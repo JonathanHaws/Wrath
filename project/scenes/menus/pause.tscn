@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="2_ndaih"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="3_vw818"]
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://audio/sfx/menu/Menu_Press.wav" id="4_2c34c"]
-[ext_resource type="Texture2D" uid="uid://d2ddctgmyhuhq" path="res://textures/logo/logo.png" id="6_vibko"]
+[ext_resource type="FontFile" uid="uid://bqaewxqlicpr5" path="res://textures/fonts/WRATH_front.ttf" id="5_b5jck"]
 
 [node name="Menu" type="CanvasLayer" node_paths=PackedStringArray("hover_sound_player", "press_sound_player", "main_menu", "resume_button", "options_button", "controls_button", "credits_button", "quit_button", "game_menu", "load_menu", "delete_menu", "options_menu", "options_master_slider", "options_sfx_slider", "options_music_slider", "options_display_dropdown", "options_back_button", "controls_menu", "credits_menu")]
 process_mode = 3
@@ -38,19 +38,32 @@ offset_bottom = 1080.0
 color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -189.0
+offset_right = 63.5
+offset_bottom = 189.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 
 [node name="Main" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
+alignment = 1
 
-[node name="Logo" type="Sprite2D" parent="CenterContainer/Main"]
-position = Vector2(53, -38)
-scale = Vector2(0.136935, 0.136935)
-texture = ExtResource("6_vibko")
+[node name="Label" type="Label" parent="CenterContainer/Main"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("5_b5jck")
+theme_override_font_sizes/font_size = 121
+text = "WRATH"
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Resume" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
@@ -104,6 +117,9 @@ size_flags_vertical = 0
 theme = ExtResource("3_vw818")
 text = "QUIT"
 icon_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/Main"]
+layout_mode = 2
 
 [node name="Game" type="VBoxContainer" parent="CenterContainer"]
 visible = false
