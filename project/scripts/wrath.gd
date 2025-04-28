@@ -102,6 +102,7 @@ func _ready() -> void:
 	if Save.data.has("wrath_defeated") and Save.data["wrath_defeated"]:
 		queue_free()
 		MUSIC.queue_free()
+		PROGRESSION_AREA.monitoring = true
 
 	health = MAX_HEALTH
 	HEALTH_BAR.max_value = MAX_HEALTH
