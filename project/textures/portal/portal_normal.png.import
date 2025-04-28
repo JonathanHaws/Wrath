@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bip6chcka1sb1"
-path.s3tc="res://.godot/imported/normal.png-f64839a474d25437554c5c076127016e.s3tc.ctex"
-path.etc2="res://.godot/imported/normal.png-f64839a474d25437554c5c076127016e.etc2.ctex"
+uid="uid://dow4ukf1dscon"
+path.s3tc="res://.godot/imported/portal_normal.png-d9489f7cf2b71fed34722bf26801ec5c.s3tc.ctex"
+path.etc2="res://.godot/imported/portal_normal.png-d9489f7cf2b71fed34722bf26801ec5c.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://textures/portal/normal.png"
-dest_files=["res://.godot/imported/normal.png-f64839a474d25437554c5c076127016e.s3tc.ctex", "res://.godot/imported/normal.png-f64839a474d25437554c5c076127016e.etc2.ctex"]
+source_file="res://textures/portal/portal_normal.png"
+dest_files=["res://.godot/imported/portal_normal.png-d9489f7cf2b71fed34722bf26801ec5c.s3tc.ctex", "res://.godot/imported/portal_normal.png-d9489f7cf2b71fed34722bf26801ec5c.etc2.ctex"]
 
 [params]
 
@@ -26,7 +26,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://textures/portal/normal.png"
+roughness/src_normal="res://textures/portal/portal_normal.png"
 process/fix_alpha_border=true
 process/premult_alpha=false
 process/normal_map_invert_y=false

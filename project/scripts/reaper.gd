@@ -16,6 +16,7 @@ extends CharacterBody3D
 @export var COYOTE_TIME: float = .4
 @export var JUMP_BUFFER_TIME: float = .2
 @export var LOCK_ON_SPEED = 7
+@export var IN_CUTSCENE = false
 
 @export_group("Visuals")
 @export var SQUASH_AMOUNT = .23
@@ -219,6 +220,10 @@ func _ready() -> void:
 	update_ui()
 	
 func _physics_process(delta: float) -> void:
+	
+	update_squash(1, SQUASH_SPEED, delta)
+	
+	if IN_CUTSCENE: return
 		
 	if Save.data.has("play_time"):
 		Save.data["play_time"] += delta	
@@ -231,8 +236,6 @@ func _physics_process(delta: float) -> void:
 			CLOAK_MATERIAL.set_shader_parameter("base_texture", ALTERNATIVE_CLOAK_TEXTURE)
 		else:
 			CLOAK_MATERIAL.set_shader_parameter("base_texture", CLOAK_TEXTURE)
-
-	update_squash(1, SQUASH_SPEED, delta)
 	
 	update_ui()
 	

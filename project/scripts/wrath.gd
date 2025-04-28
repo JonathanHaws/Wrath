@@ -96,6 +96,7 @@ func _on_jump_attack_area_body_entered(body: Node) -> void:
 
 func _ready() -> void:
 	
+	PROGRESSION_AREA.monitoring = false
 	target_direction = -global_transform.basis.z.normalized()
 	dissolve_body(0,1)
 	if Save.data.has("wrath_defeated") and Save.data["wrath_defeated"]:
