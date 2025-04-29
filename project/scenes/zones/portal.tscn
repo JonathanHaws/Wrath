@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://5n4cvh6cqc4p"]
+[gd_scene load_steps=26 format=3 uid="uid://5n4cvh6cqc4p"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/menus/pause.tscn" id="1_1waye"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="2_iv0bg"]
@@ -126,7 +126,35 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1waye"]
-size = Vector3(22.0024, 14.7581, 30.3711)
+size = Vector3(22.0024, 14.7581, 7.83386)
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_ses4i"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_q6mxo"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o5gfp"]
+animation = &"Burn_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6nidi"]
+animation = &"Burn_1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cr866"]
+animation = &"Spin"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gclgv"]
+graph_offset = Vector2(-291.236, 251.897)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_q6mxo")
+nodes/Add2/position = Vector2(60, 300)
+"nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_ses4i")
+"nodes/Add2 2/position" = Vector2(280, 320)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_cr866")
+nodes/Animation/position = Vector2(-220, 440)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_o5gfp")
+"nodes/Animation 2/position" = Vector2(-120, 240)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_6nidi")
+"nodes/Animation 3/position" = Vector2(40, 560)
+nodes/output/position = Vector2(560, 360)
+node_connections = [&"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Animation 3", &"output", 0, &"Add2 2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
 size = Vector3(7, 11, 2)
@@ -192,6 +220,15 @@ ANIM = NodePath("Cutscene")
 REAPER = NodePath("../Reaper")
 PLAYER_SPOT = NodePath("../PlayerSpot")
 
+[node name="spin" parent="Interactables/Portal" index="1"]
+transform = Transform3D(-0.451704, 0.892168, 0, -0.892168, -0.451704, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+
+[node name="fire1_002" parent="Interactables/Portal/flames_2" index="0"]
+transform = Transform3D(0.506386, -0.885425, 1.01336e-15, 0.885425, 0.506386, 2.86364e-15, -2.9889e-15, -5.42013e-16, 1.02, 15.7583, 0.222717, -15.5292)
+
+[node name="fire1_001" parent="Interactables/Portal/flames_1" index="0"]
+transform = Transform3D(-0.152831, -0.861936, 1.07986e-15, 0.861936, -0.152831, 3.23186e-15, -2.99369e-15, 1.62751e-15, 0.87538, 15.7583, 0.222717, -15.7353)
+
 [node name="Cutscene" type="AnimationPlayer" parent="Interactables/Portal"]
 libraries = {
 &"": SubResource("AnimationLibrary_ses4i")
@@ -204,12 +241,21 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Portal/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.791359, -2.34534, 14.6855)
+transform = Transform3D(1, 0, -9.6494e-18, 0, 1, 0, 9.6494e-18, 0, 1, -0.791359, -2.34534, 25.9541)
 shape = SubResource("BoxShape3D_1waye")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Interactables/Portal"]
 max_distance = 5000.0
 attenuation = 1e-05
+
+[node name="AnimationPlayer" parent="Interactables/Portal" index="7"]
+autoplay = "Spin"
+
+[node name="AnimationTree" type="AnimationTree" parent="Interactables/Portal"]
+tree_root = SubResource("AnimationNodeBlendTree_gclgv")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Add2/add_amount = 1.0
+"parameters/Add2 2/add_amount" = 1.0
 
 [node name="Reaper" parent="Interactables" instance=ExtResource("3_gpgiy")]
 transform = Transform3D(-0.995788, 0, 0.0916933, 0, 1, 0, -0.0916933, 0, -0.995788, 0, -7.999, -24.667)
@@ -268,3 +314,5 @@ theme_override_font_sizes/font_size = 56
 text = "THANK YOU FOR PLAYING!"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[editable path="Interactables/Portal"]

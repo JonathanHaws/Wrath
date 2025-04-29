@@ -223,7 +223,9 @@ func _physics_process(delta: float) -> void:
 	
 	update_squash(1, SQUASH_SPEED, delta)
 	
-	if IN_CUTSCENE: return
+	if IN_CUTSCENE: 
+		ANIM.stop()
+		return
 		
 	if Save.data.has("play_time"):
 		Save.data["play_time"] += delta	
