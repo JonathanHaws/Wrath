@@ -123,6 +123,15 @@ func _lock_on(_delta: float)-> void:
 		lock_on_activated = false;
 		LOCK_ON_INDICATOR.visible = false;
 
+@export_group("DamageNumbers")
+@export var DAMAGE_NUMBER: PackedScene
+@export var DAMAGE_NUMBER_OFFSET_Y: float = 140.0
+func show_damage(amount: int, pos: Vector3) -> void:
+	var number = DAMAGE_NUMBER.instantiate()
+	#number.get_node("Node2D/Label").text = amount
+	get_tree().current_scene.add_child(number)
+	number.position = CAMERA.unproject_position(pos) - Vector2(0, DAMAGE_NUMBER_OFFSET_Y)
+
 var mouse_delta = Vector2.ZERO
 var health = MAX_HEALTH
 var stamina = MAX_STAMINA
@@ -184,6 +193,7 @@ func _on_attack_area_body_entered(body: Node) -> void:
 	if body == self: return
 	if body is not CharacterBody3D: return
 	if not body.health: return
+	show_damage(1, body.global_position)
 	SlowMotion.impact(.04)
 	body.damage(1, ATTACK_AREA.global_position)
 	body.health -= 1;
