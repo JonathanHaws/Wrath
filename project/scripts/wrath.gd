@@ -18,7 +18,6 @@ extends CharacterBody3D
 @export var MESH: Node3D
 @export var NAV_REGION: NavigationRegion3D 
 @export var NAV_AGENT: NavigationAgent3D
-@export var HEALTH_BAR: ProgressBar
 @export var RIGHT_HAND_ATTACK_AREA: Area3D
 @export var LEFT_HAND_ATTACK_AREA: Area3D
 @export var JUMP_ATTACK_AREA: Area3D
@@ -105,13 +104,10 @@ func _ready() -> void:
 		PROGRESSION_AREA.monitoring = true
 
 	health = MAX_HEALTH
-	HEALTH_BAR.max_value = MAX_HEALTH
-	HEALTH_BAR.value = health
 	TRIGGER_AREA.connect("body_entered", Callable(self, "_on_trigger_area_body_entered"))
 
 func _physics_process(delta: float) -> void:
 	
-
 	if REAPER and REAPER.health < 0:
 		MUSIC._connect_exit_queue_free()
 
@@ -122,7 +118,6 @@ func _physics_process(delta: float) -> void:
 		velocity = Vector3(0, 0, 0)
 	if not is_on_floor(): velocity += get_gravity() * delta
 	if not triggered or health <= 0: return;
-	HEALTH_BAR.value = health
 	if REAPER.health <= 0: MUSIC._connect_exit_queue_free()
 	track_towards_direction(delta)
 	target_direction = (REAPER.global_transform.origin - global_transform.origin).normalized()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://5n4cvh6cqc4p"]
+[gd_scene load_steps=27 format=3 uid="uid://5n4cvh6cqc4p"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/menus/pause.tscn" id="1_1waye"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="2_iv0bg"]
@@ -11,7 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="8_o5gfp"]
 [ext_resource type="FontFile" uid="uid://bqaewxqlicpr5" path="res://textures/fonts/WRATH_front.ttf" id="9_gpgiy"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="9_ses4i"]
-[ext_resource type="Shader" uid="uid://bmyjxiijblbri" path="res://shaders/post processing/outline.gdshader" id="11_q6mxo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r6g78"]
 sky_top_color = Color(0.0470588, 0.0588235, 0.0705882, 1)
@@ -167,25 +166,6 @@ size = Vector3(7, 11, 2)
 vertices = PackedVector3Array(2.06018, 0.25, -23.75, 1.81018, 0.25, -34.5, -22.1898, 0.25, -34.5, 22.5602, 0.25, 29.25, 22.5602, 0.25, -23.75, -22.1898, 0.25, 29.25, 2.81018, 10, -34.5, 2.81018, 10, -24.75, 22.5602, 10, -24.75, 22.5602, 10, -34.5, 3.06018, 0.25, -34.5, 3.06018, 0.25, -25, 22.5602, 0.25, -25, 22.5602, 0.25, -34.5)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(2, 0, 5), PackedInt32Array(5, 0, 3), PackedInt32Array(9, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11)]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_q6mxo"]
-render_priority = 0
-shader = ExtResource("11_q6mxo")
-shader_parameter/outlineColor = Color(0.791999, 0.791999, 0.791999, 1)
-shader_parameter/depth_threshold = 0.165
-shader_parameter/normal_threshold = 1.5
-shader_parameter/normal_smoothing = 0.334
-shader_parameter/max_thickness = 1.0
-shader_parameter/min_thickness = 0.5
-shader_parameter/max_distance = 10000.0
-shader_parameter/min_distance = 2.0
-shader_parameter/grazing_fresnel_power = 5.0
-shader_parameter/grazing_angle_mask_power = 1.0
-shader_parameter/grazing_angle_modulation_factor = 50.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_o5gfp"]
-flip_faces = true
-size = Vector2(2, 2)
-
 [node name="Main" type="Node3D"]
 
 [node name="Menu" parent="." instance=ExtResource("1_1waye")]
@@ -244,13 +224,13 @@ REAPER = NodePath("../Reaper")
 PLAYER_SPOT = NodePath("../PlayerSpot")
 
 [node name="spin" parent="Interactables/Portal" index="1"]
-transform = Transform3D(0.979878, -0.1996, 0, 0.1996, 0.979878, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(-0.658751, -0.752361, 0, 0.752361, -0.658751, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Interactables/Portal/flames_2" index="0"]
-transform = Transform3D(0.212495, 0.779788, -1.33563e-15, -0.779788, 0.212495, 3.27538e-15, 3.51131e-15, 4.27492e-16, 0.808222, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(-0.568403, 0.576348, -1.00327e-15, -0.576348, -0.568403, 4.64742e-15, 2.60447e-15, 3.97766e-15, 0.809481, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Interactables/Portal/flames_1" index="0"]
-transform = Transform3D(0.212495, 0.779788, -1.33563e-15, -0.779788, 0.212495, 3.27538e-15, 3.51131e-15, 4.27492e-16, 0.808222, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(-0.568403, 0.576348, -1.00327e-15, -0.576348, -0.568403, 4.64742e-15, 2.60447e-15, 3.97766e-15, 0.809481, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Interactables/Portal" index="4"]
 autoplay = "Spin"
@@ -323,12 +303,6 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0601807, 9.93213, -2.54907)
 flip_faces = true
 size = Vector3(46, 20, 65)
-
-[node name="Post Process Test" type="MeshInstance3D" parent="."]
-visible = false
-material_override = SubResource("ShaderMaterial_q6mxo")
-mesh = SubResource("QuadMesh_o5gfp")
-skeleton = NodePath("../ColorRect/Label")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 2

@@ -9,9 +9,9 @@
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="3_xeyp1"]
 [ext_resource type="Texture2D" uid="uid://ckp765x2kgtit" path="res://textures/reaper/cloak/emisson.png" id="4_0idoq"]
 [ext_resource type="AudioStream" uid="uid://cv08lxjw3rypc" path="res://audio/sfx/player/Jump.wav" id="4_i3uf6"]
-[ext_resource type="StyleBox" uid="uid://dumtrjg77ixmn" path="res://shaders/ui/base_bar_background.tres" id="4_nq6uo"]
+[ext_resource type="StyleBox" uid="uid://dumtrjg77ixmn" path="res://shaders/ui/bar_background.tres" id="4_nq6uo"]
 [ext_resource type="AudioStream" uid="uid://cxfh7l5kksro3" path="res://audio/sfx/player/Land.wav" id="5_7kpka"]
-[ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://shaders/ui/base_bar_fill.tres" id="5_k7wi7"]
+[ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://shaders/ui/bar_fill.tres" id="5_k7wi7"]
 [ext_resource type="Texture2D" uid="uid://cub81gemf5odj" path="res://textures/defaults/default_normal.png" id="6_6g6ue"]
 [ext_resource type="AudioStream" uid="uid://cww02b50taw61" path="res://audio/sfx/player/Step_1.wav" id="7_erto2"]
 [ext_resource type="Texture2D" uid="uid://cwm4kdw3rghh5" path="res://textures/defaults/default_emision.png" id="8_wub5s"]
@@ -1192,7 +1192,7 @@ material_override = SubResource("ShaderMaterial_ckevw")
 material_override = SubResource("ShaderMaterial_py1jt")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.636638, -0.662005, -0.395527, 0.703357, 0.70877, -0.0541693, 0.316198, -0.24371, 0.916855, 0.0958226, 1.04482, -0.215987)
+transform = Transform3D(0.636638, -0.662006, -0.395526, 0.703357, 0.708769, -0.0541692, 0.316197, -0.24371, 0.916856, 0.095823, 1.04481, -0.215987)
 bone_name = "staff_2"
 bone_idx = 22
 

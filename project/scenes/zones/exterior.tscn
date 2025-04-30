@@ -1,15 +1,20 @@
-[gd_scene load_steps=60 format=4 uid="uid://dsdh2bite7xv4"]
+[gd_scene load_steps=69 format=4 uid="uid://dsdh2bite7xv4"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/menus/pause.tscn" id="1_6xa6f"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="1_rvkd1"]
 [ext_resource type="PackedScene" uid="uid://b3urcqmix8s8g" path="res://scenes/bosses/wrath.tscn" id="2_ttjtk"]
 [ext_resource type="Script" uid="uid://cbt6ac0ptuq16" path="res://scripts/kill_volume.gd" id="3_fqvjh"]
+[ext_resource type="Texture2D" uid="uid://ddvan0axx7svx" path="res://textures/brick/ao_1.png" id="4_huarl"]
 [ext_resource type="PackedScene" uid="uid://2c3tbvl0nxe1" path="res://scenes/bosses/lust.tscn" id="4_j0a1p"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="4_ynkt0"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/brick_1.tres" id="5_ct7j2"]
 [ext_resource type="PackedScene" uid="uid://diwdaoucmix4i" path="res://models/blender/level.blend" id="5_f1nnw"]
+[ext_resource type="Texture2D" uid="uid://bwj8yk018l62v" path="res://textures/brick/normal_3.png" id="5_vusox"]
+[ext_resource type="Texture2D" uid="uid://dqxkq5mhcsw2w" path="res://textures/brick/ao_3.png" id="6_xqrhl"]
+[ext_resource type="Texture2D" uid="uid://divcbrhgiq8y" path="res://textures/brick/ao_4.png" id="7_8ibjy"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="7_c1476"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="8_5d645"]
+[ext_resource type="Texture2D" uid="uid://ctmw2gnehmp3i" path="res://textures/brick/normal_4.png" id="8_w2ip6"]
 [ext_resource type="PackedScene" uid="uid://cat4e2my2so35" path="res://scenes/interactables/ambience.tscn" id="10_ykp4i"]
 [ext_resource type="AudioStream" uid="uid://dihsmt30mdqcm" path="res://audio/music/gluttony.ogg" id="11_0eica"]
 [ext_resource type="AudioStream" uid="uid://5u0ecm0d8hx8" path="res://audio/music/ambience.ogg" id="12_mgjjb"]
@@ -146,6 +151,47 @@ volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(0.08, 0.08, 0.08, 1)
 volumetric_fog_emission = Color(0.187176, 0.187176, 0.187176, 1)
 volumetric_fog_detail_spread = 0.965936
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vysv"]
+albedo_color = Color(0.0503743, 0.0571135, 0.065536, 1)
+metallic_specular = 0.08
+roughness = 0.0
+roughness_texture = ExtResource("6_xqrhl")
+emission_enabled = true
+emission = Color(0.102184, 0.120608, 0.143638, 1)
+emission_energy_multiplier = 0.45
+normal_enabled = true
+normal_scale = -10.5
+normal_texture = ExtResource("5_vusox")
+ao_texture = ExtResource("4_huarl")
+ao_on_uv2 = true
+uv1_scale = Vector3(-0.15, -0.15, -0.15)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 14.711
+uv1_world_triplanar = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rra1a"]
+albedo_color = Color(0.147741, 0.159764, 0.176595, 1)
+albedo_texture = ExtResource("7_8ibjy")
+metallic_specular = 0.4
+normal_enabled = true
+normal_scale = -1.0
+normal_texture = ExtResource("8_w2ip6")
+ao_texture = ExtResource("4_huarl")
+ao_on_uv2 = true
+uv1_scale = Vector3(-0.15, -0.15, -0.15)
+uv1_triplanar = true
+uv1_triplanar_sharpness = 14.711
+uv1_world_triplanar = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_iy783"]
+top_radius = 30.0
+bottom_radius = 30.0
+height = 425.0
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_ffi7c"]
+height = 425.0
+radius = 30.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_cj2vs"]
 size = Vector3(52.5, 6.81735, 1.16357)
@@ -527,7 +573,7 @@ bind/11/pose = Transform3D(-0.924673, -0.348245, 0.153967, 0.00872205, -0.423631
 [node name="Cinematics" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Cinematics"]
-transform = Transform3D(0.87463, 0.249685, -0.415547, -2.16067e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
+transform = Transform3D(0.87463, 0.249685, -0.415548, -1.86265e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
 rotation_edit_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cinematics"]
@@ -605,13 +651,36 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 40.285
 
-[node name="Unreachable Towers" type="Node3D" parent="Enviroment"]
+[node name="UnreachableTowers" type="Node3D" parent="Enviroment"]
 
-[node name="Pillar3" parent="Enviroment/Unreachable Towers" instance=ExtResource("13_npgyk")]
+[node name="Pillar1" parent="Enviroment/UnreachableTowers" instance=ExtResource("13_npgyk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.363213, -24.7361, 92.6236)
+
+[node name="spiral pillar" parent="Enviroment/UnreachableTowers/Pillar1" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -55.2298, 0)
+
+[node name="square_tover" parent="Enviroment/UnreachableTowers/Pillar1/spiral pillar" index="0"]
+material_override = SubResource("StandardMaterial3D_4vysv")
+
+[node name="cone_tower" parent="Enviroment/UnreachableTowers/Pillar1/spiral pillar" index="1"]
+material_override = SubResource("StandardMaterial3D_rra1a")
+
+[node name="Pillar2" parent="Enviroment/UnreachableTowers" instance=ExtResource("13_npgyk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.0904, -138.491, -305.461)
 
-[node name="Pillar4" parent="Enviroment/Unreachable Towers" instance=ExtResource("13_npgyk")]
+[node name="Pillar3" parent="Enviroment/UnreachableTowers" instance=ExtResource("13_npgyk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.09, -138.491, -305.461)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Enviroment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -185.221, 92.8422)
+
+[node name="PortalTower" type="MeshInstance3D" parent="Enviroment/StaticBody3D"]
+material_override = ExtResource("5_ct7j2")
+mesh = SubResource("CylinderMesh_iy783")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroment/StaticBody3D"]
+shape = SubResource("CylinderShape3D_ffi7c")
 
 [node name="Interactables" type="Node" parent="."]
 
@@ -975,6 +1044,8 @@ metadata/extras = {
 "currentUVSet": "map1"
 }
 
+[editable path="Enviroment/UnreachableTowers/Pillar1"]
+[editable path="Enviroment/UnreachableTowers/Pillar1/spiral pillar"]
 [editable path="Interactables/Wrath/WrathMusic"]
 [editable path="Interactables/Music/StatueMusic"]
 [editable path="Interactables/Music/AmbientMusic"]

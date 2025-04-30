@@ -1,11 +1,11 @@
 [gd_resource type="Theme" load_steps=3 format=3 uid="uid://bty2q8m8jwn5t"]
 
-[ext_resource type="StyleBox" uid="uid://dumtrjg77ixmn" path="res://shaders/ui/base_bar_background.tres" id="1_3rhje"]
-[ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://shaders/ui/base_bar_fill.tres" id="2_y7pp0"]
+[ext_resource type="StyleBox" uid="uid://dumtrjg77ixmn" path="res://shaders/ui/bar_background.tres" id="1_3rhje"]
+[ext_resource type="StyleBox" uid="uid://dje7o3hpjprs5" path="res://shaders/ui/bar_change.tres" id="2_sqai7"]
 
 [resource]
 default_font_size = 20
 Button/colors/font_color = Color(0.71213, 0.712129, 0.712129, 1)
 Label/colors/font_color = Color(0.713726, 0.713726, 0.713726, 1)
 ProgressBar/styles/background = ExtResource("1_3rhje")
-ProgressBar/styles/fill = ExtResource("2_y7pp0")
+ProgressBar/styles/fill = ExtResource("2_sqai7")

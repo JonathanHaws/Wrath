@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://cjkplyiuaa222"]
+
+[ext_resource type="FontFile" uid="uid://bqaewxqlicpr5" path="res://textures/fonts/WRATH_front.ttf" id="1_pcfyg"]
+
+[resource]
+default_font = ExtResource("1_pcfyg")
+default_font_size = 37
+Label/colors/font_color = Color(0.635294, 0.635294, 0.635294, 1)
+Label/constants/outline_size = 6
+Label/font_sizes/font_size = 37
