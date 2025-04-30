@@ -113,6 +113,7 @@ func damage(_amount: float) -> void:
 	if health > 0:
 		ANIM.play("HURT")
 		CAMERA.shake += 3
+		SlowMotion.impact(.2)
 	if (health <= 0):
 		death()		
 func death() -> void:
@@ -161,6 +162,7 @@ func _on_attack_area_body_entered(body: Node) -> void:
 	if body == self: return
 	if body is not CharacterBody3D: return
 	if not body.health: return
+	SlowMotion.impact(.04)
 	body.damage(1, ATTACK_AREA.global_position)
 	body.health -= 1;
 	if body.health > 0: return

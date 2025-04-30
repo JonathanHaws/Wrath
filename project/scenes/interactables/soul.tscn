@@ -18,7 +18,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.53333, 5),
+"times": PackedFloat32Array(2.73333, 5),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -75,6 +75,20 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.3, 0.5],
+"method": &"_freeze"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_4228f"]

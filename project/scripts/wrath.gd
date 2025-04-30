@@ -74,6 +74,8 @@ func spawn_particles(particle_position: Vector3, particle_scene: PackedScene) ->
 	var particles = particle_scene.instantiate()
 	get_parent().add_child(particles)
 	particles.global_transform.origin = particle_position
+func _freeze(duration: float, speed: float = 0.0) -> void:
+	SlowMotion.impact(duration, speed)
 func shake_camera() -> void:
 	REAPER.CAMERA.shake += 3
 func _on_attack_area_body_entered(body: Node) -> void:
@@ -92,7 +94,7 @@ func _on_jump_attack_area_body_entered(body: Node) -> void:
 	if REAPER.is_on_floor():
 		REAPER.health -= 10;
 		REAPER.damage(10)
-
+	
 func _ready() -> void:
 	
 	PROGRESSION_AREA.monitoring = false

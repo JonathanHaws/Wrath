@@ -7,7 +7,7 @@ extends ProgressBar
 func _on_timer_timeout() -> void:
 	$Change.value = value
 
-func _on_value_changed(value: float) -> void:
+func _on_value_changed(_new_value: float) -> void:
 	$Change.max_value = max_value
 	$Change.min_value = min_value
 	$Timer.stop()

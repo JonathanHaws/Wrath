@@ -5,6 +5,9 @@ extends Node3D
 @export var UPGRADE = 5.0
 @export var HEALTH = true
 
+func _freeze(duration: float, speed: float = 0.0) -> void:
+	SlowMotion.impact(duration, speed)
+
 func _on_body_entered(body: Node) -> void:
 	if not body == REAPER: return
 	$AnimationPlayer.play("delay_upgrade")
