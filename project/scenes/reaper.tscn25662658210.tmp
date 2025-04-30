@@ -1062,16 +1062,14 @@ albedo_texture = ExtResource("19_0hpbp")
 albedo_texture_msdf = true
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wub5s"]
-bg_color = Color(0.82, 0.82, 0.82, 0.65098)
-border_color = Color(0.8, 0.8, 0.8, 0.231373)
+bg_color = Color(0.720467, 0.720468, 0.720467, 1)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 anti_aliasing = false
 
-[node name="Reaper" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA", "MESH", "PIVOT", "ATTACK_AREA", "ANIM", "MESH_ANIM", "COLLISON_SHAPE", "STAMINA_BAR", "HEALTH_BAR", "SPAWN_PLAYER", "LOCK_ON_AREA", "LOCK_ON_INDICATOR")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300407, -0.0905066, -0.0386238)
+[node name="Reaper" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA", "MESH", "PIVOT", "ATTACK_AREA", "LOCK_ON_AREA", "ANIM", "MESH_ANIM", "COLLISON_SHAPE", "STAMINA_BAR", "HEALTH_BAR", "SPAWN_PLAYER")]
 rotation_edit_mode = 1
 collision_layer = 2
 script = ExtResource("1_0b6a6")
@@ -1079,6 +1077,7 @@ CAMERA = NodePath("Pivot/SpringArm3D/Camera3D")
 MESH = NodePath("Mesh")
 PIVOT = NodePath("Pivot")
 ATTACK_AREA = NodePath("Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D")
+LOCK_ON_AREA = NodePath("Pivot/LockOnArea")
 ANIM = NodePath("AnimationPlayer")
 MESH_ANIM = NodePath("Mesh/reaper/AnimationPlayer")
 COLLISON_SHAPE = NodePath("CollisionShape3D")
@@ -1098,8 +1097,6 @@ SPIN_SOUNDS = Array[AudioStream]([ExtResource("10_c6xc7"), ExtResource("11_x57ir
 WINDOWN_SOUNDS = Array[AudioStream]([ExtResource("18_pc8iq")])
 HURT_SOUNDS = Array[AudioStream]([ExtResource("15_tgmjc")])
 DEATH_SOUNDS = Array[AudioStream]([ExtResource("25_8i186")])
-LOCK_ON_AREA = NodePath("Pivot/LockOnArea")
-LOCK_ON_INDICATOR = NodePath("LockOnIndicator")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 callback_mode_process = 0
@@ -1268,8 +1265,8 @@ attenuation = 0.00728933
 [node name="LockOnIndicator" type="ProgressBar" parent="."]
 offset_left = 976.0
 offset_top = 504.0
-offset_right = 980.0
-offset_bottom = 508.0
+offset_right = 985.0
+offset_bottom = 512.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_wub5s")
 value = 100.0
 show_percentage = false

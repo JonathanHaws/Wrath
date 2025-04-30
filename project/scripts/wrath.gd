@@ -16,6 +16,7 @@ extends CharacterBody3D
 @export var ANIM: AnimationPlayer
 @export var MESH_ANIM: AnimationPlayer
 @export var MESH: Node3D
+@export var LOCK_ON: Node3D
 @export var NAV_REGION: NavigationRegion3D 
 @export var NAV_AGENT: NavigationAgent3D
 @export var RIGHT_HAND_ATTACK_AREA: Area3D
@@ -49,8 +50,8 @@ func root_motion() -> void: # Make sure mesh anim uses physics callback or will 
 	var transformed_root_motion = MESH.global_transform.basis * root_motion_position
 	global_transform.origin += transformed_root_motion; 
 func track_towards_direction(delta: float) -> void:
-	if target_direction.length_squared() > 0:
-		target_direction = target_direction.normalized()
+	if target_direction.length_squared() < 0.0001: return
+	if target_direction.normalized().is_equal_approx(Vector3.ZERO): return
 	var target_basis = Basis.looking_at(target_direction, Vector3.UP)
 	var interpolated_basis = MESH.global_transform.basis.slerp(target_basis, TRACKING_SPEED * TRACKING_MULTIPLIER * delta)
 	MESH.global_transform.basis = interpolated_basis.orthonormalized()

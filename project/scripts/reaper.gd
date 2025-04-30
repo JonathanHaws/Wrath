@@ -35,7 +35,6 @@ func update_squash(target_squash: float, squash_speed: float, delta: float):
 @export var MESH: Node3D
 @export var PIVOT: Node3D
 @export var ATTACK_AREA: Area3D
-@export var LOCK_ON_AREA: Area3D
 @export var ANIM: AnimationPlayer
 @export var MESH_ANIM: AnimationPlayer
 @export var COLLISON_SHAPE: CollisionShape3D
@@ -96,6 +95,34 @@ func play_death_sound() -> void:
 	if DEATH_SOUNDS.size() > 0:
 		Audio.play_2d_sound(DEATH_SOUNDS[randi() % DEATH_SOUNDS.size()], 0.9, 1.1, -10, -10)
 
+@export_group("Lock On")
+@export var LOCK_ON_OFFSET: float = 4.0
+@export var LOCK_ON_AREA: Area3D
+@export var LOCK_ON_INDICATOR: Node
+var lock_on_activated = false
+var lock_on_target: Node3D
+func _on_lock_on_area_body_entered(body: Node) -> void:
+	if body == self: return
+	if body is not CharacterBody3D: return
+	if (body.LOCK_ON): lock_on_target = body.LOCK_ON
+func _lock_on(_delta: float)-> void:
+	
+	if Input.is_action_just_pressed("lock_on"):
+		lock_on_activated = !lock_on_activated
+	
+	if lock_on_activated and lock_on_target and is_instance_valid(lock_on_target):
+		LOCK_ON_INDICATOR.visible = true;
+		LOCK_ON_INDICATOR.position = CAMERA.unproject_position(lock_on_target.global_transform.origin)
+		var target_position = lock_on_target.global_transform.origin - Vector3(0, LOCK_ON_OFFSET, 0)
+		var current_rotation = PIVOT.global_transform.basis.get_rotation_quaternion()
+		PIVOT.look_at(target_position + PIVOT.position, Vector3.UP)
+		var new_rotation = PIVOT.global_transform.basis.get_rotation_quaternion()
+		PIVOT.global_transform.basis = Basis(current_rotation.slerp(new_rotation, LOCK_ON_SPEED * _delta))
+		mouse_delta = Vector2.ZERO
+	else:
+		lock_on_activated = false;
+		LOCK_ON_INDICATOR.visible = false;
+
 var mouse_delta = Vector2.ZERO
 var health = MAX_HEALTH
 var stamina = MAX_STAMINA
@@ -103,8 +130,6 @@ var falling = COYOTE_TIME;
 var was_on_floor = true
 var has_been_on_floor = false
 var jump_buffer = 0;
-var lock_on_activated = false
-var lock_on_target: CharacterBody3D
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -154,10 +179,7 @@ func _on_animation_finished(animation_name: String) -> void:
 		ANIM.seek(0, true) 
 		stamina -= 10
 		STAMINA_BAR.value = stamina
-func _on_lock_on_area_body_entered(body: Node) -> void:
-	if body == self: return
-	if body is not CharacterBody3D: return
-	lock_on_target = body
+
 func _on_attack_area_body_entered(body: Node) -> void:
 	if body == self: return
 	if body is not CharacterBody3D: return
@@ -285,25 +307,13 @@ func _physics_process(delta: float) -> void:
 			velocity.y = JUMP_VELOCITY
 			falling = COYOTE_TIME
 			jump_buffer = 0
-
-	if Input.is_action_just_pressed("lock_on"):
-		lock_on_activated = !lock_on_activated
 	
 	var look_left_right = Input.get_axis("look_left", "look_right")
 	var look_up_down = Input.get_axis("look_down", "look_up")
 	mouse_delta.x += look_left_right * MOUSE_SENSITIVITY * 3000
 	mouse_delta.y -= look_up_down * MOUSE_SENSITIVITY * 3000
-		
-	if lock_on_activated:
-		if lock_on_target and is_instance_valid(lock_on_target):
-			var target_position = lock_on_target.global_transform.origin
-			var current_rotation = PIVOT.global_transform.basis.get_rotation_quaternion()
-			PIVOT.look_at(target_position + PIVOT.position, Vector3.UP)
-			var new_rotation = PIVOT.global_transform.basis.get_rotation_quaternion()
-			
-			PIVOT.global_transform.basis = Basis(current_rotation.slerp(new_rotation, LOCK_ON_SPEED * delta))
-
-			mouse_delta = Vector2.ZERO
+	
+	_lock_on(delta)
 
 	if mouse_delta.length() > 0:
 		
