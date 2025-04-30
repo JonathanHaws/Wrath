@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://scripts/wrath.gd" id="1_fvlx1"]
 [ext_resource type="PackedScene" uid="uid://srdha174fo73" path="res://scenes/particles/boss_death.tscn" id="2_brvm4"]
 [ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://audio/sfx/enemy/Hit_1.wav" id="3_nbwf2"]
-[ext_resource type="FontFile" uid="uid://cg3g6bx1v1c8l" path="res://textures/fonts/Seagram tfb.ttf" id="3_ww6eg"]
 [ext_resource type="AudioStream" uid="uid://b4dyx5m8hsynq" path="res://audio/sfx/enemy/Hit_2.wav" id="4_1aywb"]
 [ext_resource type="AudioStream" uid="uid://bv7cgqlt3sbtb" path="res://audio/sfx/enemy/Hit_3.wav" id="5_26ndu"]
 [ext_resource type="Texture2D" uid="uid://chgom45rhh51o" path="res://textures/wrath/color.png" id="5_hyseg"]
@@ -24,6 +23,7 @@
 [ext_resource type="StyleBox" uid="uid://bosm3016yuwg3" path="res://shaders/ui/wrath_fill.tres" id="16_x2rmd"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/enemy/Cry_2.wav" id="19_ewgrb"]
 [ext_resource type="PackedScene" uid="uid://d0ifk8wbwkr3w" path="res://scenes/particles/wrath_hurt.tscn" id="22_1df88"]
+[ext_resource type="FontFile" uid="uid://bqaewxqlicpr5" path="res://textures/fonts/WRATH_front.ttf" id="24_do1jg"]
 
 [sub_resource type="Curve" id="Curve_4iunx"]
 _limits = [0.0, 5.0, 0.0, 1.0]
@@ -795,10 +795,10 @@ shape = SubResource("CapsuleShape3D_oijfr")
 [node name="Health" type="ProgressBar" parent="."]
 visible = false
 texture_filter = 1
-offset_left = 607.0
-offset_top = 42.0
-offset_right = 1355.0
-offset_bottom = 51.0
+offset_left = 600.0
+offset_top = 15.0
+offset_right = 1348.0
+offset_bottom = 24.0
 theme = ExtResource("15_uwbrs")
 theme_override_styles/fill = ExtResource("16_x2rmd")
 value = 50.0
@@ -807,14 +807,15 @@ show_percentage = false
 
 [node name="Label" type="Label" parent="."]
 visible = false
-offset_left = 927.0
-offset_top = 14.0
-offset_right = 1066.0
-offset_bottom = 37.0
-theme_override_colors/font_color = Color(0.83, 0.83, 0.83, 1)
+offset_left = 910.0
+offset_top = 29.0
+offset_right = 1049.0
+offset_bottom = 71.0
+theme_override_colors/font_color = Color(0.650128, 0.650128, 0.650128, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("3_ww6eg")
-text = "Wrath - Гнев"
+theme_override_fonts/font = ExtResource("24_do1jg")
+theme_override_font_sizes/font_size = 30
+text = "Wrath"
 horizontal_alignment = 1
 uppercase = true
 

@@ -59,8 +59,9 @@ alignment = 1
 [node name="Label" type="Label" parent="CenterContainer/Main"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.125911, 0.125911, 0.125911, 1)
 theme_override_fonts/font = ExtResource("5_b5jck")
-theme_override_font_sizes/font_size = 121
+theme_override_font_sizes/font_size = 100
 text = "WRATH"
 horizontal_alignment = 1
 vertical_alignment = 1
