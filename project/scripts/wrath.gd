@@ -19,13 +19,13 @@ extends CharacterBody3D
 @export var LOCK_ON: Node3D
 @export var NAV_REGION: NavigationRegion3D 
 @export var NAV_AGENT: NavigationAgent3D
-
 @export var TRIGGER_AREA: Area3D
 @export var PROGRESSION_AREA: Area3D 
 @export var HURT_PARTICLE_SCENE: PackedScene
 @export var DEATH_PARTICLE_SCENE: PackedScene
 @export var BODY_MATERIAL: ShaderMaterial
-	
+@export var DAMAGE_NUMBER: PackedScene
+
 @export_group("Sounds")
 @export var MUSIC: Node
 @export var HIT_SOUNDS: Array[AudioStream] = []
@@ -57,41 +57,29 @@ func unlock_progression() -> void:
 func dissolve_body(speed: float, amount: float) -> void:
 	var tween = create_tween()
 	tween.tween_property(BODY_MATERIAL, "shader_parameter/dissolve_amount", amount, speed)
-func hurt(_amount: float, attacker_position: Vector3 = Vector3.ZERO) -> void:
+func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
+	WorldUI.show_symbol(global_position, DAMAGE_NUMBER, 140.0, "Node2D/Label", _damage)
+	SlowMotion.impact(.04)
 	REAPER.CAMERA.shake += 2
 	if HIT_SOUNDS.size() > 0:
 		Audio.play_2d_sound(HIT_SOUNDS[randi() % HIT_SOUNDS.size()], 0.9, 1.1)
-	spawn_particles(attacker_position, HURT_PARTICLE_SCENE)
-func death() -> void:
-	ANIM.play("DEATH",0,1,false)
-	Save.data["wrath_defeated"] = true
-	Save.save_game()
-	MUSIC._connect_exit_queue_free()
-func spawn_particles(particle_position: Vector3, particle_scene: PackedScene) -> void:
-	if particle_scene == null: return
-	var particles = particle_scene.instantiate()
-	get_parent().add_child(particles)
-	particles.global_transform.origin = particle_position
+	Particles.spawn(_position, HURT_PARTICLE_SCENE)
+	if health <= 0:
+		ANIM.play("DEATH",0,1,false)
+		Save.data["wrath_defeated"] = true
+		Save.save_game()	
+		MUSIC._connect_exit_queue_free()
+
 func _freeze(duration: float, speed: float = 0.0) -> void:
 	SlowMotion.impact(duration, speed)
 func shake_camera() -> void:
 	REAPER.CAMERA.shake += 3
-func _on_attack_area_body_entered(body: Node) -> void:
-	if body == self: return
-	if body is not CharacterBody3D: return
-	if not body.health: return
-	REAPER.health -= 10;
-	if body.has_method("damage"): body.damage(10)	
+
 func _on_trigger_area_body_entered(body: Node) -> void:
 	if body != REAPER: return
 	if triggered: return
 	triggered = true
 	ANIM.play("INTRO")
-func _on_jump_attack_area_body_entered(body: Node) -> void:	
-	if body != REAPER: return
-	if REAPER.is_on_floor():
-		REAPER.health -= 10;
-		REAPER.damage(10)
 	
 func _ready() -> void:
 	
@@ -110,6 +98,8 @@ func _physics_process(delta: float) -> void:
 	
 	if REAPER and REAPER.health < 0:
 		MUSIC._connect_exit_queue_free()
+
+	if health <= 0: return
 
 	root_motion()
 	if health > 0: 

@@ -32,8 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://cilvyugj78b4q" path="res://textures/reaper/body/color.png" id="23_6p2vh"]
 [ext_resource type="Texture2D" uid="uid://50tpgr2skix0" path="res://textures/reaper/body/normal.png" id="24_fp8ht"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/enemy/Slam.wav" id="25_8i186"]
-[ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://scenes/menus/Damage Numbers.tscn" id="26_6g6ue"]
 [ext_resource type="Texture2D" uid="uid://c1qayava2cjqm" path="res://textures/reaper/staff/color.png" id="27_ecunr"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="29_lwilf"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xbltt"]
 
@@ -1119,7 +1119,6 @@ HURT_SOUNDS = Array[AudioStream]([ExtResource("15_tgmjc")])
 DEATH_SOUNDS = Array[AudioStream]([ExtResource("25_8i186")])
 LOCK_ON_AREA = NodePath("Pivot/LockOnArea")
 LOCK_ON_INDICATOR = NodePath("LockOnIndicator")
-DAMAGE_NUMBER = ExtResource("26_6g6ue")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 callback_mode_process = 0
@@ -1226,6 +1225,8 @@ bone_idx = 22
 
 [node name="Area3D" type="Area3D" parent="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D"]
 transform = Transform3D(-0.0339621, 0, 0, 0, -0.906183, 0, 0, 0, -0.198858, 0, 0, 0)
+script = ExtResource("29_lwilf")
+group = "reaper"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D"]
 transform = Transform3D(0.999989, -3.8147e-06, 6.55651e-06, -4.53554e-07, 0.999997, -3.66941e-07, -1.19582e-06, -2.08616e-06, 1.00001, -2.81159, -1.29673, -0.4417)
@@ -1296,6 +1297,6 @@ show_percentage = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="Pivot/LockOnArea" to="." method="_on_lock_on_area_body_entered"]
-[connection signal="body_entered" from="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D" to="." method="_on_attack_area_body_entered"]
+[connection signal="body_entered" from="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D" to="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D" method="_on_body_entered"]
 
 [editable path="Mesh/reaper"]

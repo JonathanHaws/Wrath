@@ -193,9 +193,6 @@ height = 425.0
 height = 425.0
 radius = 30.0
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ope8t"]
-size = Vector3(188.549, 260, 355)
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_cj2vs"]
 size = Vector3(52.5, 6.81735, 1.16357)
 
@@ -274,6 +271,9 @@ size = Vector3(60.1604, 35, 107.815)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_15mrn"]
 size = Vector3(53, 15.2804, 49)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ope8t"]
+size = Vector3(188.549, 260, 355)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y4nq3"]
 size = Vector3(7, 11, 2)
@@ -684,18 +684,6 @@ shape = SubResource("CylinderShape3D_ffi7c")
 
 [node name="Interactables" type="Node" parent="."]
 
-[node name="KillFloor" type="Area3D" parent="Interactables"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 1.88324, 19)
-collision_layer = 3
-collision_mask = 3
-script = ExtResource("14_huarl")
-damage = 10000
-group = "kill_floor"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/KillFloor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8294, -186.275, -53.309)
-shape = SubResource("BoxShape3D_ope8t")
-
 [node name="Reaper" parent="Interactables" instance=ExtResource("18_wkoos")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36.5086, -190)
 
@@ -775,6 +763,17 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Wrath/Trigger Area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05826, 7.1402, -15.2056)
 shape = SubResource("BoxShape3D_15mrn")
+
+[node name="Kill Floor" type="Area3D" parent="Interactables"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("14_huarl")
+damage = 100000000
+group = "kill_volume"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Kill Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8294, -186.275, -36.3419)
+shape = SubResource("BoxShape3D_ope8t")
 
 [node name="Wisps" type="Node" parent="Interactables"]
 
@@ -1046,8 +1045,6 @@ skeleton = NodePath("")
 metadata/extras = {
 "currentUVSet": "map1"
 }
-
-[connection signal="body_entered" from="Interactables/KillFloor" to="Interactables/KillFloor" method="_on_body_entered"]
 
 [editable path="Enviroment/UnreachableTowers/Pillar1"]
 [editable path="Enviroment/UnreachableTowers/Pillar1/spiral pillar"]

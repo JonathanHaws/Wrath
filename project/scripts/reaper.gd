@@ -125,15 +125,6 @@ func _lock_on(_delta: float)-> void:
 		lock_on_activated = false;
 		LOCK_ON_INDICATOR.visible = false;
 
-@export_group("DamageNumbers")
-@export var DAMAGE_NUMBER: PackedScene
-@export var DAMAGE_NUMBER_OFFSET_Y: float = 140.0
-func show_damage(amount: int, pos: Vector3) -> void:
-	var number = DAMAGE_NUMBER.instantiate()
-	number.get_node("Node2D/Label").text = str(amount)
-	get_tree().current_scene.add_child(number)
-	number.position = CAMERA.unproject_position(pos) - Vector2(0, DAMAGE_NUMBER_OFFSET_Y)
-
 var mouse_delta = Vector2.ZERO
 var health = MAX_HEALTH
 var stamina = MAX_STAMINA
@@ -146,22 +137,22 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse_delta += event.relative
 
-func hurt(_damage: float) -> void:
+func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
+	print("test")
 	if health > 0:
-		ANIM.play("HURT")
-		CAMERA.shake += 3
-		SlowMotion.impact(.2)
-	if (health <= 0):
-		death()		
+		if (_group != "kill_floor"):
+			ANIM.play("HURT")
+			CAMERA.shake += 3
+			SlowMotion.impact(.2)
+	else:
+		Save.data["deaths"] += 1
+		if _group == "kill_floor":
+			if ANIM.current_animation == "FALL_DEATH": return
+			ANIM.play("FALL_DEATH")	
+		else:
+			if ANIM.current_animation == "DEATH": return
+			ANIM.play("DEATH")	
 
-func death() -> void:
-	if ANIM.current_animation == "DEATH": return
-	Save.data["deaths"] += 1
-	ANIM.play("DEATH")
-func fall_death() -> void:
-	if ANIM.current_animation == "FALL_DEATH": return
-	Save.data["deaths"] += 1
-	ANIM.play("FALL_DEATH")	
 func reload_checkpoint() -> void:
 	Save.data["spawn_sound_index"] = SPAWN_SOUND_INDEX
 	Save.save_game()
@@ -192,17 +183,6 @@ func _on_animation_finished(animation_name: String) -> void:
 		ANIM.seek(0, true) 
 		stamina -= 10
 		STAMINA_BAR.value = stamina
-
-func _on_attack_area_body_entered(body: Node) -> void:
-	if body == self: return
-	if body is not CharacterBody3D: return
-	if not body.health: return
-	show_damage(1000, body.global_position)
-	SlowMotion.impact(.04)
-	body.hurt(1, ATTACK_AREA.global_position)
-	body.health -= 1;
-	if body.health > 0: return
-	if body.has_method("death"): body.death()
 
 func find_node_by_name(target_name: String) -> Node:
 	var stack = [get_tree().get_root()]
