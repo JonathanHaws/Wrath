@@ -54,9 +54,7 @@ func track_towards_direction(delta: float) -> void:
 	MESH.global_transform.basis = interpolated_basis.orthonormalized()
 func unlock_progression() -> void:
 	PROGRESSION_AREA.monitoring = true
-func dissolve_body(speed: float, amount: float) -> void:
-	var tween = create_tween()
-	tween.tween_property(BODY_MATERIAL, "shader_parameter/dissolve_amount", amount, speed)
+
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
 	WorldUI.show_symbol(global_position, DAMAGE_NUMBER, 140.0, "Node2D/Label", _damage)
 	SlowMotion.impact(.04)
@@ -85,7 +83,6 @@ func _ready() -> void:
 	
 	if PROGRESSION_AREA: PROGRESSION_AREA.monitoring = false
 	target_direction = -global_transform.basis.z.normalized()
-	dissolve_body(0,1)
 	if Save.data.has("wrath_defeated") and Save.data["wrath_defeated"]:
 		queue_free()
 		MUSIC.queue_free()

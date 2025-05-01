@@ -56,43 +56,6 @@ shader_parameter/glow_border_smoothness = 0.003
 shader_parameter/normal_texture = ExtResource("6_6g6ue")
 shader_parameter/normal_strength = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_eoc4h"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mvekr"]
-noise = SubResource("FastNoiseLite_eoc4h")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckevw"]
-render_priority = 0
-shader = ExtResource("18_dtcwh")
-shader_parameter/base_texture = ExtResource("23_6p2vh")
-shader_parameter/emission_texture = ExtResource("8_wub5s")
-shader_parameter/emission_texture_intensity = 0.0
-shader_parameter/inside_color = Color(0, 0, 0, 1)
-shader_parameter/dissolve_amount = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_mvekr")
-shader_parameter/glow_color = Color(0.85098, 0.592157, 0.490196, 1)
-shader_parameter/glow_intensitiy = 1.77
-shader_parameter/glow_border_width = 0.018
-shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_texture = ExtResource("24_fp8ht")
-shader_parameter/normal_strength = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybm87"]
-render_priority = 0
-shader = ExtResource("18_dtcwh")
-shader_parameter/base_texture = ExtResource("27_ecunr")
-shader_parameter/emission_texture = ExtResource("4_0idoq")
-shader_parameter/emission_texture_intensity = 4.13
-shader_parameter/inside_color = Color(0, 0, 0, 1)
-shader_parameter/dissolve_amount = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_22u42")
-shader_parameter/glow_color = Color(0.851798, 0.591134, 0.49063, 1)
-shader_parameter/glow_intensitiy = 1.77
-shader_parameter/glow_border_width = 0.018
-shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_texture = ExtResource("6_6g6ue")
-shader_parameter/normal_strength = 1.0
-
 [sub_resource type="Animation" id="Animation_bx4xs"]
 resource_name = "DEATH"
 length = 2.0
@@ -1067,6 +1030,27 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0gmj"]
 size = Vector3(15.0551, 13.757, 60)
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_eoc4h"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mvekr"]
+noise = SubResource("FastNoiseLite_eoc4h")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckevw"]
+render_priority = 0
+shader = ExtResource("18_dtcwh")
+shader_parameter/base_texture = ExtResource("23_6p2vh")
+shader_parameter/emission_texture = ExtResource("8_wub5s")
+shader_parameter/emission_texture_intensity = 0.0
+shader_parameter/inside_color = Color(0, 0, 0, 1)
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_mvekr")
+shader_parameter/glow_color = Color(0.85098, 0.592157, 0.490196, 1)
+shader_parameter/glow_intensitiy = 1.77
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/normal_texture = ExtResource("24_fp8ht")
+shader_parameter/normal_strength = 1.0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_4jko3"]
 size = Vector3(43.5623, 2.2914, 1.20326)
 
@@ -1075,6 +1059,22 @@ transparency = 1
 albedo_color = Color(0.501407, 0.501406, 0.501406, 1)
 albedo_texture = ExtResource("19_0hpbp")
 albedo_texture_msdf = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybm87"]
+render_priority = 0
+shader = ExtResource("18_dtcwh")
+shader_parameter/base_texture = ExtResource("27_ecunr")
+shader_parameter/emission_texture = ExtResource("4_0idoq")
+shader_parameter/emission_texture_intensity = 4.13
+shader_parameter/inside_color = Color(0, 0, 0, 1)
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_22u42")
+shader_parameter/glow_color = Color(0.851798, 0.591134, 0.49063, 1)
+shader_parameter/glow_intensitiy = 1.77
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/normal_texture = ExtResource("6_6g6ue")
+shader_parameter/normal_strength = 1.0
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wub5s"]
 bg_color = Color(0.82, 0.82, 0.82, 0.792157)
@@ -1104,8 +1104,6 @@ COLLISON_SHAPE = NodePath("CollisionShape3D")
 CLOAK_TEXTURE = ExtResource("3_7534y")
 ALTERNATIVE_CLOAK_TEXTURE = ExtResource("19_sj6eg")
 CLOAK_MATERIAL = SubResource("ShaderMaterial_py1jt")
-BODY_MATERIAL = SubResource("ShaderMaterial_ckevw")
-STAFF_MATERIAL = SubResource("ShaderMaterial_ybm87")
 STAMINA_BAR = NodePath("Stamina")
 HEALTH_BAR = NodePath("Health")
 SPAWN_SOUNDS = Array[AudioStream]([ExtResource("3_2tmqw"), ExtResource("2_ykn11"), ExtResource("20_5d6ad")])

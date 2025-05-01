@@ -45,17 +45,6 @@ func update_squash(target_squash: float, squash_speed: float, delta: float):
 @export var CLOAK_TEXTURE: Texture2D
 @export var ALTERNATIVE_CLOAK_TEXTURE: Texture2D
 @export var CLOAK_MATERIAL: ShaderMaterial
-@export var BODY_MATERIAL: ShaderMaterial
-@export var STAFF_MATERIAL: ShaderMaterial
-func dissolve_cloak(speed: float, amount: float) -> void:
-	var tween = create_tween()
-	tween.tween_property(CLOAK_MATERIAL, "shader_parameter/dissolve_amount", amount, speed)
-func dissolve_body(speed: float, amount: float) -> void:
-	var tween = create_tween()
-	tween.tween_property(BODY_MATERIAL, "shader_parameter/dissolve_amount", amount, speed)
-func dissolve_staff(speed: float, amount: float) -> void:
-	var tween = create_tween()
-	tween.tween_property(STAFF_MATERIAL, "shader_parameter/dissolve_amount", amount, speed)
 var alternative_cloak = false
 
 @export_group("UI")
@@ -232,9 +221,7 @@ func _load() -> void:
 func _ready() -> void:
 	
 	_load()
-	dissolve_cloak(0,0)
-	dissolve_body(0,0)
-	dissolve_staff(0,0)
+
 	update_ui()
 	
 func _physics_process(delta: float) -> void:
