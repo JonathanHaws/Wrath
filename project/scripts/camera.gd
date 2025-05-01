@@ -23,3 +23,8 @@ func _physics_process(delta):
 		shake_offset.y = clamp(shake_y * shake, -max_shake, max_shake)
 		shake_offset.z = clamp(shake_z * shake, -max_shake, max_shake)
 		rotation_degrees += shake_offset
+		
+func _on_area_entered(area) -> void:
+	if area.has_variable("tremor"):
+		shake = area.tremor
+		area.tremor = 0.0

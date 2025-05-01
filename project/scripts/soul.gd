@@ -1,12 +1,8 @@
 extends Node3D
-@export var AREA: Area3D
 @export var REAPER: CharacterBody3D
 @export var COLLECTION_SOUNDS: Array[AudioStream] = []
 @export var UPGRADE = 5.0
 @export var HEALTH = true
-
-func _freeze(duration: float, speed: float = 0.0) -> void:
-	SlowMotion.impact(duration, speed)
 
 func _on_body_entered(body: Node) -> void:
 	if not body == REAPER: return
@@ -35,4 +31,3 @@ func _ready() -> void:
 	if Save.data.has(self.name) and Save.data[self.name] == true:
 		queue_free()
 	
-	AREA.connect("body_entered", Callable(self, "_on_body_entered"))

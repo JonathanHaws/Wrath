@@ -20,18 +20,6 @@ extends CharacterBody3D
 @export var BASE_DAMAGE = 50
 @export var DAMAGE_MULTIPLIER = 1
 
-@export_group("Visuals")
-@export var SQUASH_AMOUNT = .23
-@export var SQUASH_SPEED = .09
-func update_squash(target_squash: float, squash_speed: float, delta: float):
-	if delta == 0: return
-	var current_squash = MESH.scale.y
-	current_squash = lerp(current_squash, target_squash, (delta * squash_speed) * (1.0 / delta))
-	var squash_compensation = 1 - ((current_squash - 1) * .5)
-	MESH.scale.y = current_squash
-	MESH.scale.x = squash_compensation
-	MESH.scale.z = squash_compensation
-
 @export_group("References")
 @export var CAMERA: Camera3D
 @export var MESH: Node3D
@@ -127,7 +115,6 @@ func _input(event: InputEvent) -> void:
 		mouse_delta += event.relative
 
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
-	print("test")
 	if health > 0:
 		if (_group != "kill_floor"):
 			ANIM.play("HURT")
@@ -226,8 +213,7 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	
-	update_squash(1, SQUASH_SPEED, delta)
-	
+	Squash.settle(MESH,delta)	
 	if IN_CUTSCENE: 
 		ANIM.stop()
 		return
@@ -248,8 +234,8 @@ func _physics_process(delta: float) -> void:
 	
 	if not was_on_floor and is_on_floor() and has_been_on_floor:
 		if LAND_SOUNDS.size() > 0:
-			update_squash(1 - SQUASH_AMOUNT, 1, delta)
-			Audio.play_2d_sound(LAND_SOUNDS[randi() % LAND_SOUNDS.size()], 0.9, 1.1)		
+			Squash.squish(MESH,.23)	
+			Audio.play_2d_sound(LAND_SOUNDS[randi() % LAND_SOUNDS.size()], 0.9, 1.1)	
 	was_on_floor = is_on_floor()
 	if is_on_floor(): has_been_on_floor = true
 	
@@ -284,7 +270,7 @@ func _physics_process(delta: float) -> void:
 			if JUMP_SOUNDS.size() > 0:  
 				Audio.play_2d_sound(JUMP_SOUNDS[randi() % JUMP_SOUNDS.size()], 0.9, 1.1)
 			ANIM.play("JUMP")
-			update_squash(1 + SQUASH_AMOUNT, 1, delta)
+			Squash.squish(MESH,-.23)	
 			velocity.y = JUMP_VELOCITY
 			falling = COYOTE_TIME
 			jump_buffer = 0

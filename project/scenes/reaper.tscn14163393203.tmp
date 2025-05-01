@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=66 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://scripts/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://cfsv4t4uo4j62" path="res://scripts/camera.gd" id="2_2s8up"]
@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/enemy/Slam.wav" id="25_8i186"]
 [ext_resource type="Texture2D" uid="uid://c1qayava2cjqm" path="res://textures/reaper/staff/color.png" id="27_ecunr"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="29_lwilf"]
+[ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://scripts/squash.gd" id="35_lwilf"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xbltt"]
 
@@ -1094,6 +1095,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300407, -0.0905066, -0.038
 rotation_edit_mode = 1
 collision_layer = 2
 script = ExtResource("1_0b6a6")
+SPEED = null
+SPRINT_MULTIPLIER = null
+MAX_STAMINA = null
+MAX_HEALTH = null
+STAMINA_RECOVERY_SPEED = null
+SPEED_FRICTION = null
+JUMP_VELOCITY = null
+GRAVITY_MULTIPLIER = null
+MOUSE_SENSITIVITY = null
+TURN_SPEED = null
+SPEED_MULTIPLIER = 1
+COYOTE_TIME = null
+JUMP_BUFFER_TIME = null
+LOCK_ON_SPEED = null
+IN_CUTSCENE = null
+BASE_DAMAGE = null
+DAMAGE_MULTIPLIER = null
+SQUASH_AMOUNT = null
+SQUASH_SPEED = null
 CAMERA = NodePath("Pivot/SpringArm3D/Camera3D")
 MESH = NodePath("Mesh")
 PIVOT = NodePath("Pivot")
@@ -1106,6 +1126,7 @@ ALTERNATIVE_CLOAK_TEXTURE = ExtResource("19_sj6eg")
 CLOAK_MATERIAL = SubResource("ShaderMaterial_py1jt")
 STAMINA_BAR = NodePath("Stamina")
 HEALTH_BAR = NodePath("Health")
+BAR_PIXEL_WIDTH = null
 SPAWN_SOUNDS = Array[AudioStream]([ExtResource("3_2tmqw"), ExtResource("2_ykn11"), ExtResource("20_5d6ad")])
 SPAWN_PLAYER = NodePath("Spawn")
 JUMP_SOUNDS = Array[AudioStream]([ExtResource("4_i3uf6")])
@@ -1115,6 +1136,7 @@ SPIN_SOUNDS = Array[AudioStream]([ExtResource("10_c6xc7"), ExtResource("11_x57ir
 WINDOWN_SOUNDS = Array[AudioStream]([ExtResource("18_pc8iq")])
 HURT_SOUNDS = Array[AudioStream]([ExtResource("15_tgmjc")])
 DEATH_SOUNDS = Array[AudioStream]([ExtResource("25_8i186")])
+LOCK_ON_OFFSET = null
 LOCK_ON_AREA = NodePath("Pivot/LockOnArea")
 LOCK_ON_INDICATOR = NodePath("LockOnIndicator")
 
@@ -1217,7 +1239,7 @@ material_override = SubResource("ShaderMaterial_ckevw")
 material_override = SubResource("ShaderMaterial_py1jt")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.636638, -0.662006, -0.395526, 0.703357, 0.708769, -0.0541692, 0.316197, -0.24371, 0.916856, 0.095823, 1.04481, -0.215987)
+transform = Transform3D(0.636638, -0.662005, -0.395527, 0.703357, 0.70877, -0.0541693, 0.316198, -0.24371, 0.916855, 0.0958226, 1.04482, -0.215987)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -1292,6 +1314,9 @@ offset_bottom = 512.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_wub5s")
 value = 100.0
 show_percentage = false
+
+[node name="Squash" type="Node" parent="."]
+script = ExtResource("35_lwilf")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="Pivot/LockOnArea" to="." method="_on_lock_on_area_body_entered"]

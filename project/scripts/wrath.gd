@@ -68,8 +68,6 @@ func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.
 		Save.save_game()	
 		MUSIC._connect_exit_queue_free()
 
-func _freeze(duration: float, speed: float = 0.0) -> void:
-	SlowMotion.impact(duration, speed)
 func shake_camera() -> void:
 	REAPER.CAMERA.shake += 3
 
