@@ -1,13 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://bnli3nh320v2f"]
+[gd_scene load_steps=15 format=3 uid="uid://bnli3nh320v2f"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/menus/pause.tscn" id="1_rxbw7"]
-[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="2_c5jgk"]
-[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_88x3a"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/brick_1.tres" id="4_ti37w"]
-[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="5_hwa41"]
-[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="6_2bcko"]
-[ext_resource type="PackedScene" uid="uid://ct16v3d62ahyk" path="res://models/blender/chain_ceiling.blend" id="7_bbyat"]
-[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="7_yrqvj"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/menus/pause.tscn" id="1_4rsh0"]
+[ext_resource type="PackedScene" uid="uid://ct16v3d62ahyk" path="res://models/blender/chain_ceiling.blend" id="2_f0ngy"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_3v15h"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="4_od467"]
+[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="5_irgkx"]
+[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="6_hmgfx"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="7_tr476"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/brick_1.tres" id="8_fwba0"]
+[ext_resource type="PackedScene" uid="uid://iok4f80ofwka" path="res://scenes/bosses/envy.tscn" id="9_f0ngy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r6g78"]
 sky_top_color = Color(0.0470588, 0.0588235, 0.0705882, 1)
@@ -54,14 +55,14 @@ size = Vector3(7, 11, 2)
 
 [node name="Main" type="Node3D"]
 
-[node name="Menu" parent="." instance=ExtResource("1_rxbw7")]
+[node name="Menu" parent="." instance=ExtResource("1_4rsh0")]
 
 [node name="Enviroment" type="Node" parent="."]
 
-[node name="ChainCeiling" parent="Enviroment" instance=ExtResource("7_bbyat")]
+[node name="ChainCeiling" parent="Enviroment" instance=ExtResource("2_f0ngy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56517, -15.9073, -0.547886)
 
-[node name="Weather" parent="Enviroment" instance=ExtResource("3_88x3a")]
+[node name="Weather" parent="Enviroment" instance=ExtResource("3_3v15h")]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment"]
 environment = SubResource("Environment_1hm8g")
@@ -82,36 +83,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
 [node name="Interactables" type="Node" parent="."]
 
-[node name="Reaper" parent="Interactables" instance=ExtResource("2_c5jgk")]
+[node name="Reaper" parent="Interactables" instance=ExtResource("4_od467")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
-[node name="Checkpoint" parent="Interactables" node_paths=PackedStringArray("REAPER") instance=ExtResource("7_yrqvj")]
+[node name="Checkpoint" parent="Interactables" node_paths=PackedStringArray("REAPER") instance=ExtResource("5_irgkx")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 8.82072, -9.13993, -0.360989)
 REAPER = NodePath("../Reaper")
 CHECKPOINT_SCENE_PATH = "res://scenes/zones/envy.tscn"
 
-[node name="Envy Soul" parent="Interactables" node_paths=PackedStringArray("REAPER") instance=ExtResource("5_hwa41")]
+[node name="Envy Soul" parent="Interactables" node_paths=PackedStringArray("REAPER") instance=ExtResource("6_hmgfx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.637, -6.42492, -0.374643)
 REAPER = NodePath("../Reaper")
 
-[node name="EnvyTower" parent="Interactables" node_paths=PackedStringArray("REAPER", "AREA", "START") instance=ExtResource("6_2bcko")]
+[node name="ChainTower" parent="Interactables" node_paths=PackedStringArray("REAPER", "AREA", "START") instance=ExtResource("7_tr476")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
 REAPER = NodePath("../Reaper")
 DESTINATION_SCENE_PATH = "res://scenes/zones/exterior.tscn"
-DESTINATION_NODE_NAME = "EnvyTower"
+DESTINATION_NODE_NAME = "ChainTower"
 AREA = NodePath("Area3D")
 START = NodePath("Start")
 
-[node name="Area3D" type="Area3D" parent="Interactables/EnvyTower"]
+[node name="Area3D" type="Area3D" parent="Interactables/ChainTower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/EnvyTower/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/ChainTower/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57746e-08, 5, -0.5)
 shape = SubResource("BoxShape3D_8x7wd")
 
-[node name="Start" type="Node3D" parent="Interactables/EnvyTower"]
+[node name="Start" type="Node3D" parent="Interactables/ChainTower"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.117285, 0.53226, 8.1402)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -119,10 +120,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
-material_override = ExtResource("4_ti37w")
+material_override = ExtResource("8_fwba0")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.96857, 9.93213, -0.0490699)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71385, 9.93213, -0.0490699)
 flip_faces = true
-size = Vector3(33.9425, 20, 30)
+size = Vector3(65.3073, 20, 30)
+
+[node name="Wrath" parent="." instance=ExtResource("9_f0ngy")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 28.4454, -7.25704, -2.75995)
+visible = false

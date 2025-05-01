@@ -19,10 +19,7 @@ extends CharacterBody3D
 @export var LOCK_ON: Node3D
 @export var NAV_REGION: NavigationRegion3D 
 @export var NAV_AGENT: NavigationAgent3D
-@export var RIGHT_HAND_ATTACK_AREA: Area3D
-@export var LEFT_HAND_ATTACK_AREA: Area3D
-@export var JUMP_ATTACK_AREA: Area3D
-@export var TORSO_ATTACK_AREA: Area3D
+
 @export var TRIGGER_AREA: Area3D
 @export var PROGRESSION_AREA: Area3D 
 @export var HURT_PARTICLE_SCENE: PackedScene
@@ -60,7 +57,7 @@ func unlock_progression() -> void:
 func dissolve_body(speed: float, amount: float) -> void:
 	var tween = create_tween()
 	tween.tween_property(BODY_MATERIAL, "shader_parameter/dissolve_amount", amount, speed)
-func damage(_amount: float, attacker_position: Vector3 = Vector3.ZERO) -> void:
+func hurt(_amount: float, attacker_position: Vector3 = Vector3.ZERO) -> void:
 	REAPER.CAMERA.shake += 2
 	if HIT_SOUNDS.size() > 0:
 		Audio.play_2d_sound(HIT_SOUNDS[randi() % HIT_SOUNDS.size()], 0.9, 1.1)
@@ -98,7 +95,7 @@ func _on_jump_attack_area_body_entered(body: Node) -> void:
 	
 func _ready() -> void:
 	
-	PROGRESSION_AREA.monitoring = false
+	if PROGRESSION_AREA: PROGRESSION_AREA.monitoring = false
 	target_direction = -global_transform.basis.z.normalized()
 	dissolve_body(0,1)
 	if Save.data.has("wrath_defeated") and Save.data["wrath_defeated"]:
@@ -107,7 +104,7 @@ func _ready() -> void:
 		PROGRESSION_AREA.monitoring = true
 
 	health = MAX_HEALTH
-	TRIGGER_AREA.connect("body_entered", Callable(self, "_on_trigger_area_body_entered"))
+	if TRIGGER_AREA: TRIGGER_AREA.connect("body_entered", Callable(self, "_on_trigger_area_body_entered"))
 
 func _physics_process(delta: float) -> void:
 	

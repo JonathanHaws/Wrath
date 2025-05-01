@@ -573,7 +573,7 @@ bind/11/pose = Transform3D(-0.924673, -0.348245, 0.153967, 0.00872205, -0.423631
 [node name="Cinematics" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Cinematics"]
-transform = Transform3D(-0.725376, 0.189735, -0.661687, 2.90573e-07, 0.961261, 0.275637, 0.688352, 0.19994, -0.697277, -93.1809, 39.794, -17.6708)
+transform = Transform3D(-0.725376, 0.189735, -0.661687, 2.38418e-07, 0.961261, 0.275637, 0.688352, 0.19994, -0.697277, -93.1809, 39.794, -17.6708)
 rotation_edit_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cinematics"]
@@ -812,23 +812,23 @@ shape = SubResource("BoxShape3D_y4nq3")
 [node name="Start" type="Node3D" parent="Interactables/Doors/StartDoor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.302017, -6.20786)
 
-[node name="EnvyTower" parent="Interactables/Doors" node_paths=PackedStringArray("REAPER", "AREA", "START") instance=ExtResource("8_5d645")]
+[node name="ChainTower" parent="Interactables/Doors" node_paths=PackedStringArray("REAPER", "AREA", "START") instance=ExtResource("8_5d645")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 39.7555, -40.4065, -134.982)
 REAPER = NodePath("../../Reaper")
-DESTINATION_SCENE_PATH = "res://scenes/zones/envy.tscn"
-DESTINATION_NODE_NAME = "EnvyTower"
+DESTINATION_SCENE_PATH = "res://scenes/zones/chain_tower.tscn"
+DESTINATION_NODE_NAME = "ChainTower"
 AREA = NodePath("Area3D")
 START = NodePath("Start")
 
-[node name="Area3D" type="Area3D" parent="Interactables/Doors/EnvyTower"]
+[node name="Area3D" type="Area3D" parent="Interactables/Doors/ChainTower"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Doors/EnvyTower/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Doors/ChainTower/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57746e-08, 5, -0.5)
 shape = SubResource("BoxShape3D_y4nq3")
 
-[node name="Start" type="Node3D" parent="Interactables/Doors/EnvyTower"]
+[node name="Start" type="Node3D" parent="Interactables/Doors/ChainTower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.406483, -6.20785)
 
 [node name="TowerEast" parent="Interactables/Doors" node_paths=PackedStringArray("REAPER", "AREA", "START") instance=ExtResource("8_5d645")]

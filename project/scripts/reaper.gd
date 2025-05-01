@@ -17,6 +17,8 @@ extends CharacterBody3D
 @export var JUMP_BUFFER_TIME: float = .2
 @export var LOCK_ON_SPEED = 7
 @export var IN_CUTSCENE = false
+@export var BASE_DAMAGE = 50
+@export var DAMAGE_MULTIPLIER = 1
 
 @export_group("Visuals")
 @export var SQUASH_AMOUNT = .23
@@ -128,7 +130,7 @@ func _lock_on(_delta: float)-> void:
 @export var DAMAGE_NUMBER_OFFSET_Y: float = 140.0
 func show_damage(amount: int, pos: Vector3) -> void:
 	var number = DAMAGE_NUMBER.instantiate()
-	#number.get_node("Node2D/Label").text = amount
+	number.get_node("Node2D/Label").text = str(amount)
 	get_tree().current_scene.add_child(number)
 	number.position = CAMERA.unproject_position(pos) - Vector2(0, DAMAGE_NUMBER_OFFSET_Y)
 
@@ -143,13 +145,15 @@ var jump_buffer = 0;
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse_delta += event.relative
-func damage(_amount: float) -> void:
+
+func hurt(_damage: float) -> void:
 	if health > 0:
 		ANIM.play("HURT")
 		CAMERA.shake += 3
 		SlowMotion.impact(.2)
 	if (health <= 0):
 		death()		
+
 func death() -> void:
 	if ANIM.current_animation == "DEATH": return
 	Save.data["deaths"] += 1
@@ -193,9 +197,9 @@ func _on_attack_area_body_entered(body: Node) -> void:
 	if body == self: return
 	if body is not CharacterBody3D: return
 	if not body.health: return
-	show_damage(1, body.global_position)
+	show_damage(1000, body.global_position)
 	SlowMotion.impact(.04)
-	body.damage(1, ATTACK_AREA.global_position)
+	body.hurt(1, ATTACK_AREA.global_position)
 	body.health -= 1;
 	if body.health > 0: return
 	if body.has_method("death"): body.death()
