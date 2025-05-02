@@ -47,33 +47,6 @@ func update_ui():
 	STAMINA_BAR.value = stamina
 	HEALTH_BAR.value = health
 
-@export_group("Sounds")
-@export var SPAWN_SOUND_INDEX: int = 0
-@export var SPAWN_SOUNDS: Array[AudioStream] = [] 
-@export var SPAWN_PLAYER: AudioStreamPlayer2D
-@export var JUMP_SOUNDS: Array[AudioStream] = []
-@export var LAND_SOUNDS: Array[AudioStream] = []
-@export var FOOTSTEP_SOUNDS: Array[AudioStream] = []
-@export var SPIN_SOUNDS: Array[AudioStream] = []
-@export var WINDOWN_SOUNDS: Array[AudioStream] = []
-@export var HURT_SOUNDS: Array[AudioStream] = []
-@export var DEATH_SOUNDS: Array[AudioStream] = []
-func play_spin_sound() -> void:
-	if SPIN_SOUNDS.size() > 0:
-		Audio.play_2d_sound(SPIN_SOUNDS[randi() % SPIN_SOUNDS.size()], 0.9, 1.1)
-func play_windown_sound() -> void:
-	if WINDOWN_SOUNDS.size() > 0:
-		Audio.play_2d_sound(WINDOWN_SOUNDS[randi() % WINDOWN_SOUNDS.size()], 0.9, 1.1)
-func play_footstep_sound() -> void:
-	if FOOTSTEP_SOUNDS.size() > 0:
-		Audio.play_2d_sound(FOOTSTEP_SOUNDS[randi() % FOOTSTEP_SOUNDS.size()], 0.9, 1.1)
-func play_hurt_sound() -> void:
-	if HURT_SOUNDS.size() > 0:
-		Audio.play_2d_sound(HURT_SOUNDS[randi() % HURT_SOUNDS.size()], 0.9, 1.1, -10, -10)
-func play_death_sound() -> void:
-	if DEATH_SOUNDS.size() > 0:
-		Audio.play_2d_sound(DEATH_SOUNDS[randi() % DEATH_SOUNDS.size()], 0.9, 1.1, -10, -10)
-
 @export_group("Lock On")
 @export var LOCK_ON_OFFSET: float = 4.0
 @export var LOCK_ON_AREA: Area3D
@@ -117,21 +90,24 @@ func _input(event: InputEvent) -> void:
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
 	if health > 0:
 		if (_group != "kill_floor"):
+			if $Audio: $Audio.play_2d_sound(["hurt"], 0.9, 1.1)
 			ANIM.play("HURT")
 			CAMERA.shake += 3
 			SlowMotion.impact(.2)
-	else:
+	else: # death
 		Save.data["deaths"] += 1
 		if _group == "kill_floor":
 			if ANIM.current_animation == "FALL_DEATH": return
+			Save.data["spawn_sound"] = "spawn_void"
 			ANIM.play("FALL_DEATH")	
 		else:
+			if $Audio: $Audio.play_2d_sound(["hurt"], 0.9, 1.1)
 			if ANIM.current_animation == "DEATH": return
+			Save.data["spawn_sound"] = "spawn"
 			ANIM.play("DEATH")	
+		Save.save_game()
 
 func reload_checkpoint() -> void:
-	Save.data["spawn_sound_index"] = SPAWN_SOUND_INDEX
-	Save.save_game()
 	get_tree().change_scene_to_file(Save.data["checkpoint_scene_path"])
 
 func _on_animation_finished(animation_name: String) -> void:
@@ -168,8 +144,9 @@ func find_node_by_name(target_name: String) -> Node:
 			return node
 		stack += node.get_children()
 	return null
-func _load() -> void: 	
 
+func _ready() -> void:
+	
 	if not Save.data.has("deaths"):
 		Save.data["deaths"] = 0
 
@@ -200,14 +177,9 @@ func _load() -> void:
 		var checkpoint_node = get_node_or_null(Save.data["checkpoint_node_path"])
 		if checkpoint_node: global_transform = checkpoint_node.global_transform
 		
-	if Save.data.has("spawn_sound_index"):
-		SPAWN_SOUND_INDEX = Save.data["spawn_sound_index"]
-	SPAWN_PLAYER.stream = SPAWN_SOUNDS[SPAWN_SOUND_INDEX]	
-	SPAWN_PLAYER.play()
-
-func _ready() -> void:
-	
-	_load()
+	if not Save.data.has("spawn_sound"):
+		Save.data["spawn_sound"] = "spawn_new"
+	if $Audio: $Audio.play_2d_sound([Save.data["spawn_sound"]])
 
 	update_ui()
 	
@@ -233,9 +205,8 @@ func _physics_process(delta: float) -> void:
 	update_ui()
 	
 	if not was_on_floor and is_on_floor() and has_been_on_floor:
-		if LAND_SOUNDS.size() > 0:
-			Squash.squish(MESH,.23)	
-			Audio.play_2d_sound(LAND_SOUNDS[randi() % LAND_SOUNDS.size()], 0.9, 1.1)	
+		Squash.squish(MESH,.23)	
+		if $Audio: $Audio.play_2d_sound(["land"], 0.9, 1.1)
 	was_on_floor = is_on_floor()
 	if is_on_floor(): has_been_on_floor = true
 	
@@ -267,8 +238,7 @@ func _physics_process(delta: float) -> void:
 
 	if jump_buffer > 0 and falling < COYOTE_TIME: # JUMP
 		if ANIM.current_animation not in ["WINDOWN", "WINDUP", "SPIN", "DEATH", "FALL_DEATH", "HURT"]:
-			if JUMP_SOUNDS.size() > 0:  
-				Audio.play_2d_sound(JUMP_SOUNDS[randi() % JUMP_SOUNDS.size()], 0.9, 1.1)
+			if $Audio: $Audio.play_2d_sound(["jump"], 0.9, 1.1)
 			ANIM.play("JUMP")
 			Squash.squish(MESH,-.23)	
 			velocity.y = JUMP_VELOCITY

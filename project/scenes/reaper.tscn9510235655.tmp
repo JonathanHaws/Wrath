@@ -342,25 +342,39 @@ tracks/1/keys = {
 "update": 0,
 "values": [true]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_hurt_sound"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.208334, 0.291667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0.5, 0.5, 1.0]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:TURN_MULTIPLIER")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:TURN_MULTIPLIER")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -639,7 +653,7 @@ tracks/3/path = NodePath("Audio")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.25),
+"times": PackedFloat32Array(0.25, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [["step_1", "step_2", "step_3", "step_4"]],
@@ -730,46 +744,46 @@ tracks/0/keys = {
 "clips": PackedStringArray("Walk"),
 "times": PackedFloat32Array(0)
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:TURN_MULTIPLIER")
+tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
+"times": PackedFloat32Array(0.291667, 0.625),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_footstep_sound"
+}, {
+"args": [],
+"method": &"play_footstep_sound"
+}]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [1.0]
 }
-tracks/3/type = "method"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Audio")
+tracks/3/path = NodePath(".:SPEED_MULTIPLIER")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.291667),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [["step_1", "step_2", "step_3", "step_4"]],
-"method": &"play_2d_sound"
-}, {
-"args": [["step_1", "step_2", "step_3", "step_4"]],
-"method": &"play_2d_sound"
-}]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_od6d7"]
@@ -1159,39 +1173,40 @@ omni_attenuation = 1.5
 [node name="reaper" parent="Mesh" instance=ExtResource("3_k4avc")]
 
 [node name="Skeleton3D" parent="Mesh/reaper/Armature" index="0"]
+bones/0/position = Vector3(0.00250936, 0.0238501, 0.249099)
 bones/0/rotation = Quaternion(-0.707089, -0.00501628, 0.00501628, 0.707089)
-bones/1/position = Vector3(0.0120574, 0.193966, 0.86315)
-bones/1/rotation = Quaternion(0.666525, 0.00528841, -0.00472851, 0.745449)
-bones/2/rotation = Quaternion(1.86264e-09, 1.21443e-07, -1.86265e-09, 1)
-bones/3/position = Vector3(-0.134822, 0.052576, -0.00378909)
-bones/3/rotation = Quaternion(-0.0791568, -0.242246, 0.807361, 0.532184)
-bones/4/rotation = Quaternion(-0.708254, 0.120146, -0.332469, 0.61107)
+bones/1/position = Vector3(0.0121782, 0.195052, 0.858267)
+bones/1/rotation = Quaternion(0.564893, 0.00324265, -0.00404085, 0.825148)
+bones/2/rotation = Quaternion(0.0349499, 1.21332e-07, 2.17919e-09, 0.999389)
+bones/3/position = Vector3(-0.134822, 0.0525757, -0.00378911)
+bones/3/rotation = Quaternion(-0.0791569, -0.242246, 0.807361, 0.532184)
+bones/4/rotation = Quaternion(-0.708253, 0.120146, -0.332469, 0.61107)
 bones/5/rotation = Quaternion(-0.106005, -0.0843838, 0.0754514, 0.987902)
 bones/6/rotation = Quaternion(-0.645197, -0.369968, -0.17571, 0.644957)
-bones/7/position = Vector3(0.0950237, 0.298836, -0.0378842)
+bones/7/position = Vector3(0.0950239, 0.298836, -0.0378841)
 bones/7/rotation = Quaternion(-0.0880253, 0.319577, -0.443777, 0.832577)
-bones/8/position = Vector3(0.0402783, 0.37375, 0.0192499)
+bones/8/position = Vector3(0.0402785, 0.373751, 0.01925)
 bones/8/rotation = Quaternion(-0.590165, -0.329685, -0.328786, 0.659479)
-bones/9/rotation = Quaternion(0.0667946, 0.00017439, -0.00105738, 0.997766)
-bones/10/position = Vector3(0.0739062, 0.0863639, 2.37346e-08)
+bones/9/rotation = Quaternion(0.0967795, 7.33872e-12, 2.29543e-08, 0.995306)
+bones/10/position = Vector3(0.0739061, 0.0863636, -2.7889e-09)
 bones/10/rotation = Quaternion(-0.115372, -0.050699, -0.859753, 0.494917)
-bones/11/rotation = Quaternion(-0.458322, -0.406508, 0.068734, 0.787381)
-bones/12/rotation = Quaternion(-0.0341439, 0.039829, 0.140836, 0.988642)
+bones/11/rotation = Quaternion(-0.458321, -0.406508, 0.068734, 0.787381)
+bones/12/rotation = Quaternion(-0.0341438, 0.039829, 0.140836, 0.988642)
 bones/13/rotation = Quaternion(-0.680775, 0.0647394, -0.215597, 0.697046)
-bones/14/position = Vector3(0.0097023, 0.14449, -0.0938516)
-bones/14/rotation = Quaternion(-0.498519, -8.94973e-05, 0.259607, 0.827093)
+bones/14/position = Vector3(0.00970226, 0.14449, -0.0938517)
+bones/14/rotation = Quaternion(-0.498519, -8.94824e-05, 0.259607, 0.827093)
 bones/15/position = Vector3(-0.104507, 0.226166, -0.0265586)
 bones/15/rotation = Quaternion(-0.396715, 0.383495, -0.189197, 0.812252)
-bones/16/position = Vector3(-0.0745593, -0.0469273, -3.05887e-08)
-bones/16/rotation = Quaternion(0.00646211, 0.107892, 0.994102, 0.00892691)
-bones/17/rotation = Quaternion(0.0230632, 0.000157504, 0.00323349, 0.999729)
-bones/18/rotation = Quaternion(-0.785727, -0.00181071, 0.00179626, 0.618568)
-bones/19/position = Vector3(0.0745593, -0.0469273, -3.16411e-08)
-bones/19/rotation = Quaternion(-0.0100099, -0.1737, 0.984712, -0.00835615)
-bones/20/rotation = Quaternion(0.0230632, -0.00015751, -0.0032335, 0.999729)
-bones/21/rotation = Quaternion(-0.620078, -0.00236864, -0.000929705, 0.784536)
-bones/22/position = Vector3(0.110744, 0.465419, 1.04805)
-bones/22/rotation = Quaternion(0.602369, -0.40178, 0.123678, 0.678548)
+bones/16/position = Vector3(-0.0745592, -0.0469272, 1.74932e-08)
+bones/16/rotation = Quaternion(0.0473447, -0.388794, 0.919978, 0.0154111)
+bones/17/rotation = Quaternion(0.374055, 0.048881, 0.0168325, 0.925964)
+bones/18/rotation = Quaternion(-0.65009, 0.00207535, 0.00129364, 0.759853)
+bones/19/position = Vector3(0.0745592, -0.133484, 0.00642113)
+bones/19/rotation = Quaternion(-0.0131749, 0.0702259, 0.997425, -0.00611071)
+bones/20/rotation = Quaternion(0.083275, -0.0133851, -0.00293614, 0.996432)
+bones/21/rotation = Quaternion(-0.770145, 0.00501027, 0.00130267, 0.637847)
+bones/22/position = Vector3(0.0937308, 0.570228, 1.01649)
+bones/22/rotation = Quaternion(0.600174, -0.316756, 0.173318, 0.713735)
 
 [node name="blind_fold" parent="Mesh/reaper/Armature/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_ckevw")
@@ -1203,7 +1218,7 @@ material_override = SubResource("ShaderMaterial_ckevw")
 material_override = SubResource("ShaderMaterial_py1jt")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.636638, -0.662005, -0.395527, 0.703357, 0.70877, -0.0541693, 0.316198, -0.24371, 0.916855, 0.095863, 1.04952, -0.215419)
+transform = Transform3D(0.729812, -0.638158, -0.245212, 0.670623, 0.737952, 0.0754413, 0.132811, -0.219503, 0.96653, 0.0818089, 1.04157, -0.321129)
 bone_name = "staff_2"
 bone_idx = 22
 

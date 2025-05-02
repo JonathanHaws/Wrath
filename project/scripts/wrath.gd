@@ -19,24 +19,12 @@ extends CharacterBody3D
 @export var LOCK_ON: Node3D
 @export var NAV_REGION: NavigationRegion3D 
 @export var NAV_AGENT: NavigationAgent3D
-@export var TRIGGER_AREA: Area3D
 @export var PROGRESSION_AREA: Area3D 
 @export var HURT_PARTICLE_SCENE: PackedScene
 @export var DEATH_PARTICLE_SCENE: PackedScene
 @export var BODY_MATERIAL: ShaderMaterial
 @export var DAMAGE_NUMBER: PackedScene
-
-@export_group("Sounds")
 @export var MUSIC: Node
-@export var HIT_SOUNDS: Array[AudioStream] = []
-@export var SLAM_SOUNDS: Array[AudioStream] = []
-@export var BRICK_SOUNDS: Array[AudioStream] = []
-func play_slam_sound() -> void:
-	if SLAM_SOUNDS.size() > 0:
-		Audio.play_2d_sound(SLAM_SOUNDS[randi() % SLAM_SOUNDS.size()], 0.9, 1.1)
-func play_brick_sound() -> void:
-	if BRICK_SOUNDS.size() > 0:
-		Audio.play_2d_sound(BRICK_SOUNDS[randi() % BRICK_SOUNDS.size()], 0.9, 1.1, -8, -8)
 
 var health = MAX_HEALTH
 var triggered = false;
@@ -52,17 +40,15 @@ func track_towards_direction(delta: float) -> void:
 	var target_basis = Basis.looking_at(target_direction, Vector3.UP)
 	var interpolated_basis = MESH.global_transform.basis.slerp(target_basis, TRACKING_SPEED * TRACKING_MULTIPLIER * delta)
 	MESH.global_transform.basis = interpolated_basis.orthonormalized()
-func unlock_progression() -> void:
-	PROGRESSION_AREA.monitoring = true
 
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
 	WorldUI.show_symbol(global_position, DAMAGE_NUMBER, 140.0, "Node2D/Label", _damage)
 	SlowMotion.impact(.04)
 	REAPER.CAMERA.shake += 2
-	if HIT_SOUNDS.size() > 0:
-		Audio.play_2d_sound(HIT_SOUNDS[randi() % HIT_SOUNDS.size()], 0.9, 1.1)
+	if $Audio: $Audio.play_2d_sound(["hit_1", "hit_2", "hit_3"], 0.9, 1.1)
 	Particles.spawn(_position, HURT_PARTICLE_SCENE)
 	if health <= 0:
+		PROGRESSION_AREA.monitoring = true
 		ANIM.play("DEATH",0,1,false)
 		Save.data["wrath_defeated"] = true
 		Save.save_game()	
@@ -79,15 +65,12 @@ func _on_trigger_area_body_entered(body: Node) -> void:
 	
 func _ready() -> void:
 	
-	if PROGRESSION_AREA: PROGRESSION_AREA.monitoring = false
+	health = MAX_HEALTH
 	target_direction = -global_transform.basis.z.normalized()
 	if Save.data.has("wrath_defeated") and Save.data["wrath_defeated"]:
 		queue_free()
 		MUSIC.queue_free()
 		PROGRESSION_AREA.monitoring = true
-
-	health = MAX_HEALTH
-	if TRIGGER_AREA: TRIGGER_AREA.connect("body_entered", Callable(self, "_on_trigger_area_body_entered"))
 
 func _physics_process(delta: float) -> void:
 	
