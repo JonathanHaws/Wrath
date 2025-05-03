@@ -13,8 +13,11 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse_delta += event.relative
 
-func _ready() -> void:
-	LOCK_ON_AREA.body_entered.connect(_on_lock_on_area_body_entered)
+func rotate_mesh_towards_camera_xz(delta: float, mesh: Node3D, input_vector: Vector2, turn_speed: float = 16) -> void:
+	if input_vector.length() == 0: return
+	var direction = Vector3(input_vector.x, 0, input_vector.y).normalized()
+	var target_rotation = atan2(-direction.x, -direction.z) + PIVOT.rotation.y
+	mesh.rotation.y = lerp_angle(mesh.rotation.y, target_rotation, turn_speed * delta)
 
 func _on_lock_on_area_body_entered(body: Node) -> void:
 	if body == self: return
@@ -38,6 +41,9 @@ func _lock_on(_delta: float)-> void:
 	else:
 		lock_on_activated = false;
 		LOCK_ON_INDICATOR.visible = false;
+
+func _ready() -> void:
+	LOCK_ON_AREA.body_entered.connect(_on_lock_on_area_body_entered)
 			
 func _physics_process(delta: float) -> void:
 	

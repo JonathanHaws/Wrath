@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://iok4f80ofwka"]
+[gd_scene load_steps=39 format=3 uid="uid://iok4f80ofwka"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://scripts/wrath.gd" id="1_d4h5e"]
 [ext_resource type="PackedScene" uid="uid://d0ifk8wbwkr3w" path="res://scenes/particles/wrath_hurt.tscn" id="2_120us"]
@@ -7,14 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://chgom45rhh51o" path="res://textures/wrath/color.png" id="5_8kw3m"]
 [ext_resource type="Texture2D" uid="uid://d2eydc4mvaeui" path="res://textures/wrath/emision.png" id="6_yyfun"]
 [ext_resource type="Texture2D" uid="uid://bt0lar22n8dc1" path="res://textures/wrath/normal.png" id="7_iy15k"]
-[ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://audio/sfx/enemy/Hit_1.wav" id="8_s2b07"]
-[ext_resource type="AudioStream" uid="uid://b4dyx5m8hsynq" path="res://audio/sfx/enemy/Hit_2.wav" id="9_041uu"]
-[ext_resource type="AudioStream" uid="uid://bv7cgqlt3sbtb" path="res://audio/sfx/enemy/Hit_3.wav" id="10_erc5b"]
-[ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/enemy/Slam.wav" id="11_2b7tn"]
-[ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://audio/sfx/brick/Crumble_1.wav" id="12_pq8hq"]
-[ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/brick/Crumble_2.wav" id="13_4mtim"]
-[ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://audio/sfx/brick/Crumble_3.wav" id="14_4af8s"]
-[ext_resource type="AudioStream" uid="uid://bg0rsvkfwvyq1" path="res://audio/sfx/brick/Crumble_4.wav" id="15_5k1dx"]
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://audio/sfx/enemy/Despawn.wav" id="16_86kxk"]
 [ext_resource type="AudioStream" uid="uid://dejgyyvoucgey" path="res://audio/sfx/enemy/Cry_3.wav" id="17_nuaml"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/enemy/Cry_2.wav" id="18_uuvr5"]
@@ -780,7 +772,7 @@ Label/colors/font_color = Color(0.713726, 0.713726, 0.713726, 1)
 ProgressBar/styles/background = null
 ProgressBar/styles/fill = ExtResource("22_niej6")
 
-[node name="Wrath" type="CharacterBody3D" node_paths=PackedStringArray("ANIM", "MESH_ANIM", "MESH", "LOCK_ON", "NAV_AGENT", "RIGHT_HAND_ATTACK_AREA", "LEFT_HAND_ATTACK_AREA", "JUMP_ATTACK_AREA", "TORSO_ATTACK_AREA")]
+[node name="Wrath" type="CharacterBody3D" node_paths=PackedStringArray("ANIM", "MESH_ANIM", "MESH", "LOCK_ON", "NAV_AGENT")]
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_d4h5e")
@@ -792,16 +784,9 @@ MESH_ANIM = NodePath("Mesh/wrath/AnimationPlayer")
 MESH = NodePath("Mesh")
 LOCK_ON = NodePath("Mesh/wrath/Armature/Skeleton3D/Torso/LockOn")
 NAV_AGENT = NodePath("NavigationAgent3D")
-RIGHT_HAND_ATTACK_AREA = NodePath("Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D")
-LEFT_HAND_ATTACK_AREA = NodePath("Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D")
-JUMP_ATTACK_AREA = NodePath("Mesh/Jump")
-TORSO_ATTACK_AREA = NodePath("Mesh/wrath/Armature/Skeleton3D/Torso/Area3D")
 HURT_PARTICLE_SCENE = ExtResource("2_120us")
 DEATH_PARTICLE_SCENE = ExtResource("3_u00gf")
 BODY_MATERIAL = SubResource("ShaderMaterial_y1py8")
-HIT_SOUNDS = Array[AudioStream]([ExtResource("8_s2b07"), ExtResource("9_041uu"), ExtResource("10_erc5b")])
-SLAM_SOUNDS = Array[AudioStream]([ExtResource("11_2b7tn")])
-BRICK_SOUNDS = Array[AudioStream]([ExtResource("12_pq8hq"), ExtResource("13_4mtim"), ExtResource("14_4af8s"), ExtResource("15_5k1dx")])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 callback_mode_process = 0

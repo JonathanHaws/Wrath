@@ -22,7 +22,6 @@ extends CharacterBody3D
 @export_group("References")
 @export var CAMERA: Camera3D
 @export var MESH: Node3D
-@export var PIVOT: Node3D
 @export var ATTACK_AREA: Area3D
 @export var ANIM: AnimationPlayer
 @export var MESH_ANIM: AnimationPlayer
@@ -102,15 +101,6 @@ func _on_animation_finished(animation_name: String) -> void:
 		stamina -= 10
 		STAMINA_BAR.value = stamina
 
-func find_node_by_name(target_name: String) -> Node:
-	var stack = [get_tree().get_root()]
-	while stack.size() > 0:
-		var node = stack.pop_back()
-		if node.name == target_name:
-			return node
-		stack += node.get_children()
-	return null
-
 func _ready() -> void:
 	
 	if not Save.data.has("deaths"):
@@ -126,7 +116,7 @@ func _ready() -> void:
 	Save.data["max_stamina"] = MAX_STAMINA	
 
 	if Save.data.has("door_node_name"):		
-		var door_node = find_node_by_name(Save.data["door_node_name"])
+		var door_node = get_tree().root.find_child(Save.data["door_node_name"], true, false)
 		if door_node: if door_node.START: global_transform = door_node.START.global_transform
 		$FadeIn.play("DOOR_FADE_IN")
 		Save.data.erase("door_node_name")
@@ -234,9 +224,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = mesh_direction.x * SPEED * SPEED_MULTIPLIER
 			velocity.z = mesh_direction.z * SPEED * SPEED_MULTIPLIER
 
-		var direction = (Vector3(input_vector.x, 0, input_vector.y)).normalized()
-		var target_rotation = atan2(direction.x, direction.z) + PI
-		MESH.rotation.y = lerp_angle(MESH.rotation.y, target_rotation + PIVOT.rotation.y, TURN_SPEED * TURN_MULTIPLIER * delta)
+		CAMERA.rotate_mesh_towards_camera_xz(delta, MESH, input_vector, TURN_SPEED * TURN_MULTIPLIER)
 	else:
 		if ANIM.current_animation not in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT"] and is_on_floor():
 			ANIM.play("IDLE", 0, 1, false)

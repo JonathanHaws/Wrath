@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bnli3nh320v2f"]
+[gd_scene load_steps=14 format=3 uid="uid://bnli3nh320v2f"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/menus/pause.tscn" id="1_4rsh0"]
 [ext_resource type="PackedScene" uid="uid://ct16v3d62ahyk" path="res://models/blender/chain_ceiling.blend" id="2_f0ngy"]
@@ -8,7 +8,6 @@
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="6_hmgfx"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="7_tr476"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/brick_1.tres" id="8_fwba0"]
-[ext_resource type="PackedScene" uid="uid://iok4f80ofwka" path="res://scenes/bosses/envy.tscn" id="9_f0ngy"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r6g78"]
 sky_top_color = Color(0.0470588, 0.0588235, 0.0705882, 1)
@@ -127,7 +126,3 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71385, 9.93213, -0.0490699)
 flip_faces = true
 size = Vector3(65.3073, 20, 30)
-
-[node name="Wrath" parent="." instance=ExtResource("9_f0ngy")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 28.4454, -7.25704, -2.75995)
-visible = false

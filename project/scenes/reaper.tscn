@@ -1087,14 +1087,13 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 anti_aliasing = false
 
-[node name="Reaper" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA", "MESH", "PIVOT", "ATTACK_AREA", "ANIM", "MESH_ANIM", "COLLISON_SHAPE", "STAMINA_BAR", "HEALTH_BAR")]
+[node name="Reaper" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA", "MESH", "ATTACK_AREA", "ANIM", "MESH_ANIM", "COLLISON_SHAPE", "STAMINA_BAR", "HEALTH_BAR")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300407, -0.0905066, -0.0386238)
 rotation_edit_mode = 1
 collision_layer = 2
 script = ExtResource("1_0b6a6")
 CAMERA = NodePath("Pivot/SpringArm3D/Camera3D")
 MESH = NodePath("Mesh")
-PIVOT = NodePath("Pivot")
 ATTACK_AREA = NodePath("Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D")
 ANIM = NodePath("AnimationPlayer")
 MESH_ANIM = NodePath("Mesh/reaper/AnimationPlayer")
