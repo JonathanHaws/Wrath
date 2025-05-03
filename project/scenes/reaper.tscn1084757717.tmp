@@ -1,6 +1,7 @@
 [gd_scene load_steps=66 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://scripts/reaper.gd" id="1_0b6a6"]
+[ext_resource type="Script" uid="uid://cfsv4t4uo4j62" path="res://scripts/camera.gd" id="2_2s8up"]
 [ext_resource type="AudioStream" uid="uid://dv38k4hi68nft" path="res://audio/sfx/player/Spawn.wav" id="2_ykn11"]
 [ext_resource type="AudioStream" uid="uid://5n5whpag62f2" path="res://audio/sfx/player/Spawn_New.wav" id="3_2tmqw"]
 [ext_resource type="Texture2D" uid="uid://bm1u48mshqrkg" path="res://textures/reaper/cloak/color.png" id="3_7534y"]
@@ -13,7 +14,6 @@
 [ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://shaders/ui/bar_fill.tres" id="5_k7wi7"]
 [ext_resource type="Texture2D" uid="uid://cub81gemf5odj" path="res://textures/defaults/default_normal.png" id="6_6g6ue"]
 [ext_resource type="AudioStream" uid="uid://cww02b50taw61" path="res://audio/sfx/player/Step_1.wav" id="7_erto2"]
-[ext_resource type="Script" uid="uid://bmvwcgf01b1lq" path="res://scripts/camera_third_person.gd" id="7_lwilf"]
 [ext_resource type="Texture2D" uid="uid://cwm4kdw3rghh5" path="res://textures/defaults/default_emision.png" id="8_wub5s"]
 [ext_resource type="AudioStream" uid="uid://bt0ejti1ku0n4" path="res://audio/sfx/player/Step_2.wav" id="8_wxf0g"]
 [ext_resource type="AudioStream" uid="uid://boh8nmwkjx2sf" path="res://audio/sfx/player/Step_3.wav" id="9_rg8br"]
@@ -1129,14 +1129,11 @@ rotation_edit_mode = 1
 [node name="SpringArm3D" type="SpringArm3D" parent="Pivot"]
 spring_length = 5.0
 
-[node name="Camera3D" type="Camera3D" parent="Pivot/SpringArm3D" node_paths=PackedStringArray("PIVOT", "LOCK_ON_AREA", "LOCK_ON_INDICATOR")]
+[node name="Camera3D" type="Camera3D" parent="Pivot/SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 current = true
 fov = 80.0
-script = ExtResource("7_lwilf")
-PIVOT = NodePath("../..")
-LOCK_ON_AREA = NodePath("../../LockOnArea")
-LOCK_ON_INDICATOR = NodePath("../../../LockOnIndicator")
+script = ExtResource("2_2s8up")
 
 [node name="LockOnArea" type="Area3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.972606, -0.232461, 0, 0.232461, 0.972606, 0, -2.34592, -0.560696)
@@ -1285,6 +1282,7 @@ script = ExtResource("35_lwilf")
 SOUNDS = Array[AudioStream]([ExtResource("15_tgmjc"), ExtResource("4_i3uf6"), ExtResource("5_7kpka"), ExtResource("10_c6xc7"), ExtResource("11_x57ir"), ExtResource("12_ot1qi"), ExtResource("2_ykn11"), ExtResource("3_2tmqw"), ExtResource("20_5d6ad"), ExtResource("7_erto2"), ExtResource("8_wxf0g"), ExtResource("9_rg8br"), ExtResource("10_tro3i"), ExtResource("18_pc8iq"), ExtResource("25_8i186")])
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
+[connection signal="body_entered" from="Pivot/LockOnArea" to="." method="_on_lock_on_area_body_entered"]
 [connection signal="body_entered" from="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D" to="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D" method="_on_body_entered"]
 
 [editable path="Mesh/reaper"]

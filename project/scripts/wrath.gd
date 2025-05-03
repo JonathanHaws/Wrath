@@ -44,7 +44,7 @@ func track_towards_direction(delta: float) -> void:
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
 	WorldUI.show_symbol(global_position, DAMAGE_NUMBER, 140.0, "Node2D/Label", _damage)
 	SlowMotion.impact(.04)
-	REAPER.CAMERA.shake += 2
+	Shake.tremor(2)
 	if $Audio: $Audio.play_2d_sound(["hit_1", "hit_2", "hit_3"], 0.9, 1.1)
 	Particles.spawn(_position, HURT_PARTICLE_SCENE)
 	if health <= 0:
@@ -55,7 +55,7 @@ func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.
 		MUSIC._connect_exit_queue_free()
 
 func shake_camera() -> void:
-	REAPER.CAMERA.shake += 3
+	Shake.tremor(3)
 
 func _on_trigger_area_body_entered(body: Node) -> void:
 	if body != REAPER: return

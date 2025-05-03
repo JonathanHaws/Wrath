@@ -1,17 +1,22 @@
-extends Camera3D
+extends Node
 @export var shake = 0.0
 @export var decay_rate = 8.0
 @export var max_shake = 10.0
 var noise := FastNoiseLite.new()
 var shake_offset := Vector3.ZERO
-
+	
 func _ready():
 	noise.seed = randi()
 	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
 	noise.frequency = 2.0
 
+func tremor(scale = 1) ->void:
+	shake += scale
+	
 func _physics_process(delta):
-	rotation_degrees -= shake_offset # Remove previous frame's shake
+	var current_camera := get_viewport().get_camera_3d()
+	if !current_camera: return
+	current_camera.rotation_degrees -= shake_offset # Remove previous frame's shake
 	if shake > 0.0:
 		shake -= decay_rate * delta
 		shake = max(shake, 0.0)
@@ -22,7 +27,7 @@ func _physics_process(delta):
 		shake_offset.x = clamp(shake_x * shake, -max_shake, max_shake)
 		shake_offset.y = clamp(shake_y * shake, -max_shake, max_shake)
 		shake_offset.z = clamp(shake_z * shake, -max_shake, max_shake)
-		rotation_degrees += shake_offset
+		current_camera.rotation_degrees += shake_offset
 		
 func _on_area_entered(area) -> void:
 	if area.has_variable("tremor"):
