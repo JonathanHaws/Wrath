@@ -16,7 +16,6 @@ extends CharacterBody3D
 @export var ANIM: AnimationPlayer
 @export var MESH_ANIM: AnimationPlayer
 @export var MESH: Node3D
-@export var LOCK_ON: Node3D
 @export var NAV_REGION: NavigationRegion3D 
 @export var NAV_AGENT: NavigationAgent3D
 @export var PROGRESSION_AREA: Area3D 

@@ -6,7 +6,7 @@ extends Camera3D
 @export var LOCK_ON_AREA: Area3D
 @export var LOCK_ON_INDICATOR: Node
 var lock_on_activated = false
-var lock_on_target: Node3D
+var lock_on_target: Area3D
 var mouse_delta = Vector2.ZERO
 
 func _input(event: InputEvent) -> void:
@@ -19,10 +19,9 @@ func rotate_mesh_towards_camera_xz(delta: float, mesh: Node3D, input_vector: Vec
 	var target_rotation = atan2(-direction.x, -direction.z) + PIVOT.rotation.y
 	mesh.rotation.y = lerp_angle(mesh.rotation.y, target_rotation, turn_speed * delta)
 
-func _on_lock_on_area_body_entered(body: Node) -> void:
-	if body == self: return
-	if body is not CharacterBody3D: return
-	if (body.LOCK_ON): lock_on_target = body.LOCK_ON
+func _on_lock_on_area_entered(area: Node) -> void:
+	if area.name == "LockOn":
+		lock_on_target = area
 
 func _lock_on(_delta: float)-> void:
 	
@@ -43,7 +42,7 @@ func _lock_on(_delta: float)-> void:
 		LOCK_ON_INDICATOR.visible = false;
 
 func _ready() -> void:
-	LOCK_ON_AREA.body_entered.connect(_on_lock_on_area_body_entered)
+	LOCK_ON_AREA.area_entered.connect(_on_lock_on_area_entered)
 			
 func _physics_process(delta: float) -> void:
 	
