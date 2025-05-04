@@ -488,21 +488,12 @@ NAV_REGION = NodePath("../../NavigationRegion3D")
 PROGRESSION_AREA = NodePath("../Doors/PortalDoor/Area3D")
 MUSIC = NodePath("WrathMusic")
 
-[node name="BoneAttachment3D" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="0" node_paths=PackedStringArray("target", "skeleton")]
-transform = Transform3D(0.999567, 0.0353621, -0.01775, -0.0188269, 0.819781, 0.572979, 0.0348007, -0.572197, 0.819805, 0.0509682, 3.61969, 0.0443165)
-bone_name = ""
-target = NodePath("../../../../../../Reaper")
-skeleton = NodePath("..")
-bone_name = ""
+[node name="HeadFollow" parent="Interactables/Wrath" index="1" node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0325465, 5.14949, -1.31911)
+target = NodePath("../../Reaper")
 
-[node name="LeftHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.774773, -0.211122, -0.596536, 0.514325, -0.759474, -0.39921, -0.368643, -0.615895, 0.696761, -2.49111, 2.25386, 0.22739)
-
-[node name="RightHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="3"]
-transform = Transform3D(-0.949442, 0.268572, 0.16471, -0.302804, -0.633458, -0.712559, -0.0870058, -0.726154, 0.682518, 2.50316, 2.14596, 0.29679)
-
-[node name="Torso" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="4"]
-transform = Transform3D(0.999567, 0.0193518, -0.0345114, -0.0188268, 1.00005, 0.015479, 0.0348006, -0.0148174, 0.999635, -1.30238e-22, 0.985779, 0.0833421)
+[node name="MeshInstance3D" parent="Interactables/Wrath/HeadFollow" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.946255, 0.323422, 0, -0.323422, 0.946255, 0, -1.16459, -2.68402)
 
 [node name="Bounds" type="Node" parent="Interactables/Wrath"]
 

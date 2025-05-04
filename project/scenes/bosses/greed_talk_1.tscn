@@ -63,13 +63,13 @@ libraries = {
 }
 autoplay = "rest"
 
-[node name="Head Follow" type="Node3D" parent="." node_paths=PackedStringArray("skeleton")]
+[node name="HeadFollow" type="Node3D" parent="." node_paths=PackedStringArray("skeleton")]
 transform = Transform3D(1, -2.52953e-16, 7.13767e-17, 2.5996e-16, 0.911889, -0.410437, 3.87336e-17, 0.410437, 0.911889, -0.0566255, 5.28818, -1.70933)
 script = ExtResource("6_lb714")
 skeleton = NodePath("../greed/Rig/Skeleton3D")
 bone_name = "head"
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Head Follow"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HeadFollow"]
 transform = Transform3D(1, 1.66167e-18, 6.17481e-18, -1.81128e-18, 0.999704, 0.0243274, -6.13255e-18, -0.0243274, 0.999704, 0, 0.435364, 0.963171)
 mesh = SubResource("BoxMesh_lb714")
 
