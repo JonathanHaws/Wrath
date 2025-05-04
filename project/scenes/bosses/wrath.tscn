@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://b3urcqmix8s8g"]
+[gd_scene load_steps=55 format=3 uid="uid://b3urcqmix8s8g"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://scripts/wrath.gd" id="1_fvlx1"]
 [ext_resource type="PackedScene" uid="uid://srdha174fo73" path="res://scenes/particles/boss_death.tscn" id="2_brvm4"]
@@ -20,7 +20,6 @@
 [ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://audio/sfx/brick/Crumble_3.wav" id="12_p5r8v"]
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://audio/sfx/enemy/Spin.wav" id="13_367wx"]
 [ext_resource type="AudioStream" uid="uid://bg0rsvkfwvyq1" path="res://audio/sfx/brick/Crumble_4.wav" id="13_wxkwy"]
-[ext_resource type="Script" uid="uid://dkx4vb0l4mj00" path="res://scripts/head_follow.gd" id="15_e2tgp"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="15_uwbrs"]
 [ext_resource type="StyleBox" uid="uid://bosm3016yuwg3" path="res://shaders/ui/wrath_fill.tres" id="16_x2rmd"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/enemy/Cry_2.wav" id="19_ewgrb"]
@@ -878,11 +877,7 @@ next/SLAM_ATTACK = &"CHASE"
 next/SPIN_ATTACK = &"CHASE"
 blend_times = [&"INTRO", &"CHASE", 0.5]
 
-[node name="HeadFollow" type="Node3D" parent="." node_paths=PackedStringArray("skeleton")]
-script = ExtResource("15_e2tgp")
-skeleton = NodePath("../Mesh/wrath/Armature/Skeleton3D")
-bone_name = "head"
-reverse = false
+[node name="HeadFollow" type="Node3D" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="HeadFollow"]
 transform = Transform3D(1, 0, 0, 0, 0.946255, 0.323422, 0, -0.323422, 0.946255, 0, 4.12341, -3.94901)

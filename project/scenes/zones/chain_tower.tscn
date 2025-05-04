@@ -96,23 +96,8 @@ target = NodePath("../../Reaper")
 visible = false
 
 [node name="Skeleton3D" parent="Interactables/EnvyIntro/greed/Rig" index="0"]
-bones/1/position = Vector3(-2.15837e-16, -0.0660431, -2.73291)
-bones/1/rotation = Quaternion(-0.788479, -2.6916e-17, 1.75313e-17, 0.615061)
-bones/2/rotation = Quaternion(0.995725, 0.0149688, -0.00083364, 0.0911445)
-bones/3/rotation = Quaternion(0.234038, -0.00564757, 0.0132515, 0.972121)
-bones/6/rotation = Quaternion(0.0698825, -1.86074e-19, 1.21879e-16, 0.997555)
-bones/7/rotation = Quaternion(0.902787, 0.137022, -0.144121, 0.381353)
-bones/8/rotation = Quaternion(0.40116, -0.304419, 0.762542, 0.406116)
-bones/9/rotation = Quaternion(0.151975, -0.0328068, -0.212513, 0.96471)
 bones/12/position = Vector3(-2.70599e-23, 0.3, -1.78774e-08)
 bones/12/rotation = Quaternion(0.363691, -1.8381e-17, 1.99153e-17, 0.93152)
-bones/13/rotation = Quaternion(0.87963, -0.0463214, 0.0193861, 0.473002)
-bones/14/rotation = Quaternion(0.120651, 0.083236, -0.789549, 0.595925)
-bones/18/rotation = Quaternion(-0.259324, 0.0143287, 0.107515, 0.95968)
-bones/20/rotation = Quaternion(-0.398659, -0.0279547, -0.0491474, 0.915355)
-bones/21/rotation = Quaternion(-0.0735688, -0.00222426, -0.0102612, 0.997235)
-bones/23/rotation = Quaternion(0.234038, 0.00564757, -0.0132515, 0.972121)
-bones/24/rotation = Quaternion(-0.244926, -0.00987886, -0.0135448, 0.969397)
 
 [node name="Reaper" parent="Interactables" instance=ExtResource("4_od467")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
