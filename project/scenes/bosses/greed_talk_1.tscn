@@ -1,35 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8bvono5iv61i"]
+[gd_scene load_steps=12 format=3 uid="uid://b8bvono5iv61i"]
 
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/blender/greed.blend" id="1_j2t0c"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/disolve.gdshader" id="2_fmgxg"]
 [ext_resource type="Texture2D" uid="uid://cqxt1767hiu8b" path="res://textures/greed/color.png" id="3_6t1gf"]
 [ext_resource type="Texture2D" uid="uid://degml03bvddt4" path="res://textures/greed/emisson.png" id="4_lb714"]
 [ext_resource type="Texture2D" uid="uid://cub81gemf5odj" path="res://textures/defaults/default_normal.png" id="5_6t1gf"]
-[ext_resource type="Script" uid="uid://dkx4vb0l4mj00" path="res://scripts/head_follow.gd" id="6_lb714"]
-
-[sub_resource type="Animation" id="Animation_j2t0c"]
-resource_name = "rest"
-length = 1.70834
-loop_mode = 1
-step = 0.0416667
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("Lean"),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_2sweh"]
-_data = {
-&"rest": SubResource("Animation_j2t0c")
-}
-
-[sub_resource type="BoxMesh" id="BoxMesh_lb714"]
-size = Vector3(0.42, 0.31, 2.635)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_as0iv"]
 
@@ -54,24 +29,28 @@ shader_parameter/normal_strength = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6t1gf"]
 
-[node name="greed_talk_1" type="Node3D"]
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-root_node = NodePath("../greed/AnimationPlayer")
-libraries = {
-&"": SubResource("AnimationLibrary_2sweh")
+[sub_resource type="Animation" id="Animation_j2t0c"]
+resource_name = "rest"
+length = 1.70834
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Lean"),
+"times": PackedFloat32Array(0)
 }
-autoplay = "rest"
 
-[node name="HeadFollow" type="Node3D" parent="." node_paths=PackedStringArray("skeleton")]
-transform = Transform3D(1, -2.52953e-16, 7.13767e-17, 2.5996e-16, 0.911889, -0.410437, 3.87336e-17, 0.410437, 0.911889, -0.0566255, 5.28818, -1.70933)
-script = ExtResource("6_lb714")
-skeleton = NodePath("../greed/Rig/Skeleton3D")
-bone_name = "head"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2sweh"]
+_data = {
+&"rest": SubResource("Animation_j2t0c")
+}
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="HeadFollow"]
-transform = Transform3D(1, 1.66167e-18, 6.17481e-18, -1.81128e-18, 0.999704, 0.0243274, -6.13255e-18, -0.0243274, 0.999704, 0, 0.435364, 0.963171)
-mesh = SubResource("BoxMesh_lb714")
+[node name="greed_talk_1" type="Node3D"]
 
 [node name="greed" parent="." instance=ExtResource("1_j2t0c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0566255, 1.19209e-07, -1.16721)
@@ -86,7 +65,7 @@ bones/7/rotation = Quaternion(0.902787, 0.137022, -0.144121, 0.381353)
 bones/8/rotation = Quaternion(0.40116, -0.304419, 0.762542, 0.406116)
 bones/9/rotation = Quaternion(0.151975, -0.0328068, -0.212513, 0.96471)
 bones/12/position = Vector3(-8.47033e-22, 0.300003, 2.38419e-06)
-bones/12/rotation = Quaternion(0.363692, -1.83809e-17, 1.99154e-17, 0.931519)
+bones/12/rotation = Quaternion(0.363691, -1.8381e-17, 1.99153e-17, 0.93152)
 bones/13/rotation = Quaternion(0.87963, -0.0463214, 0.0193861, 0.473002)
 bones/14/rotation = Quaternion(0.120651, 0.083236, -0.789549, 0.595925)
 bones/18/rotation = Quaternion(-0.259324, 0.0143287, 0.107515, 0.95968)
@@ -98,11 +77,24 @@ bones/24/rotation = Quaternion(-0.244926, -0.00987886, -0.0135448, 0.969397)
 [node name="greed" parent="greed/Rig/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_qmj27")
 
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="greed/Rig/Skeleton3D" index="1"]
+bone_name = "head"
+bone = 12
+duration = 0.3
+
 [node name="LockOn" type="Area3D" parent="greed"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.66743, -0.374245)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="greed/LockOn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
 shape = SubResource("BoxShape3D_6t1gf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../greed/AnimationPlayer")
+callback_mode_process = 0
+libraries = {
+&"": SubResource("AnimationLibrary_2sweh")
+}
+autoplay = "rest"
 
 [editable path="greed"]

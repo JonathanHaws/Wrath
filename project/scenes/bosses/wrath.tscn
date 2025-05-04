@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://b3urcqmix8s8g"]
+[gd_scene load_steps=54 format=3 uid="uid://b3urcqmix8s8g"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://scripts/wrath.gd" id="1_fvlx1"]
 [ext_resource type="PackedScene" uid="uid://srdha174fo73" path="res://scenes/particles/boss_death.tscn" id="2_brvm4"]
@@ -812,9 +812,6 @@ _data = {
 &"SPIN_ATTACK": SubResource("Animation_jiut6")
 }
 
-[sub_resource type="BoxMesh" id="BoxMesh_e2tgp"]
-size = Vector3(0.565, 0.585, 6.1)
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d1l46"]
 radius = 0.822642
 height = 1.9658
@@ -876,13 +873,6 @@ next/JUMP_ATTACK = &"CHASE"
 next/SLAM_ATTACK = &"CHASE"
 next/SPIN_ATTACK = &"CHASE"
 blend_times = [&"INTRO", &"CHASE", 0.5]
-
-[node name="HeadFollow" type="Node3D" parent="."]
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="HeadFollow"]
-transform = Transform3D(1, 0, 0, 0, 0.946255, 0.323422, 0, -0.323422, 0.946255, 0, 4.12341, -3.94901)
-visible = false
-mesh = SubResource("BoxMesh_e2tgp")
 
 [node name="Mesh" type="Node3D" parent="."]
 
