@@ -72,7 +72,6 @@ bones/6/rotation = Quaternion(0.0698825, -1.86074e-19, 1.21879e-16, 0.997555)
 bones/7/rotation = Quaternion(0.902787, 0.137022, -0.144121, 0.381353)
 bones/8/rotation = Quaternion(0.40116, -0.304419, 0.762542, 0.406116)
 bones/9/rotation = Quaternion(0.151975, -0.0328068, -0.212513, 0.96471)
-bones/12/position = Vector3(1.05879e-22, 0.300001, 0)
 bones/12/rotation = Quaternion(0.363691, -1.8381e-17, 1.99153e-17, 0.93152)
 bones/13/rotation = Quaternion(0.87963, -0.0463214, 0.0193861, 0.473002)
 bones/14/rotation = Quaternion(0.120651, 0.083236, -0.789549, 0.595925)
@@ -87,10 +86,8 @@ material_override = SubResource("ShaderMaterial_qmj27")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="greed/Rig/Skeleton3D" index="1"]
 transform = Transform3D(1, -2.52953e-16, 7.13767e-17, 3.87336e-17, 0.410437, 0.911889, -2.5996e-16, -0.911889, 0.410437, -5.61176e-16, -0.542125, -5.28818)
-rotation_edit_mode = 1
 bone_name = "head"
 bone_idx = 12
-override_pose = true
 script = ExtResource("6_lb714")
 
 [node name="LockOn" type="Area3D" parent="greed"]
