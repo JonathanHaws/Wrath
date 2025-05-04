@@ -899,8 +899,7 @@ bones/10/scale = Vector3(1, 1, 1)
 bones/11/rotation = Quaternion(-0.0822429, -0.000622975, -0.134669, 0.987472)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999563, 0.0353619, -0.0177499, -0.0188268, 0.819778, 0.572977, 0.0348005, -0.572195, 0.819802, 0.0509679, 3.61968, 0.0443165)
-bone_name = "head"
+transform = Transform3D(0.999567, 0.0353621, -0.01775, -0.0188269, 0.819781, 0.572979, 0.0348007, -0.572197, 0.819805, 0.0509682, 3.61969, 0.0443165)
 bone_idx = 7
 script = ExtResource("15_e2tgp")
 
@@ -908,7 +907,7 @@ script = ExtResource("15_e2tgp")
 material_override = SubResource("ShaderMaterial_y1py8")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.77477, -0.21112, -0.596533, 0.514322, -0.759471, -0.39921, -0.36864, -0.615893, 0.696758, -2.4911, 2.25385, 0.227389)
+transform = Transform3D(-0.774773, -0.211122, -0.596536, 0.514325, -0.759474, -0.39921, -0.368643, -0.615895, 0.696761, -2.49111, 2.25386, 0.22739)
 bone_name = "hand_l"
 bone_idx = 6
 script = ExtResource("22_r385c")
@@ -926,7 +925,7 @@ shape = SubResource("CapsuleShape3D_d1l46")
 disabled = true
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3" groups=["wrath"]]
-transform = Transform3D(-0.949438, 0.268571, 0.16471, -0.302803, -0.633456, -0.712557, -0.0870057, -0.726152, 0.682515, 2.50315, 2.14595, 0.296788)
+transform = Transform3D(-0.949442, 0.268572, 0.16471, -0.302804, -0.633458, -0.712559, -0.0870058, -0.726154, 0.682518, 2.50316, 2.14596, 0.29679)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -943,7 +942,7 @@ shape = SubResource("CapsuleShape3D_86b8h")
 disabled = true
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="4"]
-transform = Transform3D(0.999563, 0.0193517, -0.0345112, -0.0188267, 1.00005, 0.0154789, 0.0348004, -0.0148172, 0.999631, 3.38859e-23, 0.985779, 0.0833417)
+transform = Transform3D(0.999567, 0.0193518, -0.0345114, -0.0188268, 1.00005, 0.015479, 0.0348006, -0.0148174, 0.999635, -1.30238e-22, 0.985779, 0.0833421)
 bone_name = "torso"
 bone_idx = 2
 

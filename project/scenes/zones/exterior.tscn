@@ -355,7 +355,7 @@ size = Vector3(2.0672, 6, 2.10349)
 [node name="Cinematics" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Cinematics"]
-transform = Transform3D(0.874629, 0.249685, -0.415548, -1.86264e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
+transform = Transform3D(0.874629, 0.249685, -0.415548, -1.78814e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
 rotation_edit_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cinematics"]
@@ -488,9 +488,12 @@ NAV_REGION = NodePath("../../NavigationRegion3D")
 PROGRESSION_AREA = NodePath("../Doors/PortalDoor/Area3D")
 MUSIC = NodePath("WrathMusic")
 
-[node name="BoneAttachment3D" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="0" node_paths=PackedStringArray("target")]
+[node name="BoneAttachment3D" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="0" node_paths=PackedStringArray("target", "skeleton")]
 transform = Transform3D(0.999567, 0.0353621, -0.01775, -0.0188269, 0.819781, 0.572979, 0.0348007, -0.572197, 0.819805, 0.0509682, 3.61969, 0.0443165)
+bone_name = ""
 target = NodePath("../../../../../../Reaper")
+skeleton = NodePath("..")
+bone_name = ""
 
 [node name="LeftHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
 transform = Transform3D(-0.774773, -0.211122, -0.596536, 0.514325, -0.759474, -0.39921, -0.368643, -0.615895, 0.696761, -2.49111, 2.25386, 0.22739)
