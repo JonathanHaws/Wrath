@@ -86,6 +86,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 [node name="EnvyIntro" parent="Interactables" instance=ExtResource("4_f0ngy")]
 transform = Transform3D(-0.0768408, 0, -0.997043, 0, 1, 0, 0.997043, 0, -0.0768408, 40.3377, -9.19147, -11.2945)
 
+[node name="BoneAttachment3D" parent="Interactables/EnvyIntro/greed/Rig/Skeleton3D" index="1" node_paths=PackedStringArray("target")]
+transform = Transform3D(1, -2.52952e-16, 7.13759e-17, 3.87337e-17, 0.410436, 0.911889, -2.5996e-16, -0.911889, 0.410436, 6.17717e-06, -0.542126, -5.2879)
+target = NodePath("../../../../../Reaper")
+
 [node name="Reaper" parent="Interactables" instance=ExtResource("4_od467")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
@@ -130,3 +134,6 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71385, 9.93213, -0.0490699)
 flip_faces = true
 size = Vector3(65.3073, 20, 30)
+
+[editable path="Interactables/EnvyIntro"]
+[editable path="Interactables/EnvyIntro/greed"]
