@@ -44,8 +44,8 @@ func _lock_on(_delta: float)-> void:
 func _ready() -> void:
 	LOCK_ON_AREA.area_entered.connect(_on_lock_on_area_entered)
 	
-func _process(delta: float) -> void:
-	pass #update the indicator here to not have lag 
+#func _process(_delta: float) -> void:
+	#pass #update the indicator here to not have lag 
 			
 func _physics_process(delta: float) -> void:
 	

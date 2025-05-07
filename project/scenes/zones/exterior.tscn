@@ -488,12 +488,6 @@ NAV_REGION = NodePath("../../NavigationRegion3D")
 PROGRESSION_AREA = NodePath("../Doors/PortalDoor/Area3D")
 MUSIC = NodePath("WrathMusic")
 
-[node name="HeadFollow" parent="Interactables/Wrath" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0325465, 5.14949, -1.31911)
-
-[node name="MeshInstance3D" parent="Interactables/Wrath/HeadFollow" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.946255, 0.323422, 0, -0.323422, 0.946255, 0, -1.16459, -2.68402)
-
 [node name="Bounds" type="Node" parent="Interactables/Wrath"]
 
 [node name="South" type="StaticBody3D" parent="Interactables/Wrath/Bounds"]

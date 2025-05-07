@@ -1087,7 +1087,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 anti_aliasing = false
 
-[node name="Reaper" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA", "MESH", "ATTACK_AREA", "ANIM", "MESH_ANIM", "COLLISON_SHAPE", "STAMINA_BAR", "HEALTH_BAR")]
+[node name="Reaper" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA", "MESH", "ATTACK_AREA", "ANIM", "MESH_ANIM", "COLLISON_SHAPE", "STAMINA_BAR", "HEALTH_BAR") groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300407, -0.0905066, -0.0386238)
 rotation_edit_mode = 1
 collision_layer = 2
@@ -1138,7 +1138,7 @@ LOCK_ON_AREA = NodePath("../../LockOnArea")
 LOCK_ON_INDICATOR = NodePath("../../../LockOnIndicator")
 
 [node name="HeadFollowTarget" type="Node3D" parent="Pivot/SpringArm3D/Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00976419, -0.303901, -7.89144)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.896154, -0.64839, -7.68562)
 
 [node name="LockOnArea" type="Area3D" parent="Pivot"]
 transform = Transform3D(1, 0, 0, 0, 0.972606, -0.232461, 0, 0.232461, 0.972606, 0, -2.34592, -0.560696)
@@ -1206,7 +1206,7 @@ material_override = SubResource("ShaderMaterial_ckevw")
 material_override = SubResource("ShaderMaterial_py1jt")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.636638, -0.662005, -0.395527, 0.703357, 0.70877, -0.0541693, 0.316198, -0.24371, 0.916855, 0.0958226, 1.04482, -0.215987)
+transform = Transform3D(0.636638, -0.662006, -0.395526, 0.703357, 0.708769, -0.0541692, 0.316197, -0.24371, 0.916856, 0.095823, 1.04481, -0.215987)
 bone_name = "staff_2"
 bone_idx = 22
 

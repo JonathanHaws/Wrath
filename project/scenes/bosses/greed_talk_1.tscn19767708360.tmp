@@ -1,11 +1,11 @@
 [gd_scene load_steps=19 format=3 uid="uid://b8bvono5iv61i"]
 
+[ext_resource type="Script" uid="uid://fwoejxthq774" path="res://scripts/dialogue/activation.gd" id="1_as0iv"]
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/blender/greed.blend" id="1_j2t0c"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/disolve.gdshader" id="2_fmgxg"]
 [ext_resource type="Texture2D" uid="uid://cqxt1767hiu8b" path="res://textures/greed/color.png" id="3_6t1gf"]
 [ext_resource type="Texture2D" uid="uid://degml03bvddt4" path="res://textures/greed/emisson.png" id="4_lb714"]
 [ext_resource type="Texture2D" uid="uid://cub81gemf5odj" path="res://textures/defaults/default_normal.png" id="5_6t1gf"]
-[ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://scripts/dialogue.gd" id="6_as0iv"]
 [ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://scenes/dialogue/label.tscn" id="7_as0iv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_as0iv"]
@@ -52,101 +52,29 @@ _data = {
 &"rest": SubResource("Animation_j2t0c")
 }
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_6t1gf"]
-radius = 5.85584
+[sub_resource type="Animation" id="Animation_qmj27"]
+length = 0.001
 
 [sub_resource type="Animation" id="Animation_as0iv"]
-resource_name = "1"
-length = 0.333337
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Dialogue/1/AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("entered"),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Dialogue")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.166667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"freeze"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_lb714"]
-resource_name = "2"
-length = 0.333337
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Dialogue/2/AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("entered"),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Dialogue")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.166667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"freeze"
-}]
-}
+resource_name = "entered"
 
 [sub_resource type="Animation" id="Animation_k5hc3"]
-resource_name = "3"
-length = 0.333337
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Dialogue/3/AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("entered"),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Dialogue")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.166667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"freeze"
-}]
-}
+resource_name = "exited"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k5hc3"]
 _data = {
-&"1": SubResource("Animation_as0iv"),
-&"2": SubResource("Animation_lb714"),
-&"3": SubResource("Animation_k5hc3")
+&"RESET": SubResource("Animation_qmj27"),
+&"entered": SubResource("Animation_as0iv"),
+&"exited": SubResource("Animation_k5hc3")
 }
 
-[node name="greed_talk_1" type="Node3D"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_6t1gf"]
+radius = 5.85584
+
+[node name="greed_talk_1" type="Node3D" node_paths=PackedStringArray("area", "box")]
+script = ExtResource("1_as0iv")
+area = NodePath("Area3D")
+box = NodePath("Dialouge")
 
 [node name="greed" parent="." instance=ExtResource("1_j2t0c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0566255, 1.19209e-07, -1.16721)
@@ -177,7 +105,6 @@ material_override = SubResource("ShaderMaterial_qmj27")
 bone_name = "head"
 bone = 12
 duration = 0.3
-ease_type = 3
 
 [node name="LockOn" type="Area3D" parent="greed"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.66743, -0.374245)
@@ -194,6 +121,30 @@ libraries = {
 }
 autoplay = "rest"
 
+[node name="Dialouge" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+libraries = {
+&"": SubResource("AnimationLibrary_k5hc3")
+}
+autoplay = "RESET"
+
+[node name="Label4" parent="Dialouge" instance=ExtResource("7_as0iv")]
+visible = false
+
+[node name="Label5" parent="Dialouge" instance=ExtResource("7_as0iv")]
+visible = false
+
+[node name="Label" parent="Dialouge/Label5" index="1"]
+layout_mode = 0
+text = "IS NO MATTER RUN ALONG NOW"
+
+[node name="Label6" parent="Dialouge" instance=ExtResource("7_as0iv")]
+visible = false
+
+[node name="Label" parent="Dialouge/Label6" index="1"]
+layout_mode = 0
+text = "GO CAUSE TROUBLE ELSEWHERE"
+
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 3
 collision_mask = 3
@@ -202,29 +153,6 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.44854, -1.47058)
 shape = SubResource("SphereShape3D_6t1gf")
 
-[node name="Dialogue" type="AnimationPlayer" parent="." node_paths=PackedStringArray("area")]
-libraries = {
-&"": SubResource("AnimationLibrary_k5hc3")
-}
-next/1 = &"2"
-next/2 = &"3"
-next/3 = &"1"
-script = ExtResource("6_as0iv")
-area = NodePath("../Area3D")
-
-[node name="1" parent="Dialogue" instance=ExtResource("7_as0iv")]
-
-[node name="2" parent="Dialogue" instance=ExtResource("7_as0iv")]
-
-[node name="Label" parent="Dialogue/2" index="1"]
-text = "IS NO MATTER RUN ALONG NOW"
-
-[node name="3" parent="Dialogue" instance=ExtResource("7_as0iv")]
-
-[node name="Label" parent="Dialogue/3" index="1"]
-text = "GO MAKE TROUBLE ELSEWHERE"
-
 [editable path="greed"]
-[editable path="Dialogue/1"]
-[editable path="Dialogue/2"]
-[editable path="Dialogue/3"]
+[editable path="Dialouge/Label5"]
+[editable path="Dialouge/Label6"]
