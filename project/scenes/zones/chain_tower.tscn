@@ -86,19 +86,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 [node name="EnvyIntro" parent="Interactables" instance=ExtResource("4_f0ngy")]
 transform = Transform3D(-0.0768408, 0, -0.997043, 0, 1, 0, 0.997043, 0, -0.0768408, 40.3377, -9.19147, -11.2945)
 
-[node name="Skeleton3D" parent="Interactables/EnvyIntro/greed/Rig" index="0"]
-bones/12/position = Vector3(-2.70599e-23, 0.3, -1.78774e-08)
-
-[node name="LookAtModifier3D" parent="Interactables/EnvyIntro/greed/Rig/Skeleton3D" index="1"]
-target_node = NodePath("../../../../../Reaper")
-duration = 1.0
-use_angle_limitation = true
-symmetry_limitation = true
-primary_limit_angle = 1.5708
-primary_damp_threshold = 1.0
-secondary_limit_angle = 1.5708
-secondary_damp_threshold = 1.0
-
 [node name="Reaper" parent="Interactables" instance=ExtResource("4_od467")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
@@ -143,9 +130,3 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71385, 9.93213, -0.0490699)
 flip_faces = true
 size = Vector3(65.3073, 20, 30)
-
-[editable path="Interactables/EnvyIntro"]
-[editable path="Interactables/EnvyIntro/greed"]
-[editable path="Interactables/EnvyIntro/Dialogue/1"]
-[editable path="Interactables/EnvyIntro/Dialogue/2"]
-[editable path="Interactables/EnvyIntro/Dialogue/3"]
