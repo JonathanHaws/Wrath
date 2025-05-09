@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://b3urcqmix8s8g"]
+[gd_scene load_steps=56 format=3 uid="uid://b3urcqmix8s8g"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://scripts/wrath.gd" id="1_fvlx1"]
 [ext_resource type="PackedScene" uid="uid://srdha174fo73" path="res://scenes/particles/boss_death.tscn" id="2_brvm4"]
@@ -20,6 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://audio/sfx/brick/Crumble_3.wav" id="12_p5r8v"]
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://audio/sfx/enemy/Spin.wav" id="13_367wx"]
 [ext_resource type="AudioStream" uid="uid://bg0rsvkfwvyq1" path="res://audio/sfx/brick/Crumble_4.wav" id="13_wxkwy"]
+[ext_resource type="Script" uid="uid://l4b37mckqf8k" path="res://scripts/proximity_based_random_attacks.gd" id="14_e2tgp"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="15_uwbrs"]
 [ext_resource type="StyleBox" uid="uid://bosm3016yuwg3" path="res://shaders/ui/wrath_fill.tres" id="16_x2rmd"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/enemy/Cry_2.wav" id="19_ewgrb"]
@@ -31,19 +32,7 @@
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://scripts/slow_motion.gd" id="29_8mxmx"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://scripts/camera_shake.gd" id="30_r1aqn"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://scripts/one_shot_audio.gd" id="31_4oeto"]
-
-[sub_resource type="Curve" id="Curve_4iunx"]
-_limits = [0.0, 5.0, 0.0, 1.0]
-_data = [Vector2(0, 8.9011), 0.0, 0.0, 0, 0, Vector2(1e-05, 3.35165), -18.9164, -18.9164, 0, 0, Vector2(0.210526, 2.30769), -6.63492, -6.63492, 0, 0, Vector2(0.267943, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 5
-
-[sub_resource type="Curve" id="Curve_hhdhn"]
-_data = [Vector2(0, 0.21978), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Curve" id="Curve_q1yl6"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.263736), 0.0, 0.0, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]
-point_count = 3
+[ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/target.gd" id="33_h5485"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1er76"]
 
@@ -812,6 +801,19 @@ _data = {
 &"SPIN_ATTACK": SubResource("Animation_jiut6")
 }
 
+[sub_resource type="Curve" id="Curve_cc4qc"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 8.9011), 0.0, 0.0, 0, 0, Vector2(1e-05, 3.35165), -18.9164, -18.9164, 0, 0, Vector2(0.210526, 2.30769), -6.63492, -6.63492, 0, 0, Vector2(0.267943, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="Curve" id="Curve_hhdhn"]
+_data = [Vector2(0, 0.21978), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_q1yl6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.263736), 0.0, 0.0, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d1l46"]
 radius = 0.822642
 height = 1.9658
@@ -849,9 +851,6 @@ radius = 3.895
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_fvlx1")
-ATTACK_ANIMATION = Array[String](["SLAM_ATTACK", "JUMP_ATTACK", "SPIN_ATTACK"])
-ATTACK_RADIUS = Array[float]([5.0, 10.0, 10.0])
-ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_4iunx"), SubResource("Curve_hhdhn"), SubResource("Curve_q1yl6")])
 ANIM = NodePath("AnimationPlayer")
 MESH_ANIM = NodePath("Mesh/wrath/AnimationPlayer")
 MESH = NodePath("Mesh")
@@ -873,16 +872,34 @@ next/JUMP_ATTACK = &"CHASE"
 next/SLAM_ATTACK = &"CHASE"
 next/SPIN_ATTACK = &"CHASE"
 blend_times = [&"INTRO", &"CHASE", 0.5]
+script = ExtResource("14_e2tgp")
+ATTACK_ANIMATION = Array[String](["SLAM_ATTACK", "JUMP_ATTACK", "SPIN_ATTACK"])
+ATTACK_RADIUS = Array[float]([5.0, 10.0, 10.0])
+ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_cc4qc"), SubResource("Curve_hhdhn"), SubResource("Curve_q1yl6")])
+ATTACK_MULTIPLIER = Array[float]([60.0, 60.0, 60.0])
 
 [node name="Mesh" type="Node3D" parent="."]
 
 [node name="wrath" parent="Mesh" instance=ExtResource("10_h46di")]
 
+[node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
+bones/1/position = Vector3(-7.71653e-18, -0.718805, 1.00353)
+bones/1/rotation = Quaternion(0.25735, 8.11288e-17, 7.05286e-17, 0.966318)
+bones/2/rotation = Quaternion(0.347629, 1.11774e-07, 4.14406e-08, 0.937632)
+bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
+bones/4/rotation = Quaternion(0.133097, 0.385149, 0.190128, 0.893195)
+bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
+bones/6/rotation = Quaternion(-0.0822429, 0.000622981, 0.134669, 0.987472)
+bones/7/rotation = Quaternion(-0.136309, -2.93099e-14, -3.24986e-08, 0.990666)
+bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
+bones/9/rotation = Quaternion(0.18255, -0.0376967, -0.180838, 0.965687)
+bones/10/rotation = Quaternion(-0.239191, 0.243902, -0.292818, 0.893061)
+
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_y1py8")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.924673, -0.00872159, -0.380663, 0.348245, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583953)
+transform = Transform3D(-0.923684, -0.195082, -0.329774, 0.0905005, -0.947408, 0.306964, -0.372313, 0.253694, 0.892761, -2.21337, 2.31166, 1.08989)
 bone_name = "hand_l"
 bone_idx = 6
 script = ExtResource("22_r385c")
@@ -900,7 +917,7 @@ shape = SubResource("CapsuleShape3D_d1l46")
 disabled = true
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.924673, 0.00872172, 0.380663, -0.348245, -0.423631, -0.836219, 0.153967, -0.905793, 0.394757, 2.01091, 1.84788, -0.0583955)
+transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885416, -0.227331, -0.588577, 0.0625503, 0.806017, 2.21279, 2.24167, 1.16546)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -917,7 +934,7 @@ shape = SubResource("CapsuleShape3D_86b8h")
 disabled = true
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 3.55271e-14, 2.38419e-07, 2.9874e-08, 0.992119, -0.125301, -2.3654e-07, 0.125301, 0.992119, 1.36342e-23, 1, 0.100295)
+transform = Transform3D(1, 7.23087e-15, 2.38419e-07, -7.95448e-08, 0.942702, 0.333635, -2.24758e-07, -0.333635, 0.942702, 5.38111e-17, 0.788918, 0.174431)
 bone_name = "torso"
 bone_idx = 2
 
@@ -939,6 +956,18 @@ group = "wrath"
 transform = Transform3D(1, 1.16415e-10, -9.31323e-10, 1.16415e-10, 1, 0, 0, 7.45058e-09, 1, -1.99663e-05, 1.64233, -0.317233)
 shape = SubResource("CapsuleShape3D_fiqjv")
 disabled = true
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/wrath/Armature/Skeleton3D" index="4"]
+target_node = NodePath("../../../../../Target")
+bone_name = "head"
+bone = 7
+forward_axis = 5
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 0.785398
+primary_damp_threshold = 1.0
+secondary_limit_angle = 0.785398
+secondary_damp_threshold = 1.0
 
 [node name="AnimationPlayer" parent="Mesh/wrath" index="1"]
 root_motion_track = NodePath("Armature/Skeleton3D:root")
@@ -1025,15 +1054,20 @@ omni_range = 27.0089
 [node name="SlowMotion" type="Node" parent="."]
 script = ExtResource("29_8mxmx")
 
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("31_4oeto")
+SOUNDS = Array[AudioStream]([ExtResource("3_nbwf2"), ExtResource("4_1aywb"), ExtResource("5_26ndu"), ExtResource("6_ay1ei"), ExtResource("10_s7vgg"), ExtResource("11_i4c6m"), ExtResource("12_p5r8v"), ExtResource("13_wxkwy"), null])
+
 [node name="Shake" type="Area3D" parent="."]
 script = ExtResource("30_r1aqn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shake"]
 shape = SubResource("SphereShape3D_4oeto")
 
-[node name="Audio" type="Node" parent="."]
-script = ExtResource("31_4oeto")
-SOUNDS = Array[AudioStream]([ExtResource("3_nbwf2"), ExtResource("4_1aywb"), ExtResource("5_26ndu"), ExtResource("6_ay1ei"), ExtResource("10_s7vgg"), ExtResource("11_i4c6m"), ExtResource("12_p5r8v"), ExtResource("13_wxkwy"), null])
+[node name="Target" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11594, 0)
+script = ExtResource("33_h5485")
+target_group = "player"
 
 [connection signal="body_entered" from="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" to="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D" to="Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D" method="_on_body_entered"]

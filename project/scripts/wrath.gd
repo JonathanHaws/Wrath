@@ -1,15 +1,10 @@
 extends CharacterBody3D
 
 @export_group("Difficulty")
-@export var MAX_HEALTH: int = 50
+@export var MAX_HEALTH: int = 2500
 @export var SPEED = 9.0
-@export var JUMP_ATTACK_PERCENTAGE = 0.8
-@export var SLAM_ATTACK_PERCENTAGE = 2.2
 @export var TRACKING_SPEED: float = 5.0
 @export var TRACKING_MULTIPLIER: float = 1.0
-@export var ATTACK_ANIMATION: Array[String] = []
-@export var ATTACK_RADIUS: Array[float] = []
-@export var ATTACK_LIKELEHOOD: Array[Curve] = []
 
 @export_group("References")
 @export var REAPER: CharacterBody3D
@@ -63,7 +58,6 @@ func _on_trigger_area_body_entered(body: Node) -> void:
 	ANIM.play("INTRO")
 	
 func _ready() -> void:
-	
 	health = MAX_HEALTH
 	target_direction = -global_transform.basis.z.normalized()
 	if Save.data.has("wrath_defeated") and Save.data["wrath_defeated"]:
@@ -93,7 +87,7 @@ func _physics_process(delta: float) -> void:
 		MUSIC._connect_exit_queue_free()
 		return
 
-	if ANIM.current_animation == "CHASE" and global_transform.origin.distance_to(REAPER.global_transform.origin) > 2.0:
+	if ANIM.current_animation == "CHASE" and global_position.distance_to(REAPER.global_position) > 2.0:
 		NAV_AGENT.target_position = REAPER.global_transform.origin
 		var direction = NAV_AGENT.get_next_path_position() - global_transform.origin
 		direction.y = 0  # Ignore vertical movement
@@ -106,18 +100,5 @@ func _physics_process(delta: float) -> void:
 
 	if not ANIM.current_animation in ["CHASE"]: return
 		
-	var indices = range(ATTACK_ANIMATION.size())  
-	indices.shuffle();  #print(indices) # randomly sort attacks to distrubte priorty
-	for i in indices:
-		var normalized_distance = clamp(global_transform.origin.distance_to(REAPER.global_transform.origin) / ATTACK_RADIUS[i], 0.0, 1.0)
-		var attack_likelihood = ATTACK_LIKELEHOOD[i].sample(randf()) * (1.0 - normalized_distance)
-		attack_likelihood *= delta 
-		attack_likelihood *= (1 / delta)
-		if randf() < attack_likelihood:
-			
-			# Avoids 3 Animations being played at the same time I think was leading to visual bug with blending. Waits till only 1 animation is playing. Not sure if this is truly the issue tho
-			if ANIM.get_current_animation_length() - ANIM.get_current_animation_position() < ANIM.get_playing_speed() * ANIM.get_blend_time(ANIM.current_animation, ATTACK_ANIMATION[i]): return
-
-			ANIM.play(ATTACK_ANIMATION[i])
-			break
+	ANIM.play_random_attack(global_position, REAPER.global_position,delta)
 		

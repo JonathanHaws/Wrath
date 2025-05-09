@@ -1213,6 +1213,7 @@ bone_idx = 22
 [node name="Area3D" type="Area3D" parent="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D"]
 transform = Transform3D(-0.0339621, 0, 0, 0, -0.906183, 0, 0, 0, -0.198858, 0, 0, 0)
 script = ExtResource("29_lwilf")
+damage = 50
 group = "reaper"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D"]
