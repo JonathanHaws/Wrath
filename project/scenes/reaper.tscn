@@ -34,7 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/enemy/Slam.wav" id="25_8i186"]
 [ext_resource type="Texture2D" uid="uid://c1qayava2cjqm" path="res://textures/reaper/staff/color.png" id="27_ecunr"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="29_lwilf"]
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://scripts/one_shot_audio.gd" id="35_lwilf"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://scripts/audio_one_shot.gd" id="35_lwilf"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xbltt"]
 
@@ -676,7 +676,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [["slash_1", "slash_2", "slash_3"]],
+"args": [["slash_1", "slash_2", "slash_3"], 0.2],
 "method": &"play_2d_sound"
 }]
 }
@@ -832,7 +832,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [["windown"]],
+"args": [["windown"], 0.3],
 "method": &"play_2d_sound"
 }]
 }
@@ -1206,7 +1206,7 @@ material_override = SubResource("ShaderMaterial_ckevw")
 material_override = SubResource("ShaderMaterial_py1jt")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.636638, -0.662006, -0.395526, 0.703357, 0.708769, -0.0541692, 0.316197, -0.24371, 0.916856, 0.095823, 1.04481, -0.215987)
+transform = Transform3D(0.636638, -0.662005, -0.395527, 0.703357, 0.70877, -0.0541693, 0.316198, -0.24371, 0.916855, 0.0958226, 1.04482, -0.215987)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -1235,9 +1235,9 @@ forward_axis = 5
 duration = 0.3
 use_angle_limitation = true
 symmetry_limitation = true
-primary_limit_angle = 1.91986
+primary_limit_angle = 1.5708
 primary_damp_threshold = 1.0
-secondary_limit_angle = 0.785398
+secondary_limit_angle = 0.523599
 secondary_damp_threshold = 1.0
 
 [node name="AnimationPlayer" parent="Mesh/reaper" index="1"]

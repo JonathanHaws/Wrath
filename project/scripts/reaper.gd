@@ -55,7 +55,7 @@ var jump_buffer = 0;
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
 	if health > 0:
 		if (_group != "kill_floor"):
-			if $Audio: $Audio.play_2d_sound(["hurt"], 0.9, 1.1)
+			if $Audio: $Audio.play_2d_sound(["hurt"], .15)
 			ANIM.play("HURT")
 			Shake.tremor(3)
 			SlowMotion.impact(.2)
@@ -194,7 +194,7 @@ func _physics_process(delta: float) -> void:
 
 	if jump_buffer > 0 and falling < COYOTE_TIME: # JUMP
 		if ANIM.current_animation not in ["WINDOWN", "WINDUP", "SPIN", "DEATH", "FALL_DEATH", "HURT"]:
-			if $Audio: $Audio.play_2d_sound(["jump"], 0.9, 1.1)
+			if $Audio: $Audio.play_2d_sound(["jump"], 2.0)
 			ANIM.play("JUMP")
 			Squash.squish(MESH,-.23)	
 			velocity.y = JUMP_VELOCITY

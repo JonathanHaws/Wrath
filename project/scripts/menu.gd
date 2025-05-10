@@ -162,20 +162,17 @@ func _on_options_back_pressed() -> void:
 func _on_master_changed(value: float) -> void:
 	if options_master_slider: options_master_slider.value = value
 	var master_bus = AudioServer.get_bus_index(options_master_bus)
-	var db_value = lerp(-80, 0, pow(value / 100, 0.5))  
-	AudioServer.set_bus_volume_db(master_bus, db_value)
+	AudioServer.set_bus_volume_db(master_bus, linear_to_db(value / 100))
 	save_settings()
 func _on_sfx_changed(value: float) -> void:
 	if options_sfx_slider: options_sfx_slider.value = value
 	var sfx_bus = AudioServer.get_bus_index(options_sfx_bus)
-	var db_value = lerp(-80, 0, pow(value / 100, 0.5)) 
-	AudioServer.set_bus_volume_db(sfx_bus, db_value)
+	AudioServer.set_bus_volume_db(sfx_bus, linear_to_db(value / 100))
 	save_settings()
 func _on_music_changed(value: float) -> void:
 	if options_music_slider: options_music_slider.value = value
 	var music_bus = AudioServer.get_bus_index(options_music_bus)
-	var db_value = lerp(-80, 0, pow(value / 100, 0.5))  
-	AudioServer.set_bus_volume_db(music_bus, db_value)
+	AudioServer.set_bus_volume_db(music_bus, linear_to_db(value / 100))
 	save_settings()
 func _on_window_mode_changed(index: int) -> void:
 	match index:

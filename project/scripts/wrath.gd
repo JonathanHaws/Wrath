@@ -39,7 +39,7 @@ func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.
 	WorldUI.show_symbol(global_position, DAMAGE_NUMBER, 140.0, "Node2D/Label", _damage)
 	SlowMotion.impact(.04)
 	Shake.tremor(2)
-	if $Audio: $Audio.play_2d_sound(["hit_1", "hit_2", "hit_3"], 0.9, 1.1)
+	if $Audio: $Audio.play_2d_sound(["hit_1", "hit_2", "hit_3"], .8)
 	Particles.spawn(_position, HURT_PARTICLE_SCENE)
 	if health <= 0:
 		PROGRESSION_AREA.monitoring = true

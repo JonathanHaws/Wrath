@@ -2,7 +2,7 @@ extends Node
 
 @export var SOUNDS: Array[AudioStream] = []
 
-func play_2d_sound(sound: Variant, pitch_min: float = 1.0, pitch_max: float = 1.0, volume_min: float = 0.0, volume_max: float = 0.0) -> AudioStreamPlayer2D:
+func play_2d_sound(sound: Variant, volume_multiplier: float = 1.0, pitch: float = 1.0, volume_variance: float = 0.0, pitch_variance: float = 0.0) -> AudioStreamPlayer2D:
 	
 	if sound is Array:
 		if sound.size() == 0: return
@@ -22,8 +22,8 @@ func play_2d_sound(sound: Variant, pitch_min: float = 1.0, pitch_max: float = 1.
 	
 	var player = AudioStreamPlayer2D.new()
 	player.stream = sound
-	player.pitch_scale = randf_range(pitch_min, pitch_max)
-	player.volume_db = randf_range(volume_min, volume_max)
+	player.pitch_scale = randf_range(pitch - pitch_variance, pitch + pitch_variance)
+	player.volume_db = linear_to_db(1.0 * (volume_multiplier + randf_range(-volume_variance, volume_variance))) 
 	player.bus = "SFX"
 	player.attenuation = 0
 	player.connect("tree_entered", Callable(player, "play"))
