@@ -1,18 +1,19 @@
-[gd_scene load_steps=14 format=3 uid="uid://duevw8ikxn5kj"]
+[gd_scene load_steps=15 format=3 uid="uid://duevw8ikxn5kj"]
 
-[ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://scripts/menu/menu.gd" id="1_jf58a"]
+[ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://scripts/ui/main/menu.gd" id="1_jf58a"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="2_ndaih"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="3_vw818"]
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://audio/sfx/menu/Menu_Press.wav" id="4_2c34c"]
 [ext_resource type="FontFile" uid="uid://bqaewxqlicpr5" path="res://textures/fonts/WRATH_front.ttf" id="5_b5jck"]
-[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/menu/redirect.gd" id="6_vibko"]
-[ext_resource type="Script" uid="uid://d2hxlmmmtfynf" path="res://scripts/menu/options/volume_adjustment.gd" id="7_5sydj"]
-[ext_resource type="Script" uid="uid://dbk4ank3cq0ny" path="res://scripts/menu/quit.gd" id="7_86mkf"]
-[ext_resource type="Script" uid="uid://cw2iscxy4kg2r" path="res://scripts/menu/game/load.gd" id="7_k40ks"]
-[ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://scripts/menu/restart.gd" id="8_1q136"]
-[ext_resource type="Script" uid="uid://yd63tscy6h1n" path="res://scripts/menu/options/window_mode_dropdown.gd" id="8_yyyho"]
-[ext_resource type="Script" uid="uid://dhsj4xkcsrngo" path="res://scripts/menu/game/new.gd" id="9_u81yu"]
-[ext_resource type="Script" uid="uid://cit8ydyw2wira" path="res://scripts/menu/game/delete.gd" id="11_24p0q"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/main/redirect.gd" id="6_vibko"]
+[ext_resource type="Script" uid="uid://d2hxlmmmtfynf" path="res://scripts/ui/options/volume_adjustment.gd" id="7_5sydj"]
+[ext_resource type="Script" uid="uid://dbk4ank3cq0ny" path="res://scripts/ui/main/quit.gd" id="7_86mkf"]
+[ext_resource type="Script" uid="uid://cw2iscxy4kg2r" path="res://scripts/ui/save/load.gd" id="7_k40ks"]
+[ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://scripts/ui/main/restart.gd" id="8_1q136"]
+[ext_resource type="Script" uid="uid://yd63tscy6h1n" path="res://scripts/ui/options/window_mode_dropdown.gd" id="8_yyyho"]
+[ext_resource type="Script" uid="uid://dhsj4xkcsrngo" path="res://scripts/ui/save/new.gd" id="9_u81yu"]
+[ext_resource type="PackedScene" uid="uid://bchlq7ojvre5o" path="res://scenes/ui/save/profile.tscn" id="11_0uke7"]
+[ext_resource type="Script" uid="uid://cit8ydyw2wira" path="res://scripts/ui/save/delete.gd" id="11_24p0q"]
 
 [node name="Menu" type="CanvasLayer" node_paths=PackedStringArray("hover_sound_player", "press_sound_player", "main_menu", "resume_button", "options_button", "controls_button", "credits_button", "quit_button")]
 process_mode = 3
@@ -221,7 +222,7 @@ target_to_show = NodePath("../../Game")
 visible = false
 layout_mode = 2
 script = ExtResource("7_k40ks")
-save_theme = ExtResource("3_vw818")
+profile_scene = ExtResource("11_0uke7")
 
 [node name="Back" type="Button" parent="CenterContainer/Load"]
 layout_mode = 2
@@ -238,7 +239,7 @@ target_to_show = NodePath("../../Game")
 visible = false
 layout_mode = 2
 script = ExtResource("11_24p0q")
-save_theme = ExtResource("3_vw818")
+profile_scene = ExtResource("11_0uke7")
 
 [node name="Back" type="Button" parent="CenterContainer/Delete"]
 layout_mode = 2

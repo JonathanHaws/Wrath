@@ -27,6 +27,7 @@ func save_game() -> void:
 func load_game(file_name: String) -> void:
 	game_file_name = file_name
 	data = get_dictionary_from_file(file_name)
+	Save.save_game()
 	call_deferred("change_scene_to_main_scene_file_path")
 
 func get_save_files(exclude_active_file = true) -> Array:
@@ -45,9 +46,14 @@ func get_save_files(exclude_active_file = true) -> Array:
 	
 	dir.list_dir_end()
 		
-	for i in range(save_files.size()): # Sort By Modifed Time
-		for j in range(i + 1, save_files.size()):
-			if save_files[i]["modified_time"] > save_files[j]["modified_time"]:
+	for i in range(save_files.size()): 
+		for j in range(i + 1, save_files.size()): # Sort By Modifed Time
+			var file_path_i = "user://" + save_files[i]["file_name"]
+			var file_path_j = "user://" + save_files[j]["file_name"]
+			var modified_time_i = FileAccess.get_modified_time(file_path_i)
+			var modified_time_j = FileAccess.get_modified_time(file_path_j)
+			#print(modified_time_i, " ", modified_time_j)
+			if modified_time_i < modified_time_j:
 				var tmp = save_files[i]
 				save_files[i] = save_files[j]
 				save_files[j] = tmp

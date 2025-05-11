@@ -14,7 +14,7 @@ func get_closest_from_group_3d(group: String) -> Node3D:
 			closest = node
 	return closest
 	
-func _process(delta):
+func _process(_delta):
 	if target == null:
 		target = get_closest_from_group_3d(target_group)
 	if target != null:

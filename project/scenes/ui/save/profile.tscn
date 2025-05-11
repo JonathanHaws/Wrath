@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bchlq7ojvre5o"]
+
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="1_jkjqm"]
+[ext_resource type="Script" uid="uid://60mgdw58o7o0" path="res://scripts/ui/save/profile.gd" id="2_egniv"]
+
+[node name="Button" type="Button"]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("1_jkjqm")
+script = ExtResource("2_egniv")
