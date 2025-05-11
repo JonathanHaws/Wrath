@@ -1,16 +1,6 @@
 extends Node
-var game_file_name: String = generate_timestamped_filename()
+var game_file_name: String = ""
 var data: Dictionary = {}
-
-func generate_timestamped_filename() -> String:
-	var datetime = Time.get_datetime_dict_from_system(false)
-	var file_name = str(datetime.year) + "_"
-	file_name += str(datetime.month).pad_zeros(2) + "_"
-	file_name += str(datetime.day).pad_zeros(2) + "_"
-	file_name += str(datetime.hour).pad_zeros(2) + "_"
-	file_name += str(datetime.minute).pad_zeros(2) + "_"
-	file_name += str(datetime.second).pad_zeros(2) + ".json"
-	return file_name
 
 func get_dictionary_from_file(file_name: String) -> Dictionary:
 	
@@ -34,7 +24,7 @@ func save_game() -> void:
 	if file: file.store_string(JSON.stringify(data, "\t"))
 	file.close()
 
-func load_game(file_name: String = generate_timestamped_filename()) -> void:
+func load_game(file_name: String) -> void:
 	game_file_name = file_name
 	data = get_dictionary_from_file(file_name)
 	call_deferred("change_scene_to_main_scene_file_path")
