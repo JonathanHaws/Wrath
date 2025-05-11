@@ -55,10 +55,10 @@ var jump_buffer = 0;
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
 	if health > 0:
 		if (_group != "kill_floor"):
-			if $Audio: $Audio.play_2d_sound(["hurt"], .15)
 			ANIM.play("HURT")
 			Shake.tremor(3)
 			SlowMotion.impact(.2)
+			if $Audio: $Audio.play_2d_sound(["hurt"],)
 	else: # death
 		Save.data["deaths"] += 1
 		if _group == "kill_floor":
@@ -66,8 +66,8 @@ func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.
 			Save.data["spawn_sound"] = "spawn_void"
 			ANIM.play("FALL_DEATH")	
 		else:
-			if $Audio: $Audio.play_2d_sound(["hurt"], 0.9, 1.1)
 			if ANIM.current_animation == "DEATH": return
+			if $Audio: $Audio.play_2d_sound(["hurt"])
 			Save.data["spawn_sound"] = "spawn"
 			ANIM.play("DEATH")	
 		Save.save_game()
