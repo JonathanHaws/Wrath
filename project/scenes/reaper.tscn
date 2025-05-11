@@ -1077,6 +1077,7 @@ rotation_edit_mode = 1
 
 [node name="SpringArm3D" type="SpringArm3D" parent="Pivot"]
 spring_length = 5.0
+margin = 120.0
 
 [node name="Camera3D" type="Camera3D" parent="Pivot/SpringArm3D" node_paths=PackedStringArray("PIVOT", "LOCK_ON_AREA", "LOCK_ON_INDICATOR")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
