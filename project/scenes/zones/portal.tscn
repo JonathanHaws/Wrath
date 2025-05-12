@@ -1,7 +1,8 @@
-[gd_scene load_steps=27 format=3 uid="uid://5n4cvh6cqc4p"]
+[gd_scene load_steps=25 format=3 uid="uid://5n4cvh6cqc4p"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_1waye"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="2_iv0bg"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="2_o5gfp"]
 [ext_resource type="PackedScene" uid="uid://yxfcfpfrgfp4" path="res://models/blender/portal.blend" id="3_1waye"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="3_gpgiy"]
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://scripts/portal.gd" id="4_iv0bg"]
@@ -11,46 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="8_o5gfp"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="9_ses4i"]
 [ext_resource type="FontFile" uid="uid://bseqwgcqg3g1" path="res://fonts/Wrath.otf" id="11_q6mxo"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r6g78"]
-sky_top_color = Color(0.0470588, 0.0588235, 0.0705882, 1)
-sky_horizon_color = Color(0.0776678, 0.0942916, 0.11424, 1)
-sky_curve = 0.344614
-ground_bottom_color = Color(0.0456206, 0.0576795, 0.072149, 1)
-ground_horizon_color = Color(0.0784314, 0.0941176, 0.113725, 1)
-ground_curve = 0.194842
-sun_angle_max = 0.0
-sun_curve = 151.205
-
-[sub_resource type="Sky" id="Sky_efxjq"]
-sky_material = SubResource("ProceduralSkyMaterial_r6g78")
-
-[sub_resource type="Environment" id="Environment_1hm8g"]
-background_mode = 2
-background_color = Color(0.860369, 0.860369, 0.860369, 1)
-sky = SubResource("Sky_efxjq")
-ambient_light_source = 2
-ambient_light_color = Color(0.1296, 0.14328, 0.16, 1)
-ambient_light_energy = 7.0
-reflected_light_source = 2
-ssao_radius = 2.17
-ssao_power = 86.5198
-glow_intensity = 0.05
-glow_strength = 2.0
-glow_bloom = 1.0
-fog_enabled = true
-fog_mode = 1
-fog_light_color = Color(0.0470588, 0.0588235, 0.0705882, 1)
-fog_density = 1.0
-fog_sky_affect = 0.0
-fog_height = -50.78
-fog_height_density = 0.0589
-fog_depth_curve = 0.297301
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
-volumetric_fog_albedo = Color(0.08, 0.08, 0.08, 1)
-volumetric_fog_emission = Color(0.187176, 0.187176, 0.187176, 1)
-volumetric_fog_detail_spread = 0.965936
 
 [sub_resource type="Animation" id="Animation_gpgiy"]
 resource_name = "ESCAPE"
@@ -173,6 +134,8 @@ visible = false
 
 [node name="Enviroment" type="Node" parent="."]
 
+[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("2_o5gfp")]
+
 [node name="Weather" parent="Enviroment" instance=ExtResource("2_iv0bg")]
 
 [node name="Lights" type="Node" parent="Enviroment"]
@@ -207,9 +170,6 @@ light_color = Color(0.294299, 0.67518, 0.743146, 1)
 light_energy = 2.0
 omni_range = 45.0382
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment"]
-environment = SubResource("Environment_1hm8g")
-
 [node name="Interactables" type="Node" parent="."]
 
 [node name="PlayerSpot" type="Node3D" parent="Interactables"]
@@ -224,13 +184,13 @@ REAPER = NodePath("../Reaper")
 PLAYER_SPOT = NodePath("../PlayerSpot")
 
 [node name="spin" parent="Interactables/Portal" index="1"]
-transform = Transform3D(0.514079, -0.857743, 0, 0.857743, 0.514079, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(0.965854, -0.259089, 0, 0.259089, 0.965854, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Interactables/Portal/flames_2" index="0"]
-transform = Transform3D(-0.43344, 0.868129, -1.50444e-15, -0.868129, -0.43344, 5.13389e-15, 3.92118e-15, 3.6393e-15, 0.970319, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(-0.191983, -0.80016, 1.00763e-15, 0.80016, -0.191983, 3.10399e-15, -2.78324e-15, 1.70401e-15, 0.822869, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Interactables/Portal/flames_1" index="0"]
-transform = Transform3D(-0.43344, 0.868129, -1.50444e-15, -0.868129, -0.43344, 5.13389e-15, 3.92118e-15, 3.6393e-15, 0.970319, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(-0.191983, -0.80016, 1.00763e-15, 0.80016, -0.191983, 3.10399e-15, -2.78324e-15, 1.70401e-15, 0.822869, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Interactables/Portal" index="4"]
 autoplay = "Spin"

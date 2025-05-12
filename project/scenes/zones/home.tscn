@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://hnifptixjb2i"]
+[gd_scene load_steps=8 format=3 uid="uid://hnifptixjb2i"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="2_ahmig"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="2_ojw5x"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="3_26jig"]
 
 [sub_resource type="GDScript" id="GDScript_x5n4p"]
 script/source = "extends Node3D
@@ -20,42 +21,6 @@ func _on_play_pressed() -> void:
 func _on_exit_pressed() -> void:
 	get_tree().quit()
 "
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_iough"]
-sky_top_color = Color(0.0470588, 0.0588235, 0.0705882, 1)
-sky_horizon_color = Color(0.0776678, 0.0942916, 0.11424, 1)
-sky_curve = 0.344614
-ground_bottom_color = Color(0.0456206, 0.0576795, 0.072149, 1)
-ground_horizon_color = Color(0.0784314, 0.0941176, 0.113725, 1)
-ground_curve = 0.194842
-sun_angle_max = 0.0
-sun_curve = 151.205
-
-[sub_resource type="Sky" id="Sky_bpira"]
-sky_material = SubResource("ProceduralSkyMaterial_iough")
-
-[sub_resource type="Environment" id="Environment_7tcvk"]
-background_mode = 2
-background_color = Color(0.860369, 0.860369, 0.860369, 1)
-sky = SubResource("Sky_bpira")
-ambient_light_source = 2
-ambient_light_color = Color(0.1296, 0.14328, 0.16, 1)
-ambient_light_energy = 7.0
-reflected_light_source = 2
-ssao_radius = 0.65
-ssao_intensity = 45.65
-ssao_power = 4.87352
-fog_enabled = true
-fog_light_color = Color(0.0470588, 0.0588235, 0.0705882, 1)
-fog_density = 0.0
-fog_sky_affect = 0.0
-fog_height = -50.78
-fog_height_density = 0.0589
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
-volumetric_fog_albedo = Color(0.08, 0.08, 0.08, 1)
-volumetric_fog_emission = Color(0.187176, 0.187176, 0.187176, 1)
-volumetric_fog_detail_spread = 0.965936
 
 [sub_resource type="Animation" id="Animation_o6qbx"]
 resource_name = "FADE_IN"
@@ -115,9 +80,6 @@ script = SubResource("GDScript_x5n4p")
 [node name="Menu" parent="." instance=ExtResource("2_ahmig")]
 visible = false
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_7tcvk")
-
 [node name="Label" type="Label" parent="."]
 offset_left = 587.0
 offset_top = 450.0
@@ -144,3 +106,5 @@ libraries = {
 &"": SubResource("AnimationLibrary_661j4")
 }
 autoplay = "FADE_IN"
+
+[node name="WorldEnvironment" parent="." instance=ExtResource("3_26jig")]
