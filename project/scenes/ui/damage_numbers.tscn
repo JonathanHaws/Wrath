@@ -1,6 +1,5 @@
-[gd_scene load_steps=6 format=3 uid="uid://dx5gfq7hao3tx"]
+[gd_scene load_steps=5 format=3 uid="uid://dx5gfq7hao3tx"]
 
-[ext_resource type="FontFile" uid="uid://cg3g6bx1v1c8l" path="res://textures/fonts/Seagram tfb.ttf" id="1_4ayrh"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/ui/notification.tres" id="1_jqg1t"]
 
 [sub_resource type="Animation" id="Animation_2ys8b"]
@@ -127,7 +126,7 @@ grow_vertical = 2
 theme = ExtResource("1_jqg1t")
 theme_override_colors/font_color = Color(0.76662, 0.76662, 0.76662, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("1_4ayrh")
+theme_override_font_sizes/font_size = 50
 text = "3000"
 horizontal_alignment = 1
 vertical_alignment = 1

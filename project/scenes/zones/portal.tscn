@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="5_q6mxo"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/brick_1.tres" id="7_6nidi"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="8_o5gfp"]
-[ext_resource type="FontFile" uid="uid://bqaewxqlicpr5" path="res://textures/fonts/WRATH_front.ttf" id="9_gpgiy"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="9_ses4i"]
+[ext_resource type="FontFile" uid="uid://bseqwgcqg3g1" path="res://fonts/Wrath.otf" id="11_q6mxo"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r6g78"]
 sky_top_color = Color(0.0470588, 0.0588235, 0.0705882, 1)
@@ -224,13 +224,13 @@ REAPER = NodePath("../Reaper")
 PLAYER_SPOT = NodePath("../PlayerSpot")
 
 [node name="spin" parent="Interactables/Portal" index="1"]
-transform = Transform3D(-0.658751, -0.752361, 0, 0.752361, -0.658751, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(0.514079, -0.857743, 0, 0.857743, 0.514079, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Interactables/Portal/flames_2" index="0"]
-transform = Transform3D(-0.568403, 0.576348, -1.00327e-15, -0.576348, -0.568403, 4.64742e-15, 2.60447e-15, 3.97766e-15, 0.809481, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(-0.43344, 0.868129, -1.50444e-15, -0.868129, -0.43344, 5.13389e-15, 3.92118e-15, 3.6393e-15, 0.970319, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Interactables/Portal/flames_1" index="0"]
-transform = Transform3D(-0.568403, 0.576348, -1.00327e-15, -0.576348, -0.568403, 4.64742e-15, 2.60447e-15, 3.97766e-15, 0.809481, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(-0.43344, 0.868129, -1.50444e-15, -0.868129, -0.43344, 5.13389e-15, 3.92118e-15, 3.6393e-15, 0.970319, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Interactables/Portal" index="4"]
 autoplay = "Spin"
@@ -318,7 +318,7 @@ offset_top = 484.0
 offset_right = 1245.0
 offset_bottom = 598.0
 theme = ExtResource("9_ses4i")
-theme_override_fonts/font = ExtResource("9_gpgiy")
+theme_override_fonts/font = ExtResource("11_q6mxo")
 theme_override_font_sizes/font_size = 56
 text = "THANK YOU FOR PLAYING!"
 horizontal_alignment = 1

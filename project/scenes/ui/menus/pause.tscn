@@ -4,7 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="2_ndaih"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="3_vw818"]
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://audio/sfx/menu/Menu_Press.wav" id="4_2c34c"]
-[ext_resource type="FontFile" uid="uid://bqaewxqlicpr5" path="res://textures/fonts/WRATH_front.ttf" id="5_b5jck"]
+[ext_resource type="FontFile" uid="uid://bseqwgcqg3g1" path="res://fonts/Wrath.otf" id="4_tq4lt"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/main/redirect.gd" id="6_vibko"]
 [ext_resource type="Script" uid="uid://d2hxlmmmtfynf" path="res://scripts/ui/options/volume_adjustment.gd" id="7_5sydj"]
 [ext_resource type="Script" uid="uid://dbk4ank3cq0ny" path="res://scripts/ui/main/quit.gd" id="7_86mkf"]
@@ -57,7 +57,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.125911, 0.125911, 0.125911, 1)
-theme_override_fonts/font = ExtResource("5_b5jck")
+theme_override_fonts/font = ExtResource("4_tq4lt")
 theme_override_font_sizes/font_size = 100
 text = "WRATH"
 horizontal_alignment = 1
