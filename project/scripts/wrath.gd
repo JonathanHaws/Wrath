@@ -7,7 +7,7 @@ extends CharacterBody3D
 @export var TRACKING_MULTIPLIER: float = 1.0
 
 @export_group("References")
-@export var REAPER: CharacterBody3D
+@export var TARGET: Node3D
 @export var ANIM: AnimationPlayer
 @export var MESH_ANIM: AnimationPlayer
 @export var MESH: Node3D
@@ -20,7 +20,6 @@ extends CharacterBody3D
 @export var DAMAGE_NUMBER: PackedScene
 
 var health = MAX_HEALTH
-var triggered = false;
 var target_direction = Vector3.ZERO
 
 func track_towards_direction(delta: float) -> void:
@@ -46,10 +45,8 @@ func shake_camera() -> void:
 	Shake.tremor(3)
 
 func _on_trigger_area_body_entered(body: Node) -> void:
-	if body != REAPER: return
-	if triggered: return
-	triggered = true
-	ANIM.play("INTRO")
+	if not body.is_in_group(TARGET.TARGET_GROUP): return
+	if not ANIM.is_playing(): ANIM.play("INTRO")
 	
 func _ready() -> void:
 	health = MAX_HEALTH
@@ -60,29 +57,17 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	if health <= 0: return
-
+	if not ANIM.is_playing(): return
 	if health > 0: 
 		move_and_slide()
 	else:
 		velocity = Vector3(0, 0, 0)
+		return
 	if not is_on_floor(): velocity += get_gravity() * delta
-	if not triggered or health <= 0: return;
 	track_towards_direction(delta)
-	target_direction = (REAPER.global_transform.origin - global_transform.origin).normalized()
+	target_direction = (TARGET.global_transform.origin - global_transform.origin).normalized()
 
-	if ANIM.current_animation == "CHASE" and global_position.distance_to(REAPER.global_position) > 2.0:
-		NAV_AGENT.target_position = REAPER.global_transform.origin
-		var direction = NAV_AGENT.get_next_path_position() - global_transform.origin
-		direction.y = 0  # Ignore vertical movement
-		velocity.x = direction.normalized().x * SPEED
-		velocity.z = direction.normalized().z * SPEED
-		if direction.length() > 0: target_direction = direction
-	else:
-		velocity.x = 0
-		velocity.z = 0
-
-	if not ANIM.current_animation in ["CHASE"]: return
-		
-	ANIM.play_random_attack(global_position, REAPER.global_position,delta)
+	if ANIM.current_animation == "CHASE":
+		TARGET.move_to_target(delta, self, SPEED)
+		ANIM.play_random_attack(global_position, TARGET.global_position,delta)
 		
