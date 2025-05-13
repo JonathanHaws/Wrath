@@ -439,19 +439,21 @@ shape = SubResource("BoxShape3D_ope8t")
 [node name="Reaper" parent="Interactables" instance=ExtResource("18_wkoos")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36.5086, -190)
 
-[node name="Wrath" parent="Interactables" node_paths=PackedStringArray("NAV_REGION", "PROGRESSION_AREA") instance=ExtResource("2_ttjtk")]
+[node name="Wrath" parent="Interactables" node_paths=PackedStringArray("PROGRESSION_AREA") instance=ExtResource("2_ttjtk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 1.88324, 19)
-NAV_REGION = NodePath("../../NavigationRegion3D")
 PROGRESSION_AREA = NodePath("../Doors/PortalDoor/Area3D")
 
 [node name="LeftHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.923684, -0.195082, -0.329773, 0.0905008, -0.947409, 0.306963, -0.372313, 0.253692, 0.892761, -2.21337, 2.31166, 1.08989)
+transform = Transform3D(-0.923684, -0.195082, -0.329773, 0.0905008, -0.947409, 0.306963, -0.372313, 0.253692, 0.892761, -2.17595, 2.14598, 1.13183)
 
 [node name="RightHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885417, -0.22733, -0.588577, 0.0625507, 0.806018, 2.21279, 2.24167, 1.16547)
+transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885417, -0.22733, -0.588577, 0.0625507, 0.806018, 2.25021, 2.07599, 1.20741)
 
 [node name="Torso" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, -2.98303e-13, 2.38418e-07, -7.9544e-08, 0.942703, 0.333634, -2.24757e-07, -0.333634, 0.942703, 5.38109e-17, 0.788923, 0.174432)
+transform = Transform3D(1, -2.98303e-13, 2.38418e-07, -7.9544e-08, 0.942703, 0.333634, -2.24757e-07, -0.333634, 0.942703, 0.0374187, 0.623245, 0.216373)
+
+[node name="Shake" parent="Interactables/Wrath" index="6"]
+TREMOR_STRENGTH = 0.0
 
 [node name="Bounds" type="Node" parent="Interactables/Wrath"]
 

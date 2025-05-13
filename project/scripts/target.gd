@@ -1,21 +1,18 @@
 extends Node3D
 @export var TARGET_GROUP: String = "player"
-@export var NAV_REGION: NavigationRegion3D 
 @export var NAV_AGENT: NavigationAgent3D
 @export var TRACKING_SPEED: float = 5.0
 @export var TRACKING_MULTIPLIER: float = 1.0
+@export var MESH: Node3D
 var target: Node3D = null
-var target_direction = Vector3.ZERO
 
-#func track_towards_direction(delta: float) -> void:
-	#if target_direction.length_squared() < 0.0001: return
-	#if target_direction.normalized().is_equal_approx(Vector3.ZERO): return
-	#var target_basis = Basis.looking_at(target_direction, Vector3.UP)
-	#var interpolated_basis = MESH.global_transform.basis.slerp(target_basis, TRACKING_SPEED * TRACKING_MULTIPLIER * delta)
-	#MESH.global_transform.basis = interpolated_basis.orthonormalized()
+func track(delta: float) -> void:
+	var initial_basis = MESH.global_transform.basis
+	MESH.look_at(global_position, Vector3.UP)
+	var target_basis = MESH.global_transform.basis
+	MESH.global_transform.basis = initial_basis.slerp(target_basis, TRACKING_SPEED * TRACKING_MULTIPLIER * delta).orthonormalized()
 
 func move_to_target(delta: float, scene_root: Node3D, speed: float = 0.0, scalar: Vector3 = Vector3(1, 0, 1)) -> void:
-
 	NAV_AGENT.target_position = global_transform.origin
 	var navigation_velocity = (NAV_AGENT.get_next_path_position() - scene_root.global_transform.origin).normalized() * scalar 
 	scene_root.global_position += navigation_velocity * speed * delta
