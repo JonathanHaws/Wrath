@@ -1,5 +1,5 @@
 extends Node3D
-@export var target_group: String
+@export var target_group: String = "player"
 var target: Node3D = null
 
 func get_closest_from_group_3d(group: String) -> Node3D:

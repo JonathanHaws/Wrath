@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://b3urcqmix8s8g"]
+[gd_scene load_steps=59 format=3 uid="uid://b3urcqmix8s8g"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://scripts/wrath.gd" id="1_fvlx1"]
 [ext_resource type="PackedScene" uid="uid://srdha174fo73" path="res://scenes/particles/boss_death.tscn" id="2_brvm4"]
@@ -19,7 +19,6 @@
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://audio/sfx/enemy/Cry.wav" id="12_kqq76"]
 [ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://audio/sfx/brick/Crumble_3.wav" id="12_p5r8v"]
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://audio/sfx/enemy/Spin.wav" id="13_367wx"]
-[ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://scripts/root_motion.gd" id="13_h5485"]
 [ext_resource type="AudioStream" uid="uid://bg0rsvkfwvyq1" path="res://audio/sfx/brick/Crumble_4.wav" id="13_wxkwy"]
 [ext_resource type="Script" uid="uid://l4b37mckqf8k" path="res://scripts/proximity_based_random_attacks.gd" id="14_e2tgp"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="17_r1aqn"]
@@ -187,20 +186,6 @@ tracks/8/keys = {
 "method": &"play_2d_sound"
 }]
 }
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Music")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_connect_exit_queue_free"
-}]
-}
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
 resource_name = "INTRO"
@@ -286,7 +271,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [["Cry_3"], 0.3],
+"args": [["Cry_3"]],
 "method": &"play_2d_sound"
 }]
 }
@@ -628,7 +613,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.0876828, 1.66667),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [["Cry"], 0.3],
+"args": [["Cry"]],
 "method": &"play_2d_sound"
 }, {
 "args": [["crumble_1", "crumble_2", "crumble_3", "crumble_4"], 0.3],
@@ -902,31 +887,29 @@ ATTACK_RADIUS = Array[float]([5.0, 10.0, 10.0])
 ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_cc4qc"), SubResource("Curve_hhdhn"), SubResource("Curve_q1yl6")])
 ATTACK_MULTIPLIER = Array[float]([60.0, 60.0, 60.0])
 
-[node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SCENE_ROOT")]
-script = ExtResource("13_h5485")
-SKELETAL_ANIMATION_PLAYER = NodePath("wrath/AnimationPlayer")
-SCENE_ROOT = NodePath("..")
+[node name="Mesh" type="Node3D" parent="."]
 
 [node name="wrath" parent="Mesh" instance=ExtResource("10_h46di")]
 
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
-bones/1/position = Vector3(-7.71653e-18, -0.718805, 1.00353)
-bones/1/rotation = Quaternion(0.25735, 8.11288e-17, 7.05286e-17, 0.966318)
-bones/2/rotation = Quaternion(0.347629, 1.11774e-07, 4.14406e-08, 0.937632)
-bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
-bones/4/rotation = Quaternion(0.133097, 0.385149, 0.190128, 0.893195)
+bones/1/position = Vector3(9.26062e-17, -0.684027, 0.982476)
+bones/1/rotation = Quaternion(0.269214, 2.87519e-17, 1.02856e-16, 0.96308)
+bones/2/rotation = Quaternion(0.345109, -0.000809951, -0.000870538, 0.938562)
+bones/2/scale = Vector3(1.00027, 1.00027, 1.00027)
+bones/3/rotation = Quaternion(0.101445, 0.180504, 0.761364, 0.614372)
+bones/4/rotation = Quaternion(0.120811, 0.375576, 0.193624, 0.898253)
 bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
 bones/6/rotation = Quaternion(-0.0822429, 0.000622971, 0.134669, 0.987472)
-bones/7/rotation = Quaternion(-0.136309, -2.93099e-14, -3.24986e-08, 0.990666)
-bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
-bones/9/rotation = Quaternion(0.18255, -0.0376967, -0.180838, 0.965687)
-bones/10/rotation = Quaternion(-0.239191, 0.243902, -0.292818, 0.893061)
+bones/7/rotation = Quaternion(-0.149002, -0.000264059, 0.000154194, 0.988837)
+bones/8/rotation = Quaternion(0.101568, -0.180244, -0.760486, 0.615513)
+bones/9/rotation = Quaternion(0.167955, -0.0381729, -0.188907, 0.966772)
+bones/10/rotation = Quaternion(-0.249009, 0.238882, -0.286684, 0.893724)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_y1py8")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.923684, -0.195082, -0.329774, 0.0905006, -0.947408, 0.306964, -0.372313, 0.253694, 0.892761, -2.21337, 2.31166, 1.08989)
+transform = Transform3D(-0.917825, -0.202313, -0.342368, 0.113425, -0.958565, 0.262368, -0.381158, 0.201919, 0.902494, -2.23766, 2.28235, 1.05103)
 bone_name = "hand_l"
 bone_idx = 6
 script = ExtResource("22_r385c")
@@ -944,7 +927,7 @@ shape = SubResource("CapsuleShape3D_d1l46")
 disabled = true
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885416, -0.227331, -0.588577, 0.0625503, 0.806017, 2.21279, 2.24167, 1.16546)
+transform = Transform3D(-0.727203, 0.458493, -0.51138, -0.381476, -0.888951, -0.254542, -0.571141, 0.0099733, 0.821126, 2.24734, 2.21319, 1.12143)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -961,7 +944,7 @@ shape = SubResource("CapsuleShape3D_86b8h")
 disabled = true
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 7.23087e-15, 2.38419e-07, -7.95448e-08, 0.942702, 0.333635, -2.24758e-07, -0.333635, 0.942702, 5.38111e-17, 0.788918, 0.174431)
+transform = Transform3D(1.00027, 0.00107536, -0.00212182, -0.000351124, 0.949203, 0.315537, 0.00235271, -0.315535, 0.9492, 3.75939e-23, 0.805584, 0.161897)
 bone_name = "torso"
 bone_idx = 2
 

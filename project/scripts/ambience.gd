@@ -1,20 +1,19 @@
 extends Node3D
-@export var REAPER: CharacterBody3D
 @export var ANIM: AnimationPlayer
 @export var ENTER_AREA: Area3D
 @export var EXIT_AREA: Area3D
+@export var target_group: String = "player"
 var inside = false
 var queued_free = false
 
 func _on_body_entered(body: Node) -> void:
-	
-	if body != REAPER: return
+	if not body.is_in_group(target_group): return
 	if inside == true: return
 	inside = true
 	if ANIM: ANIM.queue("ENTERED")
 	
 func _on_body_exited(body: Node) -> void:
-	if body != REAPER: return
+	if not body.is_in_group(target_group): return
 	if inside == false: return
 	inside = false
 	if ANIM: ANIM.queue("EXITED")

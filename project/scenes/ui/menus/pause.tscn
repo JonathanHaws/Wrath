@@ -272,6 +272,8 @@ text = "MASTER:"
 [node name="HSlider" type="HSlider" parent="CenterContainer/Options/Master"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
 theme = ExtResource("3_vw818")
 step = 10.0
 value = 100.0
@@ -293,6 +295,7 @@ text = "SFX:"
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+size_flags_vertical = 4
 theme = ExtResource("3_vw818")
 step = 10.0
 value = 100.0
@@ -312,6 +315,7 @@ text = "MUSIC:"
 [node name="HSlider" type="HSlider" parent="CenterContainer/Options/Music"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_vertical = 4
 theme = ExtResource("3_vw818")
 step = 10.0
 value = 100.0
@@ -332,6 +336,7 @@ text = "BRIGHTNESS:"
 [node name="HSlider" type="HSlider" parent="CenterContainer/Options/Brightness"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_vertical = 4
 theme = ExtResource("3_vw818")
 min_value = 1.0
 max_value = 2.0

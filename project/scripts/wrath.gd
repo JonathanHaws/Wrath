@@ -18,16 +18,11 @@ extends CharacterBody3D
 @export var DEATH_PARTICLE_SCENE: PackedScene
 @export var BODY_MATERIAL: ShaderMaterial
 @export var DAMAGE_NUMBER: PackedScene
-@export var MUSIC: Node
 
 var health = MAX_HEALTH
 var triggered = false;
 var target_direction = Vector3.ZERO
 
-func root_motion() -> void: # Make sure mesh anim uses physics callback or will not be moving enough
-	var root_motion_position = MESH_ANIM.get_root_motion_position() 
-	var transformed_root_motion = MESH.global_transform.basis * root_motion_position
-	global_transform.origin += transformed_root_motion; 
 func track_towards_direction(delta: float) -> void:
 	if target_direction.length_squared() < 0.0001: return
 	if target_direction.normalized().is_equal_approx(Vector3.ZERO): return
@@ -46,7 +41,6 @@ func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.
 		ANIM.play("DEATH",0,1,false)
 		Save.data["wrath_defeated"] = true
 		Save.save_game()	
-		MUSIC._connect_exit_queue_free()
 
 func shake_camera() -> void:
 	Shake.tremor(3)
@@ -62,30 +56,20 @@ func _ready() -> void:
 	target_direction = -global_transform.basis.z.normalized()
 	if Save.data.has("wrath_defeated") and Save.data["wrath_defeated"]:
 		queue_free()
-		MUSIC.queue_free()
 		PROGRESSION_AREA.monitoring = true
 
 func _physics_process(delta: float) -> void:
 	
-	if REAPER and REAPER.health < 0:
-		MUSIC._connect_exit_queue_free()
-
 	if health <= 0: return
 
-	root_motion()
 	if health > 0: 
 		move_and_slide()
 	else:
 		velocity = Vector3(0, 0, 0)
 	if not is_on_floor(): velocity += get_gravity() * delta
 	if not triggered or health <= 0: return;
-	if REAPER.health <= 0: MUSIC._connect_exit_queue_free()
 	track_towards_direction(delta)
 	target_direction = (REAPER.global_transform.origin - global_transform.origin).normalized()
-
-	if REAPER.health <= 0:
-		MUSIC._connect_exit_queue_free()
-		return
 
 	if ANIM.current_animation == "CHASE" and global_position.distance_to(REAPER.global_position) > 2.0:
 		NAV_AGENT.target_position = REAPER.global_transform.origin
