@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export_group("Difficulty")
-@export var MAX_HEALTH: int = 2500
+@export var MAX_HEALTH: int = 4000
 @export var SPEED = 9.0
 
 @export_group("References")

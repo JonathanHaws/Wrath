@@ -18,6 +18,7 @@ extends CharacterBody3D
 @export var IN_CUTSCENE = false
 @export var BASE_DAMAGE = 50
 @export var DAMAGE_MULTIPLIER = 1
+@export var SPIN_MULTIPLIER = 1.5
 
 @export_group("References")
 @export var CAMERA: Camera3D
@@ -51,6 +52,14 @@ var falling = COYOTE_TIME;
 var was_on_floor = true
 var has_been_on_floor = false
 var jump_buffer = 0;
+
+func increase_damage_each_spin():
+	DAMAGE_MULTIPLIER *= SPIN_MULTIPLIER
+	ATTACK_AREA.damage = BASE_DAMAGE * DAMAGE_MULTIPLIER
+
+func reset_spin_damage():
+	DAMAGE_MULTIPLIER = 1
+	ATTACK_AREA.damage = BASE_DAMAGE * DAMAGE_MULTIPLIER
 
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
 	if health > 0:

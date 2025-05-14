@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=3 uid="uid://b3urcqmix8s8g"]
+[gd_scene load_steps=62 format=3 uid="uid://b3urcqmix8s8g"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://scripts/wrath.gd" id="1_fvlx1"]
 [ext_resource type="PackedScene" uid="uid://srdha174fo73" path="res://scenes/particles/boss_death.tscn" id="2_brvm4"]
@@ -69,6 +69,18 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Chase"),
 "times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Shake:TREMOR_STRENGTH")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.396475, 0.82808),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_x1kl7"]
@@ -300,7 +312,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0.0833333),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [2.0, 2.0],
+"args": [0.2, 3.0],
 "method": &"continious_tremor"
 }]
 }
@@ -445,10 +457,10 @@ tracks/10/path = NodePath("Shake:TREMOR_STRENGTH")
 tracks/10/interp = 0
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(1.45833, 1.66667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1.30485, 1.45833, 1.75, 1.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [5.0, 0.0]
+"values": [0.0, 5.0, 0.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -621,6 +633,18 @@ tracks/13/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_plb4y"]
 resource_name = "SLAM_ATTACK"
@@ -735,7 +759,7 @@ tracks/8/path = NodePath("Shake:TREMOR_STRENGTH")
 tracks/8/interp = 0
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(1.6, 1.8, 2.13333),
+"times": PackedFloat32Array(1.63333, 1.73333, 2.13333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 5.0, 0.0]
@@ -751,6 +775,18 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.001, 50.0, 0.001]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0.233333, 0.433333, 1.9, 2.16667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_jiut6"]
@@ -811,6 +847,61 @@ tracks/3/keys = {
 }
 tracks/3/use_blend = true
 
+[sub_resource type="Animation" id="Animation_h5485"]
+resource_name = "ROAR_ATTACK"
+length = 2.5
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/wrath/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Roar"),
+"times": PackedFloat32Array(0.291667)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.458333, 1.91667, 2.45833),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shake")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.916667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.2, 3.0],
+"method": &"continious_tremor"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.916667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["Cry"]],
+"method": &"play_2d_sound"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
 &"CHASE": SubResource("Animation_edx7f"),
@@ -818,6 +909,7 @@ _data = {
 &"INTRO": SubResource("Animation_mlrdc"),
 &"JUMP_ATTACK": SubResource("Animation_nx0fp"),
 &"RESET": SubResource("Animation_jojdm"),
+&"ROAR_ATTACK": SubResource("Animation_h5485"),
 &"SLAM_ATTACK": SubResource("Animation_plb4y"),
 &"SPIN_ATTACK": SubResource("Animation_jiut6")
 }
@@ -833,6 +925,11 @@ point_count = 2
 
 [sub_resource type="Curve" id="Curve_q1yl6"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.263736), 0.0, 0.0, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Curve" id="Curve_ydlo6"]
+_limits = [0.0, 10.0, 0.0, 1.0]
+_data = [Vector2(0, 2.58427), 0.0, 0.0, 0, 0, Vector2(0.155172, 3.59551), 0.0, 0.0, 0, 0, Vector2(0.413793, 1.46067), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d1l46"]
@@ -974,12 +1071,13 @@ next/INTRO = &"CHASE"
 next/JUMP_ATTACK = &"CHASE"
 next/SLAM_ATTACK = &"CHASE"
 next/SPIN_ATTACK = &"CHASE"
+next/ROAR_ATTACK = &"CHASE"
 blend_times = [&"INTRO", &"CHASE", 0.5]
 script = ExtResource("14_e2tgp")
-ATTACK_ANIMATION = Array[String](["SLAM_ATTACK", "JUMP_ATTACK", "SPIN_ATTACK"])
-ATTACK_RADIUS = Array[float]([5.0, 10.0, 10.0])
-ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_cc4qc"), SubResource("Curve_hhdhn"), SubResource("Curve_q1yl6")])
-ATTACK_MULTIPLIER = Array[float]([60.0, 60.0, 60.0])
+ATTACK_ANIMATION = Array[String](["SLAM_ATTACK", "JUMP_ATTACK", "SPIN_ATTACK", "ROAR_ATTACK"])
+ATTACK_RADIUS = Array[float]([5.0, 10.0, 10.0, 10.0])
+ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_cc4qc"), SubResource("Curve_hhdhn"), SubResource("Curve_q1yl6"), SubResource("Curve_ydlo6")])
+ATTACK_MULTIPLIER = Array[float]([60.0, 60.0, 60.0, 1.5])
 
 [node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11594, 0)
@@ -997,13 +1095,13 @@ SCENE_ROOT = NodePath("..")
 [node name="wrath" parent="Mesh" instance=ExtResource("10_h46di")]
 
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
-bones/1/position = Vector3(-7.71653e-18, -0.718805, 1.00353)
+bones/1/position = Vector3(0.000186876, -0.719014, 1.0027)
 bones/1/rotation = Quaternion(0.25735, 8.11288e-17, 7.05286e-17, 0.966318)
 bones/2/rotation = Quaternion(0.347629, 1.11774e-07, 4.14406e-08, 0.937632)
 bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
 bones/4/rotation = Quaternion(0.133097, 0.385149, 0.190128, 0.893195)
 bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
-bones/6/rotation = Quaternion(-0.0822429, 0.000622971, 0.134669, 0.987472)
+bones/6/rotation = Quaternion(-0.0822429, 0.000622981, 0.134669, 0.987472)
 bones/7/rotation = Quaternion(-0.136309, -2.93099e-14, -3.24986e-08, 0.990666)
 bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
 bones/9/rotation = Quaternion(0.18255, -0.0376967, -0.180838, 0.965687)
@@ -1013,7 +1111,7 @@ bones/10/rotation = Quaternion(-0.239191, 0.243902, -0.292818, 0.893061)
 material_override = SubResource("ShaderMaterial_y1py8")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.923684, -0.195082, -0.329774, 0.0905006, -0.947408, 0.306964, -0.372313, 0.253694, 0.892761, -2.21337, 2.31166, 1.08989)
+transform = Transform3D(-0.923684, -0.195082, -0.329774, 0.0905005, -0.947408, 0.306964, -0.372313, 0.253694, 0.892761, -2.21319, 2.31083, 1.0901)
 bone_name = "hand_l"
 bone_idx = 6
 script = ExtResource("22_r385c")
@@ -1031,7 +1129,7 @@ shape = SubResource("CapsuleShape3D_d1l46")
 disabled = true
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885416, -0.227331, -0.588577, 0.0625503, 0.806017, 2.21279, 2.24167, 1.16546)
+transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885416, -0.227331, -0.588577, 0.0625503, 0.806017, 2.21298, 2.24084, 1.16567)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1048,7 +1146,7 @@ shape = SubResource("CapsuleShape3D_86b8h")
 disabled = true
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 7.23087e-15, 2.38419e-07, -7.95448e-08, 0.942702, 0.333635, -2.24758e-07, -0.333635, 0.942702, 5.38111e-17, 0.788918, 0.174431)
+transform = Transform3D(1, 7.23087e-15, 2.38419e-07, -7.95448e-08, 0.942702, 0.333635, -2.24758e-07, -0.333635, 0.942702, 0.000186876, 0.78809, 0.174641)
 bone_name = "torso"
 bone_idx = 2
 
