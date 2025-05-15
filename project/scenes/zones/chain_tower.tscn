@@ -1,20 +1,21 @@
-[gd_scene load_steps=13 format=3 uid="uid://bnli3nh320v2f"]
+[gd_scene load_steps=12 format=3 uid="uid://bnli3nh320v2f"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_4rsh0"]
 [ext_resource type="PackedScene" uid="uid://ct16v3d62ahyk" path="res://models/blender/chain_ceiling.blend" id="2_f0ngy"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_3v15h"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="4_3v15h"]
-[ext_resource type="PackedScene" uid="uid://b8bvono5iv61i" path="res://scenes/bosses/greed_talk_1.tscn" id="4_f0ngy"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="4_od467"]
-[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="5_irgkx"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="6_hmgfx"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="7_tr476"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/brick_1.tres" id="8_fwba0"]
+[ext_resource type="PackedScene" uid="uid://bre6cgb3dypbs" path="res://scenes/bosses/greed.tscn" id="11_od467"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
 size = Vector3(7, 11, 2)
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
+vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Main" type="Node3D"]
 
@@ -33,7 +34,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56517, -15.9073, -0.547886
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights"]
 transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 16.3637, 1.1386, -0.412741)
-light_color = Color(0.29219, 0.29219, 0.29219, 1)
+light_color = Color(0.247059, 0.270588, 0.290196, 1)
 light_energy = 100.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -45,19 +46,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
 [node name="Interactables" type="Node" parent="."]
 
-[node name="EnvyIntro" parent="Interactables" instance=ExtResource("4_f0ngy")]
-transform = Transform3D(-0.0768408, 0, -0.997043, 0, 1, 0, 0.997043, 0, -0.0768408, 40.3377, -9.19147, -11.2945)
+[node name="Greed" parent="Interactables" instance=ExtResource("11_od467")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35.4861, -8.78106, -0.657459)
 
 [node name="Reaper" parent="Interactables" instance=ExtResource("4_od467")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
-[node name="Checkpoint" parent="Interactables" node_paths=PackedStringArray("REAPER") instance=ExtResource("5_irgkx")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 8.82072, -9.13993, -0.360989)
-REAPER = NodePath("../Reaper")
-CHECKPOINT_SCENE_PATH = "res://scenes/zones/envy.tscn"
-
 [node name="Envy Soul" parent="Interactables" node_paths=PackedStringArray("REAPER") instance=ExtResource("6_hmgfx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.637, -6.42492, -0.374643)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0657, -7.87013, 12.288)
 REAPER = NodePath("../Reaper")
 
 [node name="ChainTower" parent="Interactables" node_paths=PackedStringArray("REAPER", "AREA", "START") instance=ExtResource("7_tr476")]

@@ -145,7 +145,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights"]
 transform = Transform3D(-0.863752, 0.338228, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528203, 6.96341, 1.1386, -1.43818)
-light_color = Color(0.599608, 0.41908, 0.321029, 1)
+light_color = Color(0.247059, 0.270588, 0.290196, 1)
 light_energy = 100.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -184,13 +184,13 @@ REAPER = NodePath("../Reaper")
 PLAYER_SPOT = NodePath("../PlayerSpot")
 
 [node name="spin" parent="Interactables/Portal" index="1"]
-transform = Transform3D(0.965854, -0.259089, 0, 0.259089, 0.965854, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(0.545914, 0.837842, 0, -0.837842, 0.545914, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Interactables/Portal/flames_2" index="0"]
-transform = Transform3D(-0.191983, -0.80016, 1.00763e-15, 0.80016, -0.191983, 3.10399e-15, -2.78324e-15, 1.70401e-15, 0.822869, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(0.793775, -0.191438, 3.9564e-16, 0.191438, 0.793775, 2.36611e-15, -9.39353e-16, -2.20741e-15, 0.816534, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Interactables/Portal/flames_1" index="0"]
-transform = Transform3D(-0.191983, -0.80016, 1.00763e-15, 0.80016, -0.191983, 3.10399e-15, -2.78324e-15, 1.70401e-15, 0.822869, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(0.793775, -0.191438, 3.9564e-16, 0.191438, 0.793775, 2.36611e-15, -9.39353e-16, -2.20741e-15, 0.816534, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Interactables/Portal" index="4"]
 autoplay = "Spin"

@@ -1,0 +1,840 @@
+[gd_scene load_steps=59 format=3 uid="uid://bre6cgb3dypbs"]
+
+[ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://scripts/wrath.gd" id="1_cq6fp"]
+[ext_resource type="PackedScene" uid="uid://cqca3skeurt3e" path="res://scenes/particles/greed_hurt.tscn" id="2_jx80p"]
+[ext_resource type="PackedScene" uid="uid://srdha174fo73" path="res://scenes/particles/boss_death.tscn" id="3_3l2yv"]
+[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/disolve.gdshader" id="4_br41q"]
+[ext_resource type="Texture2D" uid="uid://chgom45rhh51o" path="res://textures/wrath/color.png" id="5_clfu5"]
+[ext_resource type="Texture2D" uid="uid://d2eydc4mvaeui" path="res://textures/wrath/emision.png" id="6_ek3tb"]
+[ext_resource type="Texture2D" uid="uid://bt0lar22n8dc1" path="res://textures/wrath/normal.png" id="7_f8w5c"]
+[ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://scenes/ui/damage_numbers.tscn" id="8_th64l"]
+[ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="9_wri43"]
+[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/ui/notification.tres" id="10_bkkeq"]
+[ext_resource type="StyleBox" uid="uid://p8dn2g85fmrc" path="res://shaders/ui/bar/greed_health.tres" id="10_jx80p"]
+[ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://audio/sfx/enemy/Cry.wav" id="12_hnntr"]
+[ext_resource type="Script" uid="uid://l4b37mckqf8k" path="res://scripts/proximity_based_random_attacks.gd" id="14_4pvra"]
+[ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/target.gd" id="15_cadt7"]
+[ext_resource type="Texture2D" uid="uid://cqxt1767hiu8b" path="res://textures/greed/color.png" id="16_3l2yv"]
+[ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://scripts/root_motion.gd" id="16_psb2t"]
+[ext_resource type="Texture2D" uid="uid://degml03bvddt4" path="res://textures/greed/emisson.png" id="17_br41q"]
+[ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/blender/greed.blend" id="17_cq6fp"]
+[ext_resource type="Texture2D" uid="uid://cub81gemf5odj" path="res://textures/defaults/default_normal.png" id="18_clfu5"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="18_i3cy0"]
+[ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://scripts/camera_shake.gd" id="19_e5shh"]
+[ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://scripts/slow_motion.gd" id="20_517ma"]
+[ext_resource type="AudioStream" uid="uid://dihsmt30mdqcm" path="res://audio/music/gluttony.ogg" id="20_jx80p"]
+[ext_resource type="PackedScene" uid="uid://cat4e2my2so35" path="res://scenes/interactables/ambience.tscn" id="21_kehwy"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://scripts/audio_one_shot.gd" id="23_xmcwa"]
+[ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://audio/sfx/enemy/Hit_1.wav" id="24_1upmg"]
+[ext_resource type="AudioStream" uid="uid://b4dyx5m8hsynq" path="res://audio/sfx/enemy/Hit_2.wav" id="25_palr8"]
+[ext_resource type="AudioStream" uid="uid://bv7cgqlt3sbtb" path="res://audio/sfx/enemy/Hit_3.wav" id="26_biius"]
+[ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/enemy/Slam.wav" id="27_tfx8p"]
+[ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://audio/sfx/brick/Crumble_1.wav" id="28_fnmjv"]
+[ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/brick/Crumble_2.wav" id="29_ruf5b"]
+[ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://audio/sfx/brick/Crumble_3.wav" id="30_ei5ma"]
+[ext_resource type="AudioStream" uid="uid://bg0rsvkfwvyq1" path="res://audio/sfx/brick/Crumble_4.wav" id="31_alb30"]
+[ext_resource type="AudioStream" uid="uid://dejgyyvoucgey" path="res://audio/sfx/enemy/Cry_3.wav" id="32_j7j84"]
+[ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://audio/sfx/enemy/Despawn.wav" id="33_gi7wv"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1er76"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_do1jg"]
+noise = SubResource("FastNoiseLite_1er76")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_y1py8"]
+render_priority = 0
+shader = ExtResource("4_br41q")
+shader_parameter/base_texture = ExtResource("5_clfu5")
+shader_parameter/emission_texture = ExtResource("6_ek3tb")
+shader_parameter/emission_texture_intensity = 0.15
+shader_parameter/inside_color = Color(0, 0, 0, 1)
+shader_parameter/dissolve_amount = 1.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_do1jg")
+shader_parameter/glow_color = Color(0.690196, 0.231373, 0.215686, 1)
+shader_parameter/glow_intensitiy = 17.645
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/normal_texture = ExtResource("7_f8w5c")
+shader_parameter/normal_strength = 1.0
+
+[sub_resource type="Animation" id="Animation_edx7f"]
+resource_name = "CHASE"
+length = 0.791672
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Shake:TREMOR_STRENGTH")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.396475, 0.791667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/Greed/AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("Chase"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_x1kl7"]
+resource_name = "DEATH"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 4.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(9.23333, 9.93333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"unlock_progression"
+}, {
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Light:light_energy")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 2.63333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [80.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Label:visible")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.36667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI/Label:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.00862285, 0.233333, 0.533333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.2, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Audio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["Despawn"]],
+"method": &"play_2d_sound"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Music")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_connect_exit_queue_free"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Mesh/Greed/Rig/Skeleton3D/greed:material_override:shader_parameter/dissolve_amount")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.766667, 6.63333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mlrdc"]
+resource_name = "INTRO"
+length = 2.91667
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Light:light_energy")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0416667, 2.54167),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("UI/Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("UI/Label:scale")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.333333, 0.875, 1.41667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(1, 1), Vector2(1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0833333, 0.583333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["Cry_3"], 0.3],
+"method": &"play_2d_sound"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Shake")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0833333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.2, 3.0],
+"method": &"continious_tremor"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/Greed/Rig/Skeleton3D/greed:material_override:shader_parameter/dissolve_amount")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.583333, 1.58333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/7/type = "animation"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mesh/Greed/AnimationPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": PackedStringArray("Intro"),
+"times": PackedFloat32Array(0.5)
+}
+
+[sub_resource type="Animation" id="Animation_3l2yv"]
+resource_name = "LUNGE_ATTACK"
+length = 1.45834
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/Greed/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Lunge"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.291667, 0.416667, 1.33333, 1.41667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/Greed/Rig/Skeleton3D/BoneAttachment3D2/TorsoAttack/CollisionShape3D:disabled")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.833333, 0.875003),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_jojdm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/Label:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/Jump/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Light:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("UI/Label:scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Shake/CollisionShape3D:scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("UI:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Shake/CollisionShape3D:shape:radius")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.001]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Shake:TREMOR_STRENGTH")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Mesh/Greed/Rig/Skeleton3D/greed:material_override:shader_parameter/dissolve_amount")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Mesh/Greed/Rig/Skeleton3D/BoneAttachment3D2/TorsoAttack/CollisionShape3D:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
+_data = {
+&"CHASE": SubResource("Animation_edx7f"),
+&"DEATH": SubResource("Animation_x1kl7"),
+&"INTRO": SubResource("Animation_mlrdc"),
+&"LUNGE_ATTACK": SubResource("Animation_3l2yv"),
+&"RESET": SubResource("Animation_jojdm")
+}
+
+[sub_resource type="Curve" id="Curve_cc4qc"]
+_limits = [0.0, 5.0, 0.0, 1.0]
+_data = [Vector2(0, 8.9011), 0.0, 0.0, 0, 0, Vector2(1e-05, 0), -18.9164, -18.9164, 0, 0, Vector2(0.12069, 3.37079), 0.0, 0.0, 0, 0, Vector2(0.172414, 0.505618), -4.25012, -4.25012, 0, 0, Vector2(0.422414, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ek3tb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_f8w5c"]
+noise = SubResource("FastNoiseLite_ek3tb")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_th64l"]
+render_priority = 0
+shader = ExtResource("4_br41q")
+shader_parameter/base_texture = ExtResource("16_3l2yv")
+shader_parameter/emission_texture = ExtResource("17_br41q")
+shader_parameter/emission_texture_intensity = 1.0
+shader_parameter/inside_color = Color(0, 0, 0, 1)
+shader_parameter/dissolve_amount = 1.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_f8w5c")
+shader_parameter/glow_color = Color(0.728324, 0.456678, 0.310816, 1)
+shader_parameter/glow_intensitiy = 1.77
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/normal_texture = ExtResource("18_clfu5")
+shader_parameter/normal_strength = 1.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jx80p"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_3l2yv"]
+radius = 1.11105
+height = 4.74923
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4usqi"]
+height = 0.892645
+radius = 9.61276
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oijfr"]
+radius = 0.830904
+height = 4.80709
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4oeto"]
+radius = 0.001
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r1aqn"]
+size = Vector3(23.4119, 15.2804, 40.1915)
+
+[sub_resource type="Animation" id="Animation_vtj5q"]
+resource_name = "ENTERED"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-60.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_rdmac"]
+resource_name = "EXITED"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D:playing")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.56667),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AudioStreamPlayer2D:volume_db")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333, 2.06667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -60.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2kb3h"]
+_data = {
+&"ENTERED": SubResource("Animation_vtj5q"),
+&"EXITED": SubResource("Animation_rdmac")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cc4qc"]
+size = Vector3(60.1604, 35, 107.815)
+
+[node name="Greed" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM", "MESH") groups=["greed", "wrath"]]
+collision_layer = 7
+collision_mask = 7
+script = ExtResource("1_cq6fp")
+MAX_HEALTH = 2000
+TARGET = NodePath("Target")
+ANIM = NodePath("AnimationPlayer")
+MESH = NodePath("Mesh")
+HURT_PARTICLE_SCENE = ExtResource("2_jx80p")
+DEATH_PARTICLE_SCENE = ExtResource("3_3l2yv")
+BODY_MATERIAL = SubResource("ShaderMaterial_y1py8")
+DAMAGE_NUMBER = ExtResource("8_th64l")
+SAVE_KEY_ENCOUNTERED = "greed_encountered"
+SAVE_KEY_DEFEATED = "greed_defeated"
+
+[node name="UI" type="Node2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+
+[node name="HealthBar" parent="UI" node_paths=PackedStringArray("host") instance=ExtResource("9_wri43")]
+offset_left = 544.0
+offset_top = 10.0
+offset_right = 1410.0
+offset_bottom = 20.0
+theme_override_styles/fill = ExtResource("10_jx80p")
+host = NodePath("../..")
+max_property_name = "MAX_HEALTH"
+
+[node name="Label" type="Label" parent="UI"]
+visible = false
+offset_left = 910.0
+offset_top = 29.0
+offset_right = 1050.0
+offset_bottom = 69.0
+pivot_offset = Vector2(70, 0)
+theme = ExtResource("10_bkkeq")
+text = "Greed
+"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+callback_mode_process = 0
+libraries = {
+&"": SubResource("AnimationLibrary_y10ku")
+}
+autoplay = "RESET"
+playback_auto_capture_ease_type = 2
+next/INTRO = &"CHASE"
+next/LUNGE_ATTACK = &"CHASE"
+script = ExtResource("14_4pvra")
+ATTACK_ANIMATION = Array[String](["LUNGE_ATTACK"])
+ATTACK_RADIUS = Array[float]([5.0])
+ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_cc4qc")])
+ATTACK_MULTIPLIER = Array[float]([60.0])
+
+[node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89408, 2.62937, 5.76861)
+script = ExtResource("15_cadt7")
+NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
+FLIPPED_TRACKING = true
+MESH = NodePath("../Mesh")
+
+[node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SCENE_ROOT")]
+script = ExtResource("16_psb2t")
+SKELETAL_ANIMATION_PLAYER = NodePath("Greed/AnimationPlayer")
+SCENE_ROOT = NodePath("..")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh"]
+
+[node name="Greed" parent="Mesh" instance=ExtResource("17_cq6fp")]
+
+[node name="Skeleton3D" parent="Mesh/Greed/Rig" index="0"]
+bones/1/position = Vector3(-0.115101, -0.157914, -1.80099)
+bones/1/rotation = Quaternion(0.00935739, -7.54691e-08, -5.73085e-10, 0.999956)
+bones/2/rotation = Quaternion(0.781858, 0.219771, 0.133335, 0.567997)
+bones/3/rotation = Quaternion(0.624194, -0.0573771, 0.0324914, 0.778482)
+bones/4/rotation = Quaternion(-0.597882, 0.0670504, -0.0071842, 0.798742)
+bones/5/rotation = Quaternion(0.370329, -0.0693967, 0.0401409, 0.925435)
+bones/6/rotation = Quaternion(0.0126309, -0.00268544, 0.0420503, 0.999032)
+bones/7/rotation = Quaternion(0.572968, -0.228774, -0.603333, 0.505331)
+bones/8/rotation = Quaternion(0.0876585, -0.107701, 0.674933, 0.724694)
+bones/9/rotation = Quaternion(0.0179923, -0.202699, -0.136, 0.969584)
+bones/10/rotation = Quaternion(0.0825532, 0.013674, 0.101979, 0.991261)
+bones/12/rotation = Quaternion(-0.528291, 0.0433138, -0.000267732, 0.847958)
+bones/13/position = Vector3(-0.488867, 1.43551, -0.00969565)
+bones/13/rotation = Quaternion(0.575405, 0.200489, 0.534375, 0.585796)
+bones/14/rotation = Quaternion(-0.0858477, 0.0568758, -0.627973, 0.771392)
+bones/15/rotation = Quaternion(0.089702, 0.21583, 0.168457, 0.957598)
+bones/16/rotation = Quaternion(-0.179718, -0.232297, -0.206217, 0.933388)
+bones/17/position = Vector3(0.0041478, -0.243611, -0.14996)
+bones/17/rotation = Quaternion(0.77501, 0.0367397, -0.613452, 0.147264)
+bones/18/rotation = Quaternion(0.0772455, 0.0747014, 0.101292, 0.989036)
+bones/19/rotation = Quaternion(0.14451, -0.551562, -0.0793185, 0.817683)
+bones/20/rotation = Quaternion(0.0909837, -0.0348701, -0.119436, 0.988049)
+bones/21/rotation = Quaternion(-0.0506233, 0.152419, -0.0947484, 0.98246)
+bones/22/rotation = Quaternion(0.782452, -0.117753, 0.128627, 0.597794)
+bones/23/rotation = Quaternion(0.645334, -0.0261812, 0.0547352, 0.761488)
+bones/24/rotation = Quaternion(-0.661345, 0.0115624, -0.0775359, 0.745974)
+bones/25/rotation = Quaternion(0.291092, -0.0642706, 0.00265003, 0.95453)
+
+[node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" index="0"]
+material_override = SubResource("ShaderMaterial_th64l")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1"]
+transform = Transform3D(0.996449, -0.084087, -0.00430341, -0.00799785, -0.0436486, -0.999015, 0.0838163, 0.995502, -0.0441661, -0.115101, 1.78234, 0.838339)
+bone_name = "torso"
+bone_idx = 6
+
+[node name="LockOn" type="Area3D" parent="Mesh/Greed/Rig/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 0.721829, -0.085655)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/BoneAttachment3D/LockOn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
+shape = SubResource("BoxShape3D_jx80p")
+
+[node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2"]
+transform = Transform3D(0.996449, -0.084087, -0.00430341, -0.00799785, -0.0436486, -0.999015, 0.0838163, 0.995502, -0.0441661, -0.115101, 1.78234, 0.838339)
+bone_name = "torso"
+bone_idx = 6
+
+[node name="TorsoAttack" type="Area3D" parent="Mesh/Greed/Rig/Skeleton3D/BoneAttachment3D2"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("18_i3cy0")
+damage = 10
+group = "greed"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/BoneAttachment3D2/TorsoAttack"]
+transform = Transform3D(0.989492, -0.144162, 0.0111708, -0.144291, -0.989466, 0.0117604, 0.00935774, -0.0132487, -0.999869, 0.0529809, -0.371373, 0.0802408)
+shape = SubResource("CapsuleShape3D_3l2yv")
+disabled = true
+debug_color = Color(0.834731, 0.759712, 0.46975, 1)
+
+[node name="AnimationPlayer" parent="Mesh/Greed" index="1"]
+root_motion_track = NodePath("Rig/Skeleton3D:root")
+root_motion_local = false
+callback_mode_process = 0
+playback_default_blend_time = 0.3
+
+[node name="Jump" type="Area3D" parent="Mesh" groups=["wrath"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("18_i3cy0")
+damage = 10
+group = "wrath"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Jump"]
+shape = SubResource("CylinderShape3D_4usqi")
+disabled = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
+shape = SubResource("CapsuleShape3D_oijfr")
+
+[node name="Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 13.6732, -0.361175)
+light_color = Color(0.757543, 0.547021, 0.269911, 1)
+light_energy = 0.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 27.0089
+
+[node name="Shake" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("19_e5shh")
+TREMOR_STRENGTH = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Shake"]
+shape = SubResource("SphereShape3D_4oeto")
+
+[node name="TriggerArea" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.98601, 3)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07889, 7.1402, 8.51709)
+shape = SubResource("BoxShape3D_r1aqn")
+
+[node name="SlowMotion" type="Node" parent="."]
+script = ExtResource("20_517ma")
+
+[node name="Music" parent="." node_paths=PackedStringArray("ANIM", "ENTER_AREA", "EXIT_AREA") instance=ExtResource("21_kehwy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.8933, -21.8832, -24.8058)
+ANIM = NodePath("AnimationPlayer")
+ENTER_AREA = NodePath("../TriggerArea")
+EXIT_AREA = NodePath("Exit")
+
+[node name="AudioStreamPlayer2D" parent="Music" index="0"]
+stream = ExtResource("20_jx80p")
+volume_db = -60.0
+attenuation = 1e-05
+bus = &"Music"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Music"]
+libraries = {
+&"": SubResource("AnimationLibrary_2kb3h")
+}
+
+[node name="Exit" type="Area3D" parent="Music"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Music/Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.5303, 35.4003, 22.2378)
+shape = SubResource("BoxShape3D_cc4qc")
+
+[node name="SFX" type="AudioStreamPlayer2D" parent="."]
+volume_db = -5.0
+attenuation = 0.0145786
+bus = &"SFX"
+
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("23_xmcwa")
+SOUNDS = Array[AudioStream]([ExtResource("24_1upmg"), ExtResource("25_palr8"), ExtResource("26_biius"), ExtResource("27_tfx8p"), ExtResource("28_fnmjv"), ExtResource("29_ruf5b"), ExtResource("30_ei5ma"), ExtResource("31_alb30"), ExtResource("32_j7j84"), ExtResource("33_gi7wv"), ExtResource("12_hnntr")])
+
+[connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]
+[connection signal="body_entered" from="Shake" to="Shake" method="_on_body_entered"]
+[connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
+
+[editable path="Mesh/Greed"]
+[editable path="Music"]

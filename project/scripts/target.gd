@@ -3,13 +3,16 @@ extends Node3D
 @export var NAV_AGENT: NavigationAgent3D
 @export var TRACKING_SPEED: float = 5.0
 @export var TRACKING_MULTIPLIER: float = 1.0
+@export var FLIPPED_TRACKING: bool = false
 @export var MESH: Node3D
 var target: Node3D = null
 
 func track(delta: float) -> void:
 	var initial_basis = MESH.global_transform.basis
-	MESH.look_at(global_position, Vector3.UP)
+	MESH.look_at(global_position, Vector3.UP, FLIPPED_TRACKING)
 	var target_basis = MESH.global_transform.basis
+	target_basis.y = initial_basis.y
+	target_basis = target_basis.orthonormalized() 
 	MESH.global_transform.basis = initial_basis.slerp(target_basis, TRACKING_SPEED * TRACKING_MULTIPLIER * delta).orthonormalized()
 
 func move_to_target(delta: float, scene_root: Node3D, speed: float = 0.0, scalar: Vector3 = Vector3(1, 0, 1)) -> void:

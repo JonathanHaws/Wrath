@@ -15,3 +15,6 @@ func _on_body_entered(body)-> void:
 			body.call("hurt", final_damage, group)
 		elif arg_count == 1:
 			body.call("hurt", final_damage)
+
+func _ready() -> void:
+	connect("body_entered", Callable(self, "_on_body_entered"))

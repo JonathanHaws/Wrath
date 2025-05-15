@@ -1,4 +1,4 @@
-[gd_scene load_steps=49 format=3 uid="uid://dsdh2bite7xv4"]
+[gd_scene load_steps=50 format=3 uid="uid://dsdh2bite7xv4"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_6xa6f"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="1_rvkd1"]
@@ -25,6 +25,7 @@
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/blender/greed.blend" id="20_rsqxl"]
 [ext_resource type="Material" uid="uid://csibvbbqy3q3e" path="res://shaders/bricks/statue.tres" id="21_gfxap"]
 [ext_resource type="PackedScene" uid="uid://b0t7a64rsk4nk" path="res://models/blender/wrath.blend" id="22_iy783"]
+[ext_resource type="PackedScene" uid="uid://b8bvono5iv61i" path="res://scenes/bosses/greed_talk_1.tscn" id="26_u6d3q"]
 
 [sub_resource type="Animation" id="Animation_gllqw"]
 resource_name = "ESCAPE"
@@ -443,15 +444,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.0888538, 19)
 PROGRESSION_AREA = NodePath("../Doors/PortalDoor/Area3D")
 
-[node name="LeftHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.672069, 0.38783, -0.630802, -0.234572, 0.696495, 0.678137, 0.702352, 0.603723, -0.377119, -1.96658, 4.77782, -0.966159)
-
-[node name="RightHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.488758, -0.567372, 0.662725, 0.155164, 0.690996, 0.706009, -0.85851, 0.447899, -0.249694, 0.957297, 5.51882, -0.600544)
-
-[node name="Torso" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.991988, -0.0845041, -0.093909, 0.103787, 0.968948, 0.224428, 0.0720278, -0.232377, 0.969955, 0.0181294, 1.08302, 0.124142)
-
 [node name="Bounds" type="Node" parent="Interactables/Wrath"]
 
 [node name="South" type="StaticBody3D" parent="Interactables/Wrath/Bounds"]
@@ -820,6 +812,9 @@ material_override = ExtResource("5_ct7j2")
 
 [node name="Arch" parent="NavigationRegion3D" instance=ExtResource("13_i7oar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181592, -39.932, -161.949)
+
+[node name="greed_talk_1" parent="." instance=ExtResource("26_u6d3q")]
+transform = Transform3D(-0.0677019, 0, 0.997706, 0, 1, 0, -0.997706, 0, -0.0677019, -38.1712, -40.1198, -135.727)
 
 [connection signal="body_entered" from="Interactables/KillFloor" to="Interactables/KillFloor" method="_on_body_entered"]
 

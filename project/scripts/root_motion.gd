@@ -1,6 +1,7 @@
 extends Node3D
 @export var SKELETAL_ANIMATION_PLAYER: AnimationPlayer 
 @export var SCENE_ROOT: Node3D
+# make sure to apply all transformations to the rig in 3d software if not working
 # Use on mesh of character
 # Make sure mesh anim uses physics callback or will not be moving enough
 
