@@ -1,10 +1,10 @@
 extends AnimationPlayer
 @export var area: Area3D
-@export var start_dialogue = 0
+@export var start_index = 0
 @export var player_group: String = "player"
 @export var dialogue_templates: Array[PackedScene] = []
 @export var dialogue_file: Resource
-var current_dialogue = start_dialogue
+var current_index = start_index
 var in_range = false
 var next_queued = false
 var base_children = 0
@@ -23,20 +23,27 @@ func _on_body_exited(body)-> void:
 	if is_playing(): queue("exited") 
 	else: play("exited")
 	in_range = false
-	current_dialogue = start_dialogue
+	current_index = start_index
 
 func _spawn_next_dialogue() -> void:
-	if current_dialogue >= dialogue.size():
-		current_dialogue = int(start_dialogue)
+	if current_index >= dialogue.size():
+		current_index = int(start_index)
 		return
+	
+	if "next" in dialogue[current_index]:
+		current_index = int(dialogue[current_index].next)
+		if current_index == 0: return
 		
-	var scene_index = int(dialogue[current_dialogue].scene)
+	var scene_index = int(dialogue[current_index].scene)
 	if scene_index >= 0 and scene_index < dialogue_templates.size():
+		if not dialogue_templates[scene_index]: return
 		var instance = dialogue_templates[scene_index].instantiate()
-		if "info" in dialogue[current_dialogue]:
-			instance.info = dialogue[current_dialogue].info
+		if "info" in dialogue[current_index] and "info" in instance:
+			instance.info = dialogue[current_index].info
 		add_child(instance)
-		current_dialogue += 1
+	
+		if not "next" in dialogue[current_index]:
+			current_index += 1
 		
 func _ready():
 	base_children = get_child_count()

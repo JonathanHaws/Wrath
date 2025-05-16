@@ -1,5 +1,15 @@
 [
 	{"scene": "0", "info": ["YOUR PRESENCE IS SURPRISING WHAT DID YOU DO TO END UP HERE"]},
 	{"scene": "0", "info": ["IS NO MATTER RUN ALONG NOW"]},
-	{"scene": "0", "info": ["GO MAKE TROUBLE ELSEWHERE"]}
+	{"scene": "0", "info": ["GO MAKE TROUBLE ELSEWHERE"]},
+	{"scene": "1", "info": [{"text": "HOWD I END UP HERE?",  }, 
+							{"text": "HOW DO I ESCAPE THIS PLACE?", "next":"7"}
+							]},
+	
+	{"scene": "0", "info": ["WHO KNOWS YOUD KNOW AS MUCH AS I WOULD"]},
+	{"scene": "0", "info": ["YOU DONT LOOK LIKE A CONFESSOR BUT ARE YOU GUILTY OF SOMETHING"]},
+	{"scene": "0", "info": ["ANOTHER FACE SENT TO US AS PUNISHMENT"], "next": "0"},
+
+	{"scene": "0", "info": ["MAYBE IF YOU FALL ASLEEP AND WAKE UP THAT MIGHT DO IT"]},
+	{"scene": "0", "info": ["HOW COULD I KNOW YOUR ABSOLUTION WITHOUT KNOWING YOUR CRIME"]},
 ]

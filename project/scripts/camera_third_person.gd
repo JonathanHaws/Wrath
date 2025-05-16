@@ -5,6 +5,7 @@ extends Camera3D
 @export var LOCK_ON_OFFSET: float = 4.0
 @export var LOCK_ON_AREA: Area3D
 @export var LOCK_ON_INDICATOR: Node
+@export var ignore_mouse_when_visible := true
 var lock_on_activated = false
 var lock_on_target: Area3D
 var mouse_delta = Vector2.ZERO
@@ -48,6 +49,10 @@ func _ready() -> void:
 	#pass #update the indicator here to not have lag 
 			
 func _physics_process(delta: float) -> void:
+	
+	if ignore_mouse_when_visible and Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+		mouse_delta = Vector2.ZERO
+		return
 	
 	var look_left_right = Input.get_axis("look_left", "look_right")
 	var look_up_down = Input.get_axis("look_down", "look_up")
