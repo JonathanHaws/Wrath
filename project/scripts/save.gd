@@ -22,7 +22,7 @@ func delete_save(file_name: String) -> void:
 func save_game() -> void:
 	var file = FileAccess.open("user://" + game_file_name, FileAccess.WRITE)
 	if file: file.store_string(JSON.stringify(data, "\t"))
-	file.close()
+	if file: file.close()
 
 func load_game(file_name: String) -> void:
 	game_file_name = file_name

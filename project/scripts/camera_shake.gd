@@ -12,7 +12,7 @@ func _ready():
 	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
 	noise.frequency = 2.0
 
-func tremor(scale = 1) ->void:
+func tremor(scale: float = 1.0) ->void:
 	shake += scale
 	
 func _physics_process(delta):

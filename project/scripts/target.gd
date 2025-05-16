@@ -9,6 +9,8 @@ var target: Node3D = null
 
 func track(delta: float) -> void:
 	var initial_basis = MESH.global_transform.basis
+	if abs((global_position - MESH.global_transform.origin).normalized().dot(Vector3.UP)) > 0.999: return #vectors too similar? throwing error
+	
 	MESH.look_at(global_position, Vector3.UP, FLIPPED_TRACKING)
 	var target_basis = MESH.global_transform.basis
 	target_basis.y = initial_basis.y
