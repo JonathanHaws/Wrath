@@ -33,6 +33,10 @@ Particles="*res://scripts/particles.gd"
 Squash="*res://scripts/squash.gd"
 Shake="*res://scripts/camera_shake.gd"
 
+[debug]
+
+shapes/collision/shape_color=Color(0.458405, 0.458405, 0.458405, 0.247059)
+
 [display]
 
 window/size/viewport_width=1920

@@ -23,6 +23,15 @@ func play_2d_sound(sound: Variant, volume_multiplier: float = 1.0, pitch: float 
 						base_volume = VOLUME_MULTIPLIERS[idx]
 					break
 	
+	if sound is String:
+		for s in SOUNDS:
+			if s.resource_path.get_file().get_basename().to_lower() == sound.to_lower():
+				sound = s
+				var idx = SOUNDS.find(s)
+				if idx < VOLUME_MULTIPLIERS.size():
+					base_volume = VOLUME_MULTIPLIERS[idx]
+				break
+	
 	if sound == null or not (sound is AudioStream):
 		return null
 	

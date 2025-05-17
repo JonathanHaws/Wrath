@@ -1075,6 +1075,7 @@ autoplay = "FADE_IN"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_qswe2")
+debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.972606, 0.232461, 0, -0.232461, 0.972606, 0, 2.412, 0)
@@ -1102,6 +1103,7 @@ transform = Transform3D(1, 0, 0, 0, 0.972606, -0.232461, 0, 0.232461, 0.972606, 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/LockOnArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0538235, 3.3871, -22.3708)
 shape = SubResource("BoxShape3D_y0gmj")
+debug_color = Color(0.7, 0.7, 0.7, 0.0235294)
 
 [node name="Mesh" type="Node3D" parent="."]
 
@@ -1162,7 +1164,7 @@ material_override = SubResource("ShaderMaterial_ckevw")
 material_override = SubResource("ShaderMaterial_py1jt")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.636638, -0.662005, -0.395527, 0.703357, 0.70877, -0.0541693, 0.316198, -0.24371, 0.916855, 0.0958226, 1.04482, -0.215987)
+transform = Transform3D(0.636638, -0.662006, -0.395526, 0.703357, 0.708769, -0.0541692, 0.316197, -0.24371, 0.916856, 0.095823, 1.04481, -0.215987)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -1177,6 +1179,7 @@ group = "reaper"
 transform = Transform3D(0.999989, -3.8147e-06, 6.55651e-06, -4.53554e-07, 0.999997, -3.66941e-07, -1.19582e-06, -2.08616e-06, 1.00001, -2.81159, -1.29673, -0.4417)
 shape = SubResource("BoxShape3D_4jko3")
 disabled = true
+debug_color = Color(0.733333, 0.243137, 0.282353, 1)
 
 [node name="collar" parent="Mesh/reaper/Armature/Skeleton3D" index="4"]
 material_override = SubResource("StandardMaterial3D_h5p68")
