@@ -315,7 +315,7 @@ size = Vector3(2.0672, 6, 2.10349)
 [node name="Cinematics" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Cinematics"]
-transform = Transform3D(0.874629, 0.249685, -0.415548, -1.86264e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
+transform = Transform3D(0.874629, 0.249685, -0.415548, -1.78814e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
 rotation_edit_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cinematics"]
@@ -445,24 +445,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.0888538, 19)
 PROGRESSION_AREA = NodePath("../Doors/PortalDoor/Area3D")
 
 [node name="Skeleton3D" parent="Interactables/Wrath/Mesh/wrath/Armature" index="0"]
-bones/1/position = Vector3(3.18925e-09, -0.718805, 1.00353)
-bones/1/rotation = Quaternion(0.25735, 8.11288e-17, 7.05286e-17, 0.966318)
-bones/2/rotation = Quaternion(0.347629, 1.11774e-07, 4.14406e-08, 0.937632)
-bones/4/rotation = Quaternion(0.133097, 0.385149, 0.190128, 0.893195)
+bones/1/rotation = Quaternion(0.520187, 5.55556e-17, 9.12122e-17, 0.854052)
+bones/2/rotation = Quaternion(0.296613, 1.13845e-07, 3.5359e-08, 0.954998)
+bones/4/rotation = Quaternion(-0.18941, 0.0856309, 0.344916, 0.915327)
 bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
-bones/6/rotation = Quaternion(-0.0822429, 0.000622981, 0.134669, 0.987472)
-bones/7/rotation = Quaternion(-0.136309, -2.93099e-14, -3.24986e-08, 0.990666)
-bones/9/rotation = Quaternion(0.18255, -0.0376967, -0.180838, 0.965687)
-bones/10/rotation = Quaternion(-0.239191, 0.243902, -0.292818, 0.893061)
+bones/6/rotation = Quaternion(-0.0822429, 0.000622961, 0.134669, 0.987472)
+bones/7/rotation = Quaternion(-0.29291, -2.50809e-14, -6.98353e-08, 0.95614)
 
 [node name="LeftHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.923684, -0.195082, -0.329773, 0.0905008, -0.947409, 0.306963, -0.372313, 0.253692, 0.892761, -2.21337, 2.31166, 1.08989)
+transform = Transform3D(-0.924673, -0.00872152, -0.380662, 0.348244, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583943)
 
 [node name="RightHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885417, -0.22733, -0.588577, 0.0625507, 0.806018, 2.21279, 2.24167, 1.16547)
+transform = Transform3D(-0.924673, 0.00872081, 0.380663, -0.348244, -0.42363, -0.836219, 0.153968, -0.905793, 0.394756, 2.01091, 1.84788, -0.0583954)
 
 [node name="Torso" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, -2.98303e-13, 2.38418e-07, -7.9544e-08, 0.942703, 0.333634, -2.24757e-07, -0.333634, 0.942703, 3.18925e-09, 0.788923, 0.174432)
+transform = Transform3D(1, 2.62901e-13, 2.38419e-07, 2.98741e-08, 0.992119, -0.125302, -2.3654e-07, 0.125302, 0.992119, -1.66777e-22, 1, 0.100295)
 
 [node name="Bounds" type="Node" parent="Interactables/Wrath"]
 
@@ -739,24 +736,6 @@ transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107
 
 [node name="Model" parent="NavigationRegion3D/Statues/Greed/Stand" instance=ExtResource("20_rsqxl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03159, 0)
-
-[node name="Skeleton3D" parent="NavigationRegion3D/Statues/Greed/Stand/Model/Rig" index="0"]
-bones/1/position = Vector3(-2.33442e-16, 0.0132429, -2.99342)
-bones/1/rotation = Quaternion(-0.696678, -5.05537e-18, -5.05537e-18, 0.717384)
-bones/2/rotation = Quaternion(0.995725, 0.0149688, -0.00083364, 0.0911445)
-bones/3/rotation = Quaternion(0.234038, -0.00564757, 0.0132515, 0.972121)
-bones/6/rotation = Quaternion(0.0929901, 2.4411e-18, 1.21304e-16, 0.995667)
-bones/7/rotation = Quaternion(-0.0706068, -0.0137069, -0.113529, 0.990928)
-bones/8/rotation = Quaternion(-0.0534121, -0.00131663, 0.0973146, 0.993819)
-bones/9/rotation = Quaternion(0.110033, 0.00608325, 0.0931645, 0.989533)
-bones/12/rotation = Quaternion(0.114406, -1.27016e-17, 2.39406e-17, 0.993434)
-bones/13/rotation = Quaternion(-0.0706068, 0.0137069, 0.113529, 0.990928)
-bones/14/rotation = Quaternion(-0.0534121, 0.00131663, -0.0973146, 0.993819)
-bones/17/rotation = Quaternion(0.779864, 0.174091, -0.567985, -0.197225)
-bones/18/rotation = Quaternion(-0.259324, 0.0143287, 0.107515, 0.95968)
-bones/21/rotation = Quaternion(-0.35566, 0.0109273, 0.0021017, 0.934549)
-bones/23/rotation = Quaternion(0.234038, 0.00564757, -0.0132515, 0.972121)
-bones/24/rotation = Quaternion(-0.244926, -0.00987886, -0.0135448, 0.969397)
 
 [node name="greed" parent="NavigationRegion3D/Statues/Greed/Stand/Model/Rig/Skeleton3D" index="0"]
 material_override = ExtResource("21_gfxap")

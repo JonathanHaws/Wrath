@@ -17,7 +17,7 @@ particles_anim_loop = false
 grow_amount = -4.0
 
 [sub_resource type="Curve" id="Curve_eu71s"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0197368, 0.794195), 5.48835, 5.48835, 0, 0, Vector2(0.223684, 0.305409), -1.85377, -1.85377, 0, 0, Vector2(0.99671, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.322785, 0.611817), 0.827533, 0.827533, 0, 0, Vector2(0.626582, 0.628335), -0.521982, -0.521982, 0, 0, Vector2(0.99671, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_ao7lu"]
@@ -32,7 +32,7 @@ curve = SubResource("Curve_6r500")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1a4pd"]
 particle_flag_damping_as_friction = true
-emission_shape_scale = Vector3(30, 30, 30)
+emission_shape_scale = Vector3(40, 40, 40)
 emission_shape = 3
 emission_box_extents = Vector3(1, 1, 1)
 angle_min = -158.0
@@ -90,8 +90,8 @@ script = ExtResource("1_0yxhn")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_ij2o8")
-amount = 512
-lifetime = 12.0
+amount = 2046
+lifetime = 15.0
 speed_scale = 2.0
 fixed_fps = 60
 fract_delta = false
@@ -100,6 +100,6 @@ draw_pass_1 = SubResource("QuadMesh_qst5c")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GPUParticles3D"]
 libraries = {
-"": SubResource("AnimationLibrary_4jaru")
+&"": SubResource("AnimationLibrary_4jaru")
 }
 autoplay = "particles"

@@ -1,6 +1,7 @@
 extends Node
 var game_file_name: String = ""
 var data: Dictionary = {}
+var default_scene: String = "res://scenes/zones/exterior.tscn"
 
 func get_dictionary_from_file(file_name: String) -> Dictionary:
 	
@@ -12,8 +13,7 @@ func get_dictionary_from_file(file_name: String) -> Dictionary:
 	return {}
 
 func change_scene_to_main_scene_file_path() -> void:
-	var main_scene_path = ProjectSettings.get_setting("application/run/main_scene")
-	get_tree().change_scene_to_file(main_scene_path)
+	get_tree().change_scene_to_file(default_scene)
 	
 func delete_save(file_name: String) -> void:
 	var dir = DirAccess.open("user://")
@@ -67,7 +67,8 @@ func get_save_files(exclude_active_file = true) -> Array:
 	return save_files
 
 func _ready() -> void:
-	var save_files = get_save_files()
-	if save_files.size() > 0:
-		load_game(save_files[0]["file_name"])
+	pass
+	#var save_files = get_save_files()
+	#if save_files.size() > 0:
+		#load_game(save_files[0]["file_name"])
 		

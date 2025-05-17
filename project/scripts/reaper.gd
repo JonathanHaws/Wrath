@@ -77,6 +77,7 @@ func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.
 		else:
 			if ANIM.current_animation == "DEATH": return
 			if $Audio: $Audio.play_2d_sound(["hurt"])
+			await SlowMotion.impact(.3,0)
 			Save.data["spawn_sound"] = "spawn"
 			ANIM.play("DEATH")	
 		Save.save_game()

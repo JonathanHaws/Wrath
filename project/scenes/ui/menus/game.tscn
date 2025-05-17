@@ -1,0 +1,140 @@
+[gd_scene load_steps=9 format=3 uid="uid://bhj5mytlw0l76"]
+
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="1_n44mf"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/main/redirect.gd" id="3_0wx0i"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="4_67seb"]
+[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://scripts/ui/menu_audio.gd" id="5_poxm1"]
+[ext_resource type="Script" uid="uid://dhsj4xkcsrngo" path="res://scripts/ui/save/new.gd" id="7_poxm1"]
+[ext_resource type="Script" uid="uid://cw2iscxy4kg2r" path="res://scripts/ui/save/load.gd" id="8_65i7d"]
+[ext_resource type="PackedScene" uid="uid://bchlq7ojvre5o" path="res://scenes/ui/menus/profile.tscn" id="9_iahk0"]
+[ext_resource type="Script" uid="uid://cit8ydyw2wira" path="res://scripts/ui/save/delete.gd" id="10_iahk0"]
+
+[node name="Game" type="VBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+stream = ExtResource("4_67seb")
+attenuation = 1e-05
+bus = &"SFX"
+script = ExtResource("5_poxm1")
+hover_sound = ExtResource("4_67seb")
+press_sound = ExtResource("4_67seb")
+hover_targets = [NodePath("../Main/New"), NodePath("../Main/Load"), NodePath("../Main/Delete"), NodePath("../Main/Back"), NodePath("../New/LineEdit"), NodePath("../New/Begin"), NodePath("../New/Back"), NodePath("../Load/Back"), NodePath("../Delete/Back")]
+pressed_targets = [NodePath("../Main/New"), NodePath("../Main/Load"), NodePath("../Main/Delete"), NodePath("../Main/Back"), NodePath("../New/LineEdit"), NodePath("../New/Begin"), NodePath("../New/Back"), NodePath("../Load/Back"), NodePath("../Delete/Back")]
+
+[node name="Main" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="New" type="Button" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_n44mf")
+text = "NEW GAME
+"
+icon_alignment = 1
+script = ExtResource("3_0wx0i")
+target_to_show = NodePath("../../New")
+
+[node name="Load" type="Button" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_n44mf")
+text = "LOAD GAME
+"
+icon_alignment = 1
+script = ExtResource("3_0wx0i")
+target_to_show = NodePath("../../Load")
+
+[node name="Delete" type="Button" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_n44mf")
+text = "DELETE GAME
+"
+icon_alignment = 1
+script = ExtResource("3_0wx0i")
+target_to_show = NodePath("../../Delete")
+
+[node name="Back" type="Button" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_n44mf")
+text = "BACK
+"
+icon_alignment = 1
+script = ExtResource("3_0wx0i")
+
+[node name="New" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="New"]
+layout_mode = 2
+theme = ExtResource("1_n44mf")
+placeholder_text = "NAME"
+alignment = 1
+max_length = 64
+expand_to_text_length = true
+
+[node name="Begin" type="Button" parent="New" node_paths=PackedStringArray("name_input")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_n44mf")
+text = "BEGIN"
+icon_alignment = 1
+script = ExtResource("7_poxm1")
+name_input = NodePath("../LineEdit")
+
+[node name="Back" type="Button" parent="New"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_n44mf")
+text = "BACK
+"
+icon_alignment = 1
+script = ExtResource("3_0wx0i")
+target_to_show = NodePath("../../Main")
+
+[node name="Load" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+script = ExtResource("8_65i7d")
+profile_scene = ExtResource("9_iahk0")
+
+[node name="Back" type="Button" parent="Load"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_n44mf")
+text = "BACK
+"
+icon_alignment = 1
+script = ExtResource("3_0wx0i")
+target_to_show = NodePath("../../Main")
+
+[node name="Delete" type="VBoxContainer" parent="."]
+visible = false
+layout_mode = 2
+script = ExtResource("10_iahk0")
+profile_scene = ExtResource("9_iahk0")
+
+[node name="Back" type="Button" parent="Delete"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_n44mf")
+text = "BACK
+"
+icon_alignment = 1
+script = ExtResource("3_0wx0i")
+target_to_show = NodePath("../../Main")
+
+[connection signal="visibility_changed" from="New/Begin" to="New/Begin" method="grab_focus"]
