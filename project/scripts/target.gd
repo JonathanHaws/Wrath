@@ -3,13 +3,19 @@ extends Node3D
 @export var NAV_AGENT: NavigationAgent3D
 @export var TRACKING_SPEED: float = 5.0
 @export var TRACKING_MULTIPLIER: float = 1.0
+@export var SPEED = 9.0
+@export var SPEED_MULTIPLIER: float = 0.0
 @export var FLIPPED_TRACKING: bool = false
 @export var MESH: Node3D
+@export var BODY: Node3D
 var target: Node3D = null
 
 func track(delta: float) -> void:
+	if not MESH or not BODY or not target: return
+	
 	var initial_basis = MESH.global_transform.basis
-	if abs((global_position - MESH.global_transform.origin).normalized().dot(Vector3.UP)) > 0.999: return #vectors too similar? throwing error
+	if abs((global_position - MESH.global_transform.origin).normalized().dot(Vector3.UP)) > 0.999: return #rotation vectors too similar? exit to avoid error 
+	if MESH.global_transform.origin.distance_to(target.global_position) < 0.001: return #target and self too similar? exit to avoid error 
 	
 	MESH.look_at(global_position, Vector3.UP, FLIPPED_TRACKING)
 	var target_basis = MESH.global_transform.basis
@@ -17,10 +23,11 @@ func track(delta: float) -> void:
 	target_basis = target_basis.orthonormalized() 
 	MESH.global_transform.basis = initial_basis.slerp(target_basis, TRACKING_SPEED * TRACKING_MULTIPLIER * delta).orthonormalized()
 
-func move_to_target(delta: float, scene_root: Node3D, speed: float = 0.0, scalar: Vector3 = Vector3(1, 0, 1)) -> void:
+func move_to_target(delta: float, speed: float = 0.0, scalar: Vector3 = Vector3(1, 0, 1)) -> void:
+	if not target or not NAV_AGENT: return
 	NAV_AGENT.target_position = global_transform.origin
-	var navigation_velocity = (NAV_AGENT.get_next_path_position() - scene_root.global_transform.origin).normalized() * scalar 
-	scene_root.global_position += navigation_velocity * speed * delta
+	var navigation_velocity = (NAV_AGENT.get_next_path_position() - BODY.global_transform.origin).normalized() * scalar 
+	BODY.global_position += navigation_velocity * speed * delta
 
 func get_closest_from_group_3d(group: String) -> Node3D:
 	var closest = null
@@ -34,7 +41,9 @@ func get_closest_from_group_3d(group: String) -> Node3D:
 			closest = node
 	return closest
 	
-func _process(_delta):
+func _physics_process(delta: float) -> void:
+	move_to_target(delta, SPEED * SPEED_MULTIPLIER)
+	
 	if target == null:
 		target = get_closest_from_group_3d(TARGET_GROUP)
 	if target != null:

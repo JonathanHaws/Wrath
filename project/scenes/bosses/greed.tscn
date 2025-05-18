@@ -85,6 +85,30 @@ tracks/1/keys = {
 "clips": PackedStringArray("Chase"),
 "times": PackedFloat32Array(0)
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer:LIKELIHOOD_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_x1kl7"]
 resource_name = "DEATH"
@@ -112,7 +136,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
-"method": &"unlock_progression"
+"method": &"_unlock_progression"
 }, {
 "args": [],
 "method": &"queue_free"
@@ -228,6 +252,30 @@ tracks/10/keys = {
 "clips": PackedStringArray("Death"),
 "times": PackedFloat32Array(0)
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("AnimationPlayer:LIKELIHOOD_MULTIPLIER")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
 resource_name = "INTRO"
@@ -331,6 +379,30 @@ tracks/7/keys = {
 "clips": PackedStringArray("Intro"),
 "times": PackedFloat32Array(0.5)
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimationPlayer:LIKELIHOOD_MULTIPLIER")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_3l2yv"]
 resource_name = "LUNGE_ATTACK"
@@ -385,6 +457,30 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0.625)
 }
 tracks/3/use_blend = true
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("AnimationPlayer:LIKELIHOOD_MULTIPLIER")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_jojdm"]
 length = 0.001
@@ -544,6 +640,30 @@ tracks/12/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("AnimationPlayer:LIKELIHOOD_MULTIPLIER")
+tracks/14/interp = 0
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_br41q"]
 resource_name = "SLAM_ATTACK"
@@ -635,6 +755,30 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("AnimationPlayer:LIKELIHOOD_MULTIPLIER")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
@@ -773,6 +917,7 @@ collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_cq6fp")
 MAX_HEALTH = 2000
+SPEED = 0.0
 TARGET = NodePath("Target")
 ANIM = NodePath("AnimationPlayer")
 MESH = NodePath("Mesh")
@@ -831,14 +976,16 @@ script = ExtResource("14_4pvra")
 ATTACK_ANIMATION = Array[String](["LUNGE_ATTACK", "SLAM_ATTACK"])
 ATTACK_RADIUS = Array[float]([5.0, 5.0])
 ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_3l2yv"), SubResource("Curve_br41q")])
-ATTACK_MULTIPLIER = Array[float]([60.0, 40.0])
+LIKELIHOOD_MULTIPLIERS = Array[float]([60.0, 40.0])
+LIKELIHOOD_MULTIPLIER = 0.0
 
-[node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH")]
+[node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89408, 2.62937, 5.76861)
 script = ExtResource("15_cadt7")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 FLIPPED_TRACKING = true
 MESH = NodePath("../Mesh")
+BODY = NodePath("..")
 
 [node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SCENE_ROOT")]
 script = ExtResource("16_psb2t")
@@ -850,39 +997,39 @@ SCENE_ROOT = NodePath("..")
 [node name="Greed" parent="Mesh" instance=ExtResource("17_cq6fp")]
 
 [node name="Skeleton3D" parent="Mesh/Greed/Rig" index="0"]
-bones/1/position = Vector3(4.43234e-07, 0.00181995, -2.93554)
-bones/1/rotation = Quaternion(-0.633509, -5.74251e-08, -4.86394e-08, 0.773735)
-bones/2/rotation = Quaternion(0.678705, 0.0105619, -0.0106401, 0.734258)
-bones/3/rotation = Quaternion(0.793387, 0.00575612, 0.00299299, 0.608683)
-bones/4/rotation = Quaternion(-0.244926, 0.00987893, 0.0135449, 0.969397)
+bones/1/position = Vector3(1.4826e-07, 1.22017, -0.981879)
+bones/1/rotation = Quaternion(-0.81299, -4.32155e-08, -6.24195e-08, 0.582277)
+bones/2/rotation = Quaternion(0.995725, 0.0149688, -0.000833722, 0.0911446)
+bones/3/rotation = Quaternion(0.920709, 0.00961023, -0.00146102, 0.390128)
+bones/4/rotation = Quaternion(-0.244926, 0.00987892, 0.0135449, 0.969397)
 bones/5/rotation = Quaternion(0.189993, -0.00651416, 0.0393444, 0.980975)
-bones/6/rotation = Quaternion(-0.369344, -2.05455e-11, -9.37216e-10, 0.929293)
-bones/7/rotation = Quaternion(-0.0706068, -0.0137069, -0.113529, 0.990928)
-bones/8/rotation = Quaternion(-0.0534121, -0.00131663, 0.0973146, 0.993819)
-bones/9/rotation = Quaternion(-0.53782, 0.0418945, 0.0708446, 0.839033)
+bones/6/rotation = Quaternion(0.232141, -2.15152e-11, 5.89036e-10, 0.972682)
+bones/7/rotation = Quaternion(0.0842316, 0.0949019, -0.983692, 0.12747)
+bones/8/rotation = Quaternion(0.143024, -0.175304, -0.0171901, 0.973918)
+bones/9/rotation = Quaternion(0.0971382, 0.0122893, -0.0532991, 0.993767)
 bones/10/rotation = Quaternion(-0.024475, 8.94335e-09, -0.0359915, 0.999052)
-bones/12/rotation = Quaternion(0.264742, -1.37042e-11, 4.91696e-10, 0.964319)
+bones/12/rotation = Quaternion(-0.105105, -3.19873e-11, -2.54882e-10, 0.994461)
 bones/13/position = Vector3(-0.488868, 1.43551, -0.00969565)
-bones/13/rotation = Quaternion(-0.0706068, 0.0137069, 0.113529, 0.990928)
-bones/14/rotation = Quaternion(-0.0533375, 0.00130197, -0.0969423, 0.993859)
-bones/15/rotation = Quaternion(-0.440481, -0.0369182, -0.0771679, 0.893677)
+bones/13/rotation = Quaternion(0.00696524, -0.067562, 0.98973, 0.125783)
+bones/14/rotation = Quaternion(0.0906953, 0.0234256, 0.0289097, 0.995183)
+bones/15/rotation = Quaternion(0.110033, -0.00608328, -0.0931645, 0.989533)
 bones/16/rotation = Quaternion(-0.024475, -5.54639e-09, 0.0359915, 0.999052)
-bones/17/position = Vector3(-0.000162014, 0.339309, -0.324589)
-bones/17/rotation = Quaternion(0.779864, 0.174091, -0.567985, -0.197226)
-bones/18/rotation = Quaternion(-0.215452, 0.0913452, -0.0989759, 0.967182)
-bones/19/rotation = Quaternion(-0.41462, -0.12421, -0.232454, 0.870992)
+bones/17/position = Vector3(-0.000162007, 0.339309, -0.324589)
+bones/17/rotation = Quaternion(0.765907, 0.21774, -0.598667, -0.0870235)
+bones/18/rotation = Quaternion(-0.0924646, 0.173409, -0.595108, 0.779247)
+bones/19/rotation = Quaternion(-0.426507, 0.0467012, 0.0369573, 0.902522)
 bones/20/rotation = Quaternion(-0.398659, -0.0279548, -0.0491474, 0.915355)
-bones/21/rotation = Quaternion(-0.35566, 0.0109272, 0.00210176, 0.934549)
-bones/22/rotation = Quaternion(0.984885, -0.0338897, 0.0260046, 0.16786)
-bones/23/rotation = Quaternion(0.234039, 0.00564749, -0.0132514, 0.972121)
+bones/21/rotation = Quaternion(-0.35566, 0.0109272, 0.00210177, 0.934549)
+bones/22/rotation = Quaternion(0.995725, -0.0149688, 0.000833722, 0.0911446)
+bones/23/rotation = Quaternion(0.912644, -0.0093227, 0.00110586, 0.408648)
 bones/24/rotation = Quaternion(-0.244926, -0.00987893, -0.0135449, 0.969397)
-bones/25/rotation = Quaternion(0.290692, -0.0639853, 0.00247943, 0.954672)
+bones/25/rotation = Quaternion(0.189993, 0.00651417, -0.0393444, 0.980975)
 
 [node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_th64l")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1"]
-transform = Transform3D(1, 4.24105e-14, 2.51534e-09, -1.33182e-09, 0.84833, 0.529467, -2.13382e-09, -0.529467, 0.84833, -2.10746e-11, 3.91238, 0.198445)
+transform = Transform3D(1, 6.10623e-15, 2.51533e-09, 3.5303e-10, 0.990102, -0.140349, -2.49042e-09, 0.140349, 0.990102, -2.83458e-14, 1.92527, 0.89941)
 bone_name = "torso"
 bone_idx = 6
 
@@ -895,7 +1042,7 @@ shape = SubResource("BoxShape3D_jx80p")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2"]
-transform = Transform3D(1, 4.24105e-14, 2.51534e-09, -1.33182e-09, 0.84833, 0.529467, -2.13382e-09, -0.529467, 0.84833, -2.10746e-11, 3.91238, 0.198445)
+transform = Transform3D(1, 6.10623e-15, 2.51533e-09, 3.5303e-10, 0.990102, -0.140349, -2.49042e-09, 0.140349, 0.990102, -2.83458e-14, 1.92527, 0.89941)
 bone_name = "torso"
 bone_idx = 6
 
@@ -913,7 +1060,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3"]
-transform = Transform3D(0.996632, -0.0795949, 0.0197534, -0.0507697, -0.409658, 0.910825, -0.0644048, -0.908759, -0.41232, 0.617032, 6.04834, -2.14554)
+transform = Transform3D(-0.994649, 0.0712929, 0.0747673, -0.0593037, -0.986624, 0.151844, 0.0845924, 0.146597, 0.985572, 0.963769, 1.3182, 0.940024)
 bone_name = "hand_l"
 bone_idx = 10
 
@@ -932,7 +1079,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4"]
-transform = Transform3D(0.996649, 0.0792097, -0.0203946, 0.0357366, -0.197411, 0.979669, 0.0735732, -0.977115, -0.19958, -0.617817, 6.16982, -2.17785)
+transform = Transform3D(-0.951774, -0.302828, 0.0492102, 0.305802, -0.949322, 0.0726041, 0.0247298, 0.0841512, 0.996146, -1.04838, 1.33227, 0.882009)
 bone_name = "hand_r"
 bone_idx = 16
 
@@ -1012,7 +1159,6 @@ EXIT_AREA = NodePath("Exit")
 [node name="AudioStreamPlayer2D" parent="Music" index="0"]
 stream = ExtResource("20_jx80p")
 volume_db = -60.0
-stream_paused = true
 attenuation = 1e-05
 bus = &"Music"
 

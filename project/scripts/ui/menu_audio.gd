@@ -5,10 +5,12 @@ extends AudioStreamPlayer2D
 @export var pressed_targets: Array[Node]
 
 func _on_mouse_entered() -> void:
+	if not is_inside_tree(): return
 	stream = hover_sound
 	playing = true
 	
 func _on_pressed() -> void:
+	if not is_inside_tree(): return
 	stream = press_sound
 	playing = true
 

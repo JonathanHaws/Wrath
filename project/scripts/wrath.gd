@@ -1,10 +1,6 @@
 extends CharacterBody3D
-
-@export_group("Difficulty")
 @export var MAX_HEALTH: int = 4000
 @export var SPEED = 9.0
-
-@export_group("References")
 @export var TARGET: Node3D
 @export var ANIM: AnimationPlayer
 @export var MESH_ANIM: AnimationPlayer
@@ -27,7 +23,7 @@ func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.
 	if health <= 0:
 		if PROGRESSION_AREA: PROGRESSION_AREA.monitoring = true
 		ANIM.play("DEATH",0,1,false)
-		Save.data["wrath_defeated"] = true
+		Save.data[SAVE_KEY_DEFEATED] = true
 		Save.save_game()	
 
 func _on_trigger_area_body_entered(body: Node) -> void:
@@ -35,20 +31,20 @@ func _on_trigger_area_body_entered(body: Node) -> void:
 	if not ANIM.is_playing(): ANIM.play("INTRO")
 	Save.data[SAVE_KEY_ENCOUNTERED] = true
 	Save.save_game()	
+
+func _unlock_procession()-> void:
+	queue_free()
+	if PROGRESSION_AREA: PROGRESSION_AREA.monitoring = true
 	
 func _ready() -> void:
 	health = MAX_HEALTH
 	if Save.data.has(SAVE_KEY_DEFEATED) and Save.data[SAVE_KEY_DEFEATED]:
-		queue_free()
-		if PROGRESSION_AREA: PROGRESSION_AREA.monitoring = true
+		_unlock_procession()
 
 func _physics_process(delta: float) -> void:
 	if health > 0: move_and_slide()
 	if not ANIM.is_playing(): return
 	if not is_on_floor(): velocity += get_gravity() * delta
 	TARGET.track(delta)
-
-	if ANIM.current_animation == "CHASE":
-		TARGET.move_to_target(delta, self, SPEED)
-		ANIM.play_random_attack(global_position, TARGET.global_position,delta)
+	ANIM.play_random_attack(global_position, TARGET.global_position,delta)
 		

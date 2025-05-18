@@ -446,6 +446,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.0888538, 19)
 PROGRESSION_AREA = NodePath("../Doors/PortalDoor/Area3D")
 
+[node name="AnimationPlayer" parent="Interactables/Wrath" index="1"]
+LIKELIHOOD_MULTIPLIER = 0.0
+
 [node name="Skeleton3D" parent="Interactables/Wrath/Mesh/wrath/Armature" index="0"]
 bones/1/rotation = Quaternion(0.520187, 5.55556e-17, 9.12122e-17, 0.854052)
 bones/2/rotation = Quaternion(0.296613, 1.13845e-07, 3.5359e-08, 0.954998)
@@ -457,32 +460,11 @@ bones/7/rotation = Quaternion(-0.29291, -2.50809e-14, -6.98353e-08, 0.95614)
 [node name="LeftHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="1"]
 transform = Transform3D(-0.924673, -0.00872152, -0.380662, 0.348244, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583943)
 
-[node name="CollisionShape3D" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" index="0"]
-debug_color = Color(0, 0.6, 0.7, 0.42)
-
 [node name="RightHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
 transform = Transform3D(-0.924673, 0.00872081, 0.380663, -0.348244, -0.42363, -0.836219, 0.153968, -0.905793, 0.394756, 2.01091, 1.84788, -0.0583954)
 
-[node name="CollisionShape3D" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D" index="0"]
-debug_color = Color(0, 0.6, 0.7, 0.42)
-
 [node name="Torso" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="3"]
 transform = Transform3D(1, 2.62901e-13, 2.38419e-07, 2.98741e-08, 0.992119, -0.125302, -2.3654e-07, 0.125302, 0.992119, -1.66777e-22, 1, 0.100295)
-
-[node name="CollisionShape3D" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D/Torso/LockOn" index="0"]
-debug_color = Color(0, 0.6, 0.7, 0.42)
-
-[node name="CollisionShape3D" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D/Torso/Area3D" index="0"]
-debug_color = Color(0, 0.6, 0.7, 0.42)
-
-[node name="CollisionShape3D" parent="Interactables/Wrath/Mesh/Jump" index="0"]
-debug_color = Color(0, 0.6, 0.7, 0.42)
-
-[node name="CollisionShape3D" parent="Interactables/Wrath" index="4"]
-debug_color = Color(0, 0.6, 0.7, 0.42)
-
-[node name="CollisionShape3D" parent="Interactables/Wrath/Shake" index="0"]
-debug_color = Color(0.156863, 0.623529, 0.501961, 1)
 
 [node name="Bounds" type="Node" parent="Interactables/Wrath"]
 
