@@ -32,14 +32,14 @@ func _on_trigger_area_body_entered(body: Node) -> void:
 	Save.data[SAVE_KEY_ENCOUNTERED] = true
 	Save.save_game()	
 
-func _unlock_procession()-> void:
+func _unlock_progression()-> void:
 	queue_free()
 	if PROGRESSION_AREA: PROGRESSION_AREA.monitoring = true
 	
 func _ready() -> void:
 	health = MAX_HEALTH
 	if Save.data.has(SAVE_KEY_DEFEATED) and Save.data[SAVE_KEY_DEFEATED]:
-		_unlock_procession()
+		_unlock_progression()
 
 func _physics_process(delta: float) -> void:
 	if health > 0: move_and_slide()

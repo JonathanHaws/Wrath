@@ -1,7 +1,7 @@
 extends Button
 
 @export var target_to_hide: NodePath = "../" 
-@export var target_to_show: NodePath = ""
+@export var target_to_show: NodePath = "../../Main"
 
 func _ready() -> void:
 	pressed.connect(_on_pressed)

@@ -1,5 +1,6 @@
 extends Control
 @export var profile_scene: PackedScene
+@export var exclude_current_save: bool = false
 
 func populate_menu_with_saves() -> void:	
 	
@@ -9,7 +10,7 @@ func populate_menu_with_saves() -> void:
 		remove_child(child)
 		child.queue_free()
 	
-	var saves = Save.get_save_files()
+	var saves = Save.get_save_files(exclude_current_save)
 	for save in saves:
 		var profile = profile_scene.instantiate()
 		profile.format_profile(save)

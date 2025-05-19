@@ -30,7 +30,7 @@ func load_game(file_name: String) -> void:
 	Save.save_game()
 	call_deferred("change_scene_to_main_scene_file_path")
 
-func get_save_files(exclude_active_file = true) -> Array:
+func get_save_files(exclude_active_file = false) -> Array:
 	var dir = DirAccess.open("user://")
 	var save_files = []	
 	dir.list_dir_begin()

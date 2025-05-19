@@ -1,16 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://xoc7exqkdoqd"]
+[gd_scene load_steps=12 format=3 uid="uid://xoc7exqkdoqd"]
 
-[ext_resource type="AudioStream" uid="uid://bskcgvhx85bs3" path="res://audio/music/menu.ogg" id="1_nv4kp"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="2_3bflh"]
 [ext_resource type="FontFile" uid="uid://bseqwgcqg3g1" path="res://fonts/Wrath.otf" id="4_htcvh"]
 [ext_resource type="Script" uid="uid://cqi7s4551j7xa" path="res://scripts/ui/save/continue.gd" id="5_0l0lq"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="5_qgbil"]
+[ext_resource type="PackedScene" uid="uid://bhj5mytlw0l76" path="res://scenes/ui/menus/game.tscn" id="5_yejyp"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/main/redirect.gd" id="6_1t5jr"]
 [ext_resource type="Script" uid="uid://dbk4ank3cq0ny" path="res://scripts/ui/main/quit.gd" id="7_1of7r"]
-[ext_resource type="PackedScene" uid="uid://dt1c8xw6lwsk5" path="res://scenes/ui/menus/new_game.tscn" id="8_kb74t"]
 [ext_resource type="PackedScene" uid="uid://fxlgnts7apla" path="res://scenes/ui/menus/options.tscn" id="9_kb74t"]
-[ext_resource type="PackedScene" uid="uid://cpgt71w6iukaj" path="res://scenes/ui/menus/load_game.tscn" id="9_nv4kp"]
-[ext_resource type="PackedScene" uid="uid://c1e26hcf0nrup" path="res://scenes/ui/menus/delete_game.tscn" id="10_yejyp"]
 [ext_resource type="PackedScene" uid="uid://b3i01lg3stgkg" path="res://scenes/ui/menus/credits.tscn" id="11_nv4kp"]
 [ext_resource type="PackedScene" uid="uid://bbnvaw1wjbpv0" path="res://scenes/ui/menus/controls.tscn" id="12_yejyp"]
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://scripts/ui/menu_audio.gd" id="15_yejyp"]
@@ -18,11 +15,15 @@
 [node name="Menu" type="CanvasLayer"]
 process_mode = 3
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("1_nv4kp")
-autoplay = true
+[node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+stream = ExtResource("2_3bflh")
 attenuation = 1e-05
-bus = &"Music"
+bus = &"SFX"
+script = ExtResource("15_yejyp")
+hover_sound = ExtResource("2_3bflh")
+press_sound = ExtResource("2_3bflh")
+hover_targets = [null, NodePath("../CenterContainer/Main/Options"), NodePath("../CenterContainer/Main/Controls"), NodePath("../CenterContainer/Main/Credits"), NodePath("../CenterContainer/Main/Quit"), NodePath("../CenterContainer/Main/Continue")]
+pressed_targets = [null, NodePath("../CenterContainer/Main/Options"), NodePath("../CenterContainer/Main/Controls"), NodePath("../CenterContainer/Main/Credits"), NodePath("../CenterContainer/Main/Quit"), NodePath("../CenterContainer/Main/Continue")]
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_right = 1920.0
@@ -48,17 +49,6 @@ size_flags_vertical = 3
 layout_mode = 2
 alignment = 1
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="CenterContainer/Main" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-position = Vector2(-779.5, -302.5)
-stream = ExtResource("2_3bflh")
-attenuation = 1e-05
-bus = &"SFX"
-script = ExtResource("15_yejyp")
-hover_sound = ExtResource("2_3bflh")
-press_sound = ExtResource("2_3bflh")
-hover_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../Options"), NodePath("../Controls"), NodePath("../Credits"), NodePath("../Quit"), NodePath("../LoadGame"), NodePath("../DeleteGame")]
-pressed_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../Options"), NodePath("../Controls"), NodePath("../Credits"), NodePath("../Quit"), NodePath("../LoadGame"), NodePath("../DeleteGame")]
-
 [node name="Label" type="Label" parent="CenterContainer/Main"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -79,35 +69,15 @@ text = "CONTINUE
 icon_alignment = 1
 script = ExtResource("5_0l0lq")
 
-[node name="NewGame" type="Button" parent="CenterContainer/Main"]
+[node name="Game" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("5_qgbil")
-text = "NEW GAME"
+text = "GAME"
 icon_alignment = 1
 script = ExtResource("6_1t5jr")
-target_to_show = NodePath("../../New")
-
-[node name="LoadGame" type="Button" parent="CenterContainer/Main"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("5_qgbil")
-text = "LOAD GAME"
-icon_alignment = 1
-script = ExtResource("6_1t5jr")
-target_to_show = NodePath("../../Load")
-
-[node name="DeleteGame" type="Button" parent="CenterContainer/Main"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("5_qgbil")
-text = "DELETE GAME"
-icon_alignment = 1
-script = ExtResource("6_1t5jr")
-target_to_show = NodePath("../../Delete")
+target_to_show = NodePath(".")
 
 [node name="Options" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
@@ -153,15 +123,7 @@ script = ExtResource("7_1of7r")
 [node name="CenterContainer" type="CenterContainer" parent="CenterContainer/Main"]
 layout_mode = 2
 
-[node name="New" parent="CenterContainer" instance=ExtResource("8_kb74t")]
-visible = false
-layout_mode = 2
-
-[node name="Load" parent="CenterContainer" instance=ExtResource("9_nv4kp")]
-visible = false
-layout_mode = 2
-
-[node name="Delete" parent="CenterContainer" instance=ExtResource("10_yejyp")]
+[node name="Game" parent="CenterContainer" instance=ExtResource("5_yejyp")]
 visible = false
 layout_mode = 2
 
@@ -183,15 +145,9 @@ autostart = true
 
 [connection signal="focus_entered" from="CenterContainer/Main/Continue" to="." method="_play_hover_sound"]
 [connection signal="pressed" from="CenterContainer/Main/Continue" to="." method="_on_game_pressed"]
-[connection signal="focus_entered" from="CenterContainer/Main/NewGame" to="." method="_play_hover_sound"]
-[connection signal="mouse_entered" from="CenterContainer/Main/NewGame" to="." method="_play_hover_sound"]
-[connection signal="pressed" from="CenterContainer/Main/NewGame" to="." method="_on_options_pressed"]
-[connection signal="focus_entered" from="CenterContainer/Main/LoadGame" to="." method="_play_hover_sound"]
-[connection signal="mouse_entered" from="CenterContainer/Main/LoadGame" to="." method="_play_hover_sound"]
-[connection signal="pressed" from="CenterContainer/Main/LoadGame" to="." method="_on_options_pressed"]
-[connection signal="focus_entered" from="CenterContainer/Main/DeleteGame" to="." method="_play_hover_sound"]
-[connection signal="mouse_entered" from="CenterContainer/Main/DeleteGame" to="." method="_play_hover_sound"]
-[connection signal="pressed" from="CenterContainer/Main/DeleteGame" to="." method="_on_options_pressed"]
+[connection signal="focus_entered" from="CenterContainer/Main/Game" to="." method="_play_hover_sound"]
+[connection signal="mouse_entered" from="CenterContainer/Main/Game" to="." method="_play_hover_sound"]
+[connection signal="pressed" from="CenterContainer/Main/Game" to="." method="_on_options_pressed"]
 [connection signal="focus_entered" from="CenterContainer/Main/Options" to="." method="_play_hover_sound"]
 [connection signal="mouse_entered" from="CenterContainer/Main/Options" to="." method="_play_hover_sound"]
 [connection signal="pressed" from="CenterContainer/Main/Options" to="." method="_on_options_pressed"]

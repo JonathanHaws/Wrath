@@ -14,15 +14,15 @@ func _on_pressed() -> void:
 	stream = press_sound
 	playing = true
 
-func _ready() -> void:
+func _connect_signals() -> void:
 	for node in hover_targets:
 		if node and node.has_signal("mouse_entered"):
 			node.connect("mouse_entered", _on_mouse_entered)
-		else:
-			print('doesnt have one')
 			
 	for node in pressed_targets:
 		if node and node.has_signal("pressed"):
 			node.connect("pressed", _on_pressed)
-
+			
+func _ready() -> void:
+	call_deferred("_connect_signals")
 	
