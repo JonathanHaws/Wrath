@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1e26hcf0nrup"]
+[gd_scene load_steps=8 format=3 uid="uid://c1e26hcf0nrup"]
 
 [ext_resource type="Script" uid="uid://cit8ydyw2wira" path="res://scripts/ui/save/delete.gd" id="1_qj6sj"]
 [ext_resource type="PackedScene" uid="uid://bchlq7ojvre5o" path="res://scenes/ui/menus/profile.tscn" id="2_pgmrk"]
@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/main/redirect.gd" id="4_0i6lg"]
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://scripts/ui/menu_audio.gd" id="4_mp070"]
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://audio/sfx/menu/Menu_Press.wav" id="5_0i6lg"]
-[ext_resource type="AudioStream" uid="uid://bki6cb22a0k21" path="res://audio/sfx/door/cell_creak.wav" id="8_mp070"]
 
 [node name="Delete" type="VBoxContainer"]
 script = ExtResource("1_qj6sj")
@@ -27,8 +26,3 @@ hover_sound = ExtResource("3_0i6lg")
 press_sound = ExtResource("5_0i6lg")
 hover_targets = [NodePath("../Back")]
 pressed_targets = [NodePath("../Back")]
-
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("8_mp070")
-autoplay = true
-attenuation = 0.0145786
