@@ -19,6 +19,7 @@ extends CharacterBody3D
 @export var BASE_DAMAGE = 50
 @export var DAMAGE_MULTIPLIER = 1
 @export var SPIN_MULTIPLIER = 1.5
+@export var DESCEND_MULTIPLIER = 2.0
 
 @export_group("References")
 @export var CAMERA: Camera3D
@@ -189,7 +190,7 @@ func _physics_process(delta: float) -> void:
 		STAMINA_BAR.value = stamina
 		
 	if not is_on_floor(): # GRAVITY
-		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta
+		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER if Input.is_action_pressed("descend") else 1.0)
 
 	if is_on_floor(): 
 		falling = 0

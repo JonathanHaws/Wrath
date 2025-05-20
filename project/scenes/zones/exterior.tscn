@@ -448,7 +448,6 @@ PROGRESSION_AREA = NodePath("../Doors/PortalDoor/Area3D")
 
 [node name="Skeleton3D" parent="Interactables/Wrath/Mesh/wrath/Armature" index="0"]
 bones/4/rotation = Quaternion(-0.18941, 0.0856309, 0.344916, 0.915327)
-bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
 bones/6/rotation = Quaternion(-0.0822429, 0.000622961, 0.134669, 0.987472)
 bones/7/rotation = Quaternion(-0.29291, -2.50809e-14, -6.98353e-08, 0.95614)
 

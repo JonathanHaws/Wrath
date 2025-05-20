@@ -29,18 +29,21 @@ func _lock_on(_delta: float)-> void:
 	if Input.is_action_just_pressed("lock_on"):
 		lock_on_activated = !lock_on_activated
 	
-	if lock_on_activated and lock_on_target and is_instance_valid(lock_on_target):
-		LOCK_ON_INDICATOR.visible = true;
-		LOCK_ON_INDICATOR.position = unproject_position(lock_on_target.global_transform.origin)
-		var target_position = lock_on_target.global_transform.origin - Vector3(0, LOCK_ON_OFFSET, 0)
-		var current_rotation = PIVOT.global_transform.basis.get_rotation_quaternion()
-		PIVOT.look_at(target_position + PIVOT.position, Vector3.UP)
-		var new_rotation = PIVOT.global_transform.basis.get_rotation_quaternion()
-		PIVOT.global_transform.basis = Basis(current_rotation.slerp(new_rotation, LOCK_ON_SPEED * _delta))
-		mouse_delta = Vector2.ZERO
-	else:
-		lock_on_activated = false;
-		LOCK_ON_INDICATOR.visible = false;
+	if not (lock_on_activated and lock_on_target and is_instance_valid(lock_on_target)):
+		lock_on_activated = false
+		LOCK_ON_INDICATOR.visible = false
+		return
+
+	LOCK_ON_INDICATOR.visible = true;
+	LOCK_ON_INDICATOR.position = unproject_position(lock_on_target.global_transform.origin)
+	
+	var target_position = lock_on_target.global_transform.origin - Vector3(0, LOCK_ON_OFFSET, 0)
+	var current_rotation = PIVOT.global_transform.basis.get_rotation_quaternion()
+	PIVOT.look_at(target_position + PIVOT.position, Vector3.UP)
+	var new_rotation = PIVOT.global_transform.basis.get_rotation_quaternion()
+	PIVOT.global_transform.basis = Basis(current_rotation.slerp(new_rotation, LOCK_ON_SPEED * _delta))
+	mouse_delta = Vector2.ZERO
+
 
 func _ready() -> void:
 	LOCK_ON_AREA.area_entered.connect(_on_lock_on_area_entered)

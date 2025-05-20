@@ -1290,22 +1290,22 @@ SCENE_ROOT = NodePath("..")
 
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
 bones/1/position = Vector3(-7.12175e-17, 0.0829432, 0.518257)
-bones/1/rotation = Quaternion(0.520011, -0.0135509, -0.0222481, 0.853763)
-bones/2/rotation = Quaternion(0.296613, 1.13948e-07, 3.50255e-08, 0.954998)
-bones/2/scale = Vector3(1, 1, 1)
+bones/1/rotation = Quaternion(0.520187, 5.55556e-17, 9.12122e-17, 0.854052)
+bones/2/rotation = Quaternion(0.296613, 1.13845e-07, 3.5359e-08, 0.954998)
 bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
 bones/4/rotation = Quaternion(-0.18941, 0.085631, 0.344916, 0.915327)
-bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325445, 0.887213)
+bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
 bones/6/rotation = Quaternion(-0.0822429, 0.00062297, 0.134669, 0.987472)
-bones/7/rotation = Quaternion(-0.29291, 6.31688e-10, -6.98474e-08, 0.95614)
+bones/7/rotation = Quaternion(-0.29291, -1.6637e-14, -6.98353e-08, 0.95614)
 bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
 bones/9/rotation = Quaternion(-0.18941, -0.085631, -0.344916, 0.915327)
+bones/10/rotation = Quaternion(-0.455173, 0.0679145, -0.0325446, 0.887213)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_y1py8")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.915398, 0.0384661, -0.400707, 0.348245, -0.423631, -0.836219, -0.201918, -0.905017, 0.374395, -1.95738, 1.84788, -0.161805)
+transform = Transform3D(-0.924673, -0.00872146, -0.380663, 0.348244, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583943)
 bone_name = "hand_l"
 bone_idx = 6
 script = ExtResource("22_r385c")
@@ -1324,7 +1324,7 @@ disabled = true
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.931436, 0.055886, 0.359587, -0.348245, -0.423631, -0.836219, 0.105599, -0.904109, 0.414047, 2.05898, 1.84788, 0.0476617)
+transform = Transform3D(-0.924673, 0.00872091, 0.380663, -0.348244, -0.423631, -0.836219, 0.153968, -0.905793, 0.394757, 2.01091, 1.84788, -0.0583951)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1342,7 +1342,7 @@ disabled = true
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.998643, -0.00652599, -0.0516718, 4.03569e-08, 0.992119, -0.125301, 0.0520822, 0.125131, 0.990772, 0.042539, 1, 0.101403)
+transform = Transform3D(1, 2.62901e-13, 2.38419e-07, 2.98741e-08, 0.992119, -0.125302, -2.3654e-07, 0.125302, 0.992119, -1.66777e-22, 1, 0.100295)
 bone_name = "torso"
 bone_idx = 2
 
@@ -1395,7 +1395,7 @@ group = "wrath"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Jump"]
 shape = SubResource("CylinderShape3D_4usqi")
 disabled = true
-debug_color = Color(0, 0.6, 0.7, 0.42)
+debug_color = Color(0.733333, 0.243137, 0.282353, 1)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
@@ -1419,7 +1419,7 @@ TREMOR_STRENGTH = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Shake"]
 shape = SubResource("SphereShape3D_4oeto")
-debug_color = Color(0.156863, 0.623529, 0.501961, 1)
+debug_color = Color(0.5518, 0.62, 0.601813, 0.0156863)
 
 [node name="TriggerArea" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.98601, 3)
