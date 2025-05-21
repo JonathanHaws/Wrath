@@ -457,9 +457,6 @@ transform = Transform3D(-0.924673, -0.00872152, -0.380662, 0.348244, -0.423631, 
 [node name="RightHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
 transform = Transform3D(-0.924673, 0.00872081, 0.380663, -0.348244, -0.42363, -0.836219, 0.153968, -0.905793, 0.394756, 2.01091, 1.84788, -0.0583954)
 
-[node name="Torso" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 2.62901e-13, 2.38419e-07, 2.98741e-08, 0.992119, -0.125302, -2.3654e-07, 0.125302, 0.992119, -1.66777e-22, 1, 0.100295)
-
 [node name="Bounds" type="Node" parent="Interactables/Wrath"]
 
 [node name="South" type="StaticBody3D" parent="Interactables/Wrath/Bounds"]

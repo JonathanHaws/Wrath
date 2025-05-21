@@ -198,7 +198,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Pivot/SpringArm3D/Camera3D:current")
+tracks/4/path = NodePath("SpringArm3D/Camera3D:current")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -312,7 +312,7 @@ step = 0.0416667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pivot/SpringArm3D/Camera3D:fov")
+tracks/0/path = NodePath("SpringArm3D/Camera3D:fov")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -385,7 +385,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Pivot/SpringArm3D/Camera3D:fov")
+tracks/3/path = NodePath("SpringArm3D/Camera3D:fov")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -412,7 +412,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pivot/SpringArm3D/Camera3D:fov")
+tracks/0/path = NodePath("SpringArm3D/Camera3D:fov")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -472,7 +472,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Pivot/SpringArm3D/Camera3D:current")
+tracks/5/path = NodePath("SpringArm3D/Camera3D:current")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -484,7 +484,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Pivot/SpringArm3D/Camera3D:current")
+tracks/6/path = NodePath("SpringArm3D/Camera3D:current")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -718,7 +718,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Pivot/SpringArm3D/Camera3D:fov")
+tracks/1/path = NodePath("SpringArm3D/Camera3D:fov")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -811,7 +811,7 @@ step = 0.0416667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Pivot/SpringArm3D/Camera3D:fov")
+tracks/0/path = NodePath("SpringArm3D/Camera3D:fov")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1047,7 +1047,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300407, -0.0905066, -0.038
 rotation_edit_mode = 1
 collision_layer = 2
 script = ExtResource("1_0b6a6")
-CAMERA = NodePath("Pivot/SpringArm3D/Camera3D")
+CAMERA = NodePath("SpringArm3D/Camera3D")
 MESH = NodePath("Mesh")
 ATTACK_AREA = NodePath("Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D")
 ANIM = NodePath("AnimationPlayer")
@@ -1077,30 +1077,28 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_qswe2")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="Pivot" type="Node3D" parent="."]
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.972606, 0.232461, 0, -0.232461, 0.972606, 0, 2.412, 0)
-rotation_edit_mode = 1
-
-[node name="SpringArm3D" type="SpringArm3D" parent="Pivot"]
 spring_length = 5.0
 margin = 120.0
 
-[node name="Camera3D" type="Camera3D" parent="Pivot/SpringArm3D" node_paths=PackedStringArray("PIVOT", "LOCK_ON_AREA", "LOCK_ON_INDICATOR")]
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" node_paths=PackedStringArray("SpringArm", "LOCK_ON_AREA", "LOCK_ON_INDICATOR")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 current = true
 fov = 80.0
 script = ExtResource("7_lwilf")
-PIVOT = NodePath("../..")
-LOCK_ON_AREA = NodePath("../../LockOnArea")
-LOCK_ON_INDICATOR = NodePath("../../../LockOnIndicator")
+pitch_max_deg = 20.0
+SpringArm = NodePath("..")
+LOCK_ON_AREA = NodePath("../LockOnArea")
+LOCK_ON_INDICATOR = NodePath("../../LockOnIndicator")
 
-[node name="HeadFollowTarget" type="Node3D" parent="Pivot/SpringArm3D/Camera3D"]
+[node name="HeadFollowTarget" type="Node3D" parent="SpringArm3D/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.896154, -0.64839, -7.68562)
 
-[node name="LockOnArea" type="Area3D" parent="Pivot"]
+[node name="LockOnArea" type="Area3D" parent="SpringArm3D"]
 transform = Transform3D(1, 0, 0, 0, 0.972606, -0.232461, 0, 0.232461, 0.972606, 0, -2.34592, -0.560696)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Pivot/LockOnArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpringArm3D/LockOnArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0538235, 3.3871, -22.3708)
 shape = SubResource("BoxShape3D_y0gmj")
 debug_color = Color(0.7, 0.7, 0.7, 0.0235294)
@@ -1188,7 +1186,7 @@ material_override = SubResource("StandardMaterial3D_h5p68")
 material_override = SubResource("ShaderMaterial_ybm87")
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/reaper/Armature/Skeleton3D" index="6"]
-target_node = NodePath("../../../../../Pivot/SpringArm3D/Camera3D/HeadFollowTarget")
+target_node = NodePath("../../../../../SpringArm3D/Camera3D/HeadFollowTarget")
 bone_name = "head"
 bone = 9
 forward_axis = 5
