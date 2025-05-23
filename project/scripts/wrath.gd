@@ -19,7 +19,7 @@ func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.
 	SlowMotion.impact(.04)
 	Shake.tremor(2)
 	if $Audio: $Audio.play_2d_sound(["hit_1", "hit_2", "hit_3"], .8)
-	Particles.spawn(_position, HURT_PARTICLE_SCENE)
+	Particles.spawn(HURT_PARTICLE_SCENE, _position)
 	if health <= 0:
 		if PROGRESSION_AREA: PROGRESSION_AREA.monitoring = true
 		ANIM.play("DEATH",0,1,false)

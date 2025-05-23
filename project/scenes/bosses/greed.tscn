@@ -1270,7 +1270,7 @@ bones/25/rotation = Quaternion(0.291092, -0.0642706, 0.00265003, 0.95453)
 material_override = SubResource("ShaderMaterial_th64l")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1"]
-transform = Transform3D(0.999705, 0.0200039, -0.0137933, -0.0134782, -0.0157999, -0.999784, -0.0202175, 0.999675, -0.0155256, -0.0834752, 2.23236, 0.807928)
+transform = Transform3D(0.999705, 0.0200039, -0.0137933, -0.0134782, -0.0158001, -0.999784, -0.0202175, 0.999675, -0.0155258, -0.0834748, 2.23236, 0.807928)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1283,7 +1283,7 @@ shape = SubResource("BoxShape3D_jx80p")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2"]
-transform = Transform3D(0.999705, 0.0200039, -0.0137933, -0.0134782, -0.0157999, -0.999784, -0.0202175, 0.999675, -0.0155256, -0.0834752, 2.23236, 0.807928)
+transform = Transform3D(0.999705, 0.0200039, -0.0137933, -0.0134782, -0.0158001, -0.999784, -0.0202175, 0.999675, -0.0155258, -0.0834748, 2.23236, 0.807928)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1301,7 +1301,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3"]
-transform = Transform3D(0.999705, 0.0200039, -0.0137933, -0.0134782, -0.0157999, -0.999784, -0.0202175, 0.999675, -0.0155256, -0.0834752, 2.23236, 0.807928)
+transform = Transform3D(0.999705, 0.0200039, -0.0137933, -0.0134782, -0.0158001, -0.999784, -0.0202175, 0.999675, -0.0155258, -0.0834748, 2.23236, 0.807928)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1319,7 +1319,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4"]
-transform = Transform3D(0.267542, -0.430298, -0.862128, -0.915585, 0.165242, -0.366605, 0.300209, 0.887433, -0.349765, 0.542708, 2.25896, 4.23506)
+transform = Transform3D(0.267542, -0.430299, -0.862128, -0.915584, 0.165244, -0.366606, 0.300211, 0.887433, -0.349765, 0.542708, 2.25896, 4.23506)
 bone_name = "hand_l"
 bone_idx = 10
 
@@ -1338,7 +1338,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5"]
-transform = Transform3D(-0.719569, 0.320156, 0.616214, 0.674039, 0.108603, 0.730668, 0.167005, 0.941119, -0.293945, -0.875894, 2.51206, 4.1854)
+transform = Transform3D(-0.71957, 0.320155, 0.616215, 0.67404, 0.108603, 0.730668, 0.167004, 0.941119, -0.293944, -0.875895, 2.51206, 4.18541)
 bone_name = "hand_r"
 bone_idx = 16
 

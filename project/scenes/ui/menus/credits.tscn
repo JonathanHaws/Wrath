@@ -17,7 +17,12 @@ text = "[center] [color=#ececec] Boss Rush Jam[/color][color=#858585] - 2025 \"S
 [color=#ececec]Jcmusik08 [/color][color=#858585]- Sound Design - USA [/color]
 [color=#ececec]NaisSais[/color][color=#858585] - Modeling / Texturing - Russia [/color]
 [color=#ececec]Nemo [/color][color=#858585]- Animation / Programming - USA  [/color]
-[color=#ececec]Kenney / Le Lu / DisplacedFikaDev [/color][color=#858585]- Shaders / Free Resources  [/color]
+
+[color=#ececec] Free Resources [/color][color=#858585]- Prototyping / Final Versions[/color]
+[color=#ececec]Kenney [/color][color=#858585]- Particle Textures  [/color]
+[color=#ececec]Le Lu [/color][color=#858585]- Portal Shader / Textures  [/color]
+[color=#ececec]DisplacedFikaDev [/color][color=#858585]- Dissolve Shader  [/color]
+[color=#ececec]Cethiel [/color][color=#858585]- Slash Textures [/color]
 [/center]"
 fit_content = true
 autowrap_mode = 0
@@ -31,7 +36,6 @@ text = "BACK
 "
 icon_alignment = 1
 script = ExtResource("2_77ypm")
-target_to_show = NodePath("../../Main")
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
 stream = ExtResource("3_hyvu0")
