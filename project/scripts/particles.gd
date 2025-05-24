@@ -3,9 +3,7 @@ extends Node
 var owner_node: Node = null
 
 func _ready() -> void:
-
 	owner_node = self
-
 		
 func spawn(particle = 0, position_or_parent = null) -> void:
 
@@ -30,5 +28,6 @@ func spawn(particle = 0, position_or_parent = null) -> void:
 		if particles is Node3D and particles.material_override:
 			particles.material_override = particles.material_override.duplicate()
 		
-		particles.global_transform = owner_node.global_transform
-		get_tree().root.add_child(particles)
+		#particles.global_transform = owner_node.global_transform
+		
+		owner_node.add_child(particles)
