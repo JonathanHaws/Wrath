@@ -5,6 +5,8 @@ extends ProgressBar
 @export var max_property_name: String = "health"
 @export var difference_speed: float = 0.5
 
+#export var BAR_PIXEL_WIDTH: float = 1.0
+
 func _on_timer_timeout() -> void:
 	$Change.value = value
 
@@ -13,6 +15,8 @@ func _on_value_changed(_new_value: float) -> void:
 	$Change.min_value = min_value
 	$Timer.stop()
 	$Timer.start()
+	if difference_speed == 0:
+		$Change.value = value
 	
 func _ready()-> void:
 	$Timer.wait_time = difference_speed

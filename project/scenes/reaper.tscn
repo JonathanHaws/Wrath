@@ -1278,7 +1278,7 @@ theme_override_styles/fill = ExtResource("20_gpejb")
 host = NodePath("..")
 property_name = "stamina"
 max_property_name = "stamina"
-difference_speed = 0.05
+difference_speed = 0.0
 
 [node name="Health" parent="." node_paths=PackedStringArray("host") instance=ExtResource("36_p2pt0")]
 offset_left = -953.0

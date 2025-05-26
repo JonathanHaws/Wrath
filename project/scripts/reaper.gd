@@ -150,6 +150,12 @@ func _ready() -> void:
 
 	update_ui()
 	
+func _process(delta: float) -> void:
+	if not Input.is_action_pressed("attack"): # STAMINA RECOVERY
+		stamina += STAMINA_RECOVERY_SPEED * delta
+		if stamina > MAX_STAMINA: stamina = MAX_STAMINA
+		STAMINA_BAR.value = stamina
+	
 func _physics_process(delta: float) -> void:
 	
 	Squash.settle(MESH,delta)	
@@ -183,11 +189,6 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor():
 			if ANIM.current_animation not in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT"]:
 				ANIM.play("WINDUP")
-		
-	if not Input.is_action_pressed("attack"): # STAMINA RECOVERY
-		stamina += STAMINA_RECOVERY_SPEED * delta
-		if stamina > MAX_STAMINA: stamina = MAX_STAMINA
-		STAMINA_BAR.value = stamina
 		
 	if not is_on_floor(): # GRAVITY
 		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER if Input.is_action_pressed("descend") else 1.0)
