@@ -1217,7 +1217,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_cc4qc"]
 size = Vector3(60.1604, 35, 107.815)
 
-[node name="Wrath" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM", "MESH_ANIM", "MESH") groups=["wrath"]]
+[node name="Wrath" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM", "MESH_ANIM", "MESH", "HEALTH") groups=["wrath"]]
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_fvlx1")
@@ -1229,17 +1229,18 @@ HURT_PARTICLE_SCENE = ExtResource("22_1df88")
 DEATH_PARTICLE_SCENE = ExtResource("2_brvm4")
 BODY_MATERIAL = SubResource("ShaderMaterial_y1py8")
 DAMAGE_NUMBER = ExtResource("8_j0yyq")
+HEALTH = NodePath("UI/HealthBar")
 
 [node name="UI" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 
-[node name="HealthBar" parent="UI" node_paths=PackedStringArray("host") instance=ExtResource("17_r1aqn")]
+[node name="HealthBar" parent="UI" instance=ExtResource("17_r1aqn")]
 offset_left = 544.0
 offset_top = 10.0
 offset_right = 1410.0
 offset_bottom = 20.0
-host = NodePath("../..")
-max_property_name = "MAX_HEALTH"
+max_value = 5000.0
+value = 5000.0
 
 [node name="Label" type="Label" parent="UI"]
 visible = false

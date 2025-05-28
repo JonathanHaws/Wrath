@@ -1,27 +1,28 @@
 extends Node3D
-@export var REAPER: CharacterBody3D
 @export var COLLECTION_SOUNDS: Array[AudioStream] = []
 @export var UPGRADE = 5.0
 @export var HEALTH = true
+@export var group = "player"
+var REAPER: Node
 
 func _on_body_entered(body: Node) -> void:
-	if not body == REAPER: return
+	if group != "" and not body.is_in_group(group): return
+	REAPER = body
 	$AnimationPlayer.play("delay_upgrade")
 	Audio.play_2d_sound(COLLECTION_SOUNDS[randi() % COLLECTION_SOUNDS.size()], 0.9, 1.1)
 
 func _upgrade() -> void:
 	if HEALTH:
+		if not Save.data.has("max_health"):	Save.data["max_health"] = REAPER.HEALTH.max_value
 		Save.data["max_health"] += UPGRADE
-		REAPER.health += UPGRADE
-		REAPER.HEALTH_BAR.max_value = Save.data["max_health"]
-		REAPER.MAX_HEALTH = Save.data["max_health"]
-		REAPER.HEALTH_BAR.size.x = REAPER.MAX_HEALTH * REAPER.BAR_PIXEL_WIDTH
+		REAPER.HEALTH.max_value = Save.data["max_health"]
+		REAPER.HEALTH.value += UPGRADE
+	
 	else:
+		if not Save.data.has("max_stamina"): Save.data["max_stamina"] = REAPER.STAMINA.max_value
 		Save.data["max_stamina"] += UPGRADE
-		REAPER.stamina += UPGRADE
-		REAPER.STAMINA_BAR.max_value = Save.data["max_stamina"]
-		REAPER.MAX_STAMINA = Save.data["max_stamina"]
-		REAPER.STAMINA_BAR.size.x = REAPER.MAX_STAMINA * REAPER.BAR_PIXEL_WIDTH
+		REAPER.STAMINA.max_value = Save.data["max_stamina"]
+		REAPER.STAMINA.value += UPGRADE
 		
 	Save.data[self.name] = true
 	Save.save_game()

@@ -1149,11 +1149,10 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_cc4qc"]
 size = Vector3(60.1604, 35, 107.815)
 
-[node name="Greed" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM", "MESH") groups=["greed", "wrath"]]
+[node name="Greed" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM", "MESH", "HEALTH") groups=["greed", "wrath"]]
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_cq6fp")
-MAX_HEALTH = 2000
 SPEED = 0.0
 TARGET = NodePath("Target")
 ANIM = NodePath("Attacks")
@@ -1164,6 +1163,7 @@ BODY_MATERIAL = SubResource("ShaderMaterial_y1py8")
 DAMAGE_NUMBER = ExtResource("8_th64l")
 SAVE_KEY_ENCOUNTERED = "greed_encountered"
 SAVE_KEY_DEFEATED = "greed_defeated"
+HEALTH = NodePath("UI/HealthBar")
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 volume_db = -5.0
@@ -1177,14 +1177,14 @@ SOUNDS = Array[AudioStream]([ExtResource("24_1upmg"), ExtResource("25_palr8"), E
 [node name="UI" type="Node2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 
-[node name="HealthBar" parent="UI" node_paths=PackedStringArray("host") instance=ExtResource("9_wri43")]
+[node name="HealthBar" parent="UI" instance=ExtResource("9_wri43")]
 offset_left = 544.0
 offset_top = 10.0
 offset_right = 1410.0
 offset_bottom = 20.0
 theme_override_styles/fill = ExtResource("10_jx80p")
-host = NodePath("../..")
-max_property_name = "MAX_HEALTH"
+max_value = 2000.0
+value = 2000.0
 
 [node name="Label" type="Label" parent="UI"]
 visible = false

@@ -497,21 +497,17 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Wisps" type="Node" parent="Interactables"]
 
-[node name="Soul1" parent="Interactables/Wisps" node_paths=PackedStringArray("REAPER") instance=ExtResource("7_c1476")]
+[node name="Soul1" parent="Interactables/Wisps" instance=ExtResource("7_c1476")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.3216, -37.1959, -168.946)
-REAPER = NodePath("../../Reaper")
 
-[node name="Soul3" parent="Interactables/Wisps" node_paths=PackedStringArray("REAPER") instance=ExtResource("7_c1476")]
+[node name="Soul3" parent="Interactables/Wisps" instance=ExtResource("7_c1476")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1656, -10.1917, 37.849)
-REAPER = NodePath("../../Reaper")
 
-[node name="Soul5" parent="Interactables/Wisps" node_paths=PackedStringArray("REAPER") instance=ExtResource("7_c1476")]
+[node name="Soul5" parent="Interactables/Wisps" instance=ExtResource("7_c1476")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9891, -28.8294, -61.2567)
-REAPER = NodePath("../../Reaper")
 
-[node name="Soul6" parent="Interactables/Wisps" node_paths=PackedStringArray("REAPER") instance=ExtResource("7_c1476")]
+[node name="Soul6" parent="Interactables/Wisps" instance=ExtResource("7_c1476")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6554, -30.1646, -135.958)
-REAPER = NodePath("../../Reaper")
 
 [node name="Doors" type="Node" parent="Interactables"]
 

@@ -3,9 +3,6 @@ extends CharacterBody3D
 @export_group("Movement")
 @export var SPEED = 5.35
 @export var SPRINT_MULTIPLIER = 2.1
-@export var MAX_STAMINA = 10.0
-@export var MAX_HEALTH = 10.0
-@export var STAMINA_RECOVERY_SPEED = 20.0
 @export var SPEED_FRICTION = 0.9999999999
 @export var JUMP_VELOCITY = 14.0
 @export var GRAVITY_MULTIPLIER = 4
@@ -28,6 +25,7 @@ extends CharacterBody3D
 @export var ANIM: AnimationPlayer
 @export var MESH_ANIM: AnimationPlayer
 @export var COLLISON_SHAPE: CollisionShape3D
+@export var STAMINA_RECOVERY: float = 20.0
 
 @export_group("Material")
 @export var CLOAK_TEXTURE: Texture2D
@@ -36,19 +34,15 @@ extends CharacterBody3D
 var alternative_cloak = false
 
 @export_group("UI")
-@export var STAMINA_BAR: ProgressBar
-@export var HEALTH_BAR: ProgressBar
-@export var BAR_PIXEL_WIDTH = 4
-func update_ui():
-	STAMINA_BAR.size.x = MAX_STAMINA * BAR_PIXEL_WIDTH
-	HEALTH_BAR.size.x = MAX_HEALTH * BAR_PIXEL_WIDTH
-	STAMINA_BAR.max_value = MAX_STAMINA
-	HEALTH_BAR.max_value = MAX_HEALTH
-	STAMINA_BAR.value = stamina
-	HEALTH_BAR.value = health
+@export var STAMINA: ProgressBar
+@export var HEALTH: ProgressBar
+var health:
+	get: return HEALTH.value
+	set(value): HEALTH.value = clamp(value, HEALTH.min_value, HEALTH.max_value)
+var stamina:
+	get: return STAMINA.value
+	set(value): STAMINA.value = clamp(value, STAMINA.min_value, STAMINA.max_value)
 
-var health = MAX_HEALTH
-var stamina = MAX_STAMINA
 var falling = COYOTE_TIME;
 var was_on_floor = true
 var has_been_on_floor = false
@@ -62,8 +56,12 @@ func reset_spin_damage():
 	DAMAGE_MULTIPLIER = 1
 	ATTACK_AREA.damage = BASE_DAMAGE * DAMAGE_MULTIPLIER
 
+func _process(_delta)-> void:
+	if not Input.is_action_pressed("attack"): 
+		stamina += STAMINA_RECOVERY * _delta
+
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
-	if health > 0:
+	if HEALTH.value > 0:
 		if (_group != "kill_floor"):
 			ANIM.play("HURT")
 			Shake.tremor(3)
@@ -93,12 +91,11 @@ func _on_animation_finished(animation_name: String) -> void:
 		MESH_ANIM.playback_default_blend_time = 0.2
 
 	if animation_name == "SPIN":
-		if Input.is_action_pressed("attack") and stamina > 0:
+		if Input.is_action_pressed("attack") and STAMINA.value > 0:
 			MESH_ANIM.playback_default_blend_time = 0.0
 			ANIM.play("SPIN", 0.0, 1, false)
 			ANIM.seek(0, true)
-			stamina -= 10
-			STAMINA_BAR.value = stamina
+			STAMINA.value -= 10
 			
 		else:
 			MESH_ANIM.playback_default_blend_time = 0.0
@@ -109,22 +106,12 @@ func _on_animation_finished(animation_name: String) -> void:
 		MESH_ANIM.playback_default_blend_time = 0.0
 		ANIM.play("SPIN", 0.0, 1, false)
 		ANIM.seek(0, true) 
-		stamina -= 10
-		STAMINA_BAR.value = stamina
+		STAMINA.value -= 10
 
 func _ready() -> void:
 	
 	if not Save.data.has("deaths"):
 		Save.data["deaths"] = 0
-
-	if Save.data.has("max_health"):
-		MAX_HEALTH = Save.data["max_health"]
-		health = MAX_HEALTH
-	if Save.data.has("max_stamina"):
-		MAX_STAMINA = Save.data["max_stamina"]
-		stamina = MAX_STAMINA
-	Save.data["max_health"] = MAX_HEALTH
-	Save.data["max_stamina"] = MAX_STAMINA	
 
 	if Save.data.has("door_node_name"):		
 		var door_node = get_tree().root.find_child(Save.data["door_node_name"], true, false)
@@ -147,14 +134,6 @@ func _ready() -> void:
 	if not Save.data.has("spawn_sound"):
 		Save.data["spawn_sound"] = "spawn_new"
 	if $Audio: $Audio.play_2d_sound([Save.data["spawn_sound"]])
-
-	update_ui()
-	
-func _process(delta: float) -> void:
-	if not Input.is_action_pressed("attack"): # STAMINA RECOVERY
-		stamina += STAMINA_RECOVERY_SPEED * delta
-		if stamina > MAX_STAMINA: stamina = MAX_STAMINA
-		STAMINA_BAR.value = stamina
 	
 func _physics_process(delta: float) -> void:
 	
@@ -174,8 +153,6 @@ func _physics_process(delta: float) -> void:
 			CLOAK_MATERIAL.set_shader_parameter("base_texture", ALTERNATIVE_CLOAK_TEXTURE)
 		else:
 			CLOAK_MATERIAL.set_shader_parameter("base_texture", CLOAK_TEXTURE)
-	
-	update_ui()
 	
 	if not was_on_floor and is_on_floor() and has_been_on_floor:
 		Squash.squish(MESH,.23)	
@@ -225,7 +202,7 @@ func _physics_process(delta: float) -> void:
 	
 	if input_vector.length() > 0:
 		var mesh_direction = Vector3(0, 0, -1).rotated(Vector3.UP, MESH.rotation.y + global_transform.basis.get_euler().y)
-		if (Input.is_action_pressed("sprint") or controller_vector.length() > 0.75) and stamina > 0:
+		if (Input.is_action_pressed("sprint") or controller_vector.length() > 0.75) and STAMINA.value > 0:
 			if ANIM.current_animation not in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT"] and is_on_floor():
 				ANIM.play("RUN", 0.0, 1, false)
 			velocity.x = mesh_direction.x * SPEED * SPRINT_MULTIPLIER * SPEED_MULTIPLIER

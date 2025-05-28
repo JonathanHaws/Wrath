@@ -1,5 +1,4 @@
 extends CharacterBody3D
-@export var MAX_HEALTH: int = 4000
 @export var SPEED = 9.0
 @export var TARGET: Node3D
 @export var ANIM: AnimationPlayer
@@ -12,7 +11,10 @@ extends CharacterBody3D
 @export var DAMAGE_NUMBER: PackedScene
 @export var SAVE_KEY_ENCOUNTERED: String = "wrath_encountered"
 @export var SAVE_KEY_DEFEATED: String = "wrath_defeated"
-var health = MAX_HEALTH
+@export var HEALTH: ProgressBar
+var health:
+	get: return HEALTH.value
+	set(value): HEALTH.value = clamp(value, HEALTH.min_value, HEALTH.max_value)
 
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
 	WorldUI.show_symbol(global_position, DAMAGE_NUMBER, 140.0, "Node2D/Label", _damage)
@@ -37,7 +39,6 @@ func _unlock_progression()-> void:
 	if PROGRESSION_AREA: PROGRESSION_AREA.monitoring = true
 	
 func _ready() -> void:
-	health = MAX_HEALTH
 	if Save.data.has(SAVE_KEY_DEFEATED) and Save.data[SAVE_KEY_DEFEATED]:
 		_unlock_progression()
 
