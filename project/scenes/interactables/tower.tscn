@@ -1,7 +1,8 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmilvpidsi3sd"]
 
 [ext_resource type="PackedScene" uid="uid://cwwpt1hxo5oph" path="res://models/blender/spiral pillar.blend" id="1_ttb6p"]
-[ext_resource type="Material" uid="uid://deqgvck7b0oqx" path="res://shaders/bricks/distant_bricks.tres" id="2_28l41"]
+[ext_resource type="Material" uid="uid://deqgvck7b0oqx" path="res://shaders/bricks/distant.tres" id="2_28l41"]
+
 
 [node name="Pillar" type="Node3D"]
 

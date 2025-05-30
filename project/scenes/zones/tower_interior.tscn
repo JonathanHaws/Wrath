@@ -1,12 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://6ds3o48mieqb"]
+[gd_scene load_steps=14 format=3 uid="uid://6ds3o48mieqb"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_bnod8"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="3_42yip"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="3_ygqaf"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="4_1q80c"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="5_piso4"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/brick_1.tres" id="7_1o4cr"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/world_wall.tres" id="7_1o4cr"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="7_2pu8s"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/bricks/world_floor.tres" id="9_k2as5"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="10_0tr1y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
@@ -18,6 +19,8 @@ size = Vector3(7, 11, 2)
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(2.06018, 0.25, -23.75, 1.81018, 0.25, -34.5, -22.1898, 0.25, -34.5, 22.5602, 0.25, 29.25, 22.5602, 0.25, -23.75, -22.1898, 0.25, 29.25, 2.81018, 10, -34.5, 2.81018, 10, -24.75, 22.5602, 10, -24.75, 22.5602, 10, -34.5, 3.06018, 0.25, -34.5, 3.06018, 0.25, -25, 22.5602, 0.25, -25, 22.5602, 0.25, -34.5)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(2, 0, 5), PackedInt32Array(5, 0, 3), PackedInt32Array(9, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_b2186"]
 
 [node name="Main" type="Node3D"]
 
@@ -50,20 +53,18 @@ transform = Transform3D(-0.16916, 0, 0.985589, 0, 1, 0, -0.985589, 0, -0.16916, 
 
 [node name="Wisps" type="Node" parent="Interactables"]
 
-[node name="Soul2" parent="Interactables/Wisps" node_paths=PackedStringArray("REAPER") instance=ExtResource("3_ygqaf")]
+[node name="Soul2" parent="Interactables/Wisps" instance=ExtResource("3_ygqaf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08563, 2.71911, -29.3764)
-REAPER = NodePath("../../Reaper")
 HEALTH = false
 
-[node name="Soul4" parent="Interactables/Wisps" node_paths=PackedStringArray("REAPER") instance=ExtResource("3_ygqaf")]
+[node name="Soul4" parent="Interactables/Wisps" instance=ExtResource("3_ygqaf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9064, -7.71782, 28.0207)
-REAPER = NodePath("../../Reaper")
 HEALTH = false
 
 [node name="Doors" type="Node" parent="Interactables"]
 
 [node name="TowerEast" parent="Interactables/Doors" node_paths=PackedStringArray("REAPER", "AREA", "START") instance=ExtResource("10_0tr1y")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -10.1933, 1.00536e-06)
 REAPER = NodePath("../../Reaper")
 DESTINATION_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 DESTINATION_NODE_NAME = "TowerEast"
@@ -83,7 +84,7 @@ shape = SubResource("BoxShape3D_8x7wd")
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.117285, 1, 8.1402)
 
 [node name="TowerWest" parent="Interactables/Doors" node_paths=PackedStringArray("REAPER", "AREA", "START") instance=ExtResource("10_0tr1y")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.9699, -0.282448, -29.5036)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.9699, -0.70237, -29.5036)
 REAPER = NodePath("../../Reaper")
 DESTINATION_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 DESTINATION_NODE_NAME = "TowerWest"
@@ -102,7 +103,7 @@ shape = SubResource("BoxShape3D_ye8ka")
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 5.72205e-06, 0.366223, -7.37892)
 
 [node name="TowerSouth" parent="Interactables/Doors" node_paths=PackedStringArray("REAPER", "AREA", "START") instance=ExtResource("10_0tr1y")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.9699, -9.18941, 23.4964)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.9699, -10.3612, 23.4964)
 REAPER = NodePath("../../Reaper")
 DESTINATION_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 DESTINATION_NODE_NAME = "TowerSouth"
@@ -120,12 +121,11 @@ shape = SubResource("BoxShape3D_ye8ka")
 [node name="Start" type="Node3D" parent="Interactables/Doors/TowerSouth"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0.172693, 0.121539, -7.37892)
 
-[node name="Checkpoint" parent="Interactables" node_paths=PackedStringArray("REAPER") instance=ExtResource("7_2pu8s")]
-transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 19.8704, -9.10206, -21.1828)
-REAPER = NodePath("../Reaper")
+[node name="Checkpoint" parent="Interactables" instance=ExtResource("7_2pu8s")]
+transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 19.8704, -9.83979, -21.1828)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -10, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D"]
@@ -143,3 +143,8 @@ use_collision = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0601807, 9.93213, -2.54907)
 flip_faces = true
 size = Vector3(46, 20, 65)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(56.136, 0, 0, 0, 1, 0, 0, 0, 82.5, 0, -0.566012, 0)
+material_override = ExtResource("9_k2as5")
+mesh = SubResource("BoxMesh_b2186")

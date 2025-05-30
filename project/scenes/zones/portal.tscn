@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://5n4cvh6cqc4p"]
+[gd_scene load_steps=27 format=3 uid="uid://5n4cvh6cqc4p"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_1waye"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="2_iv0bg"]
@@ -8,9 +8,10 @@
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://scripts/portal.gd" id="4_iv0bg"]
 [ext_resource type="AudioStream" uid="uid://btssfp845kee" path="res://audio/music/escape.ogg" id="5_iv0bg"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="5_q6mxo"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/brick_1.tres" id="7_6nidi"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/world_wall.tres" id="7_6nidi"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="8_o5gfp"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="9_ses4i"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/bricks/world_floor.tres" id="10_6nidi"]
 [ext_resource type="FontFile" uid="uid://bseqwgcqg3g1" path="res://fonts/Wrath.otf" id="11_q6mxo"]
 
 [sub_resource type="Animation" id="Animation_gpgiy"]
@@ -127,6 +128,8 @@ size = Vector3(7, 11, 2)
 vertices = PackedVector3Array(2.06018, 0.25, -23.75, 1.81018, 0.25, -34.5, -22.1898, 0.25, -34.5, 22.5602, 0.25, 29.25, 22.5602, 0.25, -23.75, -22.1898, 0.25, 29.25, 2.81018, 10, -34.5, 2.81018, 10, -24.75, 22.5602, 10, -24.75, 22.5602, 10, -34.5, 3.06018, 0.25, -34.5, 3.06018, 0.25, -25, 22.5602, 0.25, -25, 22.5602, 0.25, -34.5)
 polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(2, 0, 5), PackedInt32Array(5, 0, 3), PackedInt32Array(9, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11)]
 
+[sub_resource type="BoxMesh" id="BoxMesh_cr866"]
+
 [node name="Main" type="Node3D"]
 
 [node name="Menu" parent="." instance=ExtResource("1_1waye")]
@@ -184,13 +187,13 @@ REAPER = NodePath("../Reaper")
 PLAYER_SPOT = NodePath("../PlayerSpot")
 
 [node name="spin" parent="Interactables/Portal" index="1"]
-transform = Transform3D(0.545914, 0.837842, 0, -0.837842, 0.545914, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(-0.159363, 0.987221, 0, -0.987221, -0.159363, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Interactables/Portal/flames_2" index="0"]
-transform = Transform3D(0.793775, -0.191438, 3.9564e-16, 0.191438, 0.793775, 2.36611e-15, -9.39353e-16, -2.20741e-15, 0.816534, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(-0.789154, 0.544096, -9.50198e-16, -0.544096, -0.789154, 5.70938e-15, 2.45852e-15, 5.23981e-15, 0.958542, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Interactables/Portal/flames_1" index="0"]
-transform = Transform3D(0.793775, -0.191438, 3.9564e-16, 0.191438, 0.793775, 2.36611e-15, -9.39353e-16, -2.20741e-15, 0.816534, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(-0.789154, 0.544096, -9.50198e-16, -0.544096, -0.789154, 5.70938e-15, 2.45852e-15, 5.23981e-15, 0.958542, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Interactables/Portal" index="4"]
 autoplay = "Spin"
@@ -247,13 +250,18 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.117
 
 [node name="Wisps" type="Node" parent="Interactables"]
 
-[node name="Body" parent="Interactables/Wisps" node_paths=PackedStringArray("REAPER") instance=ExtResource("8_o5gfp")]
+[node name="Body" parent="Interactables/Wisps" instance=ExtResource("8_o5gfp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4622, -7.08744, -30.8438)
-REAPER = NodePath("../../Reaper")
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(56.136, 0, 0, 0, 1, 0, 0, 0, 82.5, 0, -0.550023, 0)
+material_override = ExtResource("10_6nidi")
+mesh = SubResource("BoxMesh_cr866")
+skeleton = NodePath("../..")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
 material_override = ExtResource("7_6nidi")

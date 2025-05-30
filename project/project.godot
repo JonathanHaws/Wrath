@@ -35,7 +35,10 @@ Shake="*res://scripts/camera_shake.gd"
 
 [debug]
 
+shapes/navigation/geometry_edge_color=Color(0.42, 0.42, 0.42, 0.239216)
+shapes/navigation/geometry_face_color=Color(1, 1, 1, 0.156863)
 shapes/collision/shape_color=Color(0.458405, 0.458405, 0.458405, 0.247059)
+shapes/paths/geometry_color=Color(0.1, 1, 0.7, 0.360784)
 
 [display]
 
