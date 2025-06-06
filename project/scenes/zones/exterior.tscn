@@ -1,29 +1,24 @@
-[gd_scene load_steps=45 format=3 uid="uid://dsdh2bite7xv4"]
+[gd_scene load_steps=38 format=3 uid="uid://dsdh2bite7xv4"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_6xa6f"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="1_rvkd1"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="2_ffi7c"]
 [ext_resource type="PackedScene" uid="uid://b3urcqmix8s8g" path="res://scenes/bosses/wrath.tscn" id="2_ttjtk"]
-[ext_resource type="Texture2D" uid="uid://ddvan0axx7svx" path="res://textures/brick/ao_1.png" id="4_huarl"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="4_ynkt0"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/world_wall.tres" id="5_ct7j2"]
 [ext_resource type="PackedScene" uid="uid://diwdaoucmix4i" path="res://models/blender/level.blend" id="5_f1nnw"]
-[ext_resource type="Texture2D" uid="uid://bwj8yk018l62v" path="res://textures/brick/normal_3.png" id="5_vusox"]
-[ext_resource type="Texture2D" uid="uid://dqxkq5mhcsw2w" path="res://textures/brick/ao_3.png" id="6_xqrhl"]
-[ext_resource type="Texture2D" uid="uid://divcbrhgiq8y" path="res://textures/brick/ao_4.png" id="7_8ibjy"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="7_c1476"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="8_5d645"]
-[ext_resource type="Texture2D" uid="uid://ctmw2gnehmp3i" path="res://textures/brick/normal_4.png" id="8_w2ip6"]
 [ext_resource type="PackedScene" uid="uid://cat4e2my2so35" path="res://scenes/interactables/ambience.tscn" id="10_ykp4i"]
 [ext_resource type="AudioStream" uid="uid://5u0ecm0d8hx8" path="res://audio/music/ambience.ogg" id="12_mgjjb"]
 [ext_resource type="PackedScene" uid="uid://7mrheb4oio5g" path="res://scenes/interactables/arch.tscn" id="13_i7oar"]
-[ext_resource type="PackedScene" uid="uid://cmilvpidsi3sd" path="res://scenes/interactables/tower.tscn" id="13_npgyk"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="14_huarl"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="18_wkoos"]
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/blender/greed.blend" id="20_rsqxl"]
 [ext_resource type="Material" uid="uid://csibvbbqy3q3e" path="res://shaders/bricks/statue.tres" id="21_gfxap"]
 [ext_resource type="PackedScene" uid="uid://b0t7a64rsk4nk" path="res://models/blender/wrath.blend" id="22_iy783"]
 [ext_resource type="Material" uid="uid://cy0ev2opeyd34" path="res://shaders/bricks/floor.tres" id="23_ffi7c"]
+[ext_resource type="Material" uid="uid://8p0im5f4mlk7" path="res://shaders/bricks/world_big_wall.tres" id="24_u6d3q"]
 [ext_resource type="PackedScene" uid="uid://b8bvono5iv61i" path="res://scenes/bosses/greed_talk_1.tscn" id="26_u6d3q"]
 
 [sub_resource type="Animation" id="Animation_gllqw"]
@@ -111,38 +106,6 @@ _data = {
 &"ESCAPE": SubResource("Animation_gllqw"),
 &"RESET": SubResource("Animation_vbito")
 }
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4vysv"]
-albedo_color = Color(0.0503743, 0.0571135, 0.065536, 1)
-metallic_specular = 0.08
-roughness = 0.0
-roughness_texture = ExtResource("6_xqrhl")
-emission_enabled = true
-emission = Color(0.102184, 0.120608, 0.143638, 1)
-emission_energy_multiplier = 0.45
-normal_enabled = true
-normal_scale = -10.5
-normal_texture = ExtResource("5_vusox")
-ao_texture = ExtResource("4_huarl")
-ao_on_uv2 = true
-uv1_scale = Vector3(-0.15, -0.15, -0.15)
-uv1_triplanar = true
-uv1_triplanar_sharpness = 14.711
-uv1_world_triplanar = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rra1a"]
-albedo_color = Color(0.147741, 0.159764, 0.176595, 1)
-albedo_texture = ExtResource("7_8ibjy")
-metallic_specular = 0.4
-normal_enabled = true
-normal_scale = -1.0
-normal_texture = ExtResource("8_w2ip6")
-ao_texture = ExtResource("4_huarl")
-ao_on_uv2 = true
-uv1_scale = Vector3(-0.15, -0.15, -0.15)
-uv1_triplanar = true
-uv1_triplanar_sharpness = 14.711
-uv1_world_triplanar = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_iy783"]
 top_radius = 30.0
@@ -269,9 +232,14 @@ autoplay = "RESET"
 [node name="Lights" type="Node" parent="Enviroment"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment/Lights"]
-transform = Transform3D(0.405959, 0.913203, -0.0354598, 0.44723, -0.164677, 0.879128, 0.796983, -0.372749, -0.475264, 0, 29, 0)
+transform = Transform3D(0.587815, 0.794944, -0.150126, 0.44723, -0.164677, 0.879128, 0.674136, -0.583905, -0.452322, 0, 29, 0)
 light_color = Color(0.51, 0.51, 0.51, 1)
 light_energy = 6.0
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(0.481042, -0.122938, 0.868035, 0.875638, 0.116044, -0.46882, -0.0430944, 0.985606, 0.163471, 0, 29, 0)
+light_color = Color(0.51, 0.51, 0.51, 1)
+light_energy = 0.8
 
 [node name="General" type="OmniLight3D" parent="Enviroment/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.603172, -29.4064, -85.1052)
@@ -300,6 +268,15 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 40.285
 
+[node name="General3" type="OmniLight3D" parent="Enviroment/Lights/General3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.49831, 31.2433, -47.519)
+light_color = Color(0.247059, 0.270588, 0.290196, 1)
+light_energy = 40.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 70.3817
+
 [node name="General4" type="OmniLight3D" parent="Enviroment/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67406, 11.2555, 53.7089)
 light_color = Color(0.976471, 0.521569, 0.160784, 1)
@@ -326,26 +303,6 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 40.285
-
-[node name="UnreachableTowers" type="Node3D" parent="Enviroment"]
-
-[node name="Pillar1" parent="Enviroment/UnreachableTowers" instance=ExtResource("13_npgyk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.363213, -24.7361, 92.6236)
-
-[node name="spiral pillar" parent="Enviroment/UnreachableTowers/Pillar1" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -55.2298, 0)
-
-[node name="square_tover" parent="Enviroment/UnreachableTowers/Pillar1/spiral pillar" index="0"]
-material_override = SubResource("StandardMaterial3D_4vysv")
-
-[node name="cone_tower" parent="Enviroment/UnreachableTowers/Pillar1/spiral pillar" index="1"]
-material_override = SubResource("StandardMaterial3D_rra1a")
-
-[node name="Pillar2" parent="Enviroment/UnreachableTowers" instance=ExtResource("13_npgyk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -97.0904, -138.491, -305.461)
-
-[node name="Pillar3" parent="Enviroment/UnreachableTowers" instance=ExtResource("13_npgyk")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 97.09, -138.491, -305.461)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Enviroment"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -185.221, 92.8422)
@@ -382,16 +339,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.0888538, 19)
 PROGRESSION_AREA = NodePath("../Doors/PortalDoor/Area3D")
 
 [node name="Skeleton3D" parent="Interactables/Wrath/Mesh/wrath/Armature" index="0"]
+bones/1/position = Vector3(-7.12175e-17, 0.0829432, 0.518257)
+bones/1/rotation = Quaternion(0.520187, 5.55556e-17, 9.12122e-17, 0.854052)
+bones/2/rotation = Quaternion(0.296613, 1.13845e-07, 3.5359e-08, 0.954998)
+bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
 bones/4/rotation = Quaternion(-0.18941, 0.0856309, 0.344916, 0.915327)
+bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
 bones/6/rotation = Quaternion(-0.0822429, 0.000622961, 0.134669, 0.987472)
 bones/7/rotation = Quaternion(-0.29291, -2.50809e-14, -6.98353e-08, 0.95614)
+bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
+bones/9/rotation = Quaternion(-0.18941, -0.085631, -0.344916, 0.915327)
 bones/10/rotation = Quaternion(-0.455173, 0.0679145, -0.0325445, 0.887213)
 
 [node name="LeftHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.924673, -0.00872152, -0.380662, 0.348244, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583943)
+transform = Transform3D(-0.924673, -0.00872159, -0.380663, 0.348245, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583953)
 
 [node name="RightHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.924673, 0.00872108, 0.380663, -0.348244, -0.423631, -0.836219, 0.153968, -0.905793, 0.394757, 2.01091, 1.84788, -0.0583951)
+transform = Transform3D(-0.924673, 0.00872172, 0.380663, -0.348245, -0.423631, -0.836219, 0.153967, -0.905793, 0.394757, 2.01091, 1.84788, -0.0583955)
+
+[node name="Torso" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 3.55271e-14, 2.38419e-07, 2.9874e-08, 0.992119, -0.125301, -2.3654e-07, 0.125301, 0.992119, 1.36342e-23, 1, 0.100295)
 
 [node name="Bounds" type="Node" parent="Interactables/Wrath"]
 
@@ -701,6 +668,9 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 surface_material_override/0 = ExtResource("5_ct7j2")
 surface_material_override/1 = ExtResource("23_ffi7c")
 
+[node name="Cube" parent="NavigationRegion3D/Level" index="2"]
+surface_material_override/0 = ExtResource("24_u6d3q")
+
 [node name="Arch" parent="NavigationRegion3D" instance=ExtResource("13_i7oar")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181592, -39.932, -161.949)
 
@@ -709,8 +679,6 @@ transform = Transform3D(-0.0677019, 0, 0.997706, 0, 1, 0, -0.997706, 0, -0.06770
 
 [connection signal="body_entered" from="Interactables/KillFloor" to="Interactables/KillFloor" method="_on_body_entered"]
 
-[editable path="Enviroment/UnreachableTowers/Pillar1"]
-[editable path="Enviroment/UnreachableTowers/Pillar1/spiral pillar"]
 [editable path="Interactables/Wrath"]
 [editable path="Interactables/Wrath/Mesh/wrath"]
 [editable path="Interactables/Wrath/Music"]

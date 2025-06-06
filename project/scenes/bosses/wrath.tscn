@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://b3urcqmix8s8g"]
+[gd_scene load_steps=63 format=3 uid="uid://b3urcqmix8s8g"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://scripts/wrath.gd" id="1_fvlx1"]
 [ext_resource type="PackedScene" uid="uid://srdha174fo73" path="res://scenes/particles/boss_death.tscn" id="2_brvm4"]
@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://cat4e2my2so35" path="res://scenes/interactables/ambience.tscn" id="31_e2tgp"]
 [ext_resource type="AudioStream" uid="uid://f7dwuxrh87go" path="res://audio/music/wrath.ogg" id="32_h5485"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/target.gd" id="33_h5485"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://scripts/particles.gd" id="34_cc4qc"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1er76"]
 
@@ -1467,6 +1468,10 @@ bus = &"SFX"
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("31_4oeto")
 SOUNDS = Array[AudioStream]([ExtResource("3_nbwf2"), ExtResource("4_1aywb"), ExtResource("5_26ndu"), ExtResource("6_ay1ei"), ExtResource("10_s7vgg"), ExtResource("11_i4c6m"), ExtResource("12_p5r8v"), ExtResource("13_wxkwy"), ExtResource("8_6fdi0"), ExtResource("6_ew0re"), ExtResource("12_kqq76")])
+
+[node name="Particles" type="Node3D" parent="."]
+script = ExtResource("34_cc4qc")
+particle_scenes = Array[PackedScene]([ExtResource("22_1df88"), ExtResource("2_brvm4")])
 
 [connection signal="body_entered" from="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" to="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D" to="Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D" method="_on_body_entered"]
