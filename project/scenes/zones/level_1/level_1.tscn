@@ -1,25 +1,25 @@
 [gd_scene load_steps=38 format=3 uid="uid://dsdh2bite7xv4"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_abwnk"]
-[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="2_nw8rl"]
-[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_vdvgq"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/world_wall.tres" id="4_q35no"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="5_fi8vi"]
-[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="6_3fj08"]
-[ext_resource type="PackedScene" uid="uid://b3urcqmix8s8g" path="res://scenes/bosses/wrath.tscn" id="7_0x3iy"]
-[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="8_w1lob"]
-[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="9_fl313"]
-[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="10_ijb6w"]
-[ext_resource type="PackedScene" uid="uid://cat4e2my2so35" path="res://scenes/interactables/ambience.tscn" id="11_o4lhy"]
-[ext_resource type="AudioStream" uid="uid://5u0ecm0d8hx8" path="res://audio/music/ambience.ogg" id="12_om7s7"]
-[ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/blender/greed.blend" id="13_qqqgp"]
-[ext_resource type="Material" uid="uid://csibvbbqy3q3e" path="res://shaders/bricks/statue.tres" id="14_y1erg"]
-[ext_resource type="PackedScene" uid="uid://b0t7a64rsk4nk" path="res://models/blender/wrath.blend" id="15_57i5u"]
-[ext_resource type="PackedScene" uid="uid://diwdaoucmix4i" path="res://models/blender/level.blend" id="16_yf2ov"]
-[ext_resource type="Material" uid="uid://cy0ev2opeyd34" path="res://shaders/bricks/floor.tres" id="17_hx5db"]
-[ext_resource type="Material" uid="uid://8p0im5f4mlk7" path="res://shaders/bricks/world_big_wall.tres" id="18_hdl20"]
-[ext_resource type="PackedScene" uid="uid://7mrheb4oio5g" path="res://scenes/interactables/arch.tscn" id="19_0tsch"]
-[ext_resource type="PackedScene" uid="uid://b8bvono5iv61i" path="res://scenes/bosses/greed_talk_1.tscn" id="20_4rhxj"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_rn8wg"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="2_sb4g2"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_ywlcg"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/world_wall.tres" id="4_u6ncs"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="5_nce5h"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="6_7bth5"]
+[ext_resource type="PackedScene" uid="uid://b3urcqmix8s8g" path="res://scenes/bosses/wrath.tscn" id="7_1nkx3"]
+[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="8_4salo"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="9_bw6y2"]
+[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="10_hobx8"]
+[ext_resource type="PackedScene" uid="uid://cat4e2my2so35" path="res://scenes/interactables/ambience.tscn" id="11_rr4ge"]
+[ext_resource type="AudioStream" uid="uid://5u0ecm0d8hx8" path="res://audio/music/ambience.ogg" id="12_h5ij3"]
+[ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/blender/greed.blend" id="13_v0g44"]
+[ext_resource type="Material" uid="uid://csibvbbqy3q3e" path="res://shaders/bricks/statue.tres" id="14_a23pu"]
+[ext_resource type="PackedScene" uid="uid://b0t7a64rsk4nk" path="res://models/blender/wrath.blend" id="15_dvuf7"]
+[ext_resource type="PackedScene" uid="uid://diwdaoucmix4i" path="res://models/blender/level.blend" id="16_iox5j"]
+[ext_resource type="Material" uid="uid://cy0ev2opeyd34" path="res://shaders/bricks/floor.tres" id="17_02ry8"]
+[ext_resource type="Material" uid="uid://8p0im5f4mlk7" path="res://shaders/bricks/world_big_wall.tres" id="18_6n6nm"]
+[ext_resource type="PackedScene" uid="uid://7mrheb4oio5g" path="res://scenes/interactables/arch.tscn" id="19_rlls1"]
+[ext_resource type="PackedScene" uid="uid://b8bvono5iv61i" path="res://scenes/bosses/greed_talk_1.tscn" id="20_uum52"]
 
 [sub_resource type="Animation" id="Animation_gllqw"]
 resource_name = "ESCAPE"
@@ -208,7 +208,7 @@ size = Vector3(2.0672, 6, 2.10349)
 
 [node name="Main" type="Node3D"]
 
-[node name="Menu" parent="." instance=ExtResource("1_abwnk")]
+[node name="Menu" parent="." instance=ExtResource("1_rn8wg")]
 
 [node name="Cinematics" type="Node" parent="."]
 
@@ -225,9 +225,9 @@ autoplay = "RESET"
 
 [node name="Enviroment" type="Node" parent="."]
 
-[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("2_nw8rl")]
+[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("2_sb4g2")]
 
-[node name="Weather" parent="Enviroment" instance=ExtResource("3_vdvgq")]
+[node name="Weather" parent="Enviroment" instance=ExtResource("3_ywlcg")]
 
 [node name="Lights" type="Node" parent="Enviroment"]
 
@@ -308,7 +308,7 @@ omni_range = 40.285
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -185.221, 92.8422)
 
 [node name="PortalTower" type="MeshInstance3D" parent="Enviroment/StaticBody3D"]
-material_override = ExtResource("4_q35no")
+material_override = ExtResource("4_u6ncs")
 mesh = SubResource("CylinderMesh_iy783")
 skeleton = NodePath("../..")
 
@@ -322,7 +322,7 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 1.88324, 19)
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("5_fi8vi")
+script = ExtResource("5_nce5h")
 damage = 10000
 group = "kill_floor"
 
@@ -331,12 +331,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8294, -186.275, -53.309)
 shape = SubResource("BoxShape3D_ope8t")
 debug_color = Color(0.7, 0.7, 0.7, 0.0196078)
 
-[node name="Reaper" parent="Interactables" instance=ExtResource("6_3fj08")]
+[node name="Reaper" parent="Interactables" instance=ExtResource("6_7bth5")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36.5086, -190)
 
-[node name="Wrath" parent="Interactables" node_paths=PackedStringArray("PROGRESSION_AREA") instance=ExtResource("7_0x3iy")]
+[node name="Wrath" parent="Interactables" node_paths=PackedStringArray("PROGRESSION_AREA") instance=ExtResource("7_1nkx3")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.0888538, 19)
-PROGRESSION_AREA = NodePath("../Doors/PortalDoor/Area3D")
+PROGRESSION_AREA = NodePath("../Doors/Exit/Area3D")
 
 [node name="Skeleton3D" parent="Interactables/Wrath/Mesh/wrath/Armature" index="0"]
 bones/4/rotation = Quaternion(-0.18941, 0.0856309, 0.344916, 0.915327)
@@ -393,26 +393,26 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="Wisps" type="Node" parent="Interactables"]
 
-[node name="Soul1" parent="Interactables/Wisps" instance=ExtResource("8_w1lob")]
+[node name="Soul1" parent="Interactables/Wisps" instance=ExtResource("8_4salo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.3216, -37.1959, -168.946)
 
-[node name="Soul3" parent="Interactables/Wisps" instance=ExtResource("8_w1lob")]
+[node name="Soul3" parent="Interactables/Wisps" instance=ExtResource("8_4salo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1656, -10.1917, 37.849)
 
-[node name="Soul5" parent="Interactables/Wisps" instance=ExtResource("8_w1lob")]
+[node name="Soul5" parent="Interactables/Wisps" instance=ExtResource("8_4salo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9891, -28.8294, -61.2567)
 
-[node name="Soul6" parent="Interactables/Wisps" instance=ExtResource("8_w1lob")]
+[node name="Soul6" parent="Interactables/Wisps" instance=ExtResource("8_4salo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6554, -30.1646, -135.958)
 
 [node name="Doors" type="Node" parent="Interactables"]
 
-[node name="StartDoor" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("9_fl313")]
+[node name="StartDoor" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("9_bw6y2")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.0782509, -40.302, -200.38)
 AREA = NodePath("Area3D")
 START = NodePath("Start")
 DESTINATION_NODE_NAME = "RoofDoor"
-DESTINATION_SCENE = "exterior"
+DESTINATION_SCENE = "level_1"
 
 [node name="Area3D" type="Area3D" parent="Interactables/Doors/StartDoor"]
 collision_layer = 3
@@ -426,7 +426,7 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 [node name="Start" type="Node3D" parent="Interactables/Doors/StartDoor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.302017, -6.20786)
 
-[node name="ChainTower" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("9_fl313")]
+[node name="ChainTower" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("9_bw6y2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 39.7555, -40.4065, -134.982)
 AREA = NodePath("Area3D")
 START = NodePath("Start")
@@ -445,11 +445,12 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 [node name="Start" type="Node3D" parent="Interactables/Doors/ChainTower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.406483, -6.20785)
 
-[node name="TowerEast" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("9_fl313")]
+[node name="TowerEast" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("9_bw6y2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -25.1094, -12.9049, -2.41369)
 AREA = NodePath("Area3D")
 START = NodePath("Start")
 DESTINATION_NODE_NAME = "TowerEast"
+DESTINATION_SCENE = "tower_interior"
 
 [node name="Area3D" type="Area3D" parent="Interactables/Doors/TowerEast"]
 collision_layer = 3
@@ -463,7 +464,7 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 [node name="Start" type="Node3D" parent="Interactables/Doors/TowerEast"]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 2.38419e-07, 0.404855, -6.20785)
 
-[node name="TowerSouth" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("9_fl313")]
+[node name="TowerSouth" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("9_bw6y2")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, -0.12226, -40.127, -71.3973)
 AREA = NodePath("Area3D")
 START = NodePath("Start")
@@ -482,7 +483,7 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 [node name="Start" type="Node3D" parent="Interactables/Doors/TowerSouth"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.38419e-07, 0.127018, -6.20785)
 
-[node name="TowerWest" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("9_fl313")]
+[node name="TowerWest" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("9_bw6y2")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.0826, -12.8662, -24.5036)
 AREA = NodePath("Area3D")
 START = NodePath("Start")
@@ -501,12 +502,12 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 [node name="Start" type="Node3D" parent="Interactables/Doors/TowerWest"]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0.366223, 5.62108)
 
-[node name="RoofDoor" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("9_fl313")]
+[node name="RoofDoor" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("9_bw6y2")]
 transform = Transform3D(2.36434e-07, 0, -1, 0, 1, 0, 1, 0, 2.36434e-07, -59.8268, -10.171, -135.273)
 AREA = NodePath("Area3D")
 START = NodePath("Start")
 DESTINATION_NODE_NAME = "StartDoor"
-DESTINATION_SCENE = "exterior"
+DESTINATION_SCENE = "level_1"
 
 [node name="Area3D" type="Area3D" parent="Interactables/Doors/RoofDoor"]
 collision_layer = 3
@@ -520,54 +521,54 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 [node name="Start" type="Node3D" parent="Interactables/Doors/RoofDoor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.170965, -6.20786)
 
-[node name="PortalDoor" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("9_fl313")]
+[node name="Exit" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("9_bw6y2")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.76271, 63.2655)
 AREA = NodePath("Area3D")
 START = NodePath("Start")
-DESTINATION_NODE_NAME = "PortalDoor"
-DESTINATION_SCENE = "portal"
+DESTINATION_NODE_NAME = "Enter"
+DESTINATION_SCENE = "level_2"
 
-[node name="Area3D" type="Area3D" parent="Interactables/Doors/PortalDoor"]
+[node name="Area3D" type="Area3D" parent="Interactables/Doors/Exit"]
 collision_layer = 3
 collision_mask = 3
 monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Doors/PortalDoor/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Doors/Exit/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57746e-08, 5, -0.5)
 shape = SubResource("BoxShape3D_y4nq3")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="Start" type="Node3D" parent="Interactables/Doors/PortalDoor"]
+[node name="Start" type="Node3D" parent="Interactables/Doors/Exit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.170965, -6.20786)
 
 [node name="Checkpoints" type="Node" parent="Interactables"]
 
-[node name="Checkpoint1" parent="Interactables/Checkpoints" instance=ExtResource("10_ijb6w")]
+[node name="Checkpoint1" parent="Interactables/Checkpoints" instance=ExtResource("10_hobx8")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -37.1094, -135)
 CHECKPOINT_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 
-[node name="Checkpoint2" parent="Interactables/Checkpoints" instance=ExtResource("10_ijb6w")]
+[node name="Checkpoint2" parent="Interactables/Checkpoints" instance=ExtResource("10_hobx8")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -12.5, -65)
 CHECKPOINT_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 
-[node name="Checkpoint3" parent="Interactables/Checkpoints" instance=ExtResource("10_ijb6w")]
+[node name="Checkpoint3" parent="Interactables/Checkpoints" instance=ExtResource("10_hobx8")]
 transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, 0, 5, 50)
 CHECKPOINT_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 
-[node name="Checkpoint4" parent="Interactables/Checkpoints" instance=ExtResource("10_ijb6w")]
+[node name="Checkpoint4" parent="Interactables/Checkpoints" instance=ExtResource("10_hobx8")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -5.68248e-06, -27.6287, -43.5764)
 CHECKPOINT_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 
 [node name="Music" type="Node" parent="Interactables"]
 
-[node name="AmbientMusic" parent="Interactables/Music" node_paths=PackedStringArray("ANIM", "ENTER_AREA", "EXIT_AREA") instance=ExtResource("11_o4lhy")]
+[node name="AmbientMusic" parent="Interactables/Music" node_paths=PackedStringArray("ANIM", "ENTER_AREA", "EXIT_AREA") instance=ExtResource("11_rr4ge")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.5014, -20, -5.80582)
 ANIM = NodePath("AnimationPlayer")
 ENTER_AREA = NodePath("Area")
 EXIT_AREA = NodePath("Area")
 
 [node name="AudioStreamPlayer2D" parent="Interactables/Music/AmbientMusic" index="0"]
-stream = ExtResource("12_om7s7")
+stream = ExtResource("12_h5ij3")
 volume_db = 1.0
 attenuation = 1e-05
 bus = &"Music"
@@ -597,17 +598,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.5, -37.5, -102.5)
 [node name="Stand" type="Node3D" parent="NavigationRegion3D/Statues/Greed"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
 
-[node name="Model" parent="NavigationRegion3D/Statues/Greed/Stand" instance=ExtResource("13_qqqgp")]
+[node name="Model" parent="NavigationRegion3D/Statues/Greed/Stand" instance=ExtResource("13_v0g44")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03159, 0)
 
 [node name="greed" parent="NavigationRegion3D/Statues/Greed/Stand/Model/Rig/Skeleton3D" index="0"]
-material_override = ExtResource("14_y1erg")
+material_override = ExtResource("14_a23pu")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Statues/Greed/Stand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 use_collision = true
 size = Vector3(3, 2, 3)
-material = ExtResource("14_y1erg")
+material = ExtResource("14_a23pu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Statues/Greed/Stand"]
 
@@ -622,17 +623,17 @@ transform = Transform3D(0.0524929, 0, 0.998621, 0, 1, 0, -0.998621, 0, 0.0524929
 [node name="Stand" type="Node3D" parent="NavigationRegion3D/Statues/Wrath"]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
 
-[node name="Model" parent="NavigationRegion3D/Statues/Wrath/Stand" instance=ExtResource("15_57i5u")]
+[node name="Model" parent="NavigationRegion3D/Statues/Wrath/Stand" instance=ExtResource("15_dvuf7")]
 transform = Transform3D(-0.99976, 0, -0.0218847, 0, 1, 0, 0.0218847, 0, -0.99976, -0.0659637, 1.03911, 0.433846)
 
 [node name="wrath" parent="NavigationRegion3D/Statues/Wrath/Stand/Model/Armature/Skeleton3D" index="0"]
-material_override = ExtResource("14_y1erg")
+material_override = ExtResource("14_a23pu")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Statues/Wrath/Stand"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 use_collision = true
 size = Vector3(3, 2, 3)
-material = ExtResource("14_y1erg")
+material = ExtResource("14_a23pu")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Statues/Wrath/Stand"]
 
@@ -641,25 +642,25 @@ transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -0.19947
 shape = SubResource("BoxShape3D_6e7kf")
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="Level" parent="NavigationRegion3D" instance=ExtResource("16_yf2ov")]
+[node name="Level" parent="NavigationRegion3D" instance=ExtResource("16_iox5j")]
 
 [node name="arena" parent="NavigationRegion3D/Level/arena" index="0"]
-material_override = ExtResource("4_q35no")
+material_override = ExtResource("4_u6ncs")
 
 [node name="CollisionShape3D" parent="NavigationRegion3D/Level/arena/arena/StaticBody3D" index="0"]
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="hub" parent="NavigationRegion3D/Level/hub" index="0"]
-surface_material_override/0 = ExtResource("4_q35no")
-surface_material_override/1 = ExtResource("17_hx5db")
+surface_material_override/0 = ExtResource("4_u6ncs")
+surface_material_override/1 = ExtResource("17_02ry8")
 
 [node name="Cube" parent="NavigationRegion3D/Level" index="2"]
-surface_material_override/0 = ExtResource("18_hdl20")
+surface_material_override/0 = ExtResource("18_6n6nm")
 
-[node name="Arch" parent="NavigationRegion3D" instance=ExtResource("19_0tsch")]
+[node name="Arch" parent="NavigationRegion3D" instance=ExtResource("19_rlls1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181592, -39.932, -161.949)
 
-[node name="greed_talk_1" parent="." instance=ExtResource("20_4rhxj")]
+[node name="greed_talk_1" parent="." instance=ExtResource("20_uum52")]
 transform = Transform3D(-0.0677019, 0, 0.997706, 0, 1, 0, -0.997706, 0, -0.0677019, -38.1712, -40.1198, -135.727)
 
 [connection signal="body_entered" from="Interactables/KillFloor" to="Interactables/KillFloor" method="_on_body_entered"]

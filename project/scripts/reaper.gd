@@ -115,7 +115,9 @@ func _ready() -> void:
 
 	if Save.data.has("door_node_name"):		
 		var door_node = get_tree().root.find_child(Save.data["door_node_name"], true, false)
-		if door_node: if door_node.START: global_transform = door_node.START.global_transform
+		if door_node:
+			if door_node.START: 
+				global_transform = door_node.START.global_transform
 		$FadeIn.play("DOOR_FADE_IN")
 		Save.data.erase("door_node_name")
 		Save.save_game()

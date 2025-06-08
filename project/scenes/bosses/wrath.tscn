@@ -1439,7 +1439,7 @@ script = ExtResource("29_8mxmx")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -92.8933, -21.8832, -24.8058)
 ANIM = NodePath("AnimationPlayer")
 ENTER_AREA = NodePath("../TriggerArea")
-EXIT_AREA = NodePath("Exit")
+EXIT_AREA = NodePath("Range")
 
 [node name="AudioStreamPlayer2D" parent="Music" index="0"]
 stream = ExtResource("32_h5485")
@@ -1452,11 +1452,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_2kb3h")
 }
 
-[node name="Exit" type="Area3D" parent="Music"]
+[node name="Range" type="Area3D" parent="Music"]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Music/Exit"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Music/Range"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.5303, 35.4003, 22.2378)
 shape = SubResource("BoxShape3D_cc4qc")
 

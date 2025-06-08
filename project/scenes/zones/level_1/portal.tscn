@@ -187,13 +187,13 @@ REAPER = NodePath("../Reaper")
 PLAYER_SPOT = NodePath("../PlayerSpot")
 
 [node name="spin" parent="Interactables/Portal" index="1"]
-transform = Transform3D(0.244515, -0.969646, 0, 0.969646, 0.244515, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(-0.971546, -0.236853, 0, 0.236853, -0.971546, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Interactables/Portal/flames_2" index="0"]
-transform = Transform3D(-0.792817, -0.24123, 3.33294e-16, 0.24123, -0.792817, 3.99976e-15, -8.45442e-16, 3.92357e-15, 0.828705, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(0.868204, 0.426261, -6.97771e-16, -0.426261, 0.868204, 2.86439e-15, 1.88873e-15, -2.26369e-15, 0.9672, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Interactables/Portal/flames_1" index="0"]
-transform = Transform3D(-0.792817, -0.24123, 3.33294e-16, 0.24123, -0.792817, 3.99976e-15, -8.45442e-16, 3.92357e-15, 0.828705, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(0.868204, 0.426261, -6.97771e-16, -0.426261, 0.868204, 2.86439e-15, 1.88873e-15, -2.26369e-15, 0.9672, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Interactables/Portal" index="4"]
 autoplay = "Spin"
@@ -232,8 +232,8 @@ transform = Transform3D(-0.995788, 0, 0.0916933, 0, 1, 0, -0.0916933, 0, -0.9957
 transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, -9.094, -34.539)
 AREA = NodePath("Area3D")
 START = NodePath("Start")
-DESTINATION_NODE_NAME = "PortalDoor"
-DESTINATION_SCENE = "exterior"
+DESTINATION_NODE_NAME = "Exit"
+DESTINATION_SCENE = "level_7"
 
 [node name="Area3D" type="Area3D" parent="Interactables/Doors/PortalDoor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

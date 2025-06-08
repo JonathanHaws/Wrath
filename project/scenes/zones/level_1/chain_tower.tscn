@@ -63,7 +63,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.51
 AREA = NodePath("Area3D")
 START = NodePath("Start")
 DESTINATION_NODE_NAME = "ChainTower"
-DESTINATION_SCENE = "exterior"
+DESTINATION_SCENE = "level_1"
 
 [node name="Area3D" type="Area3D" parent="Interactables/ChainTower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)

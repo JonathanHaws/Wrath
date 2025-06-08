@@ -1,7 +1,7 @@
 extends Node
 var game_file_name: String = ""
 var data: Dictionary = {}
-var default_scene: String = "res://scenes/zones/level_1/exterior.tscn"
+var default_scene: String = "res://scenes/zones/level_1/level_1.tscn"
 
 func get_dictionary_from_file(file_name: String) -> Dictionary:
 	
