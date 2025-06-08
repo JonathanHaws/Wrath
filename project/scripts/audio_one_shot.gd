@@ -1,9 +1,14 @@
 extends Node
-
 @export var SOUNDS: Array[AudioStream] = []
 @export var VOLUME_MULTIPLIERS: Array[float] = []
 
-func play_2d_sound(sound: Variant, volume_multiplier: float = 1.0, pitch: float = 1.0, volume_variance: float = 0.0, pitch_variance: float = 0.0) -> AudioStreamPlayer2D:
+func play_2d_sound(sound: Variant = null, volume_multiplier: float = 1.0, pitch: float = 1.0, volume_variance: float = 0.0, pitch_variance: float = 0.0) -> AudioStreamPlayer2D:
+	
+	if sound == null:
+		if SOUNDS.size() > 0:
+			sound = SOUNDS[0]
+		else:
+			return null
 	
 	var base_volume = 1
 	if sound is Array:

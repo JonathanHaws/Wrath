@@ -2,11 +2,11 @@ extends Node3D
 @export var COLLECTION_SOUNDS: Array[AudioStream] = []
 @export var UPGRADE = 5.0
 @export var HEALTH = true
-@export var group = "player"
+@export var PLAYER_GROUP = "player"
 var REAPER: Node
 
 func _on_body_entered(body: Node) -> void:
-	if group != "" and not body.is_in_group(group): return
+	if PLAYER_GROUP != "" and not body.is_in_group(PLAYER_GROUP): return
 	REAPER = body
 	$AnimationPlayer.play("delay_upgrade")
 	Audio.play_2d_sound(COLLECTION_SOUNDS[randi() % COLLECTION_SOUNDS.size()], 0.9, 1.1)

@@ -1,15 +1,15 @@
 [gd_scene load_steps=14 format=3 uid="uid://bnli3nh320v2f"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_4rsh0"]
-[ext_resource type="PackedScene" uid="uid://ct16v3d62ahyk" path="res://models/blender/chain_ceiling.blend" id="2_f0ngy"]
-[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_3v15h"]
-[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="4_3v15h"]
-[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="4_od467"]
-[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="6_hmgfx"]
-[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="7_tr476"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/world_wall.tres" id="8_fwba0"]
-[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/bricks/world_floor.tres" id="10_3v15h"]
-[ext_resource type="PackedScene" uid="uid://bre6cgb3dypbs" path="res://scenes/bosses/greed.tscn" id="11_od467"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_6e50e"]
+[ext_resource type="PackedScene" uid="uid://ct16v3d62ahyk" path="res://models/blender/chain_ceiling.blend" id="2_rsisb"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_ljk0a"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="4_tynjh"]
+[ext_resource type="PackedScene" uid="uid://bre6cgb3dypbs" path="res://scenes/bosses/greed.tscn" id="5_rar5d"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="6_ny1fs"]
+[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="7_v57mh"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="8_jbbn6"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/world_wall.tres" id="9_lsjp2"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/bricks/world_floor.tres" id="10_mfe08"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
 size = Vector3(7, 11, 2)
@@ -22,16 +22,16 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Main" type="Node3D"]
 
-[node name="Menu" parent="." instance=ExtResource("1_4rsh0")]
+[node name="Menu" parent="." instance=ExtResource("1_6e50e")]
 
 [node name="Enviroment" type="Node" parent="."]
 
-[node name="ChainCeiling" parent="Enviroment" instance=ExtResource("2_f0ngy")]
+[node name="ChainCeiling" parent="Enviroment" instance=ExtResource("2_rsisb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56517, -15.9073, -0.547886)
 
-[node name="Weather" parent="Enviroment" instance=ExtResource("3_3v15h")]
+[node name="Weather" parent="Enviroment" instance=ExtResource("3_ljk0a")]
 
-[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("4_3v15h")]
+[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("4_tynjh")]
 
 [node name="Lights" type="Node" parent="Enviroment"]
 
@@ -49,22 +49,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
 [node name="Interactables" type="Node" parent="."]
 
-[node name="Greed" parent="Interactables" instance=ExtResource("11_od467")]
+[node name="Greed" parent="Interactables" instance=ExtResource("5_rar5d")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35.4861, -8.78106, -0.657459)
 
-[node name="Reaper" parent="Interactables" instance=ExtResource("4_od467")]
+[node name="Reaper" parent="Interactables" instance=ExtResource("6_ny1fs")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
-[node name="Envy Soul" parent="Interactables" instance=ExtResource("6_hmgfx")]
+[node name="Envy Soul" parent="Interactables" instance=ExtResource("7_v57mh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0657, -7.87013, 12.288)
 
-[node name="ChainTower" parent="Interactables" node_paths=PackedStringArray("REAPER", "AREA", "START") instance=ExtResource("7_tr476")]
+[node name="ChainTower" parent="Interactables" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("8_jbbn6")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
-REAPER = NodePath("../Reaper")
-DESTINATION_SCENE_PATH = "res://scenes/zones/exterior.tscn"
-DESTINATION_NODE_NAME = "ChainTower"
 AREA = NodePath("Area3D")
 START = NodePath("Start")
+DESTINATION_NODE_NAME = "ChainTower"
+DESTINATION_SCENE = "exterior"
 
 [node name="Area3D" type="Area3D" parent="Interactables/ChainTower"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
@@ -83,7 +82,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
-material_override = ExtResource("8_fwba0")
+material_override = ExtResource("9_lsjp2")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
@@ -93,5 +92,5 @@ size = Vector3(65.3073, 20, 30)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 42.0321, 0, -9.54005, 0)
-material_override = ExtResource("10_3v15h")
+material_override = ExtResource("10_mfe08")
 mesh = SubResource("BoxMesh_od467")

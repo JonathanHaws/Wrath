@@ -1,18 +1,18 @@
 [gd_scene load_steps=27 format=3 uid="uid://5n4cvh6cqc4p"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_1waye"]
-[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="2_iv0bg"]
-[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="2_o5gfp"]
-[ext_resource type="PackedScene" uid="uid://yxfcfpfrgfp4" path="res://models/blender/portal.blend" id="3_1waye"]
-[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="3_gpgiy"]
-[ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://scripts/portal.gd" id="4_iv0bg"]
-[ext_resource type="AudioStream" uid="uid://btssfp845kee" path="res://audio/music/escape.ogg" id="5_iv0bg"]
-[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="5_q6mxo"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/world_wall.tres" id="7_6nidi"]
-[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="8_o5gfp"]
-[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="9_ses4i"]
-[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/bricks/world_floor.tres" id="10_6nidi"]
-[ext_resource type="FontFile" uid="uid://bseqwgcqg3g1" path="res://fonts/Wrath.otf" id="11_q6mxo"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_bn3fv"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="2_ijgg3"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_imgxd"]
+[ext_resource type="PackedScene" uid="uid://yxfcfpfrgfp4" path="res://models/blender/portal.blend" id="4_brddq"]
+[ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://scripts/portal.gd" id="5_k1x1u"]
+[ext_resource type="AudioStream" uid="uid://btssfp845kee" path="res://audio/music/escape.ogg" id="6_dtxwk"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="7_cqhjy"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="8_tbwp6"]
+[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="9_5taq5"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/bricks/world_floor.tres" id="10_4n06m"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/world_wall.tres" id="11_5va0w"]
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="12_2uble"]
+[ext_resource type="FontFile" uid="uid://bseqwgcqg3g1" path="res://fonts/Wrath.otf" id="13_tip4x"]
 
 [sub_resource type="Animation" id="Animation_gpgiy"]
 resource_name = "ESCAPE"
@@ -27,7 +27,7 @@ tracks/0/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
-"stream": ExtResource("5_iv0bg")
+"stream": ExtResource("6_dtxwk")
 }],
 "times": PackedFloat32Array(0)
 }
@@ -132,14 +132,14 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 4, 3), PackedInt32Arr
 
 [node name="Main" type="Node3D"]
 
-[node name="Menu" parent="." instance=ExtResource("1_1waye")]
+[node name="Menu" parent="." instance=ExtResource("1_bn3fv")]
 visible = false
 
 [node name="Enviroment" type="Node" parent="."]
 
-[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("2_o5gfp")]
+[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("2_ijgg3")]
 
-[node name="Weather" parent="Enviroment" instance=ExtResource("2_iv0bg")]
+[node name="Weather" parent="Enviroment" instance=ExtResource("3_imgxd")]
 
 [node name="Lights" type="Node" parent="Enviroment"]
 
@@ -178,22 +178,22 @@ omni_range = 45.0382
 [node name="PlayerSpot" type="Node3D" parent="Interactables"]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3.82572e-06, -9.06787, 1.26405)
 
-[node name="Portal" parent="Interactables" node_paths=PackedStringArray("AREA", "ANIM", "REAPER", "PLAYER_SPOT") instance=ExtResource("3_1waye")]
+[node name="Portal" parent="Interactables" node_paths=PackedStringArray("AREA", "ANIM", "REAPER", "PLAYER_SPOT") instance=ExtResource("4_brddq")]
 transform = Transform3D(-52.205, 0, -7.88274e-06, 0, 52.205, 0, 7.88274e-06, 0, -52.205, 5.76521e-08, -9.57001, 26.9825)
-script = ExtResource("4_iv0bg")
+script = ExtResource("5_k1x1u")
 AREA = NodePath("Area3D")
 ANIM = NodePath("Cutscene")
 REAPER = NodePath("../Reaper")
 PLAYER_SPOT = NodePath("../PlayerSpot")
 
 [node name="spin" parent="Interactables/Portal" index="1"]
-transform = Transform3D(-0.214636, -0.976695, 0, 0.976695, -0.214636, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(0.244515, -0.969646, 0, 0.969646, 0.244515, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Interactables/Portal/flames_2" index="0"]
-transform = Transform3D(-0.930522, 0.0945672, -1.71475e-16, -0.0945672, -0.930522, 5.86302e-15, 4.22198e-16, 5.85031e-15, 0.935315, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(-0.792817, -0.24123, 3.33294e-16, 0.24123, -0.792817, 3.99976e-15, -8.45442e-16, 3.92357e-15, 0.828705, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Interactables/Portal/flames_1" index="0"]
-transform = Transform3D(-0.930522, 0.0945672, -1.71475e-16, -0.0945672, -0.930522, 5.86302e-15, 4.22198e-16, 5.85031e-15, 0.935315, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(-0.792817, -0.24123, 3.33294e-16, 0.24123, -0.792817, 3.99976e-15, -8.45442e-16, 3.92357e-15, 0.828705, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Interactables/Portal" index="4"]
 autoplay = "Spin"
@@ -223,18 +223,17 @@ anim_player = NodePath("../AnimationPlayer")
 parameters/Add2/add_amount = 1.0
 "parameters/Add2 2/add_amount" = 1.0
 
-[node name="Reaper" parent="Interactables" instance=ExtResource("3_gpgiy")]
+[node name="Reaper" parent="Interactables" instance=ExtResource("7_cqhjy")]
 transform = Transform3D(-0.995788, 0, 0.0916933, 0, 1, 0, -0.0916933, 0, -0.995788, 0, -7.999, -24.667)
 
 [node name="Doors" type="Node" parent="Interactables"]
 
-[node name="PortalDoor" parent="Interactables/Doors" node_paths=PackedStringArray("REAPER", "AREA", "START") instance=ExtResource("5_q6mxo")]
+[node name="PortalDoor" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("8_tbwp6")]
 transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, -9.094, -34.539)
-REAPER = NodePath("../../Reaper")
-DESTINATION_SCENE_PATH = "res://scenes/zones/exterior.tscn"
-DESTINATION_NODE_NAME = "PortalDoor"
 AREA = NodePath("Area3D")
 START = NodePath("Start")
+DESTINATION_NODE_NAME = "PortalDoor"
+DESTINATION_SCENE = "exterior"
 
 [node name="Area3D" type="Area3D" parent="Interactables/Doors/PortalDoor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
@@ -250,7 +249,7 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.117
 
 [node name="Wisps" type="Node" parent="Interactables"]
 
-[node name="Body" parent="Interactables/Wisps" instance=ExtResource("8_o5gfp")]
+[node name="Body" parent="Interactables/Wisps" instance=ExtResource("9_5taq5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4622, -7.08744, -30.8438)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -259,12 +258,12 @@ navigation_mesh = SubResource("NavigationMesh_jc5vn")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(56.136, 0, 0, 0, 1, 0, 0, 0, 82.5, 0, -0.550023, 0)
-material_override = ExtResource("10_6nidi")
+material_override = ExtResource("10_4n06m")
 mesh = SubResource("BoxMesh_cr866")
 skeleton = NodePath("../..")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
-material_override = ExtResource("7_6nidi")
+material_override = ExtResource("11_5va0w")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
@@ -285,8 +284,8 @@ offset_left = 678.0
 offset_top = 484.0
 offset_right = 1245.0
 offset_bottom = 598.0
-theme = ExtResource("9_ses4i")
-theme_override_fonts/font = ExtResource("11_q6mxo")
+theme = ExtResource("12_2uble")
+theme_override_fonts/font = ExtResource("13_tip4x")
 theme_override_font_sizes/font_size = 56
 text = "THANK YOU FOR PLAYING!"
 horizontal_alignment = 1

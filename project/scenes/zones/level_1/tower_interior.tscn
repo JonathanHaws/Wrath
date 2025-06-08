@@ -1,14 +1,14 @@
 [gd_scene load_steps=14 format=3 uid="uid://6ds3o48mieqb"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_bnod8"]
-[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="3_42yip"]
-[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="3_ygqaf"]
-[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="4_1q80c"]
-[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="5_piso4"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/world_wall.tres" id="7_1o4cr"]
-[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="7_2pu8s"]
-[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/bricks/world_floor.tres" id="9_k2as5"]
-[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="10_0tr1y"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_ebx8b"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="2_u7bnk"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="3_ak4rr"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="4_ejslf"]
+[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="5_6sohf"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="6_ervhd"]
+[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="7_k1fmy"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/bricks/world_wall.tres" id="8_i8c0t"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/bricks/world_floor.tres" id="9_k7eft"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
 size = Vector3(7, 11, 2)
@@ -24,11 +24,11 @@ polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 4, 3), PackedInt32Arr
 
 [node name="Main" type="Node3D"]
 
-[node name="Menu" parent="." instance=ExtResource("1_bnod8")]
+[node name="Menu" parent="." instance=ExtResource("1_ebx8b")]
 
 [node name="Enviroment" type="Node" parent="."]
 
-[node name="Weather" parent="Enviroment" instance=ExtResource("4_1q80c")]
+[node name="Weather" parent="Enviroment" instance=ExtResource("2_u7bnk")]
 
 [node name="Lights" type="Node" parent="Enviroment"]
 
@@ -44,32 +44,31 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.2
 omni_range = 101.01
 
-[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("3_42yip")]
+[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("3_ak4rr")]
 
 [node name="Interactables" type="Node" parent="."]
 
-[node name="Reaper" parent="Interactables" instance=ExtResource("5_piso4")]
+[node name="Reaper" parent="Interactables" instance=ExtResource("4_ejslf")]
 transform = Transform3D(-0.16916, 0, 0.985589, 0, 1, 0, -0.985589, 0, -0.16916, 14, -7.47934, 20.7907)
 
 [node name="Wisps" type="Node" parent="Interactables"]
 
-[node name="Soul2" parent="Interactables/Wisps" instance=ExtResource("3_ygqaf")]
+[node name="Soul2" parent="Interactables/Wisps" instance=ExtResource("5_6sohf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08563, 2.71911, -29.3764)
 HEALTH = false
 
-[node name="Soul4" parent="Interactables/Wisps" instance=ExtResource("3_ygqaf")]
+[node name="Soul4" parent="Interactables/Wisps" instance=ExtResource("5_6sohf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.9064, -7.71782, 28.0207)
 HEALTH = false
 
 [node name="Doors" type="Node" parent="Interactables"]
 
-[node name="TowerEast" parent="Interactables/Doors" node_paths=PackedStringArray("REAPER", "AREA", "START") instance=ExtResource("10_0tr1y")]
+[node name="TowerEast" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("6_ervhd")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -10.1933, 1.00536e-06)
-REAPER = NodePath("../../Reaper")
-DESTINATION_SCENE_PATH = "res://scenes/zones/exterior.tscn"
-DESTINATION_NODE_NAME = "TowerEast"
 AREA = NodePath("Area3D")
 START = NodePath("Start")
+DESTINATION_NODE_NAME = "TowerEast"
+DESTINATION_SCENE = "exterior"
 
 [node name="Area3D" type="Area3D" parent="Interactables/Doors/TowerEast"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
@@ -83,13 +82,12 @@ shape = SubResource("BoxShape3D_8x7wd")
 [node name="Start" type="Node3D" parent="Interactables/Doors/TowerEast"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.117285, 1, 8.1402)
 
-[node name="TowerWest" parent="Interactables/Doors" node_paths=PackedStringArray("REAPER", "AREA", "START") instance=ExtResource("10_0tr1y")]
+[node name="TowerWest" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("6_ervhd")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.9699, -0.70237, -29.5036)
-REAPER = NodePath("../../Reaper")
-DESTINATION_SCENE_PATH = "res://scenes/zones/exterior.tscn"
-DESTINATION_NODE_NAME = "TowerWest"
 AREA = NodePath("Area3D")
 START = NodePath("Start")
+DESTINATION_NODE_NAME = "TowerWest"
+DESTINATION_SCENE = "exterior"
 
 [node name="Area3D" type="Area3D" parent="Interactables/Doors/TowerWest"]
 collision_layer = 3
@@ -102,13 +100,12 @@ shape = SubResource("BoxShape3D_ye8ka")
 [node name="Start" type="Node3D" parent="Interactables/Doors/TowerWest"]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 5.72205e-06, 0.366223, -7.37892)
 
-[node name="TowerSouth" parent="Interactables/Doors" node_paths=PackedStringArray("REAPER", "AREA", "START") instance=ExtResource("10_0tr1y")]
+[node name="TowerSouth" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("6_ervhd")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.9699, -10.3612, 23.4964)
-REAPER = NodePath("../../Reaper")
-DESTINATION_SCENE_PATH = "res://scenes/zones/exterior.tscn"
-DESTINATION_NODE_NAME = "TowerSouth"
 AREA = NodePath("Area3D")
 START = NodePath("Start")
+DESTINATION_NODE_NAME = "TowerSouth"
+DESTINATION_SCENE = "exterior"
 
 [node name="Area3D" type="Area3D" parent="Interactables/Doors/TowerSouth"]
 collision_layer = 3
@@ -121,7 +118,7 @@ shape = SubResource("BoxShape3D_ye8ka")
 [node name="Start" type="Node3D" parent="Interactables/Doors/TowerSouth"]
 transform = Transform3D(0.999999, 0, 0, 0, 1, 0, 0, 0, 1, 0.172693, 0.121539, -7.37892)
 
-[node name="Checkpoint" parent="Interactables" instance=ExtResource("7_2pu8s")]
+[node name="Checkpoint" parent="Interactables" instance=ExtResource("7_k1fmy")]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 19.8704, -9.83979, -21.1828)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
@@ -130,13 +127,13 @@ navigation_mesh = SubResource("NavigationMesh_jc5vn")
 
 [node name="CSGBox3D2" type="CSGBox3D" parent="NavigationRegion3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13, 4.5, -30)
-material_override = ExtResource("7_1o4cr")
+material_override = ExtResource("8_i8c0t")
 operation = 1
 use_collision = true
 size = Vector3(21, 10, 11)
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
-material_override = ExtResource("7_1o4cr")
+material_override = ExtResource("8_i8c0t")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
@@ -146,5 +143,5 @@ size = Vector3(46, 20, 65)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
 transform = Transform3D(56.136, 0, 0, 0, 1, 0, 0, 0, 82.5, 0, -0.566012, 0)
-material_override = ExtResource("9_k2as5")
+material_override = ExtResource("9_k7eft")
 mesh = SubResource("BoxMesh_b2186")
