@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=67 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://scripts/reaper.gd" id="1_0b6a6"]
 [ext_resource type="AudioStream" uid="uid://dv38k4hi68nft" path="res://audio/sfx/player/Spawn.wav" id="2_ykn11"]
@@ -34,6 +34,7 @@
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="29_lwilf"]
 [ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://shaders/ui/bar/player_health.tres" id="34_6g6ue"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://scripts/audio_one_shot.gd" id="35_lwilf"]
+[ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://scripts/play_time_tracker.gd" id="36_5cvkf"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="36_p2pt0"]
 
 [sub_resource type="Animation" id="Animation_bx4xs"]
@@ -1289,6 +1290,9 @@ max_value = 10.0
 value = 10.0
 expands = true
 save_key_max_value = "max_health"
+
+[node name="PlayTimeTracker" type="Node" parent="."]
+script = ExtResource("36_5cvkf")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 [connection signal="body_entered" from="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D" to="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D" method="_on_body_entered"]

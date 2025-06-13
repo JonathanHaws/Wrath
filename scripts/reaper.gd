@@ -135,11 +135,6 @@ func _physics_process(delta: float) -> void:
 		ANIM.stop()
 		return
 		
-	if Save.data.has("play_time"):
-		Save.data["play_time"] += delta	
-	else:
-		Save.data["play_time"] = delta	
-		
 	if Input.is_action_just_pressed("debug_mode"):
 		debug_mode =! debug_mode
 
@@ -158,16 +153,10 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor() and not debug_mode: # GRAVITY
 		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER if Input.is_action_pressed("descend") else 1.0)
 
-	if is_on_floor(): 
-		falling = 0
-	else:
-		falling += delta;
+	falling = 0 if is_on_floor() else falling + delta
 
-	if Input.is_action_just_pressed("jump"): 
-		jump_buffer = JUMP_BUFFER_TIME;
-	else:
-		if jump_buffer > 0:
-			jump_buffer -= delta;
+	if Input.is_action_just_pressed("jump"): jump_buffer = JUMP_BUFFER_TIME;
+	elif jump_buffer > 0: jump_buffer -= delta
 
 	if jump_buffer > 0 and falling < COYOTE_TIME: # JUMP
 		if ANIM.current_animation and in_interruptible_animation():
