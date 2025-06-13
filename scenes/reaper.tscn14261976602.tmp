@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=67 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://scripts/reaper.gd" id="1_0b6a6"]
 [ext_resource type="AudioStream" uid="uid://dv38k4hi68nft" path="res://audio/sfx/player/Spawn.wav" id="2_ykn11"]
@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cxfh7l5kksro3" path="res://audio/sfx/player/Land.wav" id="5_7kpka"]
 [ext_resource type="Texture2D" uid="uid://cub81gemf5odj" path="res://textures/defaults/default_normal.png" id="6_6g6ue"]
 [ext_resource type="AudioStream" uid="uid://cww02b50taw61" path="res://audio/sfx/player/Step_1.wav" id="7_erto2"]
-[ext_resource type="Script" uid="uid://bmvwcgf01b1lq" path="res://scripts/third_person_controller.gd" id="7_lwilf"]
+[ext_resource type="Script" uid="uid://bmvwcgf01b1lq" path="res://scripts/camera_third_person.gd" id="7_lwilf"]
 [ext_resource type="Texture2D" uid="uid://cwm4kdw3rghh5" path="res://textures/defaults/default_emision.png" id="8_wub5s"]
 [ext_resource type="AudioStream" uid="uid://bt0ejti1ku0n4" path="res://audio/sfx/player/Step_2.wav" id="8_wxf0g"]
 [ext_resource type="AudioStream" uid="uid://boh8nmwkjx2sf" path="res://audio/sfx/player/Step_3.wav" id="9_rg8br"]
@@ -24,6 +24,7 @@
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/disolve.gdshader" id="18_dtcwh"]
 [ext_resource type="AudioStream" uid="uid://ca1jfg0asj5b6" path="res://audio/sfx/player/Windown.wav" id="18_pc8iq"]
 [ext_resource type="Texture2D" uid="uid://c5qhpwg8w7djb" path="res://textures/reaper/cloak/alpha.png" id="19_0hpbp"]
+[ext_resource type="Texture2D" uid="uid://b1nj6g167woes" path="res://textures/reaper/cloak/color_alternative.png" id="19_sj6eg"]
 [ext_resource type="AudioStream" uid="uid://dlwicer3j08q8" path="res://audio/sfx/player/Spawn_Void.wav" id="20_5d6ad"]
 [ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://shaders/ui/bar/stamina_fill.tres" id="20_gpejb"]
 [ext_resource type="AudioStream" uid="uid://bbwub6xco4f00" path="res://audio/sfx/ambience/Wind.wav" id="22_ogp31"]
@@ -35,6 +36,27 @@
 [ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://shaders/ui/bar/player_health.tres" id="34_6g6ue"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://scripts/audio_one_shot.gd" id="35_lwilf"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="36_p2pt0"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_xbltt"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_22u42"]
+noise = SubResource("FastNoiseLite_xbltt")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_py1jt"]
+render_priority = 0
+shader = ExtResource("18_dtcwh")
+shader_parameter/base_texture = ExtResource("3_7534y")
+shader_parameter/emission_texture = ExtResource("4_0idoq")
+shader_parameter/emission_texture_intensity = 5.0
+shader_parameter/inside_color = Color(0, 0, 0, 1)
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_22u42")
+shader_parameter/glow_color = Color(0.851798, 0.591134, 0.49063, 1)
+shader_parameter/glow_intensitiy = 1.77
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/normal_texture = ExtResource("6_6g6ue")
+shader_parameter/normal_strength = 1.0
 
 [sub_resource type="Animation" id="Animation_bx4xs"]
 resource_name = "DEATH"
@@ -1012,27 +1034,6 @@ shader_parameter/glow_border_smoothness = 0.003
 shader_parameter/normal_texture = ExtResource("24_fp8ht")
 shader_parameter/normal_strength = 1.0
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xbltt"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_22u42"]
-noise = SubResource("FastNoiseLite_xbltt")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_py1jt"]
-render_priority = 0
-shader = ExtResource("18_dtcwh")
-shader_parameter/base_texture = ExtResource("3_7534y")
-shader_parameter/emission_texture = ExtResource("4_0idoq")
-shader_parameter/emission_texture_intensity = 5.0
-shader_parameter/inside_color = Color(0, 0, 0, 1)
-shader_parameter/dissolve_amount = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_22u42")
-shader_parameter/glow_color = Color(0.851798, 0.591134, 0.49063, 1)
-shader_parameter/glow_intensitiy = 1.77
-shader_parameter/glow_border_width = 0.018
-shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_texture = ExtResource("6_6g6ue")
-shader_parameter/normal_strength = 1.0
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_4jko3"]
 size = Vector3(43.5623, 2.2914, 1.20326)
 
@@ -1082,6 +1083,9 @@ ATTACK_AREA = NodePath("Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D"
 ANIM = NodePath("AnimationPlayer")
 MESH_ANIM = NodePath("Mesh/reaper/AnimationPlayer")
 COLLISON_SHAPE = NodePath("CollisionShape3D")
+CLOAK_TEXTURE = ExtResource("3_7534y")
+ALTERNATIVE_CLOAK_TEXTURE = ExtResource("19_sj6eg")
+CLOAK_MATERIAL = SubResource("ShaderMaterial_py1jt")
 STAMINA = NodePath("Stamina")
 HEALTH = NodePath("Health")
 

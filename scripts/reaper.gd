@@ -27,12 +27,6 @@ extends CharacterBody3D
 @export var COLLISON_SHAPE: CollisionShape3D
 @export var STAMINA_RECOVERY: float = 20.0
 
-@export_group("Material")
-@export var CLOAK_TEXTURE: Texture2D
-@export var ALTERNATIVE_CLOAK_TEXTURE: Texture2D
-@export var CLOAK_MATERIAL: ShaderMaterial
-var alternative_cloak = false
-
 @export_group("UI")
 @export var STAMINA: ProgressBar
 @export var HEALTH: ProgressBar
@@ -47,19 +41,14 @@ var falling = COYOTE_TIME;
 var was_on_floor = true
 var has_been_on_floor = false
 var jump_buffer = 0;
+var debug_mode = false;
 
 func increase_damage_each_spin():
 	DAMAGE_MULTIPLIER *= SPIN_MULTIPLIER
 	ATTACK_AREA.damage = BASE_DAMAGE * DAMAGE_MULTIPLIER
-
 func reset_spin_damage():
 	DAMAGE_MULTIPLIER = 1
 	ATTACK_AREA.damage = BASE_DAMAGE * DAMAGE_MULTIPLIER
-
-func _process(_delta)-> void:
-	if not Input.is_action_pressed("attack"): 
-		stamina += STAMINA_RECOVERY * _delta
-
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
 	if HEALTH.value > 0:
 		if (_group != "kill_floor"):
@@ -80,10 +69,8 @@ func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.
 			Save.data["spawn_sound"] = "spawn"
 			ANIM.play("DEATH")	
 		Save.save_game()
-
 func reload_checkpoint() -> void:
 	get_tree().change_scene_to_file(Save.data["checkpoint_scene_path"])
-
 func _on_animation_finished(animation_name: String) -> void:
 	if animation_name == "WINDOWN":
 		ANIM.play("IDLE", 0.0, 1, false)
@@ -107,6 +94,8 @@ func _on_animation_finished(animation_name: String) -> void:
 		ANIM.play("SPIN", 0.0, 1, false)
 		ANIM.seek(0, true) 
 		STAMINA.value -= 10
+func in_interruptible_animation() -> bool:
+	return not ANIM.current_animation in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT"]
 
 func _ready() -> void:
 	
@@ -136,7 +125,9 @@ func _ready() -> void:
 	if not Save.data.has("spawn_sound"):
 		Save.data["spawn_sound"] = "spawn_new"
 	if $Audio: $Audio.play_2d_sound([Save.data["spawn_sound"]])
-	
+func _process(_delta)-> void:
+	if not Input.is_action_pressed("attack"): 
+		stamina += STAMINA_RECOVERY * _delta	
 func _physics_process(delta: float) -> void:
 	
 	Squash.settle(MESH,delta)	
@@ -149,13 +140,9 @@ func _physics_process(delta: float) -> void:
 	else:
 		Save.data["play_time"] = delta	
 		
-	if Input.is_action_just_pressed("debug"):
-		alternative_cloak = !alternative_cloak
-		if alternative_cloak:
-			CLOAK_MATERIAL.set_shader_parameter("base_texture", ALTERNATIVE_CLOAK_TEXTURE)
-		else:
-			CLOAK_MATERIAL.set_shader_parameter("base_texture", CLOAK_TEXTURE)
-	
+	if Input.is_action_just_pressed("debug_mode"):
+		debug_mode =! debug_mode
+
 	if not was_on_floor and is_on_floor() and has_been_on_floor:
 		Squash.squish(MESH,.23)	
 		if $Audio: $Audio.play_2d_sound(["land"], 0.9, 1.1)
@@ -165,11 +152,10 @@ func _physics_process(delta: float) -> void:
 	if ANIM.current_animation in "ESCAPE": return
 
 	if Input.is_action_just_pressed("attack"): # ATTACK
-		if is_on_floor():
-			if ANIM.current_animation not in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT"]:
-				ANIM.play("WINDUP")
+		if is_on_floor() and in_interruptible_animation():
+			ANIM.play("WINDUP")
 		
-	if not is_on_floor(): # GRAVITY
+	if not is_on_floor() and not debug_mode: # GRAVITY
 		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER if Input.is_action_pressed("descend") else 1.0)
 
 	if is_on_floor(): 
@@ -184,7 +170,7 @@ func _physics_process(delta: float) -> void:
 			jump_buffer -= delta;
 
 	if jump_buffer > 0 and falling < COYOTE_TIME: # JUMP
-		if ANIM.current_animation not in ["WINDOWN", "WINDUP", "SPIN", "DEATH", "FALL_DEATH", "HURT"]:
+		if ANIM.current_animation and in_interruptible_animation():
 			if $Audio: $Audio.play_2d_sound(["jump"], 2.0)
 			ANIM.play("JUMP")
 			Squash.squish(MESH,-.23)	
@@ -192,34 +178,44 @@ func _physics_process(delta: float) -> void:
 			falling = COYOTE_TIME
 			jump_buffer = 0
 	
-	if ANIM.current_animation not in ["WINDUP", "SPIN", "WINDOWN","DEATH", "FALL_DEATH", "HURT"] and !is_on_floor():
-		if (velocity.y < 0):
-			ANIM.play("FALL")
-		else:
-			ANIM.play("JUMP")
-
 	var keyboard_vector := Input.get_vector("keyboard_left", "keyboard_right", "keyboard_forward", "keyboard_back")
 	var controller_vector := Input.get_vector("controller_left", "controller_right", "controller_forward", "controller_back")
 	var input_vector := keyboard_vector + controller_vector
 	
 	if input_vector.length() > 0:
-		var mesh_direction = Vector3(0, 0, -1).rotated(Vector3.UP, MESH.rotation.y + global_transform.basis.get_euler().y)
-		if (Input.is_action_pressed("sprint") or controller_vector.length() > 0.75) and STAMINA.value > 0:
-			if ANIM.current_animation not in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT"] and is_on_floor():
-				ANIM.play("RUN", 0.0, 1, false)
-			velocity.x = mesh_direction.x * SPEED * SPRINT_MULTIPLIER * SPEED_MULTIPLIER
-			velocity.z = mesh_direction.z * SPEED * SPRINT_MULTIPLIER * SPEED_MULTIPLIER
+		if debug_mode:
+			var direction := -CAMERA.global_transform.basis.z.normalized()
+			velocity = direction * 3000 *delta
+			$CollisionShape3D.disabled = true	
 		else:
-			if ANIM.current_animation not in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT"] and is_on_floor():
-				ANIM.play("WALK", 0.0, 1, false)
-			velocity.x = mesh_direction.x * SPEED * SPEED_MULTIPLIER
-			velocity.z = mesh_direction.z * SPEED * SPEED_MULTIPLIER
+			$CollisionShape3D.disabled = false
+			var mesh_direction = Vector3(0, 0, -1).rotated(Vector3.UP, MESH.rotation.y + global_transform.basis.get_euler().y)
+			if (Input.is_action_pressed("sprint") or controller_vector.length() > 0.75):
+				velocity.x = mesh_direction.x * SPEED * SPRINT_MULTIPLIER * SPEED_MULTIPLIER
+				velocity.z = mesh_direction.z * SPEED * SPRINT_MULTIPLIER * SPEED_MULTIPLIER
+			else:
+				velocity.x = mesh_direction.x * SPEED * SPEED_MULTIPLIER
+				velocity.z = mesh_direction.z * SPEED * SPEED_MULTIPLIER
 
 		CAMERA.rotate_mesh_towards_camera_xz(delta, MESH, input_vector, TURN_SPEED * TURN_MULTIPLIER)
 	else:
-		if ANIM.current_animation not in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT"] and is_on_floor():
-			ANIM.play("IDLE", 0, 1, false)
 		velocity.x = 0 
 		velocity.z = 0
-
+		if debug_mode: velocity.y = 0 
+	
 	move_and_slide()
+	
+	if in_interruptible_animation(): 
+		if is_on_floor(): 
+			if input_vector.length() > 0:
+				if (Input.is_action_pressed("sprint") or controller_vector.length() > 0.75):
+					ANIM.play("RUN", 0.0, 1, false)
+				else:
+					ANIM.play("WALK", 0.0, 1, false)
+			else:
+				ANIM.play("IDLE", 0, 1, false)
+		else:
+			if (velocity.y < 0):
+				ANIM.play("FALL")
+			else:
+				ANIM.play("JUMP")

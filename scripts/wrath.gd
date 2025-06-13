@@ -34,14 +34,13 @@ func _on_trigger_area_body_entered(body: Node) -> void:
 	Save.data[SAVE_KEY_ENCOUNTERED] = true
 	Save.save_game()	
 
-func _unlock_progression()-> void:
-	queue_free()
-	if PROGRESSION_AREA: PROGRESSION_AREA.monitoring = true
+func _unlock_progression(enable: bool = true) -> void:
+	if PROGRESSION_AREA: PROGRESSION_AREA.monitoring = enable
+	if enable: queue_free()
 	
 func _ready() -> void:
-	if Save.data.has(SAVE_KEY_DEFEATED) and Save.data[SAVE_KEY_DEFEATED]:
-		_unlock_progression()
-
+	_unlock_progression(Save.data.has(SAVE_KEY_DEFEATED) and Save.data[SAVE_KEY_DEFEATED])
+	
 func _physics_process(delta: float) -> void:
 	if health > 0: move_and_slide()
 	if not ANIM.is_playing(): return
