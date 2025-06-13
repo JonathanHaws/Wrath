@@ -41,7 +41,7 @@ var falling = COYOTE_TIME;
 var was_on_floor = true
 var has_been_on_floor = false
 var jump_buffer = 0;
-var debug_mode = false;
+
 
 func increase_damage_each_spin():
 	DAMAGE_MULTIPLIER *= SPIN_MULTIPLIER
@@ -134,9 +134,6 @@ func _physics_process(delta: float) -> void:
 	if IN_CUTSCENE: 
 		ANIM.stop()
 		return
-		
-	if Input.is_action_just_pressed("debug_mode"):
-		debug_mode =! debug_mode
 
 	if not was_on_floor and is_on_floor() and has_been_on_floor:
 		Squash.squish(MESH,.23)	
@@ -150,7 +147,7 @@ func _physics_process(delta: float) -> void:
 		if is_on_floor() and in_interruptible_animation():
 			ANIM.play("WINDUP")
 		
-	if not is_on_floor() and not debug_mode: # GRAVITY
+	if not is_on_floor() and not God.mode: # GRAVITY
 		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER if Input.is_action_pressed("descend") else 1.0)
 
 	falling = 0 if is_on_floor() else falling + delta
@@ -172,7 +169,7 @@ func _physics_process(delta: float) -> void:
 	var input_vector := keyboard_vector + controller_vector
 	
 	if input_vector.length() > 0:
-		if debug_mode:
+		if God.mode:
 			var direction := -CAMERA.global_transform.basis.z.normalized()
 			velocity = direction * 3000 *delta
 			$CollisionShape3D.disabled = true	
@@ -190,7 +187,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.x = 0 
 		velocity.z = 0
-		if debug_mode: velocity.y = 0 
+		if God.mode: velocity.y = 0 
 	
 	move_and_slide()
 	

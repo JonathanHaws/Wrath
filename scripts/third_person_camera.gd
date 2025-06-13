@@ -12,7 +12,6 @@ extends Camera3D
 var lock_on_activated = false
 var lock_on_target: Area3D
 var mouse_delta = Vector2.ZERO
-var debug_mode = false
 
 func _on_lock_on_area_entered(area: Node) -> void:
 	if area.name == "LockOn":
@@ -61,12 +60,10 @@ func _ready() -> void:
 	
 func _process(_delta: float) -> void:
 	_lock_on_process()
-	
-	if Input.is_action_just_pressed("debug_mode"):
-		debug_mode =! debug_mode
-		SpringArm.collision_mask = 0 if debug_mode else 1
 				
 func _physics_process(delta: float) -> void:
+	
+	SpringArm.collision_mask = 0 if God.mode else 1
 	
 	if ignore_mouse_when_visible and Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
 		mouse_delta = Vector2.ZERO
@@ -83,5 +80,4 @@ func _physics_process(delta: float) -> void:
 		SpringArm.global_rotation.y -= mouse_delta.x * MOUSE_SENSITIVITY
 		SpringArm.global_rotation.x -= mouse_delta.y * MOUSE_SENSITIVITY
 		mouse_delta = Vector2.ZERO
-		if not debug_mode:
-			constrain_camera_angle()
+		constrain_camera_angle()
