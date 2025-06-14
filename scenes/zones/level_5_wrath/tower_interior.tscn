@@ -68,7 +68,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.51
 AREA = NodePath("Area3D")
 START = NodePath("Start")
 DESTINATION_NODE_NAME = "TowerEast"
-DESTINATION_SCENE = "level_1"
+DESTINATION_SCENE = "level_5"
 
 [node name="Area3D" type="Area3D" parent="Interactables/Doors/TowerEast"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
@@ -87,7 +87,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.969
 AREA = NodePath("Area3D")
 START = NodePath("Start")
 DESTINATION_NODE_NAME = "TowerWest"
-DESTINATION_SCENE = "level_1"
+DESTINATION_SCENE = "level_5"
 
 [node name="Area3D" type="Area3D" parent="Interactables/Doors/TowerWest"]
 collision_layer = 3
@@ -105,7 +105,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 22.969
 AREA = NodePath("Area3D")
 START = NodePath("Start")
 DESTINATION_NODE_NAME = "TowerSouth"
-DESTINATION_SCENE = "level_1"
+DESTINATION_SCENE = "level_5"
 
 [node name="Area3D" type="Area3D" parent="Interactables/Doors/TowerSouth"]
 collision_layer = 3
