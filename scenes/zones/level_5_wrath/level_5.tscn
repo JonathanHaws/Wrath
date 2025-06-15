@@ -6,7 +6,7 @@
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/small/world_small.tres" id="4_3gs6a"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="5_rlfmo"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="6_haf51"]
-[ext_resource type="PackedScene" uid="uid://b3urcqmix8s8g" path="res://scenes/bosses/wrath.tscn" id="7_eqpye"]
+[ext_resource type="PackedScene" uid="uid://b3urcqmix8s8g" path="res://scenes/enemies/wrath.tscn" id="7_eqpye"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="8_rf8or"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="9_1jlmx"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="10_dklar"]
@@ -19,7 +19,7 @@
 [ext_resource type="Material" uid="uid://cy0ev2opeyd34" path="res://shaders/materials/bricks/star/star.tres" id="17_e52ow"]
 [ext_resource type="Material" uid="uid://8p0im5f4mlk7" path="res://shaders/materials/bricks/big/world_big.tres" id="18_ovh7g"]
 [ext_resource type="PackedScene" uid="uid://7mrheb4oio5g" path="res://scenes/interactables/arch.tscn" id="19_3yoog"]
-[ext_resource type="PackedScene" uid="uid://b8bvono5iv61i" path="res://scenes/bosses/greed_talk_1.tscn" id="20_26ir3"]
+[ext_resource type="PackedScene" uid="uid://b8bvono5iv61i" path="res://scenes/enemies/greed_talk_1.tscn" id="20_26ir3"]
 
 [sub_resource type="Animation" id="Animation_gllqw"]
 resource_name = "ESCAPE"
@@ -337,6 +337,9 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36
 [node name="Wrath" parent="Interactables" node_paths=PackedStringArray("PROGRESSION_AREA") instance=ExtResource("7_eqpye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.0888538, 19)
 PROGRESSION_AREA = NodePath("../Doors/Exit/Area3D")
+
+[node name="Target" parent="Interactables/Wrath" index="2"]
+SPEED_MULTIPLIER = 0.0
 
 [node name="Skeleton3D" parent="Interactables/Wrath/Mesh/wrath/Armature" index="0"]
 bones/4/rotation = Quaternion(-0.18941, 0.0856309, 0.344916, 0.915327)

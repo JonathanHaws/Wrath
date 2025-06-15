@@ -4,11 +4,14 @@ extends Node3D
 @export var TRACKING_SPEED: float = 5.0
 @export var TRACKING_MULTIPLIER: float = 1.0
 @export var SPEED = 9.0
-@export var SPEED_MULTIPLIER: float = 0.0
+@export var SPEED_MULTIPLIER: float = 1.0
 @export var FLIPPED_TRACKING: bool = false
 @export var MESH: Node3D
 @export var BODY: Node3D
+@export var MOVE_AND_SLIDE: bool = true
+@export var STOP_CHASE_AREA: Area3D
 var target: Node3D = null
+var should_chase: bool = true
 
 func track(delta: float) -> void:
 	if not MESH or not BODY or not target: return
@@ -40,9 +43,30 @@ func get_closest_from_group_3d(group: String) -> Node3D:
 			min_dist = dist
 			closest = node
 	return closest
-	
+
+func _on_body_entered_stop_area(body: Node) -> void:
+	if body.is_in_group(TARGET_GROUP):
+		should_chase = false
+
+func _on_body_exited_stop_area(body: Node) -> void:
+	if body.is_in_group(TARGET_GROUP):
+		should_chase = true
+
+func _ready() -> void:
+	if STOP_CHASE_AREA:
+		STOP_CHASE_AREA.body_entered.connect(_on_body_entered_stop_area)
+		STOP_CHASE_AREA.body_exited.connect(_on_body_exited_stop_area)
+
 func _physics_process(delta: float) -> void:
-	move_to_target(delta, SPEED * SPEED_MULTIPLIER)
+	if should_chase:
+		move_to_target(delta, SPEED * SPEED_MULTIPLIER)
+	
+	if MOVE_AND_SLIDE: 
+		BODY.move_and_slide()
+	
+	if not BODY.is_on_floor(): BODY.velocity += BODY.get_gravity() * delta
+	
+	track(delta)
 	
 	if target == null:
 		target = get_closest_from_group_3d(TARGET_GROUP)

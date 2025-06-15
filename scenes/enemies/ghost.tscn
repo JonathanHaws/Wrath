@@ -1,0 +1,94 @@
+[gd_scene load_steps=23 format=3 uid="uid://c6e88ycy4nm7x"]
+
+[ext_resource type="Script" uid="uid://dkt2ctfdrjb1k" path="res://scripts/enemies/ghost.gd" id="1_ly0wf"]
+[ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="1_tijse"]
+[ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://scenes/ui/damage_numbers.tscn" id="2_qr43c"]
+[ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/particles/ghost_hurt.tscn" id="2_y2p6q"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://scripts/audio_one_shot.gd" id="4_2gcuv"]
+[ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://audio/sfx/enemy/Hit_1.wav" id="5_y2p6q"]
+[ext_resource type="AudioStream" uid="uid://b4dyx5m8hsynq" path="res://audio/sfx/enemy/Hit_2.wav" id="6_1m57m"]
+[ext_resource type="AudioStream" uid="uid://bv7cgqlt3sbtb" path="res://audio/sfx/enemy/Hit_3.wav" id="7_05mu1"]
+[ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/enemy/Slam.wav" id="8_agce3"]
+[ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://audio/sfx/brick/Crumble_1.wav" id="9_fd7dn"]
+[ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/brick/Crumble_2.wav" id="10_dfr5h"]
+[ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://audio/sfx/brick/Crumble_3.wav" id="11_n368u"]
+[ext_resource type="AudioStream" uid="uid://bg0rsvkfwvyq1" path="res://audio/sfx/brick/Crumble_4.wav" id="12_hp215"]
+[ext_resource type="AudioStream" uid="uid://dejgyyvoucgey" path="res://audio/sfx/enemy/Cry_3.wav" id="13_pyqwo"]
+[ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://audio/sfx/enemy/Despawn.wav" id="14_rkfee"]
+[ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://audio/sfx/enemy/Cry.wav" id="15_ign71"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6640v"]
+albedo_color = Color(0.0983388, 0.115936, 0.174548, 1)
+roughness = 0.7
+
+[sub_resource type="SphereMesh" id="SphereMesh_tijse"]
+radius = 0.8
+height = 1.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qr43c"]
+albedo_color = Color(0.517184, 0.517184, 0.517184, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6640v"]
+radius = 1.39359
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qr43c"]
+size = Vector3(0.498047, 0.55249, 0.592773)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2gcuv"]
+radius = 1.87272
+
+[node name="CharacterBody3D" type="CharacterBody3D"]
+script = ExtResource("1_ly0wf")
+SPEED = 2.0
+HURT_PARTICLE_SCENE = ExtResource("2_y2p6q")
+DAMAGE_NUMBER = ExtResource("2_qr43c")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1.72023, 0, 0, 0, 1.72023, 0, 0, 0, 1.72023, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_6640v")
+mesh = SubResource("SphereMesh_tijse")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-1.11243e-08, 0, 0.254494, 0, 0.254494, 0, -0.254494, 0, -1.11243e-08, 0.210059, 0.0195056, -0.589554)
+material_override = SubResource("StandardMaterial3D_qr43c")
+mesh = SubResource("SphereMesh_tijse")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MeshInstance3D"]
+transform = Transform3D(-1.11243e-08, 0, 0.254494, 0, 0.254494, 0, -0.254494, 0, -1.11243e-08, -0.244622, 0.0195056, -0.589554)
+material_override = SubResource("StandardMaterial3D_qr43c")
+mesh = SubResource("SphereMesh_tijse")
+skeleton = NodePath("")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6640v")
+
+[node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA")]
+script = ExtResource("1_tijse")
+NAV_AGENT = NodePath("../NavigationAgent3D")
+SPEED = 6.0
+MESH = NodePath("../MeshInstance3D")
+BODY = NodePath("..")
+STOP_CHASE_AREA = NodePath("../StopChase")
+
+[node name="LockOn" type="Area3D" parent="."]
+transform = Transform3D(1, 5.32907e-15, 0, 0, 1, 0, 0, 0, 1, 3.94153e-08, 0.472616, -0.165321)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LockOn"]
+transform = Transform3D(1, -1.24345e-14, -1.03739e-12, 0, 1, 0, -3.83693e-13, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_qr43c")
+debug_color = Color(0, 0.6, 0.7, 0.42)
+
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("4_2gcuv")
+SOUNDS = Array[AudioStream]([ExtResource("5_y2p6q"), ExtResource("6_1m57m"), ExtResource("7_05mu1"), ExtResource("8_agce3"), ExtResource("9_fd7dn"), ExtResource("10_dfr5h"), ExtResource("11_n368u"), ExtResource("12_hp215"), ExtResource("13_pyqwo"), ExtResource("14_rkfee"), ExtResource("15_ign71")])
+
+[node name="StopChase" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StopChase"]
+shape = SubResource("SphereShape3D_2gcuv")

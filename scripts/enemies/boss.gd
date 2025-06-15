@@ -1,5 +1,4 @@
 extends CharacterBody3D
-@export var SPEED = 9.0
 @export var TARGET: Node3D
 @export var ANIM: AnimationPlayer
 @export var MESH_ANIM: AnimationPlayer
@@ -42,9 +41,6 @@ func _ready() -> void:
 	_unlock_progression(Save.data.has(SAVE_KEY_DEFEATED) and Save.data[SAVE_KEY_DEFEATED])
 	
 func _physics_process(delta: float) -> void:
-	if health > 0: move_and_slide()
 	if not ANIM.is_playing(): return
-	if not is_on_floor(): velocity += get_gravity() * delta
-	TARGET.track(delta)
 	ANIM.play_random_attack(global_position, TARGET.global_position,delta)
 		

@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmky6xf3axtum"]
+[gd_scene load_steps=13 format=3 uid="uid://cmky6xf3axtum"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_04h28"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_0u44e"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="4_gupqu"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="5_3y1t5"]
+[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="6_nlsid"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="7_5hgnl"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/small/world_small.tres" id="8_deg3c"]
+[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://scenes/enemies/ghost.tscn" id="8_mokli"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/star/world_star.tres" id="9_d2qy0"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
@@ -83,6 +85,15 @@ shape = SubResource("BoxShape3D_8x7wd")
 
 [node name="Start" type="Node3D" parent="Interactables/Exit"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.117285, 0.53226, 8.1402)
+
+[node name="Checkpoint" parent="Interactables" instance=ExtResource("6_nlsid")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.8406, -9.14357, 0)
+
+[node name="Ghost2" parent="Interactables" instance=ExtResource("8_mokli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.4673, -4.78214, 8.83958)
+
+[node name="Ghost" parent="Interactables" instance=ExtResource("8_mokli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 18.4666, -3.50695, -4.67695)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)

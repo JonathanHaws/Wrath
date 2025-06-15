@@ -1,6 +1,6 @@
 [gd_scene load_steps=63 format=3 uid="uid://b3urcqmix8s8g"]
 
-[ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://scripts/wrath.gd" id="1_fvlx1"]
+[ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://scripts/enemies/boss.gd" id="1_fvlx1"]
 [ext_resource type="PackedScene" uid="uid://srdha174fo73" path="res://scenes/particles/boss_death.tscn" id="2_brvm4"]
 [ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://audio/sfx/enemy/Hit_1.wav" id="3_nbwf2"]
 [ext_resource type="AudioStream" uid="uid://b4dyx5m8hsynq" path="res://audio/sfx/enemy/Hit_2.wav" id="4_1aywb"]
@@ -21,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://audio/sfx/enemy/Spin.wav" id="13_367wx"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://scripts/root_motion.gd" id="13_h5485"]
 [ext_resource type="AudioStream" uid="uid://bg0rsvkfwvyq1" path="res://audio/sfx/brick/Crumble_4.wav" id="13_wxkwy"]
-[ext_resource type="Script" uid="uid://l4b37mckqf8k" path="res://scripts/proximity_based_random_attacks.gd" id="14_e2tgp"]
+[ext_resource type="Script" uid="uid://l4b37mckqf8k" path="res://scripts/enemies/proximity_based_random_attacks.gd" id="14_e2tgp"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="17_r1aqn"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/enemy/Cry_2.wav" id="19_ewgrb"]
 [ext_resource type="PackedScene" uid="uid://d0ifk8wbwkr3w" path="res://scenes/particles/wrath_hurt.tscn" id="22_1df88"]
@@ -32,7 +32,7 @@
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://scripts/audio_one_shot.gd" id="31_4oeto"]
 [ext_resource type="PackedScene" uid="uid://cat4e2my2so35" path="res://scenes/interactables/ambience.tscn" id="31_e2tgp"]
 [ext_resource type="AudioStream" uid="uid://f7dwuxrh87go" path="res://audio/music/wrath.ogg" id="32_h5485"]
-[ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/target.gd" id="33_h5485"]
+[ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="33_h5485"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://scripts/particles.gd" id="34_cc4qc"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_1er76"]
@@ -261,6 +261,30 @@ tracks/11/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(3.73333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
@@ -765,6 +789,18 @@ tracks/16/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/17/interp = 0
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_h5485"]
@@ -1278,6 +1314,7 @@ LIKELIHOOD_MULTIPLIER = 0.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11594, 0)
 script = ExtResource("33_h5485")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
+SPEED_MULTIPLIER = 0.0
 MESH = NodePath("../Mesh")
 BODY = NodePath("..")
 
@@ -1295,19 +1332,19 @@ bones/1/position = Vector3(-7.12175e-17, 0.0829432, 0.518257)
 bones/1/rotation = Quaternion(0.520187, 5.55556e-17, 9.12122e-17, 0.854052)
 bones/2/rotation = Quaternion(0.296613, 1.13845e-07, 3.5359e-08, 0.954998)
 bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
-bones/4/rotation = Quaternion(-0.18941, 0.085631, 0.344916, 0.915327)
-bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
+bones/4/rotation = Quaternion(-0.359535, 0.0106007, 0.152414, 0.920539)
+bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325445, 0.887213)
 bones/6/rotation = Quaternion(-0.0822429, 0.00062297, 0.134669, 0.987472)
-bones/7/rotation = Quaternion(-0.29291, -1.6637e-14, -6.98353e-08, 0.95614)
+bones/7/rotation = Quaternion(0.114974, -2.79969e-08, -6.39776e-08, 0.993369)
 bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
-bones/9/rotation = Quaternion(-0.18941, -0.085631, -0.344916, 0.915327)
-bones/10/rotation = Quaternion(-0.455173, 0.0679145, -0.0325446, 0.887213)
+bones/9/rotation = Quaternion(-0.24812, 0.00052556, -0.14623, 0.957629)
+bones/10/rotation = Quaternion(-0.455173, 0.0679145, -0.0325445, 0.887213)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_y1py8")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.924673, -0.00872146, -0.380663, 0.348244, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583943)
+transform = Transform3D(-0.653425, 0.0696904, -0.753776, 0.732638, -0.192318, -0.652882, -0.190464, -0.978855, 0.0746071, -2.23058, 2.65431, -0.610164)
 bone_name = "hand_l"
 bone_idx = 6
 script = ExtResource("22_r385c")
@@ -1326,7 +1363,7 @@ disabled = true
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.924673, 0.00872091, 0.380663, -0.348244, -0.423631, -0.836219, 0.153968, -0.905793, 0.394757, 2.01091, 1.84788, -0.0583951)
+transform = Transform3D(-0.685293, 0.149882, 0.712677, -0.722862, -0.258999, -0.640617, 0.0885658, -0.954177, 0.285834, 2.5137, 2.56799, -0.234137)
 bone_name = "hand_r"
 bone_idx = 11
 
