@@ -990,7 +990,7 @@ _data = {
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qswe2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0gmj"]
-size = Vector3(15.0551, 13.757, 60)
+size = Vector3(3.77381, 7.6335, 47.4886)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_eoc4h"]
 
@@ -1116,19 +1116,19 @@ fov = 80.0
 script = ExtResource("7_lwilf")
 pitch_max_deg = 20.0
 SpringArm = NodePath("..")
-LOCK_ON_AREA = NodePath("../LockOnArea")
+LOCK_ON_AREA = NodePath("LockOnArea")
 LOCK_ON_INDICATOR = NodePath("../../LockOnIndicator")
 
 [node name="HeadFollowTarget" type="Node3D" parent="SpringArm3D/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.896154, -0.64839, -7.68562)
 
-[node name="LockOnArea" type="Area3D" parent="SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 0.972606, -0.232461, 0, 0.232461, 0.972606, 0, -2.34592, -0.560696)
+[node name="LockOnArea" type="Area3D" parent="SpringArm3D/Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.979695, 0.200497, 0, -0.200497, 0.979695, 0, -3.77156, 0.404119)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpringArm3D/LockOnArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0538235, 3.3871, -22.3708)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpringArm3D/Camera3D/LockOnArea"]
+transform = Transform3D(1, 0, 0, 0, 0.989224, -0.146411, 0, 0.146411, 0.989224, -0.138961, 10.1704, -26.3057)
 shape = SubResource("BoxShape3D_y0gmj")
-debug_color = Color(0.7, 0.7, 0.7, 0.0235294)
+debug_color = Color(0.7, 0.7, 0.7, 0.8)
 
 [node name="Mesh" type="Node3D" parent="."]
 

@@ -338,14 +338,10 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.0888538, 19)
 PROGRESSION_AREA = NodePath("../Doors/Exit/Area3D")
 
-[node name="Target" parent="Interactables/Wrath" index="2"]
-SPEED_MULTIPLIER = 0.0
-
 [node name="Skeleton3D" parent="Interactables/Wrath/Mesh/wrath/Armature" index="0"]
 bones/4/rotation = Quaternion(-0.18941, 0.0856309, 0.344916, 0.915327)
 bones/6/rotation = Quaternion(-0.0822429, 0.000622961, 0.134669, 0.987472)
 bones/7/rotation = Quaternion(-0.29291, -2.50809e-14, -6.98353e-08, 0.95614)
-bones/10/rotation = Quaternion(-0.455173, 0.0679145, -0.0325445, 0.887213)
 
 [node name="LeftHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="1"]
 transform = Transform3D(-0.924673, -0.00872152, -0.380662, 0.348244, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583943)

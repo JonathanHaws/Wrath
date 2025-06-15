@@ -11,11 +11,21 @@ extends Camera3D
 @export var ignore_mouse_when_visible := true
 var lock_on_activated = false
 var lock_on_target: Area3D
+var lock_on_targets: Array[Area3D] = []
+
 var mouse_delta = Vector2.ZERO
 
 func _on_lock_on_area_entered(area: Node) -> void:
 	if area.name == "LockOn":
-		lock_on_target = area
+		lock_on_targets.append(area)
+		if lock_on_targets.size() == 1:
+			lock_on_target = area
+
+func _on_lock_on_area_exited(area: Node) -> void:
+	if area in lock_on_targets:
+		lock_on_targets.erase(area)
+		if area == lock_on_target:
+			lock_on_target = lock_on_targets[0] if lock_on_targets.size() > 0 else null
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -29,9 +39,20 @@ func rotate_mesh_towards_camera_xz(delta: float, mesh: Node3D, input_vector: Vec
 func constrain_camera_angle() -> void:
 	SpringArm.rotation_degrees.x = clamp(SpringArm.rotation_degrees.x, pitch_min_deg, pitch_max_deg)
 
+func get_distance_from_center_of_screen(world_position: Vector3) -> float:
+	var screen_pos = unproject_position(world_position)
+	var screen_center = get_viewport().size * 0.5
+	return screen_center.distance_to(screen_pos)
+
 func _lock_on_process() -> void:
 	if Input.is_action_just_pressed("lock_on"):
-		lock_on_activated = !lock_on_activated
+		if not lock_on_activated: # lock on to target closest to center of screen
+			lock_on_targets.sort_custom(func(a, b): return get_distance_from_center_of_screen(a.global_position) < get_distance_from_center_of_screen(b.global_position))
+			lock_on_target = lock_on_targets[0] if lock_on_targets.size() > 0 else null
+			lock_on_activated = lock_on_target != null
+		else:
+			lock_on_activated = false
+			lock_on_target = null
 
 	if lock_on_activated and is_instance_valid(lock_on_target):
 		LOCK_ON_INDICATOR.visible = true
@@ -57,6 +78,7 @@ func _lock_on_physics_process(_delta: float)-> void:
 
 func _ready() -> void:
 	LOCK_ON_AREA.area_entered.connect(_on_lock_on_area_entered)
+	LOCK_ON_AREA.area_exited.connect(_on_lock_on_area_exited)
 	
 func _process(_delta: float) -> void:
 	_lock_on_process()

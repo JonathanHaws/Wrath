@@ -32,10 +32,10 @@ albedo_color = Color(0.517184, 0.517184, 0.517184, 1)
 radius = 1.39359
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qr43c"]
-size = Vector3(0.498047, 0.55249, 0.592773)
+size = Vector3(1.0802, 1.44707, 1.26314)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2gcuv"]
-radius = 1.87272
+radius = 1.4903
 
 [node name="CharacterBody3D" type="CharacterBody3D"]
 script = ExtResource("1_ly0wf")
@@ -78,9 +78,9 @@ STOP_CHASE_AREA = NodePath("../StopChase")
 transform = Transform3D(1, 5.32907e-15, 0, 0, 1, 0, 0, 0, 1, 3.94153e-08, 0.472616, -0.165321)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="LockOn"]
-transform = Transform3D(1, -1.24345e-14, -1.03739e-12, 0, 1, 0, -3.83693e-13, 0, 1, 0, 0, 0)
+transform = Transform3D(1, -1.24345e-14, -1.03739e-12, 0, 1, 0, -3.83693e-13, 0, 1, 0.159728, -0.195234, 0.0834485)
 shape = SubResource("BoxShape3D_qr43c")
-debug_color = Color(0, 0.6, 0.7, 0.42)
+debug_color = Color(0.7, 0.7, 0.7, 0.121569)
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("4_2gcuv")
