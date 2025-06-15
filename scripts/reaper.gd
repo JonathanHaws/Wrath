@@ -42,7 +42,6 @@ var was_on_floor = true
 var has_been_on_floor = false
 var jump_buffer = 0;
 
-
 func increase_damage_each_spin():
 	DAMAGE_MULTIPLIER *= SPIN_MULTIPLIER
 	ATTACK_AREA.damage = BASE_DAMAGE * DAMAGE_MULTIPLIER
@@ -96,6 +95,12 @@ func _on_animation_finished(animation_name: String) -> void:
 		STAMINA.value -= 10
 func in_interruptible_animation() -> bool:
 	return not ANIM.current_animation in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT"]
+
+func _exit_tree() -> void:
+	if health > 0:
+		Save.data["health"] = health
+	else: 
+		Save.data.erase("health")
 
 func _ready() -> void:
 	

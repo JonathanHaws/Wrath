@@ -1290,6 +1290,7 @@ max_value = 10.0
 value = 10.0
 expands = true
 save_key_max_value = "max_health"
+save_key_value = "health"
 
 [node name="PlayTimeTracker" type="Node" parent="."]
 script = ExtResource("36_5cvkf")
