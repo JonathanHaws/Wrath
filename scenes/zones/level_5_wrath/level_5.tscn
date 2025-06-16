@@ -213,7 +213,7 @@ size = Vector3(2.0672, 6, 2.10349)
 [node name="Cinematics" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Cinematics"]
-transform = Transform3D(0.874629, 0.249685, -0.415548, -1.78814e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
+transform = Transform3D(0.874629, 0.249685, -0.415548, -1.86264e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
 rotation_edit_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cinematics"]
@@ -324,7 +324,6 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("5_rlfmo")
 damage = 10000
-group = "kill_floor"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/KillFloor"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8294, -186.275, -53.309)
@@ -344,10 +343,13 @@ bones/6/rotation = Quaternion(-0.0822429, 0.000622961, 0.134669, 0.987472)
 bones/7/rotation = Quaternion(-0.29291, -2.50809e-14, -6.98353e-08, 0.95614)
 
 [node name="LeftHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.924673, -0.00872152, -0.380662, 0.348244, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583943)
+transform = Transform3D(-0.924673, -0.00872166, -0.380663, 0.348244, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583942)
 
 [node name="RightHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.924673, 0.00872108, 0.380663, -0.348244, -0.423631, -0.836219, 0.153968, -0.905793, 0.394757, 2.01091, 1.84788, -0.0583951)
+transform = Transform3D(-0.685293, 0.149882, 0.712677, -0.722862, -0.258999, -0.640617, 0.0885658, -0.954177, 0.285834, 2.5137, 2.56799, -0.234137)
+
+[node name="Torso" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 2.62901e-13, 2.38419e-07, 2.98741e-08, 0.992119, -0.125302, -2.3654e-07, 0.125302, 0.992119, -1.66777e-22, 1, 0.100295)
 
 [node name="Bounds" type="Node" parent="Interactables/Wrath"]
 

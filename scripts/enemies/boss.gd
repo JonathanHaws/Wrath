@@ -1,12 +1,8 @@
 extends CharacterBody3D
 @export var TARGET: Node3D
 @export var ANIM: AnimationPlayer
-@export var MESH_ANIM: AnimationPlayer
-@export var MESH: Node3D
 @export var PROGRESSION_AREA: Area3D 
 @export var HURT_PARTICLE_SCENE: PackedScene
-@export var DEATH_PARTICLE_SCENE: PackedScene
-@export var BODY_MATERIAL: ShaderMaterial
 @export var DAMAGE_NUMBER: PackedScene
 @export var SAVE_KEY_ENCOUNTERED: String = "wrath_encountered"
 @export var SAVE_KEY_DEFEATED: String = "wrath_defeated"
@@ -40,7 +36,4 @@ func _unlock_progression(enable: bool = true) -> void:
 func _ready() -> void:
 	_unlock_progression(Save.data.has(SAVE_KEY_DEFEATED) and Save.data[SAVE_KEY_DEFEATED])
 	
-func _physics_process(delta: float) -> void:
-	if not ANIM.is_playing(): return
-	ANIM.play_random_attack(global_position, TARGET.global_position,delta)
 		
