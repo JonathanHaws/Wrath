@@ -7,6 +7,7 @@ func _on_body_entered(body)-> void:
 	if group != "" and body.is_in_group(group): return
 	var final_damage = damage + randi_range(-damage_spread, damage_spread)
 	if "health" in body: body.health -= final_damage 
+	elif "HEALTH" in body: body.HEALTH -= final_damage 
 	if "hurt" in body:
 		var arg_count = body.get_method_argument_count("hurt")
 		if arg_count >= 3:

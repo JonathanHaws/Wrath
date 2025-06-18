@@ -1263,7 +1263,7 @@ script = ExtResource("35_lwilf")
 SOUNDS = Array[AudioStream]([ExtResource("15_tgmjc"), ExtResource("4_i3uf6"), ExtResource("5_7kpka"), ExtResource("10_c6xc7"), ExtResource("11_x57ir"), ExtResource("12_ot1qi"), ExtResource("2_ykn11"), ExtResource("3_2tmqw"), ExtResource("20_5d6ad"), ExtResource("7_erto2"), ExtResource("8_wxf0g"), ExtResource("9_rg8br"), ExtResource("10_tro3i"), ExtResource("18_pc8iq"), ExtResource("25_8i186")])
 VOLUME_MULTIPLIERS = Array[float]([0.15, 1.0, 1.0, 1.0, 1.0, 1.0, 0.4, 0.4, 0.4, 0.7, 0.7, 0.7, 0.7, 1.0, 0.0])
 
-[node name="Stamina" parent="." node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
+[node name="Stamina" parent="." instance=ExtResource("36_p2pt0")]
 offset_left = -953.0
 offset_top = 502.0
 offset_right = -830.0
@@ -1275,11 +1275,6 @@ value = 10.0
 rounded = false
 difference_speed = 0.0
 expands = true
-tracked_node = NodePath("..")
-tracked_property = "STAMINA"
-tracked_max_property = "MAX_STAMINA"
-expand_min_value = 10.0
-pixel_expansion_rate = 8.0
 
 [node name="Health" parent="." node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
 offset_left = -953.0
@@ -1290,9 +1285,9 @@ theme_override_styles/fill = ExtResource("34_6g6ue")
 max_value = 10.0
 value = 10.0
 expands = true
-tracked_node = NodePath("..")
 expand_min_value = 80.0
 pixel_expansion_rate = 8.0
+tracked_node = NodePath("..")
 
 [node name="PlayTimeTracker" type="Node" parent="."]
 script = ExtResource("36_5cvkf")

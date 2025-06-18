@@ -6,10 +6,8 @@ extends CharacterBody3D
 @export var DAMAGE_NUMBER: PackedScene
 @export var SAVE_KEY_ENCOUNTERED: String = "wrath_encountered"
 @export var SAVE_KEY_DEFEATED: String = "wrath_defeated"
-@export var HEALTH: ProgressBar
-var health:
-	get: return HEALTH.value
-	set(value): HEALTH.value = clamp(value, HEALTH.min_value, HEALTH.max_value)
+@export var HEALTH: int = 100
+@export var MAX_HEALTH: int = 100
 
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
 	WorldUI.show_symbol(global_position, DAMAGE_NUMBER, 140.0, "Node2D/Label", _damage)
@@ -17,7 +15,7 @@ func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.
 	Shake.tremor(2)
 	if $Audio: $Audio.play_2d_sound(["hit_1", "hit_2", "hit_3"], .8)
 	Particles.spawn(HURT_PARTICLE_SCENE, _position)
-	if health <= 0:
+	if HEALTH <= 0:
 		if PROGRESSION_AREA: PROGRESSION_AREA.monitoring = true
 		ANIM.play("DEATH",0,1,false)
 		Save.data[SAVE_KEY_DEFEATED] = true

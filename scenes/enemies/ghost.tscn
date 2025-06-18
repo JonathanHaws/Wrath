@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://c6e88ycy4nm7x"]
+[gd_scene load_steps=35 format=3 uid="uid://c6e88ycy4nm7x"]
 
 [ext_resource type="Script" uid="uid://dkt2ctfdrjb1k" path="res://scripts/enemies/ghost.gd" id="1_ly0wf"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="1_tijse"]
@@ -18,10 +18,12 @@
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://audio/sfx/enemy/Despawn.wav" id="14_rkfee"]
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://audio/sfx/enemy/Cry.wav" id="15_ign71"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="18_05mu1"]
+[ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="19_agce3"]
+[ext_resource type="StyleBox" uid="uid://bxt584wbuc74u" path="res://shaders/ui/bar/ghost_fill.tres" id="20_fd7dn"]
 
 [sub_resource type="Animation" id="Animation_1m57m"]
 resource_name = "ATTACK"
-length = 3.0
+length = 2.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -29,7 +31,7 @@ tracks/0/path = NodePath("Mesh/MeshInstance3D/Attack/CollisionShape3D:disabled")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.26667, 1.43333),
+"times": PackedFloat32Array(0, 1.2, 1.36666),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -41,7 +43,7 @@ tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.3, 1.86667),
+"times": PackedFloat32Array(0.233333, 1.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.1, 1.0]
@@ -53,7 +55,7 @@ tracks/2/path = NodePath("Mesh/MeshInstance3D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.23333, 1.36667, 1.8),
+"times": PackedFloat32Array(0, 1.16666, 1.3, 1.73333),
 "transitions": PackedFloat32Array(0.287175, 0.15932, 0.129408, 16.5642),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.582888, 0, 0), Vector3(-0.528119, 0, 0), Vector3(0, 0, 0)]
@@ -149,13 +151,17 @@ radius = 0.794747
 size = Vector3(1.0802, 1.44707, 1.26314)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_2gcuv"]
-radius = 1.42038
+radius = 1.00222
 
-[node name="CharacterBody3D" type="CharacterBody3D" groups=["ghost"]]
+[sub_resource type="ViewportTexture" id="ViewportTexture_fd7dn"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Ghost" type="CharacterBody3D" groups=["ghost"]]
 transform = Transform3D(1.62375, 0, 0, 0, 1.62375, 0, 0, 0, 1.62375, 0, 0, 0)
 script = ExtResource("1_ly0wf")
 HURT_PARTICLE_SCENE = ExtResource("2_y2p6q")
 DAMAGE_NUMBER = ExtResource("2_qr43c")
+RESPAWN = true
 
 [node name="Attacks" type="AnimationPlayer" parent="." node_paths=PackedStringArray("TARGET", "BODY")]
 libraries = {
@@ -198,6 +204,7 @@ transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("18_05mu1")
+damage = 15
 group = "ghost"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/MeshInstance3D/Attack"]
@@ -236,4 +243,35 @@ collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StopChase"]
 shape = SubResource("SphereShape3D_2gcuv")
-debug_color = Color(1, 1, 1, 0)
+debug_color = Color(1, 1, 1, 0.0823529)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(257, 32)
+size_2d_override = Vector2i(985, 560)
+
+[node name="Bar" parent="SubViewport" node_paths=PackedStringArray("tracked_node") instance=ExtResource("19_agce3")]
+anchors_preset = -1
+anchor_left = 0.0121792
+anchor_top = 0.0330811
+anchor_right = 0.257492
+anchor_bottom = 0.04697
+offset_left = -2.99653
+offset_top = -8.52541
+offset_right = -2.99652
+offset_bottom = -4.52542
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/fill = ExtResource("20_fd7dn")
+tracked_node = NodePath("../..")
+metadata/_edit_use_anchors_ = true
+
+[node name="Change" parent="SubViewport/Bar" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0, 1.05615, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_fd7dn")
+
+[editable path="SubViewport/Bar"]

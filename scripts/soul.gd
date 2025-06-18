@@ -13,16 +13,16 @@ func _on_body_entered(body: Node) -> void:
 
 func _upgrade() -> void:
 	if HEALTH:
-		if not Save.data.has("max_health"):	Save.data["max_health"] = REAPER.HEALTH.max_value
+		if not Save.data.has("max_health"):	Save.data["max_health"] = REAPER.MAX_HEALTH
 		Save.data["max_health"] += UPGRADE
-		REAPER.HEALTH.max_value = Save.data["max_health"]
-		REAPER.HEALTH.value += UPGRADE
+		REAPER.MAX_HEALTH = Save.data["max_health"]
+		REAPER.HEALTH += UPGRADE
 	
 	else:
-		if not Save.data.has("max_stamina"): Save.data["max_stamina"] = REAPER.STAMINA.max_value
+		if not Save.data.has("max_stamina"): Save.data["max_stamina"] = REAPER.MAX_STAMINA
 		Save.data["max_stamina"] += UPGRADE
-		REAPER.STAMINA.max_value = Save.data["max_stamina"]
-		REAPER.STAMINA.value += UPGRADE
+		REAPER.MAX_STAMINA = Save.data["max_stamina"]
+		REAPER.STAMINA += UPGRADE
 		
 	Save.data[self.name] = true
 	Save.save_game()

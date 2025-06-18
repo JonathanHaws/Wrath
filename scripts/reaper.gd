@@ -25,17 +25,11 @@ extends CharacterBody3D
 @export var ANIM: AnimationPlayer
 @export var MESH_ANIM: AnimationPlayer
 @export var COLLISON_SHAPE: CollisionShape3D
+@export var HEALTH = 80
+@export var MAX_HEALTH = 80
+@export var STAMINA = 10
+@export var MAX_STAMINA = 10
 @export var STAMINA_RECOVERY: float = 20.0
-
-@export_group("UI")
-@export var STAMINA: ProgressBar
-@export var HEALTH: ProgressBar
-var health:
-	get: return HEALTH.value
-	set(value): HEALTH.value = clamp(value, HEALTH.min_value, HEALTH.max_value)
-var stamina:
-	get: return STAMINA.value
-	set(value): STAMINA.value = clamp(value, STAMINA.min_value, STAMINA.max_value)
 
 var falling = COYOTE_TIME;
 var was_on_floor = true
@@ -49,7 +43,7 @@ func reset_spin_damage():
 	DAMAGE_MULTIPLIER = 1
 	ATTACK_AREA.damage = BASE_DAMAGE * DAMAGE_MULTIPLIER
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
-	if HEALTH.value > 0:
+	if HEALTH > 0:
 		if (_group != "kill_floor"):
 			ANIM.play("HURT")
 			Shake.tremor(3)
@@ -77,11 +71,11 @@ func _on_animation_finished(animation_name: String) -> void:
 		MESH_ANIM.playback_default_blend_time = 0.2
 
 	if animation_name == "SPIN":
-		if Input.is_action_pressed("attack") and STAMINA.value > 0:
+		if Input.is_action_pressed("attack") and STAMINA > 0:
 			MESH_ANIM.playback_default_blend_time = 0.0
 			ANIM.play("SPIN", 0.0, 1, false)
 			ANIM.seek(0, true)
-			STAMINA.value -= 10
+			STAMINA -= 10
 			
 		else:
 			MESH_ANIM.playback_default_blend_time = 0.0
@@ -92,20 +86,32 @@ func _on_animation_finished(animation_name: String) -> void:
 		MESH_ANIM.playback_default_blend_time = 0.0
 		ANIM.play("SPIN", 0.0, 1, false)
 		ANIM.seek(0, true) 
-		STAMINA.value -= 10
+		STAMINA -= 10
 func in_interruptible_animation() -> bool:
 	return not ANIM.current_animation in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT"]
 
 func _exit_tree() -> void:
-	if health > 0:
-		Save.data["health"] = health
+	if HEALTH > 0:
+		Save.data["health"] = HEALTH
 	else: 
 		Save.data.erase("health")
 
 func _ready() -> void:
 	
+	if Save.data.has("max_stamina"):
+		MAX_STAMINA = Save.data["max_stamina"]
+	
+	if Save.data.has("max_health"):
+		MAX_HEALTH = Save.data["max_health"]
+		
+	if Save.data.has("health"):
+		HEALTH = Save.data["health"]
+	else:
+		HEALTH = MAX_HEALTH
+	
 	if not Save.data.has("deaths"):
 		Save.data["deaths"] = 0
+	
 
 	if Save.data.has("door_node_name"):		
 		var door_node = get_tree().root.find_child(Save.data["door_node_name"], true, false)
@@ -132,7 +138,7 @@ func _ready() -> void:
 	if $Audio: $Audio.play_2d_sound([Save.data["spawn_sound"]])
 func _process(_delta)-> void:
 	if not Input.is_action_pressed("attack"): 
-		stamina += STAMINA_RECOVERY * _delta	
+		STAMINA = clamp(STAMINA + STAMINA_RECOVERY * _delta, 0, MAX_STAMINA)
 func _physics_process(delta: float) -> void:
 	
 	Squash.settle(MESH,delta)	
@@ -210,3 +216,4 @@ func _physics_process(delta: float) -> void:
 				ANIM.play("FALL")
 			else:
 				ANIM.play("JUMP")
+				
