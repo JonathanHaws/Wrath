@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cjnryqwoknkw5"]
+[gd_scene load_steps=12 format=3 uid="uid://cjnryqwoknkw5"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_kjfq7"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_o1545"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="4_eovt3"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="5_vybla"]
+[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="6_cy8f3"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="7_q5vxo"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/small/world_small.tres" id="8_5spip"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/star/world_star.tres" id="9_fi73v"]
@@ -83,6 +84,28 @@ shape = SubResource("BoxShape3D_8x7wd")
 
 [node name="Start" type="Node3D" parent="Interactables/Exit"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.117285, 0.53226, 8.1402)
+
+[node name="FloatingRocksDoor" parent="Interactables" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("7_q5vxo")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 7.61851, -9.60013, -14.9987)
+AREA = NodePath("Area3D")
+START = NodePath("Start")
+DESTINATION_NODE_NAME = "enter"
+DESTINATION_SCENE = "floating_rocks"
+
+[node name="Area3D" type="Area3D" parent="Interactables/FloatingRocksDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/FloatingRocksDoor/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57746e-08, 5, -0.5)
+shape = SubResource("BoxShape3D_8x7wd")
+
+[node name="Start" type="Node3D" parent="Interactables/FloatingRocksDoor"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.117285, 0.53226, 8.1402)
+
+[node name="Checkpoint" parent="Interactables" instance=ExtResource("6_cy8f3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.98366, -9.11077, 0.396708)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)

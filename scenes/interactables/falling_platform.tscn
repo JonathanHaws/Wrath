@@ -1,0 +1,80 @@
+[gd_scene load_steps=9 format=3 uid="uid://b36oi3g053jo0"]
+
+[ext_resource type="Script" uid="uid://b0ux3y8bj5pp6" path="res://scripts/falling_platform.gd" id="1_pwrpi"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/star/world_star.tres" id="2_qy78s"]
+
+[sub_resource type="Animation" id="Animation_pwrpi"]
+resource_name = "fall"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.07018, 0), Vector3(0, -2, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qy78s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.07018, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cgugp"]
+_data = {
+&"RESET": SubResource("Animation_qy78s"),
+&"fall": SubResource("Animation_pwrpi")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7plis"]
+size = Vector3(5, 0.980957, 5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_ly2p2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pwrpi"]
+size = Vector3(5.12901, 1.28577, 5.24231)
+
+[node name="Falling Platform" type="Node3D"]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07018, 0)
+script = ExtResource("1_pwrpi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_cgugp")
+}
+autoplay = "fall"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29344, 0)
+shape = SubResource("BoxShape3D_7plis")
+debug_color = Color(0.69, 0.69, 0.69, 0.764706)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 1, 0, -5, 0, -2.18557e-07, 0, 3.28918, 0)
+material_override = ExtResource("2_qy78s")
+mesh = SubResource("BoxMesh_ly2p2")
+skeleton = NodePath("../../..")
+
+[node name="Area3D" type="Area3D" parent="AnimatableBody3D"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0320168, 3.60527, -0.0658569)
+shape = SubResource("BoxShape3D_pwrpi")

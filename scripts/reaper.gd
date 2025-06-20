@@ -25,8 +25,8 @@ extends CharacterBody3D
 @export var ANIM: AnimationPlayer
 @export var MESH_ANIM: AnimationPlayer
 @export var COLLISON_SHAPE: CollisionShape3D
-@export var HEALTH = 80
-@export var MAX_HEALTH = 80
+@export var HEALTH = 15
+@export var MAX_HEALTH = 15
 @export var STAMINA = 10
 @export var MAX_STAMINA = 10
 @export var STAMINA_RECOVERY: float = 20.0
