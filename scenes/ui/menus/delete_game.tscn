@@ -12,11 +12,13 @@
 script = ExtResource("1_qj6sj")
 profile_scene = ExtResource("2_pgmrk")
 
-[node name="Back" type="Button" parent="."]
+[node name="Back" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
 layout_mode = 2
 theme = ExtResource("3_itfpo")
 text = "Back"
 script = ExtResource("4_0i6lg")
+scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/tile_main.tscn"
+node_to_replace = NodePath("..")
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
 attenuation = 1e-05

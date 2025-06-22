@@ -1,0 +1,120 @@
+[gd_scene load_steps=8 format=3 uid="uid://cls12q06quifx"]
+
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="1_p0wdw"]
+[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://scripts/ui/menu_audio.gd" id="2_rk8pd"]
+[ext_resource type="FontFile" uid="uid://bseqwgcqg3g1" path="res://fonts/Wrath.otf" id="3_820sv"]
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="4_a5485"]
+[ext_resource type="Script" uid="uid://cqi7s4551j7xa" path="res://scripts/ui/save/continue.gd" id="5_jkqnh"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/main/redirect.gd" id="6_edwim"]
+[ext_resource type="Script" uid="uid://dbk4ank3cq0ny" path="res://scripts/ui/main/quit.gd" id="8_4akrw"]
+
+[node name="Main" type="VBoxContainer"]
+alignment = 1
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+position = Vector2(-779.5, -302.5)
+stream = ExtResource("1_p0wdw")
+attenuation = 1e-05
+bus = &"SFX"
+script = ExtResource("2_rk8pd")
+hover_sound = ExtResource("1_p0wdw")
+press_sound = ExtResource("1_p0wdw")
+hover_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../Options"), NodePath("../Controls"), NodePath("../Credits"), NodePath("../Quit"), NodePath("../LoadGame"), NodePath("../DeleteGame")]
+pressed_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../Options"), NodePath("../Controls"), NodePath("../Credits"), NodePath("../Quit"), NodePath("../LoadGame"), NodePath("../DeleteGame")]
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.641934, 0.641934, 0.641934, 1)
+theme_override_fonts/font = ExtResource("3_820sv")
+theme_override_font_sizes/font_size = 230
+text = "WRATH"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Continue" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_a5485")
+text = "CONTINUE
+"
+icon_alignment = 1
+script = ExtResource("5_jkqnh")
+
+[node name="NewGame" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_a5485")
+text = "NEW GAME"
+icon_alignment = 1
+script = ExtResource("6_edwim")
+scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/new_game.tscn"
+node_to_replace = NodePath("..")
+
+[node name="LoadGame" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_a5485")
+text = "LOAD GAME"
+icon_alignment = 1
+script = ExtResource("6_edwim")
+scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/load_game.tscn"
+node_to_replace = NodePath("..")
+
+[node name="DeleteGame" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_a5485")
+text = "DELETE GAME"
+icon_alignment = 1
+script = ExtResource("6_edwim")
+scene_to_spawn_path = "res://scenes/ui/menus/delete_game.tscn"
+node_to_replace = NodePath("..")
+
+[node name="Options" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_a5485")
+text = "OPTIONS"
+icon_alignment = 1
+script = ExtResource("6_edwim")
+scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/options.tscn"
+node_to_replace = NodePath("..")
+
+[node name="Controls" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("4_a5485")
+text = "CONTROLS
+"
+icon_alignment = 1
+script = ExtResource("6_edwim")
+scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/controls.tscn"
+node_to_replace = NodePath("..")
+
+[node name="Credits" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_a5485")
+text = "CREDITS
+"
+icon_alignment = 1
+script = ExtResource("6_edwim")
+scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/credits.tscn"
+node_to_replace = NodePath("..")
+
+[node name="Quit" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("4_a5485")
+text = "QUIT"
+icon_alignment = 1
+script = ExtResource("8_4akrw")

@@ -12,7 +12,7 @@ func _on_mouse_entered() -> void:
 func _on_pressed() -> void:
 	if not is_inside_tree(): return
 	stream = press_sound
-	playing = true
+	playing = true 
 
 func _connect_signals() -> void:
 	for node in hover_targets:

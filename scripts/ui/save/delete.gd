@@ -23,4 +23,4 @@ func populate_menu_with_saves() -> void:
 		move_child(profile, 0)  
 		
 func _ready() -> void:
-	visibility_changed.connect(populate_menu_with_saves)
+	populate_menu_with_saves()

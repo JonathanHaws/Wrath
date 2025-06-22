@@ -1,0 +1,52 @@
+[gd_scene load_steps=6 format=3 uid="uid://btuwirbaf8ugm"]
+
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="1_ll3a5"]
+[ext_resource type="Script" uid="uid://p76p6xby1wu" path="res://scripts/ui/options/brightness_adjustment.gd" id="3_5m6ci"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/main/redirect.gd" id="5_wtdqe"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="6_684si"]
+[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://scripts/ui/menu_audio.gd" id="7_e8mi2"]
+
+[node name="Graphics" type="VBoxContainer"]
+offset_left = 286.0
+offset_right = 524.0
+offset_bottom = 172.0
+
+[node name="Brightness" type="HBoxContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_ll3a5")
+alignment = 1
+
+[node name="Label" type="Label" parent="Brightness"]
+layout_mode = 2
+theme = ExtResource("1_ll3a5")
+text = "BRIGHTNESS:"
+
+[node name="HSlider" type="HSlider" parent="Brightness"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_ll3a5")
+step = 10.0
+value = 100.0
+script = ExtResource("3_5m6ci")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+stream = ExtResource("6_684si")
+attenuation = 1e-05
+bus = &"SFX"
+script = ExtResource("7_e8mi2")
+hover_sound = ExtResource("6_684si")
+press_sound = ExtResource("6_684si")
+hover_targets = [null, null, null, null, null, null]
+pressed_targets = [null, null]
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_ll3a5")
+text = "BACK
+"
+icon_alignment = 1
+script = ExtResource("5_wtdqe")

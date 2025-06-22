@@ -31,9 +31,8 @@ text = "CONTINUE
 "
 icon_alignment = 1
 script = ExtResource("4_3kwj5")
-target_to_show = NodePath("../../Game/Main")
 
-[node name="Back" type="Button" parent="."]
+[node name="Back" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -42,3 +41,5 @@ text = "BACK
 "
 icon_alignment = 1
 script = ExtResource("4_3kwj5")
+scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/tile_main.tscn"
+node_to_replace = NodePath("..")

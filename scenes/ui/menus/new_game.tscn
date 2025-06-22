@@ -53,7 +53,7 @@ script = ExtResource("4_cu3pp")
 name_input = NodePath("../LineEdit")
 error_label = NodePath("../Label")
 
-[node name="Back" type="Button" parent="."]
+[node name="Back" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -62,5 +62,7 @@ text = "BACK
 "
 icon_alignment = 1
 script = ExtResource("5_b7s21")
+scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/tile_main.tscn"
+node_to_replace = NodePath("..")
 
 [connection signal="visibility_changed" from="Begin" to="Begin" method="grab_focus"]
