@@ -1,32 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://duevw8ikxn5kj"]
+[gd_scene load_steps=3 format=3 uid="uid://duevw8ikxn5kj"]
 
-[ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://scripts/ui/main/pause.gd" id="1_jf58a"]
-[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="2_ndaih"]
-[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="3_vw818"]
-[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://scripts/ui/menu_audio.gd" id="4_bsgfu"]
-[ext_resource type="Script" uid="uid://t0ax5fkj1hi8" path="res://scripts/ui/main/load_scene.gd" id="6_505j4"]
-[ext_resource type="PackedScene" uid="uid://xoc7exqkdoqd" path="res://scenes/ui/menus/main.tscn" id="7_bspeo"]
-[ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://scripts/ui/main/restart.gd" id="8_1q136"]
+[ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://scripts/ui/pause.gd" id="1_7i833"]
+[ext_resource type="PackedScene" uid="uid://ctsp72sayfitw" path="res://scenes/ui/menus/pause_main.tscn" id="4_0k00m"]
 
-[node name="Menu" type="CanvasLayer" node_paths=PackedStringArray("resume_button")]
+[node name="Menu" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_jf58a")
-resume_button = NodePath("CenterContainer/Main/Resume")
-
-[node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-stream = ExtResource("2_ndaih")
-attenuation = 1e-05
-bus = &"SFX"
-script = ExtResource("4_bsgfu")
-hover_sound = ExtResource("2_ndaih")
-press_sound = ExtResource("2_ndaih")
-hover_targets = [NodePath("../CenterContainer/Main/Resume"), null, NodePath("../CenterContainer/Main/Restart"), NodePath(""), NodePath(""), NodePath("../CenterContainer/Main/Quit")]
-pressed_targets = [NodePath("../CenterContainer/Main/Resume"), null, NodePath("../CenterContainer/Main/Restart"), NodePath(""), NodePath(""), NodePath("../CenterContainer/Main/Quit")]
-
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 1920.0
-offset_bottom = 1080.0
-color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+script = ExtResource("1_7i833")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
 anchors_preset = 8
@@ -42,45 +21,13 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
 
-[node name="Main" type="VBoxContainer" parent="CenterContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Resume" type="Button" parent="CenterContainer/Main"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-focus_neighbor_top = NodePath("../Quit")
-theme = ExtResource("3_vw818")
-text = "RESUME"
-icon_alignment = 1
-
-[node name="Restart" type="Button" parent="CenterContainer/Main"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("3_vw818")
-text = "RESTART"
-icon_alignment = 1
-script = ExtResource("8_1q136")
-
-[node name="Quit" type="Button" parent="CenterContainer/Main"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("3_vw818")
-text = "QUIT"
-icon_alignment = 1
-script = ExtResource("6_505j4")
-destination_scene = ExtResource("7_bspeo")
-
-[node name="CenterContainer" type="CenterContainer" parent="CenterContainer/Main"]
+[node name="Main" parent="CenterContainer" instance=ExtResource("4_0k00m")]
 layout_mode = 2
 
-[connection signal="focus_entered" from="CenterContainer/Main/Resume" to="." method="_play_hover_sound"]
-[connection signal="mouse_entered" from="CenterContainer/Main/Resume" to="." method="_play_hover_sound"]
-[connection signal="pressed" from="CenterContainer/Main/Resume" to="." method="_on_resume_pressed"]
-[connection signal="focus_entered" from="CenterContainer/Main/Quit" to="." method="_play_hover_sound"]
-[connection signal="mouse_entered" from="CenterContainer/Main/Quit" to="." method="_play_hover_sound"]
-[connection signal="pressed" from="CenterContainer/Main/Quit" to="." method="_on_quit_pressed"]
+[node name="Audio" parent="CenterContainer/Main/Main" index="3" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+hover_targets = [null, NodePath("../Restart"), NodePath("../Options"), NodePath("../Quit")]
+pressed_targets = [null, NodePath("../Restart"), NodePath("../Options"), NodePath("../Quit")]
+
+[editable path="CenterContainer/Main"]

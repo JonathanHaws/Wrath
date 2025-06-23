@@ -1,5 +1,4 @@
 extends HSlider
-
 @export var default_value: float = 1.4
 
 func _ready() -> void:

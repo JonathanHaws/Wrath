@@ -2,7 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="1_gksqo"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="1_nke8k"]
-[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/main/redirect.gd" id="2_lbh2v"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/redirect.gd" id="2_lbh2v"]
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://scripts/ui/menu_audio.gd" id="2_thn1f"]
 
 [node name="Controls" type="VBoxContainer"]

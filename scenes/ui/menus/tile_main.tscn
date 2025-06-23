@@ -5,7 +5,7 @@
 [ext_resource type="FontFile" uid="uid://bseqwgcqg3g1" path="res://fonts/Wrath.otf" id="3_820sv"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="4_a5485"]
 [ext_resource type="Script" uid="uid://cqi7s4551j7xa" path="res://scripts/ui/save/continue.gd" id="5_jkqnh"]
-[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/main/redirect.gd" id="6_edwim"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/redirect.gd" id="6_edwim"]
 [ext_resource type="Script" uid="uid://dbk4ank3cq0ny" path="res://scripts/ui/main/quit.gd" id="8_4akrw"]
 
 [node name="Main" type="VBoxContainer"]
@@ -83,7 +83,7 @@ theme = ExtResource("4_a5485")
 text = "OPTIONS"
 icon_alignment = 1
 script = ExtResource("6_edwim")
-scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/options.tscn"
+scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/title_options.tscn"
 node_to_replace = NodePath("..")
 
 [node name="Controls" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
