@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://xoc7exqkdoqd"]
+[gd_scene load_steps=16 format=3 uid="uid://xoc7exqkdoqd"]
 
 [ext_resource type="AudioStream" uid="uid://bskcgvhx85bs3" path="res://audio/music/menu.ogg" id="1_nv4kp"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="2_3bflh"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c1e26hcf0nrup" path="res://scenes/ui/menus/delete_game.tscn" id="10_yejyp"]
 [ext_resource type="PackedScene" uid="uid://b3i01lg3stgkg" path="res://scenes/ui/menus/credits.tscn" id="11_nv4kp"]
 [ext_resource type="PackedScene" uid="uid://bbnvaw1wjbpv0" path="res://scenes/ui/menus/controls.tscn" id="12_yejyp"]
+[ext_resource type="PackedScene" uid="uid://bw8l5s2wnqr5" path="res://models/blender/castel.glb" id="15_3bflh"]
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://scripts/ui/menu_audio.gd" id="15_yejyp"]
 
 [node name="Menu" type="CanvasLayer"]
@@ -180,6 +181,9 @@ layout_mode = 2
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
+
+[node name="castel" parent="." instance=ExtResource("15_3bflh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0485865, 0, 0.283243)
 
 [connection signal="focus_entered" from="CenterContainer/Main/Continue" to="." method="_play_hover_sound"]
 [connection signal="pressed" from="CenterContainer/Main/Continue" to="." method="_on_game_pressed"]
