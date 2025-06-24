@@ -1,0 +1,162 @@
+[gd_scene load_steps=16 format=3 uid="uid://dmf0vo8jrm34a"]
+
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_mb05r"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="2_80ox6"]
+[ext_resource type="Script" uid="uid://cdyxx24pnv4pt" path="res://scripts/world_environment.gd" id="3_80ox6"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="4_42w7d"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="5_mqk0e"]
+[ext_resource type="PackedScene" uid="uid://615n66a3l256" path="res://models/blender/tower.blend" id="6_hcc5w"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="6_mb05r"]
+[ext_resource type="Material" uid="uid://bofjw8wwuxc71" path="res://shaders/materials/bricks/castle/castle_big.tres" id="8_u51x1"]
+[ext_resource type="Material" uid="uid://pl3nbr4toayv" path="res://shaders/materials/rocks.tres" id="9_u51x1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1oyht"]
+sky_top_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
+sky_horizon_color = Color(0.1998, 0.21852, 0.27, 1)
+sky_curve = 0.197934
+ground_bottom_color = Color(0.0582244, 0.0601679, 0.0688249, 1)
+ground_horizon_color = Color(0.2, 0.219608, 0.270588, 1)
+ground_curve = 0.0579282
+sun_angle_max = 0.0
+sun_curve = 151.205
+
+[sub_resource type="Sky" id="Sky_clymx"]
+sky_material = SubResource("ProceduralSkyMaterial_1oyht")
+
+[sub_resource type="Environment" id="Environment_rnikm"]
+background_mode = 2
+background_color = Color(0.860369, 0.860369, 0.860369, 1)
+sky = SubResource("Sky_clymx")
+ambient_light_source = 2
+ambient_light_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
+ambient_light_energy = 16.0
+reflected_light_source = 2
+ssao_radius = 1.75
+ssao_intensity = 0.93
+ssao_power = 9.74701
+ssao_light_affect = 1.0
+ssao_ao_channel_affect = 1.0
+glow_bloom = 0.2
+fog_enabled = true
+fog_light_color = Color(0.0470588, 0.0588235, 0.0705882, 1)
+fog_density = 0.0
+fog_sky_affect = 0.0
+fog_height = -45.0
+fog_height_density = 0.05
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+volumetric_fog_albedo = Color(0.08, 0.08, 0.08, 1)
+volumetric_fog_emission = Color(0.187176, 0.187176, 0.187176, 1)
+volumetric_fog_detail_spread = 0.965936
+adjustment_enabled = true
+adjustment_brightness = 1.3
+adjustment_saturation = 1.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
+size = Vector3(7, 11, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_80ox6"]
+size = Vector3(1625.56, 260, 1361.68)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
+vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[node name="Main" type="Node3D"]
+
+[node name="Menu" parent="." instance=ExtResource("1_mb05r")]
+
+[node name="Enviroment" type="Node" parent="."]
+
+[node name="Weather" parent="Enviroment" instance=ExtResource("2_80ox6")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="Enviroment"]
+environment = SubResource("Environment_rnikm")
+script = ExtResource("3_80ox6")
+
+[node name="Lights" type="Node" parent="Enviroment"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 127.777, 22.9625, -11.3288)
+light_color = Color(0.97, 0.62856, 0.5432, 1)
+light_energy = 20.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 101.01
+
+[node name="Lights" type="Node3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(0.437861, -0.898732, -0.0236244, 0.664543, 0.305843, 0.681794, -0.605525, -0.314231, 0.731163, 118.618, 29, 111.449)
+light_color = Color(0.505344, 0.505344, 0.505344, 1)
+light_energy = 6.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 175.851, 139.071, -60.1603)
+light_energy = 48.995
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 114.875
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 10.2977, 7.22387, -11.3288)
+light_color = Color(0.97, 0.74496, 0.6887, 1)
+light_energy = 20.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 101.01
+
+[node name="Interactables" type="Node" parent="."]
+
+[node name="Reaper" parent="Interactables" instance=ExtResource("4_42w7d")]
+transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -77.7654, -0.529366, 8.67266)
+
+[node name="Exit" parent="Interactables" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("5_mqk0e")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 140.857, 2.12855, -13.3975)
+AREA = NodePath("Area3D")
+START = NodePath("Start")
+DESTINATION_NODE_NAME = "Enter"
+DESTINATION_SCENE = "level_1"
+
+[node name="Area3D" type="Area3D" parent="Interactables/Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Exit/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57746e-08, 5, -0.5)
+shape = SubResource("BoxShape3D_8x7wd")
+
+[node name="Start" type="Node3D" parent="Interactables/Exit"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.117285, 0.53226, 5.98879)
+
+[node name="KillFloor" type="Area3D" parent="Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 1.88324, 19)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("6_mb05r")
+damage = 10000
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/KillFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.4935, -186.275, 36.6345)
+shape = SubResource("BoxShape3D_80ox6")
+debug_color = Color(0.7, 0.7, 0.7, 0.0196078)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+navigation_mesh = SubResource("NavigationMesh_jc5vn")
+
+[node name="Castle" parent="." instance=ExtResource("6_hcc5w")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 135.739, -0.837677, -12.8293)
+
+[node name="tower" parent="Castle" index="0"]
+surface_material_override/0 = ExtResource("8_u51x1")
+surface_material_override/1 = ExtResource("9_u51x1")
+
+[connection signal="body_entered" from="Interactables/KillFloor" to="Interactables/KillFloor" method="_on_body_entered"]
+
+[editable path="Castle"]

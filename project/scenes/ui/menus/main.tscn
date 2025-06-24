@@ -5,10 +5,10 @@
 [ext_resource type="FontFile" uid="uid://bseqwgcqg3g1" path="res://fonts/Wrath.otf" id="4_htcvh"]
 [ext_resource type="Script" uid="uid://cqi7s4551j7xa" path="res://scripts/ui/save/continue.gd" id="5_0l0lq"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="5_qgbil"]
-[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/main/redirect.gd" id="6_1t5jr"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/redirect.gd" id="6_1t5jr"]
 [ext_resource type="Script" uid="uid://dbk4ank3cq0ny" path="res://scripts/ui/main/quit.gd" id="7_1of7r"]
 [ext_resource type="PackedScene" uid="uid://dt1c8xw6lwsk5" path="res://scenes/ui/menus/new_game.tscn" id="8_kb74t"]
-[ext_resource type="PackedScene" uid="uid://fxlgnts7apla" path="res://scenes/ui/menus/options.tscn" id="9_kb74t"]
+[ext_resource type="PackedScene" uid="uid://fxlgnts7apla" path="res://scenes/ui/menus/title_options.tscn" id="9_kb74t"]
 [ext_resource type="PackedScene" uid="uid://cpgt71w6iukaj" path="res://scenes/ui/menus/load_game.tscn" id="9_nv4kp"]
 [ext_resource type="PackedScene" uid="uid://c1e26hcf0nrup" path="res://scenes/ui/menus/delete_game.tscn" id="10_yejyp"]
 [ext_resource type="PackedScene" uid="uid://b3i01lg3stgkg" path="res://scenes/ui/menus/credits.tscn" id="11_nv4kp"]
@@ -88,7 +88,6 @@ theme = ExtResource("5_qgbil")
 text = "NEW GAME"
 icon_alignment = 1
 script = ExtResource("6_1t5jr")
-target_to_show = NodePath("../../New")
 
 [node name="LoadGame" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
@@ -98,7 +97,6 @@ theme = ExtResource("5_qgbil")
 text = "LOAD GAME"
 icon_alignment = 1
 script = ExtResource("6_1t5jr")
-target_to_show = NodePath("../../Load")
 
 [node name="DeleteGame" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
@@ -108,7 +106,6 @@ theme = ExtResource("5_qgbil")
 text = "DELETE GAME"
 icon_alignment = 1
 script = ExtResource("6_1t5jr")
-target_to_show = NodePath("../../Delete")
 
 [node name="Options" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
@@ -118,7 +115,6 @@ theme = ExtResource("5_qgbil")
 text = "OPTIONS"
 icon_alignment = 1
 script = ExtResource("6_1t5jr")
-target_to_show = NodePath("../../Options")
 
 [node name="Controls" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
@@ -129,7 +125,6 @@ text = "CONTROLS
 "
 icon_alignment = 1
 script = ExtResource("6_1t5jr")
-target_to_show = NodePath("../../Controls")
 
 [node name="Credits" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
@@ -140,7 +135,6 @@ text = "CREDITS
 "
 icon_alignment = 1
 script = ExtResource("6_1t5jr")
-target_to_show = NodePath("../../Credits")
 
 [node name="Quit" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2

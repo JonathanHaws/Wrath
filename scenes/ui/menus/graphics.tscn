@@ -76,6 +76,7 @@ script = ExtResource("3_5m6ci")
 default_value = 1.3
 
 [node name="SSAOButton" type="CheckButton" parent="."]
+layout_mode = 0
 offset_left = 81.0
 offset_top = -96.0
 offset_right = 125.0
@@ -95,7 +96,7 @@ text = "BACK
 "
 icon_alignment = 1
 script = ExtResource("5_wtdqe")
-scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/pause_options.tscn"
+scene_to_spawn_path = "res://scenes/ui/menus/pause_options.tscn"
 node_to_replace = NodePath("..")
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]

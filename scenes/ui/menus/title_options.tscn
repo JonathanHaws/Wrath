@@ -119,7 +119,7 @@ text = "BACK
 "
 icon_alignment = 1
 script = ExtResource("5_0kcqh")
-scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/tile_main.tscn"
+scene_to_spawn_path = "res://scenes/ui/menus/tile_main.tscn"
 node_to_replace = NodePath("..")
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]

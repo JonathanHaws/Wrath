@@ -1137,13 +1137,12 @@ particle_scenes = Array[PackedScene]([ExtResource("16_p2pt0")])
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, -0.117121, -0.993118, 0, 0.993118, -0.117121, 0.0248996, 2.5027, -0.253531)
-light_color = Color(0.74, 0.54279, 0.4366, 1)
+light_color = Color(0.584424, 0.453955, 0.383155, 1)
 light_energy = 6.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 30.0
-omni_attenuation = 1.5
 
 [node name="reaper" parent="Mesh" instance=ExtResource("3_k4avc")]
 

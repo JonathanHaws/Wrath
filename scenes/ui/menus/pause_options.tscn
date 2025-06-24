@@ -132,7 +132,7 @@ bus = &"SFX"
 script = ExtResource("7_4uxce")
 hover_sound = ExtResource("6_w0nh5")
 press_sound = ExtResource("6_w0nh5")
-hover_targets = [NodePath("../Master/HSlider"), NodePath("../SFX/HSlider"), NodePath("../Music/HSlider"), NodePath(""), NodePath("../WindowMode"), NodePath("../Back")]
+hover_targets = [NodePath("../Master/HSlider"), NodePath("../SFX/HSlider"), NodePath("../Music/HSlider"), null, NodePath("../WindowMode"), NodePath("../Back")]
 pressed_targets = [NodePath("../WindowMode"), NodePath("../Back")]
 
 [connection signal="visibility_changed" from="Options/Master" to="Options/Master" method="grab_focus"]

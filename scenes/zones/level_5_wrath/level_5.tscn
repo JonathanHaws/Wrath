@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/blender/greed.blend" id="13_v1s4o"]
 [ext_resource type="Material" uid="uid://csibvbbqy3q3e" path="res://shaders/materials/statue.tres" id="14_mgos0"]
 [ext_resource type="PackedScene" uid="uid://b0t7a64rsk4nk" path="res://models/blender/wrath.blend" id="15_edumt"]
-[ext_resource type="PackedScene" uid="uid://diwdaoucmix4i" path="res://models/blender/level.blend" id="16_7fvs5"]
+[ext_resource type="PackedScene" uid="uid://diwdaoucmix4i" path="res://models/blender/hub.blend" id="16_7fvs5"]
 [ext_resource type="Material" uid="uid://cy0ev2opeyd34" path="res://shaders/materials/bricks/star/star.tres" id="17_e52ow"]
 [ext_resource type="Material" uid="uid://8p0im5f4mlk7" path="res://shaders/materials/bricks/big/world_big.tres" id="18_ovh7g"]
 [ext_resource type="PackedScene" uid="uid://7mrheb4oio5g" path="res://scenes/interactables/arch.tscn" id="19_3yoog"]
@@ -213,7 +213,7 @@ size = Vector3(2.0672, 6, 2.10349)
 [node name="Cinematics" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Cinematics"]
-transform = Transform3D(0.874629, 0.249685, -0.415548, -1.78814e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
+transform = Transform3D(0.874629, 0.249685, -0.415548, -1.86264e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
 rotation_edit_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cinematics"]
@@ -344,6 +344,12 @@ bones/7/rotation = Quaternion(-0.29291, -2.50809e-14, -6.98353e-08, 0.95614)
 
 [node name="LeftHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="1"]
 transform = Transform3D(-0.924673, -0.00872166, -0.380663, 0.348244, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583942)
+
+[node name="RightHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
+transform = Transform3D(-0.685293, 0.149882, 0.712677, -0.722862, -0.258999, -0.640617, 0.0885658, -0.954177, 0.285834, 2.5137, 2.56799, -0.234137)
+
+[node name="Torso" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 2.62901e-13, 2.38419e-07, 2.98741e-08, 0.992119, -0.125302, -2.3654e-07, 0.125302, 0.992119, -1.66777e-22, 1, 0.100295)
 
 [node name="Bounds" type="Node" parent="Interactables/Wrath"]
 

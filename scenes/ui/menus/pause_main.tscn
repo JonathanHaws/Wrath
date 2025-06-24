@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://scripts/ui/menu_audio.gd" id="3_1ouvq"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/redirect.gd" id="3_xaxel"]
 [ext_resource type="Script" uid="uid://t0ax5fkj1hi8" path="res://scripts/ui/main/load_scene.gd" id="4_snl16"]
-[ext_resource type="PackedScene" uid="uid://xoc7exqkdoqd" path="res://scenes/ui/menus/main.tscn" id="5_vpf6e"]
+[ext_resource type="PackedScene" uid="uid://xoc7exqkdoqd" path="res://scenes/ui/menus/title_screen.tscn" id="5_xaxel"]
 
 [node name="CenterContainer" type="CenterContainer"]
 offset_top = 4.0
@@ -40,7 +40,7 @@ theme = ExtResource("1_dcmog")
 text = "OPTIONS"
 icon_alignment = 1
 script = ExtResource("3_xaxel")
-scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/pause_options.tscn"
+scene_to_spawn_path = "res://scenes/ui/menus/pause_options.tscn"
 node_to_replace = NodePath("../..")
 
 [node name="Quit" type="Button" parent="Main"]
@@ -51,7 +51,7 @@ theme = ExtResource("1_dcmog")
 text = "QUIT"
 icon_alignment = 1
 script = ExtResource("4_snl16")
-destination_scene = ExtResource("5_vpf6e")
+destination_scene = ExtResource("5_xaxel")
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="Main" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
 position = Vector2(-960, -544)
@@ -61,5 +61,5 @@ bus = &"SFX"
 script = ExtResource("3_1ouvq")
 hover_sound = ExtResource("2_vpf6e")
 press_sound = ExtResource("2_vpf6e")
-hover_targets = [NodePath(""), NodePath("../Restart"), NodePath("../Options"), NodePath("../Quit")]
-pressed_targets = [NodePath(""), NodePath("../Restart"), NodePath("../Options"), NodePath("../Quit")]
+hover_targets = [null, NodePath("../Restart"), NodePath("../Options"), NodePath("../Quit")]
+pressed_targets = [null, NodePath("../Restart"), NodePath("../Options"), NodePath("../Quit")]

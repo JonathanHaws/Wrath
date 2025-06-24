@@ -50,7 +50,7 @@ theme = ExtResource("4_a5485")
 text = "NEW GAME"
 icon_alignment = 1
 script = ExtResource("6_edwim")
-scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/new_game.tscn"
+scene_to_spawn_path = "res://scenes/ui/menus/new_game.tscn"
 node_to_replace = NodePath("..")
 
 [node name="LoadGame" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
@@ -61,7 +61,7 @@ theme = ExtResource("4_a5485")
 text = "LOAD GAME"
 icon_alignment = 1
 script = ExtResource("6_edwim")
-scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/load_game.tscn"
+scene_to_spawn_path = "res://scenes/ui/menus/load_game.tscn"
 node_to_replace = NodePath("..")
 
 [node name="DeleteGame" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
@@ -83,7 +83,7 @@ theme = ExtResource("4_a5485")
 text = "OPTIONS"
 icon_alignment = 1
 script = ExtResource("6_edwim")
-scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/title_options.tscn"
+scene_to_spawn_path = "res://scenes/ui/menus/title_options.tscn"
 node_to_replace = NodePath("..")
 
 [node name="Controls" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
@@ -95,7 +95,7 @@ text = "CONTROLS
 "
 icon_alignment = 1
 script = ExtResource("6_edwim")
-scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/controls.tscn"
+scene_to_spawn_path = "res://scenes/ui/menus/controls.tscn"
 node_to_replace = NodePath("..")
 
 [node name="Credits" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
@@ -107,7 +107,7 @@ text = "CREDITS
 "
 icon_alignment = 1
 script = ExtResource("6_edwim")
-scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/credits.tscn"
+scene_to_spawn_path = "res://scenes/ui/menus/credits.tscn"
 node_to_replace = NodePath("..")
 
 [node name="Quit" type="Button" parent="."]

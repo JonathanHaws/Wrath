@@ -41,5 +41,5 @@ text = "BACK
 "
 icon_alignment = 1
 script = ExtResource("4_3kwj5")
-scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/tile_main.tscn"
+scene_to_spawn_path = "res://scenes/ui/menus/tile_main.tscn"
 node_to_replace = NodePath("..")
