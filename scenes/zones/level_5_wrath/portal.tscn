@@ -1,0 +1,294 @@
+[gd_scene load_steps=27 format=3 uid="uid://5n4cvh6cqc4p"]
+
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_bn3fv"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="2_ijgg3"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_imgxd"]
+[ext_resource type="PackedScene" uid="uid://yxfcfpfrgfp4" path="res://models/blender/portal.blend" id="4_brddq"]
+[ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://scripts/portal.gd" id="5_k1x1u"]
+[ext_resource type="AudioStream" uid="uid://btssfp845kee" path="res://audio/music/escape.ogg" id="6_dtxwk"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="7_cqhjy"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="8_tbwp6"]
+[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="9_5taq5"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/star/world_star.tres" id="10_4n06m"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/small/world_small.tres" id="11_5va0w"]
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="12_2uble"]
+[ext_resource type="FontFile" uid="uid://bseqwgcqg3g1" path="res://fonts/Wrath.otf" id="13_tip4x"]
+
+[sub_resource type="Animation" id="Animation_gpgiy"]
+resource_name = "ESCAPE"
+length = 70.0
+tracks/0/type = "audio"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AudioStreamPlayer2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("6_dtxwk")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/0/use_blend = false
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0.0430391, 0.0430392, 0.0430391, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../ColorRect/Label:visible")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 3.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ses4i"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../ColorRect/Label:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ses4i"]
+_data = {
+&"ESCAPE": SubResource("Animation_gpgiy"),
+&"RESET": SubResource("Animation_ses4i")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1waye"]
+size = Vector3(22.0024, 14.7581, 7.83386)
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_ses4i"]
+
+[sub_resource type="AnimationNodeAdd2" id="AnimationNodeAdd2_q6mxo"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o5gfp"]
+animation = &"Burn_2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6nidi"]
+animation = &"Burn_1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cr866"]
+animation = &"Spin"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gclgv"]
+graph_offset = Vector2(-291.236, 251.897)
+nodes/Add2/node = SubResource("AnimationNodeAdd2_q6mxo")
+nodes/Add2/position = Vector2(60, 300)
+"nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_ses4i")
+"nodes/Add2 2/position" = Vector2(280, 320)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_cr866")
+nodes/Animation/position = Vector2(-220, 440)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_o5gfp")
+"nodes/Animation 2/position" = Vector2(-120, 240)
+"nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_6nidi")
+"nodes/Animation 3/position" = Vector2(40, 560)
+nodes/output/position = Vector2(560, 360)
+node_connections = [&"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Animation 3", &"output", 0, &"Add2 2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
+size = Vector3(7, 11, 2)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
+vertices = PackedVector3Array(2.06018, 0.25, -23.75, 1.81018, 0.25, -34.5, -22.1898, 0.25, -34.5, 22.5602, 0.25, 29.25, 22.5602, 0.25, -23.75, -22.1898, 0.25, 29.25, 2.81018, 10, -34.5, 2.81018, 10, -24.75, 22.5602, 10, -24.75, 22.5602, 10, -34.5, 3.06018, 0.25, -34.5, 3.06018, 0.25, -25, 22.5602, 0.25, -25, 22.5602, 0.25, -34.5)
+polygons = [PackedInt32Array(2, 1, 0), PackedInt32Array(0, 4, 3), PackedInt32Array(2, 0, 5), PackedInt32Array(5, 0, 3), PackedInt32Array(9, 8, 6), PackedInt32Array(6, 8, 7), PackedInt32Array(13, 12, 10), PackedInt32Array(10, 12, 11)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_cr866"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Menu" parent="." instance=ExtResource("1_bn3fv")]
+visible = false
+
+[node name="Enviroment" type="Node" parent="."]
+
+[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("2_ijgg3")]
+
+[node name="Weather" parent="Enviroment" instance=ExtResource("3_imgxd")]
+
+[node name="Lights" type="Node" parent="Enviroment"]
+
+[node name="Lights" type="Node3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(-0.863752, 0.338228, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528203, 6.96341, 1.1386, -1.43818)
+light_color = Color(0.29, 0.29, 0.29, 1)
+light_energy = 100.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.2
+omni_range = 101.01
+
+[node name="Portal Light" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.30496, 26.0057)
+light_color = Color(0.294299, 0.67518, 0.743146, 1)
+light_energy = 15.0
+omni_range = 45.0382
+
+[node name="Portal Light2" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2085, -0.765566, 26.0057)
+light_color = Color(0.294299, 0.67518, 0.743146, 1)
+light_energy = 2.0
+omni_range = 45.0382
+
+[node name="Portal Light3" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.34703, -0.765566, 26.0057)
+light_color = Color(0.294299, 0.67518, 0.743146, 1)
+light_energy = 2.0
+omni_range = 45.0382
+
+[node name="Interactables" type="Node" parent="."]
+
+[node name="PlayerSpot" type="Node3D" parent="Interactables"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3.82572e-06, -9.06787, 1.26405)
+
+[node name="Portal" parent="Interactables" node_paths=PackedStringArray("AREA", "ANIM", "REAPER", "PLAYER_SPOT") instance=ExtResource("4_brddq")]
+transform = Transform3D(-52.205, 0, -7.88274e-06, 0, 52.205, 0, 7.88274e-06, 0, -52.205, 5.76521e-08, -9.57001, 26.9825)
+script = ExtResource("5_k1x1u")
+AREA = NodePath("Area3D")
+ANIM = NodePath("Cutscene")
+REAPER = NodePath("../Reaper")
+PLAYER_SPOT = NodePath("../PlayerSpot")
+
+[node name="spin" parent="Interactables/Portal" index="1"]
+transform = Transform3D(0.808369, 0.588677, 0, -0.588677, 0.808369, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+
+[node name="fire1_002" parent="Interactables/Portal/flames_2" index="0"]
+transform = Transform3D(-0.822561, -0.533532, 7.12329e-16, 0.533532, -0.822561, 4.54644e-15, -1.87645e-15, 4.20197e-15, 0.98044, 15.7583, 0.222717, -15.5292)
+
+[node name="fire1_001" parent="Interactables/Portal/flames_1" index="0"]
+transform = Transform3D(-0.822561, -0.533532, 7.12329e-16, 0.533532, -0.822561, 4.54644e-15, -1.87645e-15, 4.20197e-15, 0.98044, 15.7583, 0.222717, -15.7353)
+
+[node name="AnimationPlayer" parent="Interactables/Portal" index="4"]
+autoplay = "Spin"
+
+[node name="Cutscene" type="AnimationPlayer" parent="Interactables/Portal"]
+libraries = {
+&"": SubResource("AnimationLibrary_ses4i")
+}
+autoplay = "RESET"
+
+[node name="Area3D" type="Area3D" parent="Interactables/Portal"]
+transform = Transform3D(-0.0191553, 0, 2.89236e-09, 0, 0.0191553, 0, -2.89236e-09, 0, -0.0191553, -7.69387e-08, 0.183316, 0.516856)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Portal/Area3D"]
+transform = Transform3D(1, 0, -9.6494e-18, 0, 1, 0, 9.6494e-18, 0, 1, -0.791359, -2.34534, 25.9541)
+shape = SubResource("BoxShape3D_1waye")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Interactables/Portal"]
+max_distance = 5000.0
+attenuation = 1e-05
+
+[node name="AnimationTree" type="AnimationTree" parent="Interactables/Portal"]
+tree_root = SubResource("AnimationNodeBlendTree_gclgv")
+anim_player = NodePath("../AnimationPlayer")
+parameters/Add2/add_amount = 1.0
+"parameters/Add2 2/add_amount" = 1.0
+
+[node name="Reaper" parent="Interactables" instance=ExtResource("7_cqhjy")]
+transform = Transform3D(-0.995788, 0, 0.0916933, 0, 1, 0, -0.0916933, 0, -0.995788, 0, -7.999, -24.667)
+
+[node name="Doors" type="Node" parent="Interactables"]
+
+[node name="PortalDoor" parent="Interactables/Doors" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("8_tbwp6")]
+transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, -9.094, -34.539)
+AREA = NodePath("Area3D")
+START = NodePath("Start")
+DESTINATION_NODE_NAME = "Exit"
+DESTINATION_SCENE = "level_7"
+
+[node name="Area3D" type="Area3D" parent="Interactables/Doors/PortalDoor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Doors/PortalDoor/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57746e-08, 5, -0.5)
+shape = SubResource("BoxShape3D_8x7wd")
+
+[node name="Start" type="Node3D" parent="Interactables/Doors/PortalDoor"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.117285, 1, 8.1402)
+
+[node name="Wisps" type="Node" parent="Interactables"]
+
+[node name="Body" parent="Interactables/Wisps" instance=ExtResource("9_5taq5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4622, -7.08744, -30.8438)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+navigation_mesh = SubResource("NavigationMesh_jc5vn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="NavigationRegion3D"]
+transform = Transform3D(56.136, 0, 0, 0, 1, 0, 0, 0, 82.5, 0, -0.550023, 0)
+material_override = ExtResource("10_4n06m")
+mesh = SubResource("BoxMesh_cr866")
+skeleton = NodePath("../..")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
+material_override = ExtResource("11_5va0w")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0601807, 9.93213, -2.54907)
+flip_faces = true
+size = Vector3(46, 20, 65)
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0, 0, 0, 0)
+
+[node name="Label" type="Label" parent="ColorRect"]
+visible = false
+layout_mode = 0
+offset_left = 678.0
+offset_top = 484.0
+offset_right = 1245.0
+offset_bottom = 598.0
+theme = ExtResource("12_2uble")
+theme_override_fonts/font = ExtResource("13_tip4x")
+theme_override_font_sizes/font_size = 56
+text = "THANK YOU FOR PLAYING!"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[editable path="Interactables/Portal"]

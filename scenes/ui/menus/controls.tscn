@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbnvaw1wjbpv0"]
+
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="1_gksqo"]
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="1_nke8k"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/redirect.gd" id="2_lbh2v"]
+[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://scripts/ui/menu_audio.gd" id="2_thn1f"]
+
+[node name="Controls" type="VBoxContainer"]
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+stream = ExtResource("1_gksqo")
+attenuation = 1e-05
+bus = &"SFX"
+script = ExtResource("2_thn1f")
+hover_sound = ExtResource("1_gksqo")
+press_sound = ExtResource("1_gksqo")
+hover_targets = [NodePath("../Back")]
+pressed_targets = [NodePath("../Back")]
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 2
+theme = ExtResource("1_nke8k")
+bbcode_enabled = true
+text = "[center] [color=#ececec]Goal[/color][color=#858585]- Escape limbo and regain life by defeating sin incarnate[/color]
+[color=#ececec]Wasd / Arrows / Mouse / Space [/color][color=#858585]- Move / Sprint / Look / Jump [/color]
+[color=#ececec]Hold Mouse [/color][color=#858585]- Spin Attack  [/color]
+[color=#ececec]Middle Mouse[/color][color=#858585]- Camera lock on [/color]
+[/center] "
+fit_content = true
+autowrap_mode = 0
+
+[node name="Back" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_nke8k")
+text = "BACK
+"
+icon_alignment = 1
+script = ExtResource("2_lbh2v")
+scene_to_spawn_path = "C:/Users/Jonathan/Desktop/REPOS/Wrath/scenes/ui/menus/tile_main.tscn"
+node_to_replace = NodePath("..")

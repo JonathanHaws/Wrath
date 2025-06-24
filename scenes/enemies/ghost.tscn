@@ -1,0 +1,277 @@
+[gd_scene load_steps=35 format=3 uid="uid://c6e88ycy4nm7x"]
+
+[ext_resource type="Script" uid="uid://dkt2ctfdrjb1k" path="res://scripts/enemies/ghost.gd" id="1_ly0wf"]
+[ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="1_tijse"]
+[ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://scenes/ui/damage_numbers.tscn" id="2_qr43c"]
+[ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/particles/ghost_hurt.tscn" id="2_y2p6q"]
+[ext_resource type="Script" uid="uid://l4b37mckqf8k" path="res://scripts/enemies/proximity_based_random_attacks.gd" id="4_1m57m"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://scripts/audio_one_shot.gd" id="4_2gcuv"]
+[ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://audio/sfx/enemy/Hit_1.wav" id="5_y2p6q"]
+[ext_resource type="AudioStream" uid="uid://b4dyx5m8hsynq" path="res://audio/sfx/enemy/Hit_2.wav" id="6_1m57m"]
+[ext_resource type="AudioStream" uid="uid://bv7cgqlt3sbtb" path="res://audio/sfx/enemy/Hit_3.wav" id="7_05mu1"]
+[ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/enemy/Slam.wav" id="8_agce3"]
+[ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://audio/sfx/brick/Crumble_1.wav" id="9_fd7dn"]
+[ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/brick/Crumble_2.wav" id="10_dfr5h"]
+[ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://audio/sfx/brick/Crumble_3.wav" id="11_n368u"]
+[ext_resource type="AudioStream" uid="uid://bg0rsvkfwvyq1" path="res://audio/sfx/brick/Crumble_4.wav" id="12_hp215"]
+[ext_resource type="AudioStream" uid="uid://dejgyyvoucgey" path="res://audio/sfx/enemy/Cry_3.wav" id="13_pyqwo"]
+[ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://audio/sfx/enemy/Despawn.wav" id="14_rkfee"]
+[ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://audio/sfx/enemy/Cry.wav" id="15_ign71"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="18_05mu1"]
+[ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="19_agce3"]
+[ext_resource type="StyleBox" uid="uid://bxt584wbuc74u" path="res://shaders/ui/bar/ghost_fill.tres" id="20_fd7dn"]
+
+[sub_resource type="Animation" id="Animation_1m57m"]
+resource_name = "ATTACK"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/MeshInstance3D/Attack/CollisionShape3D:disabled")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.2, 1.36666),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.233333, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.1, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/MeshInstance3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.16666, 1.3, 1.73333),
+"transitions": PackedFloat32Array(0.287175, 0.15932, 0.129408, 16.5642),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.582888, 0, 0), Vector3(-0.528119, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_05mu1"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Attacks:ATTACKING")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/MeshInstance3D/Attack/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/MeshInstance3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_agce3"]
+_data = {
+&"ATTACK": SubResource("Animation_1m57m"),
+&"RESET": SubResource("Animation_05mu1")
+}
+
+[sub_resource type="Curve" id="Curve_05mu1"]
+_data = [Vector2(0.144404, 1), 0.0, 0.0, 0, 0, Vector2(0.277978, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6640v"]
+albedo_color = Color(0.0983388, 0.115936, 0.174548, 1)
+roughness = 0.7
+
+[sub_resource type="SphereMesh" id="SphereMesh_05mu1"]
+radius = 0.8
+height = 1.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qr43c"]
+albedo_color = Color(0.517184, 0.517184, 0.517184, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_agce3"]
+radius = 0.8
+height = 1.6
+
+[sub_resource type="SphereMesh" id="SphereMesh_fd7dn"]
+radius = 0.8
+height = 1.6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_agce3"]
+size = Vector3(2.23877, 1.68384, 3.26862)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6640v"]
+radius = 0.794747
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qr43c"]
+size = Vector3(1.0802, 1.44707, 1.26314)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2gcuv"]
+radius = 1.00222
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fd7dn"]
+viewport_path = NodePath("SubViewport")
+
+[node name="Ghost" type="CharacterBody3D" groups=["ghost"]]
+transform = Transform3D(1.62375, 0, 0, 0, 1.62375, 0, 0, 0, 1.62375, 0, 0, 0)
+script = ExtResource("1_ly0wf")
+HURT_PARTICLE_SCENE = ExtResource("2_y2p6q")
+DAMAGE_NUMBER = ExtResource("2_qr43c")
+RESPAWN = true
+
+[node name="Attacks" type="AnimationPlayer" parent="." node_paths=PackedStringArray("TARGET", "BODY")]
+libraries = {
+&"": SubResource("AnimationLibrary_agce3")
+}
+autoplay = "RESET"
+script = ExtResource("4_1m57m")
+ATTACK_ANIMATION = Array[String](["ATTACK"])
+ATTACK_RADIUS = Array[float]([4.0])
+ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_05mu1")])
+LIKELIHOOD_MULTIPLIERS = Array[float]([1000.0])
+ATTACKING = true
+TARGET = NodePath("../Target")
+BODY = NodePath("..")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+
+[node name="Mesh" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
+material_override = SubResource("StandardMaterial3D_6640v")
+transparency = 0.3
+mesh = SubResource("SphereMesh_05mu1")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/MeshInstance3D"]
+transform = Transform3D(-1.24846e-09, 0, 0.112722, 0, 0.112722, 0, -0.0285614, 0, -4.92725e-09, 0.280028, 0.0195056, -0.806736)
+material_override = SubResource("StandardMaterial3D_qr43c")
+mesh = SubResource("SphereMesh_agce3")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh/MeshInstance3D"]
+transform = Transform3D(-1.24846e-09, 0, 0.112722, 0, 0.112722, 0, -0.0285614, 0, -4.92725e-09, -0.302013, 0.0195056, -0.806736)
+material_override = SubResource("StandardMaterial3D_qr43c")
+mesh = SubResource("SphereMesh_fd7dn")
+skeleton = NodePath("")
+
+[node name="Attack" type="Area3D" parent="Mesh/MeshInstance3D"]
+transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("18_05mu1")
+damage = 15
+group = "ghost"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/MeshInstance3D/Attack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0577135, 0.341919, -1.7045)
+shape = SubResource("BoxShape3D_agce3")
+disabled = true
+debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6640v")
+debug_color = Color(1, 1, 1, 0)
+
+[node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA")]
+script = ExtResource("1_tijse")
+NAV_AGENT = NodePath("../NavigationAgent3D")
+SPEED = 6.0
+MESH = NodePath("../Mesh")
+BODY = NodePath("..")
+STOP_CHASE_AREA = NodePath("../StopChase")
+
+[node name="LockOn" type="Area3D" parent="."]
+transform = Transform3D(1, 5.32907e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LockOn"]
+transform = Transform3D(1, -1.24345e-14, -1.03739e-12, 0, 1, 0, -3.83693e-13, 0, 1, 0.159728, -0.195234, 0.0834485)
+shape = SubResource("BoxShape3D_qr43c")
+debug_color = Color(0.7, 0.7, 0.7, 0)
+
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("4_2gcuv")
+SOUNDS = Array[AudioStream]([ExtResource("5_y2p6q"), ExtResource("6_1m57m"), ExtResource("7_05mu1"), ExtResource("8_agce3"), ExtResource("9_fd7dn"), ExtResource("10_dfr5h"), ExtResource("11_n368u"), ExtResource("12_hp215"), ExtResource("13_pyqwo"), ExtResource("14_rkfee"), ExtResource("15_ign71")])
+
+[node name="StopChase" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StopChase"]
+shape = SubResource("SphereShape3D_2gcuv")
+debug_color = Color(1, 1, 1, 0.0823529)
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(257, 32)
+size_2d_override = Vector2i(985, 560)
+
+[node name="Bar" parent="SubViewport" node_paths=PackedStringArray("tracked_node") instance=ExtResource("19_agce3")]
+anchors_preset = -1
+anchor_left = 0.0121792
+anchor_top = 0.0330811
+anchor_right = 0.257492
+anchor_bottom = 0.04697
+offset_left = -2.99653
+offset_top = -8.52541
+offset_right = -2.99652
+offset_bottom = -4.52542
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/fill = ExtResource("20_fd7dn")
+tracked_node = NodePath("../..")
+metadata/_edit_use_anchors_ = true
+
+[node name="Change" parent="SubViewport/Bar" index="0"]
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0, 1.05615, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_fd7dn")
+
+[editable path="SubViewport/Bar"]
