@@ -14,23 +14,18 @@ func get_save_key(suffix: String) -> String:
 
 func _ready()-> void:
 	
-	if Save.data.has(get_save_key("max_health")):
-		MAX_HEALTH = Save.data[get_save_key("max_health")]
+	#if Save.data.has(get_save_key("max_health")):
+		#MAX_HEALTH = Save.data[get_save_key("max_health")]
 		
 	if Save.data.has(get_save_key("health")):
 		HEALTH = Save.data[get_save_key("health")]
 
-	if RESPAWN:
-		
-		if Save.data.has(SAVE_KEY_PLAYER_DEATHS):	
-			if Save.data.has(get_save_key("respawn_at_deathcount")):
-				if int(Save.data[get_save_key("respawn_at_deathcount")]) <= int(Save.data[SAVE_KEY_PLAYER_DEATHS]):
-					Save.data.erase(get_save_key("respawn_at_deathcount"))
-					HEALTH = MAX_HEALTH
-		
-			if not Save.data.has(get_save_key("respawn_at_deathcount")):
-				var respawn_at_deathcount = int(Save.data[SAVE_KEY_PLAYER_DEATHS]) + 1
-				Save.data[get_save_key("respawn_at_deathcount")] = respawn_at_deathcount
+	if RESPAWN and Save.data.has(SAVE_KEY_PLAYER_DEATHS):	
+		if Save.data.has(get_save_key("respawn_at_deathcount")):
+			if int(Save.data[get_save_key("respawn_at_deathcount")]) <= int(Save.data[SAVE_KEY_PLAYER_DEATHS]):
+				Save.data[get_save_key("respawn_at_deathcount")] = int(Save.data[SAVE_KEY_PLAYER_DEATHS]) + 1
+				HEALTH = MAX_HEALTH
+				Save.data[get_save_key("health")] = HEALTH
 			 			
 	if HEALTH < 0:
 		queue_free()

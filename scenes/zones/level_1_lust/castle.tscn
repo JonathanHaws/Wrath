@@ -53,7 +53,7 @@ adjustment_brightness = 1.3
 adjustment_saturation = 1.2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
-size = Vector3(7, 11, 2)
+size = Vector3(20.1342, 11, 25.1571)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_80ox6"]
 size = Vector3(1625.56, 260, 1361.68)
@@ -76,14 +76,24 @@ script = ExtResource("3_80ox6")
 
 [node name="Lights" type="Node" parent="Enviroment"]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights"]
-transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 127.777, 22.9625, -11.3288)
-light_color = Color(0.97, 0.62856, 0.5432, 1)
-light_energy = 20.0
+[node name="Door" type="Node" parent="Enviroment/Lights"]
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Enviroment/Lights/Door"]
+transform = Transform3D(0.637345, -0.190343, 0.7467, -0.75436, 0.0436432, 0.655009, -0.157264, -0.980747, -0.115771, 144.701, 17.1746, -14.6803)
+light_color = Color(0.35657, 0.57853, 0.73065, 1)
+light_energy = 1000.0
+light_specular = 0.0
+spot_range = 39.7238
+spot_angle = 40.1538
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Enviroment/Lights/Door"]
+transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 130.814, 22.9737, -12.8458)
+light_color = Color(0.53479, 0.567376, 0.457161, 1)
+light_energy = 3000.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
-omni_range = 101.01
+omni_range = 19.2777
 
 [node name="Lights" type="Node3D" parent="Enviroment/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
@@ -116,7 +126,7 @@ omni_range = 101.01
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -77.7654, -0.529366, 8.67266)
 
 [node name="Exit" parent="Interactables" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("5_mqk0e")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 140.857, 2.12855, -13.3975)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 144.124, 2.12855, -13.3975)
 AREA = NodePath("Area3D")
 START = NodePath("Start")
 DESTINATION_NODE_NAME = "Enter"
@@ -128,11 +138,11 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Exit/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57746e-08, 5, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.553036, 5, 11.0786)
 shape = SubResource("BoxShape3D_8x7wd")
 
 [node name="Start" type="Node3D" parent="Interactables/Exit"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.117285, 0.53226, 5.98879)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.11729, -2.2767, 35.0123)
 
 [node name="KillFloor" type="Area3D" parent="Interactables"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 1.88324, 19)
@@ -159,4 +169,6 @@ surface_material_override/1 = ExtResource("9_u51x1")
 
 [connection signal="body_entered" from="Interactables/KillFloor" to="Interactables/KillFloor" method="_on_body_entered"]
 
+[editable path="Interactables/Exit"]
+[editable path="Interactables/Exit/Door"]
 [editable path="NavigationRegion3D/Castle"]

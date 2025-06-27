@@ -12,7 +12,7 @@ Label/colors/font_color = Color(0.713726, 0.713726, 0.713726, 1)
 ProgressBar/styles/background = null
 ProgressBar/styles/fill = ExtResource("1_fimny")
 
-[node name="Bar" type="ProgressBar"]
+[node name="Bar" type="ProgressBar" node_paths=PackedStringArray("difference_bar")]
 texture_filter = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -31,8 +31,9 @@ value = 72.0
 rounded = true
 show_percentage = false
 script = ExtResource("3_1bxfd")
+difference_bar = NodePath("Difference")
 
-[node name="Change" type="ProgressBar" parent="."]
+[node name="Difference" type="ProgressBar" parent="."]
 z_index = -1
 texture_filter = 1
 layout_mode = 1
@@ -45,10 +46,3 @@ theme = ExtResource("4_1jmjf")
 value = 80.0
 rounded = true
 show_percentage = false
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
-
-[connection signal="value_changed" from="." to="." method="_on_value_changed"]
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

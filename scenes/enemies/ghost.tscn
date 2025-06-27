@@ -266,9 +266,6 @@ theme_override_styles/fill = ExtResource("20_fd7dn")
 tracked_node = NodePath("../..")
 metadata/_edit_use_anchors_ = true
 
-[node name="Change" parent="SubViewport/Bar" index="0"]
-metadata/_edit_use_anchors_ = true
-
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0, 1.05615, 0)
 billboard = 1
