@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://c5350q0aryax0"]
+[gd_scene load_steps=26 format=3 uid="uid://c5350q0aryax0"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_7plis"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="2_j5sqx"]
@@ -8,7 +8,10 @@
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/small/world_small.tres" id="6_50xhr"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="7_j5sqx"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/star/world_star.tres" id="7_nc132"]
-[ext_resource type="PackedScene" uid="uid://b36oi3g053jo0" path="res://scenes/interactables/falling_platform.tscn" id="8_ukurm"]
+[ext_resource type="ArrayMesh" uid="uid://duvsas8smowxr" path="res://models/godot_local/rock_8.res" id="8_47rtl"]
+[ext_resource type="ArrayMesh" uid="uid://do84noxgj8ikc" path="res://models/godot_local/rock_5.res" id="8_50xhr"]
+[ext_resource type="Material" uid="uid://pl3nbr4toayv" path="res://shaders/materials/rocks.tres" id="8_ly2p2"]
+[ext_resource type="PackedScene" uid="uid://b36oi3g053jo0" path="res://scenes/interactables/rocks/falling_platform.tscn" id="8_ukurm"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
 size = Vector3(7, 11, 2)
@@ -18,8 +21,8 @@ size = Vector3(5, 10.772, 5)
 
 [sub_resource type="BoxMesh" id="BoxMesh_ly2p2"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_7plis"]
-size = Vector3(5, 0.980957, 5)
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nc132"]
+data = PackedVector3Array(24.6346, 0.4042, 0.9661, 22.5556, 1.468, 0.9661, 22.822, 0.0764, 0.9661, 24.6346, 0.4042, 0.9661, 23.581, 1.4266, 0.9661, 22.5556, 1.468, 0.9661, 24.4009, -0.6772, 0.9661, 24.6346, 0.4042, 0.9661, 22.822, 0.0764, 0.9661, 24.4009, -0.6772, 0.9661, 22.822, 0.0764, 0.9661, 23.5187, -1.7699, 0.9661, 21.401, -0.2925, 0.9661, 23.5187, -1.7699, 0.9661, 22.822, 0.0764, 0.9661, 21.401, -0.2925, 0.9661, 21.9647, -1.3146, 0.9661, 23.5187, -1.7699, 0.9661, 22.5556, 1.468, 0.9661, 21.401, -0.2925, 0.9661, 22.822, 0.0764, 0.9661, 22.5556, 1.468, 0.9661, 21.5965, 0.7443, 0.9661, 21.401, -0.2925, 0.9661, 23.5187, -1.7699, 0.9661, 24.0238, -0.5337, 1.8446, 24.4009, -0.6772, 0.9661, 23.5187, -1.7699, 0.9661, 23.3822, -1.3285, 1.8446, 24.0238, -0.5337, 1.8446, 24.4009, -0.6772, 0.9661, 24.1937, 0.2528, 1.8446, 24.6346, 0.4042, 0.9661, 24.4009, -0.6772, 0.9661, 24.0238, -0.5337, 1.8446, 24.1937, 0.2528, 1.8446, 21.401, -0.2925, 0.9661, 22.2519, -0.9973, 1.8446, 21.9647, -1.3146, 0.9661, 21.401, -0.2925, 0.9661, 21.8418, -0.2539, 1.8446, 22.2519, -0.9973, 1.8446, 23.581, 1.4266, 0.9661, 22.6816, 1.0266, 1.8446, 22.5556, 1.468, 0.9661, 23.581, 1.4266, 0.9661, 23.4274, 0.9965, 1.8446, 22.6816, 1.0266, 1.8446, 21.9647, -1.3146, 0.9661, 23.3822, -1.3285, 1.8446, 23.5187, -1.7699, 0.9661, 21.9647, -1.3146, 0.9661, 22.2519, -0.9973, 1.8446, 23.3822, -1.3285, 1.8446, 22.5556, 1.468, 0.9661, 21.984, 0.5002, 1.8446, 21.5965, 0.7443, 0.9661, 22.5556, 1.468, 0.9661, 22.6816, 1.0266, 1.8446, 21.984, 0.5002, 1.8446, 24.6346, 0.4042, 0.9661, 23.4274, 0.9965, 1.8446, 23.581, 1.4266, 0.9661, 24.6346, 0.4042, 0.9661, 24.1937, 0.2528, 1.8446, 23.4274, 0.9965, 1.8446, 21.5965, 0.7443, 0.9661, 21.8418, -0.2539, 1.8446, 21.401, -0.2925, 0.9661, 21.5965, 0.7443, 0.9661, 21.984, 0.5002, 1.8446, 21.8418, -0.2539, 1.8446, 23.3822, -1.3285, 1.8446, 22.9706, 0.0143, 2.7064, 24.0238, -0.5337, 1.8446, 24.0238, -0.5337, 1.8446, 22.9706, 0.0143, 2.7064, 24.1937, 0.2528, 1.8446, 21.8418, -0.2539, 1.8446, 22.9706, 0.0143, 2.7064, 22.2519, -0.9973, 1.8446, 23.4274, 0.9965, 1.8446, 22.9706, 0.0143, 2.7064, 22.6816, 1.0266, 1.8446, 22.2519, -0.9973, 1.8446, 22.9706, 0.0143, 2.7064, 23.3822, -1.3285, 1.8446, 22.6816, 1.0266, 1.8446, 22.9706, 0.0143, 2.7064, 21.984, 0.5002, 1.8446, 24.1937, 0.2528, 1.8446, 22.9706, 0.0143, 2.7064, 23.4274, 0.9965, 1.8446, 21.984, 0.5002, 1.8446, 22.9706, 0.0143, 2.7064, 21.8418, -0.2539, 1.8446)
 
 [sub_resource type="Animation" id="Animation_j5sqx"]
 length = 0.001
@@ -47,6 +50,9 @@ _data = {
 &"RESET": SubResource("Animation_j5sqx"),
 &"cycle": SubResource("Animation_7plis")
 }
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_50xhr"]
+data = PackedVector3Array(-1.0133, 0.8003, 0.9583, -0.7938, -1.1113, 0.9583, 0.2624, -0.3557, 0.9583, -1.0133, 0.8003, 0.9583, -1.1713, -0.1745, 0.9583, -0.7938, -1.1113, 0.9583, -0.7938, -1.1113, 0.9583, 1.5143, -1.4871, 0.9583, 0.2624, -0.3557, 0.9583, -0.7938, -1.1113, 0.9583, 0.6819, -1.7104, 0.9583, 1.5143, -1.4871, 0.9583, 1.5143, -1.4871, 0.9583, 1.1134, 0.2854, 0.9583, 0.2624, -0.3557, 0.9583, 1.5143, -1.4871, 0.9583, 1.7527, -1.0424, 0.9583, 1.1134, 0.2854, 0.9583, -0.3878, 1.5076, 0.9583, -1.0133, 0.8003, 0.9583, 0.2624, -0.3557, 0.9583, -0.3878, 1.5076, 0.9583, 0.2624, -0.3557, 0.9583, 1.1134, 0.2854, 0.9583, 0.3014, 1.433, 0.9583, 1.1134, 0.2854, 0.9583, 2.0089, 0.9601, 0.9583, 0.3014, 1.433, 0.9583, -0.3878, 1.5076, 0.9583, 1.1134, 0.2854, 0.9583, 1.7527, -1.0424, 0.9583, 2.0089, 0.9601, 0.9583, 1.1134, 0.2854, 0.9583, 1.7527, -1.0424, 0.9583, 2.0035, -0.5744, 0.9583, 2.0089, 0.9601, 0.9583, 2.0089, 0.9601, 0.9583, 0.3638, 0.6175, 2.1053, 0.3014, 1.433, 0.9583, 2.0089, 0.9601, 0.9583, 1.1637, 0.3958, 2.1053, 0.3638, 0.6175, 2.1053, 0.3014, 1.433, 0.9583, 0.0409, 0.6524, 2.1053, -0.3878, 1.5076, 0.9583, 0.3014, 1.433, 0.9583, 0.3638, 0.6175, 2.1053, 0.0409, 0.6524, 2.1053, 1.7527, -1.0424, 0.9583, 1.1612, -0.323, 2.1053, 2.0035, -0.5744, 0.9583, 1.7527, -1.0424, 0.9583, 1.0436, -0.5422, 2.1053, 1.1612, -0.323, 2.1053, -1.1713, -0.1745, 0.9583, -0.1493, -0.5746, 2.1053, -0.7938, -1.1113, 0.9583, -1.1713, -0.1745, 0.9583, -0.3262, -0.1357, 2.1053, -0.1493, -0.5746, 2.1053, 2.0035, -0.5744, 0.9583, 1.1637, 0.3958, 2.1053, 2.0089, 0.9601, 0.9583, 2.0035, -0.5744, 0.9583, 1.1612, -0.323, 2.1053, 1.1637, 0.3958, 2.1053, -0.7938, -1.1113, 0.9583, 0.542, -0.8552, 2.1053, 0.6819, -1.7104, 0.9583, -0.7938, -1.1113, 0.9583, -0.1493, -0.5746, 2.1053, 0.542, -0.8552, 2.1053, -1.0133, 0.8003, 0.9583, -0.3262, -0.1357, 2.1053, -1.1713, -0.1745, 0.9583, -1.0133, 0.8003, 0.9583, -0.2522, 0.321, 2.1053, -0.3262, -0.1357, 2.1053, 0.6819, -1.7104, 0.9583, 0.932, -0.7506, 2.1053, 1.5143, -1.4871, 0.9583, 0.6819, -1.7104, 0.9583, 0.542, -0.8552, 2.1053, 0.932, -0.7506, 2.1053, -0.3878, 1.5076, 0.9583, -0.2522, 0.321, 2.1053, -1.0133, 0.8003, 0.9583, -0.3878, 1.5076, 0.9583, 0.0409, 0.6524, 2.1053, -0.2522, 0.321, 2.1053, 1.5143, -1.4871, 0.9583, 1.0436, -0.5422, 2.1053, 1.7527, -1.0424, 0.9583, 1.5143, -1.4871, 0.9583, 0.932, -0.7506, 2.1053, 1.0436, -0.5422, 2.1053, 1.1637, 0.3958, 2.1053, 0.4082, 0.0367, 2.59, 0.3638, 0.6175, 2.1053, 0.3638, 0.6175, 2.1053, 0.4082, 0.0367, 2.59, 0.0409, 0.6524, 2.1053, 1.0436, -0.5422, 2.1053, 0.4082, 0.0367, 2.59, 1.1612, -0.323, 2.1053, -0.3262, -0.1357, 2.1053, 0.4082, 0.0367, 2.59, -0.1493, -0.5746, 2.1053, 1.1612, -0.323, 2.1053, 0.4082, 0.0367, 2.59, 1.1637, 0.3958, 2.1053, -0.1493, -0.5746, 2.1053, 0.4082, 0.0367, 2.59, 0.542, -0.8552, 2.1053, -0.2522, 0.321, 2.1053, 0.4082, 0.0367, 2.59, -0.3262, -0.1357, 2.1053, 0.542, -0.8552, 2.1053, 0.4082, 0.0367, 2.59, 0.932, -0.7506, 2.1053, 0.0409, 0.6524, 2.1053, 0.4082, 0.0367, 2.59, -0.2522, 0.321, 2.1053, 0.932, -0.7506, 2.1053, 0.4082, 0.0367, 2.59, 1.0436, -0.5422, 2.1053)
 
 [sub_resource type="Animation" id="Animation_ukurm"]
 resource_name = "cycle_2"
@@ -144,21 +150,18 @@ mesh = SubResource("BoxMesh_ly2p2")
 skeleton = NodePath("../..")
 
 [node name="Node3D" type="Node3D" parent="Interactables"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.94099, -8.51053, 12.7362)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.4318, -4.11661, 12.7362)
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Interactables/Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07018, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Node3D/AnimatableBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29344, 0)
-shape = SubResource("BoxShape3D_7plis")
-debug_color = Color(0.69, 0.69, 0.69, 0.764706)
+transform = Transform3D(1.82167, 0, 0, 0, -7.96276e-08, -1.82167, 0, 1.82167, -7.96276e-08, 0, 3.09495, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Interactables/Node3D/AnimatableBody3D"]
-transform = Transform3D(-2.18557e-07, 0, 5, 0, 1, 0, -5, 0, -2.18557e-07, 0, 3.28918, 0)
-material_override = ExtResource("7_nc132")
-mesh = SubResource("BoxMesh_ly2p2")
+material_override = ExtResource("8_ly2p2")
+mesh = ExtResource("8_50xhr")
 skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="Interactables/Node3D/AnimatableBody3D"]
+shape = SubResource("ConcavePolygonShape3D_nc132")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Interactables/Node3D/AnimatableBody3D"]
 libraries = {
@@ -167,20 +170,19 @@ libraries = {
 autoplay = "cycle"
 
 [node name="Node3D2" type="Node3D" parent="Interactables"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.413, -3.67003, 12.736)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.413, 0.335207, 12.736)
 
 [node name="AnimatableBody3D" type="AnimatableBody3D" parent="Interactables/Node3D2"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Node3D2/AnimatableBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.29344, 0)
-shape = SubResource("BoxShape3D_7plis")
-debug_color = Color(0.69, 0.69, 0.69, 0.764706)
-
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Interactables/Node3D2/AnimatableBody3D"]
-transform = Transform3D(-2.18557e-07, 0, 5, 0, 1, 0, -5, 0, -2.18557e-07, 0, 3.28918, 0)
-material_override = ExtResource("7_nc132")
-mesh = SubResource("BoxMesh_ly2p2")
+transform = Transform3D(1.66903, 0, 0, 0, -7.29557e-08, -1.66903, 0, 1.66903, -7.29557e-08, 0, 2.17789, 0)
+material_override = ExtResource("8_ly2p2")
+mesh = ExtResource("8_47rtl")
 skeleton = NodePath("../../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Node3D2/AnimatableBody3D"]
+transform = Transform3D(1.66903, 0, 0, 0, -7.29557e-08, -1.66903, 0, 1.66903, -7.29557e-08, 0, 2.17789, 0)
+shape = SubResource("ConcavePolygonShape3D_50xhr")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Interactables/Node3D2/AnimatableBody3D"]
 libraries = {
@@ -205,17 +207,23 @@ skeleton = NodePath("../..")
 [node name="FallingPlatform3" parent="Interactables" instance=ExtResource("8_ukurm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.7089, -3.51431, -2.96558)
 
-[node name="FloatinRocksSoul" parent="Interactables" instance=ExtResource("7_j5sqx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.307, 2.80846, -12.7552)
+[node name="Rock1" parent="Interactables/FallingPlatform3/AnimatableBody3D" index="3"]
+surface_material_override/0 = ExtResource("8_ly2p2")
 
 [node name="FallingPlatform2" parent="Interactables" instance=ExtResource("8_ukurm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3871, -3.75597, 6.36576)
 
+[node name="Rock1" parent="Interactables/FallingPlatform2/AnimatableBody3D" index="3"]
+surface_material_override/0 = ExtResource("8_ly2p2")
+
 [node name="FallingPlatform" parent="Interactables" instance=ExtResource("8_ukurm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6958, -4.18358, 12.9585)
 
-[node name="FallingPlatform4" parent="Interactables" instance=ExtResource("8_ukurm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.66959, -10.56, 13.3779)
+[node name="Rock1" parent="Interactables/FallingPlatform/AnimatableBody3D" index="3"]
+surface_material_override/0 = ExtResource("8_ly2p2")
+
+[node name="SoulFloatingRocks" parent="Interactables" instance=ExtResource("7_j5sqx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.307, 2.80846, -12.7552)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
@@ -234,3 +242,7 @@ size = Vector3(65.3073, 20, 30)
 transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 42.0321, 0, -9.54005, 0)
 material_override = ExtResource("7_nc132")
 mesh = SubResource("BoxMesh_od467")
+
+[editable path="Interactables/FallingPlatform3"]
+[editable path="Interactables/FallingPlatform2"]
+[editable path="Interactables/FallingPlatform"]

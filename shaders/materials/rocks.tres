@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://bgv5lvisq1rhy" path="res://textures/bricks/roughness.png" id="1_bjstp"]
 
 [resource]
-albedo_color = Color(0.11, 0.0987067, 0.0979, 0.996078)
+albedo_color = Color(0.152472, 0.146055, 0.145596, 0.996078)
 metallic_specular = 0.4
 roughness_texture = ExtResource("1_bjstp")
 normal_enabled = true

@@ -34,7 +34,8 @@ func _ready()-> void:
 			
 func _exit_tree() -> void:
 	if HEALTH == MAX_HEALTH:
-		Save.data.erase(Save.data[get_save_key("health")])
+		if Save.data.has(get_save_key("health")):
+			Save.data.erase(Save.data[get_save_key("health")])
 	else:
 		Save.data[get_save_key("health")] = HEALTH
 	Save.save_game()
