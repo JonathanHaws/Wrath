@@ -88,7 +88,7 @@ func _on_animation_finished(animation_name: String) -> void:
 		ANIM.seek(0, true) 
 		STAMINA -= 10
 func in_interruptible_animation() -> bool:
-	return not ANIM.current_animation in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT"]
+	return not ANIM.current_animation in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT", "PLUNGE_FALL", "PLUNGE"]
 
 func _exit_tree() -> void:
 	if HEALTH > 0:
@@ -136,9 +136,11 @@ func _ready() -> void:
 	if not Save.data.has("spawn_sound"):
 		Save.data["spawn_sound"] = "spawn_new"
 	if $Audio: $Audio.play_2d_sound([Save.data["spawn_sound"]])
+
 func _process(_delta)-> void:
 	if not Input.is_action_pressed("attack"): 
 		STAMINA = clamp(STAMINA + STAMINA_RECOVERY * _delta, 0, MAX_STAMINA)
+
 func _physics_process(delta: float) -> void:
 	
 	Squash.settle(MESH,delta)	
@@ -147,6 +149,10 @@ func _physics_process(delta: float) -> void:
 		return
 
 	if not was_on_floor and is_on_floor() and has_been_on_floor:
+		if ANIM.current_animation in "PLUNGE_FALL":
+			#print('Plunge')
+			ANIM.play("PLUNGE", 0)
+		
 		Squash.squish(MESH,.23)	
 		if $Audio: $Audio.play_2d_sound(["land"], 0.9, 1.1)
 	was_on_floor = is_on_floor()
@@ -155,8 +161,11 @@ func _physics_process(delta: float) -> void:
 	if ANIM.current_animation in "ESCAPE": return
 
 	if Input.is_action_just_pressed("attack"): # ATTACK
-		if is_on_floor() and in_interruptible_animation():
-			ANIM.play("WINDUP")
+		if in_interruptible_animation():
+			if is_on_floor():
+				ANIM.play("WINDUP")
+			else:
+				ANIM.play("PLUNGE_FALL")
 		
 	if not is_on_floor() and not God.mode: # GRAVITY
 		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER if Input.is_action_pressed("descend") else 1.0)
@@ -167,7 +176,9 @@ func _physics_process(delta: float) -> void:
 	elif jump_buffer > 0: jump_buffer -= delta
 
 	if jump_buffer > 0 and falling < COYOTE_TIME: # JUMP
+
 		if ANIM.current_animation and in_interruptible_animation():
+				
 			if $Audio: $Audio.play_2d_sound(["jump"], 2.0)
 			ANIM.play("JUMP")
 			Squash.squish(MESH,-.23)	
