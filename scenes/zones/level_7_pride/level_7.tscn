@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="4_ta4p6"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="5_a6g14"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="7_eoitq"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/small/world_small.tres" id="8_lpdb7"]
-[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/star/world_star.tres" id="9_bxxo5"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://materials/bricks/small/world_small.tres" id="8_lpdb7"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://materials/bricks/star/world_star.tres" id="9_bxxo5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
 size = Vector3(7, 11, 2)

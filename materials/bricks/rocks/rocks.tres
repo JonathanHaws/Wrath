@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://pl3nbr4toayv"]
+
+[ext_resource type="Texture2D" uid="uid://bwmn8exgsqe3w" path="res://textures/rocks/peter_larsen_stylized_rock.jpg" id="1_6uf6e"]
+[ext_resource type="Texture2D" uid="uid://bgv5lvisq1rhy" path="res://textures/bricks/roughness.png" id="2_fp4ea"]
+
+[resource]
+albedo_color = Color(0.152472, 0.146055, 0.145596, 0.996078)
+metallic_specular = 0.4
+roughness_texture = ExtResource("2_fp4ea")
+normal_enabled = true
+normal_scale = 0.4
+normal_texture = ExtResource("1_6uf6e")
+ao_on_uv2 = true
+uv1_world_triplanar = true
