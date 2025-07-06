@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=70 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://scripts/reaper.gd" id="1_0b6a6"]
 [ext_resource type="AudioStream" uid="uid://dv38k4hi68nft" path="res://audio/sfx/player/Spawn.wav" id="2_ykn11"]
@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://cxfh7l5kksro3" path="res://audio/sfx/player/Land.wav" id="5_7kpka"]
 [ext_resource type="Texture2D" uid="uid://cub81gemf5odj" path="res://textures/defaults/default_normal.png" id="6_6g6ue"]
 [ext_resource type="AudioStream" uid="uid://cww02b50taw61" path="res://audio/sfx/player/Step_1.wav" id="7_erto2"]
-[ext_resource type="Script" uid="uid://bmvwcgf01b1lq" path="res://scripts/third_person_camera.gd" id="7_lwilf"]
+[ext_resource type="Script" uid="uid://bmvwcgf01b1lq" path="res://scripts/camera/third_person_camera.gd" id="7_lwilf"]
 [ext_resource type="Texture2D" uid="uid://cwm4kdw3rghh5" path="res://textures/defaults/default_emision.png" id="8_wub5s"]
 [ext_resource type="AudioStream" uid="uid://bt0ejti1ku0n4" path="res://audio/sfx/player/Step_2.wav" id="8_wxf0g"]
 [ext_resource type="AudioStream" uid="uid://boh8nmwkjx2sf" path="res://audio/sfx/player/Step_3.wav" id="9_rg8br"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://scripts/particles.gd" id="15_lwilf"]
 [ext_resource type="AudioStream" uid="uid://cawtjrru8ho7x" path="res://audio/sfx/player/Hurt.wav" id="15_tgmjc"]
 [ext_resource type="PackedScene" uid="uid://xt657huqj8r0" path="res://scenes/particles/slash.tscn" id="16_p2pt0"]
+[ext_resource type="Script" uid="uid://ccjt2mmin66uh" path="res://scripts/camera/lock_on.gd" id="17_5cvkf"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/disolve.gdshader" id="18_dtcwh"]
 [ext_resource type="AudioStream" uid="uid://ca1jfg0asj5b6" path="res://audio/sfx/player/Windown.wav" id="18_pc8iq"]
 [ext_resource type="Texture2D" uid="uid://c5qhpwg8w7djb" path="res://textures/reaper/cloak/alpha.png" id="19_0hpbp"]
@@ -1236,15 +1237,13 @@ transform = Transform3D(1, 0, 0, 0, 0.972606, 0.232461, 0, -0.232461, 0.972606, 
 spring_length = 5.0
 margin = 120.0
 
-[node name="Camera3D" type="Camera3D" parent="SpringArm3D" node_paths=PackedStringArray("SpringArm", "LOCK_ON_AREA", "LOCK_ON_INDICATOR")]
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" node_paths=PackedStringArray("SpringArm")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
 current = true
 fov = 80.0
 script = ExtResource("7_lwilf")
 pitch_max_deg = 20.0
 SpringArm = NodePath("..")
-LOCK_ON_AREA = NodePath("LockOnArea")
-LOCK_ON_INDICATOR = NodePath("../../LockOnIndicator")
 
 [node name="HeadFollowTarget" type="Node3D" parent="SpringArm3D/Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.896154, -0.64839, -7.68562)
@@ -1320,7 +1319,7 @@ material_override = SubResource("ShaderMaterial_ckevw")
 material_override = SubResource("ShaderMaterial_py1jt")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.636638, -0.662005, -0.395527, 0.703357, 0.70877, -0.0541693, 0.316198, -0.24371, 0.916855, 0.0958226, 1.04482, -0.215987)
+transform = Transform3D(0.636638, -0.662006, -0.395526, 0.703357, 0.708769, -0.0541692, 0.316197, -0.24371, 0.916856, 0.095823, 1.04481, -0.215987)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -1377,7 +1376,7 @@ bus = &"SFX"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 attenuation = 0.00728933
 
-[node name="LockOnIndicator" type="ProgressBar" parent="."]
+[node name="LockOnIndicator" type="ProgressBar" parent="." node_paths=PackedStringArray("CAMERA", "SpringArm", "LOCK_ON_AREA")]
 offset_left = 976.0
 offset_top = 504.0
 offset_right = 984.0
@@ -1385,6 +1384,10 @@ offset_bottom = 512.0
 theme_override_styles/fill = SubResource("StyleBoxFlat_wub5s")
 value = 100.0
 show_percentage = false
+script = ExtResource("17_5cvkf")
+CAMERA = NodePath("../SpringArm3D/Camera3D")
+SpringArm = NodePath("../SpringArm3D")
+LOCK_ON_AREA = NodePath("../SpringArm3D/Camera3D/LockOnArea")
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("35_lwilf")
