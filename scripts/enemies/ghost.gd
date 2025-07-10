@@ -38,6 +38,9 @@ func _exit_tree() -> void:
 			Save.data.erase(Save.data[get_save_key("health")])
 	else:
 		Save.data[get_save_key("health")] = HEALTH
+
+	if HEALTH <= 0:
+		Save.data[get_save_key("respawn_at_deathcount")] = int(Save.data[SAVE_KEY_PLAYER_DEATHS]) + 1
 	Save.save_game()
 
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:

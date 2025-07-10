@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=71 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://scripts/reaper.gd" id="1_0b6a6"]
 [ext_resource type="AudioStream" uid="uid://dv38k4hi68nft" path="res://audio/sfx/player/Spawn.wav" id="2_ykn11"]
@@ -1119,6 +1119,8 @@ _data = {
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qswe2"]
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_5cvkf"]
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0gmj"]
 size = Vector3(12.7935, 22.7476, 51.4006)
 
@@ -1234,11 +1236,12 @@ debug_color = Color(0.7, 0.7, 0.7, 0.0784314)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.972606, 0.232461, 0, -0.232461, 0.972606, 0, 2.412, 0)
+shape = SubResource("SphereShape3D_5cvkf")
 spring_length = 5.0
-margin = 120.0
+margin = 1.0
 
 [node name="Camera3D" type="Camera3D" parent="SpringArm3D" node_paths=PackedStringArray("SpringArm")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0)
 current = true
 fov = 80.0
 script = ExtResource("7_lwilf")
@@ -1409,7 +1412,6 @@ expands = true
 tracked_node = NodePath("..")
 tracked_property = "STAMINA"
 tracked_max_property = "MAX_STAMINA"
-expand_min_value = 10.0
 pixel_expansion_rate = 8.0
 
 [node name="Health" parent="." node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
@@ -1422,7 +1424,6 @@ max_value = 10.0
 value = 10.0
 expands = true
 tracked_node = NodePath("..")
-expand_min_value = 80.0
 pixel_expansion_rate = 8.0
 
 [node name="PlayTimeTracker" type="Node" parent="."]

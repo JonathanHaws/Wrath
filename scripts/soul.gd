@@ -15,13 +15,13 @@ func _upgrade() -> void:
 	if HEALTH:
 		if not Save.data.has("max_health"):	Save.data["max_health"] = REAPER.MAX_HEALTH
 		Save.data["max_health"] += UPGRADE
-		REAPER.MAX_HEALTH = Save.data["max_health"]
+		REAPER.MAX_HEALTH += UPGRADE
 		REAPER.HEALTH += UPGRADE
 	
 	else:
 		if not Save.data.has("max_stamina"): Save.data["max_stamina"] = REAPER.MAX_STAMINA
 		Save.data["max_stamina"] += UPGRADE
-		REAPER.MAX_STAMINA = Save.data["max_stamina"]
+		REAPER.MAX_STAMINA += UPGRADE
 		REAPER.STAMINA += UPGRADE
 		
 	Save.data[self.name] = true
