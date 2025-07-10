@@ -109,4 +109,4 @@ material_override = ExtResource("8_6m1rr")
 mesh = SubResource("BoxMesh_od467")
 
 [node name="Checkpoint" parent="." instance=ExtResource("9_57mri")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.79719, -9.10888, -0.207563)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.79719, -9.10888, -0.207563)

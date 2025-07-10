@@ -24,11 +24,11 @@ func _upgrade() -> void:
 		REAPER.MAX_STAMINA += UPGRADE
 		REAPER.STAMINA += UPGRADE
 		
-	Save.data[self.name] = true
+	Save.data[Save.get_unique_key(self,"_collected")] = true
 	Save.save_game()
 
 func _ready() -> void:
 	
-	if Save.data.has(self.name) and Save.data[self.name] == true:
+	if Save.data.has(Save.get_unique_key(self,"_collected")):
 		queue_free()
 	

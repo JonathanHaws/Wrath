@@ -3,6 +3,12 @@ var game_file_name: String = ""
 var data: Dictionary = {}
 var default_scene: String = "res://scenes/zones/level_1_lust/castle.tscn"
 
+func get_unique_key(node: Node, suffix: String) -> String:
+	var scene_path = node.get_tree().current_scene.scene_file_path
+	var node_path = node.get_path()
+	var node_name = node.name
+	return "%s|%s_%s_%s" % [scene_path, node_path, node_name, suffix]
+
 func get_dictionary_from_file(file_name: String) -> Dictionary:
 	
 	var file = FileAccess.open("user://" + file_name, FileAccess.READ)

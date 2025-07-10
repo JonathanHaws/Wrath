@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://c5350q0aryax0"]
+[gd_scene load_steps=27 format=3 uid="uid://c5350q0aryax0"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_7plis"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="2_j5sqx"]
@@ -12,6 +12,7 @@
 [ext_resource type="ArrayMesh" uid="uid://do84noxgj8ikc" path="res://models/godot_local/rock_5.res" id="8_50xhr"]
 [ext_resource type="Material" uid="uid://pl3nbr4toayv" path="res://materials/bricks/rocks/rocks.tres" id="8_ly2p2"]
 [ext_resource type="PackedScene" uid="uid://b36oi3g053jo0" path="res://scenes/interactables/rocks/falling_platform.tscn" id="8_ukurm"]
+[ext_resource type="PackedScene" uid="uid://b1kpbao7u5y7k" path="res://scenes/interactables/bounce_pad.tscn" id="13_nc132"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
 size = Vector3(7, 11, 2)
@@ -216,6 +217,24 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 31.6958, -4.18358, 12.9585)
 [node name="SoulFloatingRocks" parent="Interactables" instance=ExtResource("7_j5sqx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.307, 2.80846, -12.7552)
 
+[node name="SoulFloatingRocks" parent="Interactables/SoulFloatingRocks" instance=ExtResource("7_j5sqx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -33.8422, -1.40646, -0.41223)
+HEALTH = false
+
+[node name="StaticBody3D4" type="StaticBody3D" parent="Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.3941, -5.93857, -13.0446)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/StaticBody3D4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.94387, 0)
+shape = SubResource("BoxShape3D_j5sqx")
+debug_color = Color(0.69, 0.69, 0.69, 0.764706)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Interactables/StaticBody3D4"]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 17, 0, -5, 0, -2.18557e-07, 0, -3.1614, 0)
+material_override = ExtResource("7_nc132")
+mesh = SubResource("BoxMesh_ly2p2")
+skeleton = NodePath("../..")
+
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
@@ -233,6 +252,9 @@ size = Vector3(65.3073, 20, 30)
 transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 42.0321, 0, -9.54005, 0)
 material_override = ExtResource("7_nc132")
 mesh = SubResource("BoxMesh_od467")
+
+[node name="Area3D" parent="." instance=ExtResource("13_nc132")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4124, -8.26787, -11.4043)
 
 [editable path="Interactables/FallingPlatform3"]
 [editable path="Interactables/FallingPlatform2"]
