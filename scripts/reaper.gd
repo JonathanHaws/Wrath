@@ -7,7 +7,7 @@ extends CharacterBody3D
 @export var JUMP_VELOCITY = 14.0
 @export var GRAVITY_MULTIPLIER = 4
 @export var MOUSE_SENSITIVITY = 0.003
-@export var TURN_SPEED: float = 16.0
+@export var TURN_SPEED: float = 20.0
 @export var TURN_MULTIPLIER: float = 1.0
 @export var SPEED_MULTIPLIER: float = 1.0
 @export var COYOTE_TIME: float = .4

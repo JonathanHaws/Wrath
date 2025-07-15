@@ -9,20 +9,16 @@ var mouse_delta = Vector2.ZERO
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		mouse_delta += event.relative
+		mouse_delta += event.relative * Engine.time_scale
 
 func rotate_mesh_towards_camera_xz(delta: float, mesh: Node3D, input_vector: Vector2, turn_speed: float = 16) -> void:
 	if input_vector.length() == 0: return
 	var input_angle = atan2(-input_vector.x, -input_vector.y)
 	mesh.global_rotation.y = lerp_angle(mesh.global_rotation.y, SpringArm.global_rotation.y + input_angle, turn_speed * delta)
 			
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	
 	SpringArm.collision_mask = 0 if God.mode else 1
-	
-	if not ENABLED or Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-		mouse_delta = Vector2.ZERO
-		return
 	
 	var look_left_right = Input.get_axis("look_left", "look_right")
 	var look_up_down = Input.get_axis("look_down", "look_up")

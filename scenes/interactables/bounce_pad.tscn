@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b1kpbao7u5y7k"]
 
 [ext_resource type="Script" uid="uid://dkby5ae8e2mnv" path="res://scripts/bounce_pad.gd" id="1_1vl3q"]
-[ext_resource type="AudioStream" uid="uid://bpb0gi25bda85" path="res://audio/sfx/enemy/Jump.wav" id="2_olf01"]
+[ext_resource type="AudioStream" uid="uid://bnuab3qfxeifu" path="res://audio/sfx/player/bounce.wav" id="2_olf01"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_l1gcs"]
 radius = 0.932776
