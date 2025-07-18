@@ -1,8 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://1jc5rm2ln3av"]
+[gd_scene load_steps=12 format=3 uid="uid://1jc5rm2ln3av"]
 
 [ext_resource type="Script" uid="uid://bwi12jjkh4nu7" path="res://scripts/checkpoint.gd" id="1_jmg87"]
 [ext_resource type="AudioStream" uid="uid://bijkgqifxmt1t" path="res://audio/sfx/door/checkpoint.wav" id="3_7pdu5"]
+[ext_resource type="Texture2D" uid="uid://c7haptthfejp2" path="res://textures/checkpoint/color.png" id="4_7no74"]
 [ext_resource type="PackedScene" uid="uid://b7b68t7b3u76m" path="res://models/blender/checkpoint.blend" id="4_ltl5t"]
+[ext_resource type="Texture2D" uid="uid://h16x8ap3nqbc" path="res://textures/checkpoint/Emissive.jpg" id="5_xdv6p"]
+[ext_resource type="Texture2D" uid="uid://20j52u878rsw" path="res://textures/checkpoint/normalmap.png" id="6_p1yyc"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0sglt"]
 height = 0.5
@@ -60,6 +63,13 @@ _data = {
 &"RESET": SubResource("Animation_rbb1v")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p60ie"]
+albedo_texture = ExtResource("4_7no74")
+emission_enabled = true
+emission_texture = ExtResource("5_xdv6p")
+normal_enabled = true
+normal_texture = ExtResource("6_p1yyc")
+
 [node name="Checkpoint" type="Area3D" node_paths=PackedStringArray("CHECKPOINT_NODE", "ANIM")]
 collision_layer = 3
 collision_mask = 3
@@ -100,6 +110,9 @@ omni_range = 30.0
 
 [node name="checkpoint" parent="." instance=ExtResource("4_ltl5t")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0)
+
+[node name="hoarder" parent="checkpoint" index="0"]
+material_override = SubResource("StandardMaterial3D_p60ie")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 

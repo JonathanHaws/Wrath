@@ -25,11 +25,13 @@ extends CharacterBody3D
 @export var ANIM: AnimationPlayer
 @export var MESH_ANIM: AnimationPlayer
 @export var COLLISON_SHAPE: CollisionShape3D
+@export var PARTICLES: Node3D
 @export var HEALTH = 15
 @export var MAX_HEALTH = 15
 @export var STAMINA = 10
 @export var MAX_STAMINA = 10
 @export var STAMINA_RECOVERY: float = 20.0
+
 
 var falling = COYOTE_TIME;
 var was_on_floor = true
@@ -39,9 +41,11 @@ var jump_buffer = 0;
 func increase_damage_each_spin():
 	DAMAGE_MULTIPLIER *= SPIN_MULTIPLIER
 	ATTACK_AREA.damage = BASE_DAMAGE * DAMAGE_MULTIPLIER
+
 func reset_spin_damage():
 	DAMAGE_MULTIPLIER = 1
 	ATTACK_AREA.damage = BASE_DAMAGE * DAMAGE_MULTIPLIER
+
 func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
 	if HEALTH > 0:
 		if (_group != "kill_floor"):
@@ -62,8 +66,10 @@ func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.
 			Save.data["spawn_sound"] = "spawn"
 			ANIM.play("DEATH")	
 		Save.save_game()
+
 func reload_checkpoint() -> void:
 	get_tree().change_scene_to_file(Save.data["checkpoint_scene_path"])
+
 func _on_animation_finished(animation_name: String) -> void:
 	if animation_name == "WINDOWN":
 		ANIM.play("IDLE", 0.0, 1, false)
@@ -87,6 +93,7 @@ func _on_animation_finished(animation_name: String) -> void:
 		ANIM.play("SPIN", 0.0, 1, false)
 		ANIM.seek(0, true) 
 		STAMINA -= 10
+
 func in_interruptible_animation() -> bool:
 	return not ANIM.current_animation in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT", "PLUNGE_FALL", "PLUNGE"]
 
@@ -155,6 +162,8 @@ func _physics_process(delta: float) -> void:
 		
 		Squash.squish(MESH,.23)	
 		if $Audio: $Audio.play_2d_sound(["land"], 0.9, 1.1)
+		if PARTICLES: PARTICLES.spawn()
+		
 	was_on_floor = is_on_floor()
 	if is_on_floor(): has_been_on_floor = true
 	
@@ -180,11 +189,12 @@ func _physics_process(delta: float) -> void:
 		if ANIM.current_animation and in_interruptible_animation():
 				
 			if $Audio: $Audio.play_2d_sound(["jump"], 2.0)
-			ANIM.play("JUMP")
+			ANIM.play("JUMPING")
 			Squash.squish(MESH,-.23)	
 			velocity.y = JUMP_VELOCITY
 			falling = COYOTE_TIME
 			jump_buffer = 0
+			if PARTICLES: PARTICLES.spawn(1)
 	
 	var keyboard_vector := Input.get_vector("keyboard_left", "keyboard_right", "keyboard_forward", "keyboard_back")
 	var controller_vector := Input.get_vector("controller_left", "controller_right", "controller_forward", "controller_back")
@@ -226,5 +236,5 @@ func _physics_process(delta: float) -> void:
 			if (velocity.y < 0):
 				ANIM.play("FALL")
 			else:
-				ANIM.play("JUMP")
+				ANIM.play("JUMPING")
 				

@@ -1,42 +1,42 @@
-[gd_scene load_steps=11 format=3 uid="uid://b2vw4evrfcelo"]
+[gd_scene load_steps=11 format=3 uid="uid://xn7bifp3hpfj"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4vjc"]
-transparency = 1
-shading_mode = 0
-vertex_color_use_as_albedo = true
-albedo_color = Color(0.42, 0.42, 0.42, 0.0745098)
-billboard_keep_scale = true
+[ext_resource type="Material" uid="uid://gwfmysarj7pc" path="res://materials/dust.tres" id="1_ot4h5"]
 
 [sub_resource type="Curve" id="Curve_olvgd"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.128617, 0.19171), -0.123718, -0.123718, 0, 0, Vector2(0.369775, 0.132772), -0.523705, -0.523705, 0, 0, Vector2(0.598071, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0836013, 0.477104), -0.0746822, -0.0746822, 0, 0, Vector2(0.700965, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="CurveTexture" id="CurveTexture_wtfvh"]
 curve = SubResource("Curve_olvgd")
 
 [sub_resource type="Curve" id="Curve_kc6k6"]
-_data = [Vector2(0, 0), 0.667467, 0.667467, 0, 0, Vector2(0.115756, 0.309585), -0.660986, -0.660986, 0, 0, Vector2(0.78135, 0.115933), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0.19171), 0.667467, 0.424625, 0, 0, Vector2(0.569132, 0.275907), 0.0309665, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_x7qws"]
 curve = SubResource("Curve_kc6k6")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qo0m2"]
-emission_shape = 2
-emission_sphere_radius = 0.5
-direction = Vector3(0, 1, 0)
-initial_velocity_max = 3.0
-gravity = Vector3(0, 0.005, 0)
-damping_min = 0.01
-damping_max = 0.05
-scale_min = 0.0
-scale_max = 10.0
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 0.8
+emission_ring_inner_radius = 0.6
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 0)
+spread = 0.0
+initial_velocity_max = 0.1
+gravity = Vector3(0, 0.4, 0)
+damping_min = 0.1
+damping_max = 0.4
+scale_min = 2.0
+scale_max = 5.0
 scale_curve = SubResource("CurveTexture_x7qws")
-color = Color(1, 1, 1, 0.717647)
 alpha_curve = SubResource("CurveTexture_wtfvh")
 
 [sub_resource type="SphereMesh" id="SphereMesh_bt6ge"]
-radius = 0.3
+radius = 0.15
+height = 0.3
 radial_segments = 7
 rings = 6
 
@@ -95,7 +95,8 @@ _data = {
 [node name="Node3D" type="Node3D"]
 
 [node name="Dust" type="GPUParticles3D" parent="."]
-material_override = SubResource("StandardMaterial3D_c4vjc")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+material_override = ExtResource("1_ot4h5")
 amount = 64
 lifetime = 3.0
 one_shot = true
