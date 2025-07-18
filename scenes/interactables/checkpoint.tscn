@@ -80,6 +80,7 @@ ANIM = NodePath("AnimationPlayer")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CylinderShape3D_0sglt")
+debug_color = Color(0.458405, 0.458405, 0.458405, 0.247059)
 
 [node name="Node3D" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
@@ -113,6 +114,9 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 
 [node name="hoarder" parent="checkpoint" index="0"]
 material_override = SubResource("StandardMaterial3D_p60ie")
+
+[node name="CollisionShape3D" parent="checkpoint/hoarder/StaticBody3D" index="0"]
+debug_color = Color(0.458405, 0.458405, 0.458405, 0.247059)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 

@@ -1455,7 +1455,7 @@ damage_spread = 1
 transform = Transform3D(0.999989, -3.8147e-06, 6.55651e-06, -4.53554e-07, 0.999997, -3.66941e-07, -1.19582e-06, -2.08616e-06, 1.00001, -2.81159, -1.29673, -0.4417)
 shape = SubResource("BoxShape3D_4jko3")
 disabled = true
-debug_color = Color(0.73, 0.2409, 0.281658, 0.537255)
+debug_color = Color(0.44, 0.0792, 0.0792, 0.537255)
 
 [node name="collar" parent="Mesh/reaper/Armature/Skeleton3D" index="6"]
 material_override = SubResource("StandardMaterial3D_h5p68")

@@ -163,6 +163,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Exit/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.553037, 5, 6.25763)
 shape = SubResource("BoxShape3D_8x7wd")
+debug_color = Color(0.458405, 0.458405, 0.458405, 0.247059)
 
 [node name="Start" type="Node3D" parent="Interactables/Exit"]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0670204, 0.114109, 18.9841)
@@ -189,6 +190,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 135.73
 [node name="tower" parent="NavigationRegion3D/Castle" index="0"]
 surface_material_override/0 = ExtResource("8_u51x1")
 surface_material_override/1 = ExtResource("9_u51x1")
+
+[node name="CollisionShape3D" parent="NavigationRegion3D/Castle/tower/StaticBody3D" index="0"]
+debug_color = Color(0.458405, 0.458405, 0.458405, 0.247059)
 
 [connection signal="body_entered" from="Interactables/KillFloor" to="Interactables/KillFloor" method="_on_body_entered"]
 

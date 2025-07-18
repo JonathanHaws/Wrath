@@ -6,14 +6,14 @@
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0836013, 0.477104), -0.0746822, -0.0746822, 0, 0, Vector2(0.700965, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_wtfvh"]
+[sub_resource type="CurveTexture" id="CurveTexture_q85cq"]
 curve = SubResource("Curve_olvgd")
 
 [sub_resource type="Curve" id="Curve_kc6k6"]
 _data = [Vector2(0, 0.19171), 0.667467, 0.424625, 0, 0, Vector2(0.569132, 0.275907), 0.0309665, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_x7qws"]
+[sub_resource type="CurveTexture" id="CurveTexture_fvamb"]
 curve = SubResource("Curve_kc6k6")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qo0m2"]
@@ -33,8 +33,8 @@ damping_min = 0.1
 damping_max = 0.4
 scale_min = 2.0
 scale_max = 5.0
-scale_curve = SubResource("CurveTexture_x7qws")
-alpha_curve = SubResource("CurveTexture_wtfvh")
+scale_curve = SubResource("CurveTexture_fvamb")
+alpha_curve = SubResource("CurveTexture_q85cq")
 
 [sub_resource type="SphereMesh" id="SphereMesh_bt6ge"]
 radius = 0.15

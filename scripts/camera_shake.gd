@@ -1,11 +1,12 @@
 extends Node
 @export var shake = 0.0
-@export var decay_rate = 8.0
+@export var default_decay_rate = 8.0
 @export var max_shake = 10.0
 @export var TREMOR_STRENGTH: float = 1.0
 @export var TARGET_GROUP: String = "player"
 var noise := FastNoiseLite.new()
 var shake_offset := Vector3.ZERO
+var decay_rate = default_decay_rate
 	
 func _ready():
 	noise.seed = randi()
@@ -37,8 +38,7 @@ func _on_body_entered(body) -> void:
 		tremor(TREMOR_STRENGTH)
 
 func continious_tremor(strength: float, duration: float = 1.0) -> void:
-	var old_rate = decay_rate
 	decay_rate = 0
 	shake = strength
 	await get_tree().create_timer(duration, true, false, true).timeout
-	decay_rate = old_rate
+	decay_rate = default_decay_rate

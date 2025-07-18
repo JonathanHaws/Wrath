@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://b3urcqmix8s8g"]
+[gd_scene load_steps=74 format=3 uid="uid://b3urcqmix8s8g"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://scripts/enemies/boss.gd" id="1_fvlx1"]
 [ext_resource type="PackedScene" uid="uid://srdha174fo73" path="res://scenes/particles/boss_death.tscn" id="2_brvm4"]
@@ -34,6 +34,8 @@
 [ext_resource type="AudioStream" uid="uid://f7dwuxrh87go" path="res://audio/music/wrath.ogg" id="32_h5485"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="33_h5485"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://scripts/particles.gd" id="34_cc4qc"]
+[ext_resource type="Material" uid="uid://gwfmysarj7pc" path="res://materials/dust.tres" id="35_pxmry"]
+[ext_resource type="PackedScene" uid="uid://xn7bifp3hpfj" path="res://scenes/particles/dust_land.tscn" id="36_ax45f"]
 
 [sub_resource type="Animation" id="Animation_edx7f"]
 resource_name = "CHASE"
@@ -598,6 +600,32 @@ tracks/12/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Particles/Dust/AnimationPlayer")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(1.29167),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"JUMP_ATTACK"],
+"method": &"play"
+}]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Mesh/Jump/CollisionShape3D:shape:radius")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(1.45833, 1.79167),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 9.61276]
+}
 
 [sub_resource type="Animation" id="Animation_jojdm"]
 length = 0.001
@@ -829,6 +857,18 @@ tracks/18/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Mesh/Jump/CollisionShape3D:shape:radius")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9.61276]
+}
 
 [sub_resource type="Animation" id="Animation_h5485"]
 resource_name = "ROAR_ATTACK"
@@ -906,7 +946,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_plb4y"]
@@ -1302,6 +1342,135 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_cc4qc"]
 size = Vector3(60.1604, 35, 107.815)
 
+[sub_resource type="Curve" id="Curve_uphpj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0836013, 0.477104), -0.0746822, -0.0746822, 0, 0, Vector2(0.700965, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_wtfvh"]
+curve = SubResource("Curve_uphpj")
+
+[sub_resource type="Curve" id="Curve_tyf6s"]
+_data = [Vector2(0, 0.19171), 0.667467, 0.424625, 0, 0, Vector2(0.569132, 0.275907), 0.0309665, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x7qws"]
+curve = SubResource("Curve_tyf6s")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_j4kbp"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 0.0
+emission_ring_radius = 0.4
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 0)
+flatness = 1.0
+initial_velocity_max = 0.5
+radial_velocity_min = -2.23517e-05
+radial_velocity_max = 3.99998
+gravity = Vector3(0, 2, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = -2.23517e-06
+tangential_accel_min = -2.23517e-06
+tangential_accel_max = 0.199998
+damping_min = 0.1
+damping_max = 0.4
+scale_min = 2.0
+scale_max = 5.0
+scale_curve = SubResource("CurveTexture_x7qws")
+alpha_curve = SubResource("CurveTexture_wtfvh")
+
+[sub_resource type="SphereMesh" id="SphereMesh_odd7i"]
+radius = 0.15
+height = 0.3
+radial_segments = 7
+rings = 6
+
+[sub_resource type="Animation" id="Animation_81jla"]
+resource_name = "JUMP_ATTACK"
+length = 0.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:process_material:emission_ring_inner_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 9.75]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:process_material:emission_ring_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.433333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.4, 9.75]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:emitting")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_pxmry"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:process_material:emission_ring_inner_radius")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:process_material:emission_ring_radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wrvk2"]
+_data = {
+&"JUMP_ATTACK": SubResource("Animation_81jla"),
+&"RESET": SubResource("Animation_pxmry")
+}
+
 [node name="Wrath" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM") groups=["wrath"]]
 collision_layer = 7
 collision_mask = 7
@@ -1321,8 +1490,7 @@ offset_left = 544.0
 offset_top = 10.0
 offset_right = 1410.0
 offset_bottom = 20.0
-max_value = 5000.0
-value = 5000.0
+value = 100.0
 tracked_node = NodePath("../..")
 
 [node name="Label" type="Label" parent="UI"]
@@ -1376,23 +1544,23 @@ SCENE_ROOT = NodePath("..")
 [node name="wrath" parent="Mesh" instance=ExtResource("10_h46di")]
 
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
-bones/1/position = Vector3(-7.12175e-17, 0.0829432, 0.518257)
-bones/1/rotation = Quaternion(0.520187, 5.55556e-17, 9.12122e-17, 0.854052)
-bones/2/rotation = Quaternion(0.296613, 1.13845e-07, 3.5359e-08, 0.954998)
+bones/1/position = Vector3(0.0024253, -0.721523, 0.992788)
+bones/1/rotation = Quaternion(0.25735, 8.11288e-17, 7.05286e-17, 0.966318)
+bones/2/rotation = Quaternion(0.347629, 1.11774e-07, 4.14406e-08, 0.937632)
 bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
-bones/4/rotation = Quaternion(-0.359535, 0.0106007, 0.152414, 0.920539)
-bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325445, 0.887213)
-bones/6/rotation = Quaternion(-0.0822429, 0.00062297, 0.134669, 0.987472)
-bones/7/rotation = Quaternion(0.114974, -2.79969e-08, -6.39776e-08, 0.993369)
+bones/4/rotation = Quaternion(0.133097, 0.385149, 0.190128, 0.893195)
+bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
+bones/6/rotation = Quaternion(-0.0822429, 0.000622981, 0.134669, 0.987472)
+bones/7/rotation = Quaternion(-0.136309, -2.93099e-14, -3.24986e-08, 0.990666)
 bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
-bones/9/rotation = Quaternion(-0.24812, 0.00052556, -0.14623, 0.957629)
-bones/10/rotation = Quaternion(-0.455173, 0.0679145, -0.0325445, 0.887213)
+bones/9/rotation = Quaternion(0.18255, -0.0376967, -0.180838, 0.965687)
+bones/10/rotation = Quaternion(-0.239191, 0.243902, -0.292818, 0.893061)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_y1py8")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.653425, 0.0696904, -0.753776, 0.732638, -0.192318, -0.652882, -0.190464, -0.978855, 0.0746071, -2.23058, 2.65431, -0.610164)
+transform = Transform3D(-0.923684, -0.195082, -0.329774, 0.0905005, -0.947408, 0.306964, -0.372313, 0.253694, 0.892761, -2.21095, 2.30092, 1.0926)
 bone_name = "hand_l"
 bone_idx = 6
 script = ExtResource("22_r385c")
@@ -1409,10 +1577,10 @@ group = "wrath"
 transform = Transform3D(0.232359, -0.667949, -0.707003, 0.97263, 0.159571, 0.168901, 0, -0.726898, 0.686745, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_d1l46")
 disabled = true
-debug_color = Color(0, 0.6, 0.7, 0.42)
+debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.685293, 0.149882, 0.712677, -0.722862, -0.258999, -0.640617, 0.0885658, -0.954177, 0.285834, 2.5137, 2.56799, -0.234137)
+transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885416, -0.227331, -0.588577, 0.0625503, 0.806017, 2.21522, 2.23093, 1.16818)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1427,10 +1595,10 @@ group = "wrath"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D"]
 shape = SubResource("CapsuleShape3D_86b8h")
 disabled = true
-debug_color = Color(0, 0.6, 0.7, 0.42)
+debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 2.62901e-13, 2.38419e-07, 2.98741e-08, 0.992119, -0.125302, -2.3654e-07, 0.125302, 0.992119, -1.66777e-22, 1, 0.100295)
+transform = Transform3D(1, 7.23087e-15, 2.38419e-07, -7.95448e-08, 0.942702, 0.333635, -2.24758e-07, -0.333635, 0.942702, 0.0024253, 0.77818, 0.17715)
 bone_name = "torso"
 bone_idx = 2
 
@@ -1440,7 +1608,7 @@ transform = Transform3D(1, 5.32907e-15, 0, 0, 1, 0, 0, 0, 1, 3.94153e-08, 1.3089
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/Torso/LockOn"]
 transform = Transform3D(1, -1.24345e-14, -1.03739e-12, 0, 1, 0, -3.83693e-13, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_4oeto")
-debug_color = Color(0, 0.6, 0.7, 0.42)
+debug_color = Color(0.7, 0.7, 0.7, 0)
 
 [node name="Area3D" type="Area3D" parent="Mesh/wrath/Armature/Skeleton3D/Torso" groups=["wrath"]]
 collision_layer = 3
@@ -1453,7 +1621,7 @@ group = "wrath"
 transform = Transform3D(1, 1.16415e-10, -9.31323e-10, 1.16415e-10, 1, 0, 0, 7.45058e-09, 1, -1.99663e-05, 1.64233, -0.317233)
 shape = SubResource("CapsuleShape3D_fiqjv")
 disabled = true
-debug_color = Color(0, 0.6, 0.7, 0.42)
+debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/wrath/Armature/Skeleton3D" index="4"]
 target_node = NodePath("../../../../../Target")
@@ -1488,7 +1656,7 @@ debug_color = Color(0.733333, 0.243137, 0.282353, 1)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
 shape = SubResource("CapsuleShape3D_oijfr")
-debug_color = Color(0, 0.6, 0.7, 0.42)
+debug_color = Color(0.26, 0.26, 0.26, 0.419608)
 
 [node name="Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 13.6732, -0.361175)
@@ -1517,6 +1685,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05826, 7.1402, -15.2056)
 shape = SubResource("BoxShape3D_r1aqn")
+debug_color = Color(0.46, 0.46, 0.46, 0)
 
 [node name="SlowMotion" type="Node" parent="."]
 script = ExtResource("29_8mxmx")
@@ -1545,6 +1714,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Music/Range"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 93.5303, 35.4003, 22.2378)
 shape = SubResource("BoxShape3D_cc4qc")
+debug_color = Color(0.46, 0.46, 0.46, 0)
 
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 volume_db = -5.0
@@ -1558,6 +1728,26 @@ SOUNDS = Array[AudioStream]([ExtResource("3_nbwf2"), ExtResource("4_1aywb"), Ext
 [node name="Particles" type="Node3D" parent="."]
 script = ExtResource("34_cc4qc")
 particle_scenes = Array[PackedScene]([ExtResource("22_1df88"), ExtResource("2_brvm4")])
+
+[node name="Dust" type="GPUParticles3D" parent="Particles"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+material_override = ExtResource("35_pxmry")
+amount = 512
+lifetime = 2.0
+one_shot = true
+preprocess = 0.18
+explosiveness = 0.5
+fixed_fps = 60
+interpolate = false
+process_material = SubResource("ParticleProcessMaterial_j4kbp")
+draw_pass_1 = SubResource("SphereMesh_odd7i")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Particles/Dust"]
+libraries = {
+&"": SubResource("AnimationLibrary_wrvk2")
+}
+
+[node name="Node3D" parent="." instance=ExtResource("36_ax45f")]
 
 [connection signal="body_entered" from="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" to="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D" to="Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D" method="_on_body_entered"]
