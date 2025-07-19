@@ -2,11 +2,11 @@
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_4fpff"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="2_tpv3v"]
-[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="3_optp0"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/hell.tscn" id="3_optp0"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="4_wykhj"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="6_m0heu"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://materials/bricks/small/world_small.tres" id="7_7uusn"]
-[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://materials/bricks/star/world_star.tres" id="8_q0qy4"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/small/world_small.tres" id="7_7uusn"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/star/world_star.tres" id="8_q0qy4"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
 size = Vector3(7, 11, 2)
@@ -23,9 +23,9 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Enviroment" type="Node" parent="."]
 
-[node name="Weather" parent="Enviroment" instance=ExtResource("2_tpv3v")]
-
 [node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("3_optp0")]
+
+[node name="Weather" parent="Enviroment" instance=ExtResource("2_tpv3v")]
 
 [node name="Lights" type="Node" parent="Enviroment"]
 

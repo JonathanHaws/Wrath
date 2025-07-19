@@ -1,7 +1,7 @@
 [gd_scene load_steps=27 format=3 uid="uid://5n4cvh6cqc4p"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_bn3fv"]
-[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="2_ijgg3"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/hell.tscn" id="2_ijgg3"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_imgxd"]
 [ext_resource type="PackedScene" uid="uid://yxfcfpfrgfp4" path="res://models/blender/portal.blend" id="4_brddq"]
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://scripts/portal.gd" id="5_k1x1u"]
@@ -9,8 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="7_cqhjy"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="8_tbwp6"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="9_5taq5"]
-[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://materials/bricks/star/world_star.tres" id="10_4n06m"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://materials/bricks/small/world_small.tres" id="11_5va0w"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/star/world_star.tres" id="10_4n06m"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/small/world_small.tres" id="11_5va0w"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="12_2uble"]
 [ext_resource type="FontFile" uid="uid://bseqwgcqg3g1" path="res://fonts/Wrath.otf" id="13_tip4x"]
 

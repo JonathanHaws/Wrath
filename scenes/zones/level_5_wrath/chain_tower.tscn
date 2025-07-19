@@ -4,12 +4,12 @@
 [ext_resource type="PackedScene" uid="uid://ct16v3d62ahyk" path="res://models/blender/chain_ceiling.blend" id="2_rpksj"]
 [ext_resource type="Texture2D" uid="uid://bgv5lvisq1rhy" path="res://textures/bricks/roughness.png" id="3_28wfp"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="4_vuroh"]
-[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/world_environment.tscn" id="5_qvkw7"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/hell.tscn" id="5_qvkw7"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="6_a4x1y"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="7_nr52n"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="8_rmm36"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://materials/bricks/small/world_small.tres" id="9_lskvi"]
-[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://materials/bricks/star/world_star.tres" id="10_81ep7"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/small/world_small.tres" id="9_lskvi"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/star/world_star.tres" id="10_81ep7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6e50e"]
 albedo_color = Color(0.412152, 0.412152, 0.412152, 1)

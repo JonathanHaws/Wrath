@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b2vw4evrfcelo"]
 
-[ext_resource type="Material" uid="uid://gwfmysarj7pc" path="res://materials/dust.tres" id="1_ot4h5"]
+[ext_resource type="Material" uid="uid://gwfmysarj7pc" path="res://shaders/materials/dust.tres" id="1_ot4h5"]
 
 [sub_resource type="Curve" id="Curve_olvgd"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0836013, 0.477104), -0.0746822, -0.0746822, 0, 0, Vector2(0.700965, 0), 0.0, 0.0, 0, 0]
