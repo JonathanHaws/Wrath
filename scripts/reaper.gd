@@ -222,6 +222,7 @@ func _physics_process(delta: float) -> void:
 		if God.mode: velocity.y = 0 
 	
 	move_and_slide()
+	#print("Player position:", global_transform.origin) #glitch physics not using move and slide potentially?
 	
 	if in_interruptible_animation(): 
 		if is_on_floor(): 

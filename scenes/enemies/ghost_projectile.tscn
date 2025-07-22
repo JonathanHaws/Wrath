@@ -1,0 +1,114 @@
+[gd_scene load_steps=10 format=3 uid="uid://dyk5tfpn3c33w"]
+
+[ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://scripts/enemies/projectile.gd" id="1_8vmfp"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="2_v5ope"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5ope"]
+albedo_color = Color(0.0852062, 0.101318, 0.154996, 1)
+emission_enabled = true
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cgbyb"]
+top_radius = 0.167
+bottom_radius = 0.0
+cap_bottom = false
+
+[sub_resource type="SphereMesh" id="SphereMesh_v5ope"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ab56"]
+size = Vector3(0.567566, 0.678773, 0.977423)
+
+[sub_resource type="Animation" id="Animation_v5ope"]
+resource_name = "projectile"
+length = 4.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.56667),
+"transitions": PackedFloat32Array(16.5642, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_mr47g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mr47g"]
+_data = {
+&"RESET": SubResource("Animation_mr47g"),
+&"projectile": SubResource("Animation_v5ope")
+}
+
+[node name="GhostProjectile" type="Node3D" node_paths=PackedStringArray("destroy_area")]
+script = ExtResource("1_8vmfp")
+destroy_area = NodePath("Attack")
+exclude_groups = Array[String](["ghost"])
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.93627e-08, 0.67174)
+material_override = SubResource("StandardMaterial3D_v5ope")
+mesh = SubResource("CylinderMesh_cgbyb")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.345907, 0, 0, 0, -1.51201e-08, 0.345907, 0, -0.345907, -1.51201e-08, 0, -1.576e-08, -0.360545)
+material_override = SubResource("StandardMaterial3D_v5ope")
+mesh = SubResource("SphereMesh_v5ope")
+skeleton = NodePath("")
+
+[node name="Attack" type="Area3D" parent="."]
+transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("2_v5ope")
+damage = 15
+group = "ghost"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0126296, -0.00430307, -0.446377)
+shape = SubResource("BoxShape3D_3ab56")
+debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mr47g")
+}
+autoplay = "projectile"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.667053, 1.15956, -2.34819)
+light_color = Color(0.58, 0.58, 0.58, 1)
+light_energy = 2.0
+light_specular = 0.1
+omni_range = 15.0

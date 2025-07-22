@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://c6e88ycy4nm7x"]
+[gd_scene load_steps=38 format=3 uid="uid://c6e88ycy4nm7x"]
 
 [ext_resource type="Script" uid="uid://dkt2ctfdrjb1k" path="res://scripts/enemies/ghost.gd" id="1_ly0wf"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="1_tijse"]
@@ -18,8 +18,9 @@
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://audio/sfx/enemy/Despawn.wav" id="14_rkfee"]
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://audio/sfx/enemy/Cry.wav" id="15_ign71"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="18_05mu1"]
-[ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="19_agce3"]
-[ext_resource type="StyleBox" uid="uid://bxt584wbuc74u" path="res://shaders/ui/bar/ghost_fill.tres" id="20_fd7dn"]
+[ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://scripts/camera_shake.gd" id="21_dfr5h"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://scripts/particles.gd" id="21_n368u"]
+[ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://scenes/enemies/ghost_projectile.tscn" id="22_hp215"]
 
 [sub_resource type="Animation" id="Animation_1m57m"]
 resource_name = "ATTACK"
@@ -60,13 +61,52 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.582888, 0, 0), Vector3(-0.528119, 0, 0), Vector3(0, 0, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_n368u"]
+resource_name = "CHASE"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_05mu1"]
 resource_name = "RESET"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Attacks:ATTACKING")
+tracks/0/path = NodePath("Mesh/MeshInstance3D/Attack/CollisionShape3D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -78,49 +118,120 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/MeshInstance3D/Attack/CollisionShape3D:disabled")
+tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [1.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/2/path = NodePath("Mesh/MeshInstance3D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/MeshInstance3D:rotation")
+tracks/3/path = NodePath("CameraShake:shake")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_fd7dn"]
+resource_name = "SHOOT"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/SceneSpawner")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, null],
+"method": &"spawn"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.933333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CameraShake:shake")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.4]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_agce3"]
 _data = {
 &"ATTACK": SubResource("Animation_1m57m"),
-&"RESET": SubResource("Animation_05mu1")
+&"CHASE": SubResource("Animation_n368u"),
+&"RESET": SubResource("Animation_05mu1"),
+&"SHOOT": SubResource("Animation_fd7dn")
 }
 
-[sub_resource type="Curve" id="Curve_05mu1"]
-_data = [Vector2(0.144404, 1), 0.0, 0.0, 0, 0, Vector2(0.277978, 0), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_dfr5h"]
+_data = [Vector2(0.178694, 1), 0.0, 0.0, 0, 0, Vector2(0.367698, 0), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="Curve" id="Curve_n368u"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.484536, 0), 0.110692, 0.110692, 0, 0, Vector2(0.597938, 0.744382), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6640v"]
 albedo_color = Color(0.0983388, 0.115936, 0.174548, 1)
@@ -153,9 +264,6 @@ size = Vector3(1.0802, 1.44707, 1.26314)
 [sub_resource type="SphereShape3D" id="SphereShape3D_2gcuv"]
 radius = 1.00222
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_fd7dn"]
-viewport_path = NodePath("SubViewport")
-
 [node name="Ghost" type="CharacterBody3D" groups=["ghost"]]
 transform = Transform3D(1.62375, 0, 0, 0, 1.62375, 0, 0, 0, 1.62375, 0, 0, 0)
 script = ExtResource("1_ly0wf")
@@ -167,12 +275,15 @@ RESPAWN = true
 libraries = {
 &"": SubResource("AnimationLibrary_agce3")
 }
-autoplay = "RESET"
+autoplay = "CHASE"
+next/ATTACK = &"CHASE"
+next/SHOOT = &"CHASE"
 script = ExtResource("4_1m57m")
-ATTACK_ANIMATION = Array[String](["ATTACK"])
-ATTACK_RADIUS = Array[float]([4.0])
-ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_05mu1")])
-LIKELIHOOD_MULTIPLIERS = Array[float]([1000.0])
+ATTACK_ANIMATION = Array[String](["ATTACK", "SHOOT"])
+ATTACK_RADIUS = Array[float]([4.0, 37.0])
+ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_dfr5h"), SubResource("Curve_n368u")])
+LIKELIHOOD_MULTIPLIERS = Array[float]([5.0, 2.0])
+LIKELIHOOD_MULTIPLIER = 0.0
 ATTACKING = true
 TARGET = NodePath("../Target")
 BODY = NodePath("..")
@@ -180,6 +291,12 @@ BODY = NodePath("..")
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
 [node name="Mesh" type="Node3D" parent="."]
+
+[node name="SceneSpawner" type="Node3D" parent="Mesh" node_paths=PackedStringArray("copy_transform_node")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
+script = ExtResource("21_n368u")
+particle_scenes = Array[PackedScene]([ExtResource("22_hp215")])
+copy_transform_node = NodePath(".")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
 material_override = SubResource("StandardMaterial3D_6640v")
@@ -245,30 +362,12 @@ collision_mask = 3
 shape = SubResource("SphereShape3D_2gcuv")
 debug_color = Color(1, 1, 1, 0.0823529)
 
-[node name="SubViewport" type="SubViewport" parent="."]
-transparent_bg = true
-size = Vector2i(257, 32)
-size_2d_override = Vector2i(985, 560)
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18205, 0.00665204)
+light_color = Color(0.58, 0.58, 0.58, 1)
+light_energy = 3.0
+light_specular = 0.0
+omni_range = 8.96629
 
-[node name="Bar" parent="SubViewport" node_paths=PackedStringArray("tracked_node") instance=ExtResource("19_agce3")]
-anchors_preset = -1
-anchor_left = 0.0121792
-anchor_top = 0.0330811
-anchor_right = 0.257492
-anchor_bottom = 0.04697
-offset_left = -2.99653
-offset_top = -8.52541
-offset_right = -2.99652
-offset_bottom = -4.52542
-size_flags_horizontal = 6
-size_flags_vertical = 6
-theme_override_styles/fill = ExtResource("20_fd7dn")
-tracked_node = NodePath("../..")
-metadata/_edit_use_anchors_ = true
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0, 1.05615, 0)
-billboard = 1
-texture = SubResource("ViewportTexture_fd7dn")
-
-[editable path="SubViewport/Bar"]
+[node name="CameraShake" type="Node" parent="."]
+script = ExtResource("21_dfr5h")

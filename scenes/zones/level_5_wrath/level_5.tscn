@@ -343,7 +343,13 @@ bones/6/rotation = Quaternion(-0.0822429, 0.000622961, 0.134669, 0.987472)
 bones/7/rotation = Quaternion(-0.29291, -2.50809e-14, -6.98353e-08, 0.95614)
 
 [node name="LeftHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.924672, -0.00872169, -0.380663, 0.348245, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583962)
+transform = Transform3D(-0.924673, -0.00872152, -0.380662, 0.348244, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583943)
+
+[node name="RightHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
+transform = Transform3D(-0.924673, 0.00872091, 0.380663, -0.348244, -0.423631, -0.836219, 0.153968, -0.905793, 0.394757, 2.01091, 1.84788, -0.0583951)
+
+[node name="Torso" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 2.62901e-13, 2.38419e-07, 2.98741e-08, 0.992119, -0.125302, -2.3654e-07, 0.125302, 0.992119, -1.66777e-22, 1, 0.100295)
 
 [node name="Bounds" type="Node" parent="Interactables/Wrath"]
 
@@ -541,10 +547,6 @@ CHECKPOINT_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 
 [node name="Checkpoint2" parent="Interactables/Checkpoints" instance=ExtResource("10_dklar")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -12.5, -65)
-CHECKPOINT_SCENE_PATH = "res://scenes/zones/exterior.tscn"
-
-[node name="Checkpoint3" parent="Interactables/Checkpoints" instance=ExtResource("10_dklar")]
-transform = Transform3D(-1, 0, 2.62268e-07, 0, 1, 0, -2.62268e-07, 0, -1, 0, 5, 50)
 CHECKPOINT_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 
 [node name="Checkpoint4" parent="Interactables/Checkpoints" instance=ExtResource("10_dklar")]

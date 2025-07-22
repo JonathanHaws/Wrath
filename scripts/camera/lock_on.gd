@@ -32,7 +32,15 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("lock_on"):
 		if not lock_on_activated: # lock on to target closest to center of screen
-			lock_on_targets.sort_custom(func(a, b): return CAMERA.get_distance_from_center_of_screen(a.global_position) < CAMERA.get_distance_from_center_of_screen(b.global_position))
+			
+			lock_on_targets.sort_custom(func(a, b):
+				if not CAMERA.has_method("get_distance_from_center_of_screen"): # these 2 lines had to add from weird glitch if lock on is spammed
+					return false
+				var dist_a = CAMERA.get_distance_from_center_of_screen(a.global_position)
+				var dist_b = CAMERA.get_distance_from_center_of_screen(b.global_position)
+				return dist_a < dist_b
+			)
+			
 			lock_on_target = lock_on_targets[0] if lock_on_targets.size() > 0 else null
 			lock_on_activated = lock_on_target != null
 		else:
