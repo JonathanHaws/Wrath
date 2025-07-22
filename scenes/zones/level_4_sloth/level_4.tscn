@@ -108,7 +108,7 @@ material_override = ExtResource("9_d2qy0")
 mesh = SubResource("BoxMesh_od467")
 
 [node name="Ghost" parent="." instance=ExtResource("8_mokli")]
-transform = Transform3D(0.741305, 0, 1.44466, 0, 1.62375, 0, -1.44466, 0, 0.741305, 28.2871, -7.76887, 6.71838)
+transform = Transform3D(0.456538, 0, 0.889704, 0, 1, 0, -0.889704, 0, 0.456538, 28.2871, -7.76887, 6.71838)
 
 [node name="Ghost2" parent="." instance=ExtResource("8_mokli")]
-transform = Transform3D(-0.757872, 0, 1.43603, 0, 1.62375, 0, -1.43603, 0, -0.757872, 30.3021, -7.76887, -7.65768)
+transform = Transform3D(-0.466743, 0, 0.884393, 0, 1, 0, -0.884393, 0, -0.466743, 30.3021, -7.76887, -7.65768)

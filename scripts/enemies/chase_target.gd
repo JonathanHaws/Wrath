@@ -16,21 +16,26 @@ var should_chase: bool = true
 func track(delta: float) -> void:
 	if not MESH or not BODY or not target: return
 	
-	var initial_basis = MESH.global_transform.basis
-	if abs((global_position - MESH.global_transform.origin).normalized().dot(Vector3.UP)) > 0.999: return #rotation vectors too similar? exit to avoid error 
-	if MESH.global_transform.origin.distance_to(target.global_position) < 0.001: return #target and self too similar? exit to avoid error 
+	var initial_rotation = MESH.rotation
 	
-	MESH.look_at(global_position, Vector3.UP, FLIPPED_TRACKING)
-	var target_basis = MESH.global_transform.basis
-	target_basis.y = initial_basis.y
-	target_basis = target_basis.orthonormalized() 
-	MESH.global_transform.basis = initial_basis.slerp(target_basis, TRACKING_SPEED * TRACKING_MULTIPLIER * delta).orthonormalized()
+	var target_pos = target.global_position
+	target_pos.y = MESH.global_transform.origin.y
+	
+	MESH.look_at(target_pos, Vector3.UP, FLIPPED_TRACKING)
+	var target_rotation = MESH.rotation
+	
+	MESH.rotation = initial_rotation
+	MESH.rotation.y = lerp_angle(initial_rotation.y, target_rotation.y, TRACKING_SPEED * TRACKING_MULTIPLIER * delta)
 
-func move_to_target(delta: float, speed: float = 0.0, scalar: Vector3 = Vector3(1, 0, 1)) -> void:
+func move_to_target(speed: float = 0.0, scalar: Vector3 = Vector3(1, 0, 1)) -> void:
 	if not target or not NAV_AGENT: return
 	NAV_AGENT.target_position = global_transform.origin
-	var navigation_velocity = (NAV_AGENT.get_next_path_position() - BODY.global_transform.origin).normalized() * scalar 
-	BODY.global_position += navigation_velocity * speed * delta
+	var path_vector = NAV_AGENT.get_next_path_position() - BODY.global_transform.origin
+	if path_vector.length_squared() < 0.0001: return
+	var navigation_velocity = (path_vector).normalized() * scalar 
+	
+	BODY.velocity.x = navigation_velocity.x * speed
+	BODY.velocity.z = navigation_velocity.z * speed
 
 func get_closest_from_group_3d(group: String) -> Node3D:
 	var closest = null
@@ -59,10 +64,10 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if should_chase:
-		move_to_target(delta, SPEED * SPEED_MULTIPLIER)
+		move_to_target(SPEED * SPEED_MULTIPLIER)
 	
 	if MOVE_AND_SLIDE: 
-		BODY.move_and_slide()
+		if BODY.velocity.length_squared() > 0: BODY.move_and_slide()
 	
 	if not BODY.is_on_floor(): BODY.velocity += BODY.get_gravity() * delta
 	

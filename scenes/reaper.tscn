@@ -1301,6 +1301,9 @@ anti_aliasing = false
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0300407, -0.0905066, -0.0386238)
 rotation_edit_mode = 1
 collision_layer = 2
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
 script = ExtResource("1_0b6a6")
 CAMERA = NodePath("SpringArm3D/Camera3D")
 MESH = NodePath("Mesh")
@@ -1378,42 +1381,43 @@ omni_range = 30.0
 [node name="reaper" parent="Mesh" instance=ExtResource("3_k4avc")]
 
 [node name="Skeleton3D" parent="Mesh/reaper/Armature" index="0"]
-bones/0/rotation = Quaternion(-0.707089, -0.00501653, 0.00501603, 0.707089)
-bones/1/position = Vector3(0.0121782, 0.195052, 0.858267)
-bones/1/rotation = Quaternion(0.645896, -0.00349772, -0.000146736, 0.763417)
-bones/2/rotation = Quaternion(0.00128347, -0.0278493, -0.00330524, 0.999606)
-bones/3/position = Vector3(-0.0739062, 0.086364, 3.33115e-09)
-bones/3/rotation = Quaternion(-0.292705, -0.457163, 0.716788, 0.437654)
-bones/4/rotation = Quaternion(-0.307358, 0.740512, -0.233867, 0.549982)
-bones/5/rotation = Quaternion(0.322179, 0.0382648, 0.067677, 0.943481)
-bones/6/rotation = Quaternion(-0.716704, -0.0537629, 0.0104017, 0.695224)
-bones/7/position = Vector3(0.115202, 0.27591, -0.0660557)
-bones/7/rotation = Quaternion(0.184201, 0.0694581, -0.181838, 0.963421)
-bones/8/position = Vector3(0.0800401, 0.323232, 0.0675552)
-bones/8/rotation = Quaternion(-0.515226, -0.0540867, 0.0572369, 0.853429)
-bones/9/rotation = Quaternion(-0.106838, 0.482838, 0.272569, 0.825324)
-bones/10/position = Vector3(0.0739062, 0.086364, 3.6448e-08)
-bones/10/rotation = Quaternion(-0.128436, 0.0639297, -0.692563, 0.706947)
-bones/11/rotation = Quaternion(-0.318379, -0.601371, 0.178145, 0.710811)
-bones/12/rotation = Quaternion(0.102809, 0.0726833, 0.00599585, 0.992024)
-bones/13/rotation = Quaternion(-0.746551, -0.347111, -0.104445, 0.557913)
-bones/14/position = Vector3(-0.0851424, 0.169056, -0.0639027)
-bones/14/rotation = Quaternion(-0.0665823, 0.0689141, 0.213916, 0.972141)
-bones/15/position = Vector3(-0.0786803, 0.35688, 0.00946135)
-bones/15/rotation = Quaternion(-0.613737, -0.210852, -0.274339, 0.709652)
-bones/16/position = Vector3(-0.0745593, -0.0469273, -1.87737e-08)
-bones/16/rotation = Quaternion(0.0271782, -0.151372, 0.98527, -0.0747751)
-bones/17/rotation = Quaternion(0.0335726, 0.00650981, -2.65977e-05, 0.999415)
-bones/18/rotation = Quaternion(-0.649007, 0.121711, 0.227252, 0.715774)
-bones/19/position = Vector3(0.0745592, -0.0469273, -1.32796e-08)
-bones/19/rotation = Quaternion(-0.000463289, 0.0167985, 0.999734, -0.0157891)
-bones/20/rotation = Quaternion(0.331089, -0.0256913, -0.0793695, 0.939904)
-bones/21/rotation = Quaternion(-0.508827, -0.0181886, -0.0709678, 0.857746)
-bones/22/position = Vector3(0.448948, 0.572884, 1.1269)
-bones/22/rotation = Quaternion(-0.135562, -0.119504, -0.830788, 0.526434)
+bones/0/position = Vector3(0.00256202, 0.0489489, 0.0948707)
+bones/0/rotation = Quaternion(-0.612935, -0.00560519, 0.00434832, 0.790102)
+bones/1/position = Vector3(0.0123235, 0.197681, 0.868509)
+bones/1/rotation = Quaternion(0.16087, -0.100723, -0.0588781, 0.980056)
+bones/2/rotation = Quaternion(0.0349499, 1.23167e-07, 1.16e-08, 0.999389)
+bones/3/position = Vector3(-0.134822, 0.0525759, -0.00378918)
+bones/3/rotation = Quaternion(-0.00705169, -0.467247, 0.750494, 0.467322)
+bones/4/rotation = Quaternion(-0.190912, 0.2876, 0.144214, 0.927384)
+bones/5/rotation = Quaternion(-0.122516, -0.136265, 0.110098, 0.976883)
+bones/6/rotation = Quaternion(-0.645197, -0.369968, -0.17571, 0.644957)
+bones/7/position = Vector3(0.0950237, 0.298836, -0.0378841)
+bones/7/rotation = Quaternion(-0.0880253, 0.319577, -0.443777, 0.832577)
+bones/8/position = Vector3(0.0402784, 0.373751, 0.0192499)
+bones/8/rotation = Quaternion(-0.590165, -0.329685, -0.328786, 0.659479)
+bones/9/rotation = Quaternion(-0.188313, 0.0349523, 0.102123, 0.97616)
+bones/10/position = Vector3(0.0739061, 0.0863638, -1.0222e-07)
+bones/10/rotation = Quaternion(-0.212521, 0.574479, -0.73458, 0.291893)
+bones/11/rotation = Quaternion(-0.221242, -0.855924, 0.0411011, 0.465572)
+bones/12/rotation = Quaternion(0.249308, -0.230606, 0.168459, 0.925358)
+bones/13/rotation = Quaternion(-0.680775, 0.0647394, -0.215597, 0.697046)
+bones/14/position = Vector3(-0.00843012, 0.293147, 0.000175876)
+bones/14/rotation = Quaternion(-0.498519, -8.94973e-05, 0.259607, 0.827093)
+bones/15/position = Vector3(-0.104507, 0.226166, -0.0265586)
+bones/15/rotation = Quaternion(-0.270376, 0.39151, -0.216351, 0.852531)
+bones/16/position = Vector3(-0.0949471, -0.102443, -0.00616003)
+bones/16/rotation = Quaternion(0.173945, -0.564674, 0.744325, 0.311233)
+bones/17/rotation = Quaternion(0.221879, 0.0471956, 0.0239583, 0.973637)
+bones/18/rotation = Quaternion(-0.527103, 0.000813271, 0.00228508, 0.849798)
+bones/19/position = Vector3(0.0744179, -0.181045, 0.00460596)
+bones/19/rotation = Quaternion(0.127098, -0.656312, 0.74124, -0.060531)
+bones/20/rotation = Quaternion(0.232245, -0.0145044, 0.000666633, 0.972549)
+bones/21/rotation = Quaternion(-0.772792, 0.00515115, 0.0013437, 0.634637)
+bones/22/position = Vector3(-0.123488, 1.20066, 0.103137)
+bones/22/rotation = Quaternion(-0.253391, 0.353951, -0.164302, 0.885165)
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.8508, 0.441018, 0.285731, -0.277047, 0.0855835, -0.957037, -0.446525, -0.893409, 0.0493681, 0.0552546, 0.0241137, -0.0250023)
+transform = Transform3D(-0.853016, -0.147322, -0.50066, 0.500493, -0.502781, -0.704783, -0.147893, -0.851767, 0.502614, -0.497641, 0.20418, 0.058386)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -1424,7 +1428,7 @@ particle_scenes = Array[PackedScene]([ExtResource("6_bo8be"), ExtResource("8_lxn
 copy_transform_node = NodePath(".")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.8508, 0.441018, 0.285731, -0.277047, 0.0855835, -0.957037, -0.446525, -0.893409, 0.0493681, 0.0552546, 0.0241137, -0.0250023)
+transform = Transform3D(-0.853016, -0.147322, -0.50066, 0.500493, -0.502781, -0.704783, -0.147893, -0.851767, 0.502614, -0.497641, 0.20418, 0.058386)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -1444,7 +1448,7 @@ material_override = SubResource("ShaderMaterial_ckevw")
 material_override = SubResource("ShaderMaterial_py1jt")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="5"]
-transform = Transform3D(-0.41392, 0.906227, 0.0861531, 0.345231, 0.068701, 0.936, 0.84231, 0.417172, -0.341294, 0.432915, 1.13316, -0.322884)
+transform = Transform3D(0.703087, 0.119495, 0.700992, -0.633574, -0.342335, 0.693824, 0.322883, -0.931948, -0.164982, -0.122377, 0.445605, -1.0429)
 bone_name = "staff_2"
 bone_idx = 22
 

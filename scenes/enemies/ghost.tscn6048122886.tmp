@@ -22,9 +22,6 @@
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://scripts/particles.gd" id="21_n368u"]
 [ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://scenes/enemies/ghost_projectile.tscn" id="22_hp215"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_6640v"]
-radius = 0.794747
-
 [sub_resource type="Animation" id="Animation_1m57m"]
 resource_name = "ATTACK"
 length = 2.0
@@ -258,6 +255,9 @@ height = 1.6
 [sub_resource type="BoxShape3D" id="BoxShape3D_agce3"]
 size = Vector3(2.23877, 1.68384, 3.26862)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_6640v"]
+radius = 0.794747
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_qr43c"]
 size = Vector3(1.0802, 1.44707, 1.26314)
 
@@ -265,14 +265,11 @@ size = Vector3(1.0802, 1.44707, 1.26314)
 radius = 1.00222
 
 [node name="Ghost" type="CharacterBody3D" groups=["ghost"]]
+transform = Transform3D(1.62375, 0, 0, 0, 1.62375, 0, 0, 0, 1.62375, 0, 0, 0)
 script = ExtResource("1_ly0wf")
 HURT_PARTICLE_SCENE = ExtResource("2_y2p6q")
 DAMAGE_NUMBER = ExtResource("2_qr43c")
 RESPAWN = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_6640v")
-debug_color = Color(0.87, 0.87, 0.87, 1)
 
 [node name="Attacks" type="AnimationPlayer" parent="." node_paths=PackedStringArray("TARGET", "BODY")]
 libraries = {
@@ -333,6 +330,10 @@ shape = SubResource("BoxShape3D_agce3")
 disabled = true
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6640v")
+debug_color = Color(1, 1, 1, 0)
+
 [node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA")]
 script = ExtResource("1_tijse")
 NAV_AGENT = NodePath("../NavigationAgent3D")
@@ -359,7 +360,7 @@ collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StopChase"]
 shape = SubResource("SphereShape3D_2gcuv")
-debug_color = Color(1, 1, 1, 0)
+debug_color = Color(1, 1, 1, 0.0823529)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18205, 0.00665204)
