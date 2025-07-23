@@ -21,7 +21,8 @@ func track(delta: float) -> void:
 	var target_pos = target.global_position
 	target_pos.y = MESH.global_transform.origin.y
 	
-	MESH.look_at(target_pos, Vector3.UP, FLIPPED_TRACKING)
+	if not MESH.global_position.is_equal_approx(target_pos):
+		MESH.look_at(target_pos, Vector3.UP, FLIPPED_TRACKING)
 	var target_rotation = MESH.rotation
 	
 	MESH.rotation = initial_rotation
@@ -71,7 +72,7 @@ func _physics_process(delta: float) -> void:
 		move_to_target(SPEED * SPEED_MULTIPLIER)
 	
 	if MOVE_AND_SLIDE: 
-		if BODY.velocity.length() > 0: BODY.move_and_slide()
+		BODY.move_and_slide()
 	
 	if not BODY.is_on_floor(): BODY.velocity += BODY.get_gravity() * delta
 	

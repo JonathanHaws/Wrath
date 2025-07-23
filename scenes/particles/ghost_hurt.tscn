@@ -96,6 +96,7 @@ lifetime = 0.75
 one_shot = true
 preprocess = 0.18
 explosiveness = 1.0
+interpolate = false
 process_material = SubResource("ParticleProcessMaterial_qo0m2")
 draw_pass_1 = SubResource("QuadMesh_odbhm")
 

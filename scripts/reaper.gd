@@ -32,7 +32,6 @@ extends CharacterBody3D
 @export var MAX_STAMINA = 10
 @export var STAMINA_RECOVERY: float = 20.0
 
-
 var falling = COYOTE_TIME;
 var was_on_floor = true
 var has_been_on_floor = false
@@ -221,8 +220,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0
 		if God.mode: velocity.y = 0 
 	
-	if velocity.length() > 0: # never move and slide if velocity is = 0
-		move_and_slide()
+	move_and_slide()  # never move and slide if velocity is = 0
 	
 	if in_interruptible_animation(): 
 		if is_on_floor(): 

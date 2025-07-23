@@ -44,6 +44,8 @@ func play_2d_sound(sound: Variant = null, volume_multiplier: float = 1.0, pitch:
 	player.stream = sound
 	player.pitch_scale = randf_range(pitch - pitch_variance, pitch + pitch_variance)
 	#print(base_volume)
+	player.process_mode = Node.PROCESS_MODE_ALWAYS
+	
 	player.volume_db = linear_to_db(base_volume * (volume_multiplier + randf_range(-volume_variance, volume_variance))) 
 	player.bus = "SFX"
 	player.attenuation = 0

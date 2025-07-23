@@ -62,9 +62,11 @@ func _physics_process(_delta: float) -> void:
 	if not is_instance_valid(lock_on_target): return
 
 	var current_rotation = SpringArm.global_rotation
-	SpringArm.look_at(lock_on_target.global_position - SpringArm.position, Vector3.UP)
-	var new_rotation = SpringArm.global_rotation
 	
+	var final_target_position = lock_on_target.global_position - SpringArm.position
+	if not SpringArm.global_position.is_equal_approx(final_target_position):
+		SpringArm.look_at(final_target_position, Vector3.UP)
+	var new_rotation = SpringArm.global_rotation
 	
 	SpringArm.global_rotation.x = lerp_angle(current_rotation.x, new_rotation.x, LOCK_ON_SPEED * _delta)
 	SpringArm.global_rotation.y = lerp_angle(current_rotation.y, new_rotation.y, LOCK_ON_SPEED * _delta)

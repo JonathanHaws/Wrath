@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://c6e88ycy4nm7x"]
+[gd_scene load_steps=37 format=3 uid="uid://c6e88ycy4nm7x"]
 
 [ext_resource type="Script" uid="uid://dkt2ctfdrjb1k" path="res://scripts/enemies/ghost.gd" id="1_ly0wf"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="1_tijse"]
@@ -20,7 +20,6 @@
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="18_05mu1"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://scripts/camera_shake.gd" id="21_dfr5h"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://scripts/particles.gd" id="21_n368u"]
-[ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://scenes/enemies/ghost_projectile.tscn" id="22_hp215"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6640v"]
 radius = 0.794747
@@ -298,7 +297,6 @@ BODY = NodePath("..")
 [node name="SceneSpawner" type="Node3D" parent="Mesh" node_paths=PackedStringArray("copy_transform_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("21_n368u")
-particle_scenes = Array[PackedScene]([ExtResource("22_hp215")])
 copy_transform_node = NodePath(".")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]

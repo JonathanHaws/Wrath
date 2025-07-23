@@ -1,16 +1,16 @@
 # Used for particles and projectiles
 extends Node
-@export var particle_scenes: Array[PackedScene]
+@export var scenes: Array[PackedScene]
 @export var copy_transform_node: Node3D = null
 @export var parent_node: Node = null
 	
 func spawn(particle = 0, position_or_parent = null) -> void:
 
 	var particle_scene = null
-	if particle == null and particle_scenes.size() == 1: # Default to only particle scene if none is specified
-		particle_scene = particle_scenes[0]
-	if particle is int and particle >= 0 and particle < particle_scenes.size():
-		particle_scene = particle_scenes[particle]
+	if particle == null and scenes.size() == 1: # Default to only particle scene if none is specified
+		particle_scene = scenes[0]
+	if particle is int and particle >= 0 and particle < scenes.size():
+		particle_scene = scenes[particle]
 	elif particle is PackedScene:
 		particle_scene = particle
 	if particle_scene == null: return
@@ -28,6 +28,6 @@ func spawn(particle = 0, position_or_parent = null) -> void:
 	if copy_transform_node:
 		particles.global_transform = copy_transform_node.global_transform
 		
-	#if particles is Node3D and particles.material_override: for making shader unique for every particle might be a bug
+	#if particles is Node3D and particles.material_override: #for making shader unique for every particle might be a bug
 		#particles.material_override = particles.material_override.duplicate()
 		
