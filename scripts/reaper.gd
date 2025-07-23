@@ -221,7 +221,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0
 		if God.mode: velocity.y = 0 
 	
-	if velocity.length_squared() > 0: # never move and slide if velocity is = 0
+	if velocity.length() > 0: # never move and slide if velocity is = 0
 		move_and_slide()
 	
 	if in_interruptible_animation(): 

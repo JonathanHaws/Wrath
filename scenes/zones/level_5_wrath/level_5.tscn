@@ -1,8 +1,9 @@
-[gd_scene load_steps=38 format=3 uid="uid://dsdh2bite7xv4"]
+[gd_scene load_steps=39 format=3 uid="uid://dsdh2bite7xv4"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_t7rxp"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/hell.tscn" id="2_2c8ka"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_aba3s"]
+[ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://scenes/lighting/sun.tscn" id="4_2c8ka"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/small/world_small.tres" id="4_3gs6a"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="5_rlfmo"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="6_haf51"]
@@ -231,15 +232,7 @@ autoplay = "RESET"
 
 [node name="Lights" type="Node" parent="Enviroment"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Enviroment/Lights"]
-transform = Transform3D(0.587815, 0.794944, -0.150126, 0.44723, -0.164677, 0.879128, 0.674136, -0.583905, -0.452322, 0, 29, 0)
-light_color = Color(0.51, 0.51, 0.51, 1)
-light_energy = 6.0
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="Enviroment/Lights"]
-transform = Transform3D(0.481042, -0.122938, 0.868035, 0.875638, 0.116044, -0.46882, -0.0430944, 0.985606, 0.163471, 0, 29, 0)
-light_color = Color(0.51, 0.51, 0.51, 1)
-light_energy = 0.8
+[node name="Node3D" parent="Enviroment/Lights" instance=ExtResource("4_2c8ka")]
 
 [node name="General" type="OmniLight3D" parent="Enviroment/Lights"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.603172, -29.4064, -85.1052)
@@ -343,13 +336,13 @@ bones/6/rotation = Quaternion(-0.0822429, 0.000622961, 0.134669, 0.987472)
 bones/7/rotation = Quaternion(-0.29291, -2.50809e-14, -6.98353e-08, 0.95614)
 
 [node name="LeftHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.924673, -0.00872152, -0.380662, 0.348244, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583943)
+transform = Transform3D(-0.924673, -0.00872152, -0.380662, 0.241994, -0.785316, -0.569839, -0.29397, -0.619033, 0.728271, -2.01091, 1.47521, -0.348159)
 
 [node name="RightHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.924673, 0.00872091, 0.380663, -0.348244, -0.423631, -0.836219, 0.153968, -0.905793, 0.394757, 2.01091, 1.84788, -0.0583951)
+transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885417, -0.22733, -0.588577, 0.0625507, 0.806018, 2.21279, 2.24167, 1.16547)
 
 [node name="Torso" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 2.62901e-13, 2.38419e-07, 2.98741e-08, 0.992119, -0.125302, -2.3654e-07, 0.125302, 0.992119, -1.66777e-22, 1, 0.100295)
+transform = Transform3D(1, -2.98303e-13, 2.38418e-07, -7.9544e-08, 0.942703, 0.333634, -2.24757e-07, -0.333634, 0.942703, 5.38109e-17, 0.788923, 0.174432)
 
 [node name="Bounds" type="Node" parent="Interactables/Wrath"]
 

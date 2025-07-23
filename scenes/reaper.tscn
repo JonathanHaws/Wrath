@@ -1363,11 +1363,12 @@ debug_color = Color(0.7, 0.7, 0.7, 0)
 
 [node name="Mesh" type="Node3D" parent="."]
 
-[node name="SlashParticle" type="Node3D" parent="Mesh" node_paths=PackedStringArray("copy_transform_node")]
+[node name="SlashParticle" type="Node3D" parent="Mesh" node_paths=PackedStringArray("copy_transform_node", "parent_node")]
 transform = Transform3D(-2.22238, 0.0160373, 0.106121, 0.0218304, 1.53043, -0.0212102, -0.130916, -0.0170409, -1.805, 0.106509, 1.26029, -0.436493)
 script = ExtResource("15_lwilf")
 particle_scenes = Array[PackedScene]([ExtResource("16_p2pt0")])
 copy_transform_node = NodePath(".")
+parent_node = NodePath("../..")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Mesh"]
 transform = Transform3D(1, 0, 0, 0, -0.117121, -0.993118, 0, 0.993118, -0.117121, 0.0248996, 2.5027, -0.253531)
@@ -1417,7 +1418,7 @@ bones/22/position = Vector3(-0.123488, 1.20066, 0.103137)
 bones/22/rotation = Quaternion(-0.253391, 0.353951, -0.164302, 0.885165)
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.853016, -0.147322, -0.50066, 0.500493, -0.502781, -0.704783, -0.147893, -0.851767, 0.502614, -0.497641, 0.20418, 0.058386)
+transform = Transform3D(-0.853016, -0.147322, -0.50066, 0.500492, -0.502781, -0.704783, -0.147892, -0.851767, 0.502614, -0.49764, 0.20418, 0.0583856)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -1428,7 +1429,7 @@ particle_scenes = Array[PackedScene]([ExtResource("6_bo8be"), ExtResource("8_lxn
 copy_transform_node = NodePath(".")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.853016, -0.147322, -0.50066, 0.500493, -0.502781, -0.704783, -0.147893, -0.851767, 0.502614, -0.497641, 0.20418, 0.058386)
+transform = Transform3D(-0.853016, -0.147322, -0.50066, 0.500492, -0.502781, -0.704783, -0.147892, -0.851767, 0.502614, -0.49764, 0.20418, 0.0583856)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -1448,7 +1449,7 @@ material_override = SubResource("ShaderMaterial_ckevw")
 material_override = SubResource("ShaderMaterial_py1jt")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="5"]
-transform = Transform3D(0.703087, 0.119495, 0.700992, -0.633574, -0.342335, 0.693824, 0.322883, -0.931948, -0.164982, -0.122377, 0.445605, -1.0429)
+transform = Transform3D(0.703086, 0.119496, 0.700992, -0.633574, -0.342334, 0.693823, 0.322883, -0.931948, -0.164981, -0.122377, 0.445606, -1.0429)
 bone_name = "staff_2"
 bone_idx = 22
 

@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://bwu2lkv2cv827"]
+
+[node name="Sun" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.587815, 0.794944, -0.150125, 0.44723, -0.164677, 0.879128, 0.674136, -0.583905, -0.452322, 0, 29, 0)
+light_color = Color(0.51, 0.51, 0.51, 1)
+light_energy = 3.0
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.481042, -0.122938, 0.868035, 0.875638, 0.116044, -0.46882, -0.0430944, 0.985606, 0.163471, 0, 29, 0)
+light_color = Color(0.51, 0.51, 0.51, 1)
+light_energy = 0.4

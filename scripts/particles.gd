@@ -22,8 +22,6 @@ func spawn(particle = 0, position_or_parent = null) -> void:
 	else:
 		parent_node.add_child(particles)
 
-	
-	
 	if position_or_parent is Vector3:
 		particles.global_transform.origin = position_or_parent
 		
