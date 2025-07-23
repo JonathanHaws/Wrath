@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ctsp72sayfitw"]
+[gd_scene load_steps=9 format=3 uid="uid://ctsp72sayfitw"]
 
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="1_dcmog"]
 [ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://scripts/ui/main/restart.gd" id="2_rr6mc"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/redirect.gd" id="3_xaxel"]
 [ext_resource type="Script" uid="uid://t0ax5fkj1hi8" path="res://scripts/ui/main/load_scene.gd" id="4_snl16"]
 [ext_resource type="PackedScene" uid="uid://xoc7exqkdoqd" path="res://scenes/ui/menus/title_screen.tscn" id="5_xaxel"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://scripts/ui/grab_focus.gd" id="8_snl16"]
 
 [node name="CenterContainer" type="CenterContainer"]
 offset_top = 4.0
@@ -63,3 +64,7 @@ hover_sound = ExtResource("2_vpf6e")
 press_sound = ExtResource("2_vpf6e")
 hover_targets = [null, NodePath("../Restart"), NodePath("../Options"), NodePath("../Quit")]
 pressed_targets = [null, NodePath("../Restart"), NodePath("../Options"), NodePath("../Quit")]
+
+[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
+script = ExtResource("8_snl16")
+focus_node = NodePath("../Main/Restart")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://byffyuaxv71sc"]
+[gd_scene load_steps=9 format=3 uid="uid://byffyuaxv71sc"]
 
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="1_ll3a5"]
 [ext_resource type="Script" uid="uid://c6c4lhniukers" path="res://scripts/ui/graphics/bloom_toggle.gd" id="2_jcns5"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/redirect.gd" id="5_wtdqe"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="6_684si"]
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://scripts/ui/menu_audio.gd" id="7_e8mi2"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://scripts/ui/grab_focus.gd" id="8_bpob5"]
 
 [node name="Control" type="Control"]
 top_level = true
@@ -108,3 +109,7 @@ hover_sound = ExtResource("6_684si")
 press_sound = ExtResource("6_684si")
 hover_targets = [null, null, null, null, null, null]
 pressed_targets = [null, null]
+
+[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
+script = ExtResource("8_bpob5")
+focus_node = NodePath("../BloomButton")

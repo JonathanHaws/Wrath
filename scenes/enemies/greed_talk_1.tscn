@@ -8,9 +8,9 @@
 [ext_resource type="Texture2D" uid="uid://cub81gemf5odj" path="res://textures/defaults/default_normal.png" id="5_6t1gf"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://scripts/ui/dialogue/dialogue.gd" id="6_as0iv"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="8_k5hc3"]
-[ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://scenes/dialogue/chat.tscn" id="9_qmj27"]
+[ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://scenes/ui/dialogue/chat.tscn" id="9_qmj27"]
 [ext_resource type="JSON" path="res://dialogue/greed_talk1.json" id="10_asfo8"]
-[ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://scenes/dialogue/choice.tscn" id="10_hnncu"]
+[ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://scenes/ui/dialogue/choice.tscn" id="10_hnncu"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_as0iv"]
 

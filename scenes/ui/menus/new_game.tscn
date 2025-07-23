@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=4 uid="uid://dt1c8xw6lwsk5"]
+[gd_scene load_steps=9 format=4 uid="uid://dt1c8xw6lwsk5"]
 
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://scripts/ui/grab_focus.gd" id="1_ufu61"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="1_wdp5g"]
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://scripts/ui/menu_audio.gd" id="2_ufu61"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="3_rirsv"]
@@ -64,5 +65,9 @@ icon_alignment = 1
 script = ExtResource("5_b7s21")
 scene_to_spawn_path = "res://scenes/ui/menus/tile_main.tscn"
 node_to_replace = NodePath("..")
+
+[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
+script = ExtResource("1_ufu61")
+focus_node = NodePath("../LineEdit")
 
 [connection signal="visibility_changed" from="Begin" to="Begin" method="grab_focus"]

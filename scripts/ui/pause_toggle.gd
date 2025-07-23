@@ -9,5 +9,5 @@ func toggle(paused: bool) -> void:
 	get_tree().paused = paused
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("menu"):
 		toggle(not self.visible) 

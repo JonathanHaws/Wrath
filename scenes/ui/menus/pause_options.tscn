@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxja4xs36njyv"]
+[gd_scene load_steps=8 format=3 uid="uid://cxja4xs36njyv"]
 
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="1_44kt7"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://scripts/ui/grab_focus.gd" id="1_gh5rx"]
 [ext_resource type="Script" uid="uid://d2hxlmmmtfynf" path="res://scripts/ui/options/volume_adjustment.gd" id="2_gh5rx"]
 [ext_resource type="Script" uid="uid://yd63tscy6h1n" path="res://scripts/ui/options/window_mode_dropdown.gd" id="4_i2ivw"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://scripts/ui/redirect.gd" id="5_q1b1x"]
@@ -137,4 +138,6 @@ press_sound = ExtResource("6_w0nh5")
 hover_targets = [NodePath("../Master/HSlider"), NodePath("../SFX/HSlider"), NodePath("../Music/HSlider"), null, NodePath("../WindowMode"), NodePath("../Back")]
 pressed_targets = [NodePath("../WindowMode"), NodePath("../Back")]
 
-[connection signal="visibility_changed" from="Options/Master" to="Options/Master" method="grab_focus"]
+[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
+script = ExtResource("1_gh5rx")
+focus_node = NodePath("../Options/Master/HSlider")

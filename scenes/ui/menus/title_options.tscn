@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://fxlgnts7apla"]
+[gd_scene load_steps=9 format=3 uid="uid://fxlgnts7apla"]
 
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/ui/theme.tres" id="1_2cglq"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://scripts/ui/grab_focus.gd" id="1_t661t"]
 [ext_resource type="Script" uid="uid://d2hxlmmmtfynf" path="res://scripts/ui/options/volume_adjustment.gd" id="2_3wban"]
 [ext_resource type="Script" uid="uid://p76p6xby1wu" path="res://scripts/ui/graphics/brightness_adjustment.gd" id="3_vt88a"]
 [ext_resource type="Script" uid="uid://yd63tscy6h1n" path="res://scripts/ui/options/window_mode_dropdown.gd" id="4_k6d2o"]
@@ -134,4 +135,6 @@ press_sound = ExtResource("6_k6d2o")
 hover_targets = [NodePath("../Master/HSlider"), NodePath("../SFX/HSlider"), NodePath("../Music/HSlider"), NodePath("../Brightness/HSlider"), NodePath("../WindowMode"), NodePath("../Back")]
 pressed_targets = [NodePath("../WindowMode"), NodePath("../Back")]
 
-[connection signal="visibility_changed" from="Master" to="Master" method="grab_focus"]
+[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
+script = ExtResource("1_t661t")
+focus_node = NodePath("../Master/HSlider")
