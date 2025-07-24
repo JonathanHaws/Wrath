@@ -1,15 +1,24 @@
 [
-	{"scene": "0", "info": ["YOUR PRESENCE IS SURPRISING WHAT DID YOU DO TO END UP HERE"]},
-	{"scene": "0", "info": ["IS NO MATTER RUN ALONG NOW"]},
+	{"scene": "0", "info": ["OH HEY LOOK A NEW FACE"]},
+	{"scene": "0", "info": ["IF YOUR HERE TO STEAL MY TREASURES"]},
+	{"scene": "0", "info": ["TAKE YOUR LEAVE"]},
 	{"scene": "0", "info": ["GO MAKE TROUBLE ELSEWHERE"]},
 	{"scene": "1", "info": [{"text": "HOWD I END UP HERE?",  }, 
-							{"text": "HOW DO I ESCAPE THIS PLACE?", "next":"7"}
+							{"text": "HOW DO I ESCAPE?", "skip": 4 }
 							]},
 	
-	{"scene": "0", "info": ["WHO KNOWS YOUD KNOW AS MUCH AS I WOULD"]},
-	{"scene": "0", "info": ["YOU DONT LOOK LIKE A CONFESSOR BUT ARE YOU GUILTY OF SOMETHING"]},
-	{"scene": "0", "info": ["ANOTHER FACE SENT TO US AS PUNISHMENT"], "next": "0"},
+	{"scene": "0", "info": ["HOW DID YOU END UP IN HELL"],},
+	{"scene": "0", "info": ["YOU TELL ME"],},
+	{"scene": "0", "info": ["EVERYONES HERE IS GUILTY OF SOMETHING"],},
+	{"scene": "0", "info": ["WHAT WERE YOU WEAK TO"], "skip": -5 },
 
-	{"scene": "0", "info": ["MAYBE IF YOU FALL ASLEEP AND WAKE UP THAT MIGHT DO IT"]},
-	{"scene": "0", "info": ["HOW COULD I KNOW YOUR ABSOLUTION WITHOUT KNOWING YOUR CRIME"]},
+	{"scene": "0", "info": ["IM AFRAID YOU CANT"]},
+	{"scene": "0", "info": ["ITS IMPOSSIBLE"]},
+	{"scene": "0", "info": ["YOUR NOW FATED TO ROT IN THIS MISERABLE PLACE"]},
+	{"scene": "0", "info": ["UNTIL THE END OF TIME"]},
+	{"scene": "0", "info": ["UNLESS"]},
+	{"scene": "0", "info": ["YOU FIND A WAY TO"]},
+	{"scene": "0", "info": ["KILL THE DEVIL"]},
+	{"scene": "0", "info": ["SO LIKE I SAID IMPOSSIBLE"], "skip": -13},
+	
 ]

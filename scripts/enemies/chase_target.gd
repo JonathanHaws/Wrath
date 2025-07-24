@@ -63,18 +63,21 @@ func _ready() -> void:
 		STOP_CHASE_AREA.body_exited.connect(_on_body_exited_stop_area)
 
 func _physics_process(delta: float) -> void:
-	BODY.velocity.x = 0
-	BODY.velocity.z = 0
 	
-	if should_chase:
-		move_to_target(SPEED * SPEED_MULTIPLIER)
-	
-	if MOVE_AND_SLIDE: 
-		BODY.move_and_slide()
-	
-	if not BODY.is_on_floor(): BODY.velocity += BODY.get_gravity() * delta
-	
-	track(delta)
+	if BODY: 
+		
+		if not BODY.is_on_floor(): BODY.velocity += BODY.get_gravity() * delta
+
+		BODY.velocity.x = 0
+		BODY.velocity.z = 0
+
+		if should_chase:
+			move_to_target(SPEED * SPEED_MULTIPLIER)
+		
+		if MOVE_AND_SLIDE: 
+			BODY.move_and_slide()
+		
+		track(delta)
 	
 	if target == null:
 		target = get_closest_from_group_3d(TARGET_GROUP)

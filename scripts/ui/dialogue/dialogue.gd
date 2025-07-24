@@ -26,13 +26,15 @@ func _on_body_exited(body)-> void:
 	current_index = start_index
 
 func _spawn_next_dialogue() -> void:
+
+	if "skip" in dialogue[current_index]:
+		current_index += 1 + dialogue[current_index].skip
+	else:
+		current_index += 1
+		
 	if current_index >= dialogue.size():
 		current_index = int(start_index)
 		return
-	
-	if "next" in dialogue[current_index]:
-		current_index = int(dialogue[current_index].next)
-		if current_index == 0: return
 		
 	var scene_index = int(dialogue[current_index].scene)
 	if scene_index >= 0 and scene_index < dialogue_templates.size():
@@ -42,8 +44,6 @@ func _spawn_next_dialogue() -> void:
 			instance.info = dialogue[current_index].info
 		add_child(instance)
 	
-		if not "next" in dialogue[current_index]:
-			current_index += 1
 		
 func _ready():
 	base_children = get_child_count()

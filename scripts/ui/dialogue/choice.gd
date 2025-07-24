@@ -7,8 +7,8 @@ func _captured_mouse() ->void:
 func _on_choice_pressed(choice: Dictionary) -> void:
 	queue("exited")
 	get_parent().next_queued = true
-	if "next" in choice:
-		get_parent().current_index = int(choice.next)
+	if "skip" in choice:
+		get_parent().current_index += 1 + choice.skip
 
 func _visible_mouse() ->void:
 	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE 

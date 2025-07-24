@@ -18,6 +18,10 @@ func rotate_mesh_towards_camera_xz(delta: float, mesh: Node3D, input_vector: Vec
 			
 func _physics_process(_delta: float) -> void:
 	
+	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE: 
+		mouse_delta = Vector2.ZERO
+		return
+	
 	SpringArm.collision_mask = 0 if God.mode else 1
 	
 	var look_left_right = Input.get_axis("look_left", "look_right")
