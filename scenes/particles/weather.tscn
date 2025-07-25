@@ -94,6 +94,7 @@ amount = 2046
 lifetime = 15.0
 speed_scale = 2.0
 fixed_fps = 60
+interpolate = false
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_1a4pd")
 draw_pass_1 = SubResource("QuadMesh_qst5c")

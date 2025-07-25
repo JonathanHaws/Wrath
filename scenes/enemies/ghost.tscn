@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://c6e88ycy4nm7x"]
+[gd_scene load_steps=40 format=3 uid="uid://c6e88ycy4nm7x"]
 
 [ext_resource type="Script" uid="uid://dkt2ctfdrjb1k" path="res://scripts/enemies/ghost.gd" id="1_ly0wf"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="1_tijse"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://scripts/audio_one_shot.gd" id="4_2gcuv"]
 [ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://audio/sfx/enemy/Hit_1.wav" id="5_y2p6q"]
 [ext_resource type="AudioStream" uid="uid://b4dyx5m8hsynq" path="res://audio/sfx/enemy/Hit_2.wav" id="6_1m57m"]
+[ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://scenes/enemies/ghost_projectile.tscn" id="6_dfr5h"]
 [ext_resource type="AudioStream" uid="uid://bv7cgqlt3sbtb" path="res://audio/sfx/enemy/Hit_3.wav" id="7_05mu1"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/enemy/Slam.wav" id="8_agce3"]
 [ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://audio/sfx/brick/Crumble_1.wav" id="9_fd7dn"]
@@ -20,6 +21,7 @@
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="18_05mu1"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://scripts/camera_shake.gd" id="21_dfr5h"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://scripts/particles.gd" id="21_n368u"]
+[ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://scripts/squash.gd" id="22_n368u"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6640v"]
 radius = 0.794747
@@ -103,6 +105,23 @@ tracks/1/keys = {
 "values": [1.0]
 }
 
+[sub_resource type="Animation" id="Animation_hp215"]
+resource_name = "DEATH"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_05mu1"]
 resource_name = "RESET"
 tracks/0/type = "value"
@@ -165,54 +184,111 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SquashAndStretch:target_squash_scale")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_fd7dn"]
 resource_name = "SHOOT"
-tracks/0/type = "method"
+length = 2.5
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/SceneSpawner")
+tracks/0/path = NodePath("SquashAndStretch:target_squash_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.0333333, 0.163421, 0.189977),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 1.4, 1.4, 1.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SquashAndStretch")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.2, 0.376889, 0.580143, 0.837531),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
+"args": [0.2],
+"method": &"squish"
+}, {
+"args": [0.2],
+"method": &"squish"
+}, {
+"args": [0.2],
+"method": &"squish"
+}, {
+"args": [0.2],
+"method": &"squish"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/SceneSpawner")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2, 0.378289, 0.583591, 0.837518),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [0, null],
+"method": &"spawn"
+}, {
+"args": [0, null],
+"method": &"spawn"
+}, {
+"args": [0, null],
+"method": &"spawn"
+}, {
 "args": [0, null],
 "method": &"spawn"
 }]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.933333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CameraShake:shake")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CameraShake:shake")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.4]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -223,6 +299,7 @@ tracks/3/keys = {
 _data = {
 &"ATTACK": SubResource("Animation_1m57m"),
 &"CHASE": SubResource("Animation_n368u"),
+&"DEATH": SubResource("Animation_hp215"),
 &"RESET": SubResource("Animation_05mu1"),
 &"SHOOT": SubResource("Animation_fd7dn")
 }
@@ -232,8 +309,8 @@ _data = [Vector2(0.0687285, 1), 0.0, 0.0, 0, 0, Vector2(0.209622, 0), 0.0, 0.0, 
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_n368u"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.237113, 0), 0.110692, 0.110692, 0, 0, Vector2(0.457045, 0.744382), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0.730337), 0.0, 0.0, 0, 0]
+point_count = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6640v"]
 albedo_color = Color(0.0983388, 0.115936, 0.174548, 1)
@@ -297,6 +374,7 @@ BODY = NodePath("..")
 [node name="SceneSpawner" type="Node3D" parent="Mesh" node_paths=PackedStringArray("copy_transform_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("21_n368u")
+scenes = Array[PackedScene]([ExtResource("6_dfr5h")])
 copy_transform_node = NodePath(".")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
@@ -368,3 +446,7 @@ omni_range = 8.96629
 
 [node name="CameraShake" type="Node" parent="."]
 script = ExtResource("21_dfr5h")
+
+[node name="SquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("mesh_node")]
+script = ExtResource("22_n368u")
+mesh_node = NodePath("../Mesh")

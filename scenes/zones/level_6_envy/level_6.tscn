@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="7_iow1r"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/small/world_small.tres" id="8_212ov"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="8_xfmdf"]
-[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://scenes/enemies/ghost.tscn" id="9_0nd05"]
+[ext_resource type="PackedScene" uid="uid://cfs5888yrlisc" path="res://scenes/enemies/ghost_shoot.tscn" id="9_0nd05"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/star/world_star.tres" id="9_plya3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
@@ -141,8 +141,11 @@ size = Vector3(20, 20, 89)
 [node name="Checkpoint" parent="." instance=ExtResource("8_xfmdf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.78209, -8.56741, -0.492541)
 
-[node name="Ghost" parent="." instance=ExtResource("9_0nd05")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 28.8539, -5.35596, 8.45938)
+[node name="Ghost1" parent="." instance=ExtResource("9_0nd05")]
+transform = Transform3D(-0.439641, 0, 0.898173, 0, 1, 0, -0.898173, 0, -0.439641, 40.1878, -7.51033, -12.8089)
 
 [node name="Ghost2" parent="." instance=ExtResource("9_0nd05")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.772, -5.35596, -10.6981)
+transform = Transform3D(0.856348, 0, -0.516399, 0, 1, 0, 0.516399, 0, 0.856348, 25.7077, -7.51033, 71.1793)
+
+[node name="Ghost3" parent="." instance=ExtResource("9_0nd05")]
+transform = Transform3D(-0.858459, 0, -0.512882, 0, 1, 0, 0.512882, 0, -0.858459, 66.8823, -7.51033, 41.072)

@@ -5,7 +5,7 @@ extends Area3D
 func _on_body_entered(body):
 	if "velocity" in body:
 		body.velocity.y = bounce_force
-		Squash.squish($MeshInstance3D, .5)
+		Squash.squish(.5, $MeshInstance3D)
 		Audio.play_2d_sound(bounce_sound, 1, .8)
 		SlowMotion.impact(0.1, 0)
 

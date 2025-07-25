@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://b5clsl3808lrj"]
+
+[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://scenes/enemies/ghost.tscn" id="1_5uphy"]
+
+[node name="Ghost" instance=ExtResource("1_5uphy")]
+
+[node name="Attacks" parent="." index="1"]
+LIKELIHOOD_MULTIPLIERS = Array[float]([30.0, 0.0])

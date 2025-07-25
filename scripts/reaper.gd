@@ -149,7 +149,6 @@ func _process(_delta)-> void:
 
 func _physics_process(delta: float) -> void:
 	
-	Squash.settle(MESH,delta)	
 	if IN_CUTSCENE: 
 		ANIM.stop()
 		return
@@ -159,7 +158,7 @@ func _physics_process(delta: float) -> void:
 			#print('Plunge')
 			ANIM.play("PLUNGE", 0)
 		
-		Squash.squish(MESH,.23)	
+		Squash.squish(.23, MESH)	
 		if $Audio: $Audio.play_2d_sound(["land"], 0.9, 1.1)
 		if PARTICLES: PARTICLES.spawn()
 		
@@ -189,7 +188,7 @@ func _physics_process(delta: float) -> void:
 				
 			if $Audio: $Audio.play_2d_sound(["jump"], 2.0)
 			ANIM.play("JUMPING")
-			Squash.squish(MESH,-.23)	
+			Squash.squish(-.23,MESH)	
 			velocity.y = JUMP_VELOCITY
 			falling = COYOTE_TIME
 			jump_buffer = 0

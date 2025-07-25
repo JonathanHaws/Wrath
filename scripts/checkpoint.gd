@@ -4,23 +4,19 @@ extends Area3D
 @export var CHECKPOINT_SCENE_PATH: String
 @export var ANIM: AnimationPlayer
 
-func acquire() -> void:
-	ANIM.play("ACQUIRED")
-	Save.data["checkpoint_node_path"] = get_path()
-	Save.data["checkpoint_scene_path"] = get_tree().current_scene.scene_file_path
-	Save.save_game()
-
 func _on_body_entered(body: Node) -> void:
 	if GROUP != "" and not body.is_in_group(GROUP): return
-
-	if "HEALTH" in body and "MAX_HEALTH" in body:
-		#print('replenishing')
-		if body.HEALTH < body.MAX_HEALTH:
-			body.HEALTH = body.MAX_HEALTH
-			acquire()
 
 	if Save.data.has("checkpoint_node_path") and get_path() == NodePath(Save.data["checkpoint_node_path"]) and \
 	   Save.data.has("checkpoint_scene_path") and Save.data["checkpoint_scene_path"] == get_tree().current_scene.scene_file_path:
 		return  # Skip if already acquired
 	
-	acquire()
+	if "HEALTH" in body and "MAX_HEALTH" in body:
+		#print('replenishing')
+		if body.HEALTH < body.MAX_HEALTH:
+			body.HEALTH = body.MAX_HEALTH
+	
+	ANIM.play("ACQUIRED")
+	Save.data["checkpoint_node_path"] = get_path()
+	Save.data["checkpoint_scene_path"] = get_tree().current_scene.scene_file_path
+	Save.save_game()

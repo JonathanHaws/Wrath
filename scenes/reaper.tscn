@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=77 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://scripts/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://scripts/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -41,6 +41,7 @@
 [ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://scripts/play_time_tracker.gd" id="36_5cvkf"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="36_p2pt0"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://scripts/slow_motion.gd" id="39_gts01"]
+[ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://scripts/squash.gd" id="41_utjob"]
 [ext_resource type="PackedScene" uid="uid://clbxqusx74r6s" path="res://scenes/particles/dust_jump.tscn" id="42_p6b07"]
 
 [sub_resource type="Animation" id="Animation_bx4xs"]
@@ -1404,11 +1405,11 @@ bones/14/position = Vector3(0.0097023, 0.14449, -0.0938516)
 bones/14/rotation = Quaternion(-0.498519, -8.94973e-05, 0.259607, 0.827093)
 bones/15/position = Vector3(-0.104507, 0.226166, -0.0265586)
 bones/15/rotation = Quaternion(-0.396715, 0.383495, -0.189197, 0.812252)
-bones/16/position = Vector3(-0.0745592, -0.0469273, -2.79269e-08)
+bones/16/position = Vector3(-0.0745593, -0.0469273, -3.05887e-08)
 bones/16/rotation = Quaternion(0.0101559, -0.186483, 0.982371, 0.0083134)
 bones/17/rotation = Quaternion(0.0230632, 0.000157504, 0.00323349, 0.999729)
 bones/18/rotation = Quaternion(-0.61167, 0.00253319, 0.000890185, 0.791109)
-bones/19/position = Vector3(0.0745592, -0.0469274, -3.60395e-08)
+bones/19/position = Vector3(0.0745593, -0.0469273, -3.16411e-08)
 bones/19/rotation = Quaternion(-0.00628432, 0.120802, 0.992616, -0.00893624)
 bones/20/rotation = Quaternion(0.0230632, -0.00015751, -0.0032335, 0.999729)
 bones/21/rotation = Quaternion(-0.792553, 0.0020302, -0.00182285, 0.609797)
@@ -1416,7 +1417,7 @@ bones/22/position = Vector3(0.110637, 0.465987, 1.04335)
 bones/22/rotation = Quaternion(0.602369, -0.40178, 0.123678, 0.678548)
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.99982, -0.0154743, -0.0110165, 0.0115822, -0.0369603, -0.99925, 0.0150555, -0.999197, 0.037133, -0.0878731, 0.0329669, -0.131207)
+transform = Transform3D(-0.99982, -0.0154742, -0.0110165, 0.0115822, -0.0369606, -0.999249, 0.0150555, -0.999197, 0.0371333, -0.0878731, 0.0329666, -0.131206)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -1427,7 +1428,7 @@ scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.99982, -0.0154743, -0.0110165, 0.0115822, -0.0369603, -0.99925, 0.0150555, -0.999197, 0.037133, -0.0878731, 0.0329669, -0.131207)
+transform = Transform3D(-0.99982, -0.0154742, -0.0110165, 0.0115822, -0.0369606, -0.999249, 0.0150555, -0.999197, 0.0371333, -0.0878731, 0.0329666, -0.131206)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -1447,7 +1448,7 @@ material_override = SubResource("ShaderMaterial_ckevw")
 material_override = SubResource("ShaderMaterial_py1jt")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="5"]
-transform = Transform3D(0.636638, -0.662006, -0.395526, 0.703357, 0.708769, -0.0541692, 0.316197, -0.24371, 0.916856, 0.095823, 1.04481, -0.215987)
+transform = Transform3D(0.636638, -0.662005, -0.395527, 0.703357, 0.70877, -0.0541693, 0.316198, -0.24371, 0.916855, 0.0958226, 1.04482, -0.215987)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -1556,6 +1557,10 @@ script = ExtResource("36_5cvkf")
 
 [node name="SlowMotion" type="Node" parent="."]
 script = ExtResource("39_gts01")
+
+[node name="Squash" type="Node" parent="." node_paths=PackedStringArray("mesh_node")]
+script = ExtResource("41_utjob")
+mesh_node = NodePath("../Mesh")
 
 [node name="JumpParticles" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node")]
 script = ExtResource("15_lwilf")
