@@ -3,7 +3,7 @@ extends CanvasLayer
 func _ready() -> void: toggle(false)
 
 func toggle(paused: bool) -> void:
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE if paused else Input.MOUSE_MODE_CAPTURED
+	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN if paused else Input.MOUSE_MODE_CAPTURED
 	self.visible = paused
 	Engine.time_scale = 0 if paused else 1
 	get_tree().paused = paused

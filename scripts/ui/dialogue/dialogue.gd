@@ -4,6 +4,7 @@ extends AnimationPlayer
 @export var player_group: String = "player"
 @export var dialogue_templates: Array[PackedScene] = []
 @export var dialogue_file: Resource
+@export var disable_actions := ["attack", "jump"]
 var current_index = start_index
 var in_range = false
 var next_queued = false
@@ -16,6 +17,7 @@ func _on_body_entered(body) -> void:
 	if is_playing(): queue("entered")
 	else: play("entered")
 	in_range = true
+	DisableInput.toggle_action(disable_actions, false)
 	_spawn_next_dialogue()
 
 func _on_body_exited(body)-> void:
@@ -23,6 +25,7 @@ func _on_body_exited(body)-> void:
 	if is_playing(): queue("exited") 
 	else: play("exited")
 	in_range = false
+	DisableInput.toggle_action(disable_actions, true)
 	current_index = start_index
 
 func _spawn_next_dialogue() -> void:
@@ -58,7 +61,7 @@ func _ready():
 
 func _process(_delta):
 	if not in_range: return
-	if Input.is_action_just_pressed("interact"): 
+	if Input.is_action_just_pressed("talk"): 
 		next_queued = true
 	if next_queued and  get_child_count() == base_children:
 		_spawn_next_dialogue()
