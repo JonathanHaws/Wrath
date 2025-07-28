@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=78 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://scripts/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://scripts/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -42,23 +42,23 @@
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="36_p2pt0"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://scripts/slow_motion.gd" id="39_gts01"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://scripts/squash.gd" id="41_utjob"]
+[ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://scripts/camera_shake.gd" id="42_k5idf"]
 [ext_resource type="PackedScene" uid="uid://clbxqusx74r6s" path="res://scenes/particles/dust_jump.tscn" id="42_p6b07"]
 
 [sub_resource type="Animation" id="Animation_bx4xs"]
 resource_name = "DEATH"
-length = 2.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("SlowMotion")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(2),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
-"method": &"reload_checkpoint"
+"args": [0.2, 0.0],
+"method": &"impact"
 }]
 }
 tracks/1/type = "method"
@@ -71,7 +71,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [["slam"]],
+"args": [["Slam"]],
 "method": &"play_2d_sound"
 }]
 }
@@ -120,6 +120,20 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reload_checkpoint"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_fm33p"]
@@ -214,31 +228,31 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_y5607"]
 resource_name = "FALL_DEATH"
 length = 0.25
-tracks/0/type = "method"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0.233333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"reload_checkpoint"
 }]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ColorRect:color")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_3l6eq"]
@@ -290,6 +304,34 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["HURT"], 1.0, 1.0, 0.0, 0.0],
+"method": &"play_2d_sound"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SlowMotion")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.2, 0.0],
+"method": &"impact"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_kk21r"]
@@ -1314,6 +1356,24 @@ MESH_ANIM = NodePath("Mesh/reaper/AnimationPlayer")
 COLLISON_SHAPE = NodePath("CollisionShape3D")
 PARTICLES = NodePath("JumpParticles")
 
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("35_lwilf")
+SOUNDS = Array[AudioStream]([ExtResource("15_tgmjc"), ExtResource("4_i3uf6"), ExtResource("5_7kpka"), ExtResource("10_c6xc7"), ExtResource("11_x57ir"), ExtResource("12_ot1qi"), ExtResource("2_ykn11"), ExtResource("3_2tmqw"), ExtResource("20_5d6ad"), ExtResource("7_erto2"), ExtResource("8_wxf0g"), ExtResource("9_rg8br"), ExtResource("10_tro3i"), ExtResource("18_pc8iq"), ExtResource("25_8i186")])
+VOLUME_MULTIPLIERS = Array[float]([0.15, 1.0, 1.0, 1.0, 1.0, 1.0, 0.4, 0.4, 0.4, 0.7, 0.7, 0.7, 0.7, 1.0, 0.0])
+
+[node name="PlayTimeTracker" type="Node" parent="."]
+script = ExtResource("36_5cvkf")
+
+[node name="SlowMotion" type="Node" parent="."]
+script = ExtResource("39_gts01")
+
+[node name="Squash" type="Node" parent="." node_paths=PackedStringArray("mesh_node")]
+script = ExtResource("41_utjob")
+mesh_node = NodePath("../Mesh")
+
+[node name="CameraShake" type="Node" parent="."]
+script = ExtResource("42_k5idf")
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 callback_mode_process = 0
 libraries = {
@@ -1493,9 +1553,6 @@ offset_right = 1920.0
 offset_bottom = 1080.0
 color = Color(0, 0, 0, 1)
 
-[node name="AudioListener3D" type="AudioListener3D" parent="."]
-current = true
-
 [node name="Ambience" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("22_ogp31")
 autoplay = true
@@ -1517,11 +1574,6 @@ script = ExtResource("17_5cvkf")
 CAMERA = NodePath("../SpringArm3D/Camera3D")
 SpringArm = NodePath("../SpringArm3D")
 LOCK_ON_AREA = NodePath("../SpringArm3D/Camera3D/LockOnArea")
-
-[node name="Audio" type="Node" parent="."]
-script = ExtResource("35_lwilf")
-SOUNDS = Array[AudioStream]([ExtResource("15_tgmjc"), ExtResource("4_i3uf6"), ExtResource("5_7kpka"), ExtResource("10_c6xc7"), ExtResource("11_x57ir"), ExtResource("12_ot1qi"), ExtResource("2_ykn11"), ExtResource("3_2tmqw"), ExtResource("20_5d6ad"), ExtResource("7_erto2"), ExtResource("8_wxf0g"), ExtResource("9_rg8br"), ExtResource("10_tro3i"), ExtResource("18_pc8iq"), ExtResource("25_8i186")])
-VOLUME_MULTIPLIERS = Array[float]([0.15, 1.0, 1.0, 1.0, 1.0, 1.0, 0.4, 0.4, 0.4, 0.7, 0.7, 0.7, 0.7, 1.0, 0.0])
 
 [node name="Stamina" parent="." node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
 offset_left = -953.0
@@ -1552,15 +1604,8 @@ expands = true
 tracked_node = NodePath("..")
 pixel_expansion_rate = 8.0
 
-[node name="PlayTimeTracker" type="Node" parent="."]
-script = ExtResource("36_5cvkf")
-
-[node name="SlowMotion" type="Node" parent="."]
-script = ExtResource("39_gts01")
-
-[node name="Squash" type="Node" parent="." node_paths=PackedStringArray("mesh_node")]
-script = ExtResource("41_utjob")
-mesh_node = NodePath("../Mesh")
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+current = true
 
 [node name="JumpParticles" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node")]
 script = ExtResource("15_lwilf")

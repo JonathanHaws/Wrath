@@ -1,6 +1,8 @@
 extends Node # slowmotion / freeze frames
 
 func impact(duration: float, speed: float = 0.0) -> void:
+	if not is_inside_tree(): return
+	
 	if speed == 0.0:
 		# For some reason collision breakes with time_scale set to 0. Using pause instead
 		get_tree().paused = true 

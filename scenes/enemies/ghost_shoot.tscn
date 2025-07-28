@@ -4,8 +4,8 @@
 
 [node name="Ghost" instance=ExtResource("1_mshem")]
 
-[node name="Attacks" parent="." index="1"]
+[node name="Attacks" parent="." index="2"]
 LIKELIHOOD_MULTIPLIERS = Array[float]([0.0, 10.0])
 
-[node name="Target" parent="." index="4"]
+[node name="Target" parent="." index="5"]
 SPEED = 0.0

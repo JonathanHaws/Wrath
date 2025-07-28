@@ -1,6 +1,5 @@
 extends CharacterBody3D
 @export var HURT_PARTICLE_SCENE: PackedScene
-@export var DAMAGE_NUMBER: PackedScene
 @export var HEALTH = 500
 @export var MAX_HEALTH = 500
 
@@ -43,12 +42,4 @@ func _exit_tree() -> void:
 		Save.data[get_save_key("respawn_at_deathcount")] = int(Save.data[SAVE_KEY_PLAYER_DEATHS]) + 1
 	Save.save_game()
 
-func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
-	WorldUI.show_symbol(global_position, DAMAGE_NUMBER, 140.0, "Node2D/Label", _damage)
-	SlowMotion.impact(.04)
-	Shake.tremor(2)
-	if $Audio: $Audio.play_2d_sound(["hit_1", "hit_2", "hit_3"], .8)
-	Particles.spawn(HURT_PARTICLE_SCENE, _position)
-	if HEALTH <= 0:
-		queue_free()
 		

@@ -311,14 +311,15 @@ debug_color = Color(0.7, 0.7, 0.7, 0)
 
 [node name="Interactables" type="Node" parent="."]
 
-[node name="KillFloor" type="Area3D" parent="Interactables"]
+[node name="KillVolume" type="Area3D" parent="Interactables"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 1.88324, 19)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("5_rlfmo")
 damage = 10000
+death_animation = "FALL_DEATH"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/KillFloor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/KillVolume"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8294, -186.275, -53.309)
 shape = SubResource("BoxShape3D_ope8t")
 debug_color = Color(1, 1, 1, 0)
@@ -656,7 +657,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181592, -39.932, -161.949)
 [node name="greed_talk_1" parent="." instance=ExtResource("20_26ir3")]
 transform = Transform3D(-0.0677019, 0, 0.997706, 0, 1, 0, -0.997706, 0, -0.0677019, -38.1712, -40.1198, -135.727)
 
-[connection signal="body_entered" from="Interactables/KillFloor" to="Interactables/KillFloor" method="_on_body_entered"]
+[connection signal="body_entered" from="Interactables/KillVolume" to="Interactables/KillVolume" method="_on_body_entered"]
 
 [editable path="Interactables/Wrath"]
 [editable path="Interactables/Wrath/Mesh/wrath"]

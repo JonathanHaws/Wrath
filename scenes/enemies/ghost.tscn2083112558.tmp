@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://c6e88ycy4nm7x"]
+[gd_scene load_steps=40 format=3 uid="uid://c6e88ycy4nm7x"]
 
 [ext_resource type="Script" uid="uid://dkt2ctfdrjb1k" path="res://scripts/enemies/ghost.gd" id="1_ly0wf"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="1_tijse"]
@@ -23,74 +23,8 @@
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://scripts/particles.gd" id="21_n368u"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://scripts/squash.gd" id="22_n368u"]
 
-[sub_resource type="Animation" id="Animation_rkfee"]
-resource_name = "death"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Audio")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [["hit_1", "hit_2", "hit_3"], 1.0, 1.0, 0.0, 0.0],
-"method": &"play_2d_sound"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_pyqwo"]
-resource_name = "HURT"
-length = 0.001
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Audio")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [["hit_1", "hit_2", "hit_3"], 1.0, 1.0, 0.0, 0.0],
-"method": &"play_2d_sound"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CameraShake")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [1.0],
-"method": &"tremor"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_rkfee"]
-_data = {
-&"HURT": SubResource("Animation_pyqwo"),
-&"death": SubResource("Animation_rkfee")
-}
+[sub_resource type="SphereShape3D" id="SphereShape3D_6640v"]
+radius = 0.794747
 
 [sub_resource type="Animation" id="Animation_1m57m"]
 resource_name = "ATTACK"
@@ -378,9 +312,6 @@ point_count = 2
 _data = [Vector2(0, 0.730337), 0.0, 0.0, 0, 0]
 point_count = 1
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_6640v"]
-radius = 0.794747
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6640v"]
 albedo_color = Color(0.0983388, 0.115936, 0.174548, 1)
 roughness = 0.7
@@ -414,23 +345,12 @@ script = ExtResource("1_ly0wf")
 HURT_PARTICLE_SCENE = ExtResource("2_y2p6q")
 RESPAWN = true
 
-[node name="Audio" type="Node" parent="."]
-script = ExtResource("4_2gcuv")
-SOUNDS = Array[AudioStream]([ExtResource("5_y2p6q"), ExtResource("6_1m57m"), ExtResource("7_05mu1"), ExtResource("8_agce3"), ExtResource("9_fd7dn"), ExtResource("10_dfr5h"), ExtResource("11_n368u"), ExtResource("12_hp215"), ExtResource("13_pyqwo"), ExtResource("14_rkfee"), ExtResource("15_ign71")])
-
-[node name="SquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("mesh_node")]
-script = ExtResource("22_n368u")
-mesh_node = NodePath("../Mesh")
-
-[node name="CameraShake" type="Node" parent="."]
-script = ExtResource("21_dfr5h")
-
-[node name="Damaged" type="AnimationPlayer" parent="." node_paths=PackedStringArray("anim")]
-libraries = {
-&"": SubResource("AnimationLibrary_rkfee")
-}
+[node name="Hurt" type="Node" parent="."]
 script = ExtResource("4_hp215")
-anim = NodePath(".")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_6640v")
+debug_color = Color(0.87, 0.87, 0.87, 1)
 
 [node name="Attacks" type="AnimationPlayer" parent="." node_paths=PackedStringArray("TARGET", "BODY")]
 libraries = {
@@ -448,10 +368,6 @@ LIKELIHOOD_MULTIPLIER = 0.0
 ATTACKING = true
 TARGET = NodePath("../Target")
 BODY = NodePath("..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("SphereShape3D_6640v")
-debug_color = Color(0.87, 0.87, 0.87, 1)
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 
@@ -486,8 +402,8 @@ transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("18_05mu1")
-group = "ghost"
 damage = 15
+group = "ghost"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/MeshInstance3D/Attack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0577135, 0.341919, -1.7045)
@@ -511,6 +427,10 @@ transform = Transform3D(1, -1.24345e-14, -1.03739e-12, 0, 1, 0, -3.83693e-13, 0,
 shape = SubResource("BoxShape3D_qr43c")
 debug_color = Color(0.7, 0.7, 0.7, 0)
 
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("4_2gcuv")
+SOUNDS = Array[AudioStream]([ExtResource("5_y2p6q"), ExtResource("6_1m57m"), ExtResource("7_05mu1"), ExtResource("8_agce3"), ExtResource("9_fd7dn"), ExtResource("10_dfr5h"), ExtResource("11_n368u"), ExtResource("12_hp215"), ExtResource("13_pyqwo"), ExtResource("14_rkfee"), ExtResource("15_ign71")])
+
 [node name="StopChase" type="Area3D" parent="."]
 collision_layer = 3
 collision_mask = 3
@@ -525,3 +445,10 @@ light_color = Color(0.58, 0.58, 0.58, 1)
 light_energy = 3.0
 light_specular = 0.0
 omni_range = 8.96629
+
+[node name="CameraShake" type="Node" parent="."]
+script = ExtResource("21_dfr5h")
+
+[node name="SquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("mesh_node")]
+script = ExtResource("22_n368u")
+mesh_node = NodePath("../Mesh")

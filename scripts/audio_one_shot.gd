@@ -51,5 +51,5 @@ func play_2d_sound(sound: Variant = null, volume_multiplier: float = 1.0, pitch:
 	player.attenuation = 0
 	player.connect("tree_entered", Callable(player, "play"))
 	player.connect("finished", Callable(player, "queue_free"))
-	get_tree().root.call_deferred("add_child", player)
+	get_tree().get_root().call_deferred("add_child", player)
 	return player

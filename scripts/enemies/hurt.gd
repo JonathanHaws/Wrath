@@ -1,19 +1,12 @@
-extends AnimationPlayer
+extends Node
+@export var anim: AnimationPlayer = null
+@export var body: Node
 
-@export var BODY: Node
-var last_health: float = INF
+func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
+	WorldUI.show_symbol(_position, 140.0, "Node2D/Label", _damage)
+	SlowMotion.impact(.04)
+	Shake.tremor(2)
+	#Particles.spawn(HURT_PARTICLE_SCENE, _position)
 
-func _ready() -> void:
-	if BODY and BODY.has_variable("HEALTH"):
-		last_health = BODY.HEALTH
-
-func _process(_delta: float) -> void:
-	if not BODY or not BODY.has_variable("HEALTH"):
-		return
-
-	if BODY.HEALTH < last_health:
-		if BODY.HEALTH <= 0:
-			play("DEATH")
-		else:
-			play("HURT")
-	last_health = BODY.HEALTH
+	if anim and anim.has_animation("hurt"):
+		anim.play("hurt")

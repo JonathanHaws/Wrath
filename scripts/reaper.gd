@@ -45,28 +45,8 @@ func reset_spin_damage():
 	DAMAGE_MULTIPLIER = 1
 	ATTACK_AREA.damage = BASE_DAMAGE * DAMAGE_MULTIPLIER
 
-func hurt(_damage: float = 0, _group: String = "", _position: Vector3 = Vector3.ZERO) -> void:
-	if HEALTH > 0:
-		if (_group != "kill_floor"):
-			ANIM.play("HURT")
-			Shake.tremor(3)
-			SlowMotion.impact(.2)
-			if $Audio: $Audio.play_2d_sound(["hurt"],)
-	else: # death
-		Save.data["deaths"] += 1
-		if _group == "kill_floor":
-			if ANIM.current_animation == "FALL_DEATH": return
-			Save.data["spawn_sound"] = "spawn_void"
-			ANIM.play("FALL_DEATH")	
-		else:
-			if ANIM.current_animation == "DEATH": return
-			if $Audio: $Audio.play_2d_sound(["hurt"])
-			await SlowMotion.impact(.3,0)
-			Save.data["spawn_sound"] = "spawn"
-			ANIM.play("DEATH")	
-		Save.save_game()
-
 func reload_checkpoint() -> void:
+	await get_tree().process_frame
 	get_tree().change_scene_to_file(Save.data["checkpoint_scene_path"])
 
 func _on_animation_finished(animation_name: String) -> void:
@@ -97,10 +77,17 @@ func in_interruptible_animation() -> bool:
 	return not ANIM.current_animation in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT", "PLUNGE_FALL", "PLUNGE"]
 
 func _exit_tree() -> void:
+	if velocity.y > 0:
+		Save.data["spawn_sound"] = "spawn_void"
+	else:
+		Save.data["spawn_sound"] = "spawn"
+	
 	if HEALTH > 0:
 		Save.data["health"] = HEALTH
+		Save.data["deaths"] += 1
 	else: 
 		Save.data.erase("health")
+	Save.save_game()
 
 func _ready() -> void:
 	
