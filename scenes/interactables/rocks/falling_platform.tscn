@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://b36oi3g053jo0"]
+[gd_scene load_steps=9 format=3 uid="uid://b36oi3g053jo0"]
 
 [ext_resource type="Script" uid="uid://b0ux3y8bj5pp6" path="res://scripts/falling_platform.gd" id="1_pwrpi"]
+[ext_resource type="Material" uid="uid://pl3nbr4toayv" path="res://shaders/materials/bricks/rocks/rocks.tres" id="2_hjgdu"]
 [ext_resource type="ArrayMesh" uid="uid://bx7n4l7cl82nw" path="res://models/godot_local/rock_1.res" id="2_pwrpi"]
 
 [sub_resource type="Animation" id="Animation_qy78s"]
@@ -72,4 +73,5 @@ shape = SubResource("ConcavePolygonShape3D_qy78s")
 
 [node name="Rock1" type="MeshInstance3D" parent="AnimatableBody3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 3.50699, 0)
+material_override = ExtResource("2_hjgdu")
 mesh = ExtResource("2_pwrpi")

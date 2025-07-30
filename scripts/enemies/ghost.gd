@@ -11,6 +11,11 @@ func get_save_key(suffix: String) -> String:
 	var node_path = get_path()
 	return "%s|%s_%s" % [scene_path, node_path, suffix]
 
+func teleport_children_to_self() -> void:
+	for child in get_children():
+		if child.is_in_group("teleport_to_attacking_body"):
+			child.global_position = global_position
+
 func _ready()-> void:
 	
 	#if Save.data.has(get_save_key("max_health")):

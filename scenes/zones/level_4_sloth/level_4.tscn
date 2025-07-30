@@ -110,5 +110,5 @@ mesh = SubResource("BoxMesh_od467")
 [node name="Ghost" parent="." instance=ExtResource("9_nlsid")]
 transform = Transform3D(0.322051, 0, 0.946722, 0, 1, 0, -0.946722, 0, 0.322051, 27.6137, -8.06565, 7.2063)
 
-[node name="Ghost" parent="Ghost" instance=ExtResource("9_nlsid")]
-transform = Transform3D(0.668923, 0, 0.743332, 0, 1, 0, -0.743332, 0, 0.668923, 12.0576, 9.53674e-07, -3.91316)
+[node name="Ghost2" parent="." instance=ExtResource("9_nlsid")]
+transform = Transform3D(-0.488301, 0, 0.872675, 0, 1, 0, -0.872675, 0, -0.488301, 27.7922, -8.06565, -5.46913)

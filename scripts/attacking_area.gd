@@ -4,12 +4,14 @@ extends Node
 @export var damage_spread := 0
 @export var hurt_animation := "HURT" 
 @export var death_animation := "DEATH"
+@export var show_damage_numbers = false
 
-#func try_call_method(node: Node, method: String, args: Array) -> bool:
-	#if not node.has_method(method): return false
-	#args = args.slice(0, node.get_method_argument_count(method))
-	#node.callv(method, args)
-	#return true
+# For Body / Child Nodes which have to reposition themselves (Matching Animations, Hurt Particles)
+func teleport_nodes(body: Node3D) -> void:
+	for node in [body] + body.get_children():
+		if node.is_in_group("teleport_to_attacking_area"):
+			#print('getting here')
+			node.global_position = self.global_position
 
 # To trigger animation body receving damage needs to have an animation player as a direct shallow child
 func try_to_trigger_animation(node: Node, animation_name: String) -> void:
@@ -27,15 +29,15 @@ func _on_body_entered(body)-> void:
 	var final_damage = damage + randi_range(-damage_spread, damage_spread)
 	body.HEALTH -= final_damage
 	
+	teleport_nodes(body)
+	
+	if show_damage_numbers:
+		WorldUI.show_symbol(self.global_position, 140.0, "Node2D/Label", final_damage)
+	
 	if body.HEALTH > 0: 
 		try_to_trigger_animation(body, hurt_animation)
 	else:
-		try_to_trigger_animation(body, death_animation)
-			
-	#var args = [final_damage, group, self.global_position]
-	#if try_call_method(body, "hurt", args): return
-	#for child in body.get_children():
-		#if child.name == "Hurt" and try_call_method(child, "hurt", args): return	
+		try_to_trigger_animation(body, death_animation)			
 		
 func _ready() -> void:
 	if has_signal("body_entered") and not is_connected("body_entered", Callable(self, "_on_body_entered")):

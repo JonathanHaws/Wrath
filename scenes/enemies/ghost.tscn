@@ -23,37 +23,6 @@
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://scripts/particles.gd" id="21_n368u"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://scripts/squash.gd" id="22_n368u"]
 
-[sub_resource type="Animation" id="Animation_rkfee"]
-resource_name = "death"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Audio")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [["hit_1", "hit_2", "hit_3"], 1.0, 1.0, 0.0, 0.0],
-"method": &"play_2d_sound"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_pyqwo"]
 resource_name = "HURT"
 length = 0.001
@@ -85,11 +54,56 @@ tracks/1/keys = {
 "method": &"tremor"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HurtParticles")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, null],
+"method": &"spawn"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_rkfee"]
+resource_name = "DEATH"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["hit_1", "hit_2", "hit_3"], 1.0, 1.0, 0.0, 0.0],
+"method": &"play_2d_sound"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rkfee"]
 _data = {
-&"HURT": SubResource("Animation_pyqwo"),
-&"death": SubResource("Animation_rkfee")
+&"DEATH": SubResource("Animation_rkfee"),
+&"HURT": SubResource("Animation_pyqwo")
 }
 
 [sub_resource type="Animation" id="Animation_1m57m"]
@@ -424,6 +438,12 @@ mesh_node = NodePath("../Mesh")
 
 [node name="CameraShake" type="Node" parent="."]
 script = ExtResource("21_dfr5h")
+
+[node name="HurtParticles" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node") groups=["teleport_to_attacking_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
+script = ExtResource("21_n368u")
+scenes = Array[PackedScene]([ExtResource("2_y2p6q")])
+copy_transform_node = NodePath(".")
 
 [node name="Damaged" type="AnimationPlayer" parent="." node_paths=PackedStringArray("anim")]
 libraries = {
