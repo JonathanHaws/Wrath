@@ -1451,11 +1451,7 @@ scale_max = 5.0
 scale_curve = SubResource("CurveTexture_x7qws")
 alpha_curve = SubResource("CurveTexture_wtfvh")
 
-[sub_resource type="SphereMesh" id="SphereMesh_odd7i"]
-radius = 0.15
-height = 0.3
-radial_segments = 7
-rings = 6
+[sub_resource type="QuadMesh" id="QuadMesh_pmn43"]
 
 [sub_resource type="Animation" id="Animation_81jla"]
 resource_name = "JUMP_ATTACK"
@@ -1652,7 +1648,7 @@ bones/10/rotation = Quaternion(-0.239191, 0.243902, -0.292818, 0.893061)
 material_override = SubResource("ShaderMaterial_y1py8")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.923684, -0.195082, -0.329774, 0.0905005, -0.947408, 0.306964, -0.372313, 0.253694, 0.892761, -2.16434, 2.09453, 1.14485)
+transform = Transform3D(-0.923684, -0.195082, -0.329773, 0.0905008, -0.947409, 0.306963, -0.372313, 0.253692, 0.892761, -2.16433, 2.09453, 1.14485)
 bone_name = "hand_l"
 bone_idx = 6
 script = ExtResource("22_r385c")
@@ -1672,7 +1668,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885416, -0.227331, -0.588577, 0.0625503, 0.806017, 2.26183, 2.02454, 1.22043)
+transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885417, -0.22733, -0.588577, 0.0625507, 0.806018, 2.26183, 2.02454, 1.22043)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1690,7 +1686,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 7.23087e-15, 2.38419e-07, -7.95448e-08, 0.942702, 0.333635, -2.24758e-07, -0.333635, 0.942702, 0.0490389, 0.571796, 0.229397)
+transform = Transform3D(1, -2.98303e-13, 2.38418e-07, -7.9544e-08, 0.942703, 0.333634, -2.24757e-07, -0.333634, 0.942703, 0.0490389, 0.571797, 0.229398)
 bone_name = "torso"
 bone_idx = 2
 
@@ -1815,7 +1811,7 @@ explosiveness = 0.5
 fixed_fps = 60
 interpolate = false
 process_material = SubResource("ParticleProcessMaterial_j4kbp")
-draw_pass_1 = SubResource("SphereMesh_odd7i")
+draw_pass_1 = SubResource("QuadMesh_pmn43")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Particles/Dust"]
 libraries = {

@@ -34,11 +34,7 @@ scale_max = 5.0
 scale_curve = SubResource("CurveTexture_x7qws")
 alpha_curve = SubResource("CurveTexture_wtfvh")
 
-[sub_resource type="SphereMesh" id="SphereMesh_bt6ge"]
-radius = 0.15
-height = 0.3
-radial_segments = 7
-rings = 6
+[sub_resource type="QuadMesh" id="QuadMesh_ot4h5"]
 
 [sub_resource type="Animation" id="Animation_gh1vd"]
 length = 3.0
@@ -105,7 +101,7 @@ explosiveness = 1.0
 fixed_fps = 60
 interpolate = false
 process_material = SubResource("ParticleProcessMaterial_qo0m2")
-draw_pass_1 = SubResource("SphereMesh_bt6ge")
+draw_pass_1 = SubResource("QuadMesh_ot4h5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Dust"]
 libraries = {

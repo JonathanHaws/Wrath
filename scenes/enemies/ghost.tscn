@@ -23,6 +23,37 @@
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://scripts/particles.gd" id="21_n368u"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://scripts/squash.gd" id="22_n368u"]
 
+[sub_resource type="Animation" id="Animation_rkfee"]
+resource_name = "DEATH"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["hit_1", "hit_2", "hit_3"], 1.0, 1.0, 0.0, 0.0],
+"method": &"play_2d_sound"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_pyqwo"]
 resource_name = "HURT"
 length = 0.001
@@ -66,37 +97,6 @@ tracks/2/keys = {
 "values": [{
 "args": [0, null],
 "method": &"spawn"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_rkfee"]
-resource_name = "DEATH"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Audio")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [["hit_1", "hit_2", "hit_3"], 1.0, 1.0, 0.0, 0.0],
-"method": &"play_2d_sound"
 }]
 }
 
