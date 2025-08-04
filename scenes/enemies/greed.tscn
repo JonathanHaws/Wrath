@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://bre6cgb3dypbs"]
+[gd_scene load_steps=65 format=3 uid="uid://bre6cgb3dypbs"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://scripts/enemies/boss.gd" id="1_cq6fp"]
 [ext_resource type="PackedScene" uid="uid://cqca3skeurt3e" path="res://scenes/particles/greed_hurt.tscn" id="2_jx80p"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://scripts/root_motion.gd" id="16_psb2t"]
 [ext_resource type="Texture2D" uid="uid://degml03bvddt4" path="res://textures/greed/emisson.png" id="17_br41q"]
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/blender/greed.blend" id="17_cq6fp"]
-[ext_resource type="Texture2D" uid="uid://cub81gemf5odj" path="res://textures/defaults/default_normal.png" id="18_clfu5"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="18_i3cy0"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://scripts/camera_shake.gd" id="19_e5shh"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://scripts/slow_motion.gd" id="20_517ma"]
@@ -1181,7 +1180,8 @@ noise = SubResource("FastNoiseLite_ek3tb")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_th64l"]
 render_priority = 0
 shader = ExtResource("4_br41q")
-shader_parameter/base_texture = ExtResource("16_3l2yv")
+shader_parameter/albedo_texture = ExtResource("16_3l2yv")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/emission_texture = ExtResource("17_br41q")
 shader_parameter/emission_texture_intensity = 1.0
 shader_parameter/inside_color = Color(0, 0, 0, 1)
@@ -1191,8 +1191,8 @@ shader_parameter/glow_color = Color(0.728324, 0.456678, 0.310816, 1)
 shader_parameter/glow_intensitiy = 1.77
 shader_parameter/glow_border_width = 0.018
 shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_texture = ExtResource("18_clfu5")
 shader_parameter/normal_strength = 1.0
+shader_parameter/use_normal_map = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jx80p"]
 
@@ -1395,40 +1395,40 @@ SCENE_ROOT = NodePath("..")
 [node name="Greed" parent="Mesh" instance=ExtResource("17_cq6fp")]
 
 [node name="Skeleton3D" parent="Mesh/Greed/Rig" index="0"]
-bones/1/position = Vector3(-0.115101, -0.775054, -2.2212)
-bones/1/rotation = Quaternion(0.0786744, -7.53272e-08, 4.66152e-09, 0.9969)
-bones/2/position = Vector3(0.318777, -0.0666644, -0.0106259)
-bones/2/rotation = Quaternion(0.604848, 0.229349, 0.0646221, 0.759856)
-bones/3/rotation = Quaternion(0.624194, -0.0573771, 0.0324914, 0.778482)
-bones/4/rotation = Quaternion(-0.654046, 0.0391441, -0.0208794, 0.755153)
-bones/5/rotation = Quaternion(0.370329, -0.0693967, 0.0401409, 0.925435)
-bones/6/rotation = Quaternion(-0.0274027, -0.00191207, 0.0230368, 0.999357)
-bones/7/rotation = Quaternion(0.596242, -0.27638, -0.617372, 0.43239)
-bones/8/rotation = Quaternion(0.0753902, -0.0984577, 0.79427, 0.594775)
-bones/9/rotation = Quaternion(0.0324563, -0.167794, -0.125613, 0.977248)
-bones/10/rotation = Quaternion(0.113135, 0.00745659, 0.0994333, 0.988564)
-bones/12/rotation = Quaternion(-0.451912, 0.0269377, 0.0192228, 0.891448)
-bones/13/position = Vector3(-0.488868, 1.43551, -0.00969558)
-bones/13/rotation = Quaternion(0.474192, 0.28738, 0.698872, 0.451811)
-bones/14/rotation = Quaternion(0.350134, 0.116559, -0.641182, 0.672834)
-bones/15/rotation = Quaternion(-0.00831117, 0.188296, 0.112223, 0.975644)
-bones/16/rotation = Quaternion(-0.0622543, -0.109381, -0.0420504, 0.991157)
-bones/17/position = Vector3(0.0430322, -0.121257, -0.083378)
-bones/17/rotation = Quaternion(0.733485, -0.153333, -0.571964, 0.333685)
-bones/18/rotation = Quaternion(0.0875287, 0.0404995, -0.00590786, 0.995321)
-bones/19/rotation = Quaternion(0.137608, -0.532821, -0.13362, 0.824204)
-bones/20/rotation = Quaternion(0.014391, -0.0821689, -0.199726, 0.976295)
-bones/21/rotation = Quaternion(-0.0549919, 0.134846, -0.157014, 0.9768)
-bones/22/rotation = Quaternion(0.607694, -0.093017, 0.128023, 0.778245)
-bones/23/rotation = Quaternion(0.645333, -0.0261812, 0.0547352, 0.761488)
-bones/24/rotation = Quaternion(-0.703501, 0.0283735, -0.0883669, 0.704608)
-bones/25/rotation = Quaternion(0.291092, -0.0642706, 0.00265002, 0.95453)
+bones/1/position = Vector3(-0.113424, -0.785719, -2.09016)
+bones/1/rotation = Quaternion(0.149553, -7.48031e-08, 1.00204e-08, 0.988754)
+bones/2/position = Vector3(0.318777, -0.0666644, -0.0106261)
+bones/2/rotation = Quaternion(0.339671, 0.213212, -0.027215, 0.915655)
+bones/3/rotation = Quaternion(0.618909, -0.0572859, 0.0323412, 0.782703)
+bones/4/rotation = Quaternion(-0.712213, 0.00455392, -0.0369998, 0.700973)
+bones/5/rotation = Quaternion(0.366573, -0.0686007, 0.0400879, 0.926991)
+bones/6/rotation = Quaternion(-0.332793, -1.18865e-10, 2.05003e-10, 0.943)
+bones/7/rotation = Quaternion(0.272876, -0.0874625, -0.842843, 0.455527)
+bones/8/rotation = Quaternion(0.281409, -0.0527555, 0.471848, 0.833897)
+bones/9/rotation = Quaternion(0.0249159, -0.00765435, 0.219977, 0.975157)
+bones/10/rotation = Quaternion(0.132319, 0.00536992, 0.0967451, 0.98646)
+bones/12/rotation = Quaternion(-0.360301, 0.00695914, 0.0424438, 0.931844)
+bones/13/position = Vector3(-0.488868, 1.43551, -0.00969551)
+bones/13/rotation = Quaternion(0.0025542, 0.270876, 0.913956, 0.302165)
+bones/14/rotation = Quaternion(0.53948, 0.0261244, -0.374154, 0.753849)
+bones/15/rotation = Quaternion(0.245209, 0.244188, 0.139902, 0.927724)
+bones/16/rotation = Quaternion(0.081789, 0.0423976, 0.0772358, 0.992748)
+bones/17/position = Vector3(0.086115, 0.0218832, -0.00264496)
+bones/17/rotation = Quaternion(0.647103, -0.328714, -0.494835, 0.477852)
+bones/18/rotation = Quaternion(0.0974276, -0.00123923, -0.13179, 0.986478)
+bones/19/rotation = Quaternion(0.128561, -0.507676, -0.198873, 0.828364)
+bones/20/rotation = Quaternion(-0.078679, -0.137778, -0.292925, 0.942879)
+bones/21/rotation = Quaternion(-0.0600494, 0.112754, -0.231555, 0.964398)
+bones/22/rotation = Quaternion(0.361462, -0.0546394, 0.116122, 0.923513)
+bones/23/rotation = Quaternion(0.639892, -0.0257561, 0.0537377, 0.766151)
+bones/24/rotation = Quaternion(-0.745602, 0.0481328, -0.100105, 0.65707)
+bones/25/rotation = Quaternion(0.28701, -0.0640196, 0.00177572, 0.955784)
 
 [node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_th64l")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1"]
-transform = Transform3D(0.998931, -0.0459393, -0.00508422, -0.00976639, -0.102279, -0.994708, 0.0451761, 0.993694, -0.102619, -0.115101, 2.06489, 0.209039)
+transform = Transform3D(1, 2.04239e-09, 6.53956e-10, -1.466e-10, 0.369337, -0.929295, -2.1395e-09, 0.929295, 0.369337, -0.113424, 1.79548, 0.166136)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1441,7 +1441,7 @@ shape = SubResource("BoxShape3D_jx80p")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2"]
-transform = Transform3D(0.998931, -0.0459393, -0.00508422, -0.00976639, -0.102279, -0.994708, 0.0451761, 0.993694, -0.102619, -0.115101, 2.06489, 0.209039)
+transform = Transform3D(1, 2.04239e-09, 6.53956e-10, -1.466e-10, 0.369337, -0.929295, -2.1395e-09, 0.929295, 0.369337, -0.113424, 1.79548, 0.166136)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1459,7 +1459,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3"]
-transform = Transform3D(0.998931, -0.0459393, -0.00508422, -0.00976639, -0.102279, -0.994708, 0.0451761, 0.993694, -0.102619, -0.115101, 2.06489, 0.209039)
+transform = Transform3D(1, 2.04239e-09, 6.53956e-10, -1.466e-10, 0.369337, -0.929295, -2.1395e-09, 0.929295, 0.369337, -0.113424, 1.79548, 0.166136)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1477,7 +1477,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4"]
-transform = Transform3D(-0.386764, -0.360641, -0.848735, -0.828142, -0.26907, 0.491712, -0.405701, 0.89305, -0.194596, 0.271838, 0.709237, 2.35795)
+transform = Transform3D(0.294423, -0.0220242, -0.955421, -0.942317, -0.173257, -0.286391, -0.159226, 0.98463, -0.0717649, 1.44015, 1.24867, 2.19762)
 bone_name = "hand_l"
 bone_idx = 10
 
@@ -1496,7 +1496,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5"]
-transform = Transform3D(-0.432569, 0.0873356, 0.897361, 0.614932, -0.699292, 0.364484, 0.65935, 0.709481, 0.248786, -0.713501, 0.500736, 2.18367)
+transform = Transform3D(-0.799062, 0.33946, 0.496252, 0.421898, -0.27148, 0.865043, 0.428371, 0.900591, 0.0737115, -1.30246, 1.28239, 2.27135)
 bone_name = "hand_r"
 bone_idx = 16
 

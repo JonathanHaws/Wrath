@@ -1,11 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://c6e88ycy4nm7x"]
+[gd_scene load_steps=47 format=3 uid="uid://c6e88ycy4nm7x"]
 
 [ext_resource type="Script" uid="uid://dkt2ctfdrjb1k" path="res://scripts/enemies/ghost.gd" id="1_ly0wf"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="1_tijse"]
 [ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/particles/ghost_hurt.tscn" id="2_y2p6q"]
 [ext_resource type="Script" uid="uid://l4b37mckqf8k" path="res://scripts/enemies/proximity_based_random_attacks.gd" id="4_1m57m"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://scripts/audio_one_shot.gd" id="4_2gcuv"]
-[ext_resource type="Script" uid="uid://cmmawoqihgc" path="res://scripts/enemies/hurt.gd" id="4_hp215"]
 [ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://audio/sfx/enemy/Hit_1.wav" id="5_y2p6q"]
 [ext_resource type="AudioStream" uid="uid://b4dyx5m8hsynq" path="res://audio/sfx/enemy/Hit_2.wav" id="6_1m57m"]
 [ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://scenes/enemies/ghost_projectile.tscn" id="6_dfr5h"]
@@ -28,30 +27,90 @@ resource_name = "DEATH"
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("Audio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
-"method": &"queue_free"
+"args": [["hit_1", "hit_2", "hit_3"], 1.0, 1.0, 0.0, 0.0],
+"method": &"play_2d_sound"
 }]
 }
-tracks/1/type = "method"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Audio")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/MeshInstance3D:material_override:shader_parameter/dissolve_amount")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.866667),
+"transitions": PackedFloat32Array(1),
 "values": [{
-"args": [["hit_1", "hit_2", "hit_3"], 1.0, 1.0, 0.0, 0.0],
-"method": &"play_2d_sound"
+"args": [],
+"method": &"queue_free"
 }]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmniLight3D:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [3.0, 0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D:material_override:albedo_color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.766667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.52, 0.52, 0.52, 1), Color(0.52, 0.52, 0.52, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D2:material_override:albedo_color")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.766667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.52, 0.52, 0.52, 1), Color(0.52, 0.52, 0.52, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_pyqwo"]
@@ -100,10 +159,74 @@ tracks/2/keys = {
 }]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_rkfee"]
+[sub_resource type="Animation" id="Animation_ign71"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/MeshInstance3D:material_override:shader_parameter/dissolve_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D:material_override:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.52, 0.52, 0.52, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D2:material_override:albedo_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.52, 0.52, 0.52, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n368u"]
 _data = {
 &"DEATH": SubResource("Animation_rkfee"),
-&"HURT": SubResource("Animation_pyqwo")
+&"HURT": SubResource("Animation_pyqwo"),
+&"RESET": SubResource("Animation_ign71")
 }
 
 [sub_resource type="Animation" id="Animation_1m57m"]
@@ -183,23 +306,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
-}
-
-[sub_resource type="Animation" id="Animation_hp215"]
-resource_name = "DEATH"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_05mu1"]
@@ -375,6 +481,9 @@ tracks/5/keys = {
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_hp215"]
+resource_name = "DEATH"
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_agce3"]
 _data = {
 &"ATTACK": SubResource("Animation_1m57m"),
@@ -395,20 +504,109 @@ point_count = 1
 [sub_resource type="SphereShape3D" id="SphereShape3D_6640v"]
 radius = 0.794747
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6640v"]
-albedo_color = Color(0.0983388, 0.115936, 0.174548, 1)
-roughness = 0.7
+[sub_resource type="Shader" id="Shader_dfr5h"]
+code = "shader_type spatial;
+
+//credit DisplacedFikaDev
+
+uniform sampler2D albedo_texture : source_color;
+uniform vec3 albedo_color : source_color = vec3(1.0);
+uniform sampler2D emission_texture : source_color;
+uniform float emission_texture_intensity : hint_range(0.0, 50.0) = 1.0;
+uniform vec3 inside_color: source_color;
+uniform float dissolve_amount: hint_range(0.0, 1.0) = 0.0;
+uniform sampler2D noise_texture;
+
+uniform vec3 glow_color: source_color = vec3(0.533, 0.533, 0.533);
+uniform float glow_intensitiy = 1.77;
+uniform float glow_border_width: hint_range(0.0, 0.25) = 0.018;
+uniform float glow_border_smoothness: hint_range(0.0, 0.1) = 0.003;
+
+uniform sampler2D normal_texture;
+uniform float normal_strength : hint_range(0.0, 2.0) = 1.0;
+uniform bool use_normal_map = false;
+
+
+void fragment() {
+	
+	float dissolve_noise = texture(noise_texture, UV).r;
+
+	float border_mask = 0.0;
+	if (dissolve_amount > 0.0) {
+		float border_size = dissolve_amount + glow_border_width;
+		border_mask = 1.0 - smoothstep(
+			border_size - glow_border_smoothness,
+			border_size + glow_border_smoothness,
+			dissolve_noise
+		);
+	}
+
+	vec3 surface_emisson = mix(vec3(0.0), glow_color, border_mask);
+	surface_emisson += texture(emission_texture, UV).rgb * emission_texture_intensity;
+
+	vec3 albedo_tex = texture(albedo_texture, UV).rgb;
+	vec3 albedo;
+
+	if (albedo_tex == vec3(0.0)) {
+		albedo = albedo_color;
+	} else {
+		albedo = albedo_tex * albedo_color;
+	}
+
+
+	vec3 surface_color = albedo;
+	ALBEDO = surface_color;
+	//ALBEDO = vec3(border_mask);
+	EMISSION = surface_emisson * glow_intensitiy;
+	ALPHA = dissolve_noise;
+	ALPHA_SCISSOR_THRESHOLD = dissolve_amount;
+
+	if (use_normal_map) {
+		NORMAL_MAP = texture(normal_texture, UV).xyz;		
+	}
+
+
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n368u"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hp215"]
+noise = SubResource("FastNoiseLite_n368u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dfr5h"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("Shader_dfr5h")
+shader_parameter/albedo_color = Color(0.0980392, 0.117647, 0.176471, 1)
+shader_parameter/emission_texture_intensity = 0.0
+shader_parameter/inside_color = Color(0, 0, 0, 1)
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_hp215")
+shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.77
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/normal_strength = 1.0
+shader_parameter/use_normal_map = false
 
 [sub_resource type="SphereMesh" id="SphereMesh_05mu1"]
 radius = 0.8
 height = 1.6
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qr43c"]
-albedo_color = Color(0.517184, 0.517184, 0.517184, 1)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfr5h"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.52, 0.52, 0.52, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_agce3"]
 radius = 0.8
 height = 1.6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n368u"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.52, 0.52, 0.52, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_fd7dn"]
 radius = 0.8
@@ -426,6 +624,8 @@ radius = 1.00222
 [node name="Ghost" type="CharacterBody3D" groups=["ghost"]]
 script = ExtResource("1_ly0wf")
 HURT_PARTICLE_SCENE = ExtResource("2_y2p6q")
+HEALTH = 100
+MAX_HEALTH = 100
 RESPAWN = true
 
 [node name="Audio" type="Node" parent="."]
@@ -445,12 +645,10 @@ script = ExtResource("21_n368u")
 scenes = Array[PackedScene]([ExtResource("2_y2p6q")])
 copy_transform_node = NodePath(".")
 
-[node name="Damaged" type="AnimationPlayer" parent="." node_paths=PackedStringArray("anim")]
+[node name="Damaged" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_rkfee")
+&"": SubResource("AnimationLibrary_n368u")
 }
-script = ExtResource("4_hp215")
-anim = NodePath(".")
 
 [node name="Attacks" type="AnimationPlayer" parent="." node_paths=PackedStringArray("TARGET", "BODY")]
 libraries = {
@@ -484,20 +682,20 @@ scenes = Array[PackedScene]([ExtResource("6_dfr5h")])
 copy_transform_node = NodePath(".")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
-material_override = SubResource("StandardMaterial3D_6640v")
+material_override = SubResource("ShaderMaterial_dfr5h")
 transparency = 0.3
 mesh = SubResource("SphereMesh_05mu1")
 skeleton = NodePath("")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/MeshInstance3D"]
 transform = Transform3D(-1.24846e-09, 0, 0.112722, 0, 0.112722, 0, -0.0285614, 0, -4.92725e-09, 0.280028, 0.0195056, -0.806736)
-material_override = SubResource("StandardMaterial3D_qr43c")
+material_override = SubResource("StandardMaterial3D_dfr5h")
 mesh = SubResource("SphereMesh_agce3")
 skeleton = NodePath("")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh/MeshInstance3D"]
 transform = Transform3D(-1.24846e-09, 0, 0.112722, 0, 0.112722, 0, -0.0285614, 0, -4.92725e-09, -0.302013, 0.0195056, -0.806736)
-material_override = SubResource("StandardMaterial3D_qr43c")
+material_override = SubResource("StandardMaterial3D_n368u")
 mesh = SubResource("SphereMesh_fd7dn")
 skeleton = NodePath("")
 

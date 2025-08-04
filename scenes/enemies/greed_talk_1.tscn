@@ -1,11 +1,10 @@
-[gd_scene load_steps=24 format=3 uid="uid://b8bvono5iv61i"]
+[gd_scene load_steps=23 format=3 uid="uid://b8bvono5iv61i"]
 
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/blender/greed.blend" id="1_j2t0c"]
 [ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://scripts/progression_queue_free.gd" id="1_qmj27"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/disolve.gdshader" id="2_fmgxg"]
 [ext_resource type="Texture2D" uid="uid://cqxt1767hiu8b" path="res://textures/greed/color.png" id="3_6t1gf"]
 [ext_resource type="Texture2D" uid="uid://degml03bvddt4" path="res://textures/greed/emisson.png" id="4_lb714"]
-[ext_resource type="Texture2D" uid="uid://cub81gemf5odj" path="res://textures/defaults/default_normal.png" id="5_6t1gf"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://scripts/ui/dialogue/dialogue.gd" id="6_as0iv"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="8_k5hc3"]
 [ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://scenes/ui/dialogue/chat.tscn" id="9_qmj27"]
@@ -20,7 +19,8 @@ noise = SubResource("FastNoiseLite_as0iv")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qmj27"]
 render_priority = 0
 shader = ExtResource("2_fmgxg")
-shader_parameter/base_texture = ExtResource("3_6t1gf")
+shader_parameter/albedo_texture = ExtResource("3_6t1gf")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/emission_texture = ExtResource("4_lb714")
 shader_parameter/emission_texture_intensity = 1.0
 shader_parameter/inside_color = Color(0.548963, 0.548963, 0.548963, 1)
@@ -30,8 +30,8 @@ shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
 shader_parameter/glow_intensitiy = 1.77
 shader_parameter/glow_border_width = 0.018
 shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_texture = ExtResource("5_6t1gf")
 shader_parameter/normal_strength = 1.0
+shader_parameter/use_normal_map = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_6t1gf"]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=76 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://scripts/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://scripts/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -10,7 +10,6 @@
 [ext_resource type="AudioStream" uid="uid://cv08lxjw3rypc" path="res://audio/sfx/player/Jump.wav" id="4_i3uf6"]
 [ext_resource type="AudioStream" uid="uid://cxfh7l5kksro3" path="res://audio/sfx/player/Land.wav" id="5_7kpka"]
 [ext_resource type="PackedScene" uid="uid://00xupixtbxf5" path="res://scenes/particles/horizontal_slash.tscn" id="5_p6b07"]
-[ext_resource type="Texture2D" uid="uid://cub81gemf5odj" path="res://textures/defaults/default_normal.png" id="6_6g6ue"]
 [ext_resource type="PackedScene" uid="uid://b2vw4evrfcelo" path="res://scenes/particles/dust_step.tscn" id="6_bo8be"]
 [ext_resource type="AudioStream" uid="uid://cww02b50taw61" path="res://audio/sfx/player/Step_1.wav" id="7_erto2"]
 [ext_resource type="Script" uid="uid://bmvwcgf01b1lq" path="res://scripts/camera/third_person_camera.gd" id="7_lwilf"]
@@ -32,7 +31,6 @@
 [ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://shaders/ui/bar/stamina_fill.tres" id="20_gpejb"]
 [ext_resource type="AudioStream" uid="uid://bbwub6xco4f00" path="res://audio/sfx/ambience/Wind.wav" id="22_ogp31"]
 [ext_resource type="Texture2D" uid="uid://cilvyugj78b4q" path="res://textures/reaper/body/color.png" id="23_6p2vh"]
-[ext_resource type="Texture2D" uid="uid://50tpgr2skix0" path="res://textures/reaper/body/normal.png" id="24_fp8ht"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/enemy/Slam.wav" id="25_8i186"]
 [ext_resource type="Texture2D" uid="uid://c1qayava2cjqm" path="res://textures/reaper/staff/color.png" id="27_ecunr"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="29_lwilf"]
@@ -1268,7 +1266,8 @@ noise = SubResource("FastNoiseLite_eoc4h")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ckevw"]
 render_priority = 0
 shader = ExtResource("18_dtcwh")
-shader_parameter/base_texture = ExtResource("23_6p2vh")
+shader_parameter/albedo_texture = ExtResource("23_6p2vh")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/emission_texture = ExtResource("8_wub5s")
 shader_parameter/emission_texture_intensity = 0.0
 shader_parameter/inside_color = Color(0, 0, 0, 1)
@@ -1278,8 +1277,8 @@ shader_parameter/glow_color = Color(0.85098, 0.592157, 0.490196, 1)
 shader_parameter/glow_intensitiy = 1.77
 shader_parameter/glow_border_width = 0.018
 shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_texture = ExtResource("24_fp8ht")
 shader_parameter/normal_strength = 1.0
+shader_parameter/use_normal_map = false
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_xbltt"]
 
@@ -1289,7 +1288,8 @@ noise = SubResource("FastNoiseLite_xbltt")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_py1jt"]
 render_priority = 0
 shader = ExtResource("18_dtcwh")
-shader_parameter/base_texture = ExtResource("3_7534y")
+shader_parameter/albedo_texture = ExtResource("3_7534y")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/emission_texture = ExtResource("4_0idoq")
 shader_parameter/emission_texture_intensity = 5.0
 shader_parameter/inside_color = Color(0, 0, 0, 1)
@@ -1299,8 +1299,8 @@ shader_parameter/glow_color = Color(0.851798, 0.591134, 0.49063, 1)
 shader_parameter/glow_intensitiy = 1.77
 shader_parameter/glow_border_width = 0.018
 shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_texture = ExtResource("6_6g6ue")
 shader_parameter/normal_strength = 1.0
+shader_parameter/use_normal_map = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4jko3"]
 size = Vector3(43.5623, 2.2914, 1.20326)
@@ -1314,7 +1314,8 @@ albedo_texture_msdf = true
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ybm87"]
 render_priority = 0
 shader = ExtResource("18_dtcwh")
-shader_parameter/base_texture = ExtResource("27_ecunr")
+shader_parameter/albedo_texture = ExtResource("27_ecunr")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/emission_texture = ExtResource("4_0idoq")
 shader_parameter/emission_texture_intensity = 4.13
 shader_parameter/inside_color = Color(0, 0, 0, 1)
@@ -1324,8 +1325,8 @@ shader_parameter/glow_color = Color(0.851798, 0.591134, 0.49063, 1)
 shader_parameter/glow_intensitiy = 1.77
 shader_parameter/glow_border_width = 0.018
 shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_texture = ExtResource("6_6g6ue")
 shader_parameter/normal_strength = 1.0
+shader_parameter/use_normal_map = false
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wub5s"]
 bg_color = Color(0.82, 0.82, 0.82, 0.298039)
@@ -1477,7 +1478,7 @@ bones/22/position = Vector3(0.448948, 0.572884, 1.1269)
 bones/22/rotation = Quaternion(-0.135562, -0.119504, -0.830788, 0.526434)
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.988633, -0.0338307, 0.146497, -0.15035, 0.216877, -0.964551, 0.000859591, -0.975613, -0.219498, 0.0398612, 0.046905, -0.158039)
+transform = Transform3D(-0.988633, -0.0338307, 0.146497, -0.15035, 0.216878, -0.964551, 0.00085951, -0.975613, -0.219499, 0.0398612, 0.0469056, -0.15804)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -1488,7 +1489,7 @@ scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.988633, -0.0338307, 0.146497, -0.15035, 0.216877, -0.964551, 0.000859591, -0.975613, -0.219498, 0.0398612, 0.046905, -0.158039)
+transform = Transform3D(-0.988633, -0.0338307, 0.146497, -0.15035, 0.216878, -0.964551, 0.00085951, -0.975613, -0.219499, 0.0398612, 0.0469056, -0.15804)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -1508,7 +1509,7 @@ material_override = SubResource("ShaderMaterial_ckevw")
 material_override = SubResource("ShaderMaterial_py1jt")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="5"]
-transform = Transform3D(-0.413919, 0.906227, 0.0861526, 0.345231, 0.0687011, 0.936, 0.84231, 0.417171, -0.341294, 0.432915, 1.13316, -0.322884)
+transform = Transform3D(-0.41392, 0.906227, 0.0861535, 0.345231, 0.0687004, 0.936, 0.84231, 0.417172, -0.341294, 0.432915, 1.13316, -0.322884)
 bone_name = "staff_2"
 bone_idx = 22
 
