@@ -33,7 +33,7 @@
 [ext_resource type="Texture2D" uid="uid://cilvyugj78b4q" path="res://textures/reaper/body/color.png" id="23_6p2vh"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/enemy/Slam.wav" id="25_8i186"]
 [ext_resource type="Texture2D" uid="uid://c1qayava2cjqm" path="res://textures/reaper/staff/color.png" id="27_ecunr"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="29_lwilf"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/hurt_box.gd" id="29_lwilf"]
 [ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://shaders/ui/bar/player_health.tres" id="34_6g6ue"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://scripts/audio_one_shot.gd" id="35_lwilf"]
 [ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://scripts/play_time_tracker.gd" id="36_5cvkf"]

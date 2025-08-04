@@ -1,16 +1,17 @@
-[gd_scene load_steps=39 format=3 uid="uid://dsdh2bite7xv4"]
+[gd_scene load_steps=40 format=3 uid="uid://dsdh2bite7xv4"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_t7rxp"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/hell.tscn" id="2_2c8ka"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_aba3s"]
 [ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://scenes/lighting/sun.tscn" id="4_2c8ka"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/small/world_small.tres" id="4_3gs6a"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="5_rlfmo"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/hurt_box.gd" id="5_rlfmo"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="6_haf51"]
 [ext_resource type="PackedScene" uid="uid://b3urcqmix8s8g" path="res://scenes/enemies/wrath.tscn" id="7_eqpye"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/interactables/soul.tscn" id="8_rf8or"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="9_1jlmx"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="10_dklar"]
+[ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://scripts/progress_gate.gd" id="11_aba3s"]
 [ext_resource type="PackedScene" uid="uid://cat4e2my2so35" path="res://scenes/interactables/music_volume.tscn" id="11_xex2v"]
 [ext_resource type="AudioStream" uid="uid://5u0ecm0d8hx8" path="res://audio/music/ambience.ogg" id="12_c2sn4"]
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/blender/greed.blend" id="13_v1s4o"]
@@ -214,7 +215,7 @@ size = Vector3(2.0672, 6, 2.10349)
 [node name="Cinematics" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Cinematics"]
-transform = Transform3D(0.874629, 0.249685, -0.415548, -1.86264e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
+transform = Transform3D(0.874629, 0.249685, -0.415548, -1.78814e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
 rotation_edit_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cinematics"]
@@ -327,9 +328,8 @@ debug_color = Color(1, 1, 1, 0)
 [node name="Reaper" parent="Interactables" instance=ExtResource("6_haf51")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36.5086, -190)
 
-[node name="Wrath" parent="Interactables" node_paths=PackedStringArray("PROGRESSION_AREA") instance=ExtResource("7_eqpye")]
+[node name="Wrath" parent="Interactables" instance=ExtResource("7_eqpye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.0888538, 19)
-PROGRESSION_AREA = NodePath("../Doors/Exit/Area3D")
 
 [node name="Skeleton3D" parent="Interactables/Wrath/Mesh/wrath/Armature" index="0"]
 bones/4/rotation = Quaternion(-0.18941, 0.0856309, 0.344916, 0.915327)
@@ -337,13 +337,7 @@ bones/6/rotation = Quaternion(-0.0822429, 0.000622961, 0.134669, 0.987472)
 bones/7/rotation = Quaternion(-0.29291, -2.50809e-14, -6.98353e-08, 0.95614)
 
 [node name="LeftHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.924673, -0.00872152, -0.380662, 0.241994, -0.785316, -0.569839, -0.29397, -0.619033, 0.728271, -2.01091, 1.47521, -0.348159)
-
-[node name="RightHand" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885417, -0.22733, -0.588577, 0.0625507, 0.806018, 2.21279, 2.24167, 1.16547)
-
-[node name="Torso" parent="Interactables/Wrath/Mesh/wrath/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, -2.98303e-13, 2.38418e-07, -7.9544e-08, 0.942703, 0.333634, -2.24757e-07, -0.333634, 0.942703, 5.38109e-17, 0.788923, 0.174432)
+transform = Transform3D(-0.923436, -0.00966132, -0.384334, 0.247222, -0.780717, -0.574371, -0.294428, -0.625242, 0.723135, -2.0168, 1.49245, -0.35305)
 
 [node name="Bounds" type="Node" parent="Interactables/Wrath"]
 
@@ -523,12 +517,15 @@ DESTINATION_SCENE = "level_6"
 [node name="Area3D" type="Area3D" parent="Interactables/Doors/Exit"]
 collision_layer = 3
 collision_mask = 3
-monitoring = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Doors/Exit/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Doors/Exit/Area3D" node_paths=PackedStringArray("enable_collision_shape")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57746e-08, 5, -0.5)
 shape = SubResource("BoxShape3D_y4nq3")
+disabled = true
 debug_color = Color(0, 0.595, 0.7, 0)
+script = ExtResource("11_aba3s")
+save_key = "wrath_defeated"
+enable_collision_shape = NodePath(".")
 
 [node name="Start" type="Node3D" parent="Interactables/Doors/Exit"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.170965, -6.20786)

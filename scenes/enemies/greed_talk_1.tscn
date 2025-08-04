@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=3 uid="uid://b8bvono5iv61i"]
 
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/blender/greed.blend" id="1_j2t0c"]
-[ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://scripts/progression_queue_free.gd" id="1_qmj27"]
+[ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://scripts/progress_gate.gd" id="1_qmj27"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/disolve.gdshader" id="2_fmgxg"]
 [ext_resource type="Texture2D" uid="uid://cqxt1767hiu8b" path="res://textures/greed/color.png" id="3_6t1gf"]
 [ext_resource type="Texture2D" uid="uid://degml03bvddt4" path="res://textures/greed/emisson.png" id="4_lb714"]
@@ -155,9 +155,10 @@ border_width_top = 100
 border_color = Color(0, 0, 0, 0)
 border_blend = true
 
-[node name="greed_talk_1" type="Node3D"]
+[node name="greed_talk_1" type="Node3D" node_paths=PackedStringArray("node_to_queue_free")]
 script = ExtResource("1_qmj27")
 save_key = "greed_encountered"
+node_to_queue_free = NodePath(".")
 
 [node name="greed" parent="." instance=ExtResource("1_j2t0c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0566255, 1.19209e-07, -1.16721)

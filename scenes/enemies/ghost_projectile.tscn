@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dyk5tfpn3c33w"]
 
 [ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://scripts/enemies/projectile.gd" id="1_8vmfp"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="2_v5ope"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/hurt_box.gd" id="2_v5ope"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5ope"]
 albedo_color = Color(0.0852062, 0.101318, 0.154996, 1)

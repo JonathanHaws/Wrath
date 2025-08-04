@@ -84,8 +84,8 @@ func _exit_tree() -> void:
 	
 	if HEALTH > 0:
 		Save.data["health"] = HEALTH
-		Save.data["deaths"] += 1
 	else: 
+		Save.data["deaths"] += 1
 		Save.data.erase("health")
 	Save.save_game()
 

@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://scenes/lighting/sun.tscn" id="4_mqk0e"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="5_mqk0e"]
 [ext_resource type="PackedScene" uid="uid://615n66a3l256" path="res://models/blender/tower.blend" id="6_hcc5w"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="6_mb05r"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/hurt_box.gd" id="6_mb05r"]
 [ext_resource type="Material" uid="uid://bofjw8wwuxc71" path="res://shaders/materials/bricks/castle/castle_big.tres" id="8_u51x1"]
 [ext_resource type="Material" uid="uid://c7xo8odsficf7" path="res://shaders/materials/bricks/rocks/world_rocks.tres" id="9_u51x1"]
 

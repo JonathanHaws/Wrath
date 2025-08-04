@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://scripts/enemies/boss.gd" id="1_cq6fp"]
 [ext_resource type="PackedScene" uid="uid://cqca3skeurt3e" path="res://scenes/particles/greed_hurt.tscn" id="2_jx80p"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/disolve.gdshader" id="4_br41q"]
-[ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://scenes/ui/damage_numbers.tscn" id="8_th64l"]
+[ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://scripts/hitbox.gd" id="4_ri305"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="9_wri43"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/ui/notification.tres" id="10_bkkeq"]
 [ext_resource type="StyleBox" uid="uid://p8dn2g85fmrc" path="res://shaders/ui/bar/greed_health.tres" id="10_jx80p"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://scripts/root_motion.gd" id="16_psb2t"]
 [ext_resource type="Texture2D" uid="uid://degml03bvddt4" path="res://textures/greed/emisson.png" id="17_br41q"]
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/blender/greed.blend" id="17_cq6fp"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="18_i3cy0"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/hurt_box.gd" id="18_i3cy0"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://scripts/camera_shake.gd" id="19_e5shh"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://scripts/slow_motion.gd" id="20_517ma"]
 [ext_resource type="AudioStream" uid="uid://dihsmt30mdqcm" path="res://audio/music/gluttony.ogg" id="20_jx80p"]
@@ -1294,12 +1294,14 @@ collision_mask = 7
 script = ExtResource("1_cq6fp")
 TARGET = NodePath("Target")
 ANIM = NodePath("Attacks")
-HURT_PARTICLE_SCENE = ExtResource("2_jx80p")
-DAMAGE_NUMBER = ExtResource("8_th64l")
 SAVE_KEY_ENCOUNTERED = "greed_encountered"
-SAVE_KEY_DEFEATED = "greed_defeated"
 HEALTH = 3000
 MAX_HEALTH = 3000
+
+[node name="Hitbox" type="Node" parent="." node_paths=PackedStringArray("BODY")]
+script = ExtResource("4_ri305")
+BODY = NodePath("..")
+DEFEATED_KEY = "greed_defeated"
 
 [node name="CameraShake" type="Node" parent="."]
 script = ExtResource("19_e5shh")
@@ -1428,7 +1430,7 @@ bones/25/rotation = Quaternion(0.28701, -0.0640196, 0.00177572, 0.955784)
 material_override = SubResource("ShaderMaterial_th64l")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1"]
-transform = Transform3D(1, 2.04239e-09, 6.53956e-10, -1.466e-10, 0.369337, -0.929295, -2.1395e-09, 0.929295, 0.369337, -0.113424, 1.79548, 0.166136)
+transform = Transform3D(1, 2.0425e-09, 6.54028e-10, -1.46545e-10, 0.369337, -0.929295, -2.13963e-09, 0.929295, 0.369337, -0.113424, 1.79547, 0.166137)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1441,7 +1443,7 @@ shape = SubResource("BoxShape3D_jx80p")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2"]
-transform = Transform3D(1, 2.04239e-09, 6.53956e-10, -1.466e-10, 0.369337, -0.929295, -2.1395e-09, 0.929295, 0.369337, -0.113424, 1.79548, 0.166136)
+transform = Transform3D(1, 2.0425e-09, 6.54028e-10, -1.46545e-10, 0.369337, -0.929295, -2.13963e-09, 0.929295, 0.369337, -0.113424, 1.79547, 0.166137)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1459,7 +1461,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3"]
-transform = Transform3D(1, 2.04239e-09, 6.53956e-10, -1.466e-10, 0.369337, -0.929295, -2.1395e-09, 0.929295, 0.369337, -0.113424, 1.79548, 0.166136)
+transform = Transform3D(1, 2.0425e-09, 6.54028e-10, -1.46545e-10, 0.369337, -0.929295, -2.13963e-09, 0.929295, 0.369337, -0.113424, 1.79547, 0.166137)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1477,7 +1479,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4"]
-transform = Transform3D(0.294423, -0.0220242, -0.955421, -0.942317, -0.173257, -0.286391, -0.159226, 0.98463, -0.0717649, 1.44015, 1.24867, 2.19762)
+transform = Transform3D(0.294424, -0.0220251, -0.955421, -0.942317, -0.173257, -0.286392, -0.159226, 0.98463, -0.0717659, 1.44015, 1.24867, 2.19762)
 bone_name = "hand_l"
 bone_idx = 10
 
@@ -1496,7 +1498,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5"]
-transform = Transform3D(-0.799062, 0.33946, 0.496252, 0.421898, -0.27148, 0.865043, 0.428371, 0.900591, 0.0737115, -1.30246, 1.28239, 2.27135)
+transform = Transform3D(-0.799062, 0.33946, 0.496253, 0.421899, -0.27148, 0.865043, 0.428371, 0.900591, 0.0737112, -1.30246, 1.28239, 2.27135)
 bone_name = "hand_r"
 bone_idx = 16
 

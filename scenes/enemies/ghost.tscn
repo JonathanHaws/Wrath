@@ -1,7 +1,8 @@
-[gd_scene load_steps=47 format=3 uid="uid://c6e88ycy4nm7x"]
+[gd_scene load_steps=48 format=3 uid="uid://c6e88ycy4nm7x"]
 
 [ext_resource type="Script" uid="uid://dkt2ctfdrjb1k" path="res://scripts/enemies/ghost.gd" id="1_ly0wf"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="1_tijse"]
+[ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://scripts/hitbox.gd" id="2_n368u"]
 [ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/particles/ghost_hurt.tscn" id="2_y2p6q"]
 [ext_resource type="Script" uid="uid://l4b37mckqf8k" path="res://scripts/enemies/proximity_based_random_attacks.gd" id="4_1m57m"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://scripts/audio_one_shot.gd" id="4_2gcuv"]
@@ -17,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://dejgyyvoucgey" path="res://audio/sfx/enemy/Cry_3.wav" id="13_pyqwo"]
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://audio/sfx/enemy/Despawn.wav" id="14_rkfee"]
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://audio/sfx/enemy/Cry.wav" id="15_ign71"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/attacking_area.gd" id="18_05mu1"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://scripts/hurt_box.gd" id="18_05mu1"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://scripts/camera_shake.gd" id="21_dfr5h"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://scripts/particles.gd" id="21_n368u"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://scripts/squash.gd" id="22_n368u"]
@@ -231,7 +232,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_1m57m"]
 resource_name = "ATTACK"
-length = 1.2
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -239,7 +240,7 @@ tracks/0/path = NodePath("Mesh/MeshInstance3D/Attack/CollisionShape3D:disabled")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.466667, 0.633327),
+"times": PackedFloat32Array(0, 0.733333, 0.899993),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -251,7 +252,7 @@ tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.06667),
+"times": PackedFloat32Array(0, 1.33334),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -263,8 +264,8 @@ tracks/2/path = NodePath("Mesh/MeshInstance3D:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.433327, 0.566667, 0.999997),
-"transitions": PackedFloat32Array(0.287175, 0.15932, 0.129408, 16.5642),
+"times": PackedFloat32Array(0, 0.699993, 0.833333, 1.26666),
+"transitions": PackedFloat32Array(0.287175, 0.0457527, 0.129408, 16.5642),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0.582888, 0, 0), Vector3(-0.528119, 0, 0), Vector3(0, 0, 0)]
 }
@@ -307,6 +308,9 @@ tracks/1/keys = {
 "update": 0,
 "values": [1.0]
 }
+
+[sub_resource type="Animation" id="Animation_hp215"]
+resource_name = "DEATH"
 
 [sub_resource type="Animation" id="Animation_05mu1"]
 resource_name = "RESET"
@@ -481,9 +485,6 @@ tracks/5/keys = {
 "values": [0.0]
 }
 
-[sub_resource type="Animation" id="Animation_hp215"]
-resource_name = "DEATH"
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_agce3"]
 _data = {
 &"ATTACK": SubResource("Animation_1m57m"),
@@ -623,9 +624,12 @@ radius = 1.00222
 
 [node name="Ghost" type="CharacterBody3D" groups=["ghost"]]
 script = ExtResource("1_ly0wf")
-HURT_PARTICLE_SCENE = ExtResource("2_y2p6q")
 HEALTH = 100
 MAX_HEALTH = 100
+
+[node name="Hitbox" type="Node" parent="." node_paths=PackedStringArray("BODY")]
+script = ExtResource("2_n368u")
+BODY = NodePath("..")
 RESPAWN = true
 
 [node name="Audio" type="Node" parent="."]

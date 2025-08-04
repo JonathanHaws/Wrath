@@ -100,10 +100,10 @@ albedo_color = Color(0.52, 0.52, 0.52, 1)
 
 [node name="Ghost" instance=ExtResource("1_5uphy")]
 
-[node name="Damaged" parent="." index="4"]
+[node name="Damaged" parent="." index="5"]
 autoplay = "RESET"
 
-[node name="Attacks" parent="." index="5"]
+[node name="Attacks" parent="." index="6"]
 LIKELIHOOD_MULTIPLIERS = Array[float]([30.0, 0.0])
 
 [node name="MeshInstance3D" parent="Mesh" index="1"]
