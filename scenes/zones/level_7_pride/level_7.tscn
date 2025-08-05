@@ -1,12 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://bsufvbv2jwo77"]
+[gd_scene load_steps=13 format=3 uid="uid://bsufvbv2jwo77"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menus/pause.tscn" id="1_7xekx"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/particles/weather.tscn" id="3_angpk"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/enviroments/hell.tscn" id="4_ta4p6"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/reaper.tscn" id="5_a6g14"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/interactables/door.tscn" id="7_eoitq"]
+[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/interactables/checkpoint.tscn" id="8_d5x5s"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/small/world_small.tres" id="8_lpdb7"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/star/world_star.tres" id="9_bxxo5"]
+[ext_resource type="PackedScene" uid="uid://c76e444j3m8tp" path="res://scenes/enemies/ghost_jump.tscn" id="9_gv57c"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
 size = Vector3(7, 11, 2)
@@ -101,3 +103,12 @@ size = Vector3(65.3073, 20, 30)
 transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 42.0321, 0, -9.54005, 0)
 material_override = ExtResource("9_bxxo5")
 mesh = SubResource("BoxMesh_od467")
+
+[node name="Checkpoint" parent="." instance=ExtResource("8_d5x5s")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.14297, -9.05803, -0.448656)
+
+[node name="Ghost" parent="." instance=ExtResource("9_gv57c")]
+transform = Transform3D(-0.482518, 0, 0.875886, 0, 1, 0, -0.875886, 0, -0.482518, 28.1031, -8.06565, -10.8103)
+
+[node name="Ghost2" parent="." instance=ExtResource("9_gv57c")]
+transform = Transform3D(0.509988, 0, 0.860182, 0, 1, 0, -0.860182, 0, 0.509988, 16.664, -8.06565, 7.96031)

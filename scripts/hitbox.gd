@@ -9,7 +9,7 @@ extends Area3D
 @export var SAVE_HEALTH: bool = false
 @export var RESPAWN: bool = false
 @export var SAVE_DEFEATED: bool = true
-@export var STORE_DEATHCOUNT: bool = false
+@export var SAVE_DEATHCOUNT: bool = false
 @export var HEALTH_KEY: String = ""
 @export var RESPAWN_KEY: String = ""
 @export var DEFEATED_KEY: String = ""
@@ -42,9 +42,9 @@ func hit(area: Area3D) -> void:
 		
 	for anim_player in ANIMATION_PLAYERS:
 		if HEALTH > 0 and anim_player.has_animation(area.hurt_animation):
-			anim_player.play(area.hurt_animation)
+			anim_player.play(area.hurt_animation,0)
 		elif HEALTH <= 0 and anim_player.has_animation(area.death_animation):
-			anim_player.play(area.death_animation)
+			anim_player.play(area.death_animation,0)
 			
 	if HEALTH >= MAX_HEALTH:
 		Save.data.erase(HEALTH_KEY)
@@ -57,7 +57,7 @@ func hit(area: Area3D) -> void:
 		Save.data.erase(HEALTH_KEY)
 		if SAVE_DEFEATED: Save.data[DEFEATED_KEY] = true
 		if RESPAWN: Save.data[RESPAWN_KEY] = int(Save.data[SAVE_KEY_PLAYER_DEATHS]) + 1
-		if STORE_DEATHCOUNT: Save.data[DEATHCOUNT_KEY] = int(Save.data.get(DEATHCOUNT_KEY, 0)) + 1
+		if SAVE_DEATHCOUNT: Save.data[DEATHCOUNT_KEY] = int(Save.data.get(DEATHCOUNT_KEY, 0)) + 1
 		Save.save_game()
 
 func _ready()-> void:
@@ -84,6 +84,9 @@ func _ready()-> void:
 		MAX_HEALTH = Save.data[MAX_HEALTH_KEY]
 		if not Save.data.has(HEALTH_KEY):
 			HEALTH = MAX_HEALTH	
+	
+	if SAVE_DEATHCOUNT and not Save.data.has(DEATHCOUNT_KEY):
+		Save.data[DEATHCOUNT_KEY] = 0
 	
 	area_entered.connect(hit)
 			

@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5clsl3808lrj"]
+[gd_scene load_steps=8 format=3 uid="uid://c76e444j3m8tp"]
 
-[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://scenes/enemies/ghost.tscn" id="1_5uphy"]
+[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://scenes/enemies/ghost.tscn" id="1_ukca1"]
 
 [sub_resource type="Shader" id="Shader_dfr5h"]
 code = "shader_type spatial;
@@ -67,12 +67,12 @@ void fragment() {
 }
 "
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5uphy"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n368u"]
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1i75v"]
-noise = SubResource("FastNoiseLite_5uphy")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hp215"]
+noise = SubResource("FastNoiseLite_n368u")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_fy2bn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x4qib"]
 resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("Shader_dfr5h")
@@ -80,7 +80,7 @@ shader_parameter/albedo_color = Color(0.0980392, 0.117647, 0.176471, 1)
 shader_parameter/emission_texture_intensity = 0.0
 shader_parameter/inside_color = Color(0, 0, 0, 1)
 shader_parameter/dissolve_amount = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_1i75v")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_hp215")
 shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
 shader_parameter/glow_intensitiy = 1.77
 shader_parameter/glow_border_width = 0.018
@@ -88,29 +88,26 @@ shader_parameter/glow_border_smoothness = 0.003
 shader_parameter/normal_strength = 1.0
 shader_parameter/use_normal_map = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5uphy"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b55qm"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1i75v"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7s2bf"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
-[node name="Ghost" instance=ExtResource("1_5uphy")]
-
-[node name="Damaged" parent="." index="5"]
-autoplay = "RESET"
+[node name="Ghost" instance=ExtResource("1_ukca1")]
 
 [node name="Attacks" parent="." index="6"]
-LIKELIHOOD_MULTIPLIERS = Array[float]([30.0, 0.0, 0.0])
+LIKELIHOOD_MULTIPLIERS = Array[float]([0.0, 0.0, 20.0])
 
-[node name="MeshInstance3D" parent="Mesh" index="2"]
-material_override = SubResource("ShaderMaterial_fy2bn")
+[node name="MeshInstance3D" parent="Mesh" index="1"]
+material_override = SubResource("ShaderMaterial_x4qib")
 
 [node name="MeshInstance3D" parent="Mesh/MeshInstance3D" index="0"]
-material_override = SubResource("StandardMaterial3D_5uphy")
+material_override = SubResource("StandardMaterial3D_b55qm")
 
 [node name="MeshInstance3D2" parent="Mesh/MeshInstance3D" index="1"]
-material_override = SubResource("StandardMaterial3D_1i75v")
+material_override = SubResource("StandardMaterial3D_7s2bf")

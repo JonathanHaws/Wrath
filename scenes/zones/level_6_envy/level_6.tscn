@@ -80,7 +80,7 @@ shape = SubResource("BoxShape3D_8x7wd")
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.117285, 0.53226, 8.1402)
 
 [node name="Exit" parent="Interactables" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("7_iow1r")]
-transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 73.8639, -9.60013, -14)
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 72.7045, -9.60013, -14)
 AREA = NodePath("Area3D")
 START = NodePath("Start")
 DESTINATION_NODE_NAME = "Enter"

@@ -1,16 +1,33 @@
 extends Node3D
 @export var speed = 15.0
 @export var destroy_area: Area3D
-@export var exclude_groups: Array[String] = []
+@export var body_exclude_groups: Array[String] = []
+@export var area_exclude_groups: Array[String] = []
+@export var destroy_on_every_body_entered: bool = true
+@export var destroy_on_every_area_entered: bool = false
 
 func _ready():
 	if destroy_area:
 		destroy_area.body_entered.connect(_on_body_entered)
+		destroy_area.area_entered.connect(_on_area_entered)
 
 func _process(delta):
 	translate(Vector3.FORWARD * speed * delta)
 
 func _on_body_entered(body: Node) -> void:
-	for group in exclude_groups:
-		if body.is_in_group(group): return
+	if destroy_on_every_body_entered:
+		for group in body_exclude_groups:
+			if body.is_in_group(group): return
+	else: 
+		for group in body_exclude_groups:
+			if not body.is_in_group(group): return
+	queue_free()
+
+func _on_area_entered(area: Area3D) -> void:
+	if destroy_on_every_area_entered:
+		for group in area_exclude_groups:
+			if area.is_in_group(group): return
+	else:
+		for group in area_exclude_groups:
+			if not area.is_in_group(group): return
 	queue_free()

@@ -86,9 +86,6 @@ func _ready() -> void:
 	if Save.data.has("max_stamina"):
 		MAX_STAMINA = Save.data["max_stamina"]
 	
-	if not Save.data.has("deaths"):
-		Save.data["deaths"] = 0
-	
 	if Save.data.has("door_node_name"):		
 		var door_node = get_tree().root.find_child(Save.data["door_node_name"], true, false)
 		if door_node:

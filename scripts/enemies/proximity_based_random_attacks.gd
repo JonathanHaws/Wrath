@@ -4,6 +4,8 @@ extends AnimationPlayer
 @export var ATTACK_LIKELEHOOD: Array[Curve] = []
 @export var LIKELIHOOD_MULTIPLIERS: Array[float] = [] #Attacks Pers Second on average
 @export var LIKELIHOOD_MULTIPLIER: float = 1.0
+@export var BLOCKING_ANIMATIONS: Array[String] = ["DEATH", "HURT"]
+@export var BLOCK_IF_ATTACK_PLAYING: bool = true
 @export var ATTACKING: bool = false
 @export var TARGET: Node3D
 @export var BODY: Node3D
@@ -17,7 +19,23 @@ func play_random_attack(position: Vector3, target_position: Vector3, delta: floa
 		if distance > ATTACK_RADIUS[i]: continue
 		var normalized_distance = clamp(distance / ATTACK_RADIUS[i], 0.0, 1.0)
 		var attack_likelihood = ATTACK_LIKELEHOOD[i].sample(normalized_distance)
-		attack_likelihood *= LIKELIHOOD_MULTIPLIERS[i] * LIKELIHOOD_MULTIPLIER
+		
+		var multiplier = 0.0
+		if i < LIKELIHOOD_MULTIPLIERS.size():
+			multiplier = LIKELIHOOD_MULTIPLIERS[i]
+		
+		# Stop new animation from playing if already in attack animation
+		if BLOCK_IF_ATTACK_PLAYING and current_animation in ATTACK_ANIMATION: 
+			multiplier = 0.0
+			
+		# Stop new animation from playing if in animation that shouldnt be interupted
+		for blocked_anim in BLOCKING_ANIMATIONS: 
+			if current_animation == blocked_anim:
+				multiplier = 0.0
+				break
+		
+		attack_likelihood *= multiplier * LIKELIHOOD_MULTIPLIER
+		
 		if randf() < (attack_likelihood * delta):
 			play(ATTACK_ANIMATION[i])
 			break
