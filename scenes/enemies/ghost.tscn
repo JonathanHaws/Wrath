@@ -1,6 +1,5 @@
-[gd_scene load_steps=48 format=3 uid="uid://c6e88ycy4nm7x"]
+[gd_scene load_steps=47 format=3 uid="uid://c6e88ycy4nm7x"]
 
-[ext_resource type="Script" uid="uid://dkt2ctfdrjb1k" path="res://scripts/enemies/ghost.gd" id="1_ly0wf"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="1_tijse"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://scripts/hitbox.gd" id="2_n368u"]
 [ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/particles/ghost_hurt.tscn" id="2_y2p6q"]
@@ -22,6 +21,9 @@
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://scripts/camera_shake.gd" id="21_dfr5h"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://scripts/particles.gd" id="21_n368u"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://scripts/squash.gd" id="22_n368u"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_6640v"]
+radius = 0.980629
 
 [sub_resource type="Animation" id="Animation_rkfee"]
 resource_name = "DEATH"
@@ -502,9 +504,6 @@ point_count = 2
 _data = [Vector2(0, 0.730337), 0.0, 0.0, 0, 0]
 point_count = 1
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_6640v"]
-radius = 0.794747
-
 [sub_resource type="Shader" id="Shader_dfr5h"]
 code = "shader_type spatial;
 
@@ -623,14 +622,21 @@ size = Vector3(1.0802, 1.44707, 1.26314)
 radius = 1.00222
 
 [node name="Ghost" type="CharacterBody3D" groups=["ghost"]]
-script = ExtResource("1_ly0wf")
-HEALTH = 100
-MAX_HEALTH = 100
 
-[node name="Hitbox" type="Node" parent="." node_paths=PackedStringArray("BODY")]
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("BODY", "TELEPORT_NODES_TO_HIT", "ANIMATION_PLAYERS")]
 script = ExtResource("2_n368u")
+HEALTH = 150
+MAX_HEALTH = 150
 BODY = NodePath("..")
+IMMUNE_GROUPS = Array[String](["ghost"])
+SAVE_HEALTH = true
 RESPAWN = true
+TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
+ANIMATION_PLAYERS = [NodePath("../Damaged"), NodePath("../Attacks")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+shape = SubResource("SphereShape3D_6640v")
+debug_color = Color(0.87, 0.87, 0.87, 1)
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("4_2gcuv")
@@ -703,12 +709,11 @@ material_override = SubResource("StandardMaterial3D_n368u")
 mesh = SubResource("SphereMesh_fd7dn")
 skeleton = NodePath("")
 
-[node name="Attack" type="Area3D" parent="Mesh/MeshInstance3D"]
+[node name="Attack" type="Area3D" parent="Mesh/MeshInstance3D" groups=["ghost"]]
 transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("18_05mu1")
-group = "ghost"
 damage = 15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/MeshInstance3D/Attack"]

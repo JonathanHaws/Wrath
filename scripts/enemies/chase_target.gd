@@ -41,7 +41,7 @@ func get_closest_from_group_3d(group: String) -> Node3D:
 	var closest = null
 	var min_dist = INF
 	for node in get_tree().get_nodes_in_group(group):
-		if not node is Node3D:
+		if not (node is CharacterBody3D or node is RigidBody3D):
 			continue
 		var dist = global_position.distance_squared_to(node.global_position)
 		if dist < min_dist:

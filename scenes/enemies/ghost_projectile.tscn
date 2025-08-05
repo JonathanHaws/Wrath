@@ -95,7 +95,7 @@ _data = {
 [node name="GhostProjectile" type="Node3D" node_paths=PackedStringArray("destroy_area")]
 script = ExtResource("1_8vmfp")
 destroy_area = NodePath("Attack")
-exclude_groups = Array[String](["ghost"])
+exclude_groups = Array[String](["ghost", "player"])
 
 [node name="Node3D" type="Node3D" parent="."]
 
@@ -111,12 +111,11 @@ material_override = SubResource("StandardMaterial3D_v5ope")
 mesh = SubResource("SphereMesh_v5ope")
 skeleton = NodePath("")
 
-[node name="Attack" type="Area3D" parent="."]
+[node name="Attack" type="Area3D" parent="." groups=["ghost"]]
 transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("2_v5ope")
-group = "ghost"
 damage = 15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
