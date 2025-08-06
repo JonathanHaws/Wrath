@@ -15,5 +15,12 @@ func show_damage(damage_amount: int) -> void:
 		WorldUI.show_symbol(self.global_position, 140.0, "Node2D/Label", damage_amount)
 		
 func _ready() -> void:
+	if DAMAGE_KEY != "":
+		if Save.data.has(DAMAGE_KEY):
+			damage = int(Save.data[DAMAGE_KEY])
+		else:
+			Save.data[DAMAGE_KEY] = damage
+
+func _process(_delta: float) -> void:
 	if DAMAGE_KEY != "" and Save.data.has(DAMAGE_KEY):
 		damage = int(Save.data[DAMAGE_KEY])

@@ -1,5 +1,6 @@
-[gd_scene load_steps=50 format=3 uid="uid://c6e88ycy4nm7x"]
+[gd_scene load_steps=51 format=3 uid="uid://c6e88ycy4nm7x"]
 
+[ext_resource type="Script" uid="uid://qthw8jc8ahs5" path="res://scripts/damage_increase_on_death.gd" id="1_n368u"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://scripts/enemies/chase_target.gd" id="1_tijse"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://scripts/hitbox.gd" id="2_n368u"]
 [ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/particles/ghost_hurt.tscn" id="2_y2p6q"]
@@ -770,7 +771,10 @@ radius = 1.00222
 height = 0.477905
 radius = 7.92969
 
-[node name="Ghost" type="CharacterBody3D" groups=["ghost"]]
+[node name="Ghost" type="CharacterBody3D" node_paths=PackedStringArray("HITBOX") groups=["ghost"]]
+script = ExtResource("1_n368u")
+HITBOX = NodePath("Hitbox")
+DAMAGE_KEY = "damage"
 
 [node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("BODY", "TELEPORT_NODES_TO_HIT", "ANIMATION_PLAYERS")]
 script = ExtResource("2_n368u")
