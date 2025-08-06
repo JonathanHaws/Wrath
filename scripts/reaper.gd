@@ -72,7 +72,7 @@ func _on_animation_finished(animation_name: String) -> void:
 		STAMINA -= 10
 
 func in_interruptible_animation() -> bool:
-	return not ANIM.current_animation in ["WINDUP", "SPIN", "WINDOWN", "DEATH", "FALL_DEATH", "HURT", "PLUNGE_FALL", "PLUNGE"]
+	return not ANIM.current_animation in ["WINDUP", "SPIN", "DEATH", "FALL_DEATH", "HURT", "PLUNGE_FALL", "PLUNGE"]
 
 func _exit_tree() -> void:
 	if velocity.y < -20:
@@ -193,9 +193,9 @@ func _physics_process(delta: float) -> void:
 			if input_vector.length() > 0:
 				if (Input.is_action_pressed("sprint") or controller_vector.length() > 0.75):
 					ANIM.play("RUN", 0.0, 1, false)
-				else:
+				elif not ANIM.current_animation == "WINDOWN":
 					ANIM.play("WALK", 0.0, 1, false)
-			else:
+			elif not ANIM.current_animation == "WINDOWN":
 				ANIM.play("IDLE", 0, 1, false)
 		else:
 			if (velocity.y < 0):
