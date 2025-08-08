@@ -1,0 +1,35 @@
+[gd_scene load_steps=9 format=3 uid="uid://c1e26hcf0nrup"]
+
+[ext_resource type="Script" uid="uid://cit8ydyw2wira" path="res://menus/save/delete/delete.gd" id="1_3evui"]
+[ext_resource type="PackedScene" uid="uid://bchlq7ojvre5o" path="res://menus/save/profile/profile.tscn" id="2_rb5gg"]
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="3_u3frr"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="4_fevu8"]
+[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="5_mokty"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="6_npq60"]
+[ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_Press.wav" id="7_ce133"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_axw2x"]
+
+[node name="Delete" type="VBoxContainer"]
+script = ExtResource("1_3evui")
+profile_scene = ExtResource("2_rb5gg")
+
+[node name="Back" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+layout_mode = 2
+theme = ExtResource("3_u3frr")
+text = "Back"
+script = ExtResource("4_fevu8")
+scene_file = "uid://cls12q06quifx"
+node_to_replace = NodePath("..")
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+attenuation = 1e-05
+bus = &"SFX"
+script = ExtResource("5_mokty")
+hover_sound = ExtResource("6_npq60")
+press_sound = ExtResource("7_ce133")
+hover_targets = [NodePath("../Back")]
+pressed_targets = [NodePath("../Back")]
+
+[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
+script = ExtResource("8_axw2x")
+focus_node = NodePath("../Back")

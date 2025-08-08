@@ -1,0 +1,116 @@
+[gd_scene load_steps=8 format=3 uid="uid://cfs5888yrlisc"]
+
+[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="1_702sn"]
+
+[sub_resource type="Shader" id="Shader_dfr5h"]
+code = "shader_type spatial;
+
+//credit DisplacedFikaDev
+
+uniform sampler2D albedo_texture : source_color;
+uniform vec3 albedo_color : source_color = vec3(1.0);
+uniform sampler2D emission_texture : source_color;
+uniform float emission_texture_intensity : hint_range(0.0, 50.0) = 1.0;
+uniform vec3 inside_color: source_color;
+uniform float dissolve_amount: hint_range(0.0, 1.0) = 0.0;
+uniform sampler2D noise_texture;
+
+uniform vec3 glow_color: source_color = vec3(0.533, 0.533, 0.533);
+uniform float glow_intensitiy = 1.77;
+uniform float glow_border_width: hint_range(0.0, 0.25) = 0.018;
+uniform float glow_border_smoothness: hint_range(0.0, 0.1) = 0.003;
+
+uniform sampler2D normal_texture;
+uniform float normal_strength : hint_range(0.0, 2.0) = 1.0;
+uniform bool use_normal_map = false;
+
+
+void fragment() {
+	
+	float dissolve_noise = texture(noise_texture, UV).r;
+
+	float border_mask = 0.0;
+	if (dissolve_amount > 0.0) {
+		float border_size = dissolve_amount + glow_border_width;
+		border_mask = 1.0 - smoothstep(
+			border_size - glow_border_smoothness,
+			border_size + glow_border_smoothness,
+			dissolve_noise
+		);
+	}
+
+	vec3 surface_emisson = mix(vec3(0.0), glow_color, border_mask);
+	surface_emisson += texture(emission_texture, UV).rgb * emission_texture_intensity;
+
+	vec3 albedo_tex = texture(albedo_texture, UV).rgb;
+	vec3 albedo;
+
+	if (albedo_tex == vec3(0.0)) {
+		albedo = albedo_color;
+	} else {
+		albedo = albedo_tex * albedo_color;
+	}
+
+
+	vec3 surface_color = albedo;
+	ALBEDO = surface_color;
+	//ALBEDO = vec3(border_mask);
+	EMISSION = surface_emisson * glow_intensitiy;
+	ALPHA = dissolve_noise;
+	ALPHA_SCISSOR_THRESHOLD = dissolve_amount;
+
+	if (use_normal_map) {
+		NORMAL_MAP = texture(normal_texture, UV).xyz;		
+	}
+
+
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_n368u"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hp215"]
+noise = SubResource("FastNoiseLite_n368u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mshem"]
+resource_local_to_scene = true
+render_priority = 0
+shader = SubResource("Shader_dfr5h")
+shader_parameter/albedo_color = Color(0.0980392, 0.117647, 0.176471, 1)
+shader_parameter/emission_texture_intensity = 0.0
+shader_parameter/inside_color = Color(0, 0, 0, 1)
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_hp215")
+shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.77
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/normal_strength = 1.0
+shader_parameter/use_normal_map = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8f78c"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.52, 0.52, 0.52, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q5ue1"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.52, 0.52, 0.52, 1)
+
+[node name="Ghost" instance=ExtResource("1_702sn")]
+
+[node name="Attacks" parent="." index="6"]
+LIKELIHOOD_MULTIPLIERS = Array[float]([0.0, 10.0, 0.0])
+
+[node name="MeshInstance3D" parent="Mesh" index="2"]
+material_override = SubResource("ShaderMaterial_mshem")
+
+[node name="MeshInstance3D" parent="Mesh/MeshInstance3D" index="0"]
+material_override = SubResource("StandardMaterial3D_8f78c")
+
+[node name="MeshInstance3D2" parent="Mesh/MeshInstance3D" index="1"]
+material_override = SubResource("StandardMaterial3D_q5ue1")
+
+[node name="Target" parent="." index="10"]
+SPEED = 0.0

@@ -1,0 +1,156 @@
+[gd_scene load_steps=18 format=3 uid="uid://dmf0vo8jrm34a"]
+
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_mb05r"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="2_80ox6"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_u51x1"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="4_42w7d"]
+[ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://stages/lighting/sun.tscn" id="4_mqk0e"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/door/door.tscn" id="5_mqk0e"]
+[ext_resource type="PackedScene" uid="uid://615n66a3l256" path="res://stages/level_1_lust/tower.blend" id="6_hcc5w"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="6_mb05r"]
+[ext_resource type="Material" uid="uid://bofjw8wwuxc71" path="res://stages/materials/bricks/castle/castle_big.tres" id="8_u51x1"]
+[ext_resource type="Material" uid="uid://c7xo8odsficf7" path="res://actors/props/rocks/materials/world_rocks.tres" id="9_u51x1"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_u51x1"]
+seed = -2735
+frequency = 0.1056
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_42w7d"]
+noise = SubResource("FastNoiseLite_u51x1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_42w7d"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
+emission = Color(0.571755, 0.596825, 0.623254, 1)
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_42w7d")
+
+[sub_resource type="BoxMesh" id="BoxMesh_mqk0e"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8x7wd"]
+size = Vector3(20.1342, 11, 15.5152)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_80ox6"]
+size = Vector3(1625.56, 260, 1361.68)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Menu" parent="." instance=ExtResource("1_mb05r")]
+
+[node name="Enviroment" type="Node" parent="."]
+
+[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("2_u51x1")]
+
+[node name="Weather" parent="Enviroment" instance=ExtResource("2_80ox6")]
+
+[node name="Lights" type="Node" parent="Enviroment"]
+
+[node name="Castle" type="Node" parent="Enviroment/Lights"]
+
+[node name="Fill" type="Node" parent="Enviroment/Lights/Castle"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights/Castle/Fill"]
+transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 198.361, 120.793, -60.1603)
+light_color = Color(0.603922, 0.509804, 0.313726, 1)
+light_energy = 1000.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 67.1022
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="Enviroment/Lights/Castle/Fill"]
+transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 179.678, 55.3256, 31.3672)
+light_color = Color(0.6051, 0.508821, 0.311795, 1)
+light_energy = 1000.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 31.3062
+
+[node name="Door" type="Node" parent="Enviroment/Lights/Castle"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment/Lights/Castle/Door"]
+transform = Transform3D(4.62649, 0, 0, 0, 45.4866, 0, 0, 0, 22.9136, 135.592, 20.0271, -13.6777)
+material_override = SubResource("StandardMaterial3D_42w7d")
+mesh = SubResource("BoxMesh_mqk0e")
+skeleton = NodePath("../../../..")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights/Castle/Door"]
+transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 127.575, 7.61775, -13.0798)
+light_color = Color(0.572549, 0.596078, 0.623529, 1)
+light_energy = 1.441
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 19.937
+omni_range = 20.4406
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 10.2977, 7.22387, -11.3288)
+light_color = Color(0.97, 0.74496, 0.6887, 1)
+light_energy = 20.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 101.01
+
+[node name="Sun" parent="Enviroment/Lights" instance=ExtResource("4_mqk0e")]
+
+[node name="Interactables" type="Node" parent="."]
+
+[node name="Reaper" parent="Interactables" instance=ExtResource("4_42w7d")]
+transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -77.7654, -1.19897, 8.67266)
+
+[node name="Exit" parent="Interactables" node_paths=PackedStringArray("AREA", "START") instance=ExtResource("5_mqk0e")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 144.124, 2.12855, -13.3975)
+AREA = NodePath("Area3D")
+START = NodePath("Start")
+DESTINATION_NODE_NAME = "Enter"
+DESTINATION_SCENE = "uid://worsh6enfk2g"
+
+[node name="Area3D" type="Area3D" parent="Interactables/Exit"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/Exit/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.553037, 5, 6.25763)
+shape = SubResource("BoxShape3D_8x7wd")
+debug_color = Color(0.458405, 0.458405, 0.458405, 0.247059)
+
+[node name="Start" type="Node3D" parent="Interactables/Exit"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.0670204, 0.114109, 18.9841)
+
+[node name="KillVolume" type="Area3D" parent="Interactables"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 1.88324, 19)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("6_mb05r")
+damage = 10000
+death_animation = "FALL_DEATH"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Interactables/KillVolume"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.4935, -186.275, 36.6345)
+shape = SubResource("BoxShape3D_80ox6")
+debug_color = Color(0.7, 0.7, 0.7, 0.0196078)
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+navigation_mesh = SubResource("NavigationMesh_jc5vn")
+
+[node name="Castle" parent="NavigationRegion3D" instance=ExtResource("6_hcc5w")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 135.739, 8.16232, -12.8293)
+
+[node name="tower" parent="NavigationRegion3D/Castle" index="0"]
+surface_material_override/0 = ExtResource("8_u51x1")
+surface_material_override/1 = ExtResource("9_u51x1")
+
+[node name="CollisionShape3D" parent="NavigationRegion3D/Castle/tower/StaticBody3D" index="0"]
+debug_color = Color(0.458405, 0.458405, 0.458405, 0.247059)
+
+[connection signal="body_entered" from="Interactables/KillVolume" to="Interactables/KillVolume" method="_on_body_entered"]
+
+[editable path="Interactables/Exit"]
+[editable path="Interactables/Exit/Door"]
+[editable path="NavigationRegion3D/Castle"]

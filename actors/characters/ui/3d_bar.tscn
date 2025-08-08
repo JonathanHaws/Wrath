@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://b6qa5gec2i48j"]
+
+[ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="1_tuuup"]
+[ext_resource type="StyleBox" uid="uid://bxt584wbuc74u" path="res://actors/characters/ui/ghost_fill.tres" id="2_ahm3t"]
+
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_fd7dn"]
+viewport_path = NodePath("3DBar/SubViewport")
+
+[node name="3DBar" type="Node3D"]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+transparent_bg = true
+size = Vector2i(257, 32)
+size_2d_override = Vector2i(985, 560)
+
+[node name="Bar" parent="SubViewport" node_paths=PackedStringArray("tracked_node") instance=ExtResource("1_tuuup")]
+anchors_preset = -1
+anchor_left = 0.0121792
+anchor_top = 0.0330811
+anchor_right = 0.257492
+anchor_bottom = 0.04697
+offset_left = -2.99653
+offset_top = -8.52541
+offset_right = -2.99652
+offset_bottom = -4.52542
+size_flags_horizontal = 6
+size_flags_vertical = 6
+theme_override_styles/fill = ExtResource("2_ahm3t")
+tracked_node = NodePath("")
+metadata/_edit_use_anchors_ = true
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(0.78, 0, 0, 0, 0.78, 0, 0, 0, 0.78, 0, 1.05615, 0)
+billboard = 1
+texture = SubResource("ViewportTexture_fd7dn")
+
+[editable path="SubViewport/Bar"]

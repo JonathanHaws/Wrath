@@ -1,0 +1,29 @@
+[gd_scene load_steps=2 format=3 uid="uid://xoc7exqkdoqd"]
+
+[ext_resource type="PackedScene" uid="uid://cls12q06quifx" path="res://menus/title_screen/main.tscn" id="1_cxw4u"]
+
+[node name="Menu" type="CanvasLayer"]
+process_mode = 3
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -63.5
+offset_top = -189.0
+offset_right = 63.5
+offset_bottom = 189.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Main" parent="CenterContainer" instance=ExtResource("1_cxw4u")]
+layout_mode = 2

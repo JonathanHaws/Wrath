@@ -1,8 +1,0 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgpke20inq3xd"]
-
-[ext_resource type="Environment" uid="uid://bagg8vxcexy7w" path="res://shaders/enviroments/hell.tres" id="1_23jyg"]
-[ext_resource type="Script" uid="uid://cdyxx24pnv4pt" path="res://scripts/world_environment.gd" id="2_y51pl"]
-
-[node name="WorldEnvironment" type="WorldEnvironment"]
-environment = ExtResource("1_23jyg")
-script = ExtResource("2_y51pl")

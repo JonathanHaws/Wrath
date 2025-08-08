@@ -1,0 +1,68 @@
+[gd_scene load_steps=7 format=3 uid="uid://ctsp72sayfitw"]
+
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_j8ntf"]
+[ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://menus/pause/restart.gd" id="2_uw4ak"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="3_1npan"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="6_m3uiw"]
+[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="7_f2x0t"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_7alca"]
+
+[node name="CenterContainer" type="CenterContainer"]
+offset_top = 4.0
+offset_right = 96.0
+offset_bottom = 4.0
+
+[node name="ColorRect" type="ColorRect" parent="."]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 2
+color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+metadata/_edit_use_anchors_ = true
+
+[node name="Main" type="VBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Restart" type="Button" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_j8ntf")
+text = "RESTART"
+icon_alignment = 1
+script = ExtResource("2_uw4ak")
+
+[node name="Options" type="Button" parent="Main" node_paths=PackedStringArray("node_to_replace")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_j8ntf")
+text = "OPTIONS"
+icon_alignment = 1
+script = ExtResource("3_1npan")
+scene_file = "uid://cxja4xs36njyv"
+node_to_replace = NodePath("../..")
+
+[node name="Quit" type="Button" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_j8ntf")
+text = "QUIT"
+icon_alignment = 1
+script = ExtResource("3_1npan")
+scene_file = "uid://xoc7exqkdoqd"
+
+[node name="Audio" type="AudioStreamPlayer2D" parent="Main" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+position = Vector2(-960, -544)
+stream = ExtResource("6_m3uiw")
+attenuation = 1e-05
+bus = &"SFX"
+script = ExtResource("7_f2x0t")
+hover_sound = ExtResource("6_m3uiw")
+press_sound = ExtResource("6_m3uiw")
+hover_targets = [null, NodePath("../Restart"), NodePath("../Options"), NodePath("../Quit")]
+pressed_targets = [null, NodePath("../Restart"), NodePath("../Options"), NodePath("../Quit")]
+
+[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
+script = ExtResource("8_7alca")
+focus_node = NodePath("../Main/Restart")
