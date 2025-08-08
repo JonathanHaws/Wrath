@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=87 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -649,6 +649,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [70.0]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_w2nfg"]
 resource_name = "RUN"
@@ -1137,9 +1149,49 @@ tracks/4/keys = {
 "values": [70.0, 90.0]
 }
 
+[sub_resource type="Animation" id="Animation_5ijfa"]
+resource_name = "DOOR"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:TURN_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b2cvw"]
 _data = {
 &"DEATH": SubResource("Animation_bx4xs"),
+&"DOOR": SubResource("Animation_5ijfa"),
 &"ESCAPE": SubResource("Animation_fm33p"),
 &"FALL": SubResource("Animation_7aqcu"),
 &"FALL_DEATH": SubResource("Animation_y5607"),
@@ -1536,7 +1588,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_k5idf")
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["player_anim"]]
 callback_mode_process = 0
 libraries = {
 &"": SubResource("AnimationLibrary_b2cvw")

@@ -4,6 +4,9 @@ extends Node3D
 @export var REAPER: CharacterBody3D
 @export var PLAYER_SPOT: Node3D
 
+#Todo - Cutscene could export an array of animation players groups to trigger and an array of animations... 
+#Could easily allow for custscene triggering
+
 func _play_end_cutscene()-> void:
 	if REAPER and REAPER.ANIM:
 		REAPER.ANIM.play("ESCAPE")

@@ -72,7 +72,7 @@ func _on_animation_finished(animation_name: String) -> void:
 		STAMINA -= 10
 
 func in_interruptible_animation() -> bool:
-	return not ANIM.current_animation in ["WINDUP", "WINDOWN", "SPIN", "DEATH", "FALL_DEATH", "HURT", "PLUNGE_FALL", "PLUNGE"]
+	return not ANIM.current_animation in ["WINDUP", "WINDOWN", "SPIN", "DEATH", "FALL_DEATH", "HURT", "PLUNGE_FALL", "PLUNGE", "DOOR"]
 
 func _exit_tree() -> void:
 	if velocity.y < -20:
@@ -199,4 +199,4 @@ func _physics_process(delta: float) -> void:
 				ANIM.play("FALL")
 			else:
 				ANIM.play("JUMPING")
-				
+			

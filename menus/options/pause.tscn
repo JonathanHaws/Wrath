@@ -75,6 +75,7 @@ theme = ExtResource("1_44kt7")
 step = 10.0
 value = 100.0
 script = ExtResource("2_gh5rx")
+bus_name = "Master"
 
 [node name="SFX" type="HBoxContainer" parent="Options"]
 layout_mode = 2
@@ -96,6 +97,7 @@ theme = ExtResource("1_44kt7")
 step = 10.0
 value = 100.0
 script = ExtResource("2_gh5rx")
+bus_name = "SFX"
 
 [node name="Music" type="HBoxContainer" parent="Options"]
 layout_mode = 2
@@ -115,6 +117,7 @@ theme = ExtResource("1_44kt7")
 step = 10.0
 value = 100.0
 script = ExtResource("2_gh5rx")
+bus_name = "Music"
 
 [node name="WindowMode" type="OptionButton" parent="Options"]
 layout_mode = 2

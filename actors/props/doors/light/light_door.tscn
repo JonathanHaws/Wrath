@@ -1,0 +1,115 @@
+[gd_scene load_steps=9 format=3 uid="uid://cc3uruvdi605x"]
+
+[ext_resource type="Script" uid="uid://ci0byfa0f4mm3" path="res://actors/props/doors/door.gd" id="1_ityv5"]
+[ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://actors/characters/enemies/sfx/Despawn.wav" id="3_ojp7h"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="3_x2b44"]
+
+[sub_resource type="Animation" id="Animation_jqv7c"]
+resource_name = "DOOR"
+length = 3.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_2d_sound"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.333333, 0.9, 2.26667, 2.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0.92, 0.92, 0.92, 1), Color(0.92, 0.92, 0.92, 1), Color(0, 0, 0, 1)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(3),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_load_new_scene"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_t1q1y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.92, 0.92, 0.92, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7041t"]
+_data = {
+&"DOOR": SubResource("Animation_jqv7c"),
+&"RESET": SubResource("Animation_t1q1y")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ojp7h"]
+size = Vector3(17.5007, 11, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_rx8ry"]
+size = Vector3(19.4529, 10.7881, 3.15704)
+
+[node name="LightDoor" type="Node3D" node_paths=PackedStringArray("AREA", "ANIM", "START")]
+script = ExtResource("1_ityv5")
+AREA = NodePath("Area3D")
+ANIM = NodePath("AnimationPlayer")
+START = NodePath("Start")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_7041t")
+}
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 2
+offset_right = 1920.0
+offset_bottom = 1080.0
+color = Color(0.92, 0.92, 0.92, 0)
+
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("3_x2b44")
+SOUNDS = Array[AudioStream]([ExtResource("3_ojp7h")])
+
+[node name="Start" type="Node3D" parent="."]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 3.81633)
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.63269, 5, -0.5)
+shape = SubResource("BoxShape3D_ojp7h")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0838, 4.89406, -0.480927)
+shape = SubResource("BoxShape3D_rx8ry")
