@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxja4xs36njyv"]
+[gd_scene load_steps=9 format=3 uid="uid://cxja4xs36njyv"]
 
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_44kt7"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="1_gh5rx"]
+[ext_resource type="Script" uid="uid://blcresco6qh8i" path="res://menus/options/sensitivity.gd" id="2_77qd8"]
 [ext_resource type="Script" uid="uid://d2hxlmmmtfynf" path="res://menus/options/volume_adjustment.gd" id="2_gh5rx"]
 [ext_resource type="Script" uid="uid://yd63tscy6h1n" path="res://menus/options/window_mode_dropdown.gd" id="4_i2ivw"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="5_q1b1x"]
@@ -25,6 +26,30 @@ metadata/_edit_use_anchors_ = true
 [node name="Options" type="VBoxContainer" parent="."]
 layout_mode = 2
 
+[node name="Sensitivity" type="HBoxContainer" parent="Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_44kt7")
+alignment = 1
+
+[node name="Label" type="Label" parent="Options/Sensitivity"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_44kt7")
+text = "SENSITIVITY:"
+
+[node name="HSlider" type="HSlider" parent="Options/Sensitivity"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("1_44kt7")
+min_value = 0.003
+max_value = 0.09
+step = 0.001
+value = 0.03
+script = ExtResource("2_77qd8")
+
 [node name="Master" type="HBoxContainer" parent="Options"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -46,7 +71,6 @@ theme = ExtResource("1_44kt7")
 step = 10.0
 value = 100.0
 script = ExtResource("2_gh5rx")
-bus_name = "Master"
 
 [node name="SFX" type="HBoxContainer" parent="Options"]
 layout_mode = 2
@@ -68,7 +92,6 @@ theme = ExtResource("1_44kt7")
 step = 10.0
 value = 100.0
 script = ExtResource("2_gh5rx")
-bus_name = "SFX"
 
 [node name="Music" type="HBoxContainer" parent="Options"]
 layout_mode = 2
@@ -88,7 +111,6 @@ theme = ExtResource("1_44kt7")
 step = 10.0
 value = 100.0
 script = ExtResource("2_gh5rx")
-bus_name = "Music"
 
 [node name="WindowMode" type="OptionButton" parent="Options"]
 layout_mode = 2

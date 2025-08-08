@@ -1,4 +1,5 @@
 extends HSlider
+
 @export var setting_name: String = "sensitivity"
 @export var default_value: float = 0.003
 
@@ -18,4 +19,6 @@ func _on_value_changed(new_value: float) -> void:
 	config.load("user://settings.cfg")
 	config.set_value("input", setting_name, value)
 	config.save("user://settings.cfg")
-		
+	
+	for node in get_tree().get_nodes_in_group("MOUSE_SENSITIVITY"):
+		node.MOUSE_SENSITIVITY = value
