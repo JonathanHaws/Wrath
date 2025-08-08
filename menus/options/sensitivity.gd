@@ -2,6 +2,7 @@ extends HSlider
 
 @export var setting_name: String = "sensitivity"
 @export var default_value: float = 0.003
+@export var value_label: Label
 
 func _ready() -> void:
 	var config = ConfigFile.new()
@@ -22,3 +23,7 @@ func _on_value_changed(new_value: float) -> void:
 	
 	for node in get_tree().get_nodes_in_group("MOUSE_SENSITIVITY"):
 		node.MOUSE_SENSITIVITY = value
+		
+	if value_label:
+		var s = str("%.3f" % (value * 100))
+		value_label.text = s.substr(0, 3)

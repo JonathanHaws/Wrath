@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
-		mouse_delta += event.relative * Engine.time_scale
+		mouse_delta += event.screen_relative * Engine.time_scale
 
 func rotate_mesh_towards_camera_xz(delta: float, mesh: Node3D, input_vector: Vector2, turn_speed: float = 16) -> void:
 	if input_vector.length() == 0: return
