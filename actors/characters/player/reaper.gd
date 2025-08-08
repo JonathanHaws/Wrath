@@ -12,7 +12,6 @@ extends CharacterBody3D
 @export var SPEED_MULTIPLIER: float = 1.0
 @export var COYOTE_TIME: float = .4
 @export var JUMP_BUFFER_TIME: float = .2
-@export var IN_CUTSCENE = false
 @export var BASE_DAMAGE = 50
 @export var DAMAGE_MULTIPLIER = 1
 @export var SPIN_MULTIPLIER = 1.5
@@ -72,7 +71,18 @@ func _on_animation_finished(animation_name: String) -> void:
 		STAMINA -= 10
 
 func in_interruptible_animation() -> bool:
-	return not ANIM.current_animation in ["WINDUP", "WINDOWN", "SPIN", "DEATH", "FALL_DEATH", "HURT", "PLUNGE_FALL", "PLUNGE", "DOOR"]
+	return not ANIM.current_animation in [
+		"WINDUP",
+		"WINDOWN",
+		"SPIN",
+		"DEATH",
+		"FALL_DEATH",
+		"HURT",
+		"PLUNGE_FALL",
+		"PLUNGE",
+		"DOOR",
+		"ESCAPE"
+	]
 
 func _exit_tree() -> void:
 	if velocity.y < -20:
@@ -112,10 +122,6 @@ func _process(_delta)-> void:
 		STAMINA = clamp(STAMINA + STAMINA_RECOVERY * _delta, 0, MAX_STAMINA)
 
 func _physics_process(delta: float) -> void:
-	
-	if IN_CUTSCENE: 
-		ANIM.stop()
-		return
 
 	if not was_on_floor and is_on_floor() and has_been_on_floor:
 		if ANIM.current_animation in "PLUNGE_FALL":
@@ -183,7 +189,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0
 		if God.mode: velocity.y = 0 
 	
-	move_and_slide()  # never move and slide if velocity is = 0
+	move_and_slide() 
 	
 	if in_interruptible_animation(): 
 		if is_on_floor(): 
