@@ -21,7 +21,7 @@ uniform bool use_normal_map = false;
 
 
 void fragment() {
-	
+
 	float dissolve_noise = texture(noise_texture, UV).r;
 
 	float border_mask = 0.0;
@@ -57,7 +57,7 @@ void fragment() {
 	ALPHA_SCISSOR_THRESHOLD = dissolve_amount;
 
 	if (use_normal_map) {
-		NORMAL_MAP = texture(normal_texture, UV).xyz;		
+		NORMAL_MAP = texture(normal_texture, UV).xyz;
 	}
 
 
