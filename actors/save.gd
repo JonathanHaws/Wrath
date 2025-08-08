@@ -1,7 +1,7 @@
 extends Node
 var game_file_name: String = ""
 var data: Dictionary = {}
-var default_scene: String = "res://scenes/zones/level_1_lust/castle.tscn"
+var default_scene: String = "res://stages/level_1_lust/castle.tscn"
 
 func get_unique_key(node: Node, suffix: String) -> String:
 	var scene_path = node.get_tree().current_scene.scene_file_path
@@ -18,14 +18,6 @@ func get_dictionary_from_file(file_name: String) -> Dictionary:
 			return json.get_data()
 	return {}
 
-func _reload_current_scene() -> void:
-	pass
-	#var current = get_tree().get_current_scene()
-	#if current:
-		#var path = current.get_filename()
-		#if path != "":
-			#get_tree().change_scene_to_file(path)
-	
 func delete_save(file_name: String) -> void:
 	var dir = DirAccess.open("user://")
 	dir.remove("user://" + file_name)
@@ -39,7 +31,11 @@ func load_game(file_name: String) -> void:
 	game_file_name = file_name
 	data = get_dictionary_from_file(file_name)
 	Save.save_game()
-	call_deferred("_reload_current_scene")
+	
+	await get_tree().process_frame # This line might be unesscary. But calling defered might be nessacary
+	
+	if default_scene != "":
+		get_tree().change_scene_to_file(default_scene)
 
 func get_save_files(exclude_active_file = false) -> Array:
 	var dir = DirAccess.open("user://")
@@ -79,7 +75,5 @@ func get_save_files(exclude_active_file = false) -> Array:
 
 func _ready() -> void:
 	pass
-	#var save_files = get_save_files()
-	#if save_files.size() > 0:
-		#load_game(save_files[0]["file_name"])
+	# Todo future. implement autoloading most recently played save for games with no main menu
 		

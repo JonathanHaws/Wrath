@@ -3,6 +3,9 @@ extends Control
 @export var profile_scene: PackedScene
 @export var exclude_current_save: bool = false
 
+func _on_profile_pressed(save_file: String) -> void:
+	Save.load_game(save_file)
+
 func populate_menu_with_saves() -> void:	
 	
 	for child in get_children():
@@ -15,7 +18,7 @@ func populate_menu_with_saves() -> void:
 	for save in saves:
 		var profile = profile_scene.instantiate()
 		profile.format_profile(save)
-		profile.pressed.connect(Save.load_game.bind(save["file_name"]))
+		profile.pressed.connect(_on_profile_pressed.bind(save["file_name"]))
 		add_child(profile)
 		move_child(profile, 0)  
 		
