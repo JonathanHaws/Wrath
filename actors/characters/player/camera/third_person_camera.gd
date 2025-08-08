@@ -7,10 +7,8 @@ extends Camera3D
 @export var ENABLED := true
 var mouse_delta = Vector2.ZERO
 
-#Config.load()
-
 func _ready() -> void:
-	MOUSE_SENSITIVITY = Config.load_setting("input", "sensitivity", MOUSE_SENSITIVITY)
+	if Config: MOUSE_SENSITIVITY = Config.load_setting("controls", "sensitivity", MOUSE_SENSITIVITY)
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
