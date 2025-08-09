@@ -4,6 +4,14 @@ extends Area3D
 @export var CHECKPOINT_SCENE_PATH: String
 @export var ANIM: AnimationPlayer
 
+func get_starting_transform() -> Transform3D:
+	var checkpoint_transform = global_transform
+	var euler_angles = checkpoint_transform.basis.get_euler()
+	euler_angles.x = 0
+	euler_angles.z = 0
+	checkpoint_transform.basis = Basis().rotated(Vector3.UP, euler_angles.y)
+	return checkpoint_transform
+
 func _on_body_entered(body: Node) -> void:
 	if GROUP != "" and not body.is_in_group(GROUP): return
 

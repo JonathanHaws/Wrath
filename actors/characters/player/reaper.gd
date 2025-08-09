@@ -107,7 +107,7 @@ func _ready() -> void:
 		Save.data["checkpoint_scene_path"] = get_tree().current_scene.scene_file_path
 	if Save.data.has("checkpoint_node_path"):
 		var checkpoint_node = get_node_or_null(Save.data["checkpoint_node_path"])
-		if checkpoint_node: global_transform = checkpoint_node.global_transform
+		if checkpoint_node: global_transform = checkpoint_node.get_starting_transform()
 		
 	if not Save.data.has("spawn_sound"):
 		Save.data["spawn_sound"] = "spawn_new"
