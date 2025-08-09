@@ -12,9 +12,7 @@ extends CharacterBody3D
 @export var SPEED_MULTIPLIER: float = 1.0
 @export var COYOTE_TIME: float = .4
 @export var JUMP_BUFFER_TIME: float = .2
-@export var BASE_DAMAGE = 50
-@export var DAMAGE_MULTIPLIER = 1
-@export var SPIN_MULTIPLIER = 1.5
+@export var SPIN_DAMAGE_MULTIPLIER = 1.5
 @export var DESCEND_MULTIPLIER = 2.0
 
 @export_group("References")
@@ -35,12 +33,10 @@ var has_been_on_floor = false
 var jump_buffer = 0;
 
 func increase_damage_each_spin():
-	DAMAGE_MULTIPLIER *= SPIN_MULTIPLIER
-	ATTACK_AREA.damage = BASE_DAMAGE * DAMAGE_MULTIPLIER
-
+	ATTACK_AREA.damage_multiplier *= SPIN_DAMAGE_MULTIPLIER
+	
 func reset_spin_damage():
-	DAMAGE_MULTIPLIER = 1
-	ATTACK_AREA.damage = BASE_DAMAGE * DAMAGE_MULTIPLIER
+	ATTACK_AREA.damage_multiplier = 1
 
 func reload_checkpoint() -> void:
 	await get_tree().process_frame

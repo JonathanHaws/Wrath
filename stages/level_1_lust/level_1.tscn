@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://worsh6enfk2g"]
+[gd_scene load_steps=11 format=3 uid="uid://worsh6enfk2g"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_4eh01"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_a6482"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="5_pyv35"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="6_l7383"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="7_n5yio"]
+[ext_resource type="PackedScene" uid="uid://b5clsl3808lrj" path="res://actors/characters/enemies/ghosts/ghost_melee.tscn" id="8_a6482"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -68,3 +69,6 @@ DESTINATION_SCENE = "uid://cjnryqwoknkw5"
 transform = Transform3D(-4.37112e-08, 0, 1, 0, 1, 0, -1, 0, -4.37112e-08, -22.2895, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "LightDoor"
 DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
+
+[node name="Ghost" parent="." instance=ExtResource("8_a6482")]
+transform = Transform3D(0.413613, 0, 0.910453, 0, 1, 0, -0.910453, 0, 0.413613, 28.0766, -8.06565, 6.14325)

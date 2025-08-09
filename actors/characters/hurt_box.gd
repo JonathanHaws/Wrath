@@ -1,6 +1,7 @@
 extends Node
 @export var damage = 1
 @export var damage_spread := 0
+@export var damage_multiplier = 1
 @export var damage_numbers: PackedScene = preload("uid://dx5gfq7hao3tx")
 @export var hurt_animation := "HURT" 
 @export var death_animation := "DEATH"
@@ -16,3 +17,5 @@ func show_damage(damage_amount: int) -> void:
 		get_tree().current_scene.add_child(number)
 		number.position = get_viewport().get_camera_3d().unproject_position(self.global_position) - Vector2(0, 140.0)
 		
+#func _process(_delta: float) -> void:
+	#print(damage)
