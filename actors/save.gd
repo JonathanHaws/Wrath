@@ -2,6 +2,7 @@ extends Node
 var game_file_name: String = ""
 var data: Dictionary = {}
 var default_scene: String = "res://stages/level_1_lust/castle.tscn"
+signal save_data_updated
 
 func get_unique_key(node: Node, suffix: String) -> String:
 	var scene_path = node.get_tree().current_scene.scene_file_path
@@ -26,6 +27,7 @@ func save_game() -> void:
 	var file = FileAccess.open("user://" + game_file_name, FileAccess.WRITE)
 	if file: file.store_string(JSON.stringify(data, "\t"))
 	if file: file.close()
+	emit_signal("save_data_updated")
 
 func load_game(file_name: String) -> void:
 	game_file_name = file_name

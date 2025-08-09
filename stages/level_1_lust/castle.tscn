@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dmf0vo8jrm34a"]
+[gd_scene load_steps=18 format=3 uid="uid://dmf0vo8jrm34a"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_mb05r"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="2_80ox6"]
@@ -10,6 +10,7 @@
 [ext_resource type="Material" uid="uid://bofjw8wwuxc71" path="res://stages/materials/bricks/castle/castle_big.tres" id="8_u51x1"]
 [ext_resource type="Material" uid="uid://c7xo8odsficf7" path="res://actors/props/rocks/materials/world_rocks.tres" id="9_u51x1"]
 [ext_resource type="PackedScene" uid="uid://cc3uruvdi605x" path="res://actors/props/doors/light/light_door.tscn" id="10_s2ex5"]
+[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp.tscn" id="11_ugtt7"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 
@@ -128,6 +129,13 @@ death_animation = "FALL_DEATH"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.4935, -186.275, 36.6345)
 shape = SubResource("BoxShape3D_80ox6")
 debug_color = Color(0.7, 0.7, 0.7, 0.0196078)
+
+[node name="Wisp" parent="." instance=ExtResource("11_ugtt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.0015, -0.477819, 40.0089)
+HEALTH = false
+
+[node name="Wisp2" parent="." instance=ExtResource("11_ugtt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.03413, -0.477819, -26.3405)
 
 [connection signal="body_entered" from="KillVolume" to="KillVolume" method="_on_body_entered"]
 

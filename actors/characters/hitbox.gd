@@ -14,7 +14,6 @@ extends Area3D
 @export var RESPAWN_KEY: String = ""
 @export var DEFEATED_KEY: String = ""
 @export var DEATHCOUNT_KEY: String = ""
-@export var LOAD_MAX_HEALTH: bool = false
 @export var MAX_HEALTH_KEY: String = ""
 
 @export_group("DAMAGE REACTION")
@@ -23,6 +22,11 @@ extends Area3D
 @export var ANIMATION_PLAYERS: Array[AnimationPlayer] = []
 @export var HURT_ANIM: String = "HURT"
 @export var DEATH_ANIM: String = "DEATH"
+
+func _exit_tree() -> void:
+	if SAVE_HEALTH:
+		Save.data[HEALTH_KEY] = HEALTH
+		Save.save_game()
 
 func hit(area: Area3D) -> void:
 	
@@ -79,11 +83,6 @@ func _ready()-> void:
 			 			
 	if SAVE_DEFEATED and Save.data.has(DEFEATED_KEY):
 		BODY.queue_free()
-		
-	if LOAD_MAX_HEALTH and Save.data.has(MAX_HEALTH_KEY):
-		MAX_HEALTH = Save.data[MAX_HEALTH_KEY]
-		if not Save.data.has(HEALTH_KEY):
-			HEALTH = MAX_HEALTH	
 	
 	if SAVE_DEATHCOUNT and not Save.data.has(DEATHCOUNT_KEY):
 		Save.data[DEATHCOUNT_KEY] = 0
