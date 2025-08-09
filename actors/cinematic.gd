@@ -1,4 +1,4 @@
-extends Node3D
+extends Node
 @export var AREA: Area3D
 @export var ANIM: AnimationPlayer
 @export var ANIM_NAME: String = ""
@@ -8,15 +8,18 @@ extends Node3D
 @export var ANIMATION_NAMES: Array[String]
 var last_player_body : Node = null
 
-func _on_body_entered(body: Node) -> void:
-	if PLAYER_BODY_GROUP != "" and not body.is_in_group(PLAYER_BODY_GROUP): return
-	last_player_body = body
-		
+func play_animations_in_other_nodes() -> void:
 	for i in range(ANIMATION_PLAYER_GROUPS.size()):
 		if i >= ANIMATION_NAMES.size(): continue
 		for node in get_tree().get_nodes_in_group(ANIMATION_PLAYER_GROUPS[i]):
 			if node is AnimationPlayer and node.has_animation(ANIMATION_NAMES[i]):
 				node.play(ANIMATION_NAMES[i])
+			
+func _on_body_entered(body: Node) -> void:
+	if PLAYER_BODY_GROUP != "" and not body.is_in_group(PLAYER_BODY_GROUP): return
+	last_player_body = body
+		
+	play_animations_in_other_nodes()
 				
 	if ANIM and ANIM.has_animation(ANIM_NAME): ANIM.play(ANIM_NAME)
 	
@@ -30,4 +33,4 @@ func _teleport_player_to_player_spot() -> void:
 	
 func _ready() -> void:
 	
-	AREA.body_entered.connect(_on_body_entered)
+	if AREA: AREA.body_entered.connect(_on_body_entered)

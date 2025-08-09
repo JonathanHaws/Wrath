@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_ll3a5"]
 [ext_resource type="Script" uid="uid://c6c4lhniukers" path="res://menus/options/graphics/bloom_toggle.gd" id="2_jcns5"]
-[ext_resource type="Script" uid="uid://p76p6xby1wu" path="res://menus/options/graphics/brightness_adjustment.gd" id="3_5m6ci"]
+[ext_resource type="Script" uid="uid://cwe5bc001ljso" path="res://menus/options/graphics/enviroment_adjustment.gd" id="3_oc2qo"]
 [ext_resource type="Script" uid="uid://dntrkxgi76mi" path="res://menus/options/graphics/ssao_toggle.gd" id="4_ll3a5"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="5_wtdqe"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="6_684si"]
@@ -19,77 +19,150 @@ offset_bottom = 176.0
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -6.0
-offset_top = -183.0
-offset_right = 331.0
-offset_bottom = -20.0
+offset_left = -7.0
+offset_top = -178.0
+offset_right = 384.0
+offset_bottom = 43.0
 color = Color(0.0646965, 0.0646965, 0.0646965, 0.913725)
 
-[node name="Label" type="Label" parent="."]
+[node name="Brightness" type="Label" parent="."]
 layout_mode = 2
-offset_left = 18.0
-offset_top = -164.0
-offset_right = 146.0
-offset_bottom = -136.0
+offset_left = 19.0
+offset_top = -162.0
+offset_right = 147.0
+offset_bottom = -134.0
 theme = ExtResource("1_ll3a5")
 text = "BRIGHTNESS:"
 
+[node name="HSlider" type="HSlider" parent="Brightness" node_paths=PackedStringArray("display_label")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+offset_left = 139.0
+offset_top = 6.0
+offset_right = 289.0
+offset_bottom = 22.0
+size_flags_vertical = 4
+theme = ExtResource("1_ll3a5")
+min_value = 1.0
+max_value = 3.0
+step = 0.01
+value = 1.4
+script = ExtResource("3_oc2qo")
+display_label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="Brightness"]
+offset_left = 296.0
+offset_top = -2.0
+offset_right = 336.0
+offset_bottom = 26.0
+text = "1.0"
+
+[node name="Contrast" type="Label" parent="."]
+layout_mode = 2
+offset_left = 18.0
+offset_top = -133.0
+offset_right = 146.0
+offset_bottom = -105.0
+theme = ExtResource("1_ll3a5")
+text = "CONTRAST:"
+
+[node name="HSlider" type="HSlider" parent="Contrast" node_paths=PackedStringArray("display_label")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+offset_left = 139.0
+offset_top = 6.0
+offset_right = 289.0
+offset_bottom = 22.0
+size_flags_vertical = 4
+theme = ExtResource("1_ll3a5")
+min_value = 0.9
+max_value = 1.2
+step = 0.01
+value = 1.0
+script = ExtResource("3_oc2qo")
+setting_name = "contrast"
+display_label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="Contrast"]
+offset_left = 297.0
+offset_top = -3.0
+offset_right = 337.0
+offset_bottom = 25.0
+text = "1.0"
+
+[node name="Saturation" type="Label" parent="."]
+layout_mode = 2
+offset_left = 18.0
+offset_top = -105.0
+offset_right = 149.0
+offset_bottom = -77.0
+theme = ExtResource("1_ll3a5")
+text = "SATURATION:"
+
+[node name="HSlider" type="HSlider" parent="Saturation" node_paths=PackedStringArray("display_label")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+offset_left = 139.0
+offset_top = 6.0
+offset_right = 289.0
+offset_bottom = 22.0
+size_flags_vertical = 4
+theme = ExtResource("1_ll3a5")
+max_value = 2.5
+step = 0.01
+value = 1.4
+script = ExtResource("3_oc2qo")
+setting_name = "saturation"
+display_label = NodePath("../Label")
+
+[node name="Label" type="Label" parent="Saturation"]
+layout_mode = 0
+offset_left = 297.0
+offset_top = -4.0
+offset_right = 337.0
+offset_bottom = 24.0
+text = "1.0"
+
 [node name="Bloom" type="Label" parent="."]
 layout_mode = 0
-offset_left = 18.0
-offset_top = -132.0
-offset_right = 146.0
-offset_bottom = -104.0
+offset_left = 17.0
+offset_top = -74.0
+offset_right = 145.0
+offset_bottom = -46.0
 theme = ExtResource("1_ll3a5")
 text = "BLOOM:"
 
 [node name="BloomButton" type="CheckButton" parent="."]
 layout_mode = 0
-offset_left = 102.0
-offset_top = -130.0
-offset_right = 146.0
-offset_bottom = -106.0
+offset_left = 101.0
+offset_top = -72.0
+offset_right = 145.0
+offset_bottom = -48.0
 script = ExtResource("2_jcns5")
 
 [node name="SSAO" type="Label" parent="."]
 layout_mode = 0
-offset_left = 18.0
-offset_top = -98.0
-offset_right = 146.0
-offset_bottom = -70.0
+offset_left = 17.0
+offset_top = -40.0
+offset_right = 145.0
+offset_bottom = -12.0
 theme = ExtResource("1_ll3a5")
 text = "SSAO:"
 
-[node name="HSlider" type="HSlider" parent="."]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-offset_left = 157.0
-offset_top = -158.0
-offset_right = 307.0
-offset_bottom = -142.0
-size_flags_vertical = 4
-theme = ExtResource("1_ll3a5")
-min_value = 1.0
-max_value = 3.0
-step = 0.1
-value = 1.4
-script = ExtResource("3_5m6ci")
-default_value = 1.3
-
 [node name="SSAOButton" type="CheckButton" parent="."]
 layout_mode = 0
-offset_left = 81.0
-offset_top = -96.0
-offset_right = 125.0
-offset_bottom = -72.0
+offset_left = 80.0
+offset_top = -37.0
+offset_right = 124.0
+offset_bottom = -13.0
 script = ExtResource("4_ll3a5")
 
 [node name="Back" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
 layout_mode = 2
-offset_left = 15.0
-offset_top = -68.0
-offset_right = 75.0
-offset_bottom = -32.0
+offset_left = 14.0
+offset_top = -10.0
+offset_right = 74.0
+offset_bottom = 26.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = ExtResource("1_ll3a5")

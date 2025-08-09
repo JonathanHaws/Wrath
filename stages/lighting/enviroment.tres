@@ -1,4 +1,11 @@
-[gd_resource type="Environment" load_steps=3 format=3 uid="uid://bagg8vxcexy7w"]
+[gd_resource type="Environment" load_steps=5 format=3 uid="uid://bagg8vxcexy7w"]
+
+[sub_resource type="Curve" id="Curve_tqk0c"]
+_data = [Vector2(0, 0.0786518), 0.0, 0.0, 0, 0, Vector2(0.25625, 0.314607), 1.34831, 1.34831, 0, 0, Vector2(0.5375, 0.595506), 1.1985, 1.1985, 0, 0, Vector2(1, 1), 1.92174, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_kh1ui"]
+curve = SubResource("Curve_tqk0c")
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_1oyht"]
 sky_top_color = Color(0.0235294, 0.0235294, 0.0313726, 1)
@@ -21,6 +28,7 @@ ambient_light_source = 2
 ambient_light_color = Color(0.0768358, 0.0768358, 0.0768358, 1)
 ambient_light_energy = 16.0
 reflected_light_source = 2
+ssao_enabled = true
 ssao_radius = 1.75
 ssao_intensity = 0.93
 ssao_power = 9.74701
@@ -40,5 +48,7 @@ volumetric_fog_emission = Color(0.187176, 0.187176, 0.187176, 1)
 volumetric_fog_length = 1034.55
 volumetric_fog_detail_spread = 0.965936
 adjustment_enabled = true
-adjustment_brightness = 1.3
-adjustment_saturation = 1.2
+adjustment_brightness = 2.21
+adjustment_contrast = 1.02
+adjustment_saturation = 1.22
+adjustment_color_correction = SubResource("CurveTexture_kh1ui")

@@ -3,7 +3,6 @@
 [ext_resource type="Environment" uid="uid://bagg8vxcexy7w" path="res://stages/lighting/enviroment.tres" id="1_23jyg"]
 [ext_resource type="Script" uid="uid://cdyxx24pnv4pt" path="res://stages/lighting/world_environment.gd" id="2_y51pl"]
 
-
 [node name="WorldEnvironment" type="WorldEnvironment"]
 environment = ExtResource("1_23jyg")
 script = ExtResource("2_y51pl")
