@@ -404,6 +404,15 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36
 [node name="Wrath" parent="." instance=ExtResource("7_eqpye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.0888538, 19)
 
+[node name="LeftHand" parent="Wrath/Mesh/wrath/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.91782, -0.202313, -0.342367, 0.113424, -0.95856, 0.262368, -0.381156, 0.201919, 0.90249, -2.23766, 2.28235, 1.05102)
+
+[node name="RightHand" parent="Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
+transform = Transform3D(-0.727198, 0.458492, -0.511378, -0.381476, -0.888946, -0.254539, -0.571138, 0.00997524, 0.821122, 2.24732, 2.21318, 1.12143)
+
+[node name="Torso" parent="Wrath/Mesh/wrath/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1.00027, 0.00107535, -0.00212181, -0.000351121, 0.949198, 0.315537, 0.0023527, -0.315535, 0.949195, 9.06418e-22, 0.805583, 0.161896)
+
 [node name="Bounds" type="Node" parent="Wrath"]
 
 [node name="South" type="StaticBody3D" parent="Wrath/Bounds"]
@@ -540,5 +549,6 @@ debug_color = Color(0.7, 0.7, 0.7, 0.0431373)
 [editable path="NavigationRegion3D/Level"]
 [editable path="Wrath"]
 [editable path="Wrath/Ui/VBoxContainer/HealthBar"]
+[editable path="Wrath/Mesh/wrath"]
 [editable path="Wrath/Music"]
 [editable path="AmbientMusic"]

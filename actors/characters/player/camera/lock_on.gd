@@ -56,7 +56,7 @@ func _process(_delta: float) -> void:
 		
 func _physics_process(_delta: float) -> void:
 	
-	CAMERA.ENABLED = not lock_on_activated
+	CAMERA.SENSITIVITY_MULTIPLIER = 0 if lock_on_activated else 1
 	
 	if not lock_on_activated: return
 	if not is_instance_valid(lock_on_target): return

@@ -64,6 +64,9 @@ func hit(area: Area3D) -> void:
 		if SAVE_DEATHCOUNT: Save.data[DEATHCOUNT_KEY] = int(Save.data.get(DEATHCOUNT_KEY, 0)) + 1
 		Save.save_game()
 
+func _restore_health():
+	HEALTH = MAX_HEALTH
+
 func _ready()-> void:
 	
 	if HEALTH_KEY.is_empty(): HEALTH_KEY = Save.get_unique_key(self, "health")

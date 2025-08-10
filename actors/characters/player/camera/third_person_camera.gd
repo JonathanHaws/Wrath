@@ -5,7 +5,6 @@ extends Camera3D
 @export var SpringArm: SpringArm3D
 @export var MOUSE_SENSITIVITY: float = 0.003
 @export var SENSITIVITY_MULTIPLIER: float = 1.0
-@export var ENABLED := true
 var mouse_delta = Vector2.ZERO
 
 func _ready() -> void:

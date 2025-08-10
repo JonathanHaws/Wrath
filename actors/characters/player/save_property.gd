@@ -11,8 +11,6 @@ extends Node
 @export var property: String
 ## When max health gets an upgrade does health get upgraded too?
 @export var increase_property_by_max_difference: bool = false
-## Sets property in ready... Sets health to max_health for example
-@export var set_property_to_max_in_ready: bool = false
 
 @export_group("Notification Animation")
 ## (Optional) Trigger upgrade notification with this player
@@ -44,9 +42,6 @@ func _ready() -> void:
 		node.set(max_property, Save.data[max_save_key])
 	else:
 		Save.data[max_save_key] = node.get(max_property)
-		
-	if set_property_to_max_in_ready and property != "":
-		node.set(property, node.get(max_property))
 
 #func _process(_delta: float) -> void: # For debugging
 	#if update_node and update_property != "":
