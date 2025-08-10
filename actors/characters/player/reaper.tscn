@@ -1565,10 +1565,14 @@ libraries = {
 
 [node name="Label" type="Label" parent="Upgrade"]
 modulate = Color(1, 1, 1, 0)
-offset_left = 7.0
-offset_top = 1001.0
-offset_right = 231.0
-offset_bottom = 1039.0
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -73.0
+offset_right = 229.0
+offset_bottom = -35.0
+grow_vertical = 0
 theme = ExtResource("24_m1s71")
 text = "WISP STAMINA INCREASED"
 
@@ -1693,7 +1697,7 @@ bones/22/position = Vector3(0.448948, 0.572884, 1.1269)
 bones/22/rotation = Quaternion(-0.135562, -0.119504, -0.830788, 0.526434)
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.988633, -0.0338307, 0.146497, -0.15035, 0.216877, -0.964551, 0.000859591, -0.975613, -0.219498, 0.0398612, 0.046905, -0.158039)
+transform = Transform3D(-0.988633, -0.0338307, 0.146497, -0.15035, 0.216878, -0.964551, 0.00085951, -0.975613, -0.219499, 0.0398612, 0.0469056, -0.15804)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -1704,7 +1708,7 @@ scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.988633, -0.0338307, 0.146497, -0.15035, 0.216877, -0.964551, 0.000859591, -0.975613, -0.219498, 0.0398612, 0.046905, -0.158039)
+transform = Transform3D(-0.988633, -0.0338307, 0.146497, -0.15035, 0.216878, -0.964551, 0.00085951, -0.975613, -0.219499, 0.0398612, 0.0469056, -0.15804)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -1724,7 +1728,7 @@ material_override = SubResource("ShaderMaterial_ckevw")
 material_override = SubResource("ShaderMaterial_py1jt")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="5"]
-transform = Transform3D(-0.413919, 0.906227, 0.0861526, 0.345231, 0.0687011, 0.936, 0.84231, 0.417171, -0.341294, 0.432915, 1.13316, -0.322884)
+transform = Transform3D(-0.41392, 0.906227, 0.0861535, 0.345231, 0.0687004, 0.936, 0.84231, 0.417172, -0.341294, 0.432915, 1.13316, -0.322884)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -1765,8 +1769,11 @@ playback_default_blend_time = 0.2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 2
-offset_right = 1920.0
-offset_bottom = 1080.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
 [node name="Ambience" type="AudioStreamPlayer2D" parent="."]
@@ -1792,10 +1799,17 @@ SpringArm = NodePath("../SpringArm3D")
 LOCK_ON_AREA = NodePath("../SpringArm3D/Camera3D/LockOnArea")
 
 [node name="Stamina" parent="." node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
-offset_left = -953.0
-offset_top = 502.0
-offset_right = -830.0
-offset_bottom = 512.0
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = -35.0
+offset_right = 129.0
+offset_bottom = -25.0
+grow_horizontal = 1
+grow_vertical = 0
 theme_override_styles/fill = ExtResource("20_gpejb")
 max_value = 10.0
 step = 0.001
@@ -1809,10 +1823,17 @@ tracked_max_property = "MAX_STAMINA"
 pixel_expansion_rate = 8.0
 
 [node name="Health" parent="." node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
-offset_left = -953.0
-offset_top = 521.0
-offset_right = -826.0
-offset_bottom = 531.0
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -16.0
+offset_right = 132.0
+offset_bottom = -6.0
+grow_horizontal = 1
+grow_vertical = 0
 theme_override_styles/fill = ExtResource("34_6g6ue")
 max_value = 10.0
 value = 10.0

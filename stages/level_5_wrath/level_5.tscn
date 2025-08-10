@@ -210,7 +210,7 @@ size = Vector3(84.0156, 70.982, 263.846)
 [node name="Cinematics" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Cinematics"]
-transform = Transform3D(0.874629, 0.249685, -0.415548, -1.78814e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
+transform = Transform3D(0.874629, 0.249685, -0.415548, -1.86264e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
 rotation_edit_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cinematics"]
@@ -390,6 +390,7 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("5_rlfmo")
 damage = 10000
+damage_numbers = null
 death_animation = "FALL_DEATH"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillVolume"]
@@ -402,17 +403,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36
 
 [node name="Wrath" parent="." instance=ExtResource("7_eqpye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.0888538, 19)
-
-[node name="HealthBar" parent="Wrath/UI" index="0"]
-metadata/_edit_use_anchors_ = true
-
-[node name="Skeleton3D" parent="Wrath/Mesh/wrath/Armature" index="0"]
-bones/4/rotation = Quaternion(-0.18941, 0.0856309, 0.344916, 0.915327)
-bones/6/rotation = Quaternion(-0.0822429, 0.000622961, 0.134669, 0.987472)
-bones/7/rotation = Quaternion(-0.29291, -2.50809e-14, -6.98353e-08, 0.95614)
-
-[node name="LeftHand" parent="Wrath/Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.924673, -0.00872161, -0.380663, 0.241994, -0.785316, -0.569839, -0.293971, -0.619033, 0.728271, -1.99718, 1.41444, -0.332778)
 
 [node name="Bounds" type="Node" parent="Wrath"]
 
@@ -549,6 +539,6 @@ debug_color = Color(0.7, 0.7, 0.7, 0.0431373)
 [editable path="NavigationRegion3D/Statues/Wrath/Stand/Model"]
 [editable path="NavigationRegion3D/Level"]
 [editable path="Wrath"]
-[editable path="Wrath/Mesh/wrath"]
+[editable path="Wrath/Ui/VBoxContainer/HealthBar"]
 [editable path="Wrath/Music"]
 [editable path="AmbientMusic"]

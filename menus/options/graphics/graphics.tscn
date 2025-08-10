@@ -51,6 +51,7 @@ script = ExtResource("3_oc2qo")
 display_label = NodePath("../Label")
 
 [node name="Label" type="Label" parent="Brightness"]
+layout_mode = 0
 offset_left = 296.0
 offset_top = -2.0
 offset_right = 336.0
@@ -84,6 +85,7 @@ setting_name = "contrast"
 display_label = NodePath("../Label")
 
 [node name="Label" type="Label" parent="Contrast"]
+layout_mode = 0
 offset_left = 297.0
 offset_top = -3.0
 offset_right = 337.0

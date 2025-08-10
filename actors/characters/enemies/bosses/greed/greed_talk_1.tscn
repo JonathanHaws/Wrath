@@ -218,9 +218,17 @@ dialogue_file = ExtResource("10_asfo8")
 
 [node name="Background" type="ProgressBar" parent="Dialogue"]
 modulate = Color(1, 1, 1, 0)
-offset_top = 863.0
-offset_right = 1983.0
-offset_bottom = 1137.0
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -991.5
+offset_top = -274.0
+offset_right = 991.5
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
 theme_override_styles/background = SubResource("StyleBoxFlat_k5hc3")
 show_percentage = false
 

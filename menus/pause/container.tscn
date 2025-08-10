@@ -7,27 +7,4 @@
 process_mode = 3
 script = ExtResource("1_327xx")
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -63.5
-offset_top = -189.0
-offset_right = 63.5
-offset_bottom = 189.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-metadata/_edit_use_anchors_ = true
-
-[node name="Main" parent="CenterContainer" instance=ExtResource("2_lru1c")]
-layout_mode = 2
-
-[node name="Audio" parent="CenterContainer/Main/Main" index="3" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-hover_targets = [null, NodePath("../Restart"), NodePath("../Options"), NodePath("../Quit")]
-pressed_targets = [null, NodePath("../Restart"), NodePath("../Options"), NodePath("../Quit")]
-
-[editable path="CenterContainer/Main"]
+[node name="ColorRect" parent="." instance=ExtResource("2_lru1c")]
