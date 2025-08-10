@@ -355,6 +355,20 @@ tracks/14/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/15/type = "method"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath(".")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"defeated"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
 resource_name = "INTRO"
@@ -1499,6 +1513,8 @@ collision_mask = 7
 script = ExtResource("1_fvlx1")
 TARGET = NodePath("Target")
 ANIM = NodePath("AnimationPlayer")
+DOOR_TO_UNLOCK_GROUP = "wrath_door"
+DEFEATED_KEY = "wrath_defeated"
 
 [node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("BODY", "TELEPORT_NODES_TO_HIT", "ANIMATION_PLAYERS")]
 script = ExtResource("4_pxmry")
@@ -1506,7 +1522,6 @@ HEALTH = 4000
 MAX_HEALTH = 4000
 BODY = NodePath("..")
 IMMUNE_GROUPS = Array[String](["wrath"])
-DEFEATED_KEY = "wrath_defeated"
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 ANIMATION_PLAYERS = [NodePath("../Damaged"), NodePath("../AnimationPlayer")]
 
@@ -1616,24 +1631,24 @@ SCENE_ROOT = NodePath("..")
 [node name="wrath" parent="Mesh" instance=ExtResource("10_h46di")]
 
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
-bones/1/position = Vector3(9.26062e-17, -0.684027, 0.982476)
-bones/1/rotation = Quaternion(0.269214, 2.87519e-17, 1.02856e-16, 0.96308)
-bones/2/rotation = Quaternion(0.345109, -0.000809951, -0.000870538, 0.938562)
-bones/2/scale = Vector3(1.00027, 1.00027, 1.00027)
-bones/3/rotation = Quaternion(0.101445, 0.180504, 0.761364, 0.614372)
-bones/4/rotation = Quaternion(0.120811, 0.375576, 0.193624, 0.898253)
-bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
-bones/6/rotation = Quaternion(-0.0822429, 0.000622971, 0.134669, 0.987472)
-bones/7/rotation = Quaternion(-0.149002, -0.000264059, 0.000154194, 0.988837)
-bones/8/rotation = Quaternion(0.101568, -0.180244, -0.760486, 0.615513)
-bones/9/rotation = Quaternion(0.167955, -0.0381729, -0.188907, 0.966772)
-bones/10/rotation = Quaternion(-0.249009, 0.238882, -0.286684, 0.893724)
+bones/1/position = Vector3(-7.12175e-17, 0.0829432, 0.518257)
+bones/1/rotation = Quaternion(0.520187, 5.55556e-17, 9.12122e-17, 0.854052)
+bones/2/rotation = Quaternion(0.296613, 1.13845e-07, 3.5359e-08, 0.954998)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
+bones/4/rotation = Quaternion(-0.359535, 0.0106007, 0.152414, 0.920539)
+bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325445, 0.887213)
+bones/6/rotation = Quaternion(-0.0822429, 0.00062297, 0.134669, 0.987472)
+bones/7/rotation = Quaternion(0.114974, -2.79969e-08, -6.39776e-08, 0.993369)
+bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
+bones/9/rotation = Quaternion(-0.24812, 0.00052556, -0.14623, 0.957629)
+bones/10/rotation = Quaternion(-0.455173, 0.0679145, -0.0325445, 0.887213)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_y1py8")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.917825, -0.202313, -0.342368, 0.113425, -0.958565, 0.262368, -0.381158, 0.201919, 0.902494, -2.23766, 2.28235, 1.05103)
+transform = Transform3D(-0.653425, 0.0696915, -0.753776, 0.732638, -0.192318, -0.652882, -0.190465, -0.978855, 0.0746064, -2.23058, 2.65431, -0.610168)
 bone_name = "hand_l"
 bone_idx = 6
 script = ExtResource("22_r385c")
@@ -1651,7 +1666,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.727203, 0.458493, -0.51138, -0.381476, -0.888951, -0.254542, -0.571141, 0.0099733, 0.821126, 2.24734, 2.21319, 1.12143)
+transform = Transform3D(-0.685293, 0.149883, 0.712677, -0.722862, -0.259, -0.640617, 0.0885656, -0.954177, 0.285835, 2.5137, 2.56799, -0.234136)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1668,7 +1683,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3" groups=["wrath"]]
-transform = Transform3D(1.00027, 0.00107536, -0.00212182, -0.000351124, 0.949203, 0.315537, 0.00235271, -0.315535, 0.9492, 3.75939e-23, 0.805584, 0.161897)
+transform = Transform3D(1, 7.10543e-15, 2.38419e-07, 2.9874e-08, 0.992119, -0.125301, -2.3654e-07, 0.125301, 0.992119, 2.87231e-23, 1, 0.100295)
 bone_name = "torso"
 bone_idx = 2
 

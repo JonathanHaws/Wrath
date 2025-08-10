@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=88 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -29,6 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://c5qhpwg8w7djb" path="res://actors/characters/player/mesh/textures/cloak/alpha.png" id="19_0hpbp"]
 [ext_resource type="AudioStream" uid="uid://dlwicer3j08q8" path="res://actors/characters/player/sfx/Spawn_Void.wav" id="20_5d6ad"]
 [ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://actors/characters/ui/stamina_fill.tres" id="20_gpejb"]
+[ext_resource type="Script" uid="uid://brd3ehk2rfsfr" path="res://actors/characters/player/tracker/death_count_tracker.gd" id="20_m1s71"]
 [ext_resource type="AudioStream" uid="uid://bbwub6xco4f00" path="res://actors/props/sfx/Wind.wav" id="22_ogp31"]
 [ext_resource type="Texture2D" uid="uid://cilvyugj78b4q" path="res://actors/characters/player/mesh/textures/body/color.png" id="23_6p2vh"]
 [ext_resource type="Script" uid="uid://dsby53pm3kd0g" path="res://actors/characters/player/save_property.gd" id="23_75wkf"]
@@ -38,7 +39,7 @@
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="29_lwilf"]
 [ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://actors/characters/ui/player_health.tres" id="34_6g6ue"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="35_lwilf"]
-[ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://actors/characters/player/play_time_tracker.gd" id="36_5cvkf"]
+[ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://actors/characters/player/tracker/play_time_tracker.gd" id="36_5cvkf"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="36_p2pt0"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://actors/slow_motion.gd" id="39_gts01"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://actors/squash.gd" id="41_utjob"]
@@ -136,7 +137,7 @@ tracks/5/keys = {
 tracks/6/type = "method"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Hitbox")
+tracks/6/path = NodePath("../DeathCountTracker")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -144,7 +145,7 @@ tracks/6/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"_restore_health"
+"method": &"increase"
 }]
 }
 
@@ -306,7 +307,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox")
+tracks/2/path = NodePath("DeathCountTracker")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -314,7 +315,7 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"_restore_health"
+"method": &"increase"
 }]
 }
 
@@ -1529,7 +1530,7 @@ MESH_ANIM = NodePath("Mesh/reaper/AnimationPlayer")
 COLLISON_SHAPE = NodePath("CollisionShape3D")
 PARTICLES = NodePath("JumpParticles")
 
-[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("BODY", "ANIMATION_PLAYERS") groups=["player"]]
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("BODY", "ANIMATION_PLAYER", "ANIMATION_PLAYERS") groups=["player"]]
 collision_layer = 2
 script = ExtResource("2_utjob")
 HEALTH = 15
@@ -1537,11 +1538,14 @@ MAX_HEALTH = 15
 BODY = NodePath("..")
 IMMUNE_GROUPS = Array[String](["player"])
 SAVE_HEALTH = true
-SAVE_DEFEATED = false
-SAVE_DEATHCOUNT = true
 HEALTH_KEY = "health"
-DEATHCOUNT_KEY = "deaths"
+SAVE_MAX_HEALTH = true
 MAX_HEALTH_KEY = "max_health"
+ANIMATION_PLAYER = NodePath("../Upgrade")
+UPGRADE_ANIMATION = "HEALTH"
+RESPAWN = true
+DEATH_OFFSET = 0
+RESPAWN_KEY = "respawning"
 ANIMATION_PLAYERS = [NodePath("../AnimationPlayer"), NodePath("../AlwaysProcessDeath")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
@@ -1553,9 +1557,6 @@ script = ExtResource("35_lwilf")
 SOUNDS = Array[AudioStream]([ExtResource("15_tgmjc"), ExtResource("4_i3uf6"), ExtResource("5_7kpka"), ExtResource("10_c6xc7"), ExtResource("11_x57ir"), ExtResource("12_ot1qi"), ExtResource("2_ykn11"), ExtResource("3_2tmqw"), ExtResource("20_5d6ad"), ExtResource("7_erto2"), ExtResource("8_wxf0g"), ExtResource("9_rg8br"), ExtResource("10_tro3i"), ExtResource("18_pc8iq"), ExtResource("25_8i186")])
 VOLUME_MULTIPLIERS = Array[float]([0.15, 1.0, 1.0, 1.0, 1.0, 1.0, 0.4, 0.4, 0.4, 0.7, 0.7, 0.7, 0.7, 1.0, 0.3])
 
-[node name="PlayTimeTracker" type="Node" parent="."]
-script = ExtResource("36_5cvkf")
-
 [node name="SlowMotion" type="Node" parent="."]
 script = ExtResource("39_gts01")
 
@@ -1565,6 +1566,13 @@ mesh_node = NodePath("../Mesh")
 
 [node name="CameraShake" type="Node" parent="."]
 script = ExtResource("42_k5idf")
+
+[node name="PlayTimeTracker" type="Node" parent="."]
+script = ExtResource("36_5cvkf")
+
+[node name="DeathCountTracker" type="Node" parent="."]
+script = ExtResource("20_m1s71")
+key = "deaths"
 
 [node name="AlwaysProcessDeath" type="AnimationPlayer" parent="."]
 process_mode = 3
@@ -1613,24 +1621,6 @@ property = "STAMINA"
 increase_property_by_max_difference = true
 animation_player = NodePath("../Upgrade")
 animation_name = "STAMINA"
-
-[node name="SaveHealth" type="Node" parent="." node_paths=PackedStringArray("node", "animation_player")]
-script = ExtResource("23_75wkf")
-max_save_key = "max_health"
-node = NodePath("../Hitbox")
-max_property = "MAX_HEALTH"
-property = "HEALTH"
-increase_property_by_max_difference = true
-animation_player = NodePath("../Upgrade")
-animation_name = "HEALTH"
-
-[node name="SaveDamage" type="Node" parent="." node_paths=PackedStringArray("node", "animation_player")]
-script = ExtResource("23_75wkf")
-max_save_key = "damage"
-node = NodePath("../Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D")
-max_property = "damage"
-animation_player = NodePath("../Upgrade")
-animation_name = "DAMAGE"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -1758,11 +1748,15 @@ transform = Transform3D(-0.41392, 0.906227, 0.0861535, 0.345231, 0.0687004, 0.93
 bone_name = "staff_2"
 bone_idx = 22
 
-[node name="Area3D" type="Area3D" parent="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D" groups=["player"]]
+[node name="Area3D" type="Area3D" parent="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("animation_player") groups=["player"]]
 transform = Transform3D(-0.0339621, 0, 0, 0, -0.906183, 0, 0, 0, -0.198858, 0, 0, 0)
 script = ExtResource("29_lwilf")
 damage = 50
 damage_spread = 1
+save_damage = true
+save_key = "damage"
+animation_player = NodePath("../../../../../../Upgrade")
+upgrade_animation = "DAMAGE"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D"]
 transform = Transform3D(0.999992, -3.83705e-06, 6.52671e-06, -6.55651e-07, 0.999998, -3.8743e-07, -8.9407e-07, -2.04146e-06, 1.00001, -2.81159, -1.29673, -0.4417)

@@ -4,6 +4,10 @@ extends Node3D
 @export var ANIM_NAME: String = "DOOR"
 @export var START: Node3D
 @export var DESTINATION_NODE_NAME: String 
+
+@export var SAVE_LOCKED: bool = true
+@export var LOCKED: bool = false
+
 ## Uses a file instead of packed scene to avoid circular dependencies with tscn files.
 ## Still updates references automatically though if reogranizing folders in godot
 @export_file("*.tscn") var DESTINATION_SCENE: String 
@@ -25,6 +29,7 @@ func _load_new_scene() -> void:
 		get_tree().change_scene_to_file(DESTINATION_SCENE)
 
 func _on_area_body_entered(body: Node) -> void:
+	if LOCKED: return
 	if PLAYER_BODY_GROUP != "" and not body.is_in_group(PLAYER_BODY_GROUP): return
 	if not DESTINATION_SCENE: return
 	if ANIM and ANIM_NAME != "": ANIM.play(ANIM_NAME)
@@ -32,5 +37,13 @@ func _on_area_body_entered(body: Node) -> void:
 		if node is AnimationPlayer and node.has_animation(PLAYER_ANIM_NAME):
 			node.play(PLAYER_ANIM_NAME)
 
+func _exit_tree() -> void:
+	if SAVE_LOCKED:
+		Save.data[Save.get_unique_key(self,"Locked")] = LOCKED
+		Save.save_game()
+
 func _ready() -> void:
+	if SAVE_LOCKED and Save.data.has(Save.get_unique_key(self,"Locked")):
+		LOCKED = Save.data[Save.get_unique_key(self,"Locked")]
+	
 	AREA.connect("body_entered", Callable(self, "_on_area_body_entered"))

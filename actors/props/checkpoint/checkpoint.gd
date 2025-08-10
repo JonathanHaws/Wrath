@@ -19,10 +19,10 @@ func _on_body_entered(body: Node) -> void:
 	   Save.data.has("checkpoint_scene_path") and Save.data["checkpoint_scene_path"] == get_tree().current_scene.scene_file_path:
 		return  # Skip if already acquired
 	
-	if "HEALTH" in body and "MAX_HEALTH" in body:
+	#if "HEALTH" in body and "MAX_HEALTH" in body:
 		#print('replenishing')
-		if body.HEALTH < body.MAX_HEALTH:
-			body.HEALTH = body.MAX_HEALTH
+		#if body.HEALTH < body.MAX_HEALTH:
+			#body.HEALTH = body.MAX_HEALTH
 	
 	ANIM.play("ACQUIRED")
 	Save.data["checkpoint_node_path"] = get_path()

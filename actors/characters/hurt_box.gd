@@ -7,6 +7,12 @@ extends Node
 @export var death_animation := "DEATH"
 # Add groups to this node you dont want it to damage to
 
+@export_group("Save")
+@export var save_damage: bool = false
+@export var save_key: String = ""
+@export var animation_player: AnimationPlayer
+@export var upgrade_animation: String = ""
+
 func get_damage() -> int:
 	return damage + randi_range(-damage_spread, damage_spread)
 
@@ -19,3 +25,24 @@ func show_damage(damage_amount: int) -> void:
 		
 #func _process(_delta: float) -> void:
 	#print(damage)
+
+func _exit_tree() -> void:
+	if not save_damage: return
+	Save.data[save_key] = damage
+	Save.save_game()
+
+func _on_save_data_updated() -> void:
+	if not save_damage: return
+	if Save.data[save_key] != damage:
+		if animation_player and animation_player.has_animation(upgrade_animation):
+			animation_player.play(upgrade_animation)
+	damage = Save.data[save_key]
+
+func _ready() -> void:
+	if not save_damage: return
+	if save_key == "": save_key = Save.get_unique_key(self, "damage")
+	if Save.data.has(save_key):
+		damage = Save.data[save_key]
+	else:
+		Save.data[save_key] = damage
+	Save.connect("save_data_updated", _on_save_data_updated)

@@ -497,9 +497,10 @@ transform = Transform3D(-1.49011e-07, 0, 1, 0, 1, 0, -1, 0, -1.49011e-07, -59.82
 DESTINATION_NODE_NAME = "Exit"
 DESTINATION_SCENE = "uid://bnli3nh320v2f"
 
-[node name="Exit" parent="Doors" instance=ExtResource("9_1jlmx")]
+[node name="Exit" parent="Doors" groups=["wrath_door"] instance=ExtResource("9_1jlmx")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 4.76271, 62.5494)
 DESTINATION_NODE_NAME = "Enter"
+LOCKED = true
 DESTINATION_SCENE = "uid://d1k2pnn46w66f"
 
 [node name="Checkpoints" type="Node" parent="."]
