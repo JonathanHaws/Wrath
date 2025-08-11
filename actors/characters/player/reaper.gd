@@ -140,7 +140,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				ANIM.play("PLUNGE_FALL")
 		
-	if not is_on_floor() and not God.mode: # GRAVITY
+	if not is_on_floor(): # GRAVITY
 		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER if Input.is_action_pressed("descend") else 1.0)
 
 	falling = 0.0 if is_on_floor() else falling + delta
@@ -165,25 +165,18 @@ func _physics_process(delta: float) -> void:
 	var input_vector := keyboard_vector + controller_vector
 	
 	if input_vector.length() > 0:
-		if God.mode:
-			var direction := -CAMERA.global_transform.basis.z.normalized()
-			velocity = direction * 3000 *delta
-			$CollisionShape3D.disabled = true	
-		else:
-			$CollisionShape3D.disabled = false
-			var mesh_direction = Vector3(0, 0, -1).rotated(Vector3.UP, MESH.rotation.y + global_transform.basis.get_euler().y)
-			if (Input.is_action_pressed("sprint") or controller_vector.length() > 0.75):
-				velocity.x = mesh_direction.x * SPEED * SPRINT_MULTIPLIER * SPEED_MULTIPLIER
-				velocity.z = mesh_direction.z * SPEED * SPRINT_MULTIPLIER * SPEED_MULTIPLIER
-			else:
-				velocity.x = mesh_direction.x * SPEED * SPEED_MULTIPLIER
-				velocity.z = mesh_direction.z * SPEED * SPEED_MULTIPLIER
+		var mesh_direction = -MESH.global_transform.basis.z
+		var speed_factor = 1.0
+		if Input.is_action_pressed("sprint") or controller_vector.length() > 0.75:
+			speed_factor = SPRINT_MULTIPLIER
+
+		velocity.x = mesh_direction.x * SPEED * SPEED_MULTIPLIER * speed_factor
+		velocity.z = mesh_direction.z * SPEED * SPEED_MULTIPLIER * speed_factor
 
 		CAMERA.rotate_mesh_towards_camera_xz(delta, MESH, input_vector, TURN_SPEED * TURN_MULTIPLIER)
 	else:
 		velocity.x = 0 
 		velocity.z = 0
-		if God.mode: velocity.y = 0 
 	
 	move_and_slide() 
 	

@@ -25,8 +25,6 @@ func _physics_process(_delta: float) -> void:
 		mouse_delta = Vector2.ZERO
 		return
 	
-	SpringArm.collision_mask = 0 if God.mode else 1
-	
 	var sens = MOUSE_SENSITIVITY * SENSITIVITY_MULTIPLIER
 	
 	var look_left_right = Input.get_axis("look_left", "look_right")
