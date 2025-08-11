@@ -1,0 +1,54 @@
+[gd_scene load_steps=7 format=3 uid="uid://cy3bknox15p2c"]
+
+[ext_resource type="Material" uid="uid://pl3nbr4toayv" path="res://actors/props/rocks/materials/rocks.tres" id="1_uy14b"]
+[ext_resource type="ArrayMesh" uid="uid://bxabv7sapynog" path="res://actors/props/rocks/rock_4.res" id="1_xqdrt"]
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xqdrt"]
+data = PackedVector3Array(2.3846, 0.385, 0.9198, -0.4953, 2.1524, 0.9198, -0.1265, -0.0249, 0.9198, 2.3846, 0.385, 0.9198, 1.1674, 1.5547, 0.9198, -0.4953, 2.1524, 0.9198, 2.2058, -1.2776, 0.9198, 2.3846, 0.385, 0.9198, -0.1265, -0.0249, 0.9198, 2.2058, -1.2776, 0.9198, -0.1265, -0.0249, 0.9198, 0.1194, -2.4023, 0.9198, -0.4953, 2.1524, 0.9198, -2.0567, -0.947, 0.9198, -0.1265, -0.0249, 0.9198, -2.0567, -0.947, 0.9198, 0.1194, -2.4023, 0.9198, -0.1265, -0.0249, 0.9198, -0.4953, 2.1524, 0.9198, -2.0071, 0.857, 0.9198, -2.0567, -0.947, 0.9198, -2.0567, -0.947, 0.9198, -0.9792, -1.9304, 0.9198, 0.1194, -2.4023, 0.9198, 0.1194, -2.4023, 0.9198, 1.1763, -0.6964, 1.9418, 2.2058, -1.2776, 0.9198, 0.1194, -2.4023, 0.9198, 0.1418, -1.2541, 1.9418, 1.1763, -0.6964, 1.9418, 2.2058, -1.2776, 0.9198, 1.2649, 0.1279, 1.9418, 2.3846, 0.385, 0.9198, 2.2058, -1.2776, 0.9198, 1.1763, -0.6964, 1.9418, 1.2649, 0.1279, 1.9418, -2.0567, -0.947, 0.9198, -0.4028, -1.0201, 1.9418, -0.9792, -1.9304, 0.9198, -2.0567, -0.947, 0.9198, -0.9371, -0.5326, 1.9418, -0.4028, -1.0201, 1.9418, 1.1674, 1.5547, 0.9198, -0.1629, 1.0041, 1.9418, -0.4953, 2.1524, 0.9198, 1.1674, 1.5547, 0.9198, 0.6614, 0.7078, 1.9418, -0.1629, 1.0041, 1.9418, -0.9792, -1.9304, 0.9198, 0.1418, -1.2541, 1.9418, 0.1194, -2.4023, 0.9198, -0.9792, -1.9304, 0.9198, -0.4028, -1.0201, 1.9418, 0.1418, -1.2541, 1.9418, -0.4953, 2.1524, 0.9198, -0.9125, 0.3619, 1.9418, -2.0071, 0.857, 0.9198, -0.4953, 2.1524, 0.9198, -0.1629, 1.0041, 1.9418, -0.9125, 0.3619, 1.9418, 2.3846, 0.385, 0.9198, 0.6614, 0.7078, 1.9418, 1.1674, 1.5547, 0.9198, 2.3846, 0.385, 0.9198, 1.2649, 0.1279, 1.9418, 0.6614, 0.7078, 1.9418, -2.0071, 0.857, 0.9198, -0.9371, -0.5326, 1.9418, -2.0567, -0.947, 0.9198, -2.0071, 0.857, 0.9198, -0.9125, 0.3619, 1.9418, -0.9371, -0.5326, 1.9418, 0.1418, -1.2541, 1.9418, 0.1262, 0.0052, 2.4963, 1.1763, -0.6964, 1.9418, 1.1763, -0.6964, 1.9418, 0.1262, 0.0052, 2.4963, 1.2649, 0.1279, 1.9418, -0.9371, -0.5326, 1.9418, 0.1262, 0.0052, 2.4963, -0.4028, -1.0201, 1.9418, 0.6614, 0.7078, 1.9418, 0.1262, 0.0052, 2.4963, -0.1629, 1.0041, 1.9418, -0.4028, -1.0201, 1.9418, 0.1262, 0.0052, 2.4963, 0.1418, -1.2541, 1.9418, -0.1629, 1.0041, 1.9418, 0.1262, 0.0052, 2.4963, -0.9125, 0.3619, 1.9418, 1.2649, 0.1279, 1.9418, 0.1262, 0.0052, 2.4963, 0.6614, 0.7078, 1.9418, -0.9125, 0.3619, 1.9418, 0.1262, 0.0052, 2.4963, -0.9371, -0.5326, 1.9418)
+
+[sub_resource type="Animation" id="Animation_j5sqx"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_ukurm"]
+resource_name = "cycle"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(5, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j5sqx"]
+resource_local_to_scene = true
+_data = {
+&"RESET": SubResource("Animation_j5sqx"),
+&"cycle": SubResource("Animation_ukurm")
+}
+
+[node name="HorizontalMovingRock" type="Node3D"]
+
+[node name="AnimatableBody3D" type="AnimatableBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.97981, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.11359, 0.787823, 3.44368e-08)
+material_override = ExtResource("1_uy14b")
+mesh = ExtResource("1_xqdrt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="AnimatableBody3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.11359, 0.787823, 3.44368e-08)
+shape = SubResource("ConcavePolygonShape3D_xqdrt")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="AnimatableBody3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_j5sqx")
+}
+autoplay = "cycle"

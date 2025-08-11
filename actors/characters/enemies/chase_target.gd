@@ -9,7 +9,10 @@ extends Node3D
 @export var MESH: Node3D
 @export var BODY: Node3D
 @export var MOVE_AND_SLIDE: bool = true
+## Stop enemy from glitchy behavior by not chasing anymore once close enough defined by this area
 @export var STOP_CHASE_AREA: Area3D
+## What alerts enemies to give chase. If no area is specified they are omincient and always chase
+@export var AWARENESS_AREA: Area3D
 var target: Node3D = null
 var should_chase: bool = true
 
@@ -57,10 +60,18 @@ func _on_body_exited_stop_area(body: Node) -> void:
 	if body.is_in_group(TARGET_GROUP):
 		should_chase = true
 
+func _on_body_entered_awareness(body: Node) -> void:
+	if body.is_in_group(TARGET_GROUP):
+		should_chase = true
+
 func _ready() -> void:
 	if STOP_CHASE_AREA:
 		STOP_CHASE_AREA.body_entered.connect(_on_body_entered_stop_area)
 		STOP_CHASE_AREA.body_exited.connect(_on_body_exited_stop_area)
+		
+	if AWARENESS_AREA:
+		should_chase = false
+		AWARENESS_AREA.body_entered.connect(_on_body_entered_awareness)
 
 func _physics_process(delta: float) -> void:
 	
