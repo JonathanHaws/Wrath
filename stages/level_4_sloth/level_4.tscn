@@ -10,6 +10,7 @@
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="9_d2qy0"]
 [ext_resource type="PackedScene" uid="uid://b5clsl3808lrj" path="res://actors/characters/enemies/ghosts/ghost_melee.tscn" id="9_nlsid"]
 
+
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]

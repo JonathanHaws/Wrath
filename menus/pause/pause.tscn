@@ -1,11 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://ctsp72sayfitw"]
+[gd_scene load_steps=8 format=3 uid="uid://cqcx34rswnnw1"]
 
-[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_j8ntf"]
-[ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://menus/pause/restart.gd" id="2_uw4ak"]
-[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="3_1npan"]
-[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="6_m3uiw"]
-[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="7_f2x0t"]
-[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_7alca"]
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_o8gx4"]
+[ext_resource type="Script" uid="uid://pccpxg1y2tdf" path="res://menus/pause/skip.gd" id="2_mcy3d"]
+[ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://menus/pause/restart.gd" id="3_f26je"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="4_n7dk2"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="5_m2qlc"]
+[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="6_croeh"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="7_426wy"]
 
 [node name="ColorRect" type="ColorRect"]
 anchors_preset = 15
@@ -31,23 +32,34 @@ grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
 
+[node name="Skip" type="Button" parent="Main"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_o8gx4")
+text = "SKIP"
+icon_alignment = 1
+script = ExtResource("2_mcy3d")
+CINEMATIC_GROUP = "cinematic"
+PAUSE_TOGGLE_GROUP = "pause_toggle"
+
 [node name="Restart" type="Button" parent="Main"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("1_j8ntf")
+theme = ExtResource("1_o8gx4")
 text = "RESTART"
 icon_alignment = 1
-script = ExtResource("2_uw4ak")
+script = ExtResource("3_f26je")
 
 [node name="Options" type="Button" parent="Main" node_paths=PackedStringArray("node_to_replace")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("1_j8ntf")
+theme = ExtResource("1_o8gx4")
 text = "OPTIONS"
 icon_alignment = 1
-script = ExtResource("3_1npan")
+script = ExtResource("4_n7dk2")
 scene_file = "uid://cxja4xs36njyv"
 node_to_replace = NodePath("../..")
 
@@ -55,23 +67,23 @@ node_to_replace = NodePath("../..")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("1_j8ntf")
+theme = ExtResource("1_o8gx4")
 text = "QUIT"
 icon_alignment = 1
-script = ExtResource("3_1npan")
+script = ExtResource("4_n7dk2")
 scene_file = "uid://xoc7exqkdoqd"
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="Main" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
 position = Vector2(-960, -544)
-stream = ExtResource("6_m3uiw")
+stream = ExtResource("5_m2qlc")
 attenuation = 1e-05
 bus = &"SFX"
-script = ExtResource("7_f2x0t")
-hover_sound = ExtResource("6_m3uiw")
-press_sound = ExtResource("6_m3uiw")
+script = ExtResource("6_croeh")
+hover_sound = ExtResource("5_m2qlc")
+press_sound = ExtResource("5_m2qlc")
 hover_targets = [null, NodePath("../Restart"), NodePath("../Options"), NodePath("../Quit")]
 pressed_targets = [null, NodePath("../Restart"), NodePath("../Options"), NodePath("../Quit")]
 
 [node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
-script = ExtResource("8_7alca")
+script = ExtResource("7_426wy")
 focus_node = NodePath("../Main/Restart")

@@ -162,7 +162,7 @@ text = "BACK
 "
 icon_alignment = 1
 script = ExtResource("5_q1b1x")
-scene_file = "uid://ctsp72sayfitw"
+scene_file = "uid://cqcx34rswnnw1"
 node_to_replace = NodePath("../..")
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="Options" node_paths=PackedStringArray("hover_targets", "pressed_targets")]

@@ -1,10 +1,10 @@
 [gd_scene load_steps=3 format=3 uid="uid://duevw8ikxn5kj"]
 
 [ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://menus/pause/toggle.gd" id="1_327xx"]
-[ext_resource type="PackedScene" uid="uid://ctsp72sayfitw" path="res://menus/pause/main.tscn" id="2_lru1c"]
+[ext_resource type="PackedScene" uid="uid://cqcx34rswnnw1" path="res://menus/pause/pause.tscn" id="2_da7k5"]
 
-[node name="Menu" type="CanvasLayer"]
+[node name="Menu" type="CanvasLayer" groups=["pause_toggle"]]
 process_mode = 3
 script = ExtResource("1_327xx")
 
-[node name="ColorRect" parent="." instance=ExtResource("2_lru1c")]
+[node name="ColorRect" parent="." instance=ExtResource("2_da7k5")]

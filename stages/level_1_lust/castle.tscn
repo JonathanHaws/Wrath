@@ -38,6 +38,57 @@ normal_texture = SubResource("NoiseTexture2D_42w7d")
 
 [sub_resource type="BoxMesh" id="BoxMesh_mqk0e"]
 
+[sub_resource type="Animation" id="Animation_bqs2d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cinematic/Camera3D:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [116.059]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cinematic/Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-57.055, 978.878, 47.6623)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cinematic/Camera3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.3911, -1.36746, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cinematic/Camera3D:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_1tft3"]
 resource_name = "introduction"
 length = 25.0
@@ -119,57 +170,6 @@ tracks/5/keys = {
 "args": [],
 "method": &"_save_cinematic_completed"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_bqs2d"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Cinematic/Camera3D:fov")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [116.059]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Cinematic/Camera3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-57.055, 978.878, 47.6623)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Cinematic/Camera3D:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.3911, -1.36746, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Cinematic/Camera3D:current")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n044i"]
@@ -263,7 +263,7 @@ omni_range = 101.01
 [node name="Reaper" parent="." instance=ExtResource("4_42w7d")]
 transform = Transform3D(0.457082, 0, -0.889425, 0, 1, 0, 0.889425, 0, 0.457082, -21.7503, -8.46191, 87.0511)
 
-[node name="Cinematic" type="AnimationPlayer" parent="." node_paths=PackedStringArray("ANIM")]
+[node name="Cinematic" type="AnimationPlayer" parent="." node_paths=PackedStringArray("ANIM") groups=["cinematic"]]
 libraries = {
 &"": SubResource("AnimationLibrary_n044i")
 }
@@ -275,7 +275,7 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["INTRODUCTION"])
 
 [node name="Camera3D" type="Camera3D" parent="Cinematic" groups=["cinematic_camera"]]
-transform = Transform3D(0.201938, 0.963629, -0.175044, 0, 0.178726, 0.983899, 0.979398, -0.198687, 0.0360917, -57.055, 978.878, 47.6623)
+transform = Transform3D(0.201938, 0.963628, -0.175049, 0, 0.178731, 0.983898, 0.979398, -0.198686, 0.0360925, -57.055, 978.878, 47.6623)
 fov = 116.059
 
 [node name="LightDoor" parent="." instance=ExtResource("10_s2ex5")]
