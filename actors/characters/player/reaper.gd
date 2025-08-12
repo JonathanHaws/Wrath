@@ -77,7 +77,9 @@ func in_interruptible_animation() -> bool:
 		"PLUNGE_FALL",
 		"PLUNGE",
 		"DOOR",
-		"ESCAPE"
+		"ESCAPE",
+		"INTRODUCTION"
+		
 	]
 
 func _exit_tree() -> void:

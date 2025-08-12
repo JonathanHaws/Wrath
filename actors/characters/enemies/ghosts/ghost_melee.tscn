@@ -104,7 +104,7 @@ albedo_color = Color(0.52, 0.52, 0.52, 1)
 autoplay = "RESET"
 
 [node name="Attacks" parent="." index="6"]
-LIKELIHOOD_MULTIPLIERS = Array[float]([30.0, 0.0, 0.0])
+LIKELIHOOD_MULTIPLIERS = Array[float]([500.0, 0.0, 0.0])
 
 [node name="MeshInstance3D" parent="Mesh" index="2"]
 material_override = SubResource("ShaderMaterial_fy2bn")

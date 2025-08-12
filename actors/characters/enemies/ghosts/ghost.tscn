@@ -818,8 +818,8 @@ DAMAGE_KEY = "damage"
 
 [node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("BODY", "TELEPORT_NODES_TO_HIT", "ANIMATION_PLAYERS")]
 script = ExtResource("2_i6eoe")
-HEALTH = 150
-MAX_HEALTH = 150
+HEALTH = 300
+MAX_HEALTH = 300
 BODY = NodePath("..")
 IMMUNE_GROUPS = Array[String](["ghost"])
 SAVE_HEALTH = true
@@ -865,7 +865,7 @@ script = ExtResource("19_i12cp")
 ATTACK_ANIMATION = Array[String](["ATTACK", "SHOOT", "JUMP_ATTACK"])
 ATTACK_RADIUS = Array[float]([10.0, 37.0, 20.0])
 ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_dfr5h"), SubResource("Curve_n368u"), SubResource("Curve_hp215")])
-LIKELIHOOD_MULTIPLIERS = Array[float]([30.0, 2.0, 50.0])
+LIKELIHOOD_MULTIPLIERS = Array[float]([500.0, 2.0, 50.0])
 LIKELIHOOD_MULTIPLIER = 0.0
 BLOCKING_ANIMATIONS = Array[String](["DEATH"])
 ATTACKING = true

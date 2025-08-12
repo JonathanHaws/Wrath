@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://dmf0vo8jrm34a"]
+[gd_scene load_steps=27 format=3 uid="uid://dmf0vo8jrm34a"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_mb05r"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="2_80ox6"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://stages/lighting/sun.tscn" id="4_mqk0e"]
 [ext_resource type="PackedScene" uid="uid://615n66a3l256" path="res://stages/level_1_lust/tower.blend" id="6_hcc5w"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="6_mb05r"]
+[ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://actors/cinematic.gd" id="8_bqs2d"]
 [ext_resource type="Material" uid="uid://bofjw8wwuxc71" path="res://stages/materials/bricks/castle/castle_big.tres" id="8_u51x1"]
 [ext_resource type="Material" uid="uid://c7xo8odsficf7" path="res://actors/props/rocks/materials/world_rocks.tres" id="9_u51x1"]
 [ext_resource type="PackedScene" uid="uid://cc3uruvdi605x" path="res://actors/props/doors/light/light_door.tscn" id="10_s2ex5"]
@@ -36,6 +37,146 @@ normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_42w7d")
 
 [sub_resource type="BoxMesh" id="BoxMesh_mqk0e"]
+
+[sub_resource type="Animation" id="Animation_1tft3"]
+resource_name = "introduction"
+length = 25.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cinematic/Camera3D:fov")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 11.1, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [116.059, 116.059, 80.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cinematic/Camera3D:position")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 11.1, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-57.055, 978.878, 47.6623), Vector3(-73.2563, 200.841, 203.819), Vector3(-25.2007, -7.3273, 90.2599)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cinematic/Camera3D:rotation")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 11.1, 20),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.3911, -1.36746, 0), Vector3(-0.649341, -0.782785, 0), Vector3(0.349862, -1.09265, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cinematic/Camera3D:current")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 22.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Cinematic")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 21),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_play_animations_in_other_nodes"
+}, {
+"args": ["cinematic_camera", "player_camera", 1.5],
+"method": &"_seamless_camera_transition"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Cinematic")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(24.0667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_save_cinematic_completed"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bqs2d"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cinematic/Camera3D:fov")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [116.059]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cinematic/Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-57.055, 978.878, 47.6623)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cinematic/Camera3D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.3911, -1.36746, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cinematic/Camera3D:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n044i"]
+_data = {
+&"RESET": SubResource("Animation_bqs2d"),
+&"introduction": SubResource("Animation_1tft3")
+}
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_80ox6"]
 size = Vector3(1926, 195.837, 1361.68)
@@ -119,19 +260,34 @@ omni_range = 101.01
 
 [node name="Sun" parent="Enviroment/Lights" instance=ExtResource("4_mqk0e")]
 
+[node name="Reaper" parent="." instance=ExtResource("4_42w7d")]
+transform = Transform3D(0.457082, 0, -0.889425, 0, 1, 0, 0.889425, 0, 0.457082, -21.7503, -8.46191, 87.0511)
+
+[node name="Cinematic" type="AnimationPlayer" parent="." node_paths=PackedStringArray("ANIM")]
+libraries = {
+&"": SubResource("AnimationLibrary_n044i")
+}
+autoplay = "introduction"
+script = ExtResource("8_bqs2d")
+SAVE_KEY = "introduction_cutscene_completed"
+ANIM = NodePath(".")
+ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
+ANIMATION_NAMES = Array[String](["INTRODUCTION"])
+
+[node name="Camera3D" type="Camera3D" parent="Cinematic" groups=["cinematic_camera"]]
+transform = Transform3D(0.201938, 0.963629, -0.175044, 0, 0.178726, 0.983899, 0.979398, -0.198687, 0.0360917, -57.055, 978.878, 47.6623)
+fov = 116.059
+
 [node name="LightDoor" parent="." instance=ExtResource("10_s2ex5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 132.467, 48.4689, -11.9504)
 DESTINATION_NODE_NAME = "Enter"
 DESTINATION_SCENE = "uid://worsh6enfk2g"
 
-[node name="Reaper" parent="." instance=ExtResource("4_42w7d")]
-transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -21.7503, -7.46438, 87.0511)
-
 [node name="BouncePad" parent="." instance=ExtResource("13_irbjh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.454, 3.48975, 50.4632)
 
 [node name="HorizontalMovingRock" parent="." instance=ExtResource("16_1tft3")]
-transform = Transform3D(0.508485, 0, 0.861071, 0, 1, 0, -0.861071, 0, 0.508485, 68.7359, 18.3665, -30.0394)
+transform = Transform3D(0.508485, 0, 0.861071, 0, 1, 0, -0.861071, 0, 0.508485, 69.4053, 18.3665, -31.1731)
 
 [node name="FallingPlatforms" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.454, 3.48975, 50.4632)

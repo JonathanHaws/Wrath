@@ -309,34 +309,34 @@ DESTINATION_SCENE = "uid://bsufvbv2jwo77"
 [node name="Wisp" parent="." instance=ExtResource("9_ifljh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4622, -7.08744, -30.8438)
 
-[node name="Portal" type="Node3D" parent="." node_paths=PackedStringArray("AREA", "ANIM", "PLAYER_SPOT")]
+[node name="Portal" type="Node3D" parent="." node_paths=PackedStringArray("ANIM", "AREA", "PLAYER_SPOT")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3.82572e-06, -9.06787, 1.26405)
 script = ExtResource("5_c6d1s")
-AREA = NodePath("Area3D")
 ANIM = NodePath("Cinematic")
+AREA = NodePath("Area3D")
 ANIM_NAME = "ESCAPE"
 PLAYER_SPOT = NodePath("Cinematic/PlayerSpot")
 ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
-[node name="Mesh" parent="Portal" node_paths=PackedStringArray("AREA", "ANIM", "PLAYER_SPOT") instance=ExtResource("4_mda5h")]
+[node name="Mesh" parent="Portal" node_paths=PackedStringArray("ANIM", "AREA", "PLAYER_SPOT") instance=ExtResource("4_mda5h")]
 transform = Transform3D(52.205, 0, -6.36646e-12, 0, 52.205, 0, 6.36646e-12, 0, 52.205, 1.13687e-11, -0.50214, -25.7185)
 script = ExtResource("5_c6d1s")
-AREA = NodePath("../Area3D")
 ANIM = NodePath("../Cinematic")
+AREA = NodePath("../Area3D")
 ANIM_NAME = "ESCAPE"
 PLAYER_SPOT = NodePath("../Cinematic/PlayerSpot")
 ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
 [node name="spin" parent="Portal/Mesh" index="1"]
-transform = Transform3D(-0.998629, 0.052336, 0, -0.052336, -0.998629, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(-0.71955, 0.69444, 0, -0.69444, -0.71955, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Portal/Mesh/flames_2" index="0"]
-transform = Transform3D(0.552328, 0.719808, -1.21942e-15, -0.719808, 0.552328, 3.13459e-15, 3.22918e-15, -9.40785e-16, 0.907298, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(0.553589, -0.73487, 8.16484e-16, 0.73487, 0.553589, 2.46128e-15, -2.45717e-15, -8.28791e-16, 0.920052, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Portal/Mesh/flames_1" index="0"]
-transform = Transform3D(0.552328, 0.719808, -1.21942e-15, -0.719808, 0.552328, 3.13459e-15, 3.22918e-15, -9.40785e-16, 0.907298, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(0.553589, -0.73487, 8.16484e-16, 0.73487, 0.553589, 2.46128e-15, -2.45717e-15, -8.28791e-16, 0.920052, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Portal/Mesh" index="4"]
 autoplay = "Spin"
