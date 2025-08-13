@@ -1,9 +1,10 @@
 [gd_scene load_steps=6 format=3 uid="uid://bjgldiv3a4i6p"]
 
 [ext_resource type="StyleBox" uid="uid://dje7o3hpjprs5" path="res://actors/characters/ui/difference.tres" id="1_fimny"]
-[ext_resource type="StyleBox" uid="uid://bosm3016yuwg3" path="res://actors/characters/ui/wrath_health.tres" id="2_c8kxi"]
+[ext_resource type="StyleBox" uid="uid://bosm3016yuwg3" path="res://actors/characters/enemies/bosses/wrath/wrath_health.tres" id="2_c8kxi"]
 [ext_resource type="Script" uid="uid://gkuxfuak4v33" path="res://actors/characters/status_bar.gd" id="3_1bxfd"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="4_1jmjf"]
+
 
 
 [sub_resource type="Theme" id="Theme_j0yyq"]

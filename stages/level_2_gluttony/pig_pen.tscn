@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cx2ditraoxlvu"]
+[gd_scene load_steps=15 format=3 uid="uid://cx2ditraoxlvu"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_wceab"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_7wkw3"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="9_yyoo5"]
 [ext_resource type="PackedScene" uid="uid://d0qec5kl2ju4u" path="res://actors/characters/enemies/bosses/wrath/wrath_preview.tscn" id="10_el64o"]
 [ext_resource type="PackedScene" uid="uid://blxvkukk5u1ps" path="res://actors/characters/enemies/bosses/greed/greed_preview.tscn" id="11_el64o"]
+[ext_resource type="PackedScene" uid="uid://byk6752w0gnw2" path="res://actors/characters/enemies/bosses/gluttony/gluttony.tscn" id="12_efe6f"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -63,9 +64,10 @@ mesh = SubResource("BoxMesh_od467")
 [node name="Reaper" parent="." instance=ExtResource("6_hc341")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
-[node name="Exit" parent="." instance=ExtResource("7_c6ynn")]
+[node name="Exit" parent="." groups=["gluttony_door"] instance=ExtResource("7_c6ynn")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Enter"
+LOCKED = true
 DESTINATION_SCENE = "uid://cbk056vj32v0p"
 
 [node name="Enter" parent="." instance=ExtResource("7_c6ynn")]
@@ -87,3 +89,6 @@ visible = false
 [node name="GluttonyPreview" parent="." instance=ExtResource("8_yyoo5")]
 transform = Transform3D(-0.989639, 0, 0.143579, 0, 1, 0, -0.143579, 0, -0.989639, 25.4002, -7.39686, 0.793018)
 visible = false
+
+[node name="Greed" parent="." instance=ExtResource("12_efe6f")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 29.4307, -7.50503, 0.494595)

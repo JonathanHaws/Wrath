@@ -12,6 +12,7 @@ shader = ExtResource("2_2bphc")
 shader_parameter/albedo_texture = ExtResource("3_h31dm")
 shader_parameter/albedo_color = Color(0.695503, 0.695503, 0.695503, 1)
 shader_parameter/emission_texture_intensity = 0.0
+shader_parameter/emission_texture_enabled = true
 shader_parameter/inside_color = Color(0, 0, 0, 1)
 shader_parameter/dissolve_amount = 0.0
 shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)

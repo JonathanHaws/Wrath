@@ -29,7 +29,7 @@
 [ext_resource type="AudioStream" uid="uid://ca1jfg0asj5b6" path="res://actors/characters/player/sfx/Windown.wav" id="18_pc8iq"]
 [ext_resource type="Texture2D" uid="uid://c5qhpwg8w7djb" path="res://actors/characters/player/mesh/textures/cloak/alpha.png" id="19_0hpbp"]
 [ext_resource type="AudioStream" uid="uid://dlwicer3j08q8" path="res://actors/characters/player/sfx/Spawn_Void.wav" id="20_5d6ad"]
-[ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://actors/characters/ui/stamina_fill.tres" id="20_gpejb"]
+[ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://actors/characters/player/stamina_fill.tres" id="20_gpejb"]
 [ext_resource type="Script" uid="uid://brd3ehk2rfsfr" path="res://actors/characters/player/tracker/death_count_tracker.gd" id="20_m1s71"]
 [ext_resource type="AudioStream" uid="uid://bbwub6xco4f00" path="res://actors/props/sfx/Wind.wav" id="22_ogp31"]
 [ext_resource type="Texture2D" uid="uid://cilvyugj78b4q" path="res://actors/characters/player/mesh/textures/body/color.png" id="23_6p2vh"]
@@ -38,7 +38,7 @@
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://actors/characters/enemies/sfx/Slam.wav" id="25_8i186"]
 [ext_resource type="Texture2D" uid="uid://c1qayava2cjqm" path="res://actors/characters/player/mesh/textures/staff/color.png" id="27_ecunr"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="29_lwilf"]
-[ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://actors/characters/ui/player_health.tres" id="34_6g6ue"]
+[ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://actors/characters/player/player_health.tres" id="34_6g6ue"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="35_lwilf"]
 [ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://actors/characters/player/tracker/play_time_tracker.gd" id="36_5cvkf"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="36_p2pt0"]
@@ -1513,6 +1513,7 @@ shader = ExtResource("18_dtcwh")
 shader_parameter/albedo_texture = ExtResource("23_6p2vh")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/emission_texture_intensity = 0.0
+shader_parameter/emission_texture_enabled = true
 shader_parameter/inside_color = Color(0, 0, 0, 1)
 shader_parameter/dissolve_amount = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_mvekr")
@@ -1534,6 +1535,7 @@ shader = ExtResource("18_dtcwh")
 shader_parameter/albedo_texture = ExtResource("3_7534y")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/emission_texture_intensity = 0.0
+shader_parameter/emission_texture_enabled = true
 shader_parameter/inside_color = Color(0, 0, 0, 1)
 shader_parameter/dissolve_amount = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_22u42")
@@ -1560,6 +1562,7 @@ shader_parameter/albedo_texture = ExtResource("27_ecunr")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/emission_texture = ExtResource("4_0idoq")
 shader_parameter/emission_texture_intensity = 4.13
+shader_parameter/emission_texture_enabled = true
 shader_parameter/inside_color = Color(0, 0, 0, 1)
 shader_parameter/dissolve_amount = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_22u42")

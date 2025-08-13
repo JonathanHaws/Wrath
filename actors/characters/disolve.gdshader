@@ -6,6 +6,7 @@ uniform sampler2D albedo_texture : source_color;
 uniform vec3 albedo_color : source_color = vec3(1.0);
 uniform sampler2D emission_texture : source_color;
 uniform float emission_texture_intensity : hint_range(0.0, 50.0) = 1.0;
+uniform bool emission_texture_enabled = true;
 uniform vec3 inside_color: source_color;
 uniform float dissolve_amount: hint_range(0.0, 1.0) = 0.0;
 uniform sampler2D noise_texture;
@@ -22,7 +23,8 @@ uniform bool use_normal_map = false;
 
 void fragment() {
 
-	float dissolve_noise = texture(noise_texture, UV).r;
+	float dissolve_noise = texture(noise_texture, (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).xy * 0.1).r;
+	// planar mapping so dont have to worry about messed up uv as it uses world space
 
 	float border_mask = 0.0;
 	if (dissolve_amount > 0.0) {
@@ -34,9 +36,6 @@ void fragment() {
 		);
 	}
 
-	vec3 surface_emisson = mix(vec3(0.0), glow_color, border_mask);
-	surface_emisson += texture(emission_texture, UV).rgb * emission_texture_intensity;
-
 	vec3 albedo_tex = texture(albedo_texture, UV).rgb;
 	vec3 albedo;
 
@@ -46,13 +45,17 @@ void fragment() {
 		albedo = albedo_tex * albedo_color;
 	}
 
-
 	vec3 surface_color = albedo;
 	ALBEDO = surface_color;
 	//ALBEDO = vec3(border_mask);
-	if (emission_texture_intensity > 0.0) {
-		EMISSION = surface_emisson * glow_intensitiy;
+	
+	vec3 surface_emisson = mix(vec3(0.0), glow_color, border_mask);
+	if (emission_texture_enabled) {
+		surface_emisson += texture(emission_texture, UV).rgb * emission_texture_intensity;
 	}
+		
+	EMISSION = surface_emisson * glow_intensitiy;
+		
 	ALPHA = dissolve_noise;
 	ALPHA_SCISSOR_THRESHOLD = dissolve_amount;
 

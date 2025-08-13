@@ -1,7 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6qa5gec2i48j"]
 
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="1_tuuup"]
-[ext_resource type="StyleBox" uid="uid://bxt584wbuc74u" path="res://actors/characters/ui/ghost_fill.tres" id="2_ahm3t"]
+[ext_resource type="StyleBox" uid="uid://bxt584wbuc74u" path="res://actors/characters/enemies/ghosts/ghost_fill.tres" id="2_ahm3t"]
+
 
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_fd7dn"]
