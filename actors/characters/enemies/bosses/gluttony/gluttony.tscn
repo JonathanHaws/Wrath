@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://byk6752w0gnw2"]
+[gd_scene load_steps=48 format=3 uid="uid://byk6752w0gnw2"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_kn2im"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hitbox.gd" id="2_q2lvp"]
@@ -19,14 +19,13 @@
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://actors/characters/enemies/sfx/Spin.wav" id="17_l57cg"]
 [ext_resource type="Script" uid="uid://l4b37mckqf8k" path="res://actors/characters/enemies/proximity_based_random_attacks.gd" id="18_wqa85"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/particles.gd" id="19_4cd86"]
-[ext_resource type="PackedScene" uid="uid://cqca3skeurt3e" path="res://actors/characters/enemies/bosses/greed/greed_hurt_particles.tscn" id="20_4ae06"]
+[ext_resource type="PackedScene" uid="uid://bemj0qglnoue4" path="res://actors/characters/enemies/bosses/gluttony/gluttony_hurt_particles.tscn" id="20_kav4y"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="21_fddld"]
 [ext_resource type="StyleBox" uid="uid://bw47y3rgbs5wu" path="res://actors/characters/enemies/bosses/gluttony/gluttony_health.tres" id="22_28k33"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="23_wlv32"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="24_r4ucj"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="25_q2e76"]
-[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="27_ekilm"]
-[ext_resource type="Texture2D" uid="uid://dtd1gy3sbq7ge" path="res://actors/characters/enemies/bosses/gluttony/color.png" id="29_28k33"]
+[ext_resource type="Material" uid="uid://7w72228cchli" path="res://actors/characters/enemies/bosses/gluttony/gluttony_material.tres" id="28_kav4y"]
 [ext_resource type="PackedScene" uid="uid://dshyyn54ur3e1" path="res://actors/characters/enemies/bosses/gluttony/gluttony.blend" id="29_wvvup"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="30_g5uva"]
 [ext_resource type="AudioStream" uid="uid://cp5swwd4tlolh" path="res://actors/characters/enemies/bosses/gluttony/gluttony.ogg" id="31_28k33"]
@@ -267,7 +266,7 @@ tracks/8/path = NodePath("Light:light_energy")
 tracks/8/interp = 2
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.4, 2.63333),
+"times": PackedFloat32Array(0, 2.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [80.0, 0.0]
@@ -351,11 +350,11 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Mesh/gluttony/Retopo:material_override:shader_parameter/dissolve_amount")
+tracks/15/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/Retopo:material_override:shader_parameter/dissolve_amount")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0, 2.73333),
+"times": PackedFloat32Array(0, 3.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -368,28 +367,26 @@ step = 0.0416667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Light:light_energy")
-tracks/0/interp = 2
+tracks/0/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0416667, 2.54167),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 80.0]
+"values": [0.0]
 }
-tracks/1/type = "method"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Shake")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0833333),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.2, 3.0],
-"method": &"continious_tremor"
-}]
+"update": 0,
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -406,26 +403,28 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
-tracks/3/interp = 0
+tracks/3/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/Retopo:material_override:shader_parameter/dissolve_amount")
+tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.20833),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0]
+"values": [1.0, 0.0]
 }
-tracks/4/type = "value"
+tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/4/interp = 0
+tracks/4/path = NodePath("Shake")
+tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.0833333),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"values": [{
+"args": [0.2, 3.0],
+"method": &"continious_tremor"
+}]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -442,14 +441,24 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Mesh/gluttony/Retopo:material_override:shader_parameter/dissolve_amount")
-tracks/6/interp = 1
+tracks/6/path = NodePath("Light:light_energy")
+tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 2.16667),
+"times": PackedFloat32Array(0.0416667, 2.54167),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.0, 0.0]
+"values": [0.0, 80.0]
+}
+tracks/7/type = "animation"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mesh/gluttony/AnimationPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": PackedStringArray("INTRO"),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -601,26 +610,26 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Mesh/gluttony/Retopo:material_override:shader_parameter/dissolve_amount")
+tracks/12/path = NodePath("CollisionShape3D:disabled")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
+"update": 1,
+"values": [false]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("CollisionShape3D:disabled")
+tracks/13/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/Retopo:material_override:shader_parameter/dissolve_amount")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
@@ -634,28 +643,6 @@ _data = {
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4usqi"]
 height = 0.892645
 radius = 9.61276
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_28k33"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_12e26"]
-noise = SubResource("FastNoiseLite_28k33")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_12e26"]
-render_priority = 0
-shader = ExtResource("27_ekilm")
-shader_parameter/albedo_texture = ExtResource("29_28k33")
-shader_parameter/albedo_color = Color(0.641934, 0.641934, 0.641934, 1)
-shader_parameter/emission_texture_intensity = 1.0
-shader_parameter/emission_texture_enabled = false
-shader_parameter/inside_color = Color(1, 1, 1, 1)
-shader_parameter/dissolve_amount = 1.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_12e26")
-shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
-shader_parameter/glow_intensitiy = 1.77
-shader_parameter/glow_border_width = 0.018
-shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_strength = 1.0
-shader_parameter/use_normal_map = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_28k33"]
 
@@ -788,7 +775,7 @@ BODY = NodePath("..")
 [node name="HurtParticles" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node") groups=["teleport_to_attacking_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("19_4cd86")
-scenes = Array[PackedScene]([ExtResource("20_4ae06")])
+scenes = Array[PackedScene]([ExtResource("20_kav4y")])
 copy_transform_node = NodePath(".")
 
 [node name="Ui" type="Control" parent="."]
@@ -840,7 +827,7 @@ attenuation = 0.0145786
 bus = &"SFX"
 
 [node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89408, 2.62937, 5.76861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.149339, 2.69003, 4.14991)
 script = ExtResource("24_r4ucj")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 TRACKING_MULTIPLIER = 0.0
@@ -870,8 +857,144 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="gluttony" parent="Mesh" instance=ExtResource("29_wvvup")]
 
-[node name="Retopo" parent="Mesh/gluttony" index="0"]
-material_override = SubResource("ShaderMaterial_12e26")
+[node name="Skeleton3D" parent="Mesh/gluttony/Armature" index="0"]
+bones/9/rotation = Quaternion(0.844426, 0.404891, 0.158052, -0.313094)
+bones/10/rotation = Quaternion(0.901147, 0.239684, 0.0571453, -0.356678)
+bones/11/rotation = Quaternion(0.97198, 0.106428, 0.0981888, -0.185165)
+bones/21/rotation = Quaternion(0.844426, -0.404891, -0.158053, -0.313093)
+bones/22/rotation = Quaternion(0.901147, -0.239685, -0.0571457, -0.356678)
+bones/23/rotation = Quaternion(0.97198, -0.106427, -0.0981895, -0.185165)
+bones/31/rotation = Quaternion(0.18802, 0.373463, -0.445662, 0.791555)
+bones/32/rotation = Quaternion(0.161591, -0.00965965, 0.0634747, 0.984767)
+bones/41/rotation = Quaternion(0.099723, -0.279221, 0.463875, 0.834812)
+bones/42/rotation = Quaternion(0.169755, -0.107355, -0.0407962, 0.978772)
+
+[node name="Retopo" parent="Mesh/gluttony/Armature/Skeleton3D" index="0"]
+material_override = ExtResource("28_kav4y")
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="1"]
+target_node = NodePath("../../../../../Target")
+bone_name = "head"
+bone = 4
+duration = 1.0
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 3.14159
+primary_damp_threshold = 1.0
+secondary_limit_angle = 1.94779
+secondary_damp_threshold = 1.0
+
+[node name="RightCheeck" type="SpringBoneSimulator3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77025, -0.673907, 0)
+influence = 0.5
+setting_count = 1
+settings/0/root_bone_name = "cheek_r"
+settings/0/root_bone = 16
+settings/0/end_bone_name = "cheek_spring_r"
+settings/0/end_bone = 17
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 6
+settings/0/end_bone/length = 0.0
+settings/0/center_from = 2
+settings/0/center_bone_name = ""
+settings/0/center_bone = -1
+settings/0/individual_config = false
+settings/0/rotation_axis = 3
+settings/0/radius/value = 0.02
+settings/0/radius/damping_curve = null
+settings/0/stiffness/value = 1.0
+settings/0/stiffness/damping_curve = null
+settings/0/drag/value = 0.1
+settings/0/drag/damping_curve = null
+settings/0/gravity/value = 0.0
+settings/0/gravity/damping_curve = null
+settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/enable_all_child_collisions = true
+settings/0/exclude_collision_count = 0
+
+[node name="LeftCheek" type="SpringBoneSimulator3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.650886, -0.673907, 0)
+influence = 0.5
+setting_count = 1
+settings/0/root_bone_name = "cheek_l"
+settings/0/root_bone = 28
+settings/0/end_bone_name = "cheek_spring_l"
+settings/0/end_bone = 29
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 6
+settings/0/end_bone/length = 0.0
+settings/0/center_from = 2
+settings/0/center_bone_name = ""
+settings/0/center_bone = -1
+settings/0/individual_config = false
+settings/0/rotation_axis = 3
+settings/0/radius/value = 0.02
+settings/0/radius/damping_curve = null
+settings/0/stiffness/value = 1.0
+settings/0/stiffness/damping_curve = null
+settings/0/drag/value = 0.1
+settings/0/drag/damping_curve = null
+settings/0/gravity/value = 0.0
+settings/0/gravity/damping_curve = null
+settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/enable_all_child_collisions = true
+settings/0/exclude_collision_count = 0
+
+[node name="LeftEars" type="SpringBoneSimulator3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.784763, -0.673907, 0)
+influence = 0.2
+setting_count = 1
+settings/0/root_bone_name = "ear_l"
+settings/0/root_bone = 18
+settings/0/end_bone_name = "ear_tip_l"
+settings/0/end_bone = 20
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 6
+settings/0/end_bone/length = 0.0
+settings/0/center_from = 2
+settings/0/center_bone_name = ""
+settings/0/center_bone = -1
+settings/0/individual_config = false
+settings/0/rotation_axis = 3
+settings/0/radius/value = 0.02
+settings/0/radius/damping_curve = null
+settings/0/stiffness/value = 3.0
+settings/0/stiffness/damping_curve = null
+settings/0/drag/value = 0.1
+settings/0/drag/damping_curve = null
+settings/0/gravity/value = 0.0
+settings/0/gravity/damping_curve = null
+settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/enable_all_child_collisions = true
+settings/0/exclude_collision_count = 0
+
+[node name="RightEars" type="SpringBoneSimulator3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.784763, -0.673907, 0)
+influence = 0.2
+setting_count = 1
+settings/0/root_bone_name = "ear_r"
+settings/0/root_bone = 5
+settings/0/end_bone_name = "ear_tip_r"
+settings/0/end_bone = 7
+settings/0/extend_end_bone = true
+settings/0/end_bone/direction = 6
+settings/0/end_bone/length = 0.0
+settings/0/center_from = 2
+settings/0/center_bone_name = ""
+settings/0/center_bone = -1
+settings/0/individual_config = false
+settings/0/rotation_axis = 3
+settings/0/radius/value = 0.02
+settings/0/radius/damping_curve = null
+settings/0/stiffness/value = 3.0
+settings/0/stiffness/damping_curve = null
+settings/0/drag/value = 0.1
+settings/0/drag/damping_curve = null
+settings/0/gravity/value = 0.0
+settings/0/gravity/damping_curve = null
+settings/0/gravity/direction = Vector3(0, -1, 0)
+settings/0/enable_all_child_collisions = true
+settings/0/exclude_collision_count = 0
 
 [node name="LockOn" type="Area3D" parent="Mesh"]
 transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 3.55321, 0.229436)

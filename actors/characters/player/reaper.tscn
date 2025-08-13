@@ -1790,7 +1790,7 @@ bones/22/position = Vector3(0.112145, 0.46721, 1.02388)
 bones/22/rotation = Quaternion(0.602369, -0.40178, 0.123678, 0.678548)
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.99982, -0.0154742, -0.0110165, 0.0115822, -0.0369606, -0.999249, 0.0150555, -0.999197, 0.0371333, -0.0896339, 0.0166852, -0.127979)
+transform = Transform3D(-0.99982, -0.0154743, -0.0110165, 0.0115822, -0.0369603, -0.99925, 0.0150555, -0.999197, 0.037133, -0.0896339, 0.0166852, -0.127979)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -1801,7 +1801,7 @@ scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.99982, -0.0154742, -0.0110165, 0.0115822, -0.0369606, -0.999249, 0.0150555, -0.999197, 0.0371333, -0.0896339, 0.0166852, -0.127979)
+transform = Transform3D(-0.99982, -0.0154743, -0.0110165, 0.0115822, -0.0369603, -0.99925, 0.0150555, -0.999197, 0.037133, -0.0896339, 0.0166852, -0.127979)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -1821,7 +1821,7 @@ material_override = SubResource("ShaderMaterial_ckevw")
 material_override = SubResource("ShaderMaterial_py1jt")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="5"]
-transform = Transform3D(0.636638, -0.662005, -0.395527, 0.703357, 0.70877, -0.0541693, 0.316198, -0.24371, 0.916855, 0.0976067, 1.02537, -0.21721)
+transform = Transform3D(0.636638, -0.662006, -0.395526, 0.703357, 0.708769, -0.0541692, 0.316197, -0.24371, 0.916856, 0.0976071, 1.02537, -0.21721)
 bone_name = "staff_2"
 bone_idx = 22
 

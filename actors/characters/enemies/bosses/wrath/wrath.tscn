@@ -1,19 +1,15 @@
-[gd_scene load_steps=76 format=3 uid="uid://b3urcqmix8s8g"]
+[gd_scene load_steps=70 format=3 uid="uid://b3urcqmix8s8g"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_fvlx1"]
 [ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://actors/characters/enemies/sfx/Hit_1.wav" id="3_nbwf2"]
 [ext_resource type="AudioStream" uid="uid://b4dyx5m8hsynq" path="res://actors/characters/enemies/sfx/Hit_2.wav" id="4_1aywb"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hitbox.gd" id="4_pxmry"]
 [ext_resource type="AudioStream" uid="uid://bv7cgqlt3sbtb" path="res://actors/characters/enemies/sfx/Hit_3.wav" id="5_26ndu"]
-[ext_resource type="Texture2D" uid="uid://chgom45rhh51o" path="res://actors/characters/enemies/bosses/wrath/textures/color.png" id="5_hyseg"]
-[ext_resource type="Texture2D" uid="uid://d2eydc4mvaeui" path="res://actors/characters/enemies/bosses/wrath/textures/emision.png" id="6_00mkd"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://actors/characters/enemies/sfx/Slam.wav" id="6_ay1ei"]
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://actors/characters/enemies/sfx/Despawn.wav" id="6_ew0re"]
-[ext_resource type="Texture2D" uid="uid://bt0lar22n8dc1" path="res://actors/characters/enemies/bosses/wrath/textures/normal.png" id="7_4bxt0"]
 [ext_resource type="AudioStream" uid="uid://dejgyyvoucgey" path="res://actors/characters/enemies/sfx/Cry_3.wav" id="8_6fdi0"]
 [ext_resource type="PackedScene" uid="uid://b0t7a64rsk4nk" path="res://actors/characters/enemies/bosses/wrath/wrath.blend" id="10_h46di"]
 [ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://actors/props/sfx/Crumble_1.wav" id="10_s7vgg"]
-[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="11_57ti3"]
 [ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://actors/props/sfx/Crumble_2.wav" id="11_i4c6m"]
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://actors/characters/enemies/sfx/Cry.wav" id="12_kqq76"]
 [ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://actors/props/sfx/Crumble_3.wav" id="12_p5r8v"]
@@ -26,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ifk8wbwkr3w" path="res://actors/characters/enemies/bosses/wrath/wrath_hurt_particles.tscn" id="22_1df88"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="22_r385c"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="24_do1jg"]
+[ext_resource type="Material" uid="uid://biupco8dcn4xr" path="res://actors/characters/enemies/bosses/wrath/wrath_material.tres" id="27_a67hc"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://actors/slow_motion.gd" id="29_8mxmx"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_shake.gd" id="30_r1aqn"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="31_4oeto"]
@@ -1290,29 +1287,6 @@ _limits = [0.0, 10.0, 0.0, 1.0]
 _data = [Vector2(0, 2.58427), 0.0, 0.0, 0, 0, Vector2(0.155172, 3.59551), 0.0, 0.0, 0, 0, Vector2(0.413793, 1.46067), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1er76"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w5ekf"]
-noise = SubResource("FastNoiseLite_1er76")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_y1py8"]
-render_priority = 0
-shader = ExtResource("11_57ti3")
-shader_parameter/albedo_texture = ExtResource("5_hyseg")
-shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/emission_texture = ExtResource("6_00mkd")
-shader_parameter/emission_texture_intensity = 0.15
-shader_parameter/inside_color = Color(0, 0, 0, 1)
-shader_parameter/dissolve_amount = 1.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_w5ekf")
-shader_parameter/glow_color = Color(0.690196, 0.231373, 0.215686, 1)
-shader_parameter/glow_intensitiy = 17.645
-shader_parameter/glow_border_width = 0.018
-shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_texture = ExtResource("7_4bxt0")
-shader_parameter/normal_strength = 1.0
-shader_parameter/use_normal_map = true
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d1l46"]
 radius = 0.822642
 height = 1.9658
@@ -1655,23 +1629,24 @@ SCENE_ROOT = NodePath("..")
 [node name="wrath" parent="Mesh" instance=ExtResource("10_h46di")]
 
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
-bones/1/position = Vector3(0.0511777, -0.776168, 0.776934)
-bones/1/rotation = Quaternion(0.25735, 8.11288e-17, 7.05286e-17, 0.966318)
-bones/2/rotation = Quaternion(0.347629, 1.11774e-07, 4.14406e-08, 0.937632)
-bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
-bones/4/rotation = Quaternion(0.133097, 0.385149, 0.190128, 0.893195)
+bones/1/position = Vector3(1.17855e-17, -0.30565, 0.753459)
+bones/1/rotation = Quaternion(0.396863, 4.23847e-17, 9.80287e-17, 0.917878)
+bones/2/rotation = Quaternion(0.317489, -0.00962752, -0.0103468, 0.948157)
+bones/2/scale = Vector3(1.00033, 1.00033, 1.00033)
+bones/3/rotation = Quaternion(0.105172, 0.172178, 0.733226, 0.649364)
+bones/4/rotation = Quaternion(-0.0226311, 0.260283, 0.226415, 0.938337)
 bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
-bones/6/rotation = Quaternion(-0.0822429, 0.000622981, 0.134669, 0.987472)
-bones/7/rotation = Quaternion(-0.136309, -2.93099e-14, -3.24986e-08, 0.990666)
-bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
-bones/9/rotation = Quaternion(0.18255, -0.0376967, -0.180838, 0.965687)
-bones/10/rotation = Quaternion(-0.239191, 0.243902, -0.292818, 0.893061)
+bones/6/rotation = Quaternion(-0.0822429, 0.000622971, 0.134669, 0.987472)
+bones/7/rotation = Quaternion(-0.286936, -0.00310852, 0.00203131, 0.957943)
+bones/8/rotation = Quaternion(0.106541, -0.168894, -0.722042, 0.662404)
+bones/9/rotation = Quaternion(0.00051178, -0.047476, -0.273848, 0.9606)
+bones/10/rotation = Quaternion(-0.354697, 0.17596, -0.204672, 0.895175)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
-material_override = SubResource("ShaderMaterial_y1py8")
+material_override = ExtResource("27_a67hc")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.923684, -0.195082, -0.329774, 0.0905005, -0.947408, 0.306964, -0.372313, 0.253694, 0.892761, -2.1622, 2.08506, 1.14725)
+transform = Transform3D(-0.827675, -0.232787, -0.511291, 0.389843, -0.893523, -0.224262, -0.404512, -0.384814, 0.830025, -2.4477, 2.15935, 0.496727)
 bone_name = "hand_l"
 bone_idx = 6
 script = ExtResource("22_r385c")
@@ -1689,7 +1664,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885416, -0.227331, -0.588577, 0.0625503, 0.806017, 2.26397, 2.01507, 1.22283)
+transform = Transform3D(-0.933411, 0.355088, -0.0575285, -0.254817, -0.765616, -0.591231, -0.253901, -0.537027, 0.804854, 2.48682, 2.08332, 0.546855)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1706,7 +1681,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3" groups=["wrath"]]
-transform = Transform3D(1, 7.23087e-15, 2.38419e-07, -7.95448e-08, 0.942702, 0.333635, -2.24758e-07, -0.333635, 0.942702, 0.0511777, 0.562326, 0.231795)
+transform = Transform3D(0.999927, 0.013512, -0.0248349, -0.0107465, 0.994386, 0.108332, 0.0261507, -0.108022, 0.994134, 3.38859e-23, 0.950392, 0.0862353)
 bone_name = "torso"
 bone_idx = 2
 
