@@ -21,7 +21,7 @@ func _seamless_camera_transition(cinematic_camera_group_name: String, target_cam
 
 func _skip_cinematic() -> void:
 	await get_tree().process_frame # Autoload doesnt start playing until after ready so wait until an animation is playing so seek works
-	
+	if not is_inside_tree(): return
 	# Jump to end but still trigger all functions / signals
 	
 	if ANIM and ANIM.is_playing(): # Main AnimationPlayer
@@ -41,6 +41,7 @@ func _save_cinematic_completed() -> void:
 	Save.save_game()
 
 func _play_animations_in_other_nodes() -> void:
+	if not is_inside_tree(): return
 	
 	#print ('playing animations in other nodes')
 	for i in range(ANIMATION_PLAYER_GROUPS.size()):

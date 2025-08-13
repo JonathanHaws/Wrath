@@ -65,35 +65,20 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.797
 [node name="Greed" parent="." instance=ExtResource("4_y4fle")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 32.1167, -8.36329, 0)
 
-[node name="Skeleton3D" parent="Greed/Mesh/Greed/Rig" index="0"]
-bones/2/rotation = Quaternion(0.995725, 0.0149688, -0.000833722, 0.0911446)
-bones/3/rotation = Quaternion(0.920709, 0.00961023, -0.00146102, 0.390128)
-bones/6/rotation = Quaternion(0.232141, -2.15152e-11, 5.89036e-10, 0.972682)
-bones/7/rotation = Quaternion(0.0842316, 0.0949019, -0.983692, 0.12747)
-bones/8/rotation = Quaternion(0.143024, -0.175304, -0.0171901, 0.973918)
-bones/12/rotation = Quaternion(-0.105105, -3.19873e-11, -2.54882e-10, 0.994461)
-bones/13/rotation = Quaternion(0.00696524, -0.067562, 0.98973, 0.125783)
-bones/14/rotation = Quaternion(0.0906953, 0.0234256, 0.0289097, 0.995183)
-bones/18/rotation = Quaternion(-0.0924646, 0.173409, -0.595108, 0.779247)
-bones/19/rotation = Quaternion(-0.426507, 0.0467012, 0.0369573, 0.902522)
-bones/21/rotation = Quaternion(-0.35566, 0.0109272, 0.00210177, 0.934549)
-bones/22/rotation = Quaternion(0.995725, -0.0149688, 0.000833722, 0.0911446)
-bones/23/rotation = Quaternion(0.912644, -0.0093227, 0.00110586, 0.408648)
-
 [node name="BoneAttachment3D" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="1"]
-transform = Transform3D(1, 6.10623e-15, 2.51533e-09, 3.5303e-10, 0.990102, -0.140349, -2.49042e-09, 0.140349, 0.990102, -2.83458e-14, 1.92527, 0.89941)
+transform = Transform3D(1, 4.71845e-14, 2.51532e-09, 3.53001e-10, 0.990102, -0.140349, -2.49041e-09, 0.140349, 0.990102, 4.26249e-13, 1.92527, 0.899412)
 
 [node name="TorsoAttack" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="2"]
-transform = Transform3D(1, 6.10623e-15, 2.51533e-09, 3.5303e-10, 0.990102, -0.140349, -2.49042e-09, 0.140349, 0.990102, -2.83458e-14, 1.92527, 0.89941)
+transform = Transform3D(1, 4.71845e-14, 2.51532e-09, 3.53001e-10, 0.990102, -0.140349, -2.49041e-09, 0.140349, 0.990102, 4.26249e-13, 1.92527, 0.899412)
 
 [node name="TailSpin" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="3"]
-transform = Transform3D(1, 6.10623e-15, 2.51533e-09, 3.5303e-10, 0.990102, -0.140349, -2.49042e-09, 0.140349, 0.990102, -2.83458e-14, 1.92527, 0.89941)
+transform = Transform3D(1, 4.71845e-14, 2.51532e-09, 3.53001e-10, 0.990102, -0.140349, -2.49041e-09, 0.140349, 0.990102, 4.26249e-13, 1.92527, 0.899412)
 
 [node name="LeftHandAttack" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="4"]
-transform = Transform3D(-0.994649, 0.0712929, 0.0747673, -0.0593037, -0.986624, 0.151844, 0.0845924, 0.146597, 0.985572, 0.963769, 1.3182, 0.940024)
+transform = Transform3D(-0.994649, 0.0712931, 0.074767, -0.059304, -0.986623, 0.151842, 0.0845921, 0.146596, 0.985572, 0.963769, 1.3182, 0.940025)
 
 [node name="RightHandAttack" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="5"]
-transform = Transform3D(-0.951774, -0.302828, 0.0492102, 0.305802, -0.949322, 0.0726041, 0.0247298, 0.0841512, 0.996146, -1.04838, 1.33227, 0.882009)
+transform = Transform3D(-0.951774, -0.302828, 0.0492103, 0.305802, -0.949322, 0.0726041, 0.0247299, 0.0841513, 0.996146, -1.04838, 1.33227, 0.882012)
 
 [node name="Reaper" parent="." instance=ExtResource("5_sp0p1")]
 transform = Transform3D(-0.0916932, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916932, -13.0945, -7.47934, -1.63374)
@@ -101,7 +86,7 @@ transform = Transform3D(-0.0916932, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.09169
 [node name="Enter" parent="." instance=ExtResource("6_vsy0e")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Exit"
-DESTINATION_SCENE = "uid://cjnryqwoknkw5"
+DESTINATION_SCENE = "uid://cx2ditraoxlvu"
 
 [node name="Exit" parent="." groups=["greed_door"] instance=ExtResource("6_vsy0e")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)

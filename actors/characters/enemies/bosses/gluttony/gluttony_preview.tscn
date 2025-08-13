@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://nvfnr7o67bwx"]
+
+[ext_resource type="PackedScene" uid="uid://dshyyn54ur3e1" path="res://actors/characters/enemies/bosses/gluttony/gluttony.blend" id="1_x0f76"]
+[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="2_2bphc"]
+[ext_resource type="Texture2D" uid="uid://dtd1gy3sbq7ge" path="res://actors/characters/enemies/bosses/gluttony/color.png" id="3_h31dm"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x0f76"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2bphc"]
+render_priority = 0
+shader = ExtResource("2_2bphc")
+shader_parameter/albedo_texture = ExtResource("3_h31dm")
+shader_parameter/albedo_color = Color(0.695503, 0.695503, 0.695503, 1)
+shader_parameter/emission_texture_intensity = 0.0
+shader_parameter/inside_color = Color(0, 0, 0, 1)
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.77
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/normal_strength = 1.0
+shader_parameter/use_normal_map = false
+
+[node name="GluttonyPreview" type="Node3D"]
+
+[node name="gluttony" parent="." instance=ExtResource("1_x0f76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.20259, 2.38419e-07, -0.137974)
+
+[node name="Retopo" parent="gluttony" index="0"]
+material_override = SubResource("ShaderMaterial_x0f76")
+material_overlay = SubResource("ShaderMaterial_2bphc")
+
+[editable path="gluttony"]

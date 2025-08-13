@@ -10,7 +10,6 @@
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="8_5spip"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="9_fi73v"]
 
-
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
@@ -70,7 +69,7 @@ DESTINATION_SCENE = "uid://worsh6enfk2g"
 [node name="Exit" parent="." instance=ExtResource("7_q5vxo")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Enter"
-DESTINATION_SCENE = "uid://cbk056vj32v0p"
+DESTINATION_SCENE = "uid://cx2ditraoxlvu"
 
 [node name="FloatingRocksDoor" parent="." instance=ExtResource("7_q5vxo")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 7.61851, -9.60013, -14.9987)

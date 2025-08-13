@@ -1,0 +1,66 @@
+[gd_scene load_steps=10 format=3 uid="uid://d0qec5kl2ju4u"]
+
+[ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="1_fuluj"]
+[ext_resource type="PackedScene" uid="uid://b0t7a64rsk4nk" path="res://actors/characters/enemies/bosses/wrath/wrath.blend" id="2_3nmps"]
+[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="3_q5fou"]
+[ext_resource type="Texture2D" uid="uid://chgom45rhh51o" path="res://actors/characters/enemies/bosses/wrath/textures/color.png" id="4_63ye6"]
+[ext_resource type="Texture2D" uid="uid://d2eydc4mvaeui" path="res://actors/characters/enemies/bosses/wrath/textures/emision.png" id="5_q6yvx"]
+[ext_resource type="Texture2D" uid="uid://bt0lar22n8dc1" path="res://actors/characters/enemies/bosses/wrath/textures/normal.png" id="6_q1evg"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7xlkj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_do1jg"]
+noise = SubResource("FastNoiseLite_7xlkj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w002x"]
+render_priority = 0
+shader = ExtResource("3_q5fou")
+shader_parameter/albedo_texture = ExtResource("4_63ye6")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/emission_texture = ExtResource("5_q6yvx")
+shader_parameter/emission_texture_intensity = 0.15
+shader_parameter/inside_color = Color(0, 0, 0, 1)
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_do1jg")
+shader_parameter/glow_color = Color(0.690196, 0.231373, 0.215686, 1)
+shader_parameter/glow_intensitiy = 17.645
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/normal_texture = ExtResource("6_q1evg")
+shader_parameter/normal_strength = 1.0
+shader_parameter/use_normal_map = true
+
+[node name="WrathPreview" type="Node3D"]
+
+[node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SCENE_ROOT")]
+script = ExtResource("1_fuluj")
+SKELETAL_ANIMATION_PLAYER = NodePath("wrath/AnimationPlayer")
+SCENE_ROOT = NodePath("")
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh"]
+
+[node name="wrath" parent="Mesh" instance=ExtResource("2_3nmps")]
+
+[node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
+bones/1/position = Vector3(-7.71653e-18, -0.718805, 1.00353)
+bones/1/rotation = Quaternion(0.25735, 8.11288e-17, 7.05286e-17, 0.966318)
+bones/2/rotation = Quaternion(0.347629, 1.11774e-07, 4.14406e-08, 0.937632)
+bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
+bones/4/rotation = Quaternion(0.133097, 0.385149, 0.190128, 0.893195)
+bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
+bones/6/rotation = Quaternion(-0.0822429, 0.000622981, 0.134669, 0.987472)
+bones/7/rotation = Quaternion(-0.136309, -2.93099e-14, -3.24986e-08, 0.990666)
+bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
+bones/9/rotation = Quaternion(0.18255, -0.0376967, -0.180838, 0.965687)
+bones/10/rotation = Quaternion(-0.239191, 0.243902, -0.292818, 0.893061)
+
+[node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
+material_override = SubResource("ShaderMaterial_w002x")
+
+[node name="AnimationPlayer" parent="Mesh/wrath" index="1"]
+root_motion_track = NodePath("Armature/Skeleton3D:root")
+root_motion_local = false
+callback_mode_process = 0
+playback_default_blend_time = 0.2
+
+[editable path="Mesh/wrath"]
