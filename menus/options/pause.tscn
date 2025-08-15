@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://cxja4xs36njyv"]
+[gd_scene load_steps=10 format=3 uid="uid://cxja4xs36njyv"]
 
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_44kt7"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="1_gh5rx"]
 [ext_resource type="Script" uid="uid://blcresco6qh8i" path="res://menus/options/sensitivity.gd" id="2_77qd8"]
 [ext_resource type="Script" uid="uid://d2hxlmmmtfynf" path="res://menus/options/volume_adjustment.gd" id="2_gh5rx"]
+[ext_resource type="Script" uid="uid://cehsklglvnhkr" path="res://menus/options/resolution.gd" id="4_dtlus"]
 [ext_resource type="Script" uid="uid://yd63tscy6h1n" path="res://menus/options/window_mode_dropdown.gd" id="4_i2ivw"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="5_q1b1x"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="6_w0nh5"]
@@ -126,6 +127,13 @@ step = 10.0
 value = 100.0
 script = ExtResource("2_gh5rx")
 bus_name = "Music"
+
+[node name="Resolution" type="OptionButton" parent="Options"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("1_44kt7")
+script = ExtResource("4_dtlus")
 
 [node name="WindowMode" type="OptionButton" parent="Options"]
 layout_mode = 2
