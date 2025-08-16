@@ -17,7 +17,7 @@ offset_top = 176.0
 offset_right = 1920.0
 offset_bottom = 176.0
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." groups=["ui_scalable"]]
 layout_mode = 0
 offset_left = -7.0
 offset_top = -178.0
@@ -25,16 +25,16 @@ offset_right = 384.0
 offset_bottom = 43.0
 color = Color(0.0646965, 0.0646965, 0.0646965, 0.913725)
 
-[node name="Brightness" type="Label" parent="."]
+[node name="Brightness" type="Label" parent="ColorRect"]
 layout_mode = 2
-offset_left = 19.0
-offset_top = -162.0
-offset_right = 147.0
-offset_bottom = -134.0
+offset_left = 26.0
+offset_top = 16.0
+offset_right = 154.0
+offset_bottom = 44.0
 theme = ExtResource("1_ll3a5")
 text = "BRIGHTNESS:"
 
-[node name="HSlider" type="HSlider" parent="Brightness" node_paths=PackedStringArray("display_label")]
+[node name="HSlider" type="HSlider" parent="ColorRect/Brightness" node_paths=PackedStringArray("display_label")]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 offset_left = 139.0
@@ -50,24 +50,25 @@ value = 1.4
 script = ExtResource("3_oc2qo")
 display_label = NodePath("../Label")
 
-[node name="Label" type="Label" parent="Brightness"]
+[node name="Label" type="Label" parent="ColorRect/Brightness"]
 layout_mode = 0
 offset_left = 296.0
 offset_top = -2.0
 offset_right = 336.0
 offset_bottom = 26.0
+theme = ExtResource("1_ll3a5")
 text = "1.0"
 
-[node name="Contrast" type="Label" parent="."]
+[node name="Contrast" type="Label" parent="ColorRect"]
 layout_mode = 2
-offset_left = 18.0
-offset_top = -133.0
-offset_right = 146.0
-offset_bottom = -105.0
+offset_left = 25.0
+offset_top = 45.0
+offset_right = 153.0
+offset_bottom = 73.0
 theme = ExtResource("1_ll3a5")
 text = "CONTRAST:"
 
-[node name="HSlider" type="HSlider" parent="Contrast" node_paths=PackedStringArray("display_label")]
+[node name="HSlider" type="HSlider" parent="ColorRect/Contrast" node_paths=PackedStringArray("display_label")]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 offset_left = 139.0
@@ -84,7 +85,7 @@ script = ExtResource("3_oc2qo")
 setting_name = "contrast"
 display_label = NodePath("../Label")
 
-[node name="Label" type="Label" parent="Contrast"]
+[node name="Label" type="Label" parent="ColorRect/Contrast"]
 layout_mode = 0
 offset_left = 297.0
 offset_top = -3.0
@@ -92,16 +93,16 @@ offset_right = 337.0
 offset_bottom = 25.0
 text = "1.0"
 
-[node name="Saturation" type="Label" parent="."]
+[node name="Saturation" type="Label" parent="ColorRect"]
 layout_mode = 2
-offset_left = 18.0
-offset_top = -105.0
-offset_right = 149.0
-offset_bottom = -77.0
+offset_left = 25.0
+offset_top = 73.0
+offset_right = 156.0
+offset_bottom = 101.0
 theme = ExtResource("1_ll3a5")
 text = "SATURATION:"
 
-[node name="HSlider" type="HSlider" parent="Saturation" node_paths=PackedStringArray("display_label")]
+[node name="HSlider" type="HSlider" parent="ColorRect/Saturation" node_paths=PackedStringArray("display_label")]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 offset_left = 139.0
@@ -117,7 +118,7 @@ script = ExtResource("3_oc2qo")
 setting_name = "saturation"
 display_label = NodePath("../Label")
 
-[node name="Label" type="Label" parent="Saturation"]
+[node name="Label" type="Label" parent="ColorRect/Saturation"]
 layout_mode = 0
 offset_left = 297.0
 offset_top = -4.0
@@ -125,46 +126,46 @@ offset_right = 337.0
 offset_bottom = 24.0
 text = "1.0"
 
-[node name="Bloom" type="Label" parent="."]
+[node name="Bloom" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 17.0
-offset_top = -74.0
-offset_right = 145.0
-offset_bottom = -46.0
+offset_left = 24.0
+offset_top = 104.0
+offset_right = 152.0
+offset_bottom = 132.0
 theme = ExtResource("1_ll3a5")
 text = "BLOOM:"
 
-[node name="BloomButton" type="CheckButton" parent="."]
+[node name="BloomButton" type="CheckButton" parent="ColorRect"]
 layout_mode = 0
-offset_left = 101.0
-offset_top = -72.0
-offset_right = 145.0
-offset_bottom = -48.0
+offset_left = 108.0
+offset_top = 106.0
+offset_right = 152.0
+offset_bottom = 130.0
 script = ExtResource("2_jcns5")
 
-[node name="SSAO" type="Label" parent="."]
+[node name="SSAO" type="Label" parent="ColorRect"]
 layout_mode = 0
-offset_left = 17.0
-offset_top = -40.0
-offset_right = 145.0
-offset_bottom = -12.0
+offset_left = 24.0
+offset_top = 138.0
+offset_right = 152.0
+offset_bottom = 166.0
 theme = ExtResource("1_ll3a5")
 text = "SSAO:"
 
-[node name="SSAOButton" type="CheckButton" parent="."]
+[node name="SSAOButton" type="CheckButton" parent="ColorRect"]
 layout_mode = 0
-offset_left = 80.0
-offset_top = -37.0
-offset_right = 124.0
-offset_bottom = -13.0
+offset_left = 87.0
+offset_top = 141.0
+offset_right = 131.0
+offset_bottom = 165.0
 script = ExtResource("4_ll3a5")
 
-[node name="Back" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+[node name="Back" type="Button" parent="ColorRect" node_paths=PackedStringArray("node_to_replace")]
 layout_mode = 2
-offset_left = 14.0
-offset_top = -10.0
-offset_right = 74.0
-offset_bottom = 26.0
+offset_left = 21.0
+offset_top = 168.0
+offset_right = 81.0
+offset_bottom = 204.0
 size_flags_horizontal = 4
 size_flags_vertical = 0
 theme = ExtResource("1_ll3a5")
@@ -173,9 +174,10 @@ text = "BACK
 icon_alignment = 1
 script = ExtResource("5_wtdqe")
 scene_file = "uid://cxja4xs36njyv"
-node_to_replace = NodePath("..")
+node_to_replace = NodePath("../..")
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+[node name="Audio" type="AudioStreamPlayer2D" parent="ColorRect" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+position = Vector2(7, 178)
 stream = ExtResource("6_684si")
 attenuation = 1e-05
 bus = &"SFX"
@@ -185,6 +187,6 @@ press_sound = ExtResource("6_684si")
 hover_targets = [null, null, null, null, null, null]
 pressed_targets = [null, null]
 
-[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
+[node name="GrabFocus" type="Node" parent="ColorRect" node_paths=PackedStringArray("focus_node")]
 script = ExtResource("8_bpob5")
 focus_node = NodePath("../BloomButton")

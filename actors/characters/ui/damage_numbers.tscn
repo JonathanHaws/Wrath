@@ -2,7 +2,6 @@
 
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="1_jqg1t"]
 
-
 [sub_resource type="Animation" id="Animation_2ys8b"]
 length = 0.001
 tracks/0/type = "value"
@@ -112,7 +111,7 @@ autoplay = "hit"
 
 [node name="Node2D" type="Node2D" parent="."]
 
-[node name="Label" type="Label" parent="Node2D"]
+[node name="Label" type="Label" parent="Node2D" groups=["ui_scalable"]]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

@@ -49,3 +49,5 @@ func _apply_resolution(index: int) -> void:
 		var res_size = resolutions[key]  
 		var window = get_tree().get_root().get_window()
 		window.content_scale_size = res_size
+		Config.save_setting("display", "resolution_width", res_size.x)
+		Config.save_setting("display", "resolution_height", res_size.y)

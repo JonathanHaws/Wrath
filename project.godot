@@ -61,6 +61,10 @@ window/stretch/aspect="expand"
 
 enabled=PackedStringArray()
 
+[global_group]
+
+ui_scalable=""
+
 [input]
 
 ui_accept={

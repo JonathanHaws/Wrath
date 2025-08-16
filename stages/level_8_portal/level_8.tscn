@@ -12,7 +12,7 @@
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="10_0jji2"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="11_0yniq"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="12_62dvu"]
-[ext_resource type="FontFile" uid="uid://bseqwgcqg3g1" path="res://fonts/Wrath.otf" id="13_gm8kg"]
+[ext_resource type="FontFile" uid="uid://dpdckaagju1of" path="res://fonts/Wrath.otf" id="13_gm8kg"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="14_d1ner"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
@@ -330,13 +330,13 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
 [node name="spin" parent="Portal/Mesh" index="1"]
-transform = Transform3D(-0.71955, 0.69444, 0, -0.69444, -0.71955, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(0.961004, 0.276532, 0, -0.276532, 0.961004, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Portal/Mesh/flames_2" index="0"]
-transform = Transform3D(0.553589, -0.73487, 8.16484e-16, 0.73487, 0.553589, 2.46128e-15, -2.45717e-15, -8.28791e-16, 0.920052, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(-0.886267, 0.491806, -8.60688e-16, -0.491806, -0.886267, 6.12982e-15, 2.22171e-15, 5.7775e-15, 1.01358, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Portal/Mesh/flames_1" index="0"]
-transform = Transform3D(0.553589, -0.73487, 8.16484e-16, 0.73487, 0.553589, 2.46128e-15, -2.45717e-15, -8.28791e-16, 0.920052, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(-0.886267, 0.491806, -8.60688e-16, -0.491806, -0.886267, 6.12982e-15, 2.22171e-15, 5.7775e-15, 1.01358, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Portal/Mesh" index="4"]
 autoplay = "Spin"

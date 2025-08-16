@@ -22,3 +22,7 @@ func _ready() -> void:
 		var value = config.get_value("audio", bus_name, DEFAULT)
 		var bus_idx = AudioServer.get_bus_index(bus_name)
 		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value / 100.0))
+		
+	var width = config.get_value("display", "resolution_width", get_window().size.x)
+	var height = config.get_value("display", "resolution_height", get_window().size.y)
+	get_window().content_scale_size = Vector2i(width, height)

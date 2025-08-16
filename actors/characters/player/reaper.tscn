@@ -1890,13 +1890,14 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
-[node name="UI" type="Control" parent="."]
+[node name="UI" type="Control" parent="." groups=["ui_scalable"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(0, 720)
 
 [node name="Stamina" parent="UI" node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
 layout_mode = 1
@@ -1943,7 +1944,7 @@ expands = true
 tracked_node = NodePath("../../Hitbox")
 pixel_expansion_rate = 8.0
 
-[node name="LockOnIndicator" type="ProgressBar" parent="UI" node_paths=PackedStringArray("CAMERA", "SpringArm", "LOCK_ON_AREA")]
+[node name="LockOnIndicator" type="ProgressBar" parent="UI" node_paths=PackedStringArray("CAMERA", "SpringArm", "LOCK_ON_AREA") groups=["ui_scalable"]]
 layout_mode = 0
 offset_left = 976.0
 offset_top = -177.0
