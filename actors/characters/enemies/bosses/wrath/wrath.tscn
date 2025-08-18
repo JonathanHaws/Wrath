@@ -489,7 +489,7 @@ tracks/8/path = NodePath("Ui:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 0.541667),
+"times": PackedFloat32Array(2.08333, 2.625),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -1571,44 +1571,6 @@ script = ExtResource("34_cc4qc")
 scenes = Array[PackedScene]([ExtResource("22_1df88")])
 copy_transform_node = NodePath(".")
 
-[node name="Ui" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchors_preset = 10
-anchor_right = 1.0
-grow_horizontal = 2
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui" groups=["ui_scalable"]]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -452.0
-offset_top = 5.0
-offset_right = 448.0
-offset_bottom = 96.0
-grow_horizontal = 2
-pivot_offset = Vector2(450, 0)
-script = ExtResource("28_x676q")
-
-[node name="HealthBar" parent="Ui/VBoxContainer" node_paths=PackedStringArray("tracked_node") instance=ExtResource("17_r1aqn")]
-custom_minimum_size = Vector2(900, 8.645)
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 2000.0
-value = 2000.0
-tracked_node = NodePath("../../../Hitbox")
-
-[node name="Label" type="Label" parent="Ui/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = ExtResource("24_do1jg")
-text = "WRATH"
-horizontal_alignment = 1
-uppercase = true
-
 [node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11594, 0)
 script = ExtResource("33_h5485")
@@ -1629,22 +1591,22 @@ SCENE_ROOT = NodePath("..")
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
 bones/1/position = Vector3(-7.12175e-17, 0.0829432, 0.518257)
 bones/1/rotation = Quaternion(0.520187, 5.55556e-17, 9.12122e-17, 0.854052)
-bones/2/rotation = Quaternion(0.44874, 0.0700146, 0.0109544, 0.890848)
+bones/2/rotation = Quaternion(0.296613, 1.13845e-07, 3.5359e-08, 0.954998)
 bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
-bones/4/rotation = Quaternion(-0.311907, 0.0595853, 0.06399, 0.946081)
-bones/5/rotation = Quaternion(-0.24248, -0.0244624, -0.55864, 0.792797)
-bones/6/rotation = Quaternion(-0.0822429, 0.000622971, 0.134669, 0.987472)
-bones/7/rotation = Quaternion(0.133427, 0.0109242, 0.0142063, 0.990897)
+bones/4/rotation = Quaternion(-0.268814, 0.0521335, 0.2601, 0.925942)
+bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325445, 0.887213)
+bones/6/rotation = Quaternion(-0.0822429, 0.00062297, 0.134669, 0.987472)
+bones/7/rotation = Quaternion(-0.110727, -1.29362e-08, -6.86267e-08, 0.993851)
 bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
-bones/9/rotation = Quaternion(-0.261447, -0.127177, -0.0656431, 0.954548)
-bones/10/rotation = Quaternion(-0.132812, 0.100298, 0.579723, 0.797635)
+bones/9/rotation = Quaternion(-0.217393, -0.0469373, -0.256646, 0.940569)
+bones/10/rotation = Quaternion(-0.455173, 0.0679145, -0.0325445, 0.887213)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
 material_override = ExtResource("27_a67hc")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.505877, -0.5616, -0.654747, 0.68493, 0.722919, -0.0908775, 0.524366, -0.402483, 0.750365, -2.49903, 3.45239, 1.2576)
+transform = Transform3D(-0.823243, 0.0126052, -0.567549, 0.53496, -0.317325, -0.783021, -0.189967, -0.948233, 0.254492, -2.1674, 2.18332, -0.327137)
 bone_name = "hand_l"
 bone_idx = 6
 script = ExtResource("22_r385c")
@@ -1662,7 +1624,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(0.396301, 0.599593, 0.695294, -0.711407, 0.679263, -0.180284, -0.580384, -0.42319, 0.695747, 2.80491, 3.39074, 0.768294)
+transform = Transform3D(-0.836727, 0.081539, 0.541516, -0.531695, -0.357705, -0.76769, 0.131106, -0.930268, 0.342655, 2.27754, 2.14309, -0.149384)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1679,7 +1641,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3" groups=["wrath"]]
-transform = Transform3D(0.989956, 0.0433192, 0.134576, 0.0204509, 0.898009, -0.439502, -0.139889, 0.43784, 0.888103, 2.87231e-23, 1, 0.100295)
+transform = Transform3D(1, 7.10543e-15, 2.38419e-07, 2.9874e-08, 0.992119, -0.125301, -2.3654e-07, 0.125301, 0.992119, 2.87231e-23, 1, 0.100295)
 bone_name = "torso"
 bone_idx = 2
 
@@ -1820,6 +1782,47 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 27.0089
 
+[node name="Ui" type="Control" parent="." groups=["ui_scalable"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.017
+anchor_right = 0.5
+anchor_bottom = 0.099
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("28_x676q")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Ui"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -450.0
+offset_right = 450.0
+offset_bottom = 50.0
+grow_horizontal = 2
+pivot_offset = Vector2(450, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" parent="Ui/VBoxContainer" node_paths=PackedStringArray("tracked_node") instance=ExtResource("17_r1aqn")]
+custom_minimum_size = Vector2(900, 8.645)
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 2000.0
+value = 2000.0
+tracked_node = NodePath("../../../Hitbox")
+
+[node name="Label" type="Label" parent="Ui/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("24_do1jg")
+text = "WRATH"
+horizontal_alignment = 1
+uppercase = true
+
 [connection signal="body_entered" from="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" to="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D" to="Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/wrath/Armature/Skeleton3D/Torso/Area3D" to="Mesh/wrath/Armature/Skeleton3D/Torso/Area3D" method="_on_body_entered"]
@@ -1827,6 +1830,5 @@ omni_range = 27.0089
 [connection signal="body_entered" from="Shake" to="Shake" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
 
-[editable path="Ui/VBoxContainer/HealthBar"]
 [editable path="Mesh/wrath"]
 [editable path="Music"]

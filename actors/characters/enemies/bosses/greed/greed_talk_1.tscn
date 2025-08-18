@@ -152,7 +152,7 @@ _data = {
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5hc3"]
 bg_color = Color(0.04, 0.04, 0.04, 0.631373)
-border_width_top = 100
+border_width_top = 165
 border_color = Color(0, 0, 0, 0)
 border_blend = true
 
@@ -217,16 +217,12 @@ area = NodePath("../Area3D")
 dialogue_templates = Array[PackedScene]([ExtResource("9_qmj27"), ExtResource("10_hnncu")])
 dialogue_file = ExtResource("10_asfo8")
 
-[node name="Background" type="ProgressBar" parent="Dialogue" groups=["ui_scalable"]]
+[node name="Background" type="ProgressBar" parent="Dialogue"]
 modulate = Color(1, 1, 1, 0)
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
+anchors_preset = -1
+anchor_top = 0.769444
+anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -991.5
-offset_top = -274.0
-offset_right = 991.5
 grow_horizontal = 2
 grow_vertical = 0
 pivot_offset = Vector2(991.5, 274)

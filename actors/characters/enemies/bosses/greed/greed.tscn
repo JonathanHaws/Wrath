@@ -342,25 +342,13 @@ tracks/13/keys = {
 "method": &"queue_free"
 }]
 }
-tracks/14/type = "value"
+tracks/14/type = "method"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Ui:modulate")
+tracks/14/path = NodePath(".")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.933419), Color(1, 1, 1, 0)]
-}
-tracks/15/type = "method"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath(".")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -368,17 +356,29 @@ tracks/15/keys = {
 "method": &"defeated"
 }]
 }
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Hitbox/CollisionShape3D:disabled")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Hitbox/CollisionShape3D:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Ui:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 1.43333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
@@ -476,10 +476,10 @@ tracks/7/path = NodePath("Ui:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0.0833333, 0.916667, 2.91667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(1.54167, 2.75),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_f8w5c"]
@@ -823,26 +823,26 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Ui:modulate")
+tracks/15/path = NodePath("Hitbox/CollisionShape3D:disabled")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Hitbox/CollisionShape3D:disabled")
+tracks/16/path = NodePath("Ui:modulate")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_clfu5"]
@@ -1284,48 +1284,6 @@ script = ExtResource("20_ri305")
 scenes = Array[PackedScene]([ExtResource("2_jx80p")])
 copy_transform_node = NodePath(".")
 
-[node name="Ui" type="Control" parent="."]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-grow_horizontal = 2
-pivot_offset = Vector2(640, 0)
-size_flags_horizontal = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui" groups=["ui_scalable"]]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -450.0
-offset_top = 5.0
-offset_right = 450.0
-offset_bottom = 96.0
-grow_horizontal = 2
-pivot_offset = Vector2(450, 0)
-script = ExtResource("21_47sfl")
-
-[node name="HealthBar" parent="Ui/VBoxContainer" node_paths=PackedStringArray("tracked_node") instance=ExtResource("9_wri43")]
-custom_minimum_size = Vector2(900, 8.645)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/fill = ExtResource("10_jx80p")
-max_value = 2000.0
-value = 2000.0
-tracked_node = NodePath("../../../Hitbox")
-
-[node name="Label" type="Label" parent="Ui/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = ExtResource("10_bkkeq")
-text = "Greed
-"
-horizontal_alignment = 1
-uppercase = true
-
 [node name="SFX" type="AudioStreamPlayer2D" parent="."]
 volume_db = -5.0
 attenuation = 0.0145786
@@ -1352,40 +1310,40 @@ SCENE_ROOT = NodePath("..")
 [node name="Greed" parent="Mesh" instance=ExtResource("17_cq6fp")]
 
 [node name="Skeleton3D" parent="Mesh/Greed/Rig" index="0"]
-bones/1/position = Vector3(0.00684973, -0.0354049, -2.76124)
-bones/1/rotation = Quaternion(-0.696678, -5.32429e-08, -5.34893e-08, 0.717384)
-bones/2/position = Vector3(0.318777, -0.0666644, -0.0106261)
-bones/2/rotation = Quaternion(0.964571, 0.0220003, -0.0346341, 0.260612)
-bones/3/rotation = Quaternion(0.373427, 0.0430267, 0.00823016, 0.926625)
-bones/4/rotation = Quaternion(-0.316379, -0.00934846, 0.0155614, 0.948459)
-bones/5/rotation = Quaternion(0.122045, -0.017087, 0.0354516, 0.991744)
-bones/6/rotation = Quaternion(0.21601, 7.47332e-12, 2.36853e-10, 0.976391)
-bones/7/rotation = Quaternion(0.808243, 0.2447, -0.528794, 0.0851026)
-bones/8/rotation = Quaternion(-0.134473, -0.0190517, 0.131483, 0.981971)
-bones/9/rotation = Quaternion(0.109848, 0.00605317, 0.0934462, 0.989527)
-bones/10/rotation = Quaternion(-0.0241385, 1.15611e-05, -0.0357073, 0.999071)
-bones/12/rotation = Quaternion(0.27027, -0.00769517, -0.0203775, 0.962538)
-bones/13/position = Vector3(-0.488868, 1.43551, -0.00969551)
-bones/13/rotation = Quaternion(0.296544, 0.0858721, 0.905078, 0.29244)
-bones/14/rotation = Quaternion(0.274094, -0.0687405, 0.00867404, 0.959204)
-bones/15/rotation = Quaternion(0.110033, -0.00608329, -0.0931645, 0.989533)
-bones/16/rotation = Quaternion(-0.023715, 0.000303748, 0.0362889, 0.99906)
-bones/17/position = Vector3(-0.00016198, 0.339309, -0.32459)
-bones/17/rotation = Quaternion(0.779864, 0.174091, -0.567985, -0.197226)
-bones/18/rotation = Quaternion(0.00804734, -0.0180261, 0.148476, 0.988719)
-bones/19/rotation = Quaternion(0.0875399, -0.509193, -0.215319, 0.828672)
-bones/20/rotation = Quaternion(-0.142372, -0.118205, -0.249299, 0.950583)
-bones/21/rotation = Quaternion(-0.118513, 0.0942365, -0.188734, 0.970285)
-bones/22/rotation = Quaternion(0.990887, 0.00202547, 0.0229615, 0.132706)
-bones/23/rotation = Quaternion(0.373667, 0.00331256, -0.00487383, 0.927544)
-bones/24/rotation = Quaternion(-0.344794, -0.0113309, -0.0183673, 0.93843)
-bones/25/rotation = Quaternion(0.0238882, -0.0460954, -0.052322, 0.99728)
+bones/1/position = Vector3(4.29392e-07, 0.00894017, -2.84425)
+bones/1/rotation = Quaternion(-0.708777, -5.23256e-08, -5.4387e-08, 0.705433)
+bones/2/position = Vector3(0.318777, -0.0666643, -0.0106262)
+bones/2/rotation = Quaternion(0.997199, 0.0149814, -0.00056528, 0.0732821)
+bones/3/rotation = Quaternion(0.234039, -0.00564749, 0.0132514, 0.972121)
+bones/4/rotation = Quaternion(-0.244926, 0.00987892, 0.0135449, 0.969397)
+bones/5/rotation = Quaternion(0.189993, -0.00651416, 0.0393444, 0.980975)
+bones/6/rotation = Quaternion(0.0929902, -2.20204e-11, 2.35945e-10, 0.995667)
+bones/7/rotation = Quaternion(0.0839463, 0.213196, -0.936216, 0.266459)
+bones/8/rotation = Quaternion(0.299126, -0.20973, -0.0154915, 0.93075)
+bones/9/rotation = Quaternion(0.0971382, 0.0122893, -0.0532991, 0.993767)
+bones/10/rotation = Quaternion(-0.024475, 8.94335e-09, -0.0359915, 0.999052)
+bones/12/rotation = Quaternion(0.293052, -2.954e-11, 7.00147e-10, 0.956096)
+bones/13/position = Vector3(-0.488868, 1.43551, -0.00969565)
+bones/13/rotation = Quaternion(-0.0190816, 0.131559, 0.962322, 0.237202)
+bones/14/rotation = Quaternion(-0.0275993, -0.00352807, 0.0283079, 0.999212)
+bones/15/rotation = Quaternion(0.110033, -0.00608328, -0.0931645, 0.989533)
+bones/16/rotation = Quaternion(-0.024475, -5.54639e-09, 0.0359915, 0.999052)
+bones/17/position = Vector3(-0.000162007, 0.339309, -0.324589)
+bones/17/rotation = Quaternion(0.673283, 0.359329, -0.56556, -0.312593)
+bones/18/rotation = Quaternion(-0.134025, 0.169628, -0.44007, 0.871551)
+bones/19/rotation = Quaternion(-0.388011, -0.0319996, -0.254655, 0.885197)
+bones/20/rotation = Quaternion(-0.398659, -0.0279548, -0.0491474, 0.915355)
+bones/21/rotation = Quaternion(-0.17055, -0.162658, -0.137619, 0.962037)
+bones/22/rotation = Quaternion(0.99861, -0.0149903, 0.000223629, 0.0505314)
+bones/23/rotation = Quaternion(0.234039, 0.00564749, -0.0132514, 0.972121)
+bones/24/rotation = Quaternion(-0.244926, -0.00987893, -0.0135449, 0.969397)
+bones/25/rotation = Quaternion(0.189993, 0.00651417, -0.0393444, 0.980975)
 
 [node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" index="0"]
 material_override = ExtResource("27_mmykl")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1"]
-transform = Transform3D(1, 6.20353e-10, 2.43756e-09, 5.37945e-10, 0.89394, -0.448187, -2.45706e-09, 0.448187, 0.89394, 0.00684931, 3.75724, -0.00623122)
+transform = Transform3D(1, -8.57693e-11, 2.53e-09, 5.41123e-10, 0.98357, -0.180525, -2.47294e-09, 0.180525, 0.98357, -1.64251e-10, 3.84067, 0.00422642)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1398,7 +1356,7 @@ shape = SubResource("BoxShape3D_jx80p")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2"]
-transform = Transform3D(1, 6.20353e-10, 2.43756e-09, 5.37945e-10, 0.89394, -0.448187, -2.45706e-09, 0.448187, 0.89394, 0.00684931, 3.75724, -0.00623122)
+transform = Transform3D(1, -8.57693e-11, 2.53e-09, 5.41123e-10, 0.98357, -0.180525, -2.47294e-09, 0.180525, 0.98357, -1.64251e-10, 3.84067, 0.00422642)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1415,7 +1373,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3"]
-transform = Transform3D(1, 6.20353e-10, 2.43756e-09, 5.37945e-10, 0.89394, -0.448187, -2.45706e-09, 0.448187, 0.89394, 0.00684931, 3.75724, -0.00623122)
+transform = Transform3D(1, -8.57693e-11, 2.53e-09, 5.41123e-10, 0.98357, -0.180525, -2.47294e-09, 0.180525, 0.98357, -1.64251e-10, 3.84067, 0.00422642)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1432,7 +1390,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4"]
-transform = Transform3D(0.505455, 0.409725, -0.759368, 0.367076, -0.898564, -0.240494, -0.780878, -0.157187, -0.604584, 1.5234, 3.3311, 0.0378487)
+transform = Transform3D(-0.940871, 0.329171, -0.0800557, -0.338764, -0.914983, 0.219189, -0.00109928, 0.233348, 0.972392, 1.52053, 3.54613, 0.0719376)
 bone_name = "hand_l"
 bone_idx = 10
 
@@ -1450,7 +1408,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5"]
-transform = Transform3D(-0.54129, 0.0185194, 0.840632, 0.373702, -0.890292, 0.260243, 0.753228, 0.455013, 0.474985, -0.914195, 3.13025, 1.07581)
+transform = Transform3D(-0.857446, -0.504672, 0.100465, 0.514561, -0.839531, 0.174397, -0.00366987, 0.201231, 0.979536, -1.49304, 3.40094, 0.489577)
 bone_name = "hand_r"
 bone_idx = 16
 
@@ -1540,6 +1498,48 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 27.0089
+
+[node name="Ui" type="Control" parent="." groups=["ui_scalable"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.017
+anchor_right = 0.5
+anchor_bottom = 0.099
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("21_47sfl")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Ui"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -450.0
+offset_right = 450.0
+offset_bottom = 50.0
+grow_horizontal = 2
+pivot_offset = Vector2(450, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" parent="Ui/VBoxContainer" node_paths=PackedStringArray("tracked_node") instance=ExtResource("9_wri43")]
+custom_minimum_size = Vector2(900, 8.645)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/fill = ExtResource("10_jx80p")
+max_value = 2000.0
+value = 2000.0
+tracked_node = NodePath("../../../Hitbox")
+
+[node name="Label" type="Label" parent="Ui/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("10_bkkeq")
+text = "GREED"
+horizontal_alignment = 1
+uppercase = true
 
 [connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="Shake" to="Shake" method="_on_body_entered"]

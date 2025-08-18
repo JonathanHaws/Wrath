@@ -4,6 +4,7 @@ extends Node
 @export var LOCK_ON_SPEED = 7
 @export var LOCK_ON_OFFSET: float = 4.0
 @export var LOCK_ON_AREA: Area3D
+@export var lock_on_ui: Control 
 var lock_on_activated = false
 var lock_on_target: Area3D
 var lock_on_targets: Array[Area3D] = []
@@ -48,11 +49,11 @@ func _process(_delta: float) -> void:
 			lock_on_target = null
 
 	if lock_on_activated and is_instance_valid(lock_on_target):
-		self.visible = true
-		self.position = CAMERA.unproject_position(lock_on_target.global_transform.origin)
+		lock_on_ui.visible = true
+		lock_on_ui.position = CAMERA.unproject_position(lock_on_target.global_position)
 	else:
 		lock_on_activated = false
-		self.visible = false
+		lock_on_ui.visible = false
 		
 func _physics_process(_delta: float) -> void:
 	

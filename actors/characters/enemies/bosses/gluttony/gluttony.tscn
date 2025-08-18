@@ -779,29 +779,28 @@ script = ExtResource("19_4cd86")
 scenes = Array[PackedScene]([ExtResource("20_kav4y")])
 copy_transform_node = NodePath(".")
 
-[node name="Ui" type="Control" parent="."]
+[node name="Ui" type="Control" parent="." groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
-anchors_preset = 5
 anchor_left = 0.5
+anchor_top = 0.017
 anchor_right = 0.5
-offset_top = 5.0
-offset_bottom = 5.0
+anchor_bottom = 0.099
 grow_horizontal = 2
 size_flags_horizontal = 3
+script = ExtResource("21_28k33")
+metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui" groups=["ui_scalable"]]
+[node name="VBoxContainer" type="VBoxContainer" parent="Ui"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -450.0
-offset_top = 12.0
 offset_right = 450.0
-offset_bottom = 103.0
+offset_bottom = 50.0
 grow_horizontal = 2
 pivot_offset = Vector2(450, 0)
-script = ExtResource("21_28k33")
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" parent="Ui/VBoxContainer" node_paths=PackedStringArray("tracked_node") instance=ExtResource("21_fddld")]
@@ -818,8 +817,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = ExtResource("23_wlv32")
-text = "GLUTTONY
-"
+text = "GLUTTONY"
 horizontal_alignment = 1
 uppercase = true
 
