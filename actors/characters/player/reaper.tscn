@@ -1,4 +1,4 @@
-[gd_scene load_steps=91 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=92 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -46,6 +46,7 @@
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://actors/squash.gd" id="41_utjob"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_shake.gd" id="42_k5idf"]
 [ext_resource type="PackedScene" uid="uid://clbxqusx74r6s" path="res://actors/characters/particles/dust_jump.tscn" id="42_p6b07"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="43_ekykk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5idf"]
 radius = 0.274293
@@ -1890,14 +1891,26 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
 
+[node name="LockOnIndicator" type="ProgressBar" parent="." node_paths=PackedStringArray("CAMERA", "SpringArm", "LOCK_ON_AREA") groups=["ui_scalable"]]
+offset_left = 976.0
+offset_top = 543.0
+offset_right = 984.0
+offset_bottom = 551.0
+theme_override_styles/fill = SubResource("StyleBoxFlat_wub5s")
+value = 100.0
+show_percentage = false
+script = ExtResource("17_5cvkf")
+CAMERA = NodePath("../SpringArm3D/Camera3D")
+SpringArm = NodePath("../SpringArm3D")
+LOCK_ON_AREA = NodePath("../SpringArm3D/Camera3D/LockOnArea")
+
 [node name="UI" type="Control" parent="." groups=["ui_scalable"]]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(0, 720)
+grow_vertical = 0
+script = ExtResource("43_ekykk")
 
 [node name="Stamina" parent="UI" node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
 layout_mode = 1
@@ -1943,20 +1956,6 @@ value = 10.0
 expands = true
 tracked_node = NodePath("../../Hitbox")
 pixel_expansion_rate = 8.0
-
-[node name="LockOnIndicator" type="ProgressBar" parent="UI" node_paths=PackedStringArray("CAMERA", "SpringArm", "LOCK_ON_AREA") groups=["ui_scalable"]]
-layout_mode = 0
-offset_left = 976.0
-offset_top = -177.0
-offset_right = 984.0
-offset_bottom = -169.0
-theme_override_styles/fill = SubResource("StyleBoxFlat_wub5s")
-value = 100.0
-show_percentage = false
-script = ExtResource("17_5cvkf")
-CAMERA = NodePath("../../SpringArm3D/Camera3D")
-SpringArm = NodePath("../../SpringArm3D")
-LOCK_ON_AREA = NodePath("../../SpringArm3D/Camera3D/LockOnArea")
 
 [node name="UpgradeLabel" type="Label" parent="UI"]
 modulate = Color(1, 1, 1, 0)

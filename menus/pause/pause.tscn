@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cqcx34rswnnw1"]
+[gd_scene load_steps=9 format=3 uid="uid://cqcx34rswnnw1"]
 
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_0l1fl"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_o8gx4"]
 [ext_resource type="Script" uid="uid://pccpxg1y2tdf" path="res://menus/pause/skip.gd" id="2_mcy3d"]
 [ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://menus/pause/restart.gd" id="3_f26je"]
@@ -14,10 +15,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
 metadata/_edit_use_anchors_ = true
 
-[node name="Main" type="VBoxContainer" parent="."]
+[node name="Main" type="VBoxContainer" parent="." groups=["ui_scalable"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -25,12 +28,14 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -48.0
-offset_top = -58.0
+offset_top = -94.0
 offset_right = 48.0
-offset_bottom = 58.0
+offset_bottom = 94.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(48, 94)
 alignment = 1
+script = ExtResource("1_0l1fl")
 
 [node name="Skip" type="Button" parent="Main"]
 layout_mode = 2

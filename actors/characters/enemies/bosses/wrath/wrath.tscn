@@ -1,4 +1,4 @@
-[gd_scene load_steps=70 format=3 uid="uid://b3urcqmix8s8g"]
+[gd_scene load_steps=71 format=3 uid="uid://b3urcqmix8s8g"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_fvlx1"]
 [ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://actors/characters/enemies/sfx/Hit_1.wav" id="3_nbwf2"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="22_r385c"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="24_do1jg"]
 [ext_resource type="Material" uid="uid://biupco8dcn4xr" path="res://actors/characters/enemies/bosses/wrath/wrath_material.tres" id="27_a67hc"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="28_x676q"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://actors/slow_motion.gd" id="29_8mxmx"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_shake.gd" id="30_r1aqn"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="31_4oeto"]
@@ -1573,26 +1574,23 @@ copy_transform_node = NodePath(".")
 [node name="Ui" type="Control" parent="."]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = -10.0
-offset_right = 20.0
-offset_bottom = 30.0
+anchors_preset = 10
+anchor_right = 1.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Ui" groups=["ui_scalable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -452.0
-offset_top = 20.0
+offset_top = 5.0
 offset_right = 448.0
-offset_bottom = 111.0
+offset_bottom = 96.0
 grow_horizontal = 2
+pivot_offset = Vector2(450, 0)
+script = ExtResource("28_x676q")
 
 [node name="HealthBar" parent="Ui/VBoxContainer" node_paths=PackedStringArray("tracked_node") instance=ExtResource("17_r1aqn")]
 custom_minimum_size = Vector2(900, 8.645)
@@ -1629,24 +1627,24 @@ SCENE_ROOT = NodePath("..")
 [node name="wrath" parent="Mesh" instance=ExtResource("10_h46di")]
 
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
-bones/1/position = Vector3(1.17855e-17, -0.30565, 0.753459)
-bones/1/rotation = Quaternion(0.396863, 4.23847e-17, 9.80287e-17, 0.917878)
-bones/2/rotation = Quaternion(0.317489, -0.00962752, -0.0103468, 0.948157)
-bones/2/scale = Vector3(1.00033, 1.00033, 1.00033)
-bones/3/rotation = Quaternion(0.105172, 0.172178, 0.733226, 0.649364)
-bones/4/rotation = Quaternion(-0.0226311, 0.260283, 0.226415, 0.938337)
-bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
+bones/1/position = Vector3(-7.12175e-17, 0.0829432, 0.518257)
+bones/1/rotation = Quaternion(0.520187, 5.55556e-17, 9.12122e-17, 0.854052)
+bones/2/rotation = Quaternion(0.44874, 0.0700146, 0.0109544, 0.890848)
+bones/2/scale = Vector3(1, 1, 1)
+bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
+bones/4/rotation = Quaternion(-0.311907, 0.0595853, 0.06399, 0.946081)
+bones/5/rotation = Quaternion(-0.24248, -0.0244624, -0.55864, 0.792797)
 bones/6/rotation = Quaternion(-0.0822429, 0.000622971, 0.134669, 0.987472)
-bones/7/rotation = Quaternion(-0.286936, -0.00310852, 0.00203131, 0.957943)
-bones/8/rotation = Quaternion(0.106541, -0.168894, -0.722042, 0.662404)
-bones/9/rotation = Quaternion(0.00051178, -0.047476, -0.273848, 0.9606)
-bones/10/rotation = Quaternion(-0.354697, 0.17596, -0.204672, 0.895175)
+bones/7/rotation = Quaternion(0.133427, 0.0109242, 0.0142063, 0.990897)
+bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
+bones/9/rotation = Quaternion(-0.261447, -0.127177, -0.0656431, 0.954548)
+bones/10/rotation = Quaternion(-0.132812, 0.100298, 0.579723, 0.797635)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
 material_override = ExtResource("27_a67hc")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.827675, -0.232787, -0.511291, 0.389843, -0.893523, -0.224262, -0.404512, -0.384814, 0.830025, -2.4477, 2.15935, 0.496727)
+transform = Transform3D(0.505877, -0.5616, -0.654747, 0.68493, 0.722919, -0.0908775, 0.524366, -0.402483, 0.750365, -2.49903, 3.45239, 1.2576)
 bone_name = "hand_l"
 bone_idx = 6
 script = ExtResource("22_r385c")
@@ -1664,7 +1662,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.933411, 0.355088, -0.0575285, -0.254817, -0.765616, -0.591231, -0.253901, -0.537027, 0.804854, 2.48682, 2.08332, 0.546855)
+transform = Transform3D(0.396301, 0.599593, 0.695294, -0.711407, 0.679263, -0.180284, -0.580384, -0.42319, 0.695747, 2.80491, 3.39074, 0.768294)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1681,7 +1679,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3" groups=["wrath"]]
-transform = Transform3D(0.999927, 0.013512, -0.0248349, -0.0107465, 0.994386, 0.108332, 0.0261507, -0.108022, 0.994134, 3.38859e-23, 0.950392, 0.0862353)
+transform = Transform3D(0.989956, 0.0433192, 0.134576, 0.0204509, 0.898009, -0.439502, -0.139889, 0.43784, 0.888103, 2.87231e-23, 1, 0.100295)
 bone_name = "torso"
 bone_idx = 2
 

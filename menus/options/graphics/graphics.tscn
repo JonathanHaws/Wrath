@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://byffyuaxv71sc"]
+[gd_scene load_steps=10 format=3 uid="uid://byffyuaxv71sc"]
 
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_ll3a5"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_oc2qo"]
 [ext_resource type="Script" uid="uid://c6c4lhniukers" path="res://menus/options/graphics/bloom_toggle.gd" id="2_jcns5"]
 [ext_resource type="Script" uid="uid://cwe5bc001ljso" path="res://menus/options/graphics/enviroment_adjustment.gd" id="3_oc2qo"]
 [ext_resource type="Script" uid="uid://dntrkxgi76mi" path="res://menus/options/graphics/ssao_toggle.gd" id="4_ll3a5"]
@@ -24,6 +25,7 @@ offset_top = -178.0
 offset_right = 384.0
 offset_bottom = 43.0
 color = Color(0.0646965, 0.0646965, 0.0646965, 0.913725)
+script = ExtResource("1_oc2qo")
 
 [node name="Brightness" type="Label" parent="ColorRect"]
 layout_mode = 2

@@ -23,6 +23,7 @@ shader_parameter/albedo_texture = ExtResource("3_6t1gf")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/emission_texture = ExtResource("4_lb714")
 shader_parameter/emission_texture_intensity = 1.0
+shader_parameter/emission_texture_enabled = true
 shader_parameter/inside_color = Color(0.548963, 0.548963, 0.548963, 1)
 shader_parameter/dissolve_amount = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_k5hc3")
@@ -216,7 +217,7 @@ area = NodePath("../Area3D")
 dialogue_templates = Array[PackedScene]([ExtResource("9_qmj27"), ExtResource("10_hnncu")])
 dialogue_file = ExtResource("10_asfo8")
 
-[node name="Background" type="ProgressBar" parent="Dialogue"]
+[node name="Background" type="ProgressBar" parent="Dialogue" groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 7
 anchor_left = 0.5
@@ -228,8 +229,9 @@ offset_top = -274.0
 offset_right = 991.5
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_horizontal = 3
+pivot_offset = Vector2(991.5, 274)
 theme_override_styles/background = SubResource("StyleBoxFlat_k5hc3")
 show_percentage = false
+metadata/_edit_use_anchors_ = true
 
 [editable path="greed"]

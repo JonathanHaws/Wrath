@@ -48,14 +48,14 @@ void fragment() {
 	vec3 surface_color = albedo;
 	ALBEDO = surface_color;
 	//ALBEDO = vec3(border_mask);
-	
+
 	vec3 surface_emisson = mix(vec3(0.0), glow_color, border_mask);
 	if (emission_texture_enabled) {
 		surface_emisson += texture(emission_texture, UV).rgb * emission_texture_intensity;
 	}
-		
+
 	EMISSION = surface_emisson * glow_intensitiy;
-		
+
 	ALPHA = dissolve_noise;
 	ALPHA_SCISSOR_THRESHOLD = dissolve_amount;
 

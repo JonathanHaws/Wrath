@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://byk6752w0gnw2"]
+[gd_scene load_steps=49 format=3 uid="uid://byk6752w0gnw2"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_kn2im"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hitbox.gd" id="2_q2lvp"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://l4b37mckqf8k" path="res://actors/characters/enemies/proximity_based_random_attacks.gd" id="18_wqa85"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/particles.gd" id="19_4cd86"]
 [ext_resource type="PackedScene" uid="uid://bemj0qglnoue4" path="res://actors/characters/enemies/bosses/gluttony/gluttony_hurt_particles.tscn" id="20_kav4y"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="21_28k33"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="21_fddld"]
 [ext_resource type="StyleBox" uid="uid://bw47y3rgbs5wu" path="res://actors/characters/enemies/bosses/gluttony/gluttony_health.tres" id="22_28k33"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="23_wlv32"]
@@ -784,23 +785,24 @@ layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = -11.0
-offset_right = 20.0
-offset_bottom = 29.0
+offset_top = 5.0
+offset_bottom = 5.0
 grow_horizontal = 2
 size_flags_horizontal = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Ui" groups=["ui_scalable"]]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -452.0
-offset_top = 20.0
-offset_right = 448.0
-offset_bottom = 111.0
+offset_left = -450.0
+offset_top = 12.0
+offset_right = 450.0
+offset_bottom = 103.0
 grow_horizontal = 2
+pivot_offset = Vector2(450, 0)
+script = ExtResource("21_28k33")
+metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" parent="Ui/VBoxContainer" node_paths=PackedStringArray("tracked_node") instance=ExtResource("21_fddld")]
 custom_minimum_size = Vector2(900, 8.645)

@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cls12q06quifx"]
+[gd_scene load_steps=10 format=3 uid="uid://cls12q06quifx"]
 
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="1_48c50"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_gkebh"]
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="2_gkebh"]
 [ext_resource type="FontFile" uid="uid://dpdckaagju1of" path="res://fonts/Wrath.otf" id="3_03rxr"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="4_n4yvo"]
@@ -9,9 +10,22 @@
 [ext_resource type="Script" uid="uid://dbk4ank3cq0ny" path="res://menus/title_screen/quit.gd" id="7_nikc7"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_8af7w"]
 
-[node name="Main" type="VBoxContainer"]
+[node name="Main" type="VBoxContainer" groups=["ui_scalable"]]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -360.0
+offset_right = -279.0
+offset_bottom = 255.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(180.5, 307.5)
 focus_mode = 2
 alignment = 1
+script = ExtResource("1_gkebh")
 
 [node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
 position = Vector2(-779.5, -302.5)

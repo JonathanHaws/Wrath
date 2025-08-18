@@ -16,10 +16,10 @@ var resolutions = {
 	"640x480": Vector2i(640,480),
 	"480x320": Vector2i(480,320),
 	"320x240": Vector2i(320,240),
-	"240x160": Vector2i(240,160),
-	"160x120": Vector2i(160,120),
-	"128x96": Vector2i(128,96),
-	"64x48": Vector2i(64,48),
+	#"240x160": Vector2i(240,160),
+	#"160x120": Vector2i(160,120),
+	#"128x96": Vector2i(128,96),
+	#"64x48": Vector2i(64,48),
 }
 
 func _ready() -> void:
@@ -45,9 +45,6 @@ func _ready() -> void:
 
 func _apply_resolution(index: int) -> void:
 	var key := get_item_text(index)
-	if resolutions.has(key):
-		var res_size = resolutions[key]  
-		var window = get_tree().get_root().get_window()
-		window.content_scale_size = res_size
-		Config.save_setting("display", "resolution_width", res_size.x)
-		Config.save_setting("display", "resolution_height", res_size.y)
+	if not resolutions.has(key): return
+	Config.change_resolution(resolutions[key])
+	

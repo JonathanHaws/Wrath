@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://xoc7exqkdoqd"]
+[gd_scene load_steps=3 format=3 uid="uid://xoc7exqkdoqd"]
 
 [ext_resource type="PackedScene" uid="uid://cls12q06quifx" path="res://menus/title_screen/main.tscn" id="1_cxw4u"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_d36jx"]
 
 [node name="Menu" type="CanvasLayer"]
 process_mode = 3
+follow_viewport_enabled = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -15,20 +17,22 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
 
-[node name="CenterContainer" type="CenterContainer" parent="."]
+[node name="CenterContainer" type="CenterContainer" parent="." groups=["ui_scalable"]]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -63.5
-offset_top = -189.0
-offset_right = 63.5
-offset_bottom = 189.0
+offset_left = -180.5
+offset_top = -307.5
+offset_right = 180.5
+offset_bottom = 307.5
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(180.5, 307.5)
 size_flags_horizontal = 3
 size_flags_vertical = 3
+script = ExtResource("1_d36jx")
 
 [node name="Main" parent="CenterContainer" instance=ExtResource("1_cxw4u")]
 layout_mode = 2

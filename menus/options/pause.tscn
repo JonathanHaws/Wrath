@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://cxja4xs36njyv"]
 
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_44kt7"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_c0mv7"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="1_gh5rx"]
 [ext_resource type="Script" uid="uid://blcresco6qh8i" path="res://menus/options/sensitivity.gd" id="2_77qd8"]
 [ext_resource type="Script" uid="uid://d2hxlmmmtfynf" path="res://menus/options/volume_adjustment.gd" id="2_gh5rx"]
-[ext_resource type="Script" uid="uid://drleh3em50i3" path="res://menus/options/ui_scale.gd" id="4_aui3o"]
 [ext_resource type="Script" uid="uid://cehsklglvnhkr" path="res://menus/options/resolution.gd" id="4_dtlus"]
 [ext_resource type="Script" uid="uid://yd63tscy6h1n" path="res://menus/options/window_mode_dropdown.gd" id="4_i2ivw"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="5_q1b1x"]
@@ -19,10 +19,11 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+theme = ExtResource("1_44kt7")
 color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
 metadata/_edit_use_anchors_ = true
 
-[node name="Options" type="VBoxContainer" parent="."]
+[node name="Options" type="VBoxContainer" parent="." groups=["ui_scalable"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,11 +31,13 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -139.5
-offset_top = -122.0
+offset_top = -182.0
 offset_right = 139.5
-offset_bottom = 122.0
+offset_bottom = 182.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(139.5, 182)
+script = ExtResource("1_c0mv7")
 
 [node name="Sensitivity" type="HBoxContainer" parent="Options"]
 layout_mode = 2
@@ -129,41 +132,20 @@ value = 100.0
 script = ExtResource("2_gh5rx")
 bus_name = "Music"
 
-[node name="UIScale" type="HBoxContainer" parent="Options"]
-visible = false
-layout_mode = 2
-theme = ExtResource("1_44kt7")
-alignment = 1
-
-[node name="Label" type="Label" parent="Options/UIScale"]
-visible = false
-layout_mode = 2
-theme = ExtResource("1_44kt7")
-text = "UI SCALE:"
-
-[node name="HSlider" type="HSlider" parent="Options/UIScale"]
-visible = false
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("1_44kt7")
-min_value = 0.5
-max_value = 3.0
-step = 0.1
-value = 1.0
-script = ExtResource("4_aui3o")
-
 [node name="Resolution" type="OptionButton" parent="Options"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = ExtResource("1_44kt7")
+alignment = 2
+fit_to_longest_item = false
 script = ExtResource("4_dtlus")
 
 [node name="WindowMode" type="OptionButton" parent="Options"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_44kt7")
+alignment = 1
 selected = 0
 item_count = 3
 popup/item_0/text = "FULLSCREEN"

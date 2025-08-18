@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://5n4cvh6cqc4p"]
+[gd_scene load_steps=28 format=3 uid="uid://5n4cvh6cqc4p"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_7ckn6"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_i1vh2"]
@@ -13,6 +13,7 @@
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="11_0yniq"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="12_62dvu"]
 [ext_resource type="FontFile" uid="uid://dpdckaagju1of" path="res://fonts/Wrath.otf" id="13_gm8kg"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="13_v2tb1"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="14_d1ner"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
@@ -330,13 +331,13 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
 [node name="spin" parent="Portal/Mesh" index="1"]
-transform = Transform3D(0.961004, 0.276532, 0, -0.276532, 0.961004, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(0.196424, -0.980518, 0, 0.980518, 0.196424, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Portal/Mesh/flames_2" index="0"]
-transform = Transform3D(-0.886267, 0.491806, -8.60688e-16, -0.491806, -0.886267, 6.12982e-15, 2.22171e-15, 5.7775e-15, 1.01358, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(0.760234, -0.545559, 5.35326e-16, 0.545559, 0.760234, 2.26425e-15, -1.75505e-15, -1.52748e-15, 0.93573, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Portal/Mesh/flames_1" index="0"]
-transform = Transform3D(-0.886267, 0.491806, -8.60688e-16, -0.491806, -0.886267, 6.12982e-15, 2.22171e-15, 5.7775e-15, 1.01358, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(0.760234, -0.545559, 5.35326e-16, 0.545559, 0.760234, 2.26425e-15, -1.75505e-15, -1.52748e-15, 0.93573, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Portal/Mesh" index="4"]
 autoplay = "Spin"
@@ -375,7 +376,7 @@ size_flags_vertical = 3
 color = Color(0, 0, 0, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="Portal/Cinematic/ColorRect"]
+[node name="Label" type="Label" parent="Portal/Cinematic/ColorRect" groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -395,6 +396,7 @@ theme_override_font_sizes/font_size = 56
 text = "THANK YOU FOR PLAYING!"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("13_v2tb1")
 metadata/_edit_use_anchors_ = true
 
 [node name="Camera3D" type="Camera3D" parent="Portal/Cinematic"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dx5gfq7hao3tx"]
+[gd_scene load_steps=6 format=3 uid="uid://dx5gfq7hao3tx"]
 
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="1_jqg1t"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_273l6"]
 
 [sub_resource type="Animation" id="Animation_2ys8b"]
 length = 0.001
@@ -130,3 +131,4 @@ theme_override_font_sizes/font_size = 50
 text = "3000"
 horizontal_alignment = 1
 vertical_alignment = 1
+script = ExtResource("2_273l6")
