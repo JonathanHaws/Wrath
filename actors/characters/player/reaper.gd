@@ -33,10 +33,10 @@ var has_been_on_floor = false
 var jump_buffer = 0;
 
 func increase_damage_each_spin():
-	ATTACK_AREA.damage_multiplier *= SPIN_DAMAGE_MULTIPLIER
+	if ATTACK_AREA: ATTACK_AREA.damage_multiplier *= SPIN_DAMAGE_MULTIPLIER
 	
 func reset_spin_damage():
-	ATTACK_AREA.damage_multiplier = 1
+	if ATTACK_AREA: ATTACK_AREA.damage_multiplier = 1
 
 func reload_checkpoint() -> void:
 	await get_tree().process_frame
@@ -78,7 +78,8 @@ func in_interruptible_animation() -> bool:
 		"PLUNGE",
 		"DOOR",
 		"ESCAPE",
-		"INTRODUCTION"
+		"INTRODUCTION",
+		"PIGLET_PICKUP"
 		
 	]
 

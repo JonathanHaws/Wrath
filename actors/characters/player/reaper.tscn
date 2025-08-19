@@ -1,4 +1,4 @@
-[gd_scene load_steps=92 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=84 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -6,9 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://dv38k4hi68nft" path="res://actors/characters/player/sfx/Spawn.wav" id="2_ykn11"]
 [ext_resource type="AudioStream" uid="uid://5n5whpag62f2" path="res://actors/characters/player/sfx/Spawn_New.wav" id="3_2tmqw"]
 [ext_resource type="Script" uid="uid://binnxxydkjgul" path="res://actors/characters/player/god_mode.gd" id="3_4anjp"]
-[ext_resource type="Texture2D" uid="uid://bm1u48mshqrkg" path="res://actors/characters/player/mesh/textures/cloak/color.png" id="3_7534y"]
 [ext_resource type="PackedScene" uid="uid://xbs1vkc0kdgm" path="res://actors/characters/player/mesh/reaper.blend" id="3_k4avc"]
-[ext_resource type="Texture2D" uid="uid://ckp765x2kgtit" path="res://actors/characters/player/mesh/textures/cloak/emisson.png" id="4_0idoq"]
 [ext_resource type="AudioStream" uid="uid://cv08lxjw3rypc" path="res://actors/characters/player/sfx/Jump.wav" id="4_i3uf6"]
 [ext_resource type="AudioStream" uid="uid://cxfh7l5kksro3" path="res://actors/characters/player/sfx/Land.wav" id="5_7kpka"]
 [ext_resource type="PackedScene" uid="uid://00xupixtbxf5" path="res://actors/characters/player/horizontal_slash_particle.tscn" id="5_p6b07"]
@@ -27,18 +25,17 @@
 [ext_resource type="Script" uid="uid://ccjt2mmin66uh" path="res://actors/characters/player/camera/lock_on.gd" id="17_5cvkf"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="18_dtcwh"]
 [ext_resource type="AudioStream" uid="uid://ca1jfg0asj5b6" path="res://actors/characters/player/sfx/Windown.wav" id="18_pc8iq"]
-[ext_resource type="Texture2D" uid="uid://c5qhpwg8w7djb" path="res://actors/characters/player/mesh/textures/cloak/alpha.png" id="19_0hpbp"]
 [ext_resource type="AudioStream" uid="uid://dlwicer3j08q8" path="res://actors/characters/player/sfx/Spawn_Void.wav" id="20_5d6ad"]
 [ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://actors/characters/player/stamina_fill.tres" id="20_gpejb"]
 [ext_resource type="Script" uid="uid://brd3ehk2rfsfr" path="res://actors/characters/player/tracker/death_count_tracker.gd" id="20_m1s71"]
 [ext_resource type="AudioStream" uid="uid://bbwub6xco4f00" path="res://actors/props/sfx/Wind.wav" id="22_ogp31"]
-[ext_resource type="Texture2D" uid="uid://cilvyugj78b4q" path="res://actors/characters/player/mesh/textures/body/color.png" id="23_6p2vh"]
 [ext_resource type="Script" uid="uid://dsby53pm3kd0g" path="res://actors/characters/player/save_property.gd" id="23_75wkf"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="24_m1s71"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://actors/characters/enemies/sfx/Slam.wav" id="25_8i186"]
-[ext_resource type="Texture2D" uid="uid://c1qayava2cjqm" path="res://actors/characters/player/mesh/textures/staff/color.png" id="27_ecunr"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="29_lwilf"]
+[ext_resource type="Texture2D" uid="uid://cilvyugj78b4q" path="res://actors/characters/player/mesh/textures/body/color.png" id="33_n8vw1"]
 [ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://actors/characters/player/player_health.tres" id="34_6g6ue"]
+[ext_resource type="Texture2D" uid="uid://bm1u48mshqrkg" path="res://actors/characters/player/mesh/textures/cloak/color.png" id="34_75wkf"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="35_lwilf"]
 [ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://actors/characters/player/tracker/play_time_tracker.gd" id="36_5cvkf"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="36_p2pt0"]
@@ -327,39 +324,27 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_3l6eq"]
 resource_name = "HURT"
-length = 0.625004
+length = 0.0335
 step = 0.0416667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/0/path = NodePath(".:TURN_MULTIPLIER")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [true]
+"values": [1.0]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:TURN_MULTIPLIER")
+tracks/1/path = NodePath("Audio")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Audio")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -367,13 +352,13 @@ tracks/2/keys = {
 "method": &"play_2d_sound"
 }]
 }
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SlowMotion")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SlowMotion")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -381,45 +366,57 @@ tracks/3/keys = {
 "method": &"impact"
 }]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_kk21r"]
 resource_name = "Idle"
 length = 1.20834
 loop_mode = 1
 step = 0.0416667
-tracks/0/type = "value"
+tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
+"clips": PackedStringArray("Idle"),
+"times": PackedFloat32Array(0)
 }
-tracks/1/type = "animation"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/1/path = NodePath("SpringArm3D/FovLerp:target_fov")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": PackedStringArray("Idle"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [80.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SpringArm3D/FovLerp:target_fov")
+tracks/2/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [80.0]
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_fw2bj"]
@@ -501,50 +498,100 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
+"update": 1,
+"values": [1.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [1.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:TURN_MULTIPLIER")
+tracks/3/path = NodePath("SpringArm3D/FovLerp:target_fov")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [90.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SpringArm3D/FovLerp:target_fov")
+tracks/4/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_yinxs"]
+resource_name = "PIGLET_PICKUP"
+length = 8.0
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("PigletPickup"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7.96667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [90.0]
+"values": [0, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/LookAtModifier3D:influence")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 7.3, 7.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_5cvkf"]
@@ -585,25 +632,13 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.3, 1.0]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/3/path = NodePath("Audio")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.125),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [false, true]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Audio")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -611,31 +646,43 @@ tracks/4/keys = {
 "method": &"play_2d_sound"
 }]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
-tracks/5/interp = 0
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.2]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("SlowMotion")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SlowMotion")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.1, 0.0],
 "method": &"impact"
 }]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_p2pt0"]
@@ -669,50 +716,50 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/0/path = NodePath(".:SPEED_MULTIPLIER")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
+"update": 1,
+"values": [1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/path = NodePath("ColorRect:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect:color")
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 0)]
+"values": [1.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:TURN_MULTIPLIER")
+tracks/3/path = NodePath("SpringArm3D/Camera3D:current")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
+"update": 1,
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -729,62 +776,74 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SpringArm3D/Camera3D:current")
+tracks/5/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [0.2]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
+tracks/6/path = NodePath("SpringArm3D/FovLerp:target_fov")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.2]
+"values": [70.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SpringArm3D/FovLerp:target_fov")
+tracks/7/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [70.0]
+"values": [1.0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/8/path = NodePath("UI:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("UI:modulate")
+tracks/9/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/LookAtModifier3D:influence")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_w2nfg"]
@@ -857,13 +916,37 @@ tracks/4/keys = {
 "method": &"reset_spin_damage"
 }]
 }
-tracks/5/type = "method"
+tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Mesh/reaper/Armature/Skeleton3D/left_foot/dust_trail_l")
+tracks/5/path = NodePath("SpringArm3D/FovLerp:target_fov")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0.0416667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [90.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/left_foot/dust_trail_l")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0.0833333, 0.208333),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -874,13 +957,13 @@ tracks/5/keys = {
 "method": &"spawn"
 }]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Mesh/reaper/Armature/Skeleton3D/right_foot/dust_trail_r")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/right_foot/dust_trail_r")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0.324463, 0.458333),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
@@ -891,54 +974,18 @@ tracks/6/keys = {
 "method": &"spawn"
 }]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("SpringArm3D/FovLerp:target_fov")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.0416667),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [90.0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
-tracks/8/interp = 0
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
 
 [sub_resource type="Animation" id="Animation_376u0"]
 resource_name = "Spin"
 length = 0.375004
 step = 0.0416667
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/0/path = NodePath("Audio")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Audio")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.125),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -946,47 +993,47 @@ tracks/1/keys = {
 "method": &"play_2d_sound"
 }]
 }
-tracks/2/type = "animation"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/reaper/AnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "clips": PackedStringArray("Spin"),
 "times": PackedFloat32Array(0)
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:SPEED_MULTIPLIER")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0.05]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:TURN_MULTIPLIER")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:TURN_MULTIPLIER")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Mesh/Slash")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/Slash")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0.0833333),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -994,19 +1041,31 @@ tracks/5/keys = {
 "method": &"spawn"
 }]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0.208333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"increase_damage_each_spin"
 }]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_4nekk"]
@@ -1068,11 +1127,11 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Mesh/reaper/Armature/Skeleton3D/left_foot/dust_trail_l")
+tracks/4/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/left_foot/dust_trail_l")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.208333),
+"times": PackedFloat32Array(0.2079),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -1082,7 +1141,7 @@ tracks/4/keys = {
 tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Mesh/reaper/Armature/Skeleton3D/right_foot/dust_trail_r")
+tracks/5/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/right_foot/dust_trail_r")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1108,37 +1167,13 @@ tracks/0/keys = {
 "clips": PackedStringArray("Windown"),
 "times": PackedFloat32Array(0)
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/1/path = NodePath("Audio")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.0833333, 0.291667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [false, true]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Audio")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0.125),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -1146,55 +1181,67 @@ tracks/3/keys = {
 "method": &"play_2d_sound"
 }]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath(".:SPEED_MULTIPLIER")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.333333, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0.1, 0.0, 1]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath(".:TURN_MULTIPLIER")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:TURN_MULTIPLIER")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.35, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 1.0]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("SpringArm3D/FovLerp:target_fov")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpringArm3D/FovLerp:target_fov")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.208333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [90.0, 90.0]
 }
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Mesh/Slash")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/Slash")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0.0833333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0, null],
 "method": &"spawn"
 }]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.291667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [false, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_qldqy"]
@@ -1285,6 +1332,7 @@ _data = {
 &"IDLE": SubResource("Animation_kk21r"),
 &"INTRODUCTION": SubResource("Animation_fw2bj"),
 &"JUMPING": SubResource("Animation_wfofs"),
+&"PIGLET_PICKUP": SubResource("Animation_yinxs"),
 &"PLUNGE": SubResource("Animation_5cvkf"),
 &"PLUNGE_FALL": SubResource("Animation_p2pt0"),
 &"RESET": SubResource("Animation_2to1h"),
@@ -1503,76 +1551,28 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0gmj"]
 size = Vector3(12.7935, 22.7476, 51.4006)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_eoc4h"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mvekr"]
-noise = SubResource("FastNoiseLite_eoc4h")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckevw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_12tax"]
 render_priority = 0
 shader = ExtResource("18_dtcwh")
-shader_parameter/albedo_texture = ExtResource("23_6p2vh")
+shader_parameter/albedo_texture = ExtResource("33_n8vw1")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/emission_texture_intensity = 0.0
 shader_parameter/emission_texture_enabled = true
 shader_parameter/inside_color = Color(0, 0, 0, 1)
 shader_parameter/dissolve_amount = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_mvekr")
-shader_parameter/glow_color = Color(0.85098, 0.592157, 0.490196, 1)
+shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
 shader_parameter/glow_intensitiy = 1.77
 shader_parameter/glow_border_width = 0.018
 shader_parameter/glow_border_smoothness = 0.003
 shader_parameter/normal_strength = 1.0
 shader_parameter/use_normal_map = false
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_xbltt"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_22u42"]
-noise = SubResource("FastNoiseLite_xbltt")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_py1jt"]
-render_priority = 0
-shader = ExtResource("18_dtcwh")
-shader_parameter/albedo_texture = ExtResource("3_7534y")
-shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/emission_texture_intensity = 0.0
-shader_parameter/emission_texture_enabled = true
-shader_parameter/inside_color = Color(0, 0, 0, 1)
-shader_parameter/dissolve_amount = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_22u42")
-shader_parameter/glow_color = Color(0.851798, 0.591134, 0.49063, 1)
-shader_parameter/glow_intensitiy = 1.77
-shader_parameter/glow_border_width = 0.018
-shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_strength = 1.0
-shader_parameter/use_normal_map = false
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_4jko3"]
-size = Vector3(43.5623, 2.2914, 1.20326)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h5p68"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1s71"]
 transparency = 1
-albedo_color = Color(0.501407, 0.501406, 0.501406, 1)
-albedo_texture = ExtResource("19_0hpbp")
-albedo_texture_msdf = true
+albedo_texture = ExtResource("34_75wkf")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ybm87"]
-render_priority = 0
-shader = ExtResource("18_dtcwh")
-shader_parameter/albedo_texture = ExtResource("27_ecunr")
-shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/emission_texture = ExtResource("4_0idoq")
-shader_parameter/emission_texture_intensity = 4.13
-shader_parameter/emission_texture_enabled = true
-shader_parameter/inside_color = Color(0, 0, 0, 1)
-shader_parameter/dissolve_amount = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_22u42")
-shader_parameter/glow_color = Color(0.851798, 0.591134, 0.49063, 1)
-shader_parameter/glow_intensitiy = 1.77
-shader_parameter/glow_border_width = 0.018
-shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_strength = 1.0
-shader_parameter/use_normal_map = false
+[sub_resource type="BoxShape3D" id="BoxShape3D_12tax"]
+size = Vector3(1.22162, 1.39923, 0.2724)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wub5s"]
 bg_color = Color(0.82, 0.82, 0.82, 0.298039)
@@ -1596,7 +1596,7 @@ axis_lock_angular_z = true
 script = ExtResource("1_0b6a6")
 CAMERA = NodePath("SpringArm3D/Camera3D")
 MESH = NodePath("Mesh")
-ATTACK_AREA = NodePath("Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D")
+ATTACK_AREA = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D")
 ANIM = NodePath("AnimationPlayer")
 MESH_ANIM = NodePath("Mesh/reaper/AnimationPlayer")
 COLLISON_SHAPE = NodePath("CollisionShape3D")
@@ -1736,7 +1736,7 @@ transform = Transform3D(1, 0, 0, 0, 0.989224, -0.146411, 0, 0.146411, 0.989224, 
 shape = SubResource("BoxShape3D_y0gmj")
 debug_color = Color(0.7, 0.7, 0.7, 0)
 
-[node name="Mesh" type="Node3D" parent="."]
+[node name="Mesh" type="Node3D" parent="." groups=["player_mesh"]]
 
 [node name="Slash" type="Node3D" parent="Mesh" node_paths=PackedStringArray("copy_transform_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988243, -0.52316)
@@ -1755,100 +1755,90 @@ omni_range = 30.0
 
 [node name="reaper" parent="Mesh" instance=ExtResource("3_k4avc")]
 
-[node name="Skeleton3D" parent="Mesh/reaper/Armature" index="0"]
-bones/0/rotation = Quaternion(-0.707089, -0.00501628, 0.00501628, 0.707089)
-bones/1/position = Vector3(0.0101866, 0.191824, 0.842012)
-bones/1/rotation = Quaternion(0.666525, 0.00528841, -0.00472851, 0.745449)
-bones/2/rotation = Quaternion(1.86264e-09, 1.21443e-07, -1.86265e-09, 1)
-bones/3/position = Vector3(-0.134822, 0.052576, -0.00378909)
-bones/3/rotation = Quaternion(-0.0791568, -0.242246, 0.807361, 0.532184)
-bones/4/rotation = Quaternion(-0.708254, 0.120146, -0.332469, 0.61107)
-bones/5/rotation = Quaternion(-0.106005, -0.0843838, 0.0754514, 0.987902)
-bones/6/rotation = Quaternion(-0.645197, -0.369968, -0.17571, 0.644957)
-bones/7/position = Vector3(0.0950237, 0.298836, -0.0378842)
+[node name="Skeleton3D" parent="Mesh/reaper/Reaper" index="0"]
+bones/0/position = Vector3(0.101293, -0.0463622, 0.269199)
+bones/0/rotation = Quaternion(-0.667396, -0.00473469, 0.00528289, 0.744669)
+bones/1/position = Vector3(0.0113472, 0.193721, 0.850908)
+bones/1/rotation = Quaternion(0.666167, 0.00529121, -0.00472649, 0.745769)
+bones/2/rotation = Quaternion(-5.82296e-11, 1.21473e-07, -1.86429e-09, 1)
+bones/3/position = Vector3(-0.10896, 0.0732725, -0.183036)
+bones/3/rotation = Quaternion(-0.240659, -0.542814, 0.693665, 0.407756)
+bones/4/rotation = Quaternion(-0.200541, 0.330307, -0.129013, 0.913256)
+bones/5/rotation = Quaternion(-0.106005, -0.0843838, 0.0754515, 0.987902)
+bones/6/rotation = Quaternion(-0.0208747, -0.508618, -0.113183, 0.853265)
+bones/7/position = Vector3(0.0950238, 0.298836, -0.0378841)
 bones/7/rotation = Quaternion(-0.0880253, 0.319577, -0.443777, 0.832577)
-bones/8/position = Vector3(0.0402783, 0.37375, 0.0192499)
-bones/8/rotation = Quaternion(-0.590165, -0.329685, -0.328786, 0.659479)
-bones/9/rotation = Quaternion(0.0407485, 0.00161644, -0.00980106, 0.99912)
-bones/10/position = Vector3(0.0739062, 0.0863639, 2.37346e-08)
-bones/10/rotation = Quaternion(-0.115372, -0.050699, -0.859753, 0.494917)
-bones/11/rotation = Quaternion(-0.458322, -0.406508, 0.068734, 0.787381)
-bones/12/rotation = Quaternion(-0.0341439, 0.039829, 0.140836, 0.988642)
-bones/13/rotation = Quaternion(-0.680775, 0.0647394, -0.215597, 0.697046)
-bones/14/position = Vector3(0.0097023, 0.14449, -0.0938516)
+bones/8/position = Vector3(0.0402785, 0.373751, 0.0192499)
+bones/8/rotation = Quaternion(-0.1533, -0.354122, -0.086165, 0.918516)
+bones/9/rotation = Quaternion(0.000589064, -0.0080381, 0.241614, 0.970339)
+bones/10/position = Vector3(0.176749, 0.0768573, -0.164328)
+bones/10/rotation = Quaternion(-0.208765, 0.625405, -0.647661, 0.381866)
+bones/11/rotation = Quaternion(-0.11141, -0.461361, 0.0948327, 0.875066)
+bones/12/rotation = Quaternion(-0.0341438, 0.039829, 0.140836, 0.988642)
+bones/13/rotation = Quaternion(-0.00585428, 0.254709, -0.133032, 0.957806)
+bones/14/position = Vector3(0.00970239, 0.14449, -0.0938517)
 bones/14/rotation = Quaternion(-0.498519, -8.94973e-05, 0.259607, 0.827093)
 bones/15/position = Vector3(-0.104507, 0.226166, -0.0265586)
 bones/15/rotation = Quaternion(-0.396715, 0.383495, -0.189197, 0.812252)
-bones/16/position = Vector3(-0.0745593, -0.0469273, -3.05887e-08)
-bones/16/rotation = Quaternion(0.0101559, -0.186483, 0.982371, 0.0083134)
-bones/17/rotation = Quaternion(0.0230632, 0.000157504, 0.00323349, 0.999729)
-bones/18/rotation = Quaternion(-0.61167, 0.00253319, 0.000890185, 0.791109)
-bones/19/position = Vector3(0.0745593, -0.0469273, -3.16411e-08)
+bones/16/position = Vector3(-0.0745592, -0.0469273, -7.49192e-08)
+bones/16/rotation = Quaternion(0.0101608, -0.18705, 0.982263, 0.00830665)
+bones/17/rotation = Quaternion(0.0233908, 0.000163059, 0.00322738, 0.999721)
+bones/18/rotation = Quaternion(-0.61167, 0.00253319, 0.000890186, 0.791109)
+bones/19/position = Vector3(0.0745592, -0.0469273, -5.61748e-08)
 bones/19/rotation = Quaternion(-0.00628432, 0.120802, 0.992616, -0.00893624)
-bones/20/rotation = Quaternion(0.0230632, -0.00015751, -0.0032335, 0.999729)
+bones/20/rotation = Quaternion(0.0234168, -0.000162157, -0.00322876, 0.999721)
 bones/21/rotation = Quaternion(-0.792553, 0.0020302, -0.00182285, 0.609797)
-bones/22/position = Vector3(0.112145, 0.46721, 1.02388)
-bones/22/rotation = Quaternion(0.602369, -0.40178, 0.123678, 0.678548)
+bones/22/position = Vector3(0.164699, 0.0176181, 1.15013)
+bones/22/rotation = Quaternion(0.122881, -0.473445, 0.798272, 0.351443)
 
-[node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.99982, -0.0154743, -0.0110165, 0.0115822, -0.0369603, -0.99925, 0.0150555, -0.999197, 0.037133, -0.0896339, 0.0166852, -0.127979)
-bone_name = "foot_l"
-bone_idx = 18
+[node name="blind_fold" parent="Mesh/reaper/Reaper/Skeleton3D" index="0"]
+surface_material_override/0 = SubResource("ShaderMaterial_12tax")
 
-[node name="dust_trail_r" type="Node3D" parent="Mesh/reaper/Armature/Skeleton3D/right_foot" node_paths=PackedStringArray("copy_transform_node")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -0.243597, -0.056907, -0.00231815)
-script = ExtResource("15_lwilf")
-scenes = Array[PackedScene]([ExtResource("6_bo8be")])
-copy_transform_node = NodePath(".")
+[node name="collar" parent="Mesh/reaper/Reaper/Skeleton3D" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_m1s71")
 
-[node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.99982, -0.0154743, -0.0110165, 0.0115822, -0.0369603, -0.99925, 0.0150555, -0.999197, 0.037133, -0.0896339, 0.0166852, -0.127979)
-bone_name = "foot_l"
-bone_idx = 18
-
-[node name="dust_trail_l" type="Node3D" parent="Mesh/reaper/Armature/Skeleton3D/left_foot" node_paths=PackedStringArray("copy_transform_node")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0.0660789, 0.166047, -0.0468715)
-script = ExtResource("15_lwilf")
-scenes = Array[PackedScene]([ExtResource("6_bo8be")])
-copy_transform_node = NodePath(".")
-
-[node name="blind_fold" parent="Mesh/reaper/Armature/Skeleton3D" index="2"]
-material_override = SubResource("ShaderMaterial_ckevw")
-
-[node name="body" parent="Mesh/reaper/Armature/Skeleton3D" index="3"]
-material_override = SubResource("ShaderMaterial_ckevw")
-
-[node name="cloak" parent="Mesh/reaper/Armature/Skeleton3D" index="4"]
-material_override = SubResource("ShaderMaterial_py1jt")
-
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Armature/Skeleton3D" index="5"]
-transform = Transform3D(0.636638, -0.662006, -0.395526, 0.703357, 0.708769, -0.0541692, 0.316197, -0.24371, 0.916856, 0.0976071, 1.02537, -0.21721)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5"]
+transform = Transform3D(-0.730852, -0.667467, -0.142631, 0.564021, -0.708294, 0.4245, -0.384364, 0.2298, 0.894123, 0.249728, 1.10104, 0.377189)
 bone_name = "staff_2"
 bone_idx = 22
 
-[node name="Area3D" type="Area3D" parent="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("animation_player") groups=["player"]]
-transform = Transform3D(-0.0339621, 0, 0, 0, -0.906183, 0, 0, 0, -0.198858, 0, 0, 0)
+[node name="Area3D" type="Area3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("animation_player") groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00983417, 0.964215, 0.00320163)
 script = ExtResource("29_lwilf")
 damage = 50
-damage_spread = 1
 save_damage = true
 save_key = "damage"
 animation_player = NodePath("../../../../../../Upgrade")
 upgrade_animation = "DAMAGE"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D"]
-transform = Transform3D(0.999992, -3.83705e-06, 6.52671e-06, -6.55651e-07, 0.999998, -3.8743e-07, -8.9407e-07, -2.04146e-06, 1.00001, -2.81159, -1.29673, -0.4417)
-shape = SubResource("BoxShape3D_4jko3")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0249939, 0.199615, 0.0218811)
+shape = SubResource("BoxShape3D_12tax")
 disabled = true
-debug_color = Color(0.44, 0.0792, 0.0792, 0.537255)
 
-[node name="collar" parent="Mesh/reaper/Armature/Skeleton3D" index="6"]
-material_override = SubResource("StandardMaterial3D_h5p68")
+[node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="6"]
+transform = Transform3D(-0.999794, -0.0170243, -0.0110436, 0.00979389, 0.0718204, -0.99737, 0.0177727, -0.997272, -0.0716388, 0.0121075, 0.020494, -0.105337)
+bone_name = "foot_l"
+bone_idx = 18
 
-[node name="staff" parent="Mesh/reaper/Armature/Skeleton3D" index="7"]
-material_override = SubResource("ShaderMaterial_ybm87")
+[node name="dust_trail_l" type="Node3D" parent="Mesh/reaper/Reaper/Skeleton3D/left_foot" node_paths=PackedStringArray("copy_transform_node")]
+transform = Transform3D(-0.999716, 0.00169688, 0.0237513, 3.64147e-07, 0.997459, -0.0712467, -0.0238119, -0.0712265, -0.997176, -0.208212, 7.58414e-08, -0.00495933)
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("6_bo8be")])
+copy_transform_node = NodePath(".")
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/reaper/Armature/Skeleton3D" index="8"]
+[node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="7"]
+transform = Transform3D(-0.999794, -0.0170243, -0.0110436, 0.00979389, 0.0718204, -0.99737, 0.0177727, -0.997272, -0.0716388, 0.0121075, 0.020494, -0.105337)
+bone_name = "foot_l"
+bone_idx = 18
+
+[node name="dust_trail_r" type="Node3D" parent="Mesh/reaper/Reaper/Skeleton3D/right_foot" node_paths=PackedStringArray("copy_transform_node")]
+transform = Transform3D(-0.999716, 0.00169688, 0.0237513, 3.64147e-07, 0.997459, -0.0712467, -0.0238119, -0.0712265, -0.997176, 0, 0, 0)
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("6_bo8be")])
+copy_transform_node = NodePath(".")
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="8"]
 target_node = NodePath("../../../../../SpringArm3D/Camera3D/HeadFollowTarget")
 bone_name = "head"
 bone = 9
@@ -1999,7 +1989,6 @@ theme = ExtResource("24_m1s71")
 text = "WISP STAMINA INCREASED"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
-[connection signal="body_entered" from="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D" to="Mesh/reaper/Armature/Skeleton3D/BoneAttachment3D/Area3D" method="_on_body_entered"]
 
 [editable path="Mesh/reaper"]
 [editable path="UI/Stamina"]
