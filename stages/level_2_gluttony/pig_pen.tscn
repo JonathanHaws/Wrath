@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d0qec5kl2ju4u" path="res://actors/characters/enemies/bosses/wrath/wrath_preview.tscn" id="10_el64o"]
 [ext_resource type="PackedScene" uid="uid://blxvkukk5u1ps" path="res://actors/characters/enemies/bosses/greed/greed_preview.tscn" id="11_el64o"]
 [ext_resource type="PackedScene" uid="uid://byk6752w0gnw2" path="res://actors/characters/enemies/bosses/gluttony/gluttony.tscn" id="12_efe6f"]
-[ext_resource type="PackedScene" uid="uid://wlhsn0forped" path="res://actors/characters/npcs/piglet/piglet.blend" id="13_i5fvn"]
+[ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://actors/characters/npcs/piglet/piglet.tscn" id="13_i5fvn"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -94,5 +94,5 @@ visible = false
 [node name="Greed" parent="." instance=ExtResource("12_efe6f")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 29.4307, -8.57605, 0.494595)
 
-[node name="piglet" parent="." instance=ExtResource("13_i5fvn")]
-transform = Transform3D(-0.191152, 0, 0.981561, 0, 1, 0, -0.981561, 0, -0.191152, 25.2042, -8.94136, -3.9411)
+[node name="Piglet" parent="." instance=ExtResource("13_i5fvn")]
+transform = Transform3D(0.971619, 0, -0.23655, 0, 1, 0, 0.23655, 0, 0.971619, -1.67795, -9.04355, -13.2824)

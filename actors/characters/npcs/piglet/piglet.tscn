@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://dfri6vhmpkyfv"]
+
+[ext_resource type="PackedScene" uid="uid://wlhsn0forped" path="res://actors/characters/npcs/piglet/piglet.blend" id="1_w7fh2"]
+[ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="2_yln8f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_w7fh2"]
+
+[node name="Piglet" type="Node3D"]
+
+[node name="piglet" parent="." instance=ExtResource("1_w7fh2")]
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="piglet/Armature/Skeleton3D" index="1"]
+target_node = NodePath("../../../../target/OffsetForLookAt")
+bone_name = "head"
+bone = 4
+forward_axis = 2
+primary_rotation_axis = 2
+origin_offset = Vector3(0, 0, -0.995)
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 2.2314
+primary_damp_threshold = 1.0
+secondary_limit_angle = 2.14763
+secondary_damp_threshold = 1.0
+
+[node name="target" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.256931, 3.02241)
+script = ExtResource("2_yln8f")
+
+[node name="OffsetForLookAt" type="Node3D" parent="target"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="LockOn" type="Area3D" parent="."]
+transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 0.498502, -0.0348504)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="LockOn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
+shape = SubResource("BoxShape3D_w7fh2")
+debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
+
+[editable path="piglet"]
