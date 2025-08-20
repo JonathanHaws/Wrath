@@ -1,8 +1,46 @@
-[gd_scene load_steps=8 format=3 uid="uid://dfri6vhmpkyfv"]
+[gd_scene load_steps=10 format=3 uid="uid://dfri6vhmpkyfv"]
 
 [ext_resource type="PackedScene" uid="uid://wlhsn0forped" path="res://actors/characters/npcs/piglet/piglet.blend" id="1_w7fh2"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="2_yln8f"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/npcs/piglet/interaction.gd" id="3_yln8f"]
+
+[sub_resource type="Animation" id="Animation_yln8f"]
+resource_name = "GOBBLED"
+length = 3.7195
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("piglet/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("GOBBLED"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Interaction/CollisionShape3D:disabled")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_7ogmq"]
 resource_name = "PIGLET_PICKUP"
@@ -46,9 +84,38 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_vyj1q"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Interaction/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vyj1q"]
 _data = {
-&"PIGLET_PICKUP": SubResource("Animation_7ogmq")
+&"GOBBLED": SubResource("Animation_yln8f"),
+&"PIGLET_PICKUP": SubResource("Animation_7ogmq"),
+&"RESET": SubResource("Animation_vyj1q")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w7fh2"]
@@ -56,14 +123,43 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_yln8f"]
 size = Vector3(2.68766, 3.2832, 2.31576)
 
-[node name="Piglet" type="Node3D"]
+[node name="Piglet" type="Node3D" groups=["piglet"]]
+visible = false
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["piglet_anim"]]
 libraries = {
 &"": SubResource("AnimationLibrary_vyj1q")
 }
+autoplay = "RESET"
 
 [node name="piglet" parent="." instance=ExtResource("1_w7fh2")]
+
+[node name="Skeleton3D" parent="piglet/Piglet" index="0"]
+bones/0/position = Vector3(0.584278, 0.623723, 0.484995)
+bones/0/rotation = Quaternion(0.368827, 0.691219, 0.615374, -0.0865863)
+bones/1/position = Vector3(-0.102306, -0.226106, 0.466267)
+bones/1/rotation = Quaternion(0.392811, -0.185833, -0.439282, 0.786255)
+bones/2/rotation = Quaternion(0.0139796, 2.54025e-08, -3.26671e-10, 0.999902)
+bones/4/rotation = Quaternion(-0.148661, 0.240704, 0.0165501, 0.959003)
+bones/5/rotation = Quaternion(-0.16068, -8.8945e-08, -1.18384e-08, 0.987006)
+bones/6/rotation = Quaternion(0.151149, 0.0608011, 0.419362, 0.89308)
+bones/7/rotation = Quaternion(-0.479999, 0.0375655, -0.0858094, 0.872254)
+bones/8/rotation = Quaternion(-0.0746408, 0.045318, 0.0142011, 0.996079)
+bones/10/rotation = Quaternion(-0.479999, -0.0375656, 0.0858091, 0.872254)
+bones/11/rotation = Quaternion(-0.074641, -0.0453178, -0.0142008, 0.996079)
+bones/14/position = Vector3(-0.270718, 0.0829145, -0.0860801)
+bones/14/rotation = Quaternion(-0.653112, 0.595141, -0.270241, 0.382388)
+bones/15/rotation = Quaternion(-0.0187564, -0.000111911, 0.0183686, 0.999655)
+bones/16/position = Vector3(0.172982, 0.0877139, -0.240676)
+bones/16/rotation = Quaternion(-0.762221, 0.0461574, 0.0390172, 0.64449)
+bones/17/rotation = Quaternion(-0.0187564, 0.000111961, -0.0183686, 0.999655)
+bones/21/rotation = Quaternion(-0.376347, -2.83854e-08, -4.68547e-07, 0.926479)
+bones/25/position = Vector3(-0.215476, 0.0610137, -0.192475)
+bones/25/rotation = Quaternion(-0.811786, 0.254125, 0.346938, 0.39504)
+bones/26/rotation = Quaternion(-0.387328, 0.149946, 0.0802472, 0.90612)
+bones/27/position = Vector3(0.215475, 0.061014, -0.192475)
+bones/27/rotation = Quaternion(-0.942293, -0.00507824, 0.15046, 0.299031)
+bones/28/rotation = Quaternion(-0.527023, -0.102059, 0.0828904, 0.839619)
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="."]
 target_node = NodePath("../../../../target/OffsetForLookAt")
@@ -94,10 +190,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
 shape = SubResource("BoxShape3D_w7fh2")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
-[node name="Interaction" type="Area3D" parent="." node_paths=PackedStringArray("animation_player", "transform_node")]
+[node name="Interaction" type="Area3D" parent="." node_paths=PackedStringArray("trigger_area", "animation_player", "transform_node")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("3_yln8f")
+trigger_area = NodePath(".")
 animation_player = NodePath("../AnimationPlayer")
 animation_name = &"PIGLET_PICKUP"
 player_anim = &"PIGLET_PICKUP"

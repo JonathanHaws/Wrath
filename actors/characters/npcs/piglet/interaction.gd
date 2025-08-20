@@ -1,4 +1,5 @@
-extends Area3D	
+extends Node
+@export var trigger_area: Area3D	
 @export var animation_player: AnimationPlayer	
 @export var animation_name: StringName = &""	## Animation to play
 @export var player_group_name: String = "player"
@@ -6,9 +7,8 @@ extends Area3D
 @export var player_anim: StringName = &"" ## Corresponding animation 
 
 @export var transform_node: Node3D	## Node3D that will be moved to match player (rotated, translated, transformed)
-@export var target_transform_node_group: String = "player_mesh"	## Node3D that will be moved to match player (rotated, translated, transformed)
+@export var target_transform_node_group: String = "player_mesh" 	## Node3D that will be moved to match player (rotated, translated, transformed)
 var original_global_transforms: Dictionary = {}  
-
 
 func _on_body_entered(body: Node3D) -> void:
 	if not body.is_in_group(player_group_name): return
@@ -50,4 +50,5 @@ func _trigger_corresponding_animation() -> void:
 		node.play(player_anim)
 
 func _ready() -> void:
-	body_entered.connect(_on_body_entered)	# watch for bodies entering
+	if trigger_area:
+		trigger_area.body_entered.connect(_on_body_entered)
