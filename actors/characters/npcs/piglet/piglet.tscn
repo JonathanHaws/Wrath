@@ -134,6 +134,7 @@ _data = {
 size = Vector3(2.68766, 3.2832, 2.31576)
 
 [node name="Piglet" type="Node3D" groups=["piglet"]]
+rotation_edit_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["piglet_anim"]]
 libraries = {
@@ -142,6 +143,7 @@ libraries = {
 autoplay = "RESET"
 
 [node name="piglet" parent="." instance=ExtResource("1_w7fh2")]
+rotation_edit_mode = 1
 
 [node name="Skeleton3D" parent="piglet/Piglet" index="0"]
 bones/0/position = Vector3(0.0143669, 0.00609565, -1.59086)
@@ -214,7 +216,8 @@ animation_name = &"PIGLET_PICKUP"
 target_anim = &"PIGLET_PICKUP"
 parent_transform = NodePath("..")
 child_transform = NodePath("../piglet")
-weight = 1.0
+duration_seconds = 0.5
+weight = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction"]
 transform = Transform3D(0.999997, 4.65661e-09, -1.80153e-08, 1.11759e-08, 0.999997, -2.98023e-08, 1.40863e-08, -1.3411e-07, 0.999995, -0.137741, 1.13558, 0.0584046)

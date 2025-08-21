@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://byk6752w0gnw2"]
+[gd_scene load_steps=53 format=3 uid="uid://byk6752w0gnw2"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_kn2im"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hitbox.gd" id="2_q2lvp"]
@@ -29,6 +29,7 @@
 [ext_resource type="Material" uid="uid://7w72228cchli" path="res://actors/characters/enemies/bosses/gluttony/gluttony_material.tres" id="28_kav4y"]
 [ext_resource type="PackedScene" uid="uid://dshyyn54ur3e1" path="res://actors/characters/enemies/bosses/gluttony/gluttony.blend" id="29_wvvup"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="30_g5uva"]
+[ext_resource type="PackedScene" uid="uid://dfopfbx7m077q" path="res://actors/characters/enemies/bosses/gluttony/gluttony_projectile.tscn" id="30_nxhq0"]
 [ext_resource type="AudioStream" uid="uid://cp5swwd4tlolh" path="res://actors/characters/enemies/bosses/gluttony/gluttony.ogg" id="31_28k33"]
 [ext_resource type="PackedScene" uid="uid://cat4e2my2so35" path="res://actors/props/music_area/music_area.tscn" id="31_vp0ol"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/npcs/piglet/interaction.gd" id="32_12e26"]
@@ -686,13 +687,82 @@ tracks/14/keys = {
 "values": [1.0]
 }
 
+[sub_resource type="Animation" id="Animation_12e26"]
+resource_name = "SHOOT"
+length = 5.0
+step = 0.0416667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/Vomit")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.708333, 0.875, 1.04167, 1.25, 1.38068, 1.54734, 1.71401, 1.92234, 2.14406, 2.31072, 2.47739, 2.68572),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0833333, 0.208333, 3.125, 3.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 1.0, 0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
 &"CHASE": SubResource("Animation_edx7f"),
 &"DEATH": SubResource("Animation_x1kl7"),
 &"INTRO": SubResource("Animation_mlrdc"),
-&"RESET": SubResource("Animation_jojdm")
+&"RESET": SubResource("Animation_jojdm"),
+&"SHOOT": SubResource("Animation_12e26")
 }
+
+[sub_resource type="Curve" id="Curve_nxhq0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4usqi"]
 height = 0.892645
@@ -774,7 +844,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_cc4qc"]
 size = Vector3(60.1604, 35, 107.815)
 
-[node name="Gluttony" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM") groups=["greed"]]
+[node name="Gluttony" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM") groups=["gluttony"]]
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_kn2im")
@@ -784,12 +854,12 @@ SAVE_KEY_ENCOUNTERED = "gluttony_encountered"
 DOOR_TO_UNLOCK_GROUP = "gluttony_door"
 DEFEATED_KEY = "gluttony_defeated"
 
-[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("BODY", "TELEPORT_NODES_TO_HIT", "ANIMATION_PLAYERS")]
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("BODY", "TELEPORT_NODES_TO_HIT", "ANIMATION_PLAYERS") groups=["gluttony"]]
 script = ExtResource("2_q2lvp")
 HEALTH = 1500
 MAX_HEALTH = 1500
 BODY = NodePath("..")
-IMMUNE_GROUPS = Array[String](["greed"])
+IMMUNE_GROUPS = Array[String](["gluttony"])
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 ANIMATION_PLAYERS = [NodePath("../Damaged"), NodePath("../Attacks")]
 
@@ -822,6 +892,10 @@ autoplay = "RESET"
 playback_auto_capture_ease_type = 2
 next/INTRO = &"CHASE"
 script = ExtResource("18_wqa85")
+ATTACK_ANIMATION = Array[String](["SHOOT"])
+ATTACK_RADIUS = Array[float]([50.0])
+ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_nxhq0")])
+LIKELIHOOD_MULTIPLIERS = Array[float]([50.0])
 LIKELIHOOD_MULTIPLIER = 0.0
 TARGET = NodePath("../Target")
 BODY = NodePath("..")
@@ -880,7 +954,7 @@ attenuation = 0.0145786
 bus = &"SFX"
 
 [node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.149339, 2.69003, 4.14991)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.149339, 2.7633, 4.09734)
 script = ExtResource("24_r4ucj")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 TRACKING_MULTIPLIER = 0.0
@@ -1093,6 +1167,18 @@ settings/0/gravity/damping_curve = null
 settings/0/gravity/direction = Vector3(0, -1, 0)
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="6"]
+transform = Transform3D(0.999424, 0.00432114, -0.0336713, -0.0117225, 0.974783, -0.222847, 0.0318593, 0.223113, 0.974272, 1.45718e-13, 3.03694, 0.242382)
+bone_name = "head"
+bone_idx = 4
+
+[node name="Vomit" type="Node3D" parent="Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("copy_transform_node")]
+transform = Transform3D(-1, 4.48546e-09, 8.73078e-08, 0, 0.998685, -0.0513077, -8.74229e-08, -0.0513077, -0.998684, 0, 0, 0)
+rotation_edit_mode = 1
+script = ExtResource("19_4cd86")
+scenes = Array[PackedScene]([ExtResource("30_nxhq0")])
+copy_transform_node = NodePath(".")
 
 [node name="LockOn" type="Area3D" parent="Mesh"]
 transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 3.55321, 0.229436)
