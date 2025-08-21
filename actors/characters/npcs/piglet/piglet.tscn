@@ -69,19 +69,17 @@ tracks/1/keys = {
 "method": &"_trigger_corresponding_animation"
 }]
 }
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Interaction")
+tracks/2/path = NodePath("piglet/Piglet/Skeleton3D/LookAtModifier3D:influence")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.5, 1.0, Vector3(1, 0, 1)],
-"method": &"_match_transforms"
-}]
+"times": PackedFloat32Array(0, 0.22, 7.5, 7.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_vyj1q"]
@@ -108,7 +106,19 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("piglet/Piglet/Skeleton3D/LookAtModifier3D:influence")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vyj1q"]
@@ -124,7 +134,6 @@ _data = {
 size = Vector3(2.68766, 3.2832, 2.31576)
 
 [node name="Piglet" type="Node3D" groups=["piglet"]]
-visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["piglet_anim"]]
 libraries = {
@@ -135,33 +144,46 @@ autoplay = "RESET"
 [node name="piglet" parent="." instance=ExtResource("1_w7fh2")]
 
 [node name="Skeleton3D" parent="piglet/Piglet" index="0"]
-bones/0/position = Vector3(0.584278, 0.623723, 0.484995)
-bones/0/rotation = Quaternion(0.368827, 0.691219, 0.615374, -0.0865863)
-bones/1/position = Vector3(-0.102306, -0.226106, 0.466267)
-bones/1/rotation = Quaternion(0.392811, -0.185833, -0.439282, 0.786255)
-bones/2/rotation = Quaternion(0.0139796, 2.54025e-08, -3.26671e-10, 0.999902)
-bones/4/rotation = Quaternion(-0.148661, 0.240704, 0.0165501, 0.959003)
-bones/5/rotation = Quaternion(-0.16068, -8.8945e-08, -1.18384e-08, 0.987006)
+bones/0/position = Vector3(0.0143669, 0.00609565, -1.59086)
+bones/0/rotation = Quaternion(3.07477e-06, 0.704094, 0.710107, 1.0553e-05)
+bones/1/position = Vector3(-1.62139e-05, -0.174128, 0.531964)
+bones/1/rotation = Quaternion(0.0308635, -3.27203e-08, -3.66456e-10, 0.999524)
+bones/2/rotation = Quaternion(0.0139844, 0.000163356, -0.0002004, 0.999902)
+bones/4/rotation = Quaternion(0.0963935, 3.0065e-09, 1.09865e-08, 0.995343)
+bones/5/rotation = Quaternion(-0.160674, 6.9422e-05, -8.44379e-07, 0.987008)
 bones/6/rotation = Quaternion(0.151149, 0.0608011, 0.419362, 0.89308)
 bones/7/rotation = Quaternion(-0.479999, 0.0375655, -0.0858094, 0.872254)
 bones/8/rotation = Quaternion(-0.0746408, 0.045318, 0.0142011, 0.996079)
 bones/10/rotation = Quaternion(-0.479999, -0.0375656, 0.0858091, 0.872254)
 bones/11/rotation = Quaternion(-0.074641, -0.0453178, -0.0142008, 0.996079)
-bones/14/position = Vector3(-0.270718, 0.0829145, -0.0860801)
-bones/14/rotation = Quaternion(-0.653112, 0.595141, -0.270241, 0.382388)
-bones/15/rotation = Quaternion(-0.0187564, -0.000111911, 0.0183686, 0.999655)
-bones/16/position = Vector3(0.172982, 0.0877139, -0.240676)
-bones/16/rotation = Quaternion(-0.762221, 0.0461574, 0.0390172, 0.64449)
-bones/17/rotation = Quaternion(-0.0187564, 0.000111961, -0.0183686, 0.999655)
-bones/21/rotation = Quaternion(-0.376347, -2.83854e-08, -4.68547e-07, 0.926479)
-bones/25/position = Vector3(-0.215476, 0.0610137, -0.192475)
-bones/25/rotation = Quaternion(-0.811786, 0.254125, 0.346938, 0.39504)
-bones/26/rotation = Quaternion(-0.387328, 0.149946, 0.0802472, 0.90612)
-bones/27/position = Vector3(0.215475, 0.061014, -0.192475)
-bones/27/rotation = Quaternion(-0.942293, -0.00507824, 0.15046, 0.299031)
-bones/28/rotation = Quaternion(-0.527023, -0.102059, 0.0828904, 0.839619)
+bones/14/position = Vector3(-0.172956, 0.0875945, -0.240647)
+bones/14/rotation = Quaternion(-0.762221, -0.0461574, -0.0390173, 0.644489)
+bones/15/rotation = Quaternion(-0.0187564, -0.000111918, 0.0183685, 0.999655)
+bones/16/position = Vector3(0.172996, 0.0876228, -0.240603)
+bones/16/rotation = Quaternion(-0.762221, 0.0461573, 0.0390172, 0.64449)
+bones/17/rotation = Quaternion(-0.0187565, 0.000111963, -0.0183686, 0.999655)
+bones/21/rotation = Quaternion(-0.376347, -4.14157e-08, -4.63505e-07, 0.926479)
+bones/25/position = Vector3(-0.215429, 0.0609662, -0.192423)
+bones/25/rotation = Quaternion(-0.671517, -0.0386853, -0.00575932, 0.739956)
+bones/26/rotation = Quaternion(-0.0255709, -0.00125225, -0.0193465, 0.999485)
+bones/27/position = Vector3(0.215438, 0.0609676, -0.19237)
+bones/27/rotation = Quaternion(-0.671517, 0.0386854, 0.0057593, 0.739956)
+bones/28/rotation = Quaternion(-0.0255709, 0.00125225, 0.0193465, 0.999485)
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="."]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="piglet/Piglet/Skeleton3D" index="1"]
+transform = Transform3D(-1, -9.44978e-06, 1.99138e-05, 1.93828e-05, 0.0532082, 0.998583, -1.0496e-05, 0.998584, -0.0532083, 0.0143952, 0.539521, -1.76046)
+bone_name = "hip"
+bone_idx = 1
+
+[node name="LockOn" type="Area3D" parent="piglet/Piglet/Skeleton3D/BoneAttachment3D"]
+transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 0.498502, -0.0348504)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="piglet/Piglet/Skeleton3D/BoneAttachment3D/LockOn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
+shape = SubResource("BoxShape3D_w7fh2")
+debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="piglet/Piglet/Skeleton3D" index="2"]
 target_node = NodePath("../../../../target/OffsetForLookAt")
 bone_name = "head"
 bone = 4
@@ -182,23 +204,17 @@ script = ExtResource("2_yln8f")
 [node name="OffsetForLookAt" type="Node3D" parent="target"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="LockOn" type="Area3D" parent="."]
-transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 0.498502, -0.0348504)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="LockOn"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
-shape = SubResource("BoxShape3D_w7fh2")
-debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
-
-[node name="Interaction" type="Area3D" parent="." node_paths=PackedStringArray("trigger_area", "animation_player", "transform_node")]
+[node name="Interaction" type="Area3D" parent="." node_paths=PackedStringArray("trigger_area", "animation_player", "parent_transform", "child_transform")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("3_yln8f")
 trigger_area = NodePath(".")
 animation_player = NodePath("../AnimationPlayer")
 animation_name = &"PIGLET_PICKUP"
-player_anim = &"PIGLET_PICKUP"
-transform_node = NodePath("..")
+target_anim = &"PIGLET_PICKUP"
+parent_transform = NodePath("..")
+child_transform = NodePath("../piglet")
+weight = 1.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction"]
 transform = Transform3D(0.999997, 4.65661e-09, -1.80153e-08, 1.11759e-08, 0.999997, -2.98023e-08, 1.40863e-08, -1.3411e-07, 0.999995, -0.137741, 1.13558, 0.0584046)

@@ -1587,7 +1587,7 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 anti_aliasing = false
 
-[node name="Reaper" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA", "MESH", "ATTACK_AREA", "ANIM", "MESH_ANIM", "COLLISON_SHAPE", "PARTICLES") groups=["player"]]
+[node name="Reaper" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA", "MESH", "ATTACK_AREA", "ANIM", "MESH_ANIM", "COLLISON_SHAPE", "PARTICLES") groups=["player", "player_body"]]
 rotation_edit_mode = 1
 collision_layer = 2
 axis_lock_angular_x = true

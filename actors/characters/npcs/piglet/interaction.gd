@@ -1,54 +1,73 @@
 extends Node
-@export var trigger_area: Area3D	
-@export var animation_player: AnimationPlayer	
-@export var animation_name: StringName = &""	## Animation to play
-@export var player_group_name: String = "player"
-@export var player_anim_group: String = "player_anim" ## Player AnimationPlayer To trigger in the player
-@export var player_anim: StringName = &"" ## Corresponding animation 
+@export_group("Trigger Area")
+@export var trigger_area: Area3D 
+@export var animation_player: AnimationPlayer 
+@export var animation_name: StringName = &"" ## Animation to play in this object
+@export var target_body_group: String = "player" ## Only trigger if body belongs to this group
 
-@export var transform_node: Node3D	## Node3D that will be moved to match player (rotated, translated, transformed)
-@export var target_transform_node_group: String = "player_mesh" 	## Node3D that will be moved to match player (rotated, translated, transformed)
-var original_global_transforms: Dictionary = {}  
+@export_group("Target Animation")
+@export var target_anim_group: String = "player_anim" ## Animationg player group to trigger animation
+@export var target_anim: StringName = &"" ## Corresponding animation 
+
+@export_group("Interpolate Transforms") ## Remember animation tracks properties are update top to bottom in track list
+@export var parent_transform: Node3D## Transform to be aligned
+@export var child_transform: Node3D	 ## Transform thats reset so only parent transform in this object needs to be aligned
+@export var target_parent_transform_group: String = "player_body" ## Transform in other other object to be aligned
+@export var target_child_transform_group: String = "player_mesh" ## Resets local transform so only parent transform has to be Aligned
+@export_subgroup("Interpolation")## Remember animation tracks properties are update top to bottom in track list
+@export_range(0.0, 10.0, 0.01, "or_greater") var duration_seconds: float = 0.0 ## Determines how long the tween takes to align transforms 
+@export_range(0.0, 1.0, 0.01) var weight: float = 0.5 ## Determines how much influences each transform has on the meeting middle point
 
 func _on_body_entered(body: Node3D) -> void:
-	if not body.is_in_group(player_group_name): return
+	if not body.is_in_group(target_body_group): return
 	if not animation_player: return
 	if not animation_name != &"": return
 	if animation_player.is_playing(): return
 	animation_player.play(animation_name)	
 
-func _match_transforms(duration: float = 0.0, transform_weight: float = 1.0, position_weight: Vector3 = Vector3.ONE) -> void:
-	if not transform_node: return
-	for target in get_tree().get_nodes_in_group(target_transform_node_group):	
-		
-		if not original_global_transforms.has(transform_node):
-			original_global_transforms[transform_node] = transform_node.global_transform
-		if not original_global_transforms.has(target):
-			original_global_transforms[target] = target.global_transform
+func _match_transforms() -> void:
+	
+	await get_tree().process_frame
+	var tween = null
+	if duration_seconds > 0.0:
+		tween = create_tween()
+		tween.set_parallel(true)
+	
+	for target_child_transform in get_tree().get_nodes_in_group(target_child_transform_group):
+		for target_parent_transform in get_tree().get_nodes_in_group(target_parent_transform_group):	
+			
+			# Find global middle point between the childrens local transforms
+			var middle = child_transform.global_transform.interpolate_with(target_child_transform.global_transform, weight)
+			
+			if tween: 
+				tween.tween_property(child_transform, "global_transform", middle, duration_seconds)
+				tween.tween_property(parent_transform, "global_transform", middle, duration_seconds)
+				tween.tween_property(target_child_transform, "global_transform", middle, duration_seconds)
+				tween.tween_property(target_parent_transform, "global_transform", middle, duration_seconds)
+			else: 
+				parent_transform.global_transform = middle
+				child_transform.global_transform = middle
+				target_parent_transform.global_transform = middle
+				target_child_transform.global_transform = middle
 
-		# interpolate per axis
-		var start = transform_node.global_transform
-		var end = target.global_transform
-		var middle_transform = start
-		middle_transform.origin = start.origin.lerp(end.origin, transform_weight)
-		middle_transform.origin = Vector3(
-			lerp(start.origin.x, end.origin.x, position_weight.x),
-			lerp(start.origin.y, end.origin.y, position_weight.y),
-			lerp(start.origin.z, end.origin.z, position_weight.z)
-		)
+				
 		
-		var tween1 = create_tween()
-		tween1.tween_property(transform_node, "global_transform", middle_transform, duration)
-		
-		var tween2 = create_tween()
-		tween2.tween_property(target, "global_transform", middle_transform, duration)
-
 func _trigger_corresponding_animation() -> void:
-	for node in get_tree().get_nodes_in_group(player_anim_group):
+	_match_transforms()	
+	for node in get_tree().get_nodes_in_group(target_anim_group):
 		if not node is AnimationPlayer: continue
-		if not node.has_animation(player_anim): continue
-		node.play(player_anim)
+		if not node.has_animation(target_anim): continue
+		node.play(target_anim)
 
 func _ready() -> void:
 	if trigger_area:
 		trigger_area.body_entered.connect(_on_body_entered)
+
+#func _process(delta: float) -> void: # For Debugging
+	#
+	#for node in get_tree().get_nodes_in_group(target_child_transform):
+		#if node is Node3D:
+			#print(node.name, "Target child transform:", node.transform)
+	#
+	#if child_transform:
+		#print("My child_transform local:", child_transform.transform)

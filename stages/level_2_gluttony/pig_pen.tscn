@@ -58,7 +58,7 @@ omni_range = 101.01
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 42.0321, 0, -9.54005, 0)
+transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 89.7055, 0, -9.54005, 0)
 material_override = ExtResource("5_m2l7k")
 mesh = SubResource("BoxMesh_od467")
 
@@ -73,8 +73,8 @@ DESTINATION_SCENE = "uid://cbk056vj32v0p"
 
 [node name="Enter" parent="." instance=ExtResource("7_c6ynn")]
 transform = Transform3D(-4.37112e-08, 0, 1, 0, 1, 0, -1, 0, -4.37112e-08, -22.2895, -9.60013, 1.00536e-06)
-DESTINATION_NODE_NAME = "LightDoor"
-DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
+DESTINATION_NODE_NAME = "Exit"
+DESTINATION_SCENE = "uid://worsh6enfk2g"
 
 [node name="Checkpoint" parent="." instance=ExtResource("9_yyoo5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.43816, -9.11624, 0)
@@ -95,5 +95,4 @@ visible = false
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 29.4307, -8.57605, 0.494595)
 
 [node name="Piglet" parent="." instance=ExtResource("13_i5fvn")]
-transform = Transform3D(0.971619, 0, -0.23655, 0, 1, 0, 0.23655, 0, 0.971619, -1.67795, -9.04355, -10.4396)
-visible = false
+transform = Transform3D(0.971619, 0, -0.23655, 0, 1, 0, 0.23655, 0, 0.971619, -1.67795, -9.04355, 34.9739)
