@@ -40,26 +40,24 @@ func _match_transforms() -> void:
 				for node in [parent_transform, target_parent_transform, child_transform, target_child_transform]:
 					tween.tween_property(node, "global_transform", middle, duration_seconds)
 			else: 
-				for node in [parent_transform, target_parent_transform, child_transform, target_child_transform]:
-					node.global_transform = middle
-
+				parent_transform.global_transform = middle
+				target_parent_transform.global_transform = middle
+				child_transform.global_transform = middle
+				target_child_transform.global_transform = middle
+				
+				#print("Child Local Transform:", child_transform.transform)
+				#print("Target Child Local Transform:", target_child_transform.transform)
+				
 		
 func _trigger_corresponding_animation() -> void:
-	_match_transforms()	
 	for node in get_tree().get_nodes_in_group(target_anim_group):
 		if not node is AnimationPlayer: continue
 		if not node.has_animation(target_anim): continue
 		node.play(target_anim)
+		node.seek(node.current_animation_position, true) # CRUCIAL LINE MAKES IT SO TARGET STATE IS SET RIGHT BEFORE MATCHING TRANSFORM
+		
+	_match_transforms()	#ALWAYS DO THIS AFTER TRIGGERING OTHER ANIMATION
 
 func _ready() -> void:
 	if trigger_area:
 		trigger_area.body_entered.connect(_on_body_entered)
-
-#func _process(delta: float) -> void: # For Debugging
-	#
-	#for node in get_tree().get_nodes_in_group(target_child_transform):
-		#if node is Node3D:
-			#print(node.name, "Target child transform:", node.transform)
-	#
-	#if child_transform:
-		#print("My child_transform local:", child_transform.transform)

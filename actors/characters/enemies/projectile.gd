@@ -6,24 +6,31 @@ extends Node3D
 @export var destroy_on_every_body_entered: bool = true
 @export var destroy_on_every_area_entered: bool = false
 
+@export var home_in_ready: bool = false
 @export var homing: bool = false
 @export var homing_group: String = "player_body"
 @export var homing_speed: float = 2.0  
 @export var homing_offset: Vector3 = Vector3(0, .5, 0)
 
 func _ready():
+	
 	if destroy_area:
 		destroy_area.body_entered.connect(_on_body_entered)
 		destroy_area.area_entered.connect(_on_area_entered)
+	if home_in_ready:
+		await get_tree().process_frame
+		var targets = get_tree().get_nodes_in_group(homing_group)
+		if targets.size() > 0:
+			look_at(targets[0].global_position + homing_offset, Vector3.UP)
 
 func _process(delta):
 	
 	if homing:
 		var targets = get_tree().get_nodes_in_group(homing_group)
 		if targets.size() > 0:
-			var current_rot = global_transform.basis
+			var current_rot = global_transform.basis.orthonormalized()
 			look_at(targets[0].global_position + homing_offset, Vector3.UP)
-			var target_rot = global_transform.basis
+			var target_rot = global_transform.basis.orthonormalized()
 			global_transform.basis = current_rot.slerp(target_rot, homing_speed * delta)
 			
 	translate(Vector3.FORWARD * speed * delta)
