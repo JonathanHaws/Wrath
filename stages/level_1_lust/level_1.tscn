@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://worsh6enfk2g"]
+[gd_scene load_steps=14 format=3 uid="uid://worsh6enfk2g"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_4eh01"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_a6482"]
@@ -15,6 +15,10 @@ vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_2uv2b"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_hgjnn"]
 
 [node name="Main" type="Node3D"]
 
@@ -76,3 +80,13 @@ transform = Transform3D(0.413613, 0, 0.910453, 0, 1, 0, -0.910453, 0, 0.413613, 
 
 [node name="Piglet" parent="." instance=ExtResource("9_2uv2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05158, -9.04356, -10.8999)
+
+[node name="ForTestingInteractionsOkToDelete" type="StaticBody3D" parent="."]
+transform = Transform3D(0.836009, 0, 0.548717, 0, 1, 0, -0.548717, 0, 0.836009, -7.05158, -10.8292, -10.162)
+visible = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ForTestingInteractionsOkToDelete"]
+shape = SubResource("BoxShape3D_2uv2b")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ForTestingInteractionsOkToDelete"]
+mesh = SubResource("BoxMesh_hgjnn")

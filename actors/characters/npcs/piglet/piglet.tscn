@@ -143,7 +143,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_yln8f"]
 size = Vector3(2.68766, 3.2832, 2.31576)
 
-[node name="Piglet" type="Node3D" groups=["piglet"]]
+[node name="Piglet" type="Node3D" groups=["piglet_body"]]
 rotation_edit_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["piglet_anim"]]
@@ -152,7 +152,7 @@ libraries = {
 }
 autoplay = "RESET"
 
-[node name="piglet" parent="." instance=ExtResource("1_w7fh2")]
+[node name="piglet" parent="." groups=["piglet_mesh"] instance=ExtResource("1_w7fh2")]
 rotation_edit_mode = 1
 
 [node name="Skeleton3D" parent="piglet/Piglet" index="0"]
@@ -215,7 +215,7 @@ script = ExtResource("2_yln8f")
 [node name="OffsetForLookAt" type="Node3D" parent="target"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="Interaction" type="Area3D" parent="." node_paths=PackedStringArray("trigger_area", "animation_player", "parent_transform", "child_transform")]
+[node name="Interaction" type="Area3D" parent="." node_paths=PackedStringArray("trigger_area", "animation_player", "body", "mesh")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("3_yln8f")
@@ -223,8 +223,9 @@ trigger_area = NodePath(".")
 animation_player = NodePath("../AnimationPlayer")
 animation_name = &"PIGLET_PICKUP"
 target_anim = &"PIGLET_PICKUP"
-parent_transform = NodePath("..")
-child_transform = NodePath("../piglet")
+body = NodePath("..")
+mesh = NodePath("../piglet")
+duration_seconds = 0.5
 weight = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Interaction"]

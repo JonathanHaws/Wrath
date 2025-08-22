@@ -1231,14 +1231,14 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 27.0089
 
-[node name="GobbleInteraction" type="Node" parent="." node_paths=PackedStringArray("parent_transform", "child_transform")]
+[node name="GobbleInteraction" type="Node" parent="." node_paths=PackedStringArray("body", "mesh")]
 script = ExtResource("32_12e26")
 target_anim_group = "piglet_anim"
 target_anim = &"GOBBLED"
-parent_transform = NodePath("..")
-child_transform = NodePath("../Mesh")
-target_parent_transform_group = "piglet"
-target_child_transform_group = "piglet"
+body = NodePath("..")
+mesh = NodePath("../Mesh")
+target_body_group = "piglet_body"
+target_mesh_group = "piglet_mesh"
 weight = 0.0
 
 [connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]

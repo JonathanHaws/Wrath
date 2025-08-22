@@ -74,7 +74,7 @@ DESTINATION_SCENE = "uid://cbk056vj32v0p"
 [node name="Enter" parent="." instance=ExtResource("7_c6ynn")]
 transform = Transform3D(-4.37112e-08, 0, 1, 0, 1, 0, -1, 0, -4.37112e-08, -22.2895, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Exit"
-DESTINATION_SCENE = "uid://worsh6enfk2g"
+DESTINATION_SCENE = "uid://cjnryqwoknkw5"
 
 [node name="Checkpoint" parent="." instance=ExtResource("9_yyoo5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.43816, -9.11624, 0)
