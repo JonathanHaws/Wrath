@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://byk6752w0gnw2"]
+[gd_scene load_steps=56 format=3 uid="uid://byk6752w0gnw2"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_kn2im"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hitbox.gd" id="2_q2lvp"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://l4b37mckqf8k" path="res://actors/characters/enemies/proximity_based_random_attacks.gd" id="18_wqa85"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/particles.gd" id="19_4cd86"]
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://actors/cinematic.gd" id="19_5f5tj"]
+[ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://actors/characters/dialogue/scenes/chat.tscn" id="19_q0nhg"]
 [ext_resource type="PackedScene" uid="uid://bemj0qglnoue4" path="res://actors/characters/enemies/bosses/gluttony/gluttony_hurt_particles.tscn" id="20_kav4y"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="21_28k33"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="21_fddld"]
@@ -38,6 +39,12 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_28k33"]
 radius = 3.19598
 height = 7.28849
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0nhg"]
+bg_color = Color(0.04, 0.04, 0.04, 0.631373)
+border_width_top = 165
+border_color = Color(0, 0, 0, 0)
+border_blend = true
 
 [sub_resource type="Animation" id="Animation_5k6cf"]
 resource_name = "HURT"
@@ -104,12 +111,6 @@ _data = {
 &"HURT": SubResource("Animation_5k6cf")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_4usqi"]
-height = 0.892645
-radius = 9.61276
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_28k33"]
-
 [sub_resource type="Animation" id="Animation_edx7f"]
 resource_name = "CHASE"
 length = 0.791672
@@ -142,7 +143,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/2/path = NodePath("AnimationPlayer:LIKELIHOOD_MULTIPLIER")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -154,7 +155,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Attacks:ATTACKING")
+tracks/3/path = NodePath("AnimationPlayer:ATTACKING")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -236,7 +237,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/5/path = NodePath("AnimationPlayer:LIKELIHOOD_MULTIPLIER")
 tracks/5/interp = 0
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -260,7 +261,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Attacks:ATTACKING")
+tracks/7/path = NodePath("AnimationPlayer:ATTACKING")
 tracks/7/interp = 0
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -372,7 +373,7 @@ tracks/15/keys = {
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
 resource_name = "INTRO"
-length = 11.6
+length = 16.248
 step = 0.0416667
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -389,7 +390,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/1/path = NodePath("AnimationPlayer:LIKELIHOOD_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -429,7 +430,7 @@ tracks/4/path = NodePath("Shake")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.0833333),
+"times": PackedFloat32Array(7.125),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.2, 3.0],
@@ -443,7 +444,7 @@ tracks/5/path = NodePath("Ui:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(8.75, 9.58333, 11.5833),
+"times": PackedFloat32Array(13.5833, 14.4167, 16.4166),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
@@ -477,7 +478,7 @@ tracks/8/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:inf
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 9.29166, 10),
+"times": PackedFloat32Array(0, 9.29166, 15),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 1.0]
@@ -489,7 +490,7 @@ tracks/9/path = NodePath("IntroCinematic")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 10),
+"times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [],
@@ -520,7 +521,7 @@ tracks/11/path = NodePath("IntroCinematic/Camera3D:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0, 10),
+"times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(7.46145, 10.5319, 20.7818), Vector3(-2.30339, 5.02884, 23.7826)]
@@ -532,7 +533,7 @@ tracks/12/path = NodePath("IntroCinematic/Camera3D:rotation")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 10),
+"times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-0.445059, 0.344704, 0), Vector3(-0.130899, -0.0829014, 0)]
@@ -544,7 +545,7 @@ tracks/13/path = NodePath("IntroCinematic/Camera3D:fov")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 10),
+"times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [42.0, 26.5]
@@ -556,22 +557,56 @@ tracks/14/path = NodePath("IntroCinematic/Camera3D:current")
 tracks/14/interp = 0
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 0.583333, 11.5),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.583333, 3.58333, 7.08333, 16.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [false, true, false]
+"values": [false, true, false, true, false]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("IntroCinematic/ColorRect:color")
-tracks/15/interp = 1
+tracks/15/path = NodePath("IntroCinematic/Shot1:current")
+tracks/15/interp = 0
 tracks/15/loop_wrap = true
 tracks/15/keys = {
+"times": PackedFloat32Array(0, 3.58333, 7.08333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [false, true, false]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("IntroCinematic/ColorRect:color")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
 "times": PackedFloat32Array(0.208333, 0.583333, 0.958333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/17/type = "animation"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("IntroCinematic/Background/Chat")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"clips": PackedStringArray("RESET", "entered", "exited"),
+"times": PackedFloat32Array(0, 4.125, 6.41667)
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("IntroCinematic/Background:modulate")
+tracks/18/interp = 0
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0, 3.91667, 4.125, 6.625, 6.95833),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -663,7 +698,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/7/path = NodePath("AnimationPlayer:LIKELIHOOD_MULTIPLIER")
 tracks/7/interp = 0
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -687,7 +722,7 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Attacks:ATTACKING")
+tracks/9/path = NodePath("AnimationPlayer:ATTACKING")
 tracks/9/interp = 0
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -816,6 +851,40 @@ tracks/19/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
 }
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("IntroCinematic/Shot1:current")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("IntroCinematic/Background:modulate")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/22/type = "animation"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("IntroCinematic/Background/Chat")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"clips": PackedStringArray("RESET"),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_12e26"]
 resource_name = "SHOOT"
@@ -893,6 +962,12 @@ _data = {
 [sub_resource type="Curve" id="Curve_nxhq0"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
 point_count = 1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_4usqi"]
+height = 0.892645
+radius = 9.61276
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_28k33"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_12e26"]
 radius = 3.05987
@@ -973,7 +1048,7 @@ collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_kn2im")
 TARGET = NodePath("Target")
-ANIM = NodePath("Attacks")
+ANIM = NodePath("AnimationPlayer")
 SAVE_KEY_ENCOUNTERED = "gluttony_encountered"
 DOOR_TO_UNLOCK_GROUP = "gluttony_door"
 DEFEATED_KEY = "gluttony_defeated"
@@ -985,7 +1060,7 @@ MAX_HEALTH = 1500
 BODY = NodePath("..")
 IMMUNE_GROUPS = Array[String](["gluttony"])
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
-ANIMATION_PLAYERS = [NodePath("../Damaged"), NodePath("../Attacks")]
+ANIMATION_PLAYERS = [NodePath("../Damaged"), NodePath("../AnimationPlayer")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
@@ -1006,8 +1081,28 @@ script = ExtResource("19_5f5tj")
 ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["GLUTTONY_INTRO"])
 
+[node name="Background" type="ProgressBar" parent="IntroCinematic"]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_top = 0.769444
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+pivot_offset = Vector2(991.5, 274)
+theme_override_styles/background = SubResource("StyleBoxFlat_q0nhg")
+show_percentage = false
+metadata/_edit_use_anchors_ = true
+
+[node name="Chat" parent="IntroCinematic/Background" instance=ExtResource("19_q0nhg")]
+info = ["IM SORRY! I COULDN'T FIND ANY FOOD..."]
+
+[node name="Shot1" type="Camera3D" parent="IntroCinematic"]
+transform = Transform3D(0.876727, -0.146636, -0.458092, 0, 0.952396, -0.304864, 0.480989, 0.267282, 0.834991, -4.37286, 0.471814, 3.22674)
+fov = 79.0
+
 [node name="Camera3D" type="Camera3D" parent="IntroCinematic" groups=["cinematic_camera"]]
-transform = Transform3D(0.958819, -0.0638898, 0.276737, 0, 0.97437, 0.224951, -0.284016, -0.215688, 0.934245, 11.6795, 14.4465, 50.4496)
+transform = Transform3D(0.958819, -0.0638897, 0.276737, 0, 0.97437, 0.224951, -0.284016, -0.215688, 0.934245, 11.6795, 14.4465, 50.4496)
 fov = 10.5
 
 [node name="ColorRect" type="ColorRect" parent="IntroCinematic"]
@@ -1020,10 +1115,27 @@ grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
 [node name="Damaged" type="AnimationPlayer" parent="."]
-root_node = NodePath("../Attacks")
+root_node = NodePath("../AnimationPlayer")
 libraries = {
 &"": SubResource("AnimationLibrary_ri305")
 }
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("TARGET", "BODY")]
+callback_mode_process = 0
+libraries = {
+&"": SubResource("AnimationLibrary_y10ku")
+}
+autoplay = "RESET"
+playback_auto_capture_ease_type = 2
+next/INTRO = &"CHASE"
+script = ExtResource("18_wqa85")
+ATTACK_ANIMATION = Array[String](["SHOOT"])
+ATTACK_RADIUS = Array[float]([50.0])
+ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_nxhq0")])
+LIKELIHOOD_MULTIPLIERS = Array[float]([50.0])
+LIKELIHOOD_MULTIPLIER = 0.0
+TARGET = NodePath("../Target")
+BODY = NodePath("..")
 
 [node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SCENE_ROOT")]
 script = ExtResource("25_q2e76")
@@ -1043,63 +1155,6 @@ disabled = true
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
 [node name="gluttony" parent="Mesh" instance=ExtResource("29_wvvup")]
-
-[node name="Skeleton3D" parent="Mesh/gluttony/Armature" index="0"]
-bones/3/rotation = Quaternion(0.0364025, -2.08248e-09, -4.1993e-09, 0.999337)
-bones/4/position = Vector3(6.6471e-07, 1.41856, 1.394)
-bones/4/rotation = Quaternion(-0.372253, 2.17604e-14, 1.77504e-07, 0.928131)
-bones/8/position = Vector3(-0.00960543, 1.2946, 0.858857)
-bones/8/rotation = Quaternion(0.432439, 0.0140623, -0.0194486, 0.901344)
-bones/9/position = Vector3(0.110252, 1.12204, 1.59764)
-bones/9/rotation = Quaternion(0.872856, 0.395392, 0.128093, -0.255695)
-bones/10/position = Vector3(0.450006, 0.889853, 1.44165)
-bones/10/rotation = Quaternion(0.928259, 0.222239, 0.0389749, -0.295678)
-bones/11/position = Vector3(0.727356, 0.552649, 1.25966)
-bones/11/rotation = Quaternion(0.985079, 0.0923844, 0.0850032, -0.117725)
-bones/12/position = Vector3(0.872712, 0.24881, 1.20457)
-bones/13/position = Vector3(0.518264, 0.296009, 1.38103)
-bones/13/rotation = Quaternion(0.591498, -0.216966, 0.135691, 0.76462)
-bones/14/position = Vector3(0.375222, 0.405028, 1.59358)
-bones/14/rotation = Quaternion(0.421459, -0.32538, 0.144526, 0.834034)
-bones/15/position = Vector3(0.185135, 0.521864, 1.71246)
-bones/15/rotation = Quaternion(0.329791, -0.415291, 0.323407, 0.783696)
-bones/16/position = Vector3(0.815002, 0.38413, 0.0376871)
-bones/21/position = Vector3(-0.122496, 1.09937, 1.59148)
-bones/21/rotation = Quaternion(0.870774, -0.391327, -0.140782, -0.26229)
-bones/22/position = Vector3(-0.355048, 0.899793, 1.46156)
-bones/22/rotation = Quaternion(0.92551, -0.219259, -0.0502532, -0.304683)
-bones/23/position = Vector3(-0.727243, 0.4958, 1.25223)
-bones/23/rotation = Quaternion(0.983395, -0.0872256, -0.0942701, -0.128217)
-bones/24/position = Vector3(-0.802161, 0.200945, 1.2069)
-bones/25/position = Vector3(-0.508971, 0.281764, 1.35655)
-bones/25/rotation = Quaternion(0.600008, 0.183411, -0.142278, 0.765577)
-bones/26/position = Vector3(-0.35606, 0.45066, 1.57997)
-bones/26/rotation = Quaternion(0.452511, 0.252947, -0.204434, 0.830336)
-bones/27/position = Vector3(-0.149493, 0.528757, 1.70311)
-bones/27/rotation = Quaternion(0.348106, 0.388142, -0.336427, 0.784209)
-bones/28/position = Vector3(-0.806772, 0.379592, 0.0558156)
-bones/31/rotation = Quaternion(0.391172, 0.0970122, 0.155146, 0.901944)
-bones/32/rotation = Quaternion(0.262226, 0.422318, 0.281617, 0.820717)
-bones/33/rotation = Quaternion(0.00473458, -0.038002, 0.0392209, 0.998496)
-bones/34/rotation = Quaternion(0.131216, 0.0261481, -0.123854, 0.983239)
-bones/35/rotation = Quaternion(0.0176742, -0.00282868, 0.0942206, 0.995391)
-bones/36/rotation = Quaternion(-0.0480689, 0.0300204, -0.109571, 0.992362)
-bones/37/rotation = Quaternion(0.218068, -0.00324539, 0.119109, 0.968632)
-bones/38/rotation = Quaternion(-0.0711142, -0.0241357, 0.168693, 0.982804)
-bones/39/rotation = Quaternion(0.0349949, 0.00275942, -0.104146, 0.993942)
-bones/40/position = Vector3(-3.46002e-08, 1.07757, -1.51217e-07)
-bones/40/rotation = Quaternion(0.183224, 0.037297, 0.672582, 0.716011)
-bones/40/scale = Vector3(1, 1, 1)
-bones/41/rotation = Quaternion(0.387422, -0.0971148, -0.125372, 0.90816)
-bones/42/rotation = Quaternion(0.254333, -0.409849, -0.310853, 0.818968)
-bones/43/rotation = Quaternion(0.00464923, 0.0380337, -0.0391877, 0.998497)
-bones/44/rotation = Quaternion(0.131079, -0.0262361, 0.123966, 0.983241)
-bones/45/rotation = Quaternion(0.0175431, 0.0028524, -0.0942092, 0.995394)
-bones/46/rotation = Quaternion(-0.0481328, -0.0300941, 0.109555, 0.992359)
-bones/47/rotation = Quaternion(0.217927, 0.00326537, -0.119126, 0.968662)
-bones/48/position = Vector3(0.205624, 0.142293, -0.125775)
-bones/48/rotation = Quaternion(-0.0710281, 0.0241622, -0.168727, 0.982803)
-bones/49/rotation = Quaternion(0.0349046, -0.00271437, 0.104074, 0.993953)
 
 [node name="Retopo" parent="Mesh/gluttony/Armature/Skeleton3D" index="0"]
 material_override = ExtResource("28_kav4y")
@@ -1229,7 +1284,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="6"]
-transform = Transform3D(1, -1.69066e-08, -4.97431e-07, 2.83302e-07, 0.841058, 0.540945, 4.09223e-07, -0.540945, 0.841058, -4.19899e-08, 3.46073, 0.0205288)
+transform = Transform3D(1, 8.52651e-14, -4.76837e-07, -1.64658e-07, 0.938488, -0.345313, 4.47506e-07, 0.345313, 0.938488, 2.02562e-13, 3.03694, 0.242382)
 bone_name = "head"
 bone_idx = 4
 
@@ -1247,23 +1302,6 @@ transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
 shape = SubResource("BoxShape3D_28k33")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
-
-[node name="Attacks" type="AnimationPlayer" parent="." node_paths=PackedStringArray("TARGET", "BODY")]
-callback_mode_process = 0
-libraries = {
-&"": SubResource("AnimationLibrary_y10ku")
-}
-autoplay = "RESET"
-playback_auto_capture_ease_type = 2
-next/INTRO = &"CHASE"
-script = ExtResource("18_wqa85")
-ATTACK_ANIMATION = Array[String](["SHOOT"])
-ATTACK_RADIUS = Array[float]([50.0])
-ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_nxhq0")])
-LIKELIHOOD_MULTIPLIERS = Array[float]([50.0])
-LIKELIHOOD_MULTIPLIER = 0.0
-TARGET = NodePath("../Target")
-BODY = NodePath("..")
 
 [node name="HurtParticles" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node") groups=["teleport_to_attacking_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)

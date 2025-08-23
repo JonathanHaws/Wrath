@@ -1,10 +1,12 @@
 extends AnimationPlayer
-var info: Array = []
+@export var info: Array = []
 
 func _ready():
-	$Control/Label.text = info[0] if info.size() > 0 else ""
+	if info.size() > 0:
+		$Control/Label.text = info[0]
 
 func _process(_delta):
-	if not get_parent().in_range or Input.is_action_just_pressed("talk"): 
-		queue("exited")
-		return
+	var parent = get_parent()
+	if parent and "in_range" in parent:
+		if not parent.in_range or Input.is_action_just_pressed("talk"):
+			queue("exited")

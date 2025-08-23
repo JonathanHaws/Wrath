@@ -322,6 +322,80 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_bud88"]
+resource_name = "GLUTTONY_INTRO"
+length = 16.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 15.8333, 16.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 16.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 16.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:TURN_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 16.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("Idle"),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpringArm3D/Camera3D:current")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(16.4),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_3l6eq"]
 resource_name = "HURT"
 length = 0.0335
@@ -1321,80 +1395,6 @@ tracks/5/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_bud88"]
-resource_name = "GLUTTONY_INTRO"
-length = 11.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 10.9333, 11.6),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 11.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
-tracks/2/interp = 0
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 11.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:TURN_MULTIPLIER")
-tracks/3/interp = 0
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 11.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/4/type = "animation"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Mesh/reaper/AnimationPlayer")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"clips": PackedStringArray("Idle"),
-"times": PackedFloat32Array(0)
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("SpringArm3D/Camera3D:current")
-tracks/5/interp = 0
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(11.5),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b2cvw"]
 _data = {
 &"DEATH": SubResource("Animation_bx4xs"),
@@ -1832,7 +1832,7 @@ omni_range = 30.0
 
 [node name="Skeleton3D" parent="Mesh/reaper/Reaper" index="0"]
 bones/0/rotation = Quaternion(-0.707089, -0.00501628, 0.00501628, 0.707089)
-bones/1/position = Vector3(0.0091361, 0.190122, 0.833438)
+bones/1/position = Vector3(0.0121782, 0.195052, 0.858267)
 bones/1/rotation = Quaternion(0.666525, 0.00528841, -0.00472851, 0.745449)
 bones/2/rotation = Quaternion(1.86264e-09, 1.21443e-07, -1.86265e-09, 1)
 bones/3/position = Vector3(-0.134822, 0.052576, -0.00378909)
@@ -1844,7 +1844,7 @@ bones/7/position = Vector3(0.0950237, 0.298836, -0.0378842)
 bones/7/rotation = Quaternion(-0.0880253, 0.319577, -0.443777, 0.832577)
 bones/8/position = Vector3(0.0402783, 0.37375, 0.0192499)
 bones/8/rotation = Quaternion(-0.590165, -0.329685, -0.328786, 0.659479)
-bones/9/rotation = Quaternion(0.0251047, 0.00248115, -0.0150441, 0.999569)
+bones/9/rotation = Quaternion(0.0699408, -1.50209e-12, 1.66969e-08, 0.997551)
 bones/10/position = Vector3(0.0739062, 0.0863639, 2.37346e-08)
 bones/10/rotation = Quaternion(-0.115372, -0.050699, -0.859753, 0.494917)
 bones/11/rotation = Quaternion(-0.458322, -0.406508, 0.068734, 0.787381)
@@ -1862,7 +1862,7 @@ bones/19/position = Vector3(0.0745593, -0.0469273, -3.16411e-08)
 bones/19/rotation = Quaternion(-0.00628432, 0.120802, 0.992616, -0.00893624)
 bones/20/rotation = Quaternion(0.0230632, -0.00015751, -0.0032335, 0.999729)
 bones/21/rotation = Quaternion(-0.792553, 0.0020302, -0.00182285, 0.609797)
-bones/22/position = Vector3(0.111099, 0.468334, 1.01576)
+bones/22/position = Vector3(0.113597, 0.465105, 1.03929)
 bones/22/rotation = Quaternion(0.602369, -0.40178, 0.123678, 0.678548)
 
 [node name="blind_fold" parent="Mesh/reaper/Reaper/Skeleton3D" index="0"]
@@ -1872,7 +1872,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_12tax")
 surface_material_override/0 = SubResource("StandardMaterial3D_m1s71")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5"]
-transform = Transform3D(0.636638, -0.662005, -0.395527, 0.703357, 0.70877, -0.0541693, 0.316198, -0.24371, 0.916855, 0.0966762, 1.01723, -0.218334)
+transform = Transform3D(0.636638, -0.662005, -0.395527, 0.703357, 0.70877, -0.0541693, 0.316198, -0.24371, 0.916855, 0.0988398, 1.0408, -0.215104)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -1891,7 +1891,7 @@ shape = SubResource("BoxShape3D_12tax")
 disabled = true
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="6"]
-transform = Transform3D(-0.99982, -0.0154742, -0.0110165, 0.0115822, -0.0369606, -0.999249, 0.0150555, -0.999197, 0.0371333, -0.0905626, 0.00809729, -0.126276)
+transform = Transform3D(-0.99982, -0.0154742, -0.0110165, 0.0115822, -0.0369606, -0.999249, 0.0150555, -0.999197, 0.0371333, -0.0878731, 0.0329666, -0.131206)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -1902,7 +1902,7 @@ scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="7"]
-transform = Transform3D(-0.99982, -0.0154742, -0.0110165, 0.0115822, -0.0369606, -0.999249, 0.0150555, -0.999197, 0.0371333, -0.0905626, 0.00809729, -0.126276)
+transform = Transform3D(-0.99982, -0.0154742, -0.0110165, 0.0115822, -0.0369606, -0.999249, 0.0150555, -0.999197, 0.0371333, -0.0878731, 0.0329666, -0.131206)
 bone_name = "foot_l"
 bone_idx = 18
 
