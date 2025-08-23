@@ -34,7 +34,17 @@ func _ready()-> void:
 
 	default_width = size.x
 	default_max_value = max_value
-	difference_bar.value = 0
+	difference_bar.value = value
+	
+	if max_value != tracked_node.get(tracked_max_property):
+		max_value = tracked_node.get(tracked_max_property)
+		difference_bar.max_value = max_value
+		difference_bar.min_value = min_value
+		size.x = default_width + max(0, (max_value - default_max_value) * pixel_expansion_rate)
+
+	if tracked_property in tracked_node:
+		value = tracked_node.get(tracked_property)
+		difference_bar.value  = value
 	
 func _process(_delta)-> void:
 	
@@ -49,6 +59,3 @@ func _process(_delta)-> void:
 		
 		if tracked_property in tracked_node:
 			change_value(tracked_node.get(tracked_property))
-
-
-			

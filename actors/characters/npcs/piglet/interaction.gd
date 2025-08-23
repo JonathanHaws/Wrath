@@ -19,8 +19,8 @@ extends Node
 @export_range(0.0, 10.0, 0.01, "or_greater") var duration_seconds: float = 0.0 ## Determines how long the tween takes to align transforms 
 @export_range(0.0, 1.0, 0.01) var weight: float = 0.5 ## Determines who stays still versus who moves. Usually only want target to move (0). Middle is (0.5)
 
-func _on_body_entered(body: Node3D) -> void:
-	if not body.is_in_group(target_body_group): return
+func _on_body_entered(other_body: Node3D) -> void:
+	if not other_body.is_in_group(target_body_group): return
 	if not animation_player: return
 	if not animation_name != &"": return
 	if animation_player.is_playing(): return
