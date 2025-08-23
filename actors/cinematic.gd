@@ -9,15 +9,20 @@ extends Node
 @export var ANIMATION_NAMES: Array[String]
 var last_player_body : Node = null
 
-func _seamless_camera_transition(cinematic_camera_group_name: String, target_camera_group_name: String, duration: float = 1.5) -> void:
-	var cinematic_list = get_tree().get_nodes_in_group(cinematic_camera_group_name)
-	var target_list = get_tree().get_nodes_in_group(target_camera_group_name)
-	if cinematic_list.size() == 0 or target_list.size() == 0:
-		return
+@export_group("Seamless transition")
+@export var CINEMATIC_CAMERA_GROUP: String = "cinematic_camera"
+@export var TARGET_CAMERA_GROUP: String = "player_camera"
+
+func _seamless_camera_transition(duration: float = 1.5) -> void: # todo add making it go in reverse player cam to cinematic
+	var cinematic_list = get_tree().get_nodes_in_group(CINEMATIC_CAMERA_GROUP)
+	var target_list = get_tree().get_nodes_in_group(TARGET_CAMERA_GROUP)
+	if cinematic_list.size() == 0 or target_list.size() == 0: return
 	var cinematic_camera = cinematic_list[0]
 	var target_camera = target_list[0]
 	var tween = get_tree().create_tween()
+	tween.set_parallel(true)
 	tween.tween_property(cinematic_camera, "global_transform", target_camera.global_transform, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(cinematic_camera, "fov", target_camera.fov, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 
 func _skip_cinematic() -> void:
 	await get_tree().process_frame # Autoload doesnt start playing until after ready so wait until an animation is playing so seek works
@@ -46,6 +51,7 @@ func _play_animations_in_other_nodes() -> void:
 	#print ('playing animations in other nodes')
 	for i in range(ANIMATION_PLAYER_GROUPS.size()):
 		if i >= ANIMATION_NAMES.size(): continue
+		
 		for node in get_tree().get_nodes_in_group(ANIMATION_PLAYER_GROUPS[i]):
 			if node is AnimationPlayer and node.has_animation(ANIMATION_NAMES[i]):
 				node.play(ANIMATION_NAMES[i])

@@ -79,6 +79,7 @@ func in_interruptible_animation() -> bool:
 		"DOOR",
 		"ESCAPE",
 		"INTRODUCTION",
+		"GLUTTONY_INTRO",
 		"PIGLET_PICKUP"
 		
 	]
