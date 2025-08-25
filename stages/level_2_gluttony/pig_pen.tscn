@@ -96,3 +96,11 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 29.4307,
 
 [node name="Piglet" parent="." instance=ExtResource("13_i5fvn")]
 transform = Transform3D(0.971619, 0, -0.23655, 0, 1, 0, 0.23655, 0, 0.971619, -1.67795, -9.04355, 34.9739)
+
+[node name="GreedPreview2" parent="." instance=ExtResource("11_el64o")]
+transform = Transform3D(-0.287595, 0, -0.957752, 0, 1, 0, 0.957752, 0, -0.287595, 26.3782, -9.06787, 9.15673)
+visible = false
+
+[node name="WrathPreview2" parent="." instance=ExtResource("10_el64o")]
+transform = Transform3D(-0.376014, 0, 0.926614, 0, 1, 0, -0.926614, 0, -0.376014, 26.1463, -9.06787, -7.32367)
+visible = false

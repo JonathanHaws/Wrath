@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="2_oveml"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsv7j"]
-albedo_color = Color(0.59, 0.396087, 0.3894, 1)
+albedo_color = Color(0.377757, 0.44866, 0.352352, 1)
 emission_enabled = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_cgbyb"]
