@@ -1592,21 +1592,20 @@ SCENE_ROOT = NodePath("..")
 bones/1/position = Vector3(-7.12175e-17, 0.0829432, 0.518257)
 bones/1/rotation = Quaternion(0.520187, 5.55556e-17, 9.12122e-17, 0.854052)
 bones/2/rotation = Quaternion(0.296613, 1.13845e-07, 3.5359e-08, 0.954998)
-bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
-bones/4/rotation = Quaternion(-0.268814, 0.0521335, 0.2601, 0.925942)
-bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325445, 0.887213)
+bones/4/rotation = Quaternion(-0.18941, 0.085631, 0.344916, 0.915327)
+bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
 bones/6/rotation = Quaternion(-0.0822429, 0.00062297, 0.134669, 0.987472)
-bones/7/rotation = Quaternion(-0.110727, -1.29362e-08, -6.86267e-08, 0.993851)
+bones/7/rotation = Quaternion(-0.29291, -1.6637e-14, -6.98353e-08, 0.95614)
 bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
-bones/9/rotation = Quaternion(-0.217393, -0.0469373, -0.256646, 0.940569)
-bones/10/rotation = Quaternion(-0.455173, 0.0679145, -0.0325445, 0.887213)
+bones/9/rotation = Quaternion(-0.18941, -0.085631, -0.344916, 0.915327)
+bones/10/rotation = Quaternion(-0.455173, 0.0679145, -0.0325446, 0.887213)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
 material_override = ExtResource("27_a67hc")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.823243, 0.0126052, -0.567549, 0.53496, -0.317325, -0.783021, -0.189967, -0.948233, 0.254492, -2.1674, 2.18332, -0.327137)
+transform = Transform3D(-0.924672, -0.00872163, -0.380663, 0.348245, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583956)
 bone_name = "hand_l"
 bone_idx = 6
 script = ExtResource("22_r385c")
@@ -1624,7 +1623,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.836727, 0.081539, 0.541516, -0.531695, -0.357705, -0.76769, 0.131106, -0.930268, 0.342655, 2.27754, 2.14309, -0.149384)
+transform = Transform3D(-0.924672, 0.00872178, 0.380663, -0.348245, -0.423631, -0.836219, 0.153967, -0.905793, 0.394757, 2.01091, 1.84788, -0.0583954)
 bone_name = "hand_r"
 bone_idx = 11
 
