@@ -1,10 +1,6 @@
 extends AnimationPlayer
 
-class Attack:
-	@export var animation_name: StringName
-	@export var radius: float
-	@export var likelihood_curve: Curve
-	@export var multiplier: float = 1.0
+# make it so they use the rescource...
 
 @export var ATTACK_ANIMATION: Array[String] = []
 @export var ATTACK_RADIUS: Array[float] = []

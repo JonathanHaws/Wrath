@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="AttackResource" load_steps=2 format=3 uid="uid://cotco2pgwowrx"]
+
+[ext_resource type="Script" uid="uid://bmjwsjhg4wasd" path="res://actors/characters/enemies/proximity_based_random_attacks/attack_resource.gd" id="1_3l2n8"]
+
+[resource]
+script = ExtResource("1_3l2n8")
+animation_name = &""
+radius = 5.0
+multiplier = 1.0
+metadata/_custom_type_script = "uid://bmjwsjhg4wasd"

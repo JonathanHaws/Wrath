@@ -6,6 +6,9 @@ extends Node3D
 @export var destroy_on_every_body_entered: bool = true
 @export var destroy_on_every_area_entered: bool = false
 
+@export var gravity: float = 0.0  
+var velocity: Vector3
+
 @export var home_in_ready: bool = false
 @export var homing: bool = false
 @export var homing_group: String = "player_body"
@@ -13,6 +16,8 @@ extends Node3D
 @export var homing_offset: Vector3 = Vector3(0, .5, 0)
 
 func _ready():
+	
+	velocity = -global_transform.basis.z * speed  # forward
 	
 	if destroy_area:
 		destroy_area.body_entered.connect(_on_body_entered)
@@ -33,7 +38,7 @@ func _process(delta):
 			var target_rot = global_transform.basis.orthonormalized()
 			global_transform.basis = current_rot.slerp(target_rot, homing_speed * delta)
 			
-	translate(Vector3.FORWARD * speed * delta)
+	translate(velocity * delta)
 
 func _on_body_entered(body: Node) -> void:
 	

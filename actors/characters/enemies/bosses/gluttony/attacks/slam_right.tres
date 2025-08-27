@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AttackResource" load_steps=3 format=3 uid="uid://vvmq2ca0kl7q"]
+
+[ext_resource type="Script" uid="uid://bmjwsjhg4wasd" path="res://actors/characters/enemies/proximity_based_random_attacks/attack_resource.gd" id="1_g6e7s"]
+
+[sub_resource type="Curve" id="Curve_g6e7s"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[resource]
+script = ExtResource("1_g6e7s")
+animation_name = &""
+multiplier = 1.0
+radius = 50.0
+likelihood_curve = SubResource("Curve_g6e7s")
+area_multiplier_groups = Array[StringName]([])
+metadata/_custom_type_script = "uid://bmjwsjhg4wasd"
