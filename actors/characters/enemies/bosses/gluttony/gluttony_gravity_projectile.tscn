@@ -74,7 +74,6 @@ destroy_area = NodePath("Attack")
 body_exclude_groups = Array[String](["gluttony", "player"])
 area_exclude_groups = Array[String](["player", "gluttony"])
 gravity = 7.63
-INPUT_READ_VELOCITY_MULTIPLIER = 0.25
 home_in_ready = true
 
 [node name="Node3D" type="Node3D" parent="."]

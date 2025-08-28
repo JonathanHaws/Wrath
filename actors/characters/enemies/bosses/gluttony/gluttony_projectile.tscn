@@ -74,7 +74,6 @@ speed = 20.0
 destroy_area = NodePath("Attack")
 body_exclude_groups = Array[String](["gluttony", "player"])
 area_exclude_groups = Array[String](["player", "gluttony"])
-INPUT_READ_VELOCITY_MULTIPLIER = 0.25
 home_in_ready = true
 homing_speed = 0.2
 

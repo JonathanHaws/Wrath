@@ -5,7 +5,8 @@ extends AnimationPlayer
 @export var ATTACK_ANIMATION: Array[String] = []
 @export var ATTACK_RADIUS: Array[float] = []
 @export var ATTACK_LIKELEHOOD: Array[Curve] = []
-@export var LIKELIHOOD_MULTIPLIERS: Array[float] = [] #Attacks Pers Second on average
+@export var LIKELIHOOD_MULTIPLIERS: Array[float] = [] ## Attacks Pers Second on average
+@export var AREA_MULTIPLIERS: Array[Area3D] = [] ## Eg. Only let backstab happen if behind... Area that specifies whats considered behind... 
 @export var LIKELIHOOD_MULTIPLIER: float = 1.0
 @export var BLOCKING_ANIMATIONS: Array[String] = ["DEATH", "HURT"]
 @export var BLOCK_IF_ATTACK_PLAYING: bool = true
@@ -30,6 +31,11 @@ func play_random_attack(position: Vector3, target_position: Vector3, delta: floa
 		# Stop new animation from playing if already in attack animation
 		if BLOCK_IF_ATTACK_PLAYING and current_animation in ATTACK_ANIMATION: 
 			multiplier = 0.0
+			
+		# If attack requires player to be inside and they are not set the likelehood to 0	
+		if i < AREA_MULTIPLIERS.size() and AREA_MULTIPLIERS[i] and TARGET.target:
+			if not AREA_MULTIPLIERS[i].overlaps_body(TARGET.target):
+				multiplier = 0.0
 			
 		# Stop new animation from playing if in animation that shouldnt be interupted
 		for blocked_anim in BLOCKING_ANIMATIONS: 

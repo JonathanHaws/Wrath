@@ -4,6 +4,9 @@ extends Button
 var cinematic_node: Node
 var pause_toggle_node: Node
 
+@export var SKIPPABLE_GROUP: String = "skippable"
+@export var SKIPPABLE_MARKER: String = "skippable"
+
 func _skip_cinematic() -> void:
 	if pause_toggle_node: pause_toggle_node.toggle(false)
 	if cinematic_node: cinematic_node._skip_cinematic()
@@ -23,6 +26,14 @@ func _process(_delta: float) -> void:
 		visible = true
 	else:
 		visible = false
+		
+	if Input.is_action_just_pressed("ui_accept"):
+		for node in get_tree().get_nodes_in_group(SKIPPABLE_GROUP):
+			if node is AnimationPlayer and node.is_playing():
+				var anim = node.get_animation(node.current_animation)
+				if SKIPPABLE_MARKER in anim.get_marker_names():
+					var t = anim.get_marker_time(SKIPPABLE_MARKER)
+					node.seek(t, true)
 	
 	
 	
