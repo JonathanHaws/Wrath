@@ -92,6 +92,11 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_1tft3"]
 resource_name = "introduction"
 length = 25.0
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"skip",
+"time": 25.0
+}]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -263,7 +268,7 @@ omni_range = 101.01
 [node name="Reaper" parent="." instance=ExtResource("4_42w7d")]
 transform = Transform3D(0.457082, 0, -0.889425, 0, 1, 0, 0.889425, 0, 0.457082, -21.7503, -8.46191, 87.0511)
 
-[node name="Cinematic" type="AnimationPlayer" parent="." node_paths=PackedStringArray("ANIM") groups=["cinematic"]]
+[node name="Cinematic" type="AnimationPlayer" parent="." node_paths=PackedStringArray("ANIM") groups=["cinematic", "skippable"]]
 libraries = {
 &"": SubResource("AnimationLibrary_n044i")
 }

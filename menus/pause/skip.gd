@@ -27,7 +27,7 @@ func _skip(play_fade: bool = true) -> void:
 func _process(_delta: float) -> void:
 	if not ANIMATION_PLAYER: return
 	if not skippable_animation_playing(): return
-	if Input.is_action_pressed("ui_accept") or Input.is_action_pressed("ui_skip"):
+	if Input.is_action_pressed("ui_accept") or Input.is_action_pressed("skip"):
 		if not ANIMATION_PLAYER.is_playing(): ANIMATION_PLAYER.play(ANIMATION_SKIPPING_NAME)
 		ANIMATION_PLAYER.speed_scale = 1.0
 	else:

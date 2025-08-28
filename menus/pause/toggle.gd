@@ -1,5 +1,5 @@
 # Make sure process mode for this node is 'always' so when game pauses it doesnt pause aswell
-extends CanvasLayer
+extends Node
 func _ready() -> void: toggle(false)
 
 func toggle(paused: bool) -> void:

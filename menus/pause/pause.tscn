@@ -38,6 +38,7 @@ alignment = 1
 script = ExtResource("1_0l1fl")
 
 [node name="Skip" type="Button" parent="Main"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -45,8 +46,6 @@ theme = ExtResource("1_o8gx4")
 text = "SKIP"
 icon_alignment = 1
 script = ExtResource("2_mcy3d")
-CINEMATIC_GROUP = "cinematic"
-PAUSE_TOGGLE_GROUP = "pause_toggle"
 
 [node name="Restart" type="Button" parent="Main"]
 layout_mode = 2

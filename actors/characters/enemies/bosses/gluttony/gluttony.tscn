@@ -366,7 +366,7 @@ length = 17.086
 step = 0.0416667
 markers = [{
 "color": Color(0.775313, 0.518462, 0.324012, 1),
-"name": &"skippable",
+"name": &"skip",
 "time": 16.9167
 }]
 tracks/0/type = "value"
@@ -1490,7 +1490,7 @@ bones/56/rotation = Quaternion(-0.272658, 0.0169688, -0.120778, 0.954349)
 bones/57/rotation = Quaternion(0.0400877, -0.00871226, -0.0882026, 0.995258)
 
 [node name="RightLeg" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.687976, 0.131881, 0.71365, 0.72478, -0.0744644, -0.684945, -0.0371898, 0.988464, -0.146815, 2.61113, -0.112562, 1.96333)
+transform = Transform3D(0.687976, 0.13188, 0.71365, 0.72478, -0.0744643, -0.684945, -0.0371892, 0.988465, -0.146814, 2.61113, -0.112561, 1.96333)
 bone_name = "hoof_r"
 bone_idx = 54
 
@@ -1517,7 +1517,7 @@ shape = SubResource("CapsuleShape3D_uk6rk")
 debug_color = Color(0.73, 0.73, 0.73, 1)
 
 [node name="LeftLeg" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.687976, -0.131881, -0.71365, -0.72478, -0.0744644, -0.684945, 0.0371897, 0.988465, -0.146815, -2.61113, -0.112563, 1.96333)
+transform = Transform3D(0.687977, -0.13188, -0.71365, -0.724779, -0.0744644, -0.684945, 0.0371892, 0.988465, -0.146814, -2.61113, -0.112562, 1.96333)
 bone_name = "hoof_l"
 bone_idx = 57
 
@@ -1670,7 +1670,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="8"]
-transform = Transform3D(1, -9.80423e-08, -1.44114e-07, -6.01888e-08, 0.581715, -0.813392, 1.6358e-07, 0.813392, 0.581715, 6.59051e-14, 3.03694, 0.242382)
+transform = Transform3D(1, 2.55795e-13, -4.76837e-07, -2.9839e-07, 0.780009, -0.625768, 3.71937e-07, 0.625768, 0.780009, -1.00113e-12, 3.03695, 0.242385)
 bone_name = "head"
 bone_idx = 4
 
