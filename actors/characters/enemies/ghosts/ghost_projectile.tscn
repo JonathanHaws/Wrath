@@ -14,8 +14,8 @@ cap_bottom = false
 
 [sub_resource type="SphereMesh" id="SphereMesh_v5ope"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3ab56"]
-size = Vector3(0.567566, 0.678773, 0.977423)
+[sub_resource type="BoxShape3D" id="BoxShape3D_7pvji"]
+size = Vector3(0.567566, 0.678773, 0.589204)
 
 [sub_resource type="Animation" id="Animation_mr47g"]
 length = 0.001
@@ -92,35 +92,37 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="GhostProjectile" type="Node3D" node_paths=PackedStringArray("destroy_area")]
+[node name="GhostProjectile" type="Node3D" node_paths=PackedStringArray("destroy_area", "mesh")]
 script = ExtResource("1_8vmfp")
+speed = 20.0
 destroy_area = NodePath("Attack")
 body_exclude_groups = Array[String](["ghost", "player"])
 area_exclude_groups = Array[String](["player"])
+mesh = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.93627e-08, 0.67174)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.93627e-08, 1.00958)
 material_override = SubResource("StandardMaterial3D_v5ope")
 mesh = SubResource("CylinderMesh_cgbyb")
 skeleton = NodePath("")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(0.345907, 0, 0, 0, -1.51201e-08, 0.345907, 0, -0.345907, -1.51201e-08, 0, -1.576e-08, -0.360545)
+transform = Transform3D(0.345907, 0, 0, 0, -1.51201e-08, 0.345907, 0, -0.345907, -1.51201e-08, 0, -1.576e-08, -0.0227042)
 material_override = SubResource("StandardMaterial3D_v5ope")
 mesh = SubResource("SphereMesh_v5ope")
 skeleton = NodePath("")
 
 [node name="Attack" type="Area3D" parent="." groups=["ghost"]]
-transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
+transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0.375182)
 collision_mask = 2
 script = ExtResource("2_v5ope")
 damage = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0126296, -0.00430307, -0.446377)
-shape = SubResource("BoxShape3D_3ab56")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0126296, -0.00430307, -0.640486)
+shape = SubResource("BoxShape3D_7pvji")
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]

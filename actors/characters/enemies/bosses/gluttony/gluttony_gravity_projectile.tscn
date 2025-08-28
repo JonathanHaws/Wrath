@@ -73,20 +73,19 @@ script = ExtResource("1_e1mm7")
 destroy_area = NodePath("Attack")
 body_exclude_groups = Array[String](["gluttony", "player"])
 area_exclude_groups = Array[String](["player", "gluttony"])
+gravity = 7.63
 home_in_ready = true
-homing_speed = 0.2
 
 [node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.407845)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.93627e-08, 0.67174)
+transform = Transform3D(1, -1.74846e-07, -7.64274e-15, 0, -4.37114e-08, 1, -1.74846e-07, -1, -4.37114e-08, -0.0224094, 2.93627e-08, 1.06086)
 material_override = SubResource("StandardMaterial3D_xsv7j")
 mesh = SubResource("CylinderMesh_cgbyb")
 skeleton = NodePath("")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(0.345907, 0, 0, 0, -1.51201e-08, 0.345907, 0, -0.345907, -1.51201e-08, 0, -1.576e-08, -0.360545)
+transform = Transform3D(0.345907, -6.04803e-08, -2.64368e-15, 2.73463e-22, -1.51201e-08, 0.345907, -6.04803e-08, -0.345907, -1.51201e-08, -0.0224095, -1.576e-08, 0.0285747)
 material_override = SubResource("StandardMaterial3D_xsv7j")
 mesh = SubResource("SphereMesh_v5ope")
 skeleton = NodePath("")

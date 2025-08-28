@@ -45,7 +45,7 @@ func play_random_attack(position: Vector3, target_position: Vector3, delta: floa
 
 func _physics_process(delta: float) -> void:
 	if BODY and TARGET:
-		
+		play_random_attack(BODY.global_position, TARGET.global_position,delta)
 		#var debug_radius: float = 40.0
 		#var normalized_distance = clamp(BODY.global_position.distance_to(TARGET.global_position) / debug_radius, 0.0, 1.0)
 		#print("Normalized distance:", normalized_distance)

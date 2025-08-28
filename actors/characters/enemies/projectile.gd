@@ -16,29 +16,41 @@ var velocity: Vector3
 @export var homing_offset: Vector3 = Vector3(0, .5, 0)
 
 func _ready():
-	
-	velocity = -global_transform.basis.z * speed  # forward
+	await get_tree().process_frame
+	velocity = -(global_transform.basis.z.normalized()) * speed
 	
 	if destroy_area:
 		destroy_area.body_entered.connect(_on_body_entered)
 		destroy_area.area_entered.connect(_on_area_entered)
+	
 	if home_in_ready:
-		await get_tree().process_frame
 		var targets = get_tree().get_nodes_in_group(homing_group)
 		if targets.size() > 0:
-			look_at(targets[0].global_position + homing_offset, Vector3.UP)
+			var target = targets[0].global_position + homing_offset
+			var to_target = target - global_position	
+			var distance = to_target.length()
+			if not distance > 0.001: return
+			var time = distance / speed
+
+			if gravity > 0: # arc
+				velocity = to_target / time
+				velocity.y += 0.5 * gravity * time
+			else: # straight
+				velocity = to_target / time	
 
 func _process(delta):
+
+	if homing:	
+		pass
+		#add the velocity being changed
 	
-	if homing:
-		var targets = get_tree().get_nodes_in_group(homing_group)
-		if targets.size() > 0:
-			var current_rot = global_transform.basis.orthonormalized()
-			look_at(targets[0].global_position + homing_offset, Vector3.UP)
-			var target_rot = global_transform.basis.orthonormalized()
-			global_transform.basis = current_rot.slerp(target_rot, homing_speed * delta)
-			
-	translate(velocity * delta)
+	if gravity != 0.0:
+		velocity.y -= gravity * delta
+
+	if velocity.length() > 0.0:
+		look_at(global_position + velocity, Vector3.UP)
+		
+	global_position += velocity * delta
 
 func _on_body_entered(body: Node) -> void:
 	
