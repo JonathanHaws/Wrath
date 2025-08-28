@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://byk6752w0gnw2"]
+[gd_scene load_steps=62 format=3 uid="uid://byk6752w0gnw2"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_kn2im"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hitbox.gd" id="2_q2lvp"]
@@ -23,6 +23,7 @@
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/particles.gd" id="19_4cd86"]
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://actors/cinematic.gd" id="19_5f5tj"]
 [ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://actors/characters/dialogue/scenes/chat.tscn" id="19_q0nhg"]
+[ext_resource type="AudioStream" uid="uid://7dl2hq8svsgn" path="res://actors/characters/enemies/bosses/gluttony/sounds/shreik_2.wav" id="19_svijn"]
 [ext_resource type="PackedScene" uid="uid://bemj0qglnoue4" path="res://actors/characters/enemies/bosses/gluttony/gluttony_hurt_particles.tscn" id="20_kav4y"]
 [ext_resource type="AudioStream" uid="uid://kqf1rgb5uj7h" path="res://actors/characters/enemies/bosses/gluttony/sounds/scuffle.wav" id="20_svijn"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="21_28k33"]
@@ -1206,6 +1207,20 @@ tracks/0/keys = {
 "method": &"spawn"
 }]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio/Shreik2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.208333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
@@ -1228,8 +1243,8 @@ _data = [Vector2(0.00940439, 1), 0.0, 0.0, 0, 0, Vector2(0.0407524, 1), 0.0, 0.0
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_svijn"]
-_data = [Vector2(0, 0.910176), 0.0, 0.0, 0, 0]
-point_count = 1
+_data = [Vector2(0.194357, 0), 0.0, 0.0, 0, 0, Vector2(0.291536, 1), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4usqi"]
 height = 0.892645
@@ -1289,7 +1304,14 @@ script = ExtResource("5_2bcub")
 SOUNDS = Array[AudioStream]([ExtResource("6_tvxvn"), ExtResource("7_15au4"), ExtResource("8_ib2vk"), ExtResource("9_cix80"), ExtResource("10_xppq1"), ExtResource("11_l33v6"), ExtResource("12_42xxq"), ExtResource("13_drofq"), ExtResource("14_40g26"), ExtResource("15_amkdp"), ExtResource("16_wo4i2"), ExtResource("17_l57cg")])
 
 [node name="Shreik1" type="AudioStreamPlayer" parent="Audio"]
+process_mode = 3
 stream = ExtResource("18_n5wbu")
+volume_db = -16.427
+bus = &"SFX"
+
+[node name="Shreik2" type="AudioStreamPlayer" parent="Audio"]
+process_mode = 3
+stream = ExtResource("19_svijn")
 volume_db = -16.427
 bus = &"SFX"
 
@@ -1706,13 +1728,13 @@ uppercase = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.45932)
 script = ExtResource("24_r4ucj")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
-TRACKING_MULTIPLIER = 0.0
-SPEED = 12.0
-SPEED_MULTIPLIER = 0.0
-FLIPPED_TRACKING = true
 MESH = NodePath("../Mesh")
 BODY = NodePath("..")
+FLIPPED_TRACKING = true
+TRACKING_MULTIPLIER = 0.0
 STOP_CHASE_AREA = NodePath("../Hitbox")
+SPEED = 12.0
+SPEED_MULTIPLIER = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14872, 0)

@@ -68,13 +68,13 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="GluttonyProjectile" type="Node3D" node_paths=PackedStringArray("destroy_area", "mesh")]
+[node name="GluttonyProjectile" type="Node3D" node_paths=PackedStringArray("destroy_area")]
 script = ExtResource("1_xlw7j")
 speed = 20.0
 destroy_area = NodePath("Attack")
 body_exclude_groups = Array[String](["gluttony", "player"])
 area_exclude_groups = Array[String](["player", "gluttony"])
-mesh = NodePath("Node3D")
+INPUT_READ_VELOCITY_MULTIPLIER = 0.25
 home_in_ready = true
 homing_speed = 0.2
 
