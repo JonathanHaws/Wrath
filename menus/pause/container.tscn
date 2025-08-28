@@ -1,10 +1,104 @@
-[gd_scene load_steps=3 format=3 uid="uid://duevw8ikxn5kj"]
+[gd_scene load_steps=8 format=3 uid="uid://duevw8ikxn5kj"]
 
 [ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://menus/pause/toggle.gd" id="1_327xx"]
 [ext_resource type="PackedScene" uid="uid://cqcx34rswnnw1" path="res://menus/pause/pause.tscn" id="2_da7k5"]
+[ext_resource type="Script" uid="uid://pccpxg1y2tdf" path="res://menus/pause/skip.gd" id="3_rttat"]
+
+[sub_resource type="Animation" id="Animation_fcpd4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ywr8b"]
+resource_name = "SKIPPED"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_enl7q"]
+resource_name = "SKIPPING"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.9),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_skip"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.166667, 0.833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uhuen"]
+_data = {
+&"RESET": SubResource("Animation_fcpd4"),
+&"SKIPPED": SubResource("Animation_ywr8b"),
+&"SKIPPING": SubResource("Animation_enl7q")
+}
 
 [node name="Menu" type="CanvasLayer" groups=["pause_toggle"]]
+
+[node name="Skip" type="ColorRect" parent="." node_paths=PackedStringArray("ANIMATION_PLAYER") groups=["skipper"]]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+script = ExtResource("3_rttat")
+ANIMATION_PLAYER = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Skip"]
+libraries = {
+&"": SubResource("AnimationLibrary_uhuen")
+}
+autoplay = "RESET"
+
+[node name="Toggle" type="Control" parent="."]
 process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_327xx")
 
-[node name="ColorRect" parent="." instance=ExtResource("2_da7k5")]
+[node name="ColorRect" parent="Toggle" instance=ExtResource("2_da7k5")]
+process_mode = 3
+layout_mode = 1

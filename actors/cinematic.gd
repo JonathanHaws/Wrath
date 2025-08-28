@@ -1,5 +1,6 @@
 extends Node
 @export var SAVE_KEY: String = "" ## Save if completed for one time cutscenes 
+@export var SKIPPER_GROUP: String = "skipper" ## Skipper node enables skip function
 @export var ANIM: AnimationPlayer
 @export var AREA: Area3D
 @export var ANIM_NAME: String = ""
@@ -27,18 +28,10 @@ func _seamless_camera_transition(duration: float = 1.5) -> void: # todo add maki
 func _skip_cinematic() -> void:
 	await get_tree().process_frame # Autoload doesnt start playing until after ready so wait until an animation is playing so seek works
 	if not is_inside_tree(): return
-	# Jump to end but still trigger all functions / signals
-	
-	if ANIM and ANIM.is_playing(): # Main AnimationPlayer
-		ANIM.seek(ANIM.current_animation_length, true) 
-		
-	for i in range(ANIMATION_PLAYER_GROUPS.size()): # Animation players in other nodes
-		if i >= ANIMATION_NAMES.size():
-			continue
-		for node in get_tree().get_nodes_in_group(ANIMATION_PLAYER_GROUPS[i]):
-			if node is AnimationPlayer and node.has_animation(ANIMATION_NAMES[i]):
-				if node.is_playing():
-					node.seek(node.current_animation_length, true)
+
+	for skipper in get_tree().get_nodes_in_group(SKIPPER_GROUP):
+		if "_skip" in skipper:
+			skipper._skip(false)
 
 func _save_cinematic_completed() -> void:
 	if SAVE_KEY == "": return
