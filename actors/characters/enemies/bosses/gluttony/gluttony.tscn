@@ -359,6 +359,18 @@ tracks/14/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Audio/Music:volume_db")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.233333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
 resource_name = "INTRO"
@@ -932,6 +944,18 @@ tracks/24/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Audio/Music:volume_db")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_12e26"]
 resource_name = "SHOOT"
@@ -1297,24 +1321,47 @@ SAVE_KEY_ENCOUNTERED = "gluttony_encountered"
 DOOR_TO_UNLOCK_GROUP = "gluttony_door"
 DEFEATED_KEY = "gluttony_defeated"
 
-[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("BODY", "TELEPORT_NODES_TO_HIT", "ANIMATION_PLAYERS") groups=["gluttony"]]
-script = ExtResource("2_q2lvp")
-HEALTH = 1500
-MAX_HEALTH = 1500
-BODY = NodePath("..")
-IMMUNE_GROUPS = Array[String](["gluttony"])
-TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
-ANIMATION_PLAYERS = [NodePath("../Damaged"), NodePath("../AnimationPlayer")]
+[node name="Ui" type="Control" parent="." groups=["ui_scalable"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.017
+anchor_right = 0.5
+anchor_bottom = 0.099
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("21_28k33")
+metadata/_edit_use_anchors_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0.637661)
-shape = SubResource("CapsuleShape3D_q0nhg")
+[node name="VBoxContainer" type="VBoxContainer" parent="Ui"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -450.0
+offset_right = 450.0
+offset_bottom = 50.0
+grow_horizontal = 2
+pivot_offset = Vector2(450, 0)
+metadata/_edit_use_anchors_ = true
 
-[node name="CameraShake" type="Node" parent="."]
-script = ExtResource("3_vd3ju")
+[node name="HealthBar" parent="Ui/VBoxContainer" node_paths=PackedStringArray("tracked_node") instance=ExtResource("21_fddld")]
+custom_minimum_size = Vector2(900, 8.645)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/fill = ExtResource("22_28k33")
+max_value = 2000.0
+value = 2000.0
+tracked_node = NodePath("../../../Hitbox")
 
-[node name="SlowMotion" type="Node" parent="."]
-script = ExtResource("4_yfi01")
+[node name="Label" type="Label" parent="Ui/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("23_wlv32")
+text = "GLUTTONY"
+horizontal_alignment = 1
+uppercase = true
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("5_2bcub")
@@ -1339,6 +1386,25 @@ bus = &"SFX"
 process_mode = 3
 stream = ExtResource("18_kcm85")
 bus = &"Music"
+
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("BODY", "TELEPORT_NODES_TO_HIT", "ANIMATION_PLAYERS") groups=["gluttony"]]
+script = ExtResource("2_q2lvp")
+HEALTH = 1500
+MAX_HEALTH = 1500
+BODY = NodePath("..")
+IMMUNE_GROUPS = Array[String](["gluttony"])
+TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
+ANIMATION_PLAYERS = [NodePath("../Damaged"), NodePath("../AnimationPlayer")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0.637661)
+shape = SubResource("CapsuleShape3D_q0nhg")
+
+[node name="CameraShake" type="Node" parent="."]
+script = ExtResource("3_vd3ju")
+
+[node name="SlowMotion" type="Node" parent="."]
+script = ExtResource("4_yfi01")
 
 [node name="IntroCinematic" type="Node3D" parent="."]
 script = ExtResource("19_5f5tj")
@@ -1670,7 +1736,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="8"]
-transform = Transform3D(1, 2.55795e-13, -4.76837e-07, -2.9839e-07, 0.780009, -0.625768, 3.71937e-07, 0.625768, 0.780009, -1.00113e-12, 3.03695, 0.242385)
+transform = Transform3D(1, -9.80423e-08, -1.44114e-07, -6.01888e-08, 0.581715, -0.813392, 1.6358e-07, 0.813392, 0.581715, -1.00113e-12, 3.03695, 0.242385)
 bone_name = "head"
 bone_idx = 4
 
@@ -1715,48 +1781,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("19_4cd86")
 scenes = Array[PackedScene]([ExtResource("20_kav4y")])
 copy_transform_node = NodePath(".")
-
-[node name="Ui" type="Control" parent="." groups=["ui_scalable"]]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchor_left = 0.5
-anchor_top = 0.017
-anchor_right = 0.5
-anchor_bottom = 0.099
-grow_horizontal = 2
-size_flags_horizontal = 3
-script = ExtResource("21_28k33")
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -450.0
-offset_right = 450.0
-offset_bottom = 50.0
-grow_horizontal = 2
-pivot_offset = Vector2(450, 0)
-metadata/_edit_use_anchors_ = true
-
-[node name="HealthBar" parent="Ui/VBoxContainer" node_paths=PackedStringArray("tracked_node") instance=ExtResource("21_fddld")]
-custom_minimum_size = Vector2(900, 8.645)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/fill = ExtResource("22_28k33")
-max_value = 2000.0
-value = 2000.0
-tracked_node = NodePath("../../../Hitbox")
-
-[node name="Label" type="Label" parent="Ui/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = ExtResource("23_wlv32")
-text = "GLUTTONY"
-horizontal_alignment = 1
-uppercase = true
 
 [node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.45932)

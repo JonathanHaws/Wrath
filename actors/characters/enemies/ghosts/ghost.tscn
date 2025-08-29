@@ -928,11 +928,11 @@ debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 [node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA", "AWARENESS_AREA")]
 script = ExtResource("22_3d4yc")
 NAV_AGENT = NodePath("../NavigationAgent3D")
-SPEED = 6.0
 MESH = NodePath("../Mesh")
 BODY = NodePath("..")
 STOP_CHASE_AREA = NodePath("../StopChase")
 AWARENESS_AREA = NodePath("../Awareness")
+SPEED = 6.0
 
 [node name="StopChase" type="Area3D" parent="."]
 collision_layer = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://dsdh2bite7xv4"]
+[gd_scene load_steps=31 format=3 uid="uid://dsdh2bite7xv4"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_t7rxp"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_2c8ka"]
@@ -11,8 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp.tscn" id="8_rf8or"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="9_1jlmx"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="10_dklar"]
-[ext_resource type="PackedScene" uid="uid://cat4e2my2so35" path="res://actors/props/music_area/music_area.tscn" id="11_xex2v"]
-[ext_resource type="AudioStream" uid="uid://5u0ecm0d8hx8" path="res://actors/props/music_area/ambience.ogg" id="12_c2sn4"]
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://actors/characters/enemies/bosses/greed/greed.blend" id="13_v1s4o"]
 [ext_resource type="Material" uid="uid://csibvbbqy3q3e" path="res://stages/materials/statue/statue.tres" id="14_mgos0"]
 [ext_resource type="PackedScene" uid="uid://b0t7a64rsk4nk" path="res://actors/characters/enemies/bosses/wrath/wrath.blend" id="15_edumt"]
@@ -138,71 +136,6 @@ size = Vector3(1.11081, 5.95897, 71.225)
 [sub_resource type="BoxShape3D" id="BoxShape3D_hf1cc"]
 size = Vector3(51.7317, 6.81735, 0.861012)
 
-[sub_resource type="Animation" id="Animation_t7qrg"]
-resource_name = "ENTERED"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer2D:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [-60.0, 0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_vbbts"]
-resource_name = "EXITED"
-length = 3.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AudioStreamPlayer2D:volume_db")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -60.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer2D:playing")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(2.96667),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_kfamd"]
-_data = {
-&"ENTERED": SubResource("Animation_t7qrg"),
-&"EXITED": SubResource("Animation_vbbts")
-}
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_nd6ia"]
-size = Vector3(84.0156, 70.982, 263.846)
-
 [node name="Main" type="Node3D"]
 
 [node name="Menu" parent="." instance=ExtResource("1_t7rxp")]
@@ -258,6 +191,20 @@ transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107
 
 [node name="Model" parent="NavigationRegion3D/Statues/Wrath/Stand" instance=ExtResource("15_edumt")]
 transform = Transform3D(-0.99976, 0, -0.0218847, 0, 1, 0, 0.0218847, 0, -0.99976, -0.0659637, 1.03911, 0.433846)
+
+[node name="Skeleton3D" parent="NavigationRegion3D/Statues/Wrath/Stand/Model/Armature" index="0"]
+bones/0/rotation = Quaternion(-0.707107, -7.55185e-17, -7.55185e-17, 0.707107)
+bones/1/position = Vector3(-7.71653e-18, -0.718805, 1.00353)
+bones/1/rotation = Quaternion(0.25735, 8.11288e-17, 7.05286e-17, 0.966318)
+bones/2/rotation = Quaternion(0.347629, 1.11774e-07, 4.14406e-08, 0.937632)
+bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
+bones/4/rotation = Quaternion(0.133097, 0.385149, 0.190128, 0.893195)
+bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
+bones/6/rotation = Quaternion(-0.0822429, 0.000622981, 0.134669, 0.987472)
+bones/7/rotation = Quaternion(-0.136309, -2.93099e-14, -3.24986e-08, 0.990666)
+bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
+bones/9/rotation = Quaternion(0.18255, -0.0376967, -0.180838, 0.965687)
+bones/10/rotation = Quaternion(-0.239191, 0.243902, -0.292818, 0.893061)
 
 [node name="wrath" parent="NavigationRegion3D/Statues/Wrath/Stand/Model/Armature/Skeleton3D" index="0"]
 material_override = ExtResource("14_mgos0")
@@ -404,15 +351,6 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36
 [node name="Wrath" parent="." instance=ExtResource("7_eqpye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.0888538, 19)
 
-[node name="LeftHand" parent="Wrath/Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.91782, -0.202313, -0.342367, 0.113424, -0.95856, 0.262368, -0.381156, 0.201919, 0.90249, -2.23766, 2.28235, 1.05102)
-
-[node name="RightHand" parent="Wrath/Mesh/wrath/Armature/Skeleton3D" index="2"]
-transform = Transform3D(-0.727198, 0.458492, -0.511378, -0.381476, -0.888946, -0.254539, -0.571138, 0.00997524, 0.821122, 2.24732, 2.21318, 1.12143)
-
-[node name="Torso" parent="Wrath/Mesh/wrath/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1.00027, 0.00107535, -0.00212181, -0.000351121, 0.949198, 0.315537, 0.0023527, -0.315535, 0.949195, 9.06418e-22, 0.805583, 0.161896)
-
 [node name="Bounds" type="Node" parent="Wrath"]
 
 [node name="South" type="StaticBody3D" parent="Wrath/Bounds"]
@@ -517,39 +455,8 @@ CHECKPOINT_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -5.68248e-06, -27.6287, -43.5764)
 CHECKPOINT_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 
-[node name="AmbientMusic" parent="." node_paths=PackedStringArray("ANIM", "ENTER_AREA", "EXIT_AREA") instance=ExtResource("11_xex2v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -66.5014, -20, -5.80582)
-ANIM = NodePath("AnimationPlayer")
-ENTER_AREA = NodePath("Area")
-EXIT_AREA = NodePath("Area")
-
-[node name="AudioStreamPlayer2D" parent="AmbientMusic" index="0"]
-stream = ExtResource("12_c2sn4")
-volume_db = 1.0
-attenuation = 1e-05
-bus = &"Music"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="AmbientMusic"]
-libraries = {
-&"": SubResource("AnimationLibrary_kfamd")
-}
-
-[node name="Area" type="Area3D" parent="AmbientMusic"]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="AmbientMusic/Area"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 86.5913, -19.6617, -71.1331)
-shape = SubResource("BoxShape3D_nd6ia")
-debug_color = Color(0.7, 0.7, 0.7, 0.0431373)
-
 [connection signal="body_entered" from="KillVolume" to="KillVolume" method="_on_body_entered"]
 
 [editable path="NavigationRegion3D/Statues/Greed/Stand/Model"]
 [editable path="NavigationRegion3D/Statues/Wrath/Stand/Model"]
 [editable path="NavigationRegion3D/Level"]
-[editable path="Wrath"]
-[editable path="Wrath/Ui/VBoxContainer/HealthBar"]
-[editable path="Wrath/Mesh/wrath"]
-[editable path="Wrath/Music"]
-[editable path="AmbientMusic"]
