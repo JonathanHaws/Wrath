@@ -178,17 +178,14 @@ script = ExtResource("5_wtdqe")
 scene_file = "uid://cxja4xs36njyv"
 node_to_replace = NodePath("../..")
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="ColorRect" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-position = Vector2(7, 178)
-stream = ExtResource("6_684si")
-attenuation = 1e-05
+[node name="GrabFocus" type="Node" parent="ColorRect" node_paths=PackedStringArray("focus_node")]
+script = ExtResource("8_bpob5")
+focus_node = NodePath("../BloomButton")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
 bus = &"SFX"
 script = ExtResource("7_e8mi2")
 hover_sound = ExtResource("6_684si")
 press_sound = ExtResource("6_684si")
-hover_targets = [null, null, null, null, null, null]
-pressed_targets = [null, null]
-
-[node name="GrabFocus" type="Node" parent="ColorRect" node_paths=PackedStringArray("focus_node")]
-script = ExtResource("8_bpob5")
-focus_node = NodePath("../BloomButton")
+hover_targets = [NodePath("../ColorRect/Brightness/HSlider"), NodePath("../ColorRect/Contrast/HSlider"), NodePath("../ColorRect/Saturation/HSlider"), NodePath("../ColorRect/BloomButton"), NodePath("../ColorRect/SSAOButton"), NodePath("../ColorRect/Back")]
+pressed_targets = [NodePath("../ColorRect/Brightness/HSlider"), NodePath("../ColorRect/Contrast/HSlider"), NodePath("../ColorRect/Saturation/HSlider"), NodePath("../ColorRect/BloomButton"), NodePath("../ColorRect/SSAOButton"), NodePath("../ColorRect/Back")]

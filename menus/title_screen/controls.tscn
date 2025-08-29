@@ -1,22 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbnvaw1wjbpv0"]
+[gd_scene load_steps=7 format=3 uid="uid://bbnvaw1wjbpv0"]
 
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="1_gksqo"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_nke8k"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="1_thn1f"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="2_lbh2v"]
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="2_thn1f"]
+[ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_Press.wav" id="6_e0xkx"]
 
 [node name="Controls" type="VBoxContainer"]
-
-[node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-stream = ExtResource("1_gksqo")
-attenuation = 1e-05
-bus = &"SFX"
-script = ExtResource("2_thn1f")
-hover_sound = ExtResource("1_gksqo")
-press_sound = ExtResource("1_gksqo")
-hover_targets = [NodePath("../Back")]
-pressed_targets = [NodePath("../Back")]
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
@@ -45,3 +36,12 @@ node_to_replace = NodePath("..")
 [node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
 script = ExtResource("1_thn1f")
 focus_node = NodePath("../Back")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+process_mode = 3
+bus = &"SFX"
+script = ExtResource("2_thn1f")
+hover_sound = ExtResource("1_gksqo")
+press_sound = ExtResource("6_e0xkx")
+hover_targets = [NodePath("../Back")]
+pressed_targets = [NodePath("../Back")]

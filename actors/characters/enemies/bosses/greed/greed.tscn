@@ -523,7 +523,7 @@ tracks/2/keys = {
 tracks/3/type = "audio"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SFX")
+tracks/3/path = NodePath("Audio/AudioStreamPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -598,25 +598,22 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false, true]
 }
-tracks/3/type = "audio"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SFX")
-tracks/3/interp = 1
+tracks/3/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"clips": [{
-"end_offset": 1.58,
-"start_offset": 0.37,
-"stream": ExtResource("21_br41q")
-}],
-"times": PackedFloat32Array(0.625)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
-tracks/3/use_blend = true
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/4/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/4/interp = 0
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -625,18 +622,21 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/5/type = "value"
+tracks/5/type = "audio"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/5/interp = 0
+tracks/5/path = NodePath("Audio/AudioStreamPlayer")
+tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"clips": [{
+"end_offset": 1.58,
+"start_offset": 0.37,
+"stream": ExtResource("21_br41q")
+}],
+"times": PackedFloat32Array(0.625)
 }
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_jojdm"]
 length = 0.001
@@ -1051,25 +1051,22 @@ tracks/2/keys = {
 "update": 1,
 "values": [true, false, true]
 }
-tracks/3/type = "audio"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SFX")
-tracks/3/interp = 1
+tracks/3/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"clips": [{
-"end_offset": 1.36686,
-"start_offset": 0.37,
-"stream": ExtResource("21_br41q")
-}],
-"times": PackedFloat32Array(1.125)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
-tracks/3/use_blend = true
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/4/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/4/interp = 0
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1078,18 +1075,21 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/5/type = "value"
+tracks/5/type = "audio"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/5/interp = 0
+tracks/5/path = NodePath("Audio/AudioStreamPlayer")
+tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"clips": [{
+"end_offset": 1.36686,
+"start_offset": 0.37,
+"stream": ExtResource("21_br41q")
+}],
+"times": PackedFloat32Array(1.12683)
 }
+tracks/5/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
@@ -1228,6 +1228,56 @@ SAVE_KEY_ENCOUNTERED = "greed_encountered"
 DOOR_TO_UNLOCK_GROUP = "greed_door"
 DEFEATED_KEY = "greed_defeated"
 
+[node name="Ui" type="Control" parent="." groups=["ui_scalable"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.017
+anchor_right = 0.5
+anchor_bottom = 0.099
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("21_47sfl")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Ui"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -450.0
+offset_right = 450.0
+offset_bottom = 50.0
+grow_horizontal = 2
+pivot_offset = Vector2(450, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" parent="Ui/VBoxContainer" node_paths=PackedStringArray("tracked_node") instance=ExtResource("9_wri43")]
+custom_minimum_size = Vector2(900, 8.645)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/fill = ExtResource("10_jx80p")
+max_value = 2000.0
+value = 2000.0
+tracked_node = NodePath("../../../Hitbox")
+
+[node name="Label" type="Label" parent="Ui/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("10_bkkeq")
+text = "GREED"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("23_xmcwa")
+SOUNDS = Array[AudioStream]([ExtResource("24_1upmg"), ExtResource("25_palr8"), ExtResource("26_biius"), ExtResource("27_tfx8p"), ExtResource("28_fnmjv"), ExtResource("29_ruf5b"), ExtResource("30_ei5ma"), ExtResource("31_alb30"), ExtResource("32_j7j84"), ExtResource("33_gi7wv"), ExtResource("12_hnntr"), ExtResource("21_br41q")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+process_mode = 3
+bus = &"SFX"
+
 [node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("BODY", "TELEPORT_NODES_TO_HIT", "ANIMATION_PLAYERS")]
 script = ExtResource("4_ri305")
 HEALTH = 1500
@@ -1246,10 +1296,6 @@ script = ExtResource("19_e5shh")
 
 [node name="SlowMotion" type="Node" parent="."]
 script = ExtResource("20_517ma")
-
-[node name="Audio" type="Node" parent="."]
-script = ExtResource("23_xmcwa")
-SOUNDS = Array[AudioStream]([ExtResource("24_1upmg"), ExtResource("25_palr8"), ExtResource("26_biius"), ExtResource("27_tfx8p"), ExtResource("28_fnmjv"), ExtResource("29_ruf5b"), ExtResource("30_ei5ma"), ExtResource("31_alb30"), ExtResource("32_j7j84"), ExtResource("33_gi7wv"), ExtResource("12_hnntr"), ExtResource("21_br41q")])
 
 [node name="Damaged" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Attacks")
@@ -1284,21 +1330,16 @@ script = ExtResource("20_ri305")
 scenes = Array[PackedScene]([ExtResource("2_jx80p")])
 copy_transform_node = NodePath(".")
 
-[node name="SFX" type="AudioStreamPlayer2D" parent="."]
-volume_db = -5.0
-attenuation = 0.0145786
-bus = &"SFX"
-
 [node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89408, 2.62937, 5.76861)
 script = ExtResource("15_cadt7")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
-SPEED = 12.0
-SPEED_MULTIPLIER = 0.0
-FLIPPED_TRACKING = true
 MESH = NodePath("../Mesh")
 BODY = NodePath("..")
+FLIPPED_TRACKING = true
 STOP_CHASE_AREA = NodePath("../Hitbox")
+SPEED = 12.0
+SPEED_MULTIPLIER = 0.0
 
 [node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SCENE_ROOT")]
 script = ExtResource("16_psb2t")
@@ -1310,40 +1351,40 @@ SCENE_ROOT = NodePath("..")
 [node name="Greed" parent="Mesh" instance=ExtResource("17_cq6fp")]
 
 [node name="Skeleton3D" parent="Mesh/Greed/Rig" index="0"]
-bones/1/position = Vector3(-0.113424, -0.785719, -2.09016)
-bones/1/rotation = Quaternion(0.149553, -7.48031e-08, 1.00204e-08, 0.988754)
-bones/2/position = Vector3(0.318777, -0.0666644, -0.0106261)
-bones/2/rotation = Quaternion(0.339671, 0.213212, -0.027215, 0.915655)
-bones/3/rotation = Quaternion(0.618909, -0.0572859, 0.0323412, 0.782703)
-bones/4/rotation = Quaternion(-0.712213, 0.00455392, -0.0369998, 0.700973)
-bones/5/rotation = Quaternion(0.366573, -0.0686007, 0.0400879, 0.926991)
-bones/6/rotation = Quaternion(-0.332793, -1.18865e-10, 2.05003e-10, 0.943)
-bones/7/rotation = Quaternion(0.272876, -0.0874625, -0.842843, 0.455527)
-bones/8/rotation = Quaternion(0.281409, -0.0527555, 0.471848, 0.833897)
-bones/9/rotation = Quaternion(0.0249159, -0.00765435, 0.219977, 0.975157)
-bones/10/rotation = Quaternion(0.132319, 0.00536992, 0.0967451, 0.98646)
-bones/12/rotation = Quaternion(-0.360301, 0.00695914, 0.0424438, 0.931844)
-bones/13/position = Vector3(-0.488868, 1.43551, -0.00969551)
-bones/13/rotation = Quaternion(0.0025542, 0.270876, 0.913956, 0.302165)
-bones/14/rotation = Quaternion(0.53948, 0.0261244, -0.374154, 0.753849)
-bones/15/rotation = Quaternion(0.245209, 0.244188, 0.139902, 0.927724)
-bones/16/rotation = Quaternion(0.081789, 0.0423976, 0.0772358, 0.992748)
-bones/17/position = Vector3(0.086115, 0.0218832, -0.00264496)
-bones/17/rotation = Quaternion(0.647103, -0.328714, -0.494835, 0.477852)
-bones/18/rotation = Quaternion(0.0974276, -0.00123923, -0.13179, 0.986478)
-bones/19/rotation = Quaternion(0.128561, -0.507676, -0.198873, 0.828364)
-bones/20/rotation = Quaternion(-0.078679, -0.137778, -0.292925, 0.942879)
-bones/21/rotation = Quaternion(-0.0600494, 0.112754, -0.231555, 0.964398)
-bones/22/rotation = Quaternion(0.361462, -0.0546394, 0.116122, 0.923513)
-bones/23/rotation = Quaternion(0.639892, -0.0257561, 0.0537377, 0.766151)
-bones/24/rotation = Quaternion(-0.745602, 0.0481328, -0.100105, 0.65707)
-bones/25/rotation = Quaternion(0.28701, -0.0640196, 0.00177572, 0.955784)
+bones/1/position = Vector3(0.0174956, -0.0449101, -1.47916)
+bones/1/rotation = Quaternion(0.0370429, 0.000539322, -0.0268779, 0.998952)
+bones/2/position = Vector3(0.318777, -0.0666641, -0.0106262)
+bones/2/rotation = Quaternion(0.781858, 0.219771, 0.133335, 0.567997)
+bones/3/rotation = Quaternion(0.624194, -0.0573771, 0.0324914, 0.778482)
+bones/4/rotation = Quaternion(-0.597882, 0.0670504, -0.00718421, 0.798742)
+bones/5/rotation = Quaternion(0.370329, -0.0693967, 0.0401409, 0.925435)
+bones/6/rotation = Quaternion(0.0126309, -0.00268544, 0.0420503, 0.999032)
+bones/7/rotation = Quaternion(0.572968, -0.228774, -0.603333, 0.505331)
+bones/8/rotation = Quaternion(0.0876585, -0.107701, 0.674933, 0.724694)
+bones/9/rotation = Quaternion(0.0179923, -0.202699, -0.136, 0.969584)
+bones/10/rotation = Quaternion(0.0825532, 0.013674, 0.101979, 0.991261)
+bones/12/rotation = Quaternion(-0.528291, 0.0433138, -0.000267738, 0.847958)
+bones/13/position = Vector3(-0.488868, 1.43551, -0.00969547)
+bones/13/rotation = Quaternion(0.575405, 0.200489, 0.534375, 0.585796)
+bones/14/rotation = Quaternion(-0.0858477, 0.0568758, -0.627973, 0.771392)
+bones/15/rotation = Quaternion(0.089702, 0.21583, 0.168457, 0.957598)
+bones/16/rotation = Quaternion(-0.179718, -0.232297, -0.206217, 0.933388)
+bones/17/position = Vector3(0.00414755, -0.243611, -0.14996)
+bones/17/rotation = Quaternion(0.77501, 0.0367398, -0.613452, 0.147264)
+bones/18/rotation = Quaternion(0.0772455, 0.0747014, 0.101292, 0.989036)
+bones/19/rotation = Quaternion(0.14451, -0.551562, -0.0793186, 0.817683)
+bones/20/rotation = Quaternion(0.0909837, -0.0348701, -0.119436, 0.988049)
+bones/21/rotation = Quaternion(-0.0506233, 0.152419, -0.0947484, 0.98246)
+bones/22/rotation = Quaternion(0.782452, -0.117753, 0.128627, 0.597794)
+bones/23/rotation = Quaternion(0.645334, -0.0261812, 0.0547352, 0.761488)
+bones/24/rotation = Quaternion(-0.661345, 0.0115624, -0.0775359, 0.745974)
+bones/25/rotation = Quaternion(0.291092, -0.0642706, 0.00265002, 0.95453)
 
 [node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" index="0"]
 material_override = ExtResource("27_mmykl")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1"]
-transform = Transform3D(1, 2.04239e-09, 6.53956e-10, -1.466e-10, 0.369337, -0.929295, -2.1395e-09, 0.929295, 0.369337, -0.113424, 1.79548, 0.166136)
+transform = Transform3D(0.999514, -0.0304562, -0.00657886, -0.00956289, -0.0988943, -0.995052, 0.0296548, 0.994632, -0.0991376, 0.0710427, 1.40545, 0.947344)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1356,7 +1397,7 @@ shape = SubResource("BoxShape3D_jx80p")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2"]
-transform = Transform3D(1, 2.04239e-09, 6.53956e-10, -1.466e-10, 0.369337, -0.929295, -2.1395e-09, 0.929295, 0.369337, -0.113424, 1.79548, 0.166136)
+transform = Transform3D(0.999514, -0.0304562, -0.00657886, -0.00956289, -0.0988943, -0.995052, 0.0296548, 0.994632, -0.0991376, 0.0710427, 1.40545, 0.947344)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1373,7 +1414,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3"]
-transform = Transform3D(1, 2.04239e-09, 6.53956e-10, -1.466e-10, 0.369337, -0.929295, -2.1395e-09, 0.929295, 0.369337, -0.113424, 1.79548, 0.166136)
+transform = Transform3D(0.999514, -0.0304562, -0.00657886, -0.00956289, -0.0988943, -0.995052, 0.0296548, 0.994632, -0.0991376, 0.0710427, 1.40545, 0.947344)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1390,7 +1431,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4"]
-transform = Transform3D(0.294423, -0.0220242, -0.955421, -0.942317, -0.173257, -0.286391, -0.159226, 0.98463, -0.0717649, 1.44015, 1.24867, 2.19762)
+transform = Transform3D(-0.278852, -0.310137, -0.908876, -0.69145, -0.591938, 0.414131, -0.666437, 0.743924, -0.0493813, 0.576227, -0.291784, 2.92823)
 bone_name = "hand_l"
 bone_idx = 10
 
@@ -1408,7 +1449,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5"]
-transform = Transform3D(-0.799062, 0.33946, 0.496252, 0.421898, -0.27148, 0.865043, 0.428371, 0.900591, 0.0737115, -1.30246, 1.28239, 2.27135)
+transform = Transform3D(0.525923, -0.0870455, 0.846066, 0.733597, -0.45695, -0.503023, 0.430396, 0.885223, -0.176464, -0.672955, -0.323743, 3.00211)
 bone_name = "hand_r"
 bone_idx = 16
 
@@ -1498,48 +1539,6 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 27.0089
-
-[node name="Ui" type="Control" parent="." groups=["ui_scalable"]]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchor_left = 0.5
-anchor_top = 0.017
-anchor_right = 0.5
-anchor_bottom = 0.099
-grow_horizontal = 2
-size_flags_horizontal = 3
-script = ExtResource("21_47sfl")
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -450.0
-offset_right = 450.0
-offset_bottom = 50.0
-grow_horizontal = 2
-pivot_offset = Vector2(450, 0)
-metadata/_edit_use_anchors_ = true
-
-[node name="HealthBar" parent="Ui/VBoxContainer" node_paths=PackedStringArray("tracked_node") instance=ExtResource("9_wri43")]
-custom_minimum_size = Vector2(900, 8.645)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/fill = ExtResource("10_jx80p")
-max_value = 2000.0
-value = 2000.0
-tracked_node = NodePath("../../../Hitbox")
-
-[node name="Label" type="Label" parent="Ui/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = ExtResource("10_bkkeq")
-text = "GREED"
-horizontal_alignment = 1
-uppercase = true
 
 [connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="Shake" to="Shake" method="_on_body_entered"]

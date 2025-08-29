@@ -31,6 +31,9 @@ func _ready() -> void:
 	LOCK_ON_AREA.area_exited.connect(_on_lock_on_area_exited)
 
 func _process(_delta: float) -> void:
+	
+	CAMERA = get_viewport().get_camera_3d()
+	
 	if Input.is_action_just_pressed("lock_on"):
 		if not lock_on_activated: # lock on to target closest to center of screen
 			
@@ -57,7 +60,8 @@ func _process(_delta: float) -> void:
 		
 func _physics_process(_delta: float) -> void:
 	
-	CAMERA.SENSITIVITY_MULTIPLIER = 0 if lock_on_activated else 1
+	if CAMERA and "SENSITIVITY_MULTIPLIER" in CAMERA:
+		CAMERA.SENSITIVITY_MULTIPLIER = 0 if lock_on_activated else 1
 	
 	if not lock_on_activated: return
 	if not is_instance_valid(lock_on_target): return

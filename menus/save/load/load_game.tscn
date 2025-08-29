@@ -13,16 +13,6 @@
 script = ExtResource("1_6x4ew")
 profile_scene = ExtResource("2_t8d72")
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-stream = ExtResource("3_3kwj5")
-attenuation = 1e-05
-bus = &"SFX"
-script = ExtResource("4_wpkbo")
-hover_sound = ExtResource("3_3kwj5")
-press_sound = ExtResource("5_3kwj5")
-hover_targets = [NodePath("../Continue"), NodePath("../Back")]
-pressed_targets = [NodePath("../Continue"), NodePath("../Back")]
-
 [node name="Continue" type="Button" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -48,3 +38,12 @@ node_to_replace = NodePath("..")
 [node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
 script = ExtResource("8_wpkbo")
 focus_node = NodePath("../Back")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+process_mode = 3
+bus = &"SFX"
+script = ExtResource("4_wpkbo")
+hover_sound = ExtResource("3_3kwj5")
+press_sound = ExtResource("5_3kwj5")
+hover_targets = [NodePath("../Continue"), NodePath("../Back")]
+pressed_targets = [NodePath("../Continue"), NodePath("../Back")]

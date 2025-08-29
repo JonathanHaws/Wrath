@@ -1,4 +1,4 @@
-extends AudioStreamPlayer2D
+extends AudioStreamPlayer
 @export var hover_sound: AudioStream
 @export var press_sound: AudioStream
 @export var hover_targets: Array[Node]

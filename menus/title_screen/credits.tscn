@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3i01lg3stgkg"]
+[gd_scene load_steps=7 format=3 uid="uid://b3i01lg3stgkg"]
 
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="1_hyvu0"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_w063j"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="2_77ypm"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="3_hyvu0"]
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="4_if7rd"]
+[ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_Press.wav" id="6_5dwpx"]
 
 [node name="Credits" type="VBoxContainer" node_paths=PackedStringArray("focus_node")]
 alignment = 1
@@ -42,16 +43,15 @@ script = ExtResource("2_77ypm")
 scene_file = "uid://cls12q06quifx"
 node_to_replace = NodePath("..")
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-stream = ExtResource("3_hyvu0")
-attenuation = 1e-05
-bus = &"SFX"
-script = ExtResource("4_if7rd")
-hover_sound = ExtResource("3_hyvu0")
-press_sound = ExtResource("3_hyvu0")
-hover_targets = [NodePath("../Back")]
-pressed_targets = [NodePath("../Back")]
-
 [node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
 script = ExtResource("1_hyvu0")
 focus_node = NodePath("../Back")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+process_mode = 3
+bus = &"SFX"
+script = ExtResource("4_if7rd")
+hover_sound = ExtResource("3_hyvu0")
+press_sound = ExtResource("6_5dwpx")
+hover_targets = [NodePath("../Back")]
+pressed_targets = [NodePath("../Back")]

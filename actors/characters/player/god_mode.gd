@@ -10,6 +10,8 @@ extends Node
 @export var BODY_SHAPE: Node 
 @export var HITBOX_SHAPE: Node 
 @export var DAMAGE_SHAPE: Node
+@export var ANIMATION_PLAYER: AnimationPlayer
+@export var GOD_MODE_ANIMATION: StringName = &"GOD"
 var mode := false
 var last_position: Vector3
 
@@ -22,6 +24,8 @@ func _process(_delta):
 	if Input.is_action_just_pressed("god_mode"):
 		mode = !mode
 		#if DAMAGE_SHAPE: DAMAGE_SHAPE.disabled = !DAMAGE_SHAPE.disabled
+		if mode and ANIMATION_PLAYER and GOD_MODE_ANIMATION != "":
+			ANIMATION_PLAYER.play(GOD_MODE_ANIMATION)
 		
 	if mode: 
 		PLAYER.global_transform.origin = last_position

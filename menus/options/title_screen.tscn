@@ -145,16 +145,15 @@ script = ExtResource("5_0kcqh")
 scene_file = "uid://cls12q06quifx"
 node_to_replace = NodePath("..")
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-stream = ExtResource("6_k6d2o")
-attenuation = 1e-05
+[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
+script = ExtResource("1_t661t")
+focus_node = NodePath("../Master/HSlider")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+process_mode = 3
 bus = &"SFX"
 script = ExtResource("7_0kcqh")
 hover_sound = ExtResource("6_k6d2o")
 press_sound = ExtResource("6_k6d2o")
-hover_targets = [NodePath("../Master/HSlider"), NodePath("../SFX/HSlider"), NodePath("../Music/HSlider"), NodePath("../Brightness/HSlider"), NodePath("../WindowMode"), NodePath("../Back")]
-pressed_targets = [NodePath("../WindowMode"), NodePath("../Back")]
-
-[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
-script = ExtResource("1_t661t")
-focus_node = NodePath("../Master/HSlider")
+hover_targets = [NodePath("../Master/HSlider"), NodePath("../SFX/HSlider"), NodePath("../Music/HSlider"), NodePath("../Brightness/HSlider"), NodePath("../Resolution"), NodePath("../WindowMode"), NodePath("../Back")]
+pressed_targets = [NodePath("../Master/HSlider"), NodePath("../SFX/HSlider"), NodePath("../Music/HSlider"), NodePath("../Brightness/HSlider"), NodePath("../Resolution"), NodePath("../WindowMode"), NodePath("../Back")]

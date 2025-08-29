@@ -27,17 +27,6 @@ focus_mode = 2
 alignment = 1
 script = ExtResource("1_gkebh")
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-position = Vector2(-779.5, -302.5)
-stream = ExtResource("1_48c50")
-attenuation = 1e-05
-bus = &"SFX"
-script = ExtResource("2_gkebh")
-hover_sound = ExtResource("1_48c50")
-press_sound = ExtResource("1_48c50")
-hover_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../Options"), NodePath("../Controls"), NodePath("../Credits"), NodePath("../Quit"), NodePath("../LoadGame"), NodePath("../DeleteGame")]
-pressed_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../Options"), NodePath("../Controls"), NodePath("../Credits"), NodePath("../Quit"), NodePath("../LoadGame"), NodePath("../DeleteGame")]
-
 [node name="Label" type="Label" parent="."]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -138,3 +127,12 @@ script = ExtResource("7_nikc7")
 [node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
 script = ExtResource("8_8af7w")
 focus_node = NodePath("../NewGame")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+process_mode = 3
+bus = &"SFX"
+script = ExtResource("2_gkebh")
+hover_sound = ExtResource("1_48c50")
+press_sound = ExtResource("1_48c50")
+hover_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../LoadGame"), NodePath("../DeleteGame"), NodePath("../Options"), NodePath("../Controls"), NodePath("../Credits"), NodePath("../Quit")]
+pressed_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../LoadGame"), NodePath("../DeleteGame"), NodePath("../Options"), NodePath("../Controls"), NodePath("../Credits"), NodePath("../Quit")]

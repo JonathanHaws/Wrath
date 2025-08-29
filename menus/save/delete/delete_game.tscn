@@ -21,15 +21,15 @@ script = ExtResource("4_fevu8")
 scene_file = "uid://cls12q06quifx"
 node_to_replace = NodePath("..")
 
-[node name="Audio" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-attenuation = 1e-05
+[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
+script = ExtResource("8_axw2x")
+focus_node = NodePath("../Back")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+process_mode = 3
 bus = &"SFX"
 script = ExtResource("5_mokty")
 hover_sound = ExtResource("6_npq60")
 press_sound = ExtResource("7_ce133")
 hover_targets = [NodePath("../Back")]
 pressed_targets = [NodePath("../Back")]
-
-[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
-script = ExtResource("8_axw2x")
-focus_node = NodePath("../Back")
