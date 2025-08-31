@@ -123,6 +123,8 @@ area_exclude_groups = Array[String](["gluttony", "player"])
 collision_animation_player = NodePath("AnimationPlayer")
 collision_animation_name = "colliding"
 collision_point_node = NodePath("PuddleSpawner")
+random_velocity_x = 1.0
+random_velocity_y = 1.0
 gravity = 7.63
 home_in_ready = true
 

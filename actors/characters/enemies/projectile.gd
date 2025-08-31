@@ -10,6 +10,9 @@ extends Node3D
 @export var collision_animation_name: String = ""
 @export var collision_point_node: Node3D ## When an area or body or area is entered this moves to collision point 
 
+@export var random_velocity_x: float = 0.0
+@export var random_velocity_y: float = 0.0
+
 @export var gravity: float = 0.0  
 var velocity: Vector3
 
@@ -20,8 +23,6 @@ var velocity: Vector3
 @export var homing_group: String = "player_body"
 @export var homing_speed: float = 2.0  
 @export var homing_offset: Vector3 = Vector3(0, .5, 0)
-
-
 
 func _play_collision_animation():
 	if collision_animation_player and collision_animation_name != "":
@@ -73,23 +74,13 @@ func _ready():
 				velocity.y += 0.5 * gravity * time
 			else: # straight
 				velocity = to_target / time	
+				
+	var forward = velocity.normalized() if velocity.length() > 0 else Vector3.FORWARD
 
-func get_collision_point(move_vector: Vector3) -> Vector3:
-	var next_pos = global_position + move_vector
-	var space = get_world_3d().direct_space_state
+	var rand_vec = Vector3(randf_range(-random_velocity_x, random_velocity_x), randf_range(-random_velocity_y, random_velocity_y), 0)
 
-	var params = PhysicsRayQueryParameters3D.create(global_position, next_pos)
-	params.collide_with_bodies = true
-	params.collide_with_areas = true
+	velocity = forward * speed + rand_vec
 
-	var result = space.intersect_ray(params)
-	if result:
-		if collision_point_node:
-			collision_point_node.global_position = result.position
-		_play_collision_animation()
-		return result.position
-	return next_pos
-	
 func _process(delta):
 
 	if homing:	
