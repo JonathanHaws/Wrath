@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://dfopfbx7m077q"]
 
-[ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://actors/characters/enemies/projectile.gd" id="1_xlw7j"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="2_oveml"]
+[ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://actors/characters/enemies/projectile.gd" id="1_lrs7j"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="2_woit3"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsv7j"]
 albedo_color = Color(0.377757, 0.44866, 0.352352, 1)
@@ -69,7 +69,7 @@ _data = {
 }
 
 [node name="GluttonyProjectile" type="Node3D" node_paths=PackedStringArray("destroy_area")]
-script = ExtResource("1_xlw7j")
+script = ExtResource("1_lrs7j")
 speed = 20.0
 destroy_area = NodePath("Attack")
 body_exclude_groups = Array[String](["gluttony", "player"])
@@ -93,8 +93,9 @@ skeleton = NodePath("")
 
 [node name="Attack" type="Area3D" parent="." groups=["gluttony"]]
 transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
-collision_mask = 2
-script = ExtResource("2_oveml")
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("2_woit3")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0126296, -0.00430307, 0.0610786)

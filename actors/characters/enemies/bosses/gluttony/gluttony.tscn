@@ -20,7 +20,7 @@
 [ext_resource type="AudioStream" uid="uid://cp5swwd4tlolh" path="res://actors/characters/enemies/bosses/gluttony/gluttony.ogg" id="18_kcm85"]
 [ext_resource type="AudioStream" uid="uid://qat80dcakodi" path="res://actors/characters/enemies/bosses/gluttony/sounds/shreik_1.wav" id="18_n5wbu"]
 [ext_resource type="Script" uid="uid://l4b37mckqf8k" path="res://actors/characters/enemies/proximity_based_random_attacks/proximity_based_random_attacks.gd" id="18_wqa85"]
-[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/particles.gd" id="19_4cd86"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="19_4cd86"]
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://actors/cinematic.gd" id="19_5f5tj"]
 [ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://actors/characters/dialogue/scenes/chat.tscn" id="19_q0nhg"]
 [ext_resource type="AudioStream" uid="uid://7dl2hq8svsgn" path="res://actors/characters/enemies/bosses/gluttony/sounds/shreik_2.wav" id="19_svijn"]
@@ -35,8 +35,8 @@
 [ext_resource type="Material" uid="uid://7w72228cchli" path="res://actors/characters/enemies/bosses/gluttony/gluttony_material.tres" id="28_kav4y"]
 [ext_resource type="PackedScene" uid="uid://dshyyn54ur3e1" path="res://actors/characters/enemies/bosses/gluttony/gluttony.blend" id="29_wvvup"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="30_g5uva"]
-[ext_resource type="PackedScene" uid="uid://d2iqujeqiun08" path="res://actors/characters/enemies/bosses/gluttony/gluttony_gravity_projectile.tscn" id="30_kcm85"]
-[ext_resource type="PackedScene" uid="uid://dfopfbx7m077q" path="res://actors/characters/enemies/bosses/gluttony/gluttony_projectile.tscn" id="30_nxhq0"]
+[ext_resource type="PackedScene" uid="uid://d2iqujeqiun08" path="res://actors/characters/enemies/bosses/gluttony/projectiles/slow_vomit.tscn" id="30_kcm85"]
+[ext_resource type="PackedScene" uid="uid://dfopfbx7m077q" path="res://actors/characters/enemies/bosses/gluttony/projectiles/fast_vomit.tscn" id="30_nxhq0"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/npcs/piglet/interaction.gd" id="32_12e26"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q0nhg"]
@@ -1035,7 +1035,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_kcm85"]
 resource_name = "SHOOT_GRAVITY"
-length = 2.971
+length = 5.1475
 step = 0.0416667
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -1044,9 +1044,63 @@ tracks/0/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/Vom
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.916667, 1, 1.08333, 1.16432, 1.24765, 1.33098, 1.40588, 1.48922, 1.57255, 1.67264, 1.75597, 1.83931, 1.93605, 2.01939, 2.10272, 2.16667, 2.25, 2.33333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.916667, 1, 1.08333, 1.16432, 1.24765, 1.33098, 1.40588, 1.48922, 1.57255, 1.67264, 1.75597, 1.83931, 1.93605, 2.01939, 2.10272, 2.16667, 2.25, 2.33333, 2.41342, 2.49675, 2.58008, 2.66107, 2.7444, 2.82773, 2.90263, 2.98597, 3.0693, 3.16939, 3.25272, 3.33606, 3.4328, 3.51614, 3.59947, 3.66342, 3.74675, 3.83008),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
 "args": [],
 "method": &"spawn"
 }, {
@@ -1463,7 +1517,7 @@ script = ExtResource("18_wqa85")
 ATTACK_ANIMATION = Array[String](["SHOOT", "SLAM_RIGHT", "SLAM_LEFT", "SHOOT_GRAVITY"])
 ATTACK_RADIUS = Array[float]([50.0, 50.0, 50.0, 50.0])
 ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_nxhq0"), SubResource("Curve_q0nhg"), SubResource("Curve_q0nhg"), SubResource("Curve_svijn")])
-LIKELIHOOD_MULTIPLIERS = Array[float]([50.0, 50.0, 1e+07, 50.0])
+LIKELIHOOD_MULTIPLIERS = Array[float]([5.0, 50.0, 50.0, 10000.0])
 AREA_MULTIPLIERS = [null, NodePath("../Mesh/gluttony/Armature/Skeleton3D/RightLeg/TriggerArea"), NodePath("../Mesh/gluttony/Armature/Skeleton3D/LeftLeg/TriggerArea"), null]
 LIKELIHOOD_MULTIPLIER = 0.0
 TARGET = NodePath("../Target")

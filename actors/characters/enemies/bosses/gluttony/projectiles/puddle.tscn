@@ -1,0 +1,93 @@
+[gd_scene load_steps=9 format=3 uid="uid://4f506yax85t1"]
+
+[ext_resource type="Script" uid="uid://dtofx2osnk3pe" path="res://actors/characters/enemies/bosses/gluttony/projectiles/puddle.gd" id="1_s6lm2"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="2_7ntvi"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsv7j"]
+albedo_color = Color(0.377757, 0.44866, 0.352352, 1)
+emission_enabled = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_v5ope"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s6lm2"]
+resource_local_to_scene = true
+height = 0.398734
+radius = 1.637
+
+[sub_resource type="Animation" id="Animation_mr47g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_v5ope"]
+resource_name = "projectile"
+length = 4.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.466667, 3.56667),
+"transitions": PackedFloat32Array(1, 16.5642, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mr47g"]
+_data = {
+&"RESET": SubResource("Animation_mr47g"),
+&"projectile": SubResource("Animation_v5ope")
+}
+
+[node name="GluttonyProjectile" type="Node3D"]
+script = ExtResource("1_s6lm2")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(3.27353, 0, 8.91727e-23, -1.01672e-21, -1.57212e-07, 0.291327, 0, -3.59659, -1.27343e-08, -0.0197768, -1.576e-08, 0.0113704)
+material_override = SubResource("StandardMaterial3D_xsv7j")
+mesh = SubResource("SphereMesh_v5ope")
+skeleton = NodePath("")
+
+[node name="Attack" type="Area3D" parent="." groups=["gluttony"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("2_7ntvi")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0408672, 0)
+shape = SubResource("CylinderShape3D_s6lm2")
+debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mr47g")
+}
+autoplay = "projectile"
