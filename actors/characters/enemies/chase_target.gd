@@ -8,8 +8,9 @@ extends Node3D
 
 @export_subgroup("Target")
 @export var TARGET_GROUP: String = "player"
+@export var MATCH_POSITION: bool = true ## Determines whether to match this nodes global position to target
 @export var TRACKING_SPEED: float = 5.0
-@export var TRACKING_MULTIPLIER: float = 1.0
+@export var TRACKING_MULTIPLIER: float = 1.0 ## How Quickly rotation will match target
 
 @export_subgroup("Range")
 @export var STOP_CHASE_AREA: Area3D ## What alerts enemies to give chase. If no area is specified they are omincient and always chase
@@ -100,7 +101,7 @@ func _physics_process(delta: float) -> void:
 	if target == null:
 		target = get_closest_from_group_3d(TARGET_GROUP)
 	
-	if target != null:
+	if target != null and MATCH_POSITION:
 		if "velocity" in target:
 			global_position = target.global_position + target.velocity * INPUT_READ_VELOCITY_MULTIPLIER
 		else:

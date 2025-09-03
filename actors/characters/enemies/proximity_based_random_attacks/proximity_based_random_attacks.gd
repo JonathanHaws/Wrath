@@ -14,6 +14,11 @@ extends AnimationPlayer
 @export var TARGET: Node3D
 @export var BODY: Node3D
 
+## Add attack specfic cool downs also make attacks a seperate script so they can be saved as scenes... 
+@export var attacks: Array = [
+	{"name": "Slash", "radius": 3.0, "curve": null, "multiplier": 1.0, "area": null, "blocked": []},
+]
+
 func play_random_attack(position: Vector3, target_position: Vector3, delta: float) -> void:
 	#print("Playing attack:", ATTACK_ANIMATION[i])
 	var indices = range(ATTACK_ANIMATION.size())  
@@ -55,6 +60,5 @@ func _physics_process(delta: float) -> void:
 		#var debug_radius: float = 40.0
 		#var normalized_distance = clamp(BODY.global_position.distance_to(TARGET.global_position) / debug_radius, 0.0, 1.0)
 		#print("Normalized distance:", normalized_distance)
-		
-		play_random_attack(BODY.global_position, TARGET.global_position,delta)
+
 		

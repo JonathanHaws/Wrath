@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://byk6752w0gnw2"]
+[gd_scene load_steps=73 format=3 uid="uid://byk6752w0gnw2"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_kn2im"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hitbox.gd" id="2_q2lvp"]
@@ -38,6 +38,7 @@
 [ext_resource type="PackedScene" uid="uid://d2iqujeqiun08" path="res://actors/characters/enemies/bosses/gluttony/projectiles/slow_vomit.tscn" id="30_kcm85"]
 [ext_resource type="PackedScene" uid="uid://dfopfbx7m077q" path="res://actors/characters/enemies/bosses/gluttony/projectiles/fast_vomit.tscn" id="30_nxhq0"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/npcs/piglet/interaction.gd" id="32_12e26"]
+[ext_resource type="PackedScene" uid="uid://c6mdedu61qija" path="res://actors/characters/enemies/bosses/gluttony/projectiles/slow_vomit_track_player.tscn" id="35_svijn"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q0nhg"]
 radius = 2.54116
@@ -370,6 +371,140 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, -80.0]
+}
+
+[sub_resource type="Animation" id="Animation_svijn"]
+resource_name = "FIST_SLAM_LEFT"
+length = 1.25001
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/gluttony/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("FIST_SLAM_LEFT"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraShake")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.583333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [3.0],
+"method": &"tremor"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.583333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Slam"],
+"method": &"play_2d_sound"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea/CollisionShape3D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.541666, 0.583332),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="Animation" id="Animation_adl7b"]
+resource_name = "FIST_SLAM_RIGHT"
+length = 1.25001
+step = 0.0666667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/gluttony/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("FIST_SLAM_RIGHT"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraShake")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [3.0],
+"method": &"tremor"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Slam"],
+"method": &"play_2d_sound"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/RightHand/AttackArea/CollisionShape3D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.558333, 0.599999),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
 }
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
@@ -956,6 +1091,30 @@ tracks/25/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Target:position")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 2.45932)]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Target:MATCH_POSITION")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_12e26"]
 resource_name = "SHOOT"
@@ -964,7 +1123,7 @@ step = 0.0416667
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/VomitStraight")
+tracks/0/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/FastVomit")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1040,7 +1199,7 @@ step = 0.0416667
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/VomitGravity")
+tracks/0/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/SlowVomitTrackPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1220,10 +1379,10 @@ tracks/3/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:inf
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.333333, 1.04167, 1.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.0, 0.0, 0.0, 1.0]
+"values": [1.0, 1.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1287,10 +1446,10 @@ tracks/3/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:inf
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.291667, 0.916667, 1.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.25),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [1.0, 0.0, 0.0, 1.0]
+"values": [1.0, 1.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -1305,16 +1464,94 @@ tracks/4/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_uk6rk"]
+resource_name = "VOMIT_IN_FRONT"
+length = 3.08334
+step = 0.0416667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/SlowVomit")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1.375, 1.45833, 1.54166, 1.62265, 1.70598, 1.78931, 1.86421),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio/Shreik2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.958333, 2.08333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 3.80247), Vector3(3.224, 0, 3.802)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Target:MATCH_POSITION")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.375, 2.33333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
 &"CHASE": SubResource("Animation_edx7f"),
 &"DEATH": SubResource("Animation_x1kl7"),
+&"FIST_SLAM_LEFT": SubResource("Animation_svijn"),
+&"FIST_SLAM_RIGHT": SubResource("Animation_adl7b"),
 &"INTRO": SubResource("Animation_mlrdc"),
 &"RESET": SubResource("Animation_jojdm"),
 &"SHOOT": SubResource("Animation_12e26"),
 &"SHOOT_GRAVITY": SubResource("Animation_kcm85"),
 &"SLAM_LEFT": SubResource("Animation_n5wbu"),
-&"SLAM_RIGHT": SubResource("Animation_q0nhg")
+&"SLAM_RIGHT": SubResource("Animation_q0nhg"),
+&"VOMIT_IN_FRONT": SubResource("Animation_uk6rk")
 }
 
 [sub_resource type="Curve" id="Curve_nxhq0"]
@@ -1326,7 +1563,11 @@ _data = [Vector2(0.00940439, 1), 0.0, 0.0, 0, 0]
 point_count = 1
 
 [sub_resource type="Curve" id="Curve_svijn"]
-_data = [Vector2(0.194357, 0), 0.0, 0.0, 0, 0, Vector2(0.291536, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.417219, 0), 0.0, 0.0, 0, 0, Vector2(0.596026, 0.991275), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_vwjlg"]
+_data = [Vector2(0.0927152, 1), 0.0, 0.0, 0, 0, Vector2(0.34106, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4usqi"]
@@ -1334,10 +1575,18 @@ height = 0.892645
 radius = 9.61276
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_n5wbu"]
-radius = 1.01326
-height = 2.6315
+radius = 1.94211
+height = 4.60409
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uk6rk"]
+radius = 1.94211
+height = 4.60409
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_vwjlg"]
+radius = 1.94211
+height = 4.60409
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ryp23"]
 radius = 1.72153
 height = 3.98967
 
@@ -1364,6 +1613,9 @@ radius = 0.001
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r1aqn"]
 size = Vector3(23.4119, 15.2804, 40.1915)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_adl7b"]
+size = Vector3(3.37927, 4.64148, 4.23132)
 
 [node name="Gluttony" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM") groups=["gluttony"]]
 collision_layer = 7
@@ -1514,14 +1766,29 @@ playback_auto_capture_ease_type = 2
 next/INTRO = &"CHASE"
 next/SHOOT = &"CHASE"
 script = ExtResource("18_wqa85")
-ATTACK_ANIMATION = Array[String](["SHOOT", "SLAM_RIGHT", "SLAM_LEFT", "SHOOT_GRAVITY"])
-ATTACK_RADIUS = Array[float]([50.0, 50.0, 50.0, 50.0])
-ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_nxhq0"), SubResource("Curve_q0nhg"), SubResource("Curve_q0nhg"), SubResource("Curve_svijn")])
-LIKELIHOOD_MULTIPLIERS = Array[float]([5.0, 50.0, 50.0, 10000.0])
-AREA_MULTIPLIERS = [null, NodePath("../Mesh/gluttony/Armature/Skeleton3D/RightLeg/TriggerArea"), NodePath("../Mesh/gluttony/Armature/Skeleton3D/LeftLeg/TriggerArea"), null]
+ATTACK_ANIMATION = Array[String](["SHOOT", "SLAM_RIGHT", "SLAM_LEFT", "SHOOT_GRAVITY", "FIST_SLAM_LEFT", "FIST_SLAM_RIGHT", "VOMIT_IN_FRONT"])
+ATTACK_RADIUS = Array[float]([50.0, 50.0, 50.0, 50.0, 50.0, 50.0, 50.0])
+ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_nxhq0"), SubResource("Curve_q0nhg"), SubResource("Curve_q0nhg"), SubResource("Curve_svijn"), SubResource("Curve_q0nhg"), SubResource("Curve_q0nhg"), SubResource("Curve_vwjlg")])
+LIKELIHOOD_MULTIPLIERS = Array[float]([5.0, 1e+06, 1e+06, 10000.0, 1e+06, 1e+06, 5.0])
+AREA_MULTIPLIERS = [null, NodePath("../Mesh/gluttony/Armature/Skeleton3D/RightLeg/TriggerArea"), NodePath("../Mesh/gluttony/Armature/Skeleton3D/LeftLeg/TriggerArea"), null, NodePath("../Mesh/gluttony/Armature/Skeleton3D/LeftHand/TriggerArea"), NodePath("../Mesh/gluttony/Armature/Skeleton3D/RightHand/TriggerArea"), NodePath("../VomitCloseTrigger")]
 LIKELIHOOD_MULTIPLIER = 0.0
 TARGET = NodePath("../Target")
 BODY = NodePath("..")
+attacks = [{
+"area": null,
+"blocked": [],
+"curve": null,
+"multiplier": 1.0,
+"name": "Slash",
+"radius": 3.0
+}, {
+"area": null,
+"blocked": [],
+"curve": null,
+"multiplier": 1.0,
+"name": "Stab",
+"radius": 2.0
+}, null]
 
 [node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SCENE_ROOT")]
 script = ExtResource("25_q2e76")
@@ -1546,58 +1813,60 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 bones/2/rotation = Quaternion(0.115607, -7.7702e-14, -5.51256e-08, 0.993295)
 bones/3/rotation = Quaternion(0.156315, 3.84336e-14, -7.45369e-08, 0.987707)
 bones/4/position = Vector3(6.6471e-07, 1.41856, 1.394)
-bones/4/rotation = Quaternion(0.121553, 9.76996e-15, -5.79611e-08, 0.992585)
-bones/8/position = Vector3(4.27964e-07, 1.2914, 0.897505)
+bones/4/rotation = Quaternion(-0.0399073, 2.61106e-15, 1.90292e-08, 0.999203)
+bones/8/position = Vector3(4.27963e-07, 1.2914, 0.897505)
 bones/8/rotation = Quaternion(0.520192, -2.138e-06, -1.55028e-06, 0.854049)
-bones/9/position = Vector3(0.0683809, 1.04764, 1.70888)
+bones/9/position = Vector3(0.068381, 1.04764, 1.70888)
 bones/9/rotation = Quaternion(0.844426, 0.404891, 0.158052, -0.313094)
 bones/10/position = Vector3(0.311825, 0.873597, 1.55681)
 bones/10/rotation = Quaternion(0.901147, 0.239684, 0.0571453, -0.356678)
-bones/11/position = Vector3(0.523493, 0.553382, 1.3319)
+bones/11/position = Vector3(0.523493, 0.553383, 1.3319)
 bones/11/rotation = Quaternion(0.97198, 0.106428, 0.0981888, -0.185165)
-bones/12/position = Vector3(0.577774, 0.294034, 1.25518)
-bones/13/position = Vector3(0.470246, 0.084105, 1.3362)
+bones/12/position = Vector3(0.577774, 0.294035, 1.25518)
+bones/13/position = Vector3(0.470246, 0.0841048, 1.3362)
 bones/13/rotation = Quaternion(0.700648, -0.218285, 0.108457, 0.670582)
 bones/14/position = Vector3(0.339622, 0.123198, 1.57834)
 bones/14/rotation = Quaternion(0.562489, -0.294514, 0.157498, 0.756348)
 bones/15/position = Vector3(0.167567, 0.184801, 1.72042)
 bones/15/rotation = Quaternion(0.449251, -0.44543, 0.268136, 0.726546)
-bones/16/position = Vector3(0.650535, 0.385237, 0.0480369)
-bones/21/position = Vector3(-0.0683796, 1.04764, 1.70888)
-bones/22/position = Vector3(-0.311824, 0.873596, 1.55681)
+bones/16/position = Vector3(0.650535, 0.385237, 0.048037)
+bones/21/position = Vector3(-0.0683795, 1.04764, 1.70888)
+bones/21/rotation = Quaternion(0.844426, -0.404891, -0.158053, -0.313093)
+bones/22/position = Vector3(-0.311824, 0.873597, 1.55681)
 bones/22/rotation = Quaternion(0.901147, -0.239685, -0.0571457, -0.356678)
 bones/23/position = Vector3(-0.523492, 0.553383, 1.3319)
 bones/23/rotation = Quaternion(0.97198, -0.106427, -0.0981895, -0.185165)
-bones/24/position = Vector3(-0.577772, 0.294035, 1.25518)
+bones/24/position = Vector3(-0.577772, 0.294034, 1.25518)
 bones/24/rotation = Quaternion(0.963061, 0.0930194, -0.236932, 0.0878857)
-bones/25/position = Vector3(-0.470244, 0.0841047, 1.3362)
+bones/25/position = Vector3(-0.470244, 0.0841049, 1.3362)
 bones/25/rotation = Quaternion(0.700648, 0.218286, -0.108458, 0.670582)
 bones/26/position = Vector3(-0.339621, 0.123198, 1.57834)
-bones/26/rotation = Quaternion(0.562489, 0.294515, -0.157498, 0.756348)
+bones/26/rotation = Quaternion(0.562488, 0.294515, -0.157498, 0.756348)
 bones/27/position = Vector3(-0.167565, 0.184801, 1.72042)
+bones/27/rotation = Quaternion(0.449251, 0.445431, -0.268137, 0.726545)
 bones/28/position = Vector3(-0.650535, 0.385237, 0.0480376)
 bones/30/rotation = Quaternion(0.183224, -0.0372966, -0.672582, 0.716011)
-bones/31/rotation = Quaternion(0.27381, 0.0322691, 0.0423664, 0.960308)
-bones/32/rotation = Quaternion(0.262743, 0.422381, 0.281481, 0.820566)
-bones/33/rotation = Quaternion(0.00464921, -0.0380337, 0.0391877, 0.998497)
+bones/31/rotation = Quaternion(0.18802, 0.373463, -0.445662, 0.791555)
+bones/32/rotation = Quaternion(0.161591, -0.00965965, 0.0634747, 0.984767)
+bones/33/rotation = Quaternion(0.00464922, -0.0380337, 0.0391877, 0.998497)
 bones/34/rotation = Quaternion(0.131079, 0.0262361, -0.123966, 0.983241)
-bones/35/rotation = Quaternion(0.0175432, -0.00285242, 0.0942092, 0.995394)
+bones/35/rotation = Quaternion(0.0175432, -0.00285245, 0.0942092, 0.995394)
 bones/36/rotation = Quaternion(-0.0481328, 0.0300941, -0.109555, 0.992359)
 bones/37/rotation = Quaternion(0.217927, -0.00326542, 0.119126, 0.968662)
 bones/38/rotation = Quaternion(-0.0711142, -0.0241357, 0.168693, 0.982804)
-bones/39/rotation = Quaternion(0.0349045, 0.00271445, -0.104074, 0.993953)
+bones/39/rotation = Quaternion(0.0349046, 0.00271445, -0.104074, 0.993953)
 bones/40/position = Vector3(-3.46002e-08, 1.07757, -1.51217e-07)
 bones/40/rotation = Quaternion(0.183224, 0.037297, 0.672582, 0.716011)
 bones/40/scale = Vector3(1, 1, 1)
-bones/41/rotation = Quaternion(0.182992, -0.0224593, 0.240814, 0.9529)
-bones/42/rotation = Quaternion(0.254865, -0.409878, -0.310796, 0.81881)
+bones/41/rotation = Quaternion(0.099723, -0.279221, 0.463875, 0.834812)
+bones/42/rotation = Quaternion(0.169755, -0.107355, -0.0407962, 0.978772)
 bones/43/rotation = Quaternion(0.00464923, 0.0380337, -0.0391877, 0.998497)
 bones/44/rotation = Quaternion(0.131079, -0.0262361, 0.123966, 0.983241)
-bones/45/rotation = Quaternion(0.0175432, 0.00285241, -0.0942092, 0.995394)
+bones/45/rotation = Quaternion(0.0175432, 0.00285239, -0.0942092, 0.995394)
 bones/46/rotation = Quaternion(-0.0481328, -0.0300941, 0.109555, 0.992359)
-bones/47/rotation = Quaternion(0.217927, 0.00326535, -0.119126, 0.968662)
-bones/48/position = Vector3(0.205645, 0.142304, -0.125804)
-bones/48/rotation = Quaternion(-0.0711143, 0.0241357, -0.168693, 0.982804)
+bones/47/rotation = Quaternion(0.217927, 0.00326538, -0.119126, 0.968662)
+bones/48/position = Vector3(0.205646, 0.142304, -0.125804)
+bones/48/rotation = Quaternion(-0.0711142, 0.0241357, -0.168693, 0.982804)
 bones/49/rotation = Quaternion(0.0349046, -0.00271436, 0.104074, 0.993953)
 bones/51/rotation = Quaternion(0.0130586, 4.1959e-12, -6.53818e-08, 0.999915)
 bones/52/position = Vector3(-5.85673e-08, -1.61438, -0.11323)
@@ -1609,8 +1878,64 @@ bones/55/rotation = Quaternion(0.192924, -0.355507, 0.323287, 0.8555)
 bones/56/rotation = Quaternion(-0.272658, 0.0169688, -0.120778, 0.954349)
 bones/57/rotation = Quaternion(0.0400877, -0.00871226, -0.0882026, 0.995258)
 
-[node name="RightLeg" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.687976, 0.13188, 0.71365, 0.72478, -0.0744643, -0.684945, -0.0371892, 0.988465, -0.146814, 2.61113, -0.112561, 1.96333)
+[node name="RightHand" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="0"]
+transform = Transform3D(-0.274224, 0.366331, -0.889158, -0.274336, -0.915982, -0.292775, -0.921705, 0.163642, 0.351683, 2.96985, 0.701105, -1.05188)
+bone_name = "hand_r"
+bone_idx = 33
+
+[node name="AttackArea" type="Area3D" parent="Mesh/gluttony/Armature/Skeleton3D/RightHand" groups=["gluttony"]]
+transform = Transform3D(0.99621, 0, -0.086982, 0, 1, 0, 0.086982, 0, 0.99621, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("30_g5uva")
+damage = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/RightHand/AttackArea"]
+transform = Transform3D(-0.27755, -0.724332, -0.631118, 0.960711, -0.209259, -0.18233, 0, -0.656928, 0.753953, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_n5wbu")
+disabled = true
+debug_color = Color(0.73, 0.73, 0.73, 0)
+
+[node name="TriggerArea" type="Area3D" parent="Mesh/gluttony/Armature/Skeleton3D/RightHand" groups=["gluttony"]]
+transform = Transform3D(0.674882, 0, -0.737926, 0, 1, 0, 0.737926, 0, 0.674882, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/RightHand/TriggerArea"]
+transform = Transform3D(-0.27755, -0.724332, -0.631118, 0.960711, -0.209259, -0.18233, 0, -0.656928, 0.753953, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_n5wbu")
+debug_color = Color(0.73, 0.73, 0.73, 0)
+
+[node name="LeftHand" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="1"]
+transform = Transform3D(-0.30441, -0.413174, 0.858267, 0.266896, -0.901934, -0.339533, 0.914386, 0.125711, 0.384832, -3.03987, 0.752256, -1.12815)
+bone_name = "hand_l"
+bone_idx = 43
+
+[node name="AttackArea" type="Area3D" parent="Mesh/gluttony/Armature/Skeleton3D/LeftHand" groups=["gluttony"]]
+transform = Transform3D(0.0833822, 0, -0.996518, 0, 1, 0, 0.996518, 0, 0.0833822, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("30_g5uva")
+damage = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea"]
+transform = Transform3D(-0.27755, -0.724332, -0.631118, 0.960711, -0.209259, -0.18233, 0, -0.656928, 0.753953, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_n5wbu")
+disabled = true
+debug_color = Color(0.73, 0.73, 0.73, 0)
+
+[node name="TriggerArea" type="Area3D" parent="Mesh/gluttony/Armature/Skeleton3D/LeftHand" groups=["gluttony"]]
+transform = Transform3D(0.0833822, 0, -0.996518, 0, 1, 0, 0.996518, 0, 0.0833822, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/LeftHand/TriggerArea"]
+transform = Transform3D(-0.27755, -0.724332, -0.631118, 0.960711, -0.209259, -0.18233, 0, -0.656928, 0.753953, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_uk6rk")
+debug_color = Color(0.73, 0.73, 0.73, 0)
+
+[node name="RightLeg" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.687976, 0.131881, 0.71365, 0.72478, -0.0744644, -0.684945, -0.0371898, 0.988464, -0.146815, 2.61113, -0.112562, 1.96333)
 bone_name = "hoof_r"
 bone_idx = 54
 
@@ -1623,9 +1948,9 @@ damage = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/RightLeg/AttackArea"]
 transform = Transform3D(-0.27755, -0.724332, -0.631118, 0.960711, -0.209259, -0.18233, 0, -0.656928, 0.753953, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_n5wbu")
+shape = SubResource("CapsuleShape3D_vwjlg")
 disabled = true
-debug_color = Color(0.733333, 0.243137, 0.282353, 1)
+debug_color = Color(0.73, 0.73, 0.73, 0)
 
 [node name="TriggerArea" type="Area3D" parent="Mesh/gluttony/Armature/Skeleton3D/RightLeg" groups=["gluttony"]]
 collision_layer = 3
@@ -1633,11 +1958,11 @@ collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/RightLeg/TriggerArea"]
 transform = Transform3D(-0.27755, 0.632558, -0.723074, 0.960711, 0.182747, -0.208896, 2.98023e-08, -0.752645, -0.658427, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_uk6rk")
-debug_color = Color(0.73, 0.73, 0.73, 1)
+shape = SubResource("CapsuleShape3D_ryp23")
+debug_color = Color(0.73, 0.73, 0.73, 0)
 
-[node name="LeftLeg" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.687977, -0.13188, -0.71365, -0.724779, -0.0744644, -0.684945, 0.0371892, 0.988465, -0.146814, -2.61113, -0.112562, 1.96333)
+[node name="LeftLeg" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="3"]
+transform = Transform3D(0.687976, -0.131881, -0.71365, -0.72478, -0.0744644, -0.684945, 0.0371897, 0.988465, -0.146815, -2.61113, -0.112563, 1.96333)
 bone_name = "hoof_l"
 bone_idx = 57
 
@@ -1660,12 +1985,12 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/LeftLeg/TriggerArea"]
 transform = Transform3D(-0.27755, -0.724332, -0.631118, 0.960711, -0.209259, -0.18233, 0, -0.656928, 0.753953, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_svijn")
-debug_color = Color(0.73, 0.73, 0.73, 1)
+debug_color = Color(0.73, 0.73, 0.73, 0.14902)
 
-[node name="Retopo" parent="Mesh/gluttony/Armature/Skeleton3D" index="2"]
+[node name="Retopo" parent="Mesh/gluttony/Armature/Skeleton3D" index="4"]
 material_override = ExtResource("28_kav4y")
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="3"]
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="5"]
 target_node = NodePath("../../../../../Target")
 bone_name = "head"
 bone = 4
@@ -1677,7 +2002,7 @@ primary_damp_threshold = 1.0
 secondary_limit_angle = 1.94779
 secondary_damp_threshold = 1.0
 
-[node name="RightCheeck" type="SpringBoneSimulator3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="4"]
+[node name="RightCheeck" type="SpringBoneSimulator3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77025, -0.673907, 0)
 influence = 0.5
 setting_count = 1
@@ -1705,7 +2030,7 @@ settings/0/gravity/direction = Vector3(0, -1, 0)
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="LeftCheek" type="SpringBoneSimulator3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="5"]
+[node name="LeftCheek" type="SpringBoneSimulator3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.650886, -0.673907, 0)
 influence = 0.5
 setting_count = 1
@@ -1733,7 +2058,7 @@ settings/0/gravity/direction = Vector3(0, -1, 0)
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="LeftEars" type="SpringBoneSimulator3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="6"]
+[node name="LeftEars" type="SpringBoneSimulator3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.784763, -0.673907, 0)
 influence = 0.2
 setting_count = 1
@@ -1761,7 +2086,7 @@ settings/0/gravity/direction = Vector3(0, -1, 0)
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="RightEars" type="SpringBoneSimulator3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="7"]
+[node name="RightEars" type="SpringBoneSimulator3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.784763, -0.673907, 0)
 influence = 0.2
 setting_count = 1
@@ -1789,19 +2114,26 @@ settings/0/gravity/direction = Vector3(0, -1, 0)
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="8"]
-transform = Transform3D(1, -9.80423e-08, -1.44114e-07, -6.01888e-08, 0.581715, -0.813392, 1.6358e-07, 0.813392, 0.581715, -1.00113e-12, 3.03695, 0.242385)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="10"]
+transform = Transform3D(1, -5.07171e-08, -1.20785e-07, -4.52364e-08, 0.731613, -0.68172, 1.22943e-07, 0.68172, 0.731613, 6.59051e-14, 3.03694, 0.242382)
 bone_name = "head"
 bone_idx = 4
 
-[node name="VomitStraight" type="Node3D" parent="Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("copy_transform_node")]
+[node name="FastVomit" type="Node3D" parent="Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("copy_transform_node")]
 transform = Transform3D(-1, 4.48546e-09, 8.73078e-08, 0, 0.998685, -0.0513077, -8.74229e-08, -0.0513077, -0.998684, -6.90057e-08, 0.049309, 0.959783)
 rotation_edit_mode = 1
 script = ExtResource("19_4cd86")
 scenes = Array[PackedScene]([ExtResource("30_nxhq0")])
 copy_transform_node = NodePath(".")
 
-[node name="VomitGravity" type="Node3D" parent="Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("copy_transform_node")]
+[node name="SlowVomitTrackPlayer" type="Node3D" parent="Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("copy_transform_node")]
+transform = Transform3D(-1, 4.48546e-09, 8.73078e-08, 0, 0.998685, -0.0513077, -8.74229e-08, -0.0513077, -0.998684, -8.78837e-08, 0.0647815, 1.26095)
+rotation_edit_mode = 1
+script = ExtResource("19_4cd86")
+scenes = Array[PackedScene]([ExtResource("35_svijn")])
+copy_transform_node = NodePath(".")
+
+[node name="SlowVomit" type="Node3D" parent="Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("copy_transform_node")]
 transform = Transform3D(-1, 4.48546e-09, 8.73078e-08, 0, 0.998685, -0.0513077, -8.74229e-08, -0.0513077, -0.998684, -8.78837e-08, 0.0647815, 1.26095)
 rotation_edit_mode = 1
 script = ExtResource("19_4cd86")
@@ -1890,7 +2222,21 @@ target_body_group = "piglet_body"
 target_mesh_group = "piglet_mesh"
 weight = 0.0
 
+[node name="VomitCloseTrigger" type="Area3D" parent="." groups=["gluttony"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VomitCloseTrigger"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0563354, 1.82074, 3.6874)
+shape = SubResource("BoxShape3D_adl7b")
+debug_color = Color(0.73, 0.73, 0.73, 0.333333)
+
 [connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]
+[connection signal="body_entered" from="Mesh/gluttony/Armature/Skeleton3D/RightHand/AttackArea" to="Mesh/gluttony/Armature/Skeleton3D/RightHand/AttackArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Mesh/gluttony/Armature/Skeleton3D/RightHand/TriggerArea" to="Mesh/gluttony/Armature/Skeleton3D/RightHand/TriggerArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea" to="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Mesh/gluttony/Armature/Skeleton3D/LeftHand/TriggerArea" to="Mesh/gluttony/Armature/Skeleton3D/LeftHand/TriggerArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/gluttony/Armature/Skeleton3D/RightLeg/AttackArea" to="Mesh/gluttony/Armature/Skeleton3D/RightLeg/AttackArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/gluttony/Armature/Skeleton3D/RightLeg/TriggerArea" to="Mesh/gluttony/Armature/Skeleton3D/RightLeg/TriggerArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/gluttony/Armature/Skeleton3D/LeftLeg/AttackArea" to="Mesh/gluttony/Armature/Skeleton3D/LeftLeg/AttackArea" method="_on_body_entered"]
@@ -1898,5 +2244,6 @@ weight = 0.0
 [connection signal="body_entered" from="Jump" to="Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="Shake" to="Shake" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
+[connection signal="body_entered" from="VomitCloseTrigger" to="VomitCloseTrigger" method="_on_body_entered"]
 
 [editable path="Mesh/gluttony"]

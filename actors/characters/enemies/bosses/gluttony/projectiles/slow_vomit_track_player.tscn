@@ -1,9 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2iqujeqiun08"]
+[gd_scene load_steps=13 format=3 uid="uid://c6mdedu61qija"]
 
-[ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://actors/characters/enemies/projectile.gd" id="1_e1mm7"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="2_5q4cm"]
-[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="2_fabgd"]
-[ext_resource type="PackedScene" uid="uid://4f506yax85t1" path="res://actors/characters/enemies/bosses/gluttony/projectiles/puddle.tscn" id="3_j1560"]
+[ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://actors/characters/enemies/projectile.gd" id="1_jntw7"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="2_xxyhw"]
+[ext_resource type="PackedScene" uid="uid://4f506yax85t1" path="res://actors/characters/enemies/bosses/gluttony/projectiles/puddle.tscn" id="3_y6rv5"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="4_3wnrm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsv7j"]
 albedo_color = Color(0.377757, 0.44866, 0.352352, 1)
@@ -116,7 +116,7 @@ _data = {
 }
 
 [node name="GluttonyProjectile" type="Node3D" node_paths=PackedStringArray("destroy_area", "collision_animation_player", "collision_point_node")]
-script = ExtResource("1_e1mm7")
+script = ExtResource("1_jntw7")
 destroy_area = NodePath("Attack")
 body_exclude_groups = Array[String](["gluttony", "player"])
 area_exclude_groups = Array[String](["gluttony", "player"])
@@ -128,8 +128,8 @@ random_velocity_y = 1.0
 gravity = 7.63
 
 [node name="PuddleSpawner" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node")]
-script = ExtResource("2_fabgd")
-scenes = Array[PackedScene]([ExtResource("3_j1560")])
+script = ExtResource("2_xxyhw")
+scenes = Array[PackedScene]([ExtResource("3_y6rv5")])
 copy_transform_node = NodePath("../Node3D")
 
 [node name="Node3D" type="Node3D" parent="."]
@@ -150,7 +150,7 @@ skeleton = NodePath("")
 transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("2_5q4cm")
+script = ExtResource("4_3wnrm")
 damage = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
