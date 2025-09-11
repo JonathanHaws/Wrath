@@ -16,12 +16,12 @@
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://actors/characters/enemies/sfx/Spin.wav" id="13_367wx"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="13_h5485"]
 [ext_resource type="AudioStream" uid="uid://bg0rsvkfwvyq1" path="res://actors/props/sfx/Crumble_4.wav" id="13_wxkwy"]
-[ext_resource type="Script" uid="uid://l4b37mckqf8k" path="res://actors/characters/enemies/proximity_based_random_attacks/proximity_based_random_attacks.gd" id="14_e2tgp"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="17_r1aqn"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://actors/characters/enemies/sfx/Cry_2.wav" id="19_ewgrb"]
 [ext_resource type="PackedScene" uid="uid://d0ifk8wbwkr3w" path="res://actors/characters/enemies/bosses/wrath/wrath_hurt_particles.tscn" id="22_1df88"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="22_r385c"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="24_do1jg"]
+[ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/proximity_based_random_attacks/random_attack.gd" id="24_x676q"]
 [ext_resource type="Material" uid="uid://biupco8dcn4xr" path="res://actors/characters/enemies/bosses/wrath/wrath_material.tres" id="27_a67hc"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="28_x676q"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://actors/slow_motion.gd" id="29_8mxmx"]
@@ -1293,21 +1293,21 @@ _data = {
 &"SPIN_ATTACK": SubResource("Animation_jiut6")
 }
 
-[sub_resource type="Curve" id="Curve_cc4qc"]
-_limits = [0.0, 5.0, 0.0, 1.0]
+[sub_resource type="Curve" id="Curve_x676q"]
+_limits = [0.0, 8.9011, 0.0, 1.0]
 _data = [Vector2(0, 8.9011), 0.0, 0.0, 0, 0, Vector2(1e-05, 3.35165), -18.9164, -18.9164, 0, 0, Vector2(0.210526, 2.30769), -6.63492, -6.63492, 0, 0, Vector2(0.267943, 0), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 5
 
-[sub_resource type="Curve" id="Curve_hhdhn"]
-_data = [Vector2(0, 0.21978), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+[sub_resource type="Curve" id="Curve_tjj4l"]
+_data = [Vector2(0, 0.94589), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_q1yl6"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.263736), 0.0, 0.0, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.804413), 0.0, 0.0, 0, 0, Vector2(1, 0.076923), 0.0, 0.0, 0, 0]
 point_count = 3
 
 [sub_resource type="Curve" id="Curve_ydlo6"]
-_limits = [0.0, 10.0, 0.0, 1.0]
+_limits = [0.0, 3.59551, 0.0, 1.0]
 _data = [Vector2(0, 2.58427), 0.0, 0.0, 0, 0, Vector2(0.155172, 3.59551), 0.0, 0.0, 0, 0, Vector2(0.413793, 1.46067), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -1552,7 +1552,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_pxmry")
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." node_paths=PackedStringArray("TARGET", "BODY")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 callback_mode_process = 0
 libraries = {
 &"": SubResource("AnimationLibrary_y10ku")
@@ -1564,14 +1564,39 @@ next/JUMP_ATTACK = &"CHASE"
 next/ROAR_ATTACK = &"CHASE"
 next/SLAM_ATTACK = &"CHASE"
 next/SPIN_ATTACK = &"CHASE"
-script = ExtResource("14_e2tgp")
-ATTACK_ANIMATION = Array[String](["SLAM_ATTACK", "JUMP_ATTACK", "SPIN_ATTACK", "ROAR_ATTACK"])
-ATTACK_RADIUS = Array[float]([10.0, 10.0, 10.0, 10.0])
-ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_cc4qc"), SubResource("Curve_hhdhn"), SubResource("Curve_q1yl6"), SubResource("Curve_ydlo6")])
-LIKELIHOOD_MULTIPLIERS = Array[float]([80.0, 60.0, 60.0, 1.5])
-LIKELIHOOD_MULTIPLIER = 0.0
-TARGET = NodePath("../Target")
-BODY = NodePath("..")
+
+[node name="SlamAttack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
+script = ExtResource("24_x676q")
+ATTACK_ANIMATION = "SLAM_ATTACK"
+ATTACK_RADIUS = 10.0
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_x676q")
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
+
+[node name="JumpAttack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
+script = ExtResource("24_x676q")
+ATTACK_ANIMATION = "JUMP_ATTACK"
+ATTACK_RADIUS = 10.0
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_tjj4l")
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
+
+[node name="SpinAttack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
+script = ExtResource("24_x676q")
+ATTACK_ANIMATION = "SPIN_ATTACK"
+ATTACK_RADIUS = 10.0
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_q1yl6")
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
+
+[node name="RoarAttack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
+script = ExtResource("24_x676q")
+ATTACK_ANIMATION = "ROAR_ATTACK"
+LIKELIHOOD_MULTIPLIER = 0.2
+ATTACK_RADIUS = 10.0
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_ydlo6")
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
 
 [node name="HurtParticles" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node") groups=["teleport_to_attacking_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
@@ -1597,23 +1622,24 @@ SCENE_ROOT = NodePath("..")
 [node name="wrath" parent="Mesh" instance=ExtResource("10_h46di")]
 
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
-bones/1/position = Vector3(0.0311678, -0.75374, 0.865528)
-bones/1/rotation = Quaternion(0.25735, 8.11288e-17, 7.05286e-17, 0.966318)
-bones/2/rotation = Quaternion(0.347629, 1.11774e-07, 4.14406e-08, 0.937632)
+bones/1/position = Vector3(-7.12175e-17, 0.0829432, 0.518257)
+bones/1/rotation = Quaternion(0.520187, 5.55556e-17, 9.12122e-17, 0.854052)
+bones/2/rotation = Quaternion(0.296613, 1.13845e-07, 3.5359e-08, 0.954998)
+bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
-bones/4/rotation = Quaternion(0.133097, 0.385149, 0.190128, 0.893195)
+bones/4/rotation = Quaternion(-0.18941, 0.085631, 0.344916, 0.915327)
 bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
-bones/6/rotation = Quaternion(-0.0822429, 0.000622981, 0.134669, 0.987472)
-bones/7/rotation = Quaternion(-0.136309, -2.93099e-14, -3.24986e-08, 0.990666)
+bones/6/rotation = Quaternion(-0.0822429, 0.00062297, 0.134669, 0.987472)
+bones/7/rotation = Quaternion(-0.29291, -1.6637e-14, -6.98353e-08, 0.95614)
 bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
-bones/9/rotation = Quaternion(0.18255, -0.0376967, -0.180838, 0.965687)
-bones/10/rotation = Quaternion(-0.239191, 0.243902, -0.292818, 0.893061)
+bones/9/rotation = Quaternion(-0.18941, -0.085631, -0.344916, 0.915327)
+bones/10/rotation = Quaternion(-0.455173, 0.0679145, -0.0325446, 0.887213)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
 material_override = ExtResource("27_a67hc")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.923684, -0.195082, -0.329774, 0.0905005, -0.947408, 0.306964, -0.372313, 0.253694, 0.892761, -2.18221, 2.17366, 1.12482)
+transform = Transform3D(-0.924672, -0.00872163, -0.380663, 0.348245, -0.423631, -0.836219, -0.153967, -0.905793, 0.394757, -2.01091, 1.84788, -0.0583956)
 bone_name = "hand_l"
 bone_idx = 6
 script = ExtResource("22_r385c")
@@ -1631,7 +1657,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885416, -0.227331, -0.588577, 0.0625503, 0.806017, 2.24396, 2.10367, 1.2004)
+transform = Transform3D(-0.924672, 0.00872178, 0.380663, -0.348245, -0.423631, -0.836219, 0.153967, -0.905793, 0.394757, 2.01091, 1.84788, -0.0583954)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1648,7 +1674,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3" groups=["wrath"]]
-transform = Transform3D(1, 7.23087e-15, 2.38419e-07, -7.95448e-08, 0.942702, 0.333635, -2.24758e-07, -0.333635, 0.942702, 0.0311678, 0.650921, 0.209366)
+transform = Transform3D(1, 7.10543e-15, 2.38419e-07, 2.9874e-08, 0.992119, -0.125301, -2.3654e-07, 0.125301, 0.992119, 2.87231e-23, 1, 0.100295)
 bone_name = "torso"
 bone_idx = 2
 
