@@ -32,7 +32,7 @@
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="24_r4ucj"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="25_q2e76"]
 [ext_resource type="Material" uid="uid://7w72228cchli" path="res://actors/characters/enemies/bosses/gluttony/gluttony_material.tres" id="28_kav4y"]
-[ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/proximity_based_random_attacks/random_attack.gd" id="29_uk6rk"]
+[ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="29_uk6rk"]
 [ext_resource type="PackedScene" uid="uid://dshyyn54ur3e1" path="res://actors/characters/enemies/bosses/gluttony/gluttony.blend" id="29_wvvup"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="30_g5uva"]
 [ext_resource type="PackedScene" uid="uid://d2iqujeqiun08" path="res://actors/characters/enemies/bosses/gluttony/projectiles/slow_vomit.tscn" id="30_kcm85"]

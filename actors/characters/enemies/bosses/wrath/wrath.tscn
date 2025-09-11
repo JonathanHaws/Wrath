@@ -21,7 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://d0ifk8wbwkr3w" path="res://actors/characters/enemies/bosses/wrath/wrath_hurt_particles.tscn" id="22_1df88"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="22_r385c"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="24_do1jg"]
-[ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/proximity_based_random_attacks/random_attack.gd" id="24_x676q"]
+[ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="24_x676q"]
 [ext_resource type="Material" uid="uid://biupco8dcn4xr" path="res://actors/characters/enemies/bosses/wrath/wrath_material.tres" id="27_a67hc"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="28_x676q"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://actors/slow_motion.gd" id="29_8mxmx"]
@@ -1568,7 +1568,6 @@ next/SPIN_ATTACK = &"CHASE"
 [node name="SlamAttack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_x676q")
 ATTACK_ANIMATION = "SLAM_ATTACK"
-ATTACK_RADIUS = 10.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_x676q")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
@@ -1576,7 +1575,6 @@ BODY = NodePath("../..")
 [node name="JumpAttack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_x676q")
 ATTACK_ANIMATION = "JUMP_ATTACK"
-ATTACK_RADIUS = 10.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_tjj4l")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
@@ -1584,7 +1582,6 @@ BODY = NodePath("../..")
 [node name="SpinAttack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_x676q")
 ATTACK_ANIMATION = "SPIN_ATTACK"
-ATTACK_RADIUS = 10.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_q1yl6")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
@@ -1593,7 +1590,6 @@ BODY = NodePath("../..")
 script = ExtResource("24_x676q")
 ATTACK_ANIMATION = "ROAR_ATTACK"
 LIKELIHOOD_MULTIPLIER = 0.2
-ATTACK_RADIUS = 10.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_ydlo6")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
@@ -1625,7 +1621,6 @@ SCENE_ROOT = NodePath("..")
 bones/1/position = Vector3(-7.12175e-17, 0.0829432, 0.518257)
 bones/1/rotation = Quaternion(0.520187, 5.55556e-17, 9.12122e-17, 0.854052)
 bones/2/rotation = Quaternion(0.296613, 1.13845e-07, 3.5359e-08, 0.954998)
-bones/2/scale = Vector3(1, 1, 1)
 bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
 bones/4/rotation = Quaternion(-0.18941, 0.085631, 0.344916, 0.915327)
 bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)

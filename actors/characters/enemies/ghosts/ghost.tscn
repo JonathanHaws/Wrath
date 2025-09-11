@@ -18,7 +18,7 @@
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_shake.gd" id="16_wbsgp"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="17_fgjfs"]
 [ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://actors/characters/enemies/ghosts/ghost_hurt_particles.tscn" id="18_mgx37"]
-[ext_resource type="Script" uid="uid://l4b37mckqf8k" path="res://actors/characters/enemies/proximity_based_random_attacks/proximity_based_random_attacks.gd" id="19_i12cp"]
+[ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="20_mvqiw"]
 [ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://actors/characters/enemies/ghosts/ghost_projectile.tscn" id="20_x07w4"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="21_bheyo"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="22_3d4yc"]
@@ -313,7 +313,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/3/path = NodePath("AnimationPlayer:LIKELIHOOD_MULTIPLIER")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -325,6 +325,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_n368u"]
 resource_name = "CHASE"
+loop_mode = 2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -340,7 +341,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/1/path = NodePath("AnimationPlayer:LIKELIHOOD_MULTIPLIER")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -510,7 +511,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/4/path = NodePath("AnimationPlayer:LIKELIHOOD_MULTIPLIER")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -656,7 +657,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/5/path = NodePath("AnimationPlayer:LIKELIHOOD_MULTIPLIER")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -676,7 +677,7 @@ _data = {
 &"SHOOT": SubResource("Animation_fd7dn")
 }
 
-[sub_resource type="Curve" id="Curve_dfr5h"]
+[sub_resource type="Curve" id="Curve_mvqiw"]
 _data = [Vector2(0.0687285, 1), 0.0, 0.0, 0, 0, Vector2(0.209622, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
@@ -684,7 +685,7 @@ point_count = 2
 _data = [Vector2(0, 0.730337), 0.0, 0.0, 0, 0]
 point_count = 1
 
-[sub_resource type="Curve" id="Curve_hp215"]
+[sub_resource type="Curve" id="Curve_7c1mb"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.988764), 0.0, 0.0, 0, 0, Vector2(0.453659, 1), -0.0794266, -0.0794266, 0, 0, Vector2(0.668293, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
@@ -825,7 +826,7 @@ IMMUNE_GROUPS = Array[String](["ghost"])
 SAVE_HEALTH = true
 RESPAWN = true
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
-ANIMATION_PLAYERS = [NodePath("../Damaged"), NodePath("../Attacks")]
+ANIMATION_PLAYERS = [NodePath("../Damaged"), NodePath("../AnimationPlayer")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("SphereShape3D_6640v")
@@ -853,24 +854,39 @@ libraries = {
 &"": SubResource("AnimationLibrary_n368u")
 }
 
-[node name="Attacks" type="AnimationPlayer" parent="." node_paths=PackedStringArray("TARGET", "BODY")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_agce3")
 }
 autoplay = "CHASE"
 next/ATTACK = &"CHASE"
+next/CHASE = &"CHASE"
 next/JUMP_ATTACK = &"CHASE"
 next/SHOOT = &"CHASE"
-script = ExtResource("19_i12cp")
-ATTACK_ANIMATION = Array[String](["ATTACK", "SHOOT", "JUMP_ATTACK"])
-ATTACK_RADIUS = Array[float]([10.0, 37.0, 20.0])
-ATTACK_LIKELEHOOD = Array[Curve]([SubResource("Curve_dfr5h"), SubResource("Curve_n368u"), SubResource("Curve_hp215")])
-LIKELIHOOD_MULTIPLIERS = Array[float]([500.0, 2.0, 50.0])
-LIKELIHOOD_MULTIPLIER = 0.0
-BLOCKING_ANIMATIONS = Array[String](["DEATH"])
-ATTACKING = true
-TARGET = NodePath("../Target")
-BODY = NodePath("..")
+
+[node name="Attack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
+script = ExtResource("20_mvqiw")
+ATTACK_ANIMATION = "ATTACK"
+LIKELIHOOD_MULTIPLIER = 50.0
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_mvqiw")
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
+
+[node name="Shoot" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
+script = ExtResource("20_mvqiw")
+ATTACK_ANIMATION = "SHOOT"
+LIKELIHOOD_MULTIPLIER = 50.0
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_n368u")
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
+
+[node name="JumpAttack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
+script = ExtResource("20_mvqiw")
+ATTACK_ANIMATION = "JUMP_ATTACK"
+LIKELIHOOD_MULTIPLIER = 50.0
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_7c1mb")
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_6640v")

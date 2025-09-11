@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://actors/characters/enemies/sfx/Spin.wav" id="21_br41q"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="23_xmcwa"]
 [ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://actors/characters/enemies/sfx/Hit_1.wav" id="24_1upmg"]
-[ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/proximity_based_random_attacks/random_attack.gd" id="24_47sfl"]
+[ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="24_47sfl"]
 [ext_resource type="AudioStream" uid="uid://b4dyx5m8hsynq" path="res://actors/characters/enemies/sfx/Hit_2.wav" id="25_palr8"]
 [ext_resource type="AudioStream" uid="uid://bv7cgqlt3sbtb" path="res://actors/characters/enemies/sfx/Hit_3.wav" id="26_biius"]
 [ext_resource type="Material" uid="uid://cavtcg6mq6c52" path="res://actors/characters/enemies/bosses/greed/greed_material.tres" id="27_mmykl"]

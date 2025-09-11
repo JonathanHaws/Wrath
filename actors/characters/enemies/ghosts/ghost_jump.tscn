@@ -100,10 +100,17 @@ albedo_color = Color(0.52, 0.52, 0.52, 1)
 
 [node name="Ghost" instance=ExtResource("1_ukca1")]
 
-[node name="Attacks" parent="." index="6"]
-LIKELIHOOD_MULTIPLIERS = Array[float]([0.0, 0.0, 20.0])
+[node name="Attack" parent="AnimationPlayer" index="0"]
+LIKELIHOOD_MULTIPLIER = 4.0
+DISABLED = true
 
-[node name="MeshInstance3D" parent="Mesh" index="1"]
+[node name="Shoot" parent="AnimationPlayer" index="1"]
+DISABLED = true
+
+[node name="JumpAttack" parent="AnimationPlayer" index="2"]
+LIKELIHOOD_MULTIPLIER = 4.0
+
+[node name="MeshInstance3D" parent="Mesh" index="2"]
 material_override = SubResource("ShaderMaterial_x4qib")
 
 [node name="MeshInstance3D" parent="Mesh/MeshInstance3D" index="0"]

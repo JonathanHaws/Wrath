@@ -1,18 +1,21 @@
 extends Node
-# Child node to animation player to specify attacks
+# Child node to animation player to specify attacks based of promximity and other things
 
 @export var ATTACK_ANIMATION: String = "SLAM"
 @export var LIKELIHOOD_MULTIPLIER: float = 1.0 ## Easy value for adjusting the overall frequency
-@export var ATTACK_RADIUS: float = 50.0
+@export var ATTACK_RADIUS: float = 10.0
 @export var ATTACK_LIKELEHOOD_PER_SECOND: Curve
 @export var AREA_MULTIPLIER: Area3D ## Eg. Only let backstab happen if behind... Area that specifies whats considered behind... 
 @export var TRIGGER_ANIMATIONS: Array[String] = ["CHASE"] ## Requires animation player to be playing this animation trigger an attack...
+@export var DISABLED: bool = false
 
 @export_group("References")
 @export var TARGET: Node3D
 @export var BODY: Node3D
 
 func _physics_process(delta: float) -> void:
+
+	if DISABLED: return
 
 	var player: AnimationPlayer = get_parent() as AnimationPlayer
 	if not player: return

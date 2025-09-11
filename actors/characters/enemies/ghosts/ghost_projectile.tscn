@@ -92,13 +92,12 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="GhostProjectile" type="Node3D" node_paths=PackedStringArray("destroy_area", "mesh")]
+[node name="GhostProjectile" type="Node3D" node_paths=PackedStringArray("destroy_area")]
 script = ExtResource("1_8vmfp")
 speed = 20.0
 destroy_area = NodePath("Attack")
 body_exclude_groups = Array[String](["ghost", "player"])
 area_exclude_groups = Array[String](["player"])
-mesh = NodePath("Node3D")
 
 [node name="Node3D" type="Node3D" parent="."]
 
@@ -116,7 +115,8 @@ skeleton = NodePath("")
 
 [node name="Attack" type="Area3D" parent="." groups=["ghost"]]
 transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0.375182)
-collision_mask = 2
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("2_v5ope")
 damage = 5
 

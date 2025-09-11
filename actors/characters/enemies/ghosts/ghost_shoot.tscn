@@ -100,8 +100,11 @@ albedo_color = Color(0.52, 0.52, 0.52, 1)
 
 [node name="Ghost" instance=ExtResource("1_702sn")]
 
-[node name="Attacks" parent="." index="6"]
-LIKELIHOOD_MULTIPLIERS = Array[float]([0.0, 10.0, 0.0])
+[node name="Attack" parent="AnimationPlayer" index="0"]
+DISABLED = true
+
+[node name="JumpAttack" parent="AnimationPlayer" index="2"]
+DISABLED = true
 
 [node name="MeshInstance3D" parent="Mesh" index="2"]
 material_override = SubResource("ShaderMaterial_mshem")
