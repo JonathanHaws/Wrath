@@ -8,6 +8,8 @@ extends Node
 @export var AREA_MULTIPLIER: Area3D ## Eg. Only let backstab happen if behind... Area that specifies whats considered behind... 
 @export var TRIGGER_ANIMATIONS: Array[String] = ["CHASE"] ## Requires animation player to be playing this animation trigger an attack...
 @export var DISABLED: bool = false
+@export var COOLDOWN: float = 1.0
+var cooldown_remaining: float = 0.0
 
 @export_group("References")
 @export var TARGET: Node3D
@@ -16,6 +18,10 @@ extends Node
 func _physics_process(delta: float) -> void:
 
 	if DISABLED: return
+
+	if cooldown_remaining > 0.0:
+		cooldown_remaining -= delta
+		return
 
 	var player: AnimationPlayer = get_parent() as AnimationPlayer
 	if not player: return
@@ -33,5 +39,6 @@ func _physics_process(delta: float) -> void:
 	var chance = proximity_likelihood * area_likelihood * LIKELIHOOD_MULTIPLIER * delta
 	if randf() < chance:
 		player.play(ATTACK_ANIMATION)
+		cooldown_remaining = COOLDOWN
 		
 	#print(chance)

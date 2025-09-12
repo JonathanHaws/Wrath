@@ -126,6 +126,7 @@ collision_point_node = NodePath("PuddleSpawner")
 random_velocity_x = 1.0
 random_velocity_y = 1.0
 gravity = 7.63
+home_in_ready = true
 
 [node name="PuddleSpawner" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node")]
 script = ExtResource("2_xxyhw")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://byk6752w0gnw2"]
+[gd_scene load_steps=76 format=3 uid="uid://byk6752w0gnw2"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_kn2im"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hitbox.gd" id="2_q2lvp"]
@@ -1578,6 +1578,10 @@ point_count = 2
 _data = [Vector2(0.173797, 0), 0.0, 0.0, 0, 0, Vector2(0.334225, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Curve" id="Curve_0iori"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
+point_count = 1
+
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4usqi"]
 height = 0.892645
 radius = 9.61276
@@ -1827,6 +1831,16 @@ BODY = NodePath("../..")
 script = ExtResource("29_uk6rk")
 ATTACK_ANIMATION = "SHOOT_GRAVITY"
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_ryp23")
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
+
+[node name="VomitInFront" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("AREA_MULTIPLIER", "TARGET", "BODY")]
+script = ExtResource("29_uk6rk")
+ATTACK_ANIMATION = "VOMIT_IN_FRONT"
+LIKELIHOOD_MULTIPLIER = 1000.0
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_0iori")
+AREA_MULTIPLIER = NodePath("../../VomitCloseTrigger")
+COOLDOWN = 20.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
