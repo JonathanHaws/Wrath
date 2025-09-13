@@ -28,7 +28,7 @@ general/default_bus_layout="res://menus/options/channels_layot.tres"
 
 Save="*res://actors/save.gd"
 SlowMotion="*res://actors/slow_motion.gd"
-Particles="*res://actors/scene_spawner.gd"
+Particles="*res://actors/3d_scene_spawner.gd"
 Config="*res://menus/options/config.gd"
 DisableInput="*res://actors/characters/dialogue/disable_input.gd"
 HiddenCursor="*res://menus/hidden_cursor_timeout.gd"

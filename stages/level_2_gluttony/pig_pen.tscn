@@ -70,7 +70,7 @@ size = Vector3(42, 3.4845, 2)
 [node name="Enviroment" type="Node" parent="."]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment"]
-transform = Transform3D(258.713, 0, 0, 0, 1, 0, 0, 0, 89.7055, 43.3302, -9.54005, 0)
+transform = Transform3D(258.713, 0, 0, 0, 1, 0, 0, 0, 89.7055, 43.3302, -9.54585, 0)
 material_override = ExtResource("5_m2l7k")
 mesh = SubResource("BoxMesh_od467")
 skeleton = NodePath("../..")

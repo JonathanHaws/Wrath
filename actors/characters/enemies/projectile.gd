@@ -16,9 +16,6 @@ extends Node3D
 @export var gravity: float = 0.0  
 var velocity: Vector3
 
-@export var INPUT_READ_VELOCITY_MULTIPLIER: float = 0.0 ## Use targets body velocity to predict movement (Fire shot in front of player)
-
-@export var home_in_ready: bool = false ## Perfectly orient to target in ready
 @export var homing: bool = false
 @export var homing_group: String = "player_body"
 @export var homing_speed: float = 2.0  
@@ -55,31 +52,8 @@ func _ready():
 	if destroy_area:
 		destroy_area.body_entered.connect(_on_body_entered)
 		destroy_area.area_entered.connect(_on_area_entered)
-	
-	if home_in_ready:
-		var targets = get_tree().get_nodes_in_group(homing_group)
-		if targets.size() > 0:
-			var target = targets[0].global_position + homing_offset
-			var to_target = target - global_position	
-			
-			if "velocity" in targets[0]: # add predictive firing (firing in front of player)
-				to_target += targets[0].velocity * INPUT_READ_VELOCITY_MULTIPLIER
-			
-			var distance = to_target.length()
-			if not distance > 0.001: return
-			var time = distance / speed
-
-			if gravity > 0: # arc
-				velocity = to_target / time
-				velocity.y += 0.5 * gravity * time
-			else: # straight
-				velocity = to_target / time	
 				
-	var forward = velocity.normalized() if velocity.length() > 0 else Vector3.FORWARD
-
-	var rand_vec = Vector3(randf_range(-random_velocity_x, random_velocity_x), randf_range(-random_velocity_y, random_velocity_y), 0)
-
-	velocity = forward * speed + rand_vec
+	velocity +=  Vector3(randf_range(-random_velocity_x, random_velocity_x), randf_range(-random_velocity_y, random_velocity_y), 0)
 
 func _process(delta):
 

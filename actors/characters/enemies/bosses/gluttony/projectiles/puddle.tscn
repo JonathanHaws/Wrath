@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://4f506yax85t1"]
+[gd_scene load_steps=10 format=3 uid="uid://4f506yax85t1"]
 
 [ext_resource type="Script" uid="uid://dtofx2osnk3pe" path="res://actors/characters/enemies/bosses/gluttony/projectiles/puddle.gd" id="1_s6lm2"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="2_7ntvi"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_s6lm2"]
+size = Vector3(0.287537, 1, 0.296143)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsv7j"]
 albedo_color = Color(0.377757, 0.44866, 0.352352, 1)
@@ -68,10 +71,16 @@ _data = {
 [node name="GluttonyProjectile" type="Node3D"]
 script = ExtResource("1_s6lm2")
 
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0276794, 0, -0.0506592)
+shape = SubResource("BoxShape3D_s6lm2")
+
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(3.27353, 0, 8.91727e-23, -1.01672e-21, -1.57212e-07, 0.291327, 0, -3.59659, -1.27343e-08, -0.0197768, -1.576e-08, 0.0113704)
+transform = Transform3D(3.27353, -4.88282e-29, -1.72884e-37, 0, -1.57212e-07, 0.291327, -4.44423e-29, -3.59659, -1.27343e-08, 0, 0.212949, 0)
 material_override = SubResource("StandardMaterial3D_xsv7j")
 mesh = SubResource("SphereMesh_v5ope")
 skeleton = NodePath("")

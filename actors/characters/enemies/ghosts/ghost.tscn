@@ -16,7 +16,7 @@
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://actors/characters/enemies/sfx/Cry.wav" id="14_aqmuc"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://actors/squash.gd" id="15_7e8cg"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_shake.gd" id="16_wbsgp"]
-[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="17_fgjfs"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/3d_scene_spawner.gd" id="17_fgjfs"]
 [ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://actors/characters/enemies/ghosts/ghost_hurt_particles.tscn" id="18_mgx37"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="20_mvqiw"]
 [ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://actors/characters/enemies/ghosts/ghost_projectile.tscn" id="20_x07w4"]
