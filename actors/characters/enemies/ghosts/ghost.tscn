@@ -1,7 +1,7 @@
 [gd_scene load_steps=52 format=3 uid="uid://c6e88ycy4nm7x"]
 
 [ext_resource type="Script" uid="uid://qthw8jc8ahs5" path="res://actors/characters/enemies/damage_increase_on_death.gd" id="1_tw1ii"]
-[ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hitbox.gd" id="2_i6eoe"]
+[ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="2_i6eoe"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="3_p14n4"]
 [ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://actors/characters/enemies/sfx/Hit_1.wav" id="4_yqsxy"]
 [ext_resource type="AudioStream" uid="uid://b4dyx5m8hsynq" path="res://actors/characters/enemies/sfx/Hit_2.wav" id="5_00sp5"]
@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://actors/characters/enemies/ghosts/ghost_hurt_particles.tscn" id="18_mgx37"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="20_mvqiw"]
 [ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://actors/characters/enemies/ghosts/ghost_projectile.tscn" id="20_x07w4"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="21_bheyo"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="22_3d4yc"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_6640v"]
@@ -800,6 +799,53 @@ albedo_color = Color(0.52, 0.52, 0.52, 1)
 radius = 0.8
 height = 1.6
 
+[sub_resource type="GDScript" id="GDScript_n8vw1"]
+script/source = "extends Area3D
+@export var damage = 1
+@export var damage_spread := 0
+@export var damage_multiplier = 1
+@export var damage_groups: Array[String] = [\"player_hitshape\"] ##area groups you want this hurtbox to damage
+
+@export_group(\"Save\")
+@export var save_damage: bool = false
+@export var save_key: String = \"\"
+@export var animation_player: AnimationPlayer
+@export var upgrade_animation: String = \"\"
+
+func _exit_tree() -> void:
+	if not save_damage: return
+	Save.data[save_key] = damage
+	Save.save_game()
+
+func _on_save_data_updated() -> void:
+	if not save_damage: return
+	if Save.data[save_key] != damage:
+		if animation_player and animation_player.has_animation(upgrade_animation):
+			animation_player.play(upgrade_animation)
+	damage = Save.data[save_key]
+
+func _on_area_entered(area: Area3D) -> void:
+	for group in damage_groups:
+		if area.is_in_group(group):
+			if \"hit\" in area:
+				area.hit(self, damage + randi_range(-damage_spread, damage_spread))
+			break
+
+func _ready() -> void:
+	area_entered.connect(_on_area_entered)
+	
+	if save_damage: 
+		if save_key == \"\": save_key = Save.get_unique_key(self, \"damage\")
+		if Save.data.has(save_key):
+			damage = Save.data[save_key]
+		else:
+			Save.data[save_key] = damage
+		Save.connect(\"save_data_updated\", _on_save_data_updated)
+	
+#func _process(_delta: float) -> void:
+	#print(damage)
+"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_agce3"]
 size = Vector3(2.23877, 1.68384, 3.26862)
 
@@ -817,14 +863,11 @@ radius = 14.4904
 script = ExtResource("1_tw1ii")
 DAMAGE_KEY = "damage"
 
-[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("BODY", "TELEPORT_NODES_TO_HIT", "ANIMATION_PLAYERS")]
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "ANIMATION_PLAYERS") groups=["enemy_hitshape"]]
 script = ExtResource("2_i6eoe")
 HEALTH = 300
 MAX_HEALTH = 300
-BODY = NodePath("..")
 IMMUNE_GROUPS = Array[String](["ghost"])
-SAVE_HEALTH = true
-RESPAWN = true
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 ANIMATION_PLAYERS = [NodePath("../Damaged"), NodePath("../AnimationPlayer")]
 
@@ -932,7 +975,7 @@ skeleton = NodePath("")
 transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("21_bheyo")
+script = SubResource("GDScript_n8vw1")
 damage = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/MeshInstance3D/Attack"]
@@ -941,7 +984,7 @@ shape = SubResource("BoxShape3D_agce3")
 disabled = true
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 
-[node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA", "AWARENESS_AREA")]
+[node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA", "AWARENESS_AREA") groups=["enemy_hitshape"]]
 script = ExtResource("22_3d4yc")
 NAV_AGENT = NodePath("../NavigationAgent3D")
 MESH = NodePath("../Mesh")
@@ -969,7 +1012,7 @@ omni_range = 8.96629
 transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("21_bheyo")
+script = SubResource("GDScript_n8vw1")
 damage = 15
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]

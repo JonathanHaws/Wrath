@@ -1,13 +1,15 @@
-[gd_scene load_steps=85 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=89 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
-[ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hitbox.gd" id="2_utjob"]
+[ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="2_utjob"]
 [ext_resource type="AudioStream" uid="uid://dv38k4hi68nft" path="res://actors/characters/player/sfx/Spawn.wav" id="2_ykn11"]
 [ext_resource type="AudioStream" uid="uid://5n5whpag62f2" path="res://actors/characters/player/sfx/Spawn_New.wav" id="3_2tmqw"]
 [ext_resource type="Script" uid="uid://binnxxydkjgul" path="res://actors/characters/player/god_mode.gd" id="3_4anjp"]
+[ext_resource type="Script" uid="uid://djy5hf436yqi2" path="res://actors/characters/hit_shape_upgradable_max_health.gd" id="3_75wkf"]
 [ext_resource type="PackedScene" uid="uid://xbs1vkc0kdgm" path="res://actors/characters/player/mesh/reaper.blend" id="3_k4avc"]
 [ext_resource type="AudioStream" uid="uid://cv08lxjw3rypc" path="res://actors/characters/player/sfx/Jump.wav" id="4_i3uf6"]
+[ext_resource type="Script" uid="uid://d0sglng8yjegx" path="res://actors/characters/hit_shape_persistent_health.gd" id="4_m1s71"]
 [ext_resource type="AudioStream" uid="uid://cxfh7l5kksro3" path="res://actors/characters/player/sfx/Land.wav" id="5_7kpka"]
 [ext_resource type="PackedScene" uid="uid://00xupixtbxf5" path="res://actors/characters/player/horizontal_slash_particle.tscn" id="5_p6b07"]
 [ext_resource type="PackedScene" uid="uid://b2vw4evrfcelo" path="res://actors/characters/particles/dust_step.tscn" id="6_bo8be"]
@@ -32,7 +34,6 @@
 [ext_resource type="Script" uid="uid://dsby53pm3kd0g" path="res://actors/characters/player/save_property.gd" id="23_75wkf"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="24_m1s71"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://actors/characters/enemies/sfx/Slam.wav" id="25_8i186"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="29_lwilf"]
 [ext_resource type="Texture2D" uid="uid://cilvyugj78b4q" path="res://actors/characters/player/mesh/textures/body/color.png" id="33_n8vw1"]
 [ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://actors/characters/player/player_health.tres" id="34_6g6ue"]
 [ext_resource type="Texture2D" uid="uid://bm1u48mshqrkg" path="res://actors/characters/player/mesh/textures/cloak/color.png" id="34_75wkf"]
@@ -48,6 +49,53 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5idf"]
 radius = 0.274293
 height = 1.58012
+
+[sub_resource type="GDScript" id="GDScript_n8vw1"]
+script/source = "extends Area3D
+@export var damage = 1
+@export var damage_spread := 0
+@export var damage_multiplier = 1
+@export var damage_groups: Array[String] = [\"player_hitshape\"] ##area groups you want this hurtbox to damage
+
+@export_group(\"Save\")
+@export var save_damage: bool = false
+@export var save_key: String = \"\"
+@export var animation_player: AnimationPlayer
+@export var upgrade_animation: String = \"\"
+
+func _exit_tree() -> void:
+	if not save_damage: return
+	Save.data[save_key] = damage
+	Save.save_game()
+
+func _on_save_data_updated() -> void:
+	if not save_damage: return
+	if Save.data[save_key] != damage:
+		if animation_player and animation_player.has_animation(upgrade_animation):
+			animation_player.play(upgrade_animation)
+	damage = Save.data[save_key]
+
+func _on_area_entered(area: Area3D) -> void:
+	for group in damage_groups:
+		if area.is_in_group(group):
+			if \"hit\" in area:
+				area.hit(self, damage + randi_range(-damage_spread, damage_spread))
+			break
+
+func _ready() -> void:
+	area_entered.connect(_on_area_entered)
+	
+	if save_damage: 
+		if save_key == \"\": save_key = Save.get_unique_key(self, \"damage\")
+		if Save.data.has(save_key):
+			damage = Save.data[save_key]
+		else:
+			Save.data[save_key] = damage
+		Save.connect(\"save_data_updated\", _on_save_data_updated)
+	
+#func _process(_delta: float) -> void:
+	#print(damage)
+"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4anjp"]
 radius = 0.619256
@@ -66,7 +114,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [2.0, 0.0],
+"args": [1.0, 0.0],
 "method": &"impact"
 }]
 }
@@ -152,9 +200,69 @@ tracks/6/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_n8vw1"]
+resource_name = "HURT"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Hitbox/CollisionShape3D:disabled")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, false]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SlowMotion")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.3, 0.0],
+"method": &"impact"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Audio/Hurt")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xkeou"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Hitbox/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k5idf"]
 _data = {
-&"DEATH": SubResource("Animation_utjob")
+&"DEATH": SubResource("Animation_utjob"),
+&"HURT": SubResource("Animation_n8vw1"),
+&"RESET": SubResource("Animation_xkeou")
 }
 
 [sub_resource type="Animation" id="Animation_bx4xs"]
@@ -1670,23 +1778,28 @@ MESH_ANIM = NodePath("Mesh/reaper/AnimationPlayer")
 COLLISON_SHAPE = NodePath("CollisionShape3D")
 PARTICLES = NodePath("JumpParticles")
 
-[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("BODY", "ANIMATION_PLAYER", "ANIMATION_PLAYERS") groups=["player"]]
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("ANIMATION_PLAYERS") groups=["player", "player_hitshape"]]
 collision_layer = 2
 script = ExtResource("2_utjob")
 HEALTH = 15
 MAX_HEALTH = 15
-BODY = NodePath("..")
 IMMUNE_GROUPS = Array[String](["player"])
-SAVE_HEALTH = true
-HEALTH_KEY = "health"
-SAVE_MAX_HEALTH = true
-MAX_HEALTH_KEY = "max_health"
-ANIMATION_PLAYER = NodePath("../Upgrade")
-UPGRADE_ANIMATION = "HEALTH"
-RESPAWN = true
-DEATH_OFFSET = 0
-RESPAWN_KEY = "respawning"
 ANIMATION_PLAYERS = [NodePath("../AnimationPlayer"), NodePath("../AlwaysProcessDeath")]
+
+[node name="UpgradableMaxHealth" type="Node" parent="Hitbox" node_paths=PackedStringArray("HIT_SHAPE", "ANIMATION_PLAYER")]
+script = ExtResource("3_75wkf")
+HIT_SHAPE = NodePath("..")
+MAX_HEALTH_KEY = "max_health"
+ANIMATION_PLAYER = NodePath("../../Upgrade")
+UPGRADE_ANIMATION = "HEALTH"
+
+[node name="PersitentHealth" type="Node" parent="Hitbox" node_paths=PackedStringArray("HIT_SHAPE")]
+script = ExtResource("4_m1s71")
+HIT_SHAPE = NodePath("..")
+HEALTH_KEY = "health"
+FREE_BODY_IF_DEAD_ON_READY = false
+RESPAWN = true
+RESPAWN_KEY = "respawn_at_death_count"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0864, 0)
@@ -1703,9 +1816,10 @@ DAMAGE_SHAPE = NodePath("GodModeHurt/CollisionShape3D")
 ANIMATION_PLAYER = NodePath("../AnimationPlayer")
 
 [node name="GodModeHurt" type="Area3D" parent="GodMode" groups=["player"]]
-script = ExtResource("29_lwilf")
+script = SubResource("GDScript_n8vw1")
 damage = 10000000
 damage_spread = 1
+damage_groups = Array[String](["enemy_hitshape"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GodMode/GodModeHurt" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711507, 0)
@@ -1720,11 +1834,17 @@ VOLUME_MULTIPLIERS = Array[float]([0.15, 1.0, 1.0, 1.0, 1.0, 1.0, 0.4, 0.4, 0.4,
 [node name="AudioListener3D" type="AudioListener3D" parent="Audio"]
 current = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="Wind" type="AudioStreamPlayer" parent="Audio"]
 process_mode = 3
 stream = ExtResource("22_ogp31")
-volume_db = -6.58
+volume_db = -15.105
 autoplay = true
+bus = &"SFX"
+
+[node name="Hurt" type="AudioStreamPlayer" parent="Audio"]
+process_mode = 3
+stream = ExtResource("15_tgmjc")
+volume_db = -16.31
 bus = &"SFX"
 
 [node name="SlowMotion" type="Node" parent="."]
@@ -1883,8 +2003,9 @@ bone_idx = 22
 
 [node name="Area3D" type="Area3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("animation_player") groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00983417, 0.964215, 0.00320163)
-script = ExtResource("29_lwilf")
+script = SubResource("GDScript_n8vw1")
 damage = 50
+damage_groups = Array[String](["enemy_hitshape"])
 save_damage = true
 save_key = "damage"
 animation_player = NodePath("../../../../../../Upgrade")

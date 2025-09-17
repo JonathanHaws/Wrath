@@ -1,7 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://4f506yax85t1"]
 
 [ext_resource type="Script" uid="uid://dtofx2osnk3pe" path="res://actors/characters/enemies/bosses/gluttony/projectiles/puddle.gd" id="1_s6lm2"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="2_7ntvi"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_s6lm2"]
 size = Vector3(0.287537, 1, 0.296143)
@@ -11,6 +10,53 @@ albedo_color = Color(0.377757, 0.44866, 0.352352, 1)
 emission_enabled = true
 
 [sub_resource type="SphereMesh" id="SphereMesh_v5ope"]
+
+[sub_resource type="GDScript" id="GDScript_n8vw1"]
+script/source = "extends Area3D
+@export var damage = 1
+@export var damage_spread := 0
+@export var damage_multiplier = 1
+@export var damage_groups: Array[String] = [\"player_hitshape\"] ##area groups you want this hurtbox to damage
+
+@export_group(\"Save\")
+@export var save_damage: bool = false
+@export var save_key: String = \"\"
+@export var animation_player: AnimationPlayer
+@export var upgrade_animation: String = \"\"
+
+func _exit_tree() -> void:
+	if not save_damage: return
+	Save.data[save_key] = damage
+	Save.save_game()
+
+func _on_save_data_updated() -> void:
+	if not save_damage: return
+	if Save.data[save_key] != damage:
+		if animation_player and animation_player.has_animation(upgrade_animation):
+			animation_player.play(upgrade_animation)
+	damage = Save.data[save_key]
+
+func _on_area_entered(area: Area3D) -> void:
+	for group in damage_groups:
+		if area.is_in_group(group):
+			if \"hit\" in area:
+				area.hit(self, damage + randi_range(-damage_spread, damage_spread))
+			break
+
+func _ready() -> void:
+	area_entered.connect(_on_area_entered)
+	
+	if save_damage: 
+		if save_key == \"\": save_key = Save.get_unique_key(self, \"damage\")
+		if Save.data.has(save_key):
+			damage = Save.data[save_key]
+		else:
+			Save.data[save_key] = damage
+		Save.connect(\"save_data_updated\", _on_save_data_updated)
+	
+#func _process(_delta: float) -> void:
+	#print(damage)
+"
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_s6lm2"]
 resource_local_to_scene = true
@@ -88,7 +134,7 @@ skeleton = NodePath("")
 [node name="Attack" type="Area3D" parent="." groups=["gluttony"]]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("2_7ntvi")
+script = SubResource("GDScript_n8vw1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0408672, 0)

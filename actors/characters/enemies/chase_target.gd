@@ -12,11 +12,6 @@ extends Node3D
 @export var TRACKING_SPEED: float = 5.0
 @export var TRACKING_MULTIPLIER: float = 1.0 ## How Quickly rotation will match target
 
-
-@export var TARGET_SPEED: float = 15.0
-@export var TARGET_SPEED_MULTIPLIER: float = 1.0
-var previous_transform: Transform3D = Transform3D.IDENTITY
-
 @export_subgroup("Range")
 @export var STOP_CHASE_AREA: Area3D ## What alerts enemies to give chase. If no area is specified they are omincient and always chase
 @export var AWARENESS_AREA: Area3D ## How close they have to be to give chase. If none is specified its everywhere
@@ -24,7 +19,7 @@ var previous_transform: Transform3D = Transform3D.IDENTITY
 @export_subgroup("Tracking")
 @export var SPEED = 9.0 ## speed in which target will give chase
 @export var SPEED_MULTIPLIER: float = 1.0  ## Multiplier allowing certain animation to stop chase with easily animatable property
-@export var INPUT_READ_VELOCITY_MULTIPLIER: float = 1.0 ## Use targets body velocity to predict movement (Fire shot in front of player)
+@export var INPUT_READ_VELOCITY_MULTIPLIER: float = 0.0 ## Use targets body velocity to predict movement (Fire shot in front of player)
 
 var target: Node3D = null
 var should_chase: bool = true
@@ -106,18 +101,8 @@ func _physics_process(delta: float) -> void:
 	if target == null:
 		target = get_closest_from_group_3d(TARGET_GROUP)
 	
-	if target == null: return
-	
-	var target_pos = global_position
-	
-	if MATCH_POSITION:
-		target_pos = target.global_position
+	if target != null and MATCH_POSITION:
 		if "velocity" in target:
-			target_pos += target.velocity * INPUT_READ_VELOCITY_MULTIPLIER
-	
-	if global_transform != previous_transform: # Target was animated
-		target_pos = global_position
-		global_transform = previous_transform
-		
-	global_position = global_position.move_toward(target_pos, TARGET_SPEED * TARGET_SPEED_MULTIPLIER * delta)
-	previous_transform = global_transform
+			global_position = target.global_position + target.velocity * INPUT_READ_VELOCITY_MULTIPLIER
+		else:
+			global_position = target.global_position
