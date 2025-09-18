@@ -12,12 +12,9 @@ extends Node3D
 ## Still updates references automatically though if reogranizing folders in godot
 @export_file("*.tscn") var DESTINATION_SCENE: String 
 
-@export_group("Player Groups")
-## Only a body that belongs to this group can trigger the door
-@export var PLAYER_BODY_GROUP = "player"
-## (Optional) If you want a door animation to be triggered in player 
-@export var PLAYER_ANIM_GROUP: String = "player_anim"
-## The name of the animation to play 
+@export_group("Player Groups") ## Only a body that belongs to this group can trigger the door
+@export var PLAYER_BODY_GROUP = "player" ## (Optional) If you want a door animation to be triggered in player 
+@export var PLAYER_ANIM_GROUP: String = "player_anim" ## The name of the animation to play 
 @export var PLAYER_ANIM_NAME: String = "DOOR"
 ## Potential Todo: add a boolean that will teleport the players body to proper position for a synchronized animation
 

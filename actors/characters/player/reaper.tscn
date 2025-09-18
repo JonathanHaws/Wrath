@@ -1917,10 +1917,8 @@ UPGRADE_ANIMATION = "HEALTH"
 [node name="PersitentHealth" type="Node" parent="Hitbox" node_paths=PackedStringArray("HIT_SHAPE")]
 script = ExtResource("4_m1s71")
 HIT_SHAPE = NodePath("..")
-HEALTH_KEY = "health"
 FREE_BODY_IF_DEAD_ON_READY = false
-RESPAWN = true
-RESPAWN_KEY = "respawn_at_death_count"
+HEALTH_KEY = "health"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0864, 0)
@@ -2119,7 +2117,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_12tax")
 surface_material_override/0 = SubResource("StandardMaterial3D_m1s71")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5"]
-transform = Transform3D(-0.617689, -0.668628, -0.414001, 0.637925, -0.733865, 0.233439, -0.459905, -0.119909, 0.879835, 0.0749515, 1.13108, 0.464814)
+transform = Transform3D(-0.617689, -0.668628, -0.414001, 0.637925, -0.733865, 0.233439, -0.459905, -0.11991, 0.879835, 0.0749514, 1.13107, 0.464813)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -2139,7 +2137,7 @@ shape = SubResource("BoxShape3D_12tax")
 disabled = true
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="6"]
-transform = Transform3D(-0.999808, -0.0131225, -0.0145731, 0.0191087, -0.484843, -0.874393, 0.00440858, -0.874503, 0.485, -0.0875424, 0.108921, 0.0114403)
+transform = Transform3D(-0.999808, -0.0131226, -0.0145731, 0.0191087, -0.484844, -0.874392, 0.00440864, -0.874502, 0.485002, -0.0875423, 0.108921, 0.0114405)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -2150,7 +2148,7 @@ scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="7"]
-transform = Transform3D(-0.999808, -0.0131225, -0.0145731, 0.0191087, -0.484843, -0.874393, 0.00440858, -0.874503, 0.485, -0.0875424, 0.108921, 0.0114403)
+transform = Transform3D(-0.999808, -0.0131226, -0.0145731, 0.0191087, -0.484844, -0.874392, 0.00440864, -0.874502, 0.485002, -0.0875423, 0.108921, 0.0114405)
 bone_name = "foot_l"
 bone_idx = 18
 

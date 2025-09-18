@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://1jc5rm2ln3av"]
+[gd_scene load_steps=17 format=3 uid="uid://1jc5rm2ln3av"]
 
 [ext_resource type="Script" uid="uid://bwi12jjkh4nu7" path="res://actors/props/checkpoint/checkpoint.gd" id="1_jmg87"]
 [ext_resource type="AudioStream" uid="uid://bijkgqifxmt1t" path="res://actors/props/checkpoint/checkpoint.wav" id="3_7pdu5"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://b7b68t7b3u76m" path="res://actors/props/checkpoint/checkpoint.blend" id="4_ltl5t"]
 [ext_resource type="Texture2D" uid="uid://h16x8ap3nqbc" path="res://actors/props/checkpoint/textures/Emissive.jpg" id="5_xdv6p"]
 [ext_resource type="Texture2D" uid="uid://20j52u878rsw" path="res://actors/props/checkpoint/textures/normalmap.png" id="6_p1yyc"]
+[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="7_3qxw0"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0sglt"]
 height = 0.5
@@ -41,6 +42,32 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.0333334)
 }
 tracks/1/use_blend = true
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 2.03333, 2.63333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(2.96667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_aquire"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_rbb1v"]
 length = 0.001
@@ -56,11 +83,87 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Label:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j24vx"]
 _data = {
 &"ACQUIRED": SubResource("Animation_uwfnl"),
 &"RESET": SubResource("Animation_rbb1v")
+}
+
+[sub_resource type="Animation" id="Animation_8is0s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_3qxw0"]
+resource_name = "ENTER"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_2oqi1"]
+resource_name = "EXIT"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tssyw"]
+_data = {
+&"ENTER": SubResource("Animation_3qxw0"),
+&"EXIT": SubResource("Animation_2oqi1"),
+&"RESET": SubResource("Animation_8is0s")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p60ie"]
@@ -70,12 +173,13 @@ emission_texture = ExtResource("5_xdv6p")
 normal_enabled = true
 normal_texture = ExtResource("6_p1yyc")
 
-[node name="Checkpoint" type="Area3D" node_paths=PackedStringArray("CHECKPOINT_NODE", "ANIM")]
+[node name="Checkpoint" type="Area3D" node_paths=PackedStringArray("CHECKPOINT_NODE", "ANIM", "ENTER_EXIT_ANIM")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_jmg87")
 CHECKPOINT_NODE = NodePath("Node3D")
 ANIM = NodePath("AnimationPlayer")
+ENTER_EXIT_ANIM = NodePath("EnterExit")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -101,6 +205,12 @@ libraries = {
 }
 autoplay = "RESET"
 
+[node name="EnterExit" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_tssyw")
+}
+autoplay = "RESET"
+
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22516, 0)
 light_color = Color(0.473976, 0.473976, 0.473976, 1)
@@ -118,6 +228,28 @@ material_override = SubResource("StandardMaterial3D_p60ie")
 [node name="CollisionShape3D" parent="checkpoint/hoarder/StaticBody3D" index="0"]
 debug_color = Color(0.458405, 0.458405, 0.458405, 0.247059)
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="Label" type="Label" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -22.0
+offset_top = -38.0
+offset_right = 22.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("7_3qxw0")
+text = "SPIN TO REST"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
 
 [editable path="checkpoint"]
