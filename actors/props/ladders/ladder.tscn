@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://ct2ays1dctdy6" path="res://actors/props/ladders/ladder.gd" id="2_eycjc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w5i8a"]
-size = Vector3(0.517578, 7.57813, 1)
+size = Vector3(0.159851, 7.57813, 1)
 
 [node name="Ladder" type="Node3D"]
 
@@ -16,5 +16,5 @@ collision_mask = 3
 script = ExtResource("2_eycjc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.241211, 3.28906, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103363, 3.28906, 0)
 shape = SubResource("BoxShape3D_w5i8a")

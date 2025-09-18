@@ -20,7 +20,7 @@ func _ready():
 	if not ENABLED:
 		queue_free()
 
-func _process(_delta):
+func _physics_process(_delta):
 	if Input.is_action_just_pressed("god_mode"):
 		mode = !mode
 		#if DAMAGE_SHAPE: DAMAGE_SHAPE.disabled = !DAMAGE_SHAPE.disabled
