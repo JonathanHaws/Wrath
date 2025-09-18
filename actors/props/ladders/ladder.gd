@@ -40,7 +40,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	if on_ladder and player and "velocity" in player:
-		player.velocity = Vector3.ZERO
+		player.velocity = -player.velocity
 
 		var ladder_up = global_transform.basis.y.normalized()
 		var ladder_right = global_transform.basis.z.normalized()
@@ -65,3 +65,5 @@ func _physics_process(delta: float) -> void:
 			else: anim.play("LADDER")
 
 		player.move_and_slide()
+		
+		player.velocity = Vector3.ZERO

@@ -146,7 +146,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				ANIM.play("PLUNGE_FALL")
 		
-	if not is_on_floor() and not ANIM.current_animation in "LADDER": # GRAVITY
+	if not is_on_floor(): # GRAVITY
 		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER if Input.is_action_pressed("descend") else 1.0)
 
 	falling = 0.0 if is_on_floor() else falling + delta

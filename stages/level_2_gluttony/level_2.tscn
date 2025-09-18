@@ -87,7 +87,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6477, -9.34837, -13)
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.802918, -8.19358, 14.626)
 
 [node name="Ladder2" parent="." instance=ExtResource("10_qh5wb")]
-transform = Transform3D(-4.37114e-08, 5.40022e-16, -1, 0.375642, 0.926765, -1.64198e-08, 0.926765, -0.375642, -4.05102e-08, -11.9031, -8.87057, -12.3389)
+transform = Transform3D(-4.37114e-08, 2.21727e-15, -1, -0.514559, 0.857455, 2.24921e-08, 0.857455, 0.514559, -3.74805e-08, -11.9031, -8.87057, -12.3389)
 
 [editable path="greed_talk_1"]
 [editable path="greed_talk_1/greed"]
