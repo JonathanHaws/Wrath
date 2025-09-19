@@ -3,34 +3,32 @@ extends Area3D
 @export var HITSHAPE_GROUP = "player_hitshape"
 @export var CHECKPOINT_NODE: Node3D
 @export var CHECKPOINT_SCENE_PATH: String
-
 @export var REST_ANIM: AnimationPlayer
 @export var AQUIRED_ANIM: AnimationPlayer
 @export var ENTER_EXIT_ANIM: AnimationPlayer
-
 @export var REST_ACTIONS: Array[String] = ["attack"]
+@export var RESPAWN_DATA_KEY: String = "respawn_data"
 var player_inside: bool = false
 
-func get_starting_transform() -> Transform3D:
+func load_checkpoint(player: Node3D) -> void:
 	var checkpoint_transform = global_transform
 	var euler_angles = checkpoint_transform.basis.get_euler()
 	euler_angles.x = 0
 	euler_angles.z = 0
 	checkpoint_transform.basis = Basis().rotated(Vector3.UP, euler_angles.y)
-	return checkpoint_transform
+	
+	player.global_transform = checkpoint_transform
+	
+	#if Save.data.has(RESPAWN_DATA_KEY) and Save.data[RESPAWN_DATA_KEY] != {}: # Force rest if still have respawn data when it should never be the case
+		#call_deferred("_rest")
 
 func _rest() -> void:
-
 	for hitshape in get_tree().get_nodes_in_group(HITSHAPE_GROUP):
 		if "HEALTH" in hitshape and "MAX_HEALTH" in hitshape:
 			hitshape.HEALTH = hitshape.MAX_HEALTH
-	
 	if Save.data.has("respawn_data"): Save.data["respawn_data"].clear()
-
 	Save.save_game()
-	
 	get_tree().reload_current_scene()
-
 
 func _play_aquired() -> void:
 	

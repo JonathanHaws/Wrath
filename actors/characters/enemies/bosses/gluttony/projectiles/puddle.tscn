@@ -132,12 +132,14 @@ mesh = SubResource("SphereMesh_v5ope")
 skeleton = NodePath("")
 
 [node name="Attack" type="Area3D" parent="." groups=["gluttony"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206618, 0)
 collision_layer = 3
 collision_mask = 3
 script = SubResource("GDScript_n8vw1")
+damage = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0408672, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.238939, 0)
 shape = SubResource("CylinderShape3D_s6lm2")
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 

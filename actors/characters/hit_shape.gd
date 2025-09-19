@@ -2,6 +2,8 @@ extends Area3D
 @export var HEALTH = 500
 @export var MAX_HEALTH = 500
 @export var IMMUNE_GROUPS: Array[String] = []
+@export var INVINCIBILITY_COOLDOWN: float = 0.0 ## After object gets hit how long they are invincible
+var invincibility_timer: Timer
 
 @export_group("DAMAGE REACTION")
 ## For Body / Child Nodes which have to reposition themselves. Such as Needed positional synchronization between attacker / attacked on animations, Hurt Particles, etc.
@@ -19,9 +21,10 @@ func show_damage(damage_amount: int) -> void:
 
 func hit(area: Area3D, damage: int)-> void:
 	
+	if invincibility_timer: if invincibility_timer.is_stopped() == false: return  
 	for immune_group in IMMUNE_GROUPS: if area.is_in_group(immune_group): return
-	
 	HEALTH -= damage
+	if invincibility_timer: invincibility_timer.start()
 	
 	for node in TELEPORT_NODES_TO_HIT:
 		node.global_transform.origin = area.global_transform.origin
@@ -31,3 +34,10 @@ func hit(area: Area3D, damage: int)-> void:
 			anim_player.call_deferred("play", HURT_ANIM)
 		elif HEALTH <= 0 and anim_player.has_animation(DEATH_ANIM):
 			anim_player.call_deferred("play", DEATH_ANIM)
+			
+func _ready():
+	if INVINCIBILITY_COOLDOWN > 0:
+		invincibility_timer = Timer.new()
+		invincibility_timer.one_shot = true
+		invincibility_timer.wait_time = INVINCIBILITY_COOLDOWN
+		add_child(invincibility_timer)
