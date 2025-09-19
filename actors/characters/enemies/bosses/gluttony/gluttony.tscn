@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=3 uid="uid://byk6752w0gnw2"]
+[gd_scene load_steps=75 format=3 uid="uid://byk6752w0gnw2"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_kn2im"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="2_q2lvp"]
@@ -38,9 +38,9 @@
 [ext_resource type="PackedScene" uid="uid://dfopfbx7m077q" path="res://actors/characters/enemies/bosses/gluttony/projectiles/fast_vomit.tscn" id="30_nxhq0"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/npcs/piglet/interaction.gd" id="32_12e26"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_q0nhg"]
-radius = 2.54116
-height = 7.28849
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kcm85"]
+radius = 2.81369
+height = 8.40493
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0nhg"]
 bg_color = Color(0.04, 0.04, 0.04, 0.631373)
@@ -1678,9 +1678,6 @@ radius = 0.001
 [sub_resource type="BoxShape3D" id="BoxShape3D_r1aqn"]
 size = Vector3(23.4119, 15.2804, 40.1915)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_adl7b"]
-size = Vector3(3.37927, 4.64148, 4.23132)
-
 [node name="Gluttony" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM") groups=["gluttony"]]
 collision_layer = 7
 collision_mask = 7
@@ -1757,12 +1754,15 @@ process_mode = 3
 stream = ExtResource("18_kcm85")
 bus = &"Music"
 
-[node name="Hitbox" type="Area3D" parent="." groups=["enemy_hitshape", "gluttony"]]
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("ANIMATION_PLAYERS") groups=["enemy_hitshape", "gluttony"]]
 script = ExtResource("2_q2lvp")
+HEALTH = 3000
+MAX_HEALTH = 3000
+ANIMATION_PLAYERS = [NodePath("../Damaged")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0.637661)
-shape = SubResource("CapsuleShape3D_q0nhg")
+shape = SubResource("CapsuleShape3D_kcm85")
 
 [node name="CameraShake" type="Node" parent="."]
 script = ExtResource("3_vd3ju")
@@ -1905,7 +1905,7 @@ damage = 10
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Jump"]
 shape = SubResource("CylinderShape3D_4usqi")
 disabled = true
-debug_color = Color(0, 0.6, 0.7, 0.42)
+debug_color = Color(0, 0.595, 0.7, 0.266667)
 
 [node name="gluttony" parent="Mesh" instance=ExtResource("29_wvvup")]
 
@@ -2050,7 +2050,7 @@ damage = 5
 transform = Transform3D(-0.27755, -0.724332, -0.631118, 0.960711, -0.209259, -0.18233, 0, -0.656928, 0.753953, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_vwjlg")
 disabled = true
-debug_color = Color(0.73, 0.73, 0.73, 0)
+debug_color = Color(0.733333, 0.243137, 0.282353, 1)
 
 [node name="TriggerArea" type="Area3D" parent="Mesh/gluttony/Armature/Skeleton3D/LeftLeg" groups=["gluttony"]]
 collision_layer = 3
@@ -2323,15 +2323,6 @@ target_body_group = "piglet_body"
 target_mesh_group = "piglet_mesh"
 weight = 0.0
 
-[node name="VomitCloseTrigger" type="Area3D" parent="." groups=["gluttony"]]
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="VomitCloseTrigger"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0563354, 1.82074, 3.6874)
-shape = SubResource("BoxShape3D_adl7b")
-debug_color = Color(0.73, 0.73, 0.73, 0.333333)
-
 [connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea" to="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/gluttony/Armature/Skeleton3D/LeftHand/TriggerArea" to="Mesh/gluttony/Armature/Skeleton3D/LeftHand/TriggerArea" method="_on_body_entered"]
@@ -2344,6 +2335,5 @@ debug_color = Color(0.73, 0.73, 0.73, 0.333333)
 [connection signal="body_entered" from="Jump" to="Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="Shake" to="Shake" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
-[connection signal="body_entered" from="VomitCloseTrigger" to="VomitCloseTrigger" method="_on_body_entered"]
 
 [editable path="Mesh/gluttony"]

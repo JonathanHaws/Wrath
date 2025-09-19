@@ -188,7 +188,7 @@ tracks/5/keys = {
 tracks/6/type = "method"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../DeathCountTracker")
+tracks/6/path = NodePath("../Hitbox/DeathCountTracker")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -198,6 +198,18 @@ tracks/6/keys = {
 "args": [],
 "method": &"increase"
 }]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Hitbox/CollisionShape3D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_n8vw1"]
@@ -209,7 +221,7 @@ tracks/0/path = NodePath("../Hitbox/CollisionShape3D:disabled")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.533333),
+"times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [true, false]
@@ -418,7 +430,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("DeathCountTracker")
+tracks/2/path = NodePath("Hitbox/DeathCountTracker")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1907,6 +1919,11 @@ MAX_HEALTH = 15
 IMMUNE_GROUPS = Array[String](["player"])
 ANIMATION_PLAYERS = [NodePath("../AnimationPlayer"), NodePath("../AlwaysProcessDeath")]
 
+[node name="DeathCountTracker" type="Node" parent="Hitbox" node_paths=PackedStringArray("HITSHAPE")]
+script = ExtResource("20_m1s71")
+key = "deaths"
+HITSHAPE = NodePath("..")
+
 [node name="UpgradableMaxHealth" type="Node" parent="Hitbox" node_paths=PackedStringArray("HIT_SHAPE", "ANIMATION_PLAYER")]
 script = ExtResource("3_75wkf")
 HIT_SHAPE = NodePath("..")
@@ -1978,10 +1995,6 @@ script = ExtResource("42_k5idf")
 
 [node name="PlayTimeTracker" type="Node" parent="."]
 script = ExtResource("36_5cvkf")
-
-[node name="DeathCountTracker" type="Node" parent="."]
-script = ExtResource("20_m1s71")
-key = "deaths"
 
 [node name="AlwaysProcessDeath" type="AnimationPlayer" parent="."]
 process_mode = 3
