@@ -1,6 +1,7 @@
-[gd_scene load_steps=17 format=3 uid="uid://1jc5rm2ln3av"]
+[gd_scene load_steps=20 format=3 uid="uid://1jc5rm2ln3av"]
 
 [ext_resource type="Script" uid="uid://bwi12jjkh4nu7" path="res://actors/props/checkpoint/checkpoint.gd" id="1_jmg87"]
+[ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/interaction.gd" id="2_8is0s"]
 [ext_resource type="AudioStream" uid="uid://bijkgqifxmt1t" path="res://actors/props/checkpoint/checkpoint.wav" id="3_7pdu5"]
 [ext_resource type="Texture2D" uid="uid://c7haptthfejp2" path="res://actors/props/checkpoint/textures/color.png" id="4_7no74"]
 [ext_resource type="PackedScene" uid="uid://b7b68t7b3u76m" path="res://actors/props/checkpoint/checkpoint.blend" id="4_ltl5t"]
@@ -12,17 +13,94 @@
 height = 0.5
 radius = 1.5
 
-[sub_resource type="Animation" id="Animation_uwfnl"]
-resource_name = "ACQUIRED"
-length = 5.5
+[sub_resource type="Animation" id="Animation_rbb1v"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("OmniLight3D:light_energy")
+tracks/0/path = NodePath("Label:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.133333, 1.1, 3.46667),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_uwfnl"]
+resource_name = "REST"
+length = 5.8665
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.36667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(1.36667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_rest"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rest/RestInteraction")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_trigger_corresponding_animation"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_j24vx"]
+_data = {
+&"RESET": SubResource("Animation_rbb1v"),
+&"REST": SubResource("Animation_uwfnl")
+}
+
+[sub_resource type="Animation" id="Animation_tssyw"]
+resource_name = "AQUIRED"
+length = 5.735
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../OmniLight3D:light_energy")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.966667, 3.33334),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 6.0, 0.0]
@@ -30,7 +108,7 @@ tracks/0/keys = {
 tracks/1/type = "audio"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AudioStreamPlayer")
+tracks/1/path = NodePath("../AudioStreamPlayer")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -39,79 +117,13 @@ tracks/1/keys = {
 "start_offset": 0.0,
 "stream": ExtResource("3_7pdu5")
 }],
-"times": PackedFloat32Array(0.0333334)
+"times": PackedFloat32Array(0)
 }
 tracks/1/use_blend = true
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect:color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.03333, 2.63333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(2.96667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_aquire"
-}]
-}
 
-[sub_resource type="Animation" id="Animation_rbb1v"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("OmniLight3D:light_energy")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Label:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("ColorRect:color")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_j24vx"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qucei"]
 _data = {
-&"ACQUIRED": SubResource("Animation_uwfnl"),
-&"RESET": SubResource("Animation_rbb1v")
+&"AQUIRED": SubResource("Animation_tssyw")
 }
 
 [sub_resource type="Animation" id="Animation_3qxw0"]
@@ -173,12 +185,13 @@ emission_texture = ExtResource("5_xdv6p")
 normal_enabled = true
 normal_texture = ExtResource("6_p1yyc")
 
-[node name="Checkpoint" type="Area3D" node_paths=PackedStringArray("CHECKPOINT_NODE", "ANIM", "ENTER_EXIT_ANIM")]
+[node name="Checkpoint" type="Area3D" node_paths=PackedStringArray("CHECKPOINT_NODE", "REST_ANIM", "AQUIRED_ANIM", "ENTER_EXIT_ANIM")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_jmg87")
 CHECKPOINT_NODE = NodePath("Node3D")
-ANIM = NodePath("AnimationPlayer")
+REST_ANIM = NodePath("Rest")
+AQUIRED_ANIM = NodePath("Aquired")
 ENTER_EXIT_ANIM = NodePath("EnterExit")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -199,11 +212,27 @@ height = 0.5
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"SFX"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="Rest" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_j24vx")
 }
 autoplay = "RESET"
+
+[node name="RestInteraction" type="Node3D" parent="Rest" node_paths=PackedStringArray("trigger_area", "body")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502184, 0)
+script = ExtResource("2_8is0s")
+trigger_area = NodePath("../..")
+target_anim = &"REST"
+interpolate = false
+body = NodePath(".")
+duration_seconds = 10.0
+weight = 1.0
+
+[node name="Aquired" type="AnimationPlayer" parent="."]
+root_node = NodePath("../Rest")
+libraries = {
+&"": SubResource("AnimationLibrary_qucei")
+}
 
 [node name="EnterExit" type="AnimationPlayer" parent="."]
 libraries = {
@@ -241,7 +270,6 @@ offset_right = 22.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("7_3qxw0")
-text = "SPIN TO REST"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 2

@@ -3,8 +3,11 @@ extends Area3D
 @export var HITSHAPE_GROUP = "player_hitshape"
 @export var CHECKPOINT_NODE: Node3D
 @export var CHECKPOINT_SCENE_PATH: String
-@export var ANIM: AnimationPlayer
+
+@export var REST_ANIM: AnimationPlayer
+@export var AQUIRED_ANIM: AnimationPlayer
 @export var ENTER_EXIT_ANIM: AnimationPlayer
+
 @export var REST_ACTIONS: Array[String] = ["attack"]
 var player_inside: bool = false
 
@@ -16,14 +19,11 @@ func get_starting_transform() -> Transform3D:
 	checkpoint_transform.basis = Basis().rotated(Vector3.UP, euler_angles.y)
 	return checkpoint_transform
 
-func _aquire() -> void:
+func _rest() -> void:
 
 	for hitshape in get_tree().get_nodes_in_group(HITSHAPE_GROUP):
 		if "HEALTH" in hitshape and "MAX_HEALTH" in hitshape:
 			hitshape.HEALTH = hitshape.MAX_HEALTH
-			
-	Save.data["checkpoint_node_path"] = get_path()
-	Save.data["checkpoint_scene_path"] = get_tree().current_scene.scene_file_path
 	
 	if Save.data.has("respawn_data"): Save.data["respawn_data"].clear()
 
@@ -31,16 +31,32 @@ func _aquire() -> void:
 	
 	get_tree().reload_current_scene()
 
-func _play_aquire() -> void:
-	if ANIM.is_playing() and ANIM.current_animation == "ACQUIRED": return
-	ANIM.play("ACQUIRED")
 
+func _play_aquired() -> void:
+	
+	if Save.data.has("checkpoint_node_path") and get_path() == NodePath(Save.data["checkpoint_node_path"]) and \
+		Save.data.has("checkpoint_scene_path") and Save.data["checkpoint_scene_path"] == get_tree().current_scene.scene_file_path:
+		return  
+					
+	Save.data["checkpoint_node_path"] = get_path()
+	Save.data["checkpoint_scene_path"] = get_tree().current_scene.scene_file_path
+	
+	AQUIRED_ANIM.play("AQUIRED")
 
 func _on_body_entered(body: Node) -> void:
 	if GROUP != "" and not body.is_in_group(GROUP): return
 	player_inside = true
 	ENTER_EXIT_ANIM.queue("ENTER")
-
+	
+	# AQUIRE CHECKPOINT IF NOT ALREADY HAVE BUT DONT HEAL HEALTH
+	if Save.data.has("checkpoint_node_path") and get_path() == NodePath(Save.data["checkpoint_node_path"]): 
+		if Save.data.has("checkpoint_scene_path") and Save.data["checkpoint_scene_path"] == get_tree().current_scene.scene_file_path:
+			return #ALREADY AQUIRED
+		
+	Save.data["checkpoint_node_path"] = get_path()
+	Save.data["checkpoint_scene_path"] = get_tree().current_scene.scene_file_path
+	AQUIRED_ANIM.play("AQUIRED")
+	
 func _on_body_exited(body: Node) -> void:
 	if GROUP != "" and not body.is_in_group(GROUP): return
 	player_inside = false
@@ -54,4 +70,4 @@ func _process(_delta: float) -> void:
 	if player_inside:
 		for action in REST_ACTIONS:
 			if Input.is_action_just_pressed(action):
-				_play_aquire()
+				if not REST_ANIM.is_playing() and not REST_ANIM.current_animation == "REST": REST_ANIM.play("REST")

@@ -77,6 +77,7 @@ func in_interruptible_animation() -> bool:
 		"PLUNGE_FALL",
 		"PLUNGE",
 		"DOOR",
+		"REST",
 		"LADDER_ENTER",
 		"LADDER",
 		"LADDER_EXIT",

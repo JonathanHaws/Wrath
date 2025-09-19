@@ -36,7 +36,7 @@
 [ext_resource type="PackedScene" uid="uid://dshyyn54ur3e1" path="res://actors/characters/enemies/bosses/gluttony/gluttony.blend" id="29_wvvup"]
 [ext_resource type="PackedScene" uid="uid://d2iqujeqiun08" path="res://actors/characters/enemies/bosses/gluttony/projectiles/slow_vomit.tscn" id="30_kcm85"]
 [ext_resource type="PackedScene" uid="uid://dfopfbx7m077q" path="res://actors/characters/enemies/bosses/gluttony/projectiles/fast_vomit.tscn" id="30_nxhq0"]
-[ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/npcs/piglet/interaction.gd" id="32_12e26"]
+[ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/interaction.gd" id="32_12e26"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kcm85"]
 radius = 2.81369

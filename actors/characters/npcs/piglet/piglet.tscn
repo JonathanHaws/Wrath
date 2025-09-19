@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://wlhsn0forped" path="res://actors/characters/npcs/piglet/piglet.blend" id="1_w7fh2"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="2_yln8f"]
-[ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/npcs/piglet/interaction.gd" id="3_yln8f"]
+[ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/interaction.gd" id="3_yln8f"]
 
 [sub_resource type="Animation" id="Animation_yln8f"]
 resource_name = "GOBBLED"

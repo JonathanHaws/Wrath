@@ -11,6 +11,7 @@ extends Node
 @export_group("Interpolate Transforms") 
 @export_subgroup("Transforms")
 ## Todo (add collision options where collision can be disabled to prioritize the visual. and transform reset to original if one of the bodies got stuck in a wall)
+@export var interpolate: bool = true
 @export var body: Node3D ## Transform to be aligned
 @export var mesh: Node3D ## Orientation will be reset on this object so only have to worry about aligning bodies
 @export var target_body_group: String = "player_body" ## Transform in other other object to be aligned
@@ -37,10 +38,13 @@ func _match_transforms() -> void:
 			if duration_seconds > 0.0:
 				var tween = create_tween()
 				tween.set_parallel(true)
-				for node in [body, target_body, mesh, target_mesh]:
-					tween.tween_property(node, "global_transform", middle, duration_seconds)
+
+				tween.tween_property(body, "global_transform", middle, duration_seconds)
+				tween.tween_property(target_body, "global_transform", middle, duration_seconds)
+				tween.tween_property(mesh, "global_transform", middle, duration_seconds)
+				tween.tween_property(target_mesh, "global_transform", middle, duration_seconds)
 			else: 
-				body.global_transform = middle
+				if body: body.global_transform = middle
 				target_body.global_transform = middle
 				mesh.global_transform = middle
 				target_mesh.global_transform = middle
@@ -55,7 +59,7 @@ func _trigger_corresponding_animation() -> void:
 		node.play(target_anim)
 		node.seek(node.current_animation_position, true) # CRUCIAL LINE MAKES IT SO TARGET STATE IS SET RIGHT BEFORE MATCHING TRANSFORM
 		
-	_match_transforms()	#ALWAYS DO THIS AFTER TRIGGERING OTHER ANIMATION
+	if interpolate:	_match_transforms()	#ALWAYS DO THIS AFTER TRIGGERING OTHER ANIMATION
 
 func _ready() -> void:
 	if trigger_area:
