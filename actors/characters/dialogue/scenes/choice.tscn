@@ -67,11 +67,11 @@ tracks/2/path = NodePath("AnimationPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"_visible_mouse"
+"method": &"_show_cursor"
 }]
 }
 
@@ -109,14 +109,25 @@ tracks/2/path = NodePath("AnimationPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.333333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.333333),
+"transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"_captured_mouse"
-}, {
-"args": [],
 "method": &"queue_free"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_hide_cursor"
 }]
 }
 

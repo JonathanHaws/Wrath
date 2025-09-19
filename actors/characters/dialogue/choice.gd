@@ -2,9 +2,6 @@ extends AnimationPlayer
 var info: Array = []
 @export var disable_actions := ["controller_forward", "controller_left", "controller_right", "controller_back"]
 
-func _captured_mouse() ->void:
-	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 func _on_choice_pressed(choice: Dictionary) -> void:
 	DisableInput.toggle_action(disable_actions, true)
 	queue("exited")
@@ -12,13 +9,17 @@ func _on_choice_pressed(choice: Dictionary) -> void:
 	if "skip" in choice:
 		get_parent().current_index += 1 + choice.skip
 
-func _visible_mouse() ->void:
-	Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+func _hide_cursor():
+	HiddenCursor.hide_mouse_for_dialogue()
+
+func _show_cursor():
+	HiddenCursor.show_mouse_for_dialogue()
 
 func _exit_tree():
 	DisableInput.toggle_action(disable_actions, true)
 
 func _ready():
+	
 	DisableInput.toggle_action(disable_actions, false)
 	
 	$Options/Choice1.text = ""
@@ -34,3 +35,4 @@ func _process(_delta):
 	if not get_parent().in_range: 
 		queue("exited")
 		return
+		

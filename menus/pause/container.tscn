@@ -72,10 +72,11 @@ _data = {
 &"SKIPPING": SubResource("Animation_enl7q")
 }
 
-[node name="Menu" type="CanvasLayer" groups=["pause_toggle"]]
+[node name="PauseMenu" type="Node"]
 
 [node name="Skip" type="ColorRect" parent="." node_paths=PackedStringArray("ANIMATION_PLAYER") groups=["skipper"]]
 modulate = Color(1, 1, 1, 0)
+z_index = 1000
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -91,7 +92,9 @@ libraries = {
 }
 autoplay = "RESET"
 
-[node name="Toggle" type="Control" parent="."]
+[node name="Menu" type="CanvasLayer" parent="." groups=["pause_toggle"]]
+
+[node name="Toggle" type="Control" parent="Menu"]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -101,6 +104,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_327xx")
 
-[node name="ColorRect" parent="Toggle" instance=ExtResource("2_da7k5")]
+[node name="ColorRect" parent="Menu/Toggle" instance=ExtResource("2_da7k5")]
 process_mode = 3
 layout_mode = 1
