@@ -25,7 +25,9 @@ func _on_save_data_updated() -> void:
 func _on_area_entered(area: Area3D) -> void:
 	for group in damage_groups:
 		if area.is_in_group(group):
+			#print("hit")
 			if "hit" in area:
+				#print("hit", damage)
 				area.hit(self, damage + randi_range(-damage_spread, damage_spread))
 			break
 

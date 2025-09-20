@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=94 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://cxfh7l5kksro3" path="res://actors/characters/player/sfx/Land.wav" id="5_7kpka"]
 [ext_resource type="PackedScene" uid="uid://00xupixtbxf5" path="res://actors/characters/player/horizontal_slash_particle.tscn" id="5_p6b07"]
 [ext_resource type="PackedScene" uid="uid://b2vw4evrfcelo" path="res://actors/characters/particles/dust_step.tscn" id="6_bo8be"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="7_4anjp"]
 [ext_resource type="AudioStream" uid="uid://cww02b50taw61" path="res://actors/characters/player/sfx/Step_1.wav" id="7_erto2"]
 [ext_resource type="Script" uid="uid://bmvwcgf01b1lq" path="res://actors/characters/player/camera/third_person_camera.gd" id="7_lwilf"]
 [ext_resource type="PackedScene" uid="uid://xn7bifp3hpfj" path="res://actors/characters/particles/dust_land.tscn" id="8_lxnc4"]
@@ -49,53 +50,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5idf"]
 radius = 0.274293
 height = 1.58012
-
-[sub_resource type="GDScript" id="GDScript_n8vw1"]
-script/source = "extends Area3D
-@export var damage = 1
-@export var damage_spread := 0
-@export var damage_multiplier = 1
-@export var damage_groups: Array[String] = [\"player_hitshape\"] ##area groups you want this hurtbox to damage
-
-@export_group(\"Save\")
-@export var save_damage: bool = false
-@export var save_key: String = \"\"
-@export var animation_player: AnimationPlayer
-@export var upgrade_animation: String = \"\"
-
-func _exit_tree() -> void:
-	if not save_damage: return
-	Save.data[save_key] = damage
-	Save.save_game()
-
-func _on_save_data_updated() -> void:
-	if not save_damage: return
-	if Save.data[save_key] != damage:
-		if animation_player and animation_player.has_animation(upgrade_animation):
-			animation_player.play(upgrade_animation)
-	damage = Save.data[save_key]
-
-func _on_area_entered(area: Area3D) -> void:
-	for group in damage_groups:
-		if area.is_in_group(group):
-			if \"hit\" in area:
-				area.hit(self, damage + randi_range(-damage_spread, damage_spread))
-			break
-
-func _ready() -> void:
-	area_entered.connect(_on_area_entered)
-	
-	if save_damage: 
-		if save_key == \"\": save_key = Save.get_unique_key(self, \"damage\")
-		if Save.data.has(save_key):
-			damage = Save.data[save_key]
-		else:
-			Save.data[save_key] = damage
-		Save.connect(\"save_data_updated\", _on_save_data_updated)
-	
-#func _process(_delta: float) -> void:
-	#print(damage)
-"
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4anjp"]
 radius = 0.619256
@@ -1907,6 +1861,54 @@ shader_parameter/use_normal_map = false
 transparency = 1
 albedo_texture = ExtResource("34_75wkf")
 
+[sub_resource type="GDScript" id="GDScript_n8vw1"]
+script/source = "extends Area3D
+@export var damage = 1
+@export var damage_spread := 0
+@export var damage_multiplier = 1
+@export var damage_groups: Array[String] = [\"player_hitshape\"] ##area groups you want this hurtbox to damage
+
+@export_group(\"Save\")
+@export var save_damage: bool = false
+@export var save_key: String = \"\"
+@export var animation_player: AnimationPlayer
+@export var upgrade_animation: String = \"\"
+
+func _exit_tree() -> void:
+	if not save_damage: return
+	Save.data[save_key] = damage
+	Save.save_game()
+
+func _on_save_data_updated() -> void:
+	if not save_damage: return
+	if Save.data[save_key] != damage:
+		if animation_player and animation_player.has_animation(upgrade_animation):
+			animation_player.play(upgrade_animation)
+	damage = Save.data[save_key]
+
+func _on_area_entered(area: Area3D) -> void:
+	for group in damage_groups:
+		if area.is_in_group(group):
+			print(\"test\")
+			if \"hit\" in area:
+				area.hit(self, damage + randi_range(-damage_spread, damage_spread))
+			break
+
+func _ready() -> void:
+	area_entered.connect(_on_area_entered)
+	
+	if save_damage: 
+		if save_key == \"\": save_key = Save.get_unique_key(self, \"damage\")
+		if Save.data.has(save_key):
+			damage = Save.data[save_key]
+		else:
+			Save.data[save_key] = damage
+		Save.connect(\"save_data_updated\", _on_save_data_updated)
+	
+#func _process(_delta: float) -> void:
+	#print(damage)
+"
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_12tax"]
 size = Vector3(1.22162, 1.39923, 0.2724)
 
@@ -1980,9 +1982,8 @@ DAMAGE_SHAPE = NodePath("GodModeHurt/CollisionShape3D")
 ANIMATION_PLAYER = NodePath("../AnimationPlayer")
 
 [node name="GodModeHurt" type="Area3D" parent="GodMode" groups=["player"]]
-script = SubResource("GDScript_n8vw1")
+script = ExtResource("7_4anjp")
 damage = 10000000
-damage_spread = 1
 damage_groups = Array[String](["enemy_hitshape"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GodMode/GodModeHurt" groups=["player"]]
@@ -2159,7 +2160,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_12tax")
 surface_material_override/0 = SubResource("StandardMaterial3D_m1s71")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5"]
-transform = Transform3D(0.637186, -0.662321, -0.394111, 0.664712, 0.731073, -0.153917, 0.390067, -0.163897, 0.906083, 0.0982077, 1.08534, -0.0989191)
+transform = Transform3D(0.637186, -0.662322, -0.394111, 0.664712, 0.731073, -0.153917, 0.390066, -0.163897, 0.906083, 0.0982073, 1.08534, -0.0989204)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -2179,7 +2180,7 @@ shape = SubResource("BoxShape3D_12tax")
 disabled = true
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="6"]
-transform = Transform3D(-0.999794, -0.0170243, -0.0110436, 0.00978569, 0.0722803, -0.997336, 0.0177772, -0.997239, -0.0720988, -0.0884604, 0.0743553, -0.125197)
+transform = Transform3D(-0.999794, -0.0170244, -0.0110436, 0.00978568, 0.0722804, -0.997336, 0.0177773, -0.997239, -0.0720988, -0.0884603, 0.0743556, -0.125197)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -2190,7 +2191,7 @@ scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="7"]
-transform = Transform3D(-0.999794, -0.0170243, -0.0110436, 0.00978569, 0.0722803, -0.997336, 0.0177772, -0.997239, -0.0720988, -0.0884604, 0.0743553, -0.125197)
+transform = Transform3D(-0.999794, -0.0170244, -0.0110436, 0.00978568, 0.0722804, -0.997336, 0.0177773, -0.997239, -0.0720988, -0.0884603, 0.0743556, -0.125197)
 bone_name = "foot_l"
 bone_idx = 18
 

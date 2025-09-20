@@ -1,70 +1,59 @@
 extends Node3D
 @export var speed = 15.0
-@export var destroy_area: Area3D
-@export var body_exclude_groups: Array[String] = [] 
-@export var area_exclude_groups: Array[String] = []
-@export var destroy_on_every_body_entered: bool = true
-@export var destroy_on_every_area_entered: bool = false
-
-@export var collision_animation_player: AnimationPlayer
-@export var collision_animation_name: String = ""
-@export var collision_point_node: Node3D ## When an area or body or area is entered this moves to collision point 
-
+@export var gravity: float = 0.0  
 @export var random_velocity_x: float = 0.0
 @export var random_velocity_y: float = 0.0
-
-@export var gravity: float = 0.0  
-var velocity: Vector3
+@export var ray: RayCast3D
+@export var exclude_groups: Array[String] = [] 
+@export var collision_point: Node3D
+@export var collision_animation_player: AnimationPlayer
+@export var collision_animation_name: String = ""
 
 @export var homing: bool = false
 @export var homing_group: String = "player_body"
 @export var homing_speed: float = 2.0  
 @export var homing_offset: Vector3 = Vector3(0, .5, 0)
 
-func _play_collision_animation():
-	if collision_animation_player and collision_animation_name != "":
-		collision_animation_player.play(collision_animation_name)
-		await collision_animation_player.animation_finished	
-	queue_free()
-
-func _on_body_entered(body: Node) -> void:
-	if destroy_on_every_body_entered:
-		for group in body_exclude_groups:
-			if body.is_in_group(group): return
-	else: 
-		for group in body_exclude_groups:
-			if not body.is_in_group(group): return
-	_play_collision_animation()
-
-func _on_area_entered(area: Area3D) -> void:
-	if destroy_on_every_area_entered:
-		for group in area_exclude_groups:
-			if area.is_in_group(group): return
-	else:
-		for group in area_exclude_groups:
-			if not area.is_in_group(group): return
-	_play_collision_animation()
+var velocity: Vector3
 
 func _ready():
 	await get_tree().process_frame
-	velocity = -(global_transform.basis.z.normalized()) * speed
-	
-	if destroy_area:
-		destroy_area.body_entered.connect(_on_body_entered)
-		destroy_area.area_entered.connect(_on_area_entered)
-				
+	velocity = -(global_transform.basis.z.normalized()) * speed		
 	velocity +=  Vector3(randf_range(-random_velocity_x, random_velocity_x), randf_range(-random_velocity_y, random_velocity_y), 0)
 
-func _process(delta):
-
-	if homing:	
-		pass
-		#add the velocity being changed
+func _physics_process(delta: float) -> void:
+	if homing:pass #add the velocity being changed
 	
 	if gravity != 0.0:
 		velocity.y -= gravity * delta
 
 	if velocity.length() > 0.0:
-		look_at(global_position + velocity, Vector3.UP)
+		var up = Vector3.UP
+		if abs(velocity.normalized().dot(up)) > 0.999:
+			up = Vector3.RIGHT  # pick a perpendicular up
+		look_at(global_position + velocity, up)
+	
+	ray.target_position = ray.to_local(global_position + velocity * delta)
+	ray.force_raycast_update()
+	if ray.is_colliding():
+		var collider = ray.get_collider()
+		var skip = false
+		for group in exclude_groups:
+			if collider.is_in_group(group):
+				skip = true
+				break
+
+		if not skip:
+			if collision_point:
+				collision_point.global_position = ray.get_collision_point()
+				
+				var up = Vector3.UP
+				if abs(ray.get_collision_normal().dot(Vector3.UP)) > 0.999:
+					up = Vector3(0, 0, 1)
+				collision_point.look_at(collision_point.global_position + ray.get_collision_normal(), up)
+
+			if collision_animation_player and collision_animation_name != "":
+				collision_animation_player.play(collision_animation_name)
+				collision_animation_player.advance(0)  
 	
 	global_position += velocity * delta

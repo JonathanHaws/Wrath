@@ -161,23 +161,23 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="GluttonyProjectile" type="Node3D" node_paths=PackedStringArray("destroy_area", "collision_animation_player", "collision_point_node")]
+[node name="GluttonyProjectile" type="Node3D" node_paths=PackedStringArray("ray", "collision_point", "collision_animation_player")]
 script = ExtResource("1_e1mm7")
 speed = 22.0
-destroy_area = NodePath("Attack")
-body_exclude_groups = Array[String](["gluttony", "player"])
-area_exclude_groups = Array[String](["gluttony", "player"])
-collision_animation_player = NodePath("AnimationPlayer")
-collision_animation_name = "colliding"
-collision_point_node = NodePath("PuddleSpawner")
+gravity = 15.0
 random_velocity_x = 0.2
 random_velocity_y = 0.2
-gravity = 15.0
+ray = NodePath("RayCast3D")
+exclude_groups = Array[String](["gluttony", "player"])
+collision_point = NodePath("PuddleSpawner")
+collision_animation_player = NodePath("AnimationPlayer")
+collision_animation_name = "colliding"
 
 [node name="PuddleSpawner" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node")]
+rotation_edit_mode = 1
 script = ExtResource("2_fabgd")
 scenes = Array[PackedScene]([ExtResource("3_j1560")])
-copy_transform_node = NodePath("../Node3D")
+copy_transform_node = NodePath(".")
 
 [node name="Node3D" type="Node3D" parent="."]
 
@@ -210,3 +210,6 @@ libraries = {
 &"": SubResource("AnimationLibrary_mr47g")
 }
 autoplay = "projectile"
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+debug_shape_custom_color = Color(1, 1, 1, 1)
