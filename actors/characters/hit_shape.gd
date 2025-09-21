@@ -3,6 +3,7 @@ extends Area3D
 @export var MAX_HEALTH = 500
 @export var IMMUNE_GROUPS: Array[String] = []
 @export var INVINCIBILITY_COOLDOWN: float = 0.0 ## After object gets hit how long they are invincible
+var last_hurt_shape: Area3D = null # most recent hurt_shape to damage this shape
 var invincibility_timer: Timer
 
 @export_group("DAMAGE REACTION")
@@ -25,6 +26,7 @@ func hit(area: Area3D, damage: int)-> void:
 	if invincibility_timer: if invincibility_timer.is_stopped() == false: return  
 	for immune_group in IMMUNE_GROUPS: if area.is_in_group(immune_group): return
 	HEALTH -= damage
+	last_hurt_shape = area 
 	if invincibility_timer: invincibility_timer.start()
 	
 	for node in TELEPORT_NODES_TO_HIT:

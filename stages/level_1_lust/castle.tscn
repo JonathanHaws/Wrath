@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="4_42w7d"]
 [ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://stages/lighting/sun.tscn" id="4_mqk0e"]
 [ext_resource type="PackedScene" uid="uid://615n66a3l256" path="res://stages/level_1_lust/tower.blend" id="6_hcc5w"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="6_mb05r"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="6_mb05r"]
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://actors/cinematic.gd" id="8_bqs2d"]
 [ext_resource type="Material" uid="uid://bofjw8wwuxc71" path="res://stages/materials/bricks/castle/castle_big.tres" id="8_u51x1"]
 [ext_resource type="Material" uid="uid://c7xo8odsficf7" path="res://actors/props/rocks/materials/world_rocks.tres" id="9_u51x1"]
@@ -309,14 +309,12 @@ DESCEND_SPEED = 2.0
 
 [node name="KillVolumes" type="Node" parent="."]
 
-[node name="Void" type="Area3D" parent="KillVolumes"]
+[node name="Void" type="Area3D" parent="KillVolumes" groups=["platforming_hurt_shape"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 46.9871, 19)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("6_mb05r")
 damage = 10000
-damage_numbers = null
-death_animation = "FALL_DEATH"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillVolumes/Void"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.713, -212.355, 36.6345)

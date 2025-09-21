@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_aba3s"]
 [ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://stages/lighting/sun.tscn" id="4_2c8ka"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="4_3gs6a"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="5_rlfmo"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="5_rlfmo"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="6_haf51"]
 [ext_resource type="PackedScene" uid="uid://b3urcqmix8s8g" path="res://actors/characters/enemies/bosses/wrath/wrath.tscn" id="7_eqpye"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp.tscn" id="8_rf8or"]
@@ -143,7 +143,7 @@ size = Vector3(51.7317, 6.81735, 0.861012)
 [node name="Cinematics" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Cinematics"]
-transform = Transform3D(0.874629, 0.249685, -0.415548, -1.86264e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
+transform = Transform3D(0.874629, 0.249685, -0.415548, -1.78814e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
 rotation_edit_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cinematics"]
@@ -331,14 +331,12 @@ skeleton = NodePath("../..")
 shape = SubResource("CylinderShape3D_ffi7c")
 debug_color = Color(0.7, 0.7, 0.7, 0)
 
-[node name="KillVolume" type="Area3D" parent="."]
+[node name="KillVolume" type="Area3D" parent="." groups=["platforming_hurt_shape"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 1.88324, 19)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("5_rlfmo")
 damage = 10000
-damage_numbers = null
-death_animation = "FALL_DEATH"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillVolume"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8294, -186.275, -53.309)

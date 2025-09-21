@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=96 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -35,6 +35,7 @@
 [ext_resource type="Script" uid="uid://dsby53pm3kd0g" path="res://actors/characters/player/save_property.gd" id="23_75wkf"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="24_m1s71"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://actors/characters/enemies/sfx/Slam.wav" id="25_8i186"]
+[ext_resource type="Script" uid="uid://bfq61wyde2xvx" path="res://actors/characters/player/death_animation.gd" id="29_5ijfa"]
 [ext_resource type="Texture2D" uid="uid://cilvyugj78b4q" path="res://actors/characters/player/mesh/textures/body/color.png" id="33_n8vw1"]
 [ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://actors/characters/player/player_health.tres" id="34_6g6ue"]
 [ext_resource type="Texture2D" uid="uid://bm1u48mshqrkg" path="res://actors/characters/player/mesh/textures/cloak/color.png" id="34_75wkf"]
@@ -62,109 +63,16 @@ length = 4.0
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../SlowMotion")
+tracks/0/path = NodePath("../AlwaysProcessDeath/DeathAnimation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [1.0, 0.0],
-"method": &"impact"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Audio")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.16667),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": [["HURT"], 1.0, 1.0, 0.0, 0.0],
-"method": &"play_2d_sound"
-}, {
-"args": [["Slam"]],
-"method": &"play_2d_sound"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../ColorRect:color")
-tracks/2/interp = 0
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.16667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("..:SPEED_MULTIPLIER")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("..:TURN_MULTIPLIER")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("..")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(3.13333),
-"transitions": PackedFloat32Array(1),
-"values": [{
 "args": [],
-"method": &"reload_checkpoint"
+"method": &"play_animation_based_of_cause_of_death"
 }]
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../Hitbox/DeathCountTracker")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(1.7),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"increase"
-}]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../Hitbox/CollisionShape3D:disabled")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_n8vw1"]
@@ -212,17 +120,250 @@ tracks/0/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:SPEED_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:TURN_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2d6ni"]
+resource_name = "FALL_DEATH"
+length = 4.771
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:disabled")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:SPEED_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:TURN_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("DEATH"),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Hitbox/DeathCountTracker")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.733333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"increase"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reload_checkpoint"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5og37"]
+resource_name = "REGULAR_DEATH"
+length = 5.4815
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../SlowMotion")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1.0, 0.0],
+"method": &"impact"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Audio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.16667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [["HURT"], 1.0, 1.0, 0.0, 0.0],
+"method": &"play_2d_sound"
+}, {
+"args": [["Slam"]],
+"method": &"play_2d_sound"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.16667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Hitbox/CollisionShape3D:disabled")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..:SPEED_MULTIPLIER")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("..:TURN_MULTIPLIER")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "animation"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"clips": PackedStringArray("DEATH"),
+"times": PackedFloat32Array(0)
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Hitbox/DeathCountTracker")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(2.46667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"increase"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("..")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3.13333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reload_checkpoint"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k5idf"]
 _data = {
 &"DEATH": SubResource("Animation_utjob"),
+&"FALL_DEATH": SubResource("Animation_2d6ni"),
 &"HURT": SubResource("Animation_n8vw1"),
+&"REGULAR_DEATH": SubResource("Animation_5og37"),
 &"RESET": SubResource("Animation_xkeou")
 }
-
-[sub_resource type="Animation" id="Animation_bx4xs"]
-resource_name = "DEATH"
-length = 3.0
 
 [sub_resource type="Animation" id="Animation_5ijfa"]
 resource_name = "DOOR"
@@ -339,50 +480,6 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "clips": PackedStringArray("Fall"),
 "times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_y5607"]
-resource_name = "FALL_DEATH"
-length = 0.25
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ColorRect:color")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.233333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"reload_checkpoint"
-}]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Hitbox/DeathCountTracker")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.233333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"increase"
-}]
 }
 
 [sub_resource type="Animation" id="Animation_bud88"]
@@ -1607,13 +1704,16 @@ tracks/5/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_s81g7"]
+resource_name = "DEATH"
+length = 4.4495
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b2cvw"]
 _data = {
-&"DEATH": SubResource("Animation_bx4xs"),
+&"DEATH": SubResource("Animation_s81g7"),
 &"DOOR": SubResource("Animation_5ijfa"),
 &"ESCAPE": SubResource("Animation_fm33p"),
 &"FALL": SubResource("Animation_7aqcu"),
-&"FALL_DEATH": SubResource("Animation_y5607"),
 &"GLUTTONY_INTRO": SubResource("Animation_bud88"),
 &"GOD": SubResource("Animation_xnjpx"),
 &"IDLE": SubResource("Animation_kk21r"),
@@ -1985,6 +2085,13 @@ root_node = NodePath("../AnimationPlayer")
 libraries = {
 &"": SubResource("AnimationLibrary_k5idf")
 }
+
+[node name="DeathAnimation" type="Node" parent="AlwaysProcessDeath" node_paths=PackedStringArray("hit_shape", "regular_death_animation_player", "platforming_death_animation_player")]
+script = ExtResource("29_5ijfa")
+hit_shape = NodePath("../../Hitbox")
+regular_death_animation_player = NodePath("..")
+regular_death_animation_name = &"REGULAR_DEATH"
+platforming_death_animation_player = NodePath("..")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["player_anim", "skippable"]]
 callback_mode_process = 0
