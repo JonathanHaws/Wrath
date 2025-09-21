@@ -1,4 +1,4 @@
-[gd_scene load_steps=93 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=94 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -41,6 +41,7 @@
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="35_lwilf"]
 [ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://actors/characters/player/tracker/play_time_tracker.gd" id="36_5cvkf"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="36_p2pt0"]
+[ext_resource type="Script" uid="uid://dxmw2yslqiwp1" path="res://actors/characters/hurt_shape_persistent_damage.gd" id="38_ekykk"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://actors/slow_motion.gd" id="39_gts01"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://actors/squash.gd" id="41_utjob"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_shake.gd" id="42_k5idf"]
@@ -2122,12 +2123,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00983417, 0.964215, 0.0032
 script = ExtResource("7_4anjp")
 damage = 50
 damage_groups = Array[String](["enemy_hitshape"])
-save_damage = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0249939, 0.199615, 0.0218811)
 shape = SubResource("BoxShape3D_12tax")
 disabled = true
+
+[node name="PersitentDamage" type="Node" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D" node_paths=PackedStringArray("hurt_shape", "animation_player")]
+script = ExtResource("38_ekykk")
+hurt_shape = NodePath("..")
+save_key = "damage"
+animation_player = NodePath("../../../../../../../Upgrade")
+upgrade_animation = "DAMAGE"
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="6"]
 transform = Transform3D(-0.999794, -0.0170244, -0.0110436, 0.00978568, 0.0722804, -0.997336, 0.0177773, -0.997239, -0.0720988, -0.0884603, 0.0743556, -0.125197)
