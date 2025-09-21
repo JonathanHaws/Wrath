@@ -1,6 +1,6 @@
 extends Node
 @export var ENABLED: bool = true
-@export var FLY_SPEED: float = 0.2
+@export var FLY_SPEED: float = 0.4
 @export var ASCEND_SPEED: float = 50.0
 @export var DESCEND_SPEED: float = 50.0
 @export var SPRINT_MULTIPLIER = 2.1
@@ -57,8 +57,6 @@ func _physics_process(_delta):
 			
 			var direction = -CAMERA.global_transform.basis.z.normalized() # move towards camera
 			PLAYER.global_transform.origin.y += direction.y * FLY_SPEED * _delta	
-			
-	
 			
 	else:
 		if BODY_SHAPE: BODY_SHAPE.disabled = false

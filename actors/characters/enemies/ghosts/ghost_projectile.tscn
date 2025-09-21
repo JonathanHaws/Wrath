@@ -1,7 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://dyk5tfpn3c33w"]
+[gd_scene load_steps=11 format=3 uid="uid://dyk5tfpn3c33w"]
 
 [ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://actors/characters/enemies/projectile.gd" id="1_8vmfp"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="2_v5ope"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="2_v5ope"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v5ope"]
 albedo_color = Color(0.0852062, 0.101318, 0.154996, 1)
@@ -86,18 +86,37 @@ tracks/2/keys = {
 "values": [0.0, 2.0, 2.0, 0.0]
 }
 
+[sub_resource type="Animation" id="Animation_7pvji"]
+resource_name = "collision"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mr47g"]
 _data = {
 &"RESET": SubResource("Animation_mr47g"),
+&"collision": SubResource("Animation_7pvji"),
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="GhostProjectile" type="Node3D" node_paths=PackedStringArray("destroy_area")]
+[node name="GhostProjectile" type="Node3D" node_paths=PackedStringArray("ray", "collision_animation_player")]
 script = ExtResource("1_8vmfp")
 speed = 20.0
-destroy_area = NodePath("Attack")
-body_exclude_groups = Array[String](["ghost", "player"])
-area_exclude_groups = Array[String](["player"])
+ray = NodePath("RayCast3D")
+exclude_groups = Array[String](["ghost"])
+collision_animation_player = NodePath("AnimationPlayer")
+collision_animation_name = "collision"
 
 [node name="Node3D" type="Node3D" parent="."]
 
@@ -137,3 +156,6 @@ light_color = Color(0.58, 0.58, 0.58, 1)
 light_energy = 2.0
 light_specular = 0.1
 omni_range = 15.0
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+hit_from_inside = true

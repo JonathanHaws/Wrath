@@ -8,7 +8,8 @@ var invincibility_timer: Timer
 @export_group("DAMAGE REACTION")
 ## For Body / Child Nodes which have to reposition themselves. Such as Needed positional synchronization between attacker / attacked on animations, Hurt Particles, etc.
 @export var TELEPORT_NODES_TO_HIT: Array[Node3D] = [] 
-@export var ANIMATION_PLAYERS: Array[AnimationPlayer] = []
+@export var HURT_ANIMATION_PLAYER: AnimationPlayer
+@export var DEATH_ANIMATION_PLAYER: AnimationPlayer
 @export var HURT_ANIM: String = "HURT"
 @export var DEATH_ANIM: String = "DEATH"
 @export var damage_numbers: PackedScene = preload("uid://dx5gfq7hao3tx")
@@ -29,11 +30,10 @@ func hit(area: Area3D, damage: int)-> void:
 	for node in TELEPORT_NODES_TO_HIT:
 		node.global_transform.origin = area.global_transform.origin
 		
-	for anim_player in ANIMATION_PLAYERS:
-		if HEALTH > 0 and anim_player.has_animation(HURT_ANIM):
-			anim_player.call_deferred("play", HURT_ANIM)
-		elif HEALTH <= 0 and anim_player.has_animation(DEATH_ANIM):
-			anim_player.call_deferred("play", DEATH_ANIM)
+	if HEALTH > 0 and HURT_ANIMATION_PLAYER and HURT_ANIMATION_PLAYER.has_animation(HURT_ANIM):
+		HURT_ANIMATION_PLAYER.play(HURT_ANIM)
+	elif HEALTH <= 0 and DEATH_ANIMATION_PLAYER and DEATH_ANIMATION_PLAYER.has_animation(DEATH_ANIM):
+		DEATH_ANIMATION_PLAYER.play(DEATH_ANIM)
 			
 func _ready():
 	if INVINCIBILITY_COOLDOWN > 0:
@@ -41,3 +41,6 @@ func _ready():
 		invincibility_timer.one_shot = true
 		invincibility_timer.wait_time = INVINCIBILITY_COOLDOWN
 		add_child(invincibility_timer)
+		
+#func _process(delta: float) -> void:
+	#print(HEALTH)

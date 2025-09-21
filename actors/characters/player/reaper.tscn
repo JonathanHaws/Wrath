@@ -1940,14 +1940,15 @@ MESH_ANIM = NodePath("Mesh/reaper/AnimationPlayer")
 COLLISON_SHAPE = NodePath("CollisionShape3D")
 PARTICLES = NodePath("JumpParticles")
 
-[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("ANIMATION_PLAYERS") groups=["player", "player_hitshape"]]
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["player", "player_hitshape"]]
 collision_layer = 2
 script = ExtResource("2_utjob")
 HEALTH = 15
 MAX_HEALTH = 15
 IMMUNE_GROUPS = Array[String](["player"])
 INVINCIBILITY_COOLDOWN = 0.8
-ANIMATION_PLAYERS = [NodePath("../AnimationPlayer"), NodePath("../AlwaysProcessDeath")]
+HURT_ANIMATION_PLAYER = NodePath("../AlwaysProcessDeath")
+DEATH_ANIMATION_PLAYER = NodePath("../AlwaysProcessDeath")
 
 [node name="DeathCountTracker" type="Node" parent="Hitbox" node_paths=PackedStringArray("HITSHAPE")]
 script = ExtResource("20_m1s71")
@@ -1983,7 +1984,7 @@ ANIMATION_PLAYER = NodePath("../AnimationPlayer")
 
 [node name="GodModeHurt" type="Area3D" parent="GodMode" groups=["player"]]
 script = ExtResource("7_4anjp")
-damage = 10000000
+damage = 10000
 damage_groups = Array[String](["enemy_hitshape"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GodMode/GodModeHurt" groups=["player"]]

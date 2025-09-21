@@ -50,7 +50,7 @@ border_blend = true
 
 [sub_resource type="Animation" id="Animation_5k6cf"]
 resource_name = "HURT"
-length = 0.001
+length = 0.9055
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1754,11 +1754,14 @@ process_mode = 3
 stream = ExtResource("18_kcm85")
 bus = &"Music"
 
-[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("ANIMATION_PLAYERS") groups=["enemy_hitshape", "gluttony"]]
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape", "gluttony"]]
+collision_layer = 3
+collision_mask = 3
 script = ExtResource("2_q2lvp")
 HEALTH = 3000
 MAX_HEALTH = 3000
-ANIMATION_PLAYERS = [NodePath("../Damaged")]
+HURT_ANIMATION_PLAYER = NodePath("../Damaged")
+DEATH_ANIMATION_PLAYER = NodePath("../AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0.637661)

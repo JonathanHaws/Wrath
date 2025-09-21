@@ -864,13 +864,14 @@ radius = 14.4904
 script = ExtResource("1_tw1ii")
 DAMAGE_KEY = "damage"
 
-[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "ANIMATION_PLAYERS") groups=["enemy_hitshape"]]
+[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("2_i6eoe")
 HEALTH = 300
 MAX_HEALTH = 300
 IMMUNE_GROUPS = Array[String](["ghost"])
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
-ANIMATION_PLAYERS = [NodePath("../Damaged"), NodePath("../AnimationPlayer")]
+HURT_ANIMATION_PLAYER = NodePath("../Damaged")
+DEATH_ANIMATION_PLAYER = NodePath("../Damaged")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 shape = SubResource("SphereShape3D_6640v")
