@@ -3,6 +3,7 @@ extends Area3D
 @export var MAX_HEALTH = 500
 @export var IMMUNE_GROUPS: Array[String] = []
 @export var INVINCIBILITY_COOLDOWN: float = 0.0 ## After object gets hit how long they are invincible
+@export var DISABLED: bool = false
 var last_hurt_shape: Area3D = null # most recent hurt_shape to damage this shape
 var invincibility_timer: Timer
 
@@ -22,7 +23,7 @@ func show_damage(damage_amount: int) -> void:
 		number.position = get_viewport().get_camera_3d().unproject_position(self.global_position) - Vector2(0, 140.0)
 
 func hit(area: Area3D = null, damage: int = 0)-> void:
-	
+	if DISABLED: return
 	if invincibility_timer: if invincibility_timer.is_stopped() == false: return  
 	if area: for immune_group in IMMUNE_GROUPS: if area.is_in_group(immune_group): return
 	HEALTH -= damage
@@ -36,6 +37,7 @@ func hit(area: Area3D = null, damage: int = 0)-> void:
 		HURT_ANIMATION_PLAYER.play(HURT_ANIM)
 		HURT_ANIMATION_PLAYER.seek(0, true)
 	elif HEALTH <= 0 and DEATH_ANIMATION_PLAYER and DEATH_ANIMATION_PLAYER.has_animation(DEATH_ANIM):
+		DISABLED = true
 		DEATH_ANIMATION_PLAYER.play(DEATH_ANIM)
 		DEATH_ANIMATION_PLAYER.seek(0, true)
 			

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_5ay62"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_faveg"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="3_f2sb8"]
-[ext_resource type="StyleBox" uid="uid://bkiq5l50kefkj" path="res://actors/characters/enemies/bosses/lust/lust_health.tres" id="4_gxtjy"]
+[ext_resource type="StyleBox" uid="uid://brwksry3ixj4j" path="res://actors/characters/enemies/bosses/sloth/sloth_health.tres" id="4_dbtmo"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="5_h7mjm"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="6_fscfa"]
 [ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://actors/characters/enemies/sfx/Hit_1.wav" id="7_uqmuq"]
@@ -23,12 +23,12 @@
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_shake.gd" id="21_u53v8"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://actors/slow_motion.gd" id="22_q6ibl"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/3d_scene_spawner.gd" id="23_8fqfx"]
-[ext_resource type="PackedScene" uid="uid://cajl1wg350nss" path="res://actors/characters/enemies/bosses/lust/lust_hurt_particles.tscn" id="24_jigkv"]
+[ext_resource type="PackedScene" uid="uid://0o880t36r221" path="res://actors/characters/enemies/bosses/sloth/sloth_hurt_particles.tscn" id="24_dbtmo"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="25_gwq6n"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="26_t4er3"]
-[ext_resource type="PackedScene" uid="uid://c57ypccbd3fky" path="res://actors/characters/enemies/bosses/lust/lust.blend" id="27_8ydyp"]
+[ext_resource type="PackedScene" uid="uid://dnmftqcmv26ca" path="res://actors/characters/enemies/bosses/sloth/sloth.blend" id="27_dbtmo"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wbwgn"]
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dbtmo"]
 radius = 0.604509
 height = 4.80709
 
@@ -577,15 +577,15 @@ radius = 0.001
 [sub_resource type="BoxShape3D" id="BoxShape3D_wbwgn"]
 size = Vector3(23.4119, 15.2804, 40.1915)
 
-[node name="Lust" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM") groups=["greed"]]
+[node name="Sloth" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM")]
 collision_layer = 7
 collision_mask = 7
 script = ExtResource("1_5ay62")
 TARGET = NodePath("Target")
 ANIM = NodePath("Attacks")
-SAVE_KEY_ENCOUNTERED = "lust_encountered"
-DOOR_TO_UNLOCK_GROUP = "lust_door"
-DEFEATED_KEY = "lust_defeated"
+SAVE_KEY_ENCOUNTERED = "sloth_encountered"
+DOOR_TO_UNLOCK_GROUP = "sloth_door"
+DEFEATED_KEY = "sloth_defeated"
 
 [node name="Ui" type="Control" parent="." groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
@@ -615,7 +615,7 @@ metadata/_edit_use_anchors_ = true
 custom_minimum_size = Vector2(900, 8.645)
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_styles/fill = ExtResource("4_gxtjy")
+theme_override_styles/fill = ExtResource("4_dbtmo")
 max_value = 2000.0
 value = 2000.0
 tracked_node = NodePath("../../../Hitbox")
@@ -625,7 +625,7 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = ExtResource("5_h7mjm")
-text = "LUST"
+text = "SLOTH"
 horizontal_alignment = 1
 uppercase = true
 
@@ -654,7 +654,7 @@ DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
-shape = SubResource("CapsuleShape3D_wbwgn")
+shape = SubResource("CapsuleShape3D_dbtmo")
 
 [node name="CameraShake" type="Node" parent="."]
 script = ExtResource("21_u53v8")
@@ -680,7 +680,7 @@ next/INTRO = &"CHASE"
 [node name="HurtParticles" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node") groups=["teleport_to_attacking_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("23_8fqfx")
-scenes = Array[PackedScene]([ExtResource("24_jigkv")])
+scenes = Array[PackedScene]([ExtResource("24_dbtmo")])
 copy_transform_node = NodePath(".")
 
 [node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA")]
@@ -698,9 +698,9 @@ SPEED_MULTIPLIER = 0.0
 script = ExtResource("26_t4er3")
 SCENE_ROOT = NodePath("..")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh"]
+[node name="sloth" parent="Mesh" instance=ExtResource("27_dbtmo")]
 
-[node name="lust" parent="Mesh" instance=ExtResource("27_8ydyp")]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
@@ -727,7 +727,7 @@ shape = SubResource("BoxShape3D_wbwgn")
 
 [node name="Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 13.6732, -0.361175)
-light_color = Color(0.792157, 0.411765, 0.462745, 1)
+light_color = Color(0.211765, 0.596078, 0.721569, 1)
 light_energy = 0.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0

@@ -8,8 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="7_5hgnl"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="8_deg3c"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="9_d2qy0"]
-[ext_resource type="PackedScene" uid="uid://b5clsl3808lrj" path="res://actors/characters/enemies/ghosts/ghost_melee.tscn" id="9_nlsid"]
-
+[ext_resource type="PackedScene" uid="uid://sj1jfdnq1vjb" path="res://actors/characters/enemies/bosses/sloth/sloth.tscn" id="9_w17nt"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -60,12 +59,6 @@ material_override = ExtResource("9_d2qy0")
 mesh = SubResource("BoxMesh_od467")
 skeleton = NodePath("../..")
 
-[node name="Ghost" parent="." instance=ExtResource("9_nlsid")]
-transform = Transform3D(0.393413, 0, 0.919362, 0, 1, 0, -0.919362, 0, 0.393413, 15.2932, -8.06565, -7.95535)
-
-[node name="Ghost2" parent="." instance=ExtResource("9_nlsid")]
-transform = Transform3D(0.440409, 0, 0.897797, 0, 1, 0, -0.897797, 0, 0.440409, 28.6415, -8.06565, 6.15311)
-
 [node name="Reaper" parent="." instance=ExtResource("5_3y1t5")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
@@ -74,10 +67,14 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.51
 DESTINATION_NODE_NAME = "Exit"
 DESTINATION_SCENE = "uid://cbk056vj32v0p"
 
-[node name="Exit" parent="." instance=ExtResource("7_5hgnl")]
+[node name="Exit" parent="." groups=["sloth_door"] instance=ExtResource("7_5hgnl")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Enter"
+LOCKED = true
 DESTINATION_SCENE = "uid://dsdh2bite7xv4"
 
 [node name="Checkpoint" parent="." instance=ExtResource("6_nlsid")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.8406, -9.14357, 0)
+
+[node name="Sloth" parent="." instance=ExtResource("9_w17nt")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 27.1463, -9.43513, -0.116354)
