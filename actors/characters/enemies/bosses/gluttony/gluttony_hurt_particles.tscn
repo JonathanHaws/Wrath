@@ -89,7 +89,7 @@ _data = {
 
 [node name="Node3D" type="Node3D"]
 
-[node name="Gluttony" type="GPUParticles3D" parent="."]
+[node name="Hurt" type="GPUParticles3D" parent="."]
 material_override = SubResource("StandardMaterial3D_c4vjc")
 amount = 64
 lifetime = 0.75
@@ -100,7 +100,7 @@ interpolate = false
 process_material = SubResource("ParticleProcessMaterial_qo0m2")
 draw_pass_1 = SubResource("QuadMesh_odbhm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Gluttony"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hurt"]
 libraries = {
 &"": SubResource("AnimationLibrary_12k5t")
 }
