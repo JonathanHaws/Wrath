@@ -330,13 +330,13 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
 [node name="spin" parent="Portal/Mesh" index="1"]
-transform = Transform3D(-0.725502, 0.688218, 0, -0.688218, -0.725502, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(0.843724, -0.536775, 0, 0.536775, 0.843724, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Portal/Mesh/flames_2" index="0"]
-transform = Transform3D(0.791824, -0.245949, 1.4142e-16, 0.245949, 0.791824, 1.87768e-15, -6.92031e-16, -1.75122e-15, 0.829142, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(-0.860633, -0.521879, 6.98677e-16, 0.521879, -0.860633, 4.69224e-15, -1.83555e-15, 4.37448e-15, 1.0065, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Portal/Mesh/flames_1" index="0"]
-transform = Transform3D(0.791824, -0.245949, 1.4142e-16, 0.245949, 0.791824, 1.87768e-15, -6.92031e-16, -1.75122e-15, 0.829142, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(-0.860633, -0.521879, 6.98677e-16, 0.521879, -0.860633, 4.69224e-15, -1.83555e-15, 4.37448e-15, 1.0065, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Portal/Mesh" index="4"]
 autoplay = "Spin"
@@ -370,10 +370,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
 color = Color(0, 0, 0, 0)
-metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="Portal/Cinematic/ColorRect" groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
@@ -389,6 +386,7 @@ offset_right = 283.5
 offset_bottom = 57.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(283.5, 57)
 theme = ExtResource("12_62dvu")
 theme_override_fonts/font = ExtResource("13_gm8kg")
 theme_override_font_sizes/font_size = 56
@@ -396,7 +394,6 @@ text = "THANK YOU FOR PLAYING!"
 horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("13_v2tb1")
-metadata/_edit_use_anchors_ = true
 
 [node name="Camera3D" type="Camera3D" parent="Portal/Cinematic"]
 transform = Transform3D(-0.66068, 0.429468, -0.615678, 0, 0.820173, 0.572115, 0.750668, 0.377984, -0.541872, -17.2564, 8.33722, 7.99027)

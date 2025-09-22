@@ -8,8 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="8_d5x5s"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="8_lpdb7"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="9_bxxo5"]
-[ext_resource type="PackedScene" uid="uid://c76e444j3m8tp" path="res://actors/characters/enemies/ghosts/ghost_jump.tscn" id="9_gv57c"]
-
+[ext_resource type="PackedScene" uid="uid://v8b6ve5smjd1" path="res://actors/characters/enemies/bosses/pride/pride.tscn" id="9_sg0e4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -63,14 +62,6 @@ skeleton = NodePath("../..")
 [node name="Checkpoint" parent="." instance=ExtResource("8_d5x5s")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.14297, -9.05803, -0.448656)
 
-[node name="Ghost" parent="." instance=ExtResource("9_gv57c")]
-transform = Transform3D(-0.482518, 0, 0.875886, 0, 1, 0, -0.875886, 0, -0.482518, 28.1031, -8.06565, -10.8103)
-script = null
-
-[node name="Ghost2" parent="." instance=ExtResource("9_gv57c")]
-transform = Transform3D(0.509988, 0, 0.860182, 0, 1, 0, -0.860182, 0, 0.509988, 16.664, -8.06565, 7.96031)
-script = null
-
 [node name="Reaper" parent="." instance=ExtResource("5_a6g14")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
@@ -79,7 +70,11 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.51
 DESTINATION_NODE_NAME = "Exit"
 DESTINATION_SCENE = "uid://d1k2pnn46w66f"
 
-[node name="Exit" parent="." instance=ExtResource("7_eoitq")]
+[node name="Exit" parent="." groups=["pride_door"] instance=ExtResource("7_eoitq")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Enter"
+LOCKED = true
 DESTINATION_SCENE = "uid://5n4cvh6cqc4p"
+
+[node name="Pride" parent="." instance=ExtResource("9_sg0e4")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26.5036, -7.28806, 0.313053)

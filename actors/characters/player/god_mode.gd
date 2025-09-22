@@ -1,5 +1,4 @@
 extends Node
-@export var ENABLED: bool = true
 @export var FLY_SPEED: float = 0.4
 @export var ASCEND_SPEED: float = 50.0
 @export var DESCEND_SPEED: float = 50.0
@@ -17,7 +16,7 @@ var last_position: Vector3
 
 func _ready():
 	
-	if not ENABLED:
+	if not OS.is_debug_build():
 		queue_free()
 
 func _physics_process(_delta):
