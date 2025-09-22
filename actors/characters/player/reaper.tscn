@@ -75,76 +75,6 @@ tracks/0/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_n8vw1"]
-resource_name = "HURT"
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../SlowMotion")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.3, 0.0],
-"method": &"impact"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Audio/Hurt")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_xkeou"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Hitbox/CollisionShape3D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("..:SPEED_MULTIPLIER")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("..:TURN_MULTIPLIER")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="Animation" id="Animation_2d6ni"]
 resource_name = "FALL_DEATH"
 length = 4.771
@@ -232,6 +162,37 @@ tracks/6/keys = {
 "values": [{
 "args": [],
 "method": &"reload_checkpoint"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_n8vw1"]
+resource_name = "HURT"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../SlowMotion")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.3, 0.0],
+"method": &"impact"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Audio/Hurt")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
 }]
 }
 
@@ -356,6 +317,45 @@ tracks/8/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_xkeou"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Hitbox/CollisionShape3D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:SPEED_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:TURN_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k5idf"]
 _data = {
 &"DEATH": SubResource("Animation_utjob"),
@@ -364,6 +364,10 @@ _data = {
 &"REGULAR_DEATH": SubResource("Animation_5og37"),
 &"RESET": SubResource("Animation_xkeou")
 }
+
+[sub_resource type="Animation" id="Animation_s81g7"]
+resource_name = "DEATH"
+length = 4.4495
 
 [sub_resource type="Animation" id="Animation_5ijfa"]
 resource_name = "DOOR"
@@ -1704,10 +1708,6 @@ tracks/5/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_s81g7"]
-resource_name = "DEATH"
-length = 4.4495
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b2cvw"]
 _data = {
 &"DEATH": SubResource("Animation_s81g7"),
@@ -1966,12 +1966,12 @@ albedo_texture = ExtResource("34_75wkf")
 size = Vector3(1.22162, 1.39923, 0.2724)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wub5s"]
-bg_color = Color(0.82, 0.82, 0.82, 0.298039)
+bg_color = Color(1, 1, 1, 0.439216)
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
-border_color = Color(0.05, 0.05, 0.05, 0.619608)
+border_color = Color(0.0509804, 0.0509804, 0.0509804, 0.435294)
 corner_radius_top_left = 5
 corner_radius_top_right = 5
 corner_radius_bottom_right = 5
@@ -2018,7 +2018,7 @@ UPGRADE_ANIMATION = "HEALTH"
 [node name="PersitentHealth" type="Node" parent="Hitbox" node_paths=PackedStringArray("HIT_SHAPE")]
 script = ExtResource("4_m1s71")
 HIT_SHAPE = NodePath("..")
-FREE_BODY_IF_DEAD_ON_READY = false
+STORE_DEAD = false
 HEALTH_KEY = "health"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
@@ -2320,13 +2320,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(4, 4)
+pivot_offset = Vector2(3, 3)
 theme_override_styles/fill = SubResource("StyleBoxFlat_wub5s")
 value = 100.0
 show_percentage = false
