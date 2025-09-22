@@ -1,14 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://worsh6enfk2g"]
+[gd_scene load_steps=14 format=3 uid="uid://b6lpwg5hfy82g"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_4eh01"]
-[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_a6482"]
-[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_2uv2b"]
-[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="4_hgjnn"]
-[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="5_pyv35"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="6_l7383"]
-[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="7_n5yio"]
-[ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://actors/characters/npcs/piglet/piglet.tscn" id="9_2uv2b"]
-[ext_resource type="PackedScene" uid="uid://b7lmw4awqeris" path="res://actors/characters/enemies/bosses/lust/lust.tscn" id="9_hgjnn"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_w4qth"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_sg7ch"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="3_omsg5"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="4_6emc0"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="5_ocktf"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="6_07etw"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="7_emywu"]
+[ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://actors/characters/npcs/piglet/piglet.tscn" id="9_rlphr"]
+[ext_resource type="PackedScene" uid="uid://b7lmw4awqeris" path="res://actors/characters/enemies/bosses/lust/lust.tscn" id="10_sg7ch"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -22,14 +22,14 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Main" type="Node3D"]
 
-[node name="Menu" parent="." instance=ExtResource("1_4eh01")]
+[node name="Menu" parent="." instance=ExtResource("1_w4qth")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
-material_override = ExtResource("6_l7383")
+material_override = ExtResource("2_sg7ch")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
@@ -39,9 +39,9 @@ size = Vector3(65.3073, 20, 30)
 
 [node name="Enviroment" type="Node" parent="."]
 
-[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("2_a6482")]
+[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("3_omsg5")]
 
-[node name="Weather" parent="Enviroment" instance=ExtResource("3_2uv2b")]
+[node name="Weather" parent="Enviroment" instance=ExtResource("4_6emc0")]
 
 [node name="Lights" type="Node" parent="Enviroment"]
 
@@ -59,24 +59,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 42.0321, 0, -9.54005, 0)
-material_override = ExtResource("7_n5yio")
+material_override = ExtResource("5_ocktf")
 mesh = SubResource("BoxMesh_od467")
 
-[node name="Reaper" parent="." instance=ExtResource("4_hgjnn")]
+[node name="Reaper" parent="." instance=ExtResource("6_07etw")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
-[node name="Exit" parent="." groups=["lust_door"] instance=ExtResource("5_pyv35")]
+[node name="Exit" parent="." instance=ExtResource("7_emywu")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Enter"
-LOCKED = true
 DESTINATION_SCENE = "uid://cjnryqwoknkw5"
 
-[node name="Enter" parent="." instance=ExtResource("5_pyv35")]
+[node name="Enter" parent="." instance=ExtResource("7_emywu")]
 transform = Transform3D(-4.37112e-08, 0, 1, 0, 1, 0, -1, 0, -4.37112e-08, -22.2895, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "LightDoor"
 DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
 
-[node name="Piglet" parent="." instance=ExtResource("9_2uv2b")]
+[node name="Piglet" parent="." instance=ExtResource("9_rlphr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05158, -9.04356, -10.8999)
 
 [node name="ForTestingInteractionsOkToDelete" type="StaticBody3D" parent="."]
@@ -89,5 +88,5 @@ shape = SubResource("BoxShape3D_2uv2b")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ForTestingInteractionsOkToDelete"]
 mesh = SubResource("BoxMesh_hgjnn")
 
-[node name="Lust" parent="." instance=ExtResource("9_hgjnn")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26.2195, -4.73217, 0.983181)
+[node name="Lust" parent="." instance=ExtResource("10_sg7ch")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 23.1593, -4.72985, -0.97906)
