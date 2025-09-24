@@ -1,11 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://dfopfbx7m077q"]
 
 [ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://actors/characters/enemies/projectile.gd" id="1_lrs7j"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_box.gd" id="2_woit3"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsv7j"]
-albedo_color = Color(0.377757, 0.44866, 0.352352, 1)
-emission_enabled = true
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="2_woit3"]
+[ext_resource type="Material" uid="uid://14hmcag5btd0" path="res://actors/characters/enemies/bosses/gluttony/projectiles/vomit.tres" id="2_x66yr"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_cgbyb"]
 top_radius = 0.167
@@ -68,26 +65,22 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="GluttonyProjectile" type="Node3D" node_paths=PackedStringArray("destroy_area")]
+[node name="GluttonyProjectile" type="Node3D"]
 script = ExtResource("1_lrs7j")
 speed = 20.0
-destroy_area = NodePath("Attack")
-body_exclude_groups = Array[String](["gluttony", "player"])
-area_exclude_groups = Array[String](["player", "gluttony"])
-home_in_ready = true
 homing_speed = 0.2
 
 [node name="Node3D" type="Node3D" parent="."]
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 6.3573e-08, 2.77887e-15, 0, -4.37114e-08, 1, 6.3573e-08, -1, -4.37114e-08, 0, 2.93627e-08, 1.10132)
-material_override = SubResource("StandardMaterial3D_xsv7j")
+material_override = ExtResource("2_x66yr")
 mesh = SubResource("CylinderMesh_cgbyb")
 skeleton = NodePath("")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(0.345907, 0, 1.05879e-22, -1.07435e-22, -1.51201e-08, 0.345907, 0, -0.345907, -1.51201e-08, -7.10543e-15, -1.576e-08, 0.0690371)
-material_override = SubResource("StandardMaterial3D_xsv7j")
+material_override = ExtResource("2_x66yr")
 mesh = SubResource("SphereMesh_v5ope")
 skeleton = NodePath("")
 

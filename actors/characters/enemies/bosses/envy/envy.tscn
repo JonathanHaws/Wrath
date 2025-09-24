@@ -26,7 +26,7 @@
 [ext_resource type="PackedScene" uid="uid://ddf4jd6iv2r2f" path="res://actors/characters/enemies/bosses/envy/envy_hurt_particles.tscn" id="24_wpfpa"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="25_mgimy"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="26_5mwrc"]
-[ext_resource type="PackedScene" uid="uid://cdjjiusskivtl" path="res://actors/characters/enemies/bosses/envy/envy.blend" id="27_wpfpa"]
+[ext_resource type="PackedScene" uid="uid://c5kfdq4m105cm" path="res://actors/characters/enemies/bosses/envy/envy.blend" id="27_wpfpa"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wpfpa"]
 radius = 0.604509
@@ -698,7 +698,7 @@ SPEED_MULTIPLIER = 0.0
 script = ExtResource("26_5mwrc")
 SCENE_ROOT = NodePath("..")
 
-[node name="envy" parent="Mesh" instance=ExtResource("27_wpfpa")]
+[node name="envy2" parent="Mesh" instance=ExtResource("27_wpfpa")]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh"]
 
@@ -727,7 +727,7 @@ shape = SubResource("BoxShape3D_wbwgn")
 
 [node name="Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 13.6732, -0.361175)
-light_color = Color(0.223529, 0.627451, 0.431373, 1)
+light_color = Color(0.310057, 0.529571, 0.28548, 1)
 light_energy = 0.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0

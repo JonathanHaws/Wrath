@@ -1,10 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://4f506yax85t1"]
 
 [ext_resource type="Script" uid="uid://dtofx2osnk3pe" path="res://actors/characters/enemies/bosses/gluttony/projectiles/puddle.gd" id="1_s6lm2"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsv7j"]
-albedo_color = Color(0.377757, 0.44866, 0.352352, 1)
-emission_enabled = true
+[ext_resource type="Material" uid="uid://14hmcag5btd0" path="res://actors/characters/enemies/bosses/gluttony/projectiles/vomit.tres" id="2_s6lm2"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_v5ope"]
 
@@ -142,7 +139,7 @@ script = ExtResource("1_s6lm2")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(3.27353, -4.88282e-29, -1.72884e-37, 0, -1.57212e-07, 0.291327, -4.44423e-29, -3.59659, -1.27343e-08, 0, 0.212949, 0)
-material_override = SubResource("StandardMaterial3D_xsv7j")
+material_override = ExtResource("2_s6lm2")
 mesh = SubResource("SphereMesh_v5ope")
 skeleton = NodePath("")
 

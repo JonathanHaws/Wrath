@@ -3,10 +3,7 @@
 [ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://actors/characters/enemies/projectile.gd" id="1_e1mm7"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/3d_scene_spawner.gd" id="2_fabgd"]
 [ext_resource type="PackedScene" uid="uid://4f506yax85t1" path="res://actors/characters/enemies/bosses/gluttony/projectiles/puddle.tscn" id="3_j1560"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xsv7j"]
-albedo_color = Color(0.377757, 0.44866, 0.352352, 1)
-emission_enabled = true
+[ext_resource type="Material" uid="uid://14hmcag5btd0" path="res://actors/characters/enemies/bosses/gluttony/projectiles/vomit.tres" id="4_j1560"]
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_cgbyb"]
 top_radius = 0.167
@@ -183,13 +180,13 @@ copy_transform_node = NodePath(".")
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, -1.74846e-07, -7.64274e-15, 0, -4.37114e-08, 1, -1.74846e-07, -1, -4.37114e-08, -0.0224094, 2.93627e-08, 1.06086)
-material_override = SubResource("StandardMaterial3D_xsv7j")
+material_override = ExtResource("4_j1560")
 mesh = SubResource("CylinderMesh_cgbyb")
 skeleton = NodePath("")
 
 [node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(0.345907, -6.04803e-08, -2.64368e-15, 2.73463e-22, -1.51201e-08, 0.345907, -6.04803e-08, -0.345907, -1.51201e-08, -0.0224095, -1.576e-08, 0.0285747)
-material_override = SubResource("StandardMaterial3D_xsv7j")
+material_override = ExtResource("4_j1560")
 mesh = SubResource("SphereMesh_v5ope")
 skeleton = NodePath("")
 

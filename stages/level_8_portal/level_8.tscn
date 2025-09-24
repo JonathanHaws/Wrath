@@ -330,13 +330,13 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
 [node name="spin" parent="Portal/Mesh" index="1"]
-transform = Transform3D(-0.999998, -0.000816972, 0, 0.000816972, -0.999998, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(0.701662, 0.712508, 0, -0.712508, 0.701662, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Portal/Mesh/flames_2" index="0"]
-transform = Transform3D(0.999717, -0.000738356, 1.68097e-18, 0.000738356, 0.999717, 2.25841e-16, -1.84777e-18, -2.2584e-16, 0.999717, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(0.884852, -0.127589, 1.9255e-16, 0.127589, 0.884852, 3.12469e-15, -6.36523e-16, -3.06522e-15, 0.894003, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Portal/Mesh/flames_1" index="0"]
-transform = Transform3D(0.999717, -0.000738356, 1.68097e-18, 0.000738356, 0.999717, 2.25841e-16, -1.84777e-18, -2.2584e-16, 0.999717, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(0.884852, -0.127589, 1.9255e-16, 0.127589, 0.884852, 3.12469e-15, -6.36523e-16, -3.06522e-15, 0.894003, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Portal/Mesh" index="4"]
 autoplay = "Spin"
