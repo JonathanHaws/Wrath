@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://djqadr0k0vrs3"]
+[gd_scene load_steps=41 format=3 uid="uid://djqadr0k0vrs3"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_3bgwy"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_hu4d7"]
@@ -99,7 +99,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_edx7f"]
 resource_name = "CHASE"
-length = 0.791672
+length = 0.541671
 loop_mode = 1
 step = 0.0416667
 tracks/0/type = "value"
@@ -124,19 +124,29 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/2/interp = 1
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.0]
+}
+tracks/3/type = "animation"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/envy/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": PackedStringArray("CHASE"),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_x1kl7"]
@@ -382,7 +392,7 @@ tracks/5/path = NodePath("Mesh/envy/AnimationPlayer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"clips": PackedStringArray("Idle"),
+"clips": PackedStringArray("IDLE"),
 "times": PackedFloat32Array(0)
 }
 tracks/6/type = "value"
@@ -520,6 +530,16 @@ tracks/9/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/10/type = "animation"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Mesh/envy/AnimationPlayer")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": PackedStringArray("IDLE"),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
@@ -528,6 +548,8 @@ _data = {
 &"INTRO": SubResource("Animation_mlrdc"),
 &"RESET": SubResource("Animation_jojdm")
 }
+
+[sub_resource type="BoxMesh" id="BoxMesh_wpfpa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wpfpa"]
 
@@ -661,6 +683,10 @@ SPEED_MULTIPLIER = 0.0
 [node name="NodeOffset" type="Node3D" parent="Target"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62932, 0)
 
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Target"]
+visible = false
+mesh = SubResource("BoxMesh_wpfpa")
+
 [node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SCENE_ROOT")]
 script = ExtResource("26_5mwrc")
 SCENE_ROOT = NodePath("..")
@@ -668,23 +694,37 @@ SCENE_ROOT = NodePath("..")
 [node name="envy" parent="Mesh" instance=ExtResource("27_wpfpa")]
 
 [node name="Skeleton3D" parent="Mesh/envy/Armature" index="0"]
-bones/1/rotation = Quaternion(0.428231, -0.575143, -0.420656, 0.555767)
-bones/2/rotation = Quaternion(7.20951e-08, 3.38109e-07, 0.487842, 0.872932)
-bones/4/rotation = Quaternion(-0.0304589, -0.0288334, -0.776902, 0.628223)
-bones/6/position = Vector3(-0.00533605, 1.20487, -0.0213898)
-bones/6/rotation = Quaternion(-0.0184412, 0.0706208, -0.0898587, 0.993276)
-bones/7/position = Vector3(0.261438, 1.18972, -0.0779931)
-bones/9/position = Vector3(-0.21469, 0.336276, -1.07525)
-bones/9/rotation = Quaternion(-0.769736, -0.0182515, -0.578513, 0.269251)
-bones/10/rotation = Quaternion(-0.660072, 0.085807, -0.0338146, 0.745519)
-bones/12/position = Vector3(-0.190669, 0.306643, 0.847861)
-bones/12/rotation = Quaternion(0.558606, 0.310069, 0.768969, 0.0224282)
-bones/13/rotation = Quaternion(-0.660072, -0.085807, 0.0338147, 0.745519)
-bones/16/rotation = Quaternion(-0.0392729, 0.00839009, 0.102492, 0.993923)
-bones/17/rotation = Quaternion(-0.062145, -0.00574103, 0.873777, -0.482306)
+bones/1/position = Vector3(1.52783e-07, 2.95118, 0.251102)
+bones/2/rotation = Quaternion(-0.386482, 8.96593e-08, -1.28406e-06, 0.922297)
+bones/3/rotation = Quaternion(-0.108618, 1.02892e-06, -4.67635e-07, 0.994084)
+bones/4/rotation = Quaternion(0.603701, -2.89839e-06, 1.10582e-06, 0.797211)
+bones/6/position = Vector3(2.34419e-07, 1.25787, 0.146038)
+bones/6/rotation = Quaternion(0.112011, -2.35628e-08, -1.82094e-07, 0.993707)
+bones/7/rotation = Quaternion(0.0361118, 4.79028e-07, -5.0484e-08, 0.999348)
+bones/9/position = Vector3(1.12782, -0.075132, 0.161724)
+bones/9/rotation = Quaternion(0.734004, 0.398321, 0.545892, 0.0676838)
+bones/10/rotation = Quaternion(-0.0904429, 0.0706218, 0.748007, 0.653696)
+bones/12/position = Vector3(-1.12782, -0.0751322, 0.161711)
+bones/12/rotation = Quaternion(-0.734007, 0.398322, 0.545888, -0.0676816)
+bones/13/rotation = Quaternion(-0.0904429, -0.0706218, -0.748007, 0.653696)
+bones/15/rotation = Quaternion(0.994969, 1.51797e-07, 1.66264e-06, -0.100187)
+bones/17/position = Vector3(0.727797, 0.14549, 0.820306)
+bones/17/rotation = Quaternion(0.875981, -0.0297326, -0.00225826, 0.481422)
+bones/18/rotation = Quaternion(0.248893, 0.0478588, -0.0868893, 0.963437)
+bones/19/rotation = Quaternion(-0.596629, -0.0720799, 0.0821799, 0.795038)
+bones/20/rotation = Quaternion(-0.154898, 0.817474, -0.554201, -0.0245614)
+bones/21/rotation = Quaternion(-0.0368282, 0.106102, -0.230387, 0.966596)
+bones/23/rotation = Quaternion(-0.0626728, 0.560653, 0.0326586, 0.825029)
+bones/25/rotation = Quaternion(0.0681235, -0.210921, 0.409785, 0.884843)
+bones/27/position = Vector3(-0.727803, 0.145491, 0.820301)
+bones/27/rotation = Quaternion(0.875981, 0.0297308, 0.00226103, 0.481423)
+bones/28/rotation = Quaternion(0.248894, -0.0478588, 0.0868891, 0.963437)
+bones/31/rotation = Quaternion(-0.0368282, -0.106102, 0.230387, 0.966596)
+bones/33/rotation = Quaternion(-0.062673, -0.560657, -0.0326585, 0.825027)
+bones/35/rotation = Quaternion(0.0681237, 0.210921, -0.409785, 0.884843)
 
 [node name="LockOn" type="BoneAttachment3D" parent="Mesh/envy/Armature/Skeleton3D" index="0"]
-transform = Transform3D(-0.0294179, 7.88326e-05, -0.999568, -0.265234, 0.964152, 0.00788205, 0.963735, 0.265351, -0.0283425, -0.0161403, 3.13142, -0.514717)
+transform = Transform3D(1, -2.29071e-07, 3.29318e-06, 2.11376e-06, 0.810696, -0.585468, -2.53565e-06, 0.585468, 0.810696, -9.0417e-09, 3.0487, 0.888942)
 bone_name = "spine"
 bone_idx = 2
 
@@ -703,6 +743,9 @@ bone_name = "eyeball"
 bone = 5
 forward_axis = 2
 primary_rotation_axis = 0
+
+[node name="AnimationPlayer" parent="Mesh/envy" index="1"]
+playback_default_blend_time = 0.2
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh"]
 

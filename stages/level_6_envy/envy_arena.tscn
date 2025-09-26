@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://djqadr0k0vrs3" path="res://actors/characters/enemies/bosses/envy/envy.tscn" id="9_r856j"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
-vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
+vertices = PackedVector3Array(-22.19, 0.432, -65.8895, -22.19, 0.432, 66.1105, 128.81, 0.432, 66.1105, 128.81, 0.432, -65.8895)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
@@ -47,7 +47,7 @@ light_color = Color(0.29, 0.29, 0.29, 1)
 light_energy = 100.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
-light_specular = 0.2
+light_specular = 0.0
 omni_range = 101.01
 
 [node name="Lights" type="Node3D" parent="Enviroment/Lights"]
