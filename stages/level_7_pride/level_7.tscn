@@ -1,13 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmky6xf3axtum"]
+[gd_scene load_steps=11 format=3 uid="uid://cv4g3s0sicstn"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_04h28"]
-[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_0u44e"]
-[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="4_gupqu"]
-[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="5_3y1t5"]
-[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="6_nlsid"]
-[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="7_5hgnl"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="8_deg3c"]
-[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="9_d2qy0"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_4p5y5"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_43ivw"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_r21rb"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="4_yosvs"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="5_kojql"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="6_elcc2"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="7_p1sut"]
+[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="8_vf6km"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -17,14 +17,14 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Main" type="Node3D"]
 
-[node name="Menu" parent="." instance=ExtResource("1_04h28")]
+[node name="Menu" parent="." instance=ExtResource("1_4p5y5")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
-material_override = ExtResource("8_deg3c")
+material_override = ExtResource("2_43ivw")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
@@ -34,9 +34,9 @@ size = Vector3(65.3073, 20, 30)
 
 [node name="Enviroment" type="Node" parent="."]
 
-[node name="Weather" parent="Enviroment" instance=ExtResource("3_0u44e")]
+[node name="Weather" parent="Enviroment" instance=ExtResource("3_r21rb")]
 
-[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("4_gupqu")]
+[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("4_yosvs")]
 
 [node name="Lights" type="Node" parent="Enviroment"]
 
@@ -54,22 +54,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
 [node name="FloorMesh" type="MeshInstance3D" parent="Enviroment"]
 transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 42.0321, 0, -9.54005, 0)
-material_override = ExtResource("9_d2qy0")
+material_override = ExtResource("5_kojql")
 mesh = SubResource("BoxMesh_od467")
 skeleton = NodePath("../..")
 
-[node name="Reaper" parent="." instance=ExtResource("5_3y1t5")]
+[node name="Reaper" parent="." instance=ExtResource("6_elcc2")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
-[node name="Enter" parent="." instance=ExtResource("7_5hgnl")]
+[node name="Enter" parent="." instance=ExtResource("7_p1sut")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, -0.0392446)
 DESTINATION_NODE_NAME = "Exit"
-DESTINATION_SCENE = "uid://cbk056vj32v0p"
+DESTINATION_SCENE = "uid://cevok3tw0yqfi"
 
-[node name="Exit" parent="." groups=["sloth_door"] instance=ExtResource("7_5hgnl")]
+[node name="Exit" parent="." groups=["sloth_door"] instance=ExtResource("7_p1sut")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Enter"
-DESTINATION_SCENE = "uid://dsdh2bite7xv4"
+DESTINATION_SCENE = "uid://5n4cvh6cqc4p"
 
-[node name="Checkpoint" parent="." instance=ExtResource("6_nlsid")]
+[node name="Checkpoint" parent="." instance=ExtResource("8_vf6km")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.8406, -9.14357, 0)

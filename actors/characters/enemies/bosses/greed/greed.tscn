@@ -139,30 +139,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [1.0]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
-tracks/3/interp = 0
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Attacks:ATTACKING")
-tracks/4/interp = 0
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_x1kl7"]
 resource_name = "DEATH"
@@ -205,34 +181,36 @@ tracks/2/keys = {
 "method": &"play_2d_sound"
 }]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"defeated"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.0666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/4/interp = 0
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/5/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/5/interp = 0
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -256,126 +234,100 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Attacks:ATTACKING")
-tracks/7/interp = 0
+tracks/7/path = NodePath("Audio/Music:volume_db")
+tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Light:light_energy")
-tracks/8/interp = 2
+tracks/8/path = NodePath("Ui:modulate")
+tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.43333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Light:light_energy")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0.4, 2.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [80.0, 0.0]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Target:MOVE_AND_SLIDE")
-tracks/9/interp = 0
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0, 3.56667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("CollisionShape3D:disabled")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CollisionShape3D:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0, 4.06667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Mesh/Greed/Rig/Skeleton3D/greed:material_override:shader_parameter/dissolve_amount")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Mesh/Greed/Rig/Skeleton3D/greed:material_override:shader_parameter/dissolve_amount")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0, 0.766667, 6.63333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 1.0]
 }
-tracks/12/type = "method"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath(".")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("HitShape/CollisionShape3D:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath(".")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(9.93333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
 }]
-}
-tracks/13/type = "method"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath(".")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"defeated"
-}]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Hitbox/CollisionShape3D:disabled")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Ui:modulate")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0, 1.43333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Audio/Music:volume_db")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(0, 0.266667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -80.0]
 }
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
@@ -445,7 +397,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/5/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/5/interp = 0
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -457,34 +409,22 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/6/interp = 0
+tracks/6/path = NodePath("Ui:modulate")
+tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Ui:modulate")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(1.54167, 2.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Audio/Music")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Audio/Music")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -549,22 +489,10 @@ tracks/3/use_blend = true
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/4/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/4/interp = 0
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/5/interp = 0
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -612,7 +540,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/3/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -621,25 +549,13 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/4/type = "value"
+tracks/4/type = "audio"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/4/interp = 0
+tracks/4/path = NodePath("Audio/AudioStreamPlayer")
+tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/5/type = "audio"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Audio/AudioStreamPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "clips": [{
 "end_offset": 1.58,
 "start_offset": 0.37,
@@ -647,7 +563,7 @@ tracks/5/keys = {
 }],
 "times": PackedFloat32Array(0.625)
 }
-tracks/5/use_blend = true
+tracks/4/use_blend = true
 
 [sub_resource type="Animation" id="Animation_jojdm"]
 length = 0.001
@@ -786,20 +702,20 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
-tracks/11/interp = 0
+tracks/11/path = NodePath("Mesh/Greed/Rig/Skeleton3D/TailSpin/Area3D/CollisionShape3D:disabled")
+tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [true]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Mesh/Greed/Rig/Skeleton3D/TailSpin/Area3D/CollisionShape3D:disabled")
-tracks/12/interp = 1
+tracks/12/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/12/interp = 0
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
@@ -810,58 +726,34 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Target:MOVE_AND_SLIDE")
-tracks/13/interp = 0
+tracks/13/path = NodePath("HitShape/CollisionShape3D:disabled")
+tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Attacks:ATTACKING")
-tracks/14/interp = 0
+tracks/14/path = NodePath("Ui:modulate")
+tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Hitbox/CollisionShape3D:disabled")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Ui:modulate")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Audio/Music:volume_db")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Audio/Music:volume_db")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -886,22 +778,10 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/2/interp = 0
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1023,18 +903,6 @@ tracks/8/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
-tracks/9/interp = 0
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 
 [sub_resource type="Animation" id="Animation_ek3tb"]
 resource_name = "Spin"
@@ -1077,7 +945,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Attacks:LIKELIHOOD_MULTIPLIER")
+tracks/3/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1086,25 +954,13 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/4/type = "value"
+tracks/4/type = "audio"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/4/interp = 0
+tracks/4/path = NodePath("Audio/AudioStreamPlayer")
+tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/5/type = "audio"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Audio/AudioStreamPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
 "clips": [{
 "end_offset": 1.36686,
 "start_offset": 0.37,
@@ -1112,7 +968,7 @@ tracks/5/keys = {
 }],
 "times": PackedFloat32Array(1.12683)
 }
-tracks/5/use_blend = true
+tracks/4/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
@@ -1218,7 +1074,7 @@ size_flags_horizontal = 3
 theme_override_styles/fill = ExtResource("10_jx80p")
 max_value = 2000.0
 value = 2000.0
-tracked_node = NodePath("../../../Hitbox")
+tracked_node = NodePath("../../../HitShape")
 
 [node name="Label" type="Label" parent="Ui/VBoxContainer"]
 layout_mode = 2
@@ -1243,7 +1099,7 @@ stream = ExtResource("20_jx80p")
 bus = &"Music"
 parameters/looping = true
 
-[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
+[node name="HitShape" type="Area3D" parent="." node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("4_ri305")
 HEALTH = 1500
 MAX_HEALTH = 1500
@@ -1252,7 +1108,7 @@ TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
 shape = SubResource("CapsuleShape3D_5k6cf")
 
@@ -1327,7 +1183,7 @@ NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 MESH = NodePath("../Mesh")
 BODY = NodePath("..")
 FLIPPED_TRACKING = true
-STOP_CHASE_AREA = NodePath("../Hitbox")
+STOP_CHASE_AREA = NodePath("../HitShape")
 SPEED = 12.0
 SPEED_MULTIPLIER = 0.0
 
@@ -1341,40 +1197,40 @@ SCENE_ROOT = NodePath("..")
 [node name="Greed" parent="Mesh" instance=ExtResource("17_cq6fp")]
 
 [node name="Skeleton3D" parent="Mesh/Greed/Rig" index="0"]
-bones/1/position = Vector3(-0.115101, -0.329028, -1.87433)
-bones/1/rotation = Quaternion(0.0977984, -7.52238e-08, 6.10679e-09, 0.995206)
-bones/2/position = Vector3(0.318777, -0.0666644, -0.010626)
-bones/2/rotation = Quaternion(0.633282, 0.256362, 0.0529998, 0.728302)
-bones/3/rotation = Quaternion(0.62391, -0.0575097, 0.0324585, 0.778701)
-bones/4/rotation = Quaternion(-0.631032, 0.0517762, -0.019775, 0.773774)
+bones/1/position = Vector3(0.0174956, -0.0449101, -1.47916)
+bones/1/rotation = Quaternion(0.0370429, 0.000539322, -0.0268779, 0.998952)
+bones/2/position = Vector3(0.318777, -0.0666641, -0.0106262)
+bones/2/rotation = Quaternion(0.781858, 0.219771, 0.133335, 0.567997)
+bones/3/rotation = Quaternion(0.624194, -0.0573771, 0.0324914, 0.778482)
+bones/4/rotation = Quaternion(-0.597882, 0.0670504, -0.00718421, 0.798742)
 bones/5/rotation = Quaternion(0.370329, -0.0693967, 0.0401409, 0.925435)
-bones/6/rotation = Quaternion(-0.0487199, -0.000224869, 0.0309974, 0.998331)
-bones/7/rotation = Quaternion(0.596609, -0.257412, -0.600871, 0.465565)
-bones/8/rotation = Quaternion(0.0850635, -0.0950243, 0.733443, 0.667679)
-bones/9/rotation = Quaternion(0.025435, -0.184798, -0.130244, 0.973776)
-bones/10/rotation = Quaternion(0.0963821, 0.0104646, 0.101383, 0.990112)
-bones/12/rotation = Quaternion(-0.499739, 0.0305734, 0.00841366, 0.865596)
-bones/13/position = Vector3(-0.488867, 1.43551, -0.00969546)
-bones/13/rotation = Quaternion(0.519742, 0.313051, 0.601153, 0.520079)
-bones/14/rotation = Quaternion(0.145283, 0.157331, -0.623444, 0.751969)
-bones/15/rotation = Quaternion(0.0327388, 0.206807, 0.134921, 0.968481)
-bones/16/rotation = Quaternion(-0.111542, -0.158628, -0.134776, 0.971716)
-bones/17/position = Vector3(0.026411, -0.174073, -0.109228)
-bones/17/rotation = Quaternion(0.785094, 0.0516847, -0.611331, 0.0850318)
-bones/18/rotation = Quaternion(0.0848188, 0.0436389, 0.0419205, 0.994557)
-bones/19/rotation = Quaternion(0.131317, -0.548935, -0.112987, 0.817716)
-bones/20/rotation = Quaternion(0.0459933, -0.0760476, -0.159, 0.98327)
-bones/21/rotation = Quaternion(-0.0504051, 0.136132, -0.130061, 0.980822)
-bones/22/rotation = Quaternion(0.630536, -0.0844272, 0.15371, 0.756088)
-bones/23/rotation = Quaternion(0.645333, -0.0261812, 0.0547352, 0.761488)
-bones/24/rotation = Quaternion(-0.686843, 0.0220775, -0.0818956, 0.721839)
-bones/25/rotation = Quaternion(0.291092, -0.0642706, 0.00265003, 0.95453)
+bones/6/rotation = Quaternion(0.0126309, -0.00268544, 0.0420503, 0.999032)
+bones/7/rotation = Quaternion(0.572968, -0.228774, -0.603333, 0.505331)
+bones/8/rotation = Quaternion(0.0876585, -0.107701, 0.674933, 0.724694)
+bones/9/rotation = Quaternion(0.0179923, -0.202699, -0.136, 0.969584)
+bones/10/rotation = Quaternion(0.0825532, 0.013674, 0.101979, 0.991261)
+bones/12/rotation = Quaternion(-0.528291, 0.0433138, -0.000267738, 0.847958)
+bones/13/position = Vector3(-0.488868, 1.43551, -0.00969547)
+bones/13/rotation = Quaternion(0.575405, 0.200489, 0.534375, 0.585796)
+bones/14/rotation = Quaternion(-0.0858477, 0.0568758, -0.627973, 0.771392)
+bones/15/rotation = Quaternion(0.089702, 0.21583, 0.168457, 0.957598)
+bones/16/rotation = Quaternion(-0.179718, -0.232297, -0.206217, 0.933388)
+bones/17/position = Vector3(0.00414755, -0.243611, -0.14996)
+bones/17/rotation = Quaternion(0.77501, 0.0367398, -0.613452, 0.147264)
+bones/18/rotation = Quaternion(0.0772455, 0.0747014, 0.101292, 0.989036)
+bones/19/rotation = Quaternion(0.14451, -0.551562, -0.0793186, 0.817683)
+bones/20/rotation = Quaternion(0.0909837, -0.0348701, -0.119436, 0.988049)
+bones/21/rotation = Quaternion(-0.0506233, 0.152419, -0.0947484, 0.98246)
+bones/22/rotation = Quaternion(0.782452, -0.117753, 0.128627, 0.597794)
+bones/23/rotation = Quaternion(0.645334, -0.0261812, 0.0547352, 0.761488)
+bones/24/rotation = Quaternion(-0.661345, 0.0115624, -0.0775359, 0.745974)
+bones/25/rotation = Quaternion(0.291092, -0.0642706, 0.00265002, 0.95453)
 
 [node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" index="0"]
 material_override = ExtResource("27_mmykl")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1"]
-transform = Transform3D(0.998078, -0.0618695, -0.00346937, -0.00952976, -0.0979305, -0.995147, 0.0612295, 0.993268, -0.0983319, -0.115101, 1.68037, 0.648339)
+transform = Transform3D(0.999514, -0.0304562, -0.00657886, -0.00956289, -0.0988943, -0.995052, 0.0296548, 0.994632, -0.0991376, 0.0710427, 1.40545, 0.947344)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1387,7 +1243,7 @@ shape = SubResource("BoxShape3D_jx80p")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2"]
-transform = Transform3D(0.998078, -0.0618695, -0.00346937, -0.00952976, -0.0979305, -0.995147, 0.0612295, 0.993268, -0.0983319, -0.115101, 1.68037, 0.648339)
+transform = Transform3D(0.999514, -0.0304562, -0.00657886, -0.00956289, -0.0988943, -0.995052, 0.0296548, 0.994632, -0.0991376, 0.0710427, 1.40545, 0.947344)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1404,7 +1260,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3"]
-transform = Transform3D(0.998078, -0.0618695, -0.00346937, -0.00952976, -0.0979305, -0.995147, 0.0612295, 0.993268, -0.0983319, -0.115101, 1.68037, 0.648339)
+transform = Transform3D(0.999514, -0.0304562, -0.00657886, -0.00956289, -0.0988943, -0.995052, 0.0296548, 0.994632, -0.0991376, 0.0710427, 1.40545, 0.947344)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1421,7 +1277,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4"]
-transform = Transform3D(-0.335423, -0.395166, -0.855181, -0.749511, -0.438005, 0.496372, -0.570723, 0.807462, -0.149265, 0.202095, 0.1327, 2.71236)
+transform = Transform3D(-0.278852, -0.310137, -0.908876, -0.69145, -0.591938, 0.414131, -0.666437, 0.743924, -0.0493813, 0.576227, -0.291784, 2.92823)
 bone_name = "hand_l"
 bone_idx = 10
 
@@ -1439,7 +1295,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5"]
-transform = Transform3D(-0.216412, -0.164876, 0.962279, 0.799018, -0.596287, 0.0775278, 0.561013, 0.785657, 0.260783, -0.854132, 0.00586274, 2.74042)
+transform = Transform3D(0.525923, -0.0870455, 0.846066, 0.733597, -0.45695, -0.503023, 0.430396, 0.885223, -0.176464, -0.672955, -0.323743, 3.00211)
 bone_name = "hand_r"
 bone_idx = 16
 

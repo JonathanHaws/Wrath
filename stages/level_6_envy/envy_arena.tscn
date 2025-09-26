@@ -29,9 +29,9 @@ material_override = ExtResource("2_oh0fd")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71385, 9.93213, -0.0490699)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.244, 9.932, 0)
 flip_faces = true
-size = Vector3(65.3073, 20, 30)
+size = Vector3(152.368, 20, 133.279)
 
 [node name="Enviroment" type="Node" parent="."]
 
@@ -54,7 +54,7 @@ omni_range = 101.01
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
 [node name="FloorMesh" type="MeshInstance3D" parent="Enviroment"]
-transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 42.0321, 0, -9.54005, 0)
+transform = Transform3D(206.667, 0, 0, 0, 1, 0, 0, 0, 172.52, 60.801, -9.54005, 0)
 material_override = ExtResource("5_d16ah")
 mesh = SubResource("BoxMesh_od467")
 skeleton = NodePath("../..")
@@ -71,10 +71,10 @@ DESTINATION_NODE_NAME = "Exit"
 DESTINATION_SCENE = "uid://d1k2pnn46w66f"
 
 [node name="Exit" parent="." groups=["envy_door"] instance=ExtResource("8_n1rfg")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 128.959, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Enter"
 LOCKED = true
-DESTINATION_SCENE = "res://stages/level_8_portal/level_7.tscn"
+DESTINATION_SCENE = "uid://cv4g3s0sicstn"
 
 [node name="Envy" parent="." instance=ExtResource("9_r856j")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 29.6119, -8.73217, -0.983353)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.4037, -8.73217, -0.983353)

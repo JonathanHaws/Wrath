@@ -301,10 +301,10 @@ skeleton = NodePath("../..")
 
 [node name="Interactables" type="Node" parent="."]
 
-[node name="PortalDoor" parent="." instance=ExtResource("8_bgvw0")]
+[node name="Enter" parent="." instance=ExtResource("8_bgvw0")]
 transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, -9.094, -34.539)
 DESTINATION_NODE_NAME = "Exit"
-DESTINATION_SCENE = "uid://bsufvbv2jwo77"
+DESTINATION_SCENE = "uid://cv4g3s0sicstn"
 
 [node name="Wisp" parent="." instance=ExtResource("9_ifljh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4622, -7.08744, -30.8438)
@@ -330,13 +330,13 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
 [node name="spin" parent="Portal/Mesh" index="1"]
-transform = Transform3D(0.701662, 0.712508, 0, -0.712508, 0.701662, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(-0.402901, 0.915242, 0, -0.915242, -0.402901, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Portal/Mesh/flames_2" index="0"]
-transform = Transform3D(0.884852, -0.127589, 1.9255e-16, 0.127589, 0.884852, 3.12469e-15, -6.36523e-16, -3.06522e-15, 0.894003, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(-0.376932, -0.851403, 1.08778e-15, 0.851403, -0.376932, 3.73299e-15, -2.97308e-15, 2.50585e-15, 0.931109, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Portal/Mesh/flames_1" index="0"]
-transform = Transform3D(0.884852, -0.127589, 1.9255e-16, 0.127589, 0.884852, 3.12469e-15, -6.36523e-16, -3.06522e-15, 0.894003, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(-0.376932, -0.851403, 1.08778e-15, 0.851403, -0.376932, 3.73299e-15, -2.97308e-15, 2.50585e-15, 0.931109, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Portal/Mesh" index="4"]
 autoplay = "Spin"

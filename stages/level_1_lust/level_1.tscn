@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://worsh6enfk2g"]
+[gd_scene load_steps=13 format=3 uid="uid://worsh6enfk2g"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_4eh01"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_a6482"]
@@ -8,7 +8,6 @@
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="6_l7383"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="7_n5yio"]
 [ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://actors/characters/npcs/piglet/piglet.tscn" id="9_2uv2b"]
-[ext_resource type="PackedScene" uid="uid://b7lmw4awqeris" path="res://actors/characters/enemies/bosses/lust/lust.tscn" id="9_hgjnn"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -68,7 +67,6 @@ transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.09169
 [node name="Exit" parent="." groups=["lust_door"] instance=ExtResource("5_pyv35")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Enter"
-LOCKED = true
 DESTINATION_SCENE = "uid://cjnryqwoknkw5"
 
 [node name="Enter" parent="." instance=ExtResource("5_pyv35")]
@@ -88,6 +86,3 @@ shape = SubResource("BoxShape3D_2uv2b")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ForTestingInteractionsOkToDelete"]
 mesh = SubResource("BoxMesh_hgjnn")
-
-[node name="Lust" parent="." instance=ExtResource("9_hgjnn")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 26.2195, -4.73217, 0.983181)
