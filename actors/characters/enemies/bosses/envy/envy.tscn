@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://djqadr0k0vrs3"]
+[gd_scene load_steps=47 format=3 uid="uid://djqadr0k0vrs3"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_3bgwy"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_hu4d7"]
@@ -23,13 +23,15 @@
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_shake.gd" id="21_3upiv"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://actors/slow_motion.gd" id="22_oqhxd"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/3d_scene_spawner.gd" id="23_6u562"]
+[ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="23_od1a5"]
 [ext_resource type="PackedScene" uid="uid://ddf4jd6iv2r2f" path="res://actors/characters/enemies/bosses/envy/envy_hurt_particles.tscn" id="24_wpfpa"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="25_mgimy"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="26_5mwrc"]
 [ext_resource type="PackedScene" uid="uid://c5kfdq4m105cm" path="res://actors/characters/enemies/bosses/envy/envy.blend" id="27_wpfpa"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="29_1epqe"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wpfpa"]
-radius = 0.604509
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_332fe"]
+radius = 2.13243
 height = 4.80709
 
 [sub_resource type="Animation" id="Animation_5k6cf"]
@@ -99,25 +101,25 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_edx7f"]
 resource_name = "CHASE"
-length = 0.541671
+length = 1.04167
 loop_mode = 1
 step = 0.0416667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Shake:TREMOR_STRENGTH")
-tracks/0/interp = 1
+tracks/0/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.396475, 0.791667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 0.0, 0.0]
+"values": [1.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/1/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -126,25 +128,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [1.0]
 }
-tracks/2/type = "value"
+tracks/2/type = "animation"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/2/interp = 0
+tracks/2/path = NodePath("Mesh/envy/AnimationPlayer")
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/3/type = "animation"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/envy/AnimationPlayer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "clips": PackedStringArray("CHASE"),
 "times": PackedFloat32Array(0)
 }
@@ -461,8 +451,8 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Shake:TREMOR_STRENGTH")
-tracks/4/interp = 1
+tracks/4/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/4/interp = 0
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
@@ -473,88 +463,147 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/5/path = NodePath("Target:MOVE_AND_SLIDE")
 tracks/5/interp = 0
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Target:MOVE_AND_SLIDE")
-tracks/6/interp = 0
+tracks/6/path = NodePath("HitShape/CollisionShape3D:disabled")
+tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HitShape/CollisionShape3D:disabled")
+tracks/7/path = NodePath("Ui:modulate")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Ui:modulate")
+tracks/8/path = NodePath("Audio/Music:volume_db")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [0.0]
 }
-tracks/9/type = "value"
+tracks/9/type = "animation"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Audio/Music:volume_db")
+tracks/9/path = NodePath("Mesh/envy/AnimationPlayer")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
+"clips": PackedStringArray("IDLE"),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Mesh/envy/Armature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_wpfpa"]
+resource_name = "BITE_LEFT"
+length = 1.66667
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/envy/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("BITE_LEFT"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/envy/Armature/Skeleton3D/BoneAttachment3D/Area3D/CollisionShape3D:disabled")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.583333, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
 }
-tracks/10/type = "animation"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Mesh/envy/AnimationPlayer")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"clips": PackedStringArray("IDLE"),
-"times": PackedFloat32Array(0)
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.416667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
+&"BITE_LEFT": SubResource("Animation_wpfpa"),
 &"CHASE": SubResource("Animation_edx7f"),
 &"DEATH": SubResource("Animation_x1kl7"),
 &"INTRO": SubResource("Animation_mlrdc"),
 &"RESET": SubResource("Animation_jojdm")
 }
 
+[sub_resource type="Curve" id="Curve_1epqe"]
+_data = [Vector2(0.265393, 0), 0.0, 0.0, 0, 0, Vector2(0.29724, 1), 0.0, 0.0, 0, 0, Vector2(0.433121, 1), 0.0, 0.0, 0, 0, Vector2(0.467091, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [sub_resource type="BoxMesh" id="BoxMesh_wpfpa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wpfpa"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_od1a5"]
-radius = 0.78333
+[sub_resource type="BoxShape3D" id="BoxShape3D_od1a5"]
+size = Vector3(1.77151, 2.87593, 1.45825)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1epqe"]
+radius = 1.78077
 height = 4.80709
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4oeto"]
@@ -562,6 +611,9 @@ radius = 0.001
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wbwgn"]
 size = Vector3(23.4119, 15.2804, 40.1915)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_od1a5"]
+radius = 3.95716
 
 [node name="Envy" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM")]
 collision_layer = 7
@@ -640,7 +692,7 @@ DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
-shape = SubResource("CapsuleShape3D_wpfpa")
+shape = SubResource("CapsuleShape3D_332fe")
 
 [node name="CameraShake" type="Node" parent="."]
 script = ExtResource("21_3upiv")
@@ -662,6 +714,15 @@ libraries = {
 autoplay = "RESET"
 playback_auto_capture_ease_type = 2
 next/INTRO = &"CHASE"
+next/BITE_LEFT = &"CHASE"
+
+[node name="BiteLeft" type="Node" parent="Attacks" node_paths=PackedStringArray("TARGET", "BODY")]
+script = ExtResource("23_od1a5")
+ATTACK_ANIMATION = "BITE_LEFT"
+LIKELIHOOD_MULTIPLIER = 300.0
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_1epqe")
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
 
 [node name="HurtParticles" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node") groups=["teleport_to_attacking_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
@@ -676,7 +737,7 @@ NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 MESH = NodePath("../Mesh")
 BODY = NodePath("..")
 FLIPPED_TRACKING = true
-STOP_CHASE_AREA = NodePath("../HitShape")
+STOP_CHASE_AREA = NodePath("../StopChase")
 SPEED = 12.0
 SPEED_MULTIPLIER = 0.0
 
@@ -695,12 +756,14 @@ SCENE_ROOT = NodePath("..")
 
 [node name="Skeleton3D" parent="Mesh/envy/Armature" index="0"]
 bones/1/position = Vector3(1.52783e-07, 2.95118, 0.251102)
-bones/2/rotation = Quaternion(-0.386482, 8.96593e-08, -1.28406e-06, 0.922297)
-bones/3/rotation = Quaternion(-0.108618, 1.02892e-06, -4.67635e-07, 0.994084)
-bones/4/rotation = Quaternion(0.603701, -2.89839e-06, 1.10582e-06, 0.797211)
-bones/6/position = Vector3(2.34419e-07, 1.25787, 0.146038)
-bones/6/rotation = Quaternion(0.112011, -2.35628e-08, -1.82094e-07, 0.993707)
-bones/7/rotation = Quaternion(0.0361118, 4.79028e-07, -5.0484e-08, 0.999348)
+bones/1/rotation = Quaternion(0.651487, 1.17003e-06, 1.17003e-06, 0.75866)
+bones/2/rotation = Quaternion(-0.386482, 8.96614e-08, -1.28406e-06, 0.922297)
+bones/3/rotation = Quaternion(-0.108618, 1.02892e-06, -4.67636e-07, 0.994084)
+bones/4/rotation = Quaternion(0.603701, -2.89841e-06, 1.10582e-06, 0.797211)
+bones/6/position = Vector3(2.34424e-07, 1.25787, 0.146038)
+bones/6/rotation = Quaternion(0.112011, -2.3545e-08, -1.82096e-07, 0.993707)
+bones/7/position = Vector3(7.4318e-07, 1.22029, 0.430217)
+bones/7/rotation = Quaternion(0.0361118, 4.79048e-07, -5.04848e-08, 0.999348)
 bones/9/position = Vector3(1.12782, -0.075132, 0.161724)
 bones/9/rotation = Quaternion(0.734004, 0.398321, 0.545892, 0.0676838)
 bones/10/rotation = Quaternion(-0.0904429, 0.0706218, 0.748007, 0.653696)
@@ -708,23 +771,24 @@ bones/12/position = Vector3(-1.12782, -0.0751322, 0.161711)
 bones/12/rotation = Quaternion(-0.734007, 0.398322, 0.545888, -0.0676816)
 bones/13/rotation = Quaternion(-0.0904429, -0.0706218, -0.748007, 0.653696)
 bones/15/rotation = Quaternion(0.994969, 1.51797e-07, 1.66264e-06, -0.100187)
-bones/17/position = Vector3(0.727797, 0.14549, 0.820306)
-bones/17/rotation = Quaternion(0.875981, -0.0297326, -0.00225826, 0.481422)
+bones/17/position = Vector3(0.727797, 0.145491, 0.820306)
+bones/17/rotation = Quaternion(0.875981, -0.0297326, -0.00225824, 0.481422)
 bones/18/rotation = Quaternion(0.248893, 0.0478588, -0.0868893, 0.963437)
 bones/19/rotation = Quaternion(-0.596629, -0.0720799, 0.0821799, 0.795038)
-bones/20/rotation = Quaternion(-0.154898, 0.817474, -0.554201, -0.0245614)
+bones/20/rotation = Quaternion(-0.154898, 0.817474, -0.554201, -0.0245615)
 bones/21/rotation = Quaternion(-0.0368282, 0.106102, -0.230387, 0.966596)
-bones/23/rotation = Quaternion(-0.0626728, 0.560653, 0.0326586, 0.825029)
 bones/25/rotation = Quaternion(0.0681235, -0.210921, 0.409785, 0.884843)
 bones/27/position = Vector3(-0.727803, 0.145491, 0.820301)
 bones/27/rotation = Quaternion(0.875981, 0.0297308, 0.00226103, 0.481423)
-bones/28/rotation = Quaternion(0.248894, -0.0478588, 0.0868891, 0.963437)
+bones/28/rotation = Quaternion(0.248894, -0.0478587, 0.0868891, 0.963437)
+bones/29/rotation = Quaternion(-0.596629, 0.0720797, -0.0821796, 0.795038)
+bones/30/rotation = Quaternion(0.154898, 0.817474, -0.554201, 0.0245612)
 bones/31/rotation = Quaternion(-0.0368282, -0.106102, 0.230387, 0.966596)
-bones/33/rotation = Quaternion(-0.062673, -0.560657, -0.0326585, 0.825027)
-bones/35/rotation = Quaternion(0.0681237, 0.210921, -0.409785, 0.884843)
+bones/33/rotation = Quaternion(-0.0626731, -0.560659, -0.0326583, 0.825026)
+bones/35/rotation = Quaternion(0.0681236, 0.210921, -0.409785, 0.884843)
 
 [node name="LockOn" type="BoneAttachment3D" parent="Mesh/envy/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, -2.29071e-07, 3.29318e-06, 2.11376e-06, 0.810696, -0.585468, -2.53565e-06, 0.585468, 0.810696, -9.0417e-09, 3.0487, 0.888942)
+transform = Transform3D(1, -2.29075e-07, 3.29318e-06, 2.11376e-06, 0.810696, -0.585468, -2.53565e-06, 0.585468, 0.810696, -9.04163e-09, 3.0487, 0.888942)
 bone_name = "spine"
 bone_idx = 2
 
@@ -744,6 +808,22 @@ bone = 5
 forward_axis = 2
 primary_rotation_axis = 0
 
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/envy/Armature/Skeleton3D" index="3"]
+transform = Transform3D(1, -2.10366e-07, -1.62565e-06, -1.59639e-06, -0.350176, -0.936684, -3.72216e-07, 0.936684, -0.350175, -6.62187e-07, 4.20284, 2.92654)
+bone_name = "beak"
+bone_idx = 6
+
+[node name="Area3D" type="Area3D" parent="Mesh/envy/Armature/Skeleton3D/BoneAttachment3D"]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("29_1epqe")
+damage = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/envy/Armature/Skeleton3D/BoneAttachment3D/Area3D"]
+transform = Transform3D(1, 9.68575e-08, -1.4901e-08, -7.45027e-09, 1, 0, 1.7053e-13, 8.9407e-08, 1, 0.0564575, 0.121233, 0.113044)
+shape = SubResource("BoxShape3D_od1a5")
+disabled = true
+
 [node name="AnimationPlayer" parent="Mesh/envy" index="1"]
 playback_default_blend_time = 0.2
 
@@ -751,7 +831,7 @@ playback_default_blend_time = 0.2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
-shape = SubResource("CapsuleShape3D_od1a5")
+shape = SubResource("CapsuleShape3D_1epqe")
 
 [node name="Shake" type="Area3D" parent="."]
 collision_layer = 3
@@ -780,6 +860,14 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 27.0089
+
+[node name="StopChase" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StopChase"]
+shape = SubResource("SphereShape3D_od1a5")
+debug_color = Color(0.7, 0.7, 0.7, 0.0196078)
 
 [connection signal="body_entered" from="Shake" to="Shake" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
