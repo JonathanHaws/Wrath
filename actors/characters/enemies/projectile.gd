@@ -53,7 +53,8 @@ func _physics_process(delta: float) -> void:
 				collision_point.look_at(collision_point.global_position + ray.get_collision_normal(), up)
 
 			if collision_animation_player and collision_animation_name != "":
-				collision_animation_player.play(collision_animation_name)
+				#print("playing collision animation")
+				collision_animation_player.play(collision_animation_name, 0)
 				collision_animation_player.advance(0)  
 	
 	global_position += velocity * delta
