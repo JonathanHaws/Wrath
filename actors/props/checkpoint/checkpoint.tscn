@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://1jc5rm2ln3av"]
+[gd_scene load_steps=21 format=3 uid="uid://1jc5rm2ln3av"]
 
 [ext_resource type="Script" uid="uid://bwi12jjkh4nu7" path="res://actors/props/checkpoint/checkpoint.gd" id="1_jmg87"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/interaction.gd" id="2_8is0s"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://h16x8ap3nqbc" path="res://actors/props/checkpoint/textures/Emissive.jpg" id="5_xdv6p"]
 [ext_resource type="Texture2D" uid="uid://20j52u878rsw" path="res://actors/props/checkpoint/textures/normalmap.png" id="6_p1yyc"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="7_3qxw0"]
+[ext_resource type="Script" uid="uid://ca30ou0es6s2v" path="res://actors/props/checkpoint/rest_label.gd" id="9_2oqi1"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0sglt"]
 height = 0.5
@@ -50,7 +51,7 @@ tracks/0/path = NodePath("ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 1.36667),
+"times": PackedFloat32Array(1.33333, 1.53333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
@@ -62,7 +63,7 @@ tracks/1/path = NodePath(".")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.36667),
+"times": PackedFloat32Array(1.6),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -270,6 +271,8 @@ offset_right = 22.0
 grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("7_3qxw0")
+text = "REST "
+script = ExtResource("9_2oqi1")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = 2

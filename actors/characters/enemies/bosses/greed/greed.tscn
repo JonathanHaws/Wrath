@@ -421,6 +421,20 @@ tracks/6/keys = {
 "values": [0.0, 80.0]
 }
 
+[sub_resource type="Animation" id="Animation_mmykl"]
+resource_name = "KNEEL"
+length = 0.0825
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/Greed/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Kneel"),
+"times": PackedFloat32Array(0)
+}
+
 [sub_resource type="Animation" id="Animation_f8w5c"]
 resource_name = "LUNGE_ATTACK"
 length = 1.45834
@@ -957,20 +971,6 @@ tracks/4/keys = {
 "times": PackedFloat32Array(1.12683)
 }
 tracks/4/use_blend = true
-
-[sub_resource type="Animation" id="Animation_mmykl"]
-resource_name = "KNEEL"
-length = 0.0825
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/Greed/AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("Kneel"),
-"times": PackedFloat32Array(0)
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
