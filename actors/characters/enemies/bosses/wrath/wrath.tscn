@@ -342,37 +342,13 @@ tracks/0/keys = {
 "clips": PackedStringArray("Intro"),
 "times": PackedFloat32Array(0)
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Light:light_energy")
-tracks/1/interp = 2
+tracks/1/path = NodePath("Audio")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.0416667, 2.54167),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 80.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/wrath/Armature/Skeleton3D/wrath:material_override:shader_parameter/dissolve_amount")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0.0416667, 1.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Audio")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -380,13 +356,13 @@ tracks/3/keys = {
 "method": &"play_2d_sound"
 }]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Shake")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Shake")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0.0833333),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -394,43 +370,55 @@ tracks/4/keys = {
 "method": &"continious_tremor"
 }]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/5/interp = 0
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Ui:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Ui:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(2.08333, 2.625),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Audio/Music")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/Music")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"play"
 }]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Light:light_energy")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 2.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 80.0]
 }
 
 [sub_resource type="Animation" id="Animation_nx0fp"]
@@ -697,7 +685,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [0.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -1532,23 +1520,24 @@ SCENE_ROOT = NodePath("..")
 [node name="wrath" parent="Mesh" instance=ExtResource("10_h46di")]
 
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
-bones/1/position = Vector3(-7.71653e-18, -0.718805, 1.00353)
-bones/1/rotation = Quaternion(0.25735, 8.11288e-17, 7.05286e-17, 0.966318)
-bones/2/rotation = Quaternion(0.347629, 1.11774e-07, 4.14406e-08, 0.937632)
-bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
-bones/4/rotation = Quaternion(0.133097, 0.385149, 0.190128, 0.893195)
+bones/1/position = Vector3(9.26062e-17, -0.684027, 0.982476)
+bones/1/rotation = Quaternion(0.269214, 2.87519e-17, 1.02856e-16, 0.96308)
+bones/2/rotation = Quaternion(0.345109, -0.000809951, -0.000870538, 0.938562)
+bones/2/scale = Vector3(1.00027, 1.00027, 1.00027)
+bones/3/rotation = Quaternion(0.101445, 0.180504, 0.761364, 0.614372)
+bones/4/rotation = Quaternion(0.120811, 0.375576, 0.193624, 0.898253)
 bones/5/rotation = Quaternion(-0.455173, -0.0679145, 0.0325446, 0.887213)
-bones/6/rotation = Quaternion(-0.0822429, 0.000622981, 0.134669, 0.987472)
-bones/7/rotation = Quaternion(-0.136309, -2.93099e-14, -3.24986e-08, 0.990666)
-bones/8/rotation = Quaternion(0.101092, -0.18125, -0.763867, 0.611094)
-bones/9/rotation = Quaternion(0.18255, -0.0376967, -0.180838, 0.965687)
-bones/10/rotation = Quaternion(-0.239191, 0.243902, -0.292818, 0.893061)
+bones/6/rotation = Quaternion(-0.0822429, 0.000622971, 0.134669, 0.987472)
+bones/7/rotation = Quaternion(-0.149002, -0.000264059, 0.000154194, 0.988837)
+bones/8/rotation = Quaternion(0.101568, -0.180244, -0.760486, 0.615513)
+bones/9/rotation = Quaternion(0.167955, -0.0381729, -0.188907, 0.966772)
+bones/10/rotation = Quaternion(-0.249009, 0.238882, -0.286684, 0.893724)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
 material_override = ExtResource("27_a67hc")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.923684, -0.195082, -0.329774, 0.0905005, -0.947408, 0.306964, -0.372313, 0.253694, 0.892761, -2.21337, 2.31166, 1.08989)
+transform = Transform3D(-0.917825, -0.202313, -0.342368, 0.113425, -0.958565, 0.262368, -0.381158, 0.201919, 0.902494, -2.23766, 2.28235, 1.05103)
 bone_name = "hand_l"
 bone_idx = 6
 
@@ -1565,7 +1554,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885416, -0.227331, -0.588577, 0.0625503, 0.806017, 2.21279, 2.24167, 1.16546)
+transform = Transform3D(-0.727203, 0.458493, -0.51138, -0.381476, -0.888951, -0.254542, -0.571141, 0.0099733, 0.821126, 2.24734, 2.21319, 1.12143)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1582,7 +1571,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3" groups=["wrath"]]
-transform = Transform3D(1, 7.23087e-15, 2.38419e-07, -7.95448e-08, 0.942702, 0.333635, -2.24758e-07, -0.333635, 0.942702, 5.38111e-17, 0.788918, 0.174431)
+transform = Transform3D(1.00027, 0.00107536, -0.00212182, -0.000351124, 0.949203, 0.315537, 0.00235271, -0.315535, 0.9492, 3.75939e-23, 0.805584, 0.161897)
 bone_name = "torso"
 bone_idx = 2
 

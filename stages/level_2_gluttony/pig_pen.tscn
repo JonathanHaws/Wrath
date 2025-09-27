@@ -87,7 +87,7 @@ light_color = Color(0.29, 0.29, 0.29, 1)
 light_energy = 100.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
-light_specular = 0.2
+light_specular = 0.0
 omni_range = 101.01
 
 [node name="Lights" type="Node3D" parent="Enviroment/Lights"]
@@ -128,7 +128,7 @@ transform = Transform3D(-0.729721, 0, -0.683745, 0, 1, 0, 0.683745, 0, -0.729721
 visible = false
 
 [node name="Gluttony" parent="." instance=ExtResource("12_efe6f")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 40.4449, -8.576, 0)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 40.4449, -8.80873, 0)
 
 [node name="Piglet" parent="." instance=ExtResource("13_i5fvn")]
 transform = Transform3D(0.971619, 0, -0.23655, 0, 1, 0, 0.23655, 0, 0.971619, -1.67795, -9.04355, 34.9739)
