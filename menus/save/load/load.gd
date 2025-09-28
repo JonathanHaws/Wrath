@@ -4,6 +4,16 @@ extends Control
 @export var exclude_current_save: bool = false
 
 func _on_profile_pressed(save_file: String) -> void:
+	
+	# If player leaves the game mid fight far away from the checkpoint this forces them to rest.
+	# Contuing save file on a brand new day with mysteriously little health could be jarring. 
+	# Unless potentially the position of the player is saved aswell. 
+	# Which it is not currently. You always spawn at the last checkpoint you banked
+	# So this just force rests before starting the session
+	
+	Save.load_save_data(save_file) 
+	Save.data["rests"] = (Save.data.get("rests", 0) + 1)
+	Save.save_game()
 	Save.load_game(save_file)
 
 func populate_menu_with_saves() -> void:	

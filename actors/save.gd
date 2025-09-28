@@ -29,13 +29,14 @@ func save_game() -> void:
 	if file: file.close()
 	emit_signal("save_data_updated")
 
-func load_game(file_name: String) -> void:
+func load_save_data(file_name: String) -> void:
 	game_file_name = file_name
 	data = get_dictionary_from_file(file_name)
 	Save.save_game()
-	
+
+func load_game(file_name: String) -> void:
+	load_save_data(file_name)
 	await get_tree().process_frame # This line might be unesscary. But calling defered might be nessacary
-	
 	if default_scene != "":
 		get_tree().change_scene_to_file(default_scene)
 
