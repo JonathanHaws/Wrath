@@ -8,6 +8,7 @@ extends Area3D
 @export var ENTER_EXIT_ANIM: AnimationPlayer
 @export var REST_ACTIONS: Array[String] = ["Rest"]
 @export var RESPAWN_DATA_KEY: String = "respawn_data"
+var ignore_first_entry: bool = true  # ignore first trigger if player spawns inside for prompt
 var player_inside: bool = false
 
 func load_checkpoint(player: Node3D) -> void:
@@ -43,6 +44,8 @@ func _play_aquired() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if GROUP != "" and not body.is_in_group(GROUP): return
+	if ignore_first_entry: return
+	
 	player_inside = true
 	ENTER_EXIT_ANIM.queue("ENTER")
 	
@@ -58,11 +61,16 @@ func _on_body_entered(body: Node) -> void:
 func _on_body_exited(body: Node) -> void:
 	if GROUP != "" and not body.is_in_group(GROUP): return
 	player_inside = false
+	if ignore_first_entry: ignore_first_entry = false; return # Dont play exit animation if enter animation was never played
 	ENTER_EXIT_ANIM.queue("EXIT")
 
 func _ready() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
+	
+	for body in get_overlapping_bodies():
+		if GROUP != "" and body.is_in_group(GROUP):
+			ignore_first_entry = true
 
 func _process(_delta: float) -> void:
 	if player_inside:
