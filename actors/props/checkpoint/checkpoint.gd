@@ -8,7 +8,7 @@ extends Area3D
 @export var ENTER_EXIT_ANIM: AnimationPlayer
 @export var REST_ACTIONS: Array[String] = ["Rest"]
 @export var RESPAWN_DATA_KEY: String = "respawn_data"
-var ignore_first_entry: bool = true  # ignore first trigger if player spawns inside for prompt
+var ignore_first_entry: bool = false # ignore first trigger if player spawns inside for prompt
 var player_inside: bool = false
 
 func load_checkpoint(player: Node3D) -> void:
@@ -19,15 +19,10 @@ func load_checkpoint(player: Node3D) -> void:
 	checkpoint_transform.basis = Basis().rotated(Vector3.UP, euler_angles.y)
 	
 	player.global_transform = checkpoint_transform
-	
-	#if Save.data.has(RESPAWN_DATA_KEY) and Save.data[RESPAWN_DATA_KEY] != {}: # Force rest if still have respawn data when it should never be the case
-		#call_deferred("_rest")
 
 func _rest() -> void:
-	for hitshape in get_tree().get_nodes_in_group(HITSHAPE_GROUP):
-		if "HEALTH" in hitshape and "MAX_HEALTH" in hitshape:
-			hitshape.HEALTH = hitshape.MAX_HEALTH
-	if Save.data.has("respawn_data"): Save.data["respawn_data"].clear()
+	if not Save.data.has("rests"): Save.data["rests"] = 1
+	else: Save.data["rests"] += 1
 	Save.save_game()
 	get_tree().reload_current_scene()
 
@@ -71,6 +66,16 @@ func _ready() -> void:
 	for body in get_overlapping_bodies():
 		if GROUP != "" and body.is_in_group(GROUP):
 			ignore_first_entry = true
+		
+#
+	#var player_health
+	#var player_max_health
+	#if Save.data.has(RESPAWN_DATA_KEY): player_health = Save.data[RESPAWN_DATA_KEY]["health"]
+	#if Save.data.has("max_health"): player_max_health = Save.data["max_health"]
+#
+	#if player_health and player_max_health and player_health != player_max_health and ignore_first_entry:
+		## Player spawned on this checkpoint node... but its health is not full... force rest
+		#call_deferred("_rest")
 
 func _process(_delta: float) -> void:
 	if player_inside:

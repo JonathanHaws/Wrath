@@ -1,18 +1,18 @@
 [gd_scene load_steps=16 format=3 uid="uid://bsufvbv2jwo77"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_8pkmr"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_disfu"]
-[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_5f8hx"]
-[ext_resource type="PackedScene" uid="uid://wlhsn0forped" path="res://actors/characters/npcs/piglet/piglet.blend" id="3_mrds3"]
-[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="4_jth3v"]
-[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="5_burk7"]
-[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="6_mrds3"]
-[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="7_pl1dd"]
-[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="8_h5ji6"]
-[ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://actors/characters/enemies/bosses/greed/greed.blend" id="9_burk7"]
-[ext_resource type="PackedScene" uid="uid://dshyyn54ur3e1" path="res://actors/characters/enemies/bosses/gluttony/gluttony.blend" id="10_mrds3"]
-[ext_resource type="PackedScene" uid="uid://c5kfdq4m105cm" path="res://actors/characters/enemies/bosses/envy/envy.blend" id="12_burk7"]
-[ext_resource type="PackedScene" uid="uid://b0t7a64rsk4nk" path="res://actors/characters/enemies/bosses/wrath/wrath.blend" id="12_h5ji6"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_qri8l"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_6d5mm"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_1uhv7"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="4_ydha4"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="5_oqn12"]
+[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="6_nirrj"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="7_orybl"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="8_4sp4e"]
+[ext_resource type="PackedScene" uid="uid://dshyyn54ur3e1" path="res://actors/characters/enemies/bosses/gluttony/gluttony.blend" id="9_g4wad"]
+[ext_resource type="PackedScene" uid="uid://b0t7a64rsk4nk" path="res://actors/characters/enemies/bosses/wrath/wrath.blend" id="10_npdej"]
+[ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://actors/characters/enemies/bosses/greed/greed.blend" id="11_ykhj2"]
+[ext_resource type="PackedScene" uid="uid://wlhsn0forped" path="res://actors/characters/npcs/piglet/piglet.blend" id="12_qfp2b"]
+[ext_resource type="PackedScene" uid="uid://c5kfdq4m105cm" path="res://actors/characters/enemies/bosses/envy/envy.blend" id="13_6ah48"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -22,14 +22,14 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Main" type="Node3D"]
 
-[node name="Menu" parent="." instance=ExtResource("1_8pkmr")]
+[node name="Menu" parent="." instance=ExtResource("1_qri8l")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
 
 [node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
-material_override = ExtResource("2_disfu")
+material_override = ExtResource("2_6d5mm")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
@@ -39,9 +39,9 @@ size = Vector3(65.3073, 20, 77.4419)
 
 [node name="Enviroment" type="Node" parent="."]
 
-[node name="Weather" parent="Enviroment" instance=ExtResource("3_5f8hx")]
+[node name="Weather" parent="Enviroment" instance=ExtResource("3_1uhv7")]
 
-[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("4_jth3v")]
+[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("4_ydha4")]
 
 [node name="Lights" type="Node" parent="Enviroment"]
 
@@ -59,40 +59,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
 [node name="FloorMesh" type="MeshInstance3D" parent="Enviroment"]
 transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 117.389, 0, -9.54005, 0)
-material_override = ExtResource("5_burk7")
+material_override = ExtResource("5_oqn12")
 mesh = SubResource("BoxMesh_od467")
 skeleton = NodePath("../..")
 
-[node name="Checkpoint" parent="." instance=ExtResource("6_mrds3")]
+[node name="Checkpoint" parent="." instance=ExtResource("6_nirrj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.14297, -9.05803, -0.448656)
 
-[node name="Reaper" parent="." instance=ExtResource("7_pl1dd")]
+[node name="Reaper" parent="." instance=ExtResource("7_orybl")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
-[node name="Enter" parent="." instance=ExtResource("8_h5ji6")]
+[node name="Enter" parent="." instance=ExtResource("8_4sp4e")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Exit"
 DESTINATION_SCENE = "uid://d1k2pnn46w66f"
 
-[node name="Exit" parent="." groups=["pride_door"] instance=ExtResource("8_h5ji6")]
+[node name="Exit" parent="." groups=["pride_door"] instance=ExtResource("8_4sp4e")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Enter"
 LOCKED = true
 DESTINATION_SCENE = "uid://5n4cvh6cqc4p"
 
-[node name="gluttony" parent="." instance=ExtResource("10_mrds3")]
+[node name="gluttony" parent="." instance=ExtResource("9_g4wad")]
 transform = Transform3D(-0.584745, 0, -0.811217, 0, 1, 0, 0.811217, 0, -0.584745, 10.1005, -8.14531, 7.71447)
 
-[node name="wrath2" parent="." instance=ExtResource("12_h5ji6")]
+[node name="wrath2" parent="." instance=ExtResource("10_npdej")]
 transform = Transform3D(-0.412437, 0, 0.910986, 0, 1, 0, -0.910986, 0, -0.412437, 8.71285, -9.06787, -4.69483)
 
-[node name="greed2" parent="." instance=ExtResource("9_burk7")]
+[node name="greed2" parent="." instance=ExtResource("11_ykhj2")]
 transform = Transform3D(-0.0129849, 0, -0.999916, 0, 1, 0, 0.999916, 0, -0.0129849, 11.5233, -9.06787, 0.0472907)
 
-[node name="piglet" parent="." instance=ExtResource("3_mrds3")]
+[node name="piglet" parent="." instance=ExtResource("12_qfp2b")]
 transform = Transform3D(-0.51402, 0, -0.857778, 0, 1, 0, 0.857778, 0, -0.51402, 7.58483, -8.99925, 4.55227)
 
-[node name="envy" parent="." instance=ExtResource("12_burk7")]
+[node name="envy" parent="." instance=ExtResource("13_6ah48")]
 transform = Transform3D(0.867019, 0, -0.498276, 0, 1, 0, 0.498276, 0, 0.867019, 7.02015, -9.06787, -11.765)
 
 [node name="Skeleton3D" parent="envy/Armature" index="0"]
