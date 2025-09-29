@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="7_iow1r"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="8_212ov"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="8_xfmdf"]
-[ext_resource type="PackedScene" uid="uid://cfs5888yrlisc" path="res://actors/characters/enemies/ghosts/ghost_shoot.tscn" id="9_0nd05"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="9_plya3"]
+[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="9_vumr1"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-23, 0.932449, -15.385, -20.75, 0.932449, -15.635, -20.75, 0.932449, -79.635, -99.5, 0.932449, -79.635, -99.5, 0.932449, -13.385, -23, 0.932449, -13.385, 41, 0.932449, -15.635, 41, 0.932449, -79.635, 43.25, 0.932449, -15.385, 43.25, 0.932449, -13.135, 62, 0.932449, -12.885, 62.25, 0.932449, -14.635, 64.25, 0.932449, -14.635, 64.25, 0.932449, -79.635, 83, 0.932449, -14.635, 83.25, 0.932449, -12.885, 99.5, 0.932449, -13.135, 99.5, 0.932449, -79.635, 21.5, 0.932449, 14.365, 21.75, 0.932449, -14.385, -21.75, 0.932449, -14.385, -21.75, 0.932449, 14.365, 23, 0.932449, 14.365, 23.25, 0.932449, 16.115, 42, 0.932449, 15.865, 42, 0.932449, -14.385, -99.5, 0.932449, 13.365, -23, 0.932449, 13.365, 63.25, 0.932449, 53.865, 82, 0.932449, 54.115, 82, 0.932449, -13.385, 63.25, 0.932449, -13.385, 43.25, 0.932449, 54.365, 62, 0.932449, 54.365, 83.25, 0.932449, 75.365, 81, 0.932449, 75.615, 81, 0.932449, 79.615, 99.5, 0.932449, 79.615, -20.75, 0.932449, 79.615, -20.75, 0.932449, 15.615, -23, 0.932449, 15.365, -99.5, 0.932449, 79.615, 24.25, 0.932449, 79.615, 24.25, 0.932449, 75.615, 22, 0.932449, 75.365, 22, 0.932449, 15.615, 23.25, 0.932449, 54.115, 42, 0.932449, 53.865, 42, 0.932449, 55.365, 43.5, 0.932449, 74.365, 43.75, 0.932449, 55.615, 23.25, 0.932449, 74.365, 63, 0.932449, 55.615, 61.5, 0.932449, 55.615, 61.75, 0.932449, 74.365, 82, 0.932449, 74.365)
@@ -95,15 +95,6 @@ omni_range = 101.01
 [node name="Checkpoint" parent="." instance=ExtResource("8_xfmdf")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.78209, -8.56741, -0.492541)
 
-[node name="Ghost1" parent="." instance=ExtResource("9_0nd05")]
-transform = Transform3D(-0.439641, 0, 0.898173, 0, 1, 0, -0.898173, 0, -0.439641, 40.1878, -7.51033, -12.8089)
-
-[node name="Ghost2" parent="." instance=ExtResource("9_0nd05")]
-transform = Transform3D(0.856348, 0, -0.516399, 0, 1, 0, 0.516399, 0, 0.856348, 25.7077, -7.51033, 71.1793)
-
-[node name="Ghost3" parent="." instance=ExtResource("9_0nd05")]
-transform = Transform3D(-0.858459, 0, -0.512882, 0, 1, 0, 0.512882, 0, -0.858459, 66.8823, -7.51033, 41.072)
-
 [node name="Reaper" parent="." instance=ExtResource("5_322pr")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
@@ -116,3 +107,14 @@ DESTINATION_SCENE = "uid://dsdh2bite7xv4"
 transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 72.7045, -9.60013, -14)
 DESTINATION_NODE_NAME = "Enter"
 DESTINATION_SCENE = "uid://cevok3tw0yqfi"
+
+[node name="Enemies" type="Node3D" parent="."]
+
+[node name="Ghost2" parent="Enemies" instance=ExtResource("9_vumr1")]
+transform = Transform3D(-0.187398, 0, 0.982284, 0, 1, 0, -0.982284, 0, -0.187398, 25.3927, -7.67152, 71.8502)
+
+[node name="Ghost" parent="Enemies" instance=ExtResource("9_vumr1")]
+transform = Transform3D(-0.187398, 0, 0.982284, 0, 1, 0, -0.982284, 0, -0.187398, 37.5016, -7.67152, -10.6973)
+
+[node name="Ghost3" parent="Enemies" instance=ExtResource("9_vumr1")]
+transform = Transform3D(-0.187398, 0, 0.982284, 0, 1, 0, -0.982284, 0, -0.187398, 67.9769, -7.67152, 42.3328)
