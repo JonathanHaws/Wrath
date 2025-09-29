@@ -230,4 +230,13 @@ theme_override_styles/background = SubResource("StyleBoxFlat_k5hc3")
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
+[node name="Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 11.0904, -0.361175)
+light_color = Color(0.757543, 0.547021, 0.269911, 1)
+light_energy = 20.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 27.0089
+
 [editable path="greed"]

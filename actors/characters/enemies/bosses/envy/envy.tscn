@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://djqadr0k0vrs3"]
+[gd_scene load_steps=53 format=3 uid="uid://djqadr0k0vrs3"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_3bgwy"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_hu4d7"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://dihsmt30mdqcm" path="res://actors/characters/enemies/bosses/greed/greed.ogg" id="19_wkktx"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="20_sg61t"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_shake.gd" id="21_3upiv"]
+[ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://actors/characters/ui/damage_numbers.tscn" id="21_fp1nr"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://actors/slow_motion.gd" id="22_oqhxd"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/3d_scene_spawner.gd" id="23_6u562"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="23_od1a5"]
@@ -743,12 +744,13 @@ parameters/looping = true
 
 [node name="HitShape" type="Area3D" parent="." node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("20_sg61t")
-HEALTH = 1500
-MAX_HEALTH = 1500
+HEALTH = 6500
+MAX_HEALTH = 6500
 IMMUNE_GROUPS = Array[String](["greed"])
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
+DAMAGE_NUMBERS = ExtResource("21_fp1nr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)

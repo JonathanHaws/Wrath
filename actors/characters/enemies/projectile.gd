@@ -8,6 +8,7 @@ extends Node3D
 @export var collision_point: Node3D
 @export var collision_animation_player: AnimationPlayer
 @export var collision_animation_name: String = ""
+@export var hurt_box: Node ## destroy when hurtboxes hti something
 
 @export var homing: bool = false
 @export var homing_group: String = "player_body"
@@ -16,10 +17,19 @@ extends Node3D
 
 var velocity: Vector3
 
+func play_collision_animation():
+	if collision_animation_player and collision_animation_name != "":
+		if collision_animation_player.current_animation != collision_animation_name:
+			collision_animation_player.play(collision_animation_name, 0)
+			collision_animation_player.advance(0)
+
 func _ready():
 	await get_tree().process_frame
 	velocity = -(global_transform.basis.z.normalized()) * speed		
 	velocity +=  Vector3(randf_range(-random_velocity_x, random_velocity_x), randf_range(-random_velocity_y, random_velocity_y), 0)
+	
+	if hurt_box and hurt_box.has_signal("hurt_something"):
+		hurt_box.connect("hurt_something", Callable(self, "play_collision_animation"))
 
 func _physics_process(delta: float) -> void:
 	if homing:pass #add the velocity being changed
@@ -52,9 +62,6 @@ func _physics_process(delta: float) -> void:
 					up = Vector3(0, 0, 1)
 				collision_point.look_at(collision_point.global_position + ray.get_collision_normal(), up)
 
-			if collision_animation_player and collision_animation_name != "":
-				#print("playing collision animation")
-				collision_animation_player.play(collision_animation_name, 0)
-				collision_animation_player.advance(0)  
+			play_collision_animation()
 	
 	global_position += velocity * delta

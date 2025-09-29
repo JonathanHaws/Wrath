@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=3 uid="uid://byk6752w0gnw2"]
+[gd_scene load_steps=79 format=3 uid="uid://byk6752w0gnw2"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_kn2im"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="2_q2lvp"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="21_28k33"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="21_fddld"]
 [ext_resource type="StyleBox" uid="uid://bw47y3rgbs5wu" path="res://actors/characters/enemies/bosses/gluttony/gluttony_health.tres" id="22_28k33"]
+[ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://actors/characters/ui/damage_numbers.tscn" id="23_adl7b"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="23_wlv32"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="24_r4ucj"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="25_q2e76"]
@@ -1750,11 +1751,12 @@ bus = &"Music"
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("2_q2lvp")
-HEALTH = 3000
-MAX_HEALTH = 3000
+HEALTH = 2500
+MAX_HEALTH = 2500
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../AnimationPlayer")
+DAMAGE_NUMBERS = ExtResource("23_adl7b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0.637661)
@@ -2151,7 +2153,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="10"]
-transform = Transform3D(1, -3.58889e-08, -1.0981e-07, -3.98926e-08, 0.784779, -0.619775, 1.0842e-07, 0.619775, 0.784779, 2.02562e-13, 3.03694, 0.242382)
+transform = Transform3D(1, -3.58888e-08, -1.0981e-07, -3.98926e-08, 0.784779, -0.619775, 1.0842e-07, 0.619775, 0.784779, 2.02562e-13, 3.03694, 0.242382)
 bone_name = "head"
 bone_idx = 4
 

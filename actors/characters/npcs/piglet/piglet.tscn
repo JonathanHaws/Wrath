@@ -265,4 +265,13 @@ transform = Transform3D(0.999997, 4.65661e-09, -1.80153e-08, 1.11759e-08, 0.9999
 shape = SubResource("BoxShape3D_yln8f")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
+[node name="Light" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 1.64925, -0.361175)
+light_color = Color(0.570221, 0.357229, 0.228058, 1)
+light_energy = 2.5
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 12.0287
+
 [editable path="piglet"]

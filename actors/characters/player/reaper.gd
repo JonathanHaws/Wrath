@@ -33,7 +33,9 @@ var has_been_on_floor = false
 var jump_buffer = 0;
 
 func increase_damage_each_spin():
-	if ATTACK_AREA: ATTACK_AREA.damage_multiplier *= SPIN_DAMAGE_MULTIPLIER
+	if ATTACK_AREA: 
+		ATTACK_AREA.damage_multiplier *= SPIN_DAMAGE_MULTIPLIER
+		#print(ATTACK_AREA.damage_multiplier, ATTACK_AREA.damage)
 	
 func reset_spin_damage():
 	if ATTACK_AREA: ATTACK_AREA.damage_multiplier = 1

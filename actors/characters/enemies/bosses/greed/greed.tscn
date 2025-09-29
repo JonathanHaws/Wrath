@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://bre6cgb3dypbs"]
+[gd_scene load_steps=59 format=3 uid="uid://bre6cgb3dypbs"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_cq6fp"]
 [ext_resource type="PackedScene" uid="uid://cqca3skeurt3e" path="res://actors/characters/enemies/bosses/greed/greed_hurt_particles.tscn" id="2_jx80p"]
@@ -17,6 +17,7 @@
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/3d_scene_spawner.gd" id="20_ri305"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="21_47sfl"]
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://actors/characters/enemies/sfx/Spin.wav" id="21_br41q"]
+[ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://actors/characters/ui/damage_numbers.tscn" id="21_kq5wy"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="23_xmcwa"]
 [ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://actors/characters/enemies/sfx/Hit_1.wav" id="24_1upmg"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="24_47sfl"]
@@ -1104,12 +1105,13 @@ parameters/looping = true
 
 [node name="HitShape" type="Area3D" parent="." node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("4_ri305")
-HEALTH = 1500
-MAX_HEALTH = 1500
+HEALTH = 4000
+MAX_HEALTH = 4000
 IMMUNE_GROUPS = Array[String](["greed"])
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
+DAMAGE_NUMBERS = ExtResource("21_kq5wy")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
@@ -1163,6 +1165,7 @@ ATTACK_ANIMATION = "SLAM_ATTACK"
 LIKELIHOOD_MULTIPLIER = 40.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_s0pmk")
 TRIGGER_ANIMATIONS = Array[String](["CHASE", "RUN"])
+COOLDOWN = 3.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
@@ -1234,7 +1237,7 @@ bones/25/rotation = Quaternion(0.290837, -0.0642549, 0.00259525, 0.954609)
 material_override = ExtResource("27_mmykl")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1"]
-transform = Transform3D(1, 2.06273e-09, 6.10312e-10, -1.57347e-10, 0.353109, -0.935582, -2.14535e-09, 0.935582, 0.353109, -0.115101, 1.75647, 0.145331)
+transform = Transform3D(1, 2.06256e-09, 6.10389e-10, -1.57219e-10, 0.35311, -0.935582, -2.14521e-09, 0.935582, 0.35311, -0.115101, 1.75648, 0.145332)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1247,7 +1250,7 @@ shape = SubResource("BoxShape3D_jx80p")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2"]
-transform = Transform3D(1, 2.06273e-09, 6.10312e-10, -1.57347e-10, 0.353109, -0.935582, -2.14535e-09, 0.935582, 0.353109, -0.115101, 1.75647, 0.145331)
+transform = Transform3D(1, 2.06256e-09, 6.10389e-10, -1.57219e-10, 0.35311, -0.935582, -2.14521e-09, 0.935582, 0.35311, -0.115101, 1.75648, 0.145332)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1264,7 +1267,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3"]
-transform = Transform3D(1, 2.06273e-09, 6.10312e-10, -1.57347e-10, 0.353109, -0.935582, -2.14535e-09, 0.935582, 0.353109, -0.115101, 1.75647, 0.145331)
+transform = Transform3D(1, 2.06256e-09, 6.10389e-10, -1.57219e-10, 0.35311, -0.935582, -2.14521e-09, 0.935582, 0.35311, -0.115101, 1.75648, 0.145332)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1281,7 +1284,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4"]
-transform = Transform3D(0.301335, -0.0374601, -0.952782, -0.943912, -0.153199, -0.292506, -0.135008, 0.987485, -0.0815235, 1.43396, 1.20858, 2.20327)
+transform = Transform3D(0.301336, -0.037459, -0.952782, -0.943911, -0.153198, -0.292508, -0.135007, 0.987485, -0.0815225, 1.43396, 1.20859, 2.20327)
 bone_name = "hand_l"
 bone_idx = 10
 
@@ -1299,7 +1302,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5"]
-transform = Transform3D(-0.797993, 0.344818, 0.494276, 0.419157, -0.271745, 0.866292, 0.433031, 0.898473, 0.0723177, -1.30709, 1.22805, 2.24871)
+transform = Transform3D(-0.797993, 0.344819, 0.494275, 0.419157, -0.271743, 0.866292, 0.43303, 0.898474, 0.0723158, -1.30709, 1.22806, 2.24872)
 bone_name = "hand_r"
 bone_idx = 16
 

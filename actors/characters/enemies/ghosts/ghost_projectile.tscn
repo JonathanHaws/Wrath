@@ -57,6 +57,18 @@ tracks/0/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_v5ope"]
 resource_name = "projectile"
@@ -107,13 +119,14 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="GhostProjectile" type="Node3D" node_paths=PackedStringArray("ray", "collision_animation_player")]
+[node name="GhostProjectile" type="Node3D" node_paths=PackedStringArray("ray", "collision_animation_player", "hurt_box")]
 script = ExtResource("1_8vmfp")
 speed = 20.0
 ray = NodePath("RayCast3D")
 exclude_groups = Array[String](["ghost"])
 collision_animation_player = NodePath("AnimationPlayer")
 collision_animation_name = "collision"
+hurt_box = NodePath("Attack")
 
 [node name="Node3D" type="Node3D" parent="."]
 
@@ -156,4 +169,5 @@ omni_range = 15.0
 omni_attenuation = 0.5
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-hit_from_inside = true
+exclude_parent = false
+hit_back_faces = false
