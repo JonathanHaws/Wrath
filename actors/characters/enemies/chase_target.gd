@@ -5,13 +5,14 @@ extends Node3D
 @export var BODY: Node3D ## The body that will move to face
 @export var FLIPPED_TRACKING: bool = false
 @export var MOVE_AND_SLIDE: bool = true ## Stop enemy from glitchy behavior by not chasing anymore once close enough defined by this area
+@export var USE_GRAVITY: bool = true ## Stop enemy from using gravity (flying enemies)
 
 @export_subgroup("Target")
 @export var TARGET_GROUP: String = "player"
 @export var MATCH_POSITION: bool = true ## Determines whether to match this nodes global position to target
 @export var TRACKING_SPEED: float = 5.0
 @export var TRACKING_MULTIPLIER: float = 1.0 ## How Quickly rotation will match target
-
+#
 @export_subgroup("Range")
 @export var STOP_CHASE_AREA: Area3D ## What alerts enemies to give chase. If no area is specified they are omincient and always chase
 @export var AWARENESS_AREA: Area3D ## How close they have to be to give chase. If none is specified its everywhere
@@ -33,6 +34,7 @@ func track(delta: float) -> void:
 	
 	if not MESH.global_transform.origin.is_equal_approx(target_pos):
 		MESH.look_at(target_pos, Vector3.UP, FLIPPED_TRACKING) 
+		
 	var target_rotation = MESH.rotation
 	
 	MESH.rotation = initial_rotation
@@ -85,7 +87,7 @@ func _physics_process(delta: float) -> void:
 	
 	if BODY: 
 		
-		if not BODY.is_on_floor(): BODY.velocity += BODY.get_gravity() * delta
+		if USE_GRAVITY: if not BODY.is_on_floor(): BODY.velocity += BODY.get_gravity() * delta
 
 		BODY.velocity.x = 0
 		BODY.velocity.z = 0
