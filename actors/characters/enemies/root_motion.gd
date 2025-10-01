@@ -5,20 +5,24 @@ extends Node3D
 # Make sure rig skeletal animationplayer uses physics callback or will not be moving enough
 # Make sure root bone in rig is represented by a quaternion (potentially not an issue though)
 
-func remap_quaternion_from_blender_to_godot(q: Quaternion) -> Quaternion: # Rortation needs to be converted for some reason
-	return Quaternion(q.x, q.z, -q.y, q.w)
+
+var prev_root_pos := Vector3.ZERO
+var prev_root_rot := Quaternion.IDENTITY
+
+func convert_coordinate_system(q: Quaternion) -> Quaternion:
+	var euler := q.get_euler()
+	var swapped_euler := Vector3(-euler.x, euler.z, euler.y)
+	return Quaternion.from_euler(swapped_euler)
 
 func _physics_process(_delta: float) -> void: 
 	
 	if !SKELETAL_ANIMATION_PLAYER: return
 	if !SCENE_ROOT: return
 
+	var pos: Vector3 = SKELETAL_ANIMATION_PLAYER.get_root_motion_position()
+	var rot: Quaternion = convert_coordinate_system(SKELETAL_ANIMATION_PLAYER.get_root_motion_rotation(),)
 	
-	#var original_scene = SCENE_ROOT.global_transform # record original transform 
-	##apply root motion rotation
-	#SCENE_ROOT.set_quaternion((remap_quaternion_from_blender_to_godot(SKELETAL_ANIMATION_PLAYER.get_root_motion_rotation())))
-	#
-	#SCENE_ROOT.global_transform *= original_scene	
+
+	SCENE_ROOT.quaternion *= rot
+	SCENE_ROOT.position += pos 
 	
-	#apply scene position 
-	SCENE_ROOT.global_transform.origin += global_transform.basis * SKELETAL_ANIMATION_PLAYER.get_root_motion_position(); 
