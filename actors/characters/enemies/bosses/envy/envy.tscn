@@ -462,10 +462,10 @@ tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.72),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [2.0]
+"values": [2.0, 2.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1010,11 +1010,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62932, 0)
 visible = false
 mesh = SubResource("BoxMesh_wpfpa")
 
-[node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SCENE_ROOT")]
+[node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SKELETON", "SKELETAL_ANIMATION_PLAYER", "SCENE_ROOT")]
 rotation_edit_mode = 1
 script = ExtResource("26_5mwrc")
+SKELETON = NodePath("envy/Armature/Skeleton3D")
 SKELETAL_ANIMATION_PLAYER = NodePath("envy/AnimationPlayer")
-SCENE_ROOT = NodePath("envy")
+SCENE_ROOT = NodePath("..")
 
 [node name="envy" parent="Mesh" instance=ExtResource("27_wpfpa")]
 
