@@ -6,7 +6,7 @@ extends Area3D
 @export var REST_ANIM: AnimationPlayer
 @export var AQUIRED_ANIM: AnimationPlayer
 @export var ENTER_EXIT_ANIM: AnimationPlayer
-@export var REST_ACTIONS: Array[String] = ["Rest"]
+@export var REST_ACTIONS: Array[String] = ["interact"]
 @export var RESPAWN_DATA_KEY: String = "respawn_data"
 var ignore_first_entry: bool = false # ignore first trigger if player spawns inside for prompt
 var player_inside: bool = false

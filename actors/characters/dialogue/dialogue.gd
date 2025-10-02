@@ -61,7 +61,7 @@ func _ready():
 
 func _process(_delta):
 	if not in_range: return
-	if Input.is_action_just_pressed("talk"): 
+	if Input.is_action_just_pressed("interact"): 
 		next_queued = true
 	if next_queued and  get_child_count() == base_children:
 		_spawn_next_dialogue()

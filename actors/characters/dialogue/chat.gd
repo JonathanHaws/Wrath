@@ -8,5 +8,5 @@ func _ready():
 func _process(_delta):
 	var parent = get_parent()
 	if parent and "in_range" in parent:
-		if not parent.in_range or Input.is_action_just_pressed("talk"):
+		if not parent.in_range or Input.is_action_just_pressed("interact"):
 			queue("exited")

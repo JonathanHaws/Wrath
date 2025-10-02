@@ -1,22 +1,253 @@
-[gd_scene load_steps=7 format=3 uid="uid://bbnvaw1wjbpv0"]
+[gd_scene load_steps=9 format=3 uid="uid://bbnvaw1wjbpv0"]
 
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="1_gksqo"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_nke8k"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="1_thn1f"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="2_lbh2v"]
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="2_thn1f"]
+[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="2_w8ibl"]
+[ext_resource type="Script" uid="uid://d0y3kmnwe4g6k" path="res://menus/custom_control.gd" id="3_00uuv"]
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_Press.wav" id="6_e0xkx"]
 
 [node name="Controls" type="VBoxContainer"]
+
+[node name="Forward" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "keyboard_forward"
+display_name = "Forward"
+label = NodePath("Label")
+add = NodePath("Add")
+remove = NodePath("Remove")
+
+[node name="Label" type="Label" parent="Forward"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "FORWARD"
+
+[node name="Add" type="Button" parent="Forward"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "+"
+
+[node name="Remove" type="Button" parent="Forward"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_nke8k")
+text = "-"
+icon_alignment = 1
+
+[node name="Backward" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "keyboard_back"
+display_name = "Back"
+label = NodePath("Label")
+add = NodePath("Add")
+remove = NodePath("Remove")
+
+[node name="Label" type="Label" parent="Backward"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "FORWARD"
+
+[node name="Add" type="Button" parent="Backward"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "+"
+
+[node name="Remove" type="Button" parent="Backward"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_nke8k")
+text = "-
+"
+icon_alignment = 1
+
+[node name="Left" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "keyboard_left"
+display_name = "Left"
+label = NodePath("Label")
+add = NodePath("Add")
+remove = NodePath("Remove")
+
+[node name="Label" type="Label" parent="Left"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "FORWARD"
+
+[node name="Add" type="Button" parent="Left"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "+"
+
+[node name="Remove" type="Button" parent="Left"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_nke8k")
+text = "-
+"
+icon_alignment = 1
+
+[node name="Right" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "keyboard_right"
+display_name = "Right"
+label = NodePath("Label")
+add = NodePath("Add")
+remove = NodePath("Remove")
+
+[node name="Label" type="Label" parent="Right"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "FORWARD"
+
+[node name="Add" type="Button" parent="Right"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "+"
+
+[node name="Remove" type="Button" parent="Right"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_nke8k")
+text = "-
+"
+icon_alignment = 1
+
+[node name="Jump" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "jump"
+display_name = "Jump"
+label = NodePath("Label")
+add = NodePath("Add")
+remove = NodePath("Remove")
+
+[node name="Label" type="Label" parent="Jump"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "FORWARD"
+
+[node name="Add" type="Button" parent="Jump"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "+"
+
+[node name="Remove" type="Button" parent="Jump"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_nke8k")
+text = "-
+"
+icon_alignment = 1
+
+[node name="Attack" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "attack"
+display_name = "Attack"
+label = NodePath("Label")
+add = NodePath("Add")
+remove = NodePath("Remove")
+
+[node name="Label" type="Label" parent="Attack"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "FORWARD"
+
+[node name="Add" type="Button" parent="Attack"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "+"
+
+[node name="Remove" type="Button" parent="Attack"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_nke8k")
+text = "-
+"
+icon_alignment = 1
+
+[node name="Interact" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "interact"
+display_name = "Interact"
+label = NodePath("Label")
+add = NodePath("Add")
+remove = NodePath("Remove")
+
+[node name="Label" type="Label" parent="Interact"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "FORWARD"
+
+[node name="Add" type="Button" parent="Interact"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "+"
+
+[node name="Remove" type="Button" parent="Interact"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_nke8k")
+text = "-
+"
+icon_alignment = 1
+
+[node name="LockOn" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "lock_on"
+display_name = "Lock On"
+label = NodePath("Label")
+add = NodePath("Add")
+remove = NodePath("Remove")
+
+[node name="Label" type="Label" parent="LockOn"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "FORWARD"
+
+[node name="Add" type="Button" parent="LockOn"]
+layout_mode = 2
+theme = ExtResource("2_w8ibl")
+text = "+"
+
+[node name="Remove" type="Button" parent="LockOn"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_nke8k")
+text = "-
+"
+icon_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 2
 theme = ExtResource("1_nke8k")
 bbcode_enabled = true
-text = "[center] [color=#ececec]Goal[/color][color=#858585]- Escape limbo and regain life by defeating sin incarnate[/color]
-[color=#ececec]Wasd / Arrows / Mouse / Space [/color][color=#858585]- Move / Sprint / Look / Jump [/color]
+text = "[center] 
 [color=#ececec]Hold Mouse [/color][color=#858585]- Spin Attack  [/color]
-[color=#ececec]Middle Mouse[/color][color=#858585]- Camera lock on [/color]
 [/center] "
 fit_content = true
 autowrap_mode = 0
