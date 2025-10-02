@@ -1046,6 +1046,7 @@ SCENE_ROOT = NodePath("..")
 [node name="envy" parent="Mesh" instance=ExtResource("27_wpfpa")]
 
 [node name="Skeleton3D" parent="Mesh/envy/Armature" index="0"]
+bones/0/rotation = Quaternion(0, 0.707107, 0.707107, 0)
 bones/1/position = Vector3(-3.06247e-07, 0.251102, 2.95118)
 bones/1/rotation = Quaternion(2.59399e-09, 0.997124, 0.0757832, -1.62054e-06)
 bones/2/rotation = Quaternion(-0.386482, 1.21234e-07, -1.27083e-06, 0.922297)
