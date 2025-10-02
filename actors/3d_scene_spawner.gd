@@ -45,7 +45,9 @@ func spawn(particle = 0, position_or_parent = null) -> void:
 	var particles = particle_scene.instantiate()
 	
 	if parent_node == null:
-		get_tree().get_current_scene().add_child(particles)
+		var current_scene = get_tree().get_current_scene()
+		if current_scene:
+			current_scene.add_child(particles)
 	else:
 		parent_node.add_child(particles)
 
