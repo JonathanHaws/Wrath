@@ -1194,9 +1194,11 @@ STOP_CHASE_AREA = NodePath("../HitShape")
 SPEED = 12.0
 SPEED_MULTIPLIER = 0.0
 
-[node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SCENE_ROOT")]
+[node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "SCENE_ROOT")]
 script = ExtResource("16_psb2t")
 SKELETAL_ANIMATION_PLAYER = NodePath("Greed/AnimationPlayer")
+SKELETON = NodePath("Greed/Rig")
+MESH = NodePath(".")
 SCENE_ROOT = NodePath("..")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh"]

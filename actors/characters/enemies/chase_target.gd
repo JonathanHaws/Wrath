@@ -43,9 +43,14 @@ func track(delta: float) -> void:
 func move_to_target(speed: float = 0.0, scalar: Vector3 = Vector3(1, 0, 1)) -> void:
 	if not target or not NAV_AGENT: return
 	NAV_AGENT.target_position = global_transform.origin
+	
 	var path_vector = NAV_AGENT.get_next_path_position() - BODY.global_transform.origin
-	if path_vector.length_squared() < 0.0001: return
 	var navigation_velocity = (path_vector).normalized() * scalar 
+	
+	#var to_player = global_transform.origin - BODY.global_transform.origin
+	var to_player = MESH.global_transform.basis.z
+	if navigation_velocity.length() < .1:
+		navigation_velocity = to_player.normalized()
 	
 	BODY.velocity.x = navigation_velocity.x * speed
 	BODY.velocity.z = navigation_velocity.z * speed
@@ -102,6 +107,8 @@ func _physics_process(delta: float) -> void:
 	
 	if target == null:
 		target = get_closest_from_group_3d(TARGET_GROUP)
+	
+	#print(BODY.velocity.y)
 	
 	if target != null and MATCH_POSITION:
 		if "velocity" in target:

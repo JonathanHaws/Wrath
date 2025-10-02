@@ -152,6 +152,18 @@ tracks/3/keys = {
 "update": 0,
 "values": [1.0, 1.0, 0.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Target:USE_GRAVITY")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_fp1nr"]
 resource_name = "BITE_RIGHT"
@@ -462,7 +474,7 @@ tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.72),
+"times": PackedFloat32Array(0, 1.70833),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [2.0, 2.0]
@@ -742,7 +754,7 @@ tracks/12/keys = {
 
 [sub_resource type="Animation" id="Animation_o226f"]
 resource_name = "TAKEOFF_LEFT_SHOULDER"
-length = 2.08334
+length = 1.75
 step = 0.0416667
 tracks/0/type = "animation"
 tracks/0/imported = false
@@ -761,10 +773,10 @@ tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.75),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0]
+"values": [0.0, 0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -790,6 +802,20 @@ tracks/3/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(1.75),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"transfer_skeleton_orientation_to_mesh"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
@@ -809,8 +835,8 @@ _data = [Vector2(0.265393, 0), 0.0, 0.0, 0, 0, Vector2(0.29724, 1), 0.0, 0.0, 0,
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_fp1nr"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.29724, 1), 0.0, 0.0, 0, 0, Vector2(0.433121, 1), 0.0, 0.0, 0, 0, Vector2(0.751592, 1), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.459459, 1), 0.0, 0.0, 0, 0, Vector2(0.608108, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="BoxMesh" id="BoxMesh_wpfpa"]
 
@@ -964,7 +990,7 @@ script = ExtResource("23_od1a5")
 ATTACK_ANIMATION = "BITE_LEFT"
 LIKELIHOOD_MULTIPLIER = 300.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_1epqe")
-DISABLED = true
+TRIGGER_ANIMATIONS = Array[String](["CHASE", "FLY"])
 COOLDOWN = 3.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
@@ -974,7 +1000,6 @@ script = ExtResource("23_od1a5")
 ATTACK_ANIMATION = "BITE_RIGHT"
 LIKELIHOOD_MULTIPLIER = 300.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_1epqe")
-DISABLED = true
 COOLDOWN = 3.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
@@ -1010,11 +1035,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62932, 0)
 visible = false
 mesh = SubResource("BoxMesh_wpfpa")
 
-[node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SKELETON", "SKELETAL_ANIMATION_PLAYER", "SCENE_ROOT")]
+[node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "SCENE_ROOT")]
 rotation_edit_mode = 1
 script = ExtResource("26_5mwrc")
-SKELETON = NodePath("envy/Armature/Skeleton3D")
 SKELETAL_ANIMATION_PLAYER = NodePath("envy/AnimationPlayer")
+SKELETON = NodePath("envy/Armature/Skeleton3D")
+MESH = NodePath(".")
 SCENE_ROOT = NodePath("..")
 
 [node name="envy" parent="Mesh" instance=ExtResource("27_wpfpa")]

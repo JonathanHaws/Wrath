@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://djqadr0k0vrs3" path="res://actors/characters/enemies/bosses/envy/envy.tscn" id="9_r856j"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
-vertices = PackedVector3Array(-22.19, 0.432, -65.8895, -22.19, 0.432, 66.1105, 128.81, 0.432, 66.1105, 128.81, 0.432, -65.8895)
+vertices = PackedVector3Array(-22.19, 0.432001, -65.8895, -22.19, 0.432001, 66.1105, 128.81, 0.432001, 66.1105, 128.81, 0.432001, -65.8895)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
