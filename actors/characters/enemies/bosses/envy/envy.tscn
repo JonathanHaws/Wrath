@@ -1087,12 +1087,14 @@ COOLDOWN = 3.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="Takeoff_Left" type="Node" parent="Attacks" node_paths=PackedStringArray("TARGET", "BODY")]
+[node name="Takeoff_Left" type="Node" parent="Attacks" node_paths=PackedStringArray("PHASE_HITSHAPE", "TARGET", "BODY")]
 script = ExtResource("23_od1a5")
 ATTACK_ANIMATION = "TAKEOFF_LEFT_SHOULDER"
 LIKELIHOOD_MULTIPLIER = 300.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_fp1nr")
 COOLDOWN = 2.98
+PHASE_HITSHAPE = NodePath("../../HitShape")
+HEALTH_HIGH_THRESHOLD = 0.7
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
@@ -1198,9 +1200,9 @@ forward_axis = 2
 primary_rotation_axis = 0
 use_angle_limitation = true
 symmetry_limitation = true
-primary_limit_angle = 1.13446
+primary_limit_angle = 0.872665
 primary_damp_threshold = 1.0
-secondary_limit_angle = 1.13446
+secondary_limit_angle = 0.872665
 secondary_damp_threshold = 1.0
 
 [node name="Mesh" parent="Mesh/envy/Armature/Skeleton3D" index="2"]
