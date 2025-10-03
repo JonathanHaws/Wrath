@@ -45,5 +45,5 @@ func _physics_process(_delta: float) -> void:
 	var path = anim.track_get_path(SKELETON_ROOT_ROTATION_TRACK_INDEX)
 	if str(path).ends_with("root") and anim.track_get_type(SKELETON_ROOT_ROTATION_TRACK_INDEX) == Animation.TYPE_ROTATION_3D:
 		var rot_quat = anim.rotation_track_interpolate(SKELETON_ROOT_ROTATION_TRACK_INDEX, min(time, anim.length)) # Avoid out of bounds access
-		SKELETON.quaternion = convert_blender_quat_to_godot(rot_quat) 
+		SKELETON.quaternion = convert_blender_quat_to_godot(rot_quat) # example extra rotation
 		#print(convert_blender_quat_to_godot(rot_quat) )
