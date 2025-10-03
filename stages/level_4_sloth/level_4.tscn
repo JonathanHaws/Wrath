@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmky6xf3axtum"]
+[gd_scene load_steps=12 format=3 uid="uid://cmky6xf3axtum"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_04h28"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_0u44e"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="7_5hgnl"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="8_deg3c"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="9_d2qy0"]
+[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="9_w17nt"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -73,3 +74,11 @@ DESTINATION_SCENE = "uid://dsdh2bite7xv4"
 
 [node name="Checkpoint" parent="." instance=ExtResource("6_nlsid")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.8406, -9.14357, 0)
+
+[node name="Ghosts" type="Node" parent="."]
+
+[node name="Ghost" parent="Ghosts" instance=ExtResource("9_w17nt")]
+transform = Transform3D(-0.677364, 0, 0.735648, 0, 1, 0, -0.735648, 0, -0.677364, 37.6761, -8.28661, -11.1696)
+
+[node name="Ghost2" parent="Ghosts" instance=ExtResource("9_w17nt")]
+transform = Transform3D(0.449023, 0, 0.89352, 0, 1, 0, -0.89352, 0, 0.449023, 25.1016, -8.28661, 9.30553)
