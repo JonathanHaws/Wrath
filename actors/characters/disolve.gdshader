@@ -1,7 +1,7 @@
 shader_type spatial;
 
 //credit DisplacedFikaDev
-
+render_mode cull_disabled;
 uniform sampler2D albedo_texture : source_color;
 uniform vec3 albedo_color : source_color = vec3(1.0);
 uniform sampler2D emission_texture : source_color;
@@ -62,6 +62,5 @@ void fragment() {
 	if (use_normal_map) {
 		NORMAL_MAP = texture(normal_texture, UV).xyz;
 	}
-
 
 }

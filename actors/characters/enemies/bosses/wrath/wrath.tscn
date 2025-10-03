@@ -1525,7 +1525,7 @@ SKELETON_ROOT_DEFAULT_ROTATION = Quaternion(-0.707107, -7.55185e-17, -7.55185e-1
 [node name="wrath" parent="Mesh" instance=ExtResource("10_h46di")]
 
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
-bones/1/position = Vector3(-7.71653e-18, -0.718805, 1.00353)
+bones/1/position = Vector3(0.0103745, -0.730433, 0.957592)
 bones/1/rotation = Quaternion(0.25735, 8.11288e-17, 7.05286e-17, 0.966318)
 bones/2/rotation = Quaternion(0.347629, 1.11774e-07, 4.14406e-08, 0.937632)
 bones/3/rotation = Quaternion(0.101092, 0.18125, 0.763867, 0.611094)
@@ -1541,7 +1541,7 @@ bones/10/rotation = Quaternion(-0.239191, 0.243902, -0.292818, 0.893061)
 material_override = ExtResource("27_a67hc")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.923684, -0.195082, -0.329774, 0.0905005, -0.947408, 0.306964, -0.372313, 0.253694, 0.892761, -2.21337, 2.31166, 1.08989)
+transform = Transform3D(-0.923684, -0.195082, -0.329774, 0.0905005, -0.947408, 0.306964, -0.372313, 0.253694, 0.892761, -2.203, 2.26572, 1.10151)
 bone_name = "hand_l"
 bone_idx = 6
 
@@ -1558,7 +1558,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885416, -0.227331, -0.588577, 0.0625503, 0.806017, 2.21279, 2.24167, 1.16546)
+transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885416, -0.227331, -0.588577, 0.0625503, 0.806017, 2.22317, 2.19573, 1.17709)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1575,7 +1575,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3" groups=["wrath"]]
-transform = Transform3D(1, 7.23087e-15, 2.38419e-07, -7.95448e-08, 0.942702, 0.333635, -2.24758e-07, -0.333635, 0.942702, 5.38111e-17, 0.788918, 0.174431)
+transform = Transform3D(1, 7.23087e-15, 2.38419e-07, -7.95448e-08, 0.942702, 0.333635, -2.24758e-07, -0.333635, 0.942702, 0.0103745, 0.742984, 0.18606)
 bone_name = "torso"
 bone_idx = 2
 
@@ -1615,6 +1615,7 @@ secondary_damp_threshold = 1.0
 root_motion_track = NodePath("Armature/Skeleton3D:root")
 root_motion_local = false
 callback_mode_process = 0
+playback_auto_capture_ease_type = 2
 playback_default_blend_time = 0.2
 
 [node name="Jump" type="Area3D" parent="Mesh" groups=["wrath"]]

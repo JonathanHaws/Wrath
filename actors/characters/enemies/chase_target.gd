@@ -10,7 +10,7 @@ extends Node3D
 @export_subgroup("Target")
 @export var TARGET_GROUP: String = "player"
 @export var MATCH_POSITION: bool = true ## Determines whether to match this nodes global position to target
-@export var TRACKING_SPEED: float = 5.0
+@export var TRACKING_SPEED: float = 5.0 ## Degrees Per Second
 @export var TRACKING_MULTIPLIER: float = 1.0 ## How Quickly rotation will match target
 #
 @export_subgroup("Range")
@@ -49,7 +49,7 @@ func move_to_target(speed: float = 0.0, scalar: Vector3 = Vector3(1, 0, 1)) -> v
 	
 	#var to_player = global_transform.origin - BODY.global_transform.origin
 	var to_player = MESH.global_transform.basis.z
-	if navigation_velocity.length() < .1:
+	if not BODY.is_on_floor():
 		navigation_velocity = to_player.normalized()
 	
 	BODY.velocity.x = navigation_velocity.x * speed
