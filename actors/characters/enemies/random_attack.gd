@@ -6,8 +6,8 @@ extends Node # Child node to animation player to specify attacks based of random
 @export var AREA_MULTIPLIER: Area3D ## Eg. Only let backstab happen if behind... Area that specifies whats considered behind... 
 @export var TRIGGER_ANIMATIONS: Array[String] = ["CHASE"] ## Requires animation player to be playing specific animations to trigger an attack... If no required trigger will trigger no matter the current animation
 @export var DISABLED: bool = false
-@export var COOLDOWN: float = 1.0
-var cooldown_remaining: float = 0.0
+@export var COOLDOWN: float = 1.0 ## After an attack finishes... How long before they can use it again
+@export var COOLDOWN_REMAINING: float = 1.0 ## Used to disable this attack at the start of the scene
 
 @export_group("Phase") ## Used for disalbing certain attacks until the proper phase. Accelerating difficulty makes bosses exiciting 
 @export var PHASE_HITSHAPE: Node ## Percentage determined by health / max_health
@@ -27,11 +27,10 @@ func _physics_process(delta: float) -> void:
 	if not ANIM: return
 	if DISABLED: return
 
-	if cooldown_remaining > 0.0:
+	if COOLDOWN_REMAINING > 0.0:
 		if ANIM.current_animation == ATTACK_ANIMATION: return
-		cooldown_remaining -= delta
+		COOLDOWN_REMAINING -= delta
 		return
-
 
 	if PHASE_HITSHAPE and "HEALTH" in PHASE_HITSHAPE and "MAX_HEALTH" in PHASE_HITSHAPE:
 		var hp_ratio: float = float(PHASE_HITSHAPE.HEALTH) / float(PHASE_HITSHAPE.MAX_HEALTH)
@@ -51,6 +50,6 @@ func _physics_process(delta: float) -> void:
 	var chance = proximity_likelihood * area_likelihood * LIKELIHOOD_MULTIPLIER * delta
 	if randf() < chance:
 		ANIM.play(ATTACK_ANIMATION)
-		cooldown_remaining = COOLDOWN
+		COOLDOWN_REMAINING = COOLDOWN
 		
 	#print(chance)
