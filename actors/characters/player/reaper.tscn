@@ -1,4 +1,4 @@
-[gd_scene load_steps=95 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=94 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -28,7 +28,6 @@
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="18_dtcwh"]
 [ext_resource type="AudioStream" uid="uid://ca1jfg0asj5b6" path="res://actors/characters/player/sfx/Windown.wav" id="18_pc8iq"]
 [ext_resource type="AudioStream" uid="uid://dlwicer3j08q8" path="res://actors/characters/player/sfx/Spawn_Void.wav" id="20_5d6ad"]
-[ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://actors/characters/player/stamina_fill.tres" id="20_gpejb"]
 [ext_resource type="Script" uid="uid://brd3ehk2rfsfr" path="res://actors/characters/player/tracker/death_count_tracker.gd" id="20_m1s71"]
 [ext_resource type="AudioStream" uid="uid://bbwub6xco4f00" path="res://actors/props/sfx/Wind.wav" id="22_ogp31"]
 [ext_resource type="Script" uid="uid://dsby53pm3kd0g" path="res://actors/characters/player/save_property.gd" id="23_75wkf"]
@@ -2369,31 +2368,6 @@ anchor_bottom = 1.0
 grow_vertical = 0
 script = ExtResource("43_ekykk")
 
-[node name="Stamina" parent="UI" node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
-layout_mode = 1
-anchors_preset = 2
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 0.0
-anchor_bottom = 1.0
-offset_left = 6.0
-offset_top = -36.0
-offset_right = 129.0
-offset_bottom = -26.0
-grow_horizontal = 1
-grow_vertical = 0
-theme_override_styles/fill = ExtResource("20_gpejb")
-max_value = 10.0
-step = 0.001
-value = 10.0
-rounded = false
-difference_speed = 0.0
-expands = true
-tracked_node = NodePath("../..")
-tracked_property = "STAMINA"
-tracked_max_property = "MAX_STAMINA"
-pixel_expansion_rate = 8.0
-
 [node name="Health" parent="UI" node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
 layout_mode = 1
 anchors_preset = 2
@@ -2421,9 +2395,9 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
-offset_top = -74.0
+offset_top = -57.0
 offset_right = 229.0
-offset_bottom = -36.0
+offset_bottom = -12.0
 grow_vertical = 0
 theme = ExtResource("24_m1s71")
 text = "WISP STAMINA INCREASED"
@@ -2431,5 +2405,4 @@ text = "WISP STAMINA INCREASED"
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 
 [editable path="Mesh/reaper"]
-[editable path="UI/Stamina"]
 [editable path="UI/Health"]

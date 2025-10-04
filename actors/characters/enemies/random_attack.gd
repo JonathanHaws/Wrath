@@ -32,6 +32,7 @@ func _physics_process(delta: float) -> void:
 		cooldown_remaining -= delta
 		return
 
+
 	if PHASE_HITSHAPE and "HEALTH" in PHASE_HITSHAPE and "MAX_HEALTH" in PHASE_HITSHAPE:
 		var hp_ratio: float = float(PHASE_HITSHAPE.HEALTH) / float(PHASE_HITSHAPE.MAX_HEALTH)
 		if hp_ratio > HEALTH_HIGH_THRESHOLD or hp_ratio < HEALTH_LOW_THRESHOLD: return

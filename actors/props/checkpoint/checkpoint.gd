@@ -5,11 +5,10 @@ extends Area3D
 @export var CHECKPOINT_SCENE_PATH: String
 @export var REST_ANIM: AnimationPlayer
 @export var AQUIRED_ANIM: AnimationPlayer
-@export var ENTER_EXIT_ANIM: AnimationPlayer
+@export var PROMPT_ANIM: AnimationPlayer ## Animation player for when player enters area they can potentially rest
 @export var REST_ACTIONS: Array[String] = ["interact"]
-@export var RESPAWN_DATA_KEY: String = "respawn_data"
-var ignore_first_entry: bool = false # ignore first trigger if player spawns inside for prompt
 var player_inside: bool = false
+var enter_prompt_played: bool = false
 
 func load_checkpoint(player: Node3D) -> void:
 	var checkpoint_transform = global_transform
@@ -39,10 +38,10 @@ func _play_aquired() -> void:
 
 func _on_body_entered(body: Node) -> void:
 	if GROUP != "" and not body.is_in_group(GROUP): return
-	if ignore_first_entry: return
+	enter_prompt_played = true
 	
 	player_inside = true
-	ENTER_EXIT_ANIM.queue("ENTER")
+	PROMPT_ANIM.queue("ENTER")
 	
 	# AQUIRE CHECKPOINT IF NOT ALREADY HAVE BUT DONT HEAL HEALTH
 	if Save.data.has("checkpoint_node_path") and get_path() == NodePath(Save.data["checkpoint_node_path"]): 
@@ -56,26 +55,16 @@ func _on_body_entered(body: Node) -> void:
 func _on_body_exited(body: Node) -> void:
 	if GROUP != "" and not body.is_in_group(GROUP): return
 	player_inside = false
-	if ignore_first_entry: ignore_first_entry = false; return # Dont play exit animation if enter animation was never played
-	ENTER_EXIT_ANIM.queue("EXIT")
+	if not enter_prompt_played: return
+	PROMPT_ANIM.queue("EXIT")
 
 func _ready() -> void:
+	await get_tree().create_timer(.2).timeout # Makes it so that if player spawns in they dont get the prompt immeaditly... Only when they leave and hop back on...
+	_connect_signals()
+
+func _connect_signals() -> void:
 	body_entered.connect(_on_body_entered)
 	body_exited.connect(_on_body_exited)
-	
-	for body in get_overlapping_bodies():
-		if GROUP != "" and body.is_in_group(GROUP):
-			ignore_first_entry = true
-		
-#
-	#var player_health
-	#var player_max_health
-	#if Save.data.has(RESPAWN_DATA_KEY): player_health = Save.data[RESPAWN_DATA_KEY]["health"]
-	#if Save.data.has("max_health"): player_max_health = Save.data["max_health"]
-#
-	#if player_health and player_max_health and player_health != player_max_health and ignore_first_entry:
-		## Player spawned on this checkpoint node... but its health is not full... force rest
-		#call_deferred("_rest")
 
 func _process(_delta: float) -> void:
 	if player_inside:

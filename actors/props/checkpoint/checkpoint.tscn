@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://1jc5rm2ln3av"]
+[gd_scene load_steps=23 format=3 uid="uid://1jc5rm2ln3av"]
 
 [ext_resource type="Script" uid="uid://bwi12jjkh4nu7" path="res://actors/props/checkpoint/checkpoint.gd" id="1_jmg87"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/interaction.gd" id="2_8is0s"]
@@ -27,7 +27,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -187,14 +187,23 @@ emission_texture = ExtResource("5_xdv6p")
 normal_enabled = true
 normal_texture = ExtResource("6_p1yyc")
 
-[node name="Checkpoint" type="Area3D" node_paths=PackedStringArray("CHECKPOINT_NODE", "REST_ANIM", "AQUIRED_ANIM", "ENTER_EXIT_ANIM")]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tssyw"]
+bg_color = Color(0.051971, 0.051971, 0.051971, 1)
+border_width_left = 50
+border_width_top = 50
+border_width_right = 50
+border_width_bottom = 50
+border_color = Color(0.8, 0.8, 0.8, 0)
+border_blend = true
+
+[node name="Checkpoint" type="Area3D" node_paths=PackedStringArray("CHECKPOINT_NODE", "REST_ANIM", "AQUIRED_ANIM", "PROMPT_ANIM")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_jmg87")
 CHECKPOINT_NODE = NodePath("Node3D")
 REST_ANIM = NodePath("Rest")
 AQUIRED_ANIM = NodePath("Aquired")
-ENTER_EXIT_ANIM = NodePath("EnterExit")
+PROMPT_ANIM = NodePath("Prompt")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
@@ -236,7 +245,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_qucei")
 }
 
-[node name="EnterExit" type="AnimationPlayer" parent="."]
+[node name="Prompt" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_tssyw")
 }
@@ -269,6 +278,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("8_tssyw")
+
+[node name="ProgressBar" type="ProgressBar" parent="Control"]
+z_index = -6
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -50.0
+offset_top = -69.0
+offset_right = 50.0
+offset_bottom = 31.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/fill = SubResource("StyleBoxFlat_tssyw")
+show_percentage = false
 
 [node name="Label" type="Label" parent="Control"]
 modulate = Color(1, 1, 1, 0)

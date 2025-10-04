@@ -1074,7 +1074,6 @@ ATTACK_ANIMATION = "BITE_LEFT"
 LIKELIHOOD_MULTIPLIER = 300.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_1epqe")
 TRIGGER_ANIMATIONS = Array[String](["CHASE", "FLY"])
-COOLDOWN = 3.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
@@ -1083,7 +1082,6 @@ script = ExtResource("23_od1a5")
 ATTACK_ANIMATION = "BITE_RIGHT"
 LIKELIHOOD_MULTIPLIER = 300.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_1epqe")
-COOLDOWN = 3.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
