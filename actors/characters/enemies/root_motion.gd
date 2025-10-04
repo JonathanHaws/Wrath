@@ -12,7 +12,7 @@ extends Node3D
 @export var SKELETON_ROOT_DEFAULT_POSITION: Vector3 = Vector3.ZERO ## Look in skeleton mesh animation player root rotation 
 @export var SKELETON_ROOT_DEFAULT_ROTATION: Quaternion = Quaternion()  ## Look in skeleton mesh animation player root rotation 
 
-var last_root_pos: Vector3 = Vector3.ZERO  # declare at top
+var last_root_pos: Vector3 = SKELETON_ROOT_DEFAULT_POSITION  # declare at top
 var last_time: float = 0.0 ## When animation current playback goes backward you can know new animation has played so can reset root motion
 
 func convert_blender_quat_to_godot(q: Quaternion) -> Quaternion: # Blender to godot
@@ -22,6 +22,9 @@ func transfer_skeleton_orientation_to_mesh():
 	SCENE_ROOT.global_transform.basis = SKELETON.global_transform.basis
 	MESH.quaternion = Quaternion()
 	SKELETON.quaternion = Quaternion()  # reset to identity
+
+func ready() -> void:
+	last_root_pos = SKELETON_ROOT_DEFAULT_POSITION
 
 func _physics_process(_delta: float) -> void: 
 	

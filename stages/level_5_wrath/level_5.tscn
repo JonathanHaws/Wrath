@@ -143,7 +143,7 @@ size = Vector3(51.7317, 6.81735, 0.861012)
 [node name="Cinematics" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Cinematics"]
-transform = Transform3D(0.874629, 0.249685, -0.415548, -1.78814e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
+transform = Transform3D(0.874629, 0.249685, -0.415548, -1.86264e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
 rotation_edit_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cinematics"]
@@ -347,7 +347,7 @@ debug_color = Color(1, 1, 1, 0)
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36.5086, -190)
 
 [node name="Wrath" parent="." instance=ExtResource("7_eqpye")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 1.2767, 19)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 5.6484, 19)
 
 [node name="Bounds" type="Node" parent="Wrath"]
 
