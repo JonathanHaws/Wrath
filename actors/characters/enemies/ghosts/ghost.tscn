@@ -919,7 +919,7 @@ func _ready() -> void:
 	#print(damage)
 "
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_agce3"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_7c1mb"]
 size = Vector3(2.23877, 1.68384, 3.26862)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mvqiw"]
@@ -927,7 +927,7 @@ size = Vector3(2.23877, 1.68384, 3.26862)
 [sub_resource type="SphereShape3D" id="SphereShape3D_2gcuv"]
 radius = 1.00222
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_dfr5h"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_5rg5p"]
 height = 0.477905
 radius = 2.03613
 
@@ -1099,7 +1099,7 @@ damage = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/MeshInstance3D/Attack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0577135, 0.341919, -1.7045)
-shape = SubResource("BoxShape3D_agce3")
+shape = SubResource("BoxShape3D_7c1mb")
 disabled = true
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 
@@ -1141,7 +1141,7 @@ damage = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="JumpAttack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0577135, -1.10771, -0.179132)
-shape = SubResource("CylinderShape3D_dfr5h")
+shape = SubResource("CylinderShape3D_5rg5p")
 disabled = true
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 

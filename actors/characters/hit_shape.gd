@@ -10,10 +10,15 @@ var invincibility_timer: Timer
 @export_group("DAMAGE REACTION")
 ## For Body / Child Nodes which have to reposition themselves. Such as Needed positional synchronization between attacker / attacked on animations, Hurt Particles, etc.
 @export var TELEPORT_NODES_TO_HIT: Array[Node3D] = [] 
+
 @export var HURT_ANIMATION_PLAYER: AnimationPlayer
 @export var DEATH_ANIMATION_PLAYER: AnimationPlayer
+@export var HEAL_ANIMATION_PLAYER: AnimationPlayer
+
 @export var HURT_ANIM: String = "HURT"
 @export var DEATH_ANIM: String = "DEATH"
+@export var HEAL_ANIM: String = "HEAL"
+
 @export var DAMAGE_NUMBERS: PackedScene
 func show_damage(damage_amount: int) -> void:
 	var number = DAMAGE_NUMBERS.instantiate()
@@ -34,13 +39,19 @@ func hit(area: Area3D = null, damage: int = 0)-> void:
 	for node in TELEPORT_NODES_TO_HIT:
 		node.global_transform.origin = area.global_transform.origin
 		
-	if HEALTH > 0 and HURT_ANIMATION_PLAYER and HURT_ANIMATION_PLAYER.has_animation(HURT_ANIM):
-		HURT_ANIMATION_PLAYER.play(HURT_ANIM)
-		HURT_ANIMATION_PLAYER.seek(0, true)
-	elif HEALTH <= 0 and DEATH_ANIMATION_PLAYER and DEATH_ANIMATION_PLAYER.has_animation(DEATH_ANIM):
-		DISABLED = true
-		DEATH_ANIMATION_PLAYER.play(DEATH_ANIM)
-		DEATH_ANIMATION_PLAYER.seek(0, true)
+	if HEALTH > 0 and damage > 0: # HURT
+		if HURT_ANIMATION_PLAYER and HURT_ANIMATION_PLAYER.has_animation(HURT_ANIM):
+			HURT_ANIMATION_PLAYER.play(HURT_ANIM)
+			HURT_ANIMATION_PLAYER.seek(0, true)
+	if HEALTH <= 0: # DEATH
+		if DEATH_ANIMATION_PLAYER and DEATH_ANIMATION_PLAYER.has_animation(DEATH_ANIM):
+			DISABLED = true
+			DEATH_ANIMATION_PLAYER.play(DEATH_ANIM)
+			DEATH_ANIMATION_PLAYER.seek(0, true)		
+	if damage < 0: # HEAL
+		if HEAL_ANIMATION_PLAYER and HEAL_ANIMATION_PLAYER.has_animation(HEAL_ANIM):
+			HEAL_ANIMATION_PLAYER.play(HEAL_ANIM)
+			HEAL_ANIMATION_PLAYER.seek(0, true)
 			
 func _ready():
 	if INVINCIBILITY_COOLDOWN > 0:

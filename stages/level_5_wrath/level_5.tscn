@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="5_rlfmo"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="6_haf51"]
 [ext_resource type="PackedScene" uid="uid://b3urcqmix8s8g" path="res://actors/characters/enemies/bosses/wrath/wrath.tscn" id="7_eqpye"]
-[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp.tscn" id="8_rf8or"]
+[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp_health.tscn" id="8_rf8or"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="9_1jlmx"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="10_dklar"]
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://actors/characters/enemies/bosses/greed/greed.blend" id="13_v1s4o"]
@@ -389,16 +389,16 @@ debug_color = Color(0, 0.595, 0.7, 0)
 
 [node name="Wisps" type="Node" parent="."]
 
-[node name="Wisp1" parent="Wisps" instance=ExtResource("8_rf8or")]
+[node name="WispHealth" parent="Wisps" instance=ExtResource("8_rf8or")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.3216, -37.1959, -168.946)
 
-[node name="Wisp2" parent="Wisps" instance=ExtResource("8_rf8or")]
+[node name="WispHealth2" parent="Wisps" instance=ExtResource("8_rf8or")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1656, -10.1917, 37.849)
 
-[node name="Wisp3" parent="Wisps" instance=ExtResource("8_rf8or")]
+[node name="WispHealth3" parent="Wisps" instance=ExtResource("8_rf8or")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9891, -28.8294, -61.2567)
 
-[node name="Wisp4" parent="Wisps" instance=ExtResource("8_rf8or")]
+[node name="WispHealth4" parent="Wisps" instance=ExtResource("8_rf8or")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6554, -30.1646, -135.958)
 
 [node name="Doors" type="Node" parent="."]

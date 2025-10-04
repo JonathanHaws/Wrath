@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://5n4cvh6cqc4p"]
+[gd_scene load_steps=27 format=3 uid="uid://5n4cvh6cqc4p"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_7ckn6"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_i1vh2"]
@@ -8,7 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://btssfp845kee" path="res://actors/props/portal/escape.ogg" id="6_2r58u"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="7_1yqwe"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="8_bgvw0"]
-[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp.tscn" id="9_ifljh"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="10_0jji2"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="11_0yniq"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="12_62dvu"]
@@ -306,9 +305,6 @@ transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, -9.09
 DESTINATION_NODE_NAME = "Exit"
 DESTINATION_SCENE = "uid://cv4g3s0sicstn"
 
-[node name="Wisp" parent="." instance=ExtResource("9_ifljh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.4622, -7.08744, -30.8438)
-
 [node name="Portal" type="Node3D" parent="." node_paths=PackedStringArray("ANIM", "AREA", "PLAYER_SPOT")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3.82572e-06, -9.06787, 1.26405)
 script = ExtResource("5_c6d1s")
@@ -330,13 +326,13 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
 [node name="spin" parent="Portal/Mesh" index="1"]
-transform = Transform3D(-0.402901, 0.915242, 0, -0.915242, -0.402901, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(0.189467, -0.981886, 0, 0.981886, 0.189467, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Portal/Mesh/flames_2" index="0"]
-transform = Transform3D(-0.376932, -0.851403, 1.08778e-15, 0.851403, -0.376932, 3.73299e-15, -2.97308e-15, 2.50585e-15, 0.931109, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(-0.769873, 0.548352, -9.57348e-16, -0.548352, -0.769873, 5.6151e-15, 2.47781e-15, 5.12897e-15, 0.945195, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Portal/Mesh/flames_1" index="0"]
-transform = Transform3D(-0.376932, -0.851403, 1.08778e-15, 0.851403, -0.376932, 3.73299e-15, -2.97308e-15, 2.50585e-15, 0.931109, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(-0.769873, 0.548352, -9.57348e-16, -0.548352, -0.769873, 5.6151e-15, 2.47781e-15, 5.12897e-15, 0.945195, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Portal/Mesh" index="4"]
 autoplay = "Spin"
