@@ -70,10 +70,10 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ojp7h"]
-size = Vector3(17.5007, 11, 2)
+size = Vector3(23.6235, 11, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rx8ry"]
-size = Vector3(19.4529, 10.7881, 3.15704)
+size = Vector3(25.8425, 10.7881, 3.15704)
 
 [node name="LightDoor" type="Node3D" node_paths=PackedStringArray("AREA", "ANIM", "START")]
 script = ExtResource("1_ityv5")
@@ -110,11 +110,11 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.63269, 5, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42872, 5, -0.5)
 shape = SubResource("BoxShape3D_ojp7h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0838, 4.89406, -0.480927)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11102, 4.89406, -0.480927)
 shape = SubResource("BoxShape3D_rx8ry")

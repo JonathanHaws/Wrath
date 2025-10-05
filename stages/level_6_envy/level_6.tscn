@@ -104,9 +104,9 @@ DESTINATION_NODE_NAME = "Exit"
 DESTINATION_SCENE = "uid://dsdh2bite7xv4"
 
 [node name="Exit" parent="." instance=ExtResource("7_iow1r")]
-transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 72.7045, -9.60013, -14)
-DESTINATION_NODE_NAME = "Enter"
-DESTINATION_SCENE = "uid://cevok3tw0yqfi"
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 72.5092, -9.68296, -13.5897)
+DESTINATION_NODE_NAME = "EnvyCourt"
+DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
 
 [node name="Enemies" type="Node3D" parent="."]
 
