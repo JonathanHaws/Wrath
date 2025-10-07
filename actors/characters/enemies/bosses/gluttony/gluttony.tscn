@@ -1221,6 +1221,69 @@ tracks/3/keys = {
 "values": [1.0, 0.0, 0.0, 1.0, 1.0]
 }
 
+[sub_resource type="Animation" id="Animation_ryp23"]
+resource_name = "SLAM"
+length = 1.9335
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/gluttony/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("SLAM"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/Jump/CollisionShape3D:disabled")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0416667, 1.08333, 1.41667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [true, false, true]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio/Slam")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.08333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/Jump/CollisionShape3D:shape:radius")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.08333, 1.375),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.2, 40.0]
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Particles/Dust/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("JUMP_ATTACK"),
+"times": PackedFloat32Array(0.875)
+}
+
 [sub_resource type="Animation" id="Animation_q0nhg"]
 resource_name = "SLAM_LEFT"
 length = 1.25001
@@ -1541,69 +1604,6 @@ tracks/5/loop_wrap = true
 tracks/5/keys = {
 "clips": PackedStringArray("VOMIT_MEDIUM_LEFT"),
 "times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_ryp23"]
-resource_name = "SLAM"
-length = 1.9335
-step = 0.0416667
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/gluttony/AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("SLAM"),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/Jump/CollisionShape3D:disabled")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0.0416667, 1.08333, 1.41667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [true, false, true]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Audio/Slam")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(1.08333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/Jump/CollisionShape3D:shape:radius")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1.08333, 1.375),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.2, 40.0]
-}
-tracks/4/type = "animation"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Particles/Dust/AnimationPlayer")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"clips": PackedStringArray("JUMP_ATTACK"),
-"times": PackedFloat32Array(0.875)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
@@ -2031,11 +2031,11 @@ next/FIST_SLAM_RIGHT = &"CHASE"
 next/INTRO = &"CHASE"
 next/SHOOT = &"CHASE"
 next/SHOOT_GRAVITY = &"CHASE"
+next/SLAM = &"CHASE"
 next/SLAM_LEFT = &"CHASE"
 next/SLAM_RIGHT = &"CHASE"
 next/VOMIT_IN_FRONT = &"CHASE"
 next/VOMIT_MEDIUM_LEFT = &"CHASE"
-next/SLAM = &"CHASE"
 
 [node name="FistSlamLeft" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("AREA_MULTIPLIER", "TARGET", "BODY")]
 script = ExtResource("29_uk6rk")
