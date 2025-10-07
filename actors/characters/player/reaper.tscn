@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=99 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -40,6 +40,7 @@
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="35_lwilf"]
 [ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://actors/characters/player/tracker/play_time_tracker.gd" id="36_5cvkf"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="36_p2pt0"]
+[ext_resource type="Texture2D" uid="uid://ckp765x2kgtit" path="res://actors/characters/player/mesh/textures/cloak/emisson.png" id="38_5ijfa"]
 [ext_resource type="Script" uid="uid://dxmw2yslqiwp1" path="res://actors/characters/hurt_shape_persistent_damage.gd" id="38_ekykk"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://actors/slow_motion.gd" id="39_gts01"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://actors/squash.gd" id="41_utjob"]
@@ -207,18 +208,78 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0.2, 0.0],
+"args": [4.0, 0.1],
 "method": &"impact"
 }]
 }
-tracks/1/type = "method"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Audio")
-tracks/1/interp = 1
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:disabled")
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.16667),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:SPEED_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("..:TURN_MULTIPLIER")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../ColorRect:color")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.233333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../Audio")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.266667),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [["HURT"], 1.0, 1.0, 0.0, 0.0],
@@ -228,66 +289,6 @@ tracks/1/keys = {
 "method": &"play_2d_sound"
 }]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Hitbox/CollisionShape3D:disabled")
-tracks/2/interp = 0
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
-tracks/3/interp = 0
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("..:SPEED_MULTIPLIER")
-tracks/4/interp = 0
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("..:TURN_MULTIPLIER")
-tracks/5/interp = 0
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("../ColorRect:color")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.7, 2.3),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
-}
 tracks/7/type = "method"
 tracks/7/imported = false
 tracks/7/enabled = true
@@ -295,7 +296,7 @@ tracks/7/path = NodePath("../Hitbox/DeathCountTracker")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(2.53333),
+"times": PackedFloat32Array(0.266667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -309,7 +310,7 @@ tracks/8/path = NodePath("..")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(2.8),
+"times": PackedFloat32Array(0.366667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -348,68 +349,78 @@ tracks/11/keys = {
 "update": 0,
 "values": [110.0]
 }
+tracks/12/type = "animation"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Mesh/reaper/AnimationPlayer")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"clips": PackedStringArray("Death"),
+"times": PackedFloat32Array(0)
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/LookAtModifier3D:influence")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/cloak:material_override:shader_parameter/dissolve_amount")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/body:material_override:shader_parameter/dissolve_amount")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_xkeou"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Hitbox/CollisionShape3D:disabled")
+tracks/0/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/cloak:material_override:shader_parameter/dissolve_amount")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("..:SPEED_MULTIPLIER")
+tracks/1/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/body:material_override:shader_parameter/dissolve_amount")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("..:TURN_MULTIPLIER")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
 "values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("../SpringArm3D/FovLerp:target_fov")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [90.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_k5idf"]
@@ -2038,6 +2049,46 @@ shader_parameter/glow_border_smoothness = 0.003
 shader_parameter/normal_strength = 1.0
 shader_parameter/use_normal_map = false
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fw2bj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yinxs"]
+noise = SubResource("FastNoiseLite_fw2bj")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bud88"]
+render_priority = 0
+shader = ExtResource("18_dtcwh")
+shader_parameter/albedo_texture = ExtResource("33_n8vw1")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/emission_texture_intensity = 0.0
+shader_parameter/emission_texture_enabled = true
+shader_parameter/inside_color = Color(0, 0, 0, 1)
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_yinxs")
+shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.77
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/normal_strength = 1.0
+shader_parameter/use_normal_map = false
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xnjpx"]
+render_priority = 0
+shader = ExtResource("18_dtcwh")
+shader_parameter/albedo_texture = ExtResource("34_75wkf")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/emission_texture = ExtResource("38_5ijfa")
+shader_parameter/emission_texture_intensity = 1.0
+shader_parameter/emission_texture_enabled = true
+shader_parameter/inside_color = Color(0, 0, 0, 1)
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_yinxs")
+shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.77
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/normal_strength = 1.0
+shader_parameter/use_normal_map = false
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1s71"]
 transparency = 1
 albedo_texture = ExtResource("34_75wkf")
@@ -2167,6 +2218,7 @@ root_node = NodePath("../AnimationPlayer")
 libraries = {
 &"": SubResource("AnimationLibrary_k5idf")
 }
+autoplay = "RESET"
 
 [node name="DeathAnimation" type="Node" parent="AlwaysProcessDeath" node_paths=PackedStringArray("hit_shape", "regular_death_animation_player", "platforming_death_animation_player")]
 script = ExtResource("29_5ijfa")
@@ -2263,47 +2315,52 @@ omni_range = 30.0
 
 [node name="Skeleton3D" parent="Mesh/reaper/Reaper" index="0"]
 bones/0/rotation = Quaternion(-0.707089, -0.00501628, 0.00501628, 0.707089)
-bones/1/position = Vector3(0.0121595, 0.195021, 0.858114)
-bones/1/rotation = Quaternion(0.666525, 0.00528841, -0.00472851, 0.745449)
-bones/2/rotation = Quaternion(1.86264e-09, 1.21443e-07, -1.86265e-09, 1)
-bones/3/position = Vector3(-0.134822, 0.052576, -0.00378909)
-bones/3/rotation = Quaternion(-0.0791568, -0.242246, 0.807361, 0.532184)
-bones/4/rotation = Quaternion(-0.708254, 0.120146, -0.332469, 0.61107)
-bones/5/rotation = Quaternion(-0.106005, -0.0843838, 0.0754514, 0.987902)
-bones/6/rotation = Quaternion(-0.645197, -0.369968, -0.17571, 0.644957)
-bones/7/position = Vector3(0.0950237, 0.298836, -0.0378842)
-bones/7/rotation = Quaternion(-0.0880253, 0.319577, -0.443777, 0.832577)
-bones/8/position = Vector3(0.0402783, 0.37375, 0.0192499)
-bones/8/rotation = Quaternion(-0.590165, -0.329685, -0.328786, 0.659479)
-bones/9/rotation = Quaternion(0.0698226, 6.55283e-06, -3.97155e-05, 0.997559)
-bones/10/position = Vector3(0.0739062, 0.0863639, 2.37346e-08)
-bones/10/rotation = Quaternion(-0.115372, -0.050699, -0.859753, 0.494917)
-bones/11/rotation = Quaternion(-0.458322, -0.406508, 0.068734, 0.787381)
-bones/12/rotation = Quaternion(-0.0341439, 0.039829, 0.140836, 0.988642)
-bones/13/rotation = Quaternion(-0.680775, 0.0647394, -0.215597, 0.697046)
-bones/14/position = Vector3(0.0097023, 0.14449, -0.0938516)
-bones/14/rotation = Quaternion(-0.498519, -8.94973e-05, 0.259607, 0.827093)
-bones/15/position = Vector3(-0.104507, 0.226166, -0.0265586)
-bones/15/rotation = Quaternion(-0.396715, 0.383495, -0.189197, 0.812252)
-bones/16/position = Vector3(-0.0745593, -0.0469273, -3.05887e-08)
-bones/16/rotation = Quaternion(0.0101559, -0.186483, 0.982371, 0.0083134)
-bones/17/rotation = Quaternion(0.0230632, 0.000157504, 0.00323349, 0.999729)
-bones/18/rotation = Quaternion(-0.61167, 0.00253319, 0.000890185, 0.791109)
-bones/19/position = Vector3(0.0745593, -0.0469273, -3.16411e-08)
-bones/19/rotation = Quaternion(-0.00628432, 0.120802, 0.992616, -0.00893624)
-bones/20/rotation = Quaternion(0.0230632, -0.00015751, -0.0032335, 0.999729)
-bones/21/rotation = Quaternion(-0.792553, 0.0020302, -0.00182285, 0.609797)
-bones/22/position = Vector3(0.113584, 0.465124, 1.03915)
-bones/22/rotation = Quaternion(0.602369, -0.40178, 0.123678, 0.678548)
+bones/1/position = Vector3(0.0321059, 0.050313, 0.857984)
+bones/1/rotation = Quaternion(0.707089, 0.00501628, -0.00501628, 0.707089)
+bones/3/position = Vector3(-0.0739061, 0.0863639, -1.76241e-08)
+bones/3/rotation = Quaternion(-0.339954, 0.189886, 0.806794, 0.444363)
+bones/4/rotation = Quaternion(-0.351262, 0.187928, -0.33691, 0.853106)
+bones/5/rotation = Quaternion(0.208797, -0.012884, 0.188292, 0.959575)
+bones/6/rotation = Quaternion(-0.265377, 0.0323598, -0.127725, 0.955099)
+bones/7/position = Vector3(0.0579655, 0.275993, -0.0112008)
+bones/7/rotation = Quaternion(-0.096897, 0.206943, -0.173895, 0.957886)
+bones/8/position = Vector3(0.0412806, 0.336471, 0.0591398)
+bones/8/rotation = Quaternion(0.0108148, -0.730595, 0.102959, 0.674917)
+bones/9/rotation = Quaternion(-0.132495, -5.52746e-12, -3.16727e-08, 0.991184)
+bones/10/position = Vector3(0.0739062, 0.086364, 2.02373e-08)
+bones/10/rotation = Quaternion(-0.339954, -0.189886, -0.806794, 0.444363)
+bones/11/rotation = Quaternion(-0.351262, -0.187928, 0.33691, 0.853106)
+bones/12/rotation = Quaternion(0.208798, 0.012884, -0.188292, 0.959575)
+bones/13/rotation = Quaternion(-0.265377, -0.0323597, 0.127725, 0.955099)
+bones/14/position = Vector3(-0.0579655, 0.275993, -0.0112008)
+bones/14/rotation = Quaternion(-0.0968969, -0.206943, 0.173895, 0.957886)
+bones/15/position = Vector3(-0.0412807, 0.336471, 0.0591398)
+bones/15/rotation = Quaternion(0.0108147, 0.730595, -0.102959, 0.674917)
+bones/16/position = Vector3(-0.0745592, -0.0469272, -3.392e-08)
+bones/16/rotation = Quaternion(0.00351466, -0.194222, 0.980826, 0.0157056)
+bones/17/rotation = Quaternion(0.27326, 0.00741328, 0.0027838, 0.961908)
+bones/18/rotation = Quaternion(-0.706787, 4.46224e-08, 0.00129818, 0.707425)
+bones/19/position = Vector3(0.0745592, -0.0469272, -3.49725e-08)
+bones/19/rotation = Quaternion(-0.000420176, -0.00144315, 0.99987, -0.0160885)
+bones/20/rotation = Quaternion(0.39503, -0.0109573, -0.00248365, 0.918599)
+bones/21/rotation = Quaternion(-0.706787, -4.59044e-08, -0.00129818, 0.707425)
+bones/22/position = Vector3(0.441474, 0.319224, 0.8481)
+bones/22/rotation = Quaternion(0.620598, -0.366335, -0.150987, 0.676653)
 
 [node name="blind_fold" parent="Mesh/reaper/Reaper/Skeleton3D" index="0"]
 surface_material_override/0 = SubResource("ShaderMaterial_12tax")
+
+[node name="body" parent="Mesh/reaper/Reaper/Skeleton3D" index="1"]
+material_override = SubResource("ShaderMaterial_bud88")
+
+[node name="cloak" parent="Mesh/reaper/Reaper/Skeleton3D" index="2"]
+material_override = SubResource("ShaderMaterial_xnjpx")
 
 [node name="collar" parent="Mesh/reaper/Reaper/Skeleton3D" index="3"]
 surface_material_override/0 = SubResource("StandardMaterial3D_m1s71")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5"]
-transform = Transform3D(0.636638, -0.662005, -0.395527, 0.703357, 0.70877, -0.0541693, 0.316198, -0.24371, 0.916855, 0.0988293, 1.04066, -0.215124)
+transform = Transform3D(0.681559, -0.263822, -0.68255, 0.31806, 0.946836, -0.0483761, 0.659026, -0.184121, 0.729235, 0.429397, 0.854279, -0.0692239)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -2326,7 +2383,7 @@ animation_player = NodePath("../../../../../../../Upgrade")
 upgrade_animation = "DAMAGE"
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="6"]
-transform = Transform3D(-0.99982, -0.0154742, -0.0110165, 0.0115822, -0.0369606, -0.999249, 0.0150555, -0.999197, 0.0371333, -0.0878897, 0.0328138, -0.131176)
+transform = Transform3D(-0.999717, 2.96277e-07, -0.0238119, 0.0234935, -0.162993, -0.986347, -0.00388146, -0.986627, 0.162947, -0.0778968, 0.0457712, 0.105809)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -2337,7 +2394,7 @@ scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="7"]
-transform = Transform3D(-0.99982, -0.0154742, -0.0110165, 0.0115822, -0.0369606, -0.999249, 0.0150555, -0.999197, 0.0371333, -0.0878897, 0.0328138, -0.131176)
+transform = Transform3D(-0.999717, 2.96277e-07, -0.0238119, 0.0234935, -0.162993, -0.986347, -0.00388146, -0.986627, 0.162947, -0.0778968, 0.0457712, 0.105809)
 bone_name = "foot_l"
 bone_idx = 18
 
