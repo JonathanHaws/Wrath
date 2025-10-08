@@ -43,7 +43,8 @@ func _physics_process(_delta: float) -> void:
 
 	# POSITION 
 	var pos_path = anim.track_get_path(SKELETON_ROOT_POSITION_TRACK_INDEX)
-	if str(pos_path).ends_with("root") and anim.track_get_type(SKELETON_ROOT_ROTATION_TRACK_INDEX) == Animation.TYPE_ROTATION_3D:
+	if str(pos_path).ends_with("root"):
+		
 		var root_pos = anim.position_track_interpolate(SKELETON_ROOT_POSITION_TRACK_INDEX, min(time, anim.length))
 		var delta_root_pos = root_pos - last_root_pos
 		last_root_pos = root_pos	
