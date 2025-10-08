@@ -1,0 +1,28 @@
+[gd_resource type="ShaderMaterial" load_steps=6 format=3 uid="uid://d05o8hg3ko84m"]
+
+[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="1_txmst"]
+[ext_resource type="Texture2D" uid="uid://bm1u48mshqrkg" path="res://actors/characters/player/mesh/textures/cloak/color.png" id="2_ktkl1"]
+[ext_resource type="Texture2D" uid="uid://ckp765x2kgtit" path="res://actors/characters/player/mesh/textures/cloak/emisson.png" id="3_owsey"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ekykk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5ijfa"]
+noise = SubResource("FastNoiseLite_ekykk")
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_txmst")
+shader_parameter/albedo_texture = ExtResource("2_ktkl1")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/emission_texture = ExtResource("3_owsey")
+shader_parameter/emission_texture_intensity = 1.0
+shader_parameter/emission_texture_enabled = true
+shader_parameter/inside_color = Color(0, 0, 0, 1)
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_5ijfa")
+shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.77
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/normal_strength = 1.0
+shader_parameter/use_normal_map = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=91 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -25,7 +25,6 @@
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/3d_scene_spawner.gd" id="15_lwilf"]
 [ext_resource type="AudioStream" uid="uid://cawtjrru8ho7x" path="res://actors/characters/player/sfx/Hurt.wav" id="15_tgmjc"]
 [ext_resource type="Script" uid="uid://ccjt2mmin66uh" path="res://actors/characters/player/camera/lock_on.gd" id="17_5cvkf"]
-[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="18_dtcwh"]
 [ext_resource type="AudioStream" uid="uid://ca1jfg0asj5b6" path="res://actors/characters/player/sfx/Windown.wav" id="18_pc8iq"]
 [ext_resource type="AudioStream" uid="uid://dlwicer3j08q8" path="res://actors/characters/player/sfx/Spawn_Void.wav" id="20_5d6ad"]
 [ext_resource type="Script" uid="uid://brd3ehk2rfsfr" path="res://actors/characters/player/tracker/death_count_tracker.gd" id="20_m1s71"]
@@ -34,13 +33,12 @@
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="24_m1s71"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://actors/characters/enemies/sfx/Slam.wav" id="25_8i186"]
 [ext_resource type="Script" uid="uid://bfq61wyde2xvx" path="res://actors/characters/player/death_animation.gd" id="29_5ijfa"]
-[ext_resource type="Texture2D" uid="uid://cilvyugj78b4q" path="res://actors/characters/player/mesh/textures/body/color.png" id="33_n8vw1"]
 [ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://actors/characters/player/player_health.tres" id="34_6g6ue"]
-[ext_resource type="Texture2D" uid="uid://bm1u48mshqrkg" path="res://actors/characters/player/mesh/textures/cloak/color.png" id="34_75wkf"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="35_lwilf"]
+[ext_resource type="Material" uid="uid://dacvxdrj2im0y" path="res://actors/characters/player/materials/body.tres" id="35_m1s71"]
+[ext_resource type="Material" uid="uid://d05o8hg3ko84m" path="res://actors/characters/player/materials/cloak.tres" id="36_4anjp"]
 [ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://actors/characters/player/tracker/play_time_tracker.gd" id="36_5cvkf"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="36_p2pt0"]
-[ext_resource type="Texture2D" uid="uid://ckp765x2kgtit" path="res://actors/characters/player/mesh/textures/cloak/emisson.png" id="38_5ijfa"]
 [ext_resource type="Script" uid="uid://dxmw2yslqiwp1" path="res://actors/characters/hurt_shape_persistent_damage.gd" id="38_ekykk"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://actors/slow_motion.gd" id="39_gts01"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://actors/squash.gd" id="41_utjob"]
@@ -2033,66 +2031,6 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0gmj"]
 size = Vector3(12.7935, 22.7476, 51.4006)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_12tax"]
-render_priority = 0
-shader = ExtResource("18_dtcwh")
-shader_parameter/albedo_texture = ExtResource("33_n8vw1")
-shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/emission_texture_intensity = 0.0
-shader_parameter/emission_texture_enabled = true
-shader_parameter/inside_color = Color(0, 0, 0, 1)
-shader_parameter/dissolve_amount = 0.0
-shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
-shader_parameter/glow_intensitiy = 1.77
-shader_parameter/glow_border_width = 0.018
-shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_strength = 1.0
-shader_parameter/use_normal_map = false
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_fw2bj"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_yinxs"]
-noise = SubResource("FastNoiseLite_fw2bj")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_bud88"]
-render_priority = 0
-shader = ExtResource("18_dtcwh")
-shader_parameter/albedo_texture = ExtResource("33_n8vw1")
-shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/emission_texture_intensity = 0.0
-shader_parameter/emission_texture_enabled = true
-shader_parameter/inside_color = Color(0, 0, 0, 1)
-shader_parameter/dissolve_amount = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_yinxs")
-shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
-shader_parameter/glow_intensitiy = 1.77
-shader_parameter/glow_border_width = 0.018
-shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_strength = 1.0
-shader_parameter/use_normal_map = false
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xnjpx"]
-render_priority = 0
-shader = ExtResource("18_dtcwh")
-shader_parameter/albedo_texture = ExtResource("34_75wkf")
-shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/emission_texture = ExtResource("38_5ijfa")
-shader_parameter/emission_texture_intensity = 1.0
-shader_parameter/emission_texture_enabled = true
-shader_parameter/inside_color = Color(0, 0, 0, 1)
-shader_parameter/dissolve_amount = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_yinxs")
-shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
-shader_parameter/glow_intensitiy = 1.77
-shader_parameter/glow_border_width = 0.018
-shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_strength = 1.0
-shader_parameter/use_normal_map = false
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m1s71"]
-transparency = 1
-albedo_texture = ExtResource("34_75wkf")
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_12tax"]
 size = Vector3(1.22162, 1.39923, 0.2724)
 
@@ -2157,6 +2095,7 @@ UPGRADE_ANIMATION = "HEALTH"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0864, 0)
 shape = SubResource("CapsuleShape3D_k5idf")
+disabled = true
 
 [node name="GodMode" type="Node3D" parent="." node_paths=PackedStringArray("PLAYER", "MESH", "CAMERA", "BODY_SHAPE", "HITBOX_SHAPE", "DAMAGE_SHAPE", "ANIMATION_PLAYER")]
 script = ExtResource("3_4anjp")
@@ -2313,20 +2252,48 @@ omni_range = 30.0
 
 [node name="reaper" parent="Mesh" instance=ExtResource("3_k4avc")]
 
-[node name="blind_fold" parent="Mesh/reaper/Reaper/Skeleton3D" index="0"]
-surface_material_override/0 = SubResource("ShaderMaterial_12tax")
+[node name="Skeleton3D" parent="Mesh/reaper/Reaper" index="0"]
+bones/0/rotation = Quaternion(-0.707089, -0.00501628, 0.00501628, 0.707089)
+bones/1/position = Vector3(0.0121782, 0.195052, 0.858267)
+bones/1/rotation = Quaternion(0.707089, 0.00501628, -0.00501628, 0.707089)
+bones/3/position = Vector3(-0.0739061, 0.0863639, -1.76241e-08)
+bones/3/rotation = Quaternion(-0.409975, -0.0300535, 0.74513, 0.525166)
+bones/4/rotation = Quaternion(-0.277613, 0.201716, -0.194207, 0.918981)
+bones/5/rotation = Quaternion(0.0961392, 0.00734744, 0.0396406, 0.994551)
+bones/6/rotation = Quaternion(-0.265377, 0.0323598, -0.127725, 0.955099)
+bones/7/position = Vector3(0.057861, 0.261799, -0.0139946)
+bones/7/rotation = Quaternion(-0.182349, 0.225406, -0.332413, 0.897465)
+bones/8/position = Vector3(0.0653034, 0.338504, 0.0403111)
+bones/8/rotation = Quaternion(-0.172493, -0.686759, 0.0876176, 0.700665)
+bones/9/rotation = Quaternion(-0.265458, -0.00515515, -0.0321177, 0.963574)
+bones/10/position = Vector3(0.0739062, 0.086364, 2.02373e-08)
+bones/10/rotation = Quaternion(-0.409974, 0.0300534, -0.74513, 0.525166)
+bones/11/rotation = Quaternion(-0.277613, -0.201716, 0.194207, 0.918981)
+bones/12/rotation = Quaternion(0.0961392, -0.00734743, -0.0396406, 0.994551)
+bones/13/rotation = Quaternion(-0.265377, -0.0323597, 0.127725, 0.955099)
+bones/14/position = Vector3(-0.0578609, 0.261799, -0.0139946)
+bones/14/rotation = Quaternion(-0.182349, -0.225406, 0.332413, 0.897465)
+bones/15/position = Vector3(-0.0653033, 0.338504, 0.0403112)
+bones/15/rotation = Quaternion(-0.172493, 0.686759, -0.0876176, 0.700665)
+bones/16/position = Vector3(-0.0745592, -0.0469272, -3.392e-08)
+bones/16/rotation = Quaternion(0.00351466, -0.194222, 0.980826, 0.0157056)
+bones/17/rotation = Quaternion(0.0837805, 0.00191528, 0.00314371, 0.996477)
+bones/18/rotation = Quaternion(-0.706787, 4.46224e-08, 0.00129818, 0.707425)
+bones/19/position = Vector3(0.0745592, -0.0469272, -3.49725e-08)
+bones/19/rotation = Quaternion(-0.0153629, -0.227252, 0.972541, 0.0477969)
+bones/20/rotation = Quaternion(0.0506204, -0.0458554, -0.00321323, 0.99766)
+bones/21/rotation = Quaternion(-0.566836, 0.0184531, 0.00433584, 0.823613)
+bones/22/position = Vector3(0.341716, 0.683207, 0.949173)
+bones/22/rotation = Quaternion(0.526291, -0.364815, -0.0903247, 0.762738)
 
-[node name="body" parent="Mesh/reaper/Reaper/Skeleton3D" index="1"]
-material_override = SubResource("ShaderMaterial_bud88")
+[node name="body" parent="Mesh/reaper/Reaper/Skeleton3D" index="0"]
+material_override = ExtResource("35_m1s71")
 
-[node name="cloak" parent="Mesh/reaper/Reaper/Skeleton3D" index="2"]
-material_override = SubResource("ShaderMaterial_xnjpx")
+[node name="cloak" parent="Mesh/reaper/Reaper/Skeleton3D" index="1"]
+material_override = ExtResource("36_4anjp")
 
-[node name="collar" parent="Mesh/reaper/Reaper/Skeleton3D" index="3"]
-surface_material_override/0 = SubResource("StandardMaterial3D_m1s71")
-
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5"]
-transform = Transform3D(0.998841, 0.00591695, -0.0477685, -0.00559802, 0.999961, 0.00680763, 0.0478069, -0.00653231, 0.998835, -0.706043, 1.00072, 0.0655569)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="3"]
+transform = Transform3D(0.710885, -0.25851, -0.654076, 0.471575, 0.865167, 0.170593, 0.521785, -0.429718, 0.736941, 0.328215, 0.953926, -0.433207)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -2348,8 +2315,8 @@ save_key = "damage"
 animation_player = NodePath("../../../../../../../Upgrade")
 upgrade_animation = "DAMAGE"
 
-[node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="6"]
-transform = Transform3D(-0.999717, 3.66941e-07, -0.0238119, 0.0237513, -0.0712467, -0.997176, -0.00169688, -0.997459, 0.0712265, -0.0978265, 0.0106028, 0.0923682)
+[node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4"]
+transform = Transform3D(-0.999717, 2.89874e-07, -0.0238119, 0.0232263, 0.220422, -0.975128, 0.0052484, -0.975405, -0.220359, -0.0978265, 0.0502798, -0.188368)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -2359,8 +2326,8 @@ script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
-[node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="7"]
-transform = Transform3D(-0.999717, 3.66941e-07, -0.0238119, 0.0237513, -0.0712467, -0.997176, -0.00169688, -0.997459, 0.0712265, -0.0978265, 0.0106028, 0.0923682)
+[node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5"]
+transform = Transform3D(-0.999717, 2.89874e-07, -0.0238119, 0.0232263, 0.220422, -0.975128, 0.0052484, -0.975405, -0.220359, -0.0978265, 0.0502798, -0.188368)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -2370,7 +2337,7 @@ script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="8"]
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="6"]
 target_node = NodePath("../../../../../SpringArm3D/Camera3D/HeadFollowTarget")
 bone_name = "head"
 bone = 9
