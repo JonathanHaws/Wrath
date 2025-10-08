@@ -1259,7 +1259,6 @@ bone_idx = 6
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("18_i3cy0")
-damage = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/TorsoAttack/Area3D"]
 transform = Transform3D(0.989492, -0.144162, 0.0111708, -0.144291, -0.989466, 0.0117604, 0.00935774, -0.0132487, -0.999869, 0.0529809, -0.371373, 0.0802408)
@@ -1276,7 +1275,6 @@ bone_idx = 6
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("18_i3cy0")
-damage = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/TailSpin/Area3D"]
 transform = Transform3D(0.564556, -0.0664063, 0.822738, 0.818927, -0.0794929, -0.568376, 0.103144, 0.994622, 0.00950454, -0.645955, -0.301278, 0.300961)
@@ -1294,7 +1292,6 @@ transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, -7.03584
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("18_i3cy0")
-damage = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/LeftHandAttack/Area3D"]
 transform = Transform3D(0.989492, -0.144162, 0.0111708, -0.144291, -0.989466, 0.0117603, 0.00935774, -0.0132488, -0.999869, -0.135483, -1.34407, -1.68718)
@@ -1312,7 +1309,6 @@ transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, -7.03584
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("18_i3cy0")
-damage = 5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/RightHandAttack/Area3D"]
 transform = Transform3D(0.989492, -0.144162, 0.0111708, -0.144291, -0.989467, 0.0117604, 0.00935774, -0.0132488, -0.99987, 0.0337555, -1.21883, -1.63623)
@@ -1330,7 +1326,6 @@ playback_default_blend_time = 0.3
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("18_i3cy0")
-damage = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Jump"]
 shape = SubResource("CylinderShape3D_4usqi")

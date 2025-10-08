@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://dshyyn54ur3e1" path="res://actors/characters/enemies/bosses/gluttony/gluttony.blend" id="29_wvvup"]
 [ext_resource type="PackedScene" uid="uid://d2iqujeqiun08" path="res://actors/characters/enemies/bosses/gluttony/projectiles/slow_vomit.tscn" id="30_kcm85"]
 [ext_resource type="PackedScene" uid="uid://dfopfbx7m077q" path="res://actors/characters/enemies/bosses/gluttony/projectiles/fast_vomit.tscn" id="30_nxhq0"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="31_vwjlg"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/interaction.gd" id="32_12e26"]
 [ext_resource type="Script" uid="uid://bs2bbm2ty8nsu" path="res://actors/characters/enemies/chase_target_smooth.gd" id="36_svijn"]
 [ext_resource type="Material" uid="uid://gwfmysarj7pc" path="res://actors/characters/dust/dust.tres" id="40_uk6rk"]
@@ -1659,53 +1660,6 @@ point_count = 2
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
 point_count = 1
 
-[sub_resource type="GDScript" id="GDScript_n8vw1"]
-script/source = "extends Area3D
-@export var damage = 1
-@export var damage_spread := 0
-@export var damage_multiplier = 1
-@export var damage_groups: Array[String] = [\"player_hitshape\"] ##area groups you want this hurtbox to damage
-
-@export_group(\"Save\")
-@export var save_damage: bool = false
-@export var save_key: String = \"\"
-@export var animation_player: AnimationPlayer
-@export var upgrade_animation: String = \"\"
-
-func _exit_tree() -> void:
-	if not save_damage: return
-	Save.data[save_key] = damage
-	Save.save_game()
-
-func _on_save_data_updated() -> void:
-	if not save_damage: return
-	if Save.data[save_key] != damage:
-		if animation_player and animation_player.has_animation(upgrade_animation):
-			animation_player.play(upgrade_animation)
-	damage = Save.data[save_key]
-
-func _on_area_entered(area: Area3D) -> void:
-	for group in damage_groups:
-		if area.is_in_group(group):
-			if \"hit\" in area:
-				area.hit(self, damage + randi_range(-damage_spread, damage_spread))
-			break
-
-func _ready() -> void:
-	area_entered.connect(_on_area_entered)
-	
-	if save_damage: 
-		if save_key == \"\": save_key = Save.get_unique_key(self, \"damage\")
-		if Save.data.has(save_key):
-			damage = Save.data[save_key]
-		else:
-			Save.data[save_key] = damage
-		Save.connect(\"save_data_updated\", _on_save_data_updated)
-	
-#func _process(_delta: float) -> void:
-	#print(damage)
-"
-
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vwjlg"]
 height = 0.892645
 radius = 40.0
@@ -2123,8 +2077,7 @@ SCENE_ROOT = NodePath("..")
 [node name="Jump" type="Area3D" parent="Mesh"]
 collision_layer = 3
 collision_mask = 3
-script = SubResource("GDScript_n8vw1")
-damage = 3
+script = ExtResource("31_vwjlg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Jump"]
 shape = SubResource("CylinderShape3D_vwjlg")
@@ -2213,8 +2166,7 @@ bone_idx = 33
 transform = Transform3D(0.99621, 0, -0.086982, 0, 1, 0, 0.086982, 0, 0.99621, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
-script = SubResource("GDScript_n8vw1")
-damage = 5
+script = ExtResource("31_vwjlg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea"]
 transform = Transform3D(-0.27755, -0.724332, -0.631118, 0.960711, -0.209259, -0.18233, 0, -0.656928, 0.753953, 0, 0, 0)
@@ -2241,8 +2193,7 @@ bone_idx = 43
 transform = Transform3D(0.0833822, 0, -0.996518, 0, 1, 0, 0.996518, 0, 0.0833822, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
-script = SubResource("GDScript_n8vw1")
-damage = 5
+script = ExtResource("31_vwjlg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/RightHand/AttackArea"]
 transform = Transform3D(-0.27755, -0.724332, -0.631118, 0.960711, -0.209259, -0.18233, 0, -0.656928, 0.753953, 0, 0, 0)
@@ -2269,8 +2220,7 @@ bone_idx = 54
 transform = Transform3D(0.0833822, 0, -0.996518, 0, 1, 0, 0.996518, 0, 0.0833822, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
-script = SubResource("GDScript_n8vw1")
-damage = 5
+script = ExtResource("31_vwjlg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/LeftLeg/AttackArea"]
 transform = Transform3D(-0.27755, -0.724332, -0.631118, 0.960711, -0.209259, -0.18233, 0, -0.656928, 0.753953, 0, 0, 0)
@@ -2295,8 +2245,7 @@ bone_idx = 57
 [node name="AttackArea" type="Area3D" parent="Mesh/gluttony/Armature/Skeleton3D/RightLeg" groups=["gluttony"]]
 collision_layer = 3
 collision_mask = 3
-script = SubResource("GDScript_n8vw1")
-damage = 5
+script = ExtResource("31_vwjlg")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/RightLeg/AttackArea"]
 transform = Transform3D(-0.27755, -0.724332, -0.631118, 0.960711, -0.209259, -0.18233, 0, -0.656928, 0.753953, 0, 0, 0)

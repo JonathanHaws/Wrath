@@ -1,5 +1,5 @@
 extends Area3D
-@export var damage = 1
+@export var damage = 10
 @export var damage_spread := 0
 @export var damage_multiplier = 1
 @export var damage_groups: Array[String] = ["player_hitshape"] ##area groups you want this hurtbox to damage

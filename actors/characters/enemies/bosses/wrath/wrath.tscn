@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://actors/slow_motion.gd" id="29_8mxmx"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_shake.gd" id="30_r1aqn"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="31_4oeto"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="31_x676q"]
 [ext_resource type="AudioStream" uid="uid://f7dwuxrh87go" path="res://actors/characters/enemies/bosses/wrath/wrath.ogg" id="32_h5485"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="33_h5485"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/3d_scene_spawner.gd" id="34_cc4qc"]
@@ -1203,53 +1204,6 @@ _limits = [0.0, 3.59551, 0.0, 1.0]
 _data = [Vector2(0, 2.58427), 0.0, 0.0, 0, 0, Vector2(0.155172, 3.59551), 0.0, 0.0, 0, 0, Vector2(0.413793, 1.46067), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="GDScript" id="GDScript_n8vw1"]
-script/source = "extends Area3D
-@export var damage = 1
-@export var damage_spread := 0
-@export var damage_multiplier = 1
-@export var damage_groups: Array[String] = [\"player_hitshape\"] ##area groups you want this hurtbox to damage
-
-@export_group(\"Save\")
-@export var save_damage: bool = false
-@export var save_key: String = \"\"
-@export var animation_player: AnimationPlayer
-@export var upgrade_animation: String = \"\"
-
-func _exit_tree() -> void:
-	if not save_damage: return
-	Save.data[save_key] = damage
-	Save.save_game()
-
-func _on_save_data_updated() -> void:
-	if not save_damage: return
-	if Save.data[save_key] != damage:
-		if animation_player and animation_player.has_animation(upgrade_animation):
-			animation_player.play(upgrade_animation)
-	damage = Save.data[save_key]
-
-func _on_area_entered(area: Area3D) -> void:
-	for group in damage_groups:
-		if area.is_in_group(group):
-			if \"hit\" in area:
-				area.hit(self, damage + randi_range(-damage_spread, damage_spread))
-			break
-
-func _ready() -> void:
-	area_entered.connect(_on_area_entered)
-	
-	if save_damage: 
-		if save_key == \"\": save_key = Save.get_unique_key(self, \"damage\")
-		if Save.data.has(save_key):
-			damage = Save.data[save_key]
-		else:
-			Save.data[save_key] = damage
-		Save.connect(\"save_data_updated\", _on_save_data_updated)
-	
-#func _process(_delta: float) -> void:
-	#print(damage)
-"
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d1l46"]
 radius = 0.822642
 height = 1.9658
@@ -1578,15 +1532,14 @@ bones/10/rotation = Quaternion(-0.239191, 0.243902, -0.292818, 0.893061)
 material_override = ExtResource("27_a67hc")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.923684, -0.195082, -0.329774, 0.0905005, -0.947408, 0.306964, -0.372313, 0.253694, 0.892761, -2.203, 2.26572, 1.10152)
+transform = Transform3D(-0.923684, -0.195082, -0.329773, 0.0905008, -0.947409, 0.306963, -0.372313, 0.253692, 0.892761, -2.203, 2.26572, 1.10152)
 bone_name = "hand_l"
 bone_idx = 6
 
 [node name="Area3D" type="Area3D" parent="Mesh/wrath/Armature/Skeleton3D/LeftHand" groups=["wrath"]]
 collision_layer = 3
 collision_mask = 3
-script = SubResource("GDScript_n8vw1")
-damage = 10
+script = ExtResource("31_x676q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D"]
 transform = Transform3D(0.232359, -0.667949, -0.707003, 0.97263, 0.159571, 0.168901, 0, -0.726898, 0.686745, 0, 0, 0)
@@ -1595,7 +1548,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885416, -0.227331, -0.588577, 0.0625503, 0.806017, 2.22317, 2.19573, 1.17709)
+transform = Transform3D(-0.699442, 0.46057, -0.546495, -0.405411, -0.885417, -0.22733, -0.588577, 0.0625507, 0.806018, 2.22317, 2.19573, 1.1771)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1603,8 +1556,7 @@ bone_idx = 11
 transform = Transform3D(0.260016, 0.708287, 0.656294, -0.965604, 0.190726, 0.176725, -1.49012e-08, -0.679672, 0.733516, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
-script = SubResource("GDScript_n8vw1")
-damage = 10
+script = ExtResource("31_x676q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D"]
 shape = SubResource("CapsuleShape3D_86b8h")
@@ -1612,7 +1564,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3" groups=["wrath"]]
-transform = Transform3D(1, 7.23087e-15, 2.38419e-07, -7.95448e-08, 0.942702, 0.333635, -2.24758e-07, -0.333635, 0.942702, 0.0103752, 0.742981, 0.18606)
+transform = Transform3D(1, -2.98303e-13, 2.38418e-07, -7.9544e-08, 0.942703, 0.333634, -2.24757e-07, -0.333634, 0.942703, 0.0103752, 0.742982, 0.186061)
 bone_name = "torso"
 bone_idx = 2
 
@@ -1627,8 +1579,7 @@ debug_color = Color(0.7, 0.7, 0.7, 0)
 [node name="Area3D" type="Area3D" parent="Mesh/wrath/Armature/Skeleton3D/Torso" groups=["wrath"]]
 collision_layer = 3
 collision_mask = 3
-script = SubResource("GDScript_n8vw1")
-damage = 10
+script = ExtResource("31_x676q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/Torso/Area3D"]
 transform = Transform3D(1, 1.16415e-10, -9.31323e-10, 1.16415e-10, 1, 0, 0, 7.45058e-09, 1, -1.99663e-05, 1.64233, -0.317233)
@@ -1657,8 +1608,7 @@ playback_default_blend_time = 0.5
 [node name="Jump" type="Area3D" parent="Mesh" groups=["wrath"]]
 collision_layer = 3
 collision_mask = 3
-script = SubResource("GDScript_n8vw1")
-damage = 10
+script = ExtResource("31_x676q")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Jump" groups=["wrath"]]
 shape = SubResource("CylinderShape3D_4usqi")
