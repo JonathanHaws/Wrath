@@ -1,6 +1,6 @@
 [gd_resource type="Environment" load_steps=6 format=3 uid="uid://bagg8vxcexy7w"]
 
-[ext_resource type="Texture2D" uid="uid://cbviejgxk736p" path="res://stages/skybox/skybox_texture_4k.png" id="1_kh1ui"]
+[ext_resource type="Texture2D" uid="uid://dlcy0goiywjbv" path="res://stages/skybox/skybox_texture.png" id="1_kh1ui"]
 
 [sub_resource type="Curve" id="Curve_tqk0c"]
 _data = [Vector2(0, 0.0786518), 0.0, 0.0, 0, 0, Vector2(0.25625, 0.314607), 1.34831, 1.34831, 0, 0, Vector2(0.5375, 0.595506), 1.1985, 1.1985, 0, 0, Vector2(1, 1), 1.92174, 0.0, 0, 0]
@@ -14,6 +14,7 @@ panorama = ExtResource("1_kh1ui")
 
 [sub_resource type="Sky" id="Sky_clymx"]
 sky_material = SubResource("PanoramaSkyMaterial_kh1ui")
+process_mode = 2
 
 [resource]
 background_mode = 2
@@ -42,7 +43,7 @@ volumetric_fog_emission = Color(0.187176, 0.187176, 0.187176, 1)
 volumetric_fog_length = 1034.55
 volumetric_fog_detail_spread = 0.965936
 adjustment_enabled = true
-adjustment_brightness = 2.21
-adjustment_contrast = 1.02
-adjustment_saturation = 1.22
+adjustment_brightness = 2.52
+adjustment_contrast = 0.98
+adjustment_saturation = 0.9
 adjustment_color_correction = SubResource("CurveTexture_kh1ui")
