@@ -2095,7 +2095,6 @@ UPGRADE_ANIMATION = "HEALTH"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0864, 0)
 shape = SubResource("CapsuleShape3D_k5idf")
-disabled = true
 
 [node name="GodMode" type="Node3D" parent="." node_paths=PackedStringArray("PLAYER", "MESH", "CAMERA", "BODY_SHAPE", "HITBOX_SHAPE", "DAMAGE_SHAPE", "ANIMATION_PLAYER")]
 script = ExtResource("3_4anjp")
@@ -2115,6 +2114,7 @@ damage_groups = Array[String](["enemy_hitshape"])
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GodMode/GodModeHurt" groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711507, 0)
 shape = SubResource("CapsuleShape3D_4anjp")
+disabled = true
 debug_color = Color(0.7, 0.7, 0.7, 1)
 
 [node name="Audio" type="Node" parent="."]
@@ -2293,7 +2293,7 @@ material_override = ExtResource("35_m1s71")
 material_override = ExtResource("36_4anjp")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="3"]
-transform = Transform3D(0.710885, -0.25851, -0.654076, 0.471575, 0.865167, 0.170593, 0.521785, -0.429718, 0.736941, 0.328215, 0.953926, -0.433207)
+transform = Transform3D(0.710884, -0.25851, -0.654077, 0.471576, 0.865167, 0.170593, 0.521786, -0.429718, 0.736941, 0.328215, 0.953926, -0.433207)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -2316,7 +2316,7 @@ animation_player = NodePath("../../../../../../../Upgrade")
 upgrade_animation = "DAMAGE"
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4"]
-transform = Transform3D(-0.999717, 2.89874e-07, -0.0238119, 0.0232263, 0.220422, -0.975128, 0.0052484, -0.975405, -0.220359, -0.0978265, 0.0502798, -0.188368)
+transform = Transform3D(-0.999717, 2.78815e-07, -0.0238119, 0.0232263, 0.220421, -0.975128, 0.00524839, -0.975405, -0.220359, -0.0978264, 0.05028, -0.188368)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -2327,7 +2327,7 @@ scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5"]
-transform = Transform3D(-0.999717, 2.89874e-07, -0.0238119, 0.0232263, 0.220422, -0.975128, 0.0052484, -0.975405, -0.220359, -0.0978265, 0.0502798, -0.188368)
+transform = Transform3D(-0.999717, 2.78815e-07, -0.0238119, 0.0232263, 0.220421, -0.975128, 0.00524839, -0.975405, -0.220359, -0.0978264, 0.05028, -0.188368)
 bone_name = "foot_l"
 bone_idx = 18
 
