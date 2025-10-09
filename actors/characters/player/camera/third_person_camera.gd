@@ -4,6 +4,7 @@ extends Camera3D
 @export_range(-90.0, 90.0, 1.0, "Degrees") var pitch_max_deg: float = 80.0
 @export var SpringArm: SpringArm3D
 @export var MOUSE_SENSITIVITY: float = 0.003
+@export var CONTROLLER_SENSITIVITY: float = 5
 @export var SENSITIVITY_MULTIPLIER: float = 1.0
 var mouse_delta = Vector2.ZERO
 
@@ -29,8 +30,8 @@ func _physics_process(_delta: float) -> void:
 	
 	var look_left_right = Input.get_axis("look_left", "look_right")
 	var look_up_down = Input.get_axis("look_down", "look_up")
-	mouse_delta.x += look_left_right * sens
-	mouse_delta.y -= look_up_down * sens
+	mouse_delta.x += look_left_right * CONTROLLER_SENSITIVITY * SENSITIVITY_MULTIPLIER
+	mouse_delta.y -= look_up_down * CONTROLLER_SENSITIVITY * SENSITIVITY_MULTIPLIER
 	
 	if mouse_delta.length() > 0:
 		var new_x = SpringArm.global_rotation.x - mouse_delta.y * sens
