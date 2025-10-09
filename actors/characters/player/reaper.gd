@@ -4,14 +4,14 @@ extends CharacterBody3D
 @export var SPEED = 5.35
 @export var SPRINT_MULTIPLIER = 2.1
 @export var SPEED_FRICTION = 0.9999999999
-@export var JUMP_VELOCITY = 14.0
+@export var JUMP_VELOCITY = 15.0
 @export var JUMP_MULTIPLIER = 1.0
 @export var GRAVITY_MULTIPLIER = 4
 @export var MOUSE_SENSITIVITY = 0.003
 @export var TURN_SPEED: float = 20.0
 @export var TURN_MULTIPLIER: float = 1.0
 @export var SPEED_MULTIPLIER: float = 1.0
-@export var COYOTE_TIME: float = .4
+@export var COYOTE_TIME: float = .35
 @export var JUMP_BUFFER_TIME: float = .2
 @export var SPIN_DAMAGE_MULTIPLIER = 1.5
 @export var DESCEND_MULTIPLIER = 2.0

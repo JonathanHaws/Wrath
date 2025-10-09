@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dmf0vo8jrm34a"]
+[gd_scene load_steps=31 format=3 uid="uid://dmf0vo8jrm34a"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_mb05r"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="2_80ox6"]
@@ -187,7 +187,10 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_80ox6"]
-size = Vector3(1926, 195.837, 1361.68)
+size = Vector3(1926, 228.382, 1361.68)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bv0d2"]
+size = Vector3(133.595, 13.6586, 201.498)
 
 [node name="Main" type="Node3D"]
 
@@ -332,9 +335,21 @@ script = ExtResource("6_mb05r")
 damage = 10000
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillVolumes/Void"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.713, -212.355, 36.6345)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.713, -196.083, 36.6345)
 shape = SubResource("BoxShape3D_80ox6")
-debug_color = Color(0.7, 0.7, 0.7, 0)
+debug_color = Color(0.26, 0.26, 0.26, 0.560784)
+
+[node name="Void2" type="Area3D" parent="KillVolumes" groups=["platforming_hurt_shape"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 46.9871, 19)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("6_mb05r")
+damage = 10000
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="KillVolumes/Void2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4761, -70.6969, -0.643242)
+shape = SubResource("BoxShape3D_bv0d2")
+debug_color = Color(1, 1, 1, 0.027451)
 
 [node name="Checkpoints" type="Node" parent="."]
 
@@ -342,7 +357,7 @@ debug_color = Color(0.7, 0.7, 0.7, 0)
 transform = Transform3D(0.987618, -0.152081, 0.0385092, 0.156301, 0.974943, -0.158291, -0.0134713, 0.16235, 0.986641, 46.9753, 4.02938, 53.2061)
 
 [node name="Checkpoint2" parent="Checkpoints" instance=ExtResource("12_0gnis")]
-transform = Transform3D(0.997604, -0.0642152, -0.0257516, 0.0684893, 0.9693, 0.236149, 0.00979671, -0.237347, 0.971376, 178.143, -25.0414, 12.8631)
+transform = Transform3D(0.997604, -0.0642152, -0.0257516, 0.0678371, 0.981018, 0.18166, 0.0135975, -0.182972, 0.983025, 178.143, -24.9378, 12.8631)
 
 [node name="Wisps" type="Node" parent="."]
 
@@ -370,5 +385,6 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 240.80
 transform = Transform3D(-0.731187, 0, 0.682177, 0, 1, 0, -0.682177, 0, -0.731187, 144.027, -7.59234, 52.6288)
 
 [connection signal="body_entered" from="KillVolumes/Void" to="KillVolumes/Void" method="_on_body_entered"]
+[connection signal="body_entered" from="KillVolumes/Void2" to="KillVolumes/Void2" method="_on_body_entered"]
 
 [editable path="NavigationRegion3D/Castle"]

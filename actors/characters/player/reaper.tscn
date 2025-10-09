@@ -82,7 +82,7 @@ tracks/0/path = NodePath("../ColorRect:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.9),
+"times": PackedFloat32Array(0, 0.4),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
@@ -140,7 +140,7 @@ tracks/5/path = NodePath("../Hitbox/DeathCountTracker")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.733333),
+"times": PackedFloat32Array(0.466667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -154,7 +154,7 @@ tracks/6/path = NodePath("..")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.8),
+"times": PackedFloat32Array(0.533334),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -2046,7 +2046,7 @@ _data = {
 size = Vector3(12.7935, 22.7476, 51.4006)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m1s71"]
-size = Vector3(1.39011, 1.75417, 0.2724)
+size = Vector3(1.39011, 1.75417, 0.500744)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wub5s"]
 bg_color = Color(1, 1, 1, 0.439216)
@@ -2069,7 +2069,6 @@ axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_0b6a6")
 SPEED = 5.65
-COYOTE_TIME = 0.35
 SPIN_DAMAGE_MULTIPLIER = 1.2
 CAMERA = NodePath("SpringArm3D/Camera3D")
 MESH = NodePath("Mesh")
@@ -2109,6 +2108,7 @@ UPGRADE_ANIMATION = "HEALTH"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0864, 0)
 shape = SubResource("CapsuleShape3D_k5idf")
+disabled = true
 
 [node name="GodMode" type="Node3D" parent="." node_paths=PackedStringArray("PLAYER", "MESH", "CAMERA", "BODY_SHAPE", "HITBOX_SHAPE", "DAMAGE_SHAPE", "ANIMATION_PLAYER")]
 script = ExtResource("3_4anjp")
@@ -2318,7 +2318,7 @@ damage = 50
 damage_groups = Array[String](["enemy_hitshape"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D"]
-transform = Transform3D(1, 1.49012e-08, 0, 1.49012e-08, 1, 0, -2.98023e-08, 0, 1, -0.109238, 0.377083, 0.0218809)
+transform = Transform3D(1, 1.49012e-08, 0, 1.49012e-08, 1, 0, -2.98023e-08, 0, 1, -0.109237, 0.377083, 0.0120864)
 shape = SubResource("BoxShape3D_m1s71")
 disabled = true
 
