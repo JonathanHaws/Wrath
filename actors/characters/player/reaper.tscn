@@ -2045,8 +2045,8 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0gmj"]
 size = Vector3(12.7935, 22.7476, 51.4006)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_12tax"]
-size = Vector3(1.22162, 1.39923, 0.2724)
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1s71"]
+size = Vector3(1.39011, 1.75417, 0.2724)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wub5s"]
 bg_color = Color(1, 1, 1, 0.439216)
@@ -2318,8 +2318,8 @@ damage = 50
 damage_groups = Array[String](["enemy_hitshape"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0249939, 0.199615, 0.0218811)
-shape = SubResource("BoxShape3D_12tax")
+transform = Transform3D(1, 1.49012e-08, 0, 1.49012e-08, 1, 0, -2.98023e-08, 0, 1, -0.109238, 0.377083, 0.0218809)
+shape = SubResource("BoxShape3D_m1s71")
 disabled = true
 
 [node name="PersitentDamage" type="Node" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/Area3D" node_paths=PackedStringArray("hurt_shape", "animation_player")]

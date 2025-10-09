@@ -1,5 +1,5 @@
 extends Node3D
-@export var UPGRADE = 5.0
+@export var UPGRADE = 4.0
 @export var PLAYER_GROUP = "player"
 @export var ANIM: AnimationPlayer
 @export var ANIM_NAME: String = "delay_upgrade"

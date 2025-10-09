@@ -1177,36 +1177,9 @@ tracks/0/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/Slo
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.875, 1.95834, 2.04167, 2.10562, 2.18895, 2.27228, 2.35237, 2.4357, 2.51903, 2.60002, 2.68335, 2.76668, 2.84158, 2.92492, 3.00825, 3.10834, 3.19167, 3.27501, 3.37175, 3.45509, 3.53842, 3.60237, 3.6857, 3.76903),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(1.875, 1.95834, 2.04167, 2.10562, 2.18895, 2.27228, 2.35237, 2.4357, 2.51903, 2.60002, 2.68335, 2.76668, 2.84158, 2.92492, 3.00825),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
 "args": [],
 "method": &"spawn"
 }, {
@@ -1292,7 +1265,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_ryp23"]
 resource_name = "SLAM"
-length = 1.9335
+length = 3.0
 step = 0.0416667
 tracks/0/type = "animation"
 tracks/0/imported = false
@@ -1340,7 +1313,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(1.08333, 1.375),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.2, 40.0]
+"values": [0.2, 10.0]
 }
 tracks/4/type = "animation"
 tracks/4/imported = false
@@ -1489,7 +1462,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_uk6rk"]
 resource_name = "VOMIT_IN_FRONT"
-length = 4.5
+length = 5.5
 step = 0.0416667
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -1583,7 +1556,7 @@ tracks/5/keys = {
 
 [sub_resource type="Animation" id="Animation_vwjlg"]
 resource_name = "VOMIT_MEDIUM_LEFT"
-length = 4.5
+length = 5.5
 step = 0.0416667
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -1713,7 +1686,7 @@ _data = [Vector2(0.173797, 0), 0.0, 0.0, 0, 0, Vector2(0.334225, 1), 0.0, 0.0, 0
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_ryp23"]
-_data = [Vector2(0.173797, 0), 0.0, 0.0, 0, 0, Vector2(0.334225, 1), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.305825, 0), 0.0, 0.0, 0, 0, Vector2(0.461165, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Curve" id="Curve_0iori"]
@@ -1871,18 +1844,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_wrvk2"]
@@ -2065,6 +2026,7 @@ ATTACK_ANIMATION = "FIST_SLAM_LEFT"
 LIKELIHOOD_MULTIPLIER = 1000.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_adl7b")
 AREA_MULTIPLIER = NodePath("../../Mesh/gluttony/Armature/Skeleton3D/LeftHand/TriggerArea")
+COOLDOWN = 3.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
@@ -2074,6 +2036,7 @@ ATTACK_ANIMATION = "FIST_SLAM_RIGHT"
 LIKELIHOOD_MULTIPLIER = 1000.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_uk6rk")
 AREA_MULTIPLIER = NodePath("../../Mesh/gluttony/Armature/Skeleton3D/RightHand/TriggerArea")
+COOLDOWN = 3.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
@@ -2083,6 +2046,7 @@ ATTACK_ANIMATION = "SLAM_LEFT"
 LIKELIHOOD_MULTIPLIER = 1000.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_tx5w1")
 AREA_MULTIPLIER = NodePath("../../Mesh/gluttony/Armature/Skeleton3D/LeftLeg/TriggerArea")
+COOLDOWN = 3.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
@@ -2092,6 +2056,7 @@ ATTACK_ANIMATION = "SLAM_RIGHT"
 LIKELIHOOD_MULTIPLIER = 1000.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_oobth")
 AREA_MULTIPLIER = NodePath("../../Mesh/gluttony/Armature/Skeleton3D/RightLeg/TriggerArea")
+COOLDOWN = 3.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
@@ -2133,6 +2098,7 @@ script = ExtResource("29_uk6rk")
 LIKELIHOOD_MULTIPLIER = 2000.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_ddcis")
 COOLDOWN = 20.0
+COOLDOWN_REMAINING = 10.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
@@ -2226,7 +2192,7 @@ bones/57/rotation = Quaternion(0.0400877, -0.00871226, -0.0882026, 0.995258)
 material_override = ExtResource("28_kav4y")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.955003, 0.081866, -0.285075, -0.271599, -0.144835, -0.95145, -0.11918, 0.986063, -0.116083, 3.10545, 2.14977, 0.422136)
+transform = Transform3D(0.955003, 0.0818662, -0.285075, -0.271599, -0.144835, -0.95145, -0.119181, 0.986063, -0.116083, 3.10545, 2.14977, 0.422138)
 bone_name = "hand_r"
 bone_idx = 33
 
@@ -2253,7 +2219,7 @@ shape = SubResource("CapsuleShape3D_n5wbu")
 debug_color = Color(0.73, 0.73, 0.73, 0)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.934707, -0.126506, 0.332143, 0.320372, -0.104758, -0.941482, 0.153898, 0.986419, -0.0573896, -3.19035, 2.11726, 0.327694)
+transform = Transform3D(0.934707, -0.126507, 0.332142, 0.320371, -0.104758, -0.941482, 0.153899, 0.986418, -0.0573892, -3.19035, 2.11726, 0.327697)
 bone_name = "hand_l"
 bone_idx = 43
 
@@ -2280,7 +2246,7 @@ shape = SubResource("CapsuleShape3D_uk6rk")
 debug_color = Color(0.73, 0.73, 0.73, 0)
 
 [node name="LeftLeg" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.687976, 0.13188, 0.71365, 0.72478, -0.0744643, -0.684945, -0.0371892, 0.988465, -0.146814, 2.61113, -0.112561, 1.96333)
+transform = Transform3D(0.687976, 0.131881, 0.71365, 0.72478, -0.0744644, -0.684945, -0.0371898, 0.988464, -0.146815, 2.61113, -0.112562, 1.96333)
 bone_name = "hoof_r"
 bone_idx = 54
 
@@ -2306,7 +2272,7 @@ shape = SubResource("CapsuleShape3D_ryp23")
 debug_color = Color(0.73, 0.73, 0.73, 0)
 
 [node name="RightLeg" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="4"]
-transform = Transform3D(0.687977, -0.13188, -0.71365, -0.724779, -0.0744644, -0.684945, 0.0371892, 0.988465, -0.146814, -2.61113, -0.112562, 1.96333)
+transform = Transform3D(0.687976, -0.131881, -0.71365, -0.72478, -0.0744644, -0.684945, 0.0371897, 0.988465, -0.146815, -2.61113, -0.112563, 1.96333)
 bone_name = "hoof_l"
 bone_idx = 57
 
@@ -2455,7 +2421,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="10"]
-transform = Transform3D(1, 2.55795e-13, -4.76837e-07, -2.9839e-07, 0.780009, -0.625768, 3.71937e-07, 0.625768, 0.780009, -1.12903e-12, 3.03695, 0.242382)
+transform = Transform3D(1, -3.58889e-08, -1.0981e-07, -3.98926e-08, 0.784779, -0.619775, 1.0842e-07, 0.619775, 0.784779, 5.5247e-14, 3.03694, 0.242382)
 bone_name = "head"
 bone_idx = 4
 
@@ -2558,6 +2524,7 @@ script = ExtResource("19_4cd86")
 [node name="Dust" type="GPUParticles3D" parent="Particles"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 material_override = ExtResource("40_uk6rk")
+emitting = false
 amount = 1024
 lifetime = 2.0
 one_shot = true

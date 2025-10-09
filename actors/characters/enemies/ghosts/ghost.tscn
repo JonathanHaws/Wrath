@@ -992,9 +992,9 @@ size = Vector3(2.23877, 1.68384, 3.26862)
 [sub_resource type="SphereShape3D" id="SphereShape3D_2gcuv"]
 radius = 1.00222
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_5rg5p"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7c1mb"]
 height = 0.477905
-radius = 2.03613
+radius = 2.55078
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_oquh6"]
 radius = 18.8292
@@ -1206,7 +1206,7 @@ damage = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="JumpAttack"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0577135, -1.10771, -0.179132)
-shape = SubResource("CylinderShape3D_5rg5p")
+shape = SubResource("CylinderShape3D_7c1mb")
 disabled = true
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 
