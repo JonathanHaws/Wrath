@@ -153,7 +153,3 @@ transform = Transform3D(0.429471, 0, 0.903081, 0, 1, 0, -0.903081, 0, 0.429471, 
 
 [node name="Ghost2" parent="." instance=ExtResource("14_rnrrl")]
 transform = Transform3D(-0.822958, 0, -0.568102, 0, 1, 0, 0.568102, 0, -0.822958, 11.9527, -7.75724, -12.713)
-
-[editable path="FallingRock"]
-[editable path="FallingRock2"]
-[editable path="FallingRock3"]
