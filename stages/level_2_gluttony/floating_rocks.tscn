@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://c5350q0aryax0"]
+[gd_scene load_steps=20 format=3 uid="uid://c5350q0aryax0"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_ldobf"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_haesu"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b36oi3g053jo0" path="res://actors/props/rocks/falling/falling_platform.tscn" id="11_bmkvs"]
 [ext_resource type="PackedScene" uid="uid://cbnpkl3l8dkx8" path="res://actors/props/wisp/wisp_stamina.tscn" id="12_co5et"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp_health.tscn" id="13_1j05m"]
+[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="14_rnrrl"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(5.5602, 0.40003, 14.2054, 5.5602, 0.40003, -9.7946, 3.3102, 0.40003, -10.0446, 3.3102, 0.40003, -14.5446, -22.1898, 0.40003, -14.5446, -22.1898, 0.40003, 14.2054, 4.3102, 8.90003, -14.5446, 4.3102, 8.90003, -11.0446, 8.5602, 8.90003, -11.0446, 8.5602, 8.90003, -14.5446, 4.5602, 0.40003, -14.5446, 4.5602, 0.40003, -11.0446, 8.3102, 0.40003, -11.0446, 8.3102, 0.40003, -14.5446, 9.5602, 0.40003, -10.0446, 7.3102, 0.40003, -9.7946, 7.3102, 0.40003, 14.2054, 41.8102, 0.40003, -14.5446, 9.5602, 0.40003, -14.5446, 41.8102, 0.40003, 14.2054)
@@ -144,6 +145,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4648, 1.402, -13.1674)
 
 [node name="WispHealth" parent="." instance=ExtResource("13_1j05m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.307, 2.80846, -12.7552)
+
+[node name="Ghost" type="Node" parent="."]
+
+[node name="Ghost2" parent="Ghost" instance=ExtResource("14_rnrrl")]
+transform = Transform3D(0.429471, 0, 0.903081, 0, 1, 0, -0.903081, 0, 0.429471, 32.8513, -8.15837, 4.0403)
+
+[node name="Ghost2" parent="." instance=ExtResource("14_rnrrl")]
+transform = Transform3D(-0.822958, 0, -0.568102, 0, 1, 0, 0.568102, 0, -0.822958, 11.9527, -7.75724, -12.713)
 
 [editable path="FallingRock"]
 [editable path="FallingRock2"]

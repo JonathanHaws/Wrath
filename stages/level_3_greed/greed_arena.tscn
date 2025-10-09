@@ -1,0 +1,124 @@
+[gd_scene load_steps=12 format=3 uid="uid://cbk056vj32v0p"]
+
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_os1mw"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_p7tyw"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_jbf7c"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="4_kc7kd"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="5_x0i7r"]
+[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="6_xde6k"]
+[ext_resource type="PackedScene" uid="uid://bre6cgb3dypbs" path="res://actors/characters/enemies/bosses/greed/greed.tscn" id="7_iehgs"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="8_1fv10"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="9_u065d"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
+vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_od467"]
+
+[node name="Main" type="Node3D"]
+
+[node name="Menu" parent="." instance=ExtResource("1_os1mw")]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+navigation_mesh = SubResource("NavigationMesh_jc5vn")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
+material_override = ExtResource("2_p7tyw")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71385, 9.93213, -0.0490699)
+flip_faces = true
+size = Vector3(65.3073, 20, 30)
+
+[node name="Enviroment" type="Node" parent="."]
+
+[node name="Weather" parent="Enviroment" instance=ExtResource("3_jbf7c")]
+
+[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("4_kc7kd")]
+
+[node name="Lights" type="Node" parent="Enviroment"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 16.3637, 1.1386, -0.412741)
+light_color = Color(0.29, 0.29, 0.29, 1)
+light_energy = 100.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.2
+omni_range = 101.01
+
+[node name="Lights" type="Node3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="FloorMesh" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 42.0321, 0, -9.54005, 0)
+material_override = ExtResource("5_x0i7r")
+mesh = SubResource("BoxMesh_od467")
+skeleton = NodePath("../..")
+
+[node name="Checkpoint" parent="." instance=ExtResource("6_xde6k")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -4.79719, -9.10888, -0.207563)
+
+[node name="Greed" parent="." instance=ExtResource("7_iehgs")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 32.1167, -8.36329, 0)
+
+[node name="Skeleton3D" parent="Greed/Mesh/Greed/Rig" index="0"]
+bones/1/position = Vector3(4.51994e-07, 0.0132432, -2.99342)
+bones/1/rotation = Quaternion(-0.696678, -5.32428e-08, -5.34894e-08, 0.717384)
+bones/2/position = Vector3(0.318777, -0.0666642, -0.0106261)
+bones/2/rotation = Quaternion(0.995725, 0.0149688, -0.000833722, 0.0911446)
+bones/4/rotation = Quaternion(-0.244926, 0.00987893, 0.0135449, 0.969397)
+bones/7/rotation = Quaternion(-0.0706068, -0.0137069, -0.113529, 0.990928)
+bones/8/rotation = Quaternion(-0.0534121, -0.00131663, 0.0973146, 0.993819)
+bones/9/rotation = Quaternion(0.110033, 0.00608327, 0.0931645, 0.989533)
+bones/10/rotation = Quaternion(-0.024475, 9.75903e-09, -0.0359915, 0.999052)
+bones/12/rotation = Quaternion(0.114406, -3.19497e-11, 2.77434e-10, 0.993434)
+bones/13/position = Vector3(-0.488868, 1.43551, -0.00969562)
+bones/13/rotation = Quaternion(-0.0706068, 0.0137069, 0.113529, 0.990928)
+bones/14/rotation = Quaternion(-0.0534121, 0.00131663, -0.0973146, 0.993819)
+bones/16/rotation = Quaternion(-0.024475, -3.11706e-09, 0.0359915, 0.999052)
+bones/17/position = Vector3(-0.00016199, 0.339309, -0.324589)
+bones/17/rotation = Quaternion(0.779864, 0.174091, -0.567985, -0.197226)
+bones/18/rotation = Quaternion(-0.259324, 0.0143286, 0.107515, 0.95968)
+bones/19/rotation = Quaternion(-0.400944, -0.0118955, -0.124635, 0.907507)
+bones/21/rotation = Quaternion(-0.35566, 0.0109272, 0.00210176, 0.934549)
+bones/22/rotation = Quaternion(0.995725, -0.0149688, 0.000833722, 0.0911446)
+bones/25/rotation = Quaternion(0.189993, 0.00651416, -0.0393444, 0.980975)
+
+[node name="BoneAttachment3D" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="1"]
+transform = Transform3D(0.996449, -0.084087, -0.00430341, 0.0837271, 0.994985, -0.0547217, 0.00888321, 0.0541671, 0.998492, 2.69981e-13, 3.98942, 0.0424168)
+
+[node name="TorsoAttack" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="2"]
+transform = Transform3D(0.996449, -0.084087, -0.00430341, 0.0837271, 0.994985, -0.0547217, 0.00888321, 0.0541671, 0.998492, 2.69981e-13, 3.98942, 0.0424168)
+
+[node name="TailSpin" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="3"]
+transform = Transform3D(0.996449, -0.084087, -0.00430341, 0.0837271, 0.994985, -0.0547217, 0.00888321, 0.0541671, 0.998492, 2.69981e-13, 3.98942, 0.0424168)
+
+[node name="LeftHandAttack" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="4"]
+transform = Transform3D(0.986662, -0.162548, 0.00875604, 0.162279, 0.986411, 0.0256615, -0.0128083, -0.0238984, 0.999632, 0.320992, 7.552, -0.0818738)
+
+[node name="RightHandAttack" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="5"]
+transform = Transform3D(0.781826, -0.471432, 0.408044, 0.441784, 0.880672, 0.171008, -0.439972, 0.0465688, 0.896803, -1.16997, 7.40329, -0.0758251)
+
+[node name="CollisionShape3D" parent="Greed/TriggerArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07889, 7.1402, 8.51709)
+
+[node name="Reaper" parent="." instance=ExtResource("8_1fv10")]
+transform = Transform3D(-0.0916932, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916932, -13.0945, -7.47934, -1.63374)
+
+[node name="Enter" parent="." instance=ExtResource("9_u065d")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
+DESTINATION_NODE_NAME = "Exit"
+DESTINATION_SCENE = "uid://dhhysqimh462a"
+
+[node name="Exit" parent="." groups=["greed_door"] instance=ExtResource("9_u065d")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
+DESTINATION_NODE_NAME = "Enter"
+LOCKED = true
+DESTINATION_SCENE = "uid://cmky6xf3axtum"
+
+[editable path="Greed"]
+[editable path="Greed/Mesh/Greed"]

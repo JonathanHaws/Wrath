@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dsdh2bite7xv4"]
+[gd_scene load_steps=32 format=3 uid="uid://dsdh2bite7xv4"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_t7rxp"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_2c8ka"]
@@ -18,6 +18,7 @@
 [ext_resource type="Material" uid="uid://cy0ev2opeyd34" path="res://stages/materials/bricks/star/star.tres" id="17_e52ow"]
 [ext_resource type="Material" uid="uid://8p0im5f4mlk7" path="res://stages/materials/bricks/big/world_big.tres" id="18_ovh7g"]
 [ext_resource type="PackedScene" uid="uid://7mrheb4oio5g" path="res://stages/level_5_wrath/arch/arch.tscn" id="19_3yoog"]
+[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="19_b0sq8"]
 
 [sub_resource type="Animation" id="Animation_gllqw"]
 resource_name = "ESCAPE"
@@ -438,6 +439,20 @@ CHECKPOINT_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 [node name="Checkpoint4" parent="Checkpoints" instance=ExtResource("10_dklar")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -5.68248e-06, -27.6287, -43.5764)
 CHECKPOINT_SCENE_PATH = "res://scenes/zones/exterior.tscn"
+
+[node name="Ghosts" type="Node" parent="."]
+
+[node name="Ghost" parent="Ghosts" instance=ExtResource("19_b0sq8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58469, -39.0943, -82.5956)
+
+[node name="Ghost2" parent="Ghosts" instance=ExtResource("19_b0sq8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.03078, -38.934, -100.909)
+
+[node name="Ghost" parent="." instance=ExtResource("19_b0sq8")]
+transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -33.1698, -37.6756, -165.788)
+
+[node name="Ghost2" parent="." instance=ExtResource("19_b0sq8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5082, -11.1915, -37.4764)
 
 [connection signal="body_entered" from="KillVolume" to="KillVolume" method="_on_body_entered"]
 

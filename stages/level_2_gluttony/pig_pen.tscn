@@ -109,7 +109,7 @@ transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.09169
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 130.51, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Enter"
 LOCKED = true
-DESTINATION_SCENE = "uid://cbk056vj32v0p"
+DESTINATION_SCENE = "uid://dhhysqimh462a"
 
 [node name="Enter" parent="." instance=ExtResource("7_c6ynn")]
 transform = Transform3D(-4.37112e-08, 0, 1, 0, 1, 0, -1, 0, -4.37112e-08, -22.2895, -9.60013, 1.00536e-06)

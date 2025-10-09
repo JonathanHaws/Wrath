@@ -78,7 +78,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.840
 [node name="Ghosts" type="Node" parent="."]
 
 [node name="Ghost" parent="Ghosts" instance=ExtResource("9_w17nt")]
-transform = Transform3D(-0.677364, 0, 0.735648, 0, 1, 0, -0.735648, 0, -0.677364, 37.6761, -8.28661, -11.1696)
+transform = Transform3D(-0.677364, 0, 0.735648, 0, 1, 0, -0.735648, 0, -0.677364, 27.8355, -8.28661, -11.1696)
 
 [node name="Ghost2" parent="Ghosts" instance=ExtResource("9_w17nt")]
-transform = Transform3D(0.449023, 0, 0.89352, 0, 1, 0, -0.89352, 0, 0.449023, 25.1016, -8.28661, 9.30553)
+transform = Transform3D(0.449023, 0, 0.89352, 0, 1, 0, -0.89352, 0, 0.449023, 16.1, -8.28661, 9.30553)
