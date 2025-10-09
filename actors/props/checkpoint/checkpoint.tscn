@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://1jc5rm2ln3av"]
+[gd_scene load_steps=24 format=3 uid="uid://1jc5rm2ln3av"]
 
 [ext_resource type="Script" uid="uid://bwi12jjkh4nu7" path="res://actors/props/checkpoint/checkpoint.gd" id="1_jmg87"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/interaction.gd" id="2_8is0s"]
@@ -10,7 +10,8 @@
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="7_3qxw0"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="8_tssyw"]
 [ext_resource type="Script" uid="uid://ca30ou0es6s2v" path="res://actors/props/checkpoint/rest_label.gd" id="9_2oqi1"]
-[ext_resource type="Script" uid="uid://blbvcgpuvve2d" path="res://actors/props/checkpoint/jump_cancel.gd" id="11_qucei"]
+[ext_resource type="Script" uid="uid://blbvcgpuvve2d" path="res://actors/props/checkpoint/cancel_jump.gd" id="11_qucei"]
+[ext_resource type="Script" uid="uid://b5xevnjrvs2fd" path="res://actors/props/checkpoint/cancel_attack.gd" id="12_hufq8"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_0sglt"]
 height = 0.5
@@ -299,9 +300,13 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
-[node name="JumpCancel" type="Node" parent="." node_paths=PackedStringArray("AREA")]
+[node name="CancelJump" type="Node" parent="." node_paths=PackedStringArray("AREA")]
 script = ExtResource("11_qucei")
 AREA = NodePath("..")
 JUMP_MULTIPLIER = 0.0
+
+[node name="CancelAttack" type="Node" parent="." node_paths=PackedStringArray("AREA")]
+script = ExtResource("12_hufq8")
+AREA = NodePath("..")
 
 [editable path="checkpoint"]

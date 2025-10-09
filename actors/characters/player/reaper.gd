@@ -15,6 +15,7 @@ extends CharacterBody3D
 @export var JUMP_BUFFER_TIME: float = .2
 @export var SPIN_DAMAGE_MULTIPLIER = 1.5
 @export var DESCEND_MULTIPLIER = 2.0
+@export var ATTACKING_ENABLED = true
 
 @export_group("References")
 @export var CAMERA: Camera3D
@@ -143,7 +144,7 @@ func _physics_process(delta: float) -> void:
 	
 	if ANIM.current_animation in "ESCAPE": return
 
-	if Input.is_action_just_pressed("attack"): # ATTACK
+	if ATTACKING_ENABLED and Input.is_action_just_pressed("attack"):
 		if in_interruptible_animation():
 			if is_on_floor():
 				ANIM.play("WINDUP")

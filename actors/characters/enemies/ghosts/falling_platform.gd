@@ -21,7 +21,6 @@ func _on_area_entered(body: Node3D) -> void:
 func _on_area_exited(body: Node3D) -> void:
 	if not body.is_in_group(PLAYER_GROUP): return
 	ANIM_PLAYER.speed_scale = -ASCEND_SPEED
-	ANIM_PLAYER.play("your_animation", -1, -ASCEND_SPEED, true)
  	
 func _ready() -> void:
 	AREA.body_entered.connect(_on_area_entered)
