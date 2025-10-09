@@ -32,6 +32,10 @@
 [ext_resource type="AudioStream" uid="uid://dejgyyvoucgey" path="res://actors/characters/enemies/sfx/Cry_3.wav" id="32_j7j84"]
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://actors/characters/enemies/sfx/Despawn.wav" id="33_gi7wv"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oijfr"]
+radius = 1.584
+height = 4.80709
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_5k6cf"]
 radius = 1.3377
 height = 4.80709
@@ -329,6 +333,46 @@ tracks/14/keys = {
 "args": [],
 "method": &"queue_free"
 }]
+}
+tracks/15/type = "method"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Mesh/Greed/Rig/Skeleton3D/BoneAttachment3D/LockOn")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/16/type = "method"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CollisionShape3D")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Target:USE_GRAVITY")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
@@ -762,6 +806,18 @@ tracks/15/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Target:USE_GRAVITY")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_clfu5"]
 resource_name = "RUN"
@@ -1027,10 +1083,6 @@ radius = 0.562169
 height = 0.892645
 radius = 9.61276
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oijfr"]
-radius = 1.584
-height = 4.80709
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_4oeto"]
 radius = 0.001
 
@@ -1046,6 +1098,10 @@ ANIM = NodePath("Attacks")
 SAVE_KEY_ENCOUNTERED = "greed_encountered"
 DOOR_TO_UNLOCK_GROUP = "greed_door"
 DEFEATED_KEY = "greed_defeated"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
+shape = SubResource("CapsuleShape3D_oijfr")
 
 [node name="Ui" type="Control" parent="." groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
@@ -1205,40 +1261,40 @@ SCENE_ROOT = NodePath("..")
 [node name="Greed" parent="Mesh" instance=ExtResource("17_cq6fp")]
 
 [node name="Skeleton3D" parent="Mesh/Greed/Rig" index="0"]
-bones/1/position = Vector3(0.0174956, -0.0449101, -1.47916)
-bones/1/rotation = Quaternion(0.0370487, 0.00152062, -0.000389452, 0.999312)
-bones/2/position = Vector3(0.318777, -0.0666659, -0.0106264)
-bones/2/rotation = Quaternion(0.781858, 0.219771, 0.133335, 0.567997)
-bones/3/rotation = Quaternion(0.624194, -0.0573771, 0.0324914, 0.778482)
-bones/4/rotation = Quaternion(-0.597882, 0.0670504, -0.00718421, 0.798742)
-bones/5/rotation = Quaternion(0.370329, -0.0693967, 0.0401409, 0.925435)
-bones/6/rotation = Quaternion(0.0126309, -0.00268544, 0.0420503, 0.999032)
-bones/7/rotation = Quaternion(0.572968, -0.228774, -0.603333, 0.505331)
-bones/8/rotation = Quaternion(0.0876585, -0.107701, 0.674933, 0.724694)
-bones/9/rotation = Quaternion(0.0179923, -0.202699, -0.136, 0.969584)
-bones/10/rotation = Quaternion(0.0825532, 0.013674, 0.101979, 0.991261)
-bones/12/rotation = Quaternion(-0.0857355, -0.220959, 0.0733193, 0.968737)
-bones/13/position = Vector3(-0.488868, 1.43551, -0.00969552)
-bones/13/rotation = Quaternion(0.575405, 0.200489, 0.534375, 0.585796)
-bones/14/rotation = Quaternion(-0.0858477, 0.0568758, -0.627973, 0.771392)
-bones/15/rotation = Quaternion(0.0897889, 0.215739, 0.167988, 0.957692)
-bones/16/rotation = Quaternion(-0.179718, -0.232297, -0.206217, 0.933389)
-bones/17/position = Vector3(0.00414755, -0.243611, -0.14996)
-bones/17/rotation = Quaternion(0.795141, 0.0671578, -0.577042, 0.173961)
-bones/18/rotation = Quaternion(-0.0979827, 0.348152, 0.058813, 0.930446)
-bones/19/rotation = Quaternion(-0.0859827, -0.234209, -0.101342, 0.963059)
-bones/20/rotation = Quaternion(-0.128017, 0.190876, -0.072263, 0.970544)
-bones/21/rotation = Quaternion(-0.0762419, 0.169397, -0.0942468, 0.978064)
-bones/22/rotation = Quaternion(0.782452, -0.117753, 0.128627, 0.597794)
-bones/23/rotation = Quaternion(0.645445, -0.0262707, 0.054745, 0.761389)
-bones/24/rotation = Quaternion(-0.661345, 0.0115624, -0.0775359, 0.745974)
-bones/25/rotation = Quaternion(0.291092, -0.0642706, 0.00265002, 0.95453)
+bones/1/position = Vector3(1.4826e-07, 1.22017, -0.981879)
+bones/1/rotation = Quaternion(-0.81299, -4.32155e-08, -6.24195e-08, 0.582277)
+bones/2/position = Vector3(0.318777, -0.0666643, -0.0106262)
+bones/2/rotation = Quaternion(0.995735, 0.0149689, -0.000832081, 0.0910354)
+bones/3/rotation = Quaternion(0.920709, 0.00961023, -0.00146102, 0.390128)
+bones/4/rotation = Quaternion(-0.244926, 0.00987892, 0.0135449, 0.969397)
+bones/5/rotation = Quaternion(0.189993, -0.00651416, 0.0393444, 0.980975)
+bones/6/rotation = Quaternion(0.232141, -2.15152e-11, 5.89036e-10, 0.972682)
+bones/7/rotation = Quaternion(0.0842289, 0.0948774, -0.983695, 0.127469)
+bones/8/rotation = Quaternion(0.143257, -0.175358, -0.0171879, 0.973875)
+bones/9/rotation = Quaternion(0.0971382, 0.0122893, -0.0532991, 0.993767)
+bones/10/rotation = Quaternion(-0.024475, 8.94335e-09, -0.0359915, 0.999052)
+bones/12/rotation = Quaternion(-0.105105, -3.19873e-11, -2.54882e-10, 0.994461)
+bones/13/position = Vector3(-0.488868, 1.43551, -0.00969565)
+bones/13/rotation = Quaternion(0.00692853, -0.067271, 0.98975, 0.125782)
+bones/14/rotation = Quaternion(0.0905223, 0.0233863, 0.0289091, 0.9952)
+bones/15/rotation = Quaternion(0.110033, -0.00608328, -0.0931645, 0.989533)
+bones/16/rotation = Quaternion(-0.024475, -5.54639e-09, 0.0359915, 0.999052)
+bones/17/position = Vector3(-0.000162007, 0.339309, -0.324589)
+bones/17/rotation = Quaternion(0.765907, 0.21774, -0.598667, -0.0870235)
+bones/18/rotation = Quaternion(-0.0924646, 0.173409, -0.595108, 0.779247)
+bones/19/rotation = Quaternion(-0.426507, 0.0467012, 0.0369573, 0.902522)
+bones/20/rotation = Quaternion(-0.398659, -0.0279548, -0.0491474, 0.915355)
+bones/21/rotation = Quaternion(-0.35566, 0.0109272, 0.00210177, 0.934549)
+bones/22/rotation = Quaternion(0.995725, -0.0149688, 0.000833722, 0.0911446)
+bones/23/rotation = Quaternion(0.912644, -0.0093227, 0.00110586, 0.408648)
+bones/24/rotation = Quaternion(-0.244926, -0.00987893, -0.0135449, 0.969397)
+bones/25/rotation = Quaternion(0.189993, 0.00651417, -0.0393444, 0.980975)
 
 [node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" index="0"]
 material_override = ExtResource("27_mmykl")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1"]
-transform = Transform3D(0.996538, -0.0831236, -0.00131664, -0.00956917, -0.0989601, -0.995045, 0.0825815, 0.991613, -0.0994129, 0.0183832, 1.40538, 0.948782)
+transform = Transform3D(1, 6.10623e-15, 2.51533e-09, 3.5303e-10, 0.990102, -0.140349, -2.49042e-09, 0.140349, 0.990102, -2.83458e-14, 1.92527, 0.89941)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1251,7 +1307,7 @@ shape = SubResource("BoxShape3D_jx80p")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2"]
-transform = Transform3D(0.996538, -0.0831236, -0.00131664, -0.00956917, -0.0989601, -0.995045, 0.0825815, 0.991613, -0.0994129, 0.0183832, 1.40538, 0.948782)
+transform = Transform3D(1, 6.10623e-15, 2.51533e-09, 3.5303e-10, 0.990102, -0.140349, -2.49042e-09, 0.140349, 0.990102, -2.83458e-14, 1.92527, 0.89941)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1267,7 +1323,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3"]
-transform = Transform3D(0.996538, -0.0831236, -0.00131664, -0.00956917, -0.0989601, -0.995045, 0.0825815, 0.991613, -0.0994129, 0.0183832, 1.40538, 0.948782)
+transform = Transform3D(1, 6.10623e-15, 2.51533e-09, 3.5303e-10, 0.990102, -0.140349, -2.49042e-09, 0.140349, 0.990102, -2.83458e-14, 1.92527, 0.89941)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1283,7 +1339,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4"]
-transform = Transform3D(-0.243143, -0.349126, -0.904982, -0.691404, -0.591986, 0.414139, -0.680324, 0.726404, -0.0974501, 0.417879, -0.291983, 2.95355)
+transform = Transform3D(-0.99465, 0.0712876, 0.0747685, -0.0592531, -0.986545, 0.15237, 0.0846245, 0.147124, 0.985491, 0.963758, 1.31823, 0.94074)
 bone_name = "hand_l"
 bone_idx = 10
 
@@ -1300,7 +1356,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5"]
-transform = Transform3D(0.502437, -0.133416, 0.854258, 0.734055, -0.456244, -0.502995, 0.456858, 0.879796, -0.131299, -0.833263, -0.323652, 2.96151)
+transform = Transform3D(-0.951776, -0.302822, 0.0492087, 0.305801, -0.949305, 0.0728349, 0.0246581, 0.0843706, 0.996129, -1.04837, 1.33214, 0.88275)
 bone_name = "hand_r"
 bone_idx = 16
 
@@ -1331,10 +1387,6 @@ script = ExtResource("18_i3cy0")
 shape = SubResource("CylinderShape3D_4usqi")
 disabled = true
 debug_color = Color(0, 0.6, 0.7, 0.42)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
-shape = SubResource("CapsuleShape3D_oijfr")
 
 [node name="Shake" type="Area3D" parent="."]
 collision_layer = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://v8b6ve5smjd1"]
+[gd_scene load_steps=40 format=3 uid="uid://v8b6ve5smjd1"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_6oeiu"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_0f4kp"]
@@ -27,6 +27,10 @@
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="25_osw8t"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="26_8l61o"]
 [ext_resource type="PackedScene" uid="uid://s17rtpig5sq1" path="res://actors/characters/enemies/bosses/pride/pride.blend" id="27_uxu3y"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_20oj1"]
+radius = 0.78333
+height = 4.80709
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uxu3y"]
 radius = 0.604509
@@ -294,6 +298,46 @@ tracks/12/keys = {
 "update": 0,
 "values": [0.0, -80.0]
 }
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("CollisionShape3D")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Mesh/LockOn")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Target:USE_GRAVITY")
+tracks/15/interp = 0
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
 resource_name = "INTRO"
@@ -498,6 +542,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Target:USE_GRAVITY")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
@@ -507,9 +563,7 @@ _data = {
 &"RESET": SubResource("Animation_jojdm")
 }
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_20oj1"]
-radius = 0.78333
-height = 4.80709
+[sub_resource type="BoxShape3D" id="BoxShape3D_uxu3y"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_4oeto"]
 radius = 0.001
@@ -526,6 +580,10 @@ ANIM = NodePath("Attacks")
 SAVE_KEY_ENCOUNTERED = "pride_encountered"
 DOOR_TO_UNLOCK_GROUP = "pride_door"
 DEFEATED_KEY = "pride_defeated"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
+shape = SubResource("CapsuleShape3D_20oj1")
 
 [node name="Ui" type="Control" parent="." groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
@@ -642,9 +700,13 @@ SCENE_ROOT = NodePath("..")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
-shape = SubResource("CapsuleShape3D_20oj1")
+[node name="LockOn" type="Area3D" parent="Mesh"]
+transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 1.48289, -0.085655)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/LockOn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
+shape = SubResource("BoxShape3D_uxu3y")
+debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="Shake" type="Area3D" parent="."]
 collision_layer = 3

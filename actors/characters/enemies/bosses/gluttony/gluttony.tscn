@@ -42,6 +42,10 @@
 [ext_resource type="Script" uid="uid://bs2bbm2ty8nsu" path="res://actors/characters/enemies/chase_target_smooth.gd" id="36_svijn"]
 [ext_resource type="Material" uid="uid://gwfmysarj7pc" path="res://actors/characters/dust/dust.tres" id="40_uk6rk"]
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_12e26"]
+radius = 3.05987
+height = 6.36337
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_kcm85"]
 radius = 2.81369
 height = 8.40493
@@ -325,6 +329,58 @@ tracks/13/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, -80.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Target:USE_GRAVITY")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/15/type = "method"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Mesh/LockOn")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/16/type = "method"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CollisionShape3D")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_adl7b"]
@@ -1021,6 +1077,18 @@ tracks/26/keys = {
 "update": 0,
 "values": [40.0]
 }
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Target:USE_GRAVITY")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_12e26"]
 resource_name = "SHOOT"
@@ -1692,10 +1760,6 @@ height = 3.98967
 
 [sub_resource type="BoxMesh" id="BoxMesh_adl7b"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_12e26"]
-radius = 3.05987
-height = 6.36337
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_4oeto"]
 radius = 0.001
 
@@ -1836,6 +1900,10 @@ ANIM = NodePath("AnimationPlayer")
 SAVE_KEY_ENCOUNTERED = "gluttony_encountered"
 DOOR_TO_UNLOCK_GROUP = "gluttony_door"
 DEFEATED_KEY = "gluttony_defeated"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14872, 0)
+shape = SubResource("CapsuleShape3D_12e26")
 
 [node name="Ui" type="Control" parent="." groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
@@ -2387,7 +2455,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="10"]
-transform = Transform3D(1, -3.58888e-08, -1.0981e-07, -3.98925e-08, 0.784779, -0.619775, 1.08419e-07, 0.619775, 0.784779, -1.12903e-12, 3.03695, 0.242382)
+transform = Transform3D(1, 2.55795e-13, -4.76837e-07, -2.9839e-07, 0.780009, -0.625768, 3.71937e-07, 0.625768, 0.780009, -1.12903e-12, 3.03695, 0.242382)
 bone_name = "head"
 bone_idx = 4
 
@@ -2445,10 +2513,6 @@ INPUT_READ_VELOCITY_MULTIPLIER = 0.2
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Target"]
 visible = false
 mesh = SubResource("BoxMesh_adl7b")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14872, 0)
-shape = SubResource("CapsuleShape3D_12e26")
 
 [node name="Shake" type="Area3D" parent="."]
 collision_layer = 3
