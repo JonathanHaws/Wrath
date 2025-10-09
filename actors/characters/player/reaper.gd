@@ -5,6 +5,7 @@ extends CharacterBody3D
 @export var SPRINT_MULTIPLIER = 2.1
 @export var SPEED_FRICTION = 0.9999999999
 @export var JUMP_VELOCITY = 14.0
+@export var JUMP_MULTIPLIER = 1.0
 @export var GRAVITY_MULTIPLIER = 4
 @export var MOUSE_SENSITIVITY = 0.003
 @export var TURN_SPEED: float = 20.0
@@ -158,16 +159,15 @@ func _physics_process(delta: float) -> void:
 	elif jump_buffer > 0: jump_buffer -= delta
 
 	if jump_buffer > 0 and falling < COYOTE_TIME: # JUMP
-
 		if ANIM.current_animation and in_interruptible_animation():
-				
-			if $Audio: $Audio.play_2d_sound(["jump"], 2.0)
-			ANIM.play("JUMPING")
-			$Squash.squish(-.23,MESH)	
-			velocity.y = JUMP_VELOCITY
-			falling = COYOTE_TIME
-			jump_buffer = 0
-			if PARTICLES: PARTICLES.spawn(1)
+			if JUMP_MULTIPLIER > 0:
+				if $Audio: $Audio.play_2d_sound(["jump"], 2.0)
+				ANIM.play("JUMPING")
+				$Squash.squish(-.23,MESH)	
+				velocity.y = JUMP_VELOCITY * JUMP_MULTIPLIER
+				falling = COYOTE_TIME
+				jump_buffer = 0
+				if PARTICLES: PARTICLES.spawn(1)
 	
 	var keyboard_vector := Input.get_vector("keyboard_left", "keyboard_right", "keyboard_forward", "keyboard_back")
 	var controller_vector := Input.get_vector("controller_left", "controller_right", "controller_forward", "controller_back")

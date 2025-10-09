@@ -307,7 +307,7 @@ DESTINATION_SCENE = "uid://d1k2pnn46w66f"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 123.638, -4.52546, 66.9242)
 
 [node name="HorizontalMovingRock" parent="." instance=ExtResource("16_1tft3")]
-transform = Transform3D(0.508485, 0, 0.861071, 0, 1, 0, -0.861071, 0, 0.508485, 69.4053, 18.3665, -31.1731)
+transform = Transform3D(0.508485, 0, 0.861071, 0, 1, 0, -0.861071, 0, 0.508485, 71.1422, 18.3665, -32.8426)
 
 [node name="FallingPlatforms" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.454, 3.48975, 50.4632)
