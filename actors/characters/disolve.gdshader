@@ -26,6 +26,8 @@ void fragment() {
 	float dissolve_noise = texture(noise_texture, (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).xy * 0.1).r;
 	// planar mapping so dont have to worry about messed up uv as it uses world space
 
+
+
 	float border_mask = 0.0;
 	if (dissolve_amount > 0.0) {
 		float border_size = dissolve_amount + glow_border_width;
@@ -36,13 +38,13 @@ void fragment() {
 		);
 	}
 
-	vec3 albedo_tex = texture(albedo_texture, UV).rgb;
+	vec4 albedo_tex = texture(albedo_texture, UV).rgba;
 	vec3 albedo;
 
-	if (albedo_tex == vec3(0.0)) {
-		albedo = albedo_color;
+	if (albedo_tex.rgb == vec3(0.0)) {
+		albedo = albedo_color.rgb;
 	} else {
-		albedo = albedo_tex * albedo_color;
+		albedo.rgb = albedo_tex.rgb * albedo_color;
 	}
 
 	vec3 surface_color = albedo;
@@ -56,8 +58,9 @@ void fragment() {
 
 	EMISSION = surface_emisson * glow_intensitiy;
 
-	ALPHA = dissolve_noise;
+	ALPHA = min(albedo_tex.a, dissolve_noise);
 	ALPHA_SCISSOR_THRESHOLD = dissolve_amount;
+	if (albedo_tex.a == 0.0) ALPHA = 0.0;
 
 	if (use_normal_map) {
 		NORMAL_MAP = texture(normal_texture, UV).xyz;
