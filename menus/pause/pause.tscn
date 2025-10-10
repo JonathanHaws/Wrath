@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cqcx34rswnnw1"]
+[gd_scene load_steps=9 format=3 uid="uid://cqcx34rswnnw1"]
 
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_0l1fl"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_o8gx4"]
@@ -8,7 +8,6 @@
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="5_m2qlc"]
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="6_croeh"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="7_426wy"]
-[ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_Press.wav" id="8_e7s18"]
 
 [node name="ColorRect" type="ColorRect"]
 anchors_preset = 15
@@ -68,6 +67,17 @@ script = ExtResource("4_n7dk2")
 scene_file = "uid://cxja4xs36njyv"
 node_to_replace = NodePath("../..")
 
+[node name="Controls" type="Button" parent="Main" node_paths=PackedStringArray("node_to_replace")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("1_o8gx4")
+text = "CONTROLS"
+icon_alignment = 1
+script = ExtResource("4_n7dk2")
+scene_file = "uid://bbnvaw1wjbpv0"
+node_to_replace = NodePath("../..")
+
 [node name="Quit" type="Button" parent="Main"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -76,7 +86,7 @@ theme = ExtResource("1_o8gx4")
 text = "QUIT"
 icon_alignment = 1
 script = ExtResource("4_n7dk2")
-scene_file = "uid://xoc7exqkdoqd"
+scene_file = "uid://cls12q06quifx"
 
 [node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
 script = ExtResource("7_426wy")
@@ -87,6 +97,6 @@ process_mode = 3
 bus = &"SFX"
 script = ExtResource("6_croeh")
 hover_sound = ExtResource("5_m2qlc")
-press_sound = ExtResource("8_e7s18")
-hover_targets = [NodePath("../Main/Restart"), NodePath("../Main/Options"), NodePath("../Main/Quit")]
-pressed_targets = [NodePath("../Main/Restart"), NodePath("../Main/Options"), NodePath("../Main/Quit")]
+press_sound = ExtResource("5_m2qlc")
+hover_targets = [NodePath("../Main/Restart"), NodePath("../Main/Options"), NodePath("../Main/Controls"), NodePath("../Main/Quit")]
+pressed_targets = [NodePath("../Main/Restart"), NodePath("../Main/Options"), NodePath("../Main/Controls"), NodePath("../Main/Quit")]

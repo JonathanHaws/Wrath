@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cls12q06quifx"]
+[gd_scene load_steps=11 format=3 uid="uid://cls12q06quifx"]
 
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="1_48c50"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_gkebh"]
@@ -9,25 +9,46 @@
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="6_k2sbj"]
 [ext_resource type="Script" uid="uid://dbk4ank3cq0ny" path="res://menus/title_screen/quit.gd" id="7_nikc7"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_8af7w"]
+[ext_resource type="AudioStream" uid="uid://bskcgvhx85bs3" path="res://menus/title_screen/title_screen.ogg" id="10_03rxr"]
 
-[node name="Main" type="VBoxContainer" groups=["ui_scalable"]]
+[node name="TitleScreen" type="CanvasLayer"]
+process_mode = 3
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+
+[node name="CenterContainer" type="CenterContainer" parent="." groups=["ui_scalable"]]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -640.0
-offset_top = -360.0
-offset_right = -279.0
-offset_bottom = 255.0
+offset_left = -180.5
+offset_top = -307.5
+offset_right = 180.5
+offset_bottom = 307.5
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(180.5, 307.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_gkebh")
+
+[node name="Main" type="VBoxContainer" parent="CenterContainer" groups=["ui_scalable"]]
+layout_mode = 2
 focus_mode = 2
 alignment = 1
 script = ExtResource("1_gkebh")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="CenterContainer/Main"]
 layout_mode = 2
 size_flags_horizontal = 4
 theme_override_colors/font_color = Color(0.641934, 0.641934, 0.641934, 1)
@@ -37,7 +58,7 @@ text = "WRATH"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Continue" type="Button" parent="."]
+[node name="Continue" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -47,7 +68,7 @@ text = "CONTINUE
 icon_alignment = 1
 script = ExtResource("5_2fxgv")
 
-[node name="NewGame" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+[node name="NewGame" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -56,9 +77,8 @@ text = "NEW GAME"
 icon_alignment = 1
 script = ExtResource("6_k2sbj")
 scene_file = "uid://dt1c8xw6lwsk5"
-node_to_replace = NodePath("..")
 
-[node name="LoadGame" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+[node name="LoadGame" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -67,9 +87,8 @@ text = "LOAD GAME"
 icon_alignment = 1
 script = ExtResource("6_k2sbj")
 scene_file = "uid://cpgt71w6iukaj"
-node_to_replace = NodePath("..")
 
-[node name="DeleteGame" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+[node name="DeleteGame" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -78,32 +97,8 @@ text = "DELETE GAME"
 icon_alignment = 1
 script = ExtResource("6_k2sbj")
 scene_file = "uid://c1e26hcf0nrup"
-node_to_replace = NodePath("..")
 
-[node name="Options" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("4_n4yvo")
-text = "OPTIONS"
-icon_alignment = 1
-script = ExtResource("6_k2sbj")
-scene_file = "uid://fxlgnts7apla"
-node_to_replace = NodePath("..")
-
-[node name="Controls" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("4_n4yvo")
-text = "CONTROLS
-"
-icon_alignment = 1
-script = ExtResource("6_k2sbj")
-scene_file = "uid://bbnvaw1wjbpv0"
-node_to_replace = NodePath("..")
-
-[node name="Credits" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+[node name="Credits" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -113,9 +108,8 @@ text = "CREDITS
 icon_alignment = 1
 script = ExtResource("6_k2sbj")
 scene_file = "uid://b3i01lg3stgkg"
-node_to_replace = NodePath("..")
 
-[node name="Quit" type="Button" parent="."]
+[node name="Quit" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -124,15 +118,38 @@ text = "QUIT"
 icon_alignment = 1
 script = ExtResource("7_nikc7")
 
-[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
+[node name="GrabFocus" type="Node" parent="CenterContainer/Main" node_paths=PackedStringArray("focus_node")]
 script = ExtResource("8_8af7w")
 focus_node = NodePath("../NewGame")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CenterContainer/Main" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
 process_mode = 3
 bus = &"SFX"
 script = ExtResource("2_gkebh")
 hover_sound = ExtResource("1_48c50")
 press_sound = ExtResource("1_48c50")
-hover_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../LoadGame"), NodePath("../DeleteGame"), NodePath("../Options"), NodePath("../Controls"), NodePath("../Credits"), NodePath("../Quit")]
-pressed_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../LoadGame"), NodePath("../DeleteGame"), NodePath("../Options"), NodePath("../Controls"), NodePath("../Credits"), NodePath("../Quit")]
+hover_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../LoadGame"), NodePath("../DeleteGame"), NodePath(""), NodePath(""), NodePath("../Credits"), NodePath("../Quit")]
+pressed_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../LoadGame"), NodePath("../DeleteGame"), NodePath(""), NodePath(""), NodePath("../Credits"), NodePath("../Quit")]
+
+[node name="Label2" type="Label" parent="." groups=["ui_scalable"]]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -70.0
+offset_top = -22.0
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(75, 22)
+theme = ExtResource("4_n4yvo")
+theme_override_colors/font_color = Color(0.158472, 0.158472, 0.158472, 1)
+theme_override_font_sizes/font_size = 21
+text = "VERSION BETA "
+script = ExtResource("1_gkebh")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("10_03rxr")
+autoplay = true
+bus = &"Music"

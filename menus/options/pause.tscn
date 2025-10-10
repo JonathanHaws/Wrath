@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxja4xs36njyv"]
+[gd_scene load_steps=10 format=3 uid="uid://cxja4xs36njyv"]
 
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_44kt7"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_c0mv7"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="1_gh5rx"]
-[ext_resource type="Script" uid="uid://blcresco6qh8i" path="res://menus/options/sensitivity.gd" id="2_77qd8"]
 [ext_resource type="Script" uid="uid://d2hxlmmmtfynf" path="res://menus/options/volume_adjustment.gd" id="2_gh5rx"]
 [ext_resource type="Script" uid="uid://cehsklglvnhkr" path="res://menus/options/resolution.gd" id="4_dtlus"]
 [ext_resource type="Script" uid="uid://yd63tscy6h1n" path="res://menus/options/window_mode_dropdown.gd" id="4_i2ivw"]
@@ -38,34 +37,6 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(139.5, 182)
 script = ExtResource("1_c0mv7")
-
-[node name="Sensitivity" type="HBoxContainer" parent="Options"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("1_44kt7")
-alignment = 1
-
-[node name="Label" type="Label" parent="Options/Sensitivity"]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("1_44kt7")
-text = "SENSITIVITY:"
-
-[node name="Value" type="Label" parent="Options/Sensitivity"]
-layout_mode = 2
-
-[node name="HSlider" type="HSlider" parent="Options/Sensitivity" node_paths=PackedStringArray("value_label")]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-theme = ExtResource("1_44kt7")
-min_value = 0.001
-max_value = 0.05
-step = 0.001
-value = 0.03
-script = ExtResource("2_77qd8")
-value_label = NodePath("../Value")
 
 [node name="Master" type="HBoxContainer" parent="Options"]
 layout_mode = 2
@@ -189,5 +160,5 @@ bus = &"SFX"
 script = ExtResource("7_4uxce")
 hover_sound = ExtResource("6_w0nh5")
 press_sound = ExtResource("6_w0nh5")
-hover_targets = [NodePath("../Options/Sensitivity/HSlider"), NodePath("../Options/Master/HSlider"), NodePath("../Options/SFX/HSlider"), NodePath("../Options/Music/HSlider"), NodePath("../Options/Resolution"), NodePath("../Options/WindowMode"), NodePath("../Options/Graphics"), NodePath("../Options/Back")]
-pressed_targets = [NodePath("../Options/Sensitivity/HSlider"), NodePath("../Options/Master/HSlider"), NodePath("../Options/SFX/HSlider"), NodePath("../Options/Music/HSlider"), NodePath("../Options/Resolution"), NodePath("../Options/WindowMode"), NodePath("../Options/Graphics"), NodePath("../Options/Back")]
+hover_targets = [NodePath(""), NodePath("../Options/Master/HSlider"), NodePath("../Options/SFX/HSlider"), NodePath("../Options/Music/HSlider"), NodePath("../Options/Resolution"), NodePath("../Options/WindowMode"), NodePath("../Options/Graphics"), NodePath("../Options/Back")]
+pressed_targets = [NodePath(""), NodePath("../Options/Master/HSlider"), NodePath("../Options/SFX/HSlider"), NodePath("../Options/Music/HSlider"), NodePath("../Options/Resolution"), NodePath("../Options/WindowMode"), NodePath("../Options/Graphics"), NodePath("../Options/Back")]

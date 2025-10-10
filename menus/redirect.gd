@@ -1,8 +1,6 @@
 extends Node # Can be used on anything but most likely button
 @export_file("*.tscn") var scene_file: String
-## if no node to replace is specified will replace the entire tree
-@export var node_to_replace: Node
-
+@export var node_to_replace: Node ## if no node to replace is specified will replace the entire tree (USUALLY WHAT IS WANTED)
 var scene = null
 
 func _ready() -> void:
@@ -17,5 +15,7 @@ func _on_pressed() -> void:
 		var parent = node_to_replace.get_parent()
 		node_to_replace.queue_free()
 		parent.add_child(scene.instantiate())
-	else:
-		get_tree().change_scene_to_packed(scene)
+		return
+	
+	get_tree().change_scene_to_packed(scene)
+	

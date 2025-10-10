@@ -1,37 +1,129 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbnvaw1wjbpv0"]
+[gd_scene load_steps=10 format=3 uid="uid://bbnvaw1wjbpv0"]
 
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="1_gksqo"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_nke8k"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="1_thn1f"]
+[ext_resource type="Script" uid="uid://blcresco6qh8i" path="res://menus/options/sensitivity.gd" id="2_00uuv"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="2_lbh2v"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_t88b0"]
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="2_thn1f"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="2_w8ibl"]
 [ext_resource type="Script" uid="uid://d0y3kmnwe4g6k" path="res://menus/custom_control.gd" id="3_00uuv"]
-[ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_Press.wav" id="6_e0xkx"]
 
-[node name="Controls" type="VBoxContainer"]
+[node name="Controls" type="CanvasLayer"]
+process_mode = 3
+follow_viewport_enabled = true
 
-[node name="Forward" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+
+[node name="CenterContainer" type="CenterContainer" parent="." groups=["ui_scalable"]]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.5
+offset_top = -307.5
+offset_right = 180.5
+offset_bottom = 307.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(180.5, 307.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("2_t88b0")
+
+[node name="Controls" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+script = ExtResource("2_t88b0")
+
+[node name="MouseSensitivity" type="HBoxContainer" parent="CenterContainer/Controls"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_nke8k")
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/Controls/MouseSensitivity"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_nke8k")
+text = "MOUSE SENSITIVITY:"
+
+[node name="Value" type="Label" parent="CenterContainer/Controls/MouseSensitivity"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/Controls/MouseSensitivity" node_paths=PackedStringArray("value_label")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("1_nke8k")
+min_value = 0.001
+max_value = 0.05
+step = 0.001
+value = 0.03
+script = ExtResource("2_00uuv")
+value_label = NodePath("../Value")
+
+[node name="ControllerSensitivity" type="HBoxContainer" parent="CenterContainer/Controls"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_nke8k")
+alignment = 1
+
+[node name="Label" type="Label" parent="CenterContainer/Controls/ControllerSensitivity"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_nke8k")
+text = "CONTROLLER SENSITIVITY:"
+
+[node name="Value" type="Label" parent="CenterContainer/Controls/ControllerSensitivity"]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="CenterContainer/Controls/ControllerSensitivity" node_paths=PackedStringArray("value_label")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("1_nke8k")
+min_value = 0.001
+max_value = 0.05
+step = 0.001
+value = 0.03
+script = ExtResource("2_00uuv")
+camera_property_name = "CONTROLLER_SENSITIVITY"
+config_setting_name = "controller_sensitivity"
+value_label = NodePath("../Value")
+
+[node name="Forward" type="HBoxContainer" parent="CenterContainer/Controls" node_paths=PackedStringArray("label", "add", "remove")]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "keyboard_forward"
-display_name = "Forward"
+display_name = "FORWARD"
 label = NodePath("Label")
 add = NodePath("Add")
 remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Forward"]
+[node name="Label" type="Label" parent="CenterContainer/Controls/Forward"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
 text = "FORWARD"
 
-[node name="Add" type="Button" parent="Forward"]
+[node name="Add" type="Button" parent="CenterContainer/Controls/Forward"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
 text = "+"
 
-[node name="Remove" type="Button" parent="Forward"]
+[node name="Remove" type="Button" parent="CenterContainer/Controls/Forward"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -39,27 +131,27 @@ theme = ExtResource("1_nke8k")
 text = "-"
 icon_alignment = 1
 
-[node name="Backward" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Backward" type="HBoxContainer" parent="CenterContainer/Controls" node_paths=PackedStringArray("label", "add", "remove")]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "keyboard_back"
-display_name = "Back"
+display_name = "BACKWARD"
 label = NodePath("Label")
 add = NodePath("Add")
 remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Backward"]
+[node name="Label" type="Label" parent="CenterContainer/Controls/Backward"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
-text = "FORWARD"
+text = "BACKWARD"
 
-[node name="Add" type="Button" parent="Backward"]
+[node name="Add" type="Button" parent="CenterContainer/Controls/Backward"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
 text = "+"
 
-[node name="Remove" type="Button" parent="Backward"]
+[node name="Remove" type="Button" parent="CenterContainer/Controls/Backward"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -68,27 +160,27 @@ text = "-
 "
 icon_alignment = 1
 
-[node name="Left" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Left" type="HBoxContainer" parent="CenterContainer/Controls" node_paths=PackedStringArray("label", "add", "remove")]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "keyboard_left"
-display_name = "Left"
+display_name = "LEFT"
 label = NodePath("Label")
 add = NodePath("Add")
 remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Left"]
+[node name="Label" type="Label" parent="CenterContainer/Controls/Left"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
-text = "FORWARD"
+text = "LEFT"
 
-[node name="Add" type="Button" parent="Left"]
+[node name="Add" type="Button" parent="CenterContainer/Controls/Left"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
 text = "+"
 
-[node name="Remove" type="Button" parent="Left"]
+[node name="Remove" type="Button" parent="CenterContainer/Controls/Left"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -97,27 +189,27 @@ text = "-
 "
 icon_alignment = 1
 
-[node name="Right" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Right" type="HBoxContainer" parent="CenterContainer/Controls" node_paths=PackedStringArray("label", "add", "remove")]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "keyboard_right"
-display_name = "Right"
+display_name = "RIGHT"
 label = NodePath("Label")
 add = NodePath("Add")
 remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Right"]
+[node name="Label" type="Label" parent="CenterContainer/Controls/Right"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
-text = "FORWARD"
+text = "RIGHT"
 
-[node name="Add" type="Button" parent="Right"]
+[node name="Add" type="Button" parent="CenterContainer/Controls/Right"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
 text = "+"
 
-[node name="Remove" type="Button" parent="Right"]
+[node name="Remove" type="Button" parent="CenterContainer/Controls/Right"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -126,27 +218,27 @@ text = "-
 "
 icon_alignment = 1
 
-[node name="Jump" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Jump" type="HBoxContainer" parent="CenterContainer/Controls" node_paths=PackedStringArray("label", "add", "remove")]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "jump"
-display_name = "Jump"
+display_name = "JUMP"
 label = NodePath("Label")
 add = NodePath("Add")
 remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Jump"]
+[node name="Label" type="Label" parent="CenterContainer/Controls/Jump"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
-text = "FORWARD"
+text = "JUMP"
 
-[node name="Add" type="Button" parent="Jump"]
+[node name="Add" type="Button" parent="CenterContainer/Controls/Jump"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
 text = "+"
 
-[node name="Remove" type="Button" parent="Jump"]
+[node name="Remove" type="Button" parent="CenterContainer/Controls/Jump"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -155,27 +247,27 @@ text = "-
 "
 icon_alignment = 1
 
-[node name="Attack" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Attack" type="HBoxContainer" parent="CenterContainer/Controls" node_paths=PackedStringArray("label", "add", "remove")]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "attack"
-display_name = "Attack"
+display_name = "ATTACK"
 label = NodePath("Label")
 add = NodePath("Add")
 remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Attack"]
+[node name="Label" type="Label" parent="CenterContainer/Controls/Attack"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
-text = "FORWARD"
+text = "ATTACK"
 
-[node name="Add" type="Button" parent="Attack"]
+[node name="Add" type="Button" parent="CenterContainer/Controls/Attack"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
 text = "+"
 
-[node name="Remove" type="Button" parent="Attack"]
+[node name="Remove" type="Button" parent="CenterContainer/Controls/Attack"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -184,27 +276,27 @@ text = "-
 "
 icon_alignment = 1
 
-[node name="Interact" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Interact" type="HBoxContainer" parent="CenterContainer/Controls" node_paths=PackedStringArray("label", "add", "remove")]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "interact"
-display_name = "Interact"
+display_name = "INTERACT"
 label = NodePath("Label")
 add = NodePath("Add")
 remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Interact"]
+[node name="Label" type="Label" parent="CenterContainer/Controls/Interact"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
-text = "FORWARD"
+text = "INTERACT"
 
-[node name="Add" type="Button" parent="Interact"]
+[node name="Add" type="Button" parent="CenterContainer/Controls/Interact"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
 text = "+"
 
-[node name="Remove" type="Button" parent="Interact"]
+[node name="Remove" type="Button" parent="CenterContainer/Controls/Interact"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -213,27 +305,27 @@ text = "-
 "
 icon_alignment = 1
 
-[node name="LockOn" type="HBoxContainer" parent="." node_paths=PackedStringArray("label", "add", "remove")]
+[node name="LockOn" type="HBoxContainer" parent="CenterContainer/Controls" node_paths=PackedStringArray("label", "add", "remove")]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "lock_on"
-display_name = "Lock On"
+display_name = "LOCK ON"
 label = NodePath("Label")
 add = NodePath("Add")
 remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="LockOn"]
+[node name="Label" type="Label" parent="CenterContainer/Controls/LockOn"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
-text = "FORWARD"
+text = "LOCK ON"
 
-[node name="Add" type="Button" parent="LockOn"]
+[node name="Add" type="Button" parent="CenterContainer/Controls/LockOn"]
 layout_mode = 2
 theme = ExtResource("2_w8ibl")
 text = "+"
 
-[node name="Remove" type="Button" parent="LockOn"]
+[node name="Remove" type="Button" parent="CenterContainer/Controls/LockOn"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -242,17 +334,7 @@ text = "-
 "
 icon_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="."]
-layout_mode = 2
-theme = ExtResource("1_nke8k")
-bbcode_enabled = true
-text = "[center] 
-[color=#ececec]Hold Mouse [/color][color=#858585]- Spin Attack  [/color]
-[/center] "
-fit_content = true
-autowrap_mode = 0
-
-[node name="Back" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+[node name="Back" type="Button" parent="CenterContainer/Controls" node_paths=PackedStringArray("node_to_replace")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -261,18 +343,18 @@ text = "BACK
 "
 icon_alignment = 1
 script = ExtResource("2_lbh2v")
-scene_file = "uid://cls12q06quifx"
-node_to_replace = NodePath("..")
+scene_file = "uid://cqcx34rswnnw1"
+node_to_replace = NodePath("../../..")
 
-[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
+[node name="GrabFocus" type="Node" parent="CenterContainer/Controls" node_paths=PackedStringArray("focus_node")]
 script = ExtResource("1_thn1f")
 focus_node = NodePath("../Back")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CenterContainer/Controls" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
 process_mode = 3
 bus = &"SFX"
 script = ExtResource("2_thn1f")
 hover_sound = ExtResource("1_gksqo")
-press_sound = ExtResource("6_e0xkx")
+press_sound = ExtResource("1_gksqo")
 hover_targets = [NodePath("../Back")]
 pressed_targets = [NodePath("../Back")]

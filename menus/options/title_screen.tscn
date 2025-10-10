@@ -109,6 +109,39 @@ popup/item_2/text = "BORDERLESS"
 popup/item_2/id = 2
 script = ExtResource("4_k6d2o")
 
+[node name="Controls" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_2cglq")
+text = "CONTROLS"
+icon_alignment = 1
+script = ExtResource("5_0kcqh")
+scene_file = "uid://cls12q06quifx"
+node_to_replace = NodePath("..")
+
+[node name="Graphics" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_2cglq")
+text = "GRAPHICS"
+icon_alignment = 1
+script = ExtResource("5_0kcqh")
+scene_file = "uid://cls12q06quifx"
+node_to_replace = NodePath("..")
+
+[node name="Audio" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_2cglq")
+text = "AUDIO"
+icon_alignment = 1
+script = ExtResource("5_0kcqh")
+scene_file = "uid://cls12q06quifx"
+node_to_replace = NodePath("..")
+
 [node name="Back" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -131,5 +164,5 @@ bus = &"SFX"
 script = ExtResource("7_0kcqh")
 hover_sound = ExtResource("6_k6d2o")
 press_sound = ExtResource("6_k6d2o")
-hover_targets = [NodePath("../Master/HSlider"), NodePath("../SFX/HSlider"), NodePath("../Music/HSlider"), NodePath(""), NodePath("../Resolution"), NodePath("../WindowMode"), NodePath("../Back")]
-pressed_targets = [NodePath("../Master/HSlider"), NodePath("../SFX/HSlider"), NodePath("../Music/HSlider"), NodePath(""), NodePath("../Resolution"), NodePath("../WindowMode"), NodePath("../Back")]
+hover_targets = [NodePath("../Master/HSlider"), NodePath("../SFX/HSlider"), NodePath("../Music/HSlider"), null, NodePath("../Resolution"), NodePath("../WindowMode"), NodePath("../Back")]
+pressed_targets = [NodePath("../Master/HSlider"), NodePath("../SFX/HSlider"), NodePath("../Music/HSlider"), null, NodePath("../Resolution"), NodePath("../WindowMode"), NodePath("../Back")]

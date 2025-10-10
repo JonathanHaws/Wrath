@@ -2250,7 +2250,7 @@ script = ExtResource("2_1bp3y")
 camera_node = NodePath("../Camera3D")
 target_fov = 70.0
 
-[node name="Camera3D" type="Camera3D" parent="SpringArm3D" node_paths=PackedStringArray("SpringArm") groups=["MOUSE_SENSITIVITY", "player_camera"]]
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" node_paths=PackedStringArray("SpringArm") groups=["player_camera"]]
 transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0)
 current = true
 fov = 80.0

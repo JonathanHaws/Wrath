@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpgt71w6iukaj"]
+[gd_scene load_steps=10 format=3 uid="uid://cpgt71w6iukaj"]
 
 [ext_resource type="Script" uid="uid://cw2iscxy4kg2r" path="res://menus/save/load/load.gd" id="1_6x4ew"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_xbifh"]
 [ext_resource type="PackedScene" uid="uid://bchlq7ojvre5o" path="res://menus/save/profile/profile.tscn" id="2_t8d72"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="3_3kwj5"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="3_opbiq"]
@@ -9,11 +10,45 @@
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_Press.wav" id="5_3kwj5"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_wpkbo"]
 
-[node name="Load" type="VBoxContainer"]
+[node name="LoadGame" type="CanvasLayer"]
+process_mode = 3
+follow_viewport_enabled = true
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="." groups=["ui_scalable"]]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.5
+offset_top = -307.5
+offset_right = 180.5
+offset_bottom = 307.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(180.5, 307.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_xbifh")
+metadata/_edit_use_anchors_ = true
+
+[node name="Load" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
 script = ExtResource("1_6x4ew")
 profile_scene = ExtResource("2_t8d72")
 
-[node name="Continue" type="Button" parent="."]
+[node name="Continue" type="Button" parent="CenterContainer/Load"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -23,7 +58,7 @@ text = "CONTINUE
 icon_alignment = 1
 script = ExtResource("4_3kwj5")
 
-[node name="Back" type="Button" parent="." node_paths=PackedStringArray("node_to_replace")]
+[node name="Back" type="Button" parent="CenterContainer/Load"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -33,13 +68,12 @@ text = "BACK
 icon_alignment = 1
 script = ExtResource("4_3kwj5")
 scene_file = "uid://cls12q06quifx"
-node_to_replace = NodePath("..")
 
-[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
+[node name="GrabFocus" type="Node" parent="CenterContainer/Load" node_paths=PackedStringArray("focus_node")]
 script = ExtResource("8_wpkbo")
 focus_node = NodePath("../Back")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CenterContainer/Load" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
 process_mode = 3
 bus = &"SFX"
 script = ExtResource("4_wpkbo")
