@@ -1,6 +1,6 @@
 extends Area3D
-@export var HEALTH = 500
-@export var MAX_HEALTH = 500
+@export var HEALTH :float = 500.0
+@export var MAX_HEALTH	:float = 500.0
 @export var IMMUNE_GROUPS: Array[String] = []
 @export var INVINCIBILITY_COOLDOWN: float = 0.0 ## After object gets hit how long they are invincible
 @export var DISABLED: bool = false

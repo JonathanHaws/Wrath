@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://c6e88ycy4nm7x"]
+[gd_scene load_steps=58 format=3 uid="uid://c6e88ycy4nm7x"]
 
 [ext_resource type="Script" uid="uid://qthw8jc8ahs5" path="res://actors/characters/enemies/damage_increase_on_death.gd" id="1_tw1ii"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="2_i6eoe"]
@@ -24,6 +24,10 @@
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="20_mvqiw"]
 [ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://actors/characters/enemies/ghosts/ghost_projectile.tscn" id="20_x07w4"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="22_3d4yc"]
+
+[sub_resource type="Curve" id="Curve_5rg5p"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.15534, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7c1mb"]
 radius = 0.806
@@ -1001,6 +1005,7 @@ radius = 18.8292
 
 [node name="Ghost" type="CharacterBody3D" groups=["ghost"]]
 script = ExtResource("1_tw1ii")
+DAMAGE_CURVE = SubResource("Curve_5rg5p")
 DAMAGE_KEY = "damage"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -1009,8 +1014,6 @@ debug_color = Color(0.87, 0.87, 0.87, 1)
 
 [node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("2_i6eoe")
-HEALTH = 300
-MAX_HEALTH = 300
 IMMUNE_GROUPS = Array[String](["ghost"])
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 HURT_ANIMATION_PLAYER = NodePath("../Damaged")
