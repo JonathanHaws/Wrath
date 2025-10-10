@@ -10,6 +10,7 @@ extends Node3D
 @export var collision_animation_name: String = ""
 @export var hurt_box: Node ## destroy when hurtboxes hti something
 
+@export var home_in_ready: bool = false
 @export var homing: bool = false
 @export var homing_group: String = "player_body"
 @export var homing_speed: float = 2.0  
@@ -25,6 +26,11 @@ func play_collision_animation():
 
 func _ready():
 	await get_tree().process_frame
+	
+	if home_in_ready and get_tree().get_nodes_in_group(homing_group):
+		var target = get_tree().get_nodes_in_group(homing_group)[0]
+		look_at(target.global_position + homing_offset, Vector3.UP)
+	
 	velocity = -(global_transform.basis.z.normalized()) * speed		
 	velocity +=  Vector3(randf_range(-random_velocity_x, random_velocity_x), randf_range(-random_velocity_y, random_velocity_y), 0)
 	

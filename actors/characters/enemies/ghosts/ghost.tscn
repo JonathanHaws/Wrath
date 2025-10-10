@@ -26,8 +26,8 @@
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="22_3d4yc"]
 
 [sub_resource type="Curve" id="Curve_5rg5p"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.15534, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7c1mb"]
 radius = 0.806
@@ -827,7 +827,7 @@ _data = [Vector2(0, 0.730337), 0.0, 0.0, 0, 0]
 point_count = 1
 
 [sub_resource type="Curve" id="Curve_7c1mb"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 0.988764), 0.0, 0.0, 0, 0, Vector2(0.453659, 1), -0.0794266, -0.0794266, 0, 0, Vector2(0.668293, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(0.218447, 1), -0.0794266, -0.0794266, 0, 0, Vector2(0.456311, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qr43c"]
@@ -1108,15 +1108,17 @@ BODY = NodePath("../..")
 script = ExtResource("20_mvqiw")
 ATTACK_ANIMATION = "SHOOT"
 LIKELIHOOD_MULTIPLIER = 50.0
+ATTACK_RADIUS = 20.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_n368u")
 AREA_MULTIPLIER = NodePath("../../StopChase")
+COOLDOWN = 5.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
 [node name="JumpAttack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("20_mvqiw")
 ATTACK_ANIMATION = "JUMP_ATTACK"
-LIKELIHOOD_MULTIPLIER = 50.0
+LIKELIHOOD_MULTIPLIER = 30.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_7c1mb")
 COOLDOWN = 4.0
 TARGET = NodePath("../../Target")
