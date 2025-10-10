@@ -10,10 +10,10 @@ func _on_choice_pressed(choice: Dictionary) -> void:
 		get_parent().current_index += 1 + choice.skip
 
 func _hide_cursor():
-	Controls.hide_mouse_for_dialogue()
+	Controls.hide_mouse()
 
 func _show_cursor():
-	Controls.show_mouse_for_dialogue()
+	Controls.show_mouse()
 
 func _exit_tree():
 	DisableInput.toggle_action(disable_actions, true)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://b3i01lg3stgkg"]
+[gd_scene load_steps=8 format=3 uid="uid://b3i01lg3stgkg"]
 
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_airpt"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="1_hyvu0"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="2_77ypm"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="3_hyvu0"]
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="4_if7rd"]
+[ext_resource type="Script" uid="uid://di42lux5ey07j" path="res://menus/show_cursor.gd" id="7_airpt"]
 
 [node name="Credits" type="CanvasLayer"]
 process_mode = 3
@@ -86,3 +87,6 @@ hover_sound = ExtResource("3_hyvu0")
 press_sound = ExtResource("3_hyvu0")
 hover_targets = [NodePath("../Back")]
 pressed_targets = [NodePath("../Back")]
+
+[node name="ShowCursor" type="Node" parent="."]
+script = ExtResource("7_airpt")

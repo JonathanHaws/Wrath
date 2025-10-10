@@ -27,16 +27,21 @@ func _physics_process(_delta: float) -> void:
 		mouse_delta = Vector2.ZERO
 		return
 	
-	var sens = MOUSE_SENSITIVITY * SENSITIVITY_MULTIPLIER
+	var mouse_sens = MOUSE_SENSITIVITY * SENSITIVITY_MULTIPLIER
+	var controller_sens = CONTROLLER_SENSITIVITY * SENSITIVITY_MULTIPLIER
+		
+	mouse_delta.x *=  mouse_sens 
+	mouse_delta.y *=  mouse_sens 
 	
 	var look_left_right = Input.get_axis("look_left", "look_right")
 	var look_up_down = Input.get_axis("look_down", "look_up")
-	mouse_delta.x += look_left_right * CONTROLLER_SENSITIVITY * SENSITIVITY_MULTIPLIER
-	mouse_delta.y -= look_up_down * CONTROLLER_SENSITIVITY * SENSITIVITY_MULTIPLIER
+	
+	mouse_delta.x += look_left_right * controller_sens
+	mouse_delta.y -= look_up_down * controller_sens
 	
 	if mouse_delta.length() > 0:
-		var new_x = SpringArm.global_rotation.x - mouse_delta.y * sens
-		var new_y = SpringArm.global_rotation.y - mouse_delta.x * sens
+		var new_x = SpringArm.global_rotation.x - mouse_delta.y 
+		var new_y = SpringArm.global_rotation.y - mouse_delta.x 
 
 		new_x = clamp(new_x, deg_to_rad(pitch_min_deg), deg_to_rad(pitch_max_deg)) #Constrain 
 

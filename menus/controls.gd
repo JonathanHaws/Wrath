@@ -33,10 +33,10 @@ func get_action_bindings(action: String) -> String:
 var idle_time_seconds := 0.0
 var idle_timeout_seconds := 2.0
 var last_time 
-func hide_mouse_for_dialogue() -> void:
+func hide_mouse() -> void:
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-func show_mouse_for_dialogue() -> void:
+func show_mouse() -> void:
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 func _ready():

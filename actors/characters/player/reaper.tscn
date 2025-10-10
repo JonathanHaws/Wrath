@@ -2145,6 +2145,7 @@ ANIMATION_PLAYER = NodePath("../AnimationPlayer")
 
 [node name="GodModeHurt" type="Area3D" parent="GodMode" groups=["player"]]
 script = ExtResource("7_4anjp")
+damage = 10000.0
 damage_groups = Array[String](["enemy_hitshape"])
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GodMode/GodModeHurt" groups=["player"]]

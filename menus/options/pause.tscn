@@ -160,5 +160,5 @@ bus = &"SFX"
 script = ExtResource("7_4uxce")
 hover_sound = ExtResource("6_w0nh5")
 press_sound = ExtResource("6_w0nh5")
-hover_targets = [NodePath(""), NodePath("../Options/Master/HSlider"), NodePath("../Options/SFX/HSlider"), NodePath("../Options/Music/HSlider"), NodePath("../Options/Resolution"), NodePath("../Options/WindowMode"), NodePath("../Options/Graphics"), NodePath("../Options/Back")]
-pressed_targets = [NodePath(""), NodePath("../Options/Master/HSlider"), NodePath("../Options/SFX/HSlider"), NodePath("../Options/Music/HSlider"), NodePath("../Options/Resolution"), NodePath("../Options/WindowMode"), NodePath("../Options/Graphics"), NodePath("../Options/Back")]
+hover_targets = [null, NodePath("../Options/Master/HSlider"), NodePath("../Options/SFX/HSlider"), NodePath("../Options/Music/HSlider"), NodePath("../Options/Resolution"), NodePath("../Options/WindowMode"), NodePath("../Options/Graphics"), NodePath("../Options/Back")]
+pressed_targets = [null, NodePath("../Options/Master/HSlider"), NodePath("../Options/SFX/HSlider"), NodePath("../Options/Music/HSlider"), NodePath("../Options/Resolution"), NodePath("../Options/WindowMode"), NodePath("../Options/Graphics"), NodePath("../Options/Back")]
