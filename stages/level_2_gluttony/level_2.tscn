@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cjnryqwoknkw5"]
+[gd_scene load_steps=14 format=3 uid="uid://cjnryqwoknkw5"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_kjfq7"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_cy8f3"]
@@ -10,6 +10,7 @@
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="8_5spip"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="9_fi73v"]
 [ext_resource type="PackedScene" uid="uid://cemstdmdnxhba" path="res://actors/props/ladders/ladder.tscn" id="10_qh5wb"]
+[ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://actors/characters/npcs/piglet/piglet.tscn" id="11_2c563"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -89,5 +90,16 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.802
 [node name="Ladder2" parent="." instance=ExtResource("10_qh5wb")]
 transform = Transform3D(-4.37114e-08, 2.21727e-15, -1, -0.514559, 0.857455, 2.24921e-08, 0.857455, 0.514559, -3.74805e-08, -11.9031, 22.8445, -12.3389)
 
+[node name="Piglet" parent="." instance=ExtResource("11_2c563")]
+transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -7.91218, -8.92891, 10.9577)
+
+[node name="PickUpInteraction" parent="Piglet" index="3"]
+disabled = true
+
+[node name="HeadPetInteraction" parent="Piglet" index="4"]
+disabled = false
+
 [editable path="greed_talk_1"]
 [editable path="greed_talk_1/greed"]
+[editable path="Piglet"]
+[editable path="Piglet/piglet"]

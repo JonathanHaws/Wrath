@@ -1,4 +1,6 @@
 extends Node
+@export var disabled: bool = false
+
 @export_group("Trigger Area")
 @export var trigger_area: Area3D ## Only triggers from target body
 @export var animation_player: AnimationPlayer 
@@ -21,9 +23,10 @@ extends Node
 @export_range(0.0, 1.0, 0.01) var weight: float = 0.5 ## Determines who stays still versus who moves. Usually only want target to move (0). Middle is (0.5)
 
 func _on_body_entered(other_body: Node3D) -> void:
+	if disabled: return
 	if not other_body.is_in_group(target_body_group): return
 	if not animation_player: return
-	if not animation_name != &"": return
+	if animation_name == &"": return
 	if animation_player.is_playing(): return
 	animation_player.play(animation_name)	
 
@@ -53,6 +56,7 @@ func _match_transforms() -> void:
 				#print("Target Child Local Transform:", target_child_transform.transform)
 				
 func _trigger_corresponding_animation() -> void:
+	if disabled: return
 	for node in get_tree().get_nodes_in_group(target_anim_group):
 		if not node is AnimationPlayer: continue
 		if not node.has_animation(target_anim): continue
