@@ -332,7 +332,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 46.9871, 19)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("6_mb05r")
-damage = 10000
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillVolumes/Void"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.713, -196.083, 36.6345)
@@ -344,7 +343,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 46.9871, 19)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("6_mb05r")
-damage = 10000
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillVolumes/Void2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 57.4761, -70.6969, -0.643242)
