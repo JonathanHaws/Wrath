@@ -128,8 +128,8 @@ bus = &"SFX"
 script = ExtResource("2_gkebh")
 hover_sound = ExtResource("1_48c50")
 press_sound = ExtResource("1_48c50")
-hover_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../LoadGame"), NodePath("../DeleteGame"), NodePath(""), NodePath(""), NodePath("../Credits"), NodePath("../Quit")]
-pressed_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../LoadGame"), NodePath("../DeleteGame"), NodePath(""), NodePath(""), NodePath("../Credits"), NodePath("../Quit")]
+hover_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../LoadGame"), NodePath("../DeleteGame"), null, null, NodePath("../Credits"), NodePath("../Quit")]
+pressed_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../LoadGame"), NodePath("../DeleteGame"), null, null, NodePath("../Credits"), NodePath("../Quit")]
 
 [node name="Label2" type="Label" parent="." groups=["ui_scalable"]]
 anchors_preset = 3
