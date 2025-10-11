@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dfri6vhmpkyfv"]
+[gd_scene load_steps=14 format=3 uid="uid://dfri6vhmpkyfv"]
 
 [ext_resource type="PackedScene" uid="uid://wlhsn0forped" path="res://actors/characters/npcs/piglet/piglet.blend" id="1_w7fh2"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="2_yln8f"]
@@ -71,6 +71,47 @@ tracks/4/keys = {
 "values": [{
 "args": [],
 "method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_bpypl"]
+resource_name = "PIGLET_PET"
+length = 6.66667
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("piglet/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("PigletPet"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("piglet/Piglet/Skeleton3D/LookAtModifier3D:influence")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.22, 6.26667, 6.66667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("HeadPetInteraction")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_trigger_corresponding_animation"
 }]
 }
 
@@ -163,8 +204,8 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_bpypl"]
-resource_name = "PIGLET_PET"
+[sub_resource type="Animation" id="Animation_eqf0t"]
+resource_name = "PIGLET_PAT"
 length = 6.66667
 step = 0.0416667
 tracks/0/type = "animation"
@@ -174,7 +215,7 @@ tracks/0/path = NodePath("piglet/AnimationPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"clips": PackedStringArray("PigletPet"),
+"clips": PackedStringArray("PigletBellyPat"),
 "times": PackedFloat32Array(0)
 }
 tracks/1/type = "value"
@@ -192,7 +233,7 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("HeadPetInteraction")
+tracks/2/path = NodePath("PatInteraction")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -207,6 +248,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vyj1q"]
 _data = {
 &"GOBBLED": SubResource("Animation_yln8f"),
+&"PIGLET_PAT": SubResource("Animation_eqf0t"),
 &"PIGLET_PET": SubResource("Animation_bpypl"),
 &"PIGLET_PICKUP": SubResource("Animation_7ogmq"),
 &"RESET": SubResource("Animation_vyj1q")
@@ -218,6 +260,9 @@ _data = {
 size = Vector3(2.68766, 3.2832, 2.31576)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7ogmq"]
+size = Vector3(2.68766, 3.2832, 2.31576)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_vyj1q"]
 size = Vector3(2.68766, 3.2832, 2.31576)
 
 [node name="Piglet" type="Node3D" groups=["piglet_body"]]
@@ -334,6 +379,25 @@ weight = 0.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeadPetInteraction"]
 transform = Transform3D(0.999997, 4.65661e-09, -1.80153e-08, 1.11759e-08, 0.999997, -2.98023e-08, 1.40863e-08, -1.3411e-07, 0.999995, -0.137741, 1.13558, 0.0584046)
 shape = SubResource("BoxShape3D_7ogmq")
+debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
+
+[node name="PatInteraction" type="Area3D" parent="." node_paths=PackedStringArray("trigger_area", "animation_player", "body", "mesh")]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("3_yln8f")
+disabled = true
+trigger_area = NodePath(".")
+animation_player = NodePath("../AnimationPlayer")
+animation_name = &"PIGLET_PAT"
+target_anim = &"PIGLET_PAT"
+body = NodePath("..")
+mesh = NodePath("../piglet")
+duration_seconds = 0.5
+weight = 0.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PatInteraction"]
+transform = Transform3D(0.999997, 4.65661e-09, -1.80153e-08, 1.11759e-08, 0.999997, -2.98023e-08, 1.40863e-08, -1.3411e-07, 0.999995, -0.137741, 1.13558, 0.0584046)
+shape = SubResource("BoxShape3D_vyj1q")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="Light" type="OmniLight3D" parent="."]

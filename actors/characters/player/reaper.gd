@@ -90,6 +90,7 @@ func in_interruptible_animation() -> bool:
 		"GLUTTONY_INTRO",
 		"PIGLET_PICKUP",
 		"PIGLET_PET",
+		"PIGLET_PAT",
 	]
 
 func _exit_tree() -> void:
