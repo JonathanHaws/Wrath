@@ -32,7 +32,7 @@ func save_game() -> void:
 func load_save_data(file_name: String) -> void:
 	game_file_name = file_name
 	data = get_dictionary_from_file(file_name)
-	Save.save_game()
+	save_game()
 
 func load_game(file_name: String) -> void:
 	load_save_data(file_name)

@@ -42,16 +42,13 @@ func hit(area: Area3D = null, damage: int = 0)-> void:
 	if HEALTH > 0 and damage > 0: # HURT
 		if HURT_ANIMATION_PLAYER and HURT_ANIMATION_PLAYER.has_animation(HURT_ANIM):
 			HURT_ANIMATION_PLAYER.play(HURT_ANIM)
-			HURT_ANIMATION_PLAYER.seek(0, true)
 	if HEALTH <= 0: # DEATH
 		if DEATH_ANIMATION_PLAYER and DEATH_ANIMATION_PLAYER.has_animation(DEATH_ANIM):
 			DISABLED = true
-			DEATH_ANIMATION_PLAYER.play(DEATH_ANIM)
-			DEATH_ANIMATION_PLAYER.seek(0, true)		
+			DEATH_ANIMATION_PLAYER.play(DEATH_ANIM)	
 	if damage < 0: # HEAL
 		if HEAL_ANIMATION_PLAYER and HEAL_ANIMATION_PLAYER.has_animation(HEAL_ANIM):
 			HEAL_ANIMATION_PLAYER.play(HEAL_ANIM)
-			HEAL_ANIMATION_PLAYER.seek(0, true)
 			
 func _ready():
 	if INVINCIBILITY_COOLDOWN > 0:
