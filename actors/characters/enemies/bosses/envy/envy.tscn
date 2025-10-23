@@ -18,7 +18,7 @@
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://actors/characters/enemies/sfx/Despawn.wav" id="16_8wint"]
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://actors/characters/enemies/sfx/Cry.wav" id="17_il76p"]
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://actors/characters/enemies/sfx/Spin.wav" id="18_del5c"]
-[ext_resource type="AudioStream" uid="uid://dihsmt30mdqcm" path="res://actors/characters/enemies/bosses/greed/greed.ogg" id="19_wkktx"]
+[ext_resource type="AudioStream" uid="uid://bcjk1vox2p8ln" path="res://actors/characters/enemies/bosses/envy/Envy_Music.ogg" id="19_fp1nr"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="20_sg61t"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_shake.gd" id="21_3upiv"]
 [ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://actors/characters/ui/damage_numbers.tscn" id="21_fp1nr"]
@@ -1249,7 +1249,7 @@ bus = &"SFX"
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio"]
 process_mode = 3
-stream = ExtResource("19_wkktx")
+stream = ExtResource("19_fp1nr")
 bus = &"Music"
 parameters/looping = true
 
@@ -1342,7 +1342,7 @@ LIKELIHOOD_MULTIPLIER = 300.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_fp1nr")
 COOLDOWN = 2.98
 PHASE_HITSHAPE = NodePath("../../HitShape")
-HEALTH_HIGH_THRESHOLD = 0.7
+HEALTH_HIGH_THRESHOLD = 0.8
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
