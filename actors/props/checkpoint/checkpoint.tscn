@@ -197,6 +197,7 @@ CHECKPOINT_NODE = NodePath("Node3D")
 REST_ANIM = NodePath("Rest")
 AQUIRED_ANIM = NodePath("Aquired")
 PROMPT_ANIM = NodePath("Prompt")
+skill_tree_file = "uid://dspid5s7r6a1o"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)

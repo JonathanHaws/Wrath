@@ -1,10 +1,21 @@
-[gd_scene load_steps=2 format=3 uid="uid://dspid5s7r6a1o"]
+[gd_scene load_steps=12 format=3 uid="uid://dspid5s7r6a1o"]
 
+[ext_resource type="Script" uid="uid://di42lux5ey07j" path="res://menus/show_cursor.gd" id="1_7cmww"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_iiq8l"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="3_15wwq"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="3_monbv"]
+[ext_resource type="Texture2D" uid="uid://cb1iloq6j0fp0" path="res://menus/skill_tree/lust.png" id="4_15wwq"]
+[ext_resource type="Texture2D" uid="uid://dkmju8gqejjbt" path="res://menus/skill_tree/gluttony.png" id="5_tjbbn"]
+[ext_resource type="Texture2D" uid="uid://c13n32tdqtmf3" path="res://menus/skill_tree/greed.png" id="6_monbv"]
+[ext_resource type="Texture2D" uid="uid://b3h60qbd20le8" path="res://menus/skill_tree/sloth.png" id="7_n1vdw"]
+[ext_resource type="Texture2D" uid="uid://or0wjxxmmk4s" path="res://menus/skill_tree/wrath.png" id="8_uftlf"]
+[ext_resource type="Texture2D" uid="uid://cdg3cv60l67qu" path="res://menus/skill_tree/envy.png" id="9_xjsia"]
+[ext_resource type="Texture2D" uid="uid://kmyl3r87kf0m" path="res://menus/skill_tree/pride.png" id="10_lts1r"]
 
 [node name="SkillTree" type="Node3D"]
 
 [node name="ColorRect" type="ColorRect" parent="."]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -13,15 +24,107 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_iiq8l")
-color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+color = Color(0.0383972, 0.0383972, 0.0383971, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Label" type="Label" parent="ColorRect"]
+[node name="Button" type="Button" parent="ColorRect" groups=["ui_scalable"]]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = -57.0
+offset_right = -13.0
+offset_bottom = -13.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "CONTIUE
+"
+script = ExtResource("3_15wwq")
+scene_file = "uid://dmf0vo8jrm34a"
+
+[node name="Control" type="Control" parent="." groups=["ui_scalable"]]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_monbv")
+
+[node name="Label" type="Label" parent="Control"]
 layout_mode = 2
-offset_left = 603.5
-offset_top = 178.0
-offset_right = 676.5
-offset_bottom = 214.0
+offset_left = -2.5
+offset_top = -137.0
+offset_right = 73.5
+offset_bottom = -101.0
 size_flags_horizontal = 4
 theme = ExtResource("1_iiq8l")
 text = "VIRTUES:"
+
+[node name="TextureButton" type="TextureButton" parent="Control"]
+offset_left = -12.0
+offset_top = -95.0
+offset_right = 116.0
+offset_bottom = 33.0
+scale = Vector2(0.657565, 0.662287)
+texture_normal = ExtResource("4_15wwq")
+
+[node name="TextureButton2" type="TextureButton" parent="Control"]
+offset_left = 60.0
+offset_top = -62.0
+offset_right = 188.0
+offset_bottom = 66.0
+scale = Vector2(0.657565, 0.662287)
+texture_normal = ExtResource("5_tjbbn")
+
+[node name="TextureButton3" type="TextureButton" parent="Control"]
+offset_left = 62.0
+offset_top = 18.0
+offset_right = 190.0
+offset_bottom = 146.0
+scale = Vector2(0.657565, 0.662287)
+texture_normal = ExtResource("6_monbv")
+
+[node name="TextureButton4" type="TextureButton" parent="Control"]
+offset_left = -8.0
+offset_top = 72.0
+offset_right = 120.0
+offset_bottom = 200.0
+scale = Vector2(0.657565, 0.662287)
+texture_normal = ExtResource("7_n1vdw")
+
+[node name="TextureButton5" type="TextureButton" parent="Control"]
+offset_left = -81.0
+offset_top = 28.0
+offset_right = 47.0
+offset_bottom = 156.0
+scale = Vector2(0.657565, 0.662287)
+texture_normal = ExtResource("8_uftlf")
+
+[node name="TextureButton6" type="TextureButton" parent="Control"]
+offset_left = -82.0
+offset_top = -51.0
+offset_right = 46.0
+offset_bottom = 77.0
+scale = Vector2(0.657565, 0.662287)
+texture_normal = ExtResource("9_xjsia")
+
+[node name="TextureButton7" type="TextureButton" parent="Control"]
+offset_left = -10.0
+offset_top = -11.0
+offset_right = 118.0
+offset_bottom = 117.0
+scale = Vector2(0.657565, 0.662287)
+texture_normal = ExtResource("10_lts1r")
+
+[node name="ShowCursor" type="Node" parent="."]
+script = ExtResource("1_7cmww")

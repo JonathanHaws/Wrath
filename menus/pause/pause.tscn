@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="8_5x5fn"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="9_nw3fp"]
 
-[node name="ColorRect" type="ColorRect"]
+[node name="Pause" type="ColorRect"]
 process_mode = 3
 visible = false
 anchors_preset = 15

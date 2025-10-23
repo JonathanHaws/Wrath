@@ -9,6 +9,7 @@ extends Area3D
 @export var REST_ACTIONS: Array[String] = ["interact"]
 var player_inside: bool = false
 var enter_prompt_played: bool = false
+@export_file("*.tscn") var skill_tree_file: String
 
 func load_checkpoint(player: Node3D) -> void:
 	var checkpoint_transform = global_transform
@@ -23,7 +24,8 @@ func _rest() -> void:
 	if not Save.data.has("rests"): Save.data["rests"] = 1
 	else: Save.data["rests"] += 1
 	Save.save_game()
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()
+	get_tree().change_scene_to_file(skill_tree_file)
 
 func _play_aquired() -> void:
 	
