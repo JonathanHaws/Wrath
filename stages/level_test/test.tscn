@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://bsufvbv2jwo77"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_qri8l"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_qri8l"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_6d5mm"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_1uhv7"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="4_ydha4"]
@@ -21,8 +21,6 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
 
 [node name="Main" type="Node3D"]
-
-[node name="Menu" parent="." instance=ExtResource("1_qri8l")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
@@ -110,5 +108,7 @@ bones/12/rotation = Quaternion(0.558606, 0.310069, 0.768969, 0.0224282)
 bones/13/rotation = Quaternion(-0.660072, -0.085807, 0.0338147, 0.745519)
 bones/16/rotation = Quaternion(-0.0392729, 0.00839009, 0.102492, 0.993923)
 bones/17/rotation = Quaternion(-0.062145, -0.00574103, 0.873777, -0.482306)
+
+[node name="Menu" parent="." instance=ExtResource("1_qri8l")]
 
 [editable path="envy"]

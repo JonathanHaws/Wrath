@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://cv4g3s0sicstn"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_4p5y5"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_4p5y5"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_43ivw"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_r21rb"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="4_yosvs"]
@@ -16,8 +16,6 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
 
 [node name="Main" type="Node3D"]
-
-[node name="Menu" parent="." instance=ExtResource("1_4p5y5")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
@@ -73,3 +71,5 @@ DESTINATION_SCENE = "uid://5n4cvh6cqc4p"
 
 [node name="Checkpoint" parent="." instance=ExtResource("8_vf6km")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.8406, -9.14357, 0)
+
+[node name="Menu" parent="." instance=ExtResource("1_4p5y5")]

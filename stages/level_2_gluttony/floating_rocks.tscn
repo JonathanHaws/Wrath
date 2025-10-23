@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://c5350q0aryax0"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_ldobf"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_ldobf"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_haesu"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="3_bnm75"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="4_bi5ag"]

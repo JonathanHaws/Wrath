@@ -1,5 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://byffyuaxv71sc"]
+[gd_scene load_steps=11 format=3 uid="uid://byffyuaxv71sc"]
 
+[ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://menus/pause/toggle.gd" id="1_j3qnb"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_ll3a5"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_oc2qo"]
 [ext_resource type="Script" uid="uid://c6c4lhniukers" path="res://menus/options/graphics/bloom_toggle.gd" id="2_jcns5"]
@@ -11,12 +12,14 @@
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_bpob5"]
 
 [node name="Control" type="Control"]
+process_mode = 3
 top_level = true
 layout_mode = 3
 anchors_preset = 0
 offset_top = 176.0
 offset_right = 1920.0
 offset_bottom = 176.0
+script = ExtResource("1_j3qnb")
 
 [node name="ColorRect" type="ColorRect" parent="." groups=["ui_scalable"]]
 layout_mode = 0

@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://d1k2pnn46w66f"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_bpnb6"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_bpnb6"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_86kol"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="4_j3rjq"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="5_322pr"]
@@ -20,8 +20,6 @@ polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Arr
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="Main" type="Node3D"]
-
-[node name="Menu" parent="." instance=ExtResource("1_bpnb6")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
@@ -118,3 +116,5 @@ transform = Transform3D(-0.187398, 0, 0.982284, 0, 1, 0, -0.982284, 0, -0.187398
 
 [node name="Ghost3" parent="Enemies" instance=ExtResource("9_vumr1")]
 transform = Transform3D(-0.187398, 0, 0.982284, 0, 1, 0, -0.982284, 0, -0.187398, 67.9769, -7.67152, 42.3328)
+
+[node name="Menu" parent="." instance=ExtResource("1_bpnb6")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://cjnryqwoknkw5"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_kjfq7"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_kjfq7"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_cy8f3"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_o1545"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="5_vybla"]
@@ -19,8 +19,6 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
 
 [node name="Main" type="Node3D"]
-
-[node name="Menu" parent="." instance=ExtResource("1_kjfq7")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
@@ -126,11 +124,16 @@ bones/27/position = Vector3(0.215475, 0.0610135, -0.192475)
 bones/27/rotation = Quaternion(-0.671517, 0.0386854, 0.0057593, 0.739956)
 bones/28/rotation = Quaternion(-0.0255709, 0.00125225, 0.0193465, 0.999485)
 
+[node name="BoneAttachment3D" parent="Piglet/piglet/Piglet/Skeleton3D" index="1"]
+transform = Transform3D(-1, 1.50785e-07, 3.65824e-08, 4.4543e-08, 0.0531373, 0.998587, 1.48628e-07, 0.998587, -0.0531374, 0.0143669, 0.539512, -1.76027)
+
 [node name="PickUpInteraction" parent="Piglet" index="3"]
 disabled = true
 
 [node name="HeadPetInteraction" parent="Piglet" index="4"]
 disabled = false
+
+[node name="Menu" parent="." instance=ExtResource("1_kjfq7")]
 
 [editable path="greed_talk_1"]
 [editable path="greed_talk_1/greed"]

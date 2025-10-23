@@ -1,15 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://cqcx34rswnnw1"]
+[gd_scene load_steps=10 format=3 uid="uid://duevw8ikxn5kj"]
 
-[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_0l1fl"]
-[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_o8gx4"]
+[ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://menus/pause/toggle.gd" id="1_327xx"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_gwfjr"]
 [ext_resource type="Script" uid="uid://pccpxg1y2tdf" path="res://menus/pause/skip.gd" id="2_mcy3d"]
-[ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://menus/pause/restart.gd" id="3_f26je"]
-[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="4_n7dk2"]
-[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="5_m2qlc"]
-[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="6_croeh"]
-[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="7_426wy"]
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="3_7gaeb"]
+[ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://menus/pause/restart.gd" id="5_0mtqa"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="6_kiq5e"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="7_6l83q"]
+[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="8_5x5fn"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="9_nw3fp"]
 
 [node name="ColorRect" type="ColorRect"]
+process_mode = 3
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,6 +21,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+script = ExtResource("1_327xx")
 metadata/_edit_use_anchors_ = true
 
 [node name="Main" type="VBoxContainer" parent="." groups=["ui_scalable"]]
@@ -35,14 +39,14 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(48, 94)
 alignment = 1
-script = ExtResource("1_0l1fl")
+script = ExtResource("2_gwfjr")
 
 [node name="Skip" type="Button" parent="Main"]
 visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("1_o8gx4")
+theme = ExtResource("3_7gaeb")
 text = "SKIP"
 icon_alignment = 1
 script = ExtResource("2_mcy3d")
@@ -51,19 +55,19 @@ script = ExtResource("2_mcy3d")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("1_o8gx4")
+theme = ExtResource("3_7gaeb")
 text = "RESTART"
 icon_alignment = 1
-script = ExtResource("3_f26je")
+script = ExtResource("5_0mtqa")
 
 [node name="Options" type="Button" parent="Main" node_paths=PackedStringArray("node_to_replace")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("1_o8gx4")
+theme = ExtResource("3_7gaeb")
 text = "OPTIONS"
 icon_alignment = 1
-script = ExtResource("4_n7dk2")
+script = ExtResource("6_kiq5e")
 scene_file = "uid://cxja4xs36njyv"
 node_to_replace = NodePath("../..")
 
@@ -71,10 +75,10 @@ node_to_replace = NodePath("../..")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-theme = ExtResource("1_o8gx4")
+theme = ExtResource("3_7gaeb")
 text = "CONTROLS"
 icon_alignment = 1
-script = ExtResource("4_n7dk2")
+script = ExtResource("6_kiq5e")
 scene_file = "uid://bbnvaw1wjbpv0"
 node_to_replace = NodePath("../..")
 
@@ -82,21 +86,21 @@ node_to_replace = NodePath("../..")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("1_o8gx4")
+theme = ExtResource("3_7gaeb")
 text = "QUIT"
 icon_alignment = 1
-script = ExtResource("4_n7dk2")
+script = ExtResource("6_kiq5e")
 scene_file = "uid://cls12q06quifx"
 
 [node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
-script = ExtResource("7_426wy")
+script = ExtResource("7_6l83q")
 focus_node = NodePath("../Main/Restart")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
 process_mode = 3
 bus = &"SFX"
-script = ExtResource("6_croeh")
-hover_sound = ExtResource("5_m2qlc")
-press_sound = ExtResource("5_m2qlc")
+script = ExtResource("8_5x5fn")
+hover_sound = ExtResource("9_nw3fp")
+press_sound = ExtResource("9_nw3fp")
 hover_targets = [NodePath("../Main/Restart"), NodePath("../Main/Options"), NodePath("../Main/Controls"), NodePath("../Main/Quit")]
 pressed_targets = [NodePath("../Main/Restart"), NodePath("../Main/Options"), NodePath("../Main/Controls"), NodePath("../Main/Quit")]

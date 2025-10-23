@@ -1,0 +1,27 @@
+[gd_scene load_steps=2 format=3 uid="uid://dspid5s7r6a1o"]
+
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_iiq8l"]
+
+[node name="SkillTree" type="Node3D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_iiq8l")
+color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 2
+offset_left = 603.5
+offset_top = 178.0
+offset_right = 676.5
+offset_bottom = 214.0
+size_flags_horizontal = 4
+theme = ExtResource("1_iiq8l")
+text = "VIRTUES:"

@@ -1,6 +1,6 @@
 # Make sure process mode for this node is 'always' so when game pauses it doesnt pause aswell
 extends Node
-func _ready() -> void: toggle(false)
+func _ready() -> void: if not self.visible: toggle(false)
 
 func toggle(paused: bool) -> void:
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN if paused else Input.MOUSE_MODE_CAPTURED

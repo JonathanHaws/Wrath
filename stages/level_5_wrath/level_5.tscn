@@ -1,6 +1,6 @@
 [gd_scene load_steps=32 format=3 uid="uid://dsdh2bite7xv4"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_t7rxp"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_t7rxp"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_2c8ka"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_aba3s"]
 [ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://stages/lighting/sun.tscn" id="4_2c8ka"]
@@ -138,8 +138,6 @@ size = Vector3(1.11081, 5.95897, 71.225)
 size = Vector3(51.7317, 6.81735, 0.861012)
 
 [node name="Main" type="Node3D"]
-
-[node name="Menu" parent="." instance=ExtResource("1_t7rxp")]
 
 [node name="Cinematics" type="Node" parent="."]
 
@@ -453,6 +451,8 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 
 [node name="Ghost2" parent="." instance=ExtResource("19_b0sq8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5082, -11.1915, -37.4764)
+
+[node name="Menu" parent="." instance=ExtResource("1_t7rxp")]
 
 [connection signal="body_entered" from="KillVolume" to="KillVolume" method="_on_body_entered"]
 

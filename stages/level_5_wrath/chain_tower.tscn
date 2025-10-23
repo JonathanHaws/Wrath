@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://bnli3nh320v2f"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_7x0xx"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_7x0xx"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_xjjd2"]
 [ext_resource type="PackedScene" uid="uid://ct16v3d62ahyk" path="res://stages/level_5_wrath/chain_ceiling.blend" id="3_kfjdl"]
 [ext_resource type="Texture2D" uid="uid://bgv5lvisq1rhy" path="res://stages/materials/bricks/textures/roughness.png" id="4_el5y4"]
@@ -28,8 +28,6 @@ uv1_scale = Vector3(12.065, 12.065, 12.065)
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
 
 [node name="Main" type="Node3D"]
-
-[node name="Menu" parent="." instance=ExtResource("1_7x0xx")]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
@@ -96,5 +94,7 @@ transform = Transform3D(0.50829, 0, 0.861186, 0, 1, 0, -0.861186, 0, 0.50829, 13
 
 [node name="Ghost" parent="." instance=ExtResource("11_sj1b4")]
 transform = Transform3D(-0.432967, 0, 0.90141, 0, 1, 0, -0.90141, 0, -0.432967, 28.5243, -7.98728, -9.89871)
+
+[node name="Menu" parent="." instance=ExtResource("1_7x0xx")]
 
 [editable path="Enviroment/ChainCeiling"]

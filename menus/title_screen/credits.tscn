@@ -8,11 +8,7 @@
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="4_if7rd"]
 [ext_resource type="Script" uid="uid://di42lux5ey07j" path="res://menus/show_cursor.gd" id="7_airpt"]
 
-[node name="Credits" type="CanvasLayer"]
-process_mode = 3
-follow_viewport_enabled = true
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -22,15 +18,19 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
 
+[node name="ShowCursor" type="Node" parent="."]
+script = ExtResource("7_airpt")
+
 [node name="CenterContainer" type="CenterContainer" parent="." groups=["ui_scalable"]]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -180.5
+offset_left = -205.5
 offset_top = -307.5
-offset_right = 180.5
+offset_right = 205.5
 offset_bottom = 307.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -87,6 +87,3 @@ hover_sound = ExtResource("3_hyvu0")
 press_sound = ExtResource("3_hyvu0")
 hover_targets = [NodePath("../Back")]
 pressed_targets = [NodePath("../Back")]
-
-[node name="ShowCursor" type="Node" parent="."]
-script = ExtResource("7_airpt")

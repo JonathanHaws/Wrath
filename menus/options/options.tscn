@@ -1,16 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://cxja4xs36njyv"]
+[gd_scene load_steps=11 format=3 uid="uid://cxja4xs36njyv"]
 
-[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_44kt7"]
-[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_c0mv7"]
-[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="1_gh5rx"]
-[ext_resource type="Script" uid="uid://d2hxlmmmtfynf" path="res://menus/options/volume_adjustment.gd" id="2_gh5rx"]
-[ext_resource type="Script" uid="uid://cehsklglvnhkr" path="res://menus/options/resolution.gd" id="4_dtlus"]
-[ext_resource type="Script" uid="uid://yd63tscy6h1n" path="res://menus/options/window_mode_dropdown.gd" id="4_i2ivw"]
-[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="5_q1b1x"]
-[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="6_w0nh5"]
-[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="7_4uxce"]
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_fophc"]
+[ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://menus/pause/toggle.gd" id="2_js3u0"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_p4i2r"]
+[ext_resource type="Script" uid="uid://d2hxlmmmtfynf" path="res://menus/options/volume_adjustment.gd" id="3_js3u0"]
+[ext_resource type="Script" uid="uid://cehsklglvnhkr" path="res://menus/options/resolution.gd" id="4_5xg6i"]
+[ext_resource type="Script" uid="uid://yd63tscy6h1n" path="res://menus/options/window_mode_dropdown.gd" id="5_4uyla"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="6_bu2dy"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="7_7b5bx"]
+[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="8_ew2ef"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="9_krw46"]
 
 [node name="ColorRect" type="ColorRect"]
+process_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,8 +20,9 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme = ExtResource("1_44kt7")
+theme = ExtResource("1_fophc")
 color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+script = ExtResource("2_js3u0")
 metadata/_edit_use_anchors_ = true
 
 [node name="Options" type="VBoxContainer" parent="." groups=["ui_scalable"]]
@@ -36,18 +39,18 @@ offset_bottom = 182.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(139.5, 182)
-script = ExtResource("1_c0mv7")
+script = ExtResource("2_p4i2r")
 
 [node name="Master" type="HBoxContainer" parent="Options"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("1_44kt7")
+theme = ExtResource("1_fophc")
 alignment = 1
 
 [node name="Label" type="Label" parent="Options/Master"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("1_44kt7")
+theme = ExtResource("1_fophc")
 text = "MASTER:"
 
 [node name="HSlider" type="HSlider" parent="Options/Master"]
@@ -55,21 +58,21 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-theme = ExtResource("1_44kt7")
+theme = ExtResource("1_fophc")
 step = 10.0
 value = 100.0
-script = ExtResource("2_gh5rx")
+script = ExtResource("3_js3u0")
 bus_name = "Master"
 
 [node name="SFX" type="HBoxContainer" parent="Options"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("1_44kt7")
+theme = ExtResource("1_fophc")
 alignment = 1
 
 [node name="Label" type="Label" parent="Options/SFX"]
 layout_mode = 2
-theme = ExtResource("1_44kt7")
+theme = ExtResource("1_fophc")
 text = "SFX:"
 
 [node name="HSlider" type="HSlider" parent="Options/SFX"]
@@ -77,45 +80,45 @@ custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 4
-theme = ExtResource("1_44kt7")
+theme = ExtResource("1_fophc")
 step = 10.0
 value = 100.0
-script = ExtResource("2_gh5rx")
+script = ExtResource("3_js3u0")
 bus_name = "SFX"
 
 [node name="Music" type="HBoxContainer" parent="Options"]
 layout_mode = 2
-theme = ExtResource("1_44kt7")
+theme = ExtResource("1_fophc")
 alignment = 1
 
 [node name="Label" type="Label" parent="Options/Music"]
 layout_mode = 2
-theme = ExtResource("1_44kt7")
+theme = ExtResource("1_fophc")
 text = "MUSIC:"
 
 [node name="HSlider" type="HSlider" parent="Options/Music"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_vertical = 4
-theme = ExtResource("1_44kt7")
+theme = ExtResource("1_fophc")
 step = 10.0
 value = 100.0
-script = ExtResource("2_gh5rx")
+script = ExtResource("3_js3u0")
 bus_name = "Music"
 
 [node name="Resolution" type="OptionButton" parent="Options"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme = ExtResource("1_44kt7")
+theme = ExtResource("1_fophc")
 alignment = 2
 fit_to_longest_item = false
-script = ExtResource("4_dtlus")
+script = ExtResource("4_5xg6i")
 
 [node name="WindowMode" type="OptionButton" parent="Options"]
 layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource("1_44kt7")
+theme = ExtResource("1_fophc")
 alignment = 1
 selected = 0
 item_count = 3
@@ -125,17 +128,17 @@ popup/item_1/text = "WINDOWED"
 popup/item_1/id = 1
 popup/item_2/text = "BORDERLESS"
 popup/item_2/id = 2
-script = ExtResource("4_i2ivw")
+script = ExtResource("5_4uyla")
 
 [node name="Graphics" type="Button" parent="Options" node_paths=PackedStringArray("node_to_replace")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("1_44kt7")
+theme = ExtResource("1_fophc")
 text = "GRAPHICS
 "
 icon_alignment = 1
-script = ExtResource("5_q1b1x")
+script = ExtResource("6_bu2dy")
 scene_file = "uid://byffyuaxv71sc"
 node_to_replace = NodePath("../..")
 
@@ -143,22 +146,22 @@ node_to_replace = NodePath("../..")
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
-theme = ExtResource("1_44kt7")
+theme = ExtResource("1_fophc")
 text = "BACK
 "
 icon_alignment = 1
-script = ExtResource("5_q1b1x")
-scene_file = "uid://cqcx34rswnnw1"
+script = ExtResource("6_bu2dy")
+scene_file = "uid://duevw8ikxn5kj"
 node_to_replace = NodePath("../..")
 
 [node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
-script = ExtResource("1_gh5rx")
+script = ExtResource("7_7b5bx")
 focus_node = NodePath("../Options/Master/HSlider")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
 bus = &"SFX"
-script = ExtResource("7_4uxce")
-hover_sound = ExtResource("6_w0nh5")
-press_sound = ExtResource("6_w0nh5")
+script = ExtResource("8_ew2ef")
+hover_sound = ExtResource("9_krw46")
+press_sound = ExtResource("9_krw46")
 hover_targets = [null, NodePath("../Options/Master/HSlider"), NodePath("../Options/SFX/HSlider"), NodePath("../Options/Music/HSlider"), NodePath("../Options/Resolution"), NodePath("../Options/WindowMode"), NodePath("../Options/Graphics"), NodePath("../Options/Back")]
 pressed_targets = [null, NodePath("../Options/Master/HSlider"), NodePath("../Options/SFX/HSlider"), NodePath("../Options/Music/HSlider"), NodePath("../Options/Resolution"), NodePath("../Options/WindowMode"), NodePath("../Options/Graphics"), NodePath("../Options/Back")]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://5n4cvh6cqc4p"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/container.tscn" id="1_7ckn6"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_7ckn6"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_i1vh2"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_5o1fx"]
 [ext_resource type="PackedScene" uid="uid://yxfcfpfrgfp4" path="res://actors/props/portal/portal.blend" id="4_mda5h"]
@@ -254,8 +254,6 @@ _data = {
 
 [node name="Main" type="Node3D"]
 
-[node name="Menu" parent="." instance=ExtResource("1_7ckn6")]
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
@@ -341,13 +339,13 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
 [node name="spin" parent="Portal/Mesh" index="1"]
-transform = Transform3D(-0.797345, -0.603521, 0, 0.603521, -0.797345, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(0.745475, -0.666531, 0, 0.666531, 0.745475, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Portal/Mesh/flames_2" index="0"]
-transform = Transform3D(-0.528638, 0.831757, -1.44345e-15, -0.831757, -0.528638, 5.36983e-15, 3.75769e-15, 4.09858e-15, 0.985534, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(0.75855, 0.549099, -9.15544e-16, -0.549099, 0.75855, 2.91234e-15, 2.44935e-15, -1.82227e-15, 0.936434, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Portal/Mesh/flames_1" index="0"]
-transform = Transform3D(-0.528638, 0.831757, -1.44345e-15, -0.831757, -0.528638, 5.36983e-15, 3.75769e-15, 4.09858e-15, 0.985534, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(0.75855, 0.549099, -9.15544e-16, -0.549099, 0.75855, 2.91234e-15, 2.44935e-15, -1.82227e-15, 0.936434, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Portal/Mesh" index="4"]
 autoplay = "Spin"
@@ -425,5 +423,7 @@ transform = Transform3D(-0.995788, 0, 0.0916933, 0, 1, 0, -0.0916933, 0, -0.9957
 
 [node name="Checkpoint" parent="." instance=ExtResource("14_d1ner")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -9.1, -19.731)
+
+[node name="Menu" parent="." instance=ExtResource("1_7ckn6")]
 
 [editable path="Portal/Mesh"]
