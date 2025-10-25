@@ -27,17 +27,30 @@ theme = ExtResource("1_iiq8l")
 color = Color(0.0383972, 0.0383972, 0.0383971, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="ColorRect" groups=["ui_scalable"]]
+[node name="Control" type="Control" parent="ColorRect"]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -87.0
-offset_top = -57.0
-offset_right = -13.0
-offset_bottom = -13.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+script = ExtResource("3_monbv")
+
+[node name="Button" type="Button" parent="ColorRect/Control" groups=["ui_scalable"]]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -80.0
+offset_top = -50.0
+offset_right = -6.0
+offset_bottom = -6.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "CONTIUE
@@ -71,6 +84,7 @@ theme = ExtResource("1_iiq8l")
 text = "VIRTUES:"
 
 [node name="TextureButton" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = -12.0
 offset_top = -95.0
 offset_right = 116.0
@@ -79,6 +93,7 @@ scale = Vector2(0.657565, 0.662287)
 texture_normal = ExtResource("4_15wwq")
 
 [node name="TextureButton2" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = 60.0
 offset_top = -62.0
 offset_right = 188.0
@@ -87,6 +102,7 @@ scale = Vector2(0.657565, 0.662287)
 texture_normal = ExtResource("5_tjbbn")
 
 [node name="TextureButton3" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = 62.0
 offset_top = 18.0
 offset_right = 190.0
@@ -95,6 +111,7 @@ scale = Vector2(0.657565, 0.662287)
 texture_normal = ExtResource("6_monbv")
 
 [node name="TextureButton4" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = -8.0
 offset_top = 72.0
 offset_right = 120.0
@@ -103,6 +120,7 @@ scale = Vector2(0.657565, 0.662287)
 texture_normal = ExtResource("7_n1vdw")
 
 [node name="TextureButton5" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = -81.0
 offset_top = 28.0
 offset_right = 47.0
@@ -111,6 +129,7 @@ scale = Vector2(0.657565, 0.662287)
 texture_normal = ExtResource("8_uftlf")
 
 [node name="TextureButton6" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = -82.0
 offset_top = -51.0
 offset_right = 46.0
@@ -119,6 +138,7 @@ scale = Vector2(0.657565, 0.662287)
 texture_normal = ExtResource("9_xjsia")
 
 [node name="TextureButton7" type="TextureButton" parent="Control"]
+layout_mode = 0
 offset_left = -10.0
 offset_top = -11.0
 offset_right = 118.0

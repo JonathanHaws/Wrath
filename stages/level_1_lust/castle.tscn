@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://dmf0vo8jrm34a"]
+[gd_scene load_steps=42 format=3 uid="uid://dmf0vo8jrm34a"]
 
 [ext_resource type="Script" uid="uid://pccpxg1y2tdf" path="res://menus/pause/skip.gd" id="1_7fk2k"]
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_mb05r"]
@@ -21,6 +21,9 @@
 [ext_resource type="PackedScene" uid="uid://cbnpkl3l8dkx8" path="res://actors/props/wisp/wisp_stamina.tscn" id="17_n044i"]
 [ext_resource type="PackedScene" uid="uid://djqadr0k0vrs3" path="res://actors/characters/enemies/bosses/envy/envy.tscn" id="19_oqilo"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="20_bv0d2"]
+[ext_resource type="Script" uid="uid://ds3llgo67gcpi" path="res://actors/characters/enemies/patrol.gd" id="22_a0oe4"]
+[ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://actors/progress_gate.gd" id="22_je0v5"]
+[ext_resource type="PackedScene" uid="uid://c5kfdq4m105cm" path="res://actors/characters/enemies/bosses/envy/envy.blend" id="23_je0v5"]
 
 [sub_resource type="Animation" id="Animation_fcpd4"]
 length = 0.001
@@ -261,6 +264,35 @@ size = Vector3(1926, 228.382, 1361.68)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv0d2"]
 size = Vector3(133.595, 13.6586, 201.498)
 
+[sub_resource type="Curve3D" id="Curve3D_uq4p3"]
+closed = true
+_data = {
+"points": PackedVector3Array(-11.923, -4.95784, 42.1867, 11.923, 4.95784, -42.1867, 19.7497, 90.4636, -9.11395, -25.2792, 4.07257, 19.0297, 25.2792, -4.07257, -19.0297, 29.4065, 89.6526, -135.278, -34.0524, 1.90177, -2.07123, 34.0524, -1.90177, 2.07123, 102.527, 92.4315, -148.425, -41.3058, 2.52356, -4.2774, 41.3058, -2.52356, 4.2774, 183.639, 85.6074, -128.516, -39.8136, 4.4652, -32.2588, 39.8136, -4.4652, 32.2588, 254.942, 101.605, -113.243, 0, 0, 0, 0, 0, 0, 298.196, 110.568, -45.3835, 0.286499, 1.80919, -23.4988, -0.286499, -1.80919, 23.4988, 323.332, 136.198, 11.2535, 5.65823, -2.24937, -29.471, -5.65823, 2.24937, 29.471, 309.829, 125.59, 68.878, 19.7162, -0.76767, -21.6137, -19.7162, 0.76767, 21.6137, 266.892, 141.504, 142.961, 41.0746, 8.15917, 2.46977, -41.0746, -8.15917, -2.46977, 165.099, 108.555, 167.84, 14.8514, 9.68159, 34.0372, -14.8514, -9.68159, -34.0372, 43.0488, 93.8035, 108.877),
+"tilts": PackedFloat32Array(0, 0.669356, 0, 0, 0, 0, 0, 0, 0, 0, 0.436012)
+}
+point_count = 11
+
+[sub_resource type="Animation" id="Animation_a0oe4"]
+resource_name = "Flying Around"
+length = 1.70834
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("envy/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("FLY"),
+"times": PackedFloat32Array(0.0416667)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_je0v5"]
+_data = {
+&"Flying Around": SubResource("Animation_a0oe4")
+}
+
 [node name="Main" type="Node3D"]
 
 [node name="Skip" type="ColorRect" parent="." node_paths=PackedStringArray("ANIMATION_PLAYER") groups=["skipper"]]
@@ -471,7 +503,85 @@ transform = Transform3D(-0.731187, 0, 0.682177, 0, 1, 0, -0.682177, 0, -0.731187
 
 [node name="Menu" parent="." instance=ExtResource("1_mb05r")]
 
+[node name="Path3D" type="Path3D" parent="." node_paths=PackedStringArray("node_to_queue_free")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.6064, -43.9793, 0)
+curve = SubResource("Curve3D_uq4p3")
+script = ExtResource("22_je0v5")
+save_key = "envy_encountered"
+node_to_queue_free = NodePath(".")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="Path3D"]
+transform = Transform3D(0.977446, 0.194305, 0.0826359, -0.193298, 0.980926, -0.0200972, -0.0849654, 0.00367063, 0.996369, 21.9419, 93.3601, -56.2581)
+progress = 47.5476
+script = ExtResource("22_a0oe4")
+speed = -30.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D"]
+libraries = {
+&"": SubResource("AnimationLibrary_je0v5")
+}
+autoplay = "Flying Around"
+
+[node name="Light" type="OmniLight3D" parent="Path3D/PathFollow3D"]
+transform = Transform3D(1.00001, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+light_color = Color(0.61, 0.61, 0.61, 1)
+light_energy = 20.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 27.0089
+
+[node name="envy" parent="Path3D/PathFollow3D" instance=ExtResource("23_je0v5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Skeleton3D" parent="Path3D/PathFollow3D/envy/Armature" index="0"]
+bones/0/position = Vector3(2.17961e-33, -0.655624, -0.0177196)
+bones/0/rotation = Quaternion(0, 0.707107, 0.707107, 0)
+bones/1/position = Vector3(-3.06247e-07, 0.251103, 2.95118)
+bones/1/rotation = Quaternion(2.59399e-09, 0.997124, 0.0757832, -1.62054e-06)
+bones/2/rotation = Quaternion(0.00641345, 2.93719e-08, 1.00518e-08, 0.999979)
+bones/3/rotation = Quaternion(0.0264423, 1.00361e-06, 1.1356e-07, 0.99965)
+bones/4/rotation = Quaternion(0.170817, -3.45604e-06, 3.05932e-07, 0.985303)
+bones/6/position = Vector3(-1.32981e-07, 1.23867, -0.0774676)
+bones/6/rotation = Quaternion(-1.52737e-07, 7.73959e-11, 3.83693e-13, 1)
+bones/7/position = Vector3(7.4324e-07, 1.22029, 0.430218)
+bones/7/rotation = Quaternion(0.156339, 4.49287e-07, -1.87336e-07, 0.987704)
+bones/8/position = Vector3(3.76415e-07, 1.32157, 0.218238)
+bones/8/rotation = Quaternion(0.0814552, 3.1849e-07, -1.0852e-07, 0.996677)
+bones/9/position = Vector3(1.03544, 0.385571, -0.301741)
+bones/9/rotation = Quaternion(0.739848, 0.616889, -0.0888525, -0.253333)
+bones/10/rotation = Quaternion(-0.207422, 0.0471251, -0.0485564, 0.975909)
+bones/11/rotation = Quaternion(-0.172343, -0.119756, 0.115903, 0.970836)
+bones/12/position = Vector3(-1.03544, 0.385571, -0.301752)
+bones/12/rotation = Quaternion(-0.739847, 0.616888, -0.0888565, 0.253336)
+bones/13/rotation = Quaternion(-0.207422, -0.0471251, 0.0485564, 0.975909)
+bones/14/rotation = Quaternion(-0.172344, 0.119756, -0.115903, 0.970836)
+bones/15/rotation = Quaternion(0.994969, 1.48367e-07, 1.62858e-06, -0.100187)
+bones/17/position = Vector3(0.727798, 0.14549, 0.820307)
+bones/17/rotation = Quaternion(0.967317, -0.0362804, 0.0109556, 0.250723)
+bones/18/rotation = Quaternion(0.366215, 0.0487729, -0.071243, 0.926516)
+bones/19/rotation = Quaternion(0.155708, -0.0906306, 0.143846, 0.973062)
+bones/20/rotation = Quaternion(-0.154898, 0.817474, -0.554201, -0.0245619)
+bones/21/rotation = Quaternion(-0.0368281, 0.106101, -0.230387, 0.966596)
+bones/22/rotation = Quaternion(-0.0933137, 0.252642, 0.0853083, 0.959264)
+bones/23/rotation = Quaternion(-0.062673, 0.560657, 0.0326582, 0.825027)
+bones/24/rotation = Quaternion(-0.00339514, 0.591852, -0.0814129, 0.801917)
+bones/25/rotation = Quaternion(0.0681233, -0.210922, 0.409785, 0.884843)
+bones/26/rotation = Quaternion(-0.0789516, -0.154233, -0.0758817, 0.981947)
+bones/27/position = Vector3(-0.727803, 0.145491, 0.820302)
+bones/27/rotation = Quaternion(0.967317, 0.0362793, -0.0109527, 0.250723)
+bones/28/rotation = Quaternion(0.366215, -0.0487727, 0.0712429, 0.926516)
+bones/29/rotation = Quaternion(0.155707, 0.0906307, -0.143846, 0.973062)
+bones/30/rotation = Quaternion(0.154898, 0.817474, -0.554201, 0.0245614)
+bones/31/rotation = Quaternion(-0.0368282, -0.106102, 0.230387, 0.966596)
+bones/32/rotation = Quaternion(-0.0933136, -0.252642, -0.0853083, 0.959264)
+bones/33/rotation = Quaternion(-0.0626734, -0.560665, -0.0326577, 0.825021)
+bones/34/rotation = Quaternion(-0.0033943, -0.591846, 0.081413, 0.801922)
+bones/35/rotation = Quaternion(0.0681233, 0.210921, -0.409785, 0.884843)
+bones/36/rotation = Quaternion(-0.0789518, 0.154234, 0.075882, 0.981947)
+
 [connection signal="body_entered" from="KillVolumes/Void" to="KillVolumes/Void" method="_on_body_entered"]
 [connection signal="body_entered" from="KillVolumes/Void2" to="KillVolumes/Void2" method="_on_body_entered"]
 
 [editable path="NavigationRegion3D/Castle"]
+[editable path="Path3D/PathFollow3D/envy"]
