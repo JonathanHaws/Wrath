@@ -9,11 +9,7 @@
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="6_wtlav"]
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_Press.wav" id="7_io75r"]
 
-[node name="NewGame" type="CanvasLayer"]
-process_mode = 3
-follow_viewport_enabled = true
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="NewGame" type="ColorRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -25,6 +21,7 @@ color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
 metadata/_edit_use_anchors_ = true
 
 [node name="CenterContainer" type="CenterContainer" parent="." groups=["ui_scalable"]]
+layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5

@@ -1,7 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cls12q06quifx"]
+[gd_scene load_steps=13 format=3 uid="uid://cls12q06quifx"]
 
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="1_48c50"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_gkebh"]
+[ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://menus/pause/toggle.gd" id="1_n4yvo"]
+[ext_resource type="Script" uid="uid://di42lux5ey07j" path="res://menus/show_cursor.gd" id="2_2fxgv"]
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="2_gkebh"]
 [ext_resource type="FontFile" uid="uid://dpdckaagju1of" path="res://fonts/Wrath.otf" id="3_03rxr"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="4_n4yvo"]
@@ -21,6 +23,13 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+
+[node name="Toggle" type="Node2D" parent="."]
+visible = false
+script = ExtResource("1_n4yvo")
+
+[node name="ShowCursor" type="Node" parent="."]
+script = ExtResource("2_2fxgv")
 
 [node name="CenterContainer" type="CenterContainer" parent="." groups=["ui_scalable"]]
 layout_mode = 1

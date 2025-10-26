@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="4_if7rd"]
 [ext_resource type="Script" uid="uid://di42lux5ey07j" path="res://menus/show_cursor.gd" id="7_airpt"]
 
-[node name="ColorRect" type="ColorRect"]
+[node name="Credits" type="ColorRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -39,13 +39,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_airpt")
 
-[node name="Credits" type="VBoxContainer" parent="CenterContainer" node_paths=PackedStringArray("focus_node")]
+[node name="VboxContainer" type="VBoxContainer" parent="CenterContainer" node_paths=PackedStringArray("focus_node")]
 layout_mode = 2
 alignment = 1
 script = ExtResource("1_hyvu0")
 focus_node = NodePath("Back")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/Credits"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VboxContainer"]
 layout_mode = 2
 theme = ExtResource("1_w063j")
 bbcode_enabled = true
@@ -64,7 +64,7 @@ text = "[center] [color=#ececec] Boss Rush Jam[/color][color=#858585] - 2025 \"S
 fit_content = true
 autowrap_mode = 0
 
-[node name="Back" type="Button" parent="CenterContainer/Credits"]
+[node name="Back" type="Button" parent="CenterContainer/VboxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -75,11 +75,11 @@ icon_alignment = 1
 script = ExtResource("2_77ypm")
 scene_file = "uid://cls12q06quifx"
 
-[node name="GrabFocus" type="Node" parent="CenterContainer/Credits" node_paths=PackedStringArray("focus_node")]
+[node name="GrabFocus" type="Node" parent="CenterContainer/VboxContainer" node_paths=PackedStringArray("focus_node")]
 script = ExtResource("1_hyvu0")
 focus_node = NodePath("../Back")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CenterContainer/Credits" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CenterContainer/VboxContainer" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
 process_mode = 3
 bus = &"SFX"
 script = ExtResource("4_if7rd")
