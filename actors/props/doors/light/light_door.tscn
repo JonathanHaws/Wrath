@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cc3uruvdi605x"]
+[gd_scene load_steps=16 format=3 uid="uid://cc3uruvdi605x"]
 
 [ext_resource type="Script" uid="uid://ci0byfa0f4mm3" path="res://actors/props/doors/door.gd" id="1_ityv5"]
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://actors/characters/enemies/sfx/Despawn.wav" id="3_ojp7h"]
@@ -70,10 +70,66 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ojp7h"]
-size = Vector3(23.6235, 11, 2)
+size = Vector3(38, 69.2397, 5.70654)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rx8ry"]
 size = Vector3(25.8425, 10.7881, 3.15704)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ojp7h"]
+seed = -2735
+frequency = 0.1056
+offset = Vector3(14.7888, 0, 0)
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_42w7d"]
+noise = SubResource("FastNoiseLite_ojp7h")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rx8ry"]
+albedo_color = Color(0.523473, 0.597846, 0.647484, 1)
+emission_enabled = true
+emission_energy_multiplier = 4.14
+normal_enabled = true
+normal_scale = -0.14
+normal_texture = SubResource("NoiseTexture2D_42w7d")
+
+[sub_resource type="BoxMesh" id="BoxMesh_pp42x"]
+
+[sub_resource type="Animation" id="Animation_rx8ry"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MeshInstance3D:material_override:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ojp7h"]
+resource_name = "texture"
+length = 20.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../MeshInstance3D:material_override:uv1_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_pp42x"]
+_data = {
+&"RESET": SubResource("Animation_rx8ry"),
+&"texture": SubResource("Animation_ojp7h")
+}
 
 [node name="LightDoor" type="Node3D" node_paths=PackedStringArray("AREA", "ANIM", "START")]
 script = ExtResource("1_ityv5")
@@ -102,7 +158,7 @@ script = ExtResource("3_x2b44")
 SOUNDS = Array[AudioStream]([ExtResource("3_ojp7h")])
 
 [node name="Start" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 3.81633)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 7.6241)
 
 [node name="Area3D" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
@@ -110,7 +166,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.42872, 5, -0.5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.38303, 34.1199, -0.318115)
 shape = SubResource("BoxShape3D_ojp7h")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
@@ -118,3 +174,25 @@ shape = SubResource("BoxShape3D_ojp7h")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11102, 4.89406, -0.480927)
 shape = SubResource("BoxShape3D_rx8ry")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-2.0223e-07, 0, -33.3943, 0, 60.2901, 0, 4.62649, 0, -1.45971e-06, 0, 28.2266, 0)
+material_override = SubResource("StandardMaterial3D_rx8ry")
+mesh = SubResource("BoxMesh_pp42x")
+skeleton = NodePath("../../../..")
+
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+libraries = {
+&"": SubResource("AnimationLibrary_pp42x")
+}
+autoplay = "texture"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, -2.04896, 24.4988, -24.393)
+light_color = Color(0.576, 0.6624, 0.72, 1)
+light_energy = 0.5
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 19.937
+omni_range = 20.4406

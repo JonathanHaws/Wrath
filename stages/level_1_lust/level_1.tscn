@@ -22,8 +22,6 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Main" type="Node3D"]
 
-[node name="Menu" parent="." instance=ExtResource("1_4eh01")]
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
@@ -90,3 +88,5 @@ mesh = SubResource("BoxMesh_hgjnn")
 
 [node name="Ghost" parent="." instance=ExtResource("9_hgjnn")]
 transform = Transform3D(0.195861, 0, 0.980632, 0, 1, 0, -0.980632, 0, 0.195861, 27.7134, -8.26362, 8.13487)
+
+[node name="Menu" parent="." instance=ExtResource("1_4eh01")]

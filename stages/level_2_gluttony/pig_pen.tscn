@@ -22,8 +22,6 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Main" type="Node3D"]
 
-[node name="Menu" parent="." instance=ExtResource("1_wceab")]
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
@@ -144,3 +142,5 @@ visible = false
 [node name="WrathPreview2" parent="." instance=ExtResource("10_el64o")]
 transform = Transform3D(-0.376014, 0, 0.926614, 0, 1, 0, -0.926614, 0, -0.376014, 26.1463, -9.06787, -7.32367)
 visible = false
+
+[node name="Menu" parent="." instance=ExtResource("1_wceab")]

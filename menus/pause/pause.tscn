@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://duevw8ikxn5kj"]
+[gd_scene load_steps=9 format=3 uid="uid://duevw8ikxn5kj"]
 
 [ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://menus/pause/toggle.gd" id="1_327xx"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_gwfjr"]
-[ext_resource type="Script" uid="uid://pccpxg1y2tdf" path="res://menus/pause/skip.gd" id="2_mcy3d"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="3_7gaeb"]
 [ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://menus/pause/restart.gd" id="5_0mtqa"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="6_kiq5e"]
@@ -40,16 +39,6 @@ grow_vertical = 2
 pivot_offset = Vector2(48, 94)
 alignment = 1
 script = ExtResource("2_gwfjr")
-
-[node name="Skip" type="Button" parent="Main"]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("3_7gaeb")
-text = "SKIP"
-icon_alignment = 1
-script = ExtResource("2_mcy3d")
 
 [node name="Restart" type="Button" parent="Main"]
 layout_mode = 2
