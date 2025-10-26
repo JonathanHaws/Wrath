@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://cx2ditraoxlvu"]
+[gd_scene load_steps=17 format=3 uid="uid://cx2ditraoxlvu"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_wceab"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_7wkw3"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://blxvkukk5u1ps" path="res://actors/characters/enemies/bosses/greed/greed_preview.tscn" id="11_el64o"]
 [ext_resource type="PackedScene" uid="uid://byk6752w0gnw2" path="res://actors/characters/enemies/bosses/gluttony/gluttony.tscn" id="12_efe6f"]
 [ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://actors/characters/npcs/piglet/piglet.tscn" id="13_i5fvn"]
+[ext_resource type="PackedScene" uid="uid://btfr5eocbsa1j" path="res://menus/skip/skip.tscn" id="13_pyb2n"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -142,5 +143,7 @@ visible = false
 [node name="WrathPreview2" parent="." instance=ExtResource("10_el64o")]
 transform = Transform3D(-0.376014, 0, 0.926614, 0, 1, 0, -0.926614, 0, -0.376014, 26.1463, -9.06787, -7.32367)
 visible = false
+
+[node name="Skip" parent="." instance=ExtResource("13_pyb2n")]
 
 [node name="Menu" parent="." instance=ExtResource("1_wceab")]
