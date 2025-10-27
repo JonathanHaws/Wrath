@@ -1,10 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://dspid5s7r6a1o"]
+[gd_scene load_steps=13 format=3 uid="uid://dspid5s7r6a1o"]
 
 [ext_resource type="Script" uid="uid://di42lux5ey07j" path="res://menus/show_cursor.gd" id="1_7cmww"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_iiq8l"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="3_15wwq"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="3_monbv"]
 [ext_resource type="Texture2D" uid="uid://cb1iloq6j0fp0" path="res://menus/skill_tree/lust.png" id="4_15wwq"]
+[ext_resource type="Script" uid="uid://hf3odyswfp0p" path="res://menus/skill_tree/skill.gd" id="5_n1vdw"]
 [ext_resource type="Texture2D" uid="uid://dkmju8gqejjbt" path="res://menus/skill_tree/gluttony.png" id="5_tjbbn"]
 [ext_resource type="Texture2D" uid="uid://c13n32tdqtmf3" path="res://menus/skill_tree/greed.png" id="6_monbv"]
 [ext_resource type="Texture2D" uid="uid://b3h60qbd20le8" path="res://menus/skill_tree/sloth.png" id="7_n1vdw"]
@@ -91,6 +92,8 @@ offset_right = 116.0
 offset_bottom = 33.0
 scale = Vector2(0.657565, 0.662287)
 texture_normal = ExtResource("4_15wwq")
+script = ExtResource("5_n1vdw")
+custom_aquired_key = "gluttony_defeated"
 
 [node name="TextureButton2" type="TextureButton" parent="Control"]
 layout_mode = 0
@@ -100,6 +103,8 @@ offset_right = 188.0
 offset_bottom = 66.0
 scale = Vector2(0.657565, 0.662287)
 texture_normal = ExtResource("5_tjbbn")
+script = ExtResource("5_n1vdw")
+custom_aquired_key = "gluttony_defeated"
 
 [node name="TextureButton3" type="TextureButton" parent="Control"]
 layout_mode = 0
@@ -109,6 +114,8 @@ offset_right = 190.0
 offset_bottom = 146.0
 scale = Vector2(0.657565, 0.662287)
 texture_normal = ExtResource("6_monbv")
+script = ExtResource("5_n1vdw")
+custom_aquired_key = "greed_defeated"
 
 [node name="TextureButton4" type="TextureButton" parent="Control"]
 layout_mode = 0
@@ -118,6 +125,8 @@ offset_right = 120.0
 offset_bottom = 200.0
 scale = Vector2(0.657565, 0.662287)
 texture_normal = ExtResource("7_n1vdw")
+script = ExtResource("5_n1vdw")
+custom_aquired_key = "wrath_defeated"
 
 [node name="TextureButton5" type="TextureButton" parent="Control"]
 layout_mode = 0
@@ -127,6 +136,8 @@ offset_right = 47.0
 offset_bottom = 156.0
 scale = Vector2(0.657565, 0.662287)
 texture_normal = ExtResource("8_uftlf")
+script = ExtResource("5_n1vdw")
+custom_aquired_key = "wrath_defeated"
 
 [node name="TextureButton6" type="TextureButton" parent="Control"]
 layout_mode = 0
@@ -136,6 +147,8 @@ offset_right = 46.0
 offset_bottom = 77.0
 scale = Vector2(0.657565, 0.662287)
 texture_normal = ExtResource("9_xjsia")
+script = ExtResource("5_n1vdw")
+custom_aquired_key = "envy_defeated"
 
 [node name="TextureButton7" type="TextureButton" parent="Control"]
 layout_mode = 0
@@ -145,6 +158,8 @@ offset_right = 118.0
 offset_bottom = 117.0
 scale = Vector2(0.657565, 0.662287)
 texture_normal = ExtResource("10_lts1r")
+script = ExtResource("5_n1vdw")
+custom_aquired_key = "envy_defeated"
 
 [node name="ShowCursor" type="Node" parent="."]
 script = ExtResource("1_7cmww")
