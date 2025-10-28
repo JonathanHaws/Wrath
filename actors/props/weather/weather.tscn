@@ -1,15 +1,23 @@
-[gd_scene load_steps=13 format=3 uid="uid://pw71tm25g4j4"]
+[gd_scene load_steps=12 format=3 uid="uid://pw71tm25g4j4"]
 
 [ext_resource type="Script" uid="uid://rapnapo70524" path="res://actors/props/weather/weather.gd" id="1_0yxhn"]
-[ext_resource type="Texture2D" uid="uid://dvj5xtbj4kkt2" path="res://actors/particle_textures/star_05.png" id="2_m7vqp"]
+
+[sub_resource type="Gradient" id="Gradient_6dq4s"]
+offsets = PackedFloat32Array(0, 0.27762, 0.626062)
+colors = PackedColorArray(0.376471, 0.454902, 0.490196, 0.0392157, 0.3773, 0.454312, 0.49, 0.0392157, 0.3773, 0.454312, 0.49, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m7vqp"]
+gradient = SubResource("Gradient_6dq4s")
+width = 16
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ij2o8"]
 transparency = 1
-cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.54, 0.54, 0.54, 0.301961)
-albedo_texture = ExtResource("2_m7vqp")
+albedo_texture = SubResource("GradientTexture2D_m7vqp")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -24,18 +32,11 @@ point_count = 4
 [sub_resource type="CurveTexture" id="CurveTexture_ao7lu"]
 curve = SubResource("Curve_eu71s")
 
-[sub_resource type="Curve" id="Curve_6r500"]
-_data = [Vector2(0, 0), 0.0, 1.4, 0, 0, Vector2(0.0732984, 0.340659), -0.599686, -0.599686, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_mliri"]
-curve = SubResource("Curve_6r500")
-
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1a4pd"]
 particle_flag_damping_as_friction = true
-emission_shape_scale = Vector3(30, 30, 40)
-emission_shape = 1
-emission_sphere_radius = 2.3
+emission_shape_scale = Vector3(80, 80, 80)
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
 angle_min = -158.0
 angle_max = 1.07288e-05
 spread = 180.0
@@ -43,11 +44,12 @@ initial_velocity_max = 0.1
 angular_velocity_min = -1.60933e-05
 angular_velocity_max = -1.60933e-05
 gravity = Vector3(0, 0.2, 0)
-scale_curve = SubResource("CurveTexture_mliri")
+radial_accel_min = -2.23517e-06
+radial_accel_max = -2.23517e-06
 alpha_curve = SubResource("CurveTexture_ao7lu")
 
 [sub_resource type="QuadMesh" id="QuadMesh_qst5c"]
-size = Vector2(0.3, 0.3)
+size = Vector2(0.4, 0.4)
 
 [sub_resource type="Animation" id="Animation_ub0yu"]
 length = 0.001
@@ -93,9 +95,9 @@ script = ExtResource("1_0yxhn")
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.015492)
 material_override = SubResource("StandardMaterial3D_ij2o8")
-amount = 2046
-lifetime = 10.0
-speed_scale = 2.0
+amount = 1024
+lifetime = 7.0
+preprocess = 1.0
 fixed_fps = 60
 interpolate = false
 fract_delta = false
