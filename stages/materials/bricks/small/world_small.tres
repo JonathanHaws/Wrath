@@ -1,16 +1,12 @@
-[gd_resource type="StandardMaterial3D" load_steps=5 format=3 uid="uid://b7ndlyb5lfeuy"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://b7ndlyb5lfeuy"]
 
-[ext_resource type="Texture2D" uid="uid://divcbrhgiq8y" path="res://stages/materials/bricks/small/color.png" id="1_0l1p6"]
 [ext_resource type="Texture2D" uid="uid://divcbrhgiq8y" path="res://stages/materials/bricks/small/color.png" id="1_eifie"]
 [ext_resource type="Texture2D" uid="uid://ctmw2gnehmp3i" path="res://stages/materials/bricks/small/normal.png" id="3_3qkbk"]
-[ext_resource type="Texture2D" uid="uid://bgv5lvisq1rhy" path="res://stages/materials/bricks/textures/roughness.png" id="4_bgdit"]
-
 
 [resource]
 albedo_color = Color(0.0461228, 0.0590478, 0.0979491, 1)
-albedo_texture = ExtResource("1_0l1p6")
+albedo_texture = ExtResource("1_eifie")
 metallic_specular = 0.4
-roughness_texture = ExtResource("4_bgdit")
 normal_enabled = true
 normal_texture = ExtResource("3_3qkbk")
 ao_texture = ExtResource("1_eifie")

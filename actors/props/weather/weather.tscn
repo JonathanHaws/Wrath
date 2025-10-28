@@ -1,14 +1,15 @@
 [gd_scene load_steps=13 format=3 uid="uid://pw71tm25g4j4"]
 
 [ext_resource type="Script" uid="uid://rapnapo70524" path="res://actors/props/weather/weather.gd" id="1_0yxhn"]
-[ext_resource type="Texture2D" uid="uid://d0j2b2cneovh6" path="res://actors/particle_textures/circle_05.png" id="2_qu5wy"]
+[ext_resource type="Texture2D" uid="uid://dvj5xtbj4kkt2" path="res://actors/particle_textures/star_05.png" id="2_m7vqp"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ij2o8"]
 transparency = 1
+cull_mode = 2
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.506196, 0.532194, 0.566183, 0.541176)
-albedo_texture = ExtResource("2_qu5wy")
+albedo_color = Color(0.54, 0.54, 0.54, 0.301961)
+albedo_texture = ExtResource("2_m7vqp")
 billboard_mode = 3
 billboard_keep_scale = true
 particles_anim_h_frames = 1
@@ -32,9 +33,9 @@ curve = SubResource("Curve_6r500")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1a4pd"]
 particle_flag_damping_as_friction = true
-emission_shape_scale = Vector3(40, 40, 40)
-emission_shape = 3
-emission_box_extents = Vector3(1, 1, 1)
+emission_shape_scale = Vector3(30, 30, 40)
+emission_shape = 1
+emission_sphere_radius = 2.3
 angle_min = -158.0
 angle_max = 1.07288e-05
 spread = 180.0
@@ -46,6 +47,7 @@ scale_curve = SubResource("CurveTexture_mliri")
 alpha_curve = SubResource("CurveTexture_ao7lu")
 
 [sub_resource type="QuadMesh" id="QuadMesh_qst5c"]
+size = Vector2(0.3, 0.3)
 
 [sub_resource type="Animation" id="Animation_ub0yu"]
 length = 0.001
@@ -89,9 +91,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.03757, 0)
 script = ExtResource("1_0yxhn")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.015492)
 material_override = SubResource("StandardMaterial3D_ij2o8")
 amount = 2046
-lifetime = 15.0
+lifetime = 10.0
 speed_scale = 2.0
 fixed_fps = 60
 interpolate = false

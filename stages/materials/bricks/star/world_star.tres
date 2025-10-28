@@ -1,15 +1,13 @@
-[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://cwytjbq2qmglj"]
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://cwytjbq2qmglj"]
 
 [ext_resource type="Texture2D" uid="uid://6um8wg00wlq2" path="res://stages/materials/bricks/star/color.png" id="2_jxwqm"]
 [ext_resource type="Texture2D" uid="uid://bwj8yk018l62v" path="res://stages/materials/bricks/star/normal.png" id="3_jofxk"]
-[ext_resource type="Texture2D" uid="uid://bgv5lvisq1rhy" path="res://stages/materials/bricks/textures/roughness.png" id="4_jofxk"]
 
 [resource]
 albedo_color = Color(0.745098, 0.745098, 0.745098, 1)
 albedo_texture = ExtResource("2_jxwqm")
 metallic_specular = 0.4
 roughness = 0.9
-roughness_texture = ExtResource("4_jofxk")
 normal_enabled = true
 normal_scale = -0.5
 normal_texture = ExtResource("3_jofxk")
