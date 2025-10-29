@@ -25,6 +25,7 @@ extends CharacterBody3D
 @export var MESH_ANIM: AnimationPlayer
 @export var COLLISON_SHAPE: CollisionShape3D
 @export var PARTICLES: Node3D
+@export var FADE_IN_ANIM: AnimationPlayer
 @export var STAMINA = 10
 @export var MAX_STAMINA = 10
 @export var STAMINA_RECOVERY: float = 20.0
@@ -107,7 +108,7 @@ func _ready() -> void:
 		if door_node:
 			if door_node.START: 
 				global_transform = door_node.START.global_transform
-		$FadeIn.play("DOOR_FADE_IN")
+		FADE_IN_ANIM.play("DOOR_FADE_IN")
 		Save.data.erase("door_node_name")
 		Save.save_game()
 		return
@@ -138,7 +139,7 @@ func _physics_process(delta: float) -> void:
 			ANIM.play("PLUNGE", 0)
 		
 		$Squash.squish(.23, MESH)	
-		if $Audio: $Audio.play_2d_sound(["land"], 0.9, 1.1)
+		if $Audio: $Audio.play_2d_sound(["land"])
 		if PARTICLES: PARTICLES.spawn()
 		
 	was_on_floor = is_on_floor()
@@ -164,7 +165,7 @@ func _physics_process(delta: float) -> void:
 	if jump_buffer > 0 and falling < COYOTE_TIME: # JUMP
 		if ANIM.current_animation and in_interruptible_animation():
 			if JUMP_MULTIPLIER > 0:
-				if $Audio: $Audio.play_2d_sound(["jump"], 2.0)
+				if $Audio: $Audio.play_2d_sound(["jump"])
 				ANIM.play("JUMPING")
 				$Squash.squish(-.23,MESH)	
 				velocity.y = JUMP_VELOCITY * JUMP_MULTIPLIER

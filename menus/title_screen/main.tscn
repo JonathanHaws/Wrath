@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cls12q06quifx"]
+[gd_scene load_steps=14 format=3 uid="uid://cls12q06quifx"]
 
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="1_48c50"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_gkebh"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://dbk4ank3cq0ny" path="res://menus/title_screen/quit.gd" id="7_nikc7"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_8af7w"]
 [ext_resource type="AudioStream" uid="uid://bskcgvhx85bs3" path="res://menus/title_screen/title_screen.ogg" id="10_03rxr"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="12_k2sbj"]
 
 [node name="ColorRect" type="ColorRect"]
 process_mode = 3
@@ -156,8 +157,11 @@ theme_override_font_sizes/font_size = 21
 text = "VERSION BETA "
 script = ExtResource("1_gkebh")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-process_mode = 3
-stream = ExtResource("10_03rxr")
-autoplay = true
-bus = &"Music"
+[node name="MenuMusic" type="Node" parent="." node_paths=PackedStringArray("KILL_BUTTONS")]
+script = ExtResource("12_k2sbj")
+SOUNDS = Array[AudioStream]([ExtResource("10_03rxr")])
+AUTO_PLAY = true
+ADD_TO_ROOT = true
+AVOID_STACKING_MULTIPLE_LOADS = true
+GROUP_NAME = "MenuMusic"
+KILL_BUTTONS = [NodePath("../CenterContainer/Main/Continue"), NodePath("../CenterContainer/Main/NewGame"), NodePath("../CenterContainer/Main/LoadGame")]

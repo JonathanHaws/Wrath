@@ -109,6 +109,7 @@ color = Color(0, 0, 0, 0)
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("3_aw8ec")
 SOUNDS = Array[AudioStream]([ExtResource("4_jwvi6")])
+ADD_TO_ROOT = true
 
 [node name="Start" type="Node3D" parent="."]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 5.08871)
