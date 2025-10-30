@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ci0byfa0f4mm3" path="res://actors/props/doors/door.gd" id="1_ityv5"]
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://actors/characters/enemies/sfx/Despawn.wav" id="3_ojp7h"]
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="3_x2b44"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="3_x2b44"]
 
 [sub_resource type="Animation" id="Animation_jqv7c"]
 resource_name = "DOOR"

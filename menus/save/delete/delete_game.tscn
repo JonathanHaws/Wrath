@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://bchlq7ojvre5o" path="res://menus/save/profile/profile.tscn" id="2_rb5gg"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="3_u3frr"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="4_fevu8"]
-[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="5_mokty"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="6_npq60"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="7_luhou"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_axw2x"]
 
 [node name="DeleteGame" type="ColorRect"]
@@ -55,11 +55,11 @@ scene_file = "uid://cls12q06quifx"
 script = ExtResource("8_axw2x")
 focus_node = NodePath("../Back")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CenterContainer/Delete" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-process_mode = 3
-bus = &"SFX"
-script = ExtResource("5_mokty")
-hover_sound = ExtResource("6_npq60")
-press_sound = ExtResource("6_npq60")
-hover_targets = [NodePath("../Back")]
-pressed_targets = [NodePath("../Back")]
+[node name="MenuAudio" type="Node" parent="." node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+script = ExtResource("7_luhou")
+SOUNDS = Array[AudioStream]([ExtResource("6_npq60")])
+HOVER_SOUND = "Menu_Hover"
+PRESSED_SOUND = "Menu_Hover"
+HOVERED_BUTTONS = [NodePath("../CenterContainer/Delete/Back")]
+PRESSED_BUTTONS = [NodePath("../CenterContainer/Delete/Back")]
+ADD_TO_ROOT = true

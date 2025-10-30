@@ -96,5 +96,6 @@ transform = Transform3D(0.50829, 0, 0.861186, 0, 1, 0, -0.861186, 0, 0.50829, 13
 transform = Transform3D(-0.432967, 0, 0.90141, 0, 1, 0, -0.90141, 0, -0.432967, 28.5243, -7.98728, -9.89871)
 
 [node name="Menu" parent="." instance=ExtResource("1_7x0xx")]
+visible = false
 
 [editable path="Enviroment/ChainCeiling"]

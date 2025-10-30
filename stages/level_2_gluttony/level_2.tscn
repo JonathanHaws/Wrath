@@ -134,6 +134,7 @@ disabled = true
 disabled = false
 
 [node name="Menu" parent="." instance=ExtResource("1_kjfq7")]
+visible = false
 
 [editable path="greed_talk_1"]
 [editable path="greed_talk_1/greed"]

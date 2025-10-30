@@ -4,15 +4,15 @@
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_gkebh"]
 [ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://menus/pause/toggle.gd" id="1_n4yvo"]
 [ext_resource type="Script" uid="uid://di42lux5ey07j" path="res://menus/show_cursor.gd" id="2_2fxgv"]
-[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="2_gkebh"]
 [ext_resource type="FontFile" uid="uid://dpdckaagju1of" path="res://fonts/Wrath.otf" id="3_03rxr"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="4_n4yvo"]
 [ext_resource type="Script" uid="uid://cqi7s4551j7xa" path="res://menus/save/continue.gd" id="5_2fxgv"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="6_k2sbj"]
 [ext_resource type="Script" uid="uid://dbk4ank3cq0ny" path="res://menus/title_screen/quit.gd" id="7_nikc7"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_8af7w"]
+[ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_Press.wav" id="9_k2sbj"]
 [ext_resource type="AudioStream" uid="uid://bskcgvhx85bs3" path="res://menus/title_screen/title_screen.ogg" id="10_03rxr"]
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="12_k2sbj"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="12_k2sbj"]
 
 [node name="ColorRect" type="ColorRect"]
 process_mode = 3
@@ -76,6 +76,15 @@ text = "CONTINUE
 icon_alignment = 1
 script = ExtResource("5_2fxgv")
 
+[node name="MenuAudio" type="Node" parent="CenterContainer/Main/Continue" node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+script = ExtResource("12_k2sbj")
+SOUNDS = Array[AudioStream]([ExtResource("1_48c50"), ExtResource("9_k2sbj")])
+HOVER_SOUND = "Menu_Hover"
+PRESSED_SOUND = "Menu_Press"
+HOVERED_BUTTONS = [NodePath("..")]
+PRESSED_BUTTONS = [NodePath("..")]
+ADD_TO_ROOT = true
+
 [node name="NewGame" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -130,14 +139,14 @@ script = ExtResource("7_nikc7")
 script = ExtResource("8_8af7w")
 focus_node = NodePath("../NewGame")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CenterContainer/Main" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-process_mode = 3
-bus = &"SFX"
-script = ExtResource("2_gkebh")
-hover_sound = ExtResource("1_48c50")
-press_sound = ExtResource("1_48c50")
-hover_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../LoadGame"), NodePath("../DeleteGame"), null, null, NodePath("../Credits"), NodePath("../Quit")]
-pressed_targets = [NodePath("../Continue"), NodePath("../NewGame"), NodePath("../LoadGame"), NodePath("../DeleteGame"), null, null, NodePath("../Credits"), NodePath("../Quit")]
+[node name="MenuAudio" type="Node" parent="CenterContainer/Main" node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+script = ExtResource("12_k2sbj")
+SOUNDS = Array[AudioStream]([ExtResource("1_48c50")])
+HOVER_SOUND = "Menu_Hover"
+PRESSED_SOUND = "Menu_Hover"
+HOVERED_BUTTONS = [NodePath("../NewGame"), NodePath("../LoadGame"), NodePath("../DeleteGame"), NodePath("../Credits")]
+PRESSED_BUTTONS = [NodePath("../NewGame"), NodePath("../LoadGame"), NodePath("../DeleteGame"), NodePath("../Credits")]
+ADD_TO_ROOT = true
 
 [node name="Version" type="Label" parent="." groups=["ui_scalable"]]
 layout_mode = 1

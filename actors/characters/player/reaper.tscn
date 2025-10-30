@@ -34,7 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://actors/characters/enemies/sfx/Slam.wav" id="25_8i186"]
 [ext_resource type="Script" uid="uid://bfq61wyde2xvx" path="res://actors/characters/player/death_animation.gd" id="29_5ijfa"]
 [ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://actors/characters/player/player_health.tres" id="34_6g6ue"]
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="35_lwilf"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="35_lwilf"]
 [ext_resource type="Material" uid="uid://dacvxdrj2im0y" path="res://actors/characters/player/materials/body.tres" id="35_m1s71"]
 [ext_resource type="Material" uid="uid://d05o8hg3ko84m" path="res://actors/characters/player/materials/cloak.tres" id="36_4anjp"]
 [ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://actors/characters/player/tracker/play_time_tracker.gd" id="36_5cvkf"]
@@ -2094,6 +2094,19 @@ size = Vector3(12.7935, 22.7476, 51.4006)
 [sub_resource type="BoxShape3D" id="BoxShape3D_m1s71"]
 size = Vector3(1.39011, 1.75417, 0.500744)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wub5s"]
+bg_color = Color(1, 1, 1, 0.439216)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0509804, 0.0509804, 0.0509804, 0.435294)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
 [sub_resource type="Animation" id="Animation_b2psf"]
 resource_name = "DOOR_FADE_IN"
 length = 0.361
@@ -2199,19 +2212,6 @@ _data = {
 &"FADE_IN": SubResource("Animation_vfhrj"),
 &"RESET": SubResource("Animation_vjm2n")
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wub5s"]
-bg_color = Color(1, 1, 1, 0.439216)
-border_width_left = 1
-border_width_top = 1
-border_width_right = 1
-border_width_bottom = 1
-border_color = Color(0.0509804, 0.0509804, 0.0509804, 0.435294)
-corner_radius_top_left = 5
-corner_radius_top_right = 5
-corner_radius_bottom_right = 5
-corner_radius_bottom_left = 5
-anti_aliasing = false
 
 [node name="Reaper" type="CharacterBody3D" node_paths=PackedStringArray("CAMERA", "MESH", "ATTACK_AREA", "ANIM", "MESH_ANIM", "COLLISON_SHAPE", "PARTICLES", "FADE_IN_ANIM") groups=["player", "player_body"]]
 rotation_edit_mode = 1
@@ -2455,7 +2455,7 @@ material_override = ExtResource("35_m1s71")
 material_override = ExtResource("36_4anjp")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="3"]
-transform = Transform3D(0.192208, -0.554266, 0.809843, 0.748053, 0.616892, 0.244665, -0.635195, 0.558779, 0.533192, -0.00446625, 1.81551, -0.139075)
+transform = Transform3D(0.192208, -0.554266, 0.809843, 0.748053, 0.616891, 0.244665, -0.635194, 0.558779, 0.533192, -0.00446622, 1.81551, -0.139075)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -2478,7 +2478,7 @@ animation_player = NodePath("../../../../../../../Upgrade")
 upgrade_animation = "DAMAGE"
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4"]
-transform = Transform3D(-0.999908, 0.0135876, -0.000293109, -0.0119042, -0.886027, -0.463481, -0.00655733, -0.463435, 0.886107, -0.116333, 0.116392, 0.421051)
+transform = Transform3D(-0.999908, 0.0135875, -0.000293263, -0.011904, -0.886026, -0.463482, -0.00655741, -0.463436, 0.886106, -0.116333, 0.116391, 0.42105)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -2489,7 +2489,7 @@ scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5"]
-transform = Transform3D(-0.999908, 0.0135876, -0.000293109, -0.0119042, -0.886027, -0.463481, -0.00655733, -0.463435, 0.886107, -0.116333, 0.116392, 0.421051)
+transform = Transform3D(-0.999908, 0.0135875, -0.000293263, -0.011904, -0.886026, -0.463482, -0.00655741, -0.463436, 0.886106, -0.116333, 0.116391, 0.42105)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -2520,22 +2520,6 @@ playback_default_blend_time = 0.2
 script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("8_lxnc4"), ExtResource("42_p6b07")])
 copy_transform_node = NodePath(".")
-
-[node name="ColorRect" type="ColorRect" parent="."]
-z_index = 2
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-
-[node name="FadeIn" type="AnimationPlayer" parent="ColorRect"]
-root_node = NodePath("../..")
-libraries = {
-&"": SubResource("AnimationLibrary_48hq2")
-}
-autoplay = "FADE_IN"
 
 [node name="Control" type="Control" parent="." groups=["ui_scalable"]]
 layout_mode = 3
@@ -2618,6 +2602,21 @@ offset_bottom = -12.0
 grow_vertical = 0
 theme = ExtResource("24_m1s71")
 text = "WISP STAMINA INCREASED"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FadeIn" type="AnimationPlayer" parent="ColorRect"]
+root_node = NodePath("../..")
+libraries = {
+&"": SubResource("AnimationLibrary_48hq2")
+}
+autoplay = "FADE_IN"
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 

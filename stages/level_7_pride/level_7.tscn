@@ -73,3 +73,4 @@ DESTINATION_SCENE = "uid://5n4cvh6cqc4p"
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.8406, -9.14357, 0)
 
 [node name="Menu" parent="." instance=ExtResource("1_4p5y5")]
+visible = false

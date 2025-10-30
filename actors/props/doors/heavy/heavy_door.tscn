@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ci0byfa0f4mm3" path="res://actors/props/doors/door.gd" id="1_cilod"]
 [ext_resource type="PackedScene" uid="uid://c0pqtwl8b1uu4" path="res://actors/props/doors/heavy/heavy_door.blend" id="2_21gea"]
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="3_aw8ec"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="3_aw8ec"]
 [ext_resource type="AudioStream" uid="uid://b50qiukxj6lq6" path="res://actors/props/doors/heavy/stone_creak.wav" id="4_jwvi6"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m4dhi"]

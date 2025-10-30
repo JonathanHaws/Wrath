@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_jkjqm"]
 [ext_resource type="Script" uid="uid://60mgdw58o7o0" path="res://menus/save/profile/profile.gd" id="2_egniv"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="3_8a5x8"]
-[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="4_xqw8w"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="3_s3ewt"]
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_Press.wav" id="5_s3ewt"]
 
 [node name="Button" type="Button"]
@@ -12,11 +12,11 @@ offset_bottom = 8.0
 theme = ExtResource("1_jkjqm")
 script = ExtResource("2_egniv")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-process_mode = 3
-bus = &"SFX"
-script = ExtResource("4_xqw8w")
-hover_sound = ExtResource("3_8a5x8")
-press_sound = ExtResource("5_s3ewt")
-hover_targets = [NodePath("..")]
-pressed_targets = [NodePath("..")]
+[node name="MenuAudio" type="Node" parent="." node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+script = ExtResource("3_s3ewt")
+SOUNDS = Array[AudioStream]([ExtResource("3_8a5x8"), ExtResource("5_s3ewt")])
+HOVER_SOUND = "Menu_Hover"
+PRESSED_SOUND = "Menu_Press"
+HOVERED_BUTTONS = [NodePath("..")]
+PRESSED_BUTTONS = [NodePath("..")]
+ADD_TO_ROOT = true

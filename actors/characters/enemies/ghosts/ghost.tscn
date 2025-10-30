@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="2_i6eoe"]
 [ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://actors/characters/ui/damage_numbers.tscn" id="3_mvqiw"]
 [ext_resource type="Script" uid="uid://d0sglng8yjegx" path="res://actors/characters/hit_shape_persistent_health.gd" id="3_oquh6"]
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="3_p14n4"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="3_p14n4"]
 [ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://actors/characters/enemies/sfx/Hit_1.wav" id="4_yqsxy"]
 [ext_resource type="AudioStream" uid="uid://b4dyx5m8hsynq" path="res://actors/characters/enemies/sfx/Hit_2.wav" id="5_00sp5"]
 [ext_resource type="AudioStream" uid="uid://bv7cgqlt3sbtb" path="res://actors/characters/enemies/sfx/Hit_3.wav" id="6_hiblq"]

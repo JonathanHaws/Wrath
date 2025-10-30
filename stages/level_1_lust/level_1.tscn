@@ -90,3 +90,4 @@ mesh = SubResource("BoxMesh_hgjnn")
 transform = Transform3D(0.195861, 0, 0.980632, 0, 1, 0, -0.980632, 0, 0.195861, 27.7134, -8.26362, 8.13487)
 
 [node name="Menu" parent="." instance=ExtResource("1_4eh01")]
+visible = false

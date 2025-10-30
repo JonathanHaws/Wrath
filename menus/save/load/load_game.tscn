@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cpgt71w6iukaj"]
+[gd_scene load_steps=9 format=3 uid="uid://cpgt71w6iukaj"]
 
 [ext_resource type="Script" uid="uid://cw2iscxy4kg2r" path="res://menus/save/load/load.gd" id="1_6x4ew"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_xbifh"]
@@ -6,8 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="3_3kwj5"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="3_opbiq"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="4_3kwj5"]
-[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="4_wpkbo"]
-[ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_Press.wav" id="5_3kwj5"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="7_2maut"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_wpkbo"]
 
 [node name="LoadGame" type="ColorRect"]
@@ -70,11 +69,11 @@ scene_file = "uid://cls12q06quifx"
 script = ExtResource("8_wpkbo")
 focus_node = NodePath("../Back")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CenterContainer/Load" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-process_mode = 3
-bus = &"SFX"
-script = ExtResource("4_wpkbo")
-hover_sound = ExtResource("3_3kwj5")
-press_sound = ExtResource("5_3kwj5")
-hover_targets = [NodePath("../Continue"), NodePath("../Back")]
-pressed_targets = [NodePath("../Continue"), NodePath("../Back")]
+[node name="MenuAudio" type="Node" parent="." node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+script = ExtResource("7_2maut")
+SOUNDS = Array[AudioStream]([ExtResource("3_3kwj5")])
+HOVER_SOUND = "Menu_Hover"
+PRESSED_SOUND = "Menu_Hover"
+HOVERED_BUTTONS = [NodePath("../CenterContainer/Load/Back")]
+PRESSED_BUTTONS = [NodePath("../CenterContainer/Load/Back")]
+ADD_TO_ROOT = true

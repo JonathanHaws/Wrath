@@ -8,8 +8,8 @@
 [ext_resource type="Script" uid="uid://dntrkxgi76mi" path="res://menus/options/graphics/ssao_toggle.gd" id="4_ll3a5"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="5_wtdqe"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="6_684si"]
-[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="7_e8mi2"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_bpob5"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="9_j3qnb"]
 
 [node name="Control" type="Control"]
 process_mode = 3
@@ -185,10 +185,12 @@ node_to_replace = NodePath("../..")
 script = ExtResource("8_bpob5")
 focus_node = NodePath("../BloomButton")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-bus = &"SFX"
-script = ExtResource("7_e8mi2")
-hover_sound = ExtResource("6_684si")
-press_sound = ExtResource("6_684si")
-hover_targets = [NodePath("../ColorRect/Brightness/HSlider"), NodePath("../ColorRect/Contrast/HSlider"), NodePath("../ColorRect/Saturation/HSlider"), NodePath("../ColorRect/BloomButton"), NodePath("../ColorRect/SSAOButton"), NodePath("../ColorRect/Back")]
-pressed_targets = [NodePath("../ColorRect/Brightness/HSlider"), NodePath("../ColorRect/Contrast/HSlider"), NodePath("../ColorRect/Saturation/HSlider"), NodePath("../ColorRect/BloomButton"), NodePath("../ColorRect/SSAOButton"), NodePath("../ColorRect/Back")]
+[node name="MenuAudio" type="Node" parent="." node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+process_mode = 3
+script = ExtResource("9_j3qnb")
+SOUNDS = Array[AudioStream]([ExtResource("6_684si")])
+HOVER_SOUND = "Menu_Hover"
+PRESSED_SOUND = "Menu_Hover"
+HOVERED_BUTTONS = [NodePath("../ColorRect/Brightness/HSlider"), NodePath("../ColorRect/Contrast/HSlider"), NodePath("../ColorRect/Saturation/HSlider"), NodePath("../ColorRect/BloomButton"), NodePath("../ColorRect/SSAOButton"), NodePath("../ColorRect/Back")]
+PRESSED_BUTTONS = [NodePath("../ColorRect/Brightness/HSlider"), NodePath("../ColorRect/Contrast/HSlider"), NodePath("../ColorRect/Saturation/HSlider"), NodePath("../ColorRect/BloomButton"), NodePath("../ColorRect/SSAOButton"), NodePath("../ColorRect/Back")]
+ADD_TO_ROOT = true

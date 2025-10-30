@@ -461,6 +461,7 @@ bones/36/rotation = Quaternion(-0.0789518, 0.154234, 0.075882, 0.981947)
 [node name="Skip" parent="." instance=ExtResource("23_uq4p3")]
 
 [node name="Menu" parent="." instance=ExtResource("1_mb05r")]
+visible = false
 
 [connection signal="body_entered" from="KillVolumes/Void" to="KillVolumes/Void" method="_on_body_entered"]
 [connection signal="body_entered" from="KillVolumes/Void2" to="KillVolumes/Void2" method="_on_body_entered"]

@@ -77,8 +77,6 @@ _data = {
 process_mode = 3
 script = SubResource("GDScript_x5n4p")
 
-[node name="Menu" parent="." instance=ExtResource("2_ahmig")]
-
 [node name="Label" type="Label" parent="."]
 offset_left = 587.0
 offset_top = 450.0
@@ -107,3 +105,6 @@ libraries = {
 autoplay = "FADE_IN"
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("3_26jig")]
+
+[node name="Menu" parent="." instance=ExtResource("2_ahmig")]
+visible = false

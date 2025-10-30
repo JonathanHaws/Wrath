@@ -118,3 +118,4 @@ transform = Transform3D(-0.187398, 0, 0.982284, 0, 1, 0, -0.982284, 0, -0.187398
 transform = Transform3D(-0.187398, 0, 0.982284, 0, 1, 0, -0.982284, 0, -0.187398, 67.9769, -7.67152, 42.3328)
 
 [node name="Menu" parent="." instance=ExtResource("1_bpnb6")]
+visible = false

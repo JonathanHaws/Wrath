@@ -5,8 +5,8 @@
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_w063j"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="2_77ypm"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="3_hyvu0"]
-[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="4_if7rd"]
 [ext_resource type="Script" uid="uid://di42lux5ey07j" path="res://menus/show_cursor.gd" id="7_airpt"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="8_003hq"]
 
 [node name="Credits" type="ColorRect"]
 anchors_preset = 15
@@ -79,11 +79,11 @@ scene_file = "uid://cls12q06quifx"
 script = ExtResource("1_hyvu0")
 focus_node = NodePath("../Back")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CenterContainer/VboxContainer" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
-process_mode = 3
-bus = &"SFX"
-script = ExtResource("4_if7rd")
-hover_sound = ExtResource("3_hyvu0")
-press_sound = ExtResource("3_hyvu0")
-hover_targets = [NodePath("../Back")]
-pressed_targets = [NodePath("../Back")]
+[node name="MenuAudio" type="Node" parent="." node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+script = ExtResource("8_003hq")
+SOUNDS = Array[AudioStream]([ExtResource("3_hyvu0")])
+HOVER_SOUND = "Menu_Hover"
+PRESSED_SOUND = "Menu_Hover"
+HOVERED_BUTTONS = [NodePath("../CenterContainer/VboxContainer/Back")]
+PRESSED_BUTTONS = [NodePath("../CenterContainer/VboxContainer/Back")]
+ADD_TO_ROOT = true

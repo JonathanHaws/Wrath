@@ -6,12 +6,11 @@
 [ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://menus/pause/restart.gd" id="5_0mtqa"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="6_kiq5e"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="7_6l83q"]
-[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="8_5x5fn"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="7_e7s18"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="9_nw3fp"]
 
 [node name="Pause" type="ColorRect"]
 process_mode = 3
-visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -85,11 +84,12 @@ scene_file = "uid://cls12q06quifx"
 script = ExtResource("7_6l83q")
 focus_node = NodePath("../Main/Restart")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+[node name="MenuAudio" type="Node" parent="." node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 process_mode = 3
-bus = &"SFX"
-script = ExtResource("8_5x5fn")
-hover_sound = ExtResource("9_nw3fp")
-press_sound = ExtResource("9_nw3fp")
-hover_targets = [NodePath("../Main/Restart"), NodePath("../Main/Options"), NodePath("../Main/Controls"), NodePath("../Main/Quit")]
-pressed_targets = [NodePath("../Main/Restart"), NodePath("../Main/Options"), NodePath("../Main/Controls"), NodePath("../Main/Quit")]
+script = ExtResource("7_e7s18")
+SOUNDS = Array[AudioStream]([ExtResource("9_nw3fp")])
+HOVER_SOUND = "Menu_Hover"
+PRESSED_SOUND = "Menu_Hover"
+HOVERED_BUTTONS = [NodePath("../Main/Restart"), NodePath("../Main/Options"), NodePath("../Main/Controls"), NodePath("../Main/Quit")]
+PRESSED_BUTTONS = [NodePath("../Main/Restart"), NodePath("../Main/Options"), NodePath("../Main/Controls"), NodePath("../Main/Quit")]
+ADD_TO_ROOT = true

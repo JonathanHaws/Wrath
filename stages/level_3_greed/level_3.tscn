@@ -82,3 +82,4 @@ transform = Transform3D(-0.677364, 0, 0.735648, 0, 1, 0, -0.735648, 0, -0.677364
 transform = Transform3D(0.449023, 0, 0.89352, 0, 1, 0, -0.89352, 0, 0.449023, 16.1, -8.28661, 9.30553)
 
 [node name="Menu" parent="." instance=ExtResource("1_kw3rl")]
+visible = false

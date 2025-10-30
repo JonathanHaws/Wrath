@@ -453,6 +453,7 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5082, -11.1915, -37.4764)
 
 [node name="Menu" parent="." instance=ExtResource("1_t7rxp")]
+visible = false
 
 [connection signal="body_entered" from="KillVolume" to="KillVolume" method="_on_body_entered"]
 

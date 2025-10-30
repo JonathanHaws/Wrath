@@ -7,9 +7,9 @@
 [ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://menus/pause/toggle.gd" id="2_44vjs"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="2_lbh2v"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_t88b0"]
-[ext_resource type="Script" uid="uid://c4hwlqia52ux7" path="res://menus/menu_audio.gd" id="2_thn1f"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="2_w8ibl"]
 [ext_resource type="Script" uid="uid://d0y3kmnwe4g6k" path="res://menus/custom_control.gd" id="3_00uuv"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="9_t88b0"]
 
 [node name="ColorRect" type="ColorRect"]
 process_mode = 3
@@ -348,11 +348,12 @@ node_to_replace = NodePath("../..")
 script = ExtResource("1_thn1f")
 focus_node = NodePath("../MouseSensitivity/HSlider")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Controls" node_paths=PackedStringArray("hover_targets", "pressed_targets")]
+[node name="MenuAudio" type="Node" parent="." node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 process_mode = 3
-bus = &"SFX"
-script = ExtResource("2_thn1f")
-hover_sound = ExtResource("1_gksqo")
-press_sound = ExtResource("1_gksqo")
-hover_targets = [NodePath("../Back")]
-pressed_targets = [NodePath("../Back")]
+script = ExtResource("9_t88b0")
+SOUNDS = Array[AudioStream]([ExtResource("1_gksqo")])
+HOVER_SOUND = "Menu_Hover"
+PRESSED_SOUND = "Menu_Hover"
+HOVERED_BUTTONS = [NodePath("../Controls/Back")]
+PRESSED_BUTTONS = [NodePath("../Controls/Back")]
+ADD_TO_ROOT = true

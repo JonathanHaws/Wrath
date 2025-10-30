@@ -11,8 +11,10 @@ extends Node
 
 @export_subgroup("Triggering Audio") 
 @export var AUTO_PLAY: bool = false ## Makes audio play on load
-@export var HOVERED_BUTTONS: Array[Button] = [] ## Makes audio play when button is hovered
-@export var PRESSED_BUTTONS: Array[Button] = [] ## Makes audio play when button is pressed
+@export var HOVER_SOUND: String = "" 
+@export var PRESSED_SOUND: String = "" 
+@export var HOVERED_BUTTONS: Array[Node] = [] ## Makes audio play when button is hovered
+@export var PRESSED_BUTTONS: Array[Node] = [] ## Makes audio play when button is pressed
 
 @export_subgroup("Audio Between Scenes") 
 @export var ADD_TO_ROOT: bool = false ## Important for audio that is meant to play between scenes. Is added as a sibling to globals... So When calling change scene to file it doesnt get removed 
@@ -23,12 +25,19 @@ extends Node
 func _ready() -> void:
 	#print('test')
 	if AUTO_PLAY: play_2d_sound()
-	for b in HOVERED_BUTTONS:
-		if b: b.mouse_entered.connect(func(): play_2d_sound())
-	for b in PRESSED_BUTTONS:
-		if b: b.pressed.connect(func(): play_2d_sound())
+
 	for b in KILL_BUTTONS:
 		if b: b.pressed.connect(_kill_audio)
+		
+
+	for b in PRESSED_BUTTONS:
+		if b.has_signal("pressed"):
+			if b: b.pressed.connect(func(): play_2d_sound(PRESSED_SOUND))
+		
+	await get_tree().create_timer(0.1).timeout # Wait a second to connect the signal so hover isnt an issue
+	for b in HOVERED_BUTTONS:
+		if b.has_signal("mouse_entered"):
+			if b: b.mouse_entered.connect(func(): play_2d_sound(HOVER_SOUND))
 
 func play_2d_sound(sound: Variant = null) -> AudioStreamPlayer:
 	
@@ -44,12 +53,13 @@ func play_2d_sound(sound: Variant = null) -> AudioStreamPlayer:
 	var base_volume = 1
 	if sound is Array:
 		if sound.size() == 0: return
-		var random_index = randi() % sound.size()
-		
+
+		var final_index= randi() % sound.size()
+
 		if sound[0] is AudioStream:
-			sound = sound[random_index]
+			sound = sound[final_index]
 		elif sound[0] is String:
-			var sound_name = sound[random_index]
+			var sound_name = sound[final_index]
 			for s in SOUNDS:
 				if s.resource_path.get_file().get_basename().to_lower() == sound_name.to_lower():
 					#print(sound_name.to_lower())
@@ -84,7 +94,8 @@ func play_2d_sound(sound: Variant = null) -> AudioStreamPlayer:
 	if GROUP_NAME != "": player.add_to_group(GROUP_NAME)
 	
 	if ADD_TO_ROOT:
-		get_tree().get_root().call_deferred("add_child", player)
+		var tree := Engine.get_main_loop()
+		tree.get_root().call_deferred("add_child", player)
 	else:
 		add_child(player)
 	return player

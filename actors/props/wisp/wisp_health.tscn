@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://cplh0pg6a67dx" path="res://actors/particle_textures/smoke_08.png" id="4_eksnf"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="5_bniuq"]
 [ext_resource type="AudioStream" uid="uid://bg0vbvw67fmg3" path="res://actors/props/wisp/Wisp.wav" id="5_fs70g"]
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_one_shot.gd" id="6_tilfj"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="6_tilfj"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://actors/characters/enemies/sfx/Cry_2.wav" id="7_yfupi"]
 
 [sub_resource type="Animation" id="Animation_4228f"]

@@ -22,8 +22,6 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [node name="Main" type="Node3D"]
 
-[node name="Menu" parent="." instance=ExtResource("1_w4qth")]
-
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
@@ -90,3 +88,6 @@ mesh = SubResource("BoxMesh_hgjnn")
 
 [node name="Lust" parent="." instance=ExtResource("10_sg7ch")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 23.1593, -4.72985, -0.97906)
+
+[node name="Menu" parent="." instance=ExtResource("1_w4qth")]
+visible = false
