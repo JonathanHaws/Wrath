@@ -112,7 +112,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.866667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [3.0, 0.0]
+"values": [0.5, 0.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -291,13 +291,13 @@ tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("OmniLight3D:light_energy")
-tracks/2/interp = 1
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [3.0]
+"values": [0.5]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -912,7 +912,7 @@ shader_parameter/emission_texture_intensity = 0.0
 shader_parameter/inside_color = Color(0, 0, 0, 1)
 shader_parameter/dissolve_amount = 0.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_hp215")
-shader_parameter/glow_color = Color(0.179891, 0.2386, 0.285293, 1)
+shader_parameter/glow_color = Color(0.146313, 0.1651, 0.180448, 1)
 shader_parameter/glow_intensitiy = 1.77
 shader_parameter/glow_border_width = 0.018
 shader_parameter/glow_border_smoothness = 0.003
@@ -1198,7 +1198,7 @@ debug_color = Color(1, 1, 1, 0)
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18205, 0.00665204)
 light_color = Color(0.58, 0.58, 0.58, 1)
-light_energy = 3.0
+light_energy = 0.5
 light_specular = 0.0
 omni_range = 8.96629
 
