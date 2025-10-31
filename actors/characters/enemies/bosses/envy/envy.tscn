@@ -1434,7 +1434,7 @@ bones/35/rotation = Quaternion(0.0681233, 0.210921, -0.409785, 0.884843)
 bones/36/rotation = Quaternion(-0.0789518, 0.154234, 0.075882, 0.981947)
 
 [node name="LockOn" type="BoneAttachment3D" parent="Mesh/envy/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, -2.29051e-07, 3.2932e-06, 3.2932e-06, 0.138439, -0.990371, -2.2906e-07, 0.990371, 0.138439, 1.44423e-07, 3.0487, 0.888942)
+transform = Transform3D(1, -2.2908e-07, 3.29319e-06, 2.11377e-06, 0.810696, -0.585468, -2.53565e-06, 0.585468, 0.810696, 1.44423e-07, 3.0487, 0.888942)
 bone_name = "spine"
 bone_idx = 2
 
@@ -1464,7 +1464,7 @@ secondary_damp_threshold = 1.0
 material_override = SubResource("ShaderMaterial_ix8e8")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/envy/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, -2.10325e-07, -1.6257e-06, -1.6257e-06, -0.254493, -0.967075, -2.10329e-07, 0.967074, -0.254493, -5.08635e-07, 2.99263, 3.78074)
+transform = Transform3D(1, -2.1047e-07, -1.62558e-06, -1.59636e-06, -0.350175, -0.936684, -3.72096e-07, 0.936684, -0.350175, -5.08863e-07, 4.20284, 2.92654)
 bone_name = "beak"
 bone_idx = 6
 

@@ -34,7 +34,7 @@ func _ready() -> void:
 		if b.has_signal("pressed"):
 			if b: b.pressed.connect(func(): play_2d_sound(PRESSED_SOUND))
 		
-	await get_tree().create_timer(0.1).timeout # Wait a second to connect the signal so hover isnt an issue
+	await get_tree().create_timer(0.1,true,false, true).timeout # Wait a second to connect the signal so hover isnt an issue
 	for b in HOVERED_BUTTONS:
 		if b.has_signal("mouse_entered"):
 			if b: b.mouse_entered.connect(func(): play_2d_sound(HOVER_SOUND))
