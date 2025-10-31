@@ -32,8 +32,11 @@ func track(delta: float) -> void:
 	
 	var target_pos = target.global_transform.origin
 	
-	if not MESH.global_transform.origin.is_equal_approx(target_pos):
-		MESH.look_at(target_pos, Vector3.UP, FLIPPED_TRACKING) 
+	var dir = (target_pos - MESH.global_transform.origin).normalized()
+	var up = Vector3.UP
+	if abs(dir.dot(Vector3.UP)) > 0.99: # Avoid debug error 
+		up = Vector3.FORWARD
+	MESH.look_at(target_pos, up, FLIPPED_TRACKING)
 		
 	var target_rotation = MESH.rotation
 	
