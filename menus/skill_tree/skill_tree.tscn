@@ -85,7 +85,7 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_iiq8l")
-color = Color(0.0588805, 0.069939, 0.0848886, 1)
+color = Color(0.08, 0.08, 0.08, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Control" type="Control" parent="ColorRect" groups=["ui_scalable"]]

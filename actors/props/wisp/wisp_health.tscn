@@ -121,7 +121,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["Cry_2", 0.9, 1.1],
+"args": ["Cry_2"],
 "method": &"play_2d_sound"
 }]
 }
@@ -309,8 +309,8 @@ autoplay = "RESET"
 material_override = SubResource("StandardMaterial3D_ij2o8")
 amount = 64
 lifetime = 12.0
+preprocess = 24.0
 speed_scale = 2.0
-fixed_fps = 60
 fract_delta = false
 process_material = SubResource("ParticleProcessMaterial_1a4pd")
 draw_pass_1 = SubResource("QuadMesh_qst5c")
