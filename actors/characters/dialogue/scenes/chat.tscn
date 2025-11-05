@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bbw5gu8hyws74"]
+[gd_scene load_steps=12 format=3 uid="uid://bbw5gu8hyws74"]
 
 [ext_resource type="Script" uid="uid://dilt0xyh0pxn5" path="res://actors/characters/dialogue/chat.gd" id="1_tfxki"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="2_2el3y"]
@@ -22,7 +22,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_pwnol"]
 resource_name = "entered"
-length = 0.333337
+length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -90,6 +90,67 @@ _data = {
 &"exited_but_dont_queue_free": SubResource("Animation_2el3y")
 }
 
+[sub_resource type="Animation" id="Animation_ya2al"]
+resource_name = "RevealText"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 200]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.366667),
+"transitions": PackedFloat32Array(1, 0.0426889),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hvev4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:visible_characters")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [-1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_h7hyr"]
+_data = {
+&"RESET": SubResource("Animation_hvev4"),
+&"RevealText": SubResource("Animation_ya2al")
+}
+
 [node name="Chat" type="AnimationPlayer"]
 root_node = NodePath("Control/Label")
 libraries = {
@@ -116,17 +177,23 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -65.5
+offset_left = -400.0
 offset_top = -38.0
-offset_right = 65.5
+offset_right = 400.0
 grow_horizontal = 2
 grow_vertical = 0
 rotation = -6.28319
-pivot_offset = Vector2(640, 38)
+pivot_offset = Vector2(400, 40)
 size_flags_horizontal = 4
 size_flags_vertical = 8
 theme = ExtResource("2_2el3y")
-text = "EXAMPLE TEXT"
+text = "EXAMPLE TEXT. "
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
+visible_ratio = -0.0714286
+
+[node name="RevealText" type="AnimationPlayer" parent="Control/Label"]
+libraries = {
+&"": SubResource("AnimationLibrary_h7hyr")
+}
+autoplay = "RevealText"
