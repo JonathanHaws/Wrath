@@ -1,8 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbw5gu8hyws74"]
+[gd_scene load_steps=14 format=3 uid="uid://bbw5gu8hyws74"]
 
 [ext_resource type="Script" uid="uid://dilt0xyh0pxn5" path="res://actors/characters/dialogue/chat.gd" id="1_tfxki"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="2_2el3y"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="3_2el3y"]
+[ext_resource type="AudioStream" uid="uid://yn118a1m8hyx" path="res://actors/characters/enemies/bosses/greed/greed_talk.ogg" id="3_hvev4"]
+[ext_resource type="Script" uid="uid://dqpkqmjhsdscs" path="res://actors/characters/dialogue/scenes/jibberish.gd" id="3_ya2al"]
 
 [sub_resource type="Animation" id="Animation_e0soa"]
 resource_name = "RESET"
@@ -169,6 +171,12 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("3_2el3y")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Control" node_paths=PackedStringArray("label")]
+stream = ExtResource("3_hvev4")
+bus = &"SFX"
+script = ExtResource("3_ya2al")
+label = NodePath("../Label")
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 1

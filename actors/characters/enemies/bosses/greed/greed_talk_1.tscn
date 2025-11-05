@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b8bvono5iv61i"]
+[gd_scene load_steps=24 format=3 uid="uid://b8bvono5iv61i"]
 
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://actors/characters/enemies/bosses/greed/greed.blend" id="1_j2t0c"]
 [ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://actors/progress_gate.gd" id="1_qmj27"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://actors/characters/dialogue/scenes/chat.tscn" id="9_qmj27"]
 [ext_resource type="JSON" path="res://actors/characters/enemies/bosses/greed/dialogue_1.json" id="10_asfo8"]
 [ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://actors/characters/dialogue/scenes/choice.tscn" id="10_hnncu"]
+[ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://actors/characters/enemies/sfx/Cry_2.wav" id="11_lwcnx"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_as0iv"]
 
@@ -229,6 +230,9 @@ pivot_offset = Vector2(991.5, 274)
 theme_override_styles/background = SubResource("StyleBoxFlat_k5hc3")
 show_percentage = false
 metadata/_edit_use_anchors_ = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dialogue"]
+stream = ExtResource("11_lwcnx")
 
 [node name="Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 11.0904, -0.361175)
