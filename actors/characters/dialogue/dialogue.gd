@@ -29,12 +29,7 @@ func _on_body_exited(body)-> void:
 	current_index = start_index
 
 func _spawn_next_dialogue() -> void:
-
-	if "skip" in dialogue[current_index]:
-		current_index += 1 + dialogue[current_index].skip
-	else:
-		current_index += 1
-		
+	
 	if current_index >= dialogue.size():
 		current_index = int(start_index)
 		return
@@ -46,7 +41,11 @@ func _spawn_next_dialogue() -> void:
 		if "info" in dialogue[current_index] and "info" in instance:
 			instance.info = dialogue[current_index].info
 		add_child(instance)
-	
+		
+	if "skip" in dialogue[current_index]:
+		current_index += 1 + dialogue[current_index].skip
+	else:
+		current_index += 1
 		
 func _ready():
 	base_children = get_child_count()
