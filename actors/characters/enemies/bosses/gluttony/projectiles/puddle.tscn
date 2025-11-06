@@ -1,8 +1,13 @@
-[gd_scene load_steps=9 format=3 uid="uid://4f506yax85t1"]
+[gd_scene load_steps=14 format=3 uid="uid://4f506yax85t1"]
 
 [ext_resource type="Script" uid="uid://dtofx2osnk3pe" path="res://actors/characters/enemies/bosses/gluttony/projectiles/puddle.gd" id="1_s6lm2"]
 [ext_resource type="Material" uid="uid://14hmcag5btd0" path="res://actors/characters/enemies/bosses/gluttony/projectiles/vomit.tres" id="2_s6lm2"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="3_g4km2"]
+[ext_resource type="AudioStream" uid="uid://dr4wvss7cxikp" path="res://actors/characters/enemies/bosses/gluttony/sounds/vomit_splash.ogg" id="4_exbxg"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="5_g4v7w"]
+[ext_resource type="AudioStream" uid="uid://bg7hvfo0wmnlg" path="res://actors/characters/enemies/bosses/gluttony/sounds/puddle_1.ogg" id="6_yymar"]
+[ext_resource type="AudioStream" uid="uid://c8tka838atcpd" path="res://actors/characters/enemies/bosses/gluttony/sounds/puddle_2.ogg" id="7_kg012"]
+[ext_resource type="AudioStream" uid="uid://cs06ncete1mfe" path="res://actors/characters/enemies/bosses/gluttony/sounds/puddle_3.ogg" id="8_0mkwt"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_v5ope"]
 
@@ -79,6 +84,34 @@ tracks/2/keys = {
 "update": 0,
 "values": [true, false, true]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio/Splash")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random_child"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio/Puddle")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random_child"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mr47g"]
 _data = {
@@ -113,3 +146,36 @@ libraries = {
 &"": SubResource("AnimationLibrary_mr47g")
 }
 autoplay = "projectile"
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="Splash" type="Node" parent="Audio"]
+script = ExtResource("5_g4v7w")
+PITCH_VARIANCE = 0.3
+
+[node name="Splash1" type="AudioStreamPlayer" parent="Audio/Splash"]
+process_mode = 3
+stream = ExtResource("4_exbxg")
+bus = &"SFX"
+
+[node name="Puddle" type="Node" parent="Audio"]
+script = ExtResource("5_g4v7w")
+PITCH_VARIANCE = 0.3
+
+[node name="Puddle1" type="AudioStreamPlayer" parent="Audio/Puddle"]
+process_mode = 3
+stream = ExtResource("6_yymar")
+volume_db = -3.0
+bus = &"SFX"
+
+[node name="Puddle2" type="AudioStreamPlayer" parent="Audio/Puddle"]
+process_mode = 3
+stream = ExtResource("7_kg012")
+volume_db = -3.0
+bus = &"SFX"
+
+[node name="Puddle3" type="AudioStreamPlayer" parent="Audio/Puddle"]
+process_mode = 3
+stream = ExtResource("8_0mkwt")
+volume_db = -3.0
+bus = &"SFX"

@@ -40,6 +40,16 @@ func _ready() -> void:
 		if b.has_signal("mouse_entered"):
 			if b: b.mouse_entered.connect(func(): play_2d_sound(HOVER_SOUND))
 
+func play_random_child() -> void:
+	var nodes = get_children()
+	if nodes.size() == 0: return
+	var idx = randi() % nodes.size()
+	var node = nodes[idx]
+	if node is AudioStreamPlayer:
+		node.pitch_scale = randf_range(PITCH_MULTIPLIER - PITCH_VARIANCE, PITCH_MULTIPLIER + PITCH_VARIANCE)
+		node.volume_db = linear_to_db(VOLUME_MULTIPLIER + randf_range(-VOLUME_VARIANCE, VOLUME_VARIANCE))
+		node.play()
+		
 func play_2d_sound(sound: Variant = null) -> AudioStreamPlayer:
 	
 	if GROUP_NAME != "" and get_tree().get_nodes_in_group(GROUP_NAME).size() > 0:
