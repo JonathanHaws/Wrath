@@ -8,6 +8,7 @@ extends Node
 @export var PITCH_MULTIPLIER: float = 1.0 
 @export var VOLUME_VARIANCE: float = 0.0
 @export var PITCH_VARIANCE: float = 0.0
+@export var AUDIO_BUS: String = "SFX"
 
 @export_subgroup("Triggering Audio") 
 @export var AUTO_PLAY: bool = false ## Makes audio play on load
@@ -88,7 +89,7 @@ func play_2d_sound(sound: Variant = null) -> AudioStreamPlayer:
 	player.process_mode = Node.PROCESS_MODE_ALWAYS
 	
 	player.volume_db = linear_to_db(base_volume * (VOLUME_MULTIPLIER + randf_range(-VOLUME_VARIANCE, VOLUME_VARIANCE))) 
-	player.bus = "SFX"
+	player.bus = AUDIO_BUS
 	player.connect("tree_entered", Callable(player, "play"))
 	player.connect("finished", Callable(player, "queue_free"))
 	if GROUP_NAME != "": player.add_to_group(GROUP_NAME)

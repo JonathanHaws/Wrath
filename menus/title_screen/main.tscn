@@ -169,6 +169,7 @@ script = ExtResource("1_gkebh")
 [node name="MenuMusic" type="Node" parent="." node_paths=PackedStringArray("KILL_BUTTONS")]
 script = ExtResource("12_k2sbj")
 SOUNDS = Array[AudioStream]([ExtResource("10_03rxr")])
+AUDIO_BUS = "Music"
 AUTO_PLAY = true
 ADD_TO_ROOT = true
 AVOID_STACKING_MULTIPLE_LOADS = true
