@@ -33,12 +33,20 @@ func get_action_bindings(action: String) -> String:
 var idle_time_seconds := 0.0
 var idle_timeout_seconds := 2.0
 var last_time 
+#var last_mouse_pos := Vector2.ZERO
+
 func hide_mouse() -> void:
 	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 func show_mouse() -> void:
+ 
+	#var delta := current_pos.distance_to(last_mouse_pos)
+	#last_mouse_pos = get_viewport().get_mouse_position()
+	
+	#idle_time_seconds = idle_timeout_seconds
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 func _ready():
 	await get_tree().process_frame
 	process_mode = Node.PROCESS_MODE_ALWAYS

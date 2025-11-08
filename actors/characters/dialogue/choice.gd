@@ -4,6 +4,7 @@ var info: Array = []
 
 func _on_choice_pressed(choice: Dictionary) -> void:
 	DisableInput.toggle_action(disable_actions, true)
+	Controls.hide_mouse()
 	queue("exited")
 	get_parent().next_queued = true
 	if "skip" in choice:
@@ -32,7 +33,11 @@ func _ready():
 		$Options/Choice2.pressed.connect(func(): _on_choice_pressed(info[1]))
 
 func _process(_delta):
-	if not get_parent().in_range: 
+	
+	if get_parent().in_range: 
+		if not current_animation == "exited": _show_cursor()
+	
+	else:
 		queue("exited")
 		return
 		
