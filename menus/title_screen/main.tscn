@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cls12q06quifx"]
+[gd_scene load_steps=19 format=3 uid="uid://cls12q06quifx"]
 
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="1_48c50"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_gkebh"]
@@ -12,7 +12,49 @@
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_8af7w"]
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_Press.wav" id="9_k2sbj"]
 [ext_resource type="AudioStream" uid="uid://bskcgvhx85bs3" path="res://menus/title_screen/title_screen.ogg" id="10_03rxr"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="10_8af7w"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="12_k2sbj"]
+[ext_resource type="PackedScene" uid="uid://f3fcn8ktks1h" path="res://menus/title_screen/fade_to_black.tscn" id="14_nikc7"]
+
+[sub_resource type="Animation" id="Animation_nikc7"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_k2sbj"]
+resource_name = "continue"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_continue"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nikc7"]
+_data = {
+&"RESET": SubResource("Animation_nikc7"),
+&"continue": SubResource("Animation_k2sbj")
+}
 
 [node name="ColorRect" type="ColorRect"]
 process_mode = 3
@@ -66,7 +108,7 @@ text = "WRATH"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Continue" type="Button" parent="CenterContainer/Main"]
+[node name="Continue" type="Button" parent="CenterContainer/Main" node_paths=PackedStringArray("anim")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
@@ -75,6 +117,7 @@ text = "CONTINUE
 "
 icon_alignment = 1
 script = ExtResource("5_2fxgv")
+anim = NodePath("AnimationPlayer")
 
 [node name="MenuAudio" type="Node" parent="CenterContainer/Main/Continue" node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 script = ExtResource("12_k2sbj")
@@ -84,6 +127,16 @@ PRESSED_SOUND = "Menu_Press"
 HOVERED_BUTTONS = [NodePath("..")]
 PRESSED_BUTTONS = [NodePath("..")]
 ADD_TO_ROOT = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/Main/Continue"]
+libraries = {
+&"": SubResource("AnimationLibrary_nikc7")
+}
+
+[node name="Node2D" type="Node2D" parent="CenterContainer/Main/Continue"]
+top_level = true
+script = ExtResource("10_8af7w")
+scenes = Array[PackedScene]([ExtResource("14_nikc7")])
 
 [node name="NewGame" type="Button" parent="CenterContainer/Main"]
 layout_mode = 2

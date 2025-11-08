@@ -3,6 +3,8 @@ extends Control
 @export var profile_scene: PackedScene
 @export var exclude_current_save: bool = false
 
+@export var fade_to_black_spawner: Node
+
 func _on_profile_pressed(save_file: String) -> void:
 	
 	# If player leaves the game mid fight far away from the checkpoint this forces them to rest.
@@ -10,6 +12,9 @@ func _on_profile_pressed(save_file: String) -> void:
 	# Unless potentially the position of the player is saved aswell. 
 	# Which it is not currently. You always spawn at the last checkpoint you banked
 	# So this just force rests before starting the session
+	
+	fade_to_black_spawner.spawn()
+	await get_tree().create_timer(0.4).timeout ## Time to let fadeout play
 	
 	Save.load_save_data(save_file) 
 	Save.data["rests"] = (Save.data.get("rests", 0) + 1)

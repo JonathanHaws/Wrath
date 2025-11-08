@@ -1,13 +1,20 @@
 # Used for particles and projectiles
-extends Node3D
+extends Node
 @export var scenes: Array[PackedScene]
 @export var copy_transform_node: Node3D = null
 @export var parent_node: Node = null
 	
-@export_group("Homing")
+@export_group("Orientation 2D") ## Make sure node is top level to avoid it following parent
+	
+@export_group("Orientation 3D") ## For setting initial orientation for 3d Nodes
 @export var homing_target: Node3D = null
 @export var projectile_speed: float = 10.0
 @export var projectile_gravity: float = 0.0	
+	
+	
+func safe_look_at(node, target_position: Vector3) -> void:
+	if node is Node3D:
+		node.look_at(target_position, Vector3.UP)	
 	
 func home_towards_target() -> void:
 	
@@ -15,7 +22,7 @@ func home_towards_target() -> void:
 	
 	var target_velocity: Vector3 = Vector3.ZERO
 	
-	var to_target = homing_target.global_position - global_position
+	var to_target = homing_target.global_position - self.global_position
 	var distance = to_target.length()
 	if not distance > 0.001: return
 	var time = distance / projectile_speed
@@ -27,7 +34,7 @@ func home_towards_target() -> void:
 		target_velocity = to_target / time	
 	
 	if target_velocity.length() > 0.001:
-		look_at(global_position + target_velocity.normalized(), Vector3.UP)
+		safe_look_at(self, self.global_position + target_velocity.normalized())
 	
 func spawn(particle = 0, position_or_parent = null) -> void:
 

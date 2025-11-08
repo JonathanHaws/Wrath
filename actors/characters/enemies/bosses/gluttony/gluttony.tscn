@@ -19,7 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://actors/characters/enemies/sfx/Spin.wav" id="17_l57cg"]
 [ext_resource type="AudioStream" uid="uid://cp5swwd4tlolh" path="res://actors/characters/enemies/bosses/gluttony/gluttony.ogg" id="18_kcm85"]
 [ext_resource type="AudioStream" uid="uid://qat80dcakodi" path="res://actors/characters/enemies/bosses/gluttony/sounds/shreik_1.wav" id="18_n5wbu"]
-[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/3d_scene_spawner.gd" id="19_4cd86"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="19_4cd86"]
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://actors/cinematic.gd" id="19_5f5tj"]
 [ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://actors/characters/dialogue/scenes/chat.tscn" id="19_q0nhg"]
 [ext_resource type="AudioStream" uid="uid://7dl2hq8svsgn" path="res://actors/characters/enemies/bosses/gluttony/sounds/shreik_2.wav" id="19_svijn"]

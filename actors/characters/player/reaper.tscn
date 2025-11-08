@@ -22,7 +22,7 @@
 [ext_resource type="AudioStream" uid="uid://bfa44eyn6q4vu" path="res://actors/characters/player/sfx/Step_4.wav" id="10_tro3i"]
 [ext_resource type="AudioStream" uid="uid://0sf75mds1tdr" path="res://actors/characters/player/sfx/Slash_2.wav" id="11_x57ir"]
 [ext_resource type="AudioStream" uid="uid://dn40xettc7puu" path="res://actors/characters/player/sfx/Slash_3.wav" id="12_ot1qi"]
-[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/3d_scene_spawner.gd" id="15_lwilf"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="15_lwilf"]
 [ext_resource type="AudioStream" uid="uid://cawtjrru8ho7x" path="res://actors/characters/player/sfx/Hurt.wav" id="15_tgmjc"]
 [ext_resource type="Script" uid="uid://ccjt2mmin66uh" path="res://actors/characters/player/camera/lock_on.gd" id="17_5cvkf"]
 [ext_resource type="AudioStream" uid="uid://ca1jfg0asj5b6" path="res://actors/characters/player/sfx/Windown.wav" id="18_pc8iq"]

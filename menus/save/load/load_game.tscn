@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cpgt71w6iukaj"]
+[gd_scene load_steps=13 format=3 uid="uid://cpgt71w6iukaj"]
 
 [ext_resource type="Script" uid="uid://cw2iscxy4kg2r" path="res://menus/save/load/load.gd" id="1_6x4ew"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_xbifh"]
@@ -7,7 +7,32 @@
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="3_opbiq"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="4_3kwj5"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="7_2maut"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="7_oirw8"]
+[ext_resource type="PackedScene" uid="uid://f3fcn8ktks1h" path="res://menus/title_screen/fade_to_black.tscn" id="8_655js"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_wpkbo"]
+
+[sub_resource type="Animation" id="Animation_oirw8"]
+resource_name = "load"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Node2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_655js"]
+_data = {
+&"load": SubResource("Animation_oirw8")
+}
 
 [node name="LoadGame" type="ColorRect"]
 anchors_preset = 15
@@ -39,10 +64,11 @@ size_flags_vertical = 3
 script = ExtResource("1_xbifh")
 metadata/_edit_use_anchors_ = true
 
-[node name="Load" type="VBoxContainer" parent="CenterContainer"]
+[node name="Load" type="VBoxContainer" parent="CenterContainer" node_paths=PackedStringArray("fade_to_black_spawner")]
 layout_mode = 2
 script = ExtResource("1_6x4ew")
 profile_scene = ExtResource("2_t8d72")
+fade_to_black_spawner = NodePath("../../Node2D")
 
 [node name="Continue" type="Button" parent="CenterContainer/Load"]
 layout_mode = 2
@@ -68,6 +94,17 @@ scene_file = "uid://cls12q06quifx"
 [node name="GrabFocus" type="Node" parent="CenterContainer/Load" node_paths=PackedStringArray("focus_node")]
 script = ExtResource("8_wpkbo")
 focus_node = NodePath("../Back")
+
+[node name="Node2D" type="Node2D" parent="."]
+top_level = true
+script = ExtResource("7_oirw8")
+scenes = Array[PackedScene]([ExtResource("8_655js")])
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+root_node = NodePath("../../CenterContainer/Load")
+libraries = {
+&"": SubResource("AnimationLibrary_655js")
+}
 
 [node name="MenuAudio" type="Node" parent="." node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 script = ExtResource("7_2maut")
