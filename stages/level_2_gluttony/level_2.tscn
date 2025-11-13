@@ -89,7 +89,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.802
 transform = Transform3D(-4.37114e-08, 2.21727e-15, -1, -0.514559, 0.857455, 2.24921e-08, 0.857455, 0.514559, -3.74805e-08, -11.9031, 22.8445, -12.3389)
 
 [node name="Piglet" parent="." instance=ExtResource("11_2c563")]
-transform = Transform3D(-0.965926, 0, -0.258819, 0, 1, 0, 0.258819, 0, -0.965926, -7.91218, -8.92891, 10.9577)
+transform = Transform3D(-0.979544, 0, -0.201232, 0, 1, 0, 0.201232, 0, -0.979544, -7.912, -9, 10.958)
 
 [node name="Skeleton3D" parent="Piglet/piglet/Piglet" index="0"]
 bones/0/position = Vector3(0.0143669, 0.00609565, -1.59086)
@@ -125,12 +125,12 @@ bones/27/rotation = Quaternion(-0.671517, 0.0386854, 0.0057593, 0.739956)
 bones/28/rotation = Quaternion(-0.0255709, 0.00125225, 0.0193465, 0.999485)
 
 [node name="BoneAttachment3D" parent="Piglet/piglet/Piglet/Skeleton3D" index="1"]
-transform = Transform3D(-1, 1.50785e-07, 3.65824e-08, 4.4543e-08, 0.0531375, 0.998587, 1.48628e-07, 0.998587, -0.0531373, 0.0143669, 0.539512, -1.76027)
+transform = Transform3D(-1, 1.50785e-07, 3.65824e-08, 4.4543e-08, 0.0531373, 0.998587, 1.48628e-07, 0.998587, -0.0531374, 0.0143669, 0.539512, -1.76027)
 
-[node name="PickUpInteraction" parent="Piglet" index="3"]
+[node name="PickUpInteraction" parent="Piglet" index="4"]
 disabled = true
 
-[node name="HeadPetInteraction" parent="Piglet" index="4"]
+[node name="HeadPetInteraction" parent="Piglet" index="5"]
 disabled = false
 
 [node name="Menu" parent="." instance=ExtResource("1_kjfq7")]

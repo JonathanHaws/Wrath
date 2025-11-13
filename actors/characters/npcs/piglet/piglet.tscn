@@ -1,8 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://dfri6vhmpkyfv"]
+[gd_scene load_steps=15 format=3 uid="uid://dfri6vhmpkyfv"]
 
 [ext_resource type="PackedScene" uid="uid://wlhsn0forped" path="res://actors/characters/npcs/piglet/piglet.blend" id="1_w7fh2"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="2_yln8f"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/interaction.gd" id="3_yln8f"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_yln8f"]
 
 [sub_resource type="Animation" id="Animation_yln8f"]
 resource_name = "GOBBLED"
@@ -267,6 +269,11 @@ size = Vector3(2.68766, 3.2832, 2.31576)
 
 [node name="Piglet" type="Node3D" groups=["piglet_body"]]
 rotation_edit_mode = 1
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 4.17233e-05, 0.499105, 0.00958431)
+visible = false
+mesh = SubResource("PrismMesh_yln8f")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["piglet_anim", "skippable"]]
 libraries = {
