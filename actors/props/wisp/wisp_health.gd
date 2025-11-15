@@ -12,6 +12,11 @@ func _on_body_entered(body: Node) -> void:
 	if PLAYER_GROUP != "" and not body.is_in_group(PLAYER_GROUP): return
 	if Save.data.has("max_health"): Save.data["max_health"] += UPGRADE 
 	Save.data[Save.get_unique_key(self,"_collected")] = true
+	
+	if not Save.data.has("wisp"):
+		Save.data["wisp"] = 0
+	Save.data["wisp"] += 1
+	
 	Save.save_game()
 	ANIM.play(ANIM_NAME)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dspid5s7r6a1o"]
+[gd_scene load_steps=18 format=3 uid="uid://dspid5s7r6a1o"]
 
 [ext_resource type="Script" uid="uid://di42lux5ey07j" path="res://menus/show_cursor.gd" id="1_7cmww"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_iiq8l"]
@@ -12,6 +12,8 @@
 [ext_resource type="Texture2D" uid="uid://or0wjxxmmk4s" path="res://menus/skill_tree/wrath.png" id="8_uftlf"]
 [ext_resource type="Texture2D" uid="uid://cdg3cv60l67qu" path="res://menus/skill_tree/envy.png" id="9_xjsia"]
 [ext_resource type="Texture2D" uid="uid://kmyl3r87kf0m" path="res://menus/skill_tree/pride.png" id="10_lts1r"]
+[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="13_uftlf"]
+[ext_resource type="Script" uid="uid://dbfbopu4ncf67" path="res://menus/skill_tree/wisp.gd" id="14_xjsia"]
 
 [sub_resource type="Animation" id="Animation_n1vdw"]
 resource_name = "FadeIn"
@@ -244,3 +246,16 @@ libraries = {
 &"": SubResource("AnimationLibrary_xjsia")
 }
 autoplay = "FadeIn"
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -45.0
+offset_right = 60.0
+offset_bottom = -7.0
+grow_vertical = 0
+theme = ExtResource("13_uftlf")
+text = "WISP:"
+script = ExtResource("14_xjsia")
