@@ -12,7 +12,8 @@ extends TextureButton
 @export var cost_group:= "cost_skilltree" ## Label to update with cost of current skill node hovered
 @export var aquired_modulate: Color = Color(1,1,1,.9)
 @export var unaquired_modulate: Color = Color(.4,.4,.4,0.8)
-@export var hover_modulate: Color = Color(0.1,0.1,0.1,.1)	
+@export var hover_modulate: Color = Color(0.0,0.0,0.0,.0) ## default color is no hover modulation
+#@export var hover_modulate: Color = Color(0.1,0.1,0.1,.1)	
 
 @export_subgroup("AUDIO")
 @export var sfx_bought: AudioStreamPlayer
