@@ -1,20 +1,36 @@
-[gd_scene load_steps=19 format=3 uid="uid://dspid5s7r6a1o"]
+[gd_scene load_steps=35 format=3 uid="uid://dspid5s7r6a1o"]
 
 [ext_resource type="Script" uid="uid://di42lux5ey07j" path="res://menus/show_cursor.gd" id="1_7cmww"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_iiq8l"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="3_15wwq"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="3_monbv"]
+[ext_resource type="Texture2D" uid="uid://73splwccqs75" path="res://menus/skill_tree/textures/Health 1.png" id="4_1lfrl"]
 [ext_resource type="Texture2D" uid="uid://rj52h8jq1tcw" path="res://menus/skill_tree/textures/Progress/Progress Background.png" id="4_lts1r"]
+[ext_resource type="BitMap" uid="uid://dbccv4i0x8dkc" path="res://menus/skill_tree/textures/ClickableMask.png" id="5_bp54u"]
 [ext_resource type="Script" uid="uid://hf3odyswfp0p" path="res://menus/skill_tree/skill.gd" id="5_n1vdw"]
 [ext_resource type="Texture2D" uid="uid://cx2y2gjfx4lpw" path="res://menus/skill_tree/textures/Progress/Lust.png" id="5_y257w"]
+[ext_resource type="Texture2D" uid="uid://dn57jrbfmkg6k" path="res://menus/skill_tree/textures/Health 2.png" id="6_0gl5m"]
+[ext_resource type="Texture2D" uid="uid://bp2g0b4sd3245" path="res://menus/skill_tree/textures/Health 3.png" id="7_cqod1"]
 [ext_resource type="Texture2D" uid="uid://d104cj8pnvmmf" path="res://menus/skill_tree/textures/Progress/Gluttony.png" id="7_x7g2o"]
+[ext_resource type="Texture2D" uid="uid://dnywb2hp6mb2b" path="res://menus/skill_tree/textures/Health 4.png" id="8_3s8ma"]
 [ext_resource type="Texture2D" uid="uid://dtc4k0883hbbi" path="res://menus/skill_tree/textures/Progress/Greed.png" id="8_fxm8d"]
 [ext_resource type="Texture2D" uid="uid://bo4ub4xkrnjyr" path="res://menus/skill_tree/textures/Progress/Sloth.png" id="9_fq5i0"]
+[ext_resource type="Texture2D" uid="uid://by7gjvc625sx8" path="res://menus/skill_tree/textures/Health 5.png" id="9_i3d4n"]
 [ext_resource type="Texture2D" uid="uid://lovdox0pt7q1" path="res://menus/skill_tree/textures/Wrath.png" id="10_1lfrl"]
+[ext_resource type="Texture2D" uid="uid://b6spt3033rydu" path="res://menus/skill_tree/textures/Damage 1.png" id="10_k12qt"]
 [ext_resource type="Texture2D" uid="uid://xw3jd85ytxqu" path="res://menus/skill_tree/textures/Progress/Envy.png" id="11_0gl5m"]
+[ext_resource type="Texture2D" uid="uid://cgmy14h37b3kh" path="res://menus/skill_tree/textures/Damage 2.png" id="11_bxwy3"]
 [ext_resource type="Texture2D" uid="uid://77ol03ius6rh" path="res://menus/skill_tree/textures/Progress/Pride.png" id="12_cqod1"]
+[ext_resource type="Texture2D" uid="uid://vei3uf5bopl8" path="res://menus/skill_tree/textures/Damage 3.png" id="12_somab"]
+[ext_resource type="Texture2D" uid="uid://ccomad24e3fe" path="res://menus/skill_tree/textures/Damage 4.png" id="13_i4g0i"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="13_uftlf"]
+[ext_resource type="Texture2D" uid="uid://bggdgbf67jnq6" path="res://menus/skill_tree/textures/Damage 5.png" id="14_g7qdd"]
 [ext_resource type="Script" uid="uid://dbfbopu4ncf67" path="res://menus/skill_tree/wisp.gd" id="14_xjsia"]
+[ext_resource type="Texture2D" uid="uid://db00ktw17v3g1" path="res://menus/skill_tree/textures/Stamina 1.png" id="15_dhyo8"]
+[ext_resource type="Texture2D" uid="uid://dafqmaa48h04o" path="res://menus/skill_tree/textures/Stamina 2.png" id="16_bp54u"]
+[ext_resource type="Texture2D" uid="uid://dod4qgw5n3d2v" path="res://menus/skill_tree/textures/Stamina 3.png" id="17_13hwl"]
+[ext_resource type="Texture2D" uid="uid://d3ty5a8usonq" path="res://menus/skill_tree/textures/Stamina 4.png" id="18_474j7"]
+[ext_resource type="Texture2D" uid="uid://doa7ne4b483lr" path="res://menus/skill_tree/textures/Stamina 5.png" id="19_cvmyc"]
 
 [sub_resource type="Animation" id="Animation_n1vdw"]
 resource_name = "FadeIn"
@@ -149,7 +165,310 @@ theme = ExtResource("1_iiq8l")
 theme_override_colors/font_color = Color(0.597176, 0.597176, 0.597176, 1)
 text = "VIRTUES:"
 
-[node name="TextureRect" type="TextureRect" parent="Control"]
+[node name="Skill Tree" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Lines" type="Control" parent="Control/Skill Tree"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Line2D" type="Line2D" parent="Control/Skill Tree/Lines"]
+points = PackedVector2Array(-280, -19, -257, -42)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D2" type="Line2D" parent="Control/Skill Tree/Lines"]
+points = PackedVector2Array(-263, 12, -211, 12)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D3" type="Line2D" parent="Control/Skill Tree/Lines"]
+position = Vector2(6, -2)
+points = PackedVector2Array(-285, 53, -276.559, 61.4407, -258, 80)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D4" type="Line2D" parent="Control/Skill Tree/Lines"]
+points = PackedVector2Array(-148, -77, -184, -77)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D5" type="Line2D" parent="Control/Skill Tree/Lines"]
+position = Vector2(119, -1)
+points = PackedVector2Array(-148, -77, -184, -77)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D6" type="Line2D" parent="Control/Skill Tree/Lines"]
+position = Vector2(237, -2)
+points = PackedVector2Array(-148, -77, -184, -77)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D7" type="Line2D" parent="Control/Skill Tree/Lines"]
+position = Vector2(60, 91)
+points = PackedVector2Array(-148, -77, -184, -77)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D8" type="Line2D" parent="Control/Skill Tree/Lines"]
+position = Vector2(184, 92)
+points = PackedVector2Array(-148, -77, -184, -77)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D9" type="Line2D" parent="Control/Skill Tree/Lines"]
+position = Vector2(305, 91)
+points = PackedVector2Array(-148, -77, -184, -77)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D10" type="Line2D" parent="Control/Skill Tree/Lines"]
+position = Vector2(424, 91)
+points = PackedVector2Array(-148, -77, -184, -77)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D11" type="Line2D" parent="Control/Skill Tree/Lines"]
+position = Vector2(2, 189)
+points = PackedVector2Array(-148, -77, -184, -77)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D12" type="Line2D" parent="Control/Skill Tree/Lines"]
+position = Vector2(126, 190)
+points = PackedVector2Array(-148, -77, -184, -77)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D13" type="Line2D" parent="Control/Skill Tree/Lines"]
+position = Vector2(251, 190)
+points = PackedVector2Array(-148, -77, -184, -77)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D14" type="Line2D" parent="Control/Skill Tree/Lines"]
+position = Vector2(373, 191)
+points = PackedVector2Array(-148, -77, -184, -77)
+width = 4.0
+default_color = Color(0.800491, 0.800491, 0.800491, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Health" type="TextureButton" parent="Control/Skill Tree"]
+layout_mode = 0
+offset_left = -438.0
+offset_top = -114.0
+offset_right = -182.0
+offset_bottom = 142.0
+texture_normal = ExtResource("4_1lfrl")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 1
+upgrade_key = "max_health"
+new_amount = 20.0
+
+[node name="Health2" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = -358.0
+offset_top = -205.0
+offset_right = -102.0
+offset_bottom = 51.0
+texture_normal = ExtResource("6_0gl5m")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 2
+preeq_node = NodePath("../Health")
+upgrade_key = "max_health"
+
+[node name="Health3" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = -232.0
+offset_top = -209.0
+offset_right = 24.0
+offset_bottom = 47.0
+texture_normal = ExtResource("7_cqod1")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 3
+preeq_node = NodePath("../Health2")
+
+[node name="Health4" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = -117.0
+offset_top = -209.0
+offset_right = 139.0
+offset_bottom = 47.0
+texture_normal = ExtResource("8_3s8ma")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 4
+preeq_node = NodePath("../Health3")
+
+[node name="Health5" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = 3.0
+offset_top = -208.0
+offset_right = 259.0
+offset_bottom = 48.0
+texture_normal = ExtResource("9_i3d4n")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+preeq_node = NodePath(".")
+
+[node name="Damage" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = -295.0
+offset_top = -110.0
+offset_right = -39.0
+offset_bottom = 146.0
+texture_normal = ExtResource("10_k12qt")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 1
+preeq_node = NodePath("../Health")
+
+[node name="Damage 2" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = -172.0
+offset_top = -113.0
+offset_right = 84.0
+offset_bottom = 143.0
+texture_normal = ExtResource("11_bxwy3")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 2
+preeq_node = NodePath("../Damage")
+
+[node name="Damage 3" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = -48.0
+offset_top = -114.0
+offset_right = 208.0
+offset_bottom = 142.0
+texture_normal = ExtResource("12_somab")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 3
+preeq_node = NodePath("../Damage 2")
+
+[node name="Damage 4" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = 70.0
+offset_top = -116.0
+offset_right = 326.0
+offset_bottom = 140.0
+texture_normal = ExtResource("13_i4g0i")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 4
+preeq_node = NodePath("../Damage 3")
+
+[node name="Damage 5" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = 190.0
+offset_top = -116.0
+offset_right = 446.0
+offset_bottom = 140.0
+texture_normal = ExtResource("14_g7qdd")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+preeq_node = NodePath("../Damage 4")
+
+[node name="Stamina" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = -352.0
+offset_top = -14.0
+offset_right = -96.0
+offset_bottom = 242.0
+texture_normal = ExtResource("15_dhyo8")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 1
+preeq_node = NodePath("../Health")
+
+[node name="Stamina 2" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = -230.0
+offset_top = -14.0
+offset_right = 26.0
+offset_bottom = 242.0
+texture_normal = ExtResource("16_bp54u")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 2
+preeq_node = NodePath("../Stamina")
+
+[node name="Stamina 3" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = -105.0
+offset_top = -15.0
+offset_right = 151.0
+offset_bottom = 241.0
+texture_normal = ExtResource("17_13hwl")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 3
+preeq_node = NodePath("../Stamina 2")
+
+[node name="Stamina 4" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = 19.0
+offset_top = -14.0
+offset_right = 275.0
+offset_bottom = 242.0
+texture_normal = ExtResource("18_474j7")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 4
+preeq_node = NodePath("../Stamina 3")
+
+[node name="Stamina 5" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = 140.0
+offset_top = -11.0
+offset_right = 396.0
+offset_bottom = 245.0
+texture_normal = ExtResource("19_cvmyc")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+preeq_node = NodePath("../Stamina 4")
+
+[node name="Progress" type="Control" parent="Control"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="Control/Progress"]
 layout_mode = 0
 offset_left = 402.0
 offset_top = -343.0
@@ -157,7 +476,7 @@ offset_right = 658.0
 offset_bottom = -87.0
 texture = ExtResource("4_lts1r")
 
-[node name="TextureButton" type="TextureButton" parent="Control"]
+[node name="Lust" type="TextureButton" parent="Control/Progress"]
 layout_mode = 0
 offset_left = 402.0
 offset_top = -342.0
@@ -165,11 +484,13 @@ offset_right = 658.0
 offset_bottom = -86.0
 texture_normal = ExtResource("5_y257w")
 script = ExtResource("5_n1vdw")
+currency_key = ""
 custom_aquired_key = "gluttony_defeated"
 unaquired_modulate = Color(0.18, 0.18, 0.18, 0.8)
 hover_modulate = Color(0.1, 0.1, 0.1, 0)
+disable_hover_modulate = true
 
-[node name="TextureButton2" type="TextureButton" parent="Control"]
+[node name="Gluttony" type="TextureButton" parent="Control/Progress"]
 layout_mode = 0
 offset_left = 402.0
 offset_top = -342.0
@@ -177,9 +498,13 @@ offset_right = 658.0
 offset_bottom = -86.0
 texture_normal = ExtResource("7_x7g2o")
 script = ExtResource("5_n1vdw")
+currency_key = ""
 custom_aquired_key = "gluttony_defeated"
+unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
+hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
+disable_hover_modulate = true
 
-[node name="TextureButton3" type="TextureButton" parent="Control"]
+[node name="Greed" type="TextureButton" parent="Control/Progress"]
 layout_mode = 0
 offset_left = 402.0
 offset_top = -342.0
@@ -187,9 +512,13 @@ offset_right = 658.0
 offset_bottom = -86.0
 texture_normal = ExtResource("8_fxm8d")
 script = ExtResource("5_n1vdw")
+currency_key = ""
 custom_aquired_key = "greed_defeated"
+unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
+hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
+disable_hover_modulate = true
 
-[node name="TextureButton4" type="TextureButton" parent="Control"]
+[node name="Sloth" type="TextureButton" parent="Control/Progress"]
 layout_mode = 0
 offset_left = 402.0
 offset_top = -342.0
@@ -197,9 +526,13 @@ offset_right = 658.0
 offset_bottom = -86.0
 texture_normal = ExtResource("9_fq5i0")
 script = ExtResource("5_n1vdw")
+currency_key = ""
 custom_aquired_key = "wrath_defeated"
+unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
+hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
+disable_hover_modulate = true
 
-[node name="TextureButton5" type="TextureButton" parent="Control"]
+[node name="Wrath" type="TextureButton" parent="Control/Progress"]
 layout_mode = 0
 offset_left = 401.0
 offset_top = -343.0
@@ -207,9 +540,13 @@ offset_right = 657.0
 offset_bottom = -87.0
 texture_normal = ExtResource("10_1lfrl")
 script = ExtResource("5_n1vdw")
+currency_key = ""
 custom_aquired_key = "wrath_defeated"
+unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
+hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
+disable_hover_modulate = true
 
-[node name="TextureButton6" type="TextureButton" parent="Control"]
+[node name="Envy" type="TextureButton" parent="Control/Progress"]
 layout_mode = 0
 offset_left = 401.0
 offset_top = -342.0
@@ -217,9 +554,13 @@ offset_right = 657.0
 offset_bottom = -86.0
 texture_normal = ExtResource("11_0gl5m")
 script = ExtResource("5_n1vdw")
+currency_key = ""
 custom_aquired_key = "envy_defeated"
+unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
+hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
+disable_hover_modulate = true
 
-[node name="TextureButton7" type="TextureButton" parent="Control"]
+[node name="Pride" type="TextureButton" parent="Control/Progress"]
 layout_mode = 0
 offset_left = 401.0
 offset_top = -342.0
@@ -227,7 +568,11 @@ offset_right = 657.0
 offset_bottom = -86.0
 texture_normal = ExtResource("12_cqod1")
 script = ExtResource("5_n1vdw")
-custom_aquired_key = "envy_defeated"
+currency_key = ""
+custom_aquired_key = "pride_defeated"
+unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
+hover_modulate = Color(0.1, 0.1, 0.1, 0)
+disable_hover_modulate = true
 
 [node name="ShowCursor" type="Node" parent="."]
 script = ExtResource("1_7cmww")

@@ -269,9 +269,6 @@ omni_range = 101.01
 
 [node name="Sun" parent="Enviroment/Lights" instance=ExtResource("4_mqk0e")]
 
-[node name="Reaper" parent="." instance=ExtResource("4_42w7d")]
-transform = Transform3D(0.457082, 0, -0.889425, 0, 1, 0, 0.889425, 0, 0.457082, -21.7503, -8.46191, 87.0511)
-
 [node name="Cinematic" type="AnimationPlayer" parent="." node_paths=PackedStringArray("ANIM") groups=["cinematic", "skippable"]]
 libraries = {
 &"": SubResource("AnimationLibrary_n044i")
@@ -457,6 +454,9 @@ bones/33/rotation = Quaternion(-0.0626734, -0.560665, -0.0326577, 0.825021)
 bones/34/rotation = Quaternion(-0.0033943, -0.591846, 0.081413, 0.801922)
 bones/35/rotation = Quaternion(0.0681233, 0.210921, -0.409785, 0.884843)
 bones/36/rotation = Quaternion(-0.0789518, 0.154234, 0.075882, 0.981947)
+
+[node name="Reaper" parent="." instance=ExtResource("4_42w7d")]
+transform = Transform3D(0.457082, 0, -0.889425, 0, 1, 0, 0.889425, 0, 0.457082, -21.7503, -8.46191, 87.0511)
 
 [node name="Skip" parent="." instance=ExtResource("23_uq4p3")]
 

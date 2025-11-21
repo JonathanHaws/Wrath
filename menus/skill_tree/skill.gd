@@ -1,8 +1,8 @@
 extends TextureButton
 @export var cost := 5
-@export var currency_key: String = "sin"
+@export var currency_key: String = "wisp"
 
-@export var custom_aquired_key: String 
+@export var custom_aquired_key: String ## Special save data key to read if this has been aquired yet.
 @export var preeq_node: Node
 
 @export var upgrade_key: String = "health" ## The save key to update 
@@ -10,10 +10,11 @@ extends TextureButton
 
 @export_subgroup("VISUALS")
 @export var cost_group:= "cost_skilltree" ## Label to update with cost of current skill node hovered
-@export var aquired_modulate: Color = Color(1,1,1,.9)
-@export var unaquired_modulate: Color = Color(.4,.4,.4,0.8)
-@export var hover_modulate: Color = Color(0.0,0.0,0.0,.0) ## default color is no hover modulation
-#@export var hover_modulate: Color = Color(0.1,0.1,0.1,.1)	
+@export var aquired_modulate: Color = Color(1,1,1,1)
+@export var unaquired_modulate: Color = Color(.3,.3,.3,0.6)
+#@export var hover_modulate: Color = Color(0.0,0.0,0.0,.0) ## default color is no hover modulation
+@export var hover_modulate: Color = Color(0.1,0.1,0.1,.1)	
+@export var disable_hover_modulate := false
 
 @export_subgroup("AUDIO")
 @export var sfx_bought: AudioStreamPlayer
@@ -21,8 +22,6 @@ extends TextureButton
 
 var aquired_key
 var preeq_key
-
-
 
 func _ready():
 	sfx_bought = get_node_or_null("../Sufficient")
@@ -44,8 +43,9 @@ func _ready():
 	else:
 		modulate = unaquired_modulate
 	
-	mouse_entered.connect(func(): modulate += hover_modulate)
-	mouse_exited.connect(func(): modulate -= hover_modulate)
+	if not disable_hover_modulate:
+		mouse_entered.connect(func(): modulate += hover_modulate)
+		mouse_exited.connect(func(): modulate -= hover_modulate)
 	
 func _on_pressed():
 	if not Save.data.has(currency_key): return
