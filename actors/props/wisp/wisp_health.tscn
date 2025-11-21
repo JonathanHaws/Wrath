@@ -1,10 +1,9 @@
-[gd_scene load_steps=37 format=3 uid="uid://b1gqd40t6mj76"]
+[gd_scene load_steps=36 format=3 uid="uid://b1gqd40t6mj76"]
 
 [ext_resource type="Script" uid="uid://8jat2fr0tbh3" path="res://actors/props/wisp/wisp_health.gd" id="1_38mcy"]
 [ext_resource type="Texture2D" uid="uid://bgteof0ua1pk6" path="res://actors/particle_textures/scorch_02.png" id="2_0238p"]
 [ext_resource type="Shader" uid="uid://dydavnuhpkpw7" path="res://actors/props/wisp/wisp_level_up.tres" id="3_qdcvh"]
 [ext_resource type="Texture2D" uid="uid://cplh0pg6a67dx" path="res://actors/particle_textures/smoke_08.png" id="4_eksnf"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="5_bniuq"]
 [ext_resource type="AudioStream" uid="uid://bg0vbvw67fmg3" path="res://actors/props/wisp/Wisp.wav" id="5_fs70g"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="6_tilfj"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://actors/characters/enemies/sfx/Cry_2.wav" id="7_yfupi"]
@@ -348,7 +347,6 @@ draw_pass_1 = SubResource("CylinderMesh_ei2k0")
 [node name="Area3D" type="Area3D" parent="."]
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("5_bniuq")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 shape = SubResource("BoxShape3D_3quw1")
