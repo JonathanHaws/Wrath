@@ -1,5 +1,4 @@
 extends Node3D
-@export var UPGRADE = 4.0
 @export var PLAYER_GROUP = "player"
 @export var ANIM: AnimationPlayer
 @export var ANIM_NAME: String = "delay_upgrade"
@@ -8,7 +7,6 @@ extends Node3D
 func _on_body_entered(body: Node) -> void:
 	
 	if PLAYER_GROUP != "" and not body.is_in_group(PLAYER_GROUP): return	
-	if Save.data.has("max_stamina"): Save.data["max_stamina"] += UPGRADE 	
 	Save.data[Save.get_unique_key(self,"_collected")] = true
 	
 	if not Save.data.has("wisp"):
