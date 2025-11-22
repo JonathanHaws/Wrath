@@ -189,9 +189,6 @@ bones/27/position = Vector3(0.215475, 0.0610135, -0.192475)
 bones/27/rotation = Quaternion(-0.671517, 0.0386854, 0.0057593, 0.739956)
 bones/28/rotation = Quaternion(-0.0255709, 0.00125225, 0.0193465, 0.999485)
 
-[node name="BoneAttachment3D" parent="Piglet/piglet/Piglet/Skeleton3D" index="1"]
-transform = Transform3D(-1, 1.50785e-07, 3.65824e-08, 4.4543e-08, 0.0531373, 0.998587, 1.48628e-07, 0.998587, -0.0531374, 0.0143669, 0.539512, -1.76027)
-
 [node name="PickUpInteraction" parent="Piglet" index="4"]
 disabled = true
 

@@ -7,11 +7,11 @@
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="5_pyv35"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="6_l7383"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="7_n5yio"]
+[ext_resource type="PackedScene" uid="uid://b7lmw4awqeris" path="res://actors/characters/enemies/bosses/lust/lust.tscn" id="8_hgjnn"]
 [ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://actors/characters/npcs/piglet/piglet.tscn" id="9_2uv2b"]
-[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="9_hgjnn"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
-vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
+vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 83.5602, 0.43213, 14.2009, 83.5602, 0.43213, -14.2991)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
@@ -31,9 +31,9 @@ material_override = ExtResource("6_l7383")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71385, 9.93213, -0.0490699)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5887, 9.93213, -0.0490699)
 flip_faces = true
-size = Vector3(65.3073, 20, 30)
+size = Vector3(107.057, 20, 30)
 
 [node name="Enviroment" type="Node" parent="."]
 
@@ -56,15 +56,12 @@ omni_range = 101.01
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 42.0321, 0, -9.54005, 0)
+transform = Transform3D(160.874, 0, 0, 0, 1, 0, 0, 0, 42.0321, 14.7947, -9.54005, 0)
 material_override = ExtResource("7_n5yio")
 mesh = SubResource("BoxMesh_od467")
 
-[node name="Reaper" parent="." instance=ExtResource("4_hgjnn")]
-transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
-
 [node name="Exit" parent="." groups=["lust_door"] instance=ExtResource("5_pyv35")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 83.7247, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Enter"
 DESTINATION_SCENE = "uid://cjnryqwoknkw5"
 
@@ -86,8 +83,11 @@ shape = SubResource("BoxShape3D_2uv2b")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="ForTestingInteractionsOkToDelete"]
 mesh = SubResource("BoxMesh_hgjnn")
 
-[node name="Ghost" parent="." instance=ExtResource("9_hgjnn")]
-transform = Transform3D(0.195861, 0, 0.980632, 0, 1, 0, -0.980632, 0, 0.195861, 27.7134, -8.26362, 8.13487)
+[node name="Lust" parent="." instance=ExtResource("8_hgjnn")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 59.3635, -9.32702, -0.0430865)
+
+[node name="Reaper" parent="." instance=ExtResource("4_hgjnn")]
+transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
 [node name="Menu" parent="." instance=ExtResource("1_4eh01")]
 visible = false
