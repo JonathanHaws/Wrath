@@ -353,7 +353,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.0416667, 2.54167),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 80.0]
+"values": [0.0, 10.0]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -728,7 +728,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07889, 7.1402, 8.51709)
 shape = SubResource("BoxShape3D_wbwgn")
 
 [node name="Light" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 13.6732, -0.361175)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 13.6732, -3.93518)
 light_color = Color(0.792157, 0.411765, 0.462745, 1)
 light_energy = 0.0
 light_indirect_energy = 0.0

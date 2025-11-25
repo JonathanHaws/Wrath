@@ -1261,40 +1261,40 @@ SCENE_ROOT = NodePath("..")
 [node name="Greed" parent="Mesh" instance=ExtResource("17_cq6fp")]
 
 [node name="Skeleton3D" parent="Mesh/Greed/Rig" index="0"]
-bones/1/position = Vector3(4.1381e-07, 0.0362322, -2.74054)
-bones/1/rotation = Quaternion(-0.696678, -5.32429e-08, -5.34894e-08, 0.717384)
-bones/2/position = Vector3(0.318777, -0.0666643, -0.0106262)
-bones/2/rotation = Quaternion(0.995725, 0.0149688, -0.000833722, 0.0911446)
-bones/3/rotation = Quaternion(0.234039, -0.00564749, 0.0132514, 0.972121)
-bones/4/rotation = Quaternion(-0.244926, 0.00987892, 0.0135449, 0.969397)
-bones/5/rotation = Quaternion(0.189993, -0.00651416, 0.0393444, 0.980975)
-bones/6/rotation = Quaternion(0.0929902, -2.20204e-11, 2.35945e-10, 0.995667)
-bones/7/rotation = Quaternion(0.0839463, 0.213196, -0.936216, 0.266459)
-bones/8/rotation = Quaternion(0.299594, -0.209827, -0.0154856, 0.930579)
-bones/9/rotation = Quaternion(0.0971382, 0.0122893, -0.0532991, 0.993767)
-bones/10/rotation = Quaternion(-0.024475, 8.94335e-09, -0.0359915, 0.999052)
-bones/12/rotation = Quaternion(0.0571002, -3.21083e-11, 1.38467e-10, 0.998369)
-bones/13/position = Vector3(-0.488868, 1.43551, -0.00969565)
-bones/13/rotation = Quaternion(-0.0190816, 0.131559, 0.962322, 0.237202)
-bones/14/rotation = Quaternion(-0.0279621, -0.00361079, 0.0283054, 0.999202)
-bones/15/rotation = Quaternion(0.110033, -0.00608328, -0.0931645, 0.989533)
-bones/16/rotation = Quaternion(-0.024475, -5.54639e-09, 0.0359915, 0.999052)
-bones/17/position = Vector3(-0.000162007, 0.339309, -0.324589)
-bones/17/rotation = Quaternion(0.779864, 0.174091, -0.567985, -0.197226)
-bones/18/rotation = Quaternion(-0.259324, 0.0143286, 0.107515, 0.95968)
-bones/19/rotation = Quaternion(-0.400944, -0.0118956, -0.124635, 0.907507)
-bones/20/rotation = Quaternion(-0.398659, -0.0279548, -0.0491474, 0.915355)
-bones/21/rotation = Quaternion(-0.35566, 0.0109272, 0.00210176, 0.934549)
-bones/22/rotation = Quaternion(0.995725, -0.0149688, 0.000833722, 0.0911446)
-bones/23/rotation = Quaternion(0.234039, 0.00564749, -0.0132514, 0.972121)
-bones/24/rotation = Quaternion(-0.244926, -0.00987893, -0.0135449, 0.969397)
-bones/25/rotation = Quaternion(0.189993, 0.00651417, -0.0393444, 0.980975)
+bones/1/position = Vector3(-0.115101, -0.798618, -2.07558)
+bones/1/rotation = Quaternion(0.162275, -7.46678e-08, 1.09831e-08, 0.986746)
+bones/2/position = Vector3(0.318777, -0.0666644, -0.0106261)
+bones/2/rotation = Quaternion(0.325921, 0.214571, -0.0271706, 0.920324)
+bones/3/rotation = Quaternion(0.624194, -0.0573771, 0.0324914, 0.778482)
+bones/4/rotation = Quaternion(-0.718219, 0.00421157, -0.0376873, 0.694783)
+bones/5/rotation = Quaternion(0.370329, -0.0693967, 0.0401409, 0.925435)
+bones/6/rotation = Quaternion(-0.336991, -1.19777e-10, 2.04472e-10, 0.941508)
+bones/7/rotation = Quaternion(0.266146, -0.0937629, -0.841448, 0.460803)
+bones/8/rotation = Quaternion(0.284528, -0.0536736, 0.47709, 0.829788)
+bones/9/rotation = Quaternion(0.023567, -0.00786984, 0.221938, 0.974744)
+bones/10/rotation = Quaternion(0.134806, 0.00545483, 0.0988562, 0.985913)
+bones/12/rotation = Quaternion(-0.364789, 0.00696252, 0.0427657, 0.930081)
+bones/13/position = Vector3(-0.488868, 1.43551, -0.00969551)
+bones/13/rotation = Quaternion(0.000184067, 0.271694, 0.913742, 0.302089)
+bones/14/rotation = Quaternion(0.540643, 0.028887, -0.380252, 0.749853)
+bones/15/rotation = Quaternion(0.247102, 0.247932, 0.143487, 0.925679)
+bones/16/rotation = Quaternion(0.0835056, 0.0430813, 0.0778965, 0.992523)
+bones/17/position = Vector3(0.087508, 0.0167586, 0.00255281)
+bones/17/rotation = Quaternion(0.641077, -0.334877, -0.490686, 0.485907)
+bones/18/rotation = Quaternion(0.0984776, -0.00160424, -0.135596, 0.985857)
+bones/19/rotation = Quaternion(0.128613, -0.507674, -0.198852, 0.828362)
+bones/20/rotation = Quaternion(-0.0785985, -0.137803, -0.292979, 0.942866)
+bones/21/rotation = Quaternion(-0.0599755, 0.112777, -0.231608, 0.964387)
+bones/22/rotation = Quaternion(0.347176, -0.0546105, 0.11641, 0.928943)
+bones/23/rotation = Quaternion(0.645334, -0.0261812, 0.0547352, 0.761488)
+bones/24/rotation = Quaternion(-0.751606, 0.0489021, -0.101219, 0.649962)
+bones/25/rotation = Quaternion(0.291092, -0.0642706, 0.00265003, 0.95453)
 
 [node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" index="0"]
 material_override = ExtResource("27_mmykl")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1"]
-transform = Transform3D(1, 5.52891e-14, 2.51534e-09, 5.37931e-10, 0.976862, -0.213867, -2.45714e-09, 0.213867, 0.976862, 8.51888e-14, 3.73654, 0.065405)
+transform = Transform3D(1, 2.06239e-09, 6.11453e-10, -1.57347e-10, 0.353626, -0.935386, -2.14535e-09, 0.935386, 0.353626, -0.115101, 1.75647, 0.145331)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1307,7 +1307,7 @@ shape = SubResource("BoxShape3D_jx80p")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2"]
-transform = Transform3D(1, 5.52891e-14, 2.51534e-09, 5.37931e-10, 0.976862, -0.213867, -2.45714e-09, 0.213867, 0.976862, 8.51888e-14, 3.73654, 0.065405)
+transform = Transform3D(1, 2.06239e-09, 6.11453e-10, -1.57347e-10, 0.353626, -0.935386, -2.14535e-09, 0.935386, 0.353626, -0.115101, 1.75647, 0.145331)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1323,7 +1323,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3"]
-transform = Transform3D(1, 5.52891e-14, 2.51534e-09, 5.37931e-10, 0.976862, -0.213867, -2.45714e-09, 0.213867, 0.976862, 8.51888e-14, 3.73654, 0.065405)
+transform = Transform3D(1, 2.06239e-09, 6.11453e-10, -1.57347e-10, 0.353626, -0.935386, -2.14535e-09, 0.935386, 0.353626, -0.115101, 1.75647, 0.145331)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1339,7 +1339,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4"]
-transform = Transform3D(-0.940902, 0.329018, -0.0803196, -0.338447, -0.922227, 0.18695, -0.0125632, 0.203085, 0.97908, 1.52036, 3.43999, 0.124336)
+transform = Transform3D(0.301441, -0.0377628, -0.952737, -0.944024, -0.152227, -0.292651, -0.133981, 0.987623, -0.0815365, 1.43401, 1.20988, 2.2036)
 bone_name = "hand_l"
 bone_idx = 10
 
@@ -1356,7 +1356,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5"]
-transform = Transform3D(-0.857441, -0.504712, 0.100301, 0.514389, -0.846006, 0.140271, 0.0140587, 0.171868, 0.985019, -1.49307, 3.28048, 0.5346)
+transform = Transform3D(-0.79798, 0.344617, 0.494436, 0.419635, -0.271152, 0.866246, 0.43259, 0.89873, 0.0717602, -1.30742, 1.2295, 2.24908)
 bone_name = "hand_r"
 bone_idx = 16
 
