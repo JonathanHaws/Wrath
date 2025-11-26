@@ -689,7 +689,7 @@ MESH = NodePath("../Mesh")
 BODY = NodePath("..")
 FLIPPED_TRACKING = true
 STOP_CHASE_AREA = NodePath("../HitShape")
-SPEED = 12.0
+SPEED = 6.0
 SPEED_MULTIPLIER = 0.0
 
 [node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SCENE_ROOT")]
@@ -701,7 +701,7 @@ SCENE_ROOT = NodePath("..")
 [node name="lust" parent="Mesh" instance=ExtResource("27_ri2mk")]
 
 [node name="LockOn" type="Area3D" parent="Mesh"]
-transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 1.55359, -0.085655)
+transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 4.86868, -0.085655)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/LockOn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
@@ -729,7 +729,7 @@ shape = SubResource("BoxShape3D_wbwgn")
 
 [node name="Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 13.6732, -3.93518)
-light_color = Color(0.792157, 0.411765, 0.462745, 1)
+light_color = Color(0.79, 0.5688, 0.598293, 1)
 light_energy = 0.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
