@@ -32,9 +32,9 @@ material_override = ExtResource("6_l7383")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5887, 9.93213, -0.0490699)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5887, 22.2114, -0.0490699)
 flip_faces = true
-size = Vector3(107.057, 20, 30)
+size = Vector3(107.057, 44.5585, 30)
 
 [node name="Enviroment" type="Node" parent="."]
 

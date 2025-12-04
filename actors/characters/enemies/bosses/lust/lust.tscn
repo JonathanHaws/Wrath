@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b7lmw4awqeris"]
+[gd_scene load_steps=41 format=3 uid="uid://b7lmw4awqeris"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_kak7r"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_la4sj"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="20_rstpa"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_shake.gd" id="21_patk7"]
 [ext_resource type="Script" uid="uid://lptklkt0oyjb" path="res://actors/slow_motion.gd" id="22_lbco2"]
+[ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://actors/cinematic.gd" id="23_ri2mk"]
 [ext_resource type="PackedScene" uid="uid://cajl1wg350nss" path="res://actors/characters/enemies/bosses/lust/lust_hurt_particles.tscn" id="24_d0au0"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="24_ytbli"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="26_ppvu3"]
@@ -351,7 +352,7 @@ tracks/15/keys = {
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
 resource_name = "INTRO"
-length = 2.91667
+length = 8.065
 step = 0.0416667
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -410,7 +411,7 @@ tracks/4/path = NodePath("Ui:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(1.54167, 2.75),
+"times": PackedFloat32Array(5, 6.20833),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -422,12 +423,107 @@ tracks/5/path = NodePath("Audio/Music")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.0],
 "method": &"play"
 }]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("IntroCinematic")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_play_animations_in_other_nodes"
+}]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("IntroCinematic/ColorRect:color")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.0833333, 0.458333, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("IntroCinematic")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1.5],
+"method": &"_seamless_camera_transition"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("IntroCinematic/Camera3D:current")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.458333, 6.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [false, true, false]
+}
+tracks/10/type = "position_3d"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("IntroCinematic/Camera3D")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = PackedFloat32Array(0.375, 1, -0.14223, 6.00946, 6.49053)
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("IntroCinematic/Camera3D:position")
+tracks/11/interp = 2
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0.15, 1.875, 3.95833),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.062, 10.294, 9.691), Vector3(-0.062, 7.454, 7.596), Vector3(0.673, 4.554, 6.491)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("IntroCinematic/Camera3D:rotation")
+tracks/12/interp = 2
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0.18, 3.85833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.513127, 0, 0), Vector3(-0.0680678, -0.1309, -0.0872665)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("IntroCinematic/Camera3D:fov")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0.208333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [46.3]
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -564,6 +660,61 @@ tracks/10/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("IntroCinematic/Camera3D:current")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "position_3d"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("IntroCinematic/Camera3D")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = PackedFloat32Array(0, 1, -0.14223, 6.00946, 6.49053)
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("IntroCinematic/Camera3D:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.073, 5.099, 6.491)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("IntroCinematic/Camera3D:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.0685565, 0, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("IntroCinematic/Camera3D:fov")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [35.5821]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
@@ -590,6 +741,7 @@ ANIM = NodePath("Attacks")
 SAVE_KEY_ENCOUNTERED = "lust_encountered"
 DOOR_TO_UNLOCK_GROUP = "lust_door"
 DEFEATED_KEY = "lust_defeated"
+metadata/_edit_horizontal_guides_ = [-92.0]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
@@ -670,6 +822,24 @@ script = ExtResource("21_patk7")
 [node name="SlowMotion" type="Node" parent="."]
 script = ExtResource("22_lbco2")
 
+[node name="IntroCinematic" type="Node3D" parent="."]
+script = ExtResource("23_ri2mk")
+ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
+ANIMATION_NAMES = Array[String](["LUST_INTRO"])
+
+[node name="Camera3D" type="Camera3D" parent="IntroCinematic" groups=["cinematic_camera"]]
+transform = Transform3D(1, 0, 0, 0, 0.997651, 0.0685028, 0, -0.0685028, 0.997651, 1.073, 5.099, 6.491)
+fov = 35.5821
+
+[node name="ColorRect" type="ColorRect" parent="IntroCinematic"]
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.311111)
+
 [node name="Damaged" type="AnimationPlayer" parent="."]
 root_node = NodePath("../Attacks")
 libraries = {
@@ -742,7 +912,7 @@ bones/79/rotation = Quaternion(0.207894, -0.0271004, -0.126365, 0.969576)
 bones/80/rotation = Quaternion(0.0158998, -0.0233346, -0.106958, 0.993863)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, -3.20142e-09, 0.000251755, 7.28546e-05, 0.957216, -0.289375, -0.000240984, 0.289375, 0.957216, -3.33077e-09, 5.0742, 0.148249)
+transform = Transform3D(1, 7.567e-10, 0.000251767, 7.28554e-05, 0.957216, -0.289376, -0.000240996, 0.289376, 0.957215, 5.55488e-10, 5.0742, 0.148249)
 bone_name = "neck"
 bone_idx = 20
 
