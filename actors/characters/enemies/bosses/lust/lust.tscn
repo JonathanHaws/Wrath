@@ -222,7 +222,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0.4, 2.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [80.0, 0.0]
+"values": [20.0, 0.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -379,7 +379,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.0416667, 2.54167),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0, 10.0]
+"values": [0.0, 20.0]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
@@ -535,7 +535,7 @@ tracks/13/path = NodePath("IntroCinematic/Camera3D:fov")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0.208333, 5.625),
+"times": PackedFloat32Array(0.208333, 4.54167),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [46.3, 80.0]
@@ -868,7 +868,7 @@ radius = 0.001
 size = Vector3(23.4119, 15.2804, 40.1915)
 
 [node name="Lust" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM") groups=["greed"]]
-collision_layer = 7
+collision_layer = 6
 collision_mask = 7
 script = ExtResource("1_kak7r")
 TARGET = NodePath("Target")
@@ -1069,18 +1069,18 @@ bones/59/rotation = Quaternion(-0.00744228, 0.0175826, 0.107054, 0.99407)
 bones/60/rotation = Quaternion(0.026101, -0.0200452, 0.0555652, 0.997913)
 bones/65/position = Vector3(-0.370885, -0.134416, -4.07266)
 bones/65/rotation = Quaternion(0.707107, 5.33851e-08, -5.33851e-08, 0.707107)
-bones/68/rotation = Quaternion(0.459202, 0.00241423, -0.126322, 0.879301)
-bones/69/rotation = Quaternion(-0.091122, -0.0106588, -0.159659, 0.9829)
-bones/70/rotation = Quaternion(0.0171432, 0.0940829, 0.525362, 0.845487)
-bones/71/rotation = Quaternion(-0.0387732, 0.00556286, 0.21124, 0.976649)
-bones/72/rotation = Quaternion(0.0569247, 0.0138795, -0.382212, 0.922215)
-bones/73/rotation = Quaternion(0.179412, 0.0291991, -0.474186, 0.861456)
-bones/74/rotation = Quaternion(-0.0926162, 0.0635211, 0.0650623, 0.991541)
-bones/75/rotation = Quaternion(-0.32707, 0.123529, 0.479733, 0.80475)
-bones/76/rotation = Quaternion(-0.151961, -0.0211626, 0.175215, 0.972502)
-bones/77/rotation = Quaternion(0.1266, 0.00839464, -0.0895126, 0.987871)
-bones/78/rotation = Quaternion(0.344548, 0.0150785, -0.363739, 0.865305)
-bones/79/rotation = Quaternion(0.205207, -0.02699, -0.123871, 0.970473)
+bones/68/rotation = Quaternion(0.458743, 0.00573739, -0.133553, 0.878457)
+bones/69/rotation = Quaternion(-0.0905743, -0.0109333, -0.149549, 0.984536)
+bones/70/rotation = Quaternion(0.0168165, 0.0936091, 0.528829, 0.843383)
+bones/71/rotation = Quaternion(-0.0379317, 0.00551693, 0.207183, 0.977551)
+bones/72/rotation = Quaternion(0.0590522, 0.013954, -0.39135, 0.918239)
+bones/73/rotation = Quaternion(0.179427, 0.0291966, -0.474248, 0.861419)
+bones/74/rotation = Quaternion(-0.0956916, 0.0635164, 0.073047, 0.990693)
+bones/75/rotation = Quaternion(-0.328978, 0.122974, 0.482348, 0.80249)
+bones/76/rotation = Quaternion(-0.151988, -0.0211628, 0.175243, 0.972493)
+bones/77/rotation = Quaternion(0.130731, 0.00818401, -0.0937503, 0.986941)
+bones/78/rotation = Quaternion(0.349553, 0.0147926, -0.368193, 0.86141)
+bones/79/rotation = Quaternion(0.207894, -0.0271004, -0.126365, 0.969576)
 bones/80/rotation = Quaternion(0.0158667, -0.0233339, -0.106926, 0.993867)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="0"]
@@ -1259,7 +1259,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="Tail1" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="13"]
-transform = Transform3D(0.874128, 0.485271, -0.0202917, 0.0817783, -0.10587, 0.991012, 0.478761, -0.867931, -0.132228, -0.214138, 0.800995, -2.1477)
+transform = Transform3D(0.876269, 0.48137, -0.020885, 0.0817783, -0.10587, 0.991012, 0.474832, -0.8701, -0.132136, -0.188596, 0.800995, -2.14291)
 bone_name = "hip.005"
 bone_idx = 69
 
@@ -1275,7 +1275,7 @@ disabled = true
 debug_color = Color(0.73, 0.73, 0.73, 0)
 
 [node name="Tail2" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="14"]
-transform = Transform3D(0.50407, -0.855267, 0.120135, -0.205082, 0.0165896, 0.978604, -0.83896, -0.517922, -0.167038, -0.0458442, 0.587853, -5.25347)
+transform = Transform3D(0.500542, -0.857434, 0.119432, -0.205082, 0.0165896, 0.978604, -0.84107, -0.514326, -0.167541, -0.0445972, 0.587853, -5.24229)
 bone_name = "hip.007"
 bone_idx = 71
 
