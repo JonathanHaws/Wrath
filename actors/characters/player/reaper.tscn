@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=90 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -45,6 +45,7 @@
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_shake.gd" id="42_k5idf"]
 [ext_resource type="PackedScene" uid="uid://clbxqusx74r6s" path="res://actors/characters/particles/dust_jump.tscn" id="42_p6b07"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="43_ekykk"]
+[ext_resource type="Script" uid="uid://dbfbopu4ncf67" path="res://menus/skill_tree/wisp_counter.gd" id="44_4anjp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5idf"]
 radius = 0.274293
@@ -2045,125 +2046,6 @@ _data = {
 &"WINDUP": SubResource("Animation_qldqy")
 }
 
-[sub_resource type="Animation" id="Animation_4anjp"]
-resource_name = "DAMAGE"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI/UpgradeLabel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 1.73333, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/UpgradeLabel:text")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["WISP DAMAGE INCREASED"]
-}
-
-[sub_resource type="Animation" id="Animation_ekykk"]
-resource_name = "HEALTH"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI/UpgradeLabel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 1.73333, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/UpgradeLabel:text")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["WISP HEALTH INCREASED"]
-}
-
-[sub_resource type="Animation" id="Animation_m1s71"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI/UpgradeLabel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/UpgradeLabel:text")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["WISP STAMINA INCREASED"]
-}
-
-[sub_resource type="Animation" id="Animation_75wkf"]
-resource_name = "STAMINA"
-length = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("UI/UpgradeLabel:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 1.73333, 2),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("UI/UpgradeLabel:text")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": ["WISP STAMINA INCREASED"]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_4anjp"]
-_data = {
-&"DAMAGE": SubResource("Animation_4anjp"),
-&"HEALTH": SubResource("Animation_ekykk"),
-&"RESET": SubResource("Animation_m1s71"),
-&"STAMINA": SubResource("Animation_75wkf")
-}
-
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_utjob"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_5cvkf"]
@@ -2275,7 +2157,7 @@ script = ExtResource("20_m1s71")
 key = "deaths"
 HITSHAPE = NodePath("..")
 
-[node name="PersitentHealth" type="Node" parent="Hitbox" node_paths=PackedStringArray("HIT_SHAPE", "ANIMATION_PLAYER")]
+[node name="PersitentHealth" type="Node" parent="Hitbox" node_paths=PackedStringArray("HIT_SHAPE")]
 script = ExtResource("4_m1s71")
 HIT_SHAPE = NodePath("..")
 STORE_DEAD = false
@@ -2284,7 +2166,6 @@ DEATH_COUNT_KEY = "death_count_to_respawn_player"
 REST_COUNT_KEY = "rest_count_to_respawn_player"
 UPGRADABLE_MAX_HEALTH = true
 MAX_HEALTH_KEY = "max_health"
-ANIMATION_PLAYER = NodePath("../../Upgrade")
 UPGRADE_ANIMATION = "HEALTH"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
@@ -2372,19 +2253,13 @@ next/LADDER = &"LADDER"
 next/LADDER_ENTER = &"LADDER"
 next/LADDER_EXIT = &"IDLE"
 
-[node name="Upgrade" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_4anjp")
-}
-
-[node name="SaveStamina" type="Node" parent="." node_paths=PackedStringArray("node", "animation_player")]
+[node name="SaveStamina" type="Node" parent="." node_paths=PackedStringArray("node")]
 script = ExtResource("23_75wkf")
 max_save_key = "max_stamina"
 node = NodePath("..")
 max_property = "MAX_STAMINA"
 property = "STAMINA"
 increase_property_by_max_difference = true
-animation_player = NodePath("../Upgrade")
 animation_name = "STAMINA"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -2498,11 +2373,10 @@ transform = Transform3D(1, -4.76837e-07, -5.96046e-08, -6.55651e-07, 1, -3.57628
 shape = SubResource("BoxShape3D_m1s71")
 disabled = true
 
-[node name="PersitentDamage" type="Node" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" node_paths=PackedStringArray("hurt_shape", "animation_player")]
+[node name="PersitentDamage" type="Node" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" node_paths=PackedStringArray("hurt_shape")]
 script = ExtResource("38_ekykk")
 hurt_shape = NodePath("..")
 save_key = "damage"
-animation_player = NodePath("../../../../../../../Upgrade")
 upgrade_animation = "DAMAGE"
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4"]
@@ -2591,45 +2465,33 @@ lock_on_ui = NodePath("..")
 
 [node name="UI" type="Control" parent="." groups=["ui_scalable"]]
 layout_mode = 3
-anchors_preset = 2
-anchor_top = 1.0
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
-grow_vertical = 0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("43_ekykk")
 
-[node name="Health" parent="UI" node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
+[node name="Label" type="Label" parent="UI"]
+layout_mode = 2
+offset_left = 8.0
+offset_top = 661.0
+offset_right = 100.0
+offset_bottom = 699.0
+theme = ExtResource("24_m1s71")
+text = "WISP"
+script = ExtResource("44_4anjp")
+
+[node name="Bar" parent="UI" node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
 layout_mode = 1
-anchors_preset = 2
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 0.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -17.0
-offset_right = 65.0
-offset_bottom = -7.0
-grow_horizontal = 1
-grow_vertical = 0
+offset_left = -632.0
+offset_top = 341.0
+offset_right = -525.975
+offset_bottom = 351.0
 theme_override_styles/fill = ExtResource("34_6g6ue")
-max_value = 10.0
-value = 10.0
 expands = true
 tracked_node = NodePath("../../Hitbox")
 pixel_expansion_rate = 8.0
-
-[node name="UpgradeLabel" type="Label" parent="UI"]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = -57.0
-offset_right = 229.0
-offset_bottom = -12.0
-grow_vertical = 0
-theme = ExtResource("24_m1s71")
-text = "WISP STAMINA INCREASED"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -2649,4 +2511,3 @@ autoplay = "FADE_IN"
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 
 [editable path="Mesh/reaper"]
-[editable path="UI/Health"]

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_wy0h6"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="4_yydj8"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="5_4tfs5"]
-[ext_resource type="PackedScene" uid="uid://cbnpkl3l8dkx8" path="res://actors/props/wisp/wisp_stamina.tscn" id="6_g20fm"]
+[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp.tscn" id="6_hyqyh"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="7_7j2oa"]
 [ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="8_0r3a6"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="9_w0w2o"]
@@ -69,7 +69,7 @@ transform = Transform3D(-0.16916, 0, 0.985589, 0, 1, 0, -0.985589, 0, -0.16916, 
 
 [node name="Wisps" type="Node" parent="."]
 
-[node name="WispStamina" parent="Wisps" instance=ExtResource("6_g20fm")]
+[node name="Wisp" parent="Wisps" instance=ExtResource("6_hyqyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08563, 2.71911, -29.3764)
 
 [node name="Doors" type="Node" parent="."]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://c5350q0aryax0"]
+[gd_scene load_steps=20 format=3 uid="uid://c5350q0aryax0"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_ldobf"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_haesu"]
@@ -11,8 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://8d2jhagcyi03" path="res://actors/props/rocks/vertical/vertical_moving_rock.tscn" id="9_76fuj"]
 [ext_resource type="PackedScene" uid="uid://cy3bknox15p2c" path="res://actors/props/rocks/horizontal/horizontal_moving_rock.tscn" id="10_0eqd5"]
 [ext_resource type="PackedScene" uid="uid://b36oi3g053jo0" path="res://actors/props/rocks/falling/falling_platform.tscn" id="11_bmkvs"]
-[ext_resource type="PackedScene" uid="uid://cbnpkl3l8dkx8" path="res://actors/props/wisp/wisp_stamina.tscn" id="12_co5et"]
-[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp_health.tscn" id="13_1j05m"]
+[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp.tscn" id="13_1j05m"]
 [ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="14_rnrrl"]
 [ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://actors/characters/npcs/piglet/piglet.tscn" id="15_14x8r"]
 
@@ -139,11 +138,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.3871, -3.75597, 6.36576)
 [node name="FallingRock3" parent="." instance=ExtResource("11_bmkvs")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 39.7089, -3.51431, -2.96558)
 
-[node name="WispStamina" parent="." instance=ExtResource("12_co5et")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4648, 1.402, -13.1674)
+[node name="Wisps" type="Node" parent="."]
 
-[node name="WispHealth" parent="." instance=ExtResource("13_1j05m")]
+[node name="Wisp" parent="Wisps" instance=ExtResource("13_1j05m")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.307, 2.80846, -12.7552)
+
+[node name="Wisp2" parent="Wisps" instance=ExtResource("13_1j05m")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.4648, 1.402, -13.1674)
 
 [node name="Ghost" type="Node" parent="."]
 
@@ -188,6 +189,9 @@ bones/26/rotation = Quaternion(-0.0255709, -0.00125225, -0.0193465, 0.999485)
 bones/27/position = Vector3(0.215475, 0.0610135, -0.192475)
 bones/27/rotation = Quaternion(-0.671517, 0.0386854, 0.0057593, 0.739956)
 bones/28/rotation = Quaternion(-0.0255709, 0.00125225, 0.0193465, 0.999485)
+
+[node name="BoneAttachment3D" parent="Piglet/piglet/Piglet/Skeleton3D" index="1"]
+transform = Transform3D(-1, 1.50785e-07, 3.65824e-08, 4.4543e-08, 0.0531373, 0.998587, 1.48628e-07, 0.998587, -0.0531374, 0.0143669, 0.539512, -1.76027)
 
 [node name="PickUpInteraction" parent="Piglet" index="4"]
 disabled = true

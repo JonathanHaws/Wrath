@@ -1,6 +1,6 @@
-[gd_scene load_steps=58 format=3 uid="uid://c6e88ycy4nm7x"]
+[gd_scene load_steps=57 format=3 uid="uid://c6e88ycy4nm7x"]
 
-[ext_resource type="Script" uid="uid://qthw8jc8ahs5" path="res://actors/characters/enemies/damage_increase_on_death.gd" id="1_tw1ii"]
+[ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://actors/props/wisp/wisp_reward.gd" id="2_5rg5p"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="2_i6eoe"]
 [ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://actors/characters/ui/damage_numbers.tscn" id="3_mvqiw"]
 [ext_resource type="Script" uid="uid://d0sglng8yjegx" path="res://actors/characters/hit_shape_persistent_health.gd" id="3_oquh6"]
@@ -24,10 +24,6 @@
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="20_mvqiw"]
 [ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://actors/characters/enemies/ghosts/ghost_projectile.tscn" id="20_x07w4"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="22_3d4yc"]
-
-[sub_resource type="Curve" id="Curve_5rg5p"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_7c1mb"]
 radius = 0.806
@@ -138,46 +134,46 @@ tracks/7/keys = {
 "update": 0,
 "values": [Color(0.52, 0.52, 0.52, 1), Color(0.52, 0.52, 0.52, 0)]
 }
-tracks/8/type = "method"
+tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath(".")
+tracks/8/path = NodePath("Hitbox/CollisionShape3D:disabled")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"increase_player_damage"
-}]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Hitbox/CollisionShape3D:disabled")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/10/type = "animation"
+tracks/9/type = "animation"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("AnimationPlayer")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": PackedStringArray("DEATH"),
+"times": PackedFloat32Array(0)
+}
+tracks/10/type = "method"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("AnimationPlayer")
+tracks/10/path = NodePath("Mesh/LockOn")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"clips": PackedStringArray("DEATH"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 tracks/11/type = "method"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Mesh/LockOn")
+tracks/11/path = NodePath("CollisionShape3D")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -188,31 +184,31 @@ tracks/11/keys = {
 "method": &"queue_free"
 }]
 }
-tracks/12/type = "method"
+tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("CollisionShape3D")
-tracks/12/interp = 1
+tracks/12/path = NodePath("Target:USE_GRAVITY")
+tracks/12/interp = 0
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
+"update": 0,
+"values": [false]
 }
-tracks/13/type = "value"
+tracks/13/type = "method"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Target:USE_GRAVITY")
-tracks/13/interp = 0
+tracks/13/path = NodePath("WispReward")
+tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
+"values": [{
+"args": [],
+"method": &"give"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_pyqwo"]
@@ -716,7 +712,7 @@ tracks/0/path = NodePath("SquashAndStretch:target_squash_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1.26667, 1.83333),
+"times": PackedFloat32Array(0, 0.2, 1.06667, 1.63333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [1.0, 1.2, 1.2, 1.0]
@@ -728,7 +724,7 @@ tracks/1/path = NodePath("SquashAndStretch")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.26667, 1.44356, 1.64681),
+"times": PackedFloat32Array(1.06667, 1.24356, 1.44681),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [0.2],
@@ -748,7 +744,7 @@ tracks/2/path = NodePath("Mesh/SceneSpawner")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(1.26667, 1.44496, 1.65026),
+"times": PackedFloat32Array(1.06667, 1.24496, 1.45026),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [0, null],
@@ -794,7 +790,7 @@ tracks/5/path = NodePath("Audio/Shoot")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(1.26667, 1.44177, 1.64928),
+"times": PackedFloat32Array(1.06667, 1.24177, 1.44928),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [0.0],
@@ -814,7 +810,7 @@ tracks/6/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/6/interp = 0
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.7),
+"times": PackedFloat32Array(0, 1.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -826,7 +822,7 @@ tracks/7/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 1.1, 2.13333, 2.3),
+"times": PackedFloat32Array(0, 0.899997, 1.93333, 2.1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [1.0, 0.4, 0.4, 1.0]
@@ -1030,9 +1026,9 @@ radius = 18.8292
 [node name="Ghost" type="CharacterBody3D" groups=["ghost"]]
 collision_layer = 2
 collision_mask = 3
-script = ExtResource("1_tw1ii")
-DAMAGE_CURVE = SubResource("Curve_5rg5p")
-DAMAGE_KEY = "damage"
+
+[node name="WispReward" type="Node" parent="."]
+script = ExtResource("2_5rg5p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_7c1mb")
@@ -1203,7 +1199,6 @@ script = ExtResource("22_3d4yc")
 NAV_AGENT = NodePath("../NavigationAgent3D")
 MESH = NodePath("../Mesh")
 BODY = NodePath("..")
-TRACKING_SPEED = 4.0
 TRACKING_MULTIPLIER = 0.0
 STOP_CHASE_AREA = NodePath("../StopChase")
 AWARENESS_AREA = NodePath("../Awareness")

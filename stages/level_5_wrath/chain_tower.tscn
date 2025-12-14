@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="6_mmcy5"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="7_5aqd4"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="8_fk1wk"]
-[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp_health.tscn" id="9_4y6qk"]
+[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp.tscn" id="9_4y6qk"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="10_8fu47"]
 [ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="11_sj1b4"]
 
@@ -74,7 +74,7 @@ skeleton = NodePath("../..")
 [node name="Reaper" parent="." instance=ExtResource("8_fk1wk")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
-[node name="WispHealth" parent="." instance=ExtResource("9_4y6qk")]
+[node name="Wisp" parent="." instance=ExtResource("9_4y6qk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8156, -6.84752, -11.9849)
 
 [node name="Exit" parent="." instance=ExtResource("10_8fu47")]

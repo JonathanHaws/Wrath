@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://dmf0vo8jrm34a"]
+[gd_scene load_steps=33 format=3 uid="uid://dmf0vo8jrm34a"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_mb05r"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="2_80ox6"]
@@ -11,13 +11,12 @@
 [ext_resource type="Material" uid="uid://bofjw8wwuxc71" path="res://stages/materials/bricks/castle/castle_big.tres" id="8_u51x1"]
 [ext_resource type="Material" uid="uid://c7xo8odsficf7" path="res://actors/props/rocks/materials/world_rocks.tres" id="9_u51x1"]
 [ext_resource type="PackedScene" uid="uid://cc3uruvdi605x" path="res://actors/props/doors/light/light_door.tscn" id="10_s2ex5"]
-[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp_health.tscn" id="11_ugtt7"]
+[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp.tscn" id="11_ugtt7"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="12_0gnis"]
 [ext_resource type="PackedScene" uid="uid://b1kpbao7u5y7k" path="res://actors/props/bounce_pad/bounce_pad.tscn" id="13_irbjh"]
 [ext_resource type="PackedScene" uid="uid://b36oi3g053jo0" path="res://actors/props/rocks/falling/falling_platform.tscn" id="14_2ptaq"]
 [ext_resource type="PackedScene" uid="uid://cy3bknox15p2c" path="res://actors/props/rocks/horizontal/horizontal_moving_rock.tscn" id="16_1tft3"]
 [ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="17_bqs2d"]
-[ext_resource type="PackedScene" uid="uid://cbnpkl3l8dkx8" path="res://actors/props/wisp/wisp_stamina.tscn" id="17_n044i"]
 [ext_resource type="PackedScene" uid="uid://djqadr0k0vrs3" path="res://actors/characters/enemies/bosses/envy/envy.tscn" id="19_oqilo"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="20_bv0d2"]
 [ext_resource type="Script" uid="uid://ds3llgo67gcpi" path="res://actors/characters/enemies/patrol.gd" id="22_a0oe4"]
@@ -356,11 +355,11 @@ transform = Transform3D(0.997604, -0.0642152, -0.0257516, 0.0678371, 0.981018, 0
 
 [node name="Wisps" type="Node" parent="."]
 
-[node name="WispStamina" parent="Wisps" instance=ExtResource("17_n044i")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.885, -29.842, 1.00372)
-
-[node name="WispHealth" parent="Wisps" instance=ExtResource("11_ugtt7")]
+[node name="Wisp" parent="Wisps" instance=ExtResource("11_ugtt7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.8952, 20.1112, -45.7228)
+
+[node name="Wisp2" parent="Wisps" instance=ExtResource("11_ugtt7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.885, -29.842, 1.00372)
 
 [node name="Ghosts" type="Node" parent="."]
 
