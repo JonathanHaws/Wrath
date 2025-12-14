@@ -116,7 +116,6 @@ exclude_groups = Array[String](["ghost"])
 collision_animation_player = NodePath("AnimationPlayer")
 collision_animation_name = "collision"
 hurt_box = NodePath("Attack")
-home_in_ready = true
 
 [node name="Node3D" type="Node3D" parent="."]
 
