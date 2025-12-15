@@ -54,6 +54,11 @@ func _on_pressed():
 		return
 	
 	if Save.data.has(aquired_key): return
+	
+	if Save.data[currency_key] < cost:
+		if sfx_insufficient: sfx_insufficient.play()
+		return
+		
 	Save.data[currency_key] -= cost
 	Save.data[upgrade_key] = new_amount
 	#print('upgraded ', upgrade_key, " ", new_amount)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=91 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -46,6 +46,7 @@
 [ext_resource type="PackedScene" uid="uid://clbxqusx74r6s" path="res://actors/characters/particles/dust_jump.tscn" id="42_p6b07"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="43_ekykk"]
 [ext_resource type="Script" uid="uid://dbfbopu4ncf67" path="res://menus/skill_tree/wisp_counter.gd" id="44_4anjp"]
+[ext_resource type="PackedScene" uid="uid://dspid5s7r6a1o" path="res://menus/skill_tree/skill_tree.tscn" id="47_ekykk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5idf"]
 radius = 0.274293
@@ -2507,6 +2508,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_48hq2")
 }
 autoplay = "FADE_IN"
+
+[node name="SkillTree" parent="." instance=ExtResource("47_ekykk")]
+visible = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 

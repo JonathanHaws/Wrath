@@ -1,8 +1,8 @@
 [gd_scene load_steps=35 format=3 uid="uid://dspid5s7r6a1o"]
 
 [ext_resource type="Script" uid="uid://di42lux5ey07j" path="res://menus/show_cursor.gd" id="1_7cmww"]
+[ext_resource type="Script" uid="uid://dtb4vhbly0gp5" path="res://menus/skill_tree/skill_tree_toggle.gd" id="1_13hwl"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_iiq8l"]
-[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="3_15wwq"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="3_monbv"]
 [ext_resource type="Texture2D" uid="uid://73splwccqs75" path="res://menus/skill_tree/textures/Health 1.png" id="4_1lfrl"]
 [ext_resource type="Texture2D" uid="uid://rj52h8jq1tcw" path="res://menus/skill_tree/textures/Progress/Progress Background.png" id="4_lts1r"]
@@ -37,7 +37,7 @@ resource_name = "FadeIn"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FadeIn:visible")
+tracks/0/path = NodePath("../FadeIn:visible")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -49,7 +49,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FadeIn:modulate")
+tracks/1/path = NodePath("../FadeIn:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -64,7 +64,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FadeIn:modulate")
+tracks/0/path = NodePath("../FadeIn:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -76,7 +76,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FadeIn:visible")
+tracks/1/path = NodePath("../FadeIn:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -92,10 +92,19 @@ _data = {
 &"RESET": SubResource("Animation_uftlf")
 }
 
-[node name="SkillTree" type="Node3D"]
+[node name="SkillTree" type="Control" node_paths=PackedStringArray("skill_tree_ui")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_13hwl")
+skill_tree_ui = NodePath(".")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 process_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -105,91 +114,71 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_iiq8l")
 color = Color(0.0605303, 0.0605303, 0.0605303, 1)
-metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="ColorRect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = -45.0
+offset_right = 56.0
+offset_bottom = -7.0
+grow_vertical = 0
+theme = ExtResource("13_uftlf")
+text = "WISP:"
+script = ExtResource("14_xjsia")
 
 [node name="Control" type="Control" parent="ColorRect" groups=["ui_scalable"]]
 layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -40.0
-offset_top = -40.0
-grow_horizontal = 0
-grow_vertical = 0
-script = ExtResource("3_monbv")
-
-[node name="Button" type="Button" parent="ColorRect/Control" groups=["ui_scalable"]]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -80.0
-offset_top = -50.0
-offset_right = -6.0
-offset_bottom = -6.0
-grow_horizontal = 0
-grow_vertical = 0
-text = "CONTINUE
-"
-script = ExtResource("3_15wwq")
-scene_file = "uid://dmf0vo8jrm34a"
-
-[node name="Control" type="Control" parent="." groups=["ui_scalable"]]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("3_monbv")
 
-[node name="Label" type="Label" parent="Control"]
-visible = false
+[node name="Label" type="Label" parent="ColorRect/Control"]
 layout_mode = 2
-offset_left = -2.5
-offset_top = -137.0
-offset_right = 73.5
-offset_bottom = -101.0
+offset_left = 1184.0
+offset_top = 201.0
+offset_right = 1260.0
+offset_bottom = 237.0
 size_flags_horizontal = 4
 theme = ExtResource("1_iiq8l")
 theme_override_colors/font_color = Color(0.597176, 0.597176, 0.597176, 1)
 text = "VIRTUES:"
 
-[node name="Skill Tree" type="Control" parent="Control"]
+[node name="Skill Tree" type="Control" parent="ColorRect/Control"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lines" type="Control" parent="ColorRect/Control/Skill Tree"]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Lines" type="Control" parent="Control/Skill Tree"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="Line2D" type="Line2D" parent="Control/Skill Tree/Lines"]
+[node name="Line2D" type="Line2D" parent="ColorRect/Control/Skill Tree/Lines"]
 points = PackedVector2Array(-280, -19, -257, -42)
 width = 4.0
 default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D2" type="Line2D" parent="Control/Skill Tree/Lines"]
+[node name="Line2D2" type="Line2D" parent="ColorRect/Control/Skill Tree/Lines"]
 points = PackedVector2Array(-263, 12, -211, 12)
 width = 4.0
 default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D3" type="Line2D" parent="Control/Skill Tree/Lines"]
+[node name="Line2D3" type="Line2D" parent="ColorRect/Control/Skill Tree/Lines"]
 position = Vector2(6, -2)
 points = PackedVector2Array(-285, 53, -276.559, 61.4407, -258, 80)
 width = 4.0
@@ -197,14 +186,14 @@ default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D4" type="Line2D" parent="Control/Skill Tree/Lines"]
+[node name="Line2D4" type="Line2D" parent="ColorRect/Control/Skill Tree/Lines"]
 points = PackedVector2Array(-148, -77, -184, -77)
 width = 4.0
 default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D5" type="Line2D" parent="Control/Skill Tree/Lines"]
+[node name="Line2D5" type="Line2D" parent="ColorRect/Control/Skill Tree/Lines"]
 position = Vector2(119, -1)
 points = PackedVector2Array(-148, -77, -184, -77)
 width = 4.0
@@ -212,7 +201,7 @@ default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D6" type="Line2D" parent="Control/Skill Tree/Lines"]
+[node name="Line2D6" type="Line2D" parent="ColorRect/Control/Skill Tree/Lines"]
 position = Vector2(237, -2)
 points = PackedVector2Array(-148, -77, -184, -77)
 width = 4.0
@@ -220,7 +209,7 @@ default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D7" type="Line2D" parent="Control/Skill Tree/Lines"]
+[node name="Line2D7" type="Line2D" parent="ColorRect/Control/Skill Tree/Lines"]
 position = Vector2(60, 91)
 points = PackedVector2Array(-148, -77, -184, -77)
 width = 4.0
@@ -228,7 +217,7 @@ default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D8" type="Line2D" parent="Control/Skill Tree/Lines"]
+[node name="Line2D8" type="Line2D" parent="ColorRect/Control/Skill Tree/Lines"]
 position = Vector2(184, 92)
 points = PackedVector2Array(-148, -77, -184, -77)
 width = 4.0
@@ -236,7 +225,7 @@ default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D9" type="Line2D" parent="Control/Skill Tree/Lines"]
+[node name="Line2D9" type="Line2D" parent="ColorRect/Control/Skill Tree/Lines"]
 position = Vector2(305, 91)
 points = PackedVector2Array(-148, -77, -184, -77)
 width = 4.0
@@ -244,7 +233,7 @@ default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D10" type="Line2D" parent="Control/Skill Tree/Lines"]
+[node name="Line2D10" type="Line2D" parent="ColorRect/Control/Skill Tree/Lines"]
 position = Vector2(424, 91)
 points = PackedVector2Array(-148, -77, -184, -77)
 width = 4.0
@@ -252,7 +241,7 @@ default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D11" type="Line2D" parent="Control/Skill Tree/Lines"]
+[node name="Line2D11" type="Line2D" parent="ColorRect/Control/Skill Tree/Lines"]
 position = Vector2(2, 189)
 points = PackedVector2Array(-148, -77, -184, -77)
 width = 4.0
@@ -260,7 +249,7 @@ default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D12" type="Line2D" parent="Control/Skill Tree/Lines"]
+[node name="Line2D12" type="Line2D" parent="ColorRect/Control/Skill Tree/Lines"]
 position = Vector2(126, 190)
 points = PackedVector2Array(-148, -77, -184, -77)
 width = 4.0
@@ -268,7 +257,7 @@ default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D13" type="Line2D" parent="Control/Skill Tree/Lines"]
+[node name="Line2D13" type="Line2D" parent="ColorRect/Control/Skill Tree/Lines"]
 position = Vector2(251, 190)
 points = PackedVector2Array(-148, -77, -184, -77)
 width = 4.0
@@ -276,7 +265,7 @@ default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Line2D14" type="Line2D" parent="Control/Skill Tree/Lines"]
+[node name="Line2D14" type="Line2D" parent="ColorRect/Control/Skill Tree/Lines"]
 position = Vector2(373, 191)
 points = PackedVector2Array(-148, -77, -184, -77)
 width = 4.0
@@ -284,7 +273,7 @@ default_color = Color(0.800491, 0.800491, 0.800491, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="Health" type="TextureButton" parent="Control/Skill Tree"]
+[node name="Health" type="TextureButton" parent="ColorRect/Control/Skill Tree"]
 layout_mode = 0
 offset_left = -438.0
 offset_top = -114.0
@@ -297,7 +286,7 @@ cost = 10
 upgrade_key = "max_health"
 new_amount = 20.0
 
-[node name="Health2" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+[node name="Health2" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = -358.0
 offset_top = -205.0
@@ -311,7 +300,7 @@ preeq_node = NodePath("../Health")
 upgrade_key = "max_health"
 new_amount = 25.0
 
-[node name="Health3" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+[node name="Health3" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = -232.0
 offset_top = -209.0
@@ -325,7 +314,7 @@ preeq_node = NodePath("../Health2")
 upgrade_key = "max_health"
 new_amount = 30.0
 
-[node name="Health4" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+[node name="Health4" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = -117.0
 offset_top = -209.0
@@ -339,7 +328,7 @@ preeq_node = NodePath("../Health3")
 upgrade_key = "max_health"
 new_amount = 40.0
 
-[node name="Health5" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+[node name="Health5" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = 3.0
 offset_top = -208.0
@@ -353,7 +342,7 @@ preeq_node = NodePath("../Health4")
 upgrade_key = "max_health"
 new_amount = 50.0
 
-[node name="Damage" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+[node name="Damage" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = -295.0
 offset_top = -110.0
@@ -367,7 +356,7 @@ preeq_node = NodePath("../Health")
 upgrade_key = "damage"
 new_amount = 75.0
 
-[node name="Damage 2" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+[node name="Damage 2" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = -172.0
 offset_top = -113.0
@@ -381,7 +370,7 @@ preeq_node = NodePath("../Damage")
 upgrade_key = "damage"
 new_amount = 100.0
 
-[node name="Damage 3" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+[node name="Damage 3" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = -48.0
 offset_top = -114.0
@@ -395,7 +384,7 @@ preeq_node = NodePath("../Damage 2")
 upgrade_key = "damage"
 new_amount = 150.0
 
-[node name="Damage 4" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+[node name="Damage 4" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = 70.0
 offset_top = -116.0
@@ -409,7 +398,7 @@ preeq_node = NodePath("../Damage 3")
 upgrade_key = "damage"
 new_amount = 200.0
 
-[node name="Damage 5" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+[node name="Damage 5" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = 190.0
 offset_top = -116.0
@@ -423,7 +412,7 @@ preeq_node = NodePath("../Damage 4")
 upgrade_key = "damage"
 new_amount = 250.0
 
-[node name="Stamina" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+[node name="Stamina" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = -352.0
 offset_top = -14.0
@@ -437,7 +426,7 @@ preeq_node = NodePath("../Health")
 upgrade_key = "max_stamina"
 new_amount = 14.0
 
-[node name="Stamina 2" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+[node name="Stamina 2" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = -230.0
 offset_top = -14.0
@@ -451,7 +440,7 @@ preeq_node = NodePath("../Stamina")
 upgrade_key = "max_stamina"
 new_amount = 18.0
 
-[node name="Stamina 3" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+[node name="Stamina 3" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = -105.0
 offset_top = -15.0
@@ -465,7 +454,7 @@ preeq_node = NodePath("../Stamina 2")
 upgrade_key = "max_stamina"
 new_amount = 22.0
 
-[node name="Stamina 4" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+[node name="Stamina 4" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = 19.0
 offset_top = -14.0
@@ -479,7 +468,7 @@ preeq_node = NodePath("../Stamina 3")
 upgrade_key = "max_stamina"
 new_amount = 26.0
 
-[node name="Stamina 5" type="TextureButton" parent="Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
+[node name="Stamina 5" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = 140.0
 offset_top = -11.0
@@ -493,12 +482,18 @@ preeq_node = NodePath("../Stamina 4")
 upgrade_key = "max_stamina"
 new_amount = 30.0
 
-[node name="Progress" type="Control" parent="Control"]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Progress" type="Control" parent="ColorRect/Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -642.0
+offset_top = 312.0
+offset_right = -642.0
+offset_bottom = 312.0
+grow_horizontal = 0
 
-[node name="TextureRect" type="TextureRect" parent="Control/Progress"]
+[node name="TextureRect" type="TextureRect" parent="ColorRect/Control/Progress"]
 layout_mode = 0
 offset_left = 402.0
 offset_top = -343.0
@@ -506,7 +501,7 @@ offset_right = 658.0
 offset_bottom = -87.0
 texture = ExtResource("4_lts1r")
 
-[node name="Lust" type="TextureButton" parent="Control/Progress"]
+[node name="Lust" type="TextureButton" parent="ColorRect/Control/Progress"]
 layout_mode = 0
 offset_left = 402.0
 offset_top = -342.0
@@ -520,7 +515,7 @@ unaquired_modulate = Color(0.18, 0.18, 0.18, 0.8)
 hover_modulate = Color(0.1, 0.1, 0.1, 0)
 disable_hover_modulate = true
 
-[node name="Gluttony" type="TextureButton" parent="Control/Progress"]
+[node name="Gluttony" type="TextureButton" parent="ColorRect/Control/Progress"]
 layout_mode = 0
 offset_left = 402.0
 offset_top = -342.0
@@ -534,7 +529,7 @@ unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
 hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
 disable_hover_modulate = true
 
-[node name="Greed" type="TextureButton" parent="Control/Progress"]
+[node name="Greed" type="TextureButton" parent="ColorRect/Control/Progress"]
 layout_mode = 0
 offset_left = 402.0
 offset_top = -342.0
@@ -548,7 +543,7 @@ unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
 hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
 disable_hover_modulate = true
 
-[node name="Sloth" type="TextureButton" parent="Control/Progress"]
+[node name="Sloth" type="TextureButton" parent="ColorRect/Control/Progress"]
 layout_mode = 0
 offset_left = 402.0
 offset_top = -342.0
@@ -562,7 +557,7 @@ unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
 hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
 disable_hover_modulate = true
 
-[node name="Wrath" type="TextureButton" parent="Control/Progress"]
+[node name="Wrath" type="TextureButton" parent="ColorRect/Control/Progress"]
 layout_mode = 0
 offset_left = 401.0
 offset_top = -343.0
@@ -576,7 +571,7 @@ unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
 hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
 disable_hover_modulate = true
 
-[node name="Envy" type="TextureButton" parent="Control/Progress"]
+[node name="Envy" type="TextureButton" parent="ColorRect/Control/Progress"]
 layout_mode = 0
 offset_left = 401.0
 offset_top = -342.0
@@ -590,7 +585,7 @@ unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
 hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
 disable_hover_modulate = true
 
-[node name="Pride" type="TextureButton" parent="Control/Progress"]
+[node name="Pride" type="TextureButton" parent="ColorRect/Control/Progress"]
 layout_mode = 0
 offset_left = 401.0
 offset_top = -342.0
@@ -609,6 +604,7 @@ script = ExtResource("1_7cmww")
 
 [node name="FadeIn" type="ColorRect" parent="."]
 process_mode = 3
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -618,24 +614,9 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_iiq8l")
 color = Color(0.0383972, 0.0383972, 0.0383971, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="FadeIn"]
-root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_xjsia")
 }
 autoplay = "FadeIn"
-
-[node name="Label" type="Label" parent="."]
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = -45.0
-offset_right = 60.0
-offset_bottom = -7.0
-grow_vertical = 0
-theme = ExtResource("13_uftlf")
-text = "WISP:"
-script = ExtResource("14_xjsia")

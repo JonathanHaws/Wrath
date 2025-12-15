@@ -458,6 +458,7 @@ bones/36/rotation = Quaternion(-0.0789518, 0.154234, 0.075882, 0.981947)
 transform = Transform3D(0.457082, 0, -0.889425, 0, 1, 0, 0.889425, 0, 0.457082, -21.7503, -8.46191, 87.0511)
 
 [node name="Skip" parent="." instance=ExtResource("23_uq4p3")]
+visible = false
 
 [node name="Menu" parent="." instance=ExtResource("1_mb05r")]
 visible = false
