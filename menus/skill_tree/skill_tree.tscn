@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://dspid5s7r6a1o"]
+[gd_scene load_steps=48 format=3 uid="uid://dspid5s7r6a1o"]
 
 [ext_resource type="Script" uid="uid://di42lux5ey07j" path="res://menus/show_cursor.gd" id="1_7cmww"]
 [ext_resource type="Script" uid="uid://dtb4vhbly0gp5" path="res://menus/skill_tree/skill_tree_toggle.gd" id="1_13hwl"]
@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://dtc4k0883hbbi" path="res://menus/skill_tree/textures/Progress/Greed.png" id="8_fxm8d"]
 [ext_resource type="Texture2D" uid="uid://bo4ub4xkrnjyr" path="res://menus/skill_tree/textures/Progress/Sloth.png" id="9_fq5i0"]
 [ext_resource type="Texture2D" uid="uid://by7gjvc625sx8" path="res://menus/skill_tree/textures/Health 5.png" id="9_i3d4n"]
-[ext_resource type="Texture2D" uid="uid://lovdox0pt7q1" path="res://menus/skill_tree/textures/Wrath.png" id="10_1lfrl"]
+[ext_resource type="Texture2D" uid="uid://lovdox0pt7q1" path="res://menus/skill_tree/textures/Progress/Wrath.png" id="10_1lfrl"]
 [ext_resource type="Texture2D" uid="uid://b6spt3033rydu" path="res://menus/skill_tree/textures/Damage 1.png" id="10_k12qt"]
 [ext_resource type="Texture2D" uid="uid://xw3jd85ytxqu" path="res://menus/skill_tree/textures/Progress/Envy.png" id="11_0gl5m"]
 [ext_resource type="Texture2D" uid="uid://cgmy14h37b3kh" path="res://menus/skill_tree/textures/Damage 2.png" id="11_bxwy3"]
@@ -35,6 +35,13 @@
 [ext_resource type="Texture2D" uid="uid://dod4qgw5n3d2v" path="res://menus/skill_tree/textures/Stamina 3.png" id="17_13hwl"]
 [ext_resource type="Texture2D" uid="uid://d3ty5a8usonq" path="res://menus/skill_tree/textures/Stamina 4.png" id="18_474j7"]
 [ext_resource type="Texture2D" uid="uid://doa7ne4b483lr" path="res://menus/skill_tree/textures/Stamina 5.png" id="19_cvmyc"]
+[ext_resource type="BitMap" uid="uid://cx52mrtys0j6u" path="res://menus/skill_tree/textures/Progress/Lust.bmp" id="29_6pdds"]
+[ext_resource type="BitMap" uid="uid://d28um32hhw3je" path="res://menus/skill_tree/textures/Progress/Gluttony.bmp" id="31_5y3ua"]
+[ext_resource type="BitMap" uid="uid://b6a7luoq5vmpx" path="res://menus/skill_tree/textures/Progress/Greed.bmp" id="33_5y3ua"]
+[ext_resource type="BitMap" uid="uid://dnjiroy2yu8o0" path="res://menus/skill_tree/textures/Progress/Sloth.bmp" id="35_3w8ju"]
+[ext_resource type="BitMap" uid="uid://dxp1oexk5oxck" path="res://menus/skill_tree/textures/Progress/Pride.bmp" id="35_odw3s"]
+[ext_resource type="BitMap" uid="uid://c2i7jnfbb7d6e" path="res://menus/skill_tree/textures/Progress/Wrath.bmp" id="37_g7gqr"]
+[ext_resource type="BitMap" uid="uid://dndd136tgy7dj" path="res://menus/skill_tree/textures/Progress/Envy.bmp" id="39_ncvsq"]
 
 [sub_resource type="Gradient" id="Gradient_ubdiu"]
 interpolation_mode = 2
@@ -351,6 +358,7 @@ offset_left = -438.0
 offset_top = -114.0
 offset_right = -182.0
 offset_bottom = 142.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("4_1lfrl")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -365,6 +373,7 @@ offset_left = -358.0
 offset_top = -205.0
 offset_right = -102.0
 offset_bottom = 51.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("6_0gl5m")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -380,6 +389,7 @@ offset_left = -232.0
 offset_top = -209.0
 offset_right = 24.0
 offset_bottom = 47.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("7_cqod1")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -395,6 +405,7 @@ offset_left = -117.0
 offset_top = -209.0
 offset_right = 139.0
 offset_bottom = 47.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("8_3s8ma")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -410,6 +421,7 @@ offset_left = 3.0
 offset_top = -208.0
 offset_right = 259.0
 offset_bottom = 48.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("9_i3d4n")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -425,6 +437,7 @@ offset_left = -295.0
 offset_top = -110.0
 offset_right = -39.0
 offset_bottom = 146.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("10_k12qt")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -440,6 +453,7 @@ offset_left = -172.0
 offset_top = -113.0
 offset_right = 84.0
 offset_bottom = 143.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("11_bxwy3")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -455,6 +469,7 @@ offset_left = -48.0
 offset_top = -114.0
 offset_right = 208.0
 offset_bottom = 142.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("12_somab")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -470,6 +485,7 @@ offset_left = 70.0
 offset_top = -116.0
 offset_right = 326.0
 offset_bottom = 140.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("13_i4g0i")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -485,6 +501,7 @@ offset_left = 190.0
 offset_top = -116.0
 offset_right = 446.0
 offset_bottom = 140.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("14_g7qdd")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -500,6 +517,7 @@ offset_left = -352.0
 offset_top = -14.0
 offset_right = -96.0
 offset_bottom = 242.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("15_dhyo8")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -515,6 +533,7 @@ offset_left = -230.0
 offset_top = -14.0
 offset_right = 26.0
 offset_bottom = 242.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("16_bp54u")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -530,6 +549,7 @@ offset_left = -105.0
 offset_top = -15.0
 offset_right = 151.0
 offset_bottom = 241.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("17_13hwl")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -545,6 +565,7 @@ offset_left = 19.0
 offset_top = -14.0
 offset_right = 275.0
 offset_bottom = 242.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("18_474j7")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -560,6 +581,7 @@ offset_left = 140.0
 offset_top = -11.0
 offset_right = 396.0
 offset_bottom = 245.0
+pivot_offset = Vector2(124, 124)
 texture_normal = ExtResource("19_cvmyc")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
@@ -596,7 +618,9 @@ offset_left = 402.0
 offset_top = -342.0
 offset_right = 658.0
 offset_bottom = -86.0
+pivot_offset = Vector2(130.16, 126.01)
 texture_normal = ExtResource("5_y257w")
+texture_click_mask = ExtResource("29_6pdds")
 script = ExtResource("5_n1vdw")
 currency_key = ""
 custom_aquired_key = "gluttony_defeated"
@@ -611,7 +635,9 @@ offset_left = 402.0
 offset_top = -342.0
 offset_right = 658.0
 offset_bottom = -86.0
+pivot_offset = Vector2(130.16, 126.01)
 texture_normal = ExtResource("7_x7g2o")
+texture_click_mask = ExtResource("31_5y3ua")
 script = ExtResource("5_n1vdw")
 currency_key = ""
 custom_aquired_key = "gluttony_defeated"
@@ -626,7 +652,9 @@ offset_left = 402.0
 offset_top = -342.0
 offset_right = 658.0
 offset_bottom = -86.0
+pivot_offset = Vector2(130.16, 126.01)
 texture_normal = ExtResource("8_fxm8d")
+texture_click_mask = ExtResource("33_5y3ua")
 script = ExtResource("5_n1vdw")
 currency_key = ""
 custom_aquired_key = "greed_defeated"
@@ -641,7 +669,9 @@ offset_left = 402.0
 offset_top = -342.0
 offset_right = 658.0
 offset_bottom = -86.0
+pivot_offset = Vector2(130.16, 126.01)
 texture_normal = ExtResource("9_fq5i0")
+texture_click_mask = ExtResource("35_3w8ju")
 script = ExtResource("5_n1vdw")
 currency_key = ""
 custom_aquired_key = "wrath_defeated"
@@ -656,7 +686,9 @@ offset_left = 401.0
 offset_top = -343.0
 offset_right = 657.0
 offset_bottom = -87.0
+pivot_offset = Vector2(130.16, 126.01)
 texture_normal = ExtResource("10_1lfrl")
+texture_click_mask = ExtResource("37_g7gqr")
 script = ExtResource("5_n1vdw")
 currency_key = ""
 custom_aquired_key = "wrath_defeated"
@@ -671,7 +703,9 @@ offset_left = 401.0
 offset_top = -342.0
 offset_right = 657.0
 offset_bottom = -86.0
+pivot_offset = Vector2(130.16, 126.01)
 texture_normal = ExtResource("11_0gl5m")
+texture_click_mask = ExtResource("39_ncvsq")
 script = ExtResource("5_n1vdw")
 currency_key = ""
 custom_aquired_key = "envy_defeated"
@@ -686,7 +720,9 @@ offset_left = 401.0
 offset_top = -342.0
 offset_right = 657.0
 offset_bottom = -86.0
+pivot_offset = Vector2(130.16, 126.01)
 texture_normal = ExtResource("12_cqod1")
+texture_click_mask = ExtResource("35_odw3s")
 script = ExtResource("5_n1vdw")
 currency_key = ""
 custom_aquired_key = "pride_defeated"

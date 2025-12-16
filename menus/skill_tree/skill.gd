@@ -6,7 +6,7 @@ extends TextureButton
 @export var custom_aquired_key: String ## Special save data key to read if this has been aquired yet. Thats not just prefixed with node branch
 @export var preeq_node: Node ## The node that must be aquired before this one can be purchased. (Previous node skill tree) 
 
-@export_subgroup("VISUALS")
+@export_group("VISUALS")
 @export var cost_group:= "cost_skilltree" ## Label to update with cost of current skill node hovered
 @export var description_group := "ability_info_skilltree" ## Label to update with a description of the ability
 @export var description := "Increases players power"
@@ -15,6 +15,17 @@ extends TextureButton
 @export var hover_modulate: Color = Color(0.1,0.1,0.1,.1)	
 @export var disable_hover_modulate := false
 #@export var hover_modulate: Color = Color(0.0,0.0,0.0,.0) ## default color is no hover modulation
+@export_subgroup("TWEENS")
+@export var hover_scale: Vector2 = Vector2(1.2, 1.2)
+@export var normal_scale: Vector2 = Vector2(1, 1)
+@export var scale_duration: float = 0.15
+func tween_scale_up_on_hover():
+	var t = create_tween()
+	t.tween_property(self, "scale", hover_scale, scale_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+func tween_scale_down_on_exit():
+	var t = create_tween()
+	t.tween_property(self, "scale", normal_scale, scale_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+
 
 @export_subgroup("AUDIO") ## All skills can use the same audio players for ease of use
 @export var sfx_bought: AudioStreamPlayer ## Sound to be played when bought. Multiple skills can share same same player
@@ -40,7 +51,9 @@ func _ready():
 	
 	pressed.connect(_on_pressed)
 	mouse_entered.connect(hovered)
-	
+	mouse_entered.connect(tween_scale_up_on_hover)
+	mouse_exited.connect(tween_scale_down_on_exit)
+
 	if Save.data.has(aquired_key):
 		modulate = aquired_modulate
 	else:
