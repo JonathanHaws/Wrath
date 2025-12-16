@@ -18,6 +18,15 @@ func clamp_required_node():
 	if rect.position.y + rect.size.y < 0: dy = - (rect.position.y + rect.size.y)
 	position += Vector2(dx, dy)
 
+func center_required_node():
+	if not required_node: return
+	var vp := get_viewport_rect().size
+	var rect := required_node.get_global_rect()
+	var target_pos := vp * 0.5 - rect.size * 0.5
+	var offset := target_pos - rect.position
+	position += offset
+
+
 func get_mouse_local() -> Vector2:
 	return (get_viewport().get_mouse_position() - global_position) / zoom
 
@@ -32,6 +41,11 @@ func adjust_zoom(factor):
 	position += (mouse_after - mouse_before) * zoom
 
 func _process(_delta):
+	if is_visible_in_tree():
+		Controls.show_mouse()
+	else:
+		center_required_node()
+	
 	var move := Vector2.ZERO
 	if Input.is_action_pressed("ui_up"): move.y -= speed
 	if Input.is_action_pressed("ui_down"): move.y += speed

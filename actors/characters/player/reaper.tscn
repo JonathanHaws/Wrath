@@ -2464,31 +2464,37 @@ SpringArm = NodePath("../../SpringArm3D")
 LOCK_ON_AREA = NodePath("../../SpringArm3D/Camera3D/LockOnArea")
 lock_on_ui = NodePath("..")
 
-[node name="UI" type="Control" parent="." groups=["ui_scalable"]]
+[node name="UI" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
+anchors_preset = 2
+anchor_top = 1.0
 anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+grow_vertical = 0
 script = ExtResource("43_ekykk")
 
 [node name="Label" type="Label" parent="UI"]
 layout_mode = 2
 offset_left = 8.0
-offset_top = 661.0
+offset_top = -59.0
 offset_right = 100.0
-offset_bottom = 699.0
+offset_bottom = -21.0
 theme = ExtResource("24_m1s71")
 text = "WISP"
 script = ExtResource("44_4anjp")
 
 [node name="Bar" parent="UI" node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
 layout_mode = 1
-offset_left = -632.0
-offset_top = 341.0
-offset_right = -525.975
-offset_bottom = 351.0
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -19.0
+offset_right = 115.025
+offset_bottom = -9.0
+grow_horizontal = 1
+grow_vertical = 0
 theme_override_styles/fill = ExtResource("34_6g6ue")
 expands = true
 tracked_node = NodePath("../../Hitbox")

@@ -5,10 +5,14 @@ var BASE_UI_SCALE = 1.0
 var UI_SCALE = 1
 var BASE_RES 
 
+signal ui_scale_changed(new_scale: Vector2)
 func set_ui_scale(value: float) -> void:
 	for node in get_tree().get_nodes_in_group("ui_scalable"):
 		node.scale = Vector2(value, value)
+		#print('being changed')
+		#print(get_parent().name)
 	UI_SCALE = value
+	emit_signal("ui_scale_changed", Vector2(value, value))
 	
 	#reduce_ui_scale_until_contained()
 

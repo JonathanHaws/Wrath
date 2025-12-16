@@ -124,16 +124,28 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_odw3s")
 
-[node name="Label" type="Label" parent="TextureRect"]
+[node name="UiScale" type="Control" parent="TextureRect" groups=["ui_scalable"]]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+pivot_offset = Vector2(0, 40)
+script = ExtResource("3_monbv")
+
+[node name="Currency" type="Label" parent="TextureRect/UiScale"]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 5.0
-offset_top = -45.0
+offset_top = -37.0
 offset_right = 56.0
-offset_bottom = -7.0
+offset_bottom = 1.0
 grow_vertical = 0
+pivot_offset = Vector2(0, 38)
 theme = ExtResource("13_uftlf")
 text = "WISP:"
 script = ExtResource("14_xjsia")
@@ -155,14 +167,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(640, 360)
 script = ExtResource("3_monbv")
 
 [node name="AlwaysVisible" type="Control" parent="TextureRect/PanZoom/Control"]
-anchors_preset = 0
-offset_left = 327.0
-offset_top = 286.0
-offset_right = 960.0
-offset_bottom = 476.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -311.0
+offset_top = -81.0
+offset_right = 322.0
+offset_bottom = 109.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ForTesting" type="ColorRect" parent="TextureRect/PanZoom/Control/AlwaysVisible"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2255, 0.302375, 0.41, 1)
 
 [node name="Label" type="Label" parent="TextureRect/PanZoom/Control"]
 visible = false
@@ -539,7 +569,7 @@ new_amount = 30.0
 preeq_node = NodePath("../Stamina 4")
 description = "Increases consecutive spins to 6"
 
-[node name="Progress" type="Control" parent="."]
+[node name="Progress" type="Control" parent="." groups=["ui_scalable"]]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -549,6 +579,8 @@ offset_top = 312.0
 offset_right = -642.0
 offset_bottom = 312.0
 grow_horizontal = 0
+pivot_offset = Vector2(642.1, -311.83)
+script = ExtResource("3_monbv")
 
 [node name="TextureRect" type="TextureRect" parent="Progress"]
 layout_mode = 0
@@ -685,12 +717,13 @@ libraries = {
 }
 autoplay = "FadeIn"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." groups=["ui_scalable"]]
 layout_mode = 0
 offset_left = 5.0
 offset_top = 4.0
 offset_right = 45.0
 offset_bottom = 44.0
+script = ExtResource("3_monbv")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2

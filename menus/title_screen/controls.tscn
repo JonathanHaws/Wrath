@@ -21,11 +21,11 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme = ExtResource("1_nke8k")
-color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+color = Color(0.05, 0.05, 0.05, 0.913725)
 script = ExtResource("2_44vjs")
 metadata/_edit_use_anchors_ = true
 
-[node name="Controls" type="VBoxContainer" parent="."]
+[node name="Controls" type="VBoxContainer" parent="." groups=["ui_scalable"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -38,6 +38,7 @@ offset_right = 189.5
 offset_bottom = 262.0
 grow_horizontal = 2
 grow_vertical = 2
+pivot_offset = Vector2(189.5, 262)
 script = ExtResource("2_t88b0")
 
 [node name="MouseSensitivity" type="HBoxContainer" parent="Controls"]
