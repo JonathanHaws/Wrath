@@ -35,7 +35,7 @@ func _ready():
 
 	if custom_aquired_key: aquired_key = custom_aquired_key
 	else: aquired_key = Save.get_unique_key(self,"skill_node")
-	
+
 	if preeq_node: preeq_key = Save.get_unique_key(preeq_node, "skill_node")
 	
 	pressed.connect(_on_pressed)
@@ -51,17 +51,21 @@ func _ready():
 		mouse_exited.connect(func(): modulate -= hover_modulate)
 	
 func _on_pressed():
-	if not Save.data.has(currency_key): return
+
+	if not Save.data.has(currency_key): 
+		if sfx_insufficient: sfx_insufficient.play()
+		return
+	
 	if preeq_node and not Save.data.has(preeq_key):
+		if sfx_insufficient: sfx_insufficient.play()
+		return
+		
+	if 	Save.data[currency_key] < cost:
 		if sfx_insufficient: sfx_insufficient.play()
 		return
 	
 	if Save.data.has(aquired_key): return
 	
-	if Save.data[currency_key] < cost:
-		if sfx_insufficient: sfx_insufficient.play()
-		return
-		
 	Save.data[currency_key] -= cost
 	Save.data[upgrade_key] = new_amount
 	#print('upgraded ', upgrade_key, " ", new_amount)
