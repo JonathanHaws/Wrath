@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dspid5s7r6a1o"]
+[gd_scene load_steps=38 format=3 uid="uid://dspid5s7r6a1o"]
 
 [ext_resource type="Script" uid="uid://di42lux5ey07j" path="res://menus/show_cursor.gd" id="1_7cmww"]
 [ext_resource type="Script" uid="uid://dtb4vhbly0gp5" path="res://menus/skill_tree/skill_tree_toggle.gd" id="1_13hwl"]
@@ -10,7 +10,10 @@
 [ext_resource type="Script" uid="uid://hf3odyswfp0p" path="res://menus/skill_tree/skill.gd" id="5_n1vdw"]
 [ext_resource type="Texture2D" uid="uid://cx2y2gjfx4lpw" path="res://menus/skill_tree/textures/Progress/Lust.png" id="5_y257w"]
 [ext_resource type="Texture2D" uid="uid://dn57jrbfmkg6k" path="res://menus/skill_tree/textures/Health 2.png" id="6_0gl5m"]
+[ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://actors/characters/enemies/sfx/Cry.wav" id="6_474j7"]
+[ext_resource type="AudioStream" uid="uid://bq5aa53vc3chn" path="res://actors/characters/enemies/bosses/gluttony/sounds/piget_talk2.ogg" id="6_cvmyc"]
 [ext_resource type="Texture2D" uid="uid://bp2g0b4sd3245" path="res://menus/skill_tree/textures/Health 3.png" id="7_cqod1"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="7_cvmyc"]
 [ext_resource type="Texture2D" uid="uid://d104cj8pnvmmf" path="res://menus/skill_tree/textures/Progress/Gluttony.png" id="7_x7g2o"]
 [ext_resource type="Texture2D" uid="uid://dnywb2hp6mb2b" path="res://menus/skill_tree/textures/Health 4.png" id="8_3s8ma"]
 [ext_resource type="Texture2D" uid="uid://dtc4k0883hbbi" path="res://menus/skill_tree/textures/Progress/Greed.png" id="8_fxm8d"]
@@ -159,6 +162,21 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Insufficient" type="AudioStreamPlayer" parent="ColorRect/Control/Skill Tree"]
+process_mode = 3
+stream = ExtResource("6_cvmyc")
+bus = &"SFX"
+
+[node name="Sufficient" type="AudioStreamPlayer" parent="ColorRect/Control/Skill Tree"]
+process_mode = 3
+stream = ExtResource("6_474j7")
+bus = &"SFX"
+
+[node name="Hover" type="AudioStreamPlayer" parent="ColorRect/Control/Skill Tree"]
+process_mode = 3
+stream = ExtResource("7_cvmyc")
+bus = &"SFX"
 
 [node name="Lines" type="Control" parent="ColorRect/Control/Skill Tree"]
 anchors_preset = 0

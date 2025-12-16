@@ -19,16 +19,19 @@ extends TextureButton
 @export_subgroup("AUDIO") ## All skills can use the same audio players for ease of use
 @export var sfx_bought: AudioStreamPlayer ## Sound to be played when bought. Multiple skills can share same same player
 @export var sfx_insufficient: AudioStreamPlayer ## Sound to be played when declined. Automatically referenced if player is sibling
+@export var sfx_hover: AudioStreamPlayer ## Sound to be played when hovered. Automatically searches for sibling player
 var aquired_key
 var preeq_key
 
 func hovered():
+	if sfx_hover: sfx_hover.play()
 	for n in get_tree().get_nodes_in_group(cost_group): n.text = str(cost)
 	for n in get_tree().get_nodes_in_group(description_group): n.text = description
 
 func _ready():
-	sfx_bought = get_node_or_null("../Sufficient")
-	sfx_insufficient = get_node_or_null("../Insufficient")
+	if not sfx_bought: sfx_bought = get_parent().get_node_or_null("Sufficient")
+	if not sfx_insufficient: sfx_insufficient = get_parent().get_node_or_null("Insufficient")
+	if not sfx_hover: sfx_hover = get_parent().get_node_or_null("Hover")
 
 	if custom_aquired_key: aquired_key = custom_aquired_key
 	else: aquired_key = Save.get_unique_key(self,"skill_node")
