@@ -139,6 +139,7 @@ grow_vertical = 2
 script = ExtResource("3_monbv")
 
 [node name="Label" type="Label" parent="ColorRect/Control"]
+visible = false
 layout_mode = 2
 offset_left = 1184.0
 offset_top = 201.0
@@ -285,6 +286,7 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_health"
 new_amount = 20.0
+description = "Increases health to 20"
 
 [node name="Health2" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
@@ -296,9 +298,10 @@ texture_normal = ExtResource("6_0gl5m")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
 cost = 10
-preeq_node = NodePath("../Health")
 upgrade_key = "max_health"
 new_amount = 25.0
+preeq_node = NodePath("../Health")
+description = "Increases health to 25"
 
 [node name="Health3" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
@@ -310,9 +313,10 @@ texture_normal = ExtResource("7_cqod1")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
 cost = 20
-preeq_node = NodePath("../Health2")
 upgrade_key = "max_health"
 new_amount = 30.0
+preeq_node = NodePath("../Health2")
+description = "Increases health to 30"
 
 [node name="Health4" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
@@ -324,9 +328,10 @@ texture_normal = ExtResource("8_3s8ma")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
 cost = 30
-preeq_node = NodePath("../Health3")
 upgrade_key = "max_health"
 new_amount = 40.0
+preeq_node = NodePath("../Health3")
+description = "Increases health to 40"
 
 [node name="Health5" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
@@ -338,9 +343,10 @@ texture_normal = ExtResource("9_i3d4n")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
 cost = 30
-preeq_node = NodePath("../Health4")
 upgrade_key = "max_health"
 new_amount = 50.0
+preeq_node = NodePath("../Health4")
+description = "Increases health to 50"
 
 [node name="Damage" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
@@ -352,9 +358,10 @@ texture_normal = ExtResource("10_k12qt")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
 cost = 10
-preeq_node = NodePath("../Health")
 upgrade_key = "damage"
 new_amount = 75.0
+preeq_node = NodePath("../Health")
+description = "Increases damage to 75"
 
 [node name="Damage 2" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
@@ -366,9 +373,10 @@ texture_normal = ExtResource("11_bxwy3")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
 cost = 20
-preeq_node = NodePath("../Damage")
 upgrade_key = "damage"
 new_amount = 100.0
+preeq_node = NodePath("../Damage")
+description = "Increases damage to 100"
 
 [node name="Damage 3" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
@@ -380,9 +388,10 @@ texture_normal = ExtResource("12_somab")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
 cost = 30
-preeq_node = NodePath("../Damage 2")
 upgrade_key = "damage"
 new_amount = 150.0
+preeq_node = NodePath("../Damage 2")
+description = "Increases damage to 150"
 
 [node name="Damage 4" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
@@ -394,9 +403,10 @@ texture_normal = ExtResource("13_i4g0i")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
 cost = 40
-preeq_node = NodePath("../Damage 3")
 upgrade_key = "damage"
 new_amount = 200.0
+preeq_node = NodePath("../Damage 3")
+description = "Increases damage to 200"
 
 [node name="Damage 5" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
@@ -407,10 +417,11 @@ offset_bottom = 140.0
 texture_normal = ExtResource("14_g7qdd")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
-cost = 30
-preeq_node = NodePath("../Damage 4")
+cost = 50
 upgrade_key = "damage"
 new_amount = 250.0
+preeq_node = NodePath("../Damage 4")
+description = "Increases damage to 250"
 
 [node name="Stamina" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
@@ -422,9 +433,10 @@ texture_normal = ExtResource("15_dhyo8")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
 cost = 10
-preeq_node = NodePath("../Health")
 upgrade_key = "max_stamina"
 new_amount = 14.0
+preeq_node = NodePath("../Health")
+description = "Increases consecutive spins to 2"
 
 [node name="Stamina 2" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
@@ -436,9 +448,10 @@ texture_normal = ExtResource("16_bp54u")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
 cost = 10
-preeq_node = NodePath("../Stamina")
 upgrade_key = "max_stamina"
 new_amount = 18.0
+preeq_node = NodePath("../Stamina")
+description = "Increases consecutive spins to 3"
 
 [node name="Stamina 3" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
@@ -450,9 +463,10 @@ texture_normal = ExtResource("17_13hwl")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
 cost = 10
-preeq_node = NodePath("../Stamina 2")
 upgrade_key = "max_stamina"
 new_amount = 22.0
+preeq_node = NodePath("../Stamina 2")
+description = "Increases consecutive spins to 4"
 
 [node name="Stamina 4" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
@@ -464,9 +478,10 @@ texture_normal = ExtResource("18_474j7")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
 cost = 20
-preeq_node = NodePath("../Stamina 3")
 upgrade_key = "max_stamina"
 new_amount = 26.0
+preeq_node = NodePath("../Stamina 3")
+description = "Increases consecutive spins to 5"
 
 [node name="Stamina 5" type="TextureButton" parent="ColorRect/Control/Skill Tree" node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
@@ -478,9 +493,10 @@ texture_normal = ExtResource("19_cvmyc")
 texture_click_mask = ExtResource("5_bp54u")
 script = ExtResource("5_n1vdw")
 cost = 30
-preeq_node = NodePath("../Stamina 4")
 upgrade_key = "max_stamina"
 new_amount = 30.0
+preeq_node = NodePath("../Stamina 4")
+description = "Increases consecutive spins to 6"
 
 [node name="Progress" type="Control" parent="ColorRect/Control"]
 layout_mode = 1
@@ -620,3 +636,28 @@ libraries = {
 &"": SubResource("AnimationLibrary_xjsia")
 }
 autoplay = "FadeIn"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 5.0
+offset_top = 4.0
+offset_right = 45.0
+offset_bottom = 44.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme = ExtResource("13_uftlf")
+text = "COST-"
+
+[node name="Cost" type="Label" parent="VBoxContainer/HBoxContainer" groups=["cost_skilltree"]]
+layout_mode = 2
+theme = ExtResource("13_uftlf")
+text = "1"
+
+[node name="Description" type="Label" parent="VBoxContainer" groups=["ability_info_skilltree"]]
+layout_mode = 2
+theme = ExtResource("13_uftlf")
+text = "This is a description of the skill"

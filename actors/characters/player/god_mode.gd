@@ -21,13 +21,15 @@ func _ready():
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("god_mode"):
-		#Save.data["wisp"] = Save.data.get("wisp", 0) + 100000
 		mode = !mode
 		#if DAMAGE_SHAPE: DAMAGE_SHAPE.disabled = !DAMAGE_SHAPE.disabled
 		if mode and ANIMATION_PLAYER and GOD_MODE_ANIMATION != "":
 			ANIMATION_PLAYER.play(GOD_MODE_ANIMATION)
 		
 	if mode: 
+		if Input.is_action_just_pressed("get_wisp"):
+			Save.data["wisp"] = Save.data.get("wisp", 0) + 50
+		
 		PLAYER.global_transform.origin = last_position
 			
 		if BODY_SHAPE: BODY_SHAPE.disabled = true
