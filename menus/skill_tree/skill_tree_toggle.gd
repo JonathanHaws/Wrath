@@ -2,6 +2,9 @@ extends Node
 @export var skill_tree_ui: Control
 var skill_tree_open := false
 
+@export var PLAYER_GROUP = "player"
+var original_attack_state: bool = false
+
 func _process(_delta):
 	if Input.is_action_just_pressed("toggle_skill_tree"):
 		#print('test')

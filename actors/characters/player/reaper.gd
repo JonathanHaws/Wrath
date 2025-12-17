@@ -29,6 +29,7 @@ extends CharacterBody3D
 @export var STAMINA = 10
 @export var MAX_STAMINA = 10
 @export var STAMINA_RECOVERY: float = 20.0
+@export var SKILL_TREE: Node
 
 var falling = COYOTE_TIME;
 var was_on_floor = true
@@ -149,7 +150,7 @@ func _physics_process(delta: float) -> void:
 	if ANIM.current_animation in "ESCAPE": return
 
 	if ATTACKING_ENABLED and Input.is_action_just_pressed("attack"):
-		if in_interruptible_animation():
+		if in_interruptible_animation() and not SKILL_TREE.visible:
 			if is_on_floor():
 				ANIM.play("WINDUP")
 			else:
@@ -163,7 +164,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"): jump_buffer = JUMP_BUFFER_TIME;
 	elif jump_buffer > 0: jump_buffer -= delta
 
-	if jump_buffer > 0 and falling < COYOTE_TIME: # JUMP
+	if jump_buffer > 0 and falling < COYOTE_TIME and not SKILL_TREE.visible: # JUMP
 		if ANIM.current_animation and in_interruptible_animation():
 			if JUMP_MULTIPLIER > 0:
 				if $Audio: $Audio.play_2d_sound(["jump"])
@@ -178,11 +179,15 @@ func _physics_process(delta: float) -> void:
 	var controller_vector := Input.get_vector("controller_left", "controller_right", "controller_forward", "controller_back")
 	var input_vector := keyboard_vector + controller_vector
 	
+	if SKILL_TREE.visible: input_vector = Vector2.ZERO
+	
 	if input_vector.length() > 0:
+		
 		var mesh_direction = -MESH.global_transform.basis.z
 		var speed_factor = 1.0
 		if Input.is_action_pressed("sprint") or controller_vector.length() > 0.75:
 			speed_factor = SPRINT_MULTIPLIER
+		
 
 		velocity.x = mesh_direction.x * SPEED * SPEED_MULTIPLIER * speed_factor
 		velocity.z = mesh_direction.z * SPEED * SPEED_MULTIPLIER * speed_factor

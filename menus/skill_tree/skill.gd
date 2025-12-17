@@ -21,9 +21,6 @@ func apply_hover_modulate():
 func apply_base_modulate():
 	if Save.data.has(aquired_key): modulate = aquired_modulate
 	else: modulate = base_modulate
-
-@export var disable_hover_modulate := false
-#@export var hover_modulate: Color = Color(0.0,0.0,0.0,.0) ## default color is no hover modulation
 @export_subgroup("TWEENS")
 @export var hover_scale: Vector2 = Vector2(1.2, 1.2)
 @export var normal_scale: Vector2 = Vector2(1, 1)
