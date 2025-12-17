@@ -11,13 +11,13 @@
 [ext_resource type="Script" uid="uid://dj02tl55k436t" path="res://menus/skill_tree/ui_pan_and_zoom.gd" id="5_ubdiu"]
 [ext_resource type="Texture2D" uid="uid://cx2y2gjfx4lpw" path="res://menus/skill_tree/textures/Progress/Lust.png" id="5_y257w"]
 [ext_resource type="Texture2D" uid="uid://dn57jrbfmkg6k" path="res://menus/skill_tree/textures/Health 2.png" id="6_0gl5m"]
-[ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://actors/characters/enemies/sfx/Cry.wav" id="6_474j7"]
-[ext_resource type="AudioStream" uid="uid://bq5aa53vc3chn" path="res://actors/characters/enemies/bosses/gluttony/sounds/piget_talk2.ogg" id="6_cvmyc"]
 [ext_resource type="Texture2D" uid="uid://bp2g0b4sd3245" path="res://menus/skill_tree/textures/Health 3.png" id="7_cqod1"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="7_cvmyc"]
+[ext_resource type="AudioStream" uid="uid://bupfexkisbh8k" path="res://menus/skill_tree/insufficent.ogg" id="7_g7gqr"]
 [ext_resource type="Texture2D" uid="uid://d104cj8pnvmmf" path="res://menus/skill_tree/textures/Progress/Gluttony.png" id="7_x7g2o"]
 [ext_resource type="Texture2D" uid="uid://dnywb2hp6mb2b" path="res://menus/skill_tree/textures/Health 4.png" id="8_3s8ma"]
 [ext_resource type="Texture2D" uid="uid://dtc4k0883hbbi" path="res://menus/skill_tree/textures/Progress/Greed.png" id="8_fxm8d"]
+[ext_resource type="AudioStream" uid="uid://tukr53oaefox" path="res://menus/skill_tree/aquired.ogg" id="8_ncvsq"]
 [ext_resource type="Texture2D" uid="uid://bo4ub4xkrnjyr" path="res://menus/skill_tree/textures/Progress/Sloth.png" id="9_fq5i0"]
 [ext_resource type="Texture2D" uid="uid://by7gjvc625sx8" path="res://menus/skill_tree/textures/Health 5.png" id="9_i3d4n"]
 [ext_resource type="Texture2D" uid="uid://lovdox0pt7q1" path="res://menus/skill_tree/textures/Progress/Wrath.png" id="10_1lfrl"]
@@ -225,17 +225,19 @@ grow_vertical = 2
 
 [node name="Insufficient" type="AudioStreamPlayer" parent="TextureRect/PanZoom/Control/Skill Tree"]
 process_mode = 3
-stream = ExtResource("6_cvmyc")
+stream = ExtResource("7_g7gqr")
 bus = &"SFX"
 
 [node name="Sufficient" type="AudioStreamPlayer" parent="TextureRect/PanZoom/Control/Skill Tree"]
 process_mode = 3
-stream = ExtResource("6_474j7")
+stream = ExtResource("8_ncvsq")
 bus = &"SFX"
 
 [node name="Hover" type="AudioStreamPlayer" parent="TextureRect/PanZoom/Control/Skill Tree"]
 process_mode = 3
 stream = ExtResource("7_cvmyc")
+volume_db = -10.0
+pitch_scale = 0.5
 bus = &"SFX"
 
 [node name="Lines" type="Control" parent="TextureRect/PanZoom/Control/Skill Tree"]
@@ -625,8 +627,6 @@ script = ExtResource("5_n1vdw")
 currency_key = ""
 custom_aquired_key = "lust_defeated"
 description = "Lust Deafted. Virtue Of Chasity"
-unaquired_modulate = Color(0.18, 0.18, 0.18, 0.8)
-hover_modulate = Color(0.1, 0.1, 0.1, 0)
 disable_hover_modulate = true
 
 [node name="Gluttony" type="TextureButton" parent="Progress"]
@@ -642,8 +642,6 @@ script = ExtResource("5_n1vdw")
 currency_key = ""
 custom_aquired_key = "gluttony_defeated"
 description = "Gluttony Deafted. Virtue Of Temperance"
-unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
-hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
 disable_hover_modulate = true
 
 [node name="Greed" type="TextureButton" parent="Progress"]
@@ -659,8 +657,6 @@ script = ExtResource("5_n1vdw")
 currency_key = ""
 custom_aquired_key = "greed_defeated"
 description = "Greed Deafted. Virtue Of Charity"
-unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
-hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
 disable_hover_modulate = true
 
 [node name="Sloth" type="TextureButton" parent="Progress"]
@@ -676,8 +672,6 @@ script = ExtResource("5_n1vdw")
 currency_key = ""
 custom_aquired_key = "sloth_defeated"
 description = "Sloth Deafted. Virtue Of Diligence"
-unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
-hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
 disable_hover_modulate = true
 
 [node name="Wrath" type="TextureButton" parent="Progress"]
@@ -693,8 +687,6 @@ script = ExtResource("5_n1vdw")
 currency_key = ""
 custom_aquired_key = "wrath_defeated"
 description = "Wrath Deafted. Virtue Of Patience"
-unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
-hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
 disable_hover_modulate = true
 
 [node name="Envy" type="TextureButton" parent="Progress"]
@@ -710,8 +702,6 @@ script = ExtResource("5_n1vdw")
 currency_key = ""
 custom_aquired_key = "envy_defeated"
 description = "Envy Deafted. Virtue Of Kindness"
-unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
-hover_modulate = Color(0.101961, 0.101961, 0.101961, 0)
 disable_hover_modulate = true
 
 [node name="Pride" type="TextureButton" parent="Progress"]
@@ -727,8 +717,6 @@ script = ExtResource("5_n1vdw")
 currency_key = ""
 custom_aquired_key = "pride_defeated"
 description = "Pride Deafted. Virtue Of Humility"
-unaquired_modulate = Color(0.180392, 0.180392, 0.180392, 0.8)
-hover_modulate = Color(0.1, 0.1, 0.1, 0)
 disable_hover_modulate = true
 
 [node name="ShowCursor" type="Node" parent="."]

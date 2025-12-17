@@ -5,12 +5,6 @@ extends TextureButton
 @export var new_amount: Variant = 1.0 ## The update value for the property
 @export var custom_aquired_key: String ## Special save data key to read if this has been aquired yet. Thats not just prefixed with node branch
 @export var preeq_node: Node ## The node that must be aquired before this one can be purchased. (Previous node skill tree) 
-func _on_save_data_updated():
-	if Save.data.has(aquired_key):
-		modulate = aquired_modulate
-	else:
-		modulate = unaquired_modulate
-
 
 @export_group("VISUALS")
 @export_subgroup("INFO")
@@ -18,9 +12,16 @@ func _on_save_data_updated():
 @export var description_group := "ability_info_skilltree" ## Label to update with a description of the ability
 @export var description := "Increases players power"
 @export_subgroup("MODULATION")
-@export var aquired_modulate: Color = Color(1,1,1,1)
-@export var unaquired_modulate: Color = Color(.3,.3,.3,0.6)
-@export var hover_modulate: Color = Color(0.1,0.1,0.1,.1)	
+@export var base_modulate: Color = Color(.3,.3,.3,1)
+@export var hover_modulate: Color = Color(0.5,0.5,0.5,1)	
+@export var aquired_modulate: Color = Color(.9,.9,.9,1)
+func apply_hover_modulate():
+	if modulate == aquired_modulate: return # already aquired return
+	modulate = hover_modulate
+func apply_base_modulate():
+	if Save.data.has(aquired_key): modulate = aquired_modulate
+	else: modulate = base_modulate
+
 @export var disable_hover_modulate := false
 #@export var hover_modulate: Color = Color(0.0,0.0,0.0,.0) ## default color is no hover modulation
 @export_subgroup("TWEENS")
@@ -54,7 +55,6 @@ func _ready():
 
 	if custom_aquired_key: aquired_key = custom_aquired_key
 	else: aquired_key = Save.get_unique_key(self,"skill_node")
-
 	if preeq_node: preeq_key = Save.get_unique_key(preeq_node, "skill_node")
 	
 	pressed.connect(_on_pressed)
@@ -62,12 +62,10 @@ func _ready():
 	mouse_entered.connect(tween_scale_up_on_hover)
 	mouse_exited.connect(tween_scale_down_on_exit)
 
-	_on_save_data_updated()
-	Save.save_data_updated.connect(_on_save_data_updated)
-	
-	if not disable_hover_modulate:
-		mouse_entered.connect(func(): modulate += hover_modulate)
-		mouse_exited.connect(func(): modulate -= hover_modulate)
+	apply_base_modulate()
+	mouse_entered.connect(apply_hover_modulate)
+	mouse_exited.connect(apply_base_modulate)
+	Save.save_data_updated.connect(apply_base_modulate)
 	
 func _on_pressed():
 
