@@ -339,13 +339,13 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
 [node name="spin" parent="Portal/Mesh" index="1"]
-transform = Transform3D(0.923411, -0.383808, 0, 0.383808, 0.923411, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(0.993586, 0.113066, 0, -0.113066, 0.993586, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Portal/Mesh/flames_2" index="0"]
-transform = Transform3D(0.869016, 0.42921, -7.02843e-16, -0.42921, 0.869016, 2.87211e-15, 1.90204e-15, -2.2639e-15, 0.969232, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(-0.885607, -0.506247, 6.79396e-16, 0.506247, -0.885607, 4.77632e-15, -1.78055e-15, 4.4838e-15, 1.02009, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Portal/Mesh/flames_1" index="0"]
-transform = Transform3D(0.869016, 0.42921, -7.02843e-16, -0.42921, 0.869016, 2.87211e-15, 1.90204e-15, -2.2639e-15, 0.969232, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(-0.885607, -0.506247, 6.79396e-16, 0.506247, -0.885607, 4.77632e-15, -1.78055e-15, 4.4838e-15, 1.02009, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Portal/Mesh" index="4"]
 autoplay = "Spin"
@@ -418,11 +418,11 @@ bus = &"Music"
 script = ExtResource("13_ns1qw")
 scene_file = "uid://b3i01lg3stgkg"
 
-[node name="Reaper" parent="." instance=ExtResource("7_1yqwe")]
-transform = Transform3D(-0.995788, 0, 0.0916933, 0, 1, 0, -0.0916933, 0, -0.995788, 0, -7.999, -24.667)
-
 [node name="Checkpoint" parent="." instance=ExtResource("14_d1ner")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -9.1, -19.731)
+
+[node name="Reaper" parent="." instance=ExtResource("7_1yqwe")]
+transform = Transform3D(-0.995788, 0, 0.0916933, 0, 1, 0, -0.0916933, 0, -0.995788, 0, -7.999, -24.667)
 
 [node name="Menu" parent="." instance=ExtResource("1_7ckn6")]
 visible = false

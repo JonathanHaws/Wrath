@@ -142,7 +142,7 @@ size = Vector3(51.7317, 6.81735, 0.861012)
 [node name="Cinematics" type="Node" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="Cinematics"]
-transform = Transform3D(0.874629, 0.249685, -0.415548, -1.78814e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
+transform = Transform3D(0.874629, 0.249685, -0.415548, -1.86264e-07, 0.857167, 0.515037, 0.484791, -0.450466, 0.749705, -10.1883, 14.1217, 81.338)
 rotation_edit_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Cinematics"]
@@ -328,9 +328,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8294, -186.275, -53.309)
 shape = SubResource("BoxShape3D_ope8t")
 debug_color = Color(1, 1, 1, 0)
 
-[node name="Reaper" parent="." instance=ExtResource("6_haf51")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36.5086, -190)
-
 [node name="Wrath" parent="." instance=ExtResource("7_eqpye")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.750871, 19)
 
@@ -451,6 +448,9 @@ transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107
 
 [node name="Ghost2" parent="." instance=ExtResource("19_b0sq8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5082, -11.1915, -37.4764)
+
+[node name="Reaper" parent="." instance=ExtResource("6_haf51")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36.5086, -190)
 
 [node name="Menu" parent="." instance=ExtResource("1_t7rxp")]
 visible = false

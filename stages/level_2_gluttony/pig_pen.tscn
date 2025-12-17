@@ -101,9 +101,6 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.2
 omni_range = 24.7603
 
-[node name="Reaper" parent="." instance=ExtResource("6_hc341")]
-transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
-
 [node name="Exit" parent="." groups=["gluttony_door"] instance=ExtResource("7_c6ynn")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 130.51, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Enter"
@@ -143,6 +140,9 @@ visible = false
 [node name="WrathPreview2" parent="." instance=ExtResource("10_el64o")]
 transform = Transform3D(-0.376014, 0, 0.926614, 0, 1, 0, -0.926614, 0, -0.376014, 26.1463, -9.06787, -7.32367)
 visible = false
+
+[node name="Reaper" parent="." instance=ExtResource("6_hc341")]
+transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
 [node name="Skip" parent="." instance=ExtResource("13_pyb2n")]
 

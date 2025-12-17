@@ -93,9 +93,6 @@ omni_range = 101.01
 [node name="Checkpoint" parent="." instance=ExtResource("8_xfmdf")]
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 72.8576, -8.56741, 6.83791)
 
-[node name="Reaper" parent="." instance=ExtResource("5_322pr")]
-transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
-
 [node name="Enter" parent="." instance=ExtResource("7_iow1r")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Exit"
@@ -116,6 +113,9 @@ transform = Transform3D(-0.187398, 0, 0.982284, 0, 1, 0, -0.982284, 0, -0.187398
 
 [node name="Ghost3" parent="Enemies" instance=ExtResource("9_vumr1")]
 transform = Transform3D(-0.187398, 0, 0.982284, 0, 1, 0, -0.982284, 0, -0.187398, 67.9769, -7.67152, 42.3328)
+
+[node name="Reaper" parent="." instance=ExtResource("5_322pr")]
+transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
 [node name="Menu" parent="." instance=ExtResource("1_bpnb6")]
 visible = false

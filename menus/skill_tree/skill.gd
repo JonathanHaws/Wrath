@@ -5,11 +5,19 @@ extends TextureButton
 @export var new_amount: Variant = 1.0 ## The update value for the property
 @export var custom_aquired_key: String ## Special save data key to read if this has been aquired yet. Thats not just prefixed with node branch
 @export var preeq_node: Node ## The node that must be aquired before this one can be purchased. (Previous node skill tree) 
+func _on_save_data_updated():
+	if Save.data.has(aquired_key):
+		modulate = aquired_modulate
+	else:
+		modulate = unaquired_modulate
+
 
 @export_group("VISUALS")
+@export_subgroup("INFO")
 @export var cost_group:= "cost_skilltree" ## Label to update with cost of current skill node hovered
 @export var description_group := "ability_info_skilltree" ## Label to update with a description of the ability
 @export var description := "Increases players power"
+@export_subgroup("MODULATION")
 @export var aquired_modulate: Color = Color(1,1,1,1)
 @export var unaquired_modulate: Color = Color(.3,.3,.3,0.6)
 @export var hover_modulate: Color = Color(0.1,0.1,0.1,.1)	
@@ -54,10 +62,8 @@ func _ready():
 	mouse_entered.connect(tween_scale_up_on_hover)
 	mouse_exited.connect(tween_scale_down_on_exit)
 
-	if Save.data.has(aquired_key):
-		modulate = aquired_modulate
-	else:
-		modulate = unaquired_modulate
+	_on_save_data_updated()
+	Save.save_data_updated.connect(_on_save_data_updated)
 	
 	if not disable_hover_modulate:
 		mouse_entered.connect(func(): modulate += hover_modulate)

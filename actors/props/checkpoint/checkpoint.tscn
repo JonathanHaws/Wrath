@@ -43,6 +43,30 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ColorRect:visible")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Control:visible")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_uwfnl"]
 resource_name = "REST"
@@ -86,6 +110,30 @@ tracks/2/keys = {
 "args": [],
 "method": &"_trigger_corresponding_animation"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("ColorRect:visible")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.03333, 6.03333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [false, true, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Control:visible")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_j24vx"]
@@ -263,6 +311,7 @@ material_override = SubResource("StandardMaterial3D_p60ie")
 debug_color = Color(0.458405, 0.458405, 0.458405, 0.247059)
 
 [node name="Control" type="Control" parent="." groups=["ui_scalable"]]
+visible = false
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -294,6 +343,7 @@ script = ExtResource("9_2oqi1")
 display_text = "REST -"
 
 [node name="ColorRect" type="ColorRect" parent="."]
+visible = false
 z_index = 2
 anchors_preset = 15
 anchor_right = 1.0

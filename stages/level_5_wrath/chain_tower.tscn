@@ -71,9 +71,6 @@ material_override = ExtResource("7_5aqd4")
 mesh = SubResource("BoxMesh_od467")
 skeleton = NodePath("../..")
 
-[node name="Reaper" parent="." instance=ExtResource("8_fk1wk")]
-transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
-
 [node name="Wisp" parent="." instance=ExtResource("9_4y6qk")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.8156, -6.84752, -11.9849)
 
@@ -94,6 +91,9 @@ transform = Transform3D(0.50829, 0, 0.861186, 0, 1, 0, -0.861186, 0, 0.50829, 13
 
 [node name="Ghost" parent="." instance=ExtResource("11_sj1b4")]
 transform = Transform3D(-0.432967, 0, 0.90141, 0, 1, 0, -0.90141, 0, -0.432967, 28.5243, -7.98728, -9.89871)
+
+[node name="Reaper" parent="." instance=ExtResource("8_fk1wk")]
+transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
 [node name="Menu" parent="." instance=ExtResource("1_7x0xx")]
 visible = false
