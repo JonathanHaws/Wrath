@@ -1,4 +1,6 @@
 # Used for particles and projectiles
+# Use top level fro transforms in the objects to avoid them following parents strangely
+
 extends Node
 @export var scenes: Array[PackedScene]
 @export var copy_transform_node: Node3D = null

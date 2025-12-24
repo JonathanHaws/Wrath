@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://sj1jfdnq1vjb"]
+[gd_scene load_steps=41 format=3 uid="uid://sj1jfdnq1vjb"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_5ay62"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_faveg"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="25_gwq6n"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="26_t4er3"]
 [ext_resource type="PackedScene" uid="uid://dnmftqcmv26ca" path="res://actors/characters/enemies/bosses/sloth/sloth.blend" id="27_dbtmo"]
+[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="28_muo5h"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d0au0"]
 radius = 0.78333
@@ -341,7 +342,7 @@ tracks/15/keys = {
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
 resource_name = "INTRO"
-length = 2.91667
+length = 60.0
 step = 0.0416667
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -417,6 +418,60 @@ tracks/5/keys = {
 "values": [{
 "args": [0.0],
 "method": &"play"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitShape/CollisionShape3D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Node3D")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(3.33333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, null],
+"method": &"spawn"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Node3D2")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(3.83333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, null],
+"method": &"spawn"
+}]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Node3D3")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(4.375),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, null],
+"method": &"spawn"
 }]
 }
 
@@ -516,7 +571,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -533,26 +588,26 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Audio/Music:volume_db")
+tracks/9/path = NodePath("Target:USE_GRAVITY")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [true]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Target:USE_GRAVITY")
+tracks/10/path = NodePath("Audio/Music:volume_db")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
@@ -643,16 +698,19 @@ parameters/looping = true
 
 [node name="HitShape" type="Area3D" parent="." node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("20_6h4tx")
-HEALTH = 1500
-MAX_HEALTH = 1500
+HEALTH = 600.0
+MAX_HEALTH = 600.0
 IMMUNE_GROUPS = Array[String](["greed"])
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
+USE_WAVE_HEALTH_BAR = true
+WAVE_DAMAGE = 200.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
 shape = SubResource("CapsuleShape3D_dbtmo")
+disabled = true
 
 [node name="CameraShake" type="Node" parent="."]
 script = ExtResource("21_u53v8")
@@ -688,8 +746,9 @@ NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 MESH = NodePath("../Mesh")
 BODY = NodePath("..")
 FLIPPED_TRACKING = true
+TRACKING_SPEED = 0.0
 STOP_CHASE_AREA = NodePath("../HitShape")
-SPEED = 12.0
+SPEED = 0.0
 SPEED_MULTIPLIER = 0.0
 
 [node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SCENE_ROOT")]
@@ -735,6 +794,27 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 27.0089
+
+[node name="Node3D" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node", "parent_node")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29153e-06, 1.89897, -2.7827)
+script = ExtResource("23_8fqfx")
+scenes = Array[PackedScene]([ExtResource("28_muo5h")])
+copy_transform_node = NodePath(".")
+parent_node = NodePath(".")
+
+[node name="Node3D2" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node", "parent_node")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.18036, 1.89897, -2.7827)
+script = ExtResource("23_8fqfx")
+scenes = Array[PackedScene]([ExtResource("28_muo5h")])
+copy_transform_node = NodePath(".")
+parent_node = NodePath(".")
+
+[node name="Node3D3" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node", "parent_node")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.94203, 1.89897, -2.7827)
+script = ExtResource("23_8fqfx")
+scenes = Array[PackedScene]([ExtResource("28_muo5h")])
+copy_transform_node = NodePath(".")
+parent_node = NodePath(".")
 
 [connection signal="body_entered" from="Shake" to="Shake" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]

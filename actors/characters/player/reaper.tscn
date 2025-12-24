@@ -1672,6 +1672,58 @@ tracks/8/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_ekykk"]
+resource_name = "SKILLS"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:TURN_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/LookAtModifier3D:influence")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
 [sub_resource type="Animation" id="Animation_376u0"]
 resource_name = "Spin"
 length = 0.375004
@@ -2018,58 +2070,6 @@ tracks/5/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_ekykk"]
-resource_name = "SKILLS"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:SPEED_MULTIPLIER")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:TURN_MULTIPLIER")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/LookAtModifier3D:influence")
-tracks/2/interp = 0
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_b2cvw"]
 _data = {
 &"DEATH": SubResource("Animation_s81g7"),
@@ -2414,7 +2414,7 @@ material_override = ExtResource("35_m1s71")
 material_override = ExtResource("36_4anjp")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="3"]
-transform = Transform3D(0.997449, -0.0139258, -0.0700129, 0.0166927, 0.999096, 0.0390915, 0.0694052, -0.0401605, 0.99678, -0.00233254, 0.889865, -0.667738)
+transform = Transform3D(0.997449, -0.0139258, -0.0700128, 0.0166928, 0.999096, 0.0390922, 0.0694051, -0.0401611, 0.99678, -0.00233259, 0.889865, -0.667738)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -2436,7 +2436,7 @@ save_key = "damage"
 upgrade_animation = "DAMAGE"
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4"]
-transform = Transform3D(-0.999033, -0.0392884, -0.0197621, 0.0222726, -0.0645235, -0.997668, 0.0379216, -0.997142, 0.0653363, -0.105714, 0.0942541, -0.421497)
+transform = Transform3D(-0.999032, -0.0392883, -0.0197621, 0.0222726, -0.0645234, -0.997668, 0.0379216, -0.997142, 0.0653363, -0.105714, 0.094254, -0.421497)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -2447,7 +2447,7 @@ scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5"]
-transform = Transform3D(-0.999033, -0.0392884, -0.0197621, 0.0222726, -0.0645235, -0.997668, 0.0379216, -0.997142, 0.0653363, -0.105714, 0.0942541, -0.421497)
+transform = Transform3D(-0.999032, -0.0392883, -0.0197621, 0.0222726, -0.0645234, -0.997668, 0.0379216, -0.997142, 0.0653363, -0.105714, 0.094254, -0.421497)
 bone_name = "foot_l"
 bone_idx = 18
 

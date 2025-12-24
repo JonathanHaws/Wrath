@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="7_5hgnl"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="8_deg3c"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="9_d2qy0"]
-[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="9_w17nt"]
+[ext_resource type="PackedScene" uid="uid://sj1jfdnq1vjb" path="res://actors/characters/enemies/bosses/sloth/sloth.tscn" id="9_w17nt"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -72,11 +72,8 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -8.840
 
 [node name="Ghosts" type="Node" parent="."]
 
-[node name="Ghost" parent="Ghosts" instance=ExtResource("9_w17nt")]
-transform = Transform3D(-0.677364, 0, 0.735648, 0, 1, 0, -0.735648, 0, -0.677364, 27.8355, -8.28661, -11.1696)
-
-[node name="Ghost2" parent="Ghosts" instance=ExtResource("9_w17nt")]
-transform = Transform3D(0.449023, 0, 0.89352, 0, 1, 0, -0.89352, 0, 0.449023, 16.1, -8.28661, 9.30553)
+[node name="Sloth" parent="." instance=ExtResource("9_w17nt")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.8399, -8.73217, -0.629459)
 
 [node name="Reaper" parent="." instance=ExtResource("5_3y1t5")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
