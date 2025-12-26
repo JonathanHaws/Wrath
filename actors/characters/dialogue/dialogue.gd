@@ -34,16 +34,23 @@ func _spawn_next_dialogue() -> void:
 		current_index = int(start_index)
 		return
 		
-	var scene_index = int(dialogue[current_index].scene)
-	if scene_index >= 0 and scene_index < dialogue_templates.size():
-		if not dialogue_templates[scene_index]: return
-		var instance = dialogue_templates[scene_index].instantiate()
-		if "info" in dialogue[current_index] and "info" in instance:
-			instance.info = dialogue[current_index].info
-		add_child(instance)
+	var entry = dialogue[current_index]	
+	
+	if "anim" in entry and "anim_player_group" in entry :
+		for p in get_tree().get_nodes_in_group(entry.anim_player_group):
+			p.play(entry.anim)
+	
+	if entry.has("scene"):	
+		var scene_index = int(entry.scene)
+		if scene_index >= 0 and scene_index < dialogue_templates.size():
+			if not dialogue_templates[scene_index]: return
+			var instance = dialogue_templates[scene_index].instantiate()
+			if "info" in entry and "info" in instance:
+				instance.info = entry.info
+			add_child(instance)
 		
-	if "skip" in dialogue[current_index]:
-		current_index += 1 + dialogue[current_index].skip
+	if "skip" in entry:
+		current_index += 1 + entry.skip
 	else:
 		current_index += 1
 		
