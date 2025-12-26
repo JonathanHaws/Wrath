@@ -1,0 +1,248 @@
+<REAPER_PROJECT 0.1 "6.19/win64" 1766731020
+  RIPPLE 0
+  GROUPOVERRIDE 0 0 0
+  AUTOXFADE 1
+  ENVATTACH 1
+  POOLEDENVATTACH 0
+  MIXERUIFLAGS 11 48
+  PEAKGAIN 1
+  FEEDBACK 0
+  PANLAW 1
+  PROJOFFS 0 0 0
+  MAXPROJLEN 0 600
+  GRID 3455 8 1 8 1 0 0 0
+  TIMEMODE 1 5 -1 30 0 0 -1
+  VIDEO_CONFIG 0 0 256
+  PANMODE 3
+  CURSOR 46.78259291980348
+  ZOOM 392.51779035588214 17635 0
+  VZOOMEX 6 0
+  USE_REC_CFG 0
+  RECMODE 1
+  SMPTESYNC 0 30 100 40 1000 300 0 0 1 0 0
+  LOOP 0
+  LOOPGRAN 0 4
+  RECORD_PATH "" ""
+  <RECORD_CFG
+  >
+  <APPLYFX_CFG
+  >
+  RENDER_FILE "C:\Users\Jonathan\Desktop\REPOS\Wrath\actors\characters\enemies\bosses\lust\lust_talk.ogg"
+  RENDER_FMT 0 2 44100
+  RENDER_1X 0
+  RENDER_RANGE 2 0 0 18 1000
+  RENDER_RESAMPLE 3 0 1
+  RENDER_ADDTOPROJ 0
+  RENDER_STEMS 0
+  RENDER_DITHER 0
+  TIMELOCKMODE 1
+  TEMPOENVLOCKMODE 1
+  ITEMMIX 0
+  DEFPITCHMODE 589824 0
+  TAKELANE 1
+  SAMPLERATE 44100 0 0
+  <RENDER_CFG
+    dmdnbwAAAD8AgAAAAIAAAAAgAAAAAAEAAA==
+  >
+  LOCK 1
+  <METRONOME 6 2
+    VOL 0.25 0.125
+    FREQ 800 1600 1
+    BEATLEN 4
+    SAMPLES "" ""
+    PATTERN 2863311530 2863311529
+  >
+  GLOBAL_AUTO -1
+  TEMPO 120 4 4
+  PLAYRATE 1 0 0.25 4
+  SELECTION 46.82335540342363 47.09441811455435
+  SELECTION2 46.82335540342363 47.09441811455435
+  MASTERAUTOMODE 0
+  MASTERTRACKHEIGHT 0 0
+  MASTERPEAKCOL 16576
+  MASTERMUTESOLO 0
+  MASTERTRACKVIEW 0 0.6667 0.5 0.5 -1 -1 -1 0 0 0 -1 -1 0
+  MASTERHWOUT 0 0 1 0 0 0 0 -1
+  MASTER_NCH 2 2
+  MASTER_VOLUME 1 0 -1 -1 1
+  MASTER_FX 1
+  MASTER_SEL 0
+  <MASTERPLAYSPEEDENV
+    EGUID {993E295C-3692-424A-A29D-7FBABE4365FE}
+    ACT 0 -1
+    VIS 0 1 1
+    LANEHEIGHT 0 0
+    ARM 0
+    DEFSHAPE 0 -1 -1
+  >
+  <TEMPOENVEX
+    EGUID {CBFBBB86-C118-43D8-AE04-C118D14EB0B7}
+    ACT 0 -1
+    VIS 1 0 1
+    LANEHEIGHT 0 0
+    ARM 0
+    DEFSHAPE 1 -1 -1
+  >
+  <PROJBAY
+  >
+  <TRACK {61EF6325-5CB7-41B8-BB18-C013E9D198B1}
+    NAME 379301__bluesiren__requested-female-voice-sample-talking-fighting-noises
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
+    FREEMODE 0
+    SEL 0
+    REC 0 0 1 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 -1 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {61EF6325-5CB7-41B8-BB18-C013E9D198B1}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 0
+      SNAPOFFS 0
+      LENGTH 46.65693094406964
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {3711F4D7-EAB6-46CB-AEC1-E939E7DCEADC}
+      IID 1
+      NAME 379301__bluesiren__requested-female-voice-sample-talking-fighting-noises.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 0
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {4199C235-98B3-4DBA-A971-A1FAD4F25224}
+      <SOURCE WAVE
+        FILE "C:\Users\Jonathan\Downloads\379301__bluesiren__requested-female-voice-sample-talking-fighting-noises.wav"
+      >
+    >
+    <ITEM
+      POSITION 46.81829916269105
+      SNAPOFFS 0
+      LENGTH 0.30122067475996
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1 0.032274 0 1 0 0 0
+      FADEOUT 1 0.071719 0 1 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {D3712591-6A79-4DB7-B904-0226242AE452}
+      IID 8
+      NAME 379301__bluesiren__requested-female-voice-sample-talking-fighting-noises.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 46.81829916269105
+      PLAYRATE 1 1 12 -1 0 0.0025
+      CHANMODE 0
+      GUID {1C5C835B-912C-407D-9870-4213E359CB0E}
+      <SOURCE WAVE
+        FILE "C:\Users\Jonathan\Downloads\379301__bluesiren__requested-female-voice-sample-talking-fighting-noises.wav"
+      >
+    >
+    <ITEM
+      POSITION 47.20558288738243
+      SNAPOFFS 0
+      LENGTH 28.06190010581484
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {D0273037-D465-4B3B-A071-93C22EF07F25}
+      IID 7
+      NAME 379301__bluesiren__requested-female-voice-sample-talking-fighting-noises.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 47.20558288738243
+      PLAYRATE 1 1 0 -1 0 0.0025
+      CHANMODE 0
+      GUID {3DCB6607-DEE0-41C2-B6AB-7A45E119F9E6}
+      <SOURCE WAVE
+        FILE "C:\Users\Jonathan\Downloads\379301__bluesiren__requested-female-voice-sample-talking-fighting-noises.wav"
+      >
+    >
+  >
+  <TRACK {8EDF9498-6CCC-4121-A061-102DDBEA3745}
+    NAME 379301__bluesiren__requested-female-voice-sample-talking-fighting-noises
+    PEAKCOL 16576
+    BEAT -1
+    AUTOMODE 0
+    VOLPAN 1 0 -1 -1 1
+    MUTESOLO 0 0 0
+    IPHASE 0
+    PLAYOFFS 0 1
+    ISBUS 0 0
+    BUSCOMP 0 0 0 0 0
+    SHOWINMIX 1 0.6667 0.5 1 0.5 -1 -1 -1
+    FREEMODE 0
+    SEL 1
+    REC 0 0 1 0 0 0 0
+    VU 2
+    TRACKHEIGHT 0 0 0 0 -1 0
+    INQ 0 0 0 0.5 100 0 0 100
+    NCHAN 2
+    FX 1
+    TRACKID {8EDF9498-6CCC-4121-A061-102DDBEA3745}
+    PERF 0
+    MIDIOUT -1
+    MAINSEND 1 0
+    <ITEM
+      POSITION 46.78243955855297
+      SNAPOFFS 0
+      LENGTH 0.34425219972567
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1 0.046617 0 1 0 0 0
+      FADEOUT 1 0.125509 0 1 0 0 0
+      MUTE 0 0
+      SEL 1
+      IGUID {1F48065F-A585-4A6D-B7B3-7D9EE9AB0C17}
+      IID 6
+      NAME 379301__bluesiren__requested-female-voice-sample-talking-fighting-noises.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 46.78243955855297
+      PLAYRATE 1 1 15 -1 0 0.0025
+      CHANMODE 0
+      GUID {C387257D-AFEE-4B67-8EB1-E888FCCA5D58}
+      <SOURCE WAVE
+        FILE "C:\Users\Jonathan\Downloads\379301__bluesiren__requested-female-voice-sample-talking-fighting-noises.wav"
+      >
+    >
+    <ITEM
+      POSITION 47.20861525238401
+      SNAPOFFS 0
+      LENGTH 28.06190010581486
+      LOOP 0
+      ALLTAKES 0
+      FADEIN 1 0 0 1 0 0 0
+      FADEOUT 1 0 0 1 0 0 0
+      MUTE 0 0
+      SEL 0
+      IGUID {24CE62C1-981E-44EC-9A20-275A200372F6}
+      IID 9
+      NAME 379301__bluesiren__requested-female-voice-sample-talking-fighting-noises.wav
+      VOLPAN 1 0 1 -1
+      SOFFS 47.20558288738243
+      PLAYRATE 1 1 3 -1 0 0.0025
+      CHANMODE 0
+      GUID {A8A2E3E4-0258-4000-AD9B-5341F8C31205}
+      <SOURCE WAVE
+        FILE "C:\Users\Jonathan\Downloads\379301__bluesiren__requested-female-voice-sample-talking-fighting-noises.wav"
+      >
+    >
+  >
+>

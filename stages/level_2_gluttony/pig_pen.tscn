@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cx2ditraoxlvu"]
+[gd_scene load_steps=14 format=3 uid="uid://cx2ditraoxlvu"]
 
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_wceab"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_7wkw3"]
@@ -7,10 +7,7 @@
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="5_m2l7k"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="6_hc341"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="7_c6ynn"]
-[ext_resource type="PackedScene" uid="uid://nvfnr7o67bwx" path="res://actors/characters/enemies/bosses/gluttony/gluttony_preview.tscn" id="8_yyoo5"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="9_yyoo5"]
-[ext_resource type="PackedScene" uid="uid://d0qec5kl2ju4u" path="res://actors/characters/enemies/bosses/wrath/wrath_preview.tscn" id="10_el64o"]
-[ext_resource type="PackedScene" uid="uid://blxvkukk5u1ps" path="res://actors/characters/enemies/bosses/greed/greed_preview.tscn" id="11_el64o"]
 [ext_resource type="PackedScene" uid="uid://byk6752w0gnw2" path="res://actors/characters/enemies/bosses/gluttony/gluttony.tscn" id="12_efe6f"]
 [ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://actors/characters/npcs/piglet/piglet.tscn" id="13_i5fvn"]
 [ext_resource type="PackedScene" uid="uid://btfr5eocbsa1j" path="res://menus/skip/skip.tscn" id="13_pyb2n"]
@@ -115,34 +112,14 @@ DESTINATION_SCENE = "uid://cjnryqwoknkw5"
 [node name="Checkpoint" parent="." instance=ExtResource("9_yyoo5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.43816, -9.11624, 0)
 
-[node name="WrathPreview" parent="." instance=ExtResource("10_el64o")]
-transform = Transform3D(-0.759827, 0, 0.650125, 0, 1, 0, -0.650125, 0, -0.759827, 27.2417, -9.06787, -7.17066)
-visible = false
-
-[node name="GreedPreview" parent="." instance=ExtResource("11_el64o")]
-transform = Transform3D(-0.729721, 0, -0.683745, 0, 1, 0, 0.683745, 0, -0.729721, 26.1541, -9.06787, 7.00203)
-visible = false
+[node name="Reaper" parent="." instance=ExtResource("6_hc341")]
+transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
 [node name="Gluttony" parent="." instance=ExtResource("12_efe6f")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 40.4449, -8.80873, 0)
 
 [node name="Piglet" parent="." instance=ExtResource("13_i5fvn")]
 transform = Transform3D(0.971619, 0, -0.23655, 0, 1, 0, 0.23655, 0, 0.971619, -1.67795, -9.04355, 34.9739)
-
-[node name="GluttonyPreview" parent="." instance=ExtResource("8_yyoo5")]
-transform = Transform3D(-0.989639, 0, 0.143579, 0, 1, 0, -0.143579, 0, -0.989639, 25.4002, -7.39686, 0.793018)
-visible = false
-
-[node name="GreedPreview2" parent="." instance=ExtResource("11_el64o")]
-transform = Transform3D(-0.287595, 0, -0.957752, 0, 1, 0, 0.957752, 0, -0.287595, 26.3782, -9.06787, 9.15673)
-visible = false
-
-[node name="WrathPreview2" parent="." instance=ExtResource("10_el64o")]
-transform = Transform3D(-0.376014, 0, 0.926614, 0, 1, 0, -0.926614, 0, -0.376014, 26.1463, -9.06787, -7.32367)
-visible = false
-
-[node name="Reaper" parent="." instance=ExtResource("6_hc341")]
-transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
 [node name="Skip" parent="." instance=ExtResource("13_pyb2n")]
 

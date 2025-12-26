@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b8bvono5iv61i"]
+[gd_scene load_steps=26 format=3 uid="uid://b8bvono5iv61i"]
 
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://actors/characters/enemies/bosses/greed/greed.blend" id="1_j2t0c"]
 [ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://actors/progress_gate.gd" id="1_qmj27"]
@@ -10,7 +10,8 @@
 [ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://actors/characters/dialogue/scenes/chat.tscn" id="9_qmj27"]
 [ext_resource type="JSON" path="res://actors/characters/enemies/bosses/greed/greed_talk_1.json" id="10_asfo8"]
 [ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://actors/characters/dialogue/scenes/choice.tscn" id="10_hnncu"]
-[ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://actors/characters/enemies/sfx/Cry_2.wav" id="11_lwcnx"]
+[ext_resource type="Script" uid="uid://b7r0jqvwugh6i" path="res://actors/characters/dialogue/jibberish_chat.gd" id="10_l5fl7"]
+[ext_resource type="AudioStream" uid="uid://yn118a1m8hyx" path="res://actors/characters/enemies/bosses/greed/greed_talk.ogg" id="11_4ke7g"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_as0iv"]
 
@@ -61,40 +62,12 @@ _data = {
 [sub_resource type="SphereShape3D" id="SphereShape3D_6t1gf"]
 radius = 5.85584
 
-[sub_resource type="Animation" id="Animation_hnncu"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Dialogue/AnimationPlayer/Background:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
-[sub_resource type="Animation" id="Animation_qmj27"]
+[sub_resource type="Animation" id="Animation_lwcnx"]
 resource_name = "entered"
-length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialogue/AnimationPlayer/Background:modulate")
+tracks/0/path = NodePath("AnimationPlayer/Background:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -106,7 +79,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/1/path = NodePath("../greed/Rig/Skeleton3D/LookAtModifier3D:influence")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -116,13 +89,12 @@ tracks/1/keys = {
 "values": [0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_asfo8"]
+[sub_resource type="Animation" id="Animation_l5fl7"]
 resource_name = "exited"
-length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialogue/AnimationPlayer/Background:modulate")
+tracks/0/path = NodePath("AnimationPlayer/Background:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -134,21 +106,76 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/1/path = NodePath("../greed/Rig/Skeleton3D/LookAtModifier3D:influence")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.266667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 0.0]
+"values": [0.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7mlpp"]
+[sub_resource type="Animation" id="Animation_4ke7g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../greed/Rig/Skeleton3D/LookAtModifier3D:influence")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_u1728"]
+resource_name = "reset"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimationPlayer/Background:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../greed/Rig/Skeleton3D/LookAtModifier3D:influence")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ke7g"]
 _data = {
-&"RESET": SubResource("Animation_hnncu"),
-&"entered": SubResource("Animation_qmj27"),
-&"exited": SubResource("Animation_asfo8")
+&"RESET": SubResource("Animation_4ke7g"),
+&"entered": SubResource("Animation_lwcnx"),
+&"exited": SubResource("Animation_l5fl7"),
+&"reset": SubResource("Animation_u1728")
 }
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5hc3"]
@@ -236,11 +263,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.44854, -1.47058)
 shape = SubResource("SphereShape3D_6t1gf")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Dialogue" node_paths=PackedStringArray("area")]
-root_node = NodePath("../..")
 libraries = {
-&"": SubResource("AnimationLibrary_7mlpp")
+&"": SubResource("AnimationLibrary_4ke7g")
 }
-autoplay = "RESET"
+autoplay = "reset"
 script = ExtResource("6_as0iv")
 area = NodePath("..")
 dialogue_templates = Array[PackedScene]([ExtResource("9_qmj27"), ExtResource("10_hnncu")])
@@ -259,8 +285,11 @@ theme_override_styles/background = SubResource("StyleBoxFlat_k5hc3")
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dialogue/AnimationPlayer"]
-stream = ExtResource("11_lwcnx")
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dialogue" node_paths=PackedStringArray("player")]
+bus = &"SFX"
+script = ExtResource("10_l5fl7")
+sounds = Array[AudioStream]([ExtResource("11_4ke7g")])
+player = NodePath(".")
 
 [node name="Target" type="Node3D" parent="."]
 script = ExtResource("8_k5hc3")

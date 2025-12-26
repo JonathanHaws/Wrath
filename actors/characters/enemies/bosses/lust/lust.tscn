@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://b7lmw4awqeris"]
+[gd_scene load_steps=61 format=3 uid="uid://b7lmw4awqeris"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_kak7r"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_la4sj"]
@@ -36,6 +36,8 @@
 [ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://actors/characters/dialogue/scenes/choice.tscn" id="34_be12w"]
 [ext_resource type="JSON" path="res://actors/characters/enemies/bosses/lust/lust_talk_1.json" id="35_ldn6u"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://actors/characters/enemies/sfx/Cry_2.wav" id="36_7oock"]
+[ext_resource type="AudioStream" uid="uid://dluohdjxxbmn2" path="res://actors/characters/enemies/bosses/lust/lust_talk.ogg" id="36_ldn6u"]
+[ext_resource type="Script" uid="uid://b7r0jqvwugh6i" path="res://actors/characters/dialogue/jibberish_chat.gd" id="37_be12w"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d0au0"]
 radius = 0.78333
@@ -1455,6 +1457,12 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dialogue/AnimationPlayer"]
 stream = ExtResource("36_7oock")
+
+[node name="ChatSound" type="AudioStreamPlayer" parent="Dialogue/AnimationPlayer" node_paths=PackedStringArray("player")]
+bus = &"SFX"
+script = ExtResource("37_be12w")
+sounds = Array[AudioStream]([ExtResource("36_ldn6u")])
+player = NodePath(".")
 
 [connection signal="body_entered" from="Mesh/lust/Armature/Skeleton3D/Tail1/AttackArea" to="Mesh/lust/Armature/Skeleton3D/Tail1/AttackArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/lust/Armature/Skeleton3D/Tail2/AttackArea" to="Mesh/lust/Armature/Skeleton3D/Tail2/AttackArea" method="_on_body_entered"]
