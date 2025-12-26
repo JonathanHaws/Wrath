@@ -107,7 +107,7 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_edx7f"]
 resource_name = "CHASE"
-length = 1.70834
+length = 1.33334
 loop_mode = 1
 step = 0.0416667
 tracks/0/type = "value"
@@ -1030,46 +1030,57 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.942319, 1.51236)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0418515, -0.957304, -1.72898)
 
 [node name="Skeleton3D" parent="Mesh/lust/Armature" index="0"]
-bones/1/position = Vector3(0.365603, -0.0402839, 3.95554)
-bones/1/rotation = Quaternion(-0.00583933, 0.82203, 0.567338, 0.0485711)
-bones/2/rotation = Quaternion(-0.103983, -0.0136536, -0.0323425, 0.993959)
-bones/3/rotation = Quaternion(-0.00448089, 0.110215, -0.784508, 0.610229)
-bones/4/rotation = Quaternion(0.00553071, 0.597753, -0.4993, 0.627184)
+bones/1/position = Vector3(-0.339932, -0.0445421, 3.95585)
+bones/1/rotation = Quaternion(0.000872327, 0.822177, 0.567146, -0.0486749)
+bones/2/rotation = Quaternion(-0.104312, 0.00456751, 0.0351198, 0.993914)
+bones/3/rotation = Quaternion(-0.00448088, 0.110215, -0.784508, 0.610229)
+bones/4/rotation = Quaternion(0.00553071, 0.597754, -0.4993, 0.627184)
 bones/5/rotation = Quaternion(0.45272, -0.475957, 0.265874, 0.705564)
-bones/6/rotation = Quaternion(-0.0298301, -0.000769698, 0.0277362, 0.99917)
-bones/7/position = Vector3(0.0977711, 0.225499, 0.119407)
-bones/7/rotation = Quaternion(0.145474, 0.00813261, -0.0904142, 0.985189)
+bones/6/rotation = Quaternion(-0.0298301, -0.000769819, 0.0277362, 0.99917)
+bones/7/position = Vector3(0.0977707, 0.225499, 0.119407)
+bones/7/rotation = Quaternion(0.145474, 0.00813263, -0.0904142, 0.985189)
 bones/10/rotation = Quaternion(-0.0133873, 0.00121677, -0.116095, 0.993147)
 bones/12/rotation = Quaternion(0.0614101, 0.0181102, -0.0462829, 0.996875)
-bones/13/rotation = Quaternion(-0.0650022, 0.0575127, -0.051461, 0.994896)
-bones/14/rotation = Quaternion(-0.00744229, -0.0175825, -0.107054, 0.99407)
+bones/13/rotation = Quaternion(-0.0650022, 0.0575125, -0.051461, 0.994896)
+bones/14/rotation = Quaternion(-0.00744232, -0.0175825, -0.107054, 0.99407)
 bones/15/rotation = Quaternion(0.0261009, 0.0200451, -0.0555651, 0.997913)
-bones/16/rotation = Quaternion(-0.0567909, 0.00601733, 0.0394924, 0.997587)
-bones/17/rotation = Quaternion(0.0325905, 0.00382584, -0.125305, 0.991575)
-bones/18/position = Vector3(0.000843775, 0.279633, -0.0900199)
-bones/18/rotation = Quaternion(-0.00752546, -0.0428982, -0.0812818, 0.995739)
-bones/19/rotation = Quaternion(-0.00753985, 0.0047373, -0.0221261, 0.999716)
-bones/21/rotation = Quaternion(0.00503343, 0.0249042, 0.0823783, 0.996277)
-bones/29/rotation = Quaternion(0.999512, 0.0269732, -0.0114935, -0.0107692)
-bones/33/rotation = Quaternion(0.998708, 0.027767, -0.0123026, -0.0407538)
-bones/39/rotation = Quaternion(0.999509, -0.0269705, 0.0117452, -0.010776)
-bones/43/rotation = Quaternion(0.998704, -0.0277568, 0.0125539, -0.0407608)
-bones/48/rotation = Quaternion(-0.0014149, -0.107829, 0.78452, 0.610655)
-bones/49/rotation = Quaternion(0.00553056, -0.597754, 0.4993, 0.627184)
+bones/16/rotation = Quaternion(-0.0567909, 0.00601728, 0.0394924, 0.997587)
+bones/17/rotation = Quaternion(0.0325905, 0.0038259, -0.125305, 0.991575)
+bones/18/position = Vector3(0.000843904, 0.279633, -0.0900199)
+bones/18/rotation = Quaternion(-0.0075255, -0.0428981, -0.0812818, 0.995739)
+bones/19/rotation = Quaternion(-0.00753981, 0.0047373, -0.0221261, 0.999716)
+bones/21/rotation = Quaternion(0.00503606, -0.0230959, -0.0763969, 0.996797)
+bones/29/rotation = Quaternion(0.999512, 0.0269732, -0.0114942, -0.0107692)
+bones/33/rotation = Quaternion(0.998707, 0.0277675, -0.0123136, -0.0407535)
+bones/39/rotation = Quaternion(0.999509, -0.0269705, 0.0117461, -0.0107759)
+bones/43/rotation = Quaternion(0.998704, -0.0277572, 0.0125648, -0.0407604)
+bones/48/rotation = Quaternion(-0.00141489, -0.107829, 0.78452, 0.610655)
+bones/49/rotation = Quaternion(0.00553059, -0.597754, 0.4993, 0.627184)
 bones/50/rotation = Quaternion(0.45272, 0.475957, -0.265874, 0.705564)
-bones/51/rotation = Quaternion(-0.0298301, 0.000769637, -0.0277362, 0.99917)
-bones/52/position = Vector3(-0.097771, 0.225498, 0.119407)
-bones/52/rotation = Quaternion(0.145474, -0.00813276, 0.0904142, 0.985189)
-bones/55/rotation = Quaternion(-0.0133872, -0.00121671, 0.116095, 0.993147)
-bones/57/rotation = Quaternion(0.0614101, -0.0181103, 0.0462829, 0.996875)
-bones/58/rotation = Quaternion(-0.0650022, -0.0575127, 0.0514611, 0.994896)
-bones/59/rotation = Quaternion(-0.00744231, 0.0175826, 0.107054, 0.99407)
-bones/60/rotation = Quaternion(0.0261009, -0.0200452, 0.0555651, 0.997913)
-bones/65/position = Vector3(0.370884, -0.121334, 3.93835)
+bones/51/rotation = Quaternion(-0.0298301, 0.00076952, -0.0277362, 0.99917)
+bones/52/position = Vector3(-0.097771, 0.225499, 0.119407)
+bones/52/rotation = Quaternion(0.145474, -0.00813275, 0.0904142, 0.985189)
+bones/55/rotation = Quaternion(-0.0133872, -0.00121672, 0.116095, 0.993147)
+bones/57/rotation = Quaternion(0.0614101, -0.0181103, 0.0462829, 0.996874)
+bones/58/rotation = Quaternion(-0.0650022, -0.0575125, 0.051461, 0.994896)
+bones/59/rotation = Quaternion(-0.00744235, 0.0175827, 0.107054, 0.99407)
+bones/60/rotation = Quaternion(0.0261009, -0.0200451, 0.0555651, 0.997913)
+bones/65/position = Vector3(-0.358114, -0.113739, 3.89257)
 bones/66/rotation = Quaternion(-0.0420137, 7.54312e-08, 3.17195e-09, 0.999117)
+bones/69/rotation = Quaternion(0.26906, -0.0514542, 0.106177, 0.955869)
+bones/70/rotation = Quaternion(0.0864763, 0.0179626, -0.202581, 0.975274)
+bones/71/rotation = Quaternion(3.69794e-09, -4.96322e-09, -0.231599, 0.972811)
+bones/72/rotation = Quaternion(-0.00862106, -0.000347214, 0.0402408, 0.999153)
+bones/73/rotation = Quaternion(-0.0131366, -0.00752925, 0.244344, 0.96957)
+bones/74/rotation = Quaternion(-0.000691811, -0.0113245, 0.25111, 0.967892)
+bones/75/rotation = Quaternion(0.0073634, -0.00967068, 0.253235, 0.967328)
+bones/76/rotation = Quaternion(-0.00440104, 0.00279053, -0.0797586, 0.996801)
+bones/77/rotation = Quaternion(0.00262364, 0.00697979, -0.190017, 0.981753)
+bones/78/rotation = Quaternion(-0.0236352, 0.0140906, -0.240997, 0.970136)
+bones/79/rotation = Quaternion(0.0366839, 0.00957162, -0.224193, 0.973807)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.986626, 0.133975, -0.0928427, -0.154808, 0.948486, -0.276422, 0.0510263, 0.287098, 0.956541, -0.242583, 5.03027, 0.235992)
+transform = Transform3D(0.987273, -0.131465, 0.0894949, 0.151467, 0.948812, -0.277152, -0.048478, 0.28718, 0.956649, 0.222792, 5.03101, 0.232024)
 bone_name = "neck"
 bone_idx = 20
 
@@ -1085,7 +1096,7 @@ debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 surface_material_override/0 = ExtResource("30_gn5mi")
 
 [node name="Tail1" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="2"]
-transform = Transform3D(1, 1.33377e-14, -5.21623e-15, -1.16864e-14, -1.49012e-08, 1, 1.31193e-14, -1, -2.23517e-07, -0.370884, 0.564436, -1.60342)
+transform = Transform3D(0.985059, 0.172219, 2.6077e-08, 7.45058e-09, -2.98023e-08, 1, 0.172219, -0.985058, -2.08616e-07, 0.0994245, 0.518653, -1.56509)
 bone_name = "tail.006"
 bone_idx = 70
 
@@ -1101,7 +1112,7 @@ disabled = true
 debug_color = Color(0.73, 0.73, 0.73, 0)
 
 [node name="Tail2" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, 1.34219e-14, -4.98534e-15, -1.16865e-14, -0.0172555, 0.999851, 1.31155e-14, -0.999851, -0.0172557, -0.370884, 0.564436, -4.49105)
+transform = Transform3D(0.847245, 0.531123, 0.00916614, 3.07271e-08, -0.0172555, 0.999851, 0.531202, -0.847119, -0.0146198, 1.25913, 0.518653, -4.12419)
 bone_name = "tail.008"
 bone_idx = 72
 
@@ -1291,6 +1302,5 @@ omni_range = 27.0089
 [connection signal="body_entered" from="Mesh/lust/Armature/Skeleton3D/Tail1/AttackArea" to="Mesh/lust/Armature/Skeleton3D/Tail1/AttackArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/lust/Armature/Skeleton3D/Tail2/AttackArea" to="Mesh/lust/Armature/Skeleton3D/Tail2/AttackArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Shake" to="Shake" method="_on_body_entered"]
-[connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
 
 [editable path="Mesh/lust"]

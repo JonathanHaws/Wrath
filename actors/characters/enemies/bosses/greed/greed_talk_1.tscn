@@ -66,7 +66,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialogue/Background:modulate")
+tracks/0/path = NodePath("Dialogue/AnimationPlayer/Background:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -94,7 +94,7 @@ length = 0.4
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialogue/Background:modulate")
+tracks/0/path = NodePath("Dialogue/AnimationPlayer/Background:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -122,7 +122,7 @@ length = 0.3
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialogue/Background:modulate")
+tracks/0/path = NodePath("Dialogue/AnimationPlayer/Background:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -165,6 +165,36 @@ node_to_queue_free = NodePath(".")
 [node name="greed" parent="." instance=ExtResource("1_j2t0c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0566255, 1.19209e-07, -1.16721)
 
+[node name="Skeleton3D" parent="greed/Rig" index="0"]
+bones/1/position = Vector3(4.12474e-07, -0.0660428, -2.73291)
+bones/1/rotation = Quaternion(-0.788479, -4.54041e-08, -6.02858e-08, 0.615061)
+bones/2/position = Vector3(0.318777, -0.0666643, -0.0106261)
+bones/2/rotation = Quaternion(0.995725, 0.0149688, -0.000833722, 0.0911446)
+bones/3/rotation = Quaternion(0.234039, -0.00564749, 0.0132514, 0.972121)
+bones/4/rotation = Quaternion(-0.244926, 0.00987893, 0.0135449, 0.969397)
+bones/5/rotation = Quaternion(0.189993, -0.00651416, 0.0393444, 0.980975)
+bones/6/rotation = Quaternion(0.0698826, -2.74844e-11, 2.35372e-10, 0.997555)
+bones/7/rotation = Quaternion(0.902787, 0.137022, -0.144121, 0.381353)
+bones/8/rotation = Quaternion(0.40116, -0.304419, 0.762542, 0.406116)
+bones/9/rotation = Quaternion(0.151975, -0.0328068, -0.212513, 0.96471)
+bones/10/rotation = Quaternion(-0.024475, 1.22691e-08, -0.0359915, 0.999052)
+bones/12/rotation = Quaternion(0.363692, 3.97756e-11, 2.76421e-10, 0.931519)
+bones/13/position = Vector3(-0.488868, 1.43551, -0.00969566)
+bones/13/rotation = Quaternion(0.87963, -0.0463214, 0.0193861, 0.473002)
+bones/14/rotation = Quaternion(0.120651, 0.0832359, -0.789549, 0.595925)
+bones/15/rotation = Quaternion(0.110033, -0.00608327, -0.0931645, 0.989533)
+bones/16/rotation = Quaternion(-0.024475, -1.55062e-08, 0.0359915, 0.999052)
+bones/17/position = Vector3(-0.000161945, 0.339309, -0.32459)
+bones/17/rotation = Quaternion(0.779864, 0.174091, -0.567985, -0.197226)
+bones/18/rotation = Quaternion(-0.259324, 0.0143286, 0.107515, 0.95968)
+bones/19/rotation = Quaternion(-0.400944, -0.0118955, -0.124635, 0.907507)
+bones/20/rotation = Quaternion(-0.398659, -0.0279548, -0.0491474, 0.915355)
+bones/21/rotation = Quaternion(-0.0735687, -0.00222429, -0.0102612, 0.997235)
+bones/22/rotation = Quaternion(0.995725, -0.0149688, 0.000833722, 0.0911446)
+bones/23/rotation = Quaternion(0.234039, 0.00564749, -0.0132514, 0.972121)
+bones/24/rotation = Quaternion(-0.244926, -0.00987893, -0.0135449, 0.969397)
+bones/25/rotation = Quaternion(0.189993, 0.00651417, -0.0393444, 0.980975)
+
 [node name="greed" parent="greed/Rig/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_qmj27")
 
@@ -197,28 +227,26 @@ libraries = {
 }
 autoplay = "rest"
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Dialogue" type="Area3D" parent="."]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Dialogue"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.44854, -1.47058)
 shape = SubResource("SphereShape3D_6t1gf")
 
-[node name="Target" type="Node3D" parent="."]
-script = ExtResource("8_k5hc3")
-
-[node name="Dialogue" type="AnimationPlayer" parent="." node_paths=PackedStringArray("area")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dialogue" node_paths=PackedStringArray("area")]
+root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_7mlpp")
 }
 autoplay = "RESET"
 script = ExtResource("6_as0iv")
-area = NodePath("../Area3D")
+area = NodePath("..")
 dialogue_templates = Array[PackedScene]([ExtResource("9_qmj27"), ExtResource("10_hnncu")])
 dialogue_file = ExtResource("10_asfo8")
 
-[node name="Background" type="ProgressBar" parent="Dialogue"]
+[node name="Background" type="ProgressBar" parent="Dialogue/AnimationPlayer"]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = -1
 anchor_top = 0.769444
@@ -231,8 +259,11 @@ theme_override_styles/background = SubResource("StyleBoxFlat_k5hc3")
 show_percentage = false
 metadata/_edit_use_anchors_ = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dialogue"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dialogue/AnimationPlayer"]
 stream = ExtResource("11_lwcnx")
+
+[node name="Target" type="Node3D" parent="."]
+script = ExtResource("8_k5hc3")
 
 [node name="Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 11.0904, -0.361175)
