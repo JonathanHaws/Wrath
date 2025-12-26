@@ -20,13 +20,10 @@ uniform sampler2D normal_texture;
 uniform float normal_strength : hint_range(0.0, 2.0) = 1.0;
 uniform bool use_normal_map = false;
 
-
 void fragment() {
 
 	float dissolve_noise = texture(noise_texture, (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).xy * 0.1).r;
 	// planar mapping so dont have to worry about messed up uv as it uses world space
-
-
 
 	float border_mask = 0.0;
 	if (dissolve_amount > 0.0) {
@@ -39,31 +36,16 @@ void fragment() {
 	}
 
 	vec4 albedo_tex = texture(albedo_texture, UV).rgba;
-	vec3 albedo;
+	if (albedo_tex.a < 0.5) {  discard; } // force hard transparency
+	ALBEDO = albedo_tex.rgb * albedo_color;
 
-	if (albedo_tex.rgb == vec3(0.0)) {
-		albedo = albedo_color.rgb;
-	} else {
-		albedo.rgb = albedo_tex.rgb * albedo_color;
-	}
-
-	vec3 surface_color = albedo;
-	ALBEDO = surface_color;
-	//ALBEDO = vec3(border_mask);
+	ALPHA = dissolve_noise;
+	ALPHA_SCISSOR_THRESHOLD = dissolve_amount;
 
 	vec3 surface_emisson = mix(vec3(0.0), glow_color, border_mask);
-	if (emission_texture_enabled) {
-		surface_emisson += texture(emission_texture, UV).rgb * emission_texture_intensity;
-	}
-
+	if (emission_texture_enabled) { surface_emisson += texture(emission_texture, UV).rgb * emission_texture_intensity; }
 	EMISSION = surface_emisson * glow_intensitiy;
 
-	ALPHA = min(albedo_tex.a, dissolve_noise);
-	ALPHA_SCISSOR_THRESHOLD = dissolve_amount;
-	if (albedo_tex.a == 0.0) ALPHA = 0.0;
-
-	if (use_normal_map) {
-		NORMAL_MAP = texture(normal_texture, UV).xyz;
-	}
+	if (use_normal_map) { NORMAL_MAP = texture(normal_texture, UV).xyz; }
 
 }
