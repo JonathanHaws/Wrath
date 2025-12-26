@@ -1,7 +1,7 @@
 [gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://cvsny0mi4xpkl"]
 
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="1_bgrsy"]
-[ext_resource type="Texture2D" uid="uid://cgonc3b5gfd5" path="res://actors/characters/enemies/bosses/lust/color.png" id="2_xkd6s"]
+[ext_resource type="Texture2D" uid="uid://30a88mkk0lip" path="res://actors/characters/enemies/bosses/lust/color-2.png" id="2_bgrsy"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_c3uco"]
 
@@ -11,7 +11,7 @@ noise = SubResource("FastNoiseLite_c3uco")
 [resource]
 render_priority = 0
 shader = ExtResource("1_bgrsy")
-shader_parameter/albedo_texture = ExtResource("2_xkd6s")
+shader_parameter/albedo_texture = ExtResource("2_bgrsy")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/emission_texture_intensity = 0.0
 shader_parameter/emission_texture_enabled = true
