@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://b7lmw4awqeris"]
+[gd_scene load_steps=63 format=3 uid="uid://b7lmw4awqeris"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_kak7r"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_la4sj"]
@@ -25,7 +25,9 @@
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://actors/cinematic.gd" id="23_ri2mk"]
 [ext_resource type="PackedScene" uid="uid://cajl1wg350nss" path="res://actors/characters/enemies/bosses/lust/lust_hurt_particles.tscn" id="24_d0au0"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="24_f8ihq"]
+[ext_resource type="Texture2D" uid="uid://cgonc3b5gfd5" path="res://actors/characters/enemies/bosses/lust/color.png" id="24_fr36l"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="24_ytbli"]
+[ext_resource type="Texture2D" uid="uid://30a88mkk0lip" path="res://actors/characters/enemies/bosses/lust/color-2.png" id="25_7oock"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="26_ppvu3"]
 [ext_resource type="PackedScene" uid="uid://c57ypccbd3fky" path="res://actors/characters/enemies/bosses/lust/lust.blend" id="27_ri2mk"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="27_w72qa"]
@@ -506,10 +508,10 @@ tracks/10/path = NodePath("IntroCinematic/Camera3D:position")
 tracks/10/interp = 2
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0.15, 1.875, 3.95833),
+"times": PackedFloat32Array(0.15, 2.95833, 4.95833),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.062, 10.294, 9.691), Vector3(-0.062, 7.454, 7.596), Vector3(0.673, 4.554, 6.491)]
+"values": [Vector3(-0.062, 10.294, 9.691), Vector3(-0.062, 7.454, 7.596), Vector3(-0.102, 5.099, 2.902)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
@@ -518,10 +520,10 @@ tracks/11/path = NodePath("IntroCinematic/Camera3D:rotation")
 tracks/11/interp = 2
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0.18, 3.85833),
+"times": PackedFloat32Array(0.18, 4.95833),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-0.513127, 0, 0), Vector3(-0.0680678, -0.1309, -0.0872665)]
+"values": [Vector3(-0.513127, 0, 0), Vector3(0.0662448, -0.0393017, 0)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
@@ -530,10 +532,10 @@ tracks/12/path = NodePath("IntroCinematic/Camera3D:fov")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0.208333, 4.54167),
+"times": PackedFloat32Array(0.208333, 4.95833),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [46.3, 80.0]
+"values": [46.3, 34.4]
 }
 tracks/13/type = "animation"
 tracks/13/imported = false
@@ -542,8 +544,8 @@ tracks/13/path = NodePath("Mesh/lust/AnimationPlayer")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"clips": PackedStringArray("Slither"),
-"times": PackedFloat32Array(0)
+"clips": PackedStringArray("Intro"),
+"times": PackedFloat32Array(0.458333)
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -568,6 +570,18 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Mesh/lust/Armature/Skeleton3D/lust:surface_material_override/0:shader_parameter/albedo_texture")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(4.83333, 4.91996),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("24_fr36l"), ExtResource("25_7oock")]
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -816,6 +830,18 @@ tracks/20/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("Mesh/lust/Armature/Skeleton3D/lust:surface_material_override/0:shader_parameter/albedo_texture")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("24_fr36l")]
 }
 
 [sub_resource type="Animation" id="Animation_dyfuw"]
@@ -1418,6 +1444,9 @@ settings/0/gravity/damping_curve = null
 settings/0/gravity/direction = Vector3(0, -1, 0)
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
+
+[node name="AnimationPlayer" parent="Mesh/lust" index="1"]
+playback_default_blend_time = 0.3
 
 [node name="Shake" type="Area3D" parent="."]
 collision_layer = 3
