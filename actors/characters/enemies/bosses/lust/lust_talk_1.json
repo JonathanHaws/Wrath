@@ -1,0 +1,47 @@
+[
+	{"scene": "0", "info": ["OH MY..."]},
+	{"scene": "0", "info": ["WHO ARE YOU?"]},
+	{"scene": "0", "info": ["..."]},
+	{"scene": "0", "info": ["ITS VERY NICE TO MEET YOU."]},
+	
+	{"scene": "1", "info": [{"text": "WHO ARE YOU?",  }, 
+							{"text": "NICE TO MEET YOU TOO", "skip": 1 }
+							]},
+	
+	{"scene": "0", "info": ["WHO AM I?"]},
+	{"scene": "0", "info": ["DONT YOU ALREADY KNOW?"]},
+	
+	{"scene": "0", "info": ["FORGIVE ME FOR PRYING BUT..."]},
+	{"scene": "0", "info": ["WHY DO YOU SEEM SO..."]},
+	{"scene": "0", "info": ["LONELY"]},
+	{"scene": "0", "info": ["..."]},
+	{"scene": "0", "info": ["AND LOST?"]},
+	{"scene": "0", "info": ["AS IF THERES A HUGE WEIGHT ON YOUR SHOULDERS?"]},
+	{"scene": "0", "info": ["..."]},
+	{"scene": "0", "info": ["LOOK AT ME."]},
+	{"scene": "0", "info": ["I CAN REMOVE THAT LOAD FOR YOU"]},
+	{"scene": "0", "info": ["ALL YOU NEED TO DO IS... "]},
+	{"scene": "0", "info": ["LET ME... "]},
+	{"scene": "0", "info": ["..."]},
+	{"scene": "1", "info": [{"text": "GIVE IN", "skip": 5 }, 
+							{"text": "RESIST."}
+							]},
+	
+	{"scene": "0", "info": ["I THINK YOUR CONFUSED."]},
+	{"scene": "0", "info": ["NO ONE REFUSES ME."]},
+	{"scene": "0", "info": ["..."]},
+	{"scene": "0", "info": ["EVER."]},
+	{"scene": "0", "info": ["DO YOU UNDERSTAND?"]},
+
+	{"scene": "1", "info": [{"text": "NO",  "skip": 4 }, 
+							{"text": "YES", "skip": 6}
+							]},
+							
+	{"scene": "0", "info": ["GOOD..."]},
+	{"scene": "0", "info": ["WELL THEN..."]},
+	{"scene": "0", "info": ["COME CLOSER"], "skip": 3},
+	
+	{"scene": "0", "info": ["I TRIED TO WARN YOU"]},
+	{"scene": "0", "info": ["I GET WHAT I WANT"]},
+	
+]
