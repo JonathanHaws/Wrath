@@ -1,7 +1,7 @@
 shader_type spatial;
 
 //credit DisplacedFikaDev
-render_mode cull_disabled;
+render_mode cull_disabled; // Cant change this dynamicalyy. Must just make meshes with no visible backface...
 uniform sampler2D albedo_texture : source_color;
 uniform vec3 albedo_color : source_color = vec3(1.0);
 uniform sampler2D emission_texture : source_color;
