@@ -35,7 +35,7 @@
 	{"scene": "0", "info": ["EVER."]},
 	{"scene": "0", "info": ["DO YOU UNDERSTAND?"]},
 
-	{"scene": "1", "info": [{"text": "NO",  "skip": 4 }, 
+	{"scene": "1", "info": [{"text": "NO",  "skip": 2 }, 
 							{"text": "YES", "skip": 6}
 							]},
 							
@@ -44,7 +44,7 @@
 	{"scene": "0", "info": ["COME CLOSER"], "skip": 3},
 	
 	{"scene": "0", "info": ["I TRIED TO WARN YOU"]},
-	{"scene": "0", "info": ["I GET WHAT I WANT"]}, 
+	{"scene": "0", "info": ["I GET WHAT I WANT..."]}, 
 	{"anim_player_group": "lust_anim_player", "anim": "INTRO"}
 	
 ]
