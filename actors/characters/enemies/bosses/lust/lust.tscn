@@ -386,6 +386,33 @@ tracks/16/keys = {
 "values": [0.0, 1.0]
 }
 
+[sub_resource type="Animation" id="Animation_xgbyi"]
+resource_name = "IDLE"
+length = 0.791672
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/lus_shape_key/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Idle"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.579402),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 1.0]
+}
+
 [sub_resource type="Animation" id="Animation_mlrdc"]
 resource_name = "INTRO"
 length = 6.29168
@@ -1120,33 +1147,6 @@ tracks/7/keys = {
 "values": [1.0, 0.0, 0.0, 1.0]
 }
 
-[sub_resource type="Animation" id="Animation_xgbyi"]
-resource_name = "IDLE"
-length = 0.791672
-step = 0.0416667
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/lus_shape_key/AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("Idle"),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.579402),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 1.0]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
 &"CHASE": SubResource("Animation_edx7f"),
@@ -1179,12 +1179,12 @@ radius = 0.714997
 height = 4.57902
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7oock"]
-radius = 0.503398
-height = 1.70733
+radius = 0.404403
+height = 2.88366
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xgbyi"]
-radius = 0.413578
-height = 1.48963
+radius = 0.374332
+height = 2.81879
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d0au0"]
 
@@ -1557,13 +1557,13 @@ collision_mask = 3
 script = ExtResource("30_dyfuw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D/LeftHand/AttackArea"]
-transform = Transform3D(1, 3.4034e-07, 1.30385e-08, 1.36788e-08, 1, 1.86265e-08, 2.79397e-09, 1.11759e-08, 1, 0.0455611, -0.00146222, -0.000437647)
+transform = Transform3D(1, 3.42727e-07, 2.18861e-08, 2.23517e-08, 1, 1.49012e-08, 1.25729e-08, 1.49012e-08, 1, 0.0730978, -0.764383, 0.10963)
 shape = SubResource("CapsuleShape3D_7oock")
 disabled = true
 debug_color = Color(0.95, 0.038, 0.1748, 0.180392)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="5"]
-transform = Transform3D(-0.908106, -0.4187, 0.00592293, 0.418255, -0.906276, 0.0610496, -0.0201935, 0.0579168, 0.998117, -0.956145, 3.93817, -0.392304)
+transform = Transform3D(-0.908106, -0.418699, 0.00592288, 0.418254, -0.906277, 0.0610501, -0.0201937, 0.0579171, 0.998117, -0.956144, 3.93817, -0.392303)
 bone_name = "hand_r"
 bone_idx = 51
 
@@ -1573,7 +1573,7 @@ collision_mask = 3
 script = ExtResource("30_dyfuw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D/RightHand/AttackArea"]
-transform = Transform3D(1, 3.27826e-07, 1.53668e-08, 0, 1, 1.46683e-08, -1.16415e-09, 2.32831e-10, 1, 0, 0, 0)
+transform = Transform3D(1, 3.31551e-07, 1.95578e-08, 0, 1, 1.49012e-08, -1.72295e-08, 0, 1, -0.0256579, -0.710852, 0.102555)
 shape = SubResource("CapsuleShape3D_xgbyi")
 disabled = true
 debug_color = Color(0.95, 0.038, 0.1748, 0.180392)
@@ -1790,16 +1790,18 @@ shape = SubResource("SphereShape3D_ldn6u")
 
 [node name="RandomDialogue" type="AnimationPlayer" parent="Dialogue"]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Dialogue" node_paths=PackedStringArray("area")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dialogue" node_paths=PackedStringArray("anim", "area")]
 root_node = NodePath("../..")
 libraries = {
 &"": SubResource("AnimationLibrary_7mlpp")
 }
 autoplay = "RESET"
 script = ExtResource("32_ldn6u")
+anim = NodePath(".")
 area = NodePath("..")
 dialogue_templates = Array[PackedScene]([ExtResource("33_jodi6"), ExtResource("34_be12w")])
 dialogue_file = ExtResource("35_ldn6u")
+SAVE_PROGRESS = true
 
 [node name="Background" type="ProgressBar" parent="Dialogue/AnimationPlayer"]
 modulate = Color(1, 1, 1, 0)
