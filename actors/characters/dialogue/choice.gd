@@ -6,7 +6,6 @@ func _on_choice_pressed(choice: Dictionary) -> void:
 	DisableInput.toggle_action(disable_actions, true)
 	Controls.hide_mouse()
 	queue("exited")
-	get_parent().next_queued = true
 	if "skip" in choice:
 		get_parent().current_index += 1 + choice.skip
 
