@@ -2,7 +2,8 @@ extends Node
 @export var anim: AnimationPlayer ## For entry / exit animations from area
 @export var area: Area3D ## Defines the range in which will activate conversations
 @export var player_group: String = "player" ## Defines the group of bodies which can trigger conversations
-@export var dialogue_templates: Array[PackedScene] = [] ## Scene templates to spawn
+@export var conversation_templates: Array[PackedScene] = [] ## Scenes to spawn / despawn when the conversation is finished (area range exited) [NOT IMPLEMENTED YET]
+@export var dialogue_templates: Array[PackedScene] = [] ## Scene templates to spawn / despawn when the last sentence is finished
 @export var disable_actions := ["attack", "jump"] ## Requires DisableInput global
 
 @export var start_index = 0
