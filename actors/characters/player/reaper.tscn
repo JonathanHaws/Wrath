@@ -2545,7 +2545,7 @@ material_override = ExtResource("35_m1s71")
 material_override = ExtResource("36_4anjp")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="3"]
-transform = Transform3D(0.192208, -0.554266, 0.809843, 0.748053, 0.616892, 0.244665, -0.635195, 0.558779, 0.533192, -0.00446625, 1.81551, -0.139075)
+transform = Transform3D(0.192208, -0.554266, 0.809843, 0.748053, 0.616891, 0.244665, -0.635194, 0.558779, 0.533192, -0.00446622, 1.81551, -0.139075)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -2576,7 +2576,7 @@ PLAYER = NodePath("../../../../../../..")
 ATTACK_AREA = NodePath("..")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4"]
-transform = Transform3D(-0.999908, 0.0135876, -0.000293109, -0.0119042, -0.886027, -0.463481, -0.00655733, -0.463435, 0.886107, -0.116333, 0.116392, 0.421051)
+transform = Transform3D(-0.999908, 0.0135875, -0.000293263, -0.011904, -0.886026, -0.463482, -0.00655741, -0.463436, 0.886106, -0.116333, 0.116391, 0.42105)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -2587,7 +2587,7 @@ scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5"]
-transform = Transform3D(-0.999908, 0.0135876, -0.000293109, -0.0119042, -0.886027, -0.463481, -0.00655733, -0.463435, 0.886107, -0.116333, 0.116392, 0.421051)
+transform = Transform3D(-0.999908, 0.0135875, -0.000293263, -0.011904, -0.886026, -0.463482, -0.00655741, -0.463436, 0.886106, -0.116333, 0.116391, 0.42105)
 bone_name = "foot_l"
 bone_idx = 18
 

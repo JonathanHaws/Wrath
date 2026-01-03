@@ -24,10 +24,23 @@ func _on_body_entered(body) -> void:
 func _on_body_exited(body)-> void:
 	if not body.is_in_group(player_group): return
 	if DisableInput: DisableInput.toggle_action(disable_actions, true)
-	anim.queue("exited") 
+	_end_dialogue()
+
+func _end_dialogue() -> void:
+	if in_range: anim.queue("exited") 
 	in_range = false
 	current_index = start_index
 
+func skip_to(value) -> void:
+	if typeof(value) == TYPE_STRING: # Skip to fork
+		for i in range(dialogue.size()):
+			var entry = dialogue[i]
+			if entry.has("fork") and entry.fork == value:
+				current_index = i
+				return
+	else: # Skip number of sentences
+		current_index += value
+	
 func _spawn_next_dialogue() -> void:
 	
 	if not in_range: return
@@ -36,16 +49,12 @@ func _spawn_next_dialogue() -> void:
 	if current_index >= dialogue.size(): # Loop back
 		current_index = int(start_index)
 		return
-		
-	if "anim" in entry and "anim_player_group" in entry :
-		for p in get_tree().get_nodes_in_group(entry.anim_player_group):
-			p.play(entry.anim)	
 	
 	if "save" in entry and SAVE_PROGRESS:
 		Save.data[dialogue_save_key] = current_index
 		start_index = current_index
 		Save.save_game()
-	
+		
 	if entry.has("scene"):	
 		var scene_index = int(entry.scene)
 		if scene_index >= 0 and scene_index < dialogue_templates.size():
@@ -57,8 +66,17 @@ func _spawn_next_dialogue() -> void:
 			instance.tree_exited.connect(_spawn_next_dialogue) 
 			add_child(instance)
 		
-	if "skip" in entry: current_index += 1 + entry.skip
-	else: current_index += 1
+	if "skip" in entry: 
+		skip_to(entry.skip)
+	else:
+		current_index += 1
+		
+	if "anim" in entry and "anim_player_group" in entry :
+		for p in get_tree().get_nodes_in_group(entry.anim_player_group):
+			p.play(entry.anim)		
+
+	if "start" in entry: start_index = current_index
+	if "end" in entry: _end_dialogue()
 	
 func _ready():
 

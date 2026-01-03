@@ -7,7 +7,7 @@ func _on_choice_pressed(choice: Dictionary) -> void:
 	Controls.hide_mouse()
 	queue("exited")
 	if "skip" in choice:
-		get_parent().current_index += 1 + choice.skip
+		get_parent().skip_to(choice.skip)
 
 func _hide_cursor():
 	Controls.hide_mouse()
