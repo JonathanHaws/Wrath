@@ -13,15 +13,12 @@ extends CharacterBody3D
 @export var SPEED_MULTIPLIER: float = 1.0
 @export var COYOTE_TIME: float = .35
 @export var JUMP_BUFFER_TIME: float = .2
-@export var SPIN_DAMAGE_MULTIPLIER = 1.5 
-@export var PLUNGE_DAMAGE_MULTIPLIER = .3 ## 30 percent more damage each second when falling
 @export var DESCEND_MULTIPLIER = 2.0
 @export var ATTACKING_ENABLED = true
 
 @export_group("References")
 @export var CAMERA: Camera3D
 @export var MESH: Node3D
-@export var ATTACK_AREA: Area3D
 @export var ANIM: AnimationPlayer
 @export var MESH_ANIM: AnimationPlayer
 @export var COLLISON_SHAPE: CollisionShape3D
@@ -36,19 +33,6 @@ var falling = COYOTE_TIME;
 var was_on_floor = true
 var has_been_on_floor = false
 var jump_buffer = 0;
-
-func increase_damage_each_spin():
-	if ATTACK_AREA: 
-		ATTACK_AREA.damage_multiplier *= SPIN_DAMAGE_MULTIPLIER
-		#print(ATTACK_AREA.damage_multiplier, ATTACK_AREA.damage)
-
-func increase_damage_plunge():
-	if ATTACK_AREA: 
-		#print('falling amount: ', falling)
-		ATTACK_AREA.damage_multiplier = 1.0 + (falling * PLUNGE_DAMAGE_MULTIPLIER)
-
-func reset_damage():
-	if ATTACK_AREA: ATTACK_AREA.damage_multiplier = 1
 
 func reload_checkpoint() -> void:
 	await get_tree().process_frame
@@ -110,9 +94,6 @@ func _exit_tree() -> void:
 	Save.save_game()
 
 func _ready() -> void:
-	
-	SPIN_DAMAGE_MULTIPLIER   = Save.data.get("spin_multiplier", SPIN_DAMAGE_MULTIPLIER)
-	PLUNGE_DAMAGE_MULTIPLIER = Save.data.get("plunge_multiplier", PLUNGE_DAMAGE_MULTIPLIER)
 	
 	if Save.data.has("door_node_name"):		
 		var door_node = get_tree().root.find_child(Save.data["door_node_name"], true, false)
