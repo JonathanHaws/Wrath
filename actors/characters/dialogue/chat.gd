@@ -1,12 +1,12 @@
 extends AnimationPlayer
-@export var info: Array = []
+@export var info: String = ""
 @export var auto_play: bool = true
 @export var auto_play_string: String = "entered"
 @export var label: Label
 
 func _ready():
-	if info.size() > 0:
-		label.text = info[0]
+
+	label.text = info
 		
 	if auto_play:
 		play(auto_play_string)

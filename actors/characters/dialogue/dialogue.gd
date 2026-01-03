@@ -2,9 +2,13 @@ extends Node
 @export var anim: AnimationPlayer ## For entry / exit animations from area
 @export var area: Area3D ## Defines the range in which will activate conversations
 @export var player_group: String = "player" ## Defines the group of bodies which can trigger conversations
+@export var disable_actions := ["attack", "jump"] ## Requires DisableInput global
 @export var conversation_templates: Array[PackedScene] = [] ## Scenes to spawn / despawn when the conversation is finished (area range exited) [NOT IMPLEMENTED YET]
 @export var dialogue_templates: Array[PackedScene] = [] ## Scene templates to spawn / despawn when the last sentence is finished
-@export var disable_actions := ["attack", "jump"] ## Requires DisableInput global
+@export var dialog_key_map := { ## For shortening dialog files. Specify what key should spawn what scene
+	"say":0, 
+	"choice":1, 
+}
 
 @export var start_index = 0
 @export var dialogue_file: Resource
@@ -44,28 +48,23 @@ func skip_to(value) -> void:
 func _spawn_next_dialogue() -> void:
 	
 	if not in_range: return
-	var entry = dialogue[current_index]	
-	
 	if current_index >= dialogue.size(): # Loop back
 		current_index = int(start_index)
 		return
+	var entry = dialogue[current_index]	
 	
 	if "save" in entry and SAVE_PROGRESS:
 		Save.data[dialogue_save_key] = current_index
 		start_index = current_index
 		Save.save_game()
-		
-	if entry.has("scene"):	
-		var scene_index = int(entry.scene)
-		if scene_index >= 0 and scene_index < dialogue_templates.size():
-			if not dialogue_templates[scene_index]: return
-			var instance = dialogue_templates[scene_index].instantiate()
-			if "info" in entry and "info" in instance:
-				instance.info = entry.info
-			# Recursively chain dialoguye by spawning another sentence when this one is finished
+	
+	for key in dialog_key_map.keys():
+		if entry.has(key):
+			var instance = dialogue_templates[dialog_key_map[key]].instantiate()
+			instance.info = entry[key]
 			instance.tree_exited.connect(_spawn_next_dialogue) 
 			add_child(instance)
-		
+			
 	if "skip" in entry: 
 		skip_to(entry.skip)
 	else:
