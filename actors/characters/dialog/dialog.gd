@@ -20,6 +20,7 @@ var dialog_save_key
 var current_index = start_index
 var in_range = false
 var dialog
+var entry
 
 func _on_body_entered(body) -> void:
 	if not dialog or not body.is_in_group(player_group): return
@@ -48,16 +49,12 @@ func skip_to(value) -> void:
 func _spawn_next_dialog() -> void:
 	
 	if not in_range: return
-	
 	if current_index >= dialog.size(): # Loop back
 		current_index = int(start_index)
 		return
-	
 	while current_index < dialog.size() and dialog[current_index].has("fork"): # Skip fork labels
-		current_index += 1	
-		
-	var entry = dialog[current_index]	
-	
+		current_index += 1		
+	if current_index < dialog.size(): entry = dialog[current_index]	
 	
 	if "save" in entry and SAVE_PROGRESS:
 		Save.data[dialog_save_key] = current_index
