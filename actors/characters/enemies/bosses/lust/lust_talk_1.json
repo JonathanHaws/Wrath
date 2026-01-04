@@ -9,8 +9,8 @@
 	{"say": "WHO AM I?"},
 	{"say": "DONT YOU ALREADY KNOW?"},
 	
-	{"fork": "observation"
-		,"say": "FORGIVE ME FOR PRYING BUT..."},
+	{"fork": "observation"},
+		{"say": "FORGIVE ME FOR PRYING BUT..."},
 		{"say": "WHY DO YOU SEEM SO"},
 		{"say": "LONELY"},
 		{"say": "..."},
@@ -33,20 +33,21 @@
 		{"choice": [{"text": "NO",  "skip": "battle" }, 
 					{"text": "YES"}]},
 							
-	{"fork": "give_in"
-		,"say": "GOOD..."},
+	{"fork": "give_in"},
+		{"say": "GOOD..."},
 		{"say": "WELL THEN..."},
 		{"say": "COME CLOSER"},
 		{"anim_player_group": "lust_anim_player", "anim": "SIN", "skip": "atone", "end":1, "start":1},
 	
-	{"fork": "battle", "save": 1
-		,"say": "I TRIED TO WARN YOU"},
+	{"fork": "battle", "save": 1 },
+		{"say": "I TRIED TO WARN YOU"},
 		{"say": "I GET WHAT I WANT..."}, 
 	
-	{"fork": "intro", "anim_player_group": "lust_anim_player", "anim": "INTRO", "save":1, "exit":1},
+	{"fork": "intro"},
+		{"anim_player_group": "lust_anim_player", "anim": "INTRO", "save":1, "exit":1},
 	
-	{"fork": "atone","save": 1
-		,"say": "DO NOT BOTHER ME.. ","save": 1},
+	{"fork": "atone","save": 1},
+		{"say": "DO NOT BOTHER ME.. ","save": 1},
 		{"say": "I HAVE THINGS TO DO"},
 		{"choice": [{"text": "SORRY" }, 
 					{"text": "IM NOT YOUR SLAVE", "skip": "intro"}]},

@@ -1,6 +1,6 @@
 [
-	{"fork": "greetings" 
-		,"say": "OH HEY LOOK A NEW FACE..."},
+	{"fork": "greetings"},
+		{"say": "OH HEY LOOK A NEW FACE..."},
 		{"say": "IF YOUR HERE TO STEAL MY TREASURES,"},
 		{"say": "TAKE YOUR LEAVE."},
 		{"say": "GO MAKE TROUBLE ELSEWHERE!"},
@@ -13,8 +13,8 @@
 		{"say": "WHAT WERE YOU WEAK TO?"},
 		{"skip": "greetings", "end": 1},
 
-	{"fork": "escape" 
-		,"say": "IM AFRAID YOU CANT"},
+	{"fork": "escape"},
+		{"say": "IM AFRAID YOU CANT"},
 		{"say": "ITS IMPOSSIBLE."},
 		{"say": "YOUR GOING TO ROT HERE."},
 		{"say": "FOREVER."},
