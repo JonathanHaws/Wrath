@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=3 uid="uid://cx2ditraoxlvu"]
+[gd_scene load_steps=12 format=3 uid="uid://cx2ditraoxlvu"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_wceab"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_7wkw3"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="3_w2dfs"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="4_s7wev"]
@@ -10,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="9_yyoo5"]
 [ext_resource type="PackedScene" uid="uid://byk6752w0gnw2" path="res://actors/characters/enemies/bosses/gluttony/gluttony.tscn" id="12_efe6f"]
 [ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://actors/characters/npcs/piglet/piglet.tscn" id="13_i5fvn"]
-[ext_resource type="PackedScene" uid="uid://btfr5eocbsa1j" path="res://menus/skip/skip.tscn" id="13_pyb2n"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -120,8 +118,3 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 40.4449,
 
 [node name="Piglet" parent="." instance=ExtResource("13_i5fvn")]
 transform = Transform3D(0.971619, 0, -0.23655, 0, 1, 0, 0.23655, 0, 0.971619, -1.67795, -9.04355, 34.9739)
-
-[node name="Skip" parent="." instance=ExtResource("13_pyb2n")]
-
-[node name="Menu" parent="." instance=ExtResource("1_wceab")]
-visible = false

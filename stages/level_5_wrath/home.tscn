@@ -1,6 +1,5 @@
-[gd_scene load_steps=8 format=3 uid="uid://hnifptixjb2i"]
+[gd_scene load_steps=7 format=3 uid="uid://hnifptixjb2i"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="2_ahmig"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="2_ojw5x"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="3_26jig"]
 
@@ -105,6 +104,3 @@ libraries = {
 autoplay = "FADE_IN"
 
 [node name="WorldEnvironment" parent="." instance=ExtResource("3_26jig")]
-
-[node name="Menu" parent="." instance=ExtResource("2_ahmig")]
-visible = false

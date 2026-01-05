@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=3 uid="uid://cevok3tw0yqfi"]
+[gd_scene load_steps=11 format=3 uid="uid://cevok3tw0yqfi"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_5vpo2"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_oh0fd"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_2va3v"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="4_ljpmo"]
@@ -76,5 +75,3 @@ DESTINATION_SCENE = "uid://cv4g3s0sicstn"
 
 [node name="Envy" parent="." instance=ExtResource("9_r856j")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.4037, -8.73217, -0.983353)
-
-[node name="Menu" parent="." instance=ExtResource("1_5vpo2")]

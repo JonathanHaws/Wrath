@@ -1,6 +1,5 @@
-[gd_scene load_steps=28 format=3 uid="uid://5n4cvh6cqc4p"]
+[gd_scene load_steps=27 format=3 uid="uid://5n4cvh6cqc4p"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_7ckn6"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_i1vh2"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_5o1fx"]
 [ext_resource type="PackedScene" uid="uid://yxfcfpfrgfp4" path="res://actors/props/portal/portal.blend" id="4_mda5h"]
@@ -339,13 +338,13 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
 [node name="spin" parent="Portal/Mesh" index="1"]
-transform = Transform3D(0.993586, 0.113066, 0, -0.113066, 0.993586, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(0.587882, 0.808945, 0, -0.808945, 0.587882, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Portal/Mesh/flames_2" index="0"]
-transform = Transform3D(-0.885607, -0.506247, 6.79396e-16, 0.506247, -0.885607, 4.77632e-15, -1.78055e-15, 4.4838e-15, 1.02009, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(-0.825641, 0.175444, -3.11332e-16, -0.175444, -0.825641, 5.26395e-15, 7.89595e-16, 5.2137e-15, 0.844076, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Portal/Mesh/flames_1" index="0"]
-transform = Transform3D(-0.885607, -0.506247, 6.79396e-16, 0.506247, -0.885607, 4.77632e-15, -1.78055e-15, 4.4838e-15, 1.02009, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(-0.825641, 0.175444, -3.11332e-16, -0.175444, -0.825641, 5.26395e-15, 7.89595e-16, 5.2137e-15, 0.844076, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Portal/Mesh" index="4"]
 autoplay = "Spin"
@@ -423,8 +422,5 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -9.
 
 [node name="Reaper" parent="." instance=ExtResource("7_1yqwe")]
 transform = Transform3D(-0.995788, 0, 0.0916933, 0, 1, 0, -0.0916933, 0, -0.995788, 0, -7.999, -24.667)
-
-[node name="Menu" parent="." instance=ExtResource("1_7ckn6")]
-visible = false
 
 [editable path="Portal/Mesh"]

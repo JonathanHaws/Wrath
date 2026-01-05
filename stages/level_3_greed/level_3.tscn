@@ -1,6 +1,5 @@
-[gd_scene load_steps=13 format=3 uid="uid://dhhysqimh462a"]
+[gd_scene load_steps=12 format=3 uid="uid://dhhysqimh462a"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_kw3rl"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_w38s7"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_wh7qh"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="4_7sd8o"]
@@ -89,6 +88,3 @@ transform = Transform3D(0.449023, 0, 0.89352, 0, 1, 0, -0.89352, 0, 0.449023, 16
 
 [node name="Reaper" parent="." instance=ExtResource("6_y8fj1")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
-
-[node name="Menu" parent="." instance=ExtResource("1_kw3rl")]
-visible = false

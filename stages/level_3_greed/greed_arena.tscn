@@ -1,6 +1,5 @@
-[gd_scene load_steps=12 format=3 uid="uid://cbk056vj32v0p"]
+[gd_scene load_steps=11 format=3 uid="uid://cbk056vj32v0p"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_os1mw"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_p7tyw"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_jbf7c"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="4_kc7kd"]
@@ -82,19 +81,19 @@ bones/19/rotation = Quaternion(-0.400944, -0.0118955, -0.124635, 0.907507)
 bones/25/rotation = Quaternion(0.189993, 0.00651416, -0.0393444, 0.980975)
 
 [node name="BoneAttachment3D" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="1"]
-transform = Transform3D(1, -1.92862e-09, 1.61505e-09, 5.37945e-10, 0.791122, 0.611658, -2.45734e-09, -0.611658, 0.791122, 2.69981e-13, 3.98942, 0.0424168)
+transform = Transform3D(1, 1.29785e-13, 2.51551e-09, 1.20114e-09, 0.878616, -0.477529, -2.21022e-09, 0.477529, 0.878616, 2.69981e-13, 3.98942, 0.0424168)
 
 [node name="TorsoAttack" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="2"]
-transform = Transform3D(1, -1.92862e-09, 1.61505e-09, 5.37945e-10, 0.791122, 0.611658, -2.45734e-09, -0.611658, 0.791122, 2.69981e-13, 3.98942, 0.0424168)
+transform = Transform3D(1, 1.29785e-13, 2.51551e-09, 1.20114e-09, 0.878616, -0.477529, -2.21022e-09, 0.477529, 0.878616, 2.69981e-13, 3.98942, 0.0424168)
 
 [node name="TailSpin" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="3"]
-transform = Transform3D(1, -1.92862e-09, 1.61505e-09, 5.37945e-10, 0.791122, 0.611658, -2.45734e-09, -0.611658, 0.791122, 2.69981e-13, 3.98942, 0.0424168)
+transform = Transform3D(1, 1.29785e-13, 2.51551e-09, 1.20114e-09, 0.878616, -0.477529, -2.21022e-09, 0.477529, 0.878616, 2.69981e-13, 3.98942, 0.0424168)
 
 [node name="LeftHandAttack" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="4"]
-transform = Transform3D(0.996632, -0.0795941, 0.0197535, 0.045703, 0.739063, 0.672083, -0.0680929, -0.668917, 0.740211, 0.617033, 6.57105, -2.35861)
+transform = Transform3D(0.996632, -0.0795941, 0.0197535, 0.0807371, 0.910039, -0.406584, 0.0143852, 0.406809, 0.9134, 0.617033, 7.22725, 1.43748)
 
 [node name="RightHandAttack" parent="Greed/Mesh/Greed/Rig/Skeleton3D" index="5"]
-transform = Transform3D(0.806744, -0.256895, 0.532135, 0.0168419, 0.91018, 0.413869, -0.59066, -0.324924, 0.738609, -0.799888, 6.66327, -2.1909)
+transform = Transform3D(0.996632, 0.0795941, -0.0197535, -0.0807371, 0.910039, -0.406584, -0.0143852, 0.406809, 0.9134, -0.617033, 7.22725, 1.43748)
 
 [node name="Enter" parent="." instance=ExtResource("9_u065d")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
@@ -109,9 +108,6 @@ DESTINATION_SCENE = "uid://cmky6xf3axtum"
 
 [node name="Reaper" parent="." instance=ExtResource("8_1fv10")]
 transform = Transform3D(-0.0916932, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916932, -13.0945, -7.47934, -1.63374)
-
-[node name="Menu" parent="." instance=ExtResource("1_os1mw")]
-visible = false
 
 [editable path="Greed"]
 [editable path="Greed/Mesh/Greed"]

@@ -1,6 +1,5 @@
-[gd_scene load_steps=14 format=3 uid="uid://cjnryqwoknkw5"]
+[gd_scene load_steps=13 format=3 uid="uid://cjnryqwoknkw5"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_kjfq7"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_cy8f3"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_o1545"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="5_vybla"]
@@ -132,9 +131,6 @@ disabled = false
 
 [node name="Reaper" parent="." instance=ExtResource("5_vybla")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
-
-[node name="Menu" parent="." instance=ExtResource("1_kjfq7")]
-visible = false
 
 [editable path="greed_talk_1"]
 [editable path="greed_talk_1/greed"]

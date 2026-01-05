@@ -430,6 +430,11 @@ tracks/1/keys = {
 resource_name = "INTRO"
 length = 6.29168
 step = 0.0416667
+markers = [{
+"color": Color(0.776471, 0.517647, 0.32549, 1),
+"name": &"skip",
+"time": 6.25
+}]
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1538,7 +1543,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_ri305")
 }
 
-[node name="Attacks" type="AnimationPlayer" parent="." groups=["lust_anim_player"]]
+[node name="Attacks" type="AnimationPlayer" parent="." groups=["lust_anim_player", "skippable"]]
 callback_mode_process = 0
 libraries = {
 &"": SubResource("AnimationLibrary_y10ku")

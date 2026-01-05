@@ -1,6 +1,5 @@
-[gd_scene load_steps=20 format=3 uid="uid://c5350q0aryax0"]
+[gd_scene load_steps=19 format=3 uid="uid://c5350q0aryax0"]
 
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="1_ldobf"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_haesu"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="3_bnm75"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="4_bi5ag"]
@@ -196,14 +195,8 @@ disabled = true
 [node name="PatInteraction" parent="Piglet" index="6"]
 disabled = false
 
-[node name="Menu" parent="Piglet" instance=ExtResource("1_ldobf")]
-visible = false
-
 [node name="Reaper" parent="." instance=ExtResource("7_u27ng")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
-
-[node name="Menu" parent="." instance=ExtResource("1_ldobf")]
-visible = false
 
 [editable path="Piglet"]
 [editable path="Piglet/piglet"]

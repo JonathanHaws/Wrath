@@ -2008,7 +2008,6 @@ show_percentage = false
 metadata/_edit_use_anchors_ = true
 
 [node name="Chat" parent="IntroCinematic/Background" instance=ExtResource("19_q0nhg")]
-info = ["IM SORRY! I COULDN'T FIND ANY FOOD..."]
 auto_play = false
 
 [node name="Shot1" type="Camera3D" parent="IntroCinematic"]
@@ -2453,7 +2452,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="10"]
-transform = Transform3D(1, 2.55795e-13, -4.76837e-07, -2.9839e-07, 0.780009, -0.625768, 3.71937e-07, 0.625768, 0.780009, -1.12903e-12, 3.03695, 0.242382)
+transform = Transform3D(1, -3.58888e-08, -1.0981e-07, -3.98925e-08, 0.784779, -0.619775, 1.08419e-07, 0.619775, 0.784779, -1.12903e-12, 3.03695, 0.242382)
 bone_name = "head"
 bone_idx = 4
 

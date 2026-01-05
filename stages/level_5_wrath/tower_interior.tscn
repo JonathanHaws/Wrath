@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://6ds3o48mieqb"]
+[gd_scene load_steps=12 format=3 uid="uid://6ds3o48mieqb"]
 
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="1_hyqyh"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="2_84uwv"]
@@ -9,7 +9,6 @@
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="7_7j2oa"]
 [ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="8_0r3a6"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="9_w0w2o"]
-[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="10_8mpjt"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(2.06018, 0.25, -23.75, 1.81018, 0.25, -34.5, -22.1898, 0.25, -34.5, 22.5602, 0.25, 29.25, 22.5602, 0.25, -23.75, -22.1898, 0.25, 29.25, 2.81018, 10, -34.5, 2.81018, 10, -24.75, 22.5602, 10, -24.75, 22.5602, 10, -34.5, 3.06018, 0.25, -34.5, 3.06018, 0.25, -25, 22.5602, 0.25, -25, 22.5602, 0.25, -34.5)
@@ -99,6 +98,3 @@ transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107
 
 [node name="Reaper" parent="." instance=ExtResource("5_4tfs5")]
 transform = Transform3D(-0.16916, 0, 0.985589, 0, 1, 0, -0.985589, 0, -0.16916, 14, -7.47934, 20.7907)
-
-[node name="Menu" parent="." instance=ExtResource("10_8mpjt")]
-visible = false
