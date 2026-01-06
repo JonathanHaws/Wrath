@@ -165,7 +165,7 @@ _data = {
 &"RevealText": SubResource("Animation_ya2al")
 }
 
-[node name="Say" type="AnimationPlayer" node_paths=PackedStringArray("label")]
+[node name="Say" type="AnimationPlayer" node_paths=PackedStringArray("label") groups=["destroy_on_skip"]]
 root_node = NodePath("Control/Label")
 libraries = {
 &"": SubResource("AnimationLibrary_hvbvu")
