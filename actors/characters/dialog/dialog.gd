@@ -1,32 +1,25 @@
 extends Node
+@export_subgroup("Area")
 @export var anim: AnimationPlayer ## For entry / exit animations from area
 @export var area: Area3D ## Defines the range in which will activate conversations
 @export var player_group: String = "player" ## Defines the group of bodies which can trigger conversations
-
-@export var start_index = 0
-@export var dialog_file: Resource
-@export var SAVE_PROGRESS := false
 @export var disable_actions := ["attack", "jump"] ## Requires DisableInput global to work
-@export var conversation_templates: Array[PackedScene] = [] ## Scenes to spawn / despawn when the conversation is finished (area range exited) [NOT IMPLEMENTED YET]
-
-@export var dialog_templates: Array[PackedScene] = [ ## Scene templates to spawn / despawn when the last sentence is finished
-	load("res://actors/characters/dialog/scenes/chat.tscn"),
-	load("res://actors/characters/dialog/scenes/choice.tscn"),]
-@export var dialog_key_map := { ## For shortening dialog files. Specify what key should spawn what scene
-	"say":0, 
-	"choice":1,}
-	
-var dialog_save_key
+@export_group("Templates") ## Scene templates to spawn specified in dialog JSON file
+@export var dialog_key_map : Array[String] = ["choice", "say", "say_timed"] ## For shortening dialog files. Specify what key should spawn what scene
+@export var dialog_templates: Array[PackedScene] = [] ## Scene templates to spawn / despawn when the last sentence is finished
+@export var dialog_group: String = "dialog" ## Group all instances of templates are added to. 
+@export_group("Dialog") ## Control dialog flow with "fork: name", "skip: fork_name", save, start, end
+@export var dialog_file: Resource
+@export var start_index = 0
 var current_index = start_index
-var in_range = false
+var dialog_active := false
+var dialog_save_key
 var dialog
 var entry
-
+	
 func _on_body_entered(body) -> void:
-	if not dialog or not body.is_in_group(player_group): return
+	if not body.is_in_group(player_group): return
 	if DisableInput: DisableInput.toggle_action(disable_actions, false)
-	anim.queue("entered")
-	in_range = true
 	_spawn_next_dialog()
 
 func _on_body_exited(body)-> void:
@@ -35,37 +28,36 @@ func _on_body_exited(body)-> void:
 	_end_dialog()
 
 func _end_dialog() -> void:
-	if in_range: anim.queue("exited") 
-	in_range = false
+	for child in get_children(): if child.has_method("exit_area"): child.exit_area()
 	current_index = start_index
 
-func skip_to(value) -> void:
-	for i in range(dialog.size()):
-		var entry = dialog[i]
-		if entry.has("fork") and entry.fork == value:
-			current_index = i
+func skip_to(value: String) -> void:
+	for line in range(dialog.size()):
+		if dialog[line].has("fork") and dialog[line].fork == value:
+			current_index = line
 			return
+
+func play_fork(value: String) -> void: # Called in animation players 
+	skip_to(value)
+	_spawn_next_dialog()
 
 func _spawn_next_dialog() -> void:
 	
-	if not in_range: return
-	if current_index >= dialog.size(): # Loop back
-		current_index = int(start_index)
-		return
-	while current_index < dialog.size() and dialog[current_index].has("fork"): # Skip fork labels
-		current_index += 1		
-	if current_index < dialog.size(): entry = dialog[current_index]	
+	if current_index >= dialog.size(): current_index = int(start_index) # Loop back
+	while current_index < (dialog.size()-1) and dialog[current_index].has("fork"): current_index += 1 # Skip fork labels
+	entry = dialog[current_index]	
 	
-	if "save" in entry and SAVE_PROGRESS:
+	if "save" in entry:
 		Save.data[dialog_save_key] = current_index
 		start_index = current_index
 		Save.save_game()
 	
-	for key in dialog_key_map.keys():
+	for i in range(dialog_key_map.size()):
+		var key = dialog_key_map[i]
 		if entry.has(key):
-			var instance = dialog_templates[dialog_key_map[key]].instantiate()
+			var instance = dialog_templates[i].instantiate()
 			instance.info = entry[key]
-			instance.tree_exited.connect(_spawn_next_dialog) 
+			instance.add_to_group(dialog_group)
 			add_child(instance)
 			
 	if "skip" in entry: skip_to(entry.skip)
@@ -89,8 +81,17 @@ func _ready():
 		dialog = JSON.parse_string(json_as_text) as Array
 		#print(dialog)
 		
-	if SAVE_PROGRESS: # Load how far the dialog has progressed (start_index)
-		dialog_save_key = Save.get_unique_key(self, "_dialog_index")
-		if Save.data.has(dialog_save_key):
-			current_index = int(Save.data[dialog_save_key])
-			start_index = current_index
+	dialog_save_key = Save.get_unique_key(self, "_dialog_index")  # Load how far the dialog has progressed (start_index)
+	if Save.data.has(dialog_save_key):
+		current_index = int(Save.data[dialog_save_key])
+		start_index = current_index
+
+func _process(_delta: float) -> void:
+	#print(get_tree().get_nodes_in_group(dialog_group).size())
+	
+	var active := get_tree().get_nodes_in_group(dialog_group).size() > 0 # Poll to see if dialog is active
+	if active and not dialog_active:
+		anim.queue("entered")
+	elif not active and dialog_active:
+		anim.queue("exited")
+	dialog_active = active

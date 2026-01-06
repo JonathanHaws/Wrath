@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://b7lmw4awqeris"]
+[gd_scene load_steps=71 format=3 uid="uid://b7lmw4awqeris"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_kak7r"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_la4sj"]
@@ -38,7 +38,11 @@
 [ext_resource type="JSON" path="res://actors/characters/enemies/bosses/lust/lust_talk_1.json" id="35_ldn6u"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://actors/characters/enemies/sfx/Cry_2.wav" id="36_7oock"]
 [ext_resource type="AudioStream" uid="uid://dluohdjxxbmn2" path="res://actors/characters/enemies/bosses/lust/lust_talk.ogg" id="36_ldn6u"]
+[ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://actors/characters/dialog/scenes/choice/choice.tscn" id="37_216sa"]
 [ext_resource type="Script" uid="uid://b7r0jqvwugh6i" path="res://actors/characters/dialog/jibberish_chat.gd" id="37_be12w"]
+[ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://actors/characters/dialog/scenes/say/say.tscn" id="38_x0dmh"]
+[ext_resource type="PackedScene" uid="uid://kiuc3ouuqv0h" path="res://actors/characters/dialog/scenes/say_timed/say_timed.tscn" id="39_gu5ya"]
+[ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://actors/characters/dialog/background.tscn" id="40_x0dmh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d0au0"]
 radius = 0.78333
@@ -1197,6 +1201,20 @@ tracks/7/keys = {
 "update": 0,
 "values": [1.0, 0.0, 0.0, 1.0]
 }
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Dialogue/AnimationPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.791667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["random_taunt_1"],
+"method": &"play_fork"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_dyfuw"]
 resource_name = "SWIPE_RIGHT"
@@ -1344,57 +1362,48 @@ height = 2.81879
 [sub_resource type="SphereShape3D" id="SphereShape3D_4oeto"]
 radius = 0.001
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_wbwgn"]
-size = Vector3(23.4119, 15.2804, 40.1915)
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_ldn6u"]
 radius = 5.85584
 
 [sub_resource type="Animation" id="Animation_hnncu"]
 length = 0.001
-tracks/0/type = "value"
+tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialogue/AnimationPlayer/Background:modulate")
+tracks/0/path = NodePath("Dialogue/AnimationPlayer/Background")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"clips": PackedStringArray("RESET"),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_qmj27"]
 resource_name = "entered"
-length = 0.4
-tracks/0/type = "value"
+length = 0.333337
+tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialogue/AnimationPlayer/Background:modulate")
+tracks/0/path = NodePath("Dialogue/AnimationPlayer/Background")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"clips": PackedStringArray("entered"),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_asfo8"]
 resource_name = "exited"
-length = 0.3
-tracks/0/type = "value"
+length = 0.333337
+tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Dialogue/AnimationPlayer/Background:modulate")
+tracks/0/path = NodePath("Dialogue/AnimationPlayer/Background")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"clips": PackedStringArray("exited"),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7mlpp"]
@@ -1403,12 +1412,6 @@ _data = {
 &"entered": SubResource("Animation_qmj27"),
 &"exited": SubResource("Animation_asfo8")
 }
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_216sa"]
-bg_color = Color(0.04, 0.04, 0.04, 0.839216)
-border_width_top = 165
-border_color = Color(0, 0, 0, 0)
-border_blend = true
 
 [node name="Lust" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM") groups=["greed"]]
 collision_layer = 6
@@ -1725,7 +1728,7 @@ disabled = true
 debug_color = Color(0.95, 0.038, 0.1748, 0.180392)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="5"]
-transform = Transform3D(-0.908106, -0.4187, 0.0059229, 0.418255, -0.906277, 0.0610497, -0.0201935, 0.0579167, 0.998117, -0.956145, 3.93817, -0.392304)
+transform = Transform3D(-0.908106, -0.4187, 0.00592293, 0.418255, -0.906276, 0.0610496, -0.0201935, 0.0579168, 0.998117, -0.956145, 3.93817, -0.392304)
 bone_name = "hand_r"
 bone_idx = 51
 
@@ -1924,15 +1927,6 @@ TREMOR_STRENGTH = 0.0
 shape = SubResource("SphereShape3D_4oeto")
 debug_color = Color(0.155, 0.62, 0.496, 0.752941)
 
-[node name="TriggerArea" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.98601, 3)
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07889, 7.1402, 8.51709)
-shape = SubResource("BoxShape3D_wbwgn")
-
 [node name="Light" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 13.6732, -3.93518)
 light_color = Color(0.79, 0.5688, 0.598293, 1)
@@ -1950,8 +1944,6 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.44854, -1.47058)
 shape = SubResource("SphereShape3D_ldn6u")
 
-[node name="RandomDialogue" type="AnimationPlayer" parent="Dialogue"]
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Dialogue" node_paths=PackedStringArray("anim", "area")]
 root_node = NodePath("../..")
 libraries = {
@@ -1961,21 +1953,10 @@ autoplay = "RESET"
 script = ExtResource("32_ldn6u")
 anim = NodePath(".")
 area = NodePath("..")
+dialog_templates = Array[PackedScene]([ExtResource("37_216sa"), ExtResource("38_x0dmh"), ExtResource("39_gu5ya")])
 dialog_file = ExtResource("35_ldn6u")
-SAVE_PROGRESS = true
 
-[node name="Background" type="ProgressBar" parent="Dialogue/AnimationPlayer"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = -1
-anchor_top = 0.769444
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-pivot_offset = Vector2(991.5, 274)
-theme_override_styles/background = SubResource("StyleBoxFlat_216sa")
-show_percentage = false
-metadata/_edit_use_anchors_ = true
+[node name="Background" parent="Dialogue/AnimationPlayer" instance=ExtResource("40_x0dmh")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dialogue/AnimationPlayer"]
 stream = ExtResource("36_7oock")

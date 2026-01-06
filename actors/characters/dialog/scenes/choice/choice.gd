@@ -6,8 +6,12 @@ func _on_choice_pressed(choice: Dictionary) -> void:
 	DisableInput.toggle_action(disable_actions, true)
 	Controls.hide_mouse()
 	queue("exited")
-	if "skip" in choice:
-		get_parent().skip_to(choice.skip)
+	if "skip" in choice: get_parent().skip_to(choice.skip)
+	tree_exited.connect(get_parent()._spawn_next_dialog)
+
+func exit_area(): 
+	if not current_animation == "exited":
+		queue("exited")
 
 func _hide_cursor():
 	Controls.hide_mouse()
@@ -33,10 +37,7 @@ func _ready():
 
 func _process(_delta):
 	
-	if get_parent().in_range: 
-		if not current_animation == "exited": _show_cursor()
+	if not current_animation == "exited": _show_cursor()
 	
-	else:
-		queue("exited")
-		return
+
 		

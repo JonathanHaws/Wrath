@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://byk6752w0gnw2"]
+[gd_scene load_steps=101 format=3 uid="uid://byk6752w0gnw2"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_kn2im"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="2_q2lvp"]
@@ -21,7 +21,6 @@
 [ext_resource type="AudioStream" uid="uid://qat80dcakodi" path="res://actors/characters/enemies/bosses/gluttony/sounds/shreik_1.wav" id="18_n5wbu"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="19_4cd86"]
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://actors/cinematic.gd" id="19_5f5tj"]
-[ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://actors/characters/dialog/scenes/chat.tscn" id="19_q0nhg"]
 [ext_resource type="AudioStream" uid="uid://7dl2hq8svsgn" path="res://actors/characters/enemies/bosses/gluttony/sounds/shreik_2.wav" id="19_svijn"]
 [ext_resource type="PackedScene" uid="uid://bemj0qglnoue4" path="res://actors/characters/enemies/bosses/gluttony/gluttony_hurt_particles.tscn" id="20_kav4y"]
 [ext_resource type="AudioStream" uid="uid://kqf1rgb5uj7h" path="res://actors/characters/enemies/bosses/gluttony/sounds/scuffle.wav" id="20_svijn"]
@@ -41,9 +40,15 @@
 [ext_resource type="PackedScene" uid="uid://dshyyn54ur3e1" path="res://actors/characters/enemies/bosses/gluttony/gluttony.blend" id="29_wvvup"]
 [ext_resource type="PackedScene" uid="uid://d2iqujeqiun08" path="res://actors/characters/enemies/bosses/gluttony/projectiles/slow_vomit.tscn" id="30_kcm85"]
 [ext_resource type="PackedScene" uid="uid://dfopfbx7m077q" path="res://actors/characters/enemies/bosses/gluttony/projectiles/fast_vomit.tscn" id="30_nxhq0"]
+[ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://actors/characters/dialog/dialog.gd" id="31_ddcis"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="31_vwjlg"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/interaction.gd" id="32_12e26"]
+[ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://actors/characters/dialog/scenes/choice/choice.tscn" id="32_26016"]
+[ext_resource type="JSON" path="res://actors/characters/enemies/bosses/gluttony/piglet_talk_1.json" id="32_ddcis"]
+[ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://actors/characters/dialog/scenes/say/say.tscn" id="33_x6t7s"]
+[ext_resource type="PackedScene" uid="uid://kiuc3ouuqv0h" path="res://actors/characters/dialog/scenes/say_timed/say_timed.tscn" id="34_76nnf"]
 [ext_resource type="Script" uid="uid://bs2bbm2ty8nsu" path="res://actors/characters/enemies/chase_target_smooth.gd" id="36_svijn"]
+[ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://actors/characters/dialog/background.tscn" id="36_x6t7s"]
 [ext_resource type="Material" uid="uid://gwfmysarj7pc" path="res://actors/characters/dust/dust.tres" id="40_uk6rk"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_12e26"]
@@ -54,11 +59,39 @@ height = 6.36337
 radius = 2.81369
 height = 8.40493
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q0nhg"]
-bg_color = Color(0.04, 0.04, 0.04, 0.631373)
-border_width_top = 165
-border_color = Color(0, 0, 0, 0)
-border_blend = true
+[sub_resource type="Animation" id="Animation_76nnf"]
+resource_name = "entered"
+length = 0.333337
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dialog/Background")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("entered"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_mra31"]
+resource_name = "exited"
+length = 0.333337
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dialog/Background")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("exited"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4y0wo"]
+_data = {
+&"entered": SubResource("Animation_76nnf"),
+&"exited": SubResource("Animation_mra31")
+}
 
 [sub_resource type="Animation" id="Animation_5k6cf"]
 resource_name = "HURT"
@@ -707,35 +740,13 @@ tracks/12/keys = {
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
-tracks/13/type = "value"
+tracks/13/type = "audio"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("IntroCinematic/Background:modulate")
+tracks/13/path = NodePath("Audio/AudioStreamPlayer")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 3.91667, 4.125, 6.625, 6.95833),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/14/type = "animation"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("IntroCinematic/Background/Chat")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"clips": PackedStringArray("entered", "exited_but_dont_queue_free"),
-"times": PackedFloat32Array(4.08333, 6.375)
-}
-tracks/15/type = "audio"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Audio/AudioStreamPlayer")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 6.49853,
@@ -743,19 +754,33 @@ tracks/15/keys = {
 }],
 "times": PackedFloat32Array(7)
 }
-tracks/15/use_blend = true
-tracks/16/type = "method"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Audio/Music")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
+tracks/13/use_blend = true
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Audio/Music")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(12.125),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.0],
 "method": &"play"
+}]
+}
+tracks/15/type = "method"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("IntroCinematic/Dialog")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(1.58333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["apology"],
+"method": &"play_fork"
 }]
 }
 
@@ -980,116 +1005,94 @@ tracks/17/keys = {
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("IntroCinematic/Background:modulate")
+tracks/18/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/Retopo:material_override:shader_parameter/dissolve_amount")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [0.0]
 }
-tracks/19/type = "animation"
+tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("IntroCinematic/Background/Chat")
+tracks/19/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LeftLeg/AttackArea/CollisionShape3D:disabled")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"clips": PackedStringArray("RESET"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/Retopo:material_override:shader_parameter/dissolve_amount")
+tracks/20/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/RightLeg/AttackArea/CollisionShape3D:disabled")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [true]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LeftLeg/AttackArea/CollisionShape3D:disabled")
+tracks/21/path = NodePath("Audio/Music:volume_db")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [0.0]
 }
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/RightLeg/AttackArea/CollisionShape3D:disabled")
+tracks/22/path = NodePath("Target:position")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Vector3(0, 0, 2.45932)]
 }
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("Audio/Music:volume_db")
+tracks/23/path = NodePath("Target:MATCH_POSITION")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [true]
 }
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("Target:position")
+tracks/24/path = NodePath("Mesh/Jump/CollisionShape3D:shape:radius")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 2.45932)]
+"values": [40.0]
 }
 tracks/25/type = "value"
 tracks/25/imported = false
 tracks/25/enabled = true
-tracks/25/path = NodePath("Target:MATCH_POSITION")
+tracks/25/path = NodePath("Target:USE_GRAVITY")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/26/type = "value"
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/path = NodePath("Mesh/Jump/CollisionShape3D:shape:radius")
-tracks/26/interp = 1
-tracks/26/loop_wrap = true
-tracks/26/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [40.0]
-}
-tracks/27/type = "value"
-tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/path = NodePath("Target:USE_GRAVITY")
-tracks/27/interp = 1
-tracks/27/loop_wrap = true
-tracks/27/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -1994,22 +1997,6 @@ script = ExtResource("19_5f5tj")
 ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["GLUTTONY_INTRO"])
 
-[node name="Background" type="ProgressBar" parent="IntroCinematic"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = -1
-anchor_top = 0.769444
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-pivot_offset = Vector2(991.5, 274)
-theme_override_styles/background = SubResource("StyleBoxFlat_q0nhg")
-show_percentage = false
-metadata/_edit_use_anchors_ = true
-
-[node name="Chat" parent="IntroCinematic/Background" instance=ExtResource("19_q0nhg")]
-auto_play = false
-
 [node name="Shot1" type="Camera3D" parent="IntroCinematic"]
 transform = Transform3D(0.876727, -0.146636, -0.458092, 0, 0.952396, -0.304864, 0.480989, 0.267282, 0.834991, -4.37286, 0.471814, 3.22674)
 fov = 79.0
@@ -2027,6 +2014,18 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
+
+[node name="Dialog" type="AnimationPlayer" parent="IntroCinematic" node_paths=PackedStringArray("anim")]
+libraries = {
+&"": SubResource("AnimationLibrary_4y0wo")
+}
+script = ExtResource("31_ddcis")
+anim = NodePath(".")
+disable_actions = []
+dialog_templates = Array[PackedScene]([ExtResource("32_26016"), ExtResource("33_x6t7s"), ExtResource("34_76nnf")])
+dialog_file = ExtResource("32_ddcis")
+
+[node name="Background" parent="IntroCinematic/Dialog" instance=ExtResource("36_x6t7s")]
 
 [node name="Damaged" type="AnimationPlayer" parent="."]
 root_node = NodePath("../AnimationPlayer")

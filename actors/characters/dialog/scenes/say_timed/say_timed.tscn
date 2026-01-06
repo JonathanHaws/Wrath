@@ -1,8 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbw5gu8hyws74"]
+[gd_scene load_steps=12 format=3 uid="uid://kiuc3ouuqv0h"]
 
-[ext_resource type="Script" uid="uid://dilt0xyh0pxn5" path="res://actors/characters/dialog/chat.gd" id="1_tfxki"]
-[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="2_2el3y"]
-[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="3_2el3y"]
+[ext_resource type="Script" uid="uid://bb0ulhlrvid4g" path="res://actors/characters/dialog/scenes/say_timed/say_timed.gd" id="1_jnq6s"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_rmwxh"]
+[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="3_bvnr2"]
 
 [sub_resource type="Animation" id="Animation_e0soa"]
 resource_name = "RESET"
@@ -165,12 +165,13 @@ _data = {
 &"RevealText": SubResource("Animation_ya2al")
 }
 
-[node name="Chat" type="AnimationPlayer" node_paths=PackedStringArray("label")]
+[node name="Say" type="AnimationPlayer" node_paths=PackedStringArray("label")]
 root_node = NodePath("Control/Label")
 libraries = {
 &"": SubResource("AnimationLibrary_hvbvu")
 }
-script = ExtResource("1_tfxki")
+autoplay = "entered"
+script = ExtResource("1_jnq6s")
 label = NodePath("Control/Label")
 
 [node name="Control" type="Control" parent="." groups=["ui_scalable"]]
@@ -182,7 +183,7 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-script = ExtResource("3_2el3y")
+script = ExtResource("2_rmwxh")
 
 [node name="Label" type="Label" parent="Control" groups=["chat"]]
 modulate = Color(1, 1, 1, 0)
@@ -202,7 +203,7 @@ rotation = -6.28319
 pivot_offset = Vector2(400, 50)
 size_flags_horizontal = 4
 size_flags_vertical = 8
-theme = ExtResource("2_2el3y")
+theme = ExtResource("3_bvnr2")
 text = "EXAMPLE TEXT. "
 horizontal_alignment = 1
 vertical_alignment = 1

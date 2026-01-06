@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b8bvono5iv61i"]
+[gd_scene load_steps=27 format=3 uid="uid://b8bvono5iv61i"]
 
 [ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://actors/characters/enemies/bosses/greed/greed.blend" id="1_j2t0c"]
 [ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://actors/progress_gate.gd" id="1_qmj27"]
@@ -6,10 +6,14 @@
 [ext_resource type="Texture2D" uid="uid://cqxt1767hiu8b" path="res://actors/characters/enemies/bosses/greed/textures/color.png" id="3_6t1gf"]
 [ext_resource type="Texture2D" uid="uid://degml03bvddt4" path="res://actors/characters/enemies/bosses/greed/textures/emisson.png" id="4_lb714"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://actors/characters/dialog/dialog.gd" id="6_as0iv"]
+[ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://actors/characters/dialog/scenes/choice/choice.tscn" id="7_4ke7g"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="8_k5hc3"]
-[ext_resource type="JSON" path="res://actors/characters/enemies/bosses/greed/greed_talk_1.json" id="10_asfo8"]
+[ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://actors/characters/dialog/scenes/say/say.tscn" id="8_u1728"]
+[ext_resource type="PackedScene" uid="uid://kiuc3ouuqv0h" path="res://actors/characters/dialog/scenes/say_timed/say_timed.tscn" id="9_a7wgb"]
+[ext_resource type="JSON" path="res://actors/characters/enemies/bosses/greed/greed_talk.json" id="10_asfo8"]
 [ext_resource type="Script" uid="uid://b7r0jqvwugh6i" path="res://actors/characters/dialog/jibberish_chat.gd" id="10_l5fl7"]
 [ext_resource type="AudioStream" uid="uid://yn118a1m8hyx" path="res://actors/characters/enemies/bosses/greed/greed_talk.ogg" id="11_4ke7g"]
+[ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://actors/characters/dialog/background.tscn" id="11_u1728"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_as0iv"]
 
@@ -65,22 +69,10 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Background:modulate")
+tracks/0/path = NodePath("../greed/Rig/Skeleton3D/LookAtModifier3D:influence")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../greed/Rig/Skeleton3D/LookAtModifier3D:influence")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -89,56 +81,54 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_lwcnx"]
 resource_name = "entered"
+length = 0.333337
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Background:modulate")
+tracks/0/path = NodePath("../greed/Rig/Skeleton3D/LookAtModifier3D:influence")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../greed/Rig/Skeleton3D/LookAtModifier3D:influence")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.166667, 0.333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
-
-[sub_resource type="Animation" id="Animation_l5fl7"]
-resource_name = "exited"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Background:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.233333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
+tracks/1/type = "animation"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../greed/Rig/Skeleton3D/LookAtModifier3D:influence")
+tracks/1/path = NodePath("AnimationPlayer/Background")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"clips": PackedStringArray("entered"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_l5fl7"]
+resource_name = "exited"
+length = 0.333337
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../greed/Rig/Skeleton3D/LookAtModifier3D:influence")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [0.0]
+"values": [1.0, 0.0]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Background")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("exited"),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_u1728"]
@@ -146,22 +136,10 @@ resource_name = "reset"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("AnimationPlayer/Background:modulate")
+tracks/0/path = NodePath("../greed/Rig/Skeleton3D/LookAtModifier3D:influence")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../greed/Rig/Skeleton3D/LookAtModifier3D:influence")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -176,12 +154,6 @@ _data = {
 &"reset": SubResource("Animation_u1728")
 }
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_k5hc3"]
-bg_color = Color(0.04, 0.04, 0.04, 0.839216)
-border_width_top = 165
-border_color = Color(0, 0, 0, 0)
-border_blend = true
-
 [node name="greed_talk_1" type="Node3D" node_paths=PackedStringArray("node_to_queue_free")]
 script = ExtResource("1_qmj27")
 save_key = "greed_encountered"
@@ -191,34 +163,34 @@ node_to_queue_free = NodePath(".")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0566255, 1.19209e-07, -1.16721)
 
 [node name="Skeleton3D" parent="greed/Rig" index="0"]
-bones/1/position = Vector3(4.12474e-07, -0.0660428, -2.73291)
-bones/1/rotation = Quaternion(-0.788479, -4.54041e-08, -6.02858e-08, 0.615061)
-bones/2/position = Vector3(0.318777, -0.0666643, -0.0106261)
-bones/2/rotation = Quaternion(0.995725, 0.0149688, -0.000833722, 0.0911446)
-bones/3/rotation = Quaternion(0.234039, -0.00564749, 0.0132514, 0.972121)
-bones/4/rotation = Quaternion(-0.244926, 0.00987893, 0.0135449, 0.969397)
-bones/5/rotation = Quaternion(0.189993, -0.00651416, 0.0393444, 0.980975)
-bones/6/rotation = Quaternion(0.0698826, -2.74844e-11, 2.35372e-10, 0.997555)
-bones/7/rotation = Quaternion(0.902787, 0.137022, -0.144121, 0.381353)
-bones/8/rotation = Quaternion(0.40116, -0.304419, 0.762542, 0.406116)
-bones/9/rotation = Quaternion(0.151975, -0.0328068, -0.212513, 0.96471)
-bones/10/rotation = Quaternion(-0.024475, 1.22691e-08, -0.0359915, 0.999052)
-bones/12/rotation = Quaternion(0.363692, 3.97756e-11, 2.76421e-10, 0.931519)
-bones/13/position = Vector3(-0.488868, 1.43551, -0.00969566)
-bones/13/rotation = Quaternion(0.87963, -0.0463214, 0.0193861, 0.473002)
-bones/14/rotation = Quaternion(0.120651, 0.0832359, -0.789549, 0.595925)
-bones/15/rotation = Quaternion(0.110033, -0.00608327, -0.0931645, 0.989533)
-bones/16/rotation = Quaternion(-0.024475, -1.55062e-08, 0.0359915, 0.999052)
-bones/17/position = Vector3(-0.000161945, 0.339309, -0.32459)
-bones/17/rotation = Quaternion(0.779864, 0.174091, -0.567985, -0.197226)
-bones/18/rotation = Quaternion(-0.259324, 0.0143286, 0.107515, 0.95968)
-bones/19/rotation = Quaternion(-0.400944, -0.0118955, -0.124635, 0.907507)
-bones/20/rotation = Quaternion(-0.398659, -0.0279548, -0.0491474, 0.915355)
-bones/21/rotation = Quaternion(-0.0735687, -0.00222429, -0.0102612, 0.997235)
-bones/22/rotation = Quaternion(0.995725, -0.0149688, 0.000833722, 0.0911446)
-bones/23/rotation = Quaternion(0.234039, 0.00564749, -0.0132514, 0.972121)
-bones/24/rotation = Quaternion(-0.244926, -0.00987893, -0.0135449, 0.969397)
-bones/25/rotation = Quaternion(0.189993, 0.00651417, -0.0393444, 0.980975)
+bones/1/position = Vector3(-0.115101, -0.787473, -2.14445)
+bones/1/rotation = Quaternion(0.122896, -7.50456e-08, 8.00423e-09, 0.99242)
+bones/2/position = Vector3(0.318777, -0.0666644, -0.0106259)
+bones/2/rotation = Quaternion(0.462359, 0.225305, 0.0159503, 0.857442)
+bones/3/rotation = Quaternion(0.624194, -0.0573771, 0.0324914, 0.778482)
+bones/4/rotation = Quaternion(-0.688381, 0.020911, -0.0296983, 0.724439)
+bones/5/rotation = Quaternion(0.370329, -0.0693967, 0.0401409, 0.925435)
+bones/6/rotation = Quaternion(-0.0529932, -0.000970775, 0.0108873, 0.998535)
+bones/7/rotation = Quaternion(0.61007, -0.306765, -0.621609, 0.383813)
+bones/8/rotation = Quaternion(0.0655176, -0.0932375, 0.836925, 0.535323)
+bones/9/rotation = Quaternion(0.0422286, -0.151168, -0.119397, 0.980362)
+bones/10/rotation = Quaternion(0.125615, 0.00602138, 0.0989558, 0.987113)
+bones/12/rotation = Quaternion(-0.405785, 0.0164168, 0.031665, 0.913272)
+bones/13/position = Vector3(-0.488868, 1.43551, -0.00969558)
+bones/13/rotation = Quaternion(0.393763, 0.335638, 0.78031, 0.351304)
+bones/14/rotation = Quaternion(0.582906, 0.128907, -0.575976, 0.55844)
+bones/15/rotation = Quaternion(-0.0715594, 0.168053, 0.086777, 0.97934)
+bones/16/rotation = Quaternion(0.0156459, -0.0280027, 0.0277857, 0.999099)
+bones/17/position = Vector3(0.0666573, -0.0478036, -0.0384446)
+bones/17/rotation = Quaternion(0.688816, -0.254606, -0.532056, 0.421455)
+bones/18/rotation = Quaternion(0.0935437, 0.0182553, -0.074732, 0.992639)
+bones/19/rotation = Quaternion(0.132945, -0.519875, -0.168143, 0.826912)
+bones/20/rotation = Quaternion(-0.0349573, -0.111938, -0.249791, 0.961172)
+bones/21/rotation = Quaternion(-0.057667, 0.123294, -0.196537, 0.971003)
+bones/22/rotation = Quaternion(0.473986, -0.0734138, 0.123248, 0.868768)
+bones/23/rotation = Quaternion(0.645333, -0.0261812, 0.0547352, 0.761488)
+bones/24/rotation = Quaternion(-0.729257, 0.0391646, -0.0951747, 0.676456)
+bones/25/rotation = Quaternion(0.291092, -0.0642706, 0.00265002, 0.95453)
 
 [node name="greed" parent="greed/Rig/Skeleton3D" index="0"]
 material_override = SubResource("ShaderMaterial_qmj27")
@@ -264,24 +236,14 @@ shape = SubResource("SphereShape3D_6t1gf")
 libraries = {
 &"": SubResource("AnimationLibrary_4ke7g")
 }
-autoplay = "reset"
+autoplay = "RESET"
 script = ExtResource("6_as0iv")
 anim = NodePath(".")
 area = NodePath("..")
+dialog_templates = Array[PackedScene]([ExtResource("7_4ke7g"), ExtResource("8_u1728"), ExtResource("9_a7wgb")])
 dialog_file = ExtResource("10_asfo8")
 
-[node name="Background" type="ProgressBar" parent="Dialogue/AnimationPlayer"]
-modulate = Color(1, 1, 1, 0)
-anchors_preset = -1
-anchor_top = 0.769444
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 0
-pivot_offset = Vector2(991.5, 274)
-theme_override_styles/background = SubResource("StyleBoxFlat_k5hc3")
-show_percentage = false
-metadata/_edit_use_anchors_ = true
+[node name="Background" parent="Dialogue/AnimationPlayer" instance=ExtResource("11_u1728")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dialogue" node_paths=PackedStringArray("player")]
 bus = &"SFX"
