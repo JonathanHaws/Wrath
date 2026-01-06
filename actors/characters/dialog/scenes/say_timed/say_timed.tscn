@@ -187,6 +187,7 @@ script = ExtResource("2_rmwxh")
 
 [node name="Label" type="Label" parent="Control" groups=["chat"]]
 modulate = Color(1, 1, 1, 0)
+z_index = 10
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5

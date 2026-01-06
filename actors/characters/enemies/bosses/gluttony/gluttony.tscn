@@ -1902,6 +1902,8 @@ script = ExtResource("21_28k33")
 metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Ui"]
+z_index = -50
+z_as_relative = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -2006,7 +2008,8 @@ transform = Transform3D(0.958819, -0.0638897, 0.276737, 0, 0.97437, 0.224951, -0
 fov = 10.5
 
 [node name="ColorRect" type="ColorRect" parent="IntroCinematic"]
-z_index = 2
+z_index = 100
+z_as_relative = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
