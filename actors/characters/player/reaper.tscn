@@ -2455,7 +2455,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_utjob")
 debug_color = Color(0.7, 0.7, 0.7, 0.0784314)
 
-[node name="SpringArm3D" type="SpringArm3D" parent="."]
+[node name="SpringArm3D" type="SpringArm3D" parent="." groups=["ignore_interaction_tween"]]
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 0.988449, -0.151554, 0, 0.151554, 0.988449, 0, 2.412, 0)
 shape = SubResource("SphereShape3D_5cvkf")

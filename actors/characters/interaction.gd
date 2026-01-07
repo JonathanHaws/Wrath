@@ -35,17 +35,23 @@ func _match_transforms() -> void:
 	for target_mesh in get_tree().get_nodes_in_group(target_mesh_group):
 		for target_body in get_tree().get_nodes_in_group(target_body_group):	
 			
+			await get_tree().physics_frame
+			
 			# Find global middle transform point between the childrens local transforms
 			var middle = mesh.global_transform.interpolate_with(target_mesh.global_transform, weight)
 			
 			if duration_seconds > 0.0:
 				var tween = create_tween()
 				tween.set_parallel(true)
+				tween.set_process_mode(Tween.TweenProcessMode.TWEEN_PROCESS_PHYSICS)
+				tween.set_trans(Tween.TRANS_SINE)
+				tween.set_ease(Tween.EASE_IN_OUT)
 
 				tween.tween_property(body, "global_transform", middle, duration_seconds)
 				tween.tween_property(target_body, "global_transform", middle, duration_seconds)
 				tween.tween_property(mesh, "global_transform", middle, duration_seconds)
 				tween.tween_property(target_mesh, "global_transform", middle, duration_seconds)
+				
 			else: 
 				if body: body.global_transform = middle
 				target_body.global_transform = middle

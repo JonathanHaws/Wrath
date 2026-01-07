@@ -6,9 +6,12 @@ extends Camera3D
 @export var MOUSE_SENSITIVITY: float = 0.003
 @export var CONTROLLER_SENSITIVITY: float = 5
 @export var SENSITIVITY_MULTIPLIER: float = 1.0
+@export var TOP_LEVEL_ROTATION: bool = true ## For ignoring rotation tweens on interactions... Or any external influence to orientation
 var mouse_delta = Vector2.ZERO
+var last_orientation := Basis.IDENTITY
 
 func _ready() -> void:
+	last_orientation = SpringArm.global_transform.basis
 	if Config: MOUSE_SENSITIVITY = Config.load_setting("controls", "mouse_sensitivity", MOUSE_SENSITIVITY)
 	if Config: CONTROLLER_SENSITIVITY = Config.load_setting("controls", "controller_sensitivity", CONTROLLER_SENSITIVITY)
 
@@ -22,6 +25,11 @@ func rotate_mesh_towards_camera_xz(delta: float, mesh: Node3D, input_vector: Vec
 	mesh.global_rotation.y = lerp_angle(mesh.global_rotation.y, SpringArm.global_rotation.y + input_angle, turn_speed * delta)
 			
 func _physics_process(_delta: float) -> void:
+	
+	if TOP_LEVEL_ROTATION:
+		SpringArm.global_transform.basis = last_orientation
+	
+	#print(position)
 	
 	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE: 
 		mouse_delta = Vector2.ZERO
@@ -48,3 +56,5 @@ func _physics_process(_delta: float) -> void:
 		SpringArm.global_rotation.x = new_x
 		SpringArm.global_rotation.y = new_y
 		mouse_delta = Vector2.ZERO
+		
+	last_orientation = SpringArm.global_transform.basis

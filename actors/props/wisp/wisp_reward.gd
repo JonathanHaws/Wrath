@@ -23,7 +23,7 @@ func _on_body_entered(body: Node) -> void:
 func _ready() -> void:
 	if SAVE_COLLECTED: if Save.data.has(Save.get_unique_key(self,"_collected")): 
 		collected = true
-		self.visible = false
+		if "visible" in self: self.visible = false
 		if TRIGGER_AREA:
 			TRIGGER_AREA.monitoring = false
 			TRIGGER_AREA.monitorable = false
