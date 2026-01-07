@@ -55,4 +55,15 @@
 {"fork": "random_taunt_1"},
 	{"say_timed": ["I GET WHAT I WANT", 1.5]},
 	
+{"fork": "random_taunt_2"},	
+	{"say_timed": ["YOU REALLY THOUGHT...", 2.5, 1]},
+	{"say_timed": ["YOU COULD ESCAPE?", 1.5]},
+	
+{"fork": "random_taunt_3"},
+	{"say_timed": ["YOU THINK YOU KNOW LOVE?", 2.0]},
+	
+{"fork": "death"},
+	{"say_timed": ["YOULL BE ALONE...", 2.0, 1]},
+	{"say_timed": ["FOREVER.", 2.0]},
+	
 ]
