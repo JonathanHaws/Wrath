@@ -14,7 +14,7 @@ var last_player_body : Node = null
 @export var CINEMATIC_CAMERA_GROUP: String = "cinematic_camera"
 @export var TARGET_CAMERA_GROUP: String = "player_camera"
 
-func _seamless_camera_transition(duration: float = 1.5) -> void: # todo add making it go in reverse player cam to cinematic
+func _seamless_camera_transition(duration: float = 1.5, save_completed: bool = false) -> void: # todo add making it go in reverse player cam to cinematic
 	var cinematic_list = get_tree().get_nodes_in_group(CINEMATIC_CAMERA_GROUP)
 	var target_list = get_tree().get_nodes_in_group(TARGET_CAMERA_GROUP)
 	if cinematic_list.size() == 0 or target_list.size() == 0: return
@@ -24,6 +24,10 @@ func _seamless_camera_transition(duration: float = 1.5) -> void: # todo add maki
 	tween.set_parallel(true)
 	tween.tween_property(cinematic_camera, "global_transform", target_camera.global_transform, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(cinematic_camera, "fov", target_camera.fov, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.finished.connect(func():
+		target_camera.make_current()
+		if save_completed: _save_cinematic_completed()
+		)
 
 func _skip_cinematic() -> void:
 	await get_tree().process_frame # Autoload doesnt start playing until after ready so wait until an animation is playing so seek works
