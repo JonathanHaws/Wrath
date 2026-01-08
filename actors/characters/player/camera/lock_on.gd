@@ -82,4 +82,6 @@ func _physics_process(_delta: float) -> void:
 	
 	SpringArm.global_rotation.x = lerp_angle(current_rotation.x, new_rotation.x, LOCK_ON_SPEED * _delta)
 	SpringArm.global_rotation.y = lerp_angle(current_rotation.y, new_rotation.y, LOCK_ON_SPEED * _delta)
+	if "last_orientation" in CAMERA: CAMERA.last_orientation = SpringArm.global_transform.basis
+
 		
