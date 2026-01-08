@@ -78,53 +78,55 @@ tracks/1/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../Cinematic/Camera3D:position")
-tracks/2/interp = 2
+tracks/2/path = NodePath("../Cinematic/Camera3D")
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.7, 6.36667, 11.2),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(-17.2564, 8.33722, 7.99027), Vector3(-0.10612, -1.82124, 12.0556), Vector3(-0.920525, -4.00207, -28.7983)]
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"make_current"
+}]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("../Cinematic/Camera3D:rotation")
+tracks/3/path = NodePath("../Cinematic/Camera3D:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0.7, 6.36667, 11.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.609082, -2.29252, 0), Vector3(-0.0985731, -3.10846, 0), Vector3(0.00178329, -3.11719, 0)]
+"values": [Vector3(-17.2564, 8.33722, 7.99027), Vector3(-0.10612, -1.82124, 12.0556), Vector3(-0.920525, -4.00207, -28.7983)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Cinematic/Camera3D:fov")
-tracks/4/interp = 1
+tracks/4/path = NodePath("../Cinematic/Camera3D:rotation")
+tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0.7, 6.36667, 11.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [91.859, 102.239, 45.015]
+"values": [Vector3(-0.609082, -2.29252, 0), Vector3(-0.0985731, -3.10846, 0), Vector3(0.00178329, -3.11719, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Cinematic/Camera3D:current")
+tracks/5/path = NodePath("../Cinematic/Camera3D:fov")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.7),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
+"times": PackedFloat32Array(0.7, 6.36667, 11.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [91.859, 102.239, 45.015]
 }
 tracks/6/type = "method"
 tracks/6/imported = false
@@ -232,18 +234,6 @@ tracks/4/keys = {
 "update": 0,
 "values": [91.859]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("../Cinematic/Camera3D:current")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ses4i"]
 _data = {
@@ -338,13 +328,13 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
 [node name="spin" parent="Portal/Mesh" index="1"]
-transform = Transform3D(0.587882, 0.808945, 0, -0.808945, 0.587882, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(-0.465837, 0.884869, 0, -0.884869, -0.465837, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Portal/Mesh/flames_2" index="0"]
-transform = Transform3D(-0.825641, 0.175444, -3.11332e-16, -0.175444, -0.825641, 5.26395e-15, 7.89595e-16, 5.2137e-15, 0.844076, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(-0.153844, 0.862129, -1.48805e-15, -0.862129, -0.153844, 4.21775e-15, 3.89075e-15, 2.20585e-15, 0.875748, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Portal/Mesh/flames_1" index="0"]
-transform = Transform3D(-0.825641, 0.175444, -3.11332e-16, -0.175444, -0.825641, 5.26395e-15, 7.89595e-16, 5.2137e-15, 0.844076, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(-0.153844, 0.862129, -1.48805e-15, -0.862129, -0.153844, 4.21775e-15, 3.89075e-15, 2.20585e-15, 0.875748, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Portal/Mesh" index="4"]
 autoplay = "Spin"

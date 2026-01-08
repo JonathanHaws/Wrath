@@ -64,18 +64,6 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(-1.3911, -1.36746, 0)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Cinematic/Camera3D:current")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_1tft3"]
 resource_name = "introduction"
@@ -83,7 +71,7 @@ length = 25.0
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"skip",
-"time": 22.5
+"time": 21.5333
 }]
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -121,17 +109,19 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(-1.3911, -1.36746, 0), Vector3(-0.649341, -0.782785, 0), Vector3(0.349862, -1.09265, 0)]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Cinematic/Camera3D:current")
-tracks/3/interp = 0
+tracks/3/path = NodePath("Cinematic/Camera3D")
+tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 22.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"make_current"
+}]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
@@ -146,22 +136,8 @@ tracks/4/keys = {
 "args": [],
 "method": &"_play_animations_in_other_nodes"
 }, {
-"args": [],
+"args": [1.5, true],
 "method": &"_seamless_camera_transition"
-}]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Cinematic")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(21.7333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"_save_cinematic_completed"
 }]
 }
 
@@ -274,8 +250,9 @@ ANIM = NodePath(".")
 ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["INTRODUCTION"])
 
-[node name="Camera3D" type="Camera3D" parent="Cinematic" groups=["cinematic_camera"]]
+[node name="Camera3D" type="Camera3D" parent="Cinematic"]
 transform = Transform3D(0.201938, 0.963628, -0.175049, 0, 0.178731, 0.983898, 0.979398, -0.198686, 0.0360925, -57.055, 978.878, 47.6623)
+current = true
 fov = 50.0
 
 [node name="Door" type="Node" parent="."]

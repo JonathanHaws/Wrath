@@ -5,6 +5,8 @@ extends Node
 @export var ANIMATION_PLAYER: AnimationPlayer ## Animation player for the overlay
 @export var ANIMATION_SKIPPING_NAME: String = "SKIPPING" ## Animation name that fills up skip
 @export var ANIMATION_SKIPPED_NAME: String = "SKIPPED" ## Animation name for when skip has been confirmed
+@export var SKIP_CALLBACK_GROUP: String = "skip_callback" ## For nodes that need to do extra function calls when skipped 
+@export var SKIP_CALLBACK_METHOD: String = "on_skip" ## Name of functions to call
 
 func skippable_animation_playing() -> bool: ## Returns wether theres any animation players playing an animation with skippable marker
 	for node in get_tree().get_nodes_in_group(SKIPPABLE_GROUP):
@@ -24,6 +26,10 @@ func _skip(play_fade: bool = true) -> void:
 	
 	for node in get_tree().get_nodes_in_group(DESTROY_GROUP):
 		node.queue_free()
+	
+	for node in get_tree().get_nodes_in_group(SKIP_CALLBACK_GROUP):
+		if node.has_method(SKIP_CALLBACK_METHOD):
+			node.call(SKIP_CALLBACK_METHOD)
 	
 	if play_fade: ANIMATION_PLAYER.play(ANIMATION_SKIPPED_NAME)
 				
