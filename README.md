@@ -1,4 +1,4 @@
-# Wrath
+# Wrath 
 As a soul who is stuck in between worlds in limbo. Find your way back to life by defeating sin incarnate.
 <a href="https://jonathanhaws.itch.io/wrath">Play On Itch Page</a>
 
