@@ -26,14 +26,14 @@
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://actors/cinematic.gd" id="23_ri2mk"]
 [ext_resource type="PackedScene" uid="uid://cajl1wg350nss" path="res://actors/characters/enemies/bosses/lust/lust_hurt_particles.tscn" id="24_d0au0"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="24_f8ihq"]
-[ext_resource type="Texture2D" uid="uid://cgonc3b5gfd5" path="res://actors/characters/enemies/bosses/lust/visuals/color.png" id="24_fr36l"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="24_ytbli"]
-[ext_resource type="Texture2D" uid="uid://30a88mkk0lip" path="res://actors/characters/enemies/bosses/lust/visuals/color-2.png" id="25_7oock"]
+[ext_resource type="Texture2D" uid="uid://cgonc3b5gfd5" path="res://actors/characters/enemies/bosses/lust/visuals/color.png" id="25_gu5ya"]
+[ext_resource type="Texture2D" uid="uid://30a88mkk0lip" path="res://actors/characters/enemies/bosses/lust/visuals/color-2.png" id="26_0uydn"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="26_ppvu3"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="27_w72qa"]
-[ext_resource type="PackedScene" uid="uid://cv1merm5iamwj" path="res://actors/characters/enemies/bosses/lust/visuals/lus_shape_key.glb" id="29_jodi6"]
+[ext_resource type="PackedScene" uid="uid://b28l3wgogpqnm" path="res://actors/characters/enemies/bosses/lust/visuals/lust.glb" id="30_216sa"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="30_dyfuw"]
-[ext_resource type="Material" uid="uid://dk4kgelv0h72t" path="res://actors/characters/enemies/bosses/lust/visuals/lust.tres" id="30_gn5mi"]
+[ext_resource type="Material" uid="uid://cfsjgs6ugktap" path="res://actors/characters/enemies/bosses/lust/visuals/material_1.tres" id="30_gn5mi"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://actors/characters/dialog/dialog.gd" id="32_ldn6u"]
 [ext_resource type="Script" uid="uid://cfvtafc035yyj" path="res://actors/characters/dialog/random_dialog.gd" id="35_gu5ya"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://actors/characters/enemies/sfx/Cry_2.wav" id="36_7oock"]
@@ -150,7 +150,7 @@ tracks/1/keys = {
 tracks/2/type = "animation"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/lus_shape_key/AnimationPlayer")
+tracks/2/path = NodePath("Mesh/lust/AnimationPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -160,7 +160,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/3/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -230,7 +230,7 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/BoneAttachment3D/LockOn")
+tracks/4/path = NodePath("Mesh/lust/Armature/Skeleton3D/BoneAttachment3D/LockOn")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -341,31 +341,31 @@ tracks/12/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/13/type = "method"
+tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Dialogue/AnimationPlayer")
+tracks/13/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Dialogue/AnimationPlayer")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(4.73333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["death"],
 "method": &"play_fork"
 }]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0, 0.666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
@@ -391,31 +391,29 @@ tracks/16/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/17/type = "value"
+tracks/17/type = "method"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/lust:surface_material_override/0:shader_parameter/dissolve_amount")
+tracks/17/path = NodePath("WispReward")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0, 3.66667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/18/type = "method"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("WispReward")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
 "times": PackedFloat32Array(3.93333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"give"
 }]
+}
+tracks/18/type = "animation"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Mesh/lust/AnimationPlayer")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"clips": PackedStringArray("Death"),
+"times": PackedFloat32Array(0)
 }
 tracks/19/type = "value"
 tracks/19/imported = false
@@ -429,52 +427,30 @@ tracks/19/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/20/type = "method"
+tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath(".")
+tracks/20/path = NodePath("Mesh/lust/Armature/Skeleton3D/lust:surface_material_override/0:shader_parameter/dissolve_amount")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
-"times": PackedFloat32Array(9.93333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/21/type = "animation"
-tracks/21/imported = false
-tracks/21/enabled = true
-tracks/21/path = NodePath("Mesh/lus_shape_key/AnimationPlayer")
-tracks/21/interp = 1
-tracks/21/loop_wrap = true
-tracks/21/keys = {
-"clips": PackedStringArray("Death"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0, 2.13333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_xgbyi"]
 resource_name = "IDLE"
 length = 0.791672
 step = 0.0416667
-tracks/0/type = "animation"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/lus_shape_key/AnimationPlayer")
+tracks/0/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"clips": PackedStringArray("Idle"),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.579402),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -504,15 +480,17 @@ tracks/0/keys = {
 "method": &"continious_tremor"
 }]
 }
-tracks/1/type = "animation"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/lus_shape_key/AnimationPlayer")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": PackedStringArray("Intro"),
-"times": PackedFloat32Array(0.458333)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -529,46 +507,34 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/3/interp = 0
+tracks/3/path = NodePath("Dialogue/CollisionShape3D:disabled")
+tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Dialogue/CollisionShape3D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("IntroCinematic/ColorRect:color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("IntroCinematic/ColorRect:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.208333, 0.541667, 0.833333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Audio/Music")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/Music")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(4.58333),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -576,13 +542,13 @@ tracks/6/keys = {
 "method": &"play"
 }]
 }
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("IntroCinematic")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("IntroCinematic")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -590,128 +556,104 @@ tracks/7/keys = {
 "method": &"_play_animations_in_other_nodes"
 }]
 }
-tracks/8/type = "position_3d"
+tracks/7/type = "position_3d"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("IntroCinematic/Camera3D")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = PackedFloat32Array(0.375, 1, -0.14223, 6.00946, 6.49053)
+tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("IntroCinematic/Camera3D")
-tracks/8/interp = 1
+tracks/8/path = NodePath("IntroCinematic/Camera3D:position")
+tracks/8/interp = 2
 tracks/8/loop_wrap = true
-tracks/8/keys = PackedFloat32Array(0.375, 1, -0.14223, 6.00946, 6.49053)
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("IntroCinematic/Camera3D:position")
-tracks/9/interp = 2
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/8/keys = {
 "times": PackedFloat32Array(0.875, 2.08333, 3.54167),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(-0.062, 10.294, 9.691), Vector3(-0.062, 7.454, 7.596), Vector3(-0.102, 5.099, 2.902)]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("IntroCinematic/Camera3D:rotation")
-tracks/10/interp = 2
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("IntroCinematic/Camera3D:rotation")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0.905, 3.54167),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(-0.513127, 0, 0), Vector3(0.0662448, -0.0393017, 0)]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("IntroCinematic/Camera3D:fov")
-tracks/11/interp = 2
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("IntroCinematic/Camera3D:fov")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0.75, 3.95833, 4.52, 4.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [46.3, 34.4, 34.4, 45.0]
 }
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(5.625, 6.125),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("IntroCinematic/Camera3D:current")
-tracks/13/interp = 0
-tracks/13/loop_wrap = true
-tracks/13/keys = {
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("IntroCinematic/Camera3D:current")
+tracks/12/interp = 0
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0, 0.458333, 6.25),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [false, true, false]
 }
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/lust:surface_material_override/0:shader_parameter/albedo_texture")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
-"times": PackedFloat32Array(0, 4.54167, 4.58333, 6.125),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [ExtResource("24_fr36l"), ExtResource("24_fr36l"), ExtResource("25_7oock"), ExtResource("25_7oock")]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/lust:blend_shapes/Calm")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
-"times": PackedFloat32Array(4.54167, 4.70833),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
-}
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
 "times": PackedFloat32Array(0, 0.416667, 0.458333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [1.0, 1.0, 0.0]
 }
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Ui:modulate")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Ui:modulate")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(5, 6.20833),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
-tracks/18/type = "method"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("IntroCinematic")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
+tracks/15/type = "method"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("IntroCinematic")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
 "times": PackedFloat32Array(5.25),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -719,19 +661,53 @@ tracks/18/keys = {
 "method": &"_seamless_camera_transition"
 }]
 }
-tracks/19/type = "method"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("Dialogue/RandomDialogue")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
+tracks/16/type = "method"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Dialogue/RandomDialogue")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
 "times": PackedFloat32Array(6.08333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0],
 "method": &"start"
 }]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Mesh/lust/Armature/Skeleton3D/lust:blend_shapes/Calm")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 4.70833, 4.83333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 0.0]
+}
+tracks/18/type = "animation"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Mesh/lust/AnimationPlayer")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"clips": PackedStringArray("Intro"),
+"times": PackedFloat32Array(0.416667)
+}
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Mesh/lust/Armature/Skeleton3D/lust:surface_material_override/0:shader_parameter/albedo_texture")
+tracks/19/interp = 0
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0, 4.5, 4.79167),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [ExtResource("25_gu5ya"), ExtResource("25_gu5ya"), ExtResource("26_0uydn")]
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -926,108 +902,98 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/FrontTail/AttackArea/CollisionShape3D:disabled")
+tracks/16/path = NodePath("Mesh/lust/Armature/Skeleton3D/MiddleTail/AttackArea/CollisionShape3D:disabled")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/MiddleTail/AttackArea/CollisionShape3D:disabled")
+tracks/17/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [1.0]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("Dialogue/CollisionShape3D:disabled")
+tracks/18/path = NodePath("Mesh/lust/Armature/Skeleton3D/lust:blend_shapes/Calm")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [1.0]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/lust:surface_material_override/0:shader_parameter/albedo_texture")
+tracks/19/path = NodePath("Mesh/lust/Armature/Skeleton3D/FrontTail/AttackArea/CollisionShape3D:disabled")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("24_fr36l")]
+"update": 0,
+"values": [true]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/lust:blend_shapes/Calm")
+tracks/20/path = NodePath("Dialogue/CollisionShape3D:disabled")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
+"update": 1,
+"values": [false]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/lust:surface_material_override/0:shader_parameter/dissolve_amount")
+tracks/21/path = NodePath("IntroCinematic/ColorRect:color")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Color(0, 0, 0, 0)]
 }
-tracks/22/type = "animation"
+tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("Mesh/lus_shape_key/AnimationPlayer")
+tracks/22/path = NodePath("Mesh/lust/Armature/Skeleton3D/lust:surface_material_override/0:shader_parameter/dissolve_amount")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
-"clips": PackedStringArray("Idle"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/23/path = NodePath("Mesh/lust/Armature/Skeleton3D/lust:surface_material_override/0:shader_parameter/albedo_texture")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/24/type = "value"
-tracks/24/imported = false
-tracks/24/enabled = true
-tracks/24/path = NodePath("IntroCinematic/ColorRect:color")
-tracks/24/interp = 1
-tracks/24/loop_wrap = true
-tracks/24/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
+"update": 1,
+"values": [ExtResource("25_gu5ya")]
 }
 
 [sub_resource type="Animation" id="Animation_216sa"]
@@ -1129,7 +1095,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/8/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -1152,13 +1118,23 @@ tracks/9/keys = {
 "method": &"give"
 }]
 }
-tracks/10/type = "method"
+tracks/10/type = "animation"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Dialogue/AnimationPlayer")
+tracks/10/path = NodePath("Mesh/lust/AnimationPlayer")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
+"clips": PackedStringArray("Intro"),
+"times": PackedFloat32Array(0.291667)
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Dialogue/AnimationPlayer")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "values": []
@@ -1192,20 +1168,22 @@ tracks/1/keys = {
 "update": 0,
 "values": [1.0, 0.0, 0.0, 1.0]
 }
-tracks/2/type = "animation"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/lus_shape_key/AnimationPlayer")
-tracks/2/interp = 1
+tracks/2/path = NodePath("Mesh/lust/Armature/Skeleton3D/RightHand/AttackArea/CollisionShape3D:disabled")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"clips": PackedStringArray("Smash"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0, 0.958333, 1.05333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [true, false, true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/LeftHand/AttackArea/CollisionShape3D:disabled")
+tracks/3/path = NodePath("Mesh/lust/Armature/Skeleton3D/LeftHand/AttackArea/CollisionShape3D:disabled")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1214,25 +1192,35 @@ tracks/3/keys = {
 "update": 0,
 "values": [true, false, true]
 }
-tracks/4/type = "value"
+tracks/4/type = "animation"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/RightHand/AttackArea/CollisionShape3D:disabled")
-tracks/4/interp = 0
+tracks/4/path = NodePath("Mesh/lust/AnimationPlayer")
+tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.958333, 1.05333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [true, false, true]
+"clips": PackedStringArray("Smash"),
+"times": PackedFloat32Array(0)
 }
-tracks/5/type = "method"
+tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Audio/Slam")
+tracks/5/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0.166667, 0.458333, 1.41667, 1.6715),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Audio/Slam")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0.958333),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -1240,31 +1228,19 @@ tracks/5/keys = {
 "method": &"play"
 }]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CameraShake")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CameraShake")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0.958333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [5.0],
 "method": &"tremor"
 }]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0.166667, 0.458333, 1.41667, 1.6715),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 0.0, 0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_dyfuw"]
@@ -1298,74 +1274,74 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/FrontTail/AttackArea/CollisionShape3D:disabled")
-tracks/2/interp = 0
+tracks/2/path = NodePath("Mesh/lust/Armature/Skeleton3D/BackTail/AttackArea/CollisionShape3D:disabled")
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.791667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [true, false, true]
+}
+tracks/3/type = "animation"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/lust/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"clips": PackedStringArray("Swipe"),
+"times": PackedFloat32Array(0)
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.134282, 1.375, 1.58333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/lust/Armature/Skeleton3D/MiddleTail/AttackArea/CollisionShape3D:disabled")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.333333, 0.791667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [true, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/lust/Armature/Skeleton3D/FrontTail/AttackArea/CollisionShape3D:disabled")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.333333, 0.78),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [true, false, true]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/MiddleTail/AttackArea/CollisionShape3D:disabled")
-tracks/3/interp = 0
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.791667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [true, false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/BackTail/AttackArea/CollisionShape3D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.791667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/5/type = "animation"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Mesh/lus_shape_key/AnimationPlayer")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"clips": PackedStringArray("Swipe"),
-"times": PackedFloat32Array(0)
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Audio/Spin")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Audio/Spin")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0.333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.0],
 "method": &"play"
 }]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Mesh/lus_shape_key/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.134282, 1.375, 1.58333),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 0.0, 0.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
@@ -1656,145 +1632,145 @@ SCENE_ROOT = NodePath("..")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh"]
 
-[node name="lus_shape_key" parent="Mesh" instance=ExtResource("29_jodi6")]
+[node name="lust" parent="Mesh" instance=ExtResource("30_216sa")]
 
-[node name="Skeleton3D" parent="Mesh/lus_shape_key/Armature" index="0"]
-bones/1/position = Vector3(0.047938, -0.0422011, 3.95568)
-bones/1/rotation = Quaternion(-0.00282104, 0.823065, 0.56792, 0.00479633)
-bones/2/rotation = Quaternion(-0.104177, -0.00631402, -0.00515745, 0.994525)
+[node name="Skeleton3D" parent="Mesh/lust/Armature" index="0"]
+bones/1/position = Vector3(-0.339932, -0.0445421, 3.95585)
+bones/1/rotation = Quaternion(0.000872331, 0.822177, 0.567146, -0.0486749)
+bones/2/rotation = Quaternion(-0.104312, 0.00456751, 0.0351198, 0.993914)
 bones/3/rotation = Quaternion(-0.00448088, 0.110215, -0.784508, 0.610229)
-bones/4/rotation = Quaternion(0.00553075, 0.597754, -0.4993, 0.627184)
+bones/4/rotation = Quaternion(0.00553073, 0.597753, -0.4993, 0.627184)
 bones/5/rotation = Quaternion(0.45272, -0.475957, 0.265874, 0.705564)
-bones/6/rotation = Quaternion(-0.0298301, -0.000769816, 0.0277362, 0.99917)
+bones/6/rotation = Quaternion(-0.0298301, -0.000769818, 0.0277362, 0.99917)
 bones/7/position = Vector3(0.097771, 0.225499, 0.119407)
-bones/7/rotation = Quaternion(0.145474, 0.00813262, -0.0904142, 0.985189)
+bones/7/rotation = Quaternion(0.145474, 0.00813262, -0.0904141, 0.985189)
 bones/10/rotation = Quaternion(-0.0133873, 0.00121677, -0.116095, 0.993147)
 bones/12/rotation = Quaternion(0.0614101, 0.0181102, -0.0462829, 0.996875)
 bones/13/rotation = Quaternion(-0.0650022, 0.0575125, -0.051461, 0.994896)
-bones/14/rotation = Quaternion(-0.00744232, -0.0175824, -0.107054, 0.99407)
+bones/14/rotation = Quaternion(-0.00744232, -0.0175825, -0.107054, 0.99407)
 bones/15/rotation = Quaternion(0.0261009, 0.0200451, -0.0555651, 0.997913)
 bones/16/rotation = Quaternion(-0.0567909, 0.00601728, 0.0394924, 0.997587)
 bones/17/rotation = Quaternion(0.0325905, 0.0038259, -0.125305, 0.991575)
-bones/18/position = Vector3(0.000843917, 0.279633, -0.0900199)
-bones/18/rotation = Quaternion(-0.00752551, -0.0428981, -0.0812818, 0.995739)
-bones/19/rotation = Quaternion(-0.00753981, 0.0047373, -0.0221262, 0.999716)
-bones/21/rotation = Quaternion(0.00505185, 0.00330976, 0.0109481, 0.999922)
+bones/18/position = Vector3(0.00084396, 0.279633, -0.0900198)
+bones/18/rotation = Quaternion(-0.0075255, -0.0428981, -0.0812818, 0.995739)
+bones/19/rotation = Quaternion(-0.00753981, 0.0047373, -0.0221261, 0.999716)
+bones/21/rotation = Quaternion(0.00503606, -0.0230959, -0.0763969, 0.996797)
 bones/29/rotation = Quaternion(0.999512, 0.0269732, -0.0114942, -0.0107692)
 bones/33/rotation = Quaternion(0.998707, 0.0277675, -0.0123136, -0.0407535)
 bones/39/rotation = Quaternion(0.999509, -0.0269705, 0.0117461, -0.010776)
-bones/43/rotation = Quaternion(0.998704, -0.0277572, 0.0125648, -0.0407604)
+bones/43/rotation = Quaternion(0.998704, -0.0277572, 0.0125648, -0.0407605)
 bones/48/rotation = Quaternion(-0.0014149, -0.107829, 0.78452, 0.610655)
-bones/49/rotation = Quaternion(0.00553057, -0.597754, 0.4993, 0.627183)
+bones/49/rotation = Quaternion(0.00553056, -0.597754, 0.4993, 0.627184)
 bones/50/rotation = Quaternion(0.45272, 0.475957, -0.265874, 0.705564)
-bones/51/rotation = Quaternion(-0.0298301, 0.000769519, -0.0277362, 0.99917)
+bones/51/rotation = Quaternion(-0.0298301, 0.00076952, -0.0277362, 0.99917)
 bones/52/position = Vector3(-0.0977711, 0.225499, 0.119407)
-bones/52/rotation = Quaternion(0.145474, -0.00813276, 0.0904142, 0.985189)
+bones/52/rotation = Quaternion(0.145474, -0.00813275, 0.0904142, 0.985189)
 bones/55/rotation = Quaternion(-0.0133872, -0.00121671, 0.116095, 0.993147)
 bones/57/rotation = Quaternion(0.0614101, -0.0181103, 0.0462829, 0.996875)
 bones/58/rotation = Quaternion(-0.0650022, -0.0575125, 0.051461, 0.994896)
 bones/59/rotation = Quaternion(-0.00744234, 0.0175827, 0.107054, 0.99407)
 bones/60/rotation = Quaternion(0.0261009, -0.0200451, 0.0555651, 0.997913)
-bones/65/position = Vector3(0.0426547, -0.117914, 3.91774)
+bones/65/position = Vector3(-0.358114, -0.113739, 3.89257)
 bones/66/rotation = Quaternion(-0.0420137, 7.54312e-08, 3.17195e-09, 0.999117)
 bones/67/rotation = Quaternion(0.172151, 1.88201e-14, -3.17545e-16, 0.985071)
 bones/68/rotation = Quaternion(0.365145, -1.19772e-14, 4.2418e-15, 0.930951)
-bones/69/rotation = Quaternion(0.265546, 0.0866843, -0.178875, 0.943385)
-bones/70/rotation = Quaternion(0.0863438, 0.0185889, -0.209644, 0.973781)
-bones/71/rotation = Quaternion(3.6786e-09, 4.93727e-09, 0.421351, 0.906898)
-bones/72/rotation = Quaternion(-0.00798509, -0.00326828, 0.378781, 0.925446)
-bones/73/rotation = Quaternion(-0.0134437, -0.00380927, 0.12362, 0.992231)
-bones/74/rotation = Quaternion(-0.000697736, 0.00977425, -0.216735, 0.976181)
-bones/75/rotation = Quaternion(0.00721045, 0.0122289, -0.320224, 0.947235)
-bones/76/rotation = Quaternion(-0.00428947, 0.00828259, -0.236729, 0.971531)
-bones/77/rotation = Quaternion(0.00267046, 0.00139546, -0.037989, 0.999274)
-bones/78/rotation = Quaternion(-0.024224, -0.00605944, 0.103637, 0.994302)
-bones/79/rotation = Quaternion(0.0371568, -0.00894032, 0.186803, 0.981654)
+bones/69/rotation = Quaternion(0.269575, -0.0439235, 0.0906373, 0.957698)
+bones/70/rotation = Quaternion(0.0860819, 0.0197661, -0.222921, 0.970827)
+bones/71/rotation = Quaternion(-4.28287e-09, -7.85534e-09, -0.193117, 0.981176)
+bones/72/rotation = Quaternion(-0.00860284, -0.000659114, 0.0763889, 0.997041)
+bones/73/rotation = Quaternion(-0.0130897, -0.0079408, 0.2577, 0.966104)
+bones/74/rotation = Quaternion(-0.000694732, -0.0105911, 0.234848, 0.971974)
+bones/75/rotation = Quaternion(0.00741596, -0.00860205, 0.225252, 0.974234)
+bones/76/rotation = Quaternion(-0.00439192, 0.0035819, -0.102377, 0.99473)
+bones/77/rotation = Quaternion(0.00262009, 0.0072293, -0.19681, 0.980412)
+bones/78/rotation = Quaternion(-0.0236652, 0.0137987, -0.236003, 0.971366)
+bones/79/rotation = Quaternion(0.0368069, 0.00885914, -0.208409, 0.977309)
 
-[node name="lust" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="0"]
+[node name="lust" parent="Mesh/lust/Armature/Skeleton3D" index="0"]
 blend_shapes/Calm = 1.0
 surface_material_override/0 = ExtResource("30_gn5mi")
 
-[node name="FrontTail" type="BoneAttachment3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.679059, 0.734084, 0, 6.70552e-08, -2.98023e-08, 1, 0.734083, -0.679059, -2.83122e-07, 0.387464, 0.543822, -1.51276)
+[node name="FrontTail" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.969003, 0.247049, -1.11759e-08, 5.21541e-08, -8.9407e-08, 1, 0.247049, -0.969003, -2.68221e-07, 0.136863, 0.518653, -1.57343)
 bone_name = "tail.006"
 bone_idx = 70
 
-[node name="AttackArea" type="Area3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D/FrontTail" groups=["gluttony"]]
+[node name="AttackArea" type="Area3D" parent="Mesh/lust/Armature/Skeleton3D/FrontTail" groups=["gluttony"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("30_dyfuw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D/FrontTail/AttackArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lust/Armature/Skeleton3D/FrontTail/AttackArea"]
 transform = Transform3D(1, -4.65661e-10, 1.49179e-08, -4.65661e-10, 1, 1.49007e-08, 5.52589e-11, -2.27374e-13, 1, -0.0135727, 0.459428, -0.194142)
 shape = SubResource("CapsuleShape3D_gn5mi")
 disabled = true
 debug_color = Color(0.73, 0.73, 0.73, 0)
 
-[node name="MiddleTail" type="BoneAttachment3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.479658, -0.876593, -0.0389047, 5.07571e-08, -0.044338, 0.999016, -0.877455, -0.479186, -0.0212673, 0.166113, 0.51728, -5.01815)
+[node name="MiddleTail" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.999346, -0.036114, -0.00160279, 1.21072e-08, -0.0443381, 0.999017, -0.0361495, -0.998363, -0.0443093, 2.11089, 0.49211, -5.47355)
 bone_name = "tail.009"
 bone_idx = 73
 
-[node name="AttackArea" type="Area3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D/MiddleTail" groups=["gluttony"]]
+[node name="AttackArea" type="Area3D" parent="Mesh/lust/Armature/Skeleton3D/MiddleTail" groups=["gluttony"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("30_dyfuw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D/MiddleTail/AttackArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lust/Armature/Skeleton3D/MiddleTail/AttackArea"]
 transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 1.49012e-08, 0, 0, 1, -0.0160207, 0.02074, -0.194143)
 shape = SubResource("CapsuleShape3D_dyfuw")
 disabled = true
 debug_color = Color(0.73, 0.73, 0.73, 0)
 
-[node name="BackTail" type="BoneAttachment3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.999814, 0.0192723, 0.000589048, 8.56817e-08, -0.0305533, 0.999533, 0.019281, -0.999347, -0.0305479, -2.09093, 0.378554, -6.99834)
+[node name="BackTail" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="3"]
+transform = Transform3D(0.568994, -0.821958, -0.0251253, -1.78814e-07, -0.0305535, 0.999533, -0.822342, -0.568728, -0.017385, 1.29975, 0.353385, -8.35104)
 bone_name = "tail.011"
 bone_idx = 75
 
-[node name="AttackArea" type="Area3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D/BackTail" groups=["gluttony"]]
+[node name="AttackArea" type="Area3D" parent="Mesh/lust/Armature/Skeleton3D/BackTail" groups=["gluttony"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("30_dyfuw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D/BackTail/AttackArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lust/Armature/Skeleton3D/BackTail/AttackArea"]
 transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 1.49012e-08, 0, 0, 1, -0.0160207, 0.02074, -0.194143)
 shape = SubResource("CapsuleShape3D_216sa")
 disabled = true
 debug_color = Color(0.73, 0.73, 0.73, 0)
 
-[node name="LeftHand" type="BoneAttachment3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.927089, 0.374499, -0.0160225, -0.374752, -0.925079, 0.0615698, 0.00823572, 0.063085, 0.997974, 0.853219, 3.89528, -0.380515)
+[node name="LeftHand" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="4"]
+transform = Transform3D(-0.845511, 0.533207, 0.0283211, -0.530981, -0.845206, 0.0607123, 0.0563095, 0.036295, 0.997753, 1.25615, 4.05749, -0.433667)
 bone_name = "hand_l"
 bone_idx = 6
 
-[node name="AttackArea" type="Area3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D/LeftHand" groups=["gluttony"]]
+[node name="AttackArea" type="Area3D" parent="Mesh/lust/Armature/Skeleton3D/LeftHand" groups=["gluttony"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("30_dyfuw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D/LeftHand/AttackArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lust/Armature/Skeleton3D/LeftHand/AttackArea"]
 transform = Transform3D(1, 3.42727e-07, 2.18861e-08, 2.23517e-08, 1, 1.49012e-08, 1.25729e-08, 1.49012e-08, 1, 0.0730978, -0.764383, 0.10963)
 shape = SubResource("CapsuleShape3D_7oock")
 disabled = true
 debug_color = Color(0.95, 0.038, 0.1748, 0.180392)
 
-[node name="RightHand" type="BoneAttachment3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="5"]
-transform = Transform3D(-0.908106, -0.418699, 0.00592288, 0.418254, -0.906277, 0.0610501, -0.0201937, 0.0579171, 0.998117, -0.956144, 3.93817, -0.392303)
+[node name="RightHand" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="5"]
+transform = Transform3D(-0.966915, -0.250152, 0.0499938, 0.253053, -0.965331, 0.0640361, 0.0322419, 0.0745686, 0.996694, -0.530762, 3.78347, -0.346361)
 bone_name = "hand_r"
 bone_idx = 51
 
-[node name="AttackArea" type="Area3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D/RightHand" groups=["gluttony"]]
+[node name="AttackArea" type="Area3D" parent="Mesh/lust/Armature/Skeleton3D/RightHand" groups=["gluttony"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("30_dyfuw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D/RightHand/AttackArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lust/Armature/Skeleton3D/RightHand/AttackArea"]
 transform = Transform3D(1, 3.31551e-07, 1.95578e-08, 0, 1, 1.49012e-08, -1.72295e-08, 0, 1, -0.0256579, -0.710852, 0.102555)
 shape = SubResource("CapsuleShape3D_xgbyi")
 disabled = true
 debug_color = Color(0.95, 0.038, 0.1748, 0.180392)
 
-[node name="LeftChest" type="SpringBoneSimulator3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="6"]
+[node name="LeftChest" type="SpringBoneSimulator3D" parent="Mesh/lust/Armature/Skeleton3D" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75664, -6.15275, -0.259335)
 influence = 0.2
 setting_count = 1
@@ -1818,7 +1794,7 @@ settings/0/gravity/direction = Vector3(0, -1, 0)
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="RightChest" type="SpringBoneSimulator3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="7"]
+[node name="RightChest" type="SpringBoneSimulator3D" parent="Mesh/lust/Armature/Skeleton3D" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.75664, -6.15275, -0.259335)
 influence = 0.2
 setting_count = 1
@@ -1842,7 +1818,7 @@ settings/0/gravity/direction = Vector3(0, -1, 0)
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="HairBackLeft" type="SpringBoneSimulator3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="8"]
+[node name="HairBackLeft" type="SpringBoneSimulator3D" parent="Mesh/lust/Armature/Skeleton3D" index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.82372, -5.61085, -0.259335)
 influence = 0.3
 setting_count = 1
@@ -1866,7 +1842,7 @@ settings/0/gravity/direction = Vector3(0, -1, 0)
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="HairBackRight" type="SpringBoneSimulator3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="9"]
+[node name="HairBackRight" type="SpringBoneSimulator3D" parent="Mesh/lust/Armature/Skeleton3D" index="9"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11233, -5.8818, -0.259335)
 influence = 0.3
 setting_count = 1
@@ -1890,7 +1866,7 @@ settings/0/gravity/direction = Vector3(0, -1, 0)
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="HairFrontLeft" type="SpringBoneSimulator3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="10"]
+[node name="HairFrontLeft" type="SpringBoneSimulator3D" parent="Mesh/lust/Armature/Skeleton3D" index="10"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11233, -5.8818, -0.259335)
 influence = 0.3
 setting_count = 1
@@ -1914,7 +1890,7 @@ settings/0/gravity/direction = Vector3(0, -1, 0)
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="HairFrontRight" type="SpringBoneSimulator3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="11"]
+[node name="HairFrontRight" type="SpringBoneSimulator3D" parent="Mesh/lust/Armature/Skeleton3D" index="11"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11233, -5.8818, -0.259335)
 influence = 0.3
 setting_count = 1
@@ -1938,20 +1914,20 @@ settings/0/gravity/direction = Vector3(0, -1, 0)
 settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="12"]
-transform = Transform3D(0.999701, 0.0208961, -0.012685, -0.0236265, 0.959107, -0.282056, 0.00627243, 0.282271, 0.959314, -0.0288818, 5.0388, 0.230217)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="12"]
+transform = Transform3D(0.987273, -0.131465, 0.0894949, 0.151467, 0.948812, -0.277152, -0.048478, 0.28718, 0.956649, 0.222792, 5.03101, 0.232024)
 bone_name = "neck"
 bone_idx = 20
 
-[node name="LockOn" type="Area3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D/BoneAttachment3D"]
+[node name="LockOn" type="Area3D" parent="Mesh/lust/Armature/Skeleton3D/BoneAttachment3D"]
 transform = Transform3D(0.998722, 0.0469659, 0.0186753, 0.00148954, -0.396684, 0.917953, 0.0505207, -0.916753, -0.396248, -0.0147156, -0.0936141, -0.0699022)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D/BoneAttachment3D/LockOn"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lust/Armature/Skeleton3D/BoneAttachment3D/LockOn"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
 shape = SubResource("BoxShape3D_d0au0")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/lus_shape_key/Armature/Skeleton3D" index="13"]
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/lust/Armature/Skeleton3D" index="13"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40094, -6.15275, -0.259335)
 target_node = NodePath("../../../../../Target/Offset")
 bone_name = "head"
@@ -1964,9 +1940,6 @@ primary_limit_angle = 3.14159
 primary_damp_threshold = 1.0
 secondary_limit_angle = 1.5708
 secondary_damp_threshold = 1.0
-
-[node name="AnimationPlayer" parent="Mesh/lus_shape_key" index="1"]
-playback_default_blend_time = 0.3
 
 [node name="Shake" type="Area3D" parent="."]
 collision_layer = 3
@@ -2025,11 +1998,11 @@ script = ExtResource("37_be12w")
 sounds = Array[AudioStream]([ExtResource("36_ldn6u")])
 player = NodePath(".")
 
-[connection signal="body_entered" from="Mesh/lus_shape_key/Armature/Skeleton3D/FrontTail/AttackArea" to="Mesh/lus_shape_key/Armature/Skeleton3D/FrontTail/AttackArea" method="_on_body_entered"]
-[connection signal="body_entered" from="Mesh/lus_shape_key/Armature/Skeleton3D/MiddleTail/AttackArea" to="Mesh/lus_shape_key/Armature/Skeleton3D/MiddleTail/AttackArea" method="_on_body_entered"]
-[connection signal="body_entered" from="Mesh/lus_shape_key/Armature/Skeleton3D/BackTail/AttackArea" to="Mesh/lus_shape_key/Armature/Skeleton3D/BackTail/AttackArea" method="_on_body_entered"]
-[connection signal="body_entered" from="Mesh/lus_shape_key/Armature/Skeleton3D/LeftHand/AttackArea" to="Mesh/lus_shape_key/Armature/Skeleton3D/LeftHand/AttackArea" method="_on_body_entered"]
-[connection signal="body_entered" from="Mesh/lus_shape_key/Armature/Skeleton3D/RightHand/AttackArea" to="Mesh/lus_shape_key/Armature/Skeleton3D/RightHand/AttackArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Mesh/lust/Armature/Skeleton3D/FrontTail/AttackArea" to="Mesh/lust/Armature/Skeleton3D/FrontTail/AttackArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Mesh/lust/Armature/Skeleton3D/MiddleTail/AttackArea" to="Mesh/lust/Armature/Skeleton3D/MiddleTail/AttackArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Mesh/lust/Armature/Skeleton3D/BackTail/AttackArea" to="Mesh/lust/Armature/Skeleton3D/BackTail/AttackArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Mesh/lust/Armature/Skeleton3D/LeftHand/AttackArea" to="Mesh/lust/Armature/Skeleton3D/LeftHand/AttackArea" method="_on_body_entered"]
+[connection signal="body_entered" from="Mesh/lust/Armature/Skeleton3D/RightHand/AttackArea" to="Mesh/lust/Armature/Skeleton3D/RightHand/AttackArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Shake" to="Shake" method="_on_body_entered"]
 
-[editable path="Mesh/lus_shape_key"]
+[editable path="Mesh/lust"]
