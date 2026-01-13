@@ -1765,7 +1765,7 @@ disabled = true
 debug_color = Color(0.95, 0.038, 0.1748, 0.180392)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="5"]
-transform = Transform3D(-0.908106, -0.4187, 0.00592293, 0.418255, -0.906276, 0.0610496, -0.0201935, 0.0579168, 0.998117, -0.956145, 3.93817, -0.392304)
+transform = Transform3D(-0.908106, -0.418699, 0.00592288, 0.418254, -0.906277, 0.0610501, -0.0201937, 0.0579171, 0.998117, -0.956144, 3.93817, -0.392303)
 bone_name = "hand_r"
 bone_idx = 51
 

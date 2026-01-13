@@ -1,20 +1,36 @@
 extends CharacterBody3D
+@export var ATTACKING_ENABLED = true
 
-@export_group("Movement")
+@export_group("Acceleration")
+@export var GROUND_SPEED := 100.0
+@export var AIR_SPEED  := 200.0
 @export var SPEED = 5.35
+@export var MAX_SPEED = 12.35
 @export var SPRINT_MULTIPLIER = 2.1
-@export var SPEED_FRICTION = 0.9999999999
+@export var SPEED_MULTIPLIER: float = 1.0
+
+@export_group("Friction")
+@export var GROUND_FRICTION := 14.0
+@export var AIR_FRICTION := 2.0
+func stop_horizontal_movement() -> void:
+	velocity.x = 0
+	velocity.z = 0
+
+@export_group("Jumping")
 @export var JUMP_VELOCITY = 15.0
 @export var JUMP_MULTIPLIER = 1.0
+@export var COYOTE_TIME: float = .35
+@export var JUMP_BUFFER_TIME: float = .2
+
+@export_group("Falling")
 @export var GRAVITY_MULTIPLIER = 4
+@export var MAX_FALL_SPEED := 50.0 
+@export var DESCEND_MULTIPLIER = 2.0
+
+@export_group("Turning")
 @export var MOUSE_SENSITIVITY = 0.003
 @export var TURN_SPEED: float = 20.0
 @export var TURN_MULTIPLIER: float = 1.0
-@export var SPEED_MULTIPLIER: float = 1.0
-@export var COYOTE_TIME: float = .35
-@export var JUMP_BUFFER_TIME: float = .2
-@export var DESCEND_MULTIPLIER = 2.0
-@export var ATTACKING_ENABLED = true
 
 @export_group("References")
 @export var CAMERA: Camera3D
@@ -130,7 +146,7 @@ func _physics_process(delta: float) -> void:
 			#print('Plunge')
 			ANIM.play("PLUNGE", 0)
 		
-		$Squash.squish(.23, MESH)	
+		$Squash.squish(.3, MESH)	
 		if $Audio: $Audio.play_2d_sound(["land"])
 		if PARTICLES: PARTICLES.spawn()
 		
@@ -148,18 +164,18 @@ func _physics_process(delta: float) -> void:
 		
 	if not is_on_floor(): # GRAVITY
 		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER if Input.is_action_pressed("descend") else 1.0)
+	if velocity.y < -MAX_FALL_SPEED: velocity.y = -MAX_FALL_SPEED
 
-	falling = 0.0 if is_on_floor() else falling + delta
 
+	falling = 0.0 if is_on_floor() else falling + delta  # JUMP
 	if Input.is_action_just_pressed("jump"): jump_buffer = JUMP_BUFFER_TIME;
 	elif jump_buffer > 0: jump_buffer -= delta
-
-	if jump_buffer > 0 and falling < COYOTE_TIME and not SKILL_TREE.visible: # JUMP
+	if jump_buffer > 0 and falling < COYOTE_TIME and not SKILL_TREE.visible: 
 		if ANIM.current_animation and in_interruptible_animation():
 			if JUMP_MULTIPLIER > 0:
 				if $Audio: $Audio.play_2d_sound(["jump"])
 				ANIM.play("JUMPING")
-				$Squash.squish(-.23,MESH)	
+				$Squash.squish(-.3,MESH)	
 				velocity.y = JUMP_VELOCITY * JUMP_MULTIPLIER
 				falling = COYOTE_TIME
 				jump_buffer = 0
@@ -174,20 +190,27 @@ func _physics_process(delta: float) -> void:
 	if input_vector.length() > 0:
 		
 		var mesh_direction = -MESH.global_transform.basis.z
+		var move_speed := (GROUND_SPEED if is_on_floor() else AIR_SPEED) 
 		var speed_factor = 1.0
 		if Input.is_action_pressed("sprint") or controller_vector.length() > 0.75:
 			speed_factor = SPRINT_MULTIPLIER
 		
-
-		velocity.x = mesh_direction.x * SPEED * SPEED_MULTIPLIER * speed_factor
-		velocity.z = mesh_direction.z * SPEED * SPEED_MULTIPLIER * speed_factor
-
+		velocity.x += mesh_direction.x * move_speed * speed_factor * SPEED_MULTIPLIER * delta
+		velocity.z += mesh_direction.z * move_speed * speed_factor * SPEED_MULTIPLIER * delta
 		CAMERA.rotate_mesh_towards_camera_xz(delta, MESH, input_vector, TURN_SPEED * TURN_MULTIPLIER)
-	else:
-		velocity.x = 0 
-		velocity.z = 0
+	
+	var h = Vector2(velocity.x, velocity.z) # MAX SPEED
+	if h.length() > MAX_SPEED:
+		h = h.normalized() * MAX_SPEED
+		velocity.x = h.x
+		velocity.z = h.y
 	
 	move_and_slide() 
+	
+	var friction := GROUND_FRICTION if is_on_floor() else AIR_FRICTION # FRICTION
+	friction *= delta
+	velocity.x -= velocity.x * friction
+	velocity.z -= velocity.z * friction
 	
 	if in_interruptible_animation(): 
 		if is_on_floor(): 

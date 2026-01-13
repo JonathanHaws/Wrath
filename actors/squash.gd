@@ -1,7 +1,7 @@
 extends Node
 @export var mesh_node: Node3D
 @export var target_squash_scale: float = 1.0
-@export var speed: float = 0.09
+@export var speed: float = 0.08
 
 func settle(MESH: Node3D, delta: float, squash_speed: float = 0.09, target_squash: float = 1.0) -> void:
 	if delta == 0: return
