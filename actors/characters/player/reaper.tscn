@@ -1,4 +1,4 @@
-[gd_scene load_steps=96 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=97 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -33,6 +33,7 @@
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="24_m1s71"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://actors/characters/enemies/sfx/Slam.wav" id="25_8i186"]
 [ext_resource type="Script" uid="uid://bfq61wyde2xvx" path="res://actors/characters/player/death_animation.gd" id="29_5ijfa"]
+[ext_resource type="Script" uid="uid://ce0dmg6sindd8" path="res://actors/characters/player/lean.gd" id="32_xnjpx"]
 [ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://actors/characters/player/player_health.tres" id="34_6g6ue"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="35_lwilf"]
 [ext_resource type="Material" uid="uid://dacvxdrj2im0y" path="res://actors/characters/player/materials/body.tres" id="35_m1s71"]
@@ -2544,6 +2545,11 @@ debug_color = Color(0.7, 0.7, 0.7, 0)
 
 [node name="Mesh" type="Node3D" parent="." groups=["player_mesh"]]
 
+[node name="Lean" type="Node" parent="Mesh" node_paths=PackedStringArray("BODY", "MESH")]
+script = ExtResource("32_xnjpx")
+BODY = NodePath("../..")
+MESH = NodePath("../reaper")
+
 [node name="Slash" type="Node3D" parent="Mesh" node_paths=PackedStringArray("copy_transform_node")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988243, -0.52316)
 script = ExtResource("15_lwilf")
@@ -2559,6 +2565,7 @@ light_specular = 0.0
 omni_range = 17.0156
 
 [node name="reaper" parent="Mesh" instance=ExtResource("3_k4avc")]
+rotation_edit_mode = 1
 
 [node name="Skeleton3D" parent="Mesh/reaper/Reaper" index="0"]
 bones/0/position = Vector3(0.101293, -0.0463622, 0.269199)
@@ -2603,7 +2610,7 @@ material_override = ExtResource("35_m1s71")
 material_override = ExtResource("36_4anjp")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="3"]
-transform = Transform3D(-0.730874, -0.667435, -0.142669, 0.564037, -0.70836, 0.424368, -0.384299, 0.229688, 0.89418, 0.249727, 1.10103, 0.377145)
+transform = Transform3D(-0.730874, -0.667434, -0.14267, 0.564037, -0.708361, 0.424368, -0.384299, 0.229688, 0.89418, 0.249727, 1.10104, 0.377145)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -2634,7 +2641,7 @@ PLAYER = NodePath("../../../../../../..")
 ATTACK_AREA = NodePath("..")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4"]
-transform = Transform3D(-0.999794, -0.0170243, -0.0110436, 0.00979485, 0.0717668, -0.997373, 0.0177721, -0.997276, -0.071585, 0.0121075, 0.0204707, -0.105323)
+transform = Transform3D(-0.999794, -0.0170242, -0.0110436, 0.00979487, 0.0717662, -0.997374, 0.0177721, -0.997276, -0.0715845, 0.0121076, 0.0204706, -0.105323)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -2645,7 +2652,7 @@ scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 copy_transform_node = NodePath(".")
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5"]
-transform = Transform3D(-0.999794, -0.0170243, -0.0110436, 0.00979485, 0.0717668, -0.997373, 0.0177721, -0.997276, -0.071585, 0.0121075, 0.0204707, -0.105323)
+transform = Transform3D(-0.999794, -0.0170242, -0.0110436, 0.00979487, 0.0717662, -0.997374, 0.0177721, -0.997276, -0.0715845, 0.0121076, 0.0204706, -0.105323)
 bone_name = "foot_l"
 bone_idx = 18
 
