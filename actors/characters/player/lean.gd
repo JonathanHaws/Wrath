@@ -11,14 +11,11 @@ func _physics_process(delta: float) -> void:
 	var delta_velocity: Vector3 = BODY.velocity - last_velocity
 	last_velocity = BODY.velocity
 	
-	# project delta velocity onto local forward
 	var forward: Vector3 = -MESH.global_transform.basis.z
 	var lean_amount: float = delta_velocity.dot(forward)
 
-	# map to degrees and clamp
 	var target_lean: float = clamp(-lean_amount * MAX_LEAN_ANGLE, -MAX_LEAN_ANGLE, MAX_LEAN_ANGLE)
 
-	# smooth lean
 	var rot: Vector3 = MESH.rotation_degrees
 	rot.x = lerp(rot.x, target_lean, LEAN_SPEED * delta)
 	MESH.rotation_degrees = rot
