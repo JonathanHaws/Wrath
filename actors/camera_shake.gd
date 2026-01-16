@@ -1,7 +1,7 @@
 extends Node
 @export var shake = 0.0
-@export var default_decay_rate = 20.0
-@export var max_shake = 10.0
+@export var default_decay_rate = 30.0
+@export var max_shake = 13.0
 @export var TREMOR_STRENGTH: float = 1.0
 @export var TARGET_GROUP: String = "player"
 var noise := FastNoiseLite.new()
