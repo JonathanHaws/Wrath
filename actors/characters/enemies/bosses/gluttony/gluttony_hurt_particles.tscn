@@ -69,7 +69,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".")
+tracks/1/path = NodePath("..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -79,6 +79,18 @@ tracks/1/keys = {
 "args": [],
 "method": &"queue_free"
 }]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.133333, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [5.0, 0.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_12k5t"]
@@ -105,3 +117,9 @@ libraries = {
 &"": SubResource("AnimationLibrary_12k5t")
 }
 autoplay = "lifetime"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.921569, 0.537255, 0.498039, 1)
+light_energy = 5.0
+light_specular = 0.0
+omni_range = 30.5494

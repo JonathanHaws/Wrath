@@ -1717,7 +1717,7 @@ blend_shapes/Calm = 1.0
 surface_material_override/0 = ExtResource("30_gn5mi")
 
 [node name="FrontTail" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="1"]
-transform = Transform3D(0.679059, 0.734084, 0, 6.70552e-08, -2.98023e-08, 1, 0.734083, -0.679059, -2.83122e-07, 0.387464, 0.543822, -1.51276)
+transform = Transform3D(0.679061, 0.734082, 6.4075e-07, -4.47035e-07, -4.32134e-07, 1, 0.734082, -0.67906, -1.93715e-07, 0.387463, 0.543822, -1.51276)
 bone_name = "tail.006"
 bone_idx = 70
 
@@ -1733,7 +1733,7 @@ disabled = true
 debug_color = Color(0.73, 0.73, 0.73, 0)
 
 [node name="MiddleTail" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="2"]
-transform = Transform3D(0.479658, -0.876593, -0.0389047, 5.07571e-08, -0.044338, 0.999016, -0.877455, -0.479186, -0.0212673, 0.166113, 0.51728, -5.01815)
+transform = Transform3D(0.479655, -0.876594, -0.0389041, -1.93249e-07, -0.0443375, 0.999017, -0.877457, -0.479183, -0.0212671, 0.166105, 0.51728, -5.01815)
 bone_name = "tail.009"
 bone_idx = 73
 
@@ -1749,7 +1749,7 @@ disabled = true
 debug_color = Color(0.73, 0.73, 0.73, 0)
 
 [node name="BackTail" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="3"]
-transform = Transform3D(0.999814, 0.0192723, 0.000589048, 8.56817e-08, -0.0305533, 0.999533, 0.019281, -0.999347, -0.0305479, -2.09093, 0.378554, -6.99834)
+transform = Transform3D(0.999814, 0.0192687, 0.000589481, -4.63799e-07, -0.0305533, 0.999533, 0.0192776, -0.999347, -0.0305478, -2.09095, 0.378556, -6.99833)
 bone_name = "tail.011"
 bone_idx = 75
 
@@ -1765,7 +1765,7 @@ disabled = true
 debug_color = Color(0.73, 0.73, 0.73, 0)
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="4"]
-transform = Transform3D(-0.927089, 0.374499, -0.0160225, -0.374752, -0.925079, 0.0615698, 0.00823572, 0.063085, 0.997974, 0.853219, 3.89528, -0.380515)
+transform = Transform3D(-0.927089, 0.374499, -0.0160231, -0.374751, -0.925079, 0.061571, 0.00823557, 0.0630862, 0.997974, 0.85322, 3.89527, -0.380514)
 bone_name = "hand_l"
 bone_idx = 6
 
@@ -1781,7 +1781,7 @@ disabled = true
 debug_color = Color(0.95, 0.038, 0.1748, 0.180392)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="5"]
-transform = Transform3D(-0.908106, -0.4187, 0.00592293, 0.418255, -0.906276, 0.0610496, -0.0201935, 0.0579168, 0.998117, -0.956145, 3.93817, -0.392304)
+transform = Transform3D(-0.908106, -0.418698, 0.00592329, 0.418253, -0.906277, 0.06105, -0.0201931, 0.0579171, 0.998117, -0.956143, 3.93816, -0.392303)
 bone_name = "hand_r"
 bone_idx = 51
 
@@ -1941,7 +1941,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="12"]
-transform = Transform3D(0.999701, 0.0208961, -0.012685, -0.0236265, 0.959107, -0.282056, 0.00627243, 0.282271, 0.959314, -0.0288818, 5.0388, 0.230217)
+transform = Transform3D(0.999701, 0.0208961, -0.012685, -0.0236265, 0.959108, -0.282055, 0.00627245, 0.28227, 0.959314, -0.0288818, 5.0388, 0.230216)
 bone_name = "neck"
 bone_idx = 20
 
