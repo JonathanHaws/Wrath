@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://c63gb30rbqgem"]
+[gd_scene load_steps=99 format=3 uid="uid://c63gb30rbqgem"]
 
 [ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://actors/characters/player/reaper.gd" id="1_0b6a6"]
 [ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://actors/characters/player/camera/fov_lerp.gd" id="2_1bp3y"]
@@ -2301,6 +2301,43 @@ size = Vector3(12.7935, 22.7476, 51.4006)
 [sub_resource type="BoxShape3D" id="BoxShape3D_m1s71"]
 size = Vector3(1.48717, 1.89942, 0.500744)
 
+[sub_resource type="Animation" id="Animation_qlt7i"]
+resource_name = "HIT"
+length = 0.054
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../../../SlowMotion")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.12, 0.0],
+"method": &"impact"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../../../CameraShake")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [8.0],
+"method": &"tremor"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qsprq"]
+_data = {
+&"HIT": SubResource("Animation_qlt7i")
+}
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wub5s"]
 bg_color = Color(1, 1, 1, 0.439216)
 border_width_left = 1
@@ -2578,11 +2615,12 @@ transform = Transform3D(0.998841, 0.00591695, -0.0477685, -0.00559802, 0.999961,
 bone_name = "staff_2"
 bone_idx = 22
 
-[node name="SytheHurtShape" type="Area3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D" groups=["player"]]
+[node name="SytheHurtShape" type="Area3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D" node_paths=PackedStringArray("hit_animation_player") groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00983417, 0.964215, 0.00320163)
 script = ExtResource("7_4anjp")
 damage = 50.0
 damage_groups = Array[String](["enemy_hitshape"])
+hit_animation_player = NodePath("AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape"]
 transform = Transform3D(1, -4.76837e-07, -5.96046e-08, -6.55651e-07, 1, -3.57628e-07, 2.38419e-07, -5.96046e-07, 1, -0.0433788, 0.449711, 0.0120862)
@@ -2603,6 +2641,11 @@ ATTACK_AREA = NodePath("..")
 script = ExtResource("38_5ijfa")
 PLAYER = NodePath("../../../../../../..")
 ATTACK_AREA = NodePath("..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape"]
+libraries = {
+&"": SubResource("AnimationLibrary_qsprq")
+}
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4"]
 transform = Transform3D(-0.999717, 3.66941e-07, -0.0238119, 0.0237513, -0.0712467, -0.997176, -0.00169688, -0.997459, 0.0712265, -0.0978265, 0.0106028, 0.0923682)
