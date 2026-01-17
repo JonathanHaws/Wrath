@@ -116,6 +116,7 @@ func _ready() -> void:
 		if door_node:
 			if door_node.START: 
 				global_transform = door_node.START.global_transform
+				CAMERA.last_orientation = CAMERA.global_basis
 		FADE_IN_ANIM.play("DOOR_FADE_IN")
 		Save.data.erase("door_node_name")
 		Save.save_game()
