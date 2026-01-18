@@ -9,6 +9,7 @@ extends ProgressBar
 var default_width 
 var default_max_value
 var difference_delay := 0.0
+var difference_value: float = 0.0
 
 func update_bar(delta := 0.0) -> void:
 	if not tracked_node: return
@@ -27,6 +28,11 @@ func update_bar(delta := 0.0) -> void:
 	
 	if (value < difference_bar.value) and (difference_delay <= 0): # Decreasing
 		difference_delay = difference_speed
+		difference_value = value
+		
+	if (difference_value != value): # Combo Hits Decreasing... Reset timer each hit
+		difference_delay = difference_speed
+		difference_value = value
 	
 	if difference_delay > 0.0:
 		difference_delay -= delta
