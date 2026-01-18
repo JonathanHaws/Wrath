@@ -112,7 +112,8 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="GluttonyProjectile" type="Node3D" node_paths=PackedStringArray("ray", "collision_point", "collision_animation_player")]
+[node name="SlowVomit" type="Node3D" node_paths=PackedStringArray("ray", "collision_point", "collision_animation_player")]
+top_level = true
 script = ExtResource("1_e1mm7")
 speed = 22.0
 gravity = 15.0
@@ -124,11 +125,11 @@ collision_point = NodePath("PuddleSpawner")
 collision_animation_player = NodePath("AnimationPlayer")
 collision_animation_name = "colliding"
 
-[node name="PuddleSpawner" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node")]
+[node name="PuddleSpawner" type="Node3D" parent="."]
 rotation_edit_mode = 1
 script = ExtResource("2_fabgd")
 scenes = Array[PackedScene]([ExtResource("3_j1560")])
-copy_transform_node = NodePath(".")
+add_to_scene_root = true
 
 [node name="Node3D" type="Node3D" parent="."]
 

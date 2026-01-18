@@ -65,7 +65,8 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="GluttonyProjectile" type="Node3D"]
+[node name="FastVomit" type="Node3D"]
+top_level = true
 script = ExtResource("1_lrs7j")
 speed = 20.0
 homing_speed = 0.2

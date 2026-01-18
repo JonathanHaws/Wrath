@@ -97,7 +97,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [0, null],
+"args": [],
 "method": &"spawn"
 }]
 }
@@ -1376,11 +1376,10 @@ COOLDOWN = 10.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="HurtParticles" type="Node3D" parent="." node_paths=PackedStringArray("copy_transform_node") groups=["teleport_to_attacking_area"]]
+[node name="HurtParticles" type="Node3D" parent="." groups=["teleport_to_attacking_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("23_6u562")
 scenes = Array[PackedScene]([ExtResource("24_wpfpa")])
-copy_transform_node = NodePath(".")
 
 [node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.3862)

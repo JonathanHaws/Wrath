@@ -1,71 +1,74 @@
-# Used for particles and projectiles
-# Use top level fro transforms in the objects to avoid them following parents strangely
-
+## Used for particles, projectiles, and other dynamically spawned scenes
+## Use top level for scene transforms to avoid them following parents 
 extends Node
 @export var scenes: Array[PackedScene]
-@export var copy_transform_node: Node3D = null
-@export var parent_node: Node = null
-	
-@export_group("Orientation 2D") ## Make sure node is top level to avoid it following parent
-	
-@export_group("Orientation 3D") ## For setting initial orientation for 3d Nodes
-@export var homing_target: Node3D = null
+@export var scene_to_spawn: int = 0 ## Specifies which scene to spawn 
+@export var random_scene: bool = false ## Overrides 'scene_to_spawn'
+@export var add_to_scene_root: bool = false ## Makes spawned scene a child of the scene root instead of this node. Useful when particles want to spawn other particles) Still starts with this nodes initial transform though
+
+@export_group("Transform 3D") 
+@export var path_3d: Path3D = null ## Specifies a 3D Curve to home to with spawned scenes inital transform
+@export var homing_target: Node3D = null ## Specifies a target to orient towards with spawned scenes initial transform
 @export var projectile_speed: float = 10.0
 @export var projectile_gravity: float = 0.0	
-	
-	
-func safe_look_at(node, target_position: Vector3) -> void:
-	if node is Node3D:
-		node.look_at(target_position, Vector3.UP)	
-	
-func home_towards_target() -> void:
-	
-	if not homing_target: return
-	
-	var target_velocity: Vector3 = Vector3.ZERO
-	
-	var to_target = homing_target.global_position - self.global_position
+func home_towards_position_3d(node: Node, target_pos: Vector3) -> void:
+	var to_target = target_pos - node.global_position
 	var distance = to_target.length()
-	if not distance > 0.001: return
+	if distance <= 0.001: return
+	
 	var time = distance / projectile_speed
-
+	var target_velocity: Vector3
+	
 	if projectile_gravity > 0: # arc
 		target_velocity = to_target / time
 		target_velocity.y += 0.5 * projectile_gravity * time
 	else: # straight
-		target_velocity = to_target / time	
+		target_velocity = to_target / time
 	
+	if not node is Node3D: return 
+
 	if target_velocity.length() > 0.001:
-		safe_look_at(self, self.global_position + target_velocity.normalized())
-	
-func spawn(particle = 0, position_or_parent = null) -> void:
+		node.look_at(node.global_position + target_velocity.normalized(), Vector3.UP)	
+func home_towards_target(node: Node, target: Node3D = null) -> void:
+	var actual_target: Node3D = null
+	if target != null:
+		actual_target = target
+	elif homing_target != null:
+		actual_target = homing_target
+	if actual_target != null:
+		home_towards_position_3d(node, actual_target.global_position)
+		
+func spawn(particle = 0, percent: float = 0) -> void:
 
-	home_towards_target()
-
-	var particle_scene = null
-	if particle == null and scenes.size() == 1: # Default to only particle scene if none is specified
-		particle_scene = scenes[0]
-	if particle is int and particle >= 0 and particle < scenes.size():
-		particle_scene = scenes[particle]
-	elif particle is PackedScene:
-		particle_scene = particle
-	if particle_scene == null: return
+	var scene_to_instantiate: PackedScene = null
+	if particle != null and particle is PackedScene:
+		scene_to_instantiate = particle
+	elif random_scene and scenes.size() > 0:
+		scene_to_instantiate = scenes[randi() % scenes.size()]
+	elif scene_to_spawn >= 0 and scene_to_spawn < scenes.size():
+		scene_to_instantiate = scenes[scene_to_spawn]
+	elif scenes.size() == 1:
+		scene_to_instantiate = scenes[0]
+	var scene = scene_to_instantiate.instantiate()
 	
-	var particles = particle_scene.instantiate()
-	
-	if parent_node == null:
-		var current_scene = get_tree().get_current_scene()
-		if current_scene:
-			current_scene.add_child(particles)
+	if add_to_scene_root:
+		var root = get_tree().get_current_scene()
+		if root: root.add_child(scene)	
 	else:
-		parent_node.add_child(particles)
+		add_child(scene)	
+	if scene is Node3D: scene.global_transform = self.global_transform
+	
+	if path_3d and path_3d.curve != null:
+		#print(path_3d.name, percent) ## Verify all the functions are being called with right percentages deterministically
+		var curve = path_3d.curve
+		var length = curve.get_baked_length()
+		var local_pos = curve.sample_baked(percent * length)
+		var world_pos = path_3d.to_global(local_pos)
+		home_towards_position_3d(scene, world_pos)
+	else:
+		home_towards_target(scene) 
+	
 
-	if position_or_parent is Vector3:
-		particles.global_transform.origin = position_or_parent
-		
-	if copy_transform_node:
-		particles.global_transform = copy_transform_node.global_transform
-		
 	#if particles is Node3D and particles.material_override: #for making shader unique for every particle might be a bug
 		#particles.material_override = particles.material_override.duplicate()
 		
