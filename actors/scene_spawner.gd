@@ -59,16 +59,17 @@ func spawn(particle = 0, percent: float = 0) -> void:
 	if scene is Node3D: scene.global_transform = self.global_transform
 	
 	if path_3d and path_3d.curve != null:
-		#print(path_3d.name, percent) ## Verify all the functions are being called with right percentages deterministically
+
 		var curve = path_3d.curve
 		var length = curve.get_baked_length()
 		var local_pos = curve.sample_baked(percent * length)
 		var world_pos = path_3d.to_global(local_pos)
 		home_towards_position_3d(scene, world_pos)
+		
+		print(path_3d.name, percent, scene.global_rotation_degrees) ## Verify all the functions are being called with right percentages deterministically
 	else:
 		home_towards_target(scene) 
 	
-
 	#if particles is Node3D and particles.material_override: #for making shader unique for every particle might be a bug
 		#particles.material_override = particles.material_override.duplicate()
 		

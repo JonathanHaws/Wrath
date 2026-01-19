@@ -119,7 +119,7 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="GluttonyProjectile" type="Node3D"]
+[node name="VomitPuddle" type="Node3D"]
 script = ExtResource("1_s6lm2")
 
 [node name="Node3D" type="Node3D" parent="."]
