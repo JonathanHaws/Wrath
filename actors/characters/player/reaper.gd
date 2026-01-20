@@ -180,7 +180,9 @@ func _physics_process(delta: float) -> void:
 				velocity.y = JUMP_VELOCITY * JUMP_MULTIPLIER
 				falling = COYOTE_TIME
 				jump_buffer = 0
-				if PARTICLES: PARTICLES.spawn(1)
+				if PARTICLES: 
+					PARTICLES.scene_to_spawn = 1
+					PARTICLES.spawn()
 	
 	var keyboard_vector := Input.get_vector("keyboard_left", "keyboard_right", "keyboard_forward", "keyboard_back")
 	var controller_vector := Input.get_vector("controller_left", "controller_right", "controller_forward", "controller_back")
