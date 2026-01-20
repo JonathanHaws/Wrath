@@ -6,7 +6,7 @@ func _on_body_entered(body):
 		body.velocity.y = bounce_force
 		$Squash.squish(.5, $MeshInstance3D)
 		$AnimationPlayer.play("bounce", 0)
-		SlowMotion.impact(0.1, 0)
+		CameraEffects.slow_motion(0.1, 0)
 
 func _ready():
 	connect("body_entered", Callable(self, "_on_body_entered"))

@@ -1,0 +1,83 @@
+extends Node ## Node for camera impact effects like shake / slow motion 
+@export var shake = 0.0
+@export var default_decay_rate = 30.0
+@export var max_shake = 13.0
+@export var TREMOR_STRENGTH: float = 1.0
+@export var TARGET_GROUP: String = "player"
+@export var shake_presets := {
+	"player_attack": { "strength": 2.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},
+	"player_hurt":   { "strength": 2.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},
+	"player_death":  { "strength": 0.3, "slow_motion_duration": 4.0, "slow_motion_speed": 0.3},
+	"boss_death":    { "strength": 1.0, "slow_motion_duration": 2.0, "slow_motion_speed": 0.7},
+	"enemy_death":   { "strength": 1.0, "slow_motion_duration": 0.3, "slow_motion_speed": 0.2},
+	"small":  		 { "strength": 3.0, "slow_motion_duration": 0.13, "slow_motion_speed": 0.0},
+	"big": 			 { "strength": 5.0, "slow_motion_duration": .5,  "slow_motion_speed": 0.5},
+	"boss_scream":   { "continious_tremor_strength": .8, "continuious_tremor_duration": 1.5 }
+}
+var noise := FastNoiseLite.new()
+var shake_offset := Vector3.ZERO
+var decay_rate = default_decay_rate
+	
+func slow_motion(duration: float, speed: float = 0.0) -> void: 
+	if not is_inside_tree(): return
+	# regular collision engine breakes with time_scale set to 0. Must use jolt or there might be glitches
+	# get_tree().paused = true If still wanting to use regular physics will have to specially set this if case is 0
+	#print(duration, speed)
+	Engine.time_scale = speed
+	await get_tree().create_timer(duration, true, false, true).timeout
+	Engine.time_scale = 1.0	
+	
+func tremor(scale: float = 1.0) ->void:
+	shake += scale
+
+func continious_tremor(strength: float, duration: float = 1.0) -> void:
+	decay_rate = 0
+	shake = strength
+	await get_tree().create_timer(duration, true, false, true).timeout
+	decay_rate = default_decay_rate
+
+func impact(preset_name: String = "", camera_shake: float = .2, slow_motion_duration: float = .2, slow_motion_speed: float = 0):
+	if preset_name != "" and shake_presets.has(preset_name):
+		var preset = shake_presets[preset_name]
+		#print(preset_name)
+		if preset.has("strength"): 
+			shake +=  preset.strength
+		if preset.has("decay"):
+			decay_rate = preset.decay
+		if preset.has("slow_motion_duration"):
+			var duration = preset.get("slow_motion_duration", .1)
+			var impact_speed = preset.get("slow_motion_speed", 0)
+			slow_motion(duration, impact_speed)
+		if preset.has("continious_tremor_strength") and preset.has("continuious_tremor_duration"):
+			var strength = preset.continious_tremor_strength
+			var duration = preset.continuious_tremor_duration
+			continious_tremor(strength, duration)	
+		return
+	tremor(camera_shake)	
+	slow_motion(slow_motion_duration, slow_motion_speed)
+	
+func _ready():
+	noise.seed = randi()
+	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
+	noise.frequency = 2.0
+
+func _physics_process(delta):
+	var current_camera := get_viewport().get_camera_3d()
+	if !current_camera: return
+	current_camera.rotation_degrees -= shake_offset # Remove previous frame's shake
+	if shake > 0.0:
+		shake -= decay_rate * delta
+		shake = max(shake, 0.0)
+		var time = Engine.get_physics_frames()
+		var shake_x = noise.get_noise_2d(time * 0.05, 0.0)
+		var shake_y = noise.get_noise_2d(time * 0.05, 1000.0) 
+		var shake_z = noise.get_noise_2d(time * 0.05, 2000.0) 
+		shake_offset.x = clamp(shake_x * shake, -max_shake, max_shake)
+		shake_offset.y = clamp(shake_y * shake, -max_shake, max_shake)
+		shake_offset.z = clamp(shake_z * shake, -max_shake, max_shake)
+		current_camera.rotation_degrees += shake_offset
+		
+func _on_body_entered(body) -> void:
+	if body.is_in_group(TARGET_GROUP):
+		#print('registering')
+		tremor(TREMOR_STRENGTH)

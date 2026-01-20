@@ -13,7 +13,7 @@ cap_bottom = false
 [sub_resource type="SphereMesh" id="SphereMesh_v5ope"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7pvji"]
-size = Vector3(0.272693, 0.283219, 0.307823)
+size = Vector3(0.618972, 0.717653, 0.681788)
 
 [sub_resource type="Animation" id="Animation_mr47g"]
 length = 0.001
@@ -138,7 +138,7 @@ collision_mask = 3
 script = ExtResource("2_v5ope")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000255948, 0.00496654, -0.641847)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0165985, -0.0165819, -0.697874)
 shape = SubResource("BoxShape3D_7pvji")
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 

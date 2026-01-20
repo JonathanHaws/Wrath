@@ -6,7 +6,7 @@
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.472445, 0.61, 0.4087, 1)
+albedo_color = Color(0.539138, 0.61, 0.5063, 1)
 albedo_texture = ExtResource("1_usfgs")
 billboard_mode = 1
 billboard_keep_scale = true
@@ -119,7 +119,7 @@ libraries = {
 autoplay = "lifetime"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_color = Color(0.411765, 0.611765, 0.317647, 1)
+light_color = Color(0.505792, 0.61, 0.4575, 1)
 light_energy = 5.0
 light_specular = 0.0
 omni_range = 30.5494

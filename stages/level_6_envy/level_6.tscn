@@ -93,12 +93,12 @@ omni_range = 101.01
 transform = Transform3D(1, 0, -1.06581e-14, 0, 1, 0, 1.06581e-14, 0, 1, 72.8576, -8.56741, 6.83791)
 
 [node name="Enter" parent="." instance=ExtResource("7_iow1r")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -8.77128, 1.00536e-06)
 DESTINATION_NODE_NAME = "Exit"
 DESTINATION_SCENE = "uid://dsdh2bite7xv4"
 
 [node name="Exit" parent="." instance=ExtResource("7_iow1r")]
-transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 72.5092, -9.68296, -13.5897)
+transform = Transform3D(1, 0, 1.74845e-07, 0, 1, 0, -1.74845e-07, 0, 1, 72.5092, -8.78766, -13.5897)
 DESTINATION_NODE_NAME = "EnvyCourt"
 DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
 
@@ -114,4 +114,4 @@ transform = Transform3D(-0.187398, 0, 0.982284, 0, 1, 0, -0.982284, 0, -0.187398
 transform = Transform3D(-0.187398, 0, 0.982284, 0, 1, 0, -0.982284, 0, -0.187398, 67.9769, -7.67152, 42.3328)
 
 [node name="Reaper" parent="." instance=ExtResource("5_322pr")]
-transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
+transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.48924, -1.63374)

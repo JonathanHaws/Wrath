@@ -31,10 +31,10 @@ func show_damage(damage_amount: int) -> void:
 	get_tree().current_scene.add_child(number)
 	number.position = get_viewport().get_camera_3d().unproject_position(self.global_position) - Vector2(0, 140.0)
 
-func hit(area: Area3D = null, damage: int = 0)-> void:
-	if DISABLED: return
-	if invincibility_timer: if invincibility_timer.is_stopped() == false: return  
-	if area: for immune_group in IMMUNE_GROUPS: if area.is_in_group(immune_group): return
+func hit(area: Area3D = null, damage: int = 0) -> bool:
+	if DISABLED: return false
+	if invincibility_timer: if invincibility_timer.is_stopped() == false: return false 
+	if area: for immune_group in IMMUNE_GROUPS: if area.is_in_group(immune_group): return false
 	HEALTH -= damage
 	last_hurt_shape = area 
 	if invincibility_timer: invincibility_timer.start()
@@ -58,6 +58,7 @@ func hit(area: Area3D = null, damage: int = 0)-> void:
 		if HEAL_ANIMATION_PLAYER and HEAL_ANIMATION_PLAYER.has_animation(HEAL_ANIM):
 			HEAL.emit()
 			HEAL_ANIMATION_PLAYER.play(HEAL_ANIM)
+	return true
 			
 func _ready():
 	if INVINCIBILITY_COOLDOWN > 0:

@@ -70,7 +70,11 @@ func spawn_along_curve(curve_group: String, scene_count: int = 1, delay: float =
 		
 		if delay > 0: await get_tree().create_timer(delay).timeout
 
-			
+func spawn_multiple(count: int = 1, delay: float = 0.0) -> void:
+	for i in range(count):
+		spawn()
+		if delay > 0: await get_tree().create_timer(delay).timeout
+		
 func spawn() -> Node:
 	var scene_to_instantiate = get_scene_to_spawn()
 	if scene_to_instantiate == null: return
