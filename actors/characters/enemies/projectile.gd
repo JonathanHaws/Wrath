@@ -24,15 +24,21 @@ func play_collision_animation():
 			collision_animation_player.play(collision_animation_name, 0)
 			collision_animation_player.advance(0)
 
+func set_velocity_from_orientation() -> void:
+	velocity = -(global_transform.basis.z.normalized()) * speed		
+	velocity +=  Vector3(randf_range(-random_velocity_x, random_velocity_x), randf_range(-random_velocity_y, random_velocity_y), 0)
+
 func _ready():
-	await get_tree().process_frame
+	
+	await get_tree().physics_frame
 	
 	if home_in_ready and get_tree().get_nodes_in_group(homing_group):
 		var target = get_tree().get_nodes_in_group(homing_group)[0]
 		look_at(target.global_position + homing_offset, Vector3.UP)
 	
-	velocity = -(global_transform.basis.z.normalized()) * speed		
-	velocity +=  Vector3(randf_range(-random_velocity_x, random_velocity_x), randf_range(-random_velocity_y, random_velocity_y), 0)
+	set_velocity_from_orientation()
+	
+	#print(velocity)
 	
 	if hurt_box and hurt_box.has_signal("hurt_something"):
 		hurt_box.connect("hurt_something", Callable(self, "play_collision_animation"))

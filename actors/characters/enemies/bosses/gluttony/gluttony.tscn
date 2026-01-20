@@ -1503,6 +1503,61 @@ tracks/4/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_x6t7s"]
+resource_name = "VOMIT_ENCLOSE"
+length = 5.5
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/gluttony/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("VOMIT_IN_FRONT"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Audio/Shreik2")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.708333, 1.5, 1.66667, 3.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0, 1.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/VomitSpawner")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.91667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["vomit_enclose", 10, 0.0],
+"method": &"spawn_along_curve"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_uk6rk"]
 resource_name = "VOMIT_IN_FRONT"
 length = 5.5
@@ -1577,7 +1632,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(1.91667),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["vomit_in_front", 5, 0.2],
+"args": ["vomit_in_front", 6, 0.1],
 "method": &"spawn_along_curve"
 }]
 }
@@ -1656,62 +1711,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(1.91667),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["vomit_medium_left", 5, 0.2],
-"method": &"spawn_along_curve"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_x6t7s"]
-resource_name = "VOMIT_ENCLOSE"
-length = 5.5
-step = 0.0416667
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/gluttony/AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("VOMIT_IN_FRONT"),
-"times": PackedFloat32Array(0)
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Audio/Shreik2")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"play"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.708333, 1.5, 1.66667, 3.875),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 0.0, 0.0, 1.0, 1.0]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/VomitSpawner")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(1.91667),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["vomit_enclose", 10, 0.0],
+"args": ["vomit_medium_left", 6, 0.1],
 "method": &"spawn_along_curve"
 }]
 }
@@ -1966,6 +1966,7 @@ DEFEATED_KEY = "gluttony_defeated"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.14872, 0)
+visible = false
 shape = SubResource("CapsuleShape3D_12e26")
 
 [node name="Ui" type="Control" parent="." groups=["ui_scalable"]]
@@ -2128,9 +2129,9 @@ next/SHOOT_GRAVITY = &"CHASE"
 next/SLAM = &"CHASE"
 next/SLAM_LEFT = &"CHASE"
 next/SLAM_RIGHT = &"CHASE"
+next/VOMIT_ENCLOSE = &"CHASE"
 next/VOMIT_IN_FRONT = &"CHASE"
 next/VOMIT_MEDIUM_LEFT = &"CHASE"
-next/VOMIT_ENCLOSE = &"CHASE"
 
 [node name="FistSlamLeft" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("AREA_MULTIPLIER", "TARGET", "BODY")]
 script = ExtResource("29_uk6rk")
@@ -2248,8 +2249,8 @@ bones/2/rotation = Quaternion(0.115607, -7.7702e-14, -5.51256e-08, 0.993295)
 bones/3/rotation = Quaternion(0.156315, 3.84336e-14, -7.45369e-08, 0.987707)
 bones/4/position = Vector3(6.6471e-07, 1.41856, 1.394)
 bones/4/rotation = Quaternion(-0.0399073, 2.61106e-15, 1.90292e-08, 0.999203)
-bones/8/position = Vector3(4.31691e-07, 1.2914, 0.897505)
-bones/8/rotation = Quaternion(0.520192, -2.13852e-06, -1.54964e-06, 0.854049)
+bones/8/position = Vector3(4.29941e-07, 1.2914, 0.897505)
+bones/8/rotation = Quaternion(0.520192, -2.13827e-06, -1.55046e-06, 0.854049)
 bones/9/position = Vector3(0.068381, 1.04764, 1.70888)
 bones/9/rotation = Quaternion(0.844426, 0.404891, 0.158052, -0.313094)
 bones/10/position = Vector3(0.311825, 0.873597, 1.55681)
@@ -2263,7 +2264,7 @@ bones/14/position = Vector3(0.339622, 0.123198, 1.57834)
 bones/14/rotation = Quaternion(0.562489, -0.294514, 0.157498, 0.756348)
 bones/15/position = Vector3(0.167567, 0.184801, 1.72042)
 bones/15/rotation = Quaternion(0.449251, -0.44543, 0.268136, 0.726546)
-bones/16/position = Vector3(0.650535, 0.385237, 0.048037)
+bones/16/position = Vector3(0.650535, 0.385236, 0.048037)
 bones/21/position = Vector3(-0.0683795, 1.04764, 1.70888)
 bones/21/rotation = Quaternion(0.844426, -0.404891, -0.158053, -0.313093)
 bones/22/position = Vector3(-0.311824, 0.873597, 1.55681)
@@ -2278,7 +2279,7 @@ bones/26/position = Vector3(-0.339621, 0.123198, 1.57834)
 bones/26/rotation = Quaternion(0.562488, 0.294515, -0.157498, 0.756348)
 bones/27/position = Vector3(-0.167565, 0.184801, 1.72042)
 bones/27/rotation = Quaternion(0.449251, 0.445431, -0.268137, 0.726545)
-bones/28/position = Vector3(-0.650535, 0.385237, 0.0480375)
+bones/28/position = Vector3(-0.650535, 0.385236, 0.0480376)
 bones/30/rotation = Quaternion(0.183224, -0.0372966, -0.672582, 0.716011)
 bones/31/rotation = Quaternion(0.144995, 0.0969397, 0.0435599, 0.983708)
 bones/32/rotation = Quaternion(0.262743, 0.422381, 0.281481, 0.820567)
