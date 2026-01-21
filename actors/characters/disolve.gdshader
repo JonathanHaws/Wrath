@@ -1,7 +1,14 @@
 shader_type spatial;
-
 //credit DisplacedFikaDev
+
 render_mode cull_disabled; // Cant change this dynamicalyy. Must just make meshes with no visible backface...
+// but honestly seeing interior of the mesh looks better then seeing disparate parts so might keep for simplicity
+// having smooth transparency AND depth testing seems to be very difficult so will revisit only if feeling masochistic. 
+
+//uniform float fade_near = 0.02;
+//uniform float fade_far  = 0.005;
+//uniform sampler2D depth_tex : hint_depth_texture;
+
 uniform sampler2D albedo_texture : source_color;
 uniform vec3 albedo_color : source_color = vec3(1.0);
 uniform sampler2D emission_texture : source_color;
@@ -47,5 +54,11 @@ void fragment() {
 	EMISSION = surface_emisson * glow_intensitiy;
 
 	if (use_normal_map) { NORMAL_MAP = texture(normal_texture, UV).xyz; }
+
+	//float depth = texture(depth_tex, SCREEN_UV).r * 15.0;
+	//if (depth > .01){
+		//ALBEDO = vec3(0.0, 0.0, 1.0); // hard cutoff blue 
+		//ALBEDO = mix(ALBEDO, vec3(0.0,0.0,1.0), smoothstep(0.01, 1.0, depth)); // smooth cuttoff blue
+	//}
 
 }
