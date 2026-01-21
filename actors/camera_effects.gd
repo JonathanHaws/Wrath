@@ -1,31 +1,53 @@
 extends Node ## Node for camera impact effects like shake / slow motion 
 @export var shake = 0.0
 @export var default_decay_rate = 30.0
+@export var noise_frequency: float = 2.2
 @export var max_shake = 13.0
 @export var TREMOR_STRENGTH: float = 1.0
 @export var TARGET_GROUP: String = "player"
-@export var shake_presets := {
-	"player_attack": { "strength": 2.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},
-	"player_hurt":   { "strength": 2.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},
-	"player_death":  { "strength": 0.0, "slow_motion_duration": 4.0, "slow_motion_speed": 0.3},
-	"boss_death":    { "strength": 1.0, "slow_motion_duration": 2.0, "slow_motion_speed": 0.7},
-	"enemy_death":   { "strength": 1.0, "slow_motion_duration": 0.3, "slow_motion_speed": 0.2},
-	"small":  		 { "strength": 3.0, "slow_motion_duration": 0.13, "slow_motion_speed": 0.0},
-	"big": 			 { "strength": 5.0, "slow_motion_duration": .5,  "slow_motion_speed": 0.5},
-	"boss_scream":   { "continious_tremor_strength": .8, "continuious_tremor_duration": 1.5 }
-}
 var noise := FastNoiseLite.new()
 var shake_offset := Vector3.ZERO
 var decay_rate = default_decay_rate
+
+@export var shake_presets := {
+	"player_attack": { "strength": 4.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},
+	"player_hurt":   { "strength": 3.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},
+	"player_death":  { "strength": 0.0, "slow_motion_duration": 4, "slow_motion_speed": 0.3},
+	"boss_death":    { "strength": 1.0, "slow_motion_duration": 2.0, "slow_motion_speed": 0.7},
+	"enemy_death":   { "strength": 1.0, "slow_motion_duration": 0.3, "slow_motion_speed": 0.2},
+	"small":  		 { "strength": 3.0, "slow_motion_duration": 0.13, "slow_motion_speed": 0.0},
+	"big": 			 { "strength": 6.0, "slow_motion_duration": .5,  "slow_motion_speed": 0.5},
+	"boss_scream":   { "continious_tremor_strength": .8, "continuious_tremor_duration": 1.5 }
+}
+
+ ## Used so that if a new slow motion impact enters the tree the slower impact gets priority
+class slow_motion_impact:
+	extends Node
+	var speed: float
+	var duration: float
 	
+	func get_lowest_slow_motion_speed(exclude_self: bool = false) -> float:
+		var lowest_speed = 1.0
+		for node in get_tree().get_nodes_in_group("slow_motion_impact"):
+			if exclude_self and node == self: continue
+			lowest_speed = min(lowest_speed, node.speed)
+		#print(lowest_speed)
+		return lowest_speed
+
+	func _init(_speed: float, _duration: float):
+		speed = _speed
+		duration = _duration
+		add_to_group("slow_motion_impact")	
+	func _ready():
+		Engine.time_scale = get_lowest_slow_motion_speed(false)
+		await get_tree().create_timer(duration, true, false, true).timeout
+		Engine.time_scale = get_lowest_slow_motion_speed(true)
+		queue_free()
+
 func slow_motion(duration: float, speed: float = 0.0) -> void: 
 	if not is_inside_tree(): return
-	# regular collision engine breakes with time_scale set to 0. Must use jolt or there might be glitches
-	# get_tree().paused = true If still wanting to use regular physics will have to specially set this if case is 0
-	#print(duration, speed)
-	Engine.time_scale = speed
-	await get_tree().create_timer(duration, true, false, true).timeout
-	Engine.time_scale = 1.0	
+	var impact_instance = slow_motion_impact.new(speed, duration) # renamed
+	add_child(impact_instance)
 	
 func tremor(scale: float = 1.0) ->void:
 	shake += scale
@@ -59,7 +81,7 @@ func impact(preset_name: String = "", camera_shake: float = .2, slow_motion_dura
 func _ready():
 	noise.seed = randi()
 	noise.noise_type = FastNoiseLite.TYPE_SIMPLEX
-	noise.frequency = 2.0
+	noise.frequency = noise_frequency
 
 func _physics_process(delta):
 	var current_camera := get_viewport().get_camera_3d()

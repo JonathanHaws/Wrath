@@ -1,6 +1,8 @@
 shader_type spatial;
 //credit DisplacedFikaDev
 
+// potentially make script for auto animating material as animation player keyframes can be finicky
+
 render_mode cull_disabled; // Cant change this dynamicalyy. Must just make meshes with no visible backface...
 // but honestly seeing interior of the mesh looks better then seeing disparate parts so might keep for simplicity
 // having smooth transparency AND depth testing seems to be very difficult so will revisit only if feeling masochistic. 
