@@ -257,7 +257,7 @@ tracks/4/path = NodePath("../ColorRect:color")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 1.43333, 1.46667),
+"times": PackedFloat32Array(0, 0.9, 0.93333995),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
@@ -283,7 +283,7 @@ tracks/6/path = NodePath("../Audio")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.46667),
+"times": PackedFloat32Array(0, 0.93333995),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [["HURT"]],
@@ -300,7 +300,7 @@ tracks/7/path = NodePath("../Hitbox/DeathCountTracker")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(1.46667),
+"times": PackedFloat32Array(0.93333995),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -314,7 +314,7 @@ tracks/8/path = NodePath("..")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(1.56667),
+"times": PackedFloat32Array(1.0333399),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -2571,38 +2571,38 @@ omni_range = 17.0156
 rotation_edit_mode = 1
 
 [node name="Skeleton3D" parent="Mesh/reaper/Reaper" index="0"]
-bones/0/rotation = Quaternion(-0.707089, -0.00501628, 0.00501628, 0.707089)
-bones/1/position = Vector3(0.0321059, 0.050313, 0.857984)
-bones/1/rotation = Quaternion(0.707089, 0.00501628, -0.00501628, 0.707089)
-bones/3/position = Vector3(-0.0739061, 0.0863639, -1.76241e-08)
-bones/3/rotation = Quaternion(-0.339954, 0.189886, 0.806794, 0.444363)
-bones/4/rotation = Quaternion(-0.351262, 0.187928, -0.33691, 0.853106)
-bones/5/rotation = Quaternion(0.208797, -0.012884, 0.188292, 0.959575)
-bones/6/rotation = Quaternion(-0.265377, 0.0323598, -0.127725, 0.955099)
-bones/7/position = Vector3(0.057966, 0.276051, -0.0111894)
-bones/7/rotation = Quaternion(-0.096897, 0.206943, -0.173895, 0.957886)
-bones/8/position = Vector3(0.041183, 0.336463, 0.0592163)
-bones/8/rotation = Quaternion(0.0108148, -0.730595, 0.102959, 0.674917)
-bones/9/rotation = Quaternion(-0.132495, -5.52746e-12, -3.16727e-08, 0.991184)
-bones/10/position = Vector3(0.0739062, 0.086364, 2.02373e-08)
-bones/10/rotation = Quaternion(-0.339954, -0.189886, -0.806794, 0.444363)
-bones/11/rotation = Quaternion(-0.351262, -0.187928, 0.33691, 0.853106)
-bones/12/rotation = Quaternion(0.208798, 0.012884, -0.188292, 0.959575)
-bones/13/rotation = Quaternion(-0.265377, -0.0323597, 0.127725, 0.955099)
-bones/14/position = Vector3(-0.057966, 0.276051, -0.0111895)
-bones/14/rotation = Quaternion(-0.0968969, -0.206943, 0.173895, 0.957886)
-bones/15/position = Vector3(-0.041183, 0.336463, 0.0592164)
-bones/15/rotation = Quaternion(0.0108147, 0.730595, -0.102959, 0.674917)
-bones/16/position = Vector3(-0.0745592, -0.0469272, -3.392e-08)
-bones/16/rotation = Quaternion(0.00351466, -0.194222, 0.980826, 0.0157056)
-bones/17/rotation = Quaternion(0.27326, 0.00741328, 0.0027838, 0.961908)
-bones/18/rotation = Quaternion(-0.706787, 4.46224e-08, 0.00129818, 0.707425)
-bones/19/position = Vector3(0.0745592, -0.0469272, -3.49725e-08)
-bones/19/rotation = Quaternion(-0.000420176, -0.00144315, 0.99987, -0.0160885)
-bones/20/rotation = Quaternion(0.39503, -0.0109573, -0.00248364, 0.918599)
-bones/21/rotation = Quaternion(-0.706787, -4.53019e-08, -0.00129818, 0.707425)
-bones/22/position = Vector3(0.441474, 0.319224, 0.8481)
-bones/22/rotation = Quaternion(0.620598, -0.366335, -0.150987, 0.676653)
+bones/0/rotation = Quaternion(-0.70708895, -0.0050162785, 0.0050162785, 0.707089)
+bones/1/position = Vector3(0.032105897, 0.050312966, 0.85798424)
+bones/1/rotation = Quaternion(0.70708895, 0.005016275, -0.0050162785, 0.707089)
+bones/3/position = Vector3(-0.07390614, 0.08636392, -1.7624131e-08)
+bones/3/rotation = Quaternion(-0.33995402, 0.18988578, 0.806794, 0.4443627)
+bones/4/rotation = Quaternion(-0.35126203, 0.18792804, -0.33691, 0.8531059)
+bones/5/rotation = Quaternion(0.20879747, -0.012884032, 0.18829162, 0.9595749)
+bones/6/rotation = Quaternion(-0.2653767, 0.0323598, -0.12772457, 0.9550992)
+bones/7/position = Vector3(0.057965983, 0.27605093, -0.011189423)
+bones/7/rotation = Quaternion(-0.09689697, 0.20694265, -0.17389458, 0.95788646)
+bones/8/position = Vector3(0.041182965, 0.3364632, 0.059216313)
+bones/8/rotation = Quaternion(0.010814771, -0.7305951, 0.10295887, 0.67491734)
+bones/9/rotation = Quaternion(-0.13249545, -5.527461e-12, -3.1672652e-08, 0.99118364)
+bones/10/position = Vector3(0.07390615, 0.08636404, 2.0237266e-08)
+bones/10/rotation = Quaternion(-0.33995396, -0.18988591, -0.8067941, 0.44436252)
+bones/11/rotation = Quaternion(-0.35126206, -0.18792811, 0.33691004, 0.85310596)
+bones/12/rotation = Quaternion(0.20879751, 0.012884034, -0.18829158, 0.9595748)
+bones/13/rotation = Quaternion(-0.26537672, -0.03235974, 0.12772454, 0.9550992)
+bones/14/position = Vector3(-0.05796597, 0.2760509, -0.011189477)
+bones/14/rotation = Quaternion(-0.09689691, -0.20694265, 0.17389467, 0.9578864)
+bones/15/position = Vector3(-0.04118303, 0.33646318, 0.059216358)
+bones/15/rotation = Quaternion(0.010814734, 0.73059505, -0.102958746, 0.6749174)
+bones/16/position = Vector3(-0.07455925, -0.04692721, -3.3919996e-08)
+bones/16/rotation = Quaternion(0.0035146594, -0.19422187, 0.9808256, 0.0157056)
+bones/17/rotation = Quaternion(0.27325985, 0.0074132793, 0.0027838012, 0.96190774)
+bones/18/rotation = Quaternion(-0.70678735, 4.4622357e-08, 0.001298181, 0.70742494)
+bones/19/position = Vector3(0.07455924, -0.04692721, -3.4972548e-08)
+bones/19/rotation = Quaternion(-0.00042017625, -0.0014431499, 0.9998695, -0.016088543)
+bones/20/rotation = Quaternion(0.39503017, -0.01095726, -0.0024836448, 0.9185994)
+bones/21/rotation = Quaternion(-0.70678735, -4.5301935e-08, -0.0012981793, 0.70742494)
+bones/22/position = Vector3(0.44147438, 0.31922403, 0.8481003)
+bones/22/rotation = Quaternion(0.6205985, -0.36633483, -0.15098742, 0.67665297)
 
 [node name="body" parent="Mesh/reaper/Reaper/Skeleton3D" index="0"]
 material_override = ExtResource("35_m1s71")
@@ -2611,7 +2611,7 @@ material_override = ExtResource("35_m1s71")
 material_override = ExtResource("36_4anjp")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="3"]
-transform = Transform3D(0.6815591, -0.26382208, -0.68255025, 0.3180608, 0.9468353, -0.04837568, 0.6590254, -0.18412165, 0.72923553, 0.42939684, 0.85427815, -0.06922391)
+transform = Transform3D(0.68155926, -0.2638215, -0.68255025, 0.31805965, 0.9468356, -0.04837608, 0.6590257, -0.18412064, 0.7292355, 0.42939723, 0.8542785, -0.06922391)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -2648,7 +2648,7 @@ libraries = {
 }
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4"]
-transform = Transform3D(-0.9997167, 2.7753413e-07, -0.023811923, 0.023493463, -0.16299343, -0.98634726, -0.0038814503, -0.9866271, 0.16294743, -0.077896714, 0.045770973, 0.1058093)
+transform = Transform3D(-0.9997166, 2.96277e-07, -0.023811933, 0.023493467, -0.1629928, -0.98634744, -0.0038814568, -0.98662734, 0.16294684, -0.07789678, 0.04577121, 0.10580942)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -2658,7 +2658,7 @@ script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5"]
-transform = Transform3D(-0.9997167, 2.7753413e-07, -0.023811923, 0.023493463, -0.16299343, -0.98634726, -0.0038814503, -0.9866271, 0.16294743, -0.077896714, 0.045770973, 0.1058093)
+transform = Transform3D(-0.9997166, 2.96277e-07, -0.023811933, 0.023493467, -0.1629928, -0.98634744, -0.0038814568, -0.98662734, 0.16294684, -0.07789678, 0.04577121, 0.10580942)
 bone_name = "foot_l"
 bone_idx = 18
 
