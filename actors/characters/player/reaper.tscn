@@ -2384,7 +2384,6 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_0b6a6")
-SPEED = 5.65
 CAMERA = NodePath("SpringArm3D/Camera3D")
 MESH = NodePath("Mesh")
 ANIM = NodePath("AnimationPlayer")

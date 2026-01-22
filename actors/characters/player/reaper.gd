@@ -4,13 +4,12 @@ extends CharacterBody3D
 @export_group("Acceleration")
 @export var GROUND_SPEED := 100.0
 @export var AIR_SPEED  := 200.0
-@export var SPEED = 5.35
 @export var MAX_SPEED = 12.35
 @export var SPRINT_MULTIPLIER = 2.1
 @export var SPEED_MULTIPLIER: float = 1.0
 
 @export_group("Friction")
-@export var GROUND_FRICTION := 14.0
+@export var GROUND_FRICTION := 11.0
 @export var AIR_FRICTION := 2.0
 func stop_horizontal_movement() -> void:
 	velocity.x = 0
