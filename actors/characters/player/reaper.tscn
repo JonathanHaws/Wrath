@@ -2612,7 +2612,7 @@ material_override = ExtResource("35_m1s71")
 material_override = ExtResource("36_4anjp")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="3"]
-transform = Transform3D(0.681559, -0.263822, -0.68255, 0.31806, 0.946836, -0.0483761, 0.659026, -0.184121, 0.729235, 0.429397, 0.854279, -0.0692239)
+transform = Transform3D(0.6815591, -0.26382208, -0.68255025, 0.3180608, 0.9468353, -0.04837568, 0.6590254, -0.18412165, 0.72923553, 0.42939684, 0.85427815, -0.06922391)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -2649,7 +2649,7 @@ libraries = {
 }
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4"]
-transform = Transform3D(-0.999717, 2.96277e-07, -0.0238119, 0.0234935, -0.162993, -0.986347, -0.00388146, -0.986627, 0.162947, -0.0778968, 0.0457712, 0.105809)
+transform = Transform3D(-0.9997167, 2.7753413e-07, -0.023811923, 0.023493463, -0.16299343, -0.98634726, -0.0038814503, -0.9866271, 0.16294743, -0.077896714, 0.045770973, 0.1058093)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -2659,7 +2659,7 @@ script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5"]
-transform = Transform3D(-0.999717, 2.96277e-07, -0.0238119, 0.0234935, -0.162993, -0.986347, -0.00388146, -0.986627, 0.162947, -0.0778968, 0.0457712, 0.105809)
+transform = Transform3D(-0.9997167, 2.7753413e-07, -0.023811923, 0.023493463, -0.16299343, -0.98634726, -0.0038814503, -0.9866271, 0.16294743, -0.077896714, 0.045770973, 0.1058093)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -2738,7 +2738,7 @@ grow_vertical = 0
 script = ExtResource("43_ekykk")
 
 [node name="Label" type="Label" parent="UI"]
-layout_mode = 2
+layout_mode = 0
 offset_left = 8.0
 offset_top = -59.0
 offset_right = 100.0
