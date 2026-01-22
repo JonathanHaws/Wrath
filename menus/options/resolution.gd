@@ -1,8 +1,13 @@
-extends OptionButton
+extends Control
+@export var increase_button: Button 
+@export var decrease_button: Button 
+@export var resolution_label: Label
+@export var option_button: OptionButton 
 
+var resolution_index: int = 0
 var resolutions = {
-	"3840x2160": Vector2i(3840,2160),  # 4K
-	"2560x1440": Vector2i(2560,1440),  # QHD
+	#"3840x2160": Vector2i(3840,2160),  # 4K
+	#"2560x1440": Vector2i(2560,1440),  # QHD
 	"1920x1080": Vector2i(1920,1080),  # FHD
 	"1600x900": Vector2i(1600,900),
 	"1440x900": Vector2i(1440,900),
@@ -22,29 +27,60 @@ var resolutions = {
 	#"64x48": Vector2i(64,48),
 }
 
+func update_label() -> void:
+	var key_text = resolutions.keys() 
+	if resolution_label: resolution_label.text = key_text[resolution_index]
+	
+func increase_resolution() -> void:
+	var keys = resolutions.keys()
+	if resolution_index > 0:
+		resolution_index -= 1
+		var key = keys[resolution_index]
+		Config.change_resolution(resolutions[key])
+		if option_button: option_button.selected = resolution_index
+		update_label()
+
+func decrease_resolution() -> void:
+	var keys = resolutions.keys()
+	if resolution_index < keys.size() - 1:
+		resolution_index += 1
+		var key = keys[resolution_index]
+		Config.change_resolution(resolutions[key])
+		if option_button: option_button.selected = resolution_index
+		update_label()
+		
+func _on_option_selected(index: int) -> void:
+	resolution_index = index
+	update_label()
+	Config.change_resolution(resolutions[option_button.get_item_text(index)])
+
 func _ready() -> void:
-	for res_key in resolutions.keys():
-		add_item(res_key)
 	
-	item_selected.connect(_apply_resolution)
+	if increase_button: increase_button.pressed.connect(increase_resolution)
+	if decrease_button: decrease_button.pressed.connect(decrease_resolution)
 	
+	if option_button:
+		for key in resolutions: option_button.add_item(key)
+		option_button.item_selected.connect(_on_option_selected)
+		
+	get_closest_resolution()
+
+func get_closest_resolution() -> void:
 	var current = get_viewport_rect().size
-	var closest_res := ""
 	var min_diff := INF
-	for res_name in resolutions.keys():
-		var res_size = resolutions[res_name]
+
+	var keys = resolutions.keys()  # list of keys for numeric indexing
+	for i in range(keys.size()):  # numeric loop
+		var key = keys[i]
+		var res_size = resolutions[key]
 		var diff = abs(res_size.x - current.x) + abs(res_size.y - current.y)
 		if diff < min_diff:
 			min_diff = diff
-			closest_res = res_name
-	
-	for i in range(item_count):
-		if get_item_text(i) == closest_res:
-			select(i)
-			break
+			resolution_index = i
+			
+	if option_button: option_button.selected = resolution_index
+	update_label()
+			
 
-func _apply_resolution(index: int) -> void:
-	var key := get_item_text(index)
-	if not resolutions.has(key): return
-	Config.change_resolution(resolutions[key])
+
 	

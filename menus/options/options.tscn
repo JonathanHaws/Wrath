@@ -108,14 +108,25 @@ value = 100.0
 script = ExtResource("3_js3u0")
 bus_name = "Music"
 
-[node name="Resolution" type="OptionButton" parent="Options"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Options" node_paths=PackedStringArray("increase_button", "decrease_button", "resolution_label")]
 layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = ExtResource("1_fophc")
-alignment = 2
-fit_to_longest_item = false
+alignment = 1
 script = ExtResource("4_5xg6i")
+increase_button = NodePath("Increase")
+decrease_button = NodePath("Decrease")
+resolution_label = NodePath("Label")
+
+[node name="Label" type="Label" parent="Options/HBoxContainer"]
+layout_mode = 2
+text = "1920x1080"
+
+[node name="Increase" type="Button" parent="Options/HBoxContainer"]
+layout_mode = 2
+text = "+"
+
+[node name="Decrease" type="Button" parent="Options/HBoxContainer"]
+layout_mode = 2
+text = "-"
 
 [node name="WindowMode" type="OptionButton" parent="Options"]
 layout_mode = 2
@@ -166,6 +177,6 @@ script = ExtResource("9_p4i2r")
 SOUNDS = Array[AudioStream]([ExtResource("9_krw46")])
 HOVER_SOUND = "Menu_Hover"
 PRESSED_SOUND = "Menu_Hover"
-HOVERED_BUTTONS = [NodePath("../Options/Master/HSlider"), NodePath("../Options/SFX/HSlider"), NodePath("../Options/Music/HSlider"), NodePath("../Options/Resolution"), NodePath("../Options/WindowMode"), NodePath("../Options/Graphics"), NodePath("../Options/Back")]
-PRESSED_BUTTONS = [NodePath("../Options/Master/HSlider"), NodePath("../Options/SFX/HSlider"), NodePath("../Options/Music/HSlider"), NodePath("../Options/Resolution"), NodePath("../Options/WindowMode"), NodePath("../Options/Graphics"), NodePath("../Options/Back")]
+HOVERED_BUTTONS = [NodePath("../Options/Master/HSlider"), NodePath("../Options/SFX/HSlider"), NodePath("../Options/Music/HSlider"), NodePath("../Options/HBoxContainer/Increase"), NodePath("../Options/HBoxContainer/Decrease"), NodePath("../Options/WindowMode"), NodePath("../Options/Graphics"), NodePath("../Options/Back")]
+PRESSED_BUTTONS = [NodePath("../Options/Master/HSlider"), NodePath("../Options/SFX/HSlider"), NodePath("../Options/Music/HSlider"), NodePath("../Options/HBoxContainer/Increase"), NodePath("../Options/HBoxContainer/Decrease"), NodePath("../Options/WindowMode"), NodePath("../Options/Graphics"), NodePath("../Options/Back")]
 ADD_TO_ROOT = true
