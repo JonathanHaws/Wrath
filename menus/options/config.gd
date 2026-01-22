@@ -52,7 +52,8 @@ func _ready() -> void:
 		
 	var width = config.get_value("display", "resolution_width", get_window().size.x)
 	var height = config.get_value("display", "resolution_height", get_window().size.y)
-	change_resolution(Vector2i(width, height))
+	
+	change_resolution(Vector2i(min(width, 1920), min(height, 1080))) ## above 1920 seems to break audio so set as default
 
 #func reduce_ui_scale_until_contained() -> void:
 	#var win_size = get_window().content_scale_size
