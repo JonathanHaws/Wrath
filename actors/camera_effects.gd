@@ -12,7 +12,7 @@ var decay_rate = default_decay_rate
 @export var shake_presets := {
 	"player_attack": { "strength": 4.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},
 	"player_hurt":   { "strength": 3.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},
-	"player_death":  { "strength": 0.0, "slow_motion_duration": 2, "slow_motion_speed": 0.3},
+	"player_death":  { "strength": 0.0, "slow_motion_duration": 1, "slow_motion_speed": 0.2},
 	"boss_death":    { "strength": 1.0, "slow_motion_duration": 2.0, "slow_motion_speed": 0.7},
 	"enemy_death":   { "strength": 1.0, "slow_motion_duration": 0.3, "slow_motion_speed": 0.2},
 	"small":  		 { "strength": 3.0, "slow_motion_duration": 0.13, "slow_motion_speed": 0.0},

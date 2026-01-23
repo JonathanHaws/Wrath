@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://d0ifk8wbwkr3w"]
+[gd_scene load_steps=8 format=3 uid="uid://d0ifk8wbwkr3w"]
 
 [ext_resource type="Texture2D" uid="uid://bgteof0ua1pk6" path="res://actors/particle_textures/scorch_02.png" id="1_t453h"]
+[ext_resource type="Material" uid="uid://prfysqn2atre" path="res://actors/characters/hurt_particles_process_material.tres" id="2_wkvuw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c4vjc"]
 transparency = 1
@@ -10,30 +11,6 @@ albedo_color = Color(0.965061, 0.652625, 0.620399, 1)
 albedo_texture = ExtResource("1_t453h")
 billboard_mode = 1
 billboard_keep_scale = true
-
-[sub_resource type="Curve" id="Curve_olvgd"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="CurveTexture" id="CurveTexture_wtfvh"]
-curve = SubResource("Curve_olvgd")
-
-[sub_resource type="Curve" id="Curve_kc6k6"]
-_data = [Vector2(0, 0), 0.0, 36.65, 0, 0, Vector2(0.0314136, 0.241758), 0.0, 0.0, 0, 0, Vector2(0.0837696, 0.142857), -0.239874, -0.239874, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 4
-
-[sub_resource type="CurveTexture" id="CurveTexture_x7qws"]
-curve = SubResource("Curve_kc6k6")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_qo0m2"]
-direction = Vector3(1, 1, 1)
-spread = 126.925
-initial_velocity_max = 5.0
-gravity = Vector3(0, -5, 0)
-scale_min = 0.0
-scale_max = 5.0
-scale_curve = SubResource("CurveTexture_x7qws")
-alpha_curve = SubResource("CurveTexture_wtfvh")
 
 [sub_resource type="QuadMesh" id="QuadMesh_odbhm"]
 
@@ -108,8 +85,9 @@ lifetime = 0.75
 one_shot = true
 preprocess = 0.18
 explosiveness = 1.0
+fixed_fps = 60
 interpolate = false
-process_material = SubResource("ParticleProcessMaterial_qo0m2")
+process_material = ExtResource("2_wkvuw")
 draw_pass_1 = SubResource("QuadMesh_odbhm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Hurt"]

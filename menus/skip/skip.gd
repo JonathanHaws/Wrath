@@ -22,10 +22,12 @@ func _skip(play_fade: bool = true) -> void:
 				var target_time = anim.get_marker_time(SKIP_MARKER)
 				node.advance(target_time - node.current_animation_position)
 	
+	if play_fade: ANIMATION_PLAYER.play(ANIMATION_SKIPPED_NAME)
+	
+	await get_tree().process_frame
+	await get_tree().physics_frame
 	for node in get_tree().get_nodes_in_group(DESTROY_GROUP):
 		node.queue_free()
-	
-	if play_fade: ANIMATION_PLAYER.play(ANIMATION_SKIPPED_NAME)
 				
 func _process(_delta: float) -> void:
 	if not ANIMATION_PLAYER: return
