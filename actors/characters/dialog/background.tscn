@@ -17,7 +17,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_4qkyi"]
 resource_name = "entered"
-length = 0.333337
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,7 +33,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_t4pw6"]
 resource_name = "exited"
-length = 0.333337
+length = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -64,6 +64,7 @@ border_blend = true
 libraries = {
 &"": SubResource("AnimationLibrary_qtv0c")
 }
+autoplay = "RESET"
 
 [node name="Background" type="ProgressBar" parent="."]
 modulate = Color(1, 1, 1, 0)

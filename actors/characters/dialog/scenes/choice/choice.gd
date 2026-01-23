@@ -7,11 +7,12 @@ func _on_choice_pressed(choice: Dictionary) -> void:
 	Controls.hide_mouse()
 	queue("exited")
 	if "skip" in choice: get_parent().skip_to(choice.skip)
-	tree_exited.connect(get_parent()._spawn_next_dialog)
 
-func exit_area(): 
-	if not current_animation == "exited":
-		queue("exited")
+func exit_area() -> void:
+	queue("exited")
+
+func spawn_next_dialog() -> void:
+	get_parent()._spawn(true)
 
 func _hide_cursor():
 	Controls.hide_mouse()

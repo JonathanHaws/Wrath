@@ -12,6 +12,6 @@ func _ready():
 	timer.start()
 
 func _on_timer_timeout() -> void:
-	queue("exited")
+	queue("time_complete")
 	if info.size() >= 3 and info[2] == 1: # chain together
-		tree_exited.connect(get_parent()._spawn_next_dialog)
+		get_parent()._spawn()

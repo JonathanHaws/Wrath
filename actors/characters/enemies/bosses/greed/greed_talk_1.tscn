@@ -94,15 +94,19 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/1/type = "animation"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("AnimationPlayer/Background")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": PackedStringArray("entered"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"entered"],
+"method": &"queue"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_l5fl7"]
@@ -120,15 +124,19 @@ tracks/0/keys = {
 "update": 0,
 "values": [1.0, 0.0]
 }
-tracks/1/type = "animation"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("AnimationPlayer/Background")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"clips": PackedStringArray("exited"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"exited"],
+"method": &"queue"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_u1728"]

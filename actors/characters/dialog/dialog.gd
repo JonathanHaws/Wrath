@@ -12,6 +12,7 @@ extends Node
 @export var dialog_file: Resource
 @export var start_index = 0
 var current_index = start_index
+var in_range: bool = false 
 var dialog_active := false
 var dialog_save_key
 var dialog
@@ -20,16 +21,18 @@ var entry
 func _on_body_entered(body) -> void:
 	if not body.is_in_group(player_group): return
 	if DisableInput: DisableInput.toggle_action(disable_actions, false)
-	_spawn_next_dialog()
-
+	in_range = true
+	_spawn()
+	
 func _on_body_exited(body)-> void:
 	if not body.is_in_group(player_group): return
 	if DisableInput: DisableInput.toggle_action(disable_actions, true)
+	in_range = false
 	_end_dialog()
 
 func _end_dialog() -> void:
-	for child in get_children(): if child.has_method("exit_area"): child.exit_area()
 	current_index = start_index
+	for child in get_children(): if child.has_method("exit_area"): child.exit_area()
 
 func skip_to(value: String) -> void:
 	for line in range(dialog.size()):
@@ -39,10 +42,11 @@ func skip_to(value: String) -> void:
 
 func play_fork(value: String) -> void: # Called in animation players 
 	skip_to(value)
-	_spawn_next_dialog()
+	_spawn()
 
-func _spawn_next_dialog() -> void:
+func _spawn(require_in_range = false) -> void:
 	
+	if require_in_range and not in_range: return
 	if current_index >= dialog.size(): current_index = int(start_index) # Loop back
 	while current_index < (dialog.size()-1) and dialog[current_index].has("fork"): current_index += 1 # Skip fork labels
 	entry = dialog[current_index]	
@@ -86,7 +90,7 @@ func _ready():
 		current_index = int(Save.data[dialog_save_key])
 		start_index = current_index
 
-func _process(_delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	#print(get_tree().get_nodes_in_group(dialog_group).size())
 	
 	var active := get_tree().get_nodes_in_group(dialog_group).size() > 0 # Poll to see if dialog is active

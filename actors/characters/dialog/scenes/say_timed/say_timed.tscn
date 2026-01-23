@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://kiuc3ouuqv0h"]
+[gd_scene load_steps=11 format=3 uid="uid://kiuc3ouuqv0h"]
 
 [ext_resource type="Script" uid="uid://bb0ulhlrvid4g" path="res://actors/characters/dialog/scenes/say_timed/say_timed.gd" id="1_jnq6s"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_rmwxh"]
@@ -51,7 +51,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_bxd45"]
-resource_name = "exited"
+resource_name = "time_complete"
 length = 0.333337
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -80,28 +80,11 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_2el3y"]
-resource_name = "exited_but_dont_queue_free"
-length = 0.333337
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hvbvu"]
 _data = {
 &"RESET": SubResource("Animation_e0soa"),
 &"entered": SubResource("Animation_pwnol"),
-&"exited": SubResource("Animation_bxd45"),
-&"exited_but_dont_queue_free": SubResource("Animation_2el3y")
+&"time_complete": SubResource("Animation_bxd45")
 }
 
 [sub_resource type="Animation" id="Animation_hvev4"]
@@ -186,7 +169,6 @@ grow_vertical = 0
 script = ExtResource("2_rmwxh")
 
 [node name="Label" type="Label" parent="Control" groups=["chat"]]
-modulate = Color(1, 1, 1, 0)
 z_index = 10
 layout_mode = 1
 anchors_preset = 7
@@ -208,7 +190,6 @@ theme = ExtResource("3_bvnr2")
 text = "EXAMPLE TEXT. "
 horizontal_alignment = 1
 vertical_alignment = 1
-visible_ratio = -0.0714286
 
 [node name="RevealText" type="AnimationPlayer" parent="Control/Label"]
 libraries = {

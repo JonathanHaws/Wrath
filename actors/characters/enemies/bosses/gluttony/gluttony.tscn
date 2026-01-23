@@ -60,29 +60,37 @@ height = 8.40493
 [sub_resource type="Animation" id="Animation_76nnf"]
 resource_name = "entered"
 length = 0.333337
-tracks/0/type = "animation"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Dialog/Background")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"clips": PackedStringArray("entered"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"entered"],
+"method": &"queue"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_mra31"]
 resource_name = "exited"
 length = 0.333337
-tracks/0/type = "animation"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Dialog/Background")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"clips": PackedStringArray("exited"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"exited"],
+"method": &"queue"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_4y0wo"]

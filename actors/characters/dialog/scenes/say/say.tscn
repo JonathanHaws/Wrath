@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bbw5gu8hyws74"]
+[gd_scene load_steps=11 format=3 uid="uid://bbw5gu8hyws74"]
 
 [ext_resource type="Script" uid="uid://dilt0xyh0pxn5" path="res://actors/characters/dialog/scenes/say/say.gd" id="1_tfxki"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="2_2el3y"]
@@ -50,7 +50,7 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_bxd45"]
+[sub_resource type="Animation" id="Animation_ipkkb"]
 resource_name = "exited"
 length = 0.333337
 tracks/0/type = "value"
@@ -72,6 +72,20 @@ tracks/1/path = NodePath("../..")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn_next_dialog"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0.166667),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -80,28 +94,11 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_2el3y"]
-resource_name = "exited_but_dont_queue_free"
-length = 0.333337
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.166667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_hvbvu"]
 _data = {
 &"RESET": SubResource("Animation_e0soa"),
 &"entered": SubResource("Animation_pwnol"),
-&"exited": SubResource("Animation_bxd45"),
-&"exited_but_dont_queue_free": SubResource("Animation_2el3y")
+&"exited": SubResource("Animation_ipkkb")
 }
 
 [sub_resource type="Animation" id="Animation_hvev4"]
@@ -186,7 +183,6 @@ grow_vertical = 0
 script = ExtResource("3_2el3y")
 
 [node name="Label" type="Label" parent="Control" groups=["chat"]]
-modulate = Color(1, 1, 1, 0)
 z_index = 10
 layout_mode = 1
 anchors_preset = 7
@@ -208,7 +204,6 @@ theme = ExtResource("2_2el3y")
 text = "EXAMPLE TEXT. "
 horizontal_alignment = 1
 vertical_alignment = 1
-visible_ratio = -0.0714286
 
 [node name="RevealText" type="AnimationPlayer" parent="Control/Label"]
 libraries = {
