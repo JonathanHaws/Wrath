@@ -43,7 +43,7 @@ func _on_area_entered(area: Area3D) -> void:
 		var linger_timer = Timer.new()
 		linger_timer.wait_time = linger_tick
 		add_child(linger_timer)
-		linger_timer.timeout.connect(func() -> void: hurt(area))
+		if linger: linger_timer.timeout.connect(func() -> void: hurt(area))
 
 		overlapping_areas[area] = { "cooldown": cooldown_timer, "linger": linger_timer }
 
