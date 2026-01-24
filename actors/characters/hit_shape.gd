@@ -2,7 +2,7 @@ extends Area3D
 @export var HEALTH :float = 500.0
 @export var MAX_HEALTH	:float = 500.0
 @export var IMMUNE_GROUPS: Array[String] = []
-@export var INVINCIBILITY_COOLDOWN: float = 0.0 ## After object gets hit how long they are invincible
+@export var INVINCIBILITY_COOLDOWN: float = 0.05 ## After object gets hit how long they are invincible
 @export var DISABLED: bool = false
 var last_hurt_shape: Area3D = null # most recent hurt_shape to damage this shape
 var invincibility_timer: Timer

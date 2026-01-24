@@ -1,36 +1,66 @@
 extends Area3D
-@export var damage :float = 10.0
-@export var damage_spread := 0
-@export var damage_multiplier: float = 1
+@export var damage: float = 10.0
+@export var damage_spread: float = 0 ## Determines subtle randomness in attack damage
+@export var damage_multiplier: float = 1 ## Value that can be animated by animation players 
 @export var damage_groups: Array[String] = ["player_hitshape"] ##area groups you want this hurtbox to damage
-@export var hit_animation_player: AnimationPlayer
-@export var hit_anim: String = "HIT"
-@export var cooldown: float = 0.2
-var cooldown_timer: Timer
-
+@export var hit_animation_player: AnimationPlayer ## Animation to be played when something is hit by this hurt shape
+@export var hit_anim: String = "HIT" ## Name of the animation to play
+@export var cooldown: float = 0.2 
+@export var linger: bool = false
+@export var linger_tick: float = 1.2
+var overlapping_areas: Dictionary = {}
 signal hurt_something
 
-func _on_area_entered(area: Area3D) -> void:
-	if cooldown_timer.is_stopped() == false: return
+func hurt(area: Area3D) -> void:
 	
+	#print("Cooldown remaining:", overlapping_areas[area]["cooldown"].is_stopped())
+	
+	if area not in overlapping_areas: return
+	if not overlapping_areas[area]["cooldown"].is_stopped(): return
+	if !"hit" in area: return
+	
+	if area.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * damage_multiplier):
+		emit_signal("hurt_something")
+		if hit_animation_player: hit_animation_player.play(hit_anim)	
+		overlapping_areas[area]["cooldown"].start()
+		overlapping_areas[area]["linger"].start() 
+			
+func _on_area_entered(area: Area3D) -> void:
+	
+	var in_group := false # Verify in group
 	for group in damage_groups:
 		if area.is_in_group(group):
-			#print("hit")
-			if "hit" in area:
-				#print("hit", damage)
-				if area.hit(self, int(damage + randi_range(-damage_spread, damage_spread)) * damage_multiplier):
-					cooldown_timer.start()
-					
-					emit_signal("hurt_something")
-					if hit_animation_player:
-						#print('playing')
-						hit_animation_player.play(hit_anim)		
-					break
+			in_group = true
+			break
+	if !in_group: return
+	
+	if area not in overlapping_areas:
+		var cooldown_timer = Timer.new()
+		cooldown_timer.one_shot = true
+		cooldown_timer.wait_time = cooldown
+		add_child(cooldown_timer)
+
+		var linger_timer = Timer.new()
+		linger_timer.wait_time = linger_tick
+		add_child(linger_timer)
+		linger_timer.timeout.connect(func() -> void: hurt(area))
+
+		overlapping_areas[area] = { "cooldown": cooldown_timer, "linger": linger_timer }
+
+	hurt(area)
+
+func _on_area_exited(area: Area3D) -> void:
+	if area in overlapping_areas: # Clean up potential memory leak
+		for t in overlapping_areas[area].values(): t.queue_free() 
+		overlapping_areas.erase(area)
 
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
-	cooldown_timer = Timer.new()
-	cooldown_timer.wait_time = cooldown
-	cooldown_timer.one_shot = true
-	add_child(cooldown_timer)
-	
+	area_exited.connect(_on_area_exited)
+
+#func _process(_delta: float) -> void:
+	#for area in overlapping_areas.keys():
+		#if not overlapping_areas[area]["cooldown"].is_stopped():
+			#print("Cooldown running for:", area)
+		#if not overlapping_areas[area]["linger"].is_stopped():
+			#print("Linger running for:", area)
