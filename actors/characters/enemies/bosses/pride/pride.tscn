@@ -22,7 +22,7 @@
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="20_yihmj"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_effects.gd" id="21_1qi28"]
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://actors/props/wisp/wisp_reward.gd" id="23_20oj1"]
-[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="23_hybxi"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="23_hybxi"]
 [ext_resource type="PackedScene" uid="uid://c2rs4sei2yvd1" path="res://actors/characters/enemies/bosses/pride/pride_hurt_particles.tscn" id="24_uxu3y"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="25_osw8t"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="26_8l61o"]

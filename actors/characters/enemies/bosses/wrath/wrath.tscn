@@ -30,7 +30,7 @@
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="31_x676q"]
 [ext_resource type="AudioStream" uid="uid://f7dwuxrh87go" path="res://actors/characters/enemies/bosses/wrath/wrath.ogg" id="32_h5485"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="33_h5485"]
-[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="34_cc4qc"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="34_cc4qc"]
 [ext_resource type="Material" uid="uid://gwfmysarj7pc" path="res://actors/characters/dust/dust.tres" id="35_pxmry"]
 [ext_resource type="PackedScene" uid="uid://xn7bifp3hpfj" path="res://actors/characters/particles/dust_land.tscn" id="36_ax45f"]
 

@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="18_i3cy0"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_effects.gd" id="19_e5shh"]
 [ext_resource type="AudioStream" uid="uid://dihsmt30mdqcm" path="res://actors/characters/enemies/bosses/greed/greed.ogg" id="20_jx80p"]
-[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="20_ri305"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="20_ri305"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="21_47sfl"]
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://actors/characters/enemies/sfx/Spin.wav" id="21_br41q"]
 [ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://actors/characters/ui/damage_numbers.tscn" id="21_kq5wy"]

@@ -25,7 +25,7 @@
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://actors/cinematic.gd" id="23_ri2mk"]
 [ext_resource type="PackedScene" uid="uid://cajl1wg350nss" path="res://actors/characters/enemies/bosses/lust/lust_hurt_particles.tscn" id="24_d0au0"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="24_f8ihq"]
-[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="24_ytbli"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="24_ytbli"]
 [ext_resource type="Texture2D" uid="uid://cgonc3b5gfd5" path="res://actors/characters/enemies/bosses/lust/visuals/color.png" id="25_gu5ya"]
 [ext_resource type="Texture2D" uid="uid://30a88mkk0lip" path="res://actors/characters/enemies/bosses/lust/visuals/color-2.png" id="26_0uydn"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="26_ppvu3"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=13 format=3 uid="uid://d2iqujeqiun08"]
 
 [ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://actors/characters/enemies/projectile.gd" id="1_e1mm7"]
-[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="2_fabgd"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="2_fabgd"]
 [ext_resource type="PackedScene" uid="uid://4f506yax85t1" path="res://actors/characters/enemies/bosses/gluttony/projectiles/puddle.tscn" id="3_j1560"]
 [ext_resource type="Material" uid="uid://14hmcag5btd0" path="res://actors/characters/enemies/bosses/gluttony/projectiles/vomit.tres" id="4_j1560"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="5_sipne"]

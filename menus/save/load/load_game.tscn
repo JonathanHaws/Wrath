@@ -2,14 +2,15 @@
 
 [ext_resource type="Script" uid="uid://cw2iscxy4kg2r" path="res://menus/save/load/load.gd" id="1_6x4ew"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_xbifh"]
-[ext_resource type="PackedScene" uid="uid://bchlq7ojvre5o" path="res://menus/save/profile/profile.tscn" id="2_t8d72"]
+[ext_resource type="PackedScene" uid="uid://bchlq7ojvre5o" path="res://menus/save/profile/profile_load.tscn" id="2_t8d72"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="3_3kwj5"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="3_opbiq"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="4_3kwj5"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="7_2maut"]
-[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/scene_spawner.gd" id="7_oirw8"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="7_oirw8"]
 [ext_resource type="PackedScene" uid="uid://f3fcn8ktks1h" path="res://menus/title_screen/fade_to_black.tscn" id="8_655js"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_wpkbo"]
+
 
 [sub_resource type="Animation" id="Animation_oirw8"]
 resource_name = "load"
