@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://djqadr0k0vrs3"]
+[gd_scene load_steps=68 format=3 uid="uid://djqadr0k0vrs3"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_3bgwy"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_hu4d7"]
@@ -6,9 +6,6 @@
 [ext_resource type="StyleBox" uid="uid://dyxhjehl326n8" path="res://actors/characters/enemies/bosses/envy/envy_health.tres" id="4_wpfpa"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="5_o83ic"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="6_jntm4"]
-[ext_resource type="AudioStream" uid="uid://bebl8tujosm1y" path="res://actors/characters/enemies/sfx/Hit_1.wav" id="7_lcfot"]
-[ext_resource type="AudioStream" uid="uid://b4dyx5m8hsynq" path="res://actors/characters/enemies/sfx/Hit_2.wav" id="8_t5hl6"]
-[ext_resource type="AudioStream" uid="uid://bv7cgqlt3sbtb" path="res://actors/characters/enemies/sfx/Hit_3.wav" id="9_pf4ew"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://actors/characters/enemies/sfx/Slam.wav" id="10_td5ev"]
 [ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://actors/props/sfx/Crumble_1.wav" id="11_peotq"]
 [ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://actors/props/sfx/Crumble_2.wav" id="12_8fx7k"]
@@ -22,13 +19,20 @@
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="20_sg61t"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_effects.gd" id="21_3upiv"]
 [ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://actors/characters/ui/damage_numbers.tscn" id="21_fp1nr"]
+[ext_resource type="AudioStream" uid="uid://badniytqpbwr1" path="res://actors/characters/enemies/bosses/envy/sfx/Gawk_1.ogg" id="22_o226f"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="23_6u562"]
+[ext_resource type="AudioStream" uid="uid://cjs1aeuq63vpt" path="res://actors/characters/enemies/bosses/envy/sfx/Gawk_2.ogg" id="23_msv7p"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="23_od1a5"]
+[ext_resource type="AudioStream" uid="uid://c57s3ujni2rkp" path="res://actors/characters/enemies/bosses/envy/sfx/Wing_Flap_1.ogg" id="24_j3f60"]
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://actors/props/wisp/wisp_reward.gd" id="24_o226f"]
 [ext_resource type="PackedScene" uid="uid://ddf4jd6iv2r2f" path="res://actors/characters/enemies/bosses/envy/envy_hurt_particles.tscn" id="24_wpfpa"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="25_mgimy"]
+[ext_resource type="AudioStream" uid="uid://byiw6gnbkgg3m" path="res://actors/characters/enemies/bosses/envy/sfx/Wing_Flap_2.ogg" id="25_v63i7"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="26_5mwrc"]
+[ext_resource type="AudioStream" uid="uid://4tppn23c1x6k" path="res://actors/characters/enemies/bosses/envy/sfx/Wing_Flap_3.ogg" id="26_kp7sv"]
+[ext_resource type="AudioStream" uid="uid://g2wk0m7e75qk" path="res://actors/characters/enemies/bosses/envy/sfx/Wing_Flap_4.ogg" id="27_076pq"]
 [ext_resource type="PackedScene" uid="uid://c5kfdq4m105cm" path="res://actors/characters/enemies/bosses/envy/envy.blend" id="27_wpfpa"]
+[ext_resource type="AudioStream" uid="uid://rdsqiht31rt0" path="res://actors/characters/enemies/bosses/envy/sfx/Wing_Flap_5.ogg" id="28_5ffyk"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="29_1epqe"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="29_xo5l3"]
 [ext_resource type="Texture2D" uid="uid://6qmllfc0wj7d" path="res://actors/characters/enemies/bosses/envy/color.png" id="30_fp1nr"]
@@ -47,24 +51,10 @@ length = 0.001
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Audio")
+tracks/0/path = NodePath("../HurtParticles")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [["hit_1", "hit_2", "hit_3"]],
-"method": &"play_2d_sound"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../HurtParticles")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -140,6 +130,32 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/WingFlap")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.083333336),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random_child"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/envy/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.041666668, 0.5416667, 0.875, 1.5160863, 2.0807579),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 1.0, 1.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_fp1nr"]
 resource_name = "BITE_RIGHT"
@@ -202,6 +218,32 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/WingFlap")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.08333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random_child"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/envy/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 0.8333333, 1.4744197, 2.039091),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 1.0, 1.0, 1.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_edx7f"]
@@ -285,28 +327,28 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [["hit_1", "hit_2", "hit_3"]],
+"args": [["Despawn"]],
 "method": &"play_2d_sound"
 }]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Audio")
+tracks/2/path = NodePath("CollisionShape3D")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [["Despawn"]],
-"method": &"play_2d_sound"
+"args": [],
+"method": &"queue_free"
 }]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("CollisionShape3D")
+tracks/3/path = NodePath("Mesh/envy/Armature/Skeleton3D/LockOn")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -320,7 +362,7 @@ tracks/3/keys = {
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Mesh/envy/Armature/Skeleton3D/LockOn")
+tracks/4/path = NodePath(".")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -328,30 +370,16 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"queue_free"
+"method": &"defeated"
 }]
 }
 tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath(".")
+tracks/5/path = NodePath("CameraEffects")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"defeated"
-}]
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CameraEffects")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -359,17 +387,29 @@ tracks/6/keys = {
 "method": &"impact"
 }]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0, 0.0666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -386,70 +426,58 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/9/interp = 0
+tracks/9/path = NodePath("Target:USE_GRAVITY")
+tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Target:USE_GRAVITY")
+tracks/10/path = NodePath("HitShape/CollisionShape3D:disabled")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("HitShape/CollisionShape3D:disabled")
+tracks/11/path = NodePath("Ui:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Ui:modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
 "times": PackedFloat32Array(0, 1.43333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Mesh/envy/Armature/Skeleton3D/Mesh:material_override:shader_parameter/dissolve_amount")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Mesh/envy/Armature/Skeleton3D/Mesh:material_override:shader_parameter/dissolve_amount")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0, 1.98711),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/14/type = "method"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("WispReward")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("WispReward")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
 "times": PackedFloat32Array(2.66667),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -457,49 +485,49 @@ tracks/14/keys = {
 "method": &"give"
 }]
 }
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Light:light_energy")
-tracks/15/interp = 2
-tracks/15/loop_wrap = true
-tracks/15/keys = {
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Light:light_energy")
+tracks/14/interp = 2
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(0.4, 2.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [20.0, 0.0]
 }
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Target:MOVE_AND_SLIDE")
-tracks/16/interp = 0
-tracks/16/loop_wrap = true
-tracks/16/keys = {
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/15/interp = 0
+tracks/15/loop_wrap = true
+tracks/15/keys = {
 "times": PackedFloat32Array(0, 3.56667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("CollisionShape3D:disabled")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CollisionShape3D:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
 "times": PackedFloat32Array(0, 4.06667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/18/type = "method"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath(".")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
+tracks/17/type = "method"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath(".")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
 "times": PackedFloat32Array(9.93333),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -546,6 +574,23 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.3]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio/WingFlap")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.20833333, 1),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"play_random_child"
+}, {
+"args": [],
+"method": &"play_random_child"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_wpfpa"]
@@ -610,6 +655,34 @@ tracks/4/keys = {
 "values": [{
 "args": ["boss_scream", 0.2, 0.2, 0.0],
 "method": &"impact"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/Gawk")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random_child"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Audio/WingFlap")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random_child"
 }]
 }
 
@@ -872,6 +945,18 @@ tracks/12/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Mesh/envy/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_vxq26"]
 resource_name = "SLAM"
@@ -961,6 +1046,20 @@ tracks/6/keys = {
 "values": [{
 "args": ["big", 0.2, 0.2, 0.0],
 "method": &"impact"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Audio/WingFlap")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random_child"
 }]
 }
 
@@ -1254,7 +1353,7 @@ shape = SubResource("CapsuleShape3D_332fe")
 
 [node name="Audio" type="Node" parent="."]
 script = ExtResource("6_jntm4")
-SOUNDS = Array[AudioStream]([ExtResource("7_lcfot"), ExtResource("8_t5hl6"), ExtResource("9_pf4ew"), ExtResource("10_td5ev"), ExtResource("11_peotq"), ExtResource("12_8fx7k"), ExtResource("13_2fslw"), ExtResource("14_gn6a4"), ExtResource("15_6omgc"), ExtResource("16_8wint"), ExtResource("17_il76p"), ExtResource("18_del5c")])
+SOUNDS = Array[AudioStream]([ExtResource("10_td5ev"), ExtResource("11_peotq"), ExtResource("12_8fx7k"), ExtResource("13_2fslw"), ExtResource("14_gn6a4"), ExtResource("15_6omgc"), ExtResource("16_8wint"), ExtResource("17_il76p"), ExtResource("18_del5c")])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
 process_mode = 3
@@ -1271,6 +1370,40 @@ process_mode = 3
 stream = ExtResource("10_td5ev")
 volume_db = -5.917
 bus = &"SFX"
+
+[node name="Gawk" type="Node" parent="Audio"]
+script = ExtResource("6_jntm4")
+
+[node name="Gawk1" type="AudioStreamPlayer" parent="Audio/Gawk"]
+stream = ExtResource("22_o226f")
+volume_db = -5.0
+
+[node name="Gawk2" type="AudioStreamPlayer" parent="Audio/Gawk"]
+stream = ExtResource("23_msv7p")
+volume_db = -5.0
+
+[node name="WingFlap" type="Node" parent="Audio"]
+script = ExtResource("6_jntm4")
+
+[node name="WingFlap1" type="AudioStreamPlayer" parent="Audio/WingFlap"]
+stream = ExtResource("24_j3f60")
+volume_db = 2.0
+
+[node name="WingFlap2" type="AudioStreamPlayer" parent="Audio/WingFlap"]
+stream = ExtResource("25_v63i7")
+volume_db = 2.0
+
+[node name="WingFlap3" type="AudioStreamPlayer" parent="Audio/WingFlap"]
+stream = ExtResource("26_kp7sv")
+volume_db = 2.0
+
+[node name="WingFlap4" type="AudioStreamPlayer" parent="Audio/WingFlap"]
+stream = ExtResource("27_076pq")
+volume_db = 2.0
+
+[node name="WingFlap5" type="AudioStreamPlayer" parent="Audio/WingFlap"]
+stream = ExtResource("28_5ffyk")
+volume_db = 2.0
 
 [node name="CameraEffects" type="Node" parent="."]
 script = ExtResource("21_3upiv")
@@ -1391,49 +1524,49 @@ SKELETON_ROOT_DEFAULT_ROTATION = Quaternion(0, 0.707107, 0.707107, 0)
 [node name="envy" parent="Mesh" instance=ExtResource("27_wpfpa")]
 
 [node name="Skeleton3D" parent="Mesh/envy/Armature" index="0"]
-bones/1/position = Vector3(-3.06247e-07, 0.251102, 2.95118)
-bones/1/rotation = Quaternion(2.59399e-09, 0.997124, 0.0757832, -1.62054e-06)
-bones/2/rotation = Quaternion(-0.386482, 1.21235e-07, -1.27083e-06, 0.922297)
-bones/3/rotation = Quaternion(-0.108618, 1.02889e-06, -4.67639e-07, 0.994084)
-bones/4/rotation = Quaternion(0.603701, -2.89846e-06, 1.10583e-06, 0.797211)
-bones/6/position = Vector3(2.34441e-07, 1.25787, 0.146038)
-bones/6/rotation = Quaternion(0.112011, -2.34819e-08, -1.82103e-07, 0.993707)
-bones/7/position = Vector3(7.43239e-07, 1.22029, 0.430217)
-bones/7/rotation = Quaternion(0.0361118, 4.79117e-07, -5.04873e-08, 0.999348)
-bones/8/position = Vector3(3.76414e-07, 1.32157, 0.218238)
-bones/8/rotation = Quaternion(0.0814552, 3.1849e-07, -1.0852e-07, 0.996677)
-bones/9/position = Vector3(1.12782, -0.0751324, 0.161723)
-bones/9/rotation = Quaternion(0.734004, 0.398321, 0.545892, 0.0676837)
-bones/10/rotation = Quaternion(-0.0904429, 0.0706218, 0.748007, 0.653696)
-bones/11/rotation = Quaternion(-0.102492, -0.11449, 0.104556, 0.982576)
-bones/12/position = Vector3(-1.12782, -0.0751319, 0.161711)
-bones/12/rotation = Quaternion(-0.734006, 0.398322, 0.545888, -0.0676816)
-bones/13/rotation = Quaternion(-0.0904429, -0.0706218, -0.748007, 0.653696)
-bones/14/rotation = Quaternion(-0.102492, 0.11449, -0.104556, 0.982576)
-bones/15/rotation = Quaternion(0.994969, 1.48367e-07, 1.62858e-06, -0.100187)
-bones/17/position = Vector3(0.727798, 0.14549, 0.820307)
-bones/17/rotation = Quaternion(0.875981, -0.0297326, -0.00225838, 0.481423)
-bones/18/rotation = Quaternion(0.248894, 0.0478589, -0.0868892, 0.963437)
-bones/19/rotation = Quaternion(-0.596628, -0.07208, 0.0821799, 0.795038)
-bones/21/rotation = Quaternion(-0.0368281, 0.106101, -0.230387, 0.966596)
-bones/22/rotation = Quaternion(-0.0933137, 0.252642, 0.0853083, 0.959264)
-bones/23/rotation = Quaternion(-0.062673, 0.560657, 0.0326583, 0.825027)
-bones/24/rotation = Quaternion(-0.00339513, 0.591852, -0.0814129, 0.801917)
-bones/25/rotation = Quaternion(0.0681232, -0.210922, 0.409785, 0.884843)
-bones/26/rotation = Quaternion(-0.0789517, -0.154233, -0.0758817, 0.981947)
-bones/27/position = Vector3(-0.727803, 0.145491, 0.820302)
-bones/27/rotation = Quaternion(0.875981, 0.0297309, 0.00226091, 0.481423)
-bones/28/rotation = Quaternion(0.248894, -0.0478587, 0.0868891, 0.963437)
-bones/29/rotation = Quaternion(-0.596629, 0.0720796, -0.0821795, 0.795038)
-bones/30/rotation = Quaternion(0.154898, 0.817474, -0.554201, 0.0245614)
-bones/31/rotation = Quaternion(-0.0368282, -0.106102, 0.230387, 0.966596)
-bones/32/rotation = Quaternion(-0.0933136, -0.252642, -0.0853083, 0.959264)
-bones/34/rotation = Quaternion(-0.00339429, -0.591846, 0.081413, 0.801922)
-bones/35/rotation = Quaternion(0.0681233, 0.210921, -0.409785, 0.884843)
-bones/36/rotation = Quaternion(-0.0789518, 0.154234, 0.075882, 0.981947)
+bones/1/position = Vector3(-3.0624682e-07, 0.25110248, 2.9511843)
+bones/1/rotation = Quaternion(2.5939861e-09, 0.9971244, 0.075783156, -1.6205449e-06)
+bones/2/rotation = Quaternion(-0.38648182, 1.2123505e-07, -1.2708251e-06, 0.9222971)
+bones/3/rotation = Quaternion(-0.10861783, 1.0288944e-06, -4.676391e-07, 0.99408364)
+bones/4/rotation = Quaternion(0.60370064, -2.8984605e-06, 1.105832e-06, 0.79721117)
+bones/6/position = Vector3(2.344413e-07, 1.2578697, 0.14603795)
+bones/6/rotation = Quaternion(0.112010896, -2.3481897e-08, -1.8210285e-07, 0.993707)
+bones/7/position = Vector3(7.4323947e-07, 1.2202913, 0.43021747)
+bones/7/rotation = Quaternion(0.036111772, 4.7911664e-07, -5.0487284e-08, 0.9993478)
+bones/8/position = Vector3(3.764144e-07, 1.3215685, 0.21823758)
+bones/8/rotation = Quaternion(0.0814552, 3.1848984e-07, -1.0851988e-07, 0.996677)
+bones/9/position = Vector3(1.127819, -0.07513237, 0.1617235)
+bones/9/rotation = Quaternion(0.7340036, 0.39832124, 0.5458918, 0.067683734)
+bones/10/rotation = Quaternion(-0.09044288, 0.07062184, 0.7480068, 0.65369606)
+bones/11/rotation = Quaternion(-0.102492474, -0.114490226, 0.10455552, 0.9825759)
+bones/12/position = Vector3(-1.1278206, -0.07513192, 0.16171142)
+bones/12/rotation = Quaternion(-0.7340064, 0.3983215, 0.5458881, -0.067681596)
+bones/13/rotation = Quaternion(-0.09044288, -0.070621826, -0.74800676, 0.65369606)
+bones/14/rotation = Quaternion(-0.10249249, 0.11449013, -0.10455569, 0.9825759)
+bones/15/rotation = Quaternion(0.99496865, 1.4836745e-07, 1.6285791e-06, -0.100187086)
+bones/17/position = Vector3(0.7277975, 0.14549042, 0.8203067)
+bones/17/rotation = Quaternion(0.8759814, -0.029732617, -0.0022583806, 0.48142254)
+bones/18/rotation = Quaternion(0.24889356, 0.0478589, -0.086889215, 0.9634375)
+bones/19/rotation = Quaternion(-0.5966285, -0.07207996, 0.08217988, 0.79503804)
+bones/21/rotation = Quaternion(-0.036828116, 0.106101304, -0.23038703, 0.9665961)
+bones/22/rotation = Quaternion(-0.09331369, 0.25264233, 0.085308336, 0.95926374)
+bones/23/rotation = Quaternion(-0.06267302, 0.5606567, 0.032658257, 0.825027)
+bones/24/rotation = Quaternion(-0.0033951323, 0.5918524, -0.08141293, 0.80191714)
+bones/25/rotation = Quaternion(0.068123244, -0.21092182, 0.4097848, 0.8848433)
+bones/26/rotation = Quaternion(-0.07895166, -0.15423349, -0.075881675, 0.98194736)
+bones/27/position = Vector3(-0.7278029, 0.14549072, 0.8203018)
+bones/27/rotation = Quaternion(0.8759814, 0.029730853, 0.002260907, 0.48142263)
+bones/28/rotation = Quaternion(0.24889365, -0.047858667, 0.08688911, 0.9634375)
+bones/29/rotation = Quaternion(-0.5966286, 0.072079636, -0.08217948, 0.795038)
+bones/30/rotation = Quaternion(0.15489799, 0.8174743, -0.5542013, 0.024561364)
+bones/31/rotation = Quaternion(-0.036828157, -0.10610182, 0.23038673, 0.9665961)
+bones/32/rotation = Quaternion(-0.09331365, -0.252642, -0.08530831, 0.9592638)
+bones/34/rotation = Quaternion(-0.0033942852, -0.59184563, 0.08141297, 0.8019222)
+bones/35/rotation = Quaternion(0.06812329, 0.21092121, -0.40978488, 0.8848434)
+bones/36/rotation = Quaternion(-0.078951806, 0.15423416, 0.075882, 0.98194724)
 
 [node name="LockOn" type="BoneAttachment3D" parent="Mesh/envy/Armature/Skeleton3D" index="0"]
-transform = Transform3D(1, -2.2908e-07, 3.29319e-06, 2.11377e-06, 0.810696, -0.585468, -2.53565e-06, 0.585468, 0.810696, 1.44423e-07, 3.0487, 0.888942)
+transform = Transform3D(1, -2.2908034e-07, 3.2931869e-06, 2.113769e-06, 0.8106958, -0.58546764, -2.5356533e-06, 0.5854676, 0.8106957, 1.4442348e-07, 3.048701, 0.8889415)
 bone_name = "spine"
 bone_idx = 2
 
@@ -1463,7 +1596,7 @@ secondary_damp_threshold = 1.0
 material_override = SubResource("ShaderMaterial_ix8e8")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/envy/Armature/Skeleton3D" index="3"]
-transform = Transform3D(1, -2.1047e-07, -1.62558e-06, -1.59636e-06, -0.350175, -0.936684, -3.72096e-07, 0.936684, -0.350175, -5.08863e-07, 4.20284, 2.92654)
+transform = Transform3D(1, -2.1046985e-07, -1.6255849e-06, -1.5963608e-06, -0.35017514, -0.93668413, -3.7209625e-07, 0.93668395, -0.35017502, -5.088634e-07, 4.202835, 2.9265351)
 bone_name = "beak"
 bone_idx = 6
 
@@ -1479,7 +1612,6 @@ disabled = true
 
 [node name="AnimationPlayer" parent="Mesh/envy" index="1"]
 root_motion_track = NodePath("Armature/Skeleton3D:root")
-root_motion_local = false
 callback_mode_process = 0
 playback_default_blend_time = 0.3
 

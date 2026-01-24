@@ -47,7 +47,7 @@ func play_random_child() -> void:
 	var node = nodes[idx]
 	if node is AudioStreamPlayer:
 		node.pitch_scale = randf_range(PITCH_MULTIPLIER - PITCH_VARIANCE, PITCH_MULTIPLIER + PITCH_VARIANCE)
-		node.volume_db = linear_to_db(VOLUME_MULTIPLIER + randf_range(-VOLUME_VARIANCE, VOLUME_VARIANCE))
+		node.volume_db = linear_to_db((db_to_linear(node.volume_db) * VOLUME_MULTIPLIER) + randf_range(-VOLUME_VARIANCE, VOLUME_VARIANCE))
 		node.play()
 		
 func play_2d_sound(sound: Variant = null) -> AudioStreamPlayer:
