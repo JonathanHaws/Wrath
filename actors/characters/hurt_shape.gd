@@ -39,11 +39,13 @@ func _on_area_entered(area: Area3D) -> void:
 		cooldown_timer.one_shot = true
 		cooldown_timer.wait_time = cooldown
 		add_child(cooldown_timer)
+		#cooldown_timer.add_to_group("memory_leak_check")
 
 		var linger_timer = Timer.new()
 		linger_timer.wait_time = linger_tick
 		add_child(linger_timer)
 		if linger: linger_timer.timeout.connect(func() -> void: hurt(area))
+		#linger_timer.add_to_group("memory_leak_check")
 
 		overlapping_areas[area] = { "cooldown": cooldown_timer, "linger": linger_timer }
 
@@ -59,8 +61,4 @@ func _ready() -> void:
 	area_exited.connect(_on_area_exited)
 
 #func _process(_delta: float) -> void:
-	#for area in overlapping_areas.keys():
-		#if not overlapping_areas[area]["cooldown"].is_stopped():
-			#print("Cooldown running for:", area)
-		#if not overlapping_areas[area]["linger"].is_stopped():
-			#print("Linger running for:", area)
+	#print("Timers alive:", get_tree().get_nodes_in_group("memory_leak_check").size())

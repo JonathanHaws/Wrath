@@ -45,7 +45,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_v5ope"]
 resource_name = "projectile"
-length = 9.729
+length = 2.6666
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -53,7 +53,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(8.833333),
+"times": PackedFloat32Array(2.6666667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -67,7 +67,7 @@ tracks/1/path = NodePath("Node3D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.266667, 8.666634),
+"times": PackedFloat32Array(0, 0.266667, 2.4999673),
 "transitions": PackedFloat32Array(1, 16.5642, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(1, 1, 1), Vector3(0, 0, 0)]
@@ -79,7 +79,7 @@ tracks/2/path = NodePath("Attack/CollisionShape3D:disabled")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 8.566633),
+"times": PackedFloat32Array(0, 0.3, 2.399967),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [true, false, true]
