@@ -20,6 +20,10 @@ func stop_horizontal_movement() -> void:
 @export var JUMP_MULTIPLIER = 1.0
 @export var COYOTE_TIME: float = .35
 @export var JUMP_BUFFER_TIME: float = .2
+var falling = COYOTE_TIME;
+var was_on_floor = true
+var has_been_on_floor = false
+var jump_buffer = 0;
 
 @export_group("Falling")
 @export var GRAVITY_MULTIPLIER = 4
@@ -31,6 +35,17 @@ func stop_horizontal_movement() -> void:
 @export var TURN_SPEED: float = 20.0
 @export var TURN_MULTIPLIER: float = 1.0
 
+@export_group("Stamina")
+@export var STAMINA = 10
+@export var MAX_STAMINA = 10
+@export var STAMINA_RECOVERY: float = 20.0
+
+@export_group("Shooting")
+@export var MAX_SHOOTING_ENERGY: int = 5
+var shooting_energy: int = MAX_SHOOTING_ENERGY
+func change_shooting_energy(amount: int) -> void:
+	shooting_energy = clamp(shooting_energy + amount, 0, MAX_SHOOTING_ENERGY)
+
 @export_group("References")
 @export var CAMERA: Camera3D
 @export var MESH: Node3D
@@ -39,15 +54,7 @@ func stop_horizontal_movement() -> void:
 @export var COLLISON_SHAPE: CollisionShape3D
 @export var PARTICLES: Node3D
 @export var FADE_IN_ANIM: AnimationPlayer
-@export var STAMINA = 10
-@export var MAX_STAMINA = 10
-@export var STAMINA_RECOVERY: float = 20.0
 @export var SKILL_TREE: Node
-
-var falling = COYOTE_TIME;
-var was_on_floor = true
-var has_been_on_floor = false
-var jump_buffer = 0;
 
 func reload_checkpoint() -> void:
 	await get_tree().process_frame
@@ -79,6 +86,7 @@ func _on_animation_finished(animation_name: String) -> void:
 
 func in_interruptible_animation() -> bool:
 	return not ANIM.current_animation in [
+		"SHOOT",
 		"WINDUP",
 		"WINDOWN",
 		"SPIN",
@@ -138,7 +146,11 @@ func _ready() -> void:
 func _process(_delta)-> void:
 	if not Input.is_action_pressed("attack"): 
 		STAMINA = clamp(STAMINA + STAMINA_RECOVERY * _delta, 0, MAX_STAMINA)
-
+	
+	if Input.is_action_just_pressed("shoot") and in_interruptible_animation() and shooting_energy > 0:
+		ANIM.play("SHOOT", 0.0, 1, false)
+		return
+	
 func _physics_process(delta: float) -> void:
 
 	if not was_on_floor and is_on_floor() and has_been_on_floor:

@@ -32,14 +32,17 @@ func get_orientation_towards_position_3d(target_position: Vector3, position: Vec
 	
 	return Basis.looking_at(target_velocity.normalized(), Vector3.UP)
 
-func spawn_towards_target(scene_count: int = 1, delay: float = 0.0) -> void:
+func spawn_towards_target(scene_count: int = 1, delay: float = 0.0, pitch: float = 1.0, yaw: float = 1.0) -> void:
 	if target == null: return  
 	for i in range(scene_count):
-		var orientation = get_orientation_towards_position_3d(target.global_position, self.global_position)
-		var transform = Transform3D(orientation, self.global_position)
-		
 		var scene = spawn()
-		scene.global_transform = transform
+		var target_orientation = get_orientation_towards_position_3d(target.global_position, self.global_position).get_euler()
+		var original_orientation = scene.global_transform.basis.get_euler()
+		
+		var lerp_pitch = lerp(original_orientation.x, target_orientation.x, pitch)
+		var lerp_yaw = lerp(original_orientation.y, target_orientation.y, yaw)
+			
+		scene.global_transform.basis = Basis.from_euler(Vector3(lerp_pitch, lerp_yaw, original_orientation.z))
 		if scene.has_method("set_velocity_from_orientation"): scene.set_velocity_from_orientation()
 		
 		if delay > 0: await get_tree().create_timer(delay).timeout
@@ -74,7 +77,23 @@ func spawn_multiple(count: int = 1, delay: float = 0.0) -> void:
 	for i in range(count):
 		spawn()
 		if delay > 0: await get_tree().create_timer(delay).timeout
-		
+
+func spawn_towards_camera_group(group: String = "player_camera",  pitch: float = 1.0, yaw: float = 1.0) -> void:
+	for c in get_tree().get_nodes_in_group(group):
+		#print(pitch, yaw)
+		var scene  = spawn()
+		if  scene and  scene is Node3D:
+			var original_orientation = scene.global_transform.basis.get_euler()
+			var aim: Vector3 = -c.global_transform.basis.z * 1000000.0
+			var camera_target_orientation = Transform3D(Basis.looking_at(scene.global_position + aim, Vector3.UP), scene.global_position).basis.get_euler()
+			
+			var lerp_pitch: float = lerp(original_orientation.x, camera_target_orientation.x, pitch)
+			var lerp_yaw: float = lerp(original_orientation.y, camera_target_orientation.y, yaw)
+			
+			scene.global_transform.basis = Basis.from_euler(Vector3(lerp_pitch, lerp_yaw, original_orientation.z))
+			if scene.has_method("set_velocity_from_orientation"): scene.set_velocity_from_orientation()
+		return
+	
 func spawn() -> Node:
 	var scene_to_instantiate = get_scene_to_spawn()
 	if scene_to_instantiate == null: return

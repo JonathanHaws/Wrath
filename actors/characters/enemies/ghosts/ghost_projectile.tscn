@@ -98,7 +98,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.733333, 3.43333, 3.86667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.25, 0.25, 0.0]
+"values": [0.0, 0.1, 0.1, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mr47g"]
@@ -151,7 +151,7 @@ autoplay = "projectile"
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.667053, 1.15956, -2.34819)
 light_color = Color(0.58, 0.58, 0.58, 1)
-light_energy = 0.25
+light_energy = 0.0
 light_specular = 0.0
 omni_range = 15.0
 omni_attenuation = 0.5

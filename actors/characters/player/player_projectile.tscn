@@ -1,0 +1,289 @@
+[gd_scene load_steps=18 format=3 uid="uid://qi35dljseuk3"]
+
+[ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://actors/characters/enemies/projectile.gd" id="1_kpr02"]
+[ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_effects.gd" id="3_7bp6w"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="3_32n4n"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="4_o35mi"]
+[ext_resource type="AudioStream" uid="uid://bkawmwxh84v2j" path="res://actors/characters/enemies/sfx/Hit_1.ogg" id="20_qiejr"]
+[ext_resource type="AudioStream" uid="uid://bvtlb0oql5hr6" path="res://actors/characters/enemies/sfx/Hit_2.ogg" id="21_j2d75"]
+[ext_resource type="AudioStream" uid="uid://c16kx02f83mop" path="res://actors/characters/enemies/sfx/Hit_3.ogg" id="22_xpmdx"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bp6w"]
+albedo_color = Color(0.28440002, 0.33354002, 0.36, 1)
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.2
+rim_tint = 0.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_cgbyb"]
+top_radius = 0.167
+bottom_radius = 0.0
+height = 1.0
+cap_bottom = false
+
+[sub_resource type="SphereMesh" id="SphereMesh_v5ope"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7pvji"]
+size = Vector3(0.618972, 0.717653, 0.681788)
+
+[sub_resource type="Animation" id="Animation_mr47g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_7pvji"]
+resource_name = "collision"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.96666664),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Node3D:visible")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.06666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_v5ope"]
+resource_name = "projectile"
+length = 4.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.56667),
+"transitions": PackedFloat32Array(16.5642, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.733333, 3.43333, 3.86667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mr47g"]
+_data = {
+&"RESET": SubResource("Animation_mr47g"),
+&"collision": SubResource("Animation_7pvji"),
+&"projectile": SubResource("Animation_v5ope")
+}
+
+[sub_resource type="Animation" id="Animation_51sfh"]
+resource_name = "HURT"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random_child"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CameraEffects")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["player_shoot"],
+"method": &"impact"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cat40"]
+_data = {
+&"HURT": SubResource("Animation_51sfh")
+}
+
+[node name="GhostProjectile" type="Node3D" node_paths=PackedStringArray("ray", "collision_animation_player", "hurt_box")]
+script = ExtResource("1_kpr02")
+speed = 20.0
+ray = NodePath("RayCast3D")
+exclude_groups = Array[String](["ghost"])
+collision_animation_player = NodePath("AnimationPlayer")
+collision_animation_name = "collision"
+hurt_box = NodePath("Attack")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8182478)
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.64301723, 0, 0, 0, -3.2887424e-08, 0.50237286, 0, -0.7523764, -2.1959421e-08, 0, 1.813556e-08, 0.45065576)
+material_override = SubResource("StandardMaterial3D_7bp6w")
+mesh = SubResource("CylinderMesh_cgbyb")
+skeleton = NodePath("")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(0.21859917, 0, 0, 0, -1.1376007e-08, 0.17377429, 0, -0.26025227, -7.595928e-09, 0, -4.5328594e-09, 0.044185027)
+material_override = SubResource("StandardMaterial3D_7bp6w")
+mesh = SubResource("SphereMesh_v5ope")
+skeleton = NodePath("")
+
+[node name="Attack" type="Area3D" parent="." node_paths=PackedStringArray("hit_animation_player") groups=["player"]]
+transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, -0.4430658)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("3_32n4n")
+damage_groups = Array[String](["enemy_hitshape"])
+hit_animation_player = NodePath("../Hurt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0165985, -0.0165819, -0.697874)
+shape = SubResource("BoxShape3D_7pvji")
+debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_mr47g")
+}
+autoplay = "projectile"
+
+[node name="Hurt" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AnimationPlayer")
+libraries = {
+&"": SubResource("AnimationLibrary_cat40")
+}
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.667053, 0.8928584, -0.82658195)
+light_color = Color(0.58, 0.58, 0.58, 1)
+light_energy = 0.0
+light_specular = 0.0
+omni_range = 15.0
+omni_attenuation = 0.5
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8182478)
+exclude_parent = false
+hit_back_faces = false
+
+[node name="CameraEffects" type="Node" parent="."]
+script = ExtResource("3_7bp6w")
+
+[node name="Audio" type="Node" parent="."]
+script = ExtResource("4_o35mi")
+
+[node name="Hit1" type="AudioStreamPlayer" parent="Audio"]
+process_mode = 3
+stream = ExtResource("20_qiejr")
+volume_db = -8.0
+bus = &"SFX"
+
+[node name="Hit2" type="AudioStreamPlayer" parent="Audio"]
+process_mode = 3
+stream = ExtResource("21_j2d75")
+volume_db = -8.0
+bus = &"SFX"
+
+[node name="Hit3" type="AudioStreamPlayer" parent="Audio"]
+process_mode = 3
+stream = ExtResource("22_xpmdx")
+volume_db = -8.0
+bus = &"SFX"

@@ -1496,7 +1496,7 @@ script = ExtResource("23_6u562")
 scenes = Array[PackedScene]([ExtResource("24_wpfpa")])
 
 [node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 11.3862)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5154033, 0, 1.2341261)
 script = ExtResource("25_mgimy")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 MESH = NodePath("../Mesh")
@@ -1506,7 +1506,7 @@ TRACKING_MULTIPLIER = 0.0
 SPEED_MULTIPLIER = 0.0
 
 [node name="NodeOffset" type="Node3D" parent="Target"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.62932, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.674217, 0)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Target"]
 visible = false
@@ -1587,9 +1587,9 @@ forward_axis = 2
 primary_rotation_axis = 0
 use_angle_limitation = true
 symmetry_limitation = true
-primary_limit_angle = 0.872665
+primary_limit_angle = 0.5235988
 primary_damp_threshold = 1.0
-secondary_limit_angle = 0.872665
+secondary_limit_angle = 0.5235988
 secondary_damp_threshold = 1.0
 
 [node name="Mesh" parent="Mesh/envy/Armature/Skeleton3D" index="2"]

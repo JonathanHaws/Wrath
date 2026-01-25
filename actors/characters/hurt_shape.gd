@@ -4,7 +4,7 @@ extends Area3D
 @export var damage_multiplier: float = 1 ## Value that can be animated by animation players 
 @export var damage_groups: Array[String] = ["player_hitshape"] ##area groups you want this hurtbox to damage
 @export var hit_animation_player: AnimationPlayer ## Animation to be played when something is hit by this hurt shape
-@export var hit_anim: String = "HIT" ## Name of the animation to play
+@export var hit_anim: String = "HURT" ## Name of the animation to play
 @export var cooldown: float = 0.2 
 @export var linger: bool = false
 @export var linger_tick: float = 1.2

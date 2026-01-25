@@ -1,6 +1,6 @@
 extends Node ## Node for camera impact effects like shake / slow motion 
 @export var shake = 0.0
-@export var default_decay_rate = 30.0
+@export var default_decay_rate = 40.0
 @export var noise_frequency: float = 2.2
 @export var max_shake = 13.0
 @export var TREMOR_STRENGTH: float = 1.0
@@ -11,6 +11,7 @@ var decay_rate = default_decay_rate
 
 @export var shake_presets := {
 	"player_attack": { "strength": 4.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},
+	"player_shoot":  { "strength": 1.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},
 	"player_hurt":   { "strength": 3.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},
 	"player_death":  { "strength": 0.0, "slow_motion_duration": 1, "slow_motion_speed": 0.2},
 	"boss_death":    { "strength": 1.0, "slow_motion_duration": 2.0, "slow_motion_speed": 0.7},
