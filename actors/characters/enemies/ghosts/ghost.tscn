@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://c6e88ycy4nm7x"]
+[gd_scene format=3 uid="uid://c6e88ycy4nm7x"]
 
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://actors/props/wisp/wisp_reward.gd" id="2_5rg5p"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="2_i6eoe"]
@@ -776,7 +776,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(1.0666667),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [3, 0.2, 1.0, 0.0],
+"args": [3, 0.2, Vector3(0.5, 0, 0)],
 "method": &"spawn_towards_target"
 }]
 }
@@ -976,18 +976,18 @@ radius = 2.55078
 [sub_resource type="SphereShape3D" id="SphereShape3D_oquh6"]
 radius = 18.8292
 
-[node name="Ghost" type="CharacterBody3D" groups=["ghost"]]
+[node name="Ghost" type="CharacterBody3D" unique_id=842720599 groups=["ghost"]]
 collision_layer = 2
 collision_mask = 3
 
-[node name="WispReward" type="Node" parent="."]
+[node name="WispReward" type="Node" parent="." unique_id=493136637]
 script = ExtResource("2_5rg5p")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1779156698]
 shape = SubResource("SphereShape3D_7c1mb")
 debug_color = Color(0.87, 0.87, 0.87, 1)
 
-[node name="Hitbox" type="Area3D" parent="." node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
+[node name="Hitbox" type="Area3D" parent="." unique_id=1261233255 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("2_i6eoe")
 IMMUNE_GROUPS = Array[String](["ghost"])
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
@@ -995,83 +995,79 @@ HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../Damaged")
 DAMAGE_NUMBERS = ExtResource("3_mvqiw")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1137305540]
 shape = SubResource("SphereShape3D_6640v")
 debug_color = Color(0.87, 0.87, 0.87, 1)
 
-[node name="PersistentHealth" type="Node" parent="Hitbox" node_paths=PackedStringArray("HIT_SHAPE", "BODY")]
+[node name="PersistentHealth" type="Node" parent="Hitbox" unique_id=1076536758 node_paths=PackedStringArray("HIT_SHAPE", "BODY")]
 script = ExtResource("3_oquh6")
 HIT_SHAPE = NodePath("..")
 BODY = NodePath("../..")
 
-[node name="Audio" type="Node" parent="."]
+[node name="Audio" type="Node" parent="." unique_id=1672116593]
 script = ExtResource("3_p14n4")
 SOUNDS = Array[AudioStream]([ExtResource("7_d4t6r"), ExtResource("8_0p2lg"), ExtResource("9_wx0ip"), ExtResource("10_ytc78"), ExtResource("11_sesw2"), ExtResource("12_arm4u"), ExtResource("13_ybcr2"), ExtResource("14_aqmuc")])
 
-[node name="Death" type="AudioStreamPlayer" parent="Audio"]
+[node name="Death" type="AudioStreamPlayer" parent="Audio" unique_id=1948488915]
 process_mode = 3
 stream = ExtResource("12_arm4u")
 volume_db = -8.45
 pitch_scale = 1.6
 bus = &"SFX"
 
-[node name="ShootWindup" type="AudioStreamPlayer" parent="Audio"]
+[node name="ShootWindup" type="AudioStreamPlayer" parent="Audio" unique_id=1924913592]
 process_mode = 3
 stream = ExtResource("12_arm4u")
 volume_db = -4.99
 pitch_scale = 2.0
 bus = &"SFX"
 
-[node name="MeleeWindup" type="AudioStreamPlayer" parent="Audio"]
+[node name="MeleeWindup" type="AudioStreamPlayer" parent="Audio" unique_id=1244034759]
 process_mode = 3
 stream = ExtResource("14_aqmuc")
 volume_db = -4.99
 pitch_scale = 2.0
 bus = &"SFX"
 
-[node name="Shoot" type="AudioStreamPlayer" parent="Audio"]
+[node name="Shoot" type="AudioStreamPlayer" parent="Audio" unique_id=1882974098]
 process_mode = 3
 stream = ExtResource("17_7c1mb")
 volume_db = -8.245
 pitch_scale = 3.0
 bus = &"SFX"
 
-[node name="Slam" type="AudioStreamPlayer" parent="Audio"]
+[node name="Slam" type="AudioStreamPlayer" parent="Audio" unique_id=1221426232]
 process_mode = 3
 stream = ExtResource("7_d4t6r")
 volume_db = -6.395
 pitch_scale = 1.3
 bus = &"SFX"
 
-[node name="SquashAndStretch" type="Node" parent="." node_paths=PackedStringArray("mesh_node")]
+[node name="SquashAndStretch" type="Node" parent="." unique_id=509375601 node_paths=PackedStringArray("mesh_node")]
 script = ExtResource("15_7e8cg")
 mesh_node = NodePath("../Mesh")
 
-[node name="CameraEffects" type="Node" parent="."]
+[node name="CameraEffects" type="Node" parent="." unique_id=1190837221]
 script = ExtResource("16_wbsgp")
 shake = 0.4
 
-[node name="HurtParticles" type="Node3D" parent="." groups=["teleport_to_attacking_area"]]
+[node name="HurtParticles" type="Node3D" parent="." unique_id=1999803819 groups=["teleport_to_attacking_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("17_fgjfs")
 scenes = Array[PackedScene]([ExtResource("18_mgx37")])
 
-[node name="Damaged" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_n368u")
-}
+[node name="Damaged" type="AnimationPlayer" parent="." unique_id=262181767]
+libraries/ = SubResource("AnimationLibrary_n368u")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_agce3")
-}
-autoplay = "CHASE"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1933330111]
+libraries/ = SubResource("AnimationLibrary_agce3")
+autoplay = &"CHASE"
 next/ATTACK = &"CHASE"
 next/CHASE = &"CHASE"
 next/JUMP_ATTACK = &"CHASE"
 next/SHOOT = &"CHASE"
 
-[node name="Attack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
+[node name="Attack" type="Node" parent="AnimationPlayer" unique_id=1993194282 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("20_mvqiw")
 ATTACK_ANIMATION = "ATTACK"
 LIKELIHOOD_MULTIPLIER = 50.0
@@ -1079,7 +1075,7 @@ ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_mvqiw")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="Shoot" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("AREA_MULTIPLIER", "TARGET", "BODY")]
+[node name="Shoot" type="Node" parent="AnimationPlayer" unique_id=435457927 node_paths=PackedStringArray("AREA_MULTIPLIER", "TARGET", "BODY")]
 script = ExtResource("20_mvqiw")
 ATTACK_ANIMATION = "SHOOT"
 LIKELIHOOD_MULTIPLIER = 50.0
@@ -1090,7 +1086,7 @@ COOLDOWN = 5.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="JumpAttack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
+[node name="JumpAttack" type="Node" parent="AnimationPlayer" unique_id=609250576 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("20_mvqiw")
 ATTACK_ANIMATION = "JUMP_ATTACK"
 LIKELIHOOD_MULTIPLIER = 30.0
@@ -1099,56 +1095,56 @@ COOLDOWN = 4.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=95594136]
 
-[node name="Mesh" type="Node3D" parent="."]
+[node name="Mesh" type="Node3D" parent="." unique_id=268847954]
 
-[node name="LockOn" type="Area3D" parent="Mesh"]
+[node name="LockOn" type="Area3D" parent="Mesh" unique_id=2062076780]
 transform = Transform3D(1, 5.32907e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/LockOn"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/LockOn" unique_id=842629789]
 transform = Transform3D(1, -1.24345e-14, -1.03739e-12, 0, 1, 0, -3.83693e-13, 0, 1, 0.159728, -0.195234, 0.0834485)
 shape = SubResource("BoxShape3D_qr43c")
 debug_color = Color(0.7, 0.7, 0.7, 0)
 
-[node name="SceneSpawner" type="Node3D" parent="Mesh" node_paths=PackedStringArray("target")]
+[node name="SceneSpawner" type="Node3D" parent="Mesh" unique_id=1201835323 node_paths=PackedStringArray("target")]
 script = ExtResource("17_fgjfs")
 scenes = Array[PackedScene]([ExtResource("20_x07w4")])
 add_to_scene_root = true
 target = NodePath("../../Target")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh" unique_id=1134848450]
 material_override = SubResource("ShaderMaterial_dfr5h")
 transparency = 0.3
 mesh = SubResource("SphereMesh_05mu1")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/MeshInstance3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/MeshInstance3D" unique_id=639478116]
 transform = Transform3D(-1.24846e-09, 0, 0.112722, 0, 0.112722, 0, -0.0285614, 0, -4.92725e-09, 0.280028, 0.0195056, -0.806736)
 material_override = SubResource("StandardMaterial3D_dfr5h")
 mesh = SubResource("SphereMesh_agce3")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh/MeshInstance3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh/MeshInstance3D" unique_id=1419044957]
 transform = Transform3D(-1.24846e-09, 0, 0.112722, 0, 0.112722, 0, -0.0285614, 0, -4.92725e-09, -0.302013, 0.0195056, -0.806736)
 material_override = SubResource("StandardMaterial3D_n368u")
 mesh = SubResource("SphereMesh_fd7dn")
 skeleton = NodePath("")
 
-[node name="Attack" type="Area3D" parent="Mesh/MeshInstance3D" groups=["ghost"]]
+[node name="Attack" type="Area3D" parent="Mesh/MeshInstance3D" unique_id=235135068 groups=["ghost"]]
 transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
 script = SubResource("GDScript_n8vw1")
 damage = 10
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/MeshInstance3D/Attack"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/MeshInstance3D/Attack" unique_id=1190067184]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0577135, 0.341919, -1.7045)
 shape = SubResource("BoxShape3D_7c1mb")
 disabled = true
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 
-[node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA", "AWARENESS_AREA")]
+[node name="Target" type="Node3D" parent="." unique_id=963969195 node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA", "AWARENESS_AREA")]
 script = ExtResource("22_3d4yc")
 NAV_AGENT = NodePath("../NavigationAgent3D")
 MESH = NodePath("../Mesh")
@@ -1158,42 +1154,42 @@ STOP_CHASE_AREA = NodePath("../StopChase")
 AWARENESS_AREA = NodePath("../Awareness")
 SPEED = 5.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Target"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Target" unique_id=1889770623]
 visible = false
 mesh = SubResource("BoxMesh_mvqiw")
 
-[node name="StopChase" type="Area3D" parent="."]
+[node name="StopChase" type="Area3D" parent="." unique_id=130760497]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StopChase"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StopChase" unique_id=539509090]
 shape = SubResource("SphereShape3D_2gcuv")
 debug_color = Color(1, 1, 1, 0)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=87786292]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.18205, 0.00665204)
 light_color = Color(0.58, 0.58, 0.58, 1)
 light_energy = 0.5
 light_specular = 0.0
 omni_range = 8.96629
 
-[node name="JumpAttack" type="Area3D" parent="." groups=["ghost"]]
+[node name="JumpAttack" type="Area3D" parent="." unique_id=1644750163 groups=["ghost"]]
 transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
 script = SubResource("GDScript_n8vw1")
 damage = 10
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="JumpAttack"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="JumpAttack" unique_id=1167048878]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0577135, -1.10771, -0.179132)
 shape = SubResource("CylinderShape3D_7c1mb")
 disabled = true
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 
-[node name="Awareness" type="Area3D" parent="."]
+[node name="Awareness" type="Area3D" parent="." unique_id=770797376]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Awareness"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Awareness" unique_id=1096443313]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21777, 2.38419e-07, -0.353772)
 shape = SubResource("SphereShape3D_oquh6")

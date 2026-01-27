@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d2iqujeqiun08"]
+[gd_scene format=3 uid="uid://d2iqujeqiun08"]
 
 [ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://actors/characters/enemies/projectile.gd" id="1_e1mm7"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="2_fabgd"]
@@ -113,7 +113,7 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="SlowVomit" type="Node3D" node_paths=PackedStringArray("ray", "collision_point", "collision_animation_player")]
+[node name="SlowVomit" type="Node3D" unique_id=2085484686 node_paths=PackedStringArray("ray", "collision_point", "collision_animation_player")]
 top_level = true
 script = ExtResource("1_e1mm7")
 speed = 22.0
@@ -126,43 +126,41 @@ collision_point = NodePath("PuddleSpawner")
 collision_animation_player = NodePath("AnimationPlayer")
 collision_animation_name = "colliding"
 
-[node name="PuddleSpawner" type="Node3D" parent="."]
+[node name="PuddleSpawner" type="Node3D" parent="." unique_id=828005033]
 rotation_edit_mode = 1
 script = ExtResource("2_fabgd")
 scenes = Array[PackedScene]([ExtResource("3_j1560")])
 add_to_scene_root = true
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Node3D" type="Node3D" parent="." unique_id=1575833906]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D" unique_id=1459566748]
 transform = Transform3D(1, -1.74846e-07, -7.64274e-15, 0, -4.37114e-08, 1, -1.74846e-07, -1, -4.37114e-08, -0.0224094, 2.93627e-08, 0.563687)
 material_override = ExtResource("4_j1560")
 mesh = SubResource("CylinderMesh_cgbyb")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D" unique_id=2072042289]
 transform = Transform3D(0.345907, -6.04803e-08, -2.64368e-15, 2.73463e-22, -1.51201e-08, 0.345907, -6.04803e-08, -0.345907, -1.51201e-08, -0.0224095, -1.576e-08, 0.0285747)
 material_override = ExtResource("4_j1560")
 mesh = SubResource("SphereMesh_v5ope")
 skeleton = NodePath("")
 
-[node name="Attack" type="Area3D" parent="." groups=["gluttony"]]
+[node name="Attack" type="Area3D" parent="." unique_id=640081506 groups=["gluttony"]]
 transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("5_sipne")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack" unique_id=695140474]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0126296, -0.00430307, 0.0610786)
 shape = SubResource("BoxShape3D_3ab56")
 disabled = true
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_mr47g")
-}
-autoplay = "projectile"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1334184348]
+libraries/ = SubResource("AnimationLibrary_mr47g")
+autoplay = &"projectile"
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=561229281]
 debug_shape_custom_color = Color(1, 1, 1, 1)

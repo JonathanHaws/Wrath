@@ -46,6 +46,23 @@ var shooting_energy: int = MAX_SHOOTING_ENERGY
 func change_shooting_energy(amount: int) -> void:
 	shooting_energy = clamp(shooting_energy + amount, 0, MAX_SHOOTING_ENERGY)
 
+@export_group("Healing")
+@export var MAX_HEAL_CHARGES := 3
+@export var HEAL_AMOUNT := 5
+@export var HITBOX: Area3D
+var heal_charges := MAX_HEAL_CHARGES
+func heal_hitbox() -> void:
+	HITBOX.HEALTH = min(HITBOX.HEALTH + HEAL_AMOUNT, HITBOX.MAX_HEALTH)
+func try_heal() -> void:
+	if heal_charges <= 0: return
+	if not in_interruptible_animation(): return
+	if not HITBOX: return
+	if not "HEALTH" in HITBOX: return
+	if not "MAX_HEALTH" in HITBOX: return
+	if HITBOX.HEALTH >= HITBOX.MAX_HEALTH: return
+	heal_charges -= 1
+	if ANIM: ANIM.play("HEAL", 0.0)
+
 @export_group("References")
 @export var CAMERA: Camera3D
 @export var MESH: Node3D
@@ -86,6 +103,7 @@ func _on_animation_finished(animation_name: String) -> void:
 
 func in_interruptible_animation() -> bool:
 	return not ANIM.current_animation in [
+		"HEAL",
 		"BLOCK_ENTER",
 		"BLOCK_EXIT",
 		"BLOCK",
@@ -185,8 +203,8 @@ func _physics_process(delta: float) -> void:
 		if not Input.is_action_pressed("block") and ANIM.current_animation != "BLOCK_EXIT":
 			ANIM.play("BLOCK_EXIT", 0.0)
 			
-	
-		
+	if Input.is_action_just_pressed("interact"): try_heal()
+			
 	if not is_on_floor(): # GRAVITY
 		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER if Input.is_action_pressed("descend") else 1.0)
 	if velocity.y < -MAX_FALL_SPEED: velocity.y = -MAX_FALL_SPEED
