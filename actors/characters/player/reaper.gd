@@ -86,6 +86,9 @@ func _on_animation_finished(animation_name: String) -> void:
 
 func in_interruptible_animation() -> bool:
 	return not ANIM.current_animation in [
+		"BLOCK_ENTER",
+		"BLOCK_EXIT",
+		"BLOCK",
 		"SHOOT",
 		"WINDUP",
 		"WINDOWN",
@@ -173,6 +176,16 @@ func _physics_process(delta: float) -> void:
 				ANIM.play("WINDUP")
 			else:
 				ANIM.play("PLUNGE_FALL")
+	
+	if Input.is_action_just_pressed("block"):
+		if in_interruptible_animation() and ANIM.current_animation not in ["BLOCK", "BLOCK_ENTER"]:
+			#print(ANIM.playback_default_blend_time)
+			ANIM.play("BLOCK_ENTER", 0.0)
+	elif ANIM.current_animation == "BLOCK":
+		if not Input.is_action_pressed("block") and ANIM.current_animation != "BLOCK_EXIT":
+			ANIM.play("BLOCK_EXIT", 0.0)
+			
+	
 		
 	if not is_on_floor(): # GRAVITY
 		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER if Input.is_action_pressed("descend") else 1.0)
