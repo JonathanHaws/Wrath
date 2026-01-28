@@ -8,18 +8,32 @@ extends Area3D
 @export var cooldown: float = 0.2 
 @export var linger: bool = false
 @export var linger_tick: float = 1.2
+
+@export_group("Blocking")
+@export var block_groups: Array[String] = ["player_blockshape", "enemy_blockshape"]
+
 var overlapping_areas: Dictionary = {}
 signal hurt_something
 
 func hurt(area: Area3D) -> void:
 	
-	#print("Cooldown remaining:", overlapping_areas[area]["cooldown"].is_stopped())
+	await get_tree().physics_frame # Ensure both the regular hit_shape AND block_shape is in 'overlapping areas;
 	
+	# Check if one of overlapping areas is in block group... Then call hit on it instead instead of parameter area...
+	var target_to_hit := area
+	for group in block_groups:
+		for node in overlapping_areas:
+			if node.is_in_group(group):
+				target_to_hit = node
+				#print(node.name)
+				break
+	
+	#print("Cooldown remaining:", overlapping_areas[area]["cooldown"].is_stopped())
 	if area not in overlapping_areas: return
 	if not overlapping_areas[area]["cooldown"].is_stopped(): return
 	if !"hit" in area: return
 	
-	if area.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * damage_multiplier):
+	if target_to_hit.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * damage_multiplier):
 		emit_signal("hurt_something")
 		if hit_animation_player: hit_animation_player.play(hit_anim)	
 		overlapping_areas[area]["cooldown"].start()
@@ -29,6 +43,10 @@ func _on_area_entered(area: Area3D) -> void:
 	
 	var in_group := false # Verify in group
 	for group in damage_groups:
+		if area.is_in_group(group):
+			in_group = true
+			break
+	for group in block_groups:
 		if area.is_in_group(group):
 			in_group = true
 			break
