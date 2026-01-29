@@ -1239,8 +1239,8 @@ transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("21_oquh6")
-blocked_anim_player = NodePath("../../../AnimationPlayer")
 parry_anim = "STUNNED"
+blocked_anim_player = NodePath("../../../AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/MeshInstance3D/Attack" unique_id=1190067184]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0577135, 0.341919, -1.7045)

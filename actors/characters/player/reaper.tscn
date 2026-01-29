@@ -46,7 +46,6 @@
 [ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://actors/characters/player/tracker/play_time_tracker.gd" id="36_5cvkf"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="36_p2pt0"]
 [ext_resource type="Script" uid="uid://cwwirvd46gyr2" path="res://actors/characters/player/plunge_multiplier.gd" id="38_5ijfa"]
-[ext_resource type="Script" uid="uid://dxmw2yslqiwp1" path="res://actors/characters/hurt_shape_persistent_damage.gd" id="38_ekykk"]
 [ext_resource type="Script" uid="uid://0q73mstd3d54" path="res://actors/characters/player/spin_multiplier.gd" id="38_fw2bj"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://actors/squash.gd" id="41_utjob"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_effects.gd" id="42_k5idf"]
@@ -2935,8 +2934,8 @@ ANIMATION_PLAYER = NodePath("../AnimationPlayer")
 
 [node name="GodModeHurt" type="Area3D" parent="GodMode" unique_id=611101630 groups=["player"]]
 script = ExtResource("7_4anjp")
-damage = 10000.0
 damage_groups = Array[String](["enemy_hitshape"])
+damage = 10000.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GodMode/GodModeHurt" unique_id=1105067898 groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711507, 0)
@@ -3177,20 +3176,15 @@ bone_idx = 22
 [node name="SytheHurtShape" type="Area3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D" unique_id=1201465678 node_paths=PackedStringArray("hit_animation_player") groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00983417, 0.964215, 0.00320163)
 script = ExtResource("7_4anjp")
-damage = 50.0
 damage_groups = Array[String](["enemy_hitshape"])
+damage = 50.0
 hit_animation_player = NodePath("AnimationPlayer")
+save_key = "damage"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=2036506350]
 transform = Transform3D(1, -4.76837e-07, -5.96046e-08, -6.55651e-07, 1, -3.57628e-07, 2.38419e-07, -5.96046e-07, 1, -0.0433788, 0.449711, 0.0120862)
 shape = SubResource("BoxShape3D_m1s71")
 disabled = true
-
-[node name="PersitentDamage" type="Node" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=1859321514 node_paths=PackedStringArray("hurt_shape")]
-script = ExtResource("38_ekykk")
-hurt_shape = NodePath("..")
-save_key = "damage"
-upgrade_animation = "DAMAGE"
 
 [node name="SpinMultiplier" type="Node" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=484334045 node_paths=PackedStringArray("ATTACK_AREA")]
 script = ExtResource("38_fw2bj")

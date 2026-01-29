@@ -1,26 +1,45 @@
 extends Area3D
+@export_group("Damage")
+@export var damage_groups: Array[String] = ["player_hitshape"] ##area groups you want this hurtbox to damage
 @export var damage: float = 10.0
 @export var damage_spread: float = 0 ## Determines subtle randomness in attack damage
 @export var damage_multiplier: float = 1 ## Value that can be animated by animation players 
-@export var damage_groups: Array[String] = ["player_hitshape"] ##area groups you want this hurtbox to damage
-@export var hit_animation_player: AnimationPlayer ## Animation to be played when something is hit by this hurt shape
-@export var hit_anim: String = "HURT" ## Name of the animation to play
 @export var cooldown: float = 0.2 
+@export var linger_tick: float = 1.0
 @export var linger: bool = false
-@export var linger_tick: float = 1.2
+@export var hit_anim: String = "HURT" ## Name of the animation to play
+@export var hit_animation_player: AnimationPlayer ## Animation to be played when something is hit by this hurt shape
+var overlapping_areas: Dictionary = {}
+signal hurt_something
 
 @export_group("Blocking")
-@export var block_groups: Array[String] = ["player_blockshape", "enemy_blockshape"]
 @export var parryable: bool = false ## Animate property to specify window
-@export var blocked_anim_player: AnimationPlayer
 @export var parry_anim: String = "PARRY"
+@export var blocked_anim_player: AnimationPlayer
+@export var block_groups: Array[String] = ["player_blockshape", "enemy_blockshape"]
 func blocked(_block_time: float = 0.0) -> void:
 	if blocked_anim_player and blocked_anim_player.has_animation(parry_anim):
 		if blocked_anim_player.current_animation != parry_anim:
 			blocked_anim_player.play(parry_anim)
 
-var overlapping_areas: Dictionary = {}
-signal hurt_something
+@export_group("Save") ## For upgradable damage that needs to be persisten / update
+@export var enable_save: bool = true
+@export var save_key: String = ""
+func _exit_tree() -> void:
+	if not enable_save: return
+	Save.data[save_key] = damage
+	Save.save_game()
+func _on_save_data_updated() -> void:
+	#if Save.data[save_key] != damage: #upgrade animation 
+	damage = Save.data[save_key]
+func save_ready() -> void:
+	if not enable_save: return
+	
+	if save_key == "": save_key = Save.get_unique_key(self, "damage")
+	if Save.data.has(save_key): damage = Save.data[save_key]
+	else: Save.data[save_key] = damage
+
+	Save.connect("save_data_updated", _on_save_data_updated)
 
 func hurt(area: Area3D) -> void:
 	
@@ -84,6 +103,7 @@ func _on_area_exited(area: Area3D) -> void:
 func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
+	save_ready()
 
 #func _process(_delta: float) -> void:
 	#print("Timers alive:", get_tree().get_nodes_in_group("memory_leak_check").size())
