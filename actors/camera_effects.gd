@@ -11,6 +11,7 @@ var decay_rate = default_decay_rate
 
 @export var shake_presets := {
 	"player_attack": { "strength": 4.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},
+	"player_blocked":{ "strength": 1.0, "slow_motion_duration": .4,  "slow_motion_speed": 0.0},
 	"player_heal":   { "strength": 2.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},
 	"player_shoot":  { "strength": 1.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},
 	"player_hurt":   { "strength": 3.0, "slow_motion_duration": .1,  "slow_motion_speed": 0.0},

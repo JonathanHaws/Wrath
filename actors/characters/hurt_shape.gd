@@ -11,6 +11,13 @@ extends Area3D
 
 @export_group("Blocking")
 @export var block_groups: Array[String] = ["player_blockshape", "enemy_blockshape"]
+@export var parryable: bool = false ## Animate property to specify window
+@export var blocked_anim_player: AnimationPlayer
+@export var parry_anim: String = "PARRY"
+func blocked(_block_time: float = 0.0) -> void:
+	if blocked_anim_player and blocked_anim_player.has_animation(parry_anim):
+		if blocked_anim_player.current_animation != parry_anim:
+			blocked_anim_player.play(parry_anim)
 
 var overlapping_areas: Dictionary = {}
 signal hurt_something

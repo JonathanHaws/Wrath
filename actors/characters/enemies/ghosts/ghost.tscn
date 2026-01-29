@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://actors/characters/enemies/sfx/Despawn.wav" id="13_ybcr2"]
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://actors/characters/enemies/sfx/Cry.wav" id="14_aqmuc"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://actors/squash.gd" id="15_7e8cg"]
+[ext_resource type="AudioStream" uid="uid://ql4vd0nt4yjg" path="res://actors/characters/enemies/Parried.ogg" id="15_mvqiw"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_effects.gd" id="16_wbsgp"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://actors/characters/enemies/sfx/Cry_2.wav" id="17_7c1mb"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="17_fgjfs"]
@@ -336,6 +337,7 @@ _data = {
 [sub_resource type="Animation" id="Animation_1m57m"]
 resource_name = "ATTACK"
 length = 1.5
+step = 0.011111111
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -343,7 +345,7 @@ tracks/0/path = NodePath("Mesh/MeshInstance3D/Attack/CollisionShape3D:disabled")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.766667, 0.833333),
+"times": PackedFloat32Array(0, 0.73333335, 0.79999936),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -398,6 +400,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [1.0, 0.0, 0.0, 1.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/MeshInstance3D/Attack:parryable")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.6888889, 0.76666665),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
 
 [sub_resource type="Animation" id="Animation_n368u"]
 resource_name = "CHASE"
@@ -418,7 +432,7 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/1/interp = 1
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
@@ -673,6 +687,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Mesh/MeshInstance3D/Attack:parryable")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_fd7dn"]
 resource_name = "SHOOT"
@@ -782,6 +808,73 @@ tracks/6/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_oquh6"]
+resource_name = "STUNNED"
+length = 1.7500042
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/MeshInstance3D:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.111111104, 1.3222089, 1.6888754),
+"transitions": PackedFloat32Array(0.659755, 0.0457527, 4.924579, 16.5642),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.5707964, 0, 0), Vector3(1.5707964, 0, 0), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/MeshInstance3D/Attack/CollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio/Parried")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_agce3"]
 _data = {
 &"ATTACK": SubResource("Animation_1m57m"),
@@ -789,7 +882,8 @@ _data = {
 &"DEATH": SubResource("Animation_hp215"),
 &"JUMP_ATTACK": SubResource("Animation_dfr5h"),
 &"RESET": SubResource("Animation_05mu1"),
-&"SHOOT": SubResource("Animation_fd7dn")
+&"SHOOT": SubResource("Animation_fd7dn"),
+&"STUNNED": SubResource("Animation_oquh6")
 }
 
 [sub_resource type="Curve" id="Curve_mvqiw"]
@@ -1044,6 +1138,12 @@ volume_db = -6.395
 pitch_scale = 1.3
 bus = &"SFX"
 
+[node name="Parried" type="AudioStreamPlayer" parent="Audio" unique_id=109363645]
+process_mode = 3
+stream = ExtResource("15_mvqiw")
+volume_db = -5.0
+bus = &"SFX"
+
 [node name="SquashAndStretch" type="Node" parent="." unique_id=509375601 node_paths=PackedStringArray("mesh_node")]
 script = ExtResource("15_7e8cg")
 mesh_node = NodePath("../Mesh")
@@ -1067,6 +1167,7 @@ next/ATTACK = &"CHASE"
 next/CHASE = &"CHASE"
 next/JUMP_ATTACK = &"CHASE"
 next/SHOOT = &"CHASE"
+next/STUNNED = &"CHASE"
 
 [node name="Attack" type="Node" parent="AnimationPlayer" unique_id=1993194282 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("20_mvqiw")
@@ -1109,6 +1210,7 @@ shape = SubResource("BoxShape3D_qr43c")
 debug_color = Color(0.7, 0.7, 0.7, 0)
 
 [node name="SceneSpawner" type="Node3D" parent="Mesh" unique_id=1201835323 node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3600939)
 script = ExtResource("17_fgjfs")
 scenes = Array[PackedScene]([ExtResource("20_x07w4")])
 add_to_scene_root = true
@@ -1132,11 +1234,13 @@ material_override = SubResource("StandardMaterial3D_n368u")
 mesh = SubResource("SphereMesh_fd7dn")
 skeleton = NodePath("")
 
-[node name="Attack" type="Area3D" parent="Mesh/MeshInstance3D" unique_id=235135068 groups=["ghost"]]
+[node name="Attack" type="Area3D" parent="Mesh/MeshInstance3D" unique_id=235135068 node_paths=PackedStringArray("blocked_anim_player") groups=["ghost"]]
 transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("21_oquh6")
+blocked_anim_player = NodePath("../../../AnimationPlayer")
+parry_anim = "STUNNED"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/MeshInstance3D/Attack" unique_id=1190067184]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0577135, 0.341919, -1.7045)

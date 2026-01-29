@@ -195,7 +195,7 @@ func _physics_process(delta: float) -> void:
 			else:
 				ANIM.play("PLUNGE_FALL")
 	
-	if Input.is_action_just_pressed("block"):
+	if Input.is_action_pressed("block"):
 		if in_interruptible_animation() and ANIM.current_animation not in ["BLOCK", "BLOCK_ENTER"]:
 			#print(ANIM.playback_default_blend_time)
 			ANIM.play("BLOCK_ENTER", 0.0)

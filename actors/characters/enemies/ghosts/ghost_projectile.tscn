@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyk5tfpn3c33w"]
+[gd_scene format=3 uid="uid://dyk5tfpn3c33w"]
 
 [ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://actors/characters/enemies/projectile.gd" id="1_8vmfp"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="2_v5ope"]
@@ -13,7 +13,7 @@ cap_bottom = false
 [sub_resource type="SphereMesh" id="SphereMesh_v5ope"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7pvji"]
-size = Vector3(0.618972, 0.717653, 0.681788)
+size = Vector3(0.618972, 0.717653, 1.3842514)
 
 [sub_resource type="Animation" id="Animation_mr47g"]
 length = 0.001
@@ -39,7 +39,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.06666667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -53,10 +53,10 @@ tracks/1/path = NodePath("Node3D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.03333334),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(1, 1, 1)]
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_v5ope"]
@@ -108,7 +108,7 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="GhostProjectile" type="Node3D" node_paths=PackedStringArray("ray", "collision_animation_player", "hurt_box")]
+[node name="GhostProjectile" type="Node3D" unique_id=1464689911 node_paths=PackedStringArray("ray", "collision_animation_player", "hurt_box")]
 script = ExtResource("1_8vmfp")
 speed = 20.0
 ray = NodePath("RayCast3D")
@@ -117,38 +117,36 @@ collision_animation_player = NodePath("AnimationPlayer")
 collision_animation_name = "collision"
 hurt_box = NodePath("Attack")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Node3D" type="Node3D" parent="." unique_id=378754282]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 2.93627e-08, 0.517545)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D" unique_id=1367149511]
+transform = Transform3D(0.60328794, 0, 0, 0, -2.6370559e-08, 0.60328794, 0, -0.60328794, -2.6370559e-08, 0, 2.041234e-08, 0.2908439)
 material_override = ExtResource("2_xhlmk")
 mesh = SubResource("CylinderMesh_cgbyb")
 skeleton = NodePath("")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(0.345907, 0, 0, 0, -1.51201e-08, 0.345907, 0, -0.345907, -1.51201e-08, 0, -1.576e-08, -0.0227042)
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D" unique_id=107404311]
+transform = Transform3D(0.20868152, 0, 0, 0, -9.1217744e-09, 0.20868152, 0, -0.20868152, -9.1217744e-09, 0, -6.80964e-09, -0.035081893)
 material_override = ExtResource("2_xhlmk")
 mesh = SubResource("SphereMesh_v5ope")
 skeleton = NodePath("")
 
-[node name="Attack" type="Area3D" parent="." groups=["ghost"]]
+[node name="Attack" type="Area3D" parent="." unique_id=2008542141 groups=["ghost"]]
 transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0.375182)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("2_v5ope")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0165985, -0.0165819, -0.697874)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack" unique_id=520444255]
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, 0.0165985, -0.016581893, -1.0707527)
 shape = SubResource("BoxShape3D_7pvji")
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_mr47g")
-}
-autoplay = "projectile"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1336105221]
+libraries/ = SubResource("AnimationLibrary_mr47g")
+autoplay = &"projectile"
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1548411676]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.667053, 1.15956, -2.34819)
 light_color = Color(0.58, 0.58, 0.58, 1)
 light_energy = 0.0
@@ -156,6 +154,6 @@ light_specular = 0.0
 omni_range = 15.0
 omni_attenuation = 0.5
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1228087490]
 exclude_parent = false
 hit_back_faces = false
