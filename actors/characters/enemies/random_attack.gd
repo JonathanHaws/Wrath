@@ -50,6 +50,7 @@ func _physics_process(delta: float) -> void:
 	var chance = proximity_likelihood * area_likelihood * LIKELIHOOD_MULTIPLIER * delta
 	if randf() < chance:
 		ANIM.play(ATTACK_ANIMATION)
+		ANIM.advance(0.0)
 		COOLDOWN_REMAINING = COOLDOWN
 		
 	#print(chance)

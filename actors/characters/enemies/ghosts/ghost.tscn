@@ -1205,7 +1205,7 @@ shape = SubResource("BoxShape3D_qr43c")
 debug_color = Color(0.7, 0.7, 0.7, 0)
 
 [node name="SceneSpawner" type="Node3D" parent="Mesh" unique_id=1201835323 node_paths=PackedStringArray("target")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.3600939)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.78623927)
 script = ExtResource("17_fgjfs")
 scenes = Array[PackedScene]([ExtResource("20_x07w4")])
 add_to_scene_root = true

@@ -1,4 +1,4 @@
-[gd_resource type="VisualShader" load_steps=15 format=3 uid="uid://dydavnuhpkpw7"]
+[gd_resource type="VisualShader" format=3 uid="uid://dydavnuhpkpw7"]
 
 [sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_m5f8o"]
 parameter_name = "Alpha"
@@ -49,72 +49,6 @@ expanded_output_ports = [0]
 source = 5
 
 [resource]
-code = "shader_type spatial;
-render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx, unshaded, shadows_disabled;
-
-uniform float Pan_Speed;
-uniform sampler2D Texture2DParameter : source_color;
-uniform sampler2D tex_frg_2 : source_color;
-uniform float Alpha;
-
-
-
-void fragment() {
-// Input:13
-	vec4 n_out13p0 = COLOR;
-	float n_out13p4 = n_out13p0.a;
-
-
-// Input:17
-	float n_out17p0 = TIME;
-
-
-// FloatParameter:20
-	float n_out20p0 = Pan_Speed;
-
-
-// FloatOp:19
-	float n_out19p0 = n_out17p0 * n_out20p0;
-
-
-// UVFunc:16
-	vec2 n_in16p1 = vec2(1.00000, 1.00000);
-	vec2 n_out16p0 = vec2(n_out19p0) * n_in16p1 + UV;
-
-
-	vec4 n_out5p0;
-// Texture2D:5
-	n_out5p0 = texture(Texture2DParameter, n_out16p0);
-	float n_out5p1 = n_out5p0.r;
-
-
-// Texture2D:2
-	vec4 n_out2p0 = texture(tex_frg_2, UV);
-
-
-// FloatOp:15
-	float n_out15p0 = n_out5p1 * n_out2p0.x;
-
-
-// FloatOp:14
-	float n_out14p0 = n_out13p4 * n_out15p0;
-
-
-// FloatParameter:11
-	float n_out11p0 = Alpha;
-
-
-// FloatOp:12
-	float n_out12p0 = n_out14p0 * n_out11p0;
-
-
-// Output:0
-	ALBEDO = vec3(n_out13p0.xyz);
-	ALPHA = n_out12p0;
-
-
-}
-"
 modes/cull = 2
 flags/unshaded = true
 flags/shadows_disabled = true

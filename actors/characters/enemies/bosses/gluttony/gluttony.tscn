@@ -45,6 +45,7 @@
 [ext_resource type="Script" uid="uid://bs2bbm2ty8nsu" path="res://actors/characters/enemies/chase_target_smooth.gd" id="36_svijn"]
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://actors/characters/dialog/background.tscn" id="36_x6t7s"]
 [ext_resource type="Material" uid="uid://gwfmysarj7pc" path="res://actors/characters/dust/dust.tres" id="40_uk6rk"]
+[ext_resource type="PackedScene" uid="uid://koykwgdddqjf" path="res://actors/characters/enemies/bosses/gluttony/projectiles/fast_vomit.tscn" id="41_ddcis"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_12e26"]
 radius = 3.05987
@@ -1095,6 +1096,18 @@ tracks/24/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/VomitSpawner:scene_to_spawn")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_12e26"]
 resource_name = "SHOOT_FAST"
@@ -1136,21 +1149,44 @@ tracks/2/keys = {
 "method": &"play"
 }]
 }
-tracks/3/type = "method"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/VomitSpawner")
-tracks/3/interp = 1
+tracks/3/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/VomitSpawner:scene_to_spawn")
+tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.5833334, 2.0833333),
+"times": PackedFloat32Array(1.7916666, 4.75),
 "transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1, 0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/VomitSpawner")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(13.208333),
+"transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
-"method": &"spawn"
-}, {
 "args": [15, 0.08],
 "method": &"spawn_towards_target"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/VomitSpawner")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.9166666),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [15, 0.08],
+"method": &"spawn_multiple"
 }]
 }
 
@@ -2032,6 +2068,7 @@ autoplay = &"RESET"
 next/FIST_SLAM_LEFT = &"CHASE"
 next/FIST_SLAM_RIGHT = &"CHASE"
 next/INTRO = &"CHASE"
+next/SHOOT_FAST = &"CHASE"
 next/SHOOT_GRAVITY = &"CHASE"
 next/SLAM = &"CHASE"
 next/SLAM_LEFT = &"CHASE"
@@ -2479,7 +2516,8 @@ bone_idx = 4
 transform = Transform3D(-1, 1.42109e-14, 8.74228e-08, 1.42109e-14, 1, -1.49012e-07, -8.74228e-08, 0, -1, 2.15065e-07, 0.371065, 1.03368)
 rotation_edit_mode = 1
 script = ExtResource("19_4cd86")
-scenes = Array[PackedScene]([ExtResource("30_kcm85")])
+scenes = Array[PackedScene]([ExtResource("30_kcm85"), ExtResource("41_ddcis")])
+add_to_scene_root = true
 target = NodePath("../../../../../../Target")
 projectile_speed = 22.0
 projectile_gravity = 15.0

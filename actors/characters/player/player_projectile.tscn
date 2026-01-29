@@ -1,29 +1,17 @@
-[gd_scene load_steps=18 format=3 uid="uid://qi35dljseuk3"]
+[gd_scene format=3 uid="uid://qi35dljseuk3"]
 
 [ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://actors/characters/enemies/projectile.gd" id="1_kpr02"]
+[ext_resource type="PackedScene" uid="uid://1ibdp5i2ei5t" path="res://actors/characters/projectile.blend" id="2_8trq3"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_effects.gd" id="3_7bp6w"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="3_32n4n"]
+[ext_resource type="Material" uid="uid://c2p7qmqa0ird5" path="res://actors/characters/particles/player_projectile_material.tres" id="3_v2nyk"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="4_o35mi"]
 [ext_resource type="AudioStream" uid="uid://bkawmwxh84v2j" path="res://actors/characters/enemies/sfx/Hit_1.ogg" id="20_qiejr"]
 [ext_resource type="AudioStream" uid="uid://bvtlb0oql5hr6" path="res://actors/characters/enemies/sfx/Hit_2.ogg" id="21_j2d75"]
 [ext_resource type="AudioStream" uid="uid://c16kx02f83mop" path="res://actors/characters/enemies/sfx/Hit_3.ogg" id="22_xpmdx"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7bp6w"]
-albedo_color = Color(0.28440002, 0.33354002, 0.36, 1)
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 0.2
-rim_tint = 0.0
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_cgbyb"]
-top_radius = 0.167
-bottom_radius = 0.0
-height = 1.0
-cap_bottom = false
-
-[sub_resource type="SphereMesh" id="SphereMesh_v5ope"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_7pvji"]
-size = Vector3(0.618972, 0.717653, 0.681788)
+size = Vector3(0.32712737, 0.30148357, 0.3260544)
 
 [sub_resource type="Animation" id="Animation_mr47g"]
 length = 0.001
@@ -141,10 +129,10 @@ tracks/1/path = NodePath("Node3D:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 3.56667),
-"transitions": PackedFloat32Array(16.5642, 1),
+"times": PackedFloat32Array(0, 0.10000001, 0.2, 2.7, 3.76667),
+"transitions": PackedFloat32Array(1, 0.40612632, 1, 3.605001, 1),
 "update": 0,
-"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0, 0, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -157,6 +145,18 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [0.0, 1.0, 1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Node3D:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mr47g"]
@@ -202,7 +202,7 @@ _data = {
 &"HURT": SubResource("Animation_51sfh")
 }
 
-[node name="GhostProjectile" type="Node3D" node_paths=PackedStringArray("ray", "collision_animation_player", "hurt_box")]
+[node name="GhostProjectile" type="Node3D" unique_id=237657882 node_paths=PackedStringArray("ray", "collision_animation_player", "hurt_box")]
 script = ExtResource("1_kpr02")
 speed = 20.0
 ray = NodePath("RayCast3D")
@@ -211,47 +211,34 @@ collision_animation_player = NodePath("AnimationPlayer")
 collision_animation_name = "collision"
 hurt_box = NodePath("Attack")
 
-[node name="Node3D" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8182478)
+[node name="Node3D" type="Node3D" parent="." unique_id=908187687]
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(0.64301723, 0, 0, 0, -3.2887424e-08, 0.50237286, 0, -0.7523764, -2.1959421e-08, 0, 1.813556e-08, 0.45065576)
-material_override = SubResource("StandardMaterial3D_7bp6w")
-mesh = SubResource("CylinderMesh_cgbyb")
-skeleton = NodePath("")
+[node name="projectile" parent="Node3D" unique_id=1400207989 instance=ExtResource("2_8trq3")]
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
-transform = Transform3D(0.21859917, 0, 0, 0, -1.1376007e-08, 0.17377429, 0, -0.26025227, -7.595928e-09, 0, -4.5328594e-09, 0.044185027)
-material_override = SubResource("StandardMaterial3D_7bp6w")
-mesh = SubResource("SphereMesh_v5ope")
-skeleton = NodePath("")
+[node name="Cylinder" parent="Node3D/projectile" index="0" unique_id=1893045559]
+surface_material_override/0 = ExtResource("3_v2nyk")
 
-[node name="Attack" type="Area3D" parent="." node_paths=PackedStringArray("hit_animation_player") groups=["player"]]
-transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, -0.4430658)
+[node name="Attack" type="Area3D" parent="." unique_id=1769833961 node_paths=PackedStringArray("hit_animation_player") groups=["player"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("3_32n4n")
 damage_groups = Array[String](["enemy_hitshape"])
 hit_animation_player = NodePath("../Hurt")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0165985, -0.0165819, -0.697874)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack" unique_id=2015519998]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -0.0043870565, 0.016270094, -0.5404159)
 shape = SubResource("BoxShape3D_7pvji")
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_mr47g")
-}
-autoplay = "projectile"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1955324668]
+libraries/ = SubResource("AnimationLibrary_mr47g")
+autoplay = &"projectile"
 
-[node name="Hurt" type="AnimationPlayer" parent="."]
+[node name="Hurt" type="AnimationPlayer" parent="." unique_id=107658908]
 root_node = NodePath("../AnimationPlayer")
-libraries = {
-&"": SubResource("AnimationLibrary_cat40")
-}
+libraries/ = SubResource("AnimationLibrary_cat40")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1559673527]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.667053, 0.8928584, -0.82658195)
 light_color = Color(0.58, 0.58, 0.58, 1)
 light_energy = 0.0
@@ -259,31 +246,33 @@ light_specular = 0.0
 omni_range = 15.0
 omni_attenuation = 0.5
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=2020543375]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8182478)
 exclude_parent = false
 hit_back_faces = false
 
-[node name="CameraEffects" type="Node" parent="."]
+[node name="CameraEffects" type="Node" parent="." unique_id=987861492]
 script = ExtResource("3_7bp6w")
 
-[node name="Audio" type="Node" parent="."]
+[node name="Audio" type="Node" parent="." unique_id=725062436]
 script = ExtResource("4_o35mi")
 
-[node name="Hit1" type="AudioStreamPlayer" parent="Audio"]
+[node name="Hit1" type="AudioStreamPlayer" parent="Audio" unique_id=952110416]
 process_mode = 3
 stream = ExtResource("20_qiejr")
 volume_db = -8.0
 bus = &"SFX"
 
-[node name="Hit2" type="AudioStreamPlayer" parent="Audio"]
+[node name="Hit2" type="AudioStreamPlayer" parent="Audio" unique_id=7919888]
 process_mode = 3
 stream = ExtResource("21_j2d75")
 volume_db = -8.0
 bus = &"SFX"
 
-[node name="Hit3" type="AudioStreamPlayer" parent="Audio"]
+[node name="Hit3" type="AudioStreamPlayer" parent="Audio" unique_id=424331109]
 process_mode = 3
 stream = ExtResource("22_xpmdx")
 volume_db = -8.0
 bus = &"SFX"
+
+[editable path="Node3D/projectile"]
