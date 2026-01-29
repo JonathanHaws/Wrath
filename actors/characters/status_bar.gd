@@ -44,8 +44,7 @@ func _ready()-> void:
 	default_max_value = max_value
 
 	difference_bar.value = 0.0 # give hitbox nodes a chance to load in save and persistent data 
-	await get_tree().process_frame
-	await get_tree().physics_frame
+	await get_tree().create_timer(0.1).timeout
 	update_bar()
 	
 

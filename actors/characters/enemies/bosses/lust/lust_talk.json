@@ -9,7 +9,7 @@
 {"say": "WHO AM I?"},
 {"say": "DONT YOU ALREADY KNOW?"},
 
-{"fork": "observation"},
+{"fork": "observation", "save": 1},
 	{"say": "FORGIVE ME FOR PRYING BUT..."},
 	{"say": "WHY DO YOU SEEM SO"},
 	{"say": "LONELY"},
@@ -56,11 +56,19 @@
 	{"say_timed": ["I GET WHAT I WANT", 1.5]},
 	
 {"fork": "random_taunt_2"},	
-	{"say_timed": ["YOU REALLY THOUGHT...", 2.5, 1]},
-	{"say_timed": ["YOU COULD ESCAPE?", 1.5]},
+	{"say_timed": ["YOU REALLY THINK...", 2.0, 1]},
+	{"say_timed": ["YOU CAN ESCAPE?", 1.5]},
 	
 {"fork": "random_taunt_3"},
 	{"say_timed": ["YOU THINK YOU KNOW LOVE?", 2.0]},
+	
+{"fork": "random_taunt_4"},	
+	{"say_timed": ["I WANTED YOU...", 2.5, 1]},
+	{"say_timed": ["BUT NOW YOU WILL DIE!", 2.5, 1]},
+	{"say_timed": ["DIE!", 0.75, 1]},
+	{"say_timed": ["DIE!", 0.75, 1]},
+	{"say_timed": ["DIE!", 0.75, 1]},
+	{"say_timed": ["D I E!", 2.0]},
 	
 {"fork": "death"},
 	{"say_timed": ["YOULL BE ALONE...", 2.0, 1]},
