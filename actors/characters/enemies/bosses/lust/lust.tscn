@@ -1901,12 +1901,15 @@ shape = SubResource("SphereShape3D_ldn6u")
 
 [node name="RandomDialogue" type="Timer" parent="Dialogue" unique_id=805763639 node_paths=PackedStringArray("DIALOG", "HIT_SHAPE")]
 script = ExtResource("35_gu5ya")
+MIN_INTERVAL = 0.2
+MAX_INTERVAL = 1.0
+FAIL_INTERVAL = 0.2
 DELETE_AFTER_PLAY = true
 DIALOG = NodePath("../AnimationPlayer")
 HIT_SHAPE = NodePath("../../HitShape")
 LINES = Array[String](["random_taunt_1", "random_taunt_2", "random_taunt_3", "random_taunt_4"])
-TRIGGER_HP = Array[float]([1.0, 1.0, 1.0, 0.5])
 LINE_TIMES = Array[float]([1.5, 3.5, 2.0, 9.25])
+TRIGGER_MAX_HP = Array[float]([1.0, 1.0, 1.0, 0.5])
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Dialogue" unique_id=114233615 node_paths=PackedStringArray("anim", "area")]
 root_node = NodePath("../..")
