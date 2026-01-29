@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://actors/props/wisp/wisp_reward.gd" id="2_5rg5p"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="2_i6eoe"]
 [ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://actors/characters/ui/damage_numbers.tscn" id="3_mvqiw"]
-[ext_resource type="Script" uid="uid://d0sglng8yjegx" path="res://actors/characters/hit_shape_persistent_health.gd" id="3_oquh6"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="3_p14n4"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://actors/characters/enemies/sfx/Slam.wav" id="7_d4t6r"]
 [ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://actors/props/sfx/Crumble_1.wav" id="8_0p2lg"]
@@ -1082,9 +1081,10 @@ script = ExtResource("2_5rg5p")
 shape = SubResource("SphereShape3D_7c1mb")
 debug_color = Color(0.87, 0.87, 0.87, 1)
 
-[node name="Hitbox" type="Area3D" parent="." unique_id=1261233255 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
+[node name="Hitbox" type="Area3D" parent="." unique_id=1261233255 node_paths=PackedStringArray("ROOT", "TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("2_i6eoe")
 IMMUNE_GROUPS = Array[String](["ghost"])
+ROOT = NodePath("..")
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../Damaged")
@@ -1093,11 +1093,6 @@ DAMAGE_NUMBERS = ExtResource("3_mvqiw")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1137305540]
 shape = SubResource("SphereShape3D_6640v")
 debug_color = Color(0.87, 0.87, 0.87, 1)
-
-[node name="PersistentHealth" type="Node" parent="Hitbox" unique_id=1076536758 node_paths=PackedStringArray("HIT_SHAPE", "BODY")]
-script = ExtResource("3_oquh6")
-HIT_SHAPE = NodePath("..")
-BODY = NodePath("../..")
 
 [node name="Audio" type="Node" parent="." unique_id=1672116593]
 script = ExtResource("3_p14n4")

@@ -42,7 +42,12 @@ func update_bar(delta := 0.0) -> void:
 func _ready()-> void:
 	default_width = size.x
 	default_max_value = max_value
+
+	difference_bar.value = 0.0 # give hitbox nodes a chance to load in save and persistent data 
+	await get_tree().process_frame
+	await get_tree().physics_frame
 	update_bar()
+	
 
 func _process(_delta)-> void:
 	update_bar(_delta)

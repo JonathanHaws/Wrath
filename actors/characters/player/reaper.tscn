@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://binnxxydkjgul" path="res://actors/characters/player/god_mode.gd" id="3_4anjp"]
 [ext_resource type="PackedScene" uid="uid://xbs1vkc0kdgm" path="res://actors/characters/player/mesh/reaper.blend" id="3_k4avc"]
 [ext_resource type="AudioStream" uid="uid://cv08lxjw3rypc" path="res://actors/characters/player/sfx/Jump.wav" id="4_i3uf6"]
-[ext_resource type="Script" uid="uid://d0sglng8yjegx" path="res://actors/characters/hit_shape_persistent_health.gd" id="4_m1s71"]
 [ext_resource type="AudioStream" uid="uid://cxfh7l5kksro3" path="res://actors/characters/player/sfx/Land.wav" id="5_7kpka"]
 [ext_resource type="PackedScene" uid="uid://00xupixtbxf5" path="res://actors/characters/player/horizontal_slash_particle.tscn" id="5_p6b07"]
 [ext_resource type="PackedScene" uid="uid://b2vw4evrfcelo" path="res://actors/characters/particles/dust_step.tscn" id="6_bo8be"]
@@ -2897,26 +2896,20 @@ collision_layer = 2
 script = ExtResource("2_utjob")
 HEALTH = 30.0
 MAX_HEALTH = 30.0
-IMMUNE_GROUPS = Array[String](["player"])
 INVINCIBILITY_COOLDOWN = 0.8
+HEALTH_KEY = "health"
+IMMUNE_GROUPS = Array[String](["player"])
 HURT_ANIMATION_PLAYER = NodePath("../AlwaysProcessDeath")
 DEATH_ANIMATION_PLAYER = NodePath("../AlwaysProcessDeath")
+DEATH_COUNT_KEY = "death_count_to_respawn_player"
+REST_COUNT_KEY = "rest_count_to_respawn_player"
+UPGRADABLE_MAX_HEALTH = true
+MAX_HEALTH_KEY = "max_health"
 
 [node name="DeathCountTracker" type="Node" parent="Hitbox" unique_id=1635187 node_paths=PackedStringArray("HITSHAPE")]
 script = ExtResource("20_m1s71")
 key = "deaths"
 HITSHAPE = NodePath("..")
-
-[node name="PersitentHealth" type="Node" parent="Hitbox" unique_id=1295542249 node_paths=PackedStringArray("HIT_SHAPE")]
-script = ExtResource("4_m1s71")
-HIT_SHAPE = NodePath("..")
-STORE_DEAD = false
-HEALTH_KEY = "health"
-DEATH_COUNT_KEY = "death_count_to_respawn_player"
-REST_COUNT_KEY = "rest_count_to_respawn_player"
-UPGRADABLE_MAX_HEALTH = true
-MAX_HEALTH_KEY = "max_health"
-UPGRADE_ANIMATION = "HEALTH"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1440296042]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0864, 0)
