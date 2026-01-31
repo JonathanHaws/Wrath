@@ -1,6 +1,6 @@
 extends Node
 @export var skill_tree_ui: Control
-var skill_tree_open := false
+var skill_tree_open: bool = false
 
 @export var PLAYER_GROUP = "player"
 var original_attack_state: bool = false

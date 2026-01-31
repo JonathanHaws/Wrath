@@ -4,7 +4,7 @@ extends Control
 @export var anim_name: String = "continue" ## String name of the animation to trigger
 
 func _on_continue_pressed() -> void:
-	Controls.hide_mouse()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if anim and anim_name != "": anim.play(anim_name)
 	
 func _continue() -> void:
@@ -15,7 +15,6 @@ func _continue() -> void:
 		Save.save_game()
 		Save.load_game(save_files[0]["file_name"])
 		
-	
 func _on_visibility_changed() -> void:
 	var save_files = Save.get_save_files()
 	if not save_files.size() > 0:

@@ -31,7 +31,7 @@ func _physics_process(_delta: float) -> void:
 	
 	#print(position)
 	
-	if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE: 
+	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED: 
 		mouse_delta = Vector2.ZERO
 		return
 	

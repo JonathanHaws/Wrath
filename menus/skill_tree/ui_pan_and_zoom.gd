@@ -42,7 +42,8 @@ func adjust_zoom(factor):
 
 func _process(_delta):
 	if is_visible_in_tree():
-		Controls.show_mouse()
+		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	else:
 		center_required_node()
 	

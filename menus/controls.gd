@@ -28,47 +28,31 @@ func get_action_bindings(action: String) -> String:
 			keys.append("Mouse " + str(ev.button_index))
 	return ", ".join(keys) if keys.size() > 0 else "(Unassigned)"
 
-
 # Hidden Cursor
+var last_position_visible :Vector2 = Vector2.ZERO
+var mouse_tolerance := 32.0  # pixels
 var idle_time_seconds := 0.0
 var idle_timeout_seconds := 2.0
-var last_time 
-#var last_mouse_pos := Vector2.ZERO
-
-func hide_mouse() -> void:
-	if Input.get_mouse_mode() != Input.MOUSE_MODE_CAPTURED:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-func show_mouse() -> void:
- 
-	#var delta := current_pos.distance_to(last_mouse_pos)
-	#last_mouse_pos = get_viewport().get_mouse_position()
-	
-	#idle_time_seconds = idle_timeout_seconds
-	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _ready():
 	await get_tree().process_frame
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	last_time = Time.get_ticks_msec() 
-	idle_time_seconds = idle_timeout_seconds
+	idle_time_seconds = idle_timeout_seconds + 1
+
 func _input(event):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED: return
 	if event is InputEventMouseMotion:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
-		idle_time_seconds = 0
+		var current_pos = get_viewport().get_mouse_position()
+		if last_position_visible.distance_to(current_pos) > mouse_tolerance:
+			last_position_visible = get_viewport().get_mouse_position()
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _process(_delta):
-
+	#print(Input.get_mouse_mode())
 	#print(idle_time_seconds)
-	
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+		idle_time_seconds += _delta
 		if idle_time_seconds >= idle_timeout_seconds:
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		else: 
-			var now = Time.get_ticks_msec() 
-			idle_time_seconds += (now - last_time) / 1000.0
-			last_time = now		
-	else:
-		idle_time_seconds = idle_timeout_seconds
+			idle_time_seconds = 0

@@ -1,14 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://b3i01lg3stgkg"]
+[gd_scene format=3 uid="uid://b3i01lg3stgkg"]
 
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_airpt"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="1_hyvu0"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_w063j"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="2_77ypm"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="3_hyvu0"]
-[ext_resource type="Script" uid="uid://di42lux5ey07j" path="res://menus/show_cursor.gd" id="7_airpt"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="8_003hq"]
 
-[node name="Credits" type="ColorRect"]
+[node name="Credits" type="ColorRect" unique_id=346754472]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -18,10 +17,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
 
-[node name="ShowCursor" type="Node" parent="."]
-script = ExtResource("7_airpt")
-
-[node name="CenterContainer" type="CenterContainer" parent="." groups=["ui_scalable"]]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=1311230674 groups=["ui_scalable"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,13 +35,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_airpt")
 
-[node name="VboxContainer" type="VBoxContainer" parent="CenterContainer" node_paths=PackedStringArray("focus_node")]
+[node name="VboxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1850816245 node_paths=PackedStringArray("focus_node")]
 layout_mode = 2
 alignment = 1
 script = ExtResource("1_hyvu0")
 focus_node = NodePath("Back")
 
-[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VboxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VboxContainer" unique_id=1702316145]
 layout_mode = 2
 theme = ExtResource("1_w063j")
 bbcode_enabled = true
@@ -64,7 +60,7 @@ text = "[center] [color=#ececec] Boss Rush Jam[/color][color=#858585] - 2025 \"S
 fit_content = true
 autowrap_mode = 0
 
-[node name="Back" type="Button" parent="CenterContainer/VboxContainer"]
+[node name="Back" type="Button" parent="CenterContainer/VboxContainer" unique_id=622718709]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -75,11 +71,11 @@ icon_alignment = 1
 script = ExtResource("2_77ypm")
 scene_file = "uid://cls12q06quifx"
 
-[node name="GrabFocus" type="Node" parent="CenterContainer/VboxContainer" node_paths=PackedStringArray("focus_node")]
+[node name="GrabFocus" type="Node" parent="CenterContainer/VboxContainer" unique_id=386491779 node_paths=PackedStringArray("focus_node")]
 script = ExtResource("1_hyvu0")
 focus_node = NodePath("../Back")
 
-[node name="MenuAudio" type="Node" parent="." node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+[node name="MenuAudio" type="Node" parent="." unique_id=1655364472 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 script = ExtResource("8_003hq")
 SOUNDS = Array[AudioStream]([ExtResource("3_hyvu0")])
 HOVER_SOUND = "Menu_Hover"
