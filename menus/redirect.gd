@@ -17,5 +17,7 @@ func _on_pressed() -> void:
 		parent.add_child(scene.instantiate())
 		return
 	
+	get_tree().paused = false 
+	Engine.time_scale = 1.0 ## Reset If changing the scene eg.(Pause Menu To Main Menu)
 	get_tree().change_scene_to_packed(scene)
 	
