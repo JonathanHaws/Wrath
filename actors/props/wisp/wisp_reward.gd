@@ -2,6 +2,11 @@ extends Node
 @export var WISP_KEY := "wisp"
 @export var AMOUNT : int = 1
 
+#@export_group("Auto Scaling") ## Used for making harder challenges more rewarding
+#@export var AUTO_SCALING: bool = false
+#@export var HURT_SHAPES: Array[Node] = [] ## Gets the average amoutn of damage per attack
+#@export var HIT_SHAPE: Node ## Gets the amount of attacks usually done
+
 @export_group("Collectable")
 @export var SAVE_COLLECTED: bool = false ## Determines if colelctable will dissapear permantly or will repawn
 @export var PLAYER_GROUP = "player" ## Group of nodes that can trigger upgrade
