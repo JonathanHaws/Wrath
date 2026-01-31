@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://1jc5rm2ln3av"]
+[gd_scene format=3 uid="uid://1jc5rm2ln3av"]
 
 [ext_resource type="Script" uid="uid://bwi12jjkh4nu7" path="res://actors/props/checkpoint/checkpoint.gd" id="1_jmg87"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/interaction.gd" id="2_8is0s"]
@@ -237,7 +237,7 @@ emission_texture = ExtResource("5_xdv6p")
 normal_enabled = true
 normal_texture = ExtResource("6_p1yyc")
 
-[node name="Checkpoint" type="Area3D" node_paths=PackedStringArray("CHECKPOINT_NODE", "REST_ANIM", "AQUIRED_ANIM", "PROMPT_ANIM")]
+[node name="Checkpoint" type="Area3D" unique_id=2076545832 node_paths=PackedStringArray("CHECKPOINT_NODE", "REST_ANIM", "AQUIRED_ANIM", "PROMPT_ANIM")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_jmg87")
@@ -247,31 +247,29 @@ AQUIRED_ANIM = NodePath("Aquired")
 PROMPT_ANIM = NodePath("Prompt")
 skill_tree_file = "uid://dspid5s7r6a1o"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1457119076]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CylinderShape3D_0sglt")
 debug_color = Color(0.458405, 0.458405, 0.458405, 0.247059)
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Node3D" type="Node3D" parent="." unique_id=1204367155]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=274602666]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
 visible = false
 use_collision = true
 radius = 2.0
 height = 0.5
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1612915806]
 bus = &"SFX"
 
-[node name="Rest" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_j24vx")
-}
-autoplay = "RESET"
+[node name="Rest" type="AnimationPlayer" parent="." unique_id=1725587436]
+libraries/ = SubResource("AnimationLibrary_j24vx")
+autoplay = &"RESET"
 
-[node name="RestInteraction" type="Node3D" parent="Rest" node_paths=PackedStringArray("trigger_area", "body")]
+[node name="RestInteraction" type="Node3D" parent="Rest" unique_id=485879137 node_paths=PackedStringArray("trigger_area", "body")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502184, 0)
 script = ExtResource("2_8is0s")
 trigger_area = NodePath("../..")
@@ -281,19 +279,15 @@ body = NodePath(".")
 duration_seconds = 10.0
 weight = 1.0
 
-[node name="Aquired" type="AnimationPlayer" parent="."]
+[node name="Aquired" type="AnimationPlayer" parent="." unique_id=1547696060]
 root_node = NodePath("../Rest")
-libraries = {
-&"": SubResource("AnimationLibrary_qucei")
-}
+libraries/ = SubResource("AnimationLibrary_qucei")
 
-[node name="Prompt" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_tssyw")
-}
-autoplay = "RESET"
+[node name="Prompt" type="AnimationPlayer" parent="." unique_id=1894925115]
+libraries/ = SubResource("AnimationLibrary_tssyw")
+autoplay = &"RESET"
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=611138700]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.22516, 0)
 light_color = Color(0.473976, 0.473976, 0.473976, 1)
 light_energy = 0.0
@@ -301,7 +295,7 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 omni_range = 30.0
 
-[node name="checkpoint" parent="." instance=ExtResource("4_ltl5t")]
+[node name="checkpoint" parent="." unique_id=2011769512 instance=ExtResource("4_ltl5t")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0)
 
 [node name="hoarder" parent="checkpoint" index="0"]
@@ -310,7 +304,7 @@ material_override = SubResource("StandardMaterial3D_p60ie")
 [node name="CollisionShape3D" parent="checkpoint/hoarder/StaticBody3D" index="0"]
 debug_color = Color(0.458405, 0.458405, 0.458405, 0.247059)
 
-[node name="Control" type="Control" parent="." groups=["ui_scalable"]]
+[node name="Control" type="Control" parent="." unique_id=1084030070 groups=["ui_scalable"]]
 visible = false
 layout_mode = 3
 anchors_preset = 7
@@ -322,7 +316,7 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("8_tssyw")
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="Control" unique_id=1745486103]
 visible = false
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
@@ -342,7 +336,7 @@ text = "REST "
 script = ExtResource("9_2oqi1")
 display_text = "REST -"
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=644799030]
 visible = false
 z_index = 2
 anchors_preset = 15
@@ -352,12 +346,12 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
-[node name="CancelJump" type="Node" parent="." node_paths=PackedStringArray("AREA")]
+[node name="CancelJump" type="Node" parent="." unique_id=1460471958 node_paths=PackedStringArray("AREA")]
 script = ExtResource("11_qucei")
 AREA = NodePath("..")
 JUMP_MULTIPLIER = 0.0
 
-[node name="CancelAttack" type="Node" parent="." node_paths=PackedStringArray("AREA")]
+[node name="CancelAttack" type="Node" parent="." unique_id=235907982 node_paths=PackedStringArray("AREA")]
 script = ExtResource("12_hufq8")
 AREA = NodePath("..")
 

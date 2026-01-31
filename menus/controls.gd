@@ -28,6 +28,12 @@ func get_action_bindings(action: String) -> String:
 			keys.append("Mouse " + str(ev.button_index))
 	return ", ".join(keys) if keys.size() > 0 else "(Unassigned)"
 
+# For disabling input... 
+func play_input_anim(animation_name: String, group_name: String = "input_anim") -> void:
+	for p in get_tree().get_nodes_in_group(group_name):
+		if p is AnimationPlayer:
+			p.play(animation_name)
+
 # Hidden Cursor
 var last_position_visible :Vector2 = Vector2.ZERO
 var mouse_tolerance := 32.0  # pixels

@@ -20,13 +20,13 @@ var entry
 	
 func _on_body_entered(body) -> void:
 	if not body.is_in_group(player_group): return
-	if DisableInput: DisableInput.toggle_action(disable_actions, false)
+	if Controls: Controls.play_input_anim("dialog_enable")
 	in_range = true
 	_spawn()
 	
 func _on_body_exited(body)-> void:
 	if not body.is_in_group(player_group): return
-	if DisableInput: DisableInput.toggle_action(disable_actions, true)
+	if Controls: Controls.play_input_anim("dialog_disable")
 	in_range = false
 	_end_dialog()
 

@@ -3,7 +3,7 @@ var info: Array = []
 @export var disable_actions := ["controller_forward", "controller_left", "controller_right", "controller_back"]
 
 func _on_choice_pressed(choice: Dictionary) -> void:
-	DisableInput.toggle_action(disable_actions, true)
+	if Controls: Controls.play_input_anim("choice_disabled")
 	_capture_cursor()
 	queue("exited")
 	if "skip" in choice: get_parent().skip_to(choice.skip)
@@ -22,11 +22,11 @@ func _release_cursor():
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _exit_tree():
-	DisableInput.toggle_action(disable_actions, true)
+	if Controls: Controls.play_input_anim("choice_disabled")
 
 func _ready():
 	
-	DisableInput.toggle_action(disable_actions, false)
+	if Controls: Controls.play_input_anim("choice_enabled")
 	
 	$Options/Choice1.text = ""
 	$Options/Choice2.text = ""
