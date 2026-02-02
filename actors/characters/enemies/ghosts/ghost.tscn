@@ -194,6 +194,20 @@ tracks/12/keys = {
 "method": &"give"
 }]
 }
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("HurtParticles")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_pyqwo"]
 resource_name = "HURT"

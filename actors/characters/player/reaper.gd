@@ -56,6 +56,7 @@ func load_shooting_data() -> void:
 	shooting_energy = min(shooting_energy, MAX_SHOOTING_ENERGY)
 func try_shoot() -> void:
 	if shooting_energy <= 0: return
+	if not is_on_floor(): return
 	if not in_interruptible_animation(): return
 	if not ATTACKING_ENABLED: return
 	shooting_energy -= 1

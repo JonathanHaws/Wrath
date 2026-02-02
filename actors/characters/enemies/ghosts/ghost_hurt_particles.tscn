@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cagou2r2gnqty"]
+[gd_scene format=3 uid="uid://cagou2r2gnqty"]
 
 [ext_resource type="Texture2D" uid="uid://bgteof0ua1pk6" path="res://actors/particle_textures/scorch_02.png" id="1_ne006"]
 [ext_resource type="Material" uid="uid://prfysqn2atre" path="res://actors/characters/hurt_particles_process_material.tres" id="2_fy00o"]
@@ -7,7 +7,7 @@
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(0.255659, 0.255659, 0.255659, 1)
+albedo_color = Color(0.14767182, 0.14767179, 0.14767179, 1)
 albedo_texture = ExtResource("1_ne006")
 billboard_mode = 1
 billboard_keep_scale = true
@@ -76,9 +76,9 @@ _data = {
 &"lifetime": SubResource("Animation_pkdcb")
 }
 
-[node name="Node3D" type="Node3D"]
+[node name="Node3D" type="Node3D" unique_id=2137646627]
 
-[node name="Ghost" type="GPUParticles3D" parent="."]
+[node name="Ghost" type="GPUParticles3D" parent="." unique_id=317224934]
 material_override = SubResource("StandardMaterial3D_c4vjc")
 amount = 64
 lifetime = 0.75
@@ -90,14 +90,12 @@ interpolate = false
 process_material = ExtResource("2_fy00o")
 draw_pass_1 = SubResource("QuadMesh_odbhm")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Ghost"]
-libraries = {
-&"": SubResource("AnimationLibrary_12k5t")
-}
-autoplay = "lifetime"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Ghost" unique_id=305176254]
+libraries/ = SubResource("AnimationLibrary_12k5t")
+autoplay = &"lifetime"
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_color = Color(0.254902, 0.254902, 0.254902, 1)
-light_energy = 5.0
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1779020177]
+light_color = Color(0.4833547, 0.48335445, 0.4833544, 1)
+light_energy = 7.0
 light_specular = 0.0
 omni_range = 30.5494
