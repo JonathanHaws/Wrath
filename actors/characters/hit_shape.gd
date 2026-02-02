@@ -41,7 +41,7 @@ func show_damage(damage_amount: int) -> void:
 @export var RESTS_KEY: String = "rests" ## What save key keeps track of players rests 
 @export var DEATH_COUNT_KEY: String = "" ## What save key keeps track of this entities deaths
 @export var REST_COUNT_KEY: String = "" ## What save key keeps track of this entities rests 
-func _load_respawn(counter_key: String, total_key: String) -> void: # Checks in ready for if its updated. If so resets health
+func _load_respawn(counter_key: String, total_key: String) -> void: ## Checks in ready for if its updated. If so resets health
 	var total = Save.data.get(total_key, 0) 
 	if Save.data.has(counter_key):
 		if Save.data[counter_key] <= total:

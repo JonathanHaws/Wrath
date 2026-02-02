@@ -354,6 +354,30 @@ default_color = Color(0.800491, 0.800491, 0.800491, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
+[node name="Line2D15" type="Line2D" parent="TextureRect/PanZoom/Control/Skill Tree/Lines" unique_id=1226031799]
+position = Vector2(126, 190)
+points = PackedVector2Array(-201, -343, -225, -317)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D16" type="Line2D" parent="TextureRect/PanZoom/Control/Skill Tree/Lines" unique_id=410198502]
+position = Vector2(126, 190)
+points = PackedVector2Array(-95, -367, -125, -367)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Line2D17" type="Line2D" parent="TextureRect/PanZoom/Control/Skill Tree/Lines" unique_id=1155299198]
+position = Vector2(126, 190)
+points = PackedVector2Array(26, -367, -5, -367)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
 [node name="Health" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=989286291]
 layout_mode = 0
 offset_left = -438.0
@@ -592,6 +616,54 @@ upgrade_key = "max_stamina"
 new_amount = 30.0
 preeq_node = NodePath("../Stamina 4")
 description = "Increases consecutive spins to 6"
+
+[node name="Charges1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1421657066 node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = -171.0
+offset_top = -306.0
+offset_right = 85.0
+offset_bottom = -50.0
+pivot_offset = Vector2(124, 124)
+texture_normal = ExtResource("4_1lfrl")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 10
+upgrade_key = "max_heal_charges"
+new_amount = 2.0
+preeq_node = NodePath("../Health3")
+description = "Grants acess to 2 heal charges"
+
+[node name="Charges2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1222075329 node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = -53.0
+offset_top = -308.0
+offset_right = 203.0
+offset_bottom = -52.0
+pivot_offset = Vector2(124, 124)
+texture_normal = ExtResource("4_1lfrl")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 30
+upgrade_key = "max_heal_charges"
+new_amount = 3.0
+preeq_node = NodePath("../Charges1")
+description = "Grants acess to 3 heal charges"
+
+[node name="Charges3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1542770186 node_paths=PackedStringArray("preeq_node")]
+layout_mode = 0
+offset_left = 65.0
+offset_top = -309.0
+offset_right = 321.0
+offset_bottom = -53.0
+pivot_offset = Vector2(124, 124)
+texture_normal = ExtResource("4_1lfrl")
+texture_click_mask = ExtResource("5_bp54u")
+script = ExtResource("5_n1vdw")
+cost = 50
+upgrade_key = "max_heal_charges"
+new_amount = 5.0
+preeq_node = NodePath("../Charges2")
+description = "Grants acess to 5 heal charges"
 
 [node name="Progress" type="Control" parent="." unique_id=1153534499 groups=["ui_scalable"]]
 layout_mode = 1
