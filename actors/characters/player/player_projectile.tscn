@@ -197,9 +197,41 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_8trq3"]
+resource_name = "KILL"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random_child"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CameraEffects")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["player_kill"],
+"method": &"impact"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cat40"]
 _data = {
-&"HURT": SubResource("Animation_51sfh")
+&"HURT": SubResource("Animation_51sfh"),
+&"KILL": SubResource("Animation_8trq3")
 }
 
 [node name="GhostProjectile" type="Node3D" unique_id=237657882 node_paths=PackedStringArray("ray", "collision_animation_player", "hurt_box")]

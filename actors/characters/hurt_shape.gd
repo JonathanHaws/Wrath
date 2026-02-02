@@ -7,7 +7,8 @@ extends Area3D
 @export var cooldown: float = 0.2 
 @export var linger_tick: float = 1.0
 @export var linger: bool = false
-@export var hit_anim: String = "HURT" ## Name of the animation to play
+@export var hit_anim: String = "HURT" ## Name of the animation to play when something is hit
+@export var kill_anim: String = "KILL" ## Name of animation to play when something is killed
 @export var hit_animation_player: AnimationPlayer ## Animation to be played when something is hit by this hurt shape
 var overlapping_areas: Dictionary = {}
 signal hurt_something
@@ -61,9 +62,14 @@ func hurt(area: Area3D) -> void:
 	
 	if target_to_hit.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * damage_multiplier):
 		emit_signal("hurt_something")
-		if hit_animation_player: hit_animation_player.play(hit_anim)	
 		overlapping_areas[area]["cooldown"].start()
 		overlapping_areas[area]["linger"].start() 
+		
+		if hit_animation_player:
+			if "HEALTH" in target_to_hit and target_to_hit.HEALTH <= 0:
+				if hit_animation_player.has_animation(kill_anim): hit_animation_player.play(kill_anim)
+			else:
+				hit_animation_player.play(hit_anim)
 			
 func _on_area_entered(area: Area3D) -> void:
 	
