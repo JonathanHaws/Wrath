@@ -42,19 +42,30 @@ var jump_buffer = 0;
 
 @export_group("Shooting")
 @export var MAX_SHOOTING_ENERGY: int = 5
-var shooting_energy: int = MAX_SHOOTING_ENERGY
+@export var shooting_energy: int = MAX_SHOOTING_ENERGY
 func change_shooting_energy(amount: int) -> void:
 	shooting_energy = clamp(shooting_energy + amount, 0, MAX_SHOOTING_ENERGY)
+func load_shooting_data() -> void:
+	if Save.data.get("deaths",0) > Save.data.get("replenish_shooting_energy_at_death_count",0) \
+	or Save.data.get("rests",0) > Save.data.get("replenish_shooting_energy_at_rest_count",0):
+		Save.data.erase("shooting_energy")
+		Save.data["replenish_shooting_energy_at_death_count"] = Save.data.get("deaths",0)
+		Save.data["replenish_shooting_energy_at_rest_count"] = Save.data.get("rests",0)
+	MAX_SHOOTING_ENERGY = Save.data.get("max_shooting_energy", MAX_SHOOTING_ENERGY)
+	shooting_energy = Save.data.get("shooting_energy", MAX_SHOOTING_ENERGY)
+	shooting_energy = min(shooting_energy, MAX_SHOOTING_ENERGY)
+func try_shoot() -> void:
+	if shooting_energy <= 0: return
+	if not in_interruptible_animation(): return
+	if not ATTACKING_ENABLED: return
+	shooting_energy -= 1
+	ANIM.play("SHOOT", 0.0)
 
 @export_group("Healing") 
 @export var MAX_HEAL_CHARGES: int = 1
 @export var HEAL_AMOUNT: float = 5.0
 @export var HITBOX: Area3D
 @export var heal_charges: int = MAX_HEAL_CHARGES
-
-func restore_heal_charges() -> void:
-	heal_charges = MAX_HEAL_CHARGES
-
 func load_heal_data() -> void:
 	if Save.data.get("deaths",0) > Save.data.get("replenish_heal_charges_at_death_count",0) \
 	or Save.data.get("rests",0) > Save.data.get("replenish_heal_charges_at_rest_count",0):
@@ -65,12 +76,11 @@ func load_heal_data() -> void:
 	MAX_HEAL_CHARGES = Save.data.get("max_heal_charges", MAX_HEAL_CHARGES)
 	HEAL_AMOUNT = Save.data.get("heal_amount", HEAL_AMOUNT)
 	heal_charges = Save.data.get("heal_charges", MAX_HEAL_CHARGES)
-	
 func heal_hitbox() -> void:
 	HITBOX.HEALTH = min(HITBOX.HEALTH + HEAL_AMOUNT, HITBOX.MAX_HEALTH)
-	
 func try_heal() -> void:
 	if heal_charges <= 0: return
+	if not is_on_floor(): return
 	if not in_interruptible_animation(): return
 	if not HITBOX: return
 	if not "HEALTH" in HITBOX: return
@@ -148,6 +158,7 @@ func in_interruptible_animation() -> bool:
 
 func _exit_tree() -> void:
 	
+	Save.data["shooting_energy"] = shooting_energy
 	Save.data["heal_charges"] = heal_charges
 	
 	if velocity.y < -20:
@@ -159,6 +170,7 @@ func _exit_tree() -> void:
 func _ready() -> void:
 	
 	load_heal_data()
+	load_shooting_data()
 	
 	if Save.data.has("door_node_name"):		
 		var door_node = get_tree().root.find_child(Save.data["door_node_name"], true, false)
@@ -190,9 +202,7 @@ func _process(_delta)-> void:
 	if not Input.is_action_pressed("attack"): 
 		STAMINA = clamp(STAMINA + STAMINA_RECOVERY * _delta, 0, MAX_STAMINA)
 	
-	if Input.is_action_just_pressed("shoot") and in_interruptible_animation() and shooting_energy > 0:
-		ANIM.play("SHOOT", 0.0, 1, false)
-		return
+	if Input.is_action_just_pressed("shoot"): try_shoot()
 	
 func _physics_process(delta: float) -> void:
 

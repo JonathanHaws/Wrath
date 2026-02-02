@@ -224,6 +224,7 @@ collision_mask = 3
 script = ExtResource("3_32n4n")
 damage_groups = Array[String](["enemy_hitshape"])
 hit_animation_player = NodePath("../Hurt")
+save_key = "shoot_damage"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack" unique_id=2015519998]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -0.0043870565, 0.016270094, -0.5404159)

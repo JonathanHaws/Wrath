@@ -58,6 +58,8 @@
 [ext_resource type="PackedScene" uid="uid://btfr5eocbsa1j" path="res://menus/skip/skip.tscn" id="50_yinxs"]
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="51_bud88"]
 [ext_resource type="PackedScene" uid="uid://cmau4y8fs3ukm" path="res://actors/characters/player/materials/player_hurt_particles.tscn" id="52_xnjpx"]
+[ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://actors/characters/player/health_charges_fill.tres" id="56_s81g7"]
+[ext_resource type="StyleBox" uid="uid://cdkrrhvlxa2fc" path="res://actors/characters/player/shooting_energy_fill.tres" id="57_773af"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5idf"]
 radius = 0.274293
@@ -3495,35 +3497,15 @@ script = ExtResource("43_ekykk")
 
 [node name="Label" type="Label" parent="UI" unique_id=493732866]
 layout_mode = 0
-offset_left = 8.0
-offset_top = -80.0
-offset_right = 100.0
-offset_bottom = -42.0
+offset_left = 9.0
+offset_top = -95.0
+offset_right = 101.0
+offset_bottom = -57.0
 theme = ExtResource("24_m1s71")
 text = "WISP"
 script = ExtResource("44_4anjp")
 
-[node name="Bar2" parent="UI" unique_id=291496189 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
-layout_mode = 1
-anchors_preset = 2
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 0.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = -38.0
-offset_right = 115.025
-offset_bottom = -28.0
-grow_horizontal = 1
-grow_vertical = 0
-theme_override_styles/fill = ExtResource("34_6g6ue")
-expands = true
-tracked_node = NodePath("../..")
-tracked_property = "heal_charges"
-tracked_max_property = "MAX_HEAL_CHARGES"
-pixel_expansion_rate = 8.0
-
-[node name="Bar" parent="UI" unique_id=862791230 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
+[node name="Health" parent="UI" unique_id=1993447213 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
 layout_mode = 1
 anchors_preset = 2
 anchor_left = 0.0
@@ -3539,6 +3521,46 @@ grow_vertical = 0
 theme_override_styles/fill = ExtResource("34_6g6ue")
 expands = true
 tracked_node = NodePath("../../Hitbox")
+pixel_expansion_rate = 8.0
+
+[node name="HealCharges" parent="UI" unique_id=291496189 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
+layout_mode = 1
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -38.0
+offset_right = 115.025
+offset_bottom = -28.0
+grow_horizontal = 1
+grow_vertical = 0
+theme_override_styles/fill = ExtResource("56_s81g7")
+expands = true
+tracked_node = NodePath("../..")
+tracked_property = "heal_charges"
+tracked_max_property = "MAX_HEAL_CHARGES"
+pixel_expansion_rate = 8.0
+
+[node name="Shooting" parent="UI" unique_id=862791230 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
+layout_mode = 1
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = -56.0
+offset_right = 115.025
+offset_bottom = -46.0
+grow_horizontal = 1
+grow_vertical = 0
+theme_override_styles/fill = ExtResource("57_773af")
+expands = true
+tracked_node = NodePath("../..")
+tracked_property = "shooting_energy"
+tracked_max_property = "MAX_SHOOTING_ENERGY"
 pixel_expansion_rate = 8.0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1732221166]
