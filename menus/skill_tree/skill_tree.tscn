@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://bo4ub4xkrnjyr" path="res://menus/skill_tree/textures/Progress/Sloth.png" id="9_fq5i0"]
 [ext_resource type="Texture2D" uid="uid://lovdox0pt7q1" path="res://menus/skill_tree/textures/Progress/Wrath.png" id="10_1lfrl"]
 [ext_resource type="Texture2D" uid="uid://k2lit03sbiu0" path="res://menus/skill_tree/textures/Skill Images/Skills-7.png" id="10_g7gqr"]
+[ext_resource type="Texture2D" uid="uid://caga3p1qqekcr" path="res://menus/skill_tree/textures/Skill Images/Skills-1.png" id="10_mlmuh"]
 [ext_resource type="Texture2D" uid="uid://xw3jd85ytxqu" path="res://menus/skill_tree/textures/Progress/Envy.png" id="11_0gl5m"]
 [ext_resource type="Texture2D" uid="uid://77ol03ius6rh" path="res://menus/skill_tree/textures/Progress/Pride.png" id="12_cqod1"]
 [ext_resource type="Texture2D" uid="uid://bcusr8k864bcv" path="res://menus/skill_tree/textures/Skill Images/Skills-9.png" id="12_ncvsq"]
@@ -38,7 +39,6 @@
 [ext_resource type="Texture2D" uid="uid://kxudbt8cao1n" path="res://menus/skill_tree/textures/Skill Images/Skills-18.png" id="26_q260o"]
 [ext_resource type="Texture2D" uid="uid://cbvbwfjifllvh" path="res://menus/skill_tree/textures/Skill Images/Skills-19.png" id="27_ew1w1"]
 [ext_resource type="Texture2D" uid="uid://c6b14iucde34s" path="res://menus/skill_tree/textures/Skill Images/Skills-22.png" id="27_irovk"]
-[ext_resource type="Texture2D" uid="uid://lnaq0nf4c3jw" path="res://menus/skill_tree/textures/Skill Images/Skills-23.png" id="28_0x486"]
 [ext_resource type="BitMap" uid="uid://cx52mrtys0j6u" path="res://menus/skill_tree/textures/Progress/Lust.bmp" id="29_6pdds"]
 [ext_resource type="Texture2D" uid="uid://03p5rbgxdyqw" path="res://menus/skill_tree/textures/Skill Images/Skills-24.png" id="29_q260o"]
 [ext_resource type="BitMap" uid="uid://d28um32hhw3je" path="res://menus/skill_tree/textures/Progress/Gluttony.bmp" id="31_5y3ua"]
@@ -372,7 +372,7 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Line2D15" type="Line2D" parent="TextureRect/PanZoom/Control/Skill Tree/Lines" unique_id=1226031799]
-position = Vector2(126, 190)
+position = Vector2(134, 195)
 points = PackedVector2Array(-211, -369, -237, -369)
 width = 4.0
 default_color = Color(0.8, 0.8, 0.8, 1)
@@ -380,7 +380,7 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Line2D16" type="Line2D" parent="TextureRect/PanZoom/Control/Skill Tree/Lines" unique_id=410198502]
-position = Vector2(126, 190)
+position = Vector2(240, 202)
 points = PackedVector2Array(-98, -378, -125, -378)
 width = 4.0
 default_color = Color(0.8, 0.8, 0.8, 1)
@@ -388,7 +388,7 @@ begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Line2D17" type="Line2D" parent="TextureRect/PanZoom/Control/Skill Tree/Lines" unique_id=1155299198]
-position = Vector2(119, 180)
+position = Vector2(232, 191)
 points = PackedVector2Array(26, -367, -5, -367)
 width = 4.0
 default_color = Color(0.8, 0.8, 0.8, 1)
@@ -397,23 +397,15 @@ end_cap_mode = 2
 
 [node name="Line2D18" type="Line2D" parent="TextureRect/PanZoom/Control/Skill Tree/Lines" unique_id=277325886]
 position = Vector2(126, 190)
-points = PackedVector2Array(-305, -335, -327, -310)
+points = PackedVector2Array(-313, -333, -329, -317)
 width = 4.0
 default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
 [node name="Line2D19" type="Line2D" parent="TextureRect/PanZoom/Control/Skill Tree/Lines" unique_id=978239693]
-position = Vector2(126, 190)
+position = Vector2(240, 202)
 points = PackedVector2Array(105, -378, 130, -378)
-width = 4.0
-default_color = Color(0.8, 0.8, 0.8, 1)
-begin_cap_mode = 2
-end_cap_mode = 2
-
-[node name="Line2D20" type="Line2D" parent="TextureRect/PanZoom/Control/Skill Tree/Lines" unique_id=3664226]
-position = Vector2(126, 190)
-points = PackedVector2Array(211, -378, 252, -378)
 width = 4.0
 default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
@@ -483,6 +475,31 @@ default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
+[node name="Line2D20" type="Line2D" parent="TextureRect/PanZoom/Control/Skill Tree/Lines" unique_id=391276998]
+position = Vector2(132, 201)
+points = PackedVector2Array(-98, -378, -125, -378)
+width = 4.0
+default_color = Color(0.8, 0.8, 0.8, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Root" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=2059211064]
+layout_mode = 0
+offset_left = -381.0
+offset_top = -53.0
+offset_right = -253.0
+offset_bottom = 75.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(64, 64)
+texture_normal = ExtResource("10_mlmuh")
+script = ExtResource("5_n1vdw")
+cost = 0
+upgrade_key = "max_health"
+new_amount = 20.0
+description = "Aquire Skills"
+hover_scale = Vector2(0.7, 0.7)
+normal_scale = Vector2(0.5, 0.5)
+
 [node name="Health" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=989286291 node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
 offset_left = -166.0
@@ -496,7 +513,7 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_health"
 new_amount = 20.0
-preeq_node = NodePath("../Healing2")
+preeq_node = NodePath("../Healing1")
 description = "Increases health to 20"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
@@ -586,7 +603,7 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "damage"
 new_amount = 75.0
-preeq_node = NodePath("../Healing1")
+preeq_node = NodePath("../Root")
 description = "Increases damage to 75"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
@@ -676,7 +693,7 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_stamina"
 new_amount = 14.0
-preeq_node = NodePath("../Healing1")
+preeq_node = NodePath("../Root")
 description = "Increases consecutive spins to 2"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
@@ -755,10 +772,10 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Heal1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1421657066 node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
-offset_left = -106.0
-offset_top = -252.0
-offset_right = 22.0
-offset_bottom = -124.0
+offset_left = 11.0
+offset_top = -240.0
+offset_right = 139.0
+offset_bottom = -112.0
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(64, 64)
 texture_normal = ExtResource("25_mlmuh")
@@ -773,10 +790,10 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Heal2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1222075329 node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
-offset_left = 6.0
-offset_top = -253.0
-offset_right = 134.0
-offset_bottom = -125.0
+offset_left = 120.0
+offset_top = -241.0
+offset_right = 248.0
+offset_bottom = -113.0
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(64, 64)
 texture_normal = ExtResource("26_8iry6")
@@ -791,10 +808,10 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Heal3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1542770186 node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
-offset_left = 126.0
-offset_top = -254.0
-offset_right = 254.0
-offset_bottom = -126.0
+offset_left = 237.0
+offset_top = -242.0
+offset_right = 365.0
+offset_bottom = -114.0
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(64, 64)
 texture_normal = ExtResource("27_irovk")
@@ -807,30 +824,12 @@ description = "Grants acess to 5 heal charges"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Heal4" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=268917912 node_paths=PackedStringArray("preeq_node")]
-layout_mode = 0
-offset_left = 232.0
-offset_top = -252.0
-offset_right = 360.0
-offset_bottom = -124.0
-scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
-texture_normal = ExtResource("28_0x486")
-script = ExtResource("5_n1vdw")
-cost = 30
-upgrade_key = "heal_amount"
-new_amount = 25.0
-preeq_node = NodePath("../Heal3")
-description = "Grants acess to 3 heal charges"
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
-
 [node name="Heal5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1499729094 node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
-offset_left = 358.0
-offset_top = -254.0
-offset_right = 486.0
-offset_bottom = -126.0
+offset_left = 350.0
+offset_top = -242.0
+offset_right = 478.0
+offset_bottom = -114.0
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(64, 64)
 texture_normal = ExtResource("29_q260o")
@@ -838,17 +837,17 @@ script = ExtResource("5_n1vdw")
 cost = 50
 upgrade_key = "heal_amount"
 new_amount = 30.0
-preeq_node = NodePath("../Heal4")
+preeq_node = NodePath("../Heal3")
 description = "Grants acess to 5 heal charges"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Healing1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1794716747]
+[node name="Healing1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1794716747 node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
-offset_left = -383.0
-offset_top = -51.0
-offset_right = -255.0
-offset_bottom = 77.0
+offset_left = -287.0
+offset_top = -150.0
+offset_right = -159.0
+offset_bottom = -22.0
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(64, 64)
 texture_normal = ExtResource("25_0x486")
@@ -856,19 +855,20 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_heal_charges"
 new_amount = 2.0
+preeq_node = NodePath("../Root")
 description = "Grants acess to 2 heal charges"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
 [node name="Healing2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1567615969 node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
-offset_left = -294.0
-offset_top = -146.0
-offset_right = -166.0
-offset_bottom = -18.0
+offset_left = -211.0
+offset_top = -237.0
+offset_right = -83.0
+offset_bottom = -109.0
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(64, 64)
-texture_normal = ExtResource("27_ew1w1")
+texture_normal = ExtResource("26_q260o")
 script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "max_heal_charges"
@@ -880,17 +880,17 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Healing3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=244929428 node_paths=PackedStringArray("preeq_node")]
 layout_mode = 0
-offset_left = -216.0
-offset_top = -246.0
-offset_right = -88.0
-offset_bottom = -118.0
+offset_left = -99.0
+offset_top = -240.0
+offset_right = 29.0
+offset_bottom = -112.0
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(64, 64)
-texture_normal = ExtResource("26_q260o")
+texture_normal = ExtResource("27_ew1w1")
 script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "max_heal_charges"
-new_amount = 3.0
+new_amount = 5.0
 preeq_node = NodePath("../Healing2")
 description = "Grants acess to 5 heal charges"
 hover_scale = Vector2(0.7, 0.7)

@@ -66,8 +66,7 @@ func _ready():
 func _on_pressed():
 
 	if not Save.data.has(currency_key): 
-		if sfx_insufficient: sfx_insufficient.play()
-		return
+		Save.data[currency_key] = 0
 	
 	if preeq_node and not Save.data.has(preeq_key):
 		if sfx_insufficient: sfx_insufficient.play()
