@@ -70,6 +70,11 @@ func get_closest_from_group_3d(group: String) -> Node3D:
 			closest = node
 	return closest
 
+func trigger_awareness() -> void:
+	should_chase = true
+	if target == null:
+		target = get_closest_from_group_3d(TARGET_GROUP)
+
 func _on_body_entered_stop_area(body: Node) -> void:
 	if body.is_in_group(TARGET_GROUP):
 		should_chase = false
