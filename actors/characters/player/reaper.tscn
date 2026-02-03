@@ -3100,7 +3100,7 @@ _data = {
 [node name="Reaper" type="CharacterBody3D" unique_id=27859288 node_paths=PackedStringArray("HITBOX", "CAMERA", "MESH", "ANIM", "MESH_ANIM", "COLLISON_SHAPE", "PARTICLES", "FADE_IN_ANIM", "SKILL_TREE") groups=["player", "player_body"]]
 rotation_edit_mode = 1
 collision_layer = 2
-collision_mask = 3
+collision_mask = 15
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true

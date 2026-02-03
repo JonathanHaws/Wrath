@@ -1099,8 +1099,9 @@ radius = 2.9360352
 radius = 18.8292
 
 [node name="Ghost" type="CharacterBody3D" unique_id=842720599 groups=["ghost"]]
-collision_layer = 2
-collision_mask = 3
+top_level = true
+collision_layer = 4
+collision_mask = 7
 
 [node name="WispReward" type="Node" parent="." unique_id=493136637]
 script = ExtResource("2_5rg5p")
