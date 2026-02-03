@@ -32,7 +32,6 @@ func tween_scale_down_on_exit():
 	var t = create_tween()
 	t.tween_property(self, "scale", normal_scale, scale_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-
 @export_subgroup("AUDIO") ## All skills can use the same audio players for ease of use
 @export var sfx_bought: AudioStreamPlayer ## Sound to be played when bought. Multiple skills can share same same player
 @export var sfx_insufficient: AudioStreamPlayer ## Sound to be played when declined. Automatically referenced if player is sibling

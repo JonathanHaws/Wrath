@@ -36,7 +36,7 @@ func play_input_anim(animation_name: String, group_name: String = "input_anim") 
 
 # Hidden Cursor
 var last_position_visible :Vector2 = Vector2.ZERO
-var mouse_tolerance := 32.0  # pixels
+var mouse_tolerance := 10.0  # pixels
 var idle_time_seconds := 0.0
 var idle_timeout_seconds := 2.0
 
