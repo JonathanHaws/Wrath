@@ -1,23 +1,23 @@
 extends CharacterBody3D
-@export var ATTACKING_ENABLED = true
+@export var ATTACKING_DISABLED: bool = true
 
 @export_group("Acceleration")
-@export var GROUND_SPEED := 100.0
-@export var AIR_SPEED  := 200.0
-@export var MAX_SPEED = 12.35
-@export var SPRINT_MULTIPLIER = 2.1
+@export var GROUND_SPEED: float = 100.0
+@export var AIR_SPEED: float = 200.0
+@export var MAX_SPEED: float = 12.35
+@export var SPRINT_MULTIPLIER: float = 2.1
 @export var SPEED_MULTIPLIER: float = 1.0
 
 @export_group("Friction")
-@export var GROUND_FRICTION := 11.0
-@export var AIR_FRICTION := 2.0
+@export var GROUND_FRICTION: float = 11.0
+@export var AIR_FRICTION: float = 2.0
 func stop_horizontal_movement() -> void:
 	velocity.x = 0
 	velocity.z = 0
 
 @export_group("Jumping")
-@export var JUMP_VELOCITY = 15.0
-@export var JUMP_MULTIPLIER = 1.0
+@export var JUMP_VELOCITY: float = 15.0
+@export var JUMP_MULTIPLIER: float = 1.0
 @export var COYOTE_TIME: float = .35
 @export var JUMP_BUFFER_TIME: float = .2
 var falling = COYOTE_TIME;
@@ -26,21 +26,22 @@ var has_been_on_floor = false
 var jump_buffer = 0;
 
 @export_group("Falling")
-@export var GRAVITY_MULTIPLIER = 4
-@export var MAX_FALL_SPEED := 50.0 
-@export var DESCEND_MULTIPLIER = 2.0
+@export var GRAVITY_MULTIPLIER: float = 4
+@export var MAX_FALL_SPEED: float = 50.0 
+@export var DESCEND_MULTIPLIER: float = 2.0
 
 @export_group("Turning")
-@export var MOUSE_SENSITIVITY = 0.003
+@export var MOUSE_SENSITIVITY: float = 0.003
 @export var TURN_SPEED: float = 20.0
 @export var TURN_MULTIPLIER: float = 1.0
 
 @export_group("Stamina")
-@export var STAMINA = 10
-@export var MAX_STAMINA = 10
+@export var STAMINA: float = 10
+@export var MAX_STAMINA: float = 10
 @export var STAMINA_RECOVERY: float = 20.0
 
 @export_group("Shooting")
+@export var SHOOTING_DISABLED: bool = false
 @export var MAX_SHOOTING_ENERGY: int = 1
 @export var shooting_energy: int = MAX_SHOOTING_ENERGY
 func change_shooting_energy(amount: int) -> void:
@@ -56,15 +57,17 @@ func load_shooting_data() -> void:
 	load_max_shooting_data()
 	shooting_energy = Save.data.get("shooting_energy", MAX_SHOOTING_ENERGY)
 func try_shoot() -> void:
+	if SHOOTING_DISABLED: return
+	if ATTACKING_DISABLED: return
 	if ANIM.current_animation == "SHOOT": return
 	if shooting_energy <= 0: return
 	if not is_on_floor(): return
 	if not in_interruptible_animation(): return
-	if not ATTACKING_ENABLED: return
 	shooting_energy -= 1
 	ANIM.play("SHOOT", 0.0)
 
 @export_group("Healing") 
+@export var HEALING_DISABLED: bool = false
 @export var MAX_HEAL_CHARGES: int = 1
 @export var HEAL_AMOUNT: float = 5.0
 @export var HITBOX: Area3D
@@ -84,6 +87,7 @@ func load_heal_data() -> void:
 func heal_hitbox() -> void:
 	HITBOX.HEALTH = min(HITBOX.HEALTH + HEAL_AMOUNT, HITBOX.MAX_HEALTH)
 func try_heal() -> void:
+	if HEALING_DISABLED: return
 	if heal_charges <= 0: return
 	if not is_on_floor(): return
 	if not in_interruptible_animation(): return
@@ -225,7 +229,7 @@ func _physics_process(delta: float) -> void:
 	
 	if ANIM.current_animation in "ESCAPE": return
 
-	if ATTACKING_ENABLED and Input.is_action_just_pressed("attack"):
+	if (not ATTACKING_DISABLED) and Input.is_action_just_pressed("attack"):
 		if in_interruptible_animation() and not SKILL_TREE.visible:
 			if is_on_floor():
 				ANIM.play("WINDUP")

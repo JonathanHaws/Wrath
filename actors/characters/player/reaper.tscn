@@ -107,6 +107,146 @@ tracks/2/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SkillTree:toggle_disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:SHOOTING_DISABLED")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:HEALING_DISABLED")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_get7n"]
+resource_name = "checkpoint_disable"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:ATTACKING_DISABLED")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SHOOTING_DISABLED")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:HEALING_DISABLED")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_okagy"]
+resource_name = "checkpoint_enable"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:ATTACKING_DISABLED")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:HEALING_DISABLED")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SHOOTING_DISABLED")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_7g1ex"]
 resource_name = "choice_disabled"
@@ -146,22 +286,58 @@ length = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:ATTACKING_ENABLED")
-tracks/0/interp = 1
+tracks/0/path = NodePath("SkillTree:toggle_disabled")
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [false]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:JUMP_MULTIPLIER")
-tracks/1/interp = 1
+tracks/1/path = NodePath(".:ATTACKING_DISABLED")
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:HEALING_DISABLED")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:SHOOTING_DISABLED")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -174,35 +350,179 @@ length = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:ATTACKING_ENABLED")
-tracks/0/interp = 1
+tracks/0/path = NodePath("SkillTree:toggle_disabled")
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [true]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:JUMP_MULTIPLIER")
-tracks/1/interp = 1
+tracks/1/path = NodePath(".:ATTACKING_DISABLED")
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SHOOTING_DISABLED")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:HEALING_DISABLED")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
 }
 
+[sub_resource type="Animation" id="Animation_indvt"]
+resource_name = "skill_tree_disable"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:ATTACKING_DISABLED")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SHOOTING_DISABLED")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:HEALING_DISABLED")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_himm2"]
+resource_name = "skill_tree_enable"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:ATTACKING_DISABLED")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:HEALING_DISABLED")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SHOOTING_DISABLED")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_agako"]
 _data = {
 &"RESET": SubResource("Animation_hfpb6"),
+&"checkpoint_disable": SubResource("Animation_get7n"),
+&"checkpoint_enable": SubResource("Animation_okagy"),
 &"choice_disabled": SubResource("Animation_7g1ex"),
 &"choice_enabled": SubResource("Animation_p420n"),
 &"dialog_disable": SubResource("Animation_agako"),
-&"dialog_enable": SubResource("Animation_0jl1p")
+&"dialog_enable": SubResource("Animation_0jl1p"),
+&"skill_tree_disable": SubResource("Animation_indvt"),
+&"skill_tree_enable": SubResource("Animation_himm2")
 }
 
 [sub_resource type="Animation" id="Animation_utjob"]
@@ -663,22 +983,10 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hitbox:DAMAGE_MULTIPLIER")
-tracks/3/interp = 0
+tracks/3/path = NodePath("Mesh/BlockShape/CollisionShape3D:disabled")
+tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.5]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Mesh/BlockShape/CollisionShape3D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -789,22 +1097,10 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hitbox:DAMAGE_MULTIPLIER")
+tracks/3/path = NodePath("Mesh/BlockShape/CollisionShape3D:disabled")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Mesh/BlockShape/CollisionShape3D:disabled")
-tracks/4/interp = 0
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0.16666667),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -2125,34 +2421,22 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Hitbox:DAMAGE_MULTIPLIER")
+tracks/13/path = NodePath("Mesh/BlockShape/CollisionShape3D:disabled")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
+"update": 1,
+"values": [true]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Mesh/BlockShape/CollisionShape3D:disabled")
+tracks/14/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/SceneSpawner/OmniLight3D:light_energy")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/SceneSpawner/OmniLight3D:light_energy")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -3105,6 +3389,7 @@ axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
 script = ExtResource("1_0b6a6")
+ATTACKING_DISABLED = false
 HITBOX = NodePath("Hitbox")
 CAMERA = NodePath("SpringArm3D/Camera3D")
 MESH = NodePath("Mesh")
@@ -3359,7 +3644,7 @@ bones/0/rotation = Quaternion(-0.70708895, -0.0050162785, 0.0050162785, 0.707089
 bones/1/position = Vector3(0.012178161, 0.19505176, 0.8582668)
 bones/1/rotation = Quaternion(0.66652495, 0.0052884123, -0.0047285054, 0.74544907)
 bones/2/rotation = Quaternion(1.8626445e-09, 1.2144255e-07, -1.8626456e-09, 1)
-bones/3/position = Vector3(-0.13482243, 0.052575987, -0.0037890945)
+bones/3/position = Vector3(-0.13482241, 0.05257595, -0.0037891262)
 bones/3/rotation = Quaternion(-0.079156846, -0.24224563, 0.80736095, 0.53218377)
 bones/4/rotation = Quaternion(-0.7082535, 0.12014589, -0.3324694, 0.6110697)
 bones/5/rotation = Quaternion(-0.10600529, -0.08438378, 0.07545145, 0.98790157)
@@ -3368,21 +3653,21 @@ bones/7/position = Vector3(0.095023654, 0.29883614, -0.037884206)
 bones/7/rotation = Quaternion(-0.08802534, 0.31957737, -0.44377676, 0.8325768)
 bones/8/position = Vector3(0.04027832, 0.37375048, 0.019249877)
 bones/8/rotation = Quaternion(-0.5901653, -0.32968488, -0.32878575, 0.6594792)
-bones/9/rotation = Quaternion(0.069940835, -1.5020909e-12, 1.6696863e-08, 0.99755114)
-bones/10/position = Vector3(0.07390616, 0.08636394, 2.3734561e-08)
+bones/9/rotation = Quaternion(0.069940835, -1.5124413e-12, 1.669686e-08, 0.99755114)
+bones/10/position = Vector3(0.07390615, 0.086363815, -6.518709e-09)
 bones/10/rotation = Quaternion(-0.11537215, -0.050698973, -0.85975343, 0.49491715)
 bones/11/rotation = Quaternion(-0.4583216, -0.4065079, 0.068734, 0.78738064)
 bones/12/rotation = Quaternion(-0.034143854, 0.039829, 0.14083621, 0.98864204)
-bones/13/rotation = Quaternion(-0.6807748, 0.064739354, -0.21559663, 0.6970456)
+bones/13/rotation = Quaternion(-0.68077475, 0.06473936, -0.21559654, 0.6970457)
 bones/14/position = Vector3(0.009702295, 0.14449012, -0.09385164)
 bones/14/rotation = Quaternion(-0.4985187, -8.9497305e-05, 0.2596074, 0.8270932)
 bones/15/position = Vector3(-0.10450731, 0.22616595, -0.026558582)
-bones/15/rotation = Quaternion(-0.39671534, 0.38349468, -0.18919684, 0.81225204)
-bones/16/position = Vector3(-0.07455926, -0.046927348, -3.0588676e-08)
+bones/15/rotation = Quaternion(-0.39671543, 0.38349473, -0.18919688, 0.8122519)
+bones/16/position = Vector3(-0.07455925, -0.0469272, -2.3029722e-08)
 bones/16/rotation = Quaternion(0.010155851, -0.18648286, 0.9823706, 0.0083134)
 bones/17/rotation = Quaternion(0.023063233, 0.00015750382, 0.0032334917, 0.99972886)
-bones/18/rotation = Quaternion(-0.61166966, 0.0025331874, 0.0008901854, 0.79110867)
-bones/19/position = Vector3(0.07455926, -0.046927348, -3.1641132e-08)
+bones/18/rotation = Quaternion(-0.61166966, 0.002533188, 0.00089018553, 0.79110867)
+bones/19/position = Vector3(0.07455925, -0.0469272, -2.4082178e-08)
 bones/19/rotation = Quaternion(-0.006284321, 0.120801985, 0.9926165, -0.008936239)
 bones/20/rotation = Quaternion(0.02306323, -0.00015750952, -0.003233497, 0.99972886)
 bones/21/rotation = Quaternion(-0.79255307, 0.0020301999, -0.0018228459, 0.60979694)
@@ -3436,7 +3721,7 @@ light_energy = 0.0
 libraries/ = SubResource("AnimationLibrary_hfpb6")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4" unique_id=1880319706]
-transform = Transform3D(-0.9998197, -0.015474242, -0.011016471, 0.011582241, -0.036960587, -0.99924946, 0.015055463, -0.99919707, 0.03713329, -0.08787314, 0.032966614, -0.13120613)
+transform = Transform3D(-0.9998197, -0.015474241, -0.011016471, 0.011582242, -0.036960587, -0.99924946, 0.015055461, -0.99919707, 0.03713329, -0.08787313, 0.032966793, -0.13120614)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -3446,7 +3731,7 @@ script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5" unique_id=1885491197]
-transform = Transform3D(-0.9998197, -0.015474242, -0.011016471, 0.011582241, -0.036960587, -0.99924946, 0.015055463, -0.99919707, 0.03713329, -0.08787314, 0.032966614, -0.13120613)
+transform = Transform3D(-0.9998197, -0.015474241, -0.011016471, 0.011582242, -0.036960587, -0.99924946, 0.015055461, -0.99919707, 0.03713329, -0.08787313, 0.032966793, -0.13120614)
 bone_name = "foot_l"
 bone_idx = 18
 
