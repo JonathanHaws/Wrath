@@ -1280,7 +1280,7 @@ BODY = NodePath("..")
 TRACKING_MULTIPLIER = 0.0
 STOP_CHASE_AREA = NodePath("../StopChase")
 AWARENESS_AREA = NodePath("../Awareness")
-SPEED = 5.0
+SPEED = 4.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Target" unique_id=1889770623]
 visible = false

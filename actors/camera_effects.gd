@@ -42,11 +42,14 @@ class slow_motion_impact:
 		speed = _speed
 		duration = _duration
 		add_to_group("slow_motion_impact")	
+	
 	func _ready():
 		Engine.time_scale = get_lowest_slow_motion_speed(false)
 		await get_tree().create_timer(duration, true, false, true).timeout
-		Engine.time_scale = get_lowest_slow_motion_speed(true)
 		queue_free()
+		
+	func _exit_tree() -> void:
+		Engine.time_scale = get_lowest_slow_motion_speed(true)
 
 func slow_motion(duration: float, speed: float = 0.0) -> void: 
 	if not is_inside_tree(): return
