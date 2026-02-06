@@ -3903,7 +3903,7 @@ visible = false
 
 [node name="Skip" parent="." unique_id=1659970227 instance=ExtResource("50_yinxs")]
 
-[node name="Pause" parent="." unique_id=744582408 instance=ExtResource("51_bud88")]
+[node name="Pause" parent="." unique_id=744582408 groups=["pause_menu"] instance=ExtResource("51_bud88")]
 visible = false
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]

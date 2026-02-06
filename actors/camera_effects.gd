@@ -1,4 +1,6 @@
 extends Node ## Node for camera impact effects like shake / slow motion 
+## Given as Engine.time_scale can not be relied on for a delta of 0. get_tree().paused must be used.
+const pause_menu_group: String = "pause_menu" ## Used to not accidentally interfere and pause the game. 
 @export var shake = 0.0
 @export var default_decay_rate = 40.0
 @export var noise_frequency: float = 2.2
@@ -44,12 +46,24 @@ class slow_motion_impact:
 		add_to_group("slow_motion_impact")	
 	
 	func _ready():
-		Engine.time_scale = get_lowest_slow_motion_speed(false)
+		var slow_motion_speed = get_lowest_slow_motion_speed(false)
+		
+		if slow_motion_speed > 0: 
+			Engine.time_scale = slow_motion_speed	
+		else:
+			get_tree().paused = true
+			
 		await get_tree().create_timer(duration, true, false, true).timeout
 		queue_free()
 		
 	func _exit_tree() -> void:
-		Engine.time_scale = get_lowest_slow_motion_speed(true)
+		var slow_motion_speed = get_lowest_slow_motion_speed(true)
+		if slow_motion_speed > 0:
+			
+			Engine.time_scale = slow_motion_speed	
+			
+			for n in get_tree().get_nodes_in_group("pause_menu"): if n.visible: return
+			get_tree().paused = false
 
 func slow_motion(duration: float, speed: float = 0.0) -> void: 
 	if not is_inside_tree(): return

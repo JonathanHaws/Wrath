@@ -762,10 +762,10 @@ uppercase = true
 [node name="HitShape" type="Area3D" parent="." unique_id=298325573 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("20_6h4tx")
 IMMUNE_GROUPS = Array[String](["greed"])
-HEALTH = 10000.0
-MAX_HEALTH = 10000.0
+HEALTH = 100000.0
+MAX_HEALTH = 100000.0
 USE_WAVE_HEALTH_BAR = true
-WAVE_DAMAGE = 1000.0
+WAVE_DAMAGE = 10000.0
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
