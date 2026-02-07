@@ -3,24 +3,19 @@
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="1_3qab0"]
 [ext_resource type="Texture2D" uid="uid://dtd1gy3sbq7ge" path="res://actors/characters/enemies/bosses/gluttony/color.png" id="2_cmkfm"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_cm2s2"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_pu6x4"]
-noise = SubResource("FastNoiseLite_cm2s2")
-
 [resource]
 render_priority = 0
 shader = ExtResource("1_3qab0")
+shader_parameter/dissolve_amount = 0.4400000209
+shader_parameter/dissolve_frequency = 8.0
+shader_parameter/dissolve_vector = Vector3(2, -2, 1)
 shader_parameter/albedo_texture = ExtResource("2_cmkfm")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/emission_texture_intensity = 1.0
 shader_parameter/emission_texture_enabled = false
-shader_parameter/inside_color = Color(0, 0, 0, 1)
-shader_parameter/dissolve_amount = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_pu6x4")
 shader_parameter/glow_color = Color(0.4, 0.206667, 0.168, 1)
 shader_parameter/glow_intensitiy = 1.77
 shader_parameter/glow_border_width = 0.018
 shader_parameter/glow_border_smoothness = 0.003
 shader_parameter/normal_strength = 1.0
-shader_parameter/use_normal_map = false
+shader_parameter/normal_map_enabled = false

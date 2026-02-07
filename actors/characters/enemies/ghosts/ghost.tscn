@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://actors/characters/enemies/ghosts/ghost_hurt_particles.tscn" id="18_mgx37"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="20_mvqiw"]
 [ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://actors/characters/enemies/ghosts/ghost_projectile.tscn" id="20_x07w4"]
+[ext_resource type="Material" uid="uid://cn5x858kq0c3r" path="res://actors/characters/enemies/ghosts/ghost.tres" id="21_mvqiw"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="21_oquh6"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="22_3d4yc"]
 
@@ -56,25 +57,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/MeshInstance3D:material_override:shader_parameter/dissolve_amount")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.06667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(2.03333),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -82,22 +71,34 @@ tracks/3/keys = {
 "method": &"queue_free"
 }]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("OmniLight3D:light_energy")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("OmniLight3D:light_energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0, 0.866667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.5, 0.0]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D:material_override:albedo_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.766667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.52, 0.52, 0.52, 1), Color(0.52, 0.52, 0.52, 0)]
+}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D:material_override:albedo_color")
+tracks/5/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D2:material_override:albedo_color")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -109,41 +110,43 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D2:material_override:albedo_color")
+tracks/6/path = NodePath("Hitbox/CollisionShape3D:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.766667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.52, 0.52, 0.52, 1), Color(0.52, 0.52, 0.52, 0)]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Hitbox/CollisionShape3D:disabled")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/8/type = "animation"
+tracks/7/type = "animation"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("AnimationPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": PackedStringArray("DEATH"),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "method"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("AnimationPlayer")
+tracks/8/path = NodePath("Mesh/LockOn")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"clips": PackedStringArray("DEATH"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 tracks/9/type = "method"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Mesh/LockOn")
+tracks/9/path = NodePath("CollisionShape3D")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -154,39 +157,25 @@ tracks/9/keys = {
 "method": &"queue_free"
 }]
 }
-tracks/10/type = "method"
+tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("CollisionShape3D")
-tracks/10/interp = 1
+tracks/10/path = NodePath("Target:USE_GRAVITY")
+tracks/10/interp = 0
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Target:USE_GRAVITY")
-tracks/11/interp = 0
-tracks/11/loop_wrap = true
-tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [false]
 }
-tracks/12/type = "method"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("WispReward")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("WispReward")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -194,19 +183,31 @@ tracks/12/keys = {
 "method": &"give"
 }]
 }
-tracks/13/type = "method"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("HurtParticles")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("HurtParticles")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"spawn"
 }]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Mesh/MeshInstance3D:surface_material_override/0:shader_parameter/dissolve_amount")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.8333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_pyqwo"]
@@ -260,7 +261,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/MeshInstance3D:material_override:shader_parameter/dissolve_amount")
+tracks/0/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -272,31 +273,31 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/1/interp = 1
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [0.5]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("OmniLight3D:light_energy")
-tracks/2/interp = 0
+tracks/2/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D:material_override:albedo_color")
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.5]
+"values": [Color(0.52, 0.52, 0.52, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D:material_override:albedo_color")
+tracks/3/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D2:material_override:albedo_color")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -308,50 +309,50 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D2:material_override:albedo_color")
+tracks/4/path = NodePath("Target:USE_GRAVITY")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.52, 0.52, 0.52, 1)]
+"update": 1,
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Target:USE_GRAVITY")
+tracks/5/path = NodePath("Hitbox/CollisionShape3D:disabled")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Hitbox/CollisionShape3D:disabled")
+tracks/6/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [1.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/7/path = NodePath("Mesh/MeshInstance3D:surface_material_override/0:shader_parameter/dissolve_amount")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n368u"]
@@ -928,92 +929,6 @@ point_count = 4
 [sub_resource type="BoxShape3D" id="BoxShape3D_qr43c"]
 size = Vector3(1.0802, 1.44707, 1.26314)
 
-[sub_resource type="Shader" id="Shader_dfr5h"]
-code = "shader_type spatial;
-
-//credit DisplacedFikaDev
-
-uniform sampler2D albedo_texture : source_color;
-uniform vec3 albedo_color : source_color = vec3(1.0);
-uniform sampler2D emission_texture : source_color;
-uniform float emission_texture_intensity : hint_range(0.0, 50.0) = 1.0;
-uniform vec3 inside_color: source_color;
-uniform float dissolve_amount: hint_range(0.0, 1.0) = 0.0;
-uniform sampler2D noise_texture;
-
-uniform vec3 glow_color: source_color = vec3(0.533, 0.533, 0.533);
-uniform float glow_intensitiy = 1.77;
-uniform float glow_border_width: hint_range(0.0, 0.25) = 0.018;
-uniform float glow_border_smoothness: hint_range(0.0, 0.1) = 0.003;
-
-uniform sampler2D normal_texture;
-uniform float normal_strength : hint_range(0.0, 2.0) = 1.0;
-uniform bool use_normal_map = false;
-
-
-void fragment() {
-	
-	float dissolve_noise = texture(noise_texture, UV).r;
-
-	float border_mask = 0.0;
-	if (dissolve_amount > 0.0) {
-		float border_size = dissolve_amount + glow_border_width;
-		border_mask = 1.0 - smoothstep(
-			border_size - glow_border_smoothness,
-			border_size + glow_border_smoothness,
-			dissolve_noise
-		);
-	}
-
-	vec3 surface_emisson = mix(vec3(0.0), glow_color, border_mask);
-	surface_emisson += texture(emission_texture, UV).rgb * emission_texture_intensity;
-
-	vec3 albedo_tex = texture(albedo_texture, UV).rgb;
-	vec3 albedo;
-
-	if (albedo_tex == vec3(0.0)) {
-		albedo = albedo_color;
-	} else {
-		albedo = albedo_tex * albedo_color;
-	}
-
-
-	vec3 surface_color = albedo;
-	ALBEDO = surface_color;
-	//ALBEDO = vec3(border_mask);
-	EMISSION = surface_emisson * glow_intensitiy;
-	ALPHA = dissolve_noise;
-	ALPHA_SCISSOR_THRESHOLD = dissolve_amount;
-
-	if (use_normal_map) {
-		NORMAL_MAP = texture(normal_texture, UV).xyz;		
-	}
-
-
-}
-"
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_n368u"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hp215"]
-noise = SubResource("FastNoiseLite_n368u")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_dfr5h"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_dfr5h")
-shader_parameter/albedo_color = Color(0.0980392, 0.117647, 0.176471, 1)
-shader_parameter/emission_texture_intensity = 0.0
-shader_parameter/inside_color = Color(0, 0, 0, 1)
-shader_parameter/dissolve_amount = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_hp215")
-shader_parameter/glow_color = Color(0.146313, 0.1651, 0.180448, 1)
-shader_parameter/glow_intensitiy = 1.77
-shader_parameter/glow_border_width = 0.018
-shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_strength = 1.0
-shader_parameter/use_normal_map = false
-
 [sub_resource type="SphereMesh" id="SphereMesh_05mu1"]
 radius = 0.8
 height = 1.6
@@ -1241,10 +1156,9 @@ add_to_scene_root = true
 target = NodePath("../../Target")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh" unique_id=1134848450]
-material_override = SubResource("ShaderMaterial_dfr5h")
-transparency = 0.3
 mesh = SubResource("SphereMesh_05mu1")
 skeleton = NodePath("")
+surface_material_override/0 = ExtResource("21_mvqiw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/MeshInstance3D" unique_id=639478116]
 transform = Transform3D(-1.24846e-09, 0, 0.112722, 0, 0.112722, 0, -0.0285614, 0, -4.92725e-09, 0.280028, 0.0195056, -0.806736)

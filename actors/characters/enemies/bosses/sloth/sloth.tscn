@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://actors/props/wisp/wisp_reward.gd" id="23_2wp77"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="23_8fqfx"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="25_gwq6n"]
+[ext_resource type="Material" uid="uid://cn5x858kq0c3r" path="res://actors/characters/enemies/ghosts/ghost.tres" id="25_vjg2k"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="26_t4er3"]
 [ext_resource type="PackedScene" uid="uid://dnmftqcmv26ca" path="res://actors/characters/enemies/bosses/sloth/sloth.blend" id="27_dbtmo"]
 [ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="28_muo5h"]
@@ -607,96 +608,10 @@ _data = {
 &"RESET": SubResource("Animation_jojdm")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xr0xi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbtmo"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
-
-[sub_resource type="Shader" id="Shader_dfr5h"]
-code = "shader_type spatial;
-
-//credit DisplacedFikaDev
-
-uniform sampler2D albedo_texture : source_color;
-uniform vec3 albedo_color : source_color = vec3(1.0);
-uniform sampler2D emission_texture : source_color;
-uniform float emission_texture_intensity : hint_range(0.0, 50.0) = 1.0;
-uniform vec3 inside_color: source_color;
-uniform float dissolve_amount: hint_range(0.0, 1.0) = 0.0;
-uniform sampler2D noise_texture;
-
-uniform vec3 glow_color: source_color = vec3(0.533, 0.533, 0.533);
-uniform float glow_intensitiy = 1.77;
-uniform float glow_border_width: hint_range(0.0, 0.25) = 0.018;
-uniform float glow_border_smoothness: hint_range(0.0, 0.1) = 0.003;
-
-uniform sampler2D normal_texture;
-uniform float normal_strength : hint_range(0.0, 2.0) = 1.0;
-uniform bool use_normal_map = false;
-
-
-void fragment() {
-	
-	float dissolve_noise = texture(noise_texture, UV).r;
-
-	float border_mask = 0.0;
-	if (dissolve_amount > 0.0) {
-		float border_size = dissolve_amount + glow_border_width;
-		border_mask = 1.0 - smoothstep(
-			border_size - glow_border_smoothness,
-			border_size + glow_border_smoothness,
-			dissolve_noise
-		);
-	}
-
-	vec3 surface_emisson = mix(vec3(0.0), glow_color, border_mask);
-	surface_emisson += texture(emission_texture, UV).rgb * emission_texture_intensity;
-
-	vec3 albedo_tex = texture(albedo_texture, UV).rgb;
-	vec3 albedo;
-
-	if (albedo_tex == vec3(0.0)) {
-		albedo = albedo_color;
-	} else {
-		albedo = albedo_tex * albedo_color;
-	}
-
-
-	vec3 surface_color = albedo;
-	ALBEDO = surface_color;
-	//ALBEDO = vec3(border_mask);
-	EMISSION = surface_emisson * glow_intensitiy;
-	ALPHA = dissolve_noise;
-	ALPHA_SCISSOR_THRESHOLD = dissolve_amount;
-
-	if (use_normal_map) {
-		NORMAL_MAP = texture(normal_texture, UV).xyz;		
-	}
-
-
-}
-"
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_n368u"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hp215"]
-noise = SubResource("FastNoiseLite_n368u")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_vjg2k"]
-resource_local_to_scene = true
-render_priority = 0
-shader = SubResource("Shader_dfr5h")
-shader_parameter/albedo_color = Color(0.0980392, 0.117647, 0.176471, 1)
-shader_parameter/emission_texture_intensity = 0.0
-shader_parameter/inside_color = Color(0, 0, 0, 1)
-shader_parameter/dissolve_amount = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_hp215")
-shader_parameter/glow_color = Color(0.146313, 0.1651, 0.180448, 1)
-shader_parameter/glow_intensitiy = 1.77
-shader_parameter/glow_border_width = 0.018
-shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/normal_strength = 1.0
-shader_parameter/use_normal_map = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbtmo"]
 
@@ -842,8 +757,8 @@ secondary_limit_angle = 0.87266463
 secondary_damp_threshold = 1.0
 
 [node name="Sphere_001" parent="Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2146499300, 1751786890) index="1" unique_id=1498387284]
-surface_material_override/0 = SubResource("StandardMaterial3D_xr0xi")
-surface_material_override/1 = SubResource("ShaderMaterial_vjg2k")
+surface_material_override/0 = SubResource("StandardMaterial3D_dbtmo")
+surface_material_override/1 = ExtResource("25_vjg2k")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh" unique_id=345657186]
 

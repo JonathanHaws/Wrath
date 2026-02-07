@@ -1,30 +1,25 @@
-[gd_resource type="ShaderMaterial" load_steps=7 format=3 uid="uid://biupco8dcn4xr"]
+[gd_resource type="ShaderMaterial" format=3 uid="uid://biupco8dcn4xr"]
 
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="1_gn523"]
 [ext_resource type="Texture2D" uid="uid://chgom45rhh51o" path="res://actors/characters/enemies/bosses/wrath/textures/color.png" id="2_hpd4p"]
 [ext_resource type="Texture2D" uid="uid://d2eydc4mvaeui" path="res://actors/characters/enemies/bosses/wrath/textures/emision.png" id="3_m17x3"]
 [ext_resource type="Texture2D" uid="uid://bt0lar22n8dc1" path="res://actors/characters/enemies/bosses/wrath/textures/normal.png" id="4_cj5op"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1er76"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_w5ekf"]
-noise = SubResource("FastNoiseLite_1er76")
-
 [resource]
 render_priority = 0
 shader = ExtResource("1_gn523")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_frequency = 8.0
+shader_parameter/dissolve_vector = Vector3(2, -2, 1)
 shader_parameter/albedo_texture = ExtResource("2_hpd4p")
 shader_parameter/albedo_color = Color(1, 1, 1, 1)
 shader_parameter/emission_texture = ExtResource("3_m17x3")
 shader_parameter/emission_texture_intensity = 2.075
 shader_parameter/emission_texture_enabled = true
-shader_parameter/inside_color = Color(0, 0, 0, 1)
-shader_parameter/dissolve_amount = 0.0
-shader_parameter/noise_texture = SubResource("NoiseTexture2D_w5ekf")
 shader_parameter/glow_color = Color(0.55, 0.3025, 0.306625, 1)
 shader_parameter/glow_intensitiy = 1.0
 shader_parameter/glow_border_width = 0.018
 shader_parameter/glow_border_smoothness = 0.003
 shader_parameter/normal_texture = ExtResource("4_cj5op")
 shader_parameter/normal_strength = 1.0
-shader_parameter/use_normal_map = true
+shader_parameter/normal_map_enabled = true

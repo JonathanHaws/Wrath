@@ -1,0 +1,20 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://cn5x858kq0c3r"]
+
+[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="1_cdb64"]
+
+[resource]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("1_cdb64")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_frequency = 8.0
+shader_parameter/dissolve_vector = Vector3(2, -2, 1)
+shader_parameter/albedo_color = Color(0.09803922, 0.11764706, 0.1764706, 1)
+shader_parameter/enabled_emisson = false
+shader_parameter/emission_texture_intensity = 1.0
+shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.3
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/normal_strength = 1.0
+shader_parameter/enabled_normal = false
