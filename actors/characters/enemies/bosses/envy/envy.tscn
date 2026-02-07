@@ -1248,20 +1248,19 @@ point_count = 4
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ix8e8"]
 render_priority = 0
 shader = ExtResource("29_xo5l3")
-shader_parameter/albedo_texture = ExtResource("30_fp1nr")
-shader_parameter/albedo_color = Color(1, 1, 1, 1)
-shader_parameter/emission_texture_intensity = 0.0
-shader_parameter/emission_texture_enabled = true
-shader_parameter/inside_color = Color(0.493545, 0.493546, 0.493546, 1)
 shader_parameter/dissolve_amount = 0.0
 shader_parameter/dissolve_frequency = 8.0
 shader_parameter/dissolve_vector = Vector3(2, -2, 1)
-shader_parameter/glow_color = Color(0.252, 0.3, 0.228, 1)
+shader_parameter/albedo_texture = ExtResource("30_fp1nr")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/enabled_emisson = true
+shader_parameter/emission_texture_intensity = 0.0
+shader_parameter/glow_color = Color(0.286, 0.3, 0.279, 1)
 shader_parameter/glow_intensitiy = 1.77
 shader_parameter/glow_border_width = 0.018
 shader_parameter/glow_border_smoothness = 0.003
 shader_parameter/normal_strength = 1.0
-shader_parameter/use_normal_map = false
+shader_parameter/enabled_normal = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_od1a5"]
 size = Vector3(1.77151, 2.87593, 1.45825)

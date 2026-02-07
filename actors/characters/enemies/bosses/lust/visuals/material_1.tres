@@ -6,7 +6,7 @@
 [resource]
 render_priority = 0
 shader = ExtResource("1_rqgdg")
-shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_amount = 0.2830000134425
 shader_parameter/dissolve_frequency = 8.0
 shader_parameter/dissolve_vector = Vector3(1, -1, 1)
 shader_parameter/albedo_texture = ExtResource("2_8geww")

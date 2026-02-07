@@ -11,7 +11,7 @@ render_mode cull_disabled; // Cant change this dynamicalyy. Must just make meshe
 
 group_uniforms Dissolve;
 uniform float dissolve_amount: hint_range(0.0, 1.0) = 0.0;
-uniform float dissolve_frequency: hint_range(0.2, 12.0) = 8.0; // How granular the disove is 
+uniform float dissolve_frequency: hint_range(0.2, 12.0) = 6.0; // How granular the disove is 
 uniform vec3 dissolve_vector = vec3(2.0, -2.0, 1.0); // Specifies a direction for particles to drift towards
 
 group_uniforms Albedo;

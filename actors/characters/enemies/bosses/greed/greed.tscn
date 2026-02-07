@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=3 uid="uid://bre6cgb3dypbs"]
+[gd_scene format=3 uid="uid://bre6cgb3dypbs"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_cq6fp"]
 [ext_resource type="PackedScene" uid="uid://cqca3skeurt3e" path="res://actors/characters/enemies/bosses/greed/greed_hurt_particles.tscn" id="2_jx80p"]
@@ -997,7 +997,7 @@ radius = 9.61276
 [sub_resource type="BoxShape3D" id="BoxShape3D_r1aqn"]
 size = Vector3(23.4119, 15.2804, 40.1915)
 
-[node name="Greed" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM") groups=["greed"]]
+[node name="Greed" type="CharacterBody3D" unique_id=324949012 node_paths=PackedStringArray("TARGET", "ANIM") groups=["greed"]]
 collision_layer = 6
 collision_mask = 7
 script = ExtResource("1_cq6fp")
@@ -1007,11 +1007,11 @@ SAVE_KEY_ENCOUNTERED = "greed_encountered"
 DOOR_TO_UNLOCK_GROUP = "greed_door"
 DEFEATED_KEY = "greed_defeated"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=519031283]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
 shape = SubResource("CapsuleShape3D_oijfr")
 
-[node name="Ui" type="Control" parent="." groups=["ui_scalable"]]
+[node name="Ui" type="Control" parent="." unique_id=628391195 groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchor_left = 0.5
@@ -1023,7 +1023,7 @@ size_flags_horizontal = 3
 script = ExtResource("21_47sfl")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Ui" unique_id=1038526997]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1035,7 +1035,7 @@ grow_horizontal = 2
 pivot_offset = Vector2(450, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar" parent="Ui/VBoxContainer" node_paths=PackedStringArray("tracked_node") instance=ExtResource("9_wri43")]
+[node name="HealthBar" parent="Ui/VBoxContainer" unique_id=1180555038 node_paths=PackedStringArray("tracked_node") instance=ExtResource("9_wri43")]
 custom_minimum_size = Vector2(900, 8.645)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1044,7 +1044,7 @@ max_value = 2000.0
 value = 2000.0
 tracked_node = NodePath("../../../HitShape")
 
-[node name="Label" type="Label" parent="Ui/VBoxContainer"]
+[node name="Label" type="Label" parent="Ui/VBoxContainer" unique_id=1792037927]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -1053,53 +1053,49 @@ text = "GREED"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="HitShape" type="Area3D" parent="." node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
+[node name="HitShape" type="Area3D" parent="." unique_id=1264597424 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("4_ri305")
+IMMUNE_GROUPS = Array[String](["greed"])
 HEALTH = 4000.0
 MAX_HEALTH = 4000.0
-IMMUNE_GROUPS = Array[String](["greed"])
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
 DAMAGE_NUMBERS = ExtResource("21_kq5wy")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=731845473]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
 shape = SubResource("CapsuleShape3D_5k6cf")
 
-[node name="Audio" type="Node" parent="."]
+[node name="Audio" type="Node" parent="." unique_id=1669653625]
 script = ExtResource("23_xmcwa")
 SOUNDS = Array[AudioStream]([ExtResource("27_tfx8p"), ExtResource("28_fnmjv"), ExtResource("29_ruf5b"), ExtResource("30_ei5ma"), ExtResource("31_alb30"), ExtResource("32_j7j84"), ExtResource("33_gi7wv"), ExtResource("12_hnntr"), ExtResource("21_br41q")])
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=21631468]
 process_mode = 3
 bus = &"SFX"
 
-[node name="Music" type="AudioStreamPlayer" parent="Audio"]
+[node name="Music" type="AudioStreamPlayer" parent="Audio" unique_id=2057783212]
 process_mode = 3
 stream = ExtResource("20_jx80p")
 bus = &"Music"
 parameters/looping = true
 
-[node name="CameraEffects" type="Node" parent="."]
+[node name="CameraEffects" type="Node" parent="." unique_id=411024135]
 script = ExtResource("19_e5shh")
 
-[node name="WispReward" type="Node" parent="."]
+[node name="WispReward" type="Node" parent="." unique_id=1577252324]
 script = ExtResource("24_kq5wy")
 AMOUNT = 10
 
-[node name="Damaged" type="AnimationPlayer" parent="."]
+[node name="Damaged" type="AnimationPlayer" parent="." unique_id=662447906]
 root_node = NodePath("../Attacks")
-libraries = {
-&"": SubResource("AnimationLibrary_ri305")
-}
+libraries/ = SubResource("AnimationLibrary_ri305")
 
-[node name="Attacks" type="AnimationPlayer" parent="."]
+[node name="Attacks" type="AnimationPlayer" parent="." unique_id=650683328]
 callback_mode_process = 0
-libraries = {
-&"": SubResource("AnimationLibrary_y10ku")
-}
-autoplay = "RESET"
+libraries/ = SubResource("AnimationLibrary_y10ku")
+autoplay = &"RESET"
 playback_auto_capture_ease_type = 2
 next/INTRO = &"CHASE"
 next/LUNGE_ATTACK = &"CHASE"
@@ -1108,7 +1104,7 @@ next/RESET = &"KNEEL"
 next/SLAM_ATTACK = &"RUN"
 next/TAIL_SPIN_ATTACK = &"CHASE"
 
-[node name="LungeAttack" type="Node" parent="Attacks" node_paths=PackedStringArray("TARGET", "BODY")]
+[node name="LungeAttack" type="Node" parent="Attacks" unique_id=562244596 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_47sfl")
 ATTACK_ANIMATION = "LUNGE_ATTACK"
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_47sfl")
@@ -1116,7 +1112,7 @@ TRIGGER_ANIMATIONS = Array[String](["CHASE", "RUN"])
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="LungeAttackCombo" type="Node" parent="Attacks" node_paths=PackedStringArray("TARGET", "BODY")]
+[node name="LungeAttackCombo" type="Node" parent="Attacks" unique_id=1843973862 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_47sfl")
 ATTACK_ANIMATION = "LUNGE_ATTACK_COMBO"
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_txmv1")
@@ -1124,7 +1120,7 @@ TRIGGER_ANIMATIONS = Array[String](["CHASE", "RUN"])
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="SlamAttack" type="Node" parent="Attacks" node_paths=PackedStringArray("TARGET", "BODY")]
+[node name="SlamAttack" type="Node" parent="Attacks" unique_id=662379380 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_47sfl")
 ATTACK_ANIMATION = "SLAM_ATTACK"
 LIKELIHOOD_MULTIPLIER = 40.0
@@ -1133,7 +1129,7 @@ TRIGGER_ANIMATIONS = Array[String](["CHASE", "RUN"])
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="TailSpin" type="Node" parent="Attacks" node_paths=PackedStringArray("TARGET", "BODY")]
+[node name="TailSpin" type="Node" parent="Attacks" unique_id=690657958 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_47sfl")
 ATTACK_ANIMATION = "TAIL_SPIN_ATTACK"
 LIKELIHOOD_MULTIPLIER = 50.0
@@ -1141,12 +1137,12 @@ ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_vf75k")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="HurtParticles" type="Node3D" parent="." groups=["teleport_to_attacking_area"]]
+[node name="HurtParticles" type="Node3D" parent="." unique_id=1397785321 groups=["teleport_to_attacking_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("20_ri305")
 scenes = Array[PackedScene]([ExtResource("2_jx80p")])
 
-[node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA")]
+[node name="Target" type="Node3D" parent="." unique_id=524208369 node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89408, 2.62937, 5.76861)
 script = ExtResource("15_cadt7")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
@@ -1157,16 +1153,16 @@ STOP_CHASE_AREA = NodePath("../HitShape")
 SPEED = 12.0
 SPEED_MULTIPLIER = 0.0
 
-[node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "SCENE_ROOT")]
+[node name="Mesh" type="Node3D" parent="." unique_id=591728732 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "SCENE_ROOT")]
 script = ExtResource("16_psb2t")
 SKELETAL_ANIMATION_PLAYER = NodePath("Greed/AnimationPlayer")
 SKELETON = NodePath("Greed/Rig")
 MESH = NodePath(".")
 SCENE_ROOT = NodePath("..")
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh"]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh" unique_id=1044175773]
 
-[node name="Greed" parent="Mesh" instance=ExtResource("17_cq6fp")]
+[node name="Greed" parent="Mesh" unique_id=347083075 instance=ExtResource("17_cq6fp")]
 
 [node name="Skeleton3D" parent="Mesh/Greed/Rig" index="0"]
 bones/1/position = Vector3(1.4825952e-07, 1.2201675, -0.9818785)
@@ -1201,80 +1197,80 @@ bones/25/rotation = Quaternion(0.18999322, 0.006514166, -0.03934441, 0.9809751)
 [node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" index="0"]
 material_override = ExtResource("27_mmykl")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1"]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1" unique_id=771742600]
 transform = Transform3D(1, 6.217249e-15, 2.5153333e-09, 3.5302972e-10, 0.99010193, -0.14034885, -2.49042e-09, 0.14034885, 0.99010193, -2.8345792e-14, 1.925269, 0.8994103)
 bone_name = "torso"
 bone_idx = 6
 
-[node name="LockOn" type="Area3D" parent="Mesh/Greed/Rig/Skeleton3D/BoneAttachment3D"]
+[node name="LockOn" type="Area3D" parent="Mesh/Greed/Rig/Skeleton3D/BoneAttachment3D" unique_id=2057627910]
 transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 0.721829, -0.085655)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/BoneAttachment3D/LockOn"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/BoneAttachment3D/LockOn" unique_id=210687395]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
 shape = SubResource("BoxShape3D_jx80p")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
-[node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2"]
+[node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2" unique_id=536316727]
 transform = Transform3D(1, 6.217249e-15, 2.5153333e-09, 3.5302972e-10, 0.99010193, -0.14034885, -2.49042e-09, 0.14034885, 0.99010193, -2.8345792e-14, 1.925269, 0.8994103)
 bone_name = "torso"
 bone_idx = 6
 
-[node name="Area3D" type="Area3D" parent="Mesh/Greed/Rig/Skeleton3D/TorsoAttack" groups=["greed"]]
+[node name="Area3D" type="Area3D" parent="Mesh/Greed/Rig/Skeleton3D/TorsoAttack" unique_id=1820858333 groups=["greed"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("18_i3cy0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/TorsoAttack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/TorsoAttack/Area3D" unique_id=516016190]
 transform = Transform3D(0.989492, -0.144162, 0.0111708, -0.144291, -0.989466, 0.0117604, 0.00935774, -0.0132487, -0.999869, 0.0529809, -0.371373, 0.0802408)
 shape = SubResource("CapsuleShape3D_3l2yv")
 disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
-[node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3"]
+[node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3" unique_id=148533984]
 transform = Transform3D(1, 6.217249e-15, 2.5153333e-09, 3.5302972e-10, 0.99010193, -0.14034885, -2.49042e-09, 0.14034885, 0.99010193, -2.8345792e-14, 1.925269, 0.8994103)
 bone_name = "torso"
 bone_idx = 6
 
-[node name="Area3D" type="Area3D" parent="Mesh/Greed/Rig/Skeleton3D/TailSpin" groups=["greed"]]
+[node name="Area3D" type="Area3D" parent="Mesh/Greed/Rig/Skeleton3D/TailSpin" unique_id=1104873193 groups=["greed"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("18_i3cy0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/TailSpin/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/TailSpin/Area3D" unique_id=804263033]
 transform = Transform3D(0.564556, -0.0664063, 0.822738, 0.818927, -0.0794929, -0.568376, 0.103144, 0.994622, 0.00950454, -0.645955, -0.301278, 0.300961)
 shape = SubResource("CylinderShape3D_br41q")
 disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
-[node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4"]
+[node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4" unique_id=1460152811]
 transform = Transform3D(-0.9946498, 0.071284615, 0.074769035, -0.059225198, -0.98650235, 0.15265903, 0.08464198, 0.147414, 0.98544616, 0.9637513, 1.3182545, 0.9411335)
 bone_name = "hand_l"
 bone_idx = 10
 
-[node name="Area3D" type="Area3D" parent="Mesh/Greed/Rig/Skeleton3D/LeftHandAttack" groups=["greed"]]
+[node name="Area3D" type="Area3D" parent="Mesh/Greed/Rig/Skeleton3D/LeftHandAttack" unique_id=908887794 groups=["greed"]]
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, -7.03584e-09, 1.30864, 1.70658)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("18_i3cy0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/LeftHandAttack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/LeftHandAttack/Area3D" unique_id=231547346]
 transform = Transform3D(0.989492, -0.144162, 0.0111708, -0.144291, -0.989466, 0.0117603, 0.00935774, -0.0132488, -0.999869, -0.135483, -1.34407, -1.68718)
 shape = SubResource("SphereShape3D_3l2yv")
 disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
-[node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5"]
+[node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5" unique_id=1317980976]
 transform = Transform3D(-0.95177734, -0.30281782, 0.049207877, 0.30580053, -0.9492956, 0.07296193, 0.024618663, 0.08449122, 0.9961197, -1.04836, 1.3320634, 0.8831576)
 bone_name = "hand_r"
 bone_idx = 16
 
-[node name="Area3D" type="Area3D" parent="Mesh/Greed/Rig/Skeleton3D/RightHandAttack"]
+[node name="Area3D" type="Area3D" parent="Mesh/Greed/Rig/Skeleton3D/RightHandAttack" unique_id=1945284314]
 transform = Transform3D(1, 0, 0, 0, 1, -2.98023e-08, 0, 2.98023e-08, 1, -7.03584e-09, 1.30864, 1.70658)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("18_i3cy0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/RightHandAttack/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Greed/Rig/Skeleton3D/RightHandAttack/Area3D" unique_id=1683657273]
 transform = Transform3D(0.989492, -0.144162, 0.0111708, -0.144291, -0.989467, 0.0117604, 0.00935774, -0.0132488, -0.99987, 0.0337555, -1.21883, -1.63623)
 shape = SubResource("SphereShape3D_br41q")
 disabled = true
@@ -1285,26 +1281,26 @@ root_motion_track = NodePath("Rig/Skeleton3D:root")
 callback_mode_process = 0
 playback_default_blend_time = 0.3
 
-[node name="Jump" type="Area3D" parent="Mesh"]
+[node name="Jump" type="Area3D" parent="Mesh" unique_id=1827356721]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("18_i3cy0")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Jump"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Jump" unique_id=1409027311]
 shape = SubResource("CylinderShape3D_4usqi")
 disabled = true
 debug_color = Color(0, 0.6, 0.7, 0.42)
 
-[node name="TriggerArea" type="Area3D" parent="."]
+[node name="TriggerArea" type="Area3D" parent="." unique_id=397813050]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.98601, 3)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" unique_id=794160809]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07889, 7.1402, 8.51709)
 shape = SubResource("BoxShape3D_r1aqn")
 
-[node name="Light" type="OmniLight3D" parent="."]
+[node name="Light" type="OmniLight3D" parent="." unique_id=561708942]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 13.6732, -0.361175)
 light_color = Color(0.757543, 0.547021, 0.269911, 1)
 light_energy = 0.0
