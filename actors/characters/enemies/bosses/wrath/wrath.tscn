@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://b3urcqmix8s8g"]
+[gd_scene format=3 uid="uid://b3urcqmix8s8g"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://actors/characters/enemies/bosses/boss.gd" id="1_fvlx1"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="4_pxmry"]
@@ -1247,7 +1247,7 @@ _data = {
 &"RESET": SubResource("Animation_pxmry")
 }
 
-[node name="Wrath" type="CharacterBody3D" node_paths=PackedStringArray("TARGET", "ANIM") groups=["wrath"]]
+[node name="Wrath" type="CharacterBody3D" unique_id=709747532 node_paths=PackedStringArray("TARGET", "ANIM") groups=["wrath"]]
 collision_layer = 6
 collision_mask = 7
 script = ExtResource("1_fvlx1")
@@ -1256,12 +1256,12 @@ ANIM = NodePath("AnimationPlayer")
 DOOR_TO_UNLOCK_GROUP = "wrath_door"
 DEFEATED_KEY = "wrath_defeated"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1471993236]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
 shape = SubResource("CapsuleShape3D_pmn43")
 debug_color = Color(0.26, 0.26, 0.26, 1)
 
-[node name="Ui" type="Control" parent="." groups=["ui_scalable"]]
+[node name="Ui" type="Control" parent="." unique_id=1556510494 groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchor_left = 0.5
@@ -1273,7 +1273,7 @@ size_flags_horizontal = 3
 script = ExtResource("28_x676q")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Ui" unique_id=80874841]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -1285,7 +1285,7 @@ grow_horizontal = 2
 pivot_offset = Vector2(450, 0)
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar" parent="Ui/VBoxContainer" node_paths=PackedStringArray("tracked_node") instance=ExtResource("17_r1aqn")]
+[node name="HealthBar" parent="Ui/VBoxContainer" unique_id=1824303872 node_paths=PackedStringArray("tracked_node") instance=ExtResource("17_r1aqn")]
 custom_minimum_size = Vector2(900, 8.645)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -1293,7 +1293,7 @@ max_value = 2000.0
 value = 2000.0
 tracked_node = NodePath("../../../HitShape")
 
-[node name="Label" type="Label" parent="Ui/VBoxContainer"]
+[node name="Label" type="Label" parent="Ui/VBoxContainer" unique_id=1255147791]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -1302,52 +1302,48 @@ text = "WRATH"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="HitShape" type="Area3D" parent="." node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
+[node name="HitShape" type="Area3D" parent="." unique_id=1924907179 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("4_pxmry")
+IMMUNE_GROUPS = Array[String](["wrath"])
 HEALTH = 5500.0
 MAX_HEALTH = 5500.0
-IMMUNE_GROUPS = Array[String](["wrath"])
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../AnimationPlayer")
 DAMAGE_NUMBERS = ExtResource("19_a67hc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=1825158516]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
 shape = SubResource("CapsuleShape3D_oijfr")
 debug_color = Color(0.26, 0.26, 0.26, 1)
 
-[node name="Audio" type="Node" parent="."]
+[node name="Audio" type="Node" parent="." unique_id=1903051612]
 script = ExtResource("31_4oeto")
 SOUNDS = Array[AudioStream]([ExtResource("6_ay1ei"), ExtResource("10_s7vgg"), ExtResource("11_i4c6m"), ExtResource("12_p5r8v"), ExtResource("13_wxkwy"), ExtResource("8_6fdi0"), ExtResource("6_ew0re"), ExtResource("12_kqq76")])
 VOLUME_MULTIPLIERS = Array[float]([1.0, 1.0, 1.0, 0.3, 0.3, 0.3, 0.3, 0.3, 1.0, 1.0, 0.3])
 
-[node name="Music" type="AudioStreamPlayer" parent="Audio"]
+[node name="Music" type="AudioStreamPlayer" parent="Audio" unique_id=1336862352]
 process_mode = 3
 stream = ExtResource("32_h5485")
 bus = &"Music"
 parameters/looping = true
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=1913697776]
 
-[node name="CameraEffects" type="Node" parent="."]
+[node name="CameraEffects" type="Node" parent="." unique_id=464462601]
 script = ExtResource("30_r1aqn")
 
-[node name="WispReward" type="Node" parent="."]
+[node name="WispReward" type="Node" parent="." unique_id=1028282315]
 script = ExtResource("22_tjj4l")
 AMOUNT = 10
 
-[node name="Damaged" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_pxmry")
-}
+[node name="Damaged" type="AnimationPlayer" parent="." unique_id=2018659208]
+libraries/ = SubResource("AnimationLibrary_pxmry")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1869466677]
 callback_mode_process = 0
-libraries = {
-&"": SubResource("AnimationLibrary_y10ku")
-}
-autoplay = "RESET"
+libraries/ = SubResource("AnimationLibrary_y10ku")
+autoplay = &"RESET"
 playback_auto_capture_ease_type = 2
 next/INTRO = &"CHASE"
 next/JUMP_ATTACK = &"CHASE"
@@ -1355,28 +1351,28 @@ next/ROAR_ATTACK = &"CHASE"
 next/SLAM_ATTACK = &"CHASE"
 next/SPIN_ATTACK = &"CHASE"
 
-[node name="SlamAttack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
+[node name="SlamAttack" type="Node" parent="AnimationPlayer" unique_id=518478710 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_x676q")
 ATTACK_ANIMATION = "SLAM_ATTACK"
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_x676q")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="JumpAttack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
+[node name="JumpAttack" type="Node" parent="AnimationPlayer" unique_id=1261328417 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_x676q")
 ATTACK_ANIMATION = "JUMP_ATTACK"
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_tjj4l")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="SpinAttack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
+[node name="SpinAttack" type="Node" parent="AnimationPlayer" unique_id=341744808 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_x676q")
 ATTACK_ANIMATION = "SPIN_ATTACK"
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_q1yl6")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="RoarAttack" type="Node" parent="AnimationPlayer" node_paths=PackedStringArray("TARGET", "BODY")]
+[node name="RoarAttack" type="Node" parent="AnimationPlayer" unique_id=691378933 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_x676q")
 ATTACK_ANIMATION = "ROAR_ATTACK"
 LIKELIHOOD_MULTIPLIER = 0.2
@@ -1384,12 +1380,12 @@ ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_ydlo6")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="HurtParticles" type="Node3D" parent="." groups=["teleport_to_attacking_area"]]
+[node name="HurtParticles" type="Node3D" parent="." unique_id=1703377058 groups=["teleport_to_attacking_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("34_cc4qc")
 scenes = Array[PackedScene]([ExtResource("22_1df88")])
 
-[node name="Target" type="Node3D" parent="." node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY")]
+[node name="Target" type="Node3D" parent="." unique_id=1453325112 node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.11594, 0)
 script = ExtResource("33_h5485")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
@@ -1397,7 +1393,7 @@ MESH = NodePath("../Mesh")
 BODY = NodePath("..")
 SPEED_MULTIPLIER = 0.0
 
-[node name="Mesh" type="Node3D" parent="." node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "SCENE_ROOT")]
+[node name="Mesh" type="Node3D" parent="." unique_id=1492049658 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "SCENE_ROOT")]
 script = ExtResource("13_h5485")
 SKELETAL_ANIMATION_PLAYER = NodePath("wrath/AnimationPlayer")
 SKELETON = NodePath("wrath/Armature")
@@ -1406,84 +1402,83 @@ SCENE_ROOT = NodePath("..")
 SKELETON_ROOT_DEFAULT_POSITION = Vector3(5.3501e-17, -1.1, 1)
 SKELETON_ROOT_DEFAULT_ROTATION = Quaternion(-0.707107, -7.55185e-17, -7.55185e-17, 0.707107)
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh"]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh" unique_id=1237596973]
 
-[node name="wrath" parent="Mesh" instance=ExtResource("10_h46di")]
+[node name="wrath" parent="Mesh" unique_id=1674302010 instance=ExtResource("10_h46di")]
 
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
-bones/1/position = Vector3(-7.121752e-17, 0.082943216, 0.5182572)
-bones/1/rotation = Quaternion(0.5201871, 5.555561e-17, 9.1212174e-17, 0.85405236)
-bones/2/rotation = Quaternion(0.29661265, 1.1384466e-07, 3.5358987e-08, 0.9549979)
-bones/2/scale = Vector3(1, 1.0000001, 0.99999994)
-bones/3/rotation = Quaternion(0.101092115, 0.18124993, 0.763867, 0.6110943)
-bones/4/rotation = Quaternion(-0.3595353, 0.010600679, 0.15241416, 0.92053896)
-bones/5/rotation = Quaternion(-0.455173, -0.06791449, 0.03254455, 0.8872125)
-bones/6/rotation = Quaternion(-0.08224289, 0.0006229699, 0.13466907, 0.9874715)
-bones/7/rotation = Quaternion(0.11497435, -2.7996945e-08, -6.397762e-08, 0.9933685)
+bones/1/position = Vector3(0.0005928439, -0.71946937, 1.0009009)
+bones/1/rotation = Quaternion(0.2573497, 8.1128756e-17, 7.052857e-17, 0.9663183)
+bones/2/rotation = Quaternion(0.34762904, 1.1177448e-07, 4.144061e-08, 0.93763226)
+bones/3/rotation = Quaternion(0.1010921, 0.18124995, 0.763867, 0.6110943)
+bones/4/rotation = Quaternion(0.13309738, 0.38514933, 0.19012764, 0.8931947)
+bones/5/rotation = Quaternion(-0.455173, -0.067914516, 0.0325446, 0.8872125)
+bones/6/rotation = Quaternion(-0.082242884, 0.000622981, 0.13466905, 0.9874715)
+bones/7/rotation = Quaternion(-0.13630904, -2.9309884e-14, -3.249861e-08, 0.99066633)
 bones/8/rotation = Quaternion(0.10109232, -0.18125007, -0.763867, 0.61109424)
-bones/9/rotation = Quaternion(-0.24811953, 0.00052556023, -0.14623012, 0.95762897)
-bones/10/rotation = Quaternion(-0.455173, 0.06791452, -0.03254454, 0.8872125)
+bones/9/rotation = Quaternion(0.18254952, -0.037696682, -0.18083832, 0.96568745)
+bones/10/rotation = Quaternion(-0.23919083, 0.24390233, -0.29281807, 0.8930605)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
 material_override = ExtResource("27_a67hc")
 
-[node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1"]
-transform = Transform3D(-0.65342456, 0.06969153, -0.75377643, 0.7326384, -0.19231775, -0.6528817, -0.19046485, -0.97885466, 0.07460639, -2.230582, 2.6543112, -0.61016744)
+[node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1" unique_id=695131287]
+transform = Transform3D(-0.92368394, -0.19508246, -0.32977355, 0.09050055, -0.9474079, 0.30696434, -0.3723133, 0.25369352, 0.89276063, -2.212782, 2.3090315, 1.0905504)
 bone_name = "hand_l"
 bone_idx = 6
 
-[node name="Area3D" type="Area3D" parent="Mesh/wrath/Armature/Skeleton3D/LeftHand" groups=["wrath"]]
+[node name="Area3D" type="Area3D" parent="Mesh/wrath/Armature/Skeleton3D/LeftHand" unique_id=621906952 groups=["wrath"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_x676q")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" unique_id=881468294]
 transform = Transform3D(0.232359, -0.667949, -0.707003, 0.97263, 0.159571, 0.168901, 0, -0.726898, 0.686745, 0, 0, 0)
 shape = SubResource("CapsuleShape3D_d1l46")
 disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
-[node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" groups=["wrath"]]
-transform = Transform3D(-0.68529326, 0.14988273, 0.7126768, -0.7228619, -0.25899976, -0.64061666, 0.08856561, -0.9541769, 0.28583515, 2.5136962, 2.5679877, -0.23413622)
+[node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" unique_id=675944075 groups=["wrath"]]
+transform = Transform3D(-0.69944155, 0.46056998, -0.5464948, -0.40541083, -0.88541645, -0.22733104, -0.5885773, 0.06255026, 0.80601716, 2.2133837, 2.2390404, 1.1661284)
 bone_name = "hand_r"
 bone_idx = 11
 
-[node name="Area3D" type="Area3D" parent="Mesh/wrath/Armature/Skeleton3D/RightHand" groups=["wrath"]]
+[node name="Area3D" type="Area3D" parent="Mesh/wrath/Armature/Skeleton3D/RightHand" unique_id=525599458 groups=["wrath"]]
 transform = Transform3D(0.260016, 0.708287, 0.656294, -0.965604, 0.190726, 0.176725, -1.49012e-08, -0.679672, 0.733516, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_x676q")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D" unique_id=1610799272]
 shape = SubResource("CapsuleShape3D_86b8h")
 disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
-[node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3" groups=["wrath"]]
-transform = Transform3D(1, 2.1316285e-14, 2.3841864e-07, 2.9874037e-08, 0.99211884, -0.12530085, -2.3653965e-07, 0.12530091, 0.9921187, 2.8723113e-23, 0.9999998, 0.10029495)
+[node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3" unique_id=290485866 groups=["wrath"]]
+transform = Transform3D(1, 7.23087e-15, 2.3841858e-07, -7.954478e-08, 0.9427023, 0.333635, -2.2475776e-07, -0.33363494, 0.94270235, 0.0005928439, 0.78629297, 0.17509556)
 bone_name = "torso"
 bone_idx = 2
 
-[node name="LockOn" type="Area3D" parent="Mesh/wrath/Armature/Skeleton3D/Torso"]
+[node name="LockOn" type="Area3D" parent="Mesh/wrath/Armature/Skeleton3D/Torso" unique_id=2127576740]
 transform = Transform3D(1, 5.32907e-15, 0, 0, 1, 0, 0, 0, 1, 3.94153e-08, 1.30898, -0.165321)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/Torso/LockOn"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/Torso/LockOn" unique_id=2005103121]
 transform = Transform3D(1, -1.24345e-14, -1.03739e-12, 0, 1, 0, -3.83693e-13, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_4oeto")
 debug_color = Color(0.7, 0.7, 0.7, 0)
 
-[node name="Area3D" type="Area3D" parent="Mesh/wrath/Armature/Skeleton3D/Torso" groups=["wrath"]]
+[node name="Area3D" type="Area3D" parent="Mesh/wrath/Armature/Skeleton3D/Torso" unique_id=2036114241 groups=["wrath"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_x676q")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/Torso/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/Torso/Area3D" unique_id=984497997]
 transform = Transform3D(1, 1.16415e-10, -9.31323e-10, 1.16415e-10, 1, 0, 0, 7.45058e-09, 1, -1.99663e-05, 1.64233, -0.317233)
 shape = SubResource("CapsuleShape3D_pxmry")
 disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/wrath/Armature/Skeleton3D" index="4"]
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/wrath/Armature/Skeleton3D" index="4" unique_id=1573743359]
 target_node = NodePath("../../../../../Target")
 bone_name = "head"
 bone = 7
@@ -1500,30 +1495,30 @@ root_motion_track = NodePath("Armature/Skeleton3D:root")
 callback_mode_process = 0
 playback_default_blend_time = 0.5
 
-[node name="Jump" type="Area3D" parent="Mesh" groups=["wrath"]]
+[node name="Jump" type="Area3D" parent="Mesh" unique_id=1699440298 groups=["wrath"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_x676q")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Jump" groups=["wrath"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Jump" unique_id=1780483656 groups=["wrath"]]
 shape = SubResource("CylinderShape3D_4usqi")
 disabled = true
 debug_color = Color(0.733333, 0.243137, 0.282353, 1)
 
-[node name="TriggerArea" type="Area3D" parent="."]
+[node name="TriggerArea" type="Area3D" parent="." unique_id=1389874001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.98601, 3)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" unique_id=1296637435]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.05826, 7.1402, -15.2056)
 shape = SubResource("BoxShape3D_r1aqn")
 debug_color = Color(0.46, 0.46, 0.46, 0)
 
-[node name="Particles" type="Node3D" parent="."]
+[node name="Particles" type="Node3D" parent="." unique_id=1208116493]
 script = ExtResource("34_cc4qc")
 
-[node name="Dust" type="GPUParticles3D" parent="Particles"]
+[node name="Dust" type="GPUParticles3D" parent="Particles" unique_id=1261474320]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 material_override = ExtResource("35_pxmry")
 emitting = false
@@ -1537,14 +1532,12 @@ interpolate = false
 process_material = SubResource("ParticleProcessMaterial_j4kbp")
 draw_pass_1 = SubResource("QuadMesh_pmn43")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Particles/Dust"]
-libraries = {
-&"": SubResource("AnimationLibrary_wrvk2")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Particles/Dust" unique_id=1199539115]
+libraries/ = SubResource("AnimationLibrary_wrvk2")
 
-[node name="Node3D" parent="." instance=ExtResource("36_ax45f")]
+[node name="Node3D" parent="." unique_id=947792970 instance=ExtResource("36_ax45f")]
 
-[node name="Light" type="OmniLight3D" parent="."]
+[node name="Light" type="OmniLight3D" parent="." unique_id=568578169]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 13.6732, -0.361175)
 light_color = Color(0.53, 0.203873, 0.1537, 1)
 light_energy = 0.0

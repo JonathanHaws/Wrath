@@ -6,6 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://brwksry3ixj4j" path="res://actors/characters/enemies/bosses/sloth/sloth_health.tres" id="4_dbtmo"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="5_h7mjm"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="6_fscfa"]
+[ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://actors/characters/ui/damage_numbers.tscn" id="7_dbtmo"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://actors/characters/enemies/sfx/Slam.wav" id="10_qp78m"]
 [ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://actors/props/sfx/Crumble_1.wav" id="11_xcc4h"]
 [ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://actors/props/sfx/Crumble_2.wav" id="12_fn6e4"]
@@ -22,7 +23,7 @@
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://actors/props/wisp/wisp_reward.gd" id="23_2wp77"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="23_8fqfx"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="25_gwq6n"]
-[ext_resource type="Material" uid="uid://cn5x858kq0c3r" path="res://actors/characters/enemies/ghosts/ghost.tres" id="25_vjg2k"]
+[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="25_vjg2k"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="26_t4er3"]
 [ext_resource type="PackedScene" uid="uid://dnmftqcmv26ca" path="res://actors/characters/enemies/bosses/sloth/sloth.blend" id="27_dbtmo"]
 [ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="28_muo5h"]
@@ -338,25 +339,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/1/interp = 0
+tracks/1/path = NodePath("CameraEffects")
+tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CameraEffects")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0.0833334),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -364,13 +353,13 @@ tracks/2/keys = {
 "method": &"impact"
 }]
 }
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Audio/Music")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio/Music")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -378,51 +367,63 @@ tracks/3/keys = {
 "method": &"play"
 }]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("HitShape/CollisionShape3D:disabled")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitShape/CollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Light:light_energy")
-tracks/5/interp = 2
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Light:light_energy")
+tracks/4/interp = 2
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0.0416667, 2.54167),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 20.0]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Ui:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Ui:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(1.54167, 2.75),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/1:shader_parameter/dissolve_amount")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 tracks/7/type = "method"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Node3D")
+tracks/7/path = NodePath("WaveSpawner")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(3.29167, 5.5833335, 8.125, 17.416666, 19.70833, 22.249996, 29.916666, 32.20833, 34.749992),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(3.29167, 5.143317, 7.223695, 12.168487, 16.75, 19.15209, 21.250021, 26.959862, 29.641748, 32.21341, 34.717392, 40.125),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "values": [{
 "args": [],
 "method": &"spawn"
@@ -450,19 +451,16 @@ tracks/7/keys = {
 }, {
 "args": [],
 "method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
 }]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/1:shader_parameter/dissolve_amount")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -613,6 +611,23 @@ resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_muo5h"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("25_vjg2k")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_frequency = 3.0
+shader_parameter/dissolve_vector = Vector3(0.5, -0.5, 0.25)
+shader_parameter/albedo_color = Color(0.09803922, 0.11764706, 0.1764706, 1)
+shader_parameter/enabled_emisson = false
+shader_parameter/emission_texture_intensity = 1.0
+shader_parameter/glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.3
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/normal_strength = 1.0
+shader_parameter/enabled_normal = false
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbtmo"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wbwgn"]
@@ -684,6 +699,7 @@ WAVE_DAMAGE = 10000.0
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
+DAMAGE_NUMBERS = ExtResource("7_dbtmo")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=324219729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12337458, 2.49679, 0)
@@ -758,7 +774,7 @@ secondary_damp_threshold = 1.0
 
 [node name="Sphere_001" parent="Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2146499300, 1751786890) index="1" unique_id=1498387284]
 surface_material_override/0 = SubResource("StandardMaterial3D_dbtmo")
-surface_material_override/1 = ExtResource("25_vjg2k")
+surface_material_override/1 = SubResource("ShaderMaterial_muo5h")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh" unique_id=345657186]
 
@@ -788,10 +804,11 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 27.0089
 
-[node name="Node3D" type="Node3D" parent="." unique_id=450703735]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29153e-06, 1.7507273, -0.09596968)
+[node name="WaveSpawner" type="Node3D" parent="." unique_id=450703735]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29153e-06, 1.7507273, 3.2971847)
 script = ExtResource("23_8fqfx")
 scenes = Array[PackedScene]([ExtResource("28_muo5h")])
+add_to_scene_root = true
 
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
 

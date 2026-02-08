@@ -98,6 +98,7 @@ func spawn_towards_camera_group(group: String = "player_camera",  weight: Vector
 		return
 	
 func spawn() -> Node:
+	
 	var scene_to_instantiate = get_scene_to_spawn()
 	if scene_to_instantiate == null: return
 	var scene = scene_to_instantiate.instantiate()
@@ -110,7 +111,15 @@ func spawn() -> Node:
 	
 	if scene is Node3D: scene.global_transform = self.global_transform
 	
-	#if particles is Node3D and particles.material_override: #for making shader unique for every particle might be a bug
-		#particles.material_override = particles.material_override.duplicate()
+	#if "material_override" in scene: #for making shader unique for every particle might be a bug
+		#var mat = scene.material_override
+		#if mat:
+			#print('duplicated')
+			#mat = mat.duplicate()
+			#mat.shader = scene.material_override.shader
+			#scene.material_override = mat
+		
+	#if scene is Node3D and scene.material_override: #for making shader unique for every particle might be a bug
+		#scene.material_override = scene.material_override.duplicate()
 		
 	return scene

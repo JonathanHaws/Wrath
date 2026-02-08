@@ -11,8 +11,14 @@ render_mode cull_disabled; // Cant change this dynamicalyy. Must just make meshe
 
 group_uniforms Dissolve;
 uniform float dissolve_amount: hint_range(0.0, 1.0) = 0.0;
-uniform float dissolve_frequency: hint_range(0.2, 12.0) = 6.0; // How granular the disove is 
-uniform vec3 dissolve_vector = vec3(2.0, -2.0, 1.0); // Specifies a direction for particles to drift towards
+uniform float dissolve_frequency: hint_range(0.2, 12.0) = 3.0; // How granular the disove is 
+uniform vec3 dissolve_vector = vec3(0.5, -0.5, 0.25); // Specifies a direction for particles to drift towards
+
+group_uniforms Glow;
+uniform vec3 glow_color: source_color = vec3(0.533, 0.533, 0.533);
+uniform float glow_intensitiy = 1.3;
+uniform float glow_border_width: hint_range(0.0, 0.25) = 0.018;
+uniform float glow_border_smoothness: hint_range(0.0, 0.1) = 0.003;
 
 group_uniforms Albedo;
 uniform sampler2D albedo_texture : source_color;
@@ -22,11 +28,6 @@ group_uniforms Emisson;
 uniform bool enabled_emisson = true;
 uniform sampler2D emission_texture : source_color;
 uniform float emission_texture_intensity : hint_range(0.0, 50.0) = 1.0;
-
-uniform vec3 glow_color: source_color = vec3(0.533, 0.533, 0.533);
-uniform float glow_intensitiy = 1.3;
-uniform float glow_border_width: hint_range(0.0, 0.25) = 0.018;
-uniform float glow_border_smoothness: hint_range(0.0, 0.1) = 0.003;
 
 group_uniforms Normal;
 uniform sampler2D normal_texture;

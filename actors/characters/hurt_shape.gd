@@ -7,6 +7,7 @@ extends Area3D
 @export var cooldown: float = 0.2 
 @export var linger_tick: float = 1.0
 @export var linger: bool = false
+@export var hit_shape: Area3D ## Avoid lingering by automatocally freeing this hurtbox when this hitshape dies
 @export var hit_anim: String = "HURT" ## Name of the animation to play when something is hit
 @export var kill_anim: String = "KILL" ## Name of animation to play when something is killed
 @export var hit_animation_player: AnimationPlayer ## Animation to be played when something is hit by this hurt shape
@@ -24,7 +25,7 @@ func blocked(_block_time: float = 0.0) -> void:
 			blocked_anim_player.play(parry_anim)
 
 @export_group("Save") ## For upgradable damage that needs to be persisten / update
-@export var enable_save: bool = true
+@export var enable_save: bool = false
 @export var save_key: String = ""
 func _exit_tree() -> void:
 	if not enable_save: return
@@ -110,6 +111,10 @@ func _ready() -> void:
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
 	save_ready()
+	
+	if hit_shape and hit_shape.has_signal("DIED"):
+		hit_shape.DIED.connect(queue_free)
+	
 
 #func _process(_delta: float) -> void:
 	#print("Timers alive:", get_tree().get_nodes_in_group("memory_leak_check").size())

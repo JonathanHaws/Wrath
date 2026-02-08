@@ -21,3 +21,10 @@ func _on_trigger_area_body_entered(body: Node) -> void:
 func _ready() -> void:
 	if DEFEATED_KEY != "" and Save.data.has(DEFEATED_KEY):
 		queue_free()
+
+func _test() -> void:
+	print('test')
+		
+func _process(_delta: float) -> void:
+	pass
+	#print(ANIM.is_playing(), " ", ANIM.current_animation)

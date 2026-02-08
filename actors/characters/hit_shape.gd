@@ -35,13 +35,14 @@ func show_damage(damage_amount: int) -> void:
 	number.position = get_viewport().get_camera_3d().unproject_position(self.global_position) - Vector2(0, 140.0)
 
 @export_group("Respawn") ## For configuring exactly how persistent save data is handled
-@export var RESPAWN_WHEN_DEATHS_INCREMENT: bool = true ## Makes it so entitiy resets save data when player dies
-@export var RESPAWN_WHEN_RESTS_INCREMENT: bool = true ## Makes it so entitiy resets save data when player rests
+@export var RESPAWN_WHEN_DEATHS_INCREMENT: bool = false ## Makes it so entitiy resets save data when player dies
+@export var RESPAWN_WHEN_RESTS_INCREMENT: bool = false ## Makes it so entitiy resets save data when player rests
 @export var DEATHS_KEY: String = "deaths" ## What save key keeps track of players deaths
 @export var RESTS_KEY: String = "rests" ## What save key keeps track of players rests 
 @export var DEATH_COUNT_KEY: String = "" ## What save key keeps track of this entities deaths
 @export var REST_COUNT_KEY: String = "" ## What save key keeps track of this entities rests 
 func _load_respawn(counter_key: String, total_key: String) -> void: ## Checks in ready for if its updated. If so resets health
+	
 	var total = Save.data.get(total_key, 0) 
 	if Save.data.has(counter_key):
 		if Save.data[counter_key] <= total:
@@ -135,5 +136,6 @@ func _process(_delta):
 	#print(HEALTH)
 
 func _exit_tree() -> void: ## Store when switching between scenes
-	Save.data[HEALTH_KEY] = HEALTH 
-	Save.save_game()
+	if STORE_DEAD:
+		Save.data[HEALTH_KEY] = HEALTH 
+		Save.save_game()
