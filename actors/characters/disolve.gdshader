@@ -15,12 +15,14 @@ uniform float dissolve_frequency: hint_range(0.2, 12.0) = 3.0; // How granular t
 uniform vec3 dissolve_vector = vec3(0.5, -0.5, 0.25); // Specifies a direction for particles to drift towards
 
 group_uniforms Glow;
-uniform vec3 glow_color: source_color = vec3(0.533, 0.533, 0.533);
-uniform float glow_intensitiy = 1.3;
+uniform bool custom_glow_color_enabled = false; // used to specify a color other then the far mip map lod comuputed average 
+uniform vec3 custom_glow_color: source_color = vec3(0.533, 0.533, 0.533);
+uniform float glow_intensitiy = 1.0;
 uniform float glow_border_width: hint_range(0.0, 0.25) = 0.018;
 uniform float glow_border_smoothness: hint_range(0.0, 0.1) = 0.003;
 
 group_uniforms Albedo;
+uniform bool albedo_enabled = true;
 uniform sampler2D albedo_texture : source_color;
 uniform vec3 albedo_color : source_color = vec3(1.0);
 
@@ -83,7 +85,13 @@ void fragment() {
 	ALPHA = dissolve_noise;
 	ALPHA_SCISSOR_THRESHOLD = dissolve_amount;
 
-	vec3 surface_emisson = mix(vec3(0.0), glow_color, border_mask);
+	
+	// Calculate the average color of mesh
+	vec3 glow_color_local = albedo_color;
+	if (albedo_enabled) { glow_color_local = textureLod(albedo_texture, vec2(0.5), 1000.0).rgb; }
+	if (custom_glow_color_enabled) { glow_color_local = custom_glow_color; }
+
+	vec3 surface_emisson = mix(vec3(0.0), glow_color_local, border_mask);
 	if (enabled_emisson) { surface_emisson += texture(emission_texture, UV).rgb * emission_texture_intensity; }
 	EMISSION = surface_emisson * glow_intensitiy;
 
