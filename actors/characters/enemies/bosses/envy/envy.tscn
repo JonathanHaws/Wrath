@@ -1461,13 +1461,13 @@ ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_1epqe")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="Takeoff_Left" type="Node" parent="Attacks" unique_id=1390185296 node_paths=PackedStringArray("PHASE_HITSHAPE", "TARGET", "BODY")]
+[node name="Takeoff_Left" type="Node" parent="Attacks" unique_id=1390185296 node_paths=PackedStringArray("HITSHAPE", "TARGET", "BODY")]
 script = ExtResource("23_od1a5")
 ATTACK_ANIMATION = "TAKEOFF_LEFT_SHOULDER"
 LIKELIHOOD_MULTIPLIER = 300.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_fp1nr")
 COOLDOWN = 2.98
-PHASE_HITSHAPE = NodePath("../../HitShape")
+HITSHAPE = NodePath("../../HitShape")
 HEALTH_HIGH_THRESHOLD = 0.8
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")

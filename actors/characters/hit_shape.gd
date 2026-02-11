@@ -8,16 +8,13 @@ signal HEAL
 @export var MAX_HEALTH	:float = 500.0
 @export var INVINCIBILITY_COOLDOWN: float = 0.05 ## After object gets hit how long they are invincible
 @export var DISABLED: bool = false 
-@export var STORE_DEAD: bool = true ## Most entities you want queue freed if health < 0 in ready... except player sometimes (Only works if Root Is Specified
-@export var ROOT: Node ## Root of scene that will be freed if health is less then 0 when scene loaded in ready
-@export var HEALTH_KEY: String = "" ## What save key to store health persistently between scenes being loaded / unloaded. If left empty will just use unique node path
 var last_hurt_shape: Area3D = null ## most recent hurt_shape to damage this shape
 var invincibility_timer: Timer
 
-@export_group("Wave Health Bar") ## For bosses or encounters that spawn waves of enemies
-@export var USE_WAVE_HEALTH_BAR: bool = false ## optional group for wave health
-@export var WAVE_HITSHAPE_GROUP: String = "enemy_hitshape" ## optional group for wave health
-@export var WAVE_DAMAGE :float = 300.0 ## The amount to decrease health when enemies die
+@export_group("Persistence Between Scenes")
+@export var PERSISTENT_HEALTH: bool = true ## Most entities you want queue freed if health < 0 in ready... except player sometimes (Only works if Root Is Specified)
+@export var ROOT: Node ## Root of scene that will be freed if health is less then 0 when scene loaded in ready
+@export var HEALTH_KEY: String = "" ## What save key to store health persistently between scenes being loaded / unloaded. If left empty will just use unique node path
 
 @export_group("Damage Reaction") ## For Body / Child Nodes which have to reposition themselves. Such as Needed positional synchronization between attacker / attacked on animations, Hurt Particles, etc.
 @export var TELEPORT_NODES_TO_HIT: Array[Node3D] = [] 
@@ -35,8 +32,8 @@ func show_damage(damage_amount: int) -> void:
 	number.position = get_viewport().get_camera_3d().unproject_position(self.global_position) - Vector2(0, 140.0)
 
 @export_group("Respawn") ## For configuring exactly how persistent save data is handled
-@export var RESPAWN_WHEN_DEATHS_INCREMENT: bool = false ## Makes it so entitiy resets save data when player dies
-@export var RESPAWN_WHEN_RESTS_INCREMENT: bool = false ## Makes it so entitiy resets save data when player rests
+@export var RESPAWN_WHEN_DEATHS_INCREMENT: bool = true ## Makes it so entitiy resets save data when player dies
+@export var RESPAWN_WHEN_RESTS_INCREMENT: bool = true ## Makes it so entitiy resets save data when player rests
 @export var DEATHS_KEY: String = "deaths" ## What save key keeps track of players deaths
 @export var RESTS_KEY: String = "rests" ## What save key keeps track of players rests 
 @export var DEATH_COUNT_KEY: String = "" ## What save key keeps track of this entities deaths
@@ -66,6 +63,11 @@ func _load_max_health() -> void:
 	if not Save.data.has(MAX_HEALTH_KEY): Save.data[MAX_HEALTH_KEY] = MAX_HEALTH
 	MAX_HEALTH = Save.data[MAX_HEALTH_KEY]
 	Save.connect("save_data_updated", Callable(self, "_check_max_health"))	
+
+@export_group("Wave Health Bar") ## For bosses or encounters that spawn waves of enemies
+@export var USE_WAVE_HEALTH_BAR: bool = false ## optional group for wave health
+@export var WAVE_HITSHAPE_GROUP: String = "enemy_hitshape" ## optional group for wave health
+@export var WAVE_DAMAGE :float = 300.0 ## The amount to decrease health when enemies die
 
 func hit(area: Area3D = null, damage: int = 0, play_animations: bool = true) -> bool:
 	if DISABLED: return false
@@ -136,6 +138,6 @@ func _process(_delta):
 	#print(HEALTH)
 
 func _exit_tree() -> void: ## Store when switching between scenes
-	if STORE_DEAD:
+	if PERSISTENT_HEALTH:
 		Save.data[HEALTH_KEY] = HEALTH 
 		Save.save_game()

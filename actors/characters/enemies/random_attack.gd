@@ -10,7 +10,7 @@ extends Node # Child node to animation player to specify attacks based of random
 @export var COOLDOWN_REMAINING: float = 1.0 ## Used to disable this attack at the start of the scene
 
 @export_group("Phase") ## Used for disalbing certain attacks until the proper phase. Accelerating difficulty makes bosses exiciting 
-@export var PHASE_HITSHAPE: Node ## Percentage determined by health / max_health
+@export var HITSHAPE: Node ## Percentage determined by health / max_health
 @export var HEALTH_HIGH_THRESHOLD: float = 10.0   ## 0.5 = 50%
 @export var HEALTH_LOW_THRESHOLD: float = 0.0   ## 0.5 = 50%
 
@@ -32,8 +32,8 @@ func _physics_process(delta: float) -> void:
 		COOLDOWN_REMAINING -= delta
 		return
 
-	if PHASE_HITSHAPE and "HEALTH" in PHASE_HITSHAPE and "MAX_HEALTH" in PHASE_HITSHAPE:
-		var hp_ratio: float = float(PHASE_HITSHAPE.HEALTH) / float(PHASE_HITSHAPE.MAX_HEALTH)
+	if HITSHAPE and "HEALTH" in HITSHAPE and "MAX_HEALTH" in HITSHAPE:
+		var hp_ratio: float = float(HITSHAPE.HEALTH) / float(HITSHAPE.MAX_HEALTH)
 		if hp_ratio > HEALTH_HIGH_THRESHOLD or hp_ratio < HEALTH_LOW_THRESHOLD: return
 
 	if TRIGGER_ANIMATIONS.size() > 0 and not (ANIM.current_animation in TRIGGER_ANIMATIONS): return

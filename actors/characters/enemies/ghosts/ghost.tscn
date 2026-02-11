@@ -1028,14 +1028,12 @@ debug_color = Color(0.87, 0.87, 0.87, 1)
 [node name="Hitbox" type="Area3D" parent="." unique_id=1261233255 node_paths=PackedStringArray("ROOT", "TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("2_i6eoe")
 IMMUNE_GROUPS = Array[String](["ghost"])
-STORE_DEAD = false
+PERSISTENT_HEALTH = false
 ROOT = NodePath("..")
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../Damaged")
 DAMAGE_NUMBERS = ExtResource("3_mvqiw")
-RESPAWN_WHEN_DEATHS_INCREMENT = true
-RESPAWN_WHEN_RESTS_INCREMENT = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1137305540]
 shape = SubResource("SphereShape3D_6640v")
