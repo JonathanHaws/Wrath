@@ -1,56 +1,58 @@
 extends Timer
-@export var SEQUENTIAL: bool = false
-@export var MIN_INTERVAL: float = 1.0 ## Minimum seconds between lines
-@export var MAX_INTERVAL: float = 3.0 ## Maximum seconds between lines
-@export var FAIL_INTERVAL: float = 1.0 ## Timeout if no line can play
-@export var DELETE_AFTER_PLAY: bool = false ## Remove line from list after playing
 @export var DIALOG: Node ## Calls play fork for each line
 @export var HIT_SHAPE: Node ## Specifies the node that has 'HEALTH' and 'MAX HEALTH' For trigger hps
+@export var SEQUENTIAL: bool = false
+@export var DELETE_AFTER_PLAY: bool = true ## Remove line from list after playing
+@export var MIN_INTERVAL: float = 2.5 ## Minimum seconds between lines
+@export var MAX_INTERVAL: float = 4.0 ## Maximum seconds between lines
+@export var FAIL_INTERVAL: float = 0.2 ## Timeout if no line can play
 @export var LINES: Array[String] = [] ## Specifies which dialog fork to go to 
-@export var LINE_TIMES: Array[float] = [] ## Specifies how much time each will add to timeout on top of MIN / Max Interval
-@export var TRIGGER_MIN_HP: Array[float] = [] ## Specifies the min hitbox health this line can be spawned in
-@export var TRIGGER_MAX_HP: Array[float] = [] ## Specifies the max hitbox health this line can be spawned in
 var index: int = 0
 
-func _on_timeout() -> void:
-	if LINES.size() == 0 or not DIALOG: return
-	
+func get_fork_time(start_index: int) -> float:
+	var total: float = 0.0
+	var i: int = start_index
+	while i < DIALOG.dialog.size() and not DIALOG.dialog[i].has("fork"):
+		if DIALOG.dialog[i].has("say_timed"):
+			total += float(DIALOG.dialog[i].say_timed["for"])
+		i += 1
+	return total
+
+func is_hp_in_range(entry: Dictionary) -> bool:
 	var min_hp: float = 0.0
 	var max_hp: float = 1.0
-	if index < TRIGGER_MIN_HP.size(): min_hp = TRIGGER_MIN_HP[index]
-	if index < TRIGGER_MAX_HP.size(): max_hp = TRIGGER_MAX_HP[index]
-	
+	if entry.has("min_health"): min_hp = entry["min_health"]
+	if entry.has("max_health"): max_hp = entry["max_health"]
 	var current_hp: float = 1.0
 	if HIT_SHAPE: current_hp = HIT_SHAPE.HEALTH / HIT_SHAPE.MAX_HEALTH
-	
-	if current_hp >= min_hp and current_hp <= max_hp:
-		DIALOG.play_fork(LINES[index])
-	
-		if DELETE_AFTER_PLAY:
-			if index < LINES.size(): LINES.remove_at(index)
-			if index < LINE_TIMES.size(): LINE_TIMES.remove_at(index)
-			if index < TRIGGER_MIN_HP.size(): TRIGGER_MIN_HP.remove_at(index)
-			if index < TRIGGER_MAX_HP.size(): TRIGGER_MAX_HP.remove_at(index)
-			if LINES.size() == 0: return
+	return current_hp >= min_hp and current_hp <= max_hp
 
-		_set_random_wait()
-		start()
+func _on_timeout() -> void:
+	#print('attempting to spawn random dialog')
+	if not DIALOG: return
+	if LINES.size() == 0: stop(); return
+	wait_time = FAIL_INTERVAL
+	start()
 	
-	else:
-		wait_time = FAIL_INTERVAL
-		start()
-		
-	if SEQUENTIAL:
-		index = (index + 1) % LINES.size()
-	else:
-		index = (index + randi_range(1, LINES.size())) % LINES.size()
+	var entry: Dictionary = DIALOG.get_dictionary_for_value(LINES[index], 1)	
+	if not is_hp_in_range(entry): return
+	DIALOG._spawn_fork(LINES[index])		
+	#print(entry)
+	
+	var fork_time = get_fork_time(DIALOG.current_index)
+	_set_random_wait(fork_time)
 
-func _set_random_wait() -> void:
-	var extra : float = 0.0
-	if index < LINE_TIMES.size(): extra = LINE_TIMES[index]
-	wait_time = randf_range(MIN_INTERVAL, MAX_INTERVAL) + extra
+	if DELETE_AFTER_PLAY: if index < LINES.size(): LINES.remove_at(index)
+	if LINES.size() > 0:# Deletion shifts array so no +1 is needed for sequential incrementation
+		if SEQUENTIAL: index = index % LINES.size() 
+		else: index = (index + randi_range(1, LINES.size())) % LINES.size()
+
+func _set_random_wait(extra: float = 0.0) -> void:
+	wait_time += randf_range(MIN_INTERVAL, MAX_INTERVAL) + extra
+	start()
 	
 func _ready() -> void:
-	index = randi() % LINES.size()
 	_set_random_wait()
+	stop()
+	if not SEQUENTIAL: index = randi() % LINES.size()
 	connect("timeout", Callable(self, "_on_timeout"))

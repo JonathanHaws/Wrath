@@ -53,25 +53,29 @@
 				{"text": "IM NOT YOUR SLAVE", "skip": "intro"}]},
 				
 {"fork": "random_taunt_1"},
-	{"say_timed": ["I GET WHAT I WANT", 1.5]},
-	
-{"fork": "random_taunt_2"},	
-	{"say_timed": ["YOU REALLY THINK...", 2.0, 1]},
-	{"say_timed": ["YOU CAN ESCAPE?", 1.5]},
-	
+	{"say_timed": {"say": "I GET WHAT I WANT", "for": 1.5}},
+
+{"fork": "random_taunt_2"},
+	{"say_timed": {"say": "YOU REALLY THINK...", "for": 2.0, "sequence": 1}},
+	{"say_timed": {"say": "YOU CAN ESCAPE?", "for": 1.5}},
+
 {"fork": "random_taunt_3"},
-	{"say_timed": ["YOU THINK YOU KNOW LOVE?", 2.0]},
-	
-{"fork": "random_taunt_4"},	
-	{"say_timed": ["I WANTED YOU...", 2.5, 1]},
-	{"say_timed": ["BUT NOW YOU WILL DIE!", 2.5, 1]},
-	{"say_timed": ["DIE!", 0.75, 1]},
-	{"say_timed": ["DIE!", 0.75, 1]},
-	{"say_timed": ["DIE!", 0.75, 1]},
-	{"say_timed": ["D I E !", 2.0]},
-	
+	{"say_timed": {"say": "YOU THINK YOU KNOW LOVE?", "for": 2.0}},
+
+{"fork": "random_taunt_4"},
+	{"say_timed": {"say": "YOU KNOW HOW LUCKY YOU ARE?", "for": 2.5, "sequence": 1}},
+	{"say_timed": {"say": "TO HAVE MET ME?", "for": 2.5}},
+
+{"fork": "random_taunt_5"},
+	{"say_timed": {"say": "I WANTED YOU...", "for": 2.5, "sequence": 1}, "min_health": 0, "max_health" :0.5 },
+	{"say_timed": {"say": "BUT NOW YOU WILL DIE!", "for": 2.2, "sequence": 1}},
+	{"say_timed": {"say": "DIE!", "for": 0.75, "sequence": 1}},
+	{"say_timed": {"say": "DIE!", "for": 0.75, "sequence": 1}},
+	{"say_timed": {"say": "DIE!", "for": 0.75, "sequence": 1}},
+	{"say_timed": {"say": "D I E !", "for": 2.0}},
+
 {"fork": "death"},
-	{"say_timed": ["YOULL BE ALONE...", 2.0, 1]},
-	{"say_timed": ["FOREVER.", 2.0]},
+	{"say_timed": {"say": "YOULL BE ALONE...", "for": 2.0, "sequence": 1}},
+	{"say_timed": {"say": "FOREVER.", "for": 2.0}}
 	
 ]

@@ -4,10 +4,12 @@ extends Node
 @export var area: Area3D ## Defines the range in which will activate conversations
 @export var player_group: String = "player" ## Defines the group of bodies which can trigger conversations
 @export var disable_actions := ["attack", "jump"] ## Requires DisableInput global to work
+
 @export_group("Templates") ## Scene templates to spawn specified in dialog JSON file
 @export var dialog_key_map : Array[String] = ["choice", "say", "say_timed"] ## For shortening dialog files. Specify what key should spawn what scene
 @export var dialog_templates: Array[PackedScene] = [] ## Scene templates to spawn / despawn when the last sentence is finished
 @export var dialog_group: String = "dialog" ## Group all instances of templates are added to. 
+
 @export_group("Dialog") ## Control dialog flow with "fork: name", "skip: fork_name", save, start, end
 @export var dialog_file: Resource
 @export var start_index = 0
@@ -34,27 +36,33 @@ func _end_dialog() -> void:
 	current_index = start_index
 	for child in get_children(): if child.has_method("exit_area"): child.exit_area()
 
-func skip_to(value: String) -> void:
-	for line in range(dialog.size()):
-		if dialog[line].has("fork") and dialog[line].fork == value:
-			current_index = line
-			return
+func get_index_for_value(value: Variant) -> int:
+	var index = current_index
+	if value is String:
+		for line in range(dialog.size()):
+			if dialog[line].has("fork") and dialog[line].fork == value:
+				index = line
+				break
+	elif value is int: index = value
+	if index >= dialog.size(): index = int(start_index) ## Loop back
+	return index
 
-func play_fork(value: String) -> void: # Called in animation players 
-	skip_to(value)
+func get_dictionary_for_value(value: Variant, offset: int = 0) -> Dictionary:
+	var index: int = get_index_for_value(value) + offset
+	if dialog and index >= 0 and index < dialog.size():
+		return dialog[index]
+	return {}
+
+func goto(value: Variant) -> void:
+	current_index = get_index_for_value(value)
+
+func _spawn_fork(value: Variant) -> void:
+	current_index = get_index_for_value(value)
 	_spawn()
 
 func _spawn(require_in_range = false) -> void:
-	
 	if require_in_range and not in_range: return
-	if current_index >= dialog.size(): current_index = int(start_index) # Loop back
-	while current_index < (dialog.size()-1) and dialog[current_index].has("fork"): current_index += 1 # Skip fork labels
 	entry = dialog[current_index]	
-	
-	if "save" in entry:
-		Save.data[dialog_save_key] = current_index
-		start_index = current_index
-		Save.save_game()
 	
 	for i in range(dialog_key_map.size()):
 		var key = dialog_key_map[i]
@@ -63,16 +71,34 @@ func _spawn(require_in_range = false) -> void:
 			instance.info = entry[key]
 			instance.add_to_group(dialog_group)
 			add_child(instance)
-			
-	if "skip" in entry: skip_to(entry.skip)
-	else: current_index += 1
-		
-	if "anim" in entry and "anim_player_group" in entry :
-		for p in get_tree().get_nodes_in_group(entry.anim_player_group):
-			p.play(entry.anim)		
-
-	if "start" in entry: start_index = current_index
-	if "end" in entry: _end_dialog()
+	
+	if "fork" in entry:
+		if current_index < (dialog.size()-1):
+			current_index += 1 ## Skip past fork labels
+			_spawn()
+			return
+	
+	if "save" in entry:
+		Save.data[dialog_save_key] = current_index
+		start_index = current_index
+		Save.save_game()		
+	
+	if "anim" in entry:
+		if "anim_player_group" in entry :
+			for p in get_tree().get_nodes_in_group(entry.anim_player_group):
+				p.play(entry.anim)		
+	
+	if "start" in entry: 
+		start_index = current_index
+	
+	if "end" in entry: 
+		_end_dialog()
+	
+	if "skip" in entry: 
+		goto(entry.skip)
+		return
+	
+	goto(current_index + 1)
 	
 func _ready():
 

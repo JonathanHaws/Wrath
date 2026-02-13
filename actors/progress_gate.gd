@@ -4,8 +4,10 @@ extends Node
 @export var anim_player: AnimationPlayer
 @export var anim_name_to_play: String
 @export var enable_collision_shape: CollisionShape3D
+@export var run_on_ready: bool = true
+@export var run_on_save_data_changed: bool = true
 
-func _check_and_apply() -> void:
+func _sync_with_save() -> void:
 	if not Save.data.has(save_key): return
 	
 	if enable_collision_shape:
@@ -18,7 +20,5 @@ func _check_and_apply() -> void:
 		node_to_queue_free.queue_free()
 
 func _ready() -> void:
-	_check_and_apply()
-	
-func _physics_process(_delta):
-	_check_and_apply()
+	if run_on_ready: _sync_with_save()
+	if run_on_save_data_changed: Save.save_data_updated.connect(_sync_with_save)

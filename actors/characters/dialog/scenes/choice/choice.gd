@@ -6,7 +6,8 @@ func _on_choice_pressed(choice: Dictionary) -> void:
 	if Controls: Controls.play_input_anim("choice_disabled")
 	_capture_cursor()
 	queue("exited")
-	if "skip" in choice: get_parent().skip_to(choice.skip)
+	if "skip" in choice: 
+		get_parent().goto(choice.skip)
 
 func exit_area() -> void:
 	queue("exited")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://kiuc3ouuqv0h"]
+[gd_scene format=3 uid="uid://kiuc3ouuqv0h"]
 
 [ext_resource type="Script" uid="uid://bb0ulhlrvid4g" path="res://actors/characters/dialog/scenes/say_timed/say_timed.gd" id="1_jnq6s"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_rmwxh"]
@@ -148,16 +148,14 @@ _data = {
 &"RevealText": SubResource("Animation_ya2al")
 }
 
-[node name="Say" type="AnimationPlayer" node_paths=PackedStringArray("label") groups=["destroy_on_skip"]]
+[node name="Say" type="AnimationPlayer" unique_id=582972969 node_paths=PackedStringArray("label") groups=["destroy_on_skip"]]
 root_node = NodePath("Control/Label")
-libraries = {
-&"": SubResource("AnimationLibrary_hvbvu")
-}
-autoplay = "entered"
+libraries/ = SubResource("AnimationLibrary_hvbvu")
+autoplay = &"entered"
 script = ExtResource("1_jnq6s")
 label = NodePath("Control/Label")
 
-[node name="Control" type="Control" parent="." groups=["ui_scalable"]]
+[node name="Control" type="Control" parent="." unique_id=266497294 groups=["ui_scalable"]]
 layout_mode = 3
 anchors_preset = 7
 anchor_left = 0.5
@@ -168,7 +166,8 @@ grow_horizontal = 2
 grow_vertical = 0
 script = ExtResource("2_rmwxh")
 
-[node name="Label" type="Label" parent="Control" groups=["chat"]]
+[node name="Label" type="Label" parent="Control" unique_id=1111516740 groups=["chat"]]
+modulate = Color(1, 1, 1, 0)
 z_index = 10
 layout_mode = 1
 anchors_preset = 7
@@ -191,7 +190,5 @@ text = "EXAMPLE TEXT. "
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="RevealText" type="AnimationPlayer" parent="Control/Label"]
-libraries = {
-&"": SubResource("AnimationLibrary_h7hyr")
-}
+[node name="RevealText" type="AnimationPlayer" parent="Control/Label" unique_id=1040508841]
+libraries/ = SubResource("AnimationLibrary_h7hyr")

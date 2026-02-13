@@ -178,12 +178,14 @@ mouse_filter = 2
 script = ExtResource("2_xbol6")
 
 [node name="Choice1" type="Button" parent="Options" unique_id=2014382057]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_jcgki")
 text = "EXAMPLE CHOICE 1"
 
 [node name="Choice2" type="Button" parent="Options" unique_id=1086979235]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_jcgki")
