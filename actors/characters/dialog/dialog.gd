@@ -118,10 +118,20 @@ func _ready():
 		current_index = int(Save.data[dialog_save_key])
 		start_index = current_index
 
+func _is_dialog_in_tree() -> bool:
+	var dialog_in_tree: Array = get_tree().get_nodes_in_group(dialog_group)
+	if dialog_in_tree.size() == 0: return false
+	if speaker_name != "":
+		for n in dialog_in_tree:
+			if n.is_in_group(speaker_name):
+				return true
+		return false
+	return true 
+	
 func _physics_process(_delta: float) -> void:
 	#print(get_tree().get_nodes_in_group(dialog_group).size())
 	
-	var active := get_tree().get_nodes_in_group(dialog_group).size() > 0 # Poll to see if dialog is active
+	var active: bool = _is_dialog_in_tree() # Poll to see if dialog is active
 	if active and not dialog_active:
 		anim.queue("entered")
 	elif not active and dialog_active:

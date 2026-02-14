@@ -3,8 +3,8 @@ extends Timer
 @export var HIT_SHAPE: Node ## Specifies the node that has 'HEALTH' and 'MAX HEALTH' For trigger hps
 @export var SEQUENTIAL: bool = false
 @export var DELETE_AFTER_PLAY: bool = true ## Remove line from list after playing
-@export var MIN_INTERVAL: float = 3.5 ## Minimum seconds between lines
-@export var MAX_INTERVAL: float = 6.0 ## Maximum seconds between lines
+@export var MIN_INTERVAL: float = 4.5 ## Minimum seconds between lines
+@export var MAX_INTERVAL: float = 8.0 ## Maximum seconds between lines
 @export var FAIL_INTERVAL: float = 0.2 ## Timeout if no line can play
 @export var LINES: Array[String] = [] ## Specifies which dialog fork to go to 
 var index: int = 0
