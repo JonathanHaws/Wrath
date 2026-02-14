@@ -8,7 +8,8 @@ extends Node
 @export_group("Templates") ## Scene templates to spawn specified in dialog JSON file
 @export var dialog_key_map : Array[String] = ["choice", "say", "say_timed"] ## For shortening dialog files. Specify what key should spawn what scene
 @export var dialog_templates: Array[PackedScene] = [] ## Scene templates to spawn / despawn when the last sentence is finished
-@export var dialog_group: String = "dialog" ## Group all instances of templates are added to. 
+@export var dialog_group: String = "dialog" ## Group all instances of templates are added to. Used by other scrips (Such as cutscene skipper) to get rid of them
+@export var speaker_name: String = "" ## Group name... Used for jibberish audio to only apply to this entitys dialog
 
 @export_group("Dialog") ## Control dialog flow with "fork: name", "skip: fork_name", save, start, end
 @export var dialog_file: Resource
@@ -69,7 +70,8 @@ func _spawn(require_in_range = false) -> void:
 		if entry.has(key):
 			var instance = dialog_templates[i].instantiate()
 			instance.info = entry[key]
-			instance.add_to_group(dialog_group)
+			if speaker_name != "": instance.add_to_group(speaker_name)
+			if dialog_group != "": instance.add_to_group(dialog_group)
 			add_child(instance)
 	
 	if "fork" in entry:
