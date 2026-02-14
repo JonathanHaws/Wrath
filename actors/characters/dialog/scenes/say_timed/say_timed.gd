@@ -20,4 +20,6 @@ func _ready():
 func _on_timer_timeout() -> void:
 	queue("time_complete")
 
-	if info.has("sequence"): get_parent()._spawn()
+	var next_entry: Dictionary = get_parent().get_dictionary_for_value(get_parent().index, 0)
+	if next_entry and !next_entry.has("fork"):
+		get_parent()._spawn()

@@ -15,8 +15,8 @@
 [ext_resource type="AudioStream" uid="uid://dejgyyvoucgey" path="res://actors/characters/enemies/sfx/Cry_3.wav" id="15_vfdb2"]
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://actors/characters/enemies/sfx/Despawn.wav" id="16_k2wth"]
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://actors/characters/enemies/sfx/Cry.wav" id="17_cduhd"]
+[ext_resource type="AudioStream" uid="uid://bwybvt3kl681o" path="res://actors/characters/enemies/bosses/sloth/sloth.ogg" id="18_p7qim"]
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://actors/characters/enemies/sfx/Spin.wav" id="18_xrvkg"]
-[ext_resource type="AudioStream" uid="uid://dihsmt30mdqcm" path="res://actors/characters/enemies/bosses/greed/greed.ogg" id="19_skn5v"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="20_6h4tx"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_effects.gd" id="21_u53v8"]
 [ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://actors/characters/enemies/ghosts/ghost_hurt_particles.tscn" id="21_xr0xi"]
@@ -27,6 +27,17 @@
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="26_t4er3"]
 [ext_resource type="PackedScene" uid="uid://dnmftqcmv26ca" path="res://actors/characters/enemies/bosses/sloth/sloth.blend" id="27_dbtmo"]
 [ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="28_muo5h"]
+[ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://actors/characters/dialog/dialog.gd" id="28_v7xtt"]
+[ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://actors/characters/dialog/scenes/choice/choice.tscn" id="29_enj2w"]
+[ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://actors/characters/dialog/scenes/say/say.tscn" id="30_p7qim"]
+[ext_resource type="PackedScene" uid="uid://kiuc3ouuqv0h" path="res://actors/characters/dialog/scenes/say_timed/say_timed.tscn" id="31_cu7wn"]
+[ext_resource type="JSON" path="res://actors/characters/enemies/bosses/sloth/sloth_talk.json" id="32_r1bv5"]
+[ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://actors/characters/dialog/background.tscn" id="33_dvx2e"]
+[ext_resource type="Script" uid="uid://cfvtafc035yyj" path="res://actors/characters/dialog/random_dialog.gd" id="34_oet4f"]
+[ext_resource type="Script" uid="uid://b7r0jqvwugh6i" path="res://actors/characters/dialog/jibberish_chat.gd" id="35_5sj4a"]
+[ext_resource type="AudioStream" uid="uid://b5gb1x1g7p55s" path="res://actors/characters/enemies/bosses/sloth/jibberish/sloth_talk_1.ogg" id="36_p7qim"]
+[ext_resource type="AudioStream" uid="uid://7kxu26go8qp" path="res://actors/characters/enemies/bosses/sloth/jibberish/sloth_talk_2.ogg" id="37_cu7wn"]
+[ext_resource type="AudioStream" uid="uid://jp80imisvaux" path="res://actors/characters/enemies/bosses/sloth/jibberish/sloth_talk_3.ogg" id="38_r1bv5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d0au0"]
 radius = 1.1723633
@@ -79,7 +90,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_x1kl7"]
 resource_name = "DEATH"
-length = 10.0
+length = 20.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -95,10 +106,24 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Audio")
+tracks/1/path = NodePath("Dialog/RandomDialog")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -106,24 +131,10 @@ tracks/1/keys = {
 "method": &"play_2d_sound"
 }]
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"defeated"
-}]
-}
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/LockOn")
+tracks/3/path = NodePath(".")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -131,13 +142,13 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"queue_free"
+"method": &"defeated"
 }]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("CollisionShape3D")
+tracks/4/path = NodePath("Mesh/LockOn")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -151,10 +162,24 @@ tracks/4/keys = {
 tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("CameraEffects")
+tracks/5/path = NodePath("CollisionShape3D")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CameraEffects")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -162,29 +187,17 @@ tracks/5/keys = {
 "method": &"impact"
 }]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0, 0.0666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.0, 0.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/7/interp = 0
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -201,46 +214,58 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Target:USE_GRAVITY")
-tracks/9/interp = 1
+tracks/9/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/9/interp = 0
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.0]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("HitShape/CollisionShape3D:disabled")
+tracks/10/path = NodePath("Target:USE_GRAVITY")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Ui:modulate")
+tracks/11/path = NodePath("HitShape/CollisionShape3D:disabled")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Ui:modulate")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0, 1.43333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/12/type = "method"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("WispReward")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("WispReward")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
 "times": PackedFloat32Array(2.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -248,79 +273,93 @@ tracks/12/keys = {
 "method": &"give"
 }]
 }
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Light:light_energy")
-tracks/13/interp = 2
-tracks/13/loop_wrap = true
-tracks/13/keys = {
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Light:light_energy")
+tracks/14/interp = 2
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(0.4, 2.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [20.0, 0.0]
 }
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Target:MOVE_AND_SLIDE")
-tracks/14/interp = 0
-tracks/14/loop_wrap = true
-tracks/14/keys = {
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/15/interp = 0
+tracks/15/loop_wrap = true
+tracks/15/keys = {
 "times": PackedFloat32Array(0, 3.56667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("CollisionShape3D:disabled")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CollisionShape3D:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
 "times": PackedFloat32Array(0, 4.06667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/16/type = "method"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath(".")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
-"times": PackedFloat32Array(9.93333),
+tracks/17/type = "method"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath(".")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(18.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
 }]
 }
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/1:shader_parameter/dissolve_amount")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/1:shader_parameter/dissolve_amount")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
 "times": PackedFloat32Array(0, 0.8333333, 2.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 1.0]
 }
-tracks/18/type = "value"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/0:albedo_color")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
+tracks/19/type = "value"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/0:albedo_color")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
 "times": PackedFloat32Array(0.39999962, 2.2666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.52, 0.52, 0.52, 1), Color(0.52, 0.52, 0.52, 0)]
+}
+tracks/20/type = "method"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Dialog")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(7.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["death"],
+"method": &"_spawn_fork"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
@@ -460,6 +499,20 @@ tracks/7/keys = {
 }, {
 "args": [],
 "method": &"spawn"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Dialog/RandomDialog")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(2.6666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"start"
 }]
 }
 
@@ -606,12 +659,12 @@ _data = {
 &"RESET": SubResource("Animation_jojdm")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dbtmo"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s1us2"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_muo5h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sdqgv"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("25_vjg2k")
@@ -634,6 +687,48 @@ shader_parameter/enabled_normal = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wbwgn"]
 size = Vector3(23.4119, 15.2804, 40.1915)
+
+[sub_resource type="Animation" id="Animation_v7xtt"]
+resource_name = "entered"
+length = 0.333337
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dialog/Background")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"entered"],
+"method": &"queue"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_enj2w"]
+resource_name = "exited"
+length = 0.333337
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Dialog/Background")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"exited"],
+"method": &"queue"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p7qim"]
+_data = {
+&"entered": SubResource("Animation_v7xtt"),
+&"exited": SubResource("Animation_enj2w")
+}
 
 [node name="Sloth" type="CharacterBody3D" unique_id=1434777009 node_paths=PackedStringArray("TARGET", "ANIM")]
 collision_layer = 8
@@ -696,12 +791,12 @@ script = ExtResource("20_6h4tx")
 IMMUNE_GROUPS = Array[String](["greed"])
 HEALTH = 100000.0
 MAX_HEALTH = 100000.0
-USE_WAVE_HEALTH_BAR = true
-WAVE_DAMAGE = 10000.0
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
 DAMAGE_NUMBERS = ExtResource("7_dbtmo")
+USE_WAVE_HEALTH_BAR = true
+WAVE_DAMAGE = 10000.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=324219729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12337458, 2.49679, 0)
@@ -717,7 +812,7 @@ bus = &"SFX"
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio" unique_id=1114397140]
 process_mode = 3
-stream = ExtResource("19_skn5v")
+stream = ExtResource("18_p7qim")
 bus = &"Music"
 parameters/looping = true
 
@@ -775,8 +870,8 @@ secondary_limit_angle = 0.87266463
 secondary_damp_threshold = 1.0
 
 [node name="Sphere_001" parent="Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2146499300, 1751786890) index="1" unique_id=1498387284]
-surface_material_override/0 = SubResource("StandardMaterial3D_dbtmo")
-surface_material_override/1 = SubResource("ShaderMaterial_muo5h")
+surface_material_override/0 = SubResource("StandardMaterial3D_s1us2")
+surface_material_override/1 = SubResource("ShaderMaterial_sdqgv")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh" unique_id=345657186]
 
@@ -811,6 +906,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29153e-06, 1.7507273, 3.29
 script = ExtResource("23_8fqfx")
 scenes = Array[PackedScene]([ExtResource("28_muo5h")])
 add_to_scene_root = true
+
+[node name="Dialog" type="AnimationPlayer" parent="." unique_id=2123824749 node_paths=PackedStringArray("anim")]
+libraries/ = SubResource("AnimationLibrary_p7qim")
+script = ExtResource("28_v7xtt")
+anim = NodePath(".")
+dialog_templates = Array[PackedScene]([ExtResource("29_enj2w"), ExtResource("30_p7qim"), ExtResource("31_cu7wn")])
+speaker_name = "pig"
+dialog_file = ExtResource("32_r1bv5")
+
+[node name="Background" parent="Dialog" unique_id=1330511380 instance=ExtResource("33_dvx2e")]
+autoplay = &"RESET"
+
+[node name="RandomDialog" type="Timer" parent="Dialog" unique_id=12206923 node_paths=PackedStringArray("DIALOG")]
+script = ExtResource("34_oet4f")
+DIALOG = NodePath("..")
+LINES = Array[String](["random_taunt_1", "random_taunt_2", "random_taunt_3", "random_taunt_4"])
+
+[node name="Jibberish" type="AudioStreamPlayer" parent="Dialog" unique_id=1415043008 node_paths=PackedStringArray("player")]
+process_mode = 3
+bus = &"SFX"
+script = ExtResource("35_5sj4a")
+player = NodePath(".")
+sounds = Array[AudioStream]([ExtResource("36_p7qim"), ExtResource("37_cu7wn"), ExtResource("38_r1bv5")])
+speaker_group = "pig"
 
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
 

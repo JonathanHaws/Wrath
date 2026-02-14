@@ -25,28 +25,28 @@
 		{"end": 1},
 	
 	{"fork": "random_taunt_1"},
-		{"say_timed": {"say": "YOU THINK YOU CAN STEAL FROM ME?", "for": 2.5, "sequence": 0}},
+		{"say_timed": {"say": "YOU THINK YOU CAN STEAL FROM ME?", "for": 2.5}},
 		{"say_timed": {"say": "AND GET AWAY WITH IT", "for": 2.5}},
 
 	{"fork": "random_taunt_2"},
-		{"say_timed": {"say": "YOU THINK YOU CAN", "for": 2.5, "sequence": 1}},
-		{"say_timed": {"say": "SURVIVE THIS WORLD BEING POOR?", "for": 2.5, "sequence": 1}},
-		{"say_timed": {"say": "YOU CANT.", "for": 2.75, "sequence": 1}},
-		{"say_timed": {"say": "AND SO EVERYTHING WIL BE MINE", "for": 2.75, "sequence": 1}},
-		{"say_timed": {"say": "MINE", "for": 0.5, "sequence": 1}},
-		{"say_timed": {"say": "MINE", "for": 0.5, "sequence": 1}},
-		{"say_timed": {"say": "MINE", "for": 0.5, "sequence": 1}},
+		{"say_timed": {"say": "YOU THINK YOU CAN", "for": 2.5}},
+		{"say_timed": {"say": "SURVIVE THIS WORLD BEING POOR?", "for": 2.5}},
+		{"say_timed": {"say": "YOU CANT.", "for": 2.75}},
+		{"say_timed": {"say": "AND SO EVERYTHING WIL BE MINE", "for": 2.75}},
+		{"say_timed": {"say": "MINE", "for": 0.5}},
+		{"say_timed": {"say": "MINE", "for": 0.5}},
+		{"say_timed": {"say": "MINE", "for": 0.5}},
 		{"say_timed": {"say": "MINE!", "for": 0.5}},
 
 	{"fork": "random_taunt_3"},
-		{"say_timed": {"say": "EMPTY YOUR POCKETS AND PAY TRIBUTE", "for": 2.5, "sequence": 0}},
+		{"say_timed": {"say": "EMPTY YOUR POCKETS AND PAY TRIBUTE", "for": 2.5}},
 		{"say_timed": {"say": "I NOW OWN YOUR SOUL", "for": 2.5}},
 
 	{"fork": "random_taunt_4"},
 		{"say_timed": {"say": "THINK THIS IS A CHARITY?", "for": 2.5}},
 
 	{"fork": "death"},
-		{"say_timed": {"say": "YOU DONT GET IT DO YOU?", "for": 3.0, "sequence": 1}},
+		{"say_timed": {"say": "YOU DONT GET IT DO YOU?", "for": 3.0}},
 		{"say_timed": {"say": "YOU POOR POOR SOUL.", "for": 3.0}}
 
 	

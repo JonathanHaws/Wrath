@@ -1,0 +1,29 @@
+[
+	{"fork": "random_taunt_1"},
+		{"say_timed": {"say": "YOU LOOK TIRED ALREADY", "for": 2.5}},
+		{"say_timed": {"say": "SO MUCH FOR THIS SO CALLED ENDURANCE. ", "for": 2.5}},
+
+	{"fork": "random_taunt_2"},
+		{"say_timed": {"say": "GO AHEAD", "for": 2.5}},
+		{"say_timed": {"say": "WEAR YOURSELF OUT ", "for": 2.5}},
+
+	{"fork": "random_taunt_3"},
+		{"say_timed": {"say": "YOUR A SLAVE", "for": 2.5}},
+		{"say_timed": {"say": "TO A CAUSE YOU DIDNT EVEN CHOOSE.", "for": 2.5}},
+		{"say_timed": {"say": "EXPLAIN HOW ITS LAZY", "for": 2.5}},
+		{"say_timed": {"say": "TO REJECT AND AVOID SUCH A CIRCUMSTANCE", "for": 2.5}},
+		
+	{"fork": "random_taunt_4"},
+		{"say_timed": {"say": "YOU THINK YOUR THE FIRST PRETENDER?", "for": 2.5}},
+		{"say_timed": {"say": "TO HAVE AMBITION", "for": 2.5}},
+		{"say_timed": {"say": "AND MOTIVATION", "for": 2.5}},
+		{"say_timed": {"say": "AND DILLIGENCE", "for": 3.2}},
+		{"say_timed": {"say": "YOULL COME  TO LEARN THAT NOTHING LASTS", "for": 4.0}},		
+		{"say_timed": {"say": "THE WORLD IS FULL OF RUINS", "for": 4.0}},	
+		{"say_timed": {"say": "FROM THOSE WHO THOUGHT THEMSELVES ETERNAL", "for": 4.0}},	
+
+	{"fork": "death"},
+		{"say_timed": {"say": "ALL YOUR EFFORT.", "for": 3.0}},
+		{"say_timed": {"say": "TO GET NOWHERE...", "for": 3.0}}
+	
+]

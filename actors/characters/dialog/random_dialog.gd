@@ -39,7 +39,7 @@ func _on_timeout() -> void:
 	DIALOG._spawn_fork(LINES[index])		
 	#print(entry)
 	
-	var fork_time = get_fork_time(DIALOG.current_index)
+	var fork_time = get_fork_time(DIALOG.index)
 	_set_random_wait(fork_time)
 
 	if DELETE_AFTER_PLAY: if index < LINES.size(): LINES.remove_at(index)

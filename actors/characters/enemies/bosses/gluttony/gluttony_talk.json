@@ -1,21 +1,21 @@
 [
 	{"fork": "random_taunt_1"},
-		{"say_timed": {"say": "THIS HUNGER.", "for": 2.5, "sequence": 0}},
+		{"say_timed": {"say": "THIS HUNGER.", "for": 2.5}},
 		{"say_timed": {"say": "COME HERE", "for": 2.5}},
 
 	{"fork": "random_taunt_2"},
-		{"say_timed": {"say": "BLOOD. ", "for": 1.0, "sequence": 0}},
-		{"say_timed": {"say": "BONE. ", "for": 1.0, "sequence": 0}},
-		{"say_timed": {"say": "MEAT. ", "for": 1.0, "sequence": 0}},
-		{"say_timed": {"say": "FLESH. ", "for": 1.0, "sequence": 0}},
+		{"say_timed": {"say": "BLOOD. ", "for": 1.0}},
+		{"say_timed": {"say": "BONE. ", "for": 1.0}},
+		{"say_timed": {"say": "MEAT. ", "for": 1.0}},
+		{"say_timed": {"say": "FLESH. ", "for": 1.0}},
 		{"say_timed": {"say": "BRING IT HERE", "for": 2.5}},
 
 	{"fork": "random_taunt_3"},
-		{"say_timed": {"say": "I NEED MORE ", "for": 2.5, "sequence": 0}},
+		{"say_timed": {"say": "I NEED MORE ", "for": 2.5}},
 		{"say_timed": {"say": "I NEEEEED MORE!", "for": 2.5}},
 
 	{"fork": "death"},
-		{"say_timed": {"say": "LIVING IS EATING...", "for": 3.0, "sequence": 1}},
+		{"say_timed": {"say": "LIVING IS EATING...", "for": 3.0}},
 		{"say_timed": {"say": "DO YOU NOT KNOW THAT?", "for": 3.0}}
 	
 ]
