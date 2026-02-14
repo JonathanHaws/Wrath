@@ -535,6 +535,18 @@ tracks/8/keys = {
 "method": &"start"
 }]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Mesh/Greed/Rig/Skeleton3D/LookAtModifier3D:influence")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 2.07, 2.45),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_mmykl"]
 resource_name = "KNEEL"
@@ -693,6 +705,18 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/Greed/Rig/Skeleton3D/LookAtModifier3D:influence")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_3l2yv"]
 resource_name = "LUNGE_ATTACK_COMBO"
@@ -759,6 +783,18 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0.625)
 }
 tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/Greed/Rig/Skeleton3D/LookAtModifier3D:influence")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_jojdm"]
 length = 0.001
@@ -978,6 +1014,18 @@ tracks/17/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Mesh/Greed/Rig/Skeleton3D/LookAtModifier3D:influence")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_clfu5"]
 resource_name = "RUN"
@@ -1009,7 +1057,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_br41q"]
 resource_name = "SLAM_ATTACK"
-length = 1.91667
+length = 1.9166666
 step = 0.0416667
 tracks/0/type = "animation"
 tracks/0/imported = false
@@ -1112,6 +1160,18 @@ tracks/7/keys = {
 "method": &"impact"
 }]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Mesh/Greed/Rig/Skeleton3D/LookAtModifier3D:influence")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.625, 1.3333334, 1.7083334, 1.9166666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_ek3tb"]
 resource_name = "Spin"
@@ -1178,6 +1238,18 @@ tracks/4/keys = {
 "times": PackedFloat32Array(1.12683)
 }
 tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/Greed/Rig/Skeleton3D/LookAtModifier3D:influence")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
@@ -1502,40 +1574,40 @@ SCENE_ROOT = NodePath("..")
 [node name="Greed" parent="Mesh" unique_id=2091101555 instance=ExtResource("17_cq6fp")]
 
 [node name="Skeleton3D" parent="Mesh/Greed/Rig" parent_id_path=PackedInt32Array(2091101555, 994402057) index="0" unique_id=801742663]
-bones/1/position = Vector3(1.4825952e-07, 1.2201675, -0.9818785)
-bones/1/rotation = Quaternion(-0.8129902, -4.3215515e-08, -6.24195e-08, 0.5822774)
-bones/2/position = Vector3(0.31877697, -0.06666427, -0.0106261885)
-bones/2/rotation = Quaternion(0.9957268, 0.014968841, -0.0008333938, 0.091122754)
-bones/3/rotation = Quaternion(0.92070943, 0.009610231, -0.0014610213, 0.390128)
-bones/4/rotation = Quaternion(-0.24492635, 0.009878923, 0.013544923, 0.96939677)
-bones/5/rotation = Quaternion(0.18999322, -0.0065141623, 0.03934441, 0.9809751)
-bones/6/rotation = Quaternion(0.23214084, -2.1515206e-11, 5.890363e-10, 0.97268224)
-bones/7/rotation = Quaternion(0.08423108, 0.09489699, -0.98369265, 0.12746978)
-bones/8/rotation = Quaternion(0.14307095, -0.1753151, -0.017189633, 0.9739097)
-bones/9/rotation = Quaternion(0.09713818, 0.012289273, -0.053299136, 0.9937667)
-bones/10/rotation = Quaternion(-0.024474995, 8.943351e-09, -0.035991468, 0.99905235)
-bones/12/rotation = Quaternion(-0.10510508, -3.1987316e-11, -2.5488245e-10, 0.9944611)
-bones/13/position = Vector3(-0.4888677, 1.4355079, -0.009695648)
-bones/13/rotation = Quaternion(0.006957895, -0.06750378, 0.9897341, 0.12578279)
-bones/14/rotation = Quaternion(0.09066069, 0.023417765, 0.02890959, 0.99518675)
-bones/15/rotation = Quaternion(0.11003294, -0.006083277, -0.0931645, 0.9895333)
-bones/16/rotation = Quaternion(-0.02447499, -5.5463856e-09, 0.035991475, 0.99905235)
-bones/17/position = Vector3(-0.0001620068, 0.33930945, -0.32458934)
-bones/17/rotation = Quaternion(0.765907, 0.21774045, -0.5986672, -0.08702349)
-bones/18/rotation = Quaternion(-0.09246462, 0.17340854, -0.5951083, 0.77924716)
-bones/19/rotation = Quaternion(-0.42650658, 0.04670116, 0.03695732, 0.90252167)
-bones/20/rotation = Quaternion(-0.39865866, -0.027954789, -0.049147397, 0.9153548)
-bones/21/rotation = Quaternion(-0.35566005, 0.010927228, 0.0021017722, 0.9345493)
-bones/22/rotation = Quaternion(0.9957248, -0.014968825, 0.0008337221, 0.0911446)
-bones/23/rotation = Quaternion(0.91264355, -0.009322703, 0.0011058621, 0.40864843)
-bones/24/rotation = Quaternion(-0.24492635, -0.009878925, -0.013544919, 0.96939677)
-bones/25/rotation = Quaternion(0.18999322, 0.006514166, -0.03934441, 0.9809751)
+bones/1/position = Vector3(0.017495556, -0.04491006, -1.4791602)
+bones/1/rotation = Quaternion(0.037042856, 0.0005393224, -0.026877852, 0.99895203)
+bones/2/position = Vector3(0.31877676, -0.06666407, -0.01062624)
+bones/2/rotation = Quaternion(0.7818581, 0.2197707, 0.13333528, 0.5679971)
+bones/3/rotation = Quaternion(0.6241944, -0.05737709, 0.03249141, 0.77848166)
+bones/4/rotation = Quaternion(-0.5978823, 0.06705043, -0.0071842102, 0.7987424)
+bones/5/rotation = Quaternion(0.3703287, -0.06939666, 0.04014093, 0.9254347)
+bones/6/rotation = Quaternion(0.0126308855, -0.002685439, 0.04205028, 0.999032)
+bones/7/rotation = Quaternion(0.57296836, -0.22877376, -0.6033328, 0.505331)
+bones/8/rotation = Quaternion(0.08765855, -0.107701145, 0.6749335, 0.72469395)
+bones/9/rotation = Quaternion(0.01799231, -0.20269921, -0.1360004, 0.96958405)
+bones/10/rotation = Quaternion(0.08255323, 0.0136739705, 0.101979055, 0.991261)
+bones/12/rotation = Quaternion(-0.52829134, 0.04331378, -0.00026773804, 0.8479576)
+bones/13/position = Vector3(-0.4888676, 1.4355069, -0.00969547)
+bones/13/rotation = Quaternion(0.57540464, 0.2004894, 0.5343746, 0.58579636)
+bones/14/rotation = Quaternion(-0.08584767, 0.056875758, -0.6279728, 0.771392)
+bones/15/rotation = Quaternion(0.08970202, 0.21583042, 0.16845691, 0.95759755)
+bones/16/rotation = Quaternion(-0.17971794, -0.23229714, -0.20621696, 0.9333885)
+bones/17/position = Vector3(0.0041475473, -0.2436113, -0.1499595)
+bones/17/rotation = Quaternion(0.77501, 0.036739796, -0.6134517, 0.14726424)
+bones/18/rotation = Quaternion(0.077245496, 0.074701354, 0.10129191, 0.9890364)
+bones/19/rotation = Quaternion(0.1445097, -0.55156195, -0.079318576, 0.8176827)
+bones/20/rotation = Quaternion(0.09098365, -0.034870077, -0.119435735, 0.98804915)
+bones/21/rotation = Quaternion(-0.050623316, 0.15241869, -0.09474844, 0.9824605)
+bones/22/rotation = Quaternion(0.7824521, -0.11775331, 0.12862703, 0.59779423)
+bones/23/rotation = Quaternion(0.6453335, -0.026181178, 0.0547352, 0.76148754)
+bones/24/rotation = Quaternion(-0.6613445, 0.011562365, -0.077535875, 0.7459745)
+bones/25/rotation = Quaternion(0.2910924, -0.06427064, 0.0026500179, 0.95453)
 
 [node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" index="0" unique_id=2077430949]
 material_override = ExtResource("27_mmykl")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1" unique_id=771742600]
-transform = Transform3D(1, 6.1062266e-15, 2.5153333e-09, 3.5302972e-10, 0.99010193, -0.14034882, -2.49042e-09, 0.14034882, 0.99010193, -2.8345792e-14, 1.925269, 0.8994103)
+transform = Transform3D(0.9995144, -0.030456156, -0.006578862, -0.009562895, -0.098894335, -0.99505174, 0.02965484, 0.9946315, -0.09913757, 0.07104275, 1.4054456, 0.9473437)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1548,7 +1620,7 @@ shape = SubResource("BoxShape3D_jx80p")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2" unique_id=536316727]
-transform = Transform3D(1, 6.1062266e-15, 2.5153333e-09, 3.5302972e-10, 0.99010193, -0.14034882, -2.49042e-09, 0.14034882, 0.99010193, -2.8345792e-14, 1.925269, 0.8994103)
+transform = Transform3D(0.9995144, -0.030456156, -0.006578862, -0.009562895, -0.098894335, -0.99505174, 0.02965484, 0.9946315, -0.09913757, 0.07104275, 1.4054456, 0.9473437)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1564,7 +1636,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3" unique_id=148533984]
-transform = Transform3D(1, 6.1062266e-15, 2.5153333e-09, 3.5302972e-10, 0.99010193, -0.14034882, -2.49042e-09, 0.14034882, 0.99010193, -2.8345792e-14, 1.925269, 0.8994103)
+transform = Transform3D(0.9995144, -0.030456156, -0.006578862, -0.009562895, -0.098894335, -0.99505174, 0.02965484, 0.9946315, -0.09913757, 0.07104275, 1.4054456, 0.9473437)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1580,7 +1652,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4" unique_id=1460152811]
-transform = Transform3D(-0.99464923, 0.07129193, 0.0747674, -0.059293628, -0.9866078, 0.15194874, 0.0845988, 0.14670241, 0.9855559, 0.96376646, 1.3182056, 0.9401673)
+transform = Transform3D(-0.27885178, -0.3101374, -0.90887624, -0.6914499, -0.5919385, 0.41413143, -0.6664367, 0.743924, -0.04938133, 0.57622683, -0.29178402, 2.928234)
 bone_name = "hand_l"
 bone_idx = 10
 
@@ -1597,7 +1669,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5" unique_id=1317980976]
-transform = Transform3D(-0.9517741, -0.30282694, 0.049209945, 0.3058021, -0.94931865, 0.07265019, 0.024715517, 0.08419502, 0.9961424, -1.0483799, 1.3322405, 0.88215727)
+transform = Transform3D(0.52592266, -0.087045535, 0.8460662, 0.7335965, -0.4569501, -0.5030228, 0.43039602, 0.8852227, -0.17646408, -0.6729551, -0.32374346, 3.0021071)
 bone_name = "hand_r"
 bone_idx = 16
 
@@ -1677,6 +1749,7 @@ HIT_SHAPE = NodePath("../../HitShape")
 LINES = Array[String](["random_taunt_1", "random_taunt_2", "random_taunt_3", "random_taunt_4"])
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dialogue" unique_id=1816978811 node_paths=PackedStringArray("player")]
+process_mode = 3
 bus = &"SFX"
 script = ExtResource("36_po183")
 sounds = Array[AudioStream]([ExtResource("37_pscvx")])
