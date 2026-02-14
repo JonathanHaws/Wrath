@@ -37,6 +37,9 @@ func _end_dialog() -> void:
 	index = start_index
 	for child in get_children(): if child.has_method("exit_area"): child.exit_area()
 
+func purge_dialog() -> void:
+	for node in get_tree().get_nodes_in_group(dialog_group): node.queue_free()
+
 func get_index_for_value(value: Variant) -> int:
 	var idx = index
 	if value is String:
@@ -62,6 +65,7 @@ func _spawn_fork(value: Variant) -> void:
 	_spawn()
 
 func _spawn(require_in_range = false) -> void:
+	purge_dialog()
 	if require_in_range and not in_range: return
 	entry = dialog[index]	
 	

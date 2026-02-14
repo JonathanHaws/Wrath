@@ -1,0 +1,23 @@
+[
+	{"fork": "random_taunt_1"},
+		{"say_timed": {"say": "THEY DONT DESERVE MERCY.", "for": 2.5}},
+		{"say_timed": {"say": "THEM WHO TRAPPED US HERE", "for": 2.5}},
+		{"say_timed": {"say": "I HOPE THEY CHOKE AND SUFFER", "for": 2.5}},
+
+	{"fork": "random_taunt_2"},
+		{"say_timed": {"say": "YOU THINK YOUR BETTER THEN ME", "for": 2.5}},
+		{"say_timed": {"say": "WITH YOUR PATIENCE", "for": 2.5}},
+		{"say_timed": {"say": "YOU ENABLE THERE SIN", "for": 2.5}},
+
+	{"fork": "random_taunt_4"},
+		{"say_timed": {"say": "YOU THINK YOUR THE FIRST PRETENDER?", "for": 2.5}},
+		{"say_timed": {"say": "TO HAVE AMBITION", "for": 2.5}},
+		{"say_timed": {"say": "AND MOTIVATION", "for": 2.5}},
+		{"say_timed": {"say": "AND DILLIGENCE", "for": 3.2}},
+
+	{"fork": "death"},
+		{"say_timed": {"say": "I REGRET NOTHING", "for": 3.0}},
+		{"say_timed": {"say": "AND DID NOTHING WRONG", "for": 3.0}},
+		{"say_timed": {"say": "KILL THEM ALL.", "for": 3.0}}
+	
+]
