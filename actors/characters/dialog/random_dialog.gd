@@ -8,6 +8,8 @@ extends Timer
 @export var FAIL_INTERVAL: float = 0.2 ## Timeout if no line can play
 @export var LINES: Array[String] = [] ## Specifies which dialog fork to go to 
 var index: int = 0
+## Potential cool feature is save dialog so it only ever happens once
+
 
 func get_fork_time(start_index: int) -> float:
 	var total: float = 0.0

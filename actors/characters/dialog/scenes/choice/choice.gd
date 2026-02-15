@@ -1,6 +1,7 @@
 extends AnimationPlayer
 var info: Array = []
 @export var disable_actions := ["controller_forward", "controller_left", "controller_right", "controller_back"]
+## ADD option to save choices as already explored so omit them... Or to point out how odd it is your asking the same question again
 
 func _on_choice_pressed(choice: Dictionary) -> void:
 	if Controls: Controls.play_input_anim("choice_disabled")

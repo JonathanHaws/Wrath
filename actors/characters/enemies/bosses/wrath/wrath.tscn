@@ -38,6 +38,8 @@
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://actors/characters/dialog/background.tscn" id="36_whtie"]
 [ext_resource type="Script" uid="uid://cfvtafc035yyj" path="res://actors/characters/dialog/random_dialog.gd" id="37_1oiqt"]
 [ext_resource type="Script" uid="uid://b7r0jqvwugh6i" path="res://actors/characters/dialog/jibberish_chat.gd" id="38_tibrq"]
+[ext_resource type="AudioStream" uid="uid://cd22utnwcjyte" path="res://actors/characters/enemies/bosses/wrath/wrath_talk_1.ogg" id="39_1lgf5"]
+[ext_resource type="AudioStream" uid="uid://dh57adewocuhf" path="res://actors/characters/enemies/bosses/wrath/wrath_talk_2.ogg" id="40_5u627"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pmn43"]
 radius = 0.823
@@ -1657,10 +1659,11 @@ LINES = Array[String](["random_taunt_1", "random_taunt_2", "random_taunt_3", "ra
 
 [node name="Jibberish" type="AudioStreamPlayer" parent="Dialog" unique_id=206644804 node_paths=PackedStringArray("player")]
 process_mode = 3
+volume_db = 3.0
 bus = &"SFX"
 script = ExtResource("38_tibrq")
 player = NodePath(".")
-sounds = Array[AudioStream]([ExtResource("12_kqq76"), ExtResource("19_ewgrb"), null])
+sounds = Array[AudioStream]([ExtResource("39_1lgf5"), ExtResource("40_5u627")])
 speaker_group = "pig"
 
 [connection signal="body_entered" from="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" to="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" method="_on_body_entered"]
