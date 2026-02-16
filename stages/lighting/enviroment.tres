@@ -18,6 +18,7 @@ process_mode = 2
 
 [resource]
 background_mode = 2
+background_energy_multiplier = 0.7
 sky = SubResource("Sky_clymx")
 reflected_light_source = 2
 tonemap_mode = 2
