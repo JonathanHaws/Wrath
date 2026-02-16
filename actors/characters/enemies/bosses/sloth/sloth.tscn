@@ -796,7 +796,7 @@ HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
 DAMAGE_NUMBERS = ExtResource("7_dbtmo")
 USE_WAVE_HEALTH_BAR = true
-WAVE_DAMAGE = 10000.0
+WAVE_DAMAGE = 1200.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=324219729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12337458, 2.49679, 0)

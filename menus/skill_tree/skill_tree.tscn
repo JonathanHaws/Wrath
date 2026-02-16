@@ -496,11 +496,12 @@ script = ExtResource("5_n1vdw")
 cost = 0
 upgrade_key = "max_health"
 new_amount = 20.0
+save_key = "root_skill"
 description = "Aquire Skills"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Health" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=989286291 node_paths=PackedStringArray("preeq_node")]
+[node name="Health1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=989286291 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = -166.0
 offset_top = -145.0
@@ -513,12 +514,13 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_health"
 new_amount = 20.0
-preeq_node = NodePath("../Healing1")
+save_key = "health_skill"
+prerequisite_node = NodePath("../Healing1")
 description = "Increases health to 20"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Health2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=617741630 node_paths=PackedStringArray("preeq_node")]
+[node name="Health2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=617741630 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = -50.0
 offset_top = -146.0
@@ -531,12 +533,13 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_health"
 new_amount = 25.0
-preeq_node = NodePath("../Health")
+save_key = "health_2_skill"
+prerequisite_node = NodePath("../Health1")
 description = "Increases health to 25"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Health3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1530933580 node_paths=PackedStringArray("preeq_node")]
+[node name="Health3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1530933580 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 68.0
 offset_top = -148.0
@@ -549,12 +552,13 @@ script = ExtResource("5_n1vdw")
 cost = 20
 upgrade_key = "max_health"
 new_amount = 30.0
-preeq_node = NodePath("../Health2")
+save_key = "health_3_skill"
+prerequisite_node = NodePath("../Health2")
 description = "Increases health to 30"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Health4" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=418795439 node_paths=PackedStringArray("preeq_node")]
+[node name="Health4" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=418795439 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 180.0
 offset_top = -148.0
@@ -567,12 +571,13 @@ script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "max_health"
 new_amount = 40.0
-preeq_node = NodePath("../Health3")
+save_key = "health_4_skill"
+prerequisite_node = NodePath("../Health3")
 description = "Increases health to 40"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Health5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1076724308 node_paths=PackedStringArray("preeq_node")]
+[node name="Health5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1076724308 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 300.0
 offset_top = -147.0
@@ -585,12 +590,13 @@ script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "max_health"
 new_amount = 50.0
-preeq_node = NodePath("../Health4")
+save_key = "health_5_skill"
+prerequisite_node = NodePath("../Health4")
 description = "Increases health to 50"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Damage" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=696502459 node_paths=PackedStringArray("preeq_node")]
+[node name="Damage1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=696502459 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = -234.0
 offset_top = -49.0
@@ -603,12 +609,13 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "damage"
 new_amount = 75.0
-preeq_node = NodePath("../Root")
+save_key = "damage_1_skill"
+prerequisite_node = NodePath("../Root")
 description = "Increases damage to 75"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Damage 2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1434864100 node_paths=PackedStringArray("preeq_node")]
+[node name="Damage2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1434864100 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = -111.0
 offset_top = -52.0
@@ -621,12 +628,13 @@ script = ExtResource("5_n1vdw")
 cost = 20
 upgrade_key = "damage"
 new_amount = 100.0
-preeq_node = NodePath("../Damage")
+save_key = "damage_2_skill"
+prerequisite_node = NodePath("../Damage1")
 description = "Increases damage to 100"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Damage 3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1358661405 node_paths=PackedStringArray("preeq_node")]
+[node name="Damage3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1358661405 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 13.0
 offset_top = -53.0
@@ -639,12 +647,13 @@ script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "damage"
 new_amount = 150.0
-preeq_node = NodePath("../Damage 2")
+save_key = "damage_3_skill"
+prerequisite_node = NodePath("../Damage2")
 description = "Increases damage to 150"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Damage 4" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=2099494119 node_paths=PackedStringArray("preeq_node")]
+[node name="Damage4" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=2099494119 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 131.0
 offset_top = -55.0
@@ -657,12 +666,13 @@ script = ExtResource("5_n1vdw")
 cost = 40
 upgrade_key = "damage"
 new_amount = 200.0
-preeq_node = NodePath("../Damage 3")
+save_key = "damage_4_skill"
+prerequisite_node = NodePath("../Damage3")
 description = "Increases damage to 200"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Damage 5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=393665130 node_paths=PackedStringArray("preeq_node")]
+[node name="Damage5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=393665130 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 251.0
 offset_top = -55.0
@@ -675,12 +685,13 @@ script = ExtResource("5_n1vdw")
 cost = 50
 upgrade_key = "damage"
 new_amount = 250.0
-preeq_node = NodePath("../Damage 4")
+save_key = "damage_5_skill"
+prerequisite_node = NodePath("../Damage4")
 description = "Increases damage to 250"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Stamina" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1769906788 node_paths=PackedStringArray("preeq_node")]
+[node name="Stamina1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1769906788 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = -287.0
 offset_top = 45.0
@@ -693,12 +704,13 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_stamina"
 new_amount = 14.0
-preeq_node = NodePath("../Root")
+save_key = "stamina_1_skill"
+prerequisite_node = NodePath("../Root")
 description = "Increases consecutive spins to 2"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Stamina 2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=195302398 node_paths=PackedStringArray("preeq_node")]
+[node name="Stamina2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=195302398 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = -165.0
 offset_top = 45.0
@@ -711,12 +723,13 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_stamina"
 new_amount = 18.0
-preeq_node = NodePath("../Stamina")
+save_key = "stamiina_2_skill"
+prerequisite_node = NodePath("../Stamina1")
 description = "Increases consecutive spins to 3"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Stamina 3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1590350321 node_paths=PackedStringArray("preeq_node")]
+[node name="Stamina3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1590350321 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = -40.0
 offset_top = 44.0
@@ -729,12 +742,13 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_stamina"
 new_amount = 22.0
-preeq_node = NodePath("../Stamina 2")
+save_key = "stamina_3_skill"
+prerequisite_node = NodePath("../Stamina2")
 description = "Increases consecutive spins to 4"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Stamina 4" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=141627404 node_paths=PackedStringArray("preeq_node")]
+[node name="Stamina4" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=141627404 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 84.0
 offset_top = 45.0
@@ -747,12 +761,13 @@ script = ExtResource("5_n1vdw")
 cost = 20
 upgrade_key = "max_stamina"
 new_amount = 26.0
-preeq_node = NodePath("../Stamina 3")
+save_key = "stamina_4_skill"
+prerequisite_node = NodePath("../Stamina3")
 description = "Increases consecutive spins to 5"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Stamina 5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1055730430 node_paths=PackedStringArray("preeq_node")]
+[node name="Stamina5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1055730430 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 205.0
 offset_top = 48.0
@@ -765,12 +780,13 @@ script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "max_stamina"
 new_amount = 30.0
-preeq_node = NodePath("../Stamina 4")
+save_key = "stamina_5_skill"
+prerequisite_node = NodePath("../Stamina4")
 description = "Increases consecutive spins to 6"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Heal1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1421657066 node_paths=PackedStringArray("preeq_node")]
+[node name="Heal1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1421657066 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 11.0
 offset_top = -240.0
@@ -783,12 +799,13 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "heal_amount"
 new_amount = 10.0
-preeq_node = NodePath("../Healing3")
+save_key = "heal_1_skill"
+prerequisite_node = NodePath("../Healing3")
 description = "Grants acess to 2 heal charges"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Heal2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1222075329 node_paths=PackedStringArray("preeq_node")]
+[node name="Heal2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1222075329 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 120.0
 offset_top = -241.0
@@ -801,12 +818,13 @@ script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "heal_amount"
 new_amount = 15.0
-preeq_node = NodePath("../Heal1")
+save_key = "heal_2_skill"
+prerequisite_node = NodePath("../Heal1")
 description = "Grants acess to 3 heal charges"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Heal3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1542770186 node_paths=PackedStringArray("preeq_node")]
+[node name="Heal3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1542770186 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 237.0
 offset_top = -242.0
@@ -819,12 +837,13 @@ script = ExtResource("5_n1vdw")
 cost = 50
 upgrade_key = "heal_amount"
 new_amount = 20.0
-preeq_node = NodePath("../Heal2")
+save_key = "heal_3_skill"
+prerequisite_node = NodePath("../Heal2")
 description = "Grants acess to 5 heal charges"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Heal5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1499729094 node_paths=PackedStringArray("preeq_node")]
+[node name="Heal5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1499729094 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 350.0
 offset_top = -242.0
@@ -837,12 +856,13 @@ script = ExtResource("5_n1vdw")
 cost = 50
 upgrade_key = "heal_amount"
 new_amount = 30.0
-preeq_node = NodePath("../Heal3")
+save_key = "heal_5_skill"
+prerequisite_node = NodePath("../Heal3")
 description = "Grants acess to 5 heal charges"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Healing1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1794716747 node_paths=PackedStringArray("preeq_node")]
+[node name="Healing1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1794716747 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = -287.0
 offset_top = -150.0
@@ -855,12 +875,13 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_heal_charges"
 new_amount = 2.0
-preeq_node = NodePath("../Root")
+save_key = "healing_1_skill"
+prerequisite_node = NodePath("../Root")
 description = "Grants acess to 2 heal charges"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Healing2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1567615969 node_paths=PackedStringArray("preeq_node")]
+[node name="Healing2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1567615969 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = -211.0
 offset_top = -237.0
@@ -873,12 +894,13 @@ script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "max_heal_charges"
 new_amount = 3.0
-preeq_node = NodePath("../Healing1")
+save_key = "healing_2_skill"
+prerequisite_node = NodePath("../Healing1")
 description = "Grants acess to 3 heal charges"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Healing3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=244929428 node_paths=PackedStringArray("preeq_node")]
+[node name="Healing3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=244929428 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = -99.0
 offset_top = -240.0
@@ -891,12 +913,13 @@ script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "max_heal_charges"
 new_amount = 5.0
-preeq_node = NodePath("../Healing2")
+save_key = "healing_3_skill"
+prerequisite_node = NodePath("../Healing2")
 description = "Grants acess to 5 heal charges"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Shooting1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1740089763 node_paths=PackedStringArray("preeq_node")]
+[node name="Shooting1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1740089763 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = -212.0
 offset_top = 131.0
@@ -909,12 +932,13 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_shooting_energy"
 new_amount = 3.0
-preeq_node = NodePath("../Stamina")
+save_key = "shooting_1_skill"
+prerequisite_node = NodePath("../Stamina1")
 description = "Increases ranged capacity to 3"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Shooting2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=91032018 node_paths=PackedStringArray("preeq_node")]
+[node name="Shooting2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=91032018 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = -99.0
 offset_top = 134.0
@@ -927,12 +951,13 @@ script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "max_shooting_energy"
 new_amount = 5.0
-preeq_node = NodePath("../Shooting1")
+save_key = "shooting_2_skill"
+prerequisite_node = NodePath("../Shooting1")
 description = "Increases ranged capacity to 5"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Shooting3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=845054454 node_paths=PackedStringArray("preeq_node")]
+[node name="Shooting3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=845054454 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 22.0
 offset_top = 135.0
@@ -945,12 +970,13 @@ script = ExtResource("5_n1vdw")
 cost = 50
 upgrade_key = "max_shooting_energy"
 new_amount = 10.0
-preeq_node = NodePath("../Shooting2")
+save_key = "shooting_3_skill"
+prerequisite_node = NodePath("../Shooting2")
 description = "Increases ranged capacity to 10"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Shoot1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=55361770 node_paths=PackedStringArray("preeq_node")]
+[node name="Shoot1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=55361770 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 140.0
 offset_top = 133.0
@@ -963,12 +989,13 @@ script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "shoot_damage"
 new_amount = 15.0
-preeq_node = NodePath("../Shooting3")
+save_key = "shoot_1_skill"
+prerequisite_node = NodePath("../Shooting3")
 description = "Increases ranged damage to 15"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Shoot2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=843346763 node_paths=PackedStringArray("preeq_node")]
+[node name="Shoot2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=843346763 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 260.0
 offset_top = 133.0
@@ -981,12 +1008,13 @@ script = ExtResource("5_n1vdw")
 cost = 20
 upgrade_key = "shoot_damage"
 new_amount = 25.0
-preeq_node = NodePath("../Shoot1")
+save_key = "shoot_2_skill"
+prerequisite_node = NodePath("../Shoot1")
 description = "Increases ranged damage to 25"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
 
-[node name="Shoot3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1364290635 node_paths=PackedStringArray("preeq_node")]
+[node name="Shoot3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1364290635 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
 offset_left = 316.0
 offset_top = 47.0
@@ -999,7 +1027,8 @@ script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "shoot_damage"
 new_amount = 50.0
-preeq_node = NodePath("../Shoot2")
+save_key = "shoot_3_skill"
+prerequisite_node = NodePath("../Shoot2")
 description = "Increases ranged damage to 50"
 hover_scale = Vector2(0.7, 0.7)
 normal_scale = Vector2(0.5, 0.5)
@@ -1036,7 +1065,6 @@ texture_normal = ExtResource("5_y257w")
 texture_click_mask = ExtResource("29_6pdds")
 script = ExtResource("5_n1vdw")
 currency_key = ""
-custom_aquired_key = "lust_defeated"
 description = "Lust Deafted. Virtue Of Chasity"
 
 [node name="Gluttony" type="TextureButton" parent="Progress" unique_id=1838205048]
@@ -1050,7 +1078,6 @@ texture_normal = ExtResource("7_x7g2o")
 texture_click_mask = ExtResource("31_5y3ua")
 script = ExtResource("5_n1vdw")
 currency_key = ""
-custom_aquired_key = "gluttony_defeated"
 description = "Gluttony Deafted. Virtue Of Temperance"
 
 [node name="Greed" type="TextureButton" parent="Progress" unique_id=943465748]
@@ -1064,7 +1091,6 @@ texture_normal = ExtResource("8_fxm8d")
 texture_click_mask = ExtResource("33_5y3ua")
 script = ExtResource("5_n1vdw")
 currency_key = ""
-custom_aquired_key = "greed_defeated"
 description = "Greed Deafted. Virtue Of Charity"
 
 [node name="Sloth" type="TextureButton" parent="Progress" unique_id=1775705239]
@@ -1078,7 +1104,6 @@ texture_normal = ExtResource("9_fq5i0")
 texture_click_mask = ExtResource("35_3w8ju")
 script = ExtResource("5_n1vdw")
 currency_key = ""
-custom_aquired_key = "sloth_defeated"
 description = "Sloth Deafted. Virtue Of Diligence"
 
 [node name="Wrath" type="TextureButton" parent="Progress" unique_id=1963615076]
@@ -1092,7 +1117,6 @@ texture_normal = ExtResource("10_1lfrl")
 texture_click_mask = ExtResource("37_g7gqr")
 script = ExtResource("5_n1vdw")
 currency_key = ""
-custom_aquired_key = "wrath_defeated"
 description = "Wrath Deafted. Virtue Of Patience"
 
 [node name="Envy" type="TextureButton" parent="Progress" unique_id=827200978]
@@ -1106,7 +1130,6 @@ texture_normal = ExtResource("11_0gl5m")
 texture_click_mask = ExtResource("39_ncvsq")
 script = ExtResource("5_n1vdw")
 currency_key = ""
-custom_aquired_key = "envy_defeated"
 description = "Envy Deafted. Virtue Of Kindness"
 
 [node name="Pride" type="TextureButton" parent="Progress" unique_id=254821332]
@@ -1120,7 +1143,6 @@ texture_normal = ExtResource("12_cqod1")
 texture_click_mask = ExtResource("35_odw3s")
 script = ExtResource("5_n1vdw")
 currency_key = ""
-custom_aquired_key = "pride_defeated"
 description = "Pride Deafted. Virtue Of Humility"
 
 [node name="FadeIn" type="ColorRect" parent="." unique_id=1072898387]

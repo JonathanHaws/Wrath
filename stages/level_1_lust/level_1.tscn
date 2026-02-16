@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://worsh6enfk2g"]
+[gd_scene format=3 uid="uid://worsh6enfk2g"]
 
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_a6482"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_2uv2b"]
@@ -20,30 +20,30 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hgjnn"]
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=1547312028]
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=990454839]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D" unique_id=572564580]
 material_override = ExtResource("6_l7383")
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=810597532]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.5887, 22.2114, -0.0490699)
 flip_faces = true
 size = Vector3(107.057, 44.5585, 30)
 
-[node name="Enviroment" type="Node" parent="."]
+[node name="Enviroment" type="Node" parent="." unique_id=348908698]
 
-[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("2_a6482")]
+[node name="WorldEnvironment" parent="Enviroment" unique_id=954457664 instance=ExtResource("2_a6482")]
 
-[node name="Weather" parent="Enviroment" instance=ExtResource("3_2uv2b")]
+[node name="Weather" parent="Enviroment" unique_id=1287315665 instance=ExtResource("3_2uv2b")]
 
-[node name="Lights" type="Node" parent="Enviroment"]
+[node name="Lights" type="Node" parent="Enviroment" unique_id=143139604]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights" unique_id=1634604778]
 transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 16.3637, 1.1386, -0.412741)
 light_color = Color(0.29, 0.29, 0.29, 1)
 light_energy = 100.0
@@ -52,42 +52,42 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.2
 omni_range = 101.01
 
-[node name="Lights" type="Node3D" parent="Enviroment/Lights"]
+[node name="Lights" type="Node3D" parent="Enviroment/Lights" unique_id=764292203]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1433691373]
 transform = Transform3D(160.874, 0, 0, 0, 1, 0, 0, 0, 42.0321, 14.7947, -9.54005, 0)
 material_override = ExtResource("7_n5yio")
 mesh = SubResource("BoxMesh_od467")
 
-[node name="Exit" parent="." groups=["lust_door"] instance=ExtResource("5_pyv35")]
+[node name="Exit" parent="." unique_id=1887430866 groups=["lust_door"] instance=ExtResource("5_pyv35")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 83.7247, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "Enter"
 DESTINATION_SCENE = "uid://cjnryqwoknkw5"
 
-[node name="Enter" parent="." instance=ExtResource("5_pyv35")]
+[node name="Enter" parent="." unique_id=1064937866 instance=ExtResource("5_pyv35")]
 transform = Transform3D(-4.37112e-08, 0, 1, 0, 1, 0, -1, 0, -4.37112e-08, -22.2895, -9.60013, 1.00536e-06)
 DESTINATION_NODE_NAME = "LightDoor"
 DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
 
-[node name="Piglet" parent="." instance=ExtResource("9_2uv2b")]
+[node name="Piglet" parent="." unique_id=1655639238 instance=ExtResource("9_2uv2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05158, -9.04356, -10.8999)
 
-[node name="ForTestingInteractionsOkToDelete" type="StaticBody3D" parent="."]
+[node name="ForTestingInteractionsOkToDelete" type="StaticBody3D" parent="." unique_id=722249077]
 transform = Transform3D(0.836009, 0, 0.548717, 0, 1, 0, -0.548717, 0, 0.836009, -7.05158, -10.8292, -10.162)
 visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ForTestingInteractionsOkToDelete"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ForTestingInteractionsOkToDelete" unique_id=139199148]
 shape = SubResource("BoxShape3D_2uv2b")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ForTestingInteractionsOkToDelete"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ForTestingInteractionsOkToDelete" unique_id=1130992006]
 mesh = SubResource("BoxMesh_hgjnn")
 
-[node name="Lust" parent="." instance=ExtResource("8_hgjnn")]
+[node name="Lust" parent="." unique_id=7123475 instance=ExtResource("8_hgjnn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 59.3635, -9.32702, -0.0430865)
 
-[node name="Checkpoint" parent="." instance=ExtResource("10_hgjnn")]
+[node name="Checkpoint" parent="." unique_id=2010351630 instance=ExtResource("10_hgjnn")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.58173, -9.18, 0)
 
-[node name="Reaper" parent="." instance=ExtResource("4_hgjnn")]
+[node name="Reaper" parent="." unique_id=361408396 instance=ExtResource("4_hgjnn")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)

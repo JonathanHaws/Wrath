@@ -3,8 +3,8 @@ extends TextureButton
 @export var currency_key: String = "wisp" 
 @export var upgrade_key: String = "health" ## The save key to update 
 @export var new_amount: Variant = 1.0 ## The update value for the property
-@export var custom_aquired_key: String ## Special save data key to read if this has been aquired yet. Thats not just prefixed with node branch
-@export var preeq_node: Node ## The node that must be aquired before this one can be purchased. (Previous node skill tree) 
+@export var save_key: String ## Special save data key to read if this has been aquired yet. If left empty key will be auto generated prefixed with unique node branch path
+@export var prerequisite_node: Node ## The node that must be aquired before this one can be purchased. (Previous node skill tree) 
 
 @export_group("VISUALS")
 @export_subgroup("INFO")
@@ -32,12 +32,12 @@ func tween_scale_down_on_exit():
 	var t = create_tween()
 	t.tween_property(self, "scale", normal_scale, scale_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-@export_subgroup("AUDIO") ## All skills can use the same audio players for ease of use
+@export_group("AUDIO") ## All skills can use the same audio players for ease of use
 @export var sfx_bought: AudioStreamPlayer ## Sound to be played when bought. Multiple skills can share same same player
 @export var sfx_insufficient: AudioStreamPlayer ## Sound to be played when declined. Automatically referenced if player is sibling
 @export var sfx_hover: AudioStreamPlayer ## Sound to be played when hovered. Automatically searches for sibling player
 var aquired_key
-var preeq_key
+var prerequisite_key
 
 func hovered():
 	if sfx_hover: sfx_hover.play()
@@ -49,9 +49,12 @@ func _ready():
 	if not sfx_insufficient: sfx_insufficient = get_parent().get_node_or_null("Insufficient")
 	if not sfx_hover: sfx_hover = get_parent().get_node_or_null("Hover")
 
-	if custom_aquired_key: aquired_key = custom_aquired_key
+	if save_key: aquired_key = save_key
 	else: aquired_key = Save.get_unique_key(self,"skill_node")
-	if preeq_node: preeq_key = Save.get_unique_key(preeq_node, "skill_node")
+	if prerequisite_node: 
+		prerequisite_key = Save.get_unique_key(prerequisite_node, "skill_node")
+		if prerequisite_node.save_key != "": prerequisite_key = prerequisite_node.save_key
+
 	
 	pressed.connect(_on_pressed)
 	mouse_entered.connect(hovered)
@@ -68,7 +71,7 @@ func _on_pressed():
 	if not Save.data.has(currency_key): 
 		Save.data[currency_key] = 0
 	
-	if preeq_node and not Save.data.has(preeq_key):
+	if prerequisite_node and not Save.data.has(prerequisite_key):
 		if sfx_insufficient: sfx_insufficient.play()
 		return
 		
