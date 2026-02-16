@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bwyvmebwu86xs"]
+[gd_scene format=3 uid="uid://bwyvmebwu86xs"]
 
 [ext_resource type="Script" uid="uid://ci0byfa0f4mm3" path="res://actors/props/doors/door.gd" id="1_cilod"]
 [ext_resource type="PackedScene" uid="uid://c0pqtwl8b1uu4" path="res://actors/props/doors/heavy/heavy_door.blend" id="2_21gea"]
@@ -76,26 +76,24 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_4q587"]
 size = Vector3(7, 11, 2)
 
-[node name="HeavyDoor" type="Node3D" node_paths=PackedStringArray("AREA", "ANIM", "START")]
+[node name="HeavyDoor" type="Node3D" unique_id=2033611572 node_paths=PackedStringArray("AREA", "ANIM", "START")]
 script = ExtResource("1_cilod")
 AREA = NodePath("Area3D")
 ANIM = NodePath("AnimationPlayer")
 START = NodePath("Start")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1879861269]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=768163996]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.139717, 4.89406, -0.638245)
 shape = SubResource("BoxShape3D_m4dhi")
 
-[node name="Mesh" parent="." instance=ExtResource("2_21gea")]
+[node name="Mesh" parent="." unique_id=496705735 instance=ExtResource("2_21gea")]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_7041t")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=682263940]
+libraries/ = SubResource("AnimationLibrary_7041t")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1015591577]
 z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
@@ -106,19 +104,21 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 0)
 
-[node name="Audio" type="Node" parent="."]
+[node name="Audio" type="Node" parent="." unique_id=729106236]
 script = ExtResource("3_aw8ec")
 SOUNDS = Array[AudioStream]([ExtResource("4_jwvi6")])
 ADD_TO_ROOT = true
 
-[node name="Start" type="Node3D" parent="."]
+[node name="Start" type="Node3D" parent="." unique_id=1184416226]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 5.08871)
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=1004948619]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=462898610]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.57746e-08, 5, -0.5)
 shape = SubResource("BoxShape3D_4q587")
+
+[editable path="Mesh"]

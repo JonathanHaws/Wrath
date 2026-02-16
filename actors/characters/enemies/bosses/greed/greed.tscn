@@ -1492,8 +1492,8 @@ uppercase = true
 [node name="HitShape" type="Area3D" parent="." unique_id=1264597424 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("4_ri305")
 IMMUNE_GROUPS = Array[String](["greed"])
-HEALTH = 4000.0
-MAX_HEALTH = 4000.0
+HEALTH = 3000.0
+MAX_HEALTH = 3000.0
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 HURT_ANIMATION_PLAYER = NodePath("../Damaged")
 DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
@@ -1607,41 +1607,11 @@ SCENE_ROOT = NodePath("..")
 
 [node name="Greed" parent="Mesh" unique_id=2091101555 instance=ExtResource("17_cq6fp")]
 
-[node name="Skeleton3D" parent="Mesh/Greed/Rig" parent_id_path=PackedInt32Array(2091101555, 994402057) index="0" unique_id=801742663]
-bones/1/position = Vector3(-0.115101114, -0.79861844, -2.075578)
-bones/1/rotation = Quaternion(0.1622754, -7.466784e-08, 1.0983076e-08, 0.98674554)
-bones/2/position = Vector3(0.31877694, -0.0666644, -0.010626115)
-bones/2/rotation = Quaternion(0.3259213, 0.21457146, -0.027170643, 0.92032397)
-bones/3/rotation = Quaternion(0.6241944, -0.05737707, 0.0324914, 0.77848166)
-bones/4/rotation = Quaternion(-0.7182192, 0.0042115734, -0.037687335, 0.69478285)
-bones/5/rotation = Quaternion(0.3703287, -0.06939668, 0.040140938, 0.92543477)
-bones/6/rotation = Quaternion(-0.3369906, -1.1977658e-10, 2.0447154e-10, 0.94150805)
-bones/7/rotation = Quaternion(0.26614618, -0.09376295, -0.8414484, 0.46080285)
-bones/8/rotation = Quaternion(0.28452846, -0.053673647, 0.4770904, 0.82978773)
-bones/9/rotation = Quaternion(0.023566961, -0.007869838, 0.2219383, 0.97474414)
-bones/10/rotation = Quaternion(0.13480632, 0.005454828, 0.098856196, 0.98591334)
-bones/12/rotation = Quaternion(-0.36478907, 0.0069625215, 0.042765673, 0.9300815)
-bones/13/position = Vector3(-0.4888676, 1.4355075, -0.009695509)
-bones/13/rotation = Quaternion(0.00018406662, 0.27169397, 0.9137421, 0.3020892)
-bones/14/rotation = Quaternion(0.5406428, 0.028886953, -0.3802521, 0.7498529)
-bones/15/rotation = Quaternion(0.24710202, 0.24793163, 0.14348744, 0.9256792)
-bones/16/rotation = Quaternion(0.08350562, 0.043081306, 0.07789651, 0.9925235)
-bones/17/position = Vector3(0.08750801, 0.01675862, 0.0025528073)
-bones/17/rotation = Quaternion(0.64107656, -0.33487692, -0.49068558, 0.48590732)
-bones/18/rotation = Quaternion(0.09847757, -0.0016042369, -0.13559632, 0.98585665)
-bones/19/rotation = Quaternion(0.12861319, -0.5076735, -0.19885157, 0.8283624)
-bones/20/rotation = Quaternion(-0.0785985, -0.13780251, -0.29297888, 0.9428659)
-bones/21/rotation = Quaternion(-0.059975497, 0.11277661, -0.2316078, 0.96438694)
-bones/22/rotation = Quaternion(0.34717643, -0.054610472, 0.116409674, 0.928943)
-bones/23/rotation = Quaternion(0.6453335, -0.02618118, 0.054735184, 0.76148754)
-bones/24/rotation = Quaternion(-0.75160646, 0.048902124, -0.101219214, 0.6499623)
-bones/25/rotation = Quaternion(0.2910924, -0.06427064, 0.0026500337, 0.95453)
-
-[node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" index="0" unique_id=2077430949]
+[node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" parent_id_path=PackedInt32Array(2091101555, 801742663) index="0" unique_id=2077430949]
 material_override = ExtResource("27_mmykl")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1" unique_id=771742600]
-transform = Transform3D(1, 2.0623916e-09, 6.1145333e-10, -1.5734702e-10, 0.35362646, -0.9353865, -2.1453483e-09, 0.9353865, 0.35362646, -0.11510143, 1.7564726, 0.14533114)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" parent_id_path=PackedInt32Array(2091101555, 801742663) index="1" unique_id=771742600]
+transform = Transform3D(1, 3.0031533e-14, 2.5153595e-09, 5.379448e-10, 0.97686243, -0.21386711, -2.4571523e-09, 0.21386711, 0.97686243, 5.6868586e-14, 3.989421, 0.042415958)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1653,8 +1623,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
 shape = SubResource("BoxShape3D_jx80p")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
-[node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2" unique_id=536316727]
-transform = Transform3D(1, 2.0623916e-09, 6.1145333e-10, -1.5734702e-10, 0.35362646, -0.9353865, -2.1453483e-09, 0.9353865, 0.35362646, -0.11510143, 1.7564726, 0.14533114)
+[node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" parent_id_path=PackedInt32Array(2091101555, 801742663) index="2" unique_id=536316727]
+transform = Transform3D(1, 3.0031533e-14, 2.5153595e-09, 5.379448e-10, 0.97686243, -0.21386711, -2.4571523e-09, 0.21386711, 0.97686243, 5.6868586e-14, 3.989421, 0.042415958)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1669,8 +1639,8 @@ shape = SubResource("CapsuleShape3D_3l2yv")
 disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
-[node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3" unique_id=148533984]
-transform = Transform3D(1, 2.0623916e-09, 6.1145333e-10, -1.5734702e-10, 0.35362646, -0.9353865, -2.1453483e-09, 0.9353865, 0.35362646, -0.11510143, 1.7564726, 0.14533114)
+[node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" parent_id_path=PackedInt32Array(2091101555, 801742663) index="3" unique_id=148533984]
+transform = Transform3D(1, 3.0031533e-14, 2.5153595e-09, 5.379448e-10, 0.97686243, -0.21386711, -2.4571523e-09, 0.21386711, 0.97686243, 5.6868586e-14, 3.989421, 0.042415958)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1685,8 +1655,8 @@ shape = SubResource("CylinderShape3D_br41q")
 disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
-[node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4" unique_id=1460152811]
-transform = Transform3D(0.30144107, -0.03776279, -0.9527367, -0.9440242, -0.15222663, -0.29265088, -0.13398059, 0.98762333, -0.08153647, 1.4340069, 1.2098815, 2.2036018)
+[node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" parent_id_path=PackedInt32Array(2091101555, 801742663) index="4" unique_id=1460152811]
+transform = Transform3D(0.99663144, -0.07959498, 0.019753486, 0.08154929, 0.98734057, -0.13604027, -0.008675303, 0.13719288, 0.9905058, 0.61703146, 7.487709, 0.48028052)
 bone_name = "hand_l"
 bone_idx = 10
 
@@ -1702,8 +1672,8 @@ shape = SubResource("SphereShape3D_3l2yv")
 disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
-[node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5" unique_id=1317980976]
-transform = Transform3D(-0.79797983, 0.3446165, 0.49443644, 0.41963524, -0.27115157, 0.86624616, 0.4325902, 0.8987298, 0.07176017, -1.3074242, 1.229495, 2.249083)
+[node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" parent_id_path=PackedInt32Array(2091101555, 801742663) index="5" unique_id=1317980976]
+transform = Transform3D(0.99663144, 0.07959497, -0.01975351, -0.08154927, 0.9873407, -0.13604029, 0.008675327, 0.13719289, 0.9905059, -0.6170313, 7.487709, 0.48028046)
 bone_name = "hand_r"
 bone_idx = 16
 
@@ -1719,7 +1689,7 @@ shape = SubResource("SphereShape3D_br41q")
 disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/Greed/Rig/Skeleton3D" index="6" unique_id=188420690]
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/Greed/Rig/Skeleton3D" parent_id_path=PackedInt32Array(2091101555, 801742663) index="6" unique_id=188420690]
 influence = 0.0
 target_node = NodePath("../../../../../Target")
 bone_name = "head"
