@@ -2,21 +2,26 @@ extends CharacterBody3D
 @export var ATTACKING_DISABLED: bool = true
 
 @export_group("Acceleration")
-@export var GROUND_SPEED: float = 100.0
-@export var AIR_SPEED: float = 200.0
+@export var GROUND_SPEED: float = 1.5
+@export var AIR_SPEED: float = 1.5
 @export var MAX_SPEED: float = 12.35
 @export var SPRINT_MULTIPLIER: float = 2.1
 @export var SPEED_MULTIPLIER: float = 1.0
 
 @export_group("Friction")
-@export var GROUND_FRICTION: float = 11.0
-@export var AIR_FRICTION: float = 2.0
+@export var GROUND_FRICTION_PER_SECOND: float = 0.9 # fraction of remainingvelocity
+@export var AIR_FRICTION_PER_SECOND: float = 0.9 # fraction of velocity lost
 func stop_horizontal_movement() -> void:
 	velocity.x = 0
 	velocity.z = 0
+func apply_friction() -> void: ## Use in physics process for time independence
+	var friction: float = GROUND_FRICTION_PER_SECOND
+	if not is_on_floor(): friction = AIR_FRICTION_PER_SECOND
+	velocity.x *= friction
+	velocity.z *= friction
 
 @export_group("Jumping")
-@export var JUMP_VELOCITY: float = 15.0
+@export var JUMP_VELOCITY: float = 15.3
 @export var JUMP_MULTIPLIER: float = 1.0
 @export var COYOTE_TIME: float = .35
 @export var JUMP_BUFFER_TIME: float = .2
@@ -251,8 +256,7 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor(): # GRAVITY
 		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER if Input.is_action_pressed("descend") else 1.0)
 	if velocity.y < -MAX_FALL_SPEED: velocity.y = -MAX_FALL_SPEED
-
-
+	
 	falling = 0.0 if is_on_floor() else falling + delta  # JUMP
 	if Input.is_action_just_pressed("jump"): jump_buffer = JUMP_BUFFER_TIME;
 	elif jump_buffer > 0: jump_buffer -= delta
@@ -269,22 +273,25 @@ func _physics_process(delta: float) -> void:
 					PARTICLES.scene_to_spawn = 1
 					PARTICLES.spawn()
 	
-	var keyboard_vector := Input.get_vector("keyboard_left", "keyboard_right", "keyboard_forward", "keyboard_back")
-	var controller_vector := Input.get_vector("controller_left", "controller_right", "controller_forward", "controller_back")
-	var input_vector := keyboard_vector + controller_vector
+	var keyboard_vector: Vector2 = Input.get_vector("keyboard_left", "keyboard_right", "keyboard_forward", "keyboard_back")
+	var controller_vector: Vector2 = Input.get_vector("controller_left", "controller_right", "controller_forward", "controller_back")
+	var input_vector: Vector2 = keyboard_vector + controller_vector
 	
 	if SKILL_TREE.visible: input_vector = Vector2.ZERO
 	
 	if input_vector.length() > 0:
 		
-		var mesh_direction = -MESH.global_transform.basis.z
-		var move_speed := (GROUND_SPEED if is_on_floor() else AIR_SPEED) 
+		var move_speed: float = (GROUND_SPEED if is_on_floor() else AIR_SPEED) 
 		var speed_factor = 1.0
 		if Input.is_action_pressed("sprint") or controller_vector.length() > 0.75:
 			speed_factor = SPRINT_MULTIPLIER
-		
-		velocity.x += mesh_direction.x * move_speed * speed_factor * SPEED_MULTIPLIER * delta
-		velocity.z += mesh_direction.z * move_speed * speed_factor * SPEED_MULTIPLIER * delta
+			
+		var acceleration: float = move_speed * speed_factor * SPEED_MULTIPLIER	
+			
+		var move_vector = (Vector3(input_vector.x, 0, input_vector.y)).rotated(Vector3.UP, CAMERA.global_rotation.y)
+
+		velocity.x += move_vector.x * acceleration
+		velocity.z += move_vector.z * acceleration
 		CAMERA.rotate_mesh_towards_camera_xz(delta, MESH, input_vector, TURN_SPEED * TURN_MULTIPLIER)
 	
 	var h = Vector2(velocity.x, velocity.z) # MAX SPEED
@@ -295,10 +302,7 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide() 
 	
-	var friction := GROUND_FRICTION if is_on_floor() else AIR_FRICTION # FRICTION
-	friction *= delta
-	velocity.x -= velocity.x * friction
-	velocity.z -= velocity.z * friction
+	apply_friction()
 	
 	if in_interruptible_animation(): 
 		if is_on_floor(): 
