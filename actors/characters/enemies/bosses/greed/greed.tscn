@@ -97,6 +97,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_x1kl7"]
 resource_name = "DEATH"
@@ -1607,11 +1619,41 @@ SCENE_ROOT = NodePath("..")
 
 [node name="Greed" parent="Mesh" unique_id=2091101555 instance=ExtResource("17_cq6fp")]
 
-[node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" parent_id_path=PackedInt32Array(2091101555, 801742663) index="0" unique_id=2077430949]
+[node name="Skeleton3D" parent="Mesh/Greed/Rig" parent_id_path=PackedInt32Array(2091101555, 994402057) index="0" unique_id=801742663]
+bones/1/position = Vector3(-0.1151011, -0.84261656, -2.1953773)
+bones/1/rotation = Quaternion(0.29588643, -7.246005e-08, 2.110574e-08, 0.9552231)
+bones/2/position = Vector3(0.31877697, -0.06666439, -0.010625941)
+bones/2/rotation = Quaternion(0.75390774, 0.21148314, 0.06728538, 0.61836135)
+bones/3/rotation = Quaternion(0.6241944, -0.05737707, 0.0324914, 0.77848166)
+bones/4/rotation = Quaternion(-0.71950275, 0.003473273, -0.038038604, 0.6934384)
+bones/5/rotation = Quaternion(0.3703287, -0.06939668, 0.040140923, 0.92543477)
+bones/6/rotation = Quaternion(-0.2742993, 0.004815103, 0.011586549, 0.96156263)
+bones/7/rotation = Quaternion(0.6968191, -0.22333927, -0.5572424, 0.39248395)
+bones/8/rotation = Quaternion(-0.077105485, -0.11067574, 0.6556744, 0.7428976)
+bones/9/rotation = Quaternion(0.1577331, -0.19903225, -0.07707497, 0.96413994)
+bones/10/rotation = Quaternion(0.07793357, 0.07394067, 0.23356484, 0.96638846)
+bones/12/rotation = Quaternion(-0.44792518, 0.021345494, 0.030343955, 0.89330107)
+bones/13/position = Vector3(-0.4888676, 1.4355075, -0.009695581)
+bones/13/rotation = Quaternion(0.55245477, 0.33845472, 0.66579264, 0.37008435)
+bones/14/rotation = Quaternion(0.10698956, 0.07404257, -0.53921884, 0.8320541)
+bones/15/rotation = Quaternion(-0.001296535, 0.16071948, 0.17619084, 0.97114587)
+bones/16/rotation = Quaternion(0.17914928, -0.12537426, -0.29140958, 0.93127185)
+bones/17/position = Vector3(0.06346794, -0.16659948, -0.07651895)
+bones/17/rotation = Quaternion(0.79765683, 0.0065743476, -0.5947885, 0.099635385)
+bones/18/rotation = Quaternion(0.09266619, 0.021623451, -0.06435512, 0.99338)
+bones/19/rotation = Quaternion(0.13366002, -0.52187514, -0.16294782, 0.82657695)
+bones/20/rotation = Quaternion(-0.027510203, -0.10748068, -0.24231924, 0.9638322)
+bones/21/rotation = Quaternion(-0.05726955, 0.12505135, -0.19059289, 0.971986)
+bones/22/rotation = Quaternion(0.75448984, -0.10494509, 0.094613716, 0.64092124)
+bones/23/rotation = Quaternion(0.64533347, -0.026181163, 0.054735184, 0.7614876)
+bones/24/rotation = Quaternion(-0.75252855, 0.049312025, -0.10147157, 0.6488241)
+bones/25/rotation = Quaternion(0.2910924, -0.06427063, 0.0026500162, 0.95453)
+
+[node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" index="0" unique_id=2077430949]
 material_override = ExtResource("27_mmykl")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" parent_id_path=PackedInt32Array(2091101555, 801742663) index="1" unique_id=771742600]
-transform = Transform3D(1, 3.0031533e-14, 2.5153595e-09, 5.379448e-10, 0.97686243, -0.21386711, -2.4571523e-09, 0.21386711, 0.97686243, 5.6868586e-14, 3.989421, 0.042415958)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1" unique_id=771742600]
+transform = Transform3D(0.9996851, -0.024923934, 0.0029036815, 0.0017795525, -0.045006633, -0.99898475, 0.02502932, 0.99867535, -0.0449481, -0.11510143, 1.6321208, -0.020660758)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1623,8 +1665,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
 shape = SubResource("BoxShape3D_jx80p")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
-[node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" parent_id_path=PackedInt32Array(2091101555, 801742663) index="2" unique_id=536316727]
-transform = Transform3D(1, 3.0031533e-14, 2.5153595e-09, 5.379448e-10, 0.97686243, -0.21386711, -2.4571523e-09, 0.21386711, 0.97686243, 5.6868586e-14, 3.989421, 0.042415958)
+[node name="TorsoAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="2" unique_id=536316727]
+transform = Transform3D(0.9996851, -0.024923934, 0.0029036815, 0.0017795525, -0.045006633, -0.99898475, 0.02502932, 0.99867535, -0.0449481, -0.11510143, 1.6321208, -0.020660758)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1639,8 +1681,8 @@ shape = SubResource("CapsuleShape3D_3l2yv")
 disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
-[node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" parent_id_path=PackedInt32Array(2091101555, 801742663) index="3" unique_id=148533984]
-transform = Transform3D(1, 3.0031533e-14, 2.5153595e-09, 5.379448e-10, 0.97686243, -0.21386711, -2.4571523e-09, 0.21386711, 0.97686243, 5.6868586e-14, 3.989421, 0.042415958)
+[node name="TailSpin" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="3" unique_id=148533984]
+transform = Transform3D(0.9996851, -0.024923934, 0.0029036815, 0.0017795525, -0.045006633, -0.99898475, 0.02502932, 0.99867535, -0.0449481, -0.11510143, 1.6321208, -0.020660758)
 bone_name = "torso"
 bone_idx = 6
 
@@ -1655,8 +1697,8 @@ shape = SubResource("CylinderShape3D_br41q")
 disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
-[node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" parent_id_path=PackedInt32Array(2091101555, 801742663) index="4" unique_id=1460152811]
-transform = Transform3D(0.99663144, -0.07959498, 0.019753486, 0.08154929, 0.98734057, -0.13604027, -0.008675303, 0.13719288, 0.9905058, 0.61703146, 7.487709, 0.48028052)
+[node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4" unique_id=1460152811]
+transform = Transform3D(-0.27862936, -0.35894215, -0.8908006, -0.82968247, -0.37721094, 0.41150707, -0.48372695, 0.8537395, -0.19270608, 0.24819839, -0.029396087, 1.7264639)
 bone_name = "hand_l"
 bone_idx = 10
 
@@ -1672,8 +1714,8 @@ shape = SubResource("SphereShape3D_3l2yv")
 disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
-[node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" parent_id_path=PackedInt32Array(2091101555, 801742663) index="5" unique_id=1317980976]
-transform = Transform3D(0.99663144, 0.07959497, -0.01975351, -0.08154927, 0.9873407, -0.13604029, 0.008675327, 0.13719289, 0.9905059, -0.6170313, 7.487709, 0.48028046)
+[node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5" unique_id=1317980976]
+transform = Transform3D(-0.32579294, 0.14230649, 0.93466973, 0.7480194, -0.5658097, 0.3468797, 0.57820845, 0.81216234, 0.07788855, -0.7439124, -0.27335137, 1.5183318)
 bone_name = "hand_r"
 bone_idx = 16
 
@@ -1689,7 +1731,7 @@ shape = SubResource("SphereShape3D_br41q")
 disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/Greed/Rig/Skeleton3D" parent_id_path=PackedInt32Array(2091101555, 801742663) index="6" unique_id=188420690]
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/Greed/Rig/Skeleton3D" index="6" unique_id=188420690]
 influence = 0.0
 target_node = NodePath("../../../../../Target")
 bone_name = "head"
@@ -1770,7 +1812,6 @@ player = NodePath(".")
 sounds = Array[AudioStream]([ExtResource("37_pscvx")])
 
 [node name="Background" parent="Dialog/GreedDialog" unique_id=193652404 instance=ExtResource("35_ggcq0")]
-autoplay = &"RESET"
 
 [connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]

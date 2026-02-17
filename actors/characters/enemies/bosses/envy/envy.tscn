@@ -1659,7 +1659,7 @@ bone_name = "spine"
 bone_idx = 2
 
 [node name="LockOn" type="Area3D" parent="Mesh/envy/Armature/Skeleton3D/LockOn" unique_id=318483379]
-transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 0.721829, -0.085655)
+transform = Transform3D(0.999906, 0.00257004, 0.013503601, -0.013120901, -0.11442301, 0.993345, 0.00409807, -0.99342906, -0.11437896, -0.009742977, 0.6055999, -0.24659717)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/envy/Armature/Skeleton3D/LockOn/LockOn" unique_id=71613345]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
@@ -1751,7 +1751,6 @@ speaker_name = "pig"
 dialog_file = ExtResource("41_x0k4b")
 
 [node name="Background" parent="Dialog" unique_id=1095527906 instance=ExtResource("41_7awae")]
-autoplay = &"RESET"
 
 [node name="RandomDialog" type="Timer" parent="Dialog" unique_id=1815444290 node_paths=PackedStringArray("DIALOG")]
 script = ExtResource("42_vie5j")
