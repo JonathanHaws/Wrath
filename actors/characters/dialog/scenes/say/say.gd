@@ -19,5 +19,4 @@ func _process(_delta):
 			reveal_animation_player.play(reveal_skipped_animation, 0)
 		else:
 			queue("exited")	# already done → end
-
-					
+	

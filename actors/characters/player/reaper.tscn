@@ -56,8 +56,12 @@
 [ext_resource type="Script" uid="uid://pxraa8l0plaw" path="res://actors/characters/block_shape.gd" id="45_2d6ni"]
 [ext_resource type="PackedScene" uid="uid://dspid5s7r6a1o" path="res://menus/skill_tree/skill_tree.tscn" id="47_ekykk"]
 [ext_resource type="PackedScene" uid="uid://btfr5eocbsa1j" path="res://menus/skip/skip.tscn" id="50_yinxs"]
+[ext_resource type="Script" uid="uid://nbc1ksywm8ut" path="res://actors/tutorial_label.gd" id="51_773af"]
 [ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://menus/pause/pause.tscn" id="51_bud88"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="52_3vvcf"]
+[ext_resource type="Theme" uid="uid://dc3871vl88kgm" path="res://actors/characters/player/tutorial.tres" id="52_ccj1p"]
 [ext_resource type="PackedScene" uid="uid://cmau4y8fs3ukm" path="res://actors/characters/player/materials/player_hurt_particles.tscn" id="52_xnjpx"]
+[ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_New.wav" id="53_qlt7i"]
 [ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://actors/characters/player/health_charges_fill.tres" id="56_s81g7"]
 [ext_resource type="StyleBox" uid="uid://cdkrrhvlxa2fc" path="res://actors/characters/player/shooting_energy_fill.tres" id="57_773af"]
 
@@ -1267,7 +1271,7 @@ markers = [{
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI:modulate")
+tracks/0/path = NodePath("UI/BottomLeft:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1768,7 +1772,7 @@ markers = [{
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("UI:modulate")
+tracks/0/path = NodePath("UI/BottomLeft:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -2361,7 +2365,7 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("UI:modulate")
+tracks/8/path = NodePath("UI/BottomLeft:modulate")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -3327,6 +3331,198 @@ corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 anti_aliasing = false
 
+[sub_resource type="Animation" id="Animation_0kva7"]
+resource_name = "LEARNED"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/SkillTreeTutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iqh13"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/SkillTreeTutorial:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_qm1wy"]
+resource_name = "REVEAL"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/SkillTreeTutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/SkillTreeTutorial:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ika6y"]
+_data = {
+&"LEARNED": SubResource("Animation_0kva7"),
+&"RESET": SubResource("Animation_iqh13"),
+&"REVEAL": SubResource("Animation_qm1wy")
+}
+
+[sub_resource type="Animation" id="Animation_6b16r"]
+resource_name = "LEARNED"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/HealTutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b52ho"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/HealTutorial:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ika6y"]
+resource_name = "REVEAL"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/HealTutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/HealTutorial:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b52ho"]
+_data = {
+&"LEARNED": SubResource("Animation_6b16r"),
+&"RESET": SubResource("Animation_b52ho"),
+&"REVEAL": SubResource("Animation_ika6y")
+}
+
+[sub_resource type="Animation" id="Animation_wy1rq"]
+resource_name = "LEARNED"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/ShootTutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_1qp3y"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/ShootTutorial:visible_ratio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_mu8jq"]
+resource_name = "REVEAL"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VBoxContainer/ShootTutorial:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/ShootTutorial:visible_ratio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rgylo"]
+_data = {
+&"LEARNED": SubResource("Animation_wy1rq"),
+&"RESET": SubResource("Animation_1qp3y"),
+&"REVEAL": SubResource("Animation_mu8jq")
+}
+
 [sub_resource type="Animation" id="Animation_b2psf"]
 resource_name = "DOOR_FADE_IN"
 length = 0.361
@@ -3642,10 +3838,10 @@ rotation_edit_mode = 1
 
 [node name="Skeleton3D" parent="Mesh/reaper/Reaper" parent_id_path=PackedInt32Array(457514100, 1555644302) index="0" unique_id=508255527]
 bones/0/rotation = Quaternion(-0.70708895, -0.0050162785, 0.0050162785, 0.707089)
-bones/1/position = Vector3(0.012178161, 0.19505176, 0.8582668)
+bones/1/position = Vector3(0.009892099, 0.19134718, 0.83960843)
 bones/1/rotation = Quaternion(0.66652495, 0.0052884123, -0.0047285054, 0.74544907)
 bones/2/rotation = Quaternion(1.8626445e-09, 1.2144255e-07, -1.8626456e-09, 1)
-bones/3/position = Vector3(-0.13482241, 0.05257595, -0.0037891262)
+bones/3/position = Vector3(-0.13482243, 0.052575987, -0.0037890945)
 bones/3/rotation = Quaternion(-0.079156846, -0.24224563, 0.80736095, 0.53218377)
 bones/4/rotation = Quaternion(-0.7082535, 0.12014589, -0.3324694, 0.6110697)
 bones/5/rotation = Quaternion(-0.10600529, -0.08438378, 0.07545145, 0.98790157)
@@ -3654,25 +3850,25 @@ bones/7/position = Vector3(0.095023654, 0.29883614, -0.037884206)
 bones/7/rotation = Quaternion(-0.08802534, 0.31957737, -0.44377676, 0.8325768)
 bones/8/position = Vector3(0.04027832, 0.37375048, 0.019249877)
 bones/8/rotation = Quaternion(-0.5901653, -0.32968488, -0.32878575, 0.6594792)
-bones/9/rotation = Quaternion(0.069940835, -1.5124413e-12, 1.669686e-08, 0.99755114)
-bones/10/position = Vector3(0.07390615, 0.086363815, -6.518709e-09)
+bones/9/rotation = Quaternion(0.0364276, 0.0018553865, -0.011249866, 0.99927133)
+bones/10/position = Vector3(0.07390616, 0.08636394, 2.3734561e-08)
 bones/10/rotation = Quaternion(-0.11537215, -0.050698973, -0.85975343, 0.49491715)
 bones/11/rotation = Quaternion(-0.4583216, -0.4065079, 0.068734, 0.78738064)
 bones/12/rotation = Quaternion(-0.034143854, 0.039829, 0.14083621, 0.98864204)
-bones/13/rotation = Quaternion(-0.68077475, 0.06473936, -0.21559654, 0.6970457)
+bones/13/rotation = Quaternion(-0.6807748, 0.064739354, -0.21559663, 0.6970456)
 bones/14/position = Vector3(0.009702295, 0.14449012, -0.09385164)
 bones/14/rotation = Quaternion(-0.4985187, -8.9497305e-05, 0.2596074, 0.8270932)
 bones/15/position = Vector3(-0.10450731, 0.22616595, -0.026558582)
-bones/15/rotation = Quaternion(-0.39671543, 0.38349473, -0.18919688, 0.8122519)
-bones/16/position = Vector3(-0.07455925, -0.0469272, -2.3029722e-08)
+bones/15/rotation = Quaternion(-0.39671534, 0.38349468, -0.18919684, 0.81225204)
+bones/16/position = Vector3(-0.07455926, -0.046927348, -3.0588676e-08)
 bones/16/rotation = Quaternion(0.010155851, -0.18648286, 0.9823706, 0.0083134)
 bones/17/rotation = Quaternion(0.023063233, 0.00015750382, 0.0032334917, 0.99972886)
-bones/18/rotation = Quaternion(-0.61166966, 0.002533188, 0.00089018553, 0.79110867)
-bones/19/position = Vector3(0.07455925, -0.0469272, -2.4082178e-08)
+bones/18/rotation = Quaternion(-0.61166966, 0.0025331874, 0.0008901854, 0.79110867)
+bones/19/position = Vector3(0.07455926, -0.046927348, -3.1641132e-08)
 bones/19/rotation = Quaternion(-0.006284321, 0.120801985, 0.9926165, -0.008936239)
 bones/20/rotation = Quaternion(0.02306323, -0.00015750952, -0.003233497, 0.99972886)
 bones/21/rotation = Quaternion(-0.79255307, 0.0020301999, -0.0018228459, 0.60979694)
-bones/22/position = Vector3(0.07410163, 0.48258358, 1.0977385)
+bones/22/position = Vector3(0.073768854, 0.48258352, 1.0742853)
 bones/22/rotation = Quaternion(0.2975276, 0.26516646, 0.55392134, 0.7309825)
 
 [node name="body" parent="Mesh/reaper/Reaper/Skeleton3D" index="0" unique_id=23935814]
@@ -3682,7 +3878,7 @@ material_override = ExtResource("35_m1s71")
 material_override = ExtResource("36_4anjp")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="3" unique_id=552018988]
-transform = Transform3D(0.24651477, -0.6622983, 0.70752466, -0.05455814, 0.7194133, 0.69243604, -0.967602, -0.20929696, 0.14121224, 0.058519647, 1.0986793, -0.23258343)
+transform = Transform3D(0.24651477, -0.6622983, 0.70752466, -0.05455814, 0.7194133, 0.69243604, -0.967602, -0.20929696, 0.14121224, 0.05851966, 1.0752237, -0.23258337)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -3722,7 +3918,7 @@ light_energy = 0.0
 libraries/ = SubResource("AnimationLibrary_hfpb6")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4" unique_id=1880319706]
-transform = Transform3D(-0.9998197, -0.015474241, -0.011016471, 0.011582242, -0.036960587, -0.99924946, 0.015055461, -0.99919707, 0.03713329, -0.08787313, 0.032966793, -0.13120614)
+transform = Transform3D(-0.9998197, -0.015474242, -0.011016471, 0.011582241, -0.036960587, -0.99924946, 0.015055463, -0.99919707, 0.03713329, -0.08989425, 0.014277697, -0.12750155)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -3732,7 +3928,7 @@ script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5" unique_id=1885491197]
-transform = Transform3D(-0.9998197, -0.015474241, -0.011016471, 0.011582242, -0.036960587, -0.99924946, 0.015055461, -0.99919707, 0.03713329, -0.08787313, 0.032966793, -0.13120614)
+transform = Transform3D(-0.9998197, -0.015474242, -0.011016471, 0.011582241, -0.036960587, -0.99924946, 0.015055463, -0.99919707, 0.03713329, -0.08989425, 0.014277697, -0.12750155)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -3807,25 +4003,133 @@ SpringArm = NodePath("../../SpringArm3D")
 LOCK_ON_AREA = NodePath("../../SpringArm3D/Camera3D/LockOnArea")
 lock_on_ui = NodePath("..")
 
-[node name="UI" type="Control" parent="." unique_id=1327505875]
+[node name="UI" type="Control" parent="." unique_id=384331694]
 layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Tutorials" type="Control" parent="UI" unique_id=916132959]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.8, 0.8)
+script = ExtResource("43_ekykk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tutorials" unique_id=1379840933]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 5.0
+offset_right = 297.0
+offset_bottom = 45.0
+
+[node name="Revealed" type="AudioStreamPlayer" parent="UI/Tutorials/VBoxContainer" unique_id=1667586098]
+process_mode = 3
+stream = ExtResource("53_qlt7i")
+volume_db = -15.0
+pitch_scale = 0.2
+bus = &"SFX"
+
+[node name="Learning" type="AudioStreamPlayer" parent="UI/Tutorials/VBoxContainer" unique_id=124996239]
+process_mode = 3
+stream = ExtResource("52_3vvcf")
+volume_db = -22.0
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="Learnt" type="AudioStreamPlayer" parent="UI/Tutorials/VBoxContainer" unique_id=2087764388]
+process_mode = 3
+stream = ExtResource("53_qlt7i")
+volume_db = -22.0
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="SkillTreeTutorial" type="RichTextLabel" parent="UI/Tutorials/VBoxContainer" unique_id=1707971146 node_paths=PackedStringArray("label", "animation_player", "revealed_player", "learning_player")]
+layout_mode = 2
+theme = ExtResource("52_ccj1p")
+bbcode_enabled = true
+text = "[font_size=28][outline_size=6][color=#7B7B7B]# PRESS [color=4a515b][key][/color] TO AQUIRE SKILLS "
+fit_content = true
+visible_characters = 0
+visible_ratio = 0.0
+script = ExtResource("51_773af")
+label = NodePath(".")
+action_name = "toggle_skill_tree"
+saved_key = "skill_tree_tutorial"
+required_learn_count = 4
+animation_player = NodePath("AnimationPlayer")
+revealed_player = NodePath("../Revealed")
+learning_player = NodePath("../Learning")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Tutorials/VBoxContainer/SkillTreeTutorial" unique_id=694729877]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_ika6y")
+
+[node name="HealTutorial" type="RichTextLabel" parent="UI/Tutorials/VBoxContainer" unique_id=2078828283 node_paths=PackedStringArray("label", "animation_player", "revealed_player", "learning_player")]
+layout_mode = 2
+theme = ExtResource("52_ccj1p")
+bbcode_enabled = true
+text = "[font_size=28][outline_size=6][color=#7B7B7B]# PRESS [color=606060][key][/color] TO HEAL"
+fit_content = true
+script = ExtResource("51_773af")
+label = NodePath(".")
+saved_key = "healing_tutorial"
+required_learn_count = 4
+animation_player = NodePath("AnimationPlayer")
+tutorial_area_group_name = "heal_tutorial"
+revealed_player = NodePath("../Revealed")
+learning_player = NodePath("../Learning")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Tutorials/VBoxContainer/HealTutorial" unique_id=1265264304]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_b52ho")
+
+[node name="ShootTutorial" type="RichTextLabel" parent="UI/Tutorials/VBoxContainer" unique_id=1295859465 node_paths=PackedStringArray("label", "animation_player", "revealed_player", "learning_player")]
+layout_mode = 2
+theme = ExtResource("52_ccj1p")
+bbcode_enabled = true
+text = "[font_size=28][outline_size=6][color=#7B7B7B]# SHOOT WITH [color=765a43][key][/color][br] RECHARGE SOUL BY ATTACKING ENEMIES [/color]"
+fit_content = true
+visible_characters = 0
+visible_ratio = 0.0
+script = ExtResource("51_773af")
+label = NodePath(".")
+action_name = "shoot"
+saved_key = "shooting_tutorial"
+required_learn_count = 4
+animation_player = NodePath("AnimationPlayer")
+tutorial_area_group_name = "shoot_tutorial"
+revealed_player = NodePath("../Revealed")
+learning_player = NodePath("../Learning")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Tutorials/VBoxContainer/ShootTutorial" unique_id=1136143808]
+root_node = NodePath("../../..")
+libraries/ = SubResource("AnimationLibrary_rgylo")
+
+[node name="BottomLeft" type="Control" parent="UI" unique_id=1327505875]
+layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
+offset_top = -720.0
+offset_bottom = -720.0
 grow_vertical = 0
+pivot_offset = Vector2(0, 720)
 script = ExtResource("43_ekykk")
 
-[node name="Label" type="Label" parent="UI" unique_id=493732866]
+[node name="Label" type="Label" parent="UI/BottomLeft" unique_id=493732866]
 layout_mode = 0
 offset_left = 9.0
-offset_top = -95.0
+offset_top = 624.0
 offset_right = 101.0
-offset_bottom = -57.0
+offset_bottom = 662.0
 theme = ExtResource("24_m1s71")
 text = "WISP"
 script = ExtResource("44_4anjp")
 
-[node name="Health" parent="UI" unique_id=1993447213 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
+[node name="Health" parent="UI/BottomLeft" unique_id=1993447213 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
 layout_mode = 1
 anchors_preset = 2
 anchor_left = 0.0
@@ -3833,17 +4137,17 @@ anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
 offset_left = 9.0
-offset_top = -19.0
-offset_right = 115.025
-offset_bottom = -9.0
+offset_top = 700.0
+offset_right = 115.024994
+offset_bottom = 710.0
 grow_horizontal = 1
 grow_vertical = 0
 theme_override_styles/fill = ExtResource("34_6g6ue")
 expands = true
-tracked_node = NodePath("../../Hitbox")
+tracked_node = NodePath("../../../Hitbox")
 pixel_expansion_rate = 8.0
 
-[node name="HealCharges" parent="UI" unique_id=291496189 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
+[node name="HealCharges" parent="UI/BottomLeft" unique_id=291496189 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
 layout_mode = 1
 anchors_preset = 2
 anchor_left = 0.0
@@ -3851,19 +4155,19 @@ anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
 offset_left = 9.0
-offset_top = -38.0
-offset_right = 115.025
-offset_bottom = -28.0
+offset_top = 681.0
+offset_right = 115.024994
+offset_bottom = 691.0
 grow_horizontal = 1
 grow_vertical = 0
 theme_override_styles/fill = ExtResource("56_s81g7")
 expands = true
-tracked_node = NodePath("../..")
+tracked_node = NodePath("../../..")
 tracked_property = "heal_charges"
 tracked_max_property = "MAX_HEAL_CHARGES"
 pixel_expansion_rate = 8.0
 
-[node name="Shooting" parent="UI" unique_id=862791230 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
+[node name="Shooting" parent="UI/BottomLeft" unique_id=862791230 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
 layout_mode = 1
 anchors_preset = 2
 anchor_left = 0.0
@@ -3871,14 +4175,14 @@ anchor_top = 1.0
 anchor_right = 0.0
 anchor_bottom = 1.0
 offset_left = 9.0
-offset_top = -56.0
-offset_right = 115.025
-offset_bottom = -46.0
+offset_top = 663.0
+offset_right = 115.024994
+offset_bottom = 673.0
 grow_horizontal = 1
 grow_vertical = 0
 theme_override_styles/fill = ExtResource("57_773af")
 expands = true
-tracked_node = NodePath("../..")
+tracked_node = NodePath("../../..")
 tracked_property = "shooting_energy"
 tracked_max_property = "MAX_SHOOTING_ENERGY"
 pixel_expansion_rate = 8.0

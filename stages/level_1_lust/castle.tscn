@@ -206,6 +206,14 @@ _data = {
 &"Flying Around": SubResource("Animation_a0oe4")
 }
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_7fk2k"]
+resource_local_to_scene = true
+size = Vector3(17, 13, 19)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dq2hf"]
+resource_local_to_scene = true
+size = Vector3(17, 13, 19)
+
 [node name="Main" type="Node3D" unique_id=1722623232]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1692198949]
@@ -273,7 +281,7 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["INTRODUCTION"])
 
 [node name="Camera3D" type="Camera3D" parent="Cinematic" unique_id=2010672013 groups=["cinematic_camera"]]
-transform = Transform3D(0.20193797, 0.96362793, -0.1750486, 0, 0.17873074, 0.98389804, 0.979398, -0.1986864, 0.03609254, -57.055, 978.878, 47.6623)
+transform = Transform3D(0.20193797, 0.96362776, -0.1750486, 0, 0.1787307, 0.98389804, 0.979398, -0.19868638, 0.03609254, -57.055, 978.878, 47.6623)
 fov = 50.0
 
 [node name="Door" type="Node" parent="." unique_id=368264647]
@@ -392,6 +400,26 @@ autoplay = &"Flying Around"
 
 [node name="Reaper" parent="." unique_id=1142266382 instance=ExtResource("4_42w7d")]
 transform = Transform3D(0.457082, 0, -0.889425, 0, 1, 0, 0.889425, 0, 0.457082, -21.7503, -8.46191, 87.0511)
+
+[node name="SkillTreeTutorial" type="Area3D" parent="." unique_id=2027932816 groups=["skill_tree_tutorial"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 35.632748, 4.829819, 56.317955)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SkillTreeTutorial" unique_id=98978797]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 5)
+shape = SubResource("BoxShape3D_7fk2k")
+debug_color = Color(0.768, 0.79413337, 0.8, 0.88235295)
+
+[node name="ShootTutorial" type="Area3D" parent="." unique_id=1659477864 groups=["shoot_tutorial"]]
+transform = Transform3D(0.69814044, 0, 0.71596086, 0, 1, 0, -0.71596086, 0, 0.69814044, 131.28143, -2.3418546, 65.068825)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShootTutorial" unique_id=807632199]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 5)
+shape = SubResource("BoxShape3D_dq2hf")
+debug_color = Color(0.768, 0.79413337, 0.8, 0.88235295)
 
 [connection signal="body_entered" from="KillVolumes/Void" to="KillVolumes/Void" method="_on_body_entered"]
 [connection signal="body_entered" from="KillVolumes/Void2" to="KillVolumes/Void2" method="_on_body_entered"]

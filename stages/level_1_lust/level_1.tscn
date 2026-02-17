@@ -20,6 +20,10 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_hgjnn"]
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_hgjnn"]
+resource_local_to_scene = true
+size = Vector3(17, 13, 38.374878)
+
 [node name="Main" type="Node3D" unique_id=1547312028]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=990454839]
@@ -91,3 +95,13 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.581
 
 [node name="Reaper" parent="." unique_id=361408396 instance=ExtResource("4_hgjnn")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
+
+[node name="HealTutorial" type="Area3D" parent="." unique_id=761754293 groups=["heal_tutorial"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.199722, -11.416544, -4.441559)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HealTutorial" unique_id=389926924]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 1.9887085)
+shape = SubResource("BoxShape3D_hgjnn")
+debug_color = Color(0.768, 0.79413337, 0.8, 0.88235295)
