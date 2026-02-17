@@ -344,4 +344,10 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1070475261]
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1219032758]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6022949, 0, 0)
+debug_fill = false
+
 [editable path="checkpoint"]
