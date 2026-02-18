@@ -1597,16 +1597,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("20_ri305")
 scenes = Array[PackedScene]([ExtResource("2_jx80p")])
 
-[node name="Target" type="Node3D" parent="." unique_id=524208369 node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA")]
+[node name="Target" type="Node3D" parent="." unique_id=524208369 node_paths=PackedStringArray("BODY", "MESH", "NAV_AGENT", "STOP_CHASE_AREA")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8066845, 2.62937, 5.5470924)
 script = ExtResource("15_cadt7")
-NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
-MESH = NodePath("../Mesh")
 BODY = NodePath("..")
+MESH = NodePath("../Mesh")
+NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 FLIPPED_TRACKING = true
-STOP_CHASE_AREA = NodePath("../HitShape")
 SPEED = 12.0
 SPEED_MULTIPLIER = 0.0
+STOP_CHASE_AREA = NodePath("../HitShape")
 
 [node name="Mesh" type="Node3D" parent="." unique_id=591728732 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "SCENE_ROOT")]
 script = ExtResource("16_psb2t")

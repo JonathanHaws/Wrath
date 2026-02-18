@@ -1583,14 +1583,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("23_6u562")
 scenes = Array[PackedScene]([ExtResource("24_wpfpa")])
 
-[node name="Target" type="Node3D" parent="." unique_id=230275988 node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY")]
+[node name="Target" type="Node3D" parent="." unique_id=230275988 node_paths=PackedStringArray("BODY", "MESH", "NAV_AGENT")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5154033, 0, 1.2341261)
 script = ExtResource("25_mgimy")
-NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
-MESH = NodePath("../Mesh")
 BODY = NodePath("..")
-FLIPPED_TRACKING = true
+MESH = NodePath("../Mesh")
+NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 TRACKING_MULTIPLIER = 0.0
+FLIPPED_TRACKING = true
+USE_PATHFINDING = false
+MESH_CHASE_VECTOR = true
 SPEED_MULTIPLIER = 0.0
 
 [node name="NodeOffset" type="Node3D" parent="Target" unique_id=1277068007]
