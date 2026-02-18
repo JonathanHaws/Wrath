@@ -252,37 +252,51 @@ tracks/12/keys = {
 "update": 0,
 "values": [20.0, 0.0]
 }
-tracks/13/type = "value"
+tracks/13/type = "method"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Target:MOVE_AND_SLIDE")
-tracks/13/interp = 0
+tracks/13/path = NodePath("Dialog")
+tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
+"times": PackedFloat32Array(2.6),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["death"],
+"method": &"_spawn_fork"
+}]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/14/interp = 0
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(0, 3.56667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("CollisionShape3D:disabled")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("CollisionShape3D:disabled")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
 "times": PackedFloat32Array(0, 4.06667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/15/type = "method"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("WispReward")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
+tracks/16/type = "method"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("WispReward")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
 "times": PackedFloat32Array(4.46667),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -290,32 +304,18 @@ tracks/15/keys = {
 "method": &"give"
 }]
 }
-tracks/16/type = "method"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath(".")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
+tracks/17/type = "method"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath(".")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
 "times": PackedFloat32Array(18.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
-}]
-}
-tracks/17/type = "method"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Dialog")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
-"times": PackedFloat32Array(9.733334),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["death"],
-"method": &"_spawn_fork"
 }]
 }
 
@@ -674,16 +674,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("23_hybxi")
 scenes = Array[PackedScene]([ExtResource("24_uxu3y")])
 
-[node name="Target" type="Node3D" parent="." unique_id=1924219474 node_paths=PackedStringArray("NAV_AGENT", "MESH", "BODY", "STOP_CHASE_AREA")]
+[node name="Target" type="Node3D" parent="." unique_id=1924219474 node_paths=PackedStringArray("BODY", "MESH", "NAV_AGENT", "STOP_CHASE_AREA")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89408, 2.62937, 5.76861)
 script = ExtResource("25_osw8t")
-NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
-MESH = NodePath("../Mesh")
 BODY = NodePath("..")
+MESH = NodePath("../Mesh")
+NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 FLIPPED_TRACKING = true
-STOP_CHASE_AREA = NodePath("../HitShape")
 SPEED = 12.0
 SPEED_MULTIPLIER = 0.0
+STOP_CHASE_AREA = NodePath("../HitShape")
 
 [node name="Mesh" type="Node3D" parent="." unique_id=31844010 node_paths=PackedStringArray("SCENE_ROOT")]
 script = ExtResource("26_8l61o")
@@ -722,13 +722,12 @@ omni_range = 27.0089
 [node name="Dialog" type="AnimationPlayer" parent="." unique_id=350144529 node_paths=PackedStringArray("anim")]
 libraries/ = SubResource("AnimationLibrary_sxwwu")
 script = ExtResource("25_2x3ef")
-anim = NodePath(".")
+dialog_file = ExtResource("29_2x3ef")
 dialog_templates = Array[PackedScene]([ExtResource("26_pd0jx"), ExtResource("27_or7ux"), ExtResource("28_hnqmt")])
 speaker_name = "pig"
-dialog_file = ExtResource("29_2x3ef")
+anim = NodePath(".")
 
 [node name="Background" parent="Dialog" unique_id=1392334860 instance=ExtResource("30_2q8t5")]
-autoplay = &"RESET"
 
 [node name="RandomDialog" type="Timer" parent="Dialog" unique_id=626962202 node_paths=PackedStringArray("DIALOG")]
 script = ExtResource("31_q4x5b")

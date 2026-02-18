@@ -386,7 +386,7 @@ tracks/20/path = NodePath("Dialog/AnimationPlayer")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
-"times": PackedFloat32Array(4.73333),
+"times": PackedFloat32Array(2.6),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["death"],
@@ -1920,7 +1920,7 @@ disabled = true
 debug_color = Color(0.95, 0.038, 0.1748, 0.180392)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="5" unique_id=255726878]
-transform = Transform3D(-0.90810555, -0.4186998, 0.005922934, 0.41825476, -0.90627635, 0.0610496, -0.020193523, 0.057916787, 0.99811685, -0.956145, 3.9381685, -0.3923036)
+transform = Transform3D(-0.90806115, -0.41879526, 0.00600587, 0.4183547, -0.9062304, 0.061046474, -0.020123072, 0.05794647, 0.9981166, -0.95631385, 3.9382722, -0.39223558)
 bone_name = "hand_r"
 bone_idx = 51
 
