@@ -1,7 +1,12 @@
 extends Node
 @export_group("Dialog") ## Control dialog flow with "fork: name", "skip: fork_name", save, start, end
 @export var dialog_file: Resource
-@export var start_index = 0
+@export var start_index = 0 ## Line index that is said when player leaves area and comes back
+@export var start_index_auto_progress: bool = true ## Index isn't reset when leaving area
+@export var start_index_save_key: String = ""
+func get_start_index_save_key() -> String:
+	if start_index_save_key != "": return start_index_save_key
+	return Save.get_unique_key(self, "start_index_save_key")
 
 @export_subgroup("Templates") ## Scene templates to spawn specified in dialog JSON file
 @export var dialog_key_map : Array[String] = ["choice", "say", "say_timed"] ## For shortening dialog files. Specify what key should spawn what scene
@@ -17,7 +22,6 @@ extends Node
 var index = start_index
 var in_range: bool = false 
 var dialog_active := false
-var dialog_save_key
 var dialog
 var entry
 	
@@ -85,9 +89,7 @@ func _spawn(require_in_range = false) -> void:
 			return
 	
 	if "save" in entry:
-		Save.data[dialog_save_key] = index
-		start_index = index
-		Save.save_game()		
+		Save.data[get_start_index_save_key()] = index
 	
 	if "anim" in entry:
 		if "anim_player_group" in entry :
@@ -104,8 +106,9 @@ func _spawn(require_in_range = false) -> void:
 		goto(entry.skip)
 		return
 	
+	if start_index_auto_progress: start_index = index
 	goto(index + 1)
-	
+
 func _ready():
 
 	if area:
@@ -117,9 +120,8 @@ func _ready():
 		dialog = JSON.parse_string(json_as_text) as Array
 		#print(dialog)
 		
-	dialog_save_key = Save.get_unique_key(self, "_dialog_index")  # Load how far the dialog has progressed (start_index)
-	if Save.data.has(dialog_save_key):
-		index = int(Save.data[dialog_save_key])
+	if Save.data.has(get_start_index_save_key()):
+		index = int(Save.data[get_start_index_save_key()])
 		start_index = index
 
 func _is_dialog_in_tree() -> bool:
