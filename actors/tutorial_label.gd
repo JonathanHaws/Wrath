@@ -21,6 +21,7 @@ func has_learned_tutorial() -> bool:
 	return int(Save.data.get(get_key(), 0)) >= required_learn_count
 
 @export_group("Animation")
+@export var revealed_player: AudioStreamPlayer ## Sound for when tutorial info is revealed
 @export var animation_player: AnimationPlayer ## Animation to play when area is entered
 @export var reveal_animation: String = "REVEAL"
 @export var learned_animation: String = "LEARNED"
@@ -41,10 +42,6 @@ func _on_body_entered(body: Node) -> void:
 		visible = true
 	#print('player entered tutorial')
 
-@export_group("Audio")
-@export var revealed_player: AudioStreamPlayer
-@export var learning_player: AudioStreamPlayer
-
 func _ready():
 	set_tutorial_text()
 	if has_learned_tutorial(): queue_free()
@@ -61,8 +58,6 @@ func _ready():
 	
 func _process(_delta):
 	if Input.is_action_just_pressed(action_name) and visible:
-		if learning_player: learning_player.play()
-
 		Save.data[saved_key] = int(Save.data.get(saved_key, 0)) + 1	# increment
 		
 		if has_learned_tutorial():
