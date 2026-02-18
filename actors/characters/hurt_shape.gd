@@ -4,6 +4,7 @@ extends Area3D
 @export var damage: float = 10.0
 @export var damage_spread: float = 0 ## Determines subtle randomness in attack damage
 @export var damage_multiplier: float = 1 ## Value that can be animated by animation players 
+@export var disabled: bool = false
 @export var cooldown: float = 0.2 
 @export var linger_tick: float = 1.0
 @export var linger: bool = false
@@ -44,7 +45,7 @@ func save_ready() -> void:
 	Save.connect("save_data_updated", _on_save_data_updated)
 
 func hurt(area: Area3D) -> void:
-	
+	if disabled: return
 	await get_tree().physics_frame # Ensure both the regular hit_shape AND block_shape is in 'overlapping areas;
 	
 	# Check if one of overlapping areas is in block group... Then call hit on it instead instead of parameter area...

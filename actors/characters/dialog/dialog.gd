@@ -1,19 +1,19 @@
 extends Node
-@export_subgroup("Area")
-@export var anim: AnimationPlayer ## For entry / exit animations from area
-@export var area: Area3D ## Defines the range in which will activate conversations
-@export var player_group: String = "player" ## Defines the group of bodies which can trigger conversations
-@export var disable_actions := ["attack", "jump"] ## Requires DisableInput global to work
+@export_group("Dialog") ## Control dialog flow with "fork: name", "skip: fork_name", save, start, end
+@export var dialog_file: Resource
+@export var start_index = 0
 
-@export_group("Templates") ## Scene templates to spawn specified in dialog JSON file
+@export_subgroup("Templates") ## Scene templates to spawn specified in dialog JSON file
 @export var dialog_key_map : Array[String] = ["choice", "say", "say_timed"] ## For shortening dialog files. Specify what key should spawn what scene
 @export var dialog_templates: Array[PackedScene] = [] ## Scene templates to spawn / despawn when the last sentence is finished
 @export var dialog_group: String = "dialog" ## Group all instances of templates are added to. Used by other scrips (Such as cutscene skipper) to get rid of them
 @export var speaker_name: String = "" ## Group name... Used for jibberish audio to only apply to this entitys dialog
 
-@export_group("Dialog") ## Control dialog flow with "fork: name", "skip: fork_name", save, start, end
-@export var dialog_file: Resource
-@export var start_index = 0
+@export_subgroup("Area")
+@export var anim: AnimationPlayer ## For entry / exit animations from area
+@export var area: Area3D ## Defines the range in which will activate conversations
+@export var player_group: String = "player" ## Defines the group of bodies which can trigger conversations
+
 var index = start_index
 var in_range: bool = false 
 var dialog_active := false

@@ -147,6 +147,18 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_get7n"]
 resource_name = "checkpoint_disable"
@@ -338,10 +350,22 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:JUMP_MULTIPLIER")
-tracks/4/interp = 0
+tracks/4/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape:disabled")
+tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -384,7 +408,7 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/3/type = "value"
@@ -396,16 +420,28 @@ tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:JUMP_MULTIPLIER")
-tracks/4/interp = 0
+tracks/4/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape:disabled")
+tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -3838,7 +3874,7 @@ rotation_edit_mode = 1
 
 [node name="Skeleton3D" parent="Mesh/reaper/Reaper" parent_id_path=PackedInt32Array(457514100, 1555644302) index="0" unique_id=508255527]
 bones/0/rotation = Quaternion(-0.70708895, -0.0050162785, 0.0050162785, 0.707089)
-bones/1/position = Vector3(0.009892099, 0.19134718, 0.83960843)
+bones/1/position = Vector3(0.010998693, 0.19314043, 0.8486402)
 bones/1/rotation = Quaternion(0.66652495, 0.0052884123, -0.0047285054, 0.74544907)
 bones/2/rotation = Quaternion(1.8626445e-09, 1.2144255e-07, -1.8626456e-09, 1)
 bones/3/position = Vector3(-0.13482243, 0.052575987, -0.0037890945)
@@ -3850,7 +3886,7 @@ bones/7/position = Vector3(0.095023654, 0.29883614, -0.037884206)
 bones/7/rotation = Quaternion(-0.08802534, 0.31957737, -0.44377676, 0.8325768)
 bones/8/position = Vector3(0.04027832, 0.37375048, 0.019249877)
 bones/8/rotation = Quaternion(-0.5901653, -0.32968488, -0.32878575, 0.6594792)
-bones/9/rotation = Quaternion(0.0364276, 0.0018553865, -0.011249866, 0.99927133)
+bones/9/rotation = Quaternion(0.052660268, 0.00095730845, -0.005804494, 0.9985952)
 bones/10/position = Vector3(0.07390616, 0.08636394, 2.3734561e-08)
 bones/10/rotation = Quaternion(-0.11537215, -0.050698973, -0.85975343, 0.49491715)
 bones/11/rotation = Quaternion(-0.4583216, -0.4065079, 0.068734, 0.78738064)
@@ -3868,7 +3904,7 @@ bones/19/position = Vector3(0.07455926, -0.046927348, -3.1641132e-08)
 bones/19/rotation = Quaternion(-0.006284321, 0.120801985, 0.9926165, -0.008936239)
 bones/20/rotation = Quaternion(0.02306323, -0.00015750952, -0.003233497, 0.99972886)
 bones/21/rotation = Quaternion(-0.79255307, 0.0020301999, -0.0018228459, 0.60979694)
-bones/22/position = Vector3(0.073768854, 0.48258352, 1.0742853)
+bones/22/position = Vector3(0.073929906, 0.48258355, 1.0856382)
 bones/22/rotation = Quaternion(0.2975276, 0.26516646, 0.55392134, 0.7309825)
 
 [node name="body" parent="Mesh/reaper/Reaper/Skeleton3D" index="0" unique_id=23935814]
@@ -3878,7 +3914,7 @@ material_override = ExtResource("35_m1s71")
 material_override = ExtResource("36_4anjp")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="3" unique_id=552018988]
-transform = Transform3D(0.24651477, -0.6622983, 0.70752466, -0.05455814, 0.7194133, 0.69243604, -0.967602, -0.20929696, 0.14121224, 0.05851966, 1.0752237, -0.23258337)
+transform = Transform3D(0.24651477, -0.6622983, 0.70752466, -0.05455814, 0.7194133, 0.69243604, -0.967602, -0.20929696, 0.14121224, 0.058519617, 1.0865778, -0.2325834)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -3918,7 +3954,7 @@ light_energy = 0.0
 libraries/ = SubResource("AnimationLibrary_hfpb6")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4" unique_id=1880319706]
-transform = Transform3D(-0.9998197, -0.015474242, -0.011016471, 0.011582241, -0.036960587, -0.99924946, 0.015055463, -0.99919707, 0.03713329, -0.08989425, 0.014277697, -0.12750155)
+transform = Transform3D(-0.9998197, -0.015474242, -0.011016471, 0.011582241, -0.036960587, -0.99924946, 0.015055463, -0.99919707, 0.03713329, -0.08891591, 0.023324251, -0.1292948)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -3928,7 +3964,7 @@ script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5" unique_id=1885491197]
-transform = Transform3D(-0.9998197, -0.015474242, -0.011016471, 0.011582241, -0.036960587, -0.99924946, 0.015055463, -0.99919707, 0.03713329, -0.08989425, 0.014277697, -0.12750155)
+transform = Transform3D(-0.9998197, -0.015474242, -0.011016471, 0.011582241, -0.036960587, -0.99924946, 0.015055463, -0.99919707, 0.03713329, -0.08891591, 0.023324251, -0.1292948)
 bone_name = "foot_l"
 bone_idx = 18
 

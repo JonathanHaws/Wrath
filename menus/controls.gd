@@ -30,9 +30,12 @@ func get_action_bindings(action: String) -> String:
 
 # For disabling input... 
 func play_input_anim(animation_name: String, group_name: String = "input_anim") -> void:
+	
+	#print(animation_name)
 	for p in get_tree().get_nodes_in_group(group_name):
 		if p is AnimationPlayer:
-			p.play(animation_name)
+			p.play(animation_name, 0)
+			p.advance(p.current_animation_length)
 
 # Hidden Cursor
 var last_position_visible :Vector2 = Vector2.ZERO
