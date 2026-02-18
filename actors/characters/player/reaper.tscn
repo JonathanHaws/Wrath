@@ -4010,6 +4010,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="Tutorials" type="Control" parent="UI" unique_id=916132959]
 anchors_preset = 0
@@ -4046,7 +4047,7 @@ volume_db = -22.0
 pitch_scale = 0.5
 bus = &"SFX"
 
-[node name="SkillTreeTutorial" type="RichTextLabel" parent="UI/Tutorials/VBoxContainer" unique_id=1707971146 node_paths=PackedStringArray("label", "animation_player", "revealed_player", "learning_player")]
+[node name="SkillTreeTutorial" type="RichTextLabel" parent="UI/Tutorials/VBoxContainer" unique_id=1707971146 node_paths=PackedStringArray("label", "revealed_player", "animation_player")]
 layout_mode = 2
 theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
@@ -4059,15 +4060,14 @@ label = NodePath(".")
 action_name = "toggle_skill_tree"
 saved_key = "skill_tree_tutorial"
 required_learn_count = 4
-animation_player = NodePath("AnimationPlayer")
 revealed_player = NodePath("../Revealed")
-learning_player = NodePath("../Learning")
+animation_player = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Tutorials/VBoxContainer/SkillTreeTutorial" unique_id=694729877]
 root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_ika6y")
 
-[node name="HealTutorial" type="RichTextLabel" parent="UI/Tutorials/VBoxContainer" unique_id=2078828283 node_paths=PackedStringArray("label", "animation_player", "revealed_player", "learning_player")]
+[node name="HealTutorial" type="RichTextLabel" parent="UI/Tutorials/VBoxContainer" unique_id=2078828283 node_paths=PackedStringArray("label", "revealed_player", "animation_player")]
 layout_mode = 2
 theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
@@ -4077,16 +4077,15 @@ script = ExtResource("51_773af")
 label = NodePath(".")
 saved_key = "healing_tutorial"
 required_learn_count = 4
+revealed_player = NodePath("../Revealed")
 animation_player = NodePath("AnimationPlayer")
 tutorial_area_group_name = "heal_tutorial"
-revealed_player = NodePath("../Revealed")
-learning_player = NodePath("../Learning")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Tutorials/VBoxContainer/HealTutorial" unique_id=1265264304]
 root_node = NodePath("../../..")
 libraries/ = SubResource("AnimationLibrary_b52ho")
 
-[node name="ShootTutorial" type="RichTextLabel" parent="UI/Tutorials/VBoxContainer" unique_id=1295859465 node_paths=PackedStringArray("label", "animation_player", "revealed_player", "learning_player")]
+[node name="ShootTutorial" type="RichTextLabel" parent="UI/Tutorials/VBoxContainer" unique_id=1295859465 node_paths=PackedStringArray("label", "revealed_player", "animation_player")]
 layout_mode = 2
 theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
@@ -4099,10 +4098,9 @@ label = NodePath(".")
 action_name = "shoot"
 saved_key = "shooting_tutorial"
 required_learn_count = 4
+revealed_player = NodePath("../Revealed")
 animation_player = NodePath("AnimationPlayer")
 tutorial_area_group_name = "shoot_tutorial"
-revealed_player = NodePath("../Revealed")
-learning_player = NodePath("../Learning")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="UI/Tutorials/VBoxContainer/ShootTutorial" unique_id=1136143808]
 root_node = NodePath("../../..")

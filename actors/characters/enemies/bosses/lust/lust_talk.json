@@ -3,8 +3,8 @@
 {"say": "WHO ARE YOU?"},
 {"say": "..."},
 {"say": "ITS VERY NICE TO MEET YOU!"},
-{"choice": [{"text": "WHO ARE YOU?"}, 				
-			{"text": "NICE TO MEET YOU TOO", "skip": "observation" }]},
+{"choice": [{"text": "WHO ARE YOU?" }, 				
+			{"text": "NICE TO MEET YOU TOO", "skip": "observation" }], "save": 1},
 
 {"say": "WHO AM I?"},
 {"say": "DONT YOU ALREADY KNOW?"},
@@ -25,7 +25,7 @@
 	{"choice": [{"text": "GIVE IN", "skip": "give_in" }, 
 				{"text": "RESIST"}]},
 
-	{"say": "I THINK YOUR CONFUSED"},
+	{"say": "I THINK YOU'RE CONFUSED"},
 	{"say": "NO ONE REFUSES ME"},
 	{"say": "..."},
 	{"say": "EVER."},
