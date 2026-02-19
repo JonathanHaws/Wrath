@@ -4049,18 +4049,27 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Tutorials" type="Control" parent="UI" unique_id=916132959]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
 scale = Vector2(0.8, 0.8)
 script = ExtResource("43_ekykk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Tutorials" unique_id=1379840933]
 layout_mode = 0
-offset_left = 7.0
-offset_top = 5.0
-offset_right = 297.0
-offset_bottom = 45.0
+offset_left = -247.49997
+offset_top = -82.49999
+offset_right = 42.50003
+offset_bottom = 41.500008
+pivot_offset = Vector2(290, 124)
+alignment = 2
 
 [node name="Revealed" type="AudioStreamPlayer" parent="UI/Tutorials/VBoxContainer" unique_id=1667586098]
 process_mode = 3
@@ -4089,6 +4098,7 @@ theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
 text = "[font_size=28][outline_size=6][color=#7B7B7B]# PRESS [color=4a515b][key][/color] TO AQUIRE SKILLS "
 fit_content = true
+horizontal_alignment = 2
 visible_characters = 0
 visible_ratio = 0.0
 script = ExtResource("51_773af")
@@ -4109,6 +4119,7 @@ theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
 text = "[font_size=28][outline_size=6][color=#7B7B7B]# PRESS [color=606060][key][/color] TO HEAL"
 fit_content = true
+horizontal_alignment = 2
 script = ExtResource("51_773af")
 label = NodePath(".")
 saved_key = "healing_tutorial"
@@ -4127,6 +4138,7 @@ theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
 text = "[font_size=28][outline_size=6][color=#7B7B7B]# SHOOT WITH [color=765a43][key][/color][br] RECHARGE SOUL BY ATTACKING ENEMIES [/color]"
 fit_content = true
+horizontal_alignment = 2
 visible_characters = 0
 visible_ratio = 0.0
 script = ExtResource("51_773af")

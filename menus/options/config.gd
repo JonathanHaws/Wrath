@@ -17,6 +17,7 @@ func set_ui_scale(value: float) -> void:
 	#reduce_ui_scale_until_contained()
 
 func change_resolution(res_size: Vector2) -> void:
+	
 	get_window().content_scale_size = res_size
 	Config.save_setting("display", "resolution_width", res_size.x)
 	Config.save_setting("display", "resolution_height", res_size.y)

@@ -35,7 +35,7 @@ func _skip_cinematic() -> void:
 
 	for skipper in get_tree().get_nodes_in_group(SKIPPER_GROUP):
 		if "_skip" in skipper:
-			skipper._skip(false)
+			skipper._skip()
 
 func _save_cinematic_completed() -> void:
 	if SAVE_KEY == "": return
