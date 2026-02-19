@@ -1,4 +1,16 @@
 [
+	{"fork": "food1", "save":  {"key": "food1", "value": 1}},
+		{"say_timed": {"say": "HELLO", "for": 3, "sequence": 1}},
+		{"say_timed": {"say": "DO YOU KNOW WHERE ANY FOOD IS?", "for": 3}},
+	
+	{"fork": "food2", "save":  {"key": "food2", "value": 1}},
+		{"say_timed": {"say": "PLEASE TELL ME IF", "for": 3, "sequence": 1}},
+		{"say_timed": {"say": "YOU FIND ANY SPARE FOOD", "for": 3}},
+	
+	{"fork": "food3", "save":  {"key": "food3", "value": 1}},
+		{"say_timed": {"say": "HAVE YOU SEEN ANY FOOD YET?", "for": 3, "sequence": 1}},
+		{"say_timed": {"say": "I NEED SOME!", "for": 3}},
+	
 	{"fork": "apology"},
 		{"say_timed": {"say": "IM SORRY...", "for": 3, "sequence": 1}},
 		{"say_timed": {"say": "I COULDN'T FIND ANY FOOD", "for": 3}}

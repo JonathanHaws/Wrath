@@ -4,6 +4,7 @@ extends Node
 @export var start_index = 0 ## Line index that is said when player leaves area and comes back
 @export var start_index_auto_progress: bool = true ## Index isn't reset when leaving area
 @export var start_index_save_key: String = ""
+@export var speaker_name: String = "" ## Group name... Used for jibberish audio to only apply to this entitys dialog
 func get_start_index_save_key() -> String:
 	if start_index_save_key != "": return start_index_save_key
 	return Save.get_unique_key(self, "start_index_save_key")
@@ -13,12 +14,10 @@ func get_saved_start_index() -> int:
 		return int(Save.data[get_start_index_save_key()])
 	return 0
 
-
 @export_subgroup("Templates") ## Scene templates to spawn specified in dialog JSON file
 @export var dialog_key_map : Array[String] = ["choice", "say", "say_timed"] ## For shortening dialog files. Specify what key should spawn what scene
 @export var dialog_templates: Array[PackedScene] = [] ## Scene templates to spawn / despawn when the last sentence is finished
 @export var dialog_group: String = "dialog" ## Group all instances of templates are added to. Used by other scrips (Such as cutscene skipper) to get rid of them
-@export var speaker_name: String = "" ## Group name... Used for jibberish audio to only apply to this entitys dialog
 
 @export_subgroup("Area")
 @export var anim: AnimationPlayer ## For entry / exit animations from area
@@ -90,25 +89,30 @@ func _spawn(require_in_range = false) -> void:
 			if dialog_group != "": instance.add_to_group(dialog_group)
 			add_child(instance)
 	
+	if "save" in entry:
+		if entry.save is Dictionary and entry.save.has("key") and entry.save.has("value"):
+			Save.data[entry.save.key] = entry.save.value
+	
 	if "fork" in entry:
 		if index < (dialog.size()-1):
 			index += 1 ## Skip past fork labels
 			_spawn()
 			return
-	
-	if "save" in entry:
-		Save.data[get_start_index_save_key()] = index
-	
+		
 	if "anim" in entry:
 		if "anim_player_group" in entry :
 			for p in get_tree().get_nodes_in_group(entry.anim_player_group):
 				p.play(entry.anim)		
 	
+	if "start" in entry:
+		Save.data[get_start_index_save_key()] = index
+	
 	if "end" in entry: 
 		_end_dialog()
-	
+		
 	if "skip" in entry: 
 		goto(entry.skip)
+		if start_index_auto_progress: start_index = index
 		return
 	
 	if start_index_auto_progress: start_index = index

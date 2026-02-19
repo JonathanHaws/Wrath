@@ -1,8 +1,18 @@
-[gd_scene load_steps=15 format=3 uid="uid://dfri6vhmpkyfv"]
+[gd_scene format=3 uid="uid://dfri6vhmpkyfv"]
 
 [ext_resource type="PackedScene" uid="uid://wlhsn0forped" path="res://actors/characters/npcs/piglet/piglet.blend" id="1_w7fh2"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="2_yln8f"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/interaction.gd" id="3_yln8f"]
+[ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://actors/characters/dialog/dialog.gd" id="4_lk4kr"]
+[ext_resource type="JSON" path="res://actors/characters/enemies/bosses/gluttony/piglet_talk_1.json" id="5_mqdry"]
+[ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://actors/characters/dialog/scenes/choice/choice.tscn" id="6_n7ptf"]
+[ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://actors/characters/dialog/scenes/say/say.tscn" id="7_p2gj2"]
+[ext_resource type="PackedScene" uid="uid://kiuc3ouuqv0h" path="res://actors/characters/dialog/scenes/say_timed/say_timed.tscn" id="8_sqsdj"]
+[ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://actors/characters/dialog/background.tscn" id="9_jcpxj"]
+[ext_resource type="Script" uid="uid://b7r0jqvwugh6i" path="res://actors/characters/dialog/jibberish_chat.gd" id="10_sjgh2"]
+[ext_resource type="AudioStream" uid="uid://042olyodr1k" path="res://actors/characters/enemies/bosses/gluttony/sounds/piget_talk1.ogg" id="11_38cti"]
+[ext_resource type="AudioStream" uid="uid://bq5aa53vc3chn" path="res://actors/characters/enemies/bosses/gluttony/sounds/piget_talk2.ogg" id="12_10ins"]
+[ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://actors/progress_gate.gd" id="13_mqdry"]
 
 [sub_resource type="PrismMesh" id="PrismMesh_yln8f"]
 
@@ -75,10 +85,24 @@ tracks/4/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("PigletDialog")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(1.5833),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["apology"],
+"method": &"_spawn_fork"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_eqf0t"]
 resource_name = "PIGLET_PAT"
-length = 6.66667
+length = 6.9583335
 step = 0.0416667
 tracks/0/type = "animation"
 tracks/0/imported = false
@@ -116,10 +140,24 @@ tracks/2/keys = {
 "method": &"_trigger_corresponding_animation"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PigletDialog")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.625),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["food3"],
+"method": &"_spawn_fork"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_bpypl"]
 resource_name = "PIGLET_PET"
-length = 6.66667
+length = 7.0416665
 step = 0.0416667
 tracks/0/type = "animation"
 tracks/0/imported = false
@@ -157,10 +195,24 @@ tracks/2/keys = {
 "method": &"_trigger_corresponding_animation"
 }]
 }
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PigletDialog")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.3333335),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["food2"],
+"method": &"_spawn_fork"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_7ogmq"]
 resource_name = "PIGLET_PICKUP"
-length = 8.0
+length = 8.466666
 tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -195,6 +247,20 @@ tracks/2/keys = {
 "values": [{
 "args": [],
 "method": &"_trigger_corresponding_animation"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PigletDialog")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.3666668),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["food1"],
+"method": &"_spawn_fork"
 }]
 }
 
@@ -267,70 +333,110 @@ size = Vector3(2.68766, 3.2832, 2.31576)
 [sub_resource type="BoxShape3D" id="BoxShape3D_vyj1q"]
 size = Vector3(2.68766, 3.2832, 2.31576)
 
-[node name="Piglet" type="Node3D" groups=["piglet_body"]]
+[sub_resource type="Animation" id="Animation_a8trv"]
+resource_name = "entered"
+length = 0.333337
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PigletDialog/Background")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"entered"],
+"method": &"queue"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ilwd1"]
+resource_name = "exited"
+length = 0.333337
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PigletDialog/Background")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"exited"],
+"method": &"queue"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a5qpk"]
+_data = {
+&"entered": SubResource("Animation_a8trv"),
+&"exited": SubResource("Animation_ilwd1")
+}
+
+[node name="Piglet" type="Node3D" unique_id=759269460 groups=["piglet_body"]]
 rotation_edit_mode = 1
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=218893775]
 transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 4.17233e-05, 0.499105, 0.00958431)
 visible = false
 mesh = SubResource("PrismMesh_yln8f")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." groups=["piglet_anim", "skippable"]]
-libraries = {
-&"": SubResource("AnimationLibrary_vyj1q")
-}
-autoplay = "RESET"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=566658482 groups=["piglet_anim", "skippable"]]
+libraries/ = SubResource("AnimationLibrary_vyj1q")
+autoplay = &"RESET"
 
-[node name="piglet" parent="." groups=["piglet_mesh"] instance=ExtResource("1_w7fh2")]
+[node name="piglet" parent="." unique_id=2106838690 groups=["piglet_mesh"] instance=ExtResource("1_w7fh2")]
 rotation_edit_mode = 1
 
 [node name="Skeleton3D" parent="piglet/Piglet" index="0"]
-bones/0/position = Vector3(0.0143669, 0.00609565, -1.59086)
-bones/0/rotation = Quaternion(4.62056e-08, 0.704069, 0.710132, -6.0502e-08)
-bones/1/position = Vector3(-1.11992e-08, -0.173976, 0.531944)
-bones/1/rotation = Quaternion(0.0308635, -3.27203e-08, -3.66456e-10, 0.999524)
-bones/2/rotation = Quaternion(0.0139796, 2.56345e-08, -2.65216e-10, 0.999902)
-bones/4/rotation = Quaternion(0.0963935, 3.0065e-09, 1.09865e-08, 0.995343)
-bones/5/rotation = Quaternion(-0.16068, -8.76664e-08, -4.52739e-09, 0.987006)
-bones/6/rotation = Quaternion(0.151149, 0.0608011, 0.419362, 0.89308)
-bones/7/rotation = Quaternion(-0.479999, 0.0375655, -0.0858094, 0.872254)
-bones/8/rotation = Quaternion(-0.0746408, 0.045318, 0.0142011, 0.996079)
-bones/10/rotation = Quaternion(-0.479999, -0.0375656, 0.0858091, 0.872254)
-bones/11/rotation = Quaternion(-0.074641, -0.0453178, -0.0142008, 0.996079)
-bones/14/position = Vector3(-0.172982, 0.0877139, -0.240676)
-bones/14/rotation = Quaternion(-0.762221, -0.0461574, -0.0390173, 0.644489)
-bones/15/rotation = Quaternion(-0.0187564, -0.000111918, 0.0183685, 0.999655)
-bones/16/position = Vector3(0.172982, 0.087714, -0.240676)
-bones/16/rotation = Quaternion(-0.762221, 0.0461573, 0.0390172, 0.64449)
-bones/17/rotation = Quaternion(-0.0187565, 0.000111963, -0.0183686, 0.999655)
-bones/18/position = Vector3(5.94131e-09, -0.0505515, 0.100357)
-bones/18/rotation = Quaternion(0.982259, 8.30921e-08, 3.91408e-07, 0.187531)
-bones/19/rotation = Quaternion(-0.0729608, 2.32059e-07, -7.83777e-08, 0.997335)
-bones/20/rotation = Quaternion(-0.180406, -1.50632e-08, -2.33013e-07, 0.983592)
-bones/22/rotation = Quaternion(-0.374347, 1.00797e-08, -4.48377e-07, 0.927289)
-bones/23/rotation = Quaternion(-0.356357, -5.36377e-08, -4.10246e-07, 0.93435)
-bones/24/rotation = Quaternion(-0.271482, 5.50385e-08, -3.12476e-07, 0.962444)
-bones/25/position = Vector3(-0.215475, 0.0610136, -0.192475)
-bones/25/rotation = Quaternion(-0.671517, -0.0386853, -0.00575932, 0.739956)
-bones/26/rotation = Quaternion(-0.0255709, -0.00125225, -0.0193465, 0.999485)
-bones/27/position = Vector3(0.215475, 0.0610135, -0.192475)
-bones/27/rotation = Quaternion(-0.671517, 0.0386854, 0.0057593, 0.739956)
-bones/28/rotation = Quaternion(-0.0255709, 0.00125225, 0.0193465, 0.999485)
+bones/0/position = Vector3(0.014366882, 0.0060956455, -1.5908631)
+bones/0/rotation = Quaternion(4.620557e-08, 0.7040688, 0.7101318, -6.050204e-08)
+bones/1/position = Vector3(-1.1199242e-08, -0.17397617, 0.531944)
+bones/1/rotation = Quaternion(0.030863503, -3.2720312e-08, -3.6645573e-10, 0.99952364)
+bones/2/rotation = Quaternion(0.013979564, 2.5634534e-08, -2.652163e-10, 0.9999023)
+bones/4/rotation = Quaternion(0.0963935, 3.0065042e-09, 1.0986537e-08, 0.9953433)
+bones/5/rotation = Quaternion(-0.16068041, -8.766636e-08, -4.527393e-09, 0.9870065)
+bones/6/rotation = Quaternion(0.15114914, 0.06080115, 0.41936243, 0.89308023)
+bones/7/rotation = Quaternion(-0.4799993, 0.03756548, -0.08580935, 0.87225354)
+bones/8/rotation = Quaternion(-0.07464082, 0.045317993, 0.014201099, 0.996079)
+bones/10/rotation = Quaternion(-0.4799992, -0.03756561, 0.0858091, 0.8722536)
+bones/11/rotation = Quaternion(-0.07464097, -0.045317806, -0.01420077, 0.996079)
+bones/14/position = Vector3(-0.17298222, 0.08771387, -0.24067579)
+bones/14/rotation = Quaternion(-0.7622208, -0.04615739, -0.039017294, 0.6444894)
+bones/15/rotation = Quaternion(-0.018756447, -0.00011191832, 0.01836854, 0.99965537)
+bones/16/position = Vector3(0.17298226, 0.08771397, -0.24067582)
+bones/16/rotation = Quaternion(-0.76222074, 0.046157345, 0.03901724, 0.6444896)
+bones/17/rotation = Quaternion(-0.01875646, 0.000111963105, -0.018368576, 0.99965537)
+bones/18/position = Vector3(5.9413123e-09, -0.05055145, 0.100356914)
+bones/18/rotation = Quaternion(0.9822588, 8.3092104e-08, 3.9140798e-07, 0.18753052)
+bones/19/rotation = Quaternion(-0.07296083, 2.3205911e-07, -7.837767e-08, 0.9973349)
+bones/20/rotation = Quaternion(-0.18040565, -1.506315e-08, -2.3301307e-07, 0.98359233)
+bones/22/rotation = Quaternion(-0.37434694, 1.0079654e-08, -4.4837697e-07, 0.9272887)
+bones/23/rotation = Quaternion(-0.3563569, -5.3637688e-08, -4.1024566e-07, 0.93434995)
+bones/24/rotation = Quaternion(-0.27148184, 5.5038484e-08, -3.1247586e-07, 0.96244365)
+bones/25/position = Vector3(-0.21547538, 0.06101356, -0.1924752)
+bones/25/rotation = Quaternion(-0.67151713, -0.038685333, -0.0057593244, 0.73995614)
+bones/26/rotation = Quaternion(-0.025570929, -0.0012522504, -0.019346502, 0.9994851)
+bones/27/position = Vector3(0.21547532, 0.06101351, -0.19247521)
+bones/27/rotation = Quaternion(-0.67151713, 0.038685363, 0.005759299, 0.73995614)
+bones/28/rotation = Quaternion(-0.025570905, 0.0012522478, 0.019346531, 0.999485)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="piglet/Piglet/Skeleton3D" index="1"]
-transform = Transform3D(-1, 1.50785e-07, 3.65824e-08, 4.4543e-08, 0.0531373, 0.998587, 1.48628e-07, 0.998587, -0.0531374, 0.0143669, 0.539512, -1.76027)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="piglet/Piglet/Skeleton3D" index="1" unique_id=1183657264]
+transform = Transform3D(-1, 1.507847e-07, 3.658237e-08, 4.4542965e-08, 0.053137287, 0.99858725, 1.4862775e-07, 0.9985875, -0.05313738, 0.014366857, 0.53951174, -1.7602719)
 bone_name = "hip"
 bone_idx = 1
 
-[node name="LockOn" type="Area3D" parent="piglet/Piglet/Skeleton3D/BoneAttachment3D"]
+[node name="LockOn" type="Area3D" parent="piglet/Piglet/Skeleton3D/BoneAttachment3D" unique_id=156417962]
 transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 0.498502, -0.0348504)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="piglet/Piglet/Skeleton3D/BoneAttachment3D/LockOn"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="piglet/Piglet/Skeleton3D/BoneAttachment3D/LockOn" unique_id=2069500625]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
 shape = SubResource("BoxShape3D_w7fh2")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="piglet/Piglet/Skeleton3D" index="2"]
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="piglet/Piglet/Skeleton3D" index="2" unique_id=2097558753]
 target_node = NodePath("../../../../target/OffsetForLookAt")
 bone_name = "head"
 bone = 4
@@ -344,14 +450,14 @@ primary_damp_threshold = 1.0
 secondary_limit_angle = 2.14763
 secondary_damp_threshold = 1.0
 
-[node name="target" type="Node3D" parent="."]
+[node name="target" type="Node3D" parent="." unique_id=1379468587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.256931, 3.02241)
 script = ExtResource("2_yln8f")
 
-[node name="OffsetForLookAt" type="Node3D" parent="target"]
+[node name="OffsetForLookAt" type="Node3D" parent="target" unique_id=1475473437]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
-[node name="PickUpInteraction" type="Area3D" parent="." node_paths=PackedStringArray("trigger_area", "animation_player", "body", "mesh")]
+[node name="PickUpInteraction" type="Area3D" parent="." unique_id=1269613829 node_paths=PackedStringArray("trigger_area", "animation_player", "body", "mesh")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("3_yln8f")
@@ -364,12 +470,12 @@ mesh = NodePath("../piglet")
 duration_seconds = 0.5
 weight = 0.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpInteraction"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpInteraction" unique_id=447597325]
 transform = Transform3D(0.999997, 4.65661e-09, -1.80153e-08, 1.11759e-08, 0.999997, -2.98023e-08, 1.40863e-08, -1.3411e-07, 0.999995, -0.137741, 1.13558, 0.0584046)
 shape = SubResource("BoxShape3D_yln8f")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
-[node name="HeadPetInteraction" type="Area3D" parent="." node_paths=PackedStringArray("trigger_area", "animation_player", "body", "mesh")]
+[node name="HeadPetInteraction" type="Area3D" parent="." unique_id=1044115885 node_paths=PackedStringArray("trigger_area", "animation_player", "body", "mesh")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("3_yln8f")
@@ -383,12 +489,12 @@ mesh = NodePath("../piglet")
 duration_seconds = 0.5
 weight = 0.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadPetInteraction"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HeadPetInteraction" unique_id=2103315949]
 transform = Transform3D(0.999997, 4.65661e-09, -1.80153e-08, 1.11759e-08, 0.999997, -2.98023e-08, 1.40863e-08, -1.3411e-07, 0.999995, -0.137741, 1.13558, 0.0584046)
 shape = SubResource("BoxShape3D_7ogmq")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
-[node name="PatInteraction" type="Area3D" parent="." node_paths=PackedStringArray("trigger_area", "animation_player", "body", "mesh")]
+[node name="PatInteraction" type="Area3D" parent="." unique_id=1822399454 node_paths=PackedStringArray("trigger_area", "animation_player", "body", "mesh")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("3_yln8f")
@@ -402,12 +508,12 @@ mesh = NodePath("../piglet")
 duration_seconds = 0.5
 weight = 0.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="PatInteraction"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PatInteraction" unique_id=1619893817]
 transform = Transform3D(0.999997, 4.65661e-09, -1.80153e-08, 1.11759e-08, 0.999997, -2.98023e-08, 1.40863e-08, -1.3411e-07, 0.999995, -0.137741, 1.13558, 0.0584046)
 shape = SubResource("BoxShape3D_vyj1q")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
-[node name="Light" type="OmniLight3D" parent="."]
+[node name="Light" type="OmniLight3D" parent="." unique_id=434232898]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 1.64925, -0.361175)
 light_color = Color(0.57, 0.397765, 0.2907, 1)
 light_energy = 0.25
@@ -415,5 +521,27 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 12.0287
+
+[node name="PigletDialog" type="AnimationPlayer" parent="." unique_id=1426215669 node_paths=PackedStringArray("anim")]
+libraries/ = SubResource("AnimationLibrary_a5qpk")
+script = ExtResource("4_lk4kr")
+dialog_file = ExtResource("5_mqdry")
+speaker_name = "piglet"
+dialog_templates = Array[PackedScene]([ExtResource("6_n7ptf"), ExtResource("7_p2gj2"), ExtResource("8_sqsdj")])
+anim = NodePath(".")
+
+[node name="Background" parent="PigletDialog" unique_id=509965786 instance=ExtResource("9_jcpxj")]
+
+[node name="Jibberish" type="AudioStreamPlayer" parent="PigletDialog" unique_id=1102842512 node_paths=PackedStringArray("player")]
+bus = &"SFX"
+script = ExtResource("10_sjgh2")
+player = NodePath(".")
+sounds = Array[AudioStream]([ExtResource("11_38cti"), ExtResource("12_10ins")])
+speaker_group = "piglet"
+
+[node name="Node" type="Node" parent="." unique_id=1385845519 node_paths=PackedStringArray("node_to_queue_free")]
+script = ExtResource("13_mqdry")
+save_key = "gluttony_defeated"
+node_to_queue_free = NodePath("..")
 
 [editable path="piglet"]

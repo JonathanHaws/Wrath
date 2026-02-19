@@ -1,9 +1,11 @@
 extends AnimationPlayer
 var info: Array = []
+var choice_chosen: int = -1
 @export var disable_actions := ["controller_forward", "controller_left", "controller_right", "controller_back"]
 ## ADD option to save choices as already explored so omit them... Or to point out how odd it is your asking the same question again
 
 func _on_choice_pressed(choice: Dictionary) -> void:
+	choice_chosen = info.find(choice)
 	if Controls: Controls.play_input_anim("choice_disabled")
 	_capture_cursor()
 	queue("exited")
@@ -14,6 +16,7 @@ func exit_area() -> void:
 	queue("exited")
 
 func spawn_next_dialog() -> void:
+	if info[choice_chosen].has("end"): return
 	get_parent()._spawn(true)
 
 func _capture_cursor():

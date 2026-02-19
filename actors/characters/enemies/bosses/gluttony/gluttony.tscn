@@ -29,9 +29,7 @@
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="24_r4ucj"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="25_q2e76"]
 [ext_resource type="Material" uid="uid://7w72228cchli" path="res://actors/characters/enemies/bosses/gluttony/gluttony_material.tres" id="28_kav4y"]
-[ext_resource type="AudioStream" uid="uid://042olyodr1k" path="res://actors/characters/enemies/bosses/gluttony/sounds/piget_talk1.ogg" id="28_ryp23"]
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://actors/props/wisp/wisp_reward.gd" id="29_0iori"]
-[ext_resource type="AudioStream" uid="uid://bq5aa53vc3chn" path="res://actors/characters/enemies/bosses/gluttony/sounds/piget_talk2.ogg" id="29_tx5w1"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="29_uk6rk"]
 [ext_resource type="PackedScene" uid="uid://dshyyn54ur3e1" path="res://actors/characters/enemies/bosses/gluttony/gluttony.blend" id="29_wvvup"]
 [ext_resource type="PackedScene" uid="uid://d2iqujeqiun08" path="res://actors/characters/enemies/bosses/gluttony/projectiles/slow_vomit.tscn" id="30_kcm85"]
@@ -39,7 +37,6 @@
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="31_vwjlg"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/interaction.gd" id="32_12e26"]
 [ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://actors/characters/dialog/scenes/choice/choice.tscn" id="32_26016"]
-[ext_resource type="JSON" path="res://actors/characters/enemies/bosses/gluttony/piglet_talk_1.json" id="32_ddcis"]
 [ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://actors/characters/dialog/scenes/say/say.tscn" id="33_x6t7s"]
 [ext_resource type="PackedScene" uid="uid://kiuc3ouuqv0h" path="res://actors/characters/dialog/scenes/say_timed/say_timed.tscn" id="34_76nnf"]
 [ext_resource type="Script" uid="uid://bs2bbm2ty8nsu" path="res://actors/characters/enemies/chase_target_smooth.gd" id="36_svijn"]
@@ -618,39 +615,25 @@ tracks/2/keys = {
 "method": &"_trigger_corresponding_animation"
 }]
 }
-tracks/3/type = "method"
+tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Dialog/PigletDialog")
-tracks/3/interp = 1
+tracks/3/path = NodePath("IntroCinematic/Shot1:current")
+tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.58333),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["apology"],
-"method": &"_spawn_fork"
-}]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("IntroCinematic/Shot1:current")
-tracks/4/interp = 0
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0, 3.58333, 7.08333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [false, true, false]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CameraEffects")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CameraEffects")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(7.08333),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -658,13 +641,13 @@ tracks/5/keys = {
 "method": &"impact"
 }]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Audio/Music")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/Music")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(12.125),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -672,23 +655,23 @@ tracks/6/keys = {
 "method": &"play"
 }]
 }
-tracks/7/type = "animation"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Mesh/gluttony/AnimationPlayer")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/6/type = "animation"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/gluttony/AnimationPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "clips": PackedStringArray("GOBBLE"),
 "times": PackedFloat32Array(0.583333)
 }
-tracks/8/type = "audio"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Audio/AudioStreamPlayer")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Audio/AudioStreamPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 6.49853,
@@ -696,98 +679,98 @@ tracks/8/keys = {
 }],
 "times": PackedFloat32Array(7)
 }
-tracks/8/use_blend = true
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/7/use_blend = true
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0, 0.541667, 0.583333, 9.29166, 15),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [1.0, 1.0, 0.0, 0.0, 1.0]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("IntroCinematic/Shot2:current")
-tracks/10/interp = 0
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("IntroCinematic/Shot2:current")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0, 0.583333, 3.58333, 7.08333, 16.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
 "values": [false, true, false, true, false]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("IntroCinematic/Shot2:position")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 15),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(7.46145, 10.5319, 20.7818), Vector3(-2.30339, 5.02884, 23.7826)]
+}
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("IntroCinematic/Shot2:position")
+tracks/11/path = NodePath("IntroCinematic/Shot2:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(7.46145, 10.5319, 20.7818), Vector3(-2.30339, 5.02884, 23.7826)]
+"values": [Vector3(-0.445059, 0.344704, 0), Vector3(-0.130899, -0.0829014, 0)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("IntroCinematic/Shot2:rotation")
+tracks/12/path = NodePath("IntroCinematic/Shot2:fov")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0, 15),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector3(-0.445059, 0.344704, 0), Vector3(-0.130899, -0.0829014, 0)]
+"values": [42.0, 26.5]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("IntroCinematic/Shot2:fov")
+tracks/13/path = NodePath("Ui:modulate")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 15),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [42.0, 26.5]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Ui:modulate")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
 "times": PackedFloat32Array(13.5833, 14.4167, 17),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("IntroCinematic/ColorRect:color")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("IntroCinematic/ColorRect:color")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(0.208333, 0.583333, 0.958333),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
-tracks/16/type = "method"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Dialog/PigDialog/RandomDialog")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
+tracks/15/type = "method"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Dialog/PigDialog/RandomDialog")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
 "times": PackedFloat32Array(16.958334),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -2037,48 +2020,6 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="Animation" id="Animation_4kxbv"]
-resource_name = "entered"
-length = 0.333337
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Dialog/PigletDialog/Background")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"entered"],
-"method": &"queue"
-}]
-}
-
-[sub_resource type="Animation" id="Animation_26016"]
-resource_name = "exited"
-length = 0.333337
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../Dialog/PigletDialog/Background")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [&"exited"],
-"method": &"queue"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_x6t7s"]
-_data = {
-&"entered": SubResource("Animation_4kxbv"),
-&"exited": SubResource("Animation_26016")
-}
-
 [sub_resource type="Animation" id="Animation_mra31"]
 resource_name = "entered"
 length = 0.333337
@@ -2417,42 +2358,42 @@ debug_color = Color(0, 0.595, 0.7, 0.266667)
 [node name="Skeleton3D" parent="Mesh/gluttony/Armature" index="0"]
 bones/1/position = Vector3(1.7097143e-08, -1.614377, -0.113229506)
 bones/2/rotation = Quaternion(0.11560689, -7.770195e-14, -5.5125646e-08, 0.9932951)
-bones/3/rotation = Quaternion(0.15631525, 3.843357e-14, -7.453692e-08, 0.9877072)
-bones/4/position = Vector3(6.6470966e-07, 1.4185574, 1.3939972)
-bones/4/rotation = Quaternion(-0.039907258, 2.6110602e-15, 1.9029244e-08, 0.9992034)
+bones/3/rotation = Quaternion(0.15642758, 3.42665e-10, -7.675544e-08, 0.98768944)
+bones/4/position = Vector3(6.6470966e-07, 1.4185575, 1.3939972)
+bones/4/rotation = Quaternion(-0.039907258, 2.6110604e-15, 1.9029244e-08, 0.99920344)
 bones/8/position = Vector3(4.27963e-07, 1.291399, 0.8975054)
 bones/8/rotation = Quaternion(0.520192, -2.137996e-06, -1.5502766e-06, 0.8540493)
-bones/9/position = Vector3(0.06838097, 1.0476388, 1.7088784)
+bones/9/position = Vector3(0.06851744, 1.0480881, 1.7086829)
 bones/9/rotation = Quaternion(0.84442616, 0.40489054, 0.1580521, -0.31309372)
-bones/10/position = Vector3(0.31182522, 0.8735967, 1.556809)
+bones/10/position = Vector3(0.31208506, 0.8737201, 1.5567535)
 bones/10/rotation = Quaternion(0.90114725, 0.23968439, 0.05714526, -0.35667834)
-bones/11/position = Vector3(0.52349263, 0.55338264, 1.3318983)
+bones/11/position = Vector3(0.5236974, 0.55336326, 1.3319184)
 bones/11/rotation = Quaternion(0.9719804, 0.10642794, 0.09818882, -0.18516523)
-bones/12/position = Vector3(0.5777737, 0.29403475, 1.2551814)
-bones/13/position = Vector3(0.47024575, 0.084104784, 1.3361984)
-bones/13/rotation = Quaternion(0.7006484, -0.21828513, 0.108457156, 0.6705822)
-bones/14/position = Vector3(0.33962214, 0.12319791, 1.5783408)
+bones/12/position = Vector3(0.5780757, 0.2940192, 1.2551879)
+bones/13/position = Vector3(0.47082692, 0.08410868, 1.3363286)
+bones/13/rotation = Quaternion(0.7006484, -0.21828516, 0.108457156, 0.6705822)
+bones/14/position = Vector3(0.3396221, 0.12319792, 1.5783408)
 bones/14/rotation = Quaternion(0.56248873, -0.29451418, 0.15749767, 0.756348)
-bones/15/position = Vector3(0.16756672, 0.1848008, 1.720416)
+bones/15/position = Vector3(0.16752562, 0.18507317, 1.7201974)
 bones/15/rotation = Quaternion(0.44925135, -0.44542998, 0.26813602, 0.7265456)
 bones/16/position = Vector3(0.6505356, 0.38523683, 0.048036937)
-bones/21/position = Vector3(-0.06837947, 1.047639, 1.7088782)
+bones/21/position = Vector3(-0.06837847, 1.0480118, 1.7087171)
 bones/21/rotation = Quaternion(0.84442604, -0.4048908, -0.15805274, -0.31309327)
 bones/22/position = Vector3(-0.3118238, 0.87359697, 1.556809)
 bones/22/rotation = Quaternion(0.90114737, -0.23968452, -0.057145726, -0.35667798)
-bones/23/position = Vector3(-0.5234915, 0.55338264, 1.3318987)
+bones/23/position = Vector3(-0.5237103, 0.55341536, 1.3319273)
 bones/23/rotation = Quaternion(0.97198045, -0.106427304, -0.09818945, -0.18516517)
-bones/24/position = Vector3(-0.5777724, 0.29403415, 1.2551826)
+bones/24/position = Vector3(-0.5779716, 0.29405615, 1.2551272)
 bones/24/rotation = Quaternion(0.9630612, 0.09301943, -0.2369317, 0.087885715)
-bones/25/position = Vector3(-0.47024438, 0.084104896, 1.3361987)
+bones/25/position = Vector3(-0.47041866, 0.084083, 1.3361601)
 bones/25/rotation = Quaternion(0.70064837, 0.21828568, -0.108457625, 0.670582)
-bones/26/position = Vector3(-0.3396207, 0.123197965, 1.5783412)
+bones/26/position = Vector3(-0.33989215, 0.12286093, 1.5783929)
 bones/26/rotation = Quaternion(0.5624885, 0.29451466, -0.15749803, 0.7563479)
-bones/27/position = Vector3(-0.16756503, 0.18480095, 1.7204158)
+bones/27/position = Vector3(-0.16762666, 0.18524955, 1.720056)
 bones/27/rotation = Quaternion(0.4492508, 0.44543076, -0.2681367, 0.7265452)
 bones/28/position = Vector3(-0.65053517, 0.38523662, 0.048037432)
 bones/30/rotation = Quaternion(0.18322377, -0.037296604, -0.67258185, 0.71601105)
-bones/31/rotation = Quaternion(0.14499511, 0.096939676, 0.043559905, 0.9837081)
+bones/31/rotation = Quaternion(0.14499511, 0.09693967, 0.043559905, 0.9837081)
 bones/32/rotation = Quaternion(0.26274303, 0.42238086, 0.28148058, 0.82056653)
 bones/33/rotation = Quaternion(0.0046492177, -0.0380337, 0.03918771, 0.99849695)
 bones/34/rotation = Quaternion(0.13107882, 0.02623611, -0.12396564, 0.98324084)
@@ -2464,7 +2405,7 @@ bones/39/rotation = Quaternion(0.03490454, 0.002714462, -0.10407443, 0.9939531)
 bones/40/position = Vector3(-3.4600173e-08, 1.0775654, -1.5121655e-07)
 bones/40/rotation = Quaternion(0.18322411, 0.037296984, 0.67258173, 0.716011)
 bones/40/scale = Vector3(1.0000002, 1.0000001, 1)
-bones/41/rotation = Quaternion(0.11475858, -0.0882835, -0.0033687293, 0.989457)
+bones/41/rotation = Quaternion(0.114758596, -0.088283524, -0.0033687335, 0.9894571)
 bones/42/rotation = Quaternion(0.25486484, -0.40987793, -0.31079572, 0.81881016)
 bones/43/rotation = Quaternion(0.0046492307, 0.038033716, -0.03918773, 0.99849695)
 bones/44/rotation = Quaternion(0.13107882, -0.026236081, 0.12396566, 0.98324084)
@@ -2488,7 +2429,7 @@ bones/57/rotation = Quaternion(0.04008765, -0.008712262, -0.088202596, 0.9952575
 material_override = ExtResource("28_kav4y")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="1" unique_id=134155221]
-transform = Transform3D(0.9550025, 0.08186618, -0.2850749, -0.27159855, -0.14483517, -0.9514498, -0.11918063, 0.9860633, -0.11608325, 3.1054537, 2.1497736, 0.42213786)
+transform = Transform3D(0.95500255, 0.08186614, -0.28507495, -0.2715986, -0.14483511, -0.9514499, -0.11918064, 0.98606324, -0.11608319, 3.1054537, 2.1497738, 0.4221378)
 bone_name = "hand_r"
 bone_idx = 33
 
@@ -2513,7 +2454,7 @@ transform = Transform3D(-0.27754998, -0.72433156, -0.6311179, 0.960711, -0.20925
 shape = SubResource("CapsuleShape3D_mra31")
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="2" unique_id=446597695]
-transform = Transform3D(0.93470734, -0.12650712, 0.33214214, 0.32037124, -0.10475807, -0.94148207, 0.1538986, 0.9864185, -0.05738919, -3.1903486, 2.1172552, 0.3276965)
+transform = Transform3D(0.93470734, -0.12650712, 0.33214214, 0.3203712, -0.10475808, -0.94148207, 0.15389858, 0.98641855, -0.05738931, -3.1903486, 2.1172552, 0.32769662)
 bone_name = "hand_l"
 bone_idx = 43
 
@@ -2735,7 +2676,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="10" unique_id=665646346]
-transform = Transform3D(1, 2.842171e-14, -1.1368684e-13, -4.2632564e-14, 0.8158263, -0.5782967, 2.842171e-14, 0.5782967, 0.81582636, 5.5246958e-14, 3.036944, 0.24238157)
+transform = Transform3D(1, 4.2066617e-09, -1.1843042e-09, -4.116771e-09, 0.8158541, -0.57825744, -1.4664181e-09, 0.5782574, 0.81585413, 6.218043e-09, 3.0365207, 0.24254143)
 bone_name = "head"
 bone_idx = 4
 
@@ -2850,24 +2791,6 @@ curve = SubResource("Curve3D_x6t7s")
 curve = SubResource("Curve3D_76nnf")
 
 [node name="Dialog" type="Node" parent="." unique_id=1007750878]
-
-[node name="PigletDialog" type="AnimationPlayer" parent="Dialog" unique_id=406170125 node_paths=PackedStringArray("anim")]
-root_node = NodePath("../../IntroCinematic")
-libraries/ = SubResource("AnimationLibrary_x6t7s")
-script = ExtResource("31_ddcis")
-dialog_file = ExtResource("32_ddcis")
-dialog_templates = Array[PackedScene]([ExtResource("32_26016"), ExtResource("33_x6t7s"), ExtResource("34_76nnf")])
-speaker_name = "piglet"
-anim = NodePath(".")
-
-[node name="Background" parent="Dialog/PigletDialog" unique_id=101502857 instance=ExtResource("36_x6t7s")]
-
-[node name="Jibberish" type="AudioStreamPlayer" parent="Dialog/PigletDialog" unique_id=1496413820 node_paths=PackedStringArray("player")]
-bus = &"SFX"
-script = ExtResource("22_oobth")
-player = NodePath(".")
-sounds = Array[AudioStream]([ExtResource("28_ryp23"), ExtResource("29_tx5w1")])
-speaker_group = "piglet"
 
 [node name="PigDialog" type="AnimationPlayer" parent="Dialog" unique_id=520841044 node_paths=PackedStringArray("anim")]
 libraries/ = SubResource("AnimationLibrary_vj6n6")

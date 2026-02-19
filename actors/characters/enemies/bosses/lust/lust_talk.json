@@ -4,12 +4,12 @@
 {"say": "..."},
 {"say": "ITS VERY NICE TO MEET YOU!"},
 {"choice": [{"text": "WHO ARE YOU?" }, 				
-			{"text": "NICE TO MEET YOU TOO", "skip": "observation" }], "save": 1},
+			{"text": "NICE TO MEET YOU TOO", "skip": "observation" }], "start": 1},
 
 {"say": "WHO AM I?"},
 {"say": "DONT YOU ALREADY KNOW?"},
 
-{"fork": "observation", "save": 1},
+{"fork": "observation", "start": 1},
 	{"say": "FORGIVE ME FOR PRYING BUT..."},
 	{"say": "WHY DO YOU SEEM SO"},
 	{"say": "LONELY"},
@@ -37,20 +37,21 @@
 	{"say": "GOOD..."},
 	{"say": "WELL THEN..."},
 	{"say": "COME CLOSER"},
-	{"anim_player_group": "lust_anim_player", "anim": "SIN", "skip": "atone", "end":1, "start":1},
+	{"anim_player_group": "lust_anim_player", "anim": "SIN", "skip": "bother", "end":1, "start":1},
 
-{"fork": "battle", "save": 1 },
+{"fork": "battle", "start": 1 },
 	{"say": "I TRIED TO WARN YOU"},
 	{"say": "I GET WHAT I WANT..."}, 
 
 {"fork": "intro"},
-	{"anim_player_group": "lust_anim_player", "anim": "INTRO", "save":1, "exit":1},
+	{"anim_player_group": "lust_anim_player", "anim": "INTRO", "start":1, "exit":1},
 
-{"fork": "atone","save": 1},
-	{"say": "DO NOT BOTHER ME.. "},
+{"fork": "bother", "start": 1},
+	{"say": "YES THE MASTER WILL LOVE YOU"},
+	{"say": "BUT DO NOT BOTHER ME... "},
 	{"say": "I HAVE THINGS TO DO"},
-	{"choice": [{"text": "SORRY" }, 
-				{"text": "IM NOT YOUR SLAVE", "skip": "intro"}]},
+	{"choice": [{"text": "SORRY", "skip": "bother", "end":1}, 
+				{"text": "IM NO ONES SLAVE", "skip": "intro"}]},
 				
 {"fork": "random_taunt_1"},
 	{"say_timed": {"say": "I GET WHAT I WANT", "for": 1.5}},
