@@ -8,6 +8,12 @@ func get_start_index_save_key() -> String:
 	if start_index_save_key != "": return start_index_save_key
 	return Save.get_unique_key(self, "start_index_save_key")
 
+func get_saved_start_index() -> int:
+	if Save.data.has(get_start_index_save_key()):
+		return int(Save.data[get_start_index_save_key()])
+	return 0
+
+
 @export_subgroup("Templates") ## Scene templates to spawn specified in dialog JSON file
 @export var dialog_key_map : Array[String] = ["choice", "say", "say_timed"] ## For shortening dialog files. Specify what key should spawn what scene
 @export var dialog_templates: Array[PackedScene] = [] ## Scene templates to spawn / despawn when the last sentence is finished
@@ -34,11 +40,13 @@ func _on_body_entered(body) -> void:
 func _on_body_exited(body)-> void:
 	if not body.is_in_group(player_group): return
 	if Controls: Controls.play_input_anim("dialog_disable")
+	for child in get_children(): if child.has_method("exit_area"): child.exit_area()
 	in_range = false
-	_end_dialog()
+	index = start_index
 
 func _end_dialog() -> void:
-	index = start_index
+	index = get_saved_start_index()
+	start_index = index
 	for child in get_children(): if child.has_method("exit_area"): child.exit_area()
 
 func purge_dialog() -> void:
@@ -52,7 +60,7 @@ func get_index_for_value(value: Variant) -> int:
 				idx = line
 				break
 	elif value is int: idx = value
-	if idx >= dialog.size(): idx = int(start_index) ## Loop back
+	if idx > dialog.size(): idx = get_saved_start_index()
 	return idx
 
 func get_dictionary_for_value(value: Variant, offset: int = 0) -> Dictionary:
@@ -96,9 +104,6 @@ func _spawn(require_in_range = false) -> void:
 			for p in get_tree().get_nodes_in_group(entry.anim_player_group):
 				p.play(entry.anim)		
 	
-	if "start" in entry: 
-		start_index = index
-	
 	if "end" in entry: 
 		_end_dialog()
 	
@@ -120,9 +125,8 @@ func _ready():
 		dialog = JSON.parse_string(json_as_text) as Array
 		#print(dialog)
 		
-	if Save.data.has(get_start_index_save_key()):
-		index = int(Save.data[get_start_index_save_key()])
-		start_index = index
+	index = get_saved_start_index()
+	start_index = index
 
 func _is_dialog_in_tree() -> bool:
 	var dialog_in_tree: Array = get_tree().get_nodes_in_group(dialog_group)
@@ -136,6 +140,7 @@ func _is_dialog_in_tree() -> bool:
 	
 func _physics_process(_delta: float) -> void:
 	#print(get_tree().get_nodes_in_group(dialog_group).size())
+	#print(start_index, " ", index)
 	
 	var active: bool = _is_dialog_in_tree() # Poll to see if dialog is active
 	if active and not dialog_active:
