@@ -21,5 +21,5 @@ func _on_timer_timeout() -> void:
 	queue("time_complete")
 
 	var next_entry: Dictionary = get_parent().get_dictionary_for_value(get_parent().index, 0)
-	if next_entry and !next_entry.has("fork") and (get_parent().index >= get_parent().start_index):
+	if next_entry and !next_entry.has("fork"):
 		get_parent()._spawn()
