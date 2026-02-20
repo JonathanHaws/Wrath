@@ -1,5 +1,6 @@
 extends AnimationPlayer
-@export var info: String = ""
+@export var dialog: Node ## Auto assigned from parent spawner
+@export var info: String = "" ## Auto assigned from parent spawner
 @export var label: Label
 @export var reveal_animation_player: AnimationPlayer
 @export var reveal_skipped_animation: String = "SKIPPED"
@@ -11,7 +12,9 @@ func exit_area() -> void:
 	queue("exited")
 
 func spawn_next_dialog() -> void:
-	get_parent()._spawn(true)
+	if dialog.in_range:
+		dialog.goto(dialog.index + 1)
+		dialog.spawn()
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("interact"): 

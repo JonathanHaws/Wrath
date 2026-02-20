@@ -1,5 +1,6 @@
 extends AnimationPlayer
-@export var info: Dictionary = {}
+@export var dialog: Node ## Auto assigned from parent spawner
+@export var info: Dictionary = {} ## Auto assigned from parent spawner
 @export var label: Label
 var timer: Timer
 
@@ -20,6 +21,8 @@ func _ready():
 func _on_timer_timeout() -> void:
 	queue("time_complete")
 
-	var next_entry: Dictionary = get_parent().get_dictionary_for_value(get_parent().index, 0)
-	if next_entry and !next_entry.has("fork"):
-		get_parent()._spawn()
+	var next_entry: Dictionary = dialog.get_dictionary_for_value(dialog.index + 1, 0)
+	if next_entry and !next_entry.has("branch"):
+		dialog.goto(dialog.index + 1)
+		dialog.spawn()
+		

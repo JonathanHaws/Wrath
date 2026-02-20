@@ -1,24 +1,24 @@
 [
-	{"fork": "random_taunt_1"},
+	{"branch": "random_taunt_1"},
 		{"say_timed": {"say": "THEY DONT DESERVE MERCY.", "for": 2.5}},
 		{"say_timed": {"say": "THOSE WHO TRAPPED US HERE", "for": 2.5}},
 
-	{"fork": "random_taunt_2"},
+	{"branch": "random_taunt_2"},
 		{"say_timed": {"say": "YOU THINK YOU'RE BETTER THEN ME", "for": 2.5}},
 		{"say_timed": {"say": "WITH YOUR PATIENCE", "for": 2.5}},
 		{"say_timed": {"say": "WATCHING AS THEY MAKE OTHERS SUFFER?", "for": 3.5}},
 		{"say_timed": {"say": "MOCKING OUR STRUGGLE.", "for": 3.5}},
 		{"say_timed": {"say": "OUR PAIN", "for": 3.5}},
 
-	{"fork": "random_taunt_3"},
+	{"branch": "random_taunt_3"},
 		{"say_timed": {"say": "YOU DISGUST ME.", "for": 2.5}},
 		{"say_timed": {"say": "YOU AND THE MASTER", "for": 2.5}},
 		
-	{"fork": "random_taunt_4"},	
+	{"branch": "random_taunt_4"},	
 		{"say_timed": {"say": "I WILL PARADE YOUR HYPROTICIAL CORPSE", "for": 2.5}},
 		{"say_timed": {"say": "WHEN I PUMMEL YOU INTO THE GROUND", "for": 2.5}},
 
-	{"fork": "death"},
+	{"branch": "death"},
 		{"say_timed": {"say": "I REGRET NOTHING", "for": 3.0}},
 		{"say_timed": {"say": "AND DID NOTHING WRONG", "for": 3.0}},
 		{"say_timed": {"say": "KILL THEM ALL.", "for": 3.0}}

@@ -1,20 +1,20 @@
 extends Timer
-@export var DIALOG: Node ## Calls play fork for each line
+@export var DIALOG: Node ## Calls play branch for each line
 @export var HIT_SHAPE: Node ## Specifies the node that has 'HEALTH' and 'MAX HEALTH' For trigger hps
 @export var SEQUENTIAL: bool = false
 @export var DELETE_AFTER_PLAY: bool = true ## Remove line from list after playing
 @export var MIN_INTERVAL: float = 4.5 ## Minimum seconds between lines
 @export var MAX_INTERVAL: float = 8.0 ## Maximum seconds between lines
 @export var FAIL_INTERVAL: float = 0.2 ## Timeout if no line can play
-@export var LINES: Array[String] = [] ## Specifies which dialog fork to go to 
+@export var LINES: Array[String] = [] ## Specifies which dialog branch to go to 
 var index: int = 0
 ## Potential cool feature is save dialog so it only ever happens once
 
 
-func get_fork_time(start_index: int) -> float:
+func get_branch_time(start_index: int) -> float:
 	var total: float = 0.0
 	var i: int = start_index
-	while i < DIALOG.dialog.size() and not DIALOG.dialog[i].has("fork"):
+	while i < DIALOG.dialog.size() and not DIALOG.dialog[i].has("branch"):
 		if DIALOG.dialog[i].has("say_timed"):
 			total += float(DIALOG.dialog[i].say_timed["for"])
 		i += 1
@@ -38,11 +38,11 @@ func _on_timeout() -> void:
 	
 	var entry: Dictionary = DIALOG.get_dictionary_for_value(LINES[index], 1)	
 	if not is_hp_in_range(entry): return
-	DIALOG._spawn_fork(LINES[index])		
+	DIALOG.spawn_branch(LINES[index])		
 	#print(entry)
 	
-	var fork_time = get_fork_time(DIALOG.index)
-	_set_random_wait(fork_time)
+	var branch_time = get_branch_time(DIALOG.index)
+	_set_random_wait(branch_time)
 
 	if DELETE_AFTER_PLAY: if index < LINES.size(): LINES.remove_at(index)
 	if LINES.size() > 0:# Deletion shifts array so no +1 is needed for sequential incrementation

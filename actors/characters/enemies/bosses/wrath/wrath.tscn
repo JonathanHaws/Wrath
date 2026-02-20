@@ -316,7 +316,7 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["death"],
-"method": &"_spawn_fork"
+"method": &"spawn_branch"
 }]
 }
 tracks/16/type = "value"
@@ -1645,8 +1645,8 @@ omni_range = 27.0089
 libraries/ = SubResource("AnimationLibrary_ur27y")
 script = ExtResource("31_5u627")
 dialog_file = ExtResource("35_5u627")
-dialog_templates = Array[PackedScene]([ExtResource("32_n3ooi"), ExtResource("33_la01t"), ExtResource("34_3lujc")])
 speaker_name = "pig"
+dialog_templates = Array[PackedScene]([ExtResource("32_n3ooi"), ExtResource("33_la01t"), ExtResource("34_3lujc")])
 anim = NodePath(".")
 
 [node name="Background" parent="Dialog" unique_id=2082848149 instance=ExtResource("36_whtie")]

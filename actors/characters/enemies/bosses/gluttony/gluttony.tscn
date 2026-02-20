@@ -361,7 +361,7 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["death"],
-"method": &"_spawn_fork"
+"method": &"spawn_branch"
 }]
 }
 tracks/16/type = "value"
@@ -2210,14 +2210,14 @@ next/FIST_SLAM_RIGHT = &"CHASE"
 next/INTRO = &"CHASE"
 next/SHOOT_FAST = &"CHASE"
 next/SHOOT_GRAVITY = &"CHASE"
+next/SHOOT_GRAVITY_PHASE_2 = &"CHASE"
 next/SLAM = &"CHASE"
 next/SLAM_LEFT = &"CHASE"
 next/SLAM_RIGHT = &"CHASE"
 next/VOMIT_ENCLOSE = &"CHASE"
+next/VOMIT_ENCLOSE_PHASE_2 = &"CHASE"
 next/VOMIT_IN_FRONT = &"CHASE"
 next/VOMIT_MEDIUM_LEFT = &"CHASE"
-next/VOMIT_ENCLOSE_PHASE_2 = &"CHASE"
-next/SHOOT_GRAVITY_PHASE_2 = &"CHASE"
 
 [node name="FistSlamLeft" type="Node" parent="AnimationPlayer" unique_id=918857647 node_paths=PackedStringArray("AREA_MULTIPLIER", "TARGET", "BODY")]
 script = ExtResource("29_uk6rk")
@@ -2676,7 +2676,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="10" unique_id=665646346]
-transform = Transform3D(1, 4.2066617e-09, -1.1843042e-09, -4.116771e-09, 0.8158541, -0.57825744, -1.4664181e-09, 0.5782574, 0.81585413, 6.218043e-09, 3.0365207, 0.24254143)
+transform = Transform3D(1, 4.369948e-09, -4.7648808e-07, -1.687398e-07, 0.9384089, -0.3455261, 4.4563072e-07, 0.34552604, 0.938409, 6.218043e-09, 3.0365207, 0.24254143)
 bone_name = "head"
 bone_idx = 4
 
@@ -2796,8 +2796,8 @@ curve = SubResource("Curve3D_76nnf")
 libraries/ = SubResource("AnimationLibrary_vj6n6")
 script = ExtResource("31_ddcis")
 dialog_file = ExtResource("49_26016")
-dialog_templates = Array[PackedScene]([ExtResource("32_26016"), ExtResource("33_x6t7s"), ExtResource("34_76nnf")])
 speaker_name = "pig"
+dialog_templates = Array[PackedScene]([ExtResource("32_26016"), ExtResource("33_x6t7s"), ExtResource("34_76nnf")])
 anim = NodePath(".")
 
 [node name="Background" parent="Dialog/PigDialog" unique_id=42615546 instance=ExtResource("36_x6t7s")]

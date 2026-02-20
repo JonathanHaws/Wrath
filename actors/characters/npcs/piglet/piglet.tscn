@@ -96,7 +96,7 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["apology"],
-"method": &"_spawn_fork"
+"method": &"spawn_branch"
 }]
 }
 
@@ -151,7 +151,7 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["food3"],
-"method": &"_spawn_fork"
+"method": &"spawn_branch"
 }]
 }
 
@@ -206,7 +206,7 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["food2"],
-"method": &"_spawn_fork"
+"method": &"spawn_branch"
 }]
 }
 
@@ -260,7 +260,7 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["food1"],
-"method": &"_spawn_fork"
+"method": &"spawn_branch"
 }]
 }
 

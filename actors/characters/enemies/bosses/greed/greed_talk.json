@@ -1,6 +1,7 @@
 [
-	{"fork": "greetings"},
+	{"branch": "greetings"},
 		{"say": "OH HEY LOOK A NEW FACE..."},
+		{"say": "ANOTHER SUMMONED BY THE MASTER?"},
 		{"say": "IF YOU'RE HERE TO STEAL MY TREASURES,"},
 		{"say": "TAKE YOUR LEAVE."},
 		{"say": "GO MAKE TROUBLE ELSEWHERE!"},
@@ -13,7 +14,7 @@
 		{"say": "WHAT WERE YOU WEAK TO?"},
 		{"skip": "greetings", "end": 1},
 
-	{"fork": "escape"},
+	{"branch": "escape"},
 		{"say": "IM AFRAID YOU CANT"},
 		{"say": "ITS IMPOSSIBLE."},
 		
@@ -31,11 +32,11 @@
 		{"say": "SO LIKE I SAID IMPOSSIBLE.", },
 		{"end": 1},
 	
-	{"fork": "random_taunt_1"},
+	{"branch": "random_taunt_1"},
 		{"say_timed": {"say": "YOU THINK YOU CAN STEAL FROM ME?", "for": 2.5}},
 		{"say_timed": {"say": "AND GET AWAY WITH IT", "for": 2.5}},
 
-	{"fork": "random_taunt_2"},
+	{"branch": "random_taunt_2"},
 		{"say_timed": {"say": "YOU THINK YOU CAN", "for": 2.5}},
 		{"say_timed": {"say": "SURVIVE THIS WORLD BEING POOR?", "for": 2.5}},
 		{"say_timed": {"say": "YOU CANT.", "for": 2.75}},
@@ -45,14 +46,14 @@
 		{"say_timed": {"say": "MINE", "for": 0.5}},
 		{"say_timed": {"say": "MINE!", "for": 0.5}},
 
-	{"fork": "random_taunt_3"},
+	{"branch": "random_taunt_3"},
 		{"say_timed": {"say": "EMPTY YOUR POCKETS AND PAY TRIBUTE", "for": 2.5}},
 		{"say_timed": {"say": "I NOW OWN YOUR SOUL", "for": 2.5}},
 
-	{"fork": "random_taunt_4"},
+	{"branch": "random_taunt_4"},
 		{"say_timed": {"say": "THINK THIS IS A CHARITY?", "for": 2.5}},
 
-	{"fork": "death"},
+	{"branch": "death"},
 		{"say_timed": {"say": "YOU DONT GET IT DO YOU?", "for": 3.0}},
 		{"say_timed": {"say": "YOU POOR POOR SOUL.", "for": 3.0}}
 

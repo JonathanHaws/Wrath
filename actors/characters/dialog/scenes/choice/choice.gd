@@ -1,23 +1,30 @@
 extends AnimationPlayer
-var info: Array = []
+@export var dialog: Node ## Auto assigned from parent spawner
+var info: Array = [] ## Auto assigned from parent spawner
 var choice_chosen: int = -1
 @export var disable_actions := ["controller_forward", "controller_left", "controller_right", "controller_back"]
 ## ADD option to save choices as already explored so omit them... Or to point out how odd it is your asking the same question again
 
 func _on_choice_pressed(choice: Dictionary) -> void:
 	choice_chosen = info.find(choice)
+	if info[choice_chosen].has("end"): 
+		dialog.end()
+	
 	if Controls: Controls.play_input_anim("choice_disabled")
 	_capture_cursor()
 	queue("exited")
-	if "skip" in choice: 
-		get_parent().goto(choice.skip)
+	if dialog.in_range:
+		if "skip" in choice: 
+			dialog.goto(choice.skip)
+		else:
+			dialog.goto(dialog.index + 1)
 
 func exit_area() -> void:
 	queue("exited")
 
 func spawn_next_dialog() -> void:
-	if info[choice_chosen].has("end"): return
-	get_parent()._spawn(true)
+	if dialog.in_range and not info[choice_chosen].has("end"):
+		dialog.spawn()
 
 func _capture_cursor():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)

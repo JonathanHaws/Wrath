@@ -507,7 +507,7 @@ tracks/14/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["death"],
-"method": &"_spawn_fork"
+"method": &"spawn_branch"
 }]
 }
 tracks/15/type = "method"
@@ -1748,8 +1748,8 @@ debug_color = Color(0.7, 0.7, 0.7, 0.0196078)
 libraries/ = SubResource("AnimationLibrary_hc8br")
 script = ExtResource("37_pmjfi")
 dialog_file = ExtResource("41_x0k4b")
-dialog_templates = Array[PackedScene]([ExtResource("38_x0k4b"), ExtResource("39_06a6w"), ExtResource("40_hc8br")])
 speaker_name = "pig"
+dialog_templates = Array[PackedScene]([ExtResource("38_x0k4b"), ExtResource("39_06a6w"), ExtResource("40_hc8br")])
 anim = NodePath(".")
 
 [node name="Background" parent="Dialog" unique_id=1095527906 instance=ExtResource("41_7awae")]

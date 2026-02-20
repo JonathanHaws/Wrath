@@ -9,7 +9,7 @@
 {"say": "WHO AM I?"},
 {"say": "DONT YOU ALREADY KNOW?"},
 
-{"fork": "observation", "start": 1},
+{"branch": "observation", "start": 1},
 	{"say": "FORGIVE ME FOR PRYING BUT..."},
 	{"say": "WHY DO YOU SEEM SO"},
 	{"say": "LONELY"},
@@ -33,41 +33,42 @@
 	{"choice": [{"text": "NO",  "skip": "battle" }, 
 				{"text": "YES"}]},
 						
-{"fork": "give_in"},
+{"branch": "give_in"},
 	{"say": "GOOD..."},
 	{"say": "WELL THEN..."},
 	{"say": "COME CLOSER"},
-	{"anim_player_group": "lust_anim_player", "anim": "SIN", "skip": "bother", "end":1, "start":1},
+	{"anim_player_group": "lust_anim_player", "anim": "SIN", "skip": "bother"},
 
-{"fork": "battle", "start": 1 },
+{"branch": "battle", "start": 1 },
 	{"say": "I TRIED TO WARN YOU"},
 	{"say": "I GET WHAT I WANT..."}, 
 
-{"fork": "intro"},
+{"branch": "intro"},
 	{"anim_player_group": "lust_anim_player", "anim": "INTRO", "start":1, "exit":1},
 
-{"fork": "bother", "start": 1},
-	{"say": "YES THE MASTER WILL LOVE YOU"},
-	{"say": "BUT DO NOT BOTHER ME... "},
+{"branch": "bother", "start": 1},
+	{"say": "YES."},
+	{"say": "THE MASTER WILL LOVE YOU"},
+	{"say": "BUT GO AWAY FOR NOW... "},
 	{"say": "I HAVE THINGS TO DO"},
-	{"choice": [{"text": "SORRY", "skip": "bother", "end":1}, 
+	{"choice": [{"text": "AS YOU COMMAND", "skip": "bother", "end":1}, 
 				{"text": "IM NO ONES SLAVE", "skip": "intro"}]},
 				
-{"fork": "random_taunt_1"},
+{"branch": "random_taunt_1"},
 	{"say_timed": {"say": "I GET WHAT I WANT", "for": 1.5}},
 
-{"fork": "random_taunt_2"},
+{"branch": "random_taunt_2"},
 	{"say_timed": {"say": "YOU REALLY THINK...", "for": 2.0}},
 	{"say_timed": {"say": "YOU CAN ESCAPE?", "for": 1.5}},
 
-{"fork": "random_taunt_3"},
+{"branch": "random_taunt_3"},
 	{"say_timed": {"say": "YOU THINK YOU KNOW LOVE?", "for": 2.0}},
 
-{"fork": "random_taunt_4"},
+{"branch": "random_taunt_4"},
 	{"say_timed": {"say": "YOU KNOW HOW LUCKY YOU ARE?", "for": 2.5}},
 	{"say_timed": {"say": "TO HAVE MET ME?", "for": 2.5}},
 
-{"fork": "random_taunt_5"},
+{"branch": "random_taunt_5"},
 	{"say_timed": {"say": "I WANTED YOU...", "for": 2.5}, "min_health": 0, "max_health" :0.5 },
 	{"say_timed": {"say": "BUT NOW YOU WILL DIE!", "for": 2.2}},
 	{"say_timed": {"say": "DIE!", "for": 0.75}},
@@ -75,7 +76,7 @@
 	{"say_timed": {"say": "DIE!", "for": 0.75}},
 	{"say_timed": {"say": "D I E !", "for": 2.0}},
 
-{"fork": "death"},
+{"branch": "death"},
 	{"say_timed": {"say": "YOULL BE ALONE...", "for": 2.0}},
 	{"say_timed": {"say": "FOREVER.", "for": 2.0}}
 	

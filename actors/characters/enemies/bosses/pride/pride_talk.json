@@ -1,10 +1,10 @@
 [
-	{"fork": "random_taunt_1"},
+	{"branch": "random_taunt_1"},
 		{"say_timed": {"say": "YOU THOUGHT YOU WERE SOMEONE?", "for": 2.5}},
 		{"say_timed": {"say": "WHEN YOU STUMBLED INTO THIS DEN OF SIN?", "for": 2.5}},
 		{"say_timed": {"say": "YOU ARE NO ONE...", "for": 2.5}},
 
-	{"fork": "death"},
+	{"branch": "death"},
 		{"say_timed": {"say": "IM NO ONE", "for": 5.0}},
 	
 ]

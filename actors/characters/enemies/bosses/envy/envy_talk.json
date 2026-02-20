@@ -1,9 +1,9 @@
 [
-	{"fork": "random_taunt_1"},
+	{"branch": "random_taunt_1"},
 		{"say_timed": {"say": "IVE BEEN STALKING YOU FOR A WHILE", "for": 3.5}},
 		{"say_timed": {"say": "DIDNT THINK YOUD MAKE IT THIS FAR", "for": 3.5}},
 
-	{"fork": "random_taunt_2"},
+	{"branch": "random_taunt_2"},
 		{"say_timed": {"say": "YOU KNOW WHAT IVE LEARNED", "for": 3.5}},
 		{"say_timed": {"say": "FROM MY OBSERVATIONS", "for": 2.5}},
 		{"say_timed": {"say": "YOU'RE SPECIAL", "for": 2.5}},
@@ -12,14 +12,14 @@
 		{"say_timed": {"say": "AND SO I WILL EAT YOUR SPECIAL SOUL", "for": 3.5}},
 		{"say_timed": {"say": "SO I CAN FINALLY ESCAPE THIS PLACE ", "for": 3.5}},
 
-	{"fork": "random_taunt_3"},
+	{"branch": "random_taunt_3"},
 		{"say_timed": {"say": "IVE FORGOTTEN HOW I GOT HERE...", "for": 4.0}},
 		{"say_timed": {"say": "SO MANY YEARS UNDER THE THUMB", "for": 2.5}},
 		{"say_timed": {"say": "OF THAT MALICIOUS LIAR", "for": 2.5}},
 		{"say_timed": {"say": "WHEN I HAVE WHAT YOU HAVE", "for": 2.5}},
 		{"say_timed": {"say": "MAYBE ILL BE ENOUGH", "for": 2.5}},
 
-	{"fork": "death"},
+	{"branch": "death"},
 		{"say_timed": {"say": "YOU MIGHT BE ACTUALLY STRONG ENOUGH", "for": 3.0}},
 		{"say_timed": {"say": "TO KILL THE MASTER", "for": 3.0}},
 		{"say_timed": {"say": "I WISH I WAS THAT STRONG", "for": 3.0}}
