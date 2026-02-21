@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dlcy0goiywjbv"
-path="res://.godot/imported/skybox_texture.png-e5750d44a7ce1b00153d7b91202b00b6.ctex"
+uid="uid://854milo5oaer"
+path="res://.godot/imported/mountain_normal.jpg-7a4258703cd0064136755f5f92b97067.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://stages/skybox/skybox_texture.png"
-dest_files=["res://.godot/imported/skybox_texture.png-e5750d44a7ce1b00153d7b91202b00b6.ctex"]
+source_file="res://stages/skybox/mountain_normal.jpg"
+dest_files=["res://.godot/imported/mountain_normal.jpg-7a4258703cd0064136755f5f92b97067.ctex"]
 
 [params]
 
@@ -23,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1
