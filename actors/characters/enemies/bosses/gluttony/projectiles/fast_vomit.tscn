@@ -128,6 +128,7 @@ omni_range = 15.0
 omni_attenuation = 0.5
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1228087490]
+visible = false
 exclude_parent = false
 hit_back_faces = false
 

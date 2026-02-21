@@ -364,20 +364,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 144.885, -29.842, 1.00372)
 
 [node name="Ghosts" type="Node" parent="." unique_id=1275844089]
 
-[node name="Ghost4" parent="Ghosts" unique_id=3690936 instance=ExtResource("17_bqs2d")]
+[node name="Ghost1" parent="Ghosts" unique_id=3690936 instance=ExtResource("17_bqs2d")]
 transform = Transform3D(-0.108954, 0, 0.994047, 0, 1, 0, -0.994047, 0, -0.108954, 242.612, -22.6287, 36.4595)
 
-[node name="Ghost5" parent="Ghosts" unique_id=202119520 instance=ExtResource("17_bqs2d")]
+[node name="Ghost2" parent="Ghosts" unique_id=202119520 instance=ExtResource("17_bqs2d")]
 transform = Transform3D(-0.108954, 0, 0.994047, 0, 1, 0, -0.994047, 0, -0.108954, 253.524, -24.5972, 50.0539)
 
-[node name="Ghost6" parent="Ghosts" unique_id=356478529 instance=ExtResource("17_bqs2d")]
+[node name="Ghost3" parent="Ghosts" unique_id=356478529 instance=ExtResource("17_bqs2d")]
 transform = Transform3D(-0.108954, 0, 0.994047, 0, 1, 0, -0.994047, 0, -0.108954, 231.488, -22.6251, 65.772)
 
 [node name="Envy" parent="." unique_id=291897580 instance=ExtResource("19_oqilo")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 240.809, 215.239, -7.78366)
-
-[node name="Ghost" parent="." unique_id=1747764887 instance=ExtResource("17_bqs2d")]
-transform = Transform3D(-0.731187, 0, 0.682177, 0, 1, 0, -0.682177, 0, -0.731187, 144.027, -7.59234, 52.6288)
 
 [node name="Path3D" type="Path3D" parent="." unique_id=2031636455 node_paths=PackedStringArray("node_to_queue_free")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.6064, -43.9793, 0)

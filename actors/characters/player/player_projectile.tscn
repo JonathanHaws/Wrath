@@ -281,6 +281,7 @@ omni_attenuation = 0.5
 
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=2020543375]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.8182478)
+visible = false
 exclude_parent = false
 hit_back_faces = false
 
