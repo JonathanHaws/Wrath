@@ -457,62 +457,29 @@ tracks/6/keys = {
 tracks/7/type = "method"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("WaveSpawner")
+tracks/7/path = NodePath("Dialog/RandomDialog")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(3.29167, 5.143317, 7.223695, 12.168487, 16.75, 19.15209, 21.250021, 26.959862, 29.641748, 32.21341, 34.717392, 40.125),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"values": [{
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}, {
-"args": [],
-"method": &"spawn"
-}]
-}
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Dialog/RandomDialog")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(2.6666667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"start"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WaveSpawner/AnimationPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(4.5416665),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Wave1"],
+"method": &"play"
 }]
 }
 
@@ -687,6 +654,127 @@ shader_parameter/enabled_normal = false
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wbwgn"]
 size = Vector3(23.4119, 15.2804, 40.1915)
+
+[sub_resource type="Animation" id="Animation_p7qim"]
+resource_name = "Wave1"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"pause"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_cu7wn"]
+resource_name = "Wave2"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"pause"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_r1bv5"]
+resource_name = "Wave3"
+length = 5.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2, 4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(4.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"pause"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cu7wn"]
+_data = {
+&"Wave1": SubResource("Animation_p7qim"),
+&"Wave2": SubResource("Animation_cu7wn"),
+&"Wave3": SubResource("Animation_r1bv5")
+}
 
 [sub_resource type="Animation" id="Animation_v7xtt"]
 resource_name = "entered"
@@ -901,11 +989,17 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 27.0089
 
-[node name="WaveSpawner" type="Node3D" parent="." unique_id=450703735]
+[node name="WaveSpawner" type="Node3D" parent="." unique_id=450703735 node_paths=PackedStringArray("wave_animation_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29153e-06, 1.7507273, -0.21312356)
 script = ExtResource("23_8fqfx")
 scenes = Array[PackedScene]([ExtResource("28_muo5h")])
 add_to_scene_root = true
+wave_animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WaveSpawner" unique_id=203373663]
+libraries/ = SubResource("AnimationLibrary_cu7wn")
+next/Wave1 = &"Wave2"
+next/Wave2 = &"Wave3"
 
 [node name="Dialog" type="AnimationPlayer" parent="." unique_id=2123824749 node_paths=PackedStringArray("anim")]
 libraries/ = SubResource("AnimationLibrary_p7qim")

@@ -32,6 +32,17 @@ func get_orientation_towards_position_3d(target_position: Vector3, position: Vec
 	
 	return Basis.looking_at(target_velocity.normalized(), Vector3.UP)
 
+@export_group("Waves") 
+## Stop progress until all enemies are killed by making wave animation end with 
+## a call method track on the animation player itself with a stop(). 
+## when all enemies are killed play will be called
+@export var wave_animation_player: AnimationPlayer 
+func _check_wave_end():
+	if not is_inside_tree(): return
+	if get_tree().get_nodes_in_group("wave_spawned").is_empty():
+		print("All enemies killed spawning new wave")
+		wave_animation_player.play()	# advance wave
+
 func spawn_towards_target(scene_count: int = 1, delay: float = 0.0, weight: Vector3 = Vector3(1,1,1)) -> void:
 	if target == null: return  
 	for i in range(scene_count):
@@ -110,6 +121,10 @@ func spawn() -> Node:
 		add_child(scene)	
 	
 	if scene is Node3D: scene.global_transform = self.global_transform
+	
+	if wave_animation_player:
+		scene.add_to_group("wave_spawned")
+		scene.tree_exited.connect(_check_wave_end)
 	
 	#if "material_override" in scene: #for making shader unique for every particle might be a bug
 		#var mat = scene.material_override
