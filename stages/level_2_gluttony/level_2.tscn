@@ -5,7 +5,6 @@
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="5_vybla"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://actors/props/checkpoint/checkpoint.tscn" id="6_cy8f3"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="7_q5vxo"]
-[ext_resource type="PackedScene" uid="uid://bre6cgb3dypbs" path="res://actors/characters/enemies/bosses/greed/greed.tscn" id="7_qh5wb"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="8_5spip"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://stages/materials/bricks/star/world_star.tres" id="9_fi73v"]
 [ext_resource type="PackedScene" uid="uid://cemstdmdnxhba" path="res://actors/props/ladders/ladder.tscn" id="10_qh5wb"]
@@ -75,11 +74,6 @@ DESTINATION_SCENE = "uid://c5350q0aryax0"
 [node name="Checkpoint" parent="." unique_id=317181500 instance=ExtResource("6_cy8f3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.98366, -9.11077, 0.396708)
 
-[node name="Greed" parent="." unique_id=324949012 instance=ExtResource("7_qh5wb")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6477, -9.34837, -14.201779)
-USE_CUSTOM_START_ANIMATION = true
-START_ANIMATION = "LEAN"
-
 [node name="Ladder" parent="." unique_id=313575098 instance=ExtResource("10_qh5wb")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.802918, 23.5215, 14.626)
 
@@ -87,51 +81,12 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.802
 transform = Transform3D(-4.37114e-08, 2.21727e-15, -1, -0.514559, 0.857455, 2.24921e-08, 0.857455, 0.514559, -3.74805e-08, -11.9031, 22.8445, -12.3389)
 
 [node name="Piglet" parent="." unique_id=1733790200 instance=ExtResource("11_2c563")]
-transform = Transform3D(-0.979544, 0, -0.201232, 0, 1, 0, 0.201232, 0, -0.979544, -7.912, -9, 10.958)
+transform = Transform3D(-0.80747575, 0, 0.5899013, 0, 1, 0, -0.5899013, 0, -0.80747575, -18.44065, -9, 10.958)
 
-[node name="AnimationPlayer" parent="Piglet" index="1"]
-autoplay = &"RESET"
-
-[node name="Skeleton3D" parent="Piglet/piglet/Piglet" index="0"]
-bones/0/position = Vector3(0.014366882, 0.0060956455, -1.5908631)
-bones/0/rotation = Quaternion(4.620557e-08, 0.7040688, 0.7101318, -6.050204e-08)
-bones/1/position = Vector3(-1.1199242e-08, -0.17397617, 0.531944)
-bones/1/rotation = Quaternion(0.030863503, -3.2720312e-08, -3.6645573e-10, 0.99952364)
-bones/2/rotation = Quaternion(0.013979564, 2.5634534e-08, -2.652163e-10, 0.9999023)
-bones/4/rotation = Quaternion(0.0963935, 3.0065042e-09, 1.0986537e-08, 0.9953433)
-bones/5/rotation = Quaternion(-0.16068041, -8.766636e-08, -4.527393e-09, 0.9870065)
-bones/6/rotation = Quaternion(0.15114914, 0.06080115, 0.41936243, 0.89308023)
-bones/7/rotation = Quaternion(-0.4799993, 0.03756548, -0.08580935, 0.87225354)
-bones/8/rotation = Quaternion(-0.07464082, 0.045317993, 0.014201099, 0.996079)
-bones/10/rotation = Quaternion(-0.4799992, -0.03756561, 0.0858091, 0.8722536)
-bones/11/rotation = Quaternion(-0.07464097, -0.045317806, -0.01420077, 0.996079)
-bones/14/position = Vector3(-0.17298222, 0.08771387, -0.24067579)
-bones/14/rotation = Quaternion(-0.7622208, -0.04615739, -0.039017294, 0.6444894)
-bones/15/rotation = Quaternion(-0.018756447, -0.00011191832, 0.01836854, 0.99965537)
-bones/16/position = Vector3(0.17298226, 0.08771397, -0.24067582)
-bones/16/rotation = Quaternion(-0.76222074, 0.046157345, 0.03901724, 0.6444896)
-bones/17/rotation = Quaternion(-0.01875646, 0.000111963105, -0.018368576, 0.99965537)
-bones/18/position = Vector3(5.9413123e-09, -0.05055145, 0.100356914)
-bones/18/rotation = Quaternion(0.9822588, 8.3092104e-08, 3.9140798e-07, 0.18753052)
-bones/19/rotation = Quaternion(-0.07296083, 2.3205911e-07, -7.837767e-08, 0.9973349)
-bones/20/rotation = Quaternion(-0.18040565, -1.506315e-08, -2.3301307e-07, 0.98359233)
-bones/22/rotation = Quaternion(-0.37434694, 1.0079654e-08, -4.4837697e-07, 0.9272887)
-bones/23/rotation = Quaternion(-0.3563569, -5.3637688e-08, -4.1024566e-07, 0.93434995)
-bones/24/rotation = Quaternion(-0.27148184, 5.5038484e-08, -3.1247586e-07, 0.96244365)
-bones/25/position = Vector3(-0.21547538, 0.06101356, -0.1924752)
-bones/25/rotation = Quaternion(-0.67151713, -0.038685333, -0.0057593244, 0.73995614)
-bones/26/rotation = Quaternion(-0.025570929, -0.0012522504, -0.019346502, 0.9994851)
-bones/27/position = Vector3(0.21547532, 0.06101351, -0.19247521)
-bones/27/rotation = Quaternion(-0.67151713, 0.038685363, 0.005759299, 0.73995614)
-bones/28/rotation = Quaternion(-0.025570905, 0.0012522478, 0.019346531, 0.999485)
-
-[node name="BoneAttachment3D" parent="Piglet/piglet/Piglet/Skeleton3D" index="1"]
-transform = Transform3D(-1, 1.507847e-07, 3.658237e-08, 4.4542965e-08, 0.053137287, 0.99858725, 1.4862775e-07, 0.9985875, -0.05313738, 0.014366857, 0.53951174, -1.7602719)
-
-[node name="PickUpInteraction" parent="Piglet" index="4"]
+[node name="PickUpInteraction" parent="Piglet" index="4" unique_id=1269613829]
 disabled = true
 
-[node name="HeadPetInteraction" parent="Piglet" index="5"]
+[node name="HeadPetInteraction" parent="Piglet" index="5" unique_id=1044115885]
 disabled = false
 
 [node name="Reaper" parent="." unique_id=1031185986 instance=ExtResource("5_vybla")]

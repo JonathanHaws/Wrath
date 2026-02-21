@@ -2,9 +2,6 @@
 	{"branch": "greetings"},
 		{"say": "OH HEY LOOK A NEW FACE..."},
 		{"say": "ANOTHER SUMMONED BY THE MASTER?"},
-		{"say": "IF YOU'RE HERE TO STEAL MY TREASURES,"},
-		{"say": "TAKE YOUR LEAVE."},
-		{"say": "GO MAKE TROUBLE ELSEWHERE!"},
 		{"choice": [{"text": "HOWD I END UP HERE?"}, 
 					{"text": "HOW DO I ESCAPE?", "skip": "escape" }]},
 		
@@ -12,13 +9,15 @@
 		{"say": "YOU TELL ME"},
 		{"say": "EVERYONES HERE IS GUILTY OF SOMETHING..."},
 		{"say": "WHAT WERE YOU WEAK TO?"},
+		{"say": "IF YOU'RE HERE TO STEAL MY TREASURES,"},
+		{"say": "TAKE YOUR LEAVE."},
+		{"say": "GO MAKE TROUBLE ELSEWHERE!"},
 		{"skip": "greetings", "end": 1},
 
 	{"branch": "escape"},
 		{"say": "IM AFRAID YOU CANT"},
 		{"say": "ITS IMPOSSIBLE."},
 		
-		{"say": "SOMEHOW DESPITE HOW SMALL YOU ARE"},
 		{"say": "YOU'VE FOUND YOUR WAY"},
 		{"say": "INTO THE HOME"},
 		{"say": "OF THE 7 SINS OF HELL"},
@@ -57,5 +56,4 @@
 		{"say_timed": {"say": "YOU DONT GET IT DO YOU?", "for": 3.0}},
 		{"say_timed": {"say": "YOU POOR POOR SOUL.", "for": 3.0}}
 
-	
 ]
