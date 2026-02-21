@@ -46,6 +46,7 @@ func save_ready() -> void:
 
 func hurt(area: Area3D) -> void:
 	if disabled: return
+	emit_signal("hurt_something")
 	await get_tree().physics_frame # Ensure both the regular hit_shape AND block_shape is in 'overlapping areas;
 	
 	# Check if one of overlapping areas is in block group... Then call hit on it instead instead of parameter area...
@@ -63,7 +64,6 @@ func hurt(area: Area3D) -> void:
 	if !"hit" in area: return
 	
 	if target_to_hit.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * damage_multiplier):
-		emit_signal("hurt_something")
 		overlapping_areas[area]["cooldown"].start()
 		overlapping_areas[area]["linger"].start() 
 		

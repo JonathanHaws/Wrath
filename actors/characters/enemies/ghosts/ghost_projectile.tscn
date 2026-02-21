@@ -89,13 +89,13 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="GhostProjectile" type="Node3D" unique_id=1464689911 node_paths=PackedStringArray("ray", "collision_animation_player", "hurt_box")]
+[node name="GhostProjectile" type="Node3D" unique_id=1464689911 node_paths=PackedStringArray("collision_animation_player", "ray", "hurt_box")]
 script = ExtResource("1_8vmfp")
 speed = 20.0
-ray = NodePath("RayCast3D")
 exclude_groups = Array[String](["ghost", "enemy"])
 collision_animation_player = NodePath("AnimationPlayer")
 collision_animation_name = "collision"
+ray = NodePath("RayCast3D")
 hurt_box = NodePath("Attack")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=378754282]
@@ -130,7 +130,6 @@ omni_attenuation = 0.5
 [node name="RayCast3D" type="RayCast3D" parent="." unique_id=1228087490]
 visible = false
 exclude_parent = false
-collision_mask = 3
-hit_back_faces = false
+hit_from_inside = true
 
 [editable path="Node3D/projectile"]
