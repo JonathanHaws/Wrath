@@ -213,7 +213,7 @@ size = Vector3(17, 13, 19)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dq2hf"]
 resource_local_to_scene = true
-size = Vector3(17, 13, 19)
+size = Vector3(20.036133, 19, 31.77295)
 
 [node name="Main" type="Node3D" unique_id=1722623232]
 
@@ -415,12 +415,12 @@ shape = SubResource("BoxShape3D_7fk2k")
 debug_color = Color(0.768, 0.79413337, 0.8, 0.88235295)
 
 [node name="ShootTutorial" type="Area3D" parent="." unique_id=1659477864 groups=["shoot_tutorial"]]
-transform = Transform3D(0.69814044, 0, 0.71596086, 0, 1, 0, -0.71596086, 0, 0.69814044, 131.28143, -2.3418546, 65.068825)
+transform = Transform3D(0.77838564, 0, -0.6277865, 0, 1, 0, 0.6277865, 0, 0.77838564, 190.46954, -20.48368, 26.25815)
 collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShootTutorial" unique_id=807632199]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 5)
+transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 10.623535, 4, -1.3864746)
 shape = SubResource("BoxShape3D_dq2hf")
 debug_color = Color(0.768, 0.79413337, 0.8, 0.88235295)
 
