@@ -6,6 +6,8 @@ extends Node
 func increase_damage_plunge():
 	if ATTACK_AREA: 
 		#print('falling amount: ', falling)
+		#var falling: float = PLAYER.falling
+		#ATTACK_AREA.damage_multiplier = 1.0 + (t * PLUNGE_DAMAGE_MULTIPLIER)
 		ATTACK_AREA.damage_multiplier = 1.0 + (PLAYER.falling * PLUNGE_DAMAGE_MULTIPLIER)
 
 func reset_damage():

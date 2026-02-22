@@ -43,7 +43,7 @@ var jump_buffer = 0;
 @export_group("Stamina")
 @export var STAMINA: float = 10
 @export var MAX_STAMINA: float = 10
-@export var STAMINA_RECOVERY: float = 20.0
+@export var STAMINA_RECOVERY: float = 30.0
 
 @export_group("Shooting")
 @export var SHOOTING_DISABLED: bool = false
@@ -225,7 +225,7 @@ func _physics_process(delta: float) -> void:
 			#print('Plunge')
 			ANIM.play("PLUNGE", 0)
 		
-		$Squash.squish(.3, MESH)	
+		$Squash.squish(.3)	
 		if $Audio: $Audio.play_2d_sound(["land"])
 		if PARTICLES: PARTICLES.spawn()
 		
@@ -265,7 +265,7 @@ func _physics_process(delta: float) -> void:
 			if JUMP_MULTIPLIER > 0:
 				if $Audio: $Audio.play_2d_sound(["jump"])
 				ANIM.play("JUMPING")
-				$Squash.squish(-.3,MESH)	
+				$Squash.squish(-.3)	
 				velocity.y = JUMP_VELOCITY * JUMP_MULTIPLIER
 				falling = COYOTE_TIME
 				jump_buffer = 0

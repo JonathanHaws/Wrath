@@ -89,3 +89,4 @@ func _on_pressed():
 	
 	Save.data[aquired_key] = true
 	modulate = aquired_modulate
+	Save.save_game()

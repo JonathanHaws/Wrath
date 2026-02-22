@@ -35,6 +35,9 @@ func _exit_tree() -> void:
 func _on_save_data_updated() -> void:
 	#if Save.data[save_key] != damage: #upgrade animation 
 	damage = Save.data[save_key]
+	damage_multiplier = 1.0
+	#print(damage)
+	
 func save_ready() -> void:
 	if not enable_save: return
 	

@@ -364,57 +364,57 @@ _data = {
 
 [sub_resource type="Animation" id="Animation_1m57m"]
 resource_name = "ATTACK"
-length = 2.0
+length = 2.2
 step = 0.011111111
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/MeshInstance3D/Attack/CollisionShape3D:disabled")
-tracks/0/interp = 0
+tracks/0/path = NodePath("Audio/MeleeWindup")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.73333335, 0.79999936),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [true, false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 1.6555556),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/MeshInstance3D:rotation")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.722227, 0.866673, 1.3),
-"transitions": PackedFloat32Array(0.659755, 0.0457527, 0.0457527, 0.129408, 16.5642),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.582888, 0, 0), Vector3(0.582888, 0, 0), Vector3(-0.528119, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Audio/MeleeWindup")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.0],
 "method": &"play"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/MeshInstance3D/Attack/CollisionShape3D:disabled")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.84444445, 0.91111046),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.7666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/MeshInstance3D:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.41111112, 0.8333381, 0.9777841, 1.4111111),
+"transitions": PackedFloat32Array(0.659755, 0.0457527, 0.0457527, 0.129408, 16.5642),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.582888, 0, 0), Vector3(0.582888, 0, 0), Vector3(-0.528119, 0, 0), Vector3(0, 0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -423,7 +423,7 @@ tracks/4/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.233333, 1.17362, 1.7222222),
+"times": PackedFloat32Array(0, 0.3444441, 1.2847311, 1.8333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [1.0, 0.0, 0.0, 1.0]
@@ -435,7 +435,7 @@ tracks/5/path = NodePath("Mesh/MeshInstance3D/Attack:parryable")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.6888889, 0.76666665),
+"times": PackedFloat32Array(0.8, 0.87777776),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -659,7 +659,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SquashAndStretch:target_squash_scale")
+tracks/3/path = NodePath("Squash:target_squash_scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -731,11 +731,11 @@ tracks/8/keys = {
 
 [sub_resource type="Animation" id="Animation_fd7dn"]
 resource_name = "SHOOT"
-length = 3.2
+length = 3.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SquashAndStretch:target_squash_scale")
+tracks/0/path = NodePath("Squash:target_squash_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -765,7 +765,7 @@ tracks/2/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.1666698),
+"times": PackedFloat32Array(0, 3.1666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -777,15 +777,15 @@ tracks/3/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.566667, 2.6, 2.7666698),
+"times": PackedFloat32Array(0, 1.566667, 2.8666666, 3.0333364),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [1.0, 0.4, 0.4, 1.0]
+"values": [1.0, 0.0, 0.0, 1.0]
 }
 tracks/4/type = "method"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SquashAndStretch")
+tracks/4/path = NodePath("Squash")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -953,7 +953,7 @@ radius = 0.8
 height = 1.6
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7c1mb"]
-size = Vector3(2.23877, 1.68384, 3.26862)
+size = Vector3(2.23877, 2.2388926, 3.1289225)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mvqiw"]
 
@@ -1016,8 +1016,8 @@ func _ready() -> void:
 "
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_7c1mb"]
-height = 0.477905
-radius = 3.5820313
+height = 0.9640502
+radius = 2.2036133
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_oquh6"]
 radius = 18.8292
@@ -1093,9 +1093,9 @@ stream = ExtResource("15_mvqiw")
 volume_db = -5.0
 bus = &"SFX"
 
-[node name="SquashAndStretch" type="Node" parent="." unique_id=509375601 node_paths=PackedStringArray("mesh_node")]
+[node name="Squash" type="Node" parent="." unique_id=509375601 node_paths=PackedStringArray("meshes")]
 script = ExtResource("15_7e8cg")
-mesh_node = NodePath("../Mesh")
+meshes = [NodePath("../Mesh/MeshInstance3D")]
 
 [node name="CameraEffects" type="Node" parent="." unique_id=1190837221]
 script = ExtResource("16_wbsgp")
@@ -1192,7 +1192,7 @@ parry_anim = "STUNNED"
 blocked_anim_player = NodePath("../../../AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/MeshInstance3D/Attack" unique_id=1190067184]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0577135, 0.341919, -1.7045)
+transform = Transform3D(1, 0, 0, 0, 1.0000119, 4.053116e-06, 0, -4.053116e-06, 1.0000119, -0.0577135, 0.61945003, -0.86612415)
 shape = SubResource("BoxShape3D_7c1mb")
 disabled = true
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
@@ -1254,7 +1254,7 @@ script = SubResource("GDScript_n8vw1")
 damage = 10
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="JumpAttack" unique_id=1167048878]
-transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, -0.05771347, -1.10771, -0.17913193)
+transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, -0.05771347, -0.8646373, -0.17913187)
 shape = SubResource("CylinderShape3D_7c1mb")
 disabled = true
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
