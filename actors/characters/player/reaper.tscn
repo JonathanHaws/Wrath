@@ -3801,9 +3801,9 @@ hit_animation_player = NodePath("../reaper/Reaper/Skeleton3D/BoneAttachment3D/Sy
 enable_save = true
 save_key = "damage"
 
-[node name="PlungeMultiplier" type="Node" parent="Mesh/PlungeHurt" unique_id=259433183 node_paths=PackedStringArray("PLAYER", "ATTACK_AREA")]
+[node name="PlungeMultiplier" type="Node" parent="Mesh/PlungeHurt" unique_id=259433183 node_paths=PackedStringArray("STATE_ANIMATION_PLAYER", "ATTACK_AREA")]
 script = ExtResource("38_5ijfa")
-PLAYER = NodePath("../../..")
+STATE_ANIMATION_PLAYER = NodePath("../../../AnimationPlayer")
 ATTACK_AREA = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/PlungeHurt" unique_id=637160610]
