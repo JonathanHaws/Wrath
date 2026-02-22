@@ -1130,7 +1130,6 @@ BODY = NodePath("../..")
 script = ExtResource("20_mvqiw")
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_n368u")
 ATTACK_ANIMATION = "SHOOT"
-LIKELIHOOD_MULTIPLIER = 2.0
 ATTACK_RADIUS = 20.0
 COOLDOWN = 5.0
 AREAS = [NodePath("../../ShootWhenPlayerInHere"), NodePath("../../NeverShootWhenPlayerInHere")]

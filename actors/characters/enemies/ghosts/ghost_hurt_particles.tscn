@@ -14,7 +14,7 @@ billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_odbhm"]
 
-[sub_resource type="Animation" id="Animation_gh1vd"]
+[sub_resource type="Animation" id="Animation_fy00o"]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -28,7 +28,7 @@ tracks/0/keys = {
 "values": [true]
 }
 
-[sub_resource type="Animation" id="Animation_pkdcb"]
+[sub_resource type="Animation" id="Animation_f6g80"]
 resource_name = "lifetime"
 loop_mode = 1
 tracks/0/type = "value"
@@ -70,10 +70,10 @@ tracks/2/keys = {
 "values": [5.0, 0.0, 0.0]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_12k5t"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_71fc2"]
 _data = {
-&"RESET": SubResource("Animation_gh1vd"),
-&"lifetime": SubResource("Animation_pkdcb")
+&"RESET": SubResource("Animation_fy00o"),
+&"lifetime": SubResource("Animation_f6g80")
 }
 
 [node name="Node3D" type="Node3D" unique_id=2137646627]
@@ -91,11 +91,11 @@ process_material = ExtResource("2_fy00o")
 draw_pass_1 = SubResource("QuadMesh_odbhm")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Ghost" unique_id=305176254]
-libraries/ = SubResource("AnimationLibrary_12k5t")
+libraries/ = SubResource("AnimationLibrary_71fc2")
 autoplay = &"lifetime"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1779020177]
 light_color = Color(0.4833547, 0.48335445, 0.4833544, 1)
-light_energy = 7.0
+light_energy = 5.0
 light_specular = 0.0
 omni_range = 30.5494
