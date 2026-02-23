@@ -4,7 +4,7 @@ extends Area3D
 func _on_body_entered(body):
 	if "velocity" in body:
 		body.velocity.y = bounce_force
-		$Squash.squish(.5, $MeshInstance3D)
+		$Squash.squish(.5)
 		$AnimationPlayer.play("bounce", 0)
 		CameraEffects.slow_motion(0.1, 0)
 

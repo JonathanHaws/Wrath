@@ -548,7 +548,7 @@ tracks/3/path = NodePath("JumpAttack/CollisionShape3D:disabled")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 1, 1.06666),
+"times": PackedFloat32Array(0, 1, 1.0181818),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [true, false, true]
@@ -565,37 +565,13 @@ tracks/4/keys = {
 "update": 0,
 "values": [false, true]
 }
-tracks/5/type = "value"
+tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/5/interp = 0
+tracks/5/path = NodePath("Audio/Slam")
+tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.2333, 1.6545454, 1.8878855),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 0.0, 0.0, 1.0]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Audio/Slam")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -603,19 +579,43 @@ tracks/7/keys = {
 "method": &"play"
 }]
 }
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("CameraEffects")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CameraEffects")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["small", 0.2, 0.2, 0.0],
 "method": &"impact"
 }]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.2333, 1.6545454, 1.8878855),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_05mu1"]
@@ -1032,11 +1032,13 @@ script = ExtResource("2_5rg5p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1779156698]
 shape = SubResource("SphereShape3D_7c1mb")
-debug_color = Color(0.87, 0.87, 0.87, 1)
+debug_color = Color(0.87, 0.87, 0.87, 0.011764706)
 
 [node name="Hitbox" type="Area3D" parent="." unique_id=1261233255 node_paths=PackedStringArray("ROOT", "TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("2_i6eoe")
 IMMUNE_GROUPS = Array[String](["ghost"])
+HEALTH = 300.0
+MAX_HEALTH = 300.0
 PERSISTENT_HEALTH = false
 ROOT = NodePath("..")
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
@@ -1046,7 +1048,7 @@ DAMAGE_NUMBERS = ExtResource("3_mvqiw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1137305540]
 shape = SubResource("SphereShape3D_6640v")
-debug_color = Color(0.87, 0.87, 0.87, 1)
+debug_color = Color(0.87, 0.87, 0.87, 0.03137255)
 
 [node name="Audio" type="Node" parent="." unique_id=1672116593]
 script = ExtResource("3_p14n4")
@@ -1232,7 +1234,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShootWhenPlayerInHere" unique_id=1253445290]
 transform = Transform3D(0.99995124, 0, 0, 0, 0.99995124, 0, 0, 0, 0.99995124, -0.05771342, -0.5267727, -0.17913179)
 shape = SubResource("CylinderShape3D_mvqiw")
-debug_color = Color(0.67, 0.67, 0.67, 1)
+debug_color = Color(0.67, 0.67, 0.67, 0.019607844)
 
 [node name="NeverShootWhenPlayerInHere" type="Area3D" parent="." unique_id=383909656 groups=["ghost"]]
 transform = Transform3D(0.33793065, 0, 0, 0, 0.33793065, 0, 0, 0, 0.33793065, 0, 0, 0)
@@ -1242,7 +1244,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="NeverShootWhenPlayerInHere" unique_id=1740816977]
 transform = Transform3D(0.999918, 0, 0, 0, 0.999918, 0, 0, 0, 0.999918, -0.05771328, 0.2723474, -0.17913142)
 shape = SubResource("CylinderShape3D_5rg5p")
-debug_color = Color(0.67, 0.67, 0.67, 1)
+debug_color = Color(0.67, 0.67, 0.67, 0.023529412)
 
 [node name="JumpAttack" type="Area3D" parent="." unique_id=1644750163 groups=["ghost"]]
 transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
@@ -1255,7 +1257,7 @@ damage = 10
 transform = Transform3D(0.99999964, 0, 0, 0, 0.99999964, 0, 0, 0, 0.99999964, -0.05771347, -0.8646373, -0.17913187)
 shape = SubResource("CylinderShape3D_7c1mb")
 disabled = true
-debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
+debug_color = Color(0.67, 0.11166668, 0, 0.30980393)
 
 [node name="Awareness" type="Area3D" parent="." unique_id=770797376]
 collision_layer = 3
@@ -1264,3 +1266,4 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Awareness" unique_id=1096443313]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21777, 2.38419e-07, -0.353772)
 shape = SubResource("SphereShape3D_oquh6")
+debug_color = Color(0.658, 0.6937, 0.7, 0.023529412)

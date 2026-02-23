@@ -159,6 +159,30 @@ tracks/6/keys = {
 "update": 0,
 "values": [false]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:RUN_DISABLED")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_get7n"]
 resource_name = "checkpoint_disable"
@@ -178,7 +202,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:SHOOTING_DISABLED")
+tracks/1/path = NodePath(".:HEALING_DISABLED")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -186,30 +210,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:HEALING_DISABLED")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:JUMP_MULTIPLIER")
-tracks/3/interp = 0
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_okagy"]
@@ -238,30 +238,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [false]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".:SHOOTING_DISABLED")
-tracks/2/interp = 0
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:JUMP_MULTIPLIER")
-tracks/3/interp = 0
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_7g1ex"]
@@ -490,10 +466,34 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:JUMP_MULTIPLIER")
-tracks/3/interp = 0
+tracks/3/path = NodePath(".:RUN_DISABLED")
+tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -542,10 +542,34 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:JUMP_MULTIPLIER")
-tracks/3/interp = 0
+tracks/3/path = NodePath(".:RUN_DISABLED")
+tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -601,7 +625,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../Hitbox/CollisionShape3D:disabled")
+tracks/1/path = NodePath("../Hitshape/CollisionShape3D:disabled")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -647,7 +671,7 @@ tracks/4/keys = {
 tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("../Hitbox/DeathCountTracker")
+tracks/5/path = NodePath("../Hitshape/DeathCountTracker")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -725,7 +749,7 @@ length = 7.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Hitbox/CollisionShape3D:disabled")
+tracks/0/path = NodePath("../Hitshape/CollisionShape3D:disabled")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -827,7 +851,7 @@ tracks/7/keys = {
 tracks/8/type = "method"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("../Hitbox/DeathCountTracker")
+tracks/8/path = NodePath("../Hitshape/DeathCountTracker")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -2327,7 +2351,7 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Hitbox/CollisionShape3D:disabled")
+tracks/11/path = NodePath("Hitshape/CollisionShape3D:disabled")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
@@ -3172,7 +3196,7 @@ _data = {
 size = Vector3(17.3834, 22.7476, 51.4006)
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_qlt7i"]
-radius = 2.0
+radius = 2.197676
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8oma7"]
 size = Vector3(1.5802494, 2.9945183, 1.0261042)
@@ -3574,26 +3598,28 @@ _data = {
 &"RESET": SubResource("Animation_vjm2n")
 }
 
-[node name="Reaper" type="CharacterBody3D" unique_id=27859288 node_paths=PackedStringArray("HITBOX", "CAMERA", "MESH", "ANIM", "MESH_ANIM", "COLLISON_SHAPE", "PARTICLES", "FADE_IN_ANIM", "SKILL_TREE") groups=["player", "player_body"]]
+[node name="Reaper" type="CharacterBody3D" unique_id=27859288 node_paths=PackedStringArray("STEP_UP_RAY", "HITSHAPE", "CAMERA", "MESH", "COLLISON_SHAPE", "PARTICLES", "ANIM", "MESH_ANIM", "FADE_IN_ANIM") groups=["player", "player_body"]]
 rotation_edit_mode = 1
 collision_layer = 2
 collision_mask = 15
 axis_lock_angular_x = true
 axis_lock_angular_y = true
 axis_lock_angular_z = true
+floor_block_on_wall = false
+floor_snap_length = 0.5
 script = ExtResource("1_0b6a6")
+STEP_UP_RAY = NodePath("Mesh/StepUp")
 ATTACKING_DISABLED = false
-HITBOX = NodePath("Hitbox")
+HITSHAPE = NodePath("Hitshape")
 CAMERA = NodePath("SpringArm3D/Camera3D")
 MESH = NodePath("Mesh")
-ANIM = NodePath("AnimationPlayer")
-MESH_ANIM = NodePath("Mesh/reaper/AnimationPlayer")
 COLLISON_SHAPE = NodePath("CollisionShape3D")
 PARTICLES = NodePath("JumpParticles")
+ANIM = NodePath("AnimationPlayer")
+MESH_ANIM = NodePath("Mesh/reaper/AnimationPlayer")
 FADE_IN_ANIM = NodePath("ColorRect/FadeIn")
-SKILL_TREE = NodePath("SkillTree")
 
-[node name="Hitbox" type="Area3D" parent="." unique_id=1397946160 node_paths=PackedStringArray("HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["player", "player_hitshape"]]
+[node name="Hitshape" type="Area3D" parent="." unique_id=1397946160 node_paths=PackedStringArray("HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["player", "player_hitshape"]]
 collision_layer = 2
 script = ExtResource("2_utjob")
 IMMUNE_GROUPS = Array[String](["player"])
@@ -3608,12 +3634,12 @@ REST_COUNT_KEY = "rest_count_to_respawn_player"
 UPGRADABLE_MAX_HEALTH = true
 MAX_HEALTH_KEY = "max_health"
 
-[node name="DeathCountTracker" type="Node" parent="Hitbox" unique_id=1635187 node_paths=PackedStringArray("HITSHAPE")]
+[node name="DeathCountTracker" type="Node" parent="Hitshape" unique_id=1635187 node_paths=PackedStringArray("HITSHAPE")]
 script = ExtResource("20_m1s71")
 key = "deaths"
 HITSHAPE = NodePath("..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1440296042]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitshape" unique_id=1440296042]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0864, 0)
 shape = SubResource("CapsuleShape3D_k5idf")
 
@@ -3623,7 +3649,7 @@ PLAYER = NodePath("..")
 MESH = NodePath("../Mesh")
 CAMERA = NodePath("../SpringArm3D/Camera3D")
 BODY_SHAPE = NodePath("../CollisionShape3D")
-HITBOX_SHAPE = NodePath("../Hitbox/CollisionShape3D")
+HITBOX_SHAPE = NodePath("../Hitshape/CollisionShape3D")
 DAMAGE_SHAPE = NodePath("GodModeHurt/CollisionShape3D")
 ANIMATION_PLAYER = NodePath("../AnimationPlayer")
 
@@ -3729,7 +3755,7 @@ autoplay = &"RESET"
 
 [node name="DeathAnimation" type="Node" parent="AlwaysProcessDeath" unique_id=1054051242 node_paths=PackedStringArray("hit_shape", "regular_death_animation_player", "platforming_death_animation_player")]
 script = ExtResource("29_5ijfa")
-hit_shape = NodePath("../../Hitbox")
+hit_shape = NodePath("../../Hitshape")
 regular_death_animation_player = NodePath("..")
 regular_death_animation_name = &"REGULAR_DEATH"
 platforming_death_animation_player = NodePath("..")
@@ -3757,7 +3783,7 @@ animation_name = "STAMINA"
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=262511401]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 shape = SubResource("CapsuleShape3D_utjob")
-debug_color = Color(0.7, 0.7, 0.7, 0.0784314)
+debug_color = Color(0.7, 0.7, 0.7, 1)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=209570210 groups=["ignore_interaction_tween"]]
 physics_interpolation_mode = 1
@@ -3792,8 +3818,13 @@ debug_color = Color(0.7, 0.7, 0.7, 0.368627)
 
 [node name="Mesh" type="Node3D" parent="." unique_id=531747882 groups=["player_mesh"]]
 
+[node name="StepUp" type="RayCast3D" parent="Mesh" unique_id=770825662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.57833004)
+target_position = Vector3(0, -0.75, 0)
+debug_shape_thickness = 5
+
 [node name="PlungeHurt" type="Area3D" parent="Mesh" unique_id=622933227 node_paths=PackedStringArray("hit_animation_player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1605837, 0.4402213)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1605837, 0.68690205)
 script = ExtResource("7_4anjp")
 damage_groups = Array[String](["enemy_hitshape"])
 damage = 50.0
@@ -3814,7 +3845,7 @@ disabled = true
 [node name="BlockShape" type="Area3D" parent="Mesh" unique_id=1724350500 node_paths=PackedStringArray("hitshape", "anim_player") groups=["player", "player_blockshape"]]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999998, 0, 0, 0)
 script = ExtResource("45_2d6ni")
-hitshape = NodePath("../../Hitbox")
+hitshape = NodePath("../../Hitshape")
 anim_player = NodePath("AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/BlockShape" unique_id=768245768]
@@ -3854,38 +3885,38 @@ rotation_edit_mode = 1
 
 [node name="Skeleton3D" parent="Mesh/reaper/Reaper" parent_id_path=PackedInt32Array(457514100, 1555644302) index="0" unique_id=508255527]
 bones/0/rotation = Quaternion(-0.70708895, -0.0050162785, 0.0050162785, 0.707089)
-bones/1/position = Vector3(0.012178161, 0.19505176, 0.8582668)
+bones/1/position = Vector3(0.0113323275, 0.1932452, 0.79865587)
 bones/1/rotation = Quaternion(0.66652495, 0.0052884123, -0.0047285054, 0.74544907)
-bones/2/rotation = Quaternion(1.8626445e-09, 1.2144255e-07, -1.8626456e-09, 1)
-bones/3/position = Vector3(-0.13482243, 0.052575987, -0.0037890945)
-bones/3/rotation = Quaternion(-0.079156846, -0.24224563, 0.80736095, 0.53218377)
-bones/4/rotation = Quaternion(-0.7082535, 0.12014589, -0.3324694, 0.6110697)
-bones/5/rotation = Quaternion(-0.10600529, -0.08438378, 0.07545145, 0.98790157)
-bones/6/rotation = Quaternion(-0.6451973, -0.36996844, -0.17571034, 0.64495724)
-bones/7/position = Vector3(0.095023654, 0.29883614, -0.037884206)
-bones/7/rotation = Quaternion(-0.08802534, 0.31957737, -0.44377676, 0.8325768)
-bones/8/position = Vector3(0.04027832, 0.37375048, 0.019249877)
-bones/8/rotation = Quaternion(-0.5901653, -0.32968488, -0.32878575, 0.6594792)
-bones/9/rotation = Quaternion(0.069940835, -1.5020909e-12, 1.6696863e-08, 0.99755114)
-bones/10/position = Vector3(0.07390616, 0.08636394, 2.3734561e-08)
-bones/10/rotation = Quaternion(-0.11537215, -0.050698973, -0.85975343, 0.49491715)
-bones/11/rotation = Quaternion(-0.4583216, -0.4065079, 0.068734, 0.78738064)
-bones/12/rotation = Quaternion(-0.034143854, 0.039829, 0.14083621, 0.98864204)
-bones/13/rotation = Quaternion(-0.6807748, 0.064739354, -0.21559663, 0.6970456)
-bones/14/position = Vector3(0.009702295, 0.14449012, -0.09385164)
-bones/14/rotation = Quaternion(-0.4985187, -8.9497305e-05, 0.2596074, 0.8270932)
-bones/15/position = Vector3(-0.10450731, 0.22616595, -0.026558582)
-bones/15/rotation = Quaternion(-0.39671534, 0.38349468, -0.18919684, 0.81225204)
-bones/16/position = Vector3(-0.07455925, -0.04692732, -2.7926903e-08)
-bones/16/rotation = Quaternion(0.010155851, -0.18648286, 0.9823706, 0.0083134)
-bones/17/rotation = Quaternion(0.023063233, 0.00015750382, 0.0032334917, 0.99972886)
-bones/18/rotation = Quaternion(-0.61166966, 0.0025331874, 0.0008901854, 0.79110867)
-bones/19/position = Vector3(0.07455925, -0.046927385, -3.6039534e-08)
-bones/19/rotation = Quaternion(-0.006284321, 0.120801985, 0.9926165, -0.008936239)
-bones/20/rotation = Quaternion(0.02306323, -0.00015750952, -0.003233497, 0.99972886)
-bones/21/rotation = Quaternion(-0.79255307, 0.0020301999, -0.0018228459, 0.60979694)
-bones/22/position = Vector3(0.11063665, 0.46598747, 1.043353)
-bones/22/rotation = Quaternion(0.6023692, -0.40178025, 0.12367751, 0.67854834)
+bones/2/rotation = Quaternion(-0.11975618, 1.2073741e-07, -1.5936156e-08, 0.99280334)
+bones/3/position = Vector3(-0.13482241, 0.05257595, -0.0037891262)
+bones/3/rotation = Quaternion(-0.25372022, -0.580655, 0.54051054, 0.5534566)
+bones/4/rotation = Quaternion(-0.33145168, 0.15853004, -0.11503269, 0.9229168)
+bones/5/rotation = Quaternion(0.23274279, 0.46700516, -0.0035098859, 0.8530678)
+bones/6/rotation = Quaternion(-0.56271416, 0.35730013, -0.0641489, 0.7426806)
+bones/7/position = Vector3(-0.11759405, 0.2737586, -0.045789275)
+bones/7/rotation = Quaternion(0.06759372, 0.86980355, -0.19214511, 0.44939205)
+bones/8/position = Vector3(0.01564081, 0.3471404, 0.0016987831)
+bones/8/rotation = Quaternion(-0.29830813, 0.5469927, 0.12336761, 0.7723935)
+bones/9/rotation = Quaternion(0.069940835, -1.5124413e-12, 1.669686e-08, 0.99755114)
+bones/10/position = Vector3(0.07390615, 0.086363815, -6.518709e-09)
+bones/10/rotation = Quaternion(-0.3513077, 0.35746822, -0.5947306, 0.6285658)
+bones/11/rotation = Quaternion(0.020329837, -0.5148682, 0.115081966, 0.8492666)
+bones/12/rotation = Quaternion(0.24997917, -0.032564268, 0.0077018808, 0.9676729)
+bones/13/rotation = Quaternion(-0.68077475, 0.06473936, -0.21559654, 0.6970457)
+bones/14/position = Vector3(-0.05707143, 0.22036748, 0.015360259)
+bones/14/rotation = Quaternion(-0.2805245, -0.17397511, 0.364591, 0.8706963)
+bones/15/position = Vector3(-0.072949305, 0.29038298, 0.092563294)
+bones/15/rotation = Quaternion(-0.39671543, 0.38349473, -0.18919688, 0.8122519)
+bones/16/position = Vector3(-0.07455925, -0.0469272, -2.3029722e-08)
+bones/16/rotation = Quaternion(0.011724273, -0.39621276, 0.918065, 0.0058987727)
+bones/17/rotation = Quaternion(0.32486928, 0.0051489635, -0.0021175616, 0.9457426)
+bones/18/rotation = Quaternion(-0.61166966, 0.002533188, 0.00089018553, 0.79110867)
+bones/19/position = Vector3(0.07455925, -0.0469272, -2.4082178e-08)
+bones/19/rotation = Quaternion(-0.005789405, 0.17456661, 0.98458475, -0.009264533)
+bones/20/rotation = Quaternion(0.14559303, -0.0017089325, -0.0013863494, 0.9893422)
+bones/21/rotation = Quaternion(-0.752137, 0.0010380534, -0.0015691912, 0.65900415)
+bones/22/position = Vector3(0.082709074, 0.7798222, 1.2134116)
+bones/22/rotation = Quaternion(0.49822417, -0.5549598, 0.36947232, 0.5543308)
 
 [node name="body" parent="Mesh/reaper/Reaper/Skeleton3D" index="0" unique_id=23935814]
 material_override = ExtResource("35_m1s71")
@@ -3894,7 +3925,7 @@ material_override = ExtResource("35_m1s71")
 material_override = ExtResource("36_4anjp")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="3" unique_id=552018988]
-transform = Transform3D(0.6366379, -0.6620049, -0.39552683, 0.7033569, 0.7087698, -0.054169253, 0.3161978, -0.24371035, 0.91685545, 0.0958226, 1.0448176, -0.21598732)
+transform = Transform3D(0.09705593, -0.9645301, -0.24548267, 0.9848987, 0.12860583, -0.11590994, 0.14336903, -0.23052582, 0.96244633, 0.06548508, 1.2144629, -0.529822)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -3930,7 +3961,7 @@ light_energy = 0.0
 libraries/ = SubResource("AnimationLibrary_hfpb6")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4" unique_id=1880319706]
-transform = Transform3D(-0.9998197, -0.015474242, -0.011016471, 0.011582241, -0.036960587, -0.99924946, 0.015055463, -0.99919707, 0.03713329, -0.08787313, 0.032966673, -0.13120613)
+transform = Transform3D(-0.9998197, -0.015474355, -0.011016581, 0.014041352, -0.2114794, -0.97728175, 0.012793033, -0.9772599, 0.21165869, -0.08787321, 0.0480448, -0.2206089)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -3940,7 +3971,7 @@ script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5" unique_id=1885491197]
-transform = Transform3D(-0.9998197, -0.015474242, -0.011016471, 0.011582241, -0.036960587, -0.99924946, 0.015055463, -0.99919707, 0.03713329, -0.08787313, 0.032966673, -0.13120613)
+transform = Transform3D(-0.9998197, -0.015474355, -0.011016581, 0.014041352, -0.2114794, -0.97728175, 0.012793033, -0.9772599, 0.21165869, -0.08787321, 0.0480448, -0.2206089)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -4169,7 +4200,7 @@ grow_horizontal = 1
 grow_vertical = 0
 theme_override_styles/fill = ExtResource("34_6g6ue")
 expands = true
-tracked_node = NodePath("../../../Hitbox")
+tracked_node = NodePath("../../../Hitshape")
 pixel_expansion_rate = 8.0
 
 [node name="HealCharges" parent="UI/BottomLeft" unique_id=291496189 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]

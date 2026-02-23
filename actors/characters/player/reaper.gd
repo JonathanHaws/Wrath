@@ -1,51 +1,173 @@
 extends CharacterBody3D
-@export var ATTACKING_DISABLED: bool = true
-
-@export_group("Acceleration")
-@export var GROUND_SPEED: float = 1.5
-@export var AIR_SPEED: float = 1.5
-@export var MAX_SPEED: float = 12.35
+@export_group("Movement") 
+@export_subgroup("Acceleration")
+@export var GROUND_SPEED: float = 1.2
+@export var AIR_SPEED: float = 1.2
+@export var MAX_SPEED: float = 15.35
 @export var SPRINT_MULTIPLIER: float = 2.1
 @export var SPEED_MULTIPLIER: float = 1.0
-
-@export_group("Friction")
 @export var GROUND_FRICTION_PER_SECOND: float = 0.9 # fraction of remainingvelocity
 @export var AIR_FRICTION_PER_SECOND: float = 0.9 # fraction of velocity lost
-func stop_horizontal_movement() -> void:
-	velocity.x = 0
-	velocity.z = 0
-func apply_friction() -> void: ## Use in physics process for time independence
+@export var RUN_DISABLED: bool = false	
+func apply_horizontal_friction() -> void: 
+	# Use in physics process for time independence
 	var friction: float = GROUND_FRICTION_PER_SECOND
 	if not is_on_floor(): friction = AIR_FRICTION_PER_SECOND
 	velocity.x *= friction
 	velocity.z *= friction
+func stop_horizontal_movement() -> void:
+	velocity.x = 0
+	velocity.z = 0
+func clamp_horizontal_movement() -> void:
+	if Vector2(velocity.x, velocity.z).length() <= MAX_SPEED: return
+	var velocity_normalized = Vector2(velocity.x, velocity.z).normalized()
+	velocity.x = velocity_normalized.x * MAX_SPEED
+	velocity.z = velocity_normalized.y * MAX_SPEED
+func get_keyboard_run_vector() -> Vector2:
+	if RUN_DISABLED: return Vector2.ZERO
+	return Input.get_vector("keyboard_left", "keyboard_right", "keyboard_forward", "keyboard_back")
+func get_controller_run_vector() -> Vector2:
+	if RUN_DISABLED: return Vector2.ZERO
+	return Input.get_vector("controller_left", "controller_right", "controller_forward", "controller_back")
+func get_run_vector() -> Vector2:
+	if RUN_DISABLED: return Vector2.ZERO
+	var run_vector = get_controller_run_vector() + get_keyboard_run_vector()
+	if run_vector.length() > 1: run_vector = run_vector.normalized()
+	return run_vector
+func get_run_acceleration() -> Vector3:
+	var input_vector: Vector2 = get_run_vector()
+	var run_speed: float
+	if is_on_floor(): run_speed = GROUND_SPEED
+	else: run_speed = AIR_SPEED
+	
+	var speed_factor: float = 1.0
+	if Input.is_action_pressed("sprint") or get_controller_run_vector().length() > 0.75:
+		speed_factor *= SPRINT_MULTIPLIER
+		
+	var acceleration: float = run_speed * speed_factor * SPEED_MULTIPLIER
+	var run_vector = (Vector3(input_vector.x, 0, input_vector.y)).rotated(Vector3.UP, CAMERA.global_rotation.y)
+	var run_velocity = run_vector * acceleration
+	return 	run_velocity
+func try_run(delta: float) -> void:
+	if get_run_vector().length() == 0: return
+	var acceleration = get_run_acceleration()
+	velocity += acceleration
+	if acceleration.length() > 0: CAMERA.rotate_mesh_towards_camera_xz(delta, MESH, get_run_vector(), TURN_SPEED * TURN_MULTIPLIER)
 
-@export_group("Jumping")
-@export var JUMP_VELOCITY: float = 15.3
+@export_subgroup("Jumping")
+@export var JUMP_VELOCITY: float = 16.3
 @export var JUMP_MULTIPLIER: float = 1.0
 @export var COYOTE_TIME: float = .35
 @export var JUMP_BUFFER_TIME: float = .2
-var falling = COYOTE_TIME;
-var was_on_floor = true
-var has_been_on_floor = false
+var air_time = 0;
 var jump_buffer = 0;
-
-@export_group("Falling")
+func update_jump_buffer(delta: float) -> void:
+	if Input.is_action_just_pressed("jump"):
+		jump_buffer = JUMP_BUFFER_TIME
+	elif jump_buffer > 0:
+		jump_buffer -= delta
+func try_jump() -> void:
+	if jump_buffer <= 0: return
+	if air_time >= COYOTE_TIME: return
+	if not in_interruptible_animation(): return
+	if JUMP_MULTIPLIER == 0: return
+	
+	velocity.y = JUMP_VELOCITY * JUMP_MULTIPLIER
+	air_time = COYOTE_TIME
+	jump_buffer = 0
+	
+	if $Audio: $Audio.play_2d_sound(["jump"])
+	$Squash.squish(-.3)	
+	ANIM.play("JUMPING")
+	if PARTICLES: 
+		PARTICLES.scene_to_spawn = 1
+		PARTICLES.spawn()
+	
+@export_subgroup("Falling")
 @export var GRAVITY_MULTIPLIER: float = 4
 @export var MAX_FALL_SPEED: float = 50.0 
 @export var DESCEND_MULTIPLIER: float = 2.0
+@export var LAND_EFFECTS_COOLDOWN: float = 0.24
+@export var STEP_UP_RAY: RayCast3D
+func get_fall_velocity(delta: float) -> Vector3:
+	var fall_vel = velocity + get_gravity() * GRAVITY_MULTIPLIER * delta
+	if Input.is_action_pressed("descend"):
+		fall_vel += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER - 1.0)
+	if fall_vel.y < -MAX_FALL_SPEED:
+		fall_vel.y = -MAX_FALL_SPEED
+	return fall_vel
+func try_fall(delta: float) -> void:
+	if is_on_floor():
+		air_time = 0
+	else:
+		air_time += delta
+		velocity = get_fall_velocity(delta)
+func play_land_effects() -> void:
+	if air_time > LAND_EFFECTS_COOLDOWN:
+		$Squash.squish(.3)
+		if $Audio: $Audio.play_2d_sound(["land"])
+		if PARTICLES: PARTICLES.spawn()
+func try_step_up() -> void:
+	if not STEP_UP_RAY: return
+	if not STEP_UP_RAY.is_colliding(): return
+	if velocity.y > 1: return # Jumping ignore
+	
+	var hit_y: float = STEP_UP_RAY.get_collision_point().y
+	var body_y: float = global_position.y
+	if hit_y <= body_y: return
+	
+	# Make step up not work if its too steep an angle
+	var hit_normal: Vector3 = STEP_UP_RAY.get_collision_normal()
+	var up: Vector3 = Vector3.UP
+	var angle: float = acos(clamp(hit_normal.dot(up), -1.0, 1.0))
+	if angle > floor_max_angle: return
 
-@export_group("Turning")
+	# Return if would be in collision
+	var new_pos: Vector3 = Vector3(global_position.x, hit_y, global_position.z)
+	var params := PhysicsTestMotionParameters3D.new()
+	params.from = global_transform
+	params.motion = new_pos - global_position
+	if PhysicsServer3D.body_test_motion(get_rid(), params): return
+	
+	play_land_effects()
+	air_time = 0
+	velocity.y = 0
+	global_position.y = hit_y
+
+@export_subgroup("Turning")
 @export var MOUSE_SENSITIVITY: float = 0.003
 @export var TURN_SPEED: float = 20.0
 @export var TURN_MULTIPLIER: float = 1.0
 
-@export_group("Stamina")
+@export_group("Combat") #
+@export var ATTACKING_DISABLED: bool = true
+func try_block() -> void:
+	if Input.is_action_pressed("block"):
+		if in_interruptible_animation() and ANIM.current_animation not in ["BLOCK", "BLOCK_ENTER"]:
+			ANIM.play("BLOCK_ENTER", 0.0)
+	elif ANIM.current_animation == "BLOCK":
+		if not Input.is_action_pressed("block") and ANIM.current_animation != "BLOCK_EXIT":
+			ANIM.play("BLOCK_EXIT", 0.0)
+func try_attack() -> void:
+	if ATTACKING_DISABLED: return
+	if not Input.is_action_just_pressed("attack"): return
+	if not in_interruptible_animation(): return
+	
+	if is_on_floor():
+		ANIM.play("WINDUP")
+	else:
+		ANIM.play("PLUNGE_FALL")
+func try_plunge() -> void:
+	if not is_on_floor(): return
+	if not ANIM.current_animation in "PLUNGE_FALL": return
+	ANIM.play("PLUNGE", 0)
+
+@export_subgroup("Stamina")
 @export var STAMINA: float = 10
 @export var MAX_STAMINA: float = 10
 @export var STAMINA_RECOVERY: float = 30.0
 
-@export_group("Shooting")
+@export_subgroup("Shooting")
 @export var SHOOTING_DISABLED: bool = false
 @export var MAX_SHOOTING_ENERGY: int = 1
 @export var shooting_energy: int = MAX_SHOOTING_ENERGY
@@ -64,6 +186,7 @@ func load_shooting_data() -> void:
 func try_shoot() -> void:
 	if SHOOTING_DISABLED: return
 	if ATTACKING_DISABLED: return
+	if not Input.is_action_just_pressed("shoot"): return
 	if ANIM.current_animation == "SHOOT": return
 	if shooting_energy <= 0: return
 	if not is_on_floor(): return
@@ -71,11 +194,11 @@ func try_shoot() -> void:
 	shooting_energy -= 1
 	ANIM.play("SHOOT", 0.0)
 
-@export_group("Healing") 
+@export_subgroup("Healing") 
+@export var HITSHAPE: Area3D
 @export var HEALING_DISABLED: bool = false
 @export var MAX_HEAL_CHARGES: int = 1
 @export var HEAL_AMOUNT: float = 5.0
-@export var HITBOX: Area3D
 @export var heal_charges: int = MAX_HEAL_CHARGES
 func load_max_heal_data() -> void:
 	MAX_HEAL_CHARGES = Save.data.get("max_heal_charges", MAX_HEAL_CHARGES)
@@ -89,35 +212,31 @@ func load_heal_data() -> void:
 	load_max_heal_data()
 	HEAL_AMOUNT = Save.data.get("heal_amount", HEAL_AMOUNT)
 	heal_charges = Save.data.get("heal_charges", MAX_HEAL_CHARGES)
-func heal_hitbox() -> void:
-	HITBOX.HEALTH = min(HITBOX.HEALTH + HEAL_AMOUNT, HITBOX.MAX_HEALTH)
+func heal_hitshape() -> void:
+	HITSHAPE.HEALTH = min(HITSHAPE.HEALTH + HEAL_AMOUNT, HITSHAPE.MAX_HEALTH)
 func try_heal() -> void:
 	if HEALING_DISABLED: return
 	if heal_charges <= 0: return
+	if not HITSHAPE: return
+	if not Input.is_action_just_pressed("interact"): return
 	if not is_on_floor(): return
 	if not in_interruptible_animation(): return
-	if not HITBOX: return
-	if not "HEALTH" in HITBOX: return
-	if not "MAX_HEALTH" in HITBOX: return
+	if not "HEALTH" in HITSHAPE: return
+	if not "MAX_HEALTH" in HITSHAPE: return
 	#if HITBOX.HEALTH >= HITBOX.MAX_HEALTH: return
 	heal_charges -= 1
 	if ANIM: ANIM.play("HEAL", 0.0)
 
-@export_group("References")
+@export_subgroup("References")
 @export var CAMERA: Camera3D
 @export var MESH: Node3D
-@export var ANIM: AnimationPlayer
-@export var MESH_ANIM: AnimationPlayer
 @export var COLLISON_SHAPE: CollisionShape3D
 @export var PARTICLES: Node3D
+@export var ANIM: AnimationPlayer
+@export var MESH_ANIM: AnimationPlayer
 @export var FADE_IN_ANIM: AnimationPlayer
-@export var SKILL_TREE: Node
-
-func reload_checkpoint() -> void:
-	await get_tree().process_frame
-	get_tree().change_scene_to_file(Save.data["checkpoint_scene_path"])
-
 func _on_animation_finished(animation_name: String) -> void:
+	
 	if animation_name == "WINDOWN":
 		ANIM.play("IDLE", 0.0, 1, false)
 		ANIM.seek(0, true)
@@ -140,8 +259,9 @@ func _on_animation_finished(animation_name: String) -> void:
 		ANIM.play("SPIN", 0.0, 1, false)
 		ANIM.seek(0, true) 
 		STAMINA -= 10
-
 func in_interruptible_animation() -> bool:
+	
+	if not ANIM: return true
 	return not ANIM.current_animation in [
 		"HEAL",
 		"BLOCK_ENTER",
@@ -169,6 +289,10 @@ func in_interruptible_animation() -> bool:
 		"PIGLET_PAT",
 		"LUST_INTRO"
 	]
+
+func reload_checkpoint() -> void:
+	await get_tree().process_frame
+	get_tree().change_scene_to_file(Save.data["checkpoint_scene_path"])
 
 func _exit_tree() -> void:
 	
@@ -219,95 +343,29 @@ func _process(_delta)-> void:
 		STAMINA = clamp(STAMINA + STAMINA_RECOVERY * _delta, 0, MAX_STAMINA)
 	
 func _physics_process(delta: float) -> void:
-
-	if not was_on_floor and is_on_floor() and has_been_on_floor:
-		if ANIM.current_animation in "PLUNGE_FALL":
-			#print('Plunge')
-			ANIM.play("PLUNGE", 0)
-		
-		$Squash.squish(.3)	
-		if $Audio: $Audio.play_2d_sound(["land"])
-		if PARTICLES: PARTICLES.spawn()
-		
-	was_on_floor = is_on_floor()
-	if is_on_floor(): has_been_on_floor = true
 	
 	if ANIM.current_animation in "ESCAPE": return
+	
+	if is_on_floor():
+		play_land_effects()
 
-	if (not ATTACKING_DISABLED) and Input.is_action_just_pressed("attack"):
-		if in_interruptible_animation() and not SKILL_TREE.visible:
-			if is_on_floor():
-				ANIM.play("WINDUP")
-			else:
-				ANIM.play("PLUNGE_FALL")
-	
-	if Input.is_action_pressed("block"):
-		if in_interruptible_animation() and ANIM.current_animation not in ["BLOCK", "BLOCK_ENTER"]:
-			#print(ANIM.playback_default_blend_time)
-			ANIM.play("BLOCK_ENTER", 0.0)
-	elif ANIM.current_animation == "BLOCK":
-		if not Input.is_action_pressed("block") and ANIM.current_animation != "BLOCK_EXIT":
-			ANIM.play("BLOCK_EXIT", 0.0)
-			
-	if Input.is_action_just_pressed("interact"): try_heal()
-	if Input.is_action_just_pressed("shoot"): try_shoot()
-	
-			
-	if not is_on_floor(): # GRAVITY
-		velocity += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER if Input.is_action_pressed("descend") else 1.0)
-	if velocity.y < -MAX_FALL_SPEED: velocity.y = -MAX_FALL_SPEED
-	
-	falling = 0.0 if is_on_floor() else falling + delta  # JUMP
-	if Input.is_action_just_pressed("jump"): jump_buffer = JUMP_BUFFER_TIME;
-	elif jump_buffer > 0: jump_buffer -= delta
-	if jump_buffer > 0 and falling < COYOTE_TIME and not SKILL_TREE.visible: 
-		if ANIM.current_animation and in_interruptible_animation():
-			if JUMP_MULTIPLIER > 0:
-				if $Audio: $Audio.play_2d_sound(["jump"])
-				ANIM.play("JUMPING")
-				$Squash.squish(-.3)	
-				velocity.y = JUMP_VELOCITY * JUMP_MULTIPLIER
-				falling = COYOTE_TIME
-				jump_buffer = 0
-				if PARTICLES: 
-					PARTICLES.scene_to_spawn = 1
-					PARTICLES.spawn()
-	
-	var keyboard_vector: Vector2 = Input.get_vector("keyboard_left", "keyboard_right", "keyboard_forward", "keyboard_back")
-	var controller_vector: Vector2 = Input.get_vector("controller_left", "controller_right", "controller_forward", "controller_back")
-	var input_vector: Vector2 = keyboard_vector + controller_vector
-	
-	if SKILL_TREE.visible: input_vector = Vector2.ZERO
-	
-	if input_vector.length() > 0:
-		
-		var move_speed: float = (GROUND_SPEED if is_on_floor() else AIR_SPEED) 
-		var speed_factor = 1.0
-		if Input.is_action_pressed("sprint") or controller_vector.length() > 0.75:
-			speed_factor = SPRINT_MULTIPLIER
-			
-		var acceleration: float = move_speed * speed_factor * SPEED_MULTIPLIER	
-			
-		var move_vector = (Vector3(input_vector.x, 0, input_vector.y)).rotated(Vector3.UP, CAMERA.global_rotation.y)
-
-		velocity.x += move_vector.x * acceleration
-		velocity.z += move_vector.z * acceleration
-		CAMERA.rotate_mesh_towards_camera_xz(delta, MESH, input_vector, TURN_SPEED * TURN_MULTIPLIER)
-	
-	var h = Vector2(velocity.x, velocity.z) # MAX SPEED
-	if h.length() > MAX_SPEED:
-		h = h.normalized() * MAX_SPEED
-		velocity.x = h.x
-		velocity.z = h.y
-	
+	try_fall(delta)
+	try_run(delta)
+	update_jump_buffer(delta)
+	try_jump()
+	try_plunge()
+	try_attack()
+	try_block()	
+	try_heal()
+	try_shoot()
+	try_step_up()
+	clamp_horizontal_movement()
+	apply_horizontal_friction()
 	move_and_slide() 
-	
-	apply_friction()
-	
 	if in_interruptible_animation(): 
-		if is_on_floor(): 
-			if input_vector.length() > 0:
-				if (Input.is_action_pressed("sprint") or controller_vector.length() > 0.75):
+		if air_time < 0.1: 
+			if get_run_vector().length() > 0:
+				if Input.is_action_pressed("sprint") or get_controller_run_vector().length() > 0.75:
 					ANIM.play("RUN", 0.0, 1, false)
 				else:
 					ANIM.play("WALK", 0.0, 1, false)

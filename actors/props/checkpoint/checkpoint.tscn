@@ -3,10 +3,7 @@
 [ext_resource type="Script" uid="uid://bwi12jjkh4nu7" path="res://actors/props/checkpoint/checkpoint.gd" id="1_jmg87"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://actors/characters/interaction.gd" id="2_8is0s"]
 [ext_resource type="AudioStream" uid="uid://bijkgqifxmt1t" path="res://actors/props/checkpoint/checkpoint.wav" id="3_7pdu5"]
-[ext_resource type="Texture2D" uid="uid://c7haptthfejp2" path="res://actors/props/checkpoint/textures/color.png" id="4_7no74"]
 [ext_resource type="PackedScene" uid="uid://b7b68t7b3u76m" path="res://actors/props/checkpoint/checkpoint.blend" id="4_ltl5t"]
-[ext_resource type="Texture2D" uid="uid://h16x8ap3nqbc" path="res://actors/props/checkpoint/textures/Emissive.jpg" id="5_xdv6p"]
-[ext_resource type="Texture2D" uid="uid://20j52u878rsw" path="res://actors/props/checkpoint/textures/normalmap.png" id="6_p1yyc"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="7_3qxw0"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="8_tssyw"]
 [ext_resource type="Script" uid="uid://ca30ou0es6s2v" path="res://actors/props/checkpoint/rest_label.gd" id="9_2oqi1"]
@@ -228,18 +225,10 @@ _data = {
 &"RESET": SubResource("Animation_8is0s")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p60ie"]
-albedo_texture = ExtResource("4_7no74")
-emission_enabled = true
-emission_texture = ExtResource("5_xdv6p")
-normal_enabled = true
-normal_texture = ExtResource("6_p1yyc")
-
 [node name="Checkpoint" type="Area3D" unique_id=2076545832 node_paths=PackedStringArray("CHECKPOINT_NODE", "REST_ANIM", "AQUIRED_ANIM", "PROMPT_ANIM")]
-collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_jmg87")
-CHECKPOINT_NODE = NodePath("Node3D")
+CHECKPOINT_NODE = NodePath("PlayerSpot")
 REST_ANIM = NodePath("Rest")
 AQUIRED_ANIM = NodePath("Aquired")
 PROMPT_ANIM = NodePath("Prompt")
@@ -250,15 +239,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
 shape = SubResource("CylinderShape3D_0sglt")
 debug_color = Color(0.458405, 0.458405, 0.458405, 0.247059)
 
-[node name="Node3D" type="Node3D" parent="." unique_id=1204367155]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="." unique_id=274602666]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
-visible = false
-use_collision = true
-radius = 2.0
-height = 0.5
+[node name="PlayerSpot" type="Node3D" parent="." unique_id=1204367155]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48279646, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1612915806]
 bus = &"SFX"
@@ -267,15 +249,15 @@ bus = &"SFX"
 libraries/ = SubResource("AnimationLibrary_j24vx")
 autoplay = &"RESET"
 
-[node name="RestInteraction" type="Node3D" parent="Rest" unique_id=485879137 node_paths=PackedStringArray("trigger_area", "body")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.502184, 0)
+[node name="RestInteraction" type="Node3D" parent="Rest" unique_id=485879137 node_paths=PackedStringArray("trigger_area", "body", "mesh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.484923, 0)
 script = ExtResource("2_8is0s")
 trigger_area = NodePath("../..")
 target_anim = &"REST"
-interpolate = false
 body = NodePath(".")
-duration_seconds = 10.0
-weight = 1.0
+mesh = NodePath("../../PlayerSpot")
+duration_seconds = 1.0
+weight = 0.0
 
 [node name="Aquired" type="AnimationPlayer" parent="." unique_id=1547696060]
 root_node = NodePath("../Rest")
@@ -293,14 +275,8 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 omni_range = 30.0
 
-[node name="checkpoint" parent="." unique_id=2011769512 instance=ExtResource("4_ltl5t")]
+[node name="checkpoint" parent="." unique_id=268663326 instance=ExtResource("4_ltl5t")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, 0, 0, 0)
-
-[node name="hoarder" parent="checkpoint" index="0"]
-material_override = SubResource("StandardMaterial3D_p60ie")
-
-[node name="CollisionShape3D" parent="checkpoint/hoarder/StaticBody3D" index="0"]
-debug_color = Color(0.458405, 0.458405, 0.458405, 0.247059)
 
 [node name="Control" type="Control" parent="." unique_id=1084030070 groups=["ui_scalable"]]
 visible = false
@@ -343,11 +319,5 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
-
-[node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1070475261]
-
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody3D" unique_id=1219032758]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6022949, 0, 0)
-debug_fill = false
 
 [editable path="checkpoint"]
