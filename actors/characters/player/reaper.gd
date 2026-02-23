@@ -55,33 +55,40 @@ func try_run(delta: float) -> void:
 	if acceleration.length() > 0: CAMERA.rotate_mesh_towards_camera_xz(delta, MESH, get_run_vector(), TURN_SPEED * TURN_MULTIPLIER)
 
 @export_subgroup("Jumping")
-@export var JUMP_VELOCITY: float = 16.3
+@export var JUMP_VELOCITY: float = 9.6
 @export var JUMP_MULTIPLIER: float = 1.0
-@export var COYOTE_TIME: float = .35
-@export var JUMP_BUFFER_TIME: float = .2
-var air_time = 0;
+@export var VARIABLE_JUMP_TIME: float = .25
+@export var COYOTE_TIME: float = 0.35
+@export var JUMP_BUFFER_TIME: float = 0.2
 var jump_buffer = 0;
-func update_jump_buffer(delta: float) -> void:
+var air_time = 0;
+func update_jump_buffer(delta: float) -> void:	
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer = JUMP_BUFFER_TIME
 	elif jump_buffer > 0:
-		jump_buffer -= delta
+		jump_buffer -= delta	
 func try_jump() -> void:
-	if jump_buffer <= 0: return
-	if air_time >= COYOTE_TIME: return
-	if not in_interruptible_animation(): return
-	if JUMP_MULTIPLIER == 0: return
-	
-	velocity.y = JUMP_VELOCITY * JUMP_MULTIPLIER
-	air_time = COYOTE_TIME
-	jump_buffer = 0
-	
-	if $Audio: $Audio.play_2d_sound(["jump"])
-	$Squash.squish(-.3)	
-	ANIM.play("JUMPING")
-	if PARTICLES: 
-		PARTICLES.scene_to_spawn = 1
-		PARTICLES.spawn()
+
+	if jump_buffer > 0: 
+		if air_time >= COYOTE_TIME: return
+		if not in_interruptible_animation(): return
+		if JUMP_MULTIPLIER == 0: return
+		
+		velocity.y = JUMP_VELOCITY * JUMP_MULTIPLIER
+		
+		if Input.is_action_pressed("jump") and air_time < VARIABLE_JUMP_TIME:
+			jump_buffer = JUMP_BUFFER_TIME
+		else:
+			air_time = COYOTE_TIME
+			jump_buffer = 0
+		
+		if is_on_floor():
+			if $Audio: $Audio.play_2d_sound(["jump"])
+			$Squash.squish(-.3)	
+			ANIM.play("JUMPING")
+			if PARTICLES: 
+				PARTICLES.scene_to_spawn = 1
+				PARTICLES.spawn()
 	
 @export_subgroup("Falling")
 @export var GRAVITY_MULTIPLIER: float = 4
@@ -141,6 +148,7 @@ func try_step_up() -> void:
 
 @export_group("Combat") #
 @export var ATTACKING_DISABLED: bool = true
+@export var PLUNGE_TIME: float = 0.03
 func try_block() -> void:
 	if Input.is_action_pressed("block"):
 		if in_interruptible_animation() and ANIM.current_animation not in ["BLOCK", "BLOCK_ENTER"]:
@@ -155,12 +163,12 @@ func try_attack() -> void:
 	
 	if is_on_floor():
 		ANIM.play("WINDUP")
-	else:
+	elif air_time > PLUNGE_TIME:
 		ANIM.play("PLUNGE_FALL")
 func try_plunge() -> void:
-	if not is_on_floor(): return
-	if not ANIM.current_animation in "PLUNGE_FALL": return
-	ANIM.play("PLUNGE", 0)
+	if is_on_floor() or air_time < PLUNGE_TIME:
+		if not ANIM.current_animation in "PLUNGE_FALL": return
+		ANIM.play("PLUNGE", 0)
 
 @export_subgroup("Stamina")
 @export var STAMINA: float = 10
@@ -346,9 +354,7 @@ func _physics_process(delta: float) -> void:
 	
 	if ANIM.current_animation in "ESCAPE": return
 	
-	if is_on_floor():
-		play_land_effects()
-
+	if is_on_floor(): play_land_effects()
 	try_fall(delta)
 	try_run(delta)
 	update_jump_buffer(delta)
