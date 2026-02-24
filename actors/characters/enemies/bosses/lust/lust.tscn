@@ -27,7 +27,6 @@
 [ext_resource type="Texture2D" uid="uid://cgonc3b5gfd5" path="res://actors/characters/enemies/bosses/lust/visuals/color.png" id="25_gu5ya"]
 [ext_resource type="Texture2D" uid="uid://30a88mkk0lip" path="res://actors/characters/enemies/bosses/lust/visuals/color-2.png" id="26_0uydn"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="26_ppvu3"]
-[ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="27_w72qa"]
 [ext_resource type="PackedScene" uid="uid://b28l3wgogpqnm" path="res://actors/characters/enemies/bosses/lust/visuals/lust.glb" id="30_216sa"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="30_dyfuw"]
 [ext_resource type="Material" uid="uid://cfsjgs6ugktap" path="res://actors/characters/enemies/bosses/lust/visuals/material_1.tres" id="30_gn5mi"]
@@ -1791,9 +1790,7 @@ STOP_CHASE_AREA = NodePath("../HitShape")
 [node name="Offset" type="Node3D" parent="Target" unique_id=1031161489]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9356, 0)
 
-[node name="Mesh" type="Node3D" parent="." unique_id=1610674552 node_paths=PackedStringArray("SCENE_ROOT")]
-script = ExtResource("27_w72qa")
-SCENE_ROOT = NodePath("..")
+[node name="Mesh" type="Node3D" parent="." unique_id=1610674552]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh" unique_id=1837448144]
 
@@ -1936,7 +1933,7 @@ disabled = true
 debug_color = Color(0.95, 0.038, 0.1748, 0.180392)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="5" unique_id=255726878]
-transform = Transform3D(-0.25621444, -0.5419568, 0.8003979, 0.8816475, -0.4705067, -0.03636117, 0.39629877, 0.6963524, 0.59836495, -1.4168652, 4.7766247, 0.9110265)
+transform = Transform3D(-0.90810555, -0.4186998, 0.005922934, 0.41825476, -0.90627635, 0.0610496, -0.020193523, 0.057916787, 0.99811685, -0.956145, 3.9381685, -0.3923036)
 bone_name = "hand_r"
 bone_idx = 51
 

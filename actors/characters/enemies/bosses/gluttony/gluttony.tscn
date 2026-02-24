@@ -27,7 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://actors/characters/ui/damage_numbers.tscn" id="23_adl7b"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="23_wlv32"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="24_r4ucj"]
-[ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="25_q2e76"]
 [ext_resource type="Material" uid="uid://7w72228cchli" path="res://actors/characters/enemies/bosses/gluttony/gluttony_material.tres" id="28_kav4y"]
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://actors/props/wisp/wisp_reward.gd" id="29_0iori"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="29_uk6rk"]
@@ -2341,9 +2340,7 @@ COOLDOWN_REMAINING = 10.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="Mesh" type="Node3D" parent="." unique_id=1223605182 node_paths=PackedStringArray("SCENE_ROOT")]
-script = ExtResource("25_q2e76")
-SCENE_ROOT = NodePath("..")
+[node name="Mesh" type="Node3D" parent="." unique_id=1223605182]
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh" unique_id=2051367108]
 

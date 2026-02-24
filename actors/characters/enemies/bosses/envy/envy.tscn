@@ -1523,44 +1523,44 @@ next/TAKEOFF_LEFT_SHOULDER = &"FLY"
 
 [node name="Slam" type="Node" parent="Attacks" unique_id=354631471 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("23_od1a5")
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_ix8e8")
 LIKELIHOOD_MULTIPLIER = 300.0
 ATTACK_RADIUS = 20.0
-ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_ix8e8")
 COOLDOWN = 5.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
 [node name="Gawk" type="Node" parent="Attacks" unique_id=677450295 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("23_od1a5")
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_msv7p")
 ATTACK_ANIMATION = "GAWK"
 LIKELIHOOD_MULTIPLIER = 100.0
-ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_msv7p")
 COOLDOWN = 10.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
 [node name="BiteLeft" type="Node" parent="Attacks" unique_id=522650817 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("23_od1a5")
-ATTACK_ANIMATION = "BITE_LEFT"
-LIKELIHOOD_MULTIPLIER = 300.0
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_1epqe")
 TRIGGER_ANIMATIONS = Array[String](["CHASE", "FLY"])
+ATTACK_ANIMATION = "BITE_LEFT"
+LIKELIHOOD_MULTIPLIER = 300.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
 [node name="BiteRight" type="Node" parent="Attacks" unique_id=2007705492 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("23_od1a5")
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_1epqe")
 ATTACK_ANIMATION = "BITE_RIGHT"
 LIKELIHOOD_MULTIPLIER = 300.0
-ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_1epqe")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
 [node name="Takeoff_Left" type="Node" parent="Attacks" unique_id=1390185296 node_paths=PackedStringArray("HITSHAPE", "TARGET", "BODY")]
 script = ExtResource("23_od1a5")
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_fp1nr")
 ATTACK_ANIMATION = "TAKEOFF_LEFT_SHOULDER"
 LIKELIHOOD_MULTIPLIER = 300.0
-ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_fp1nr")
 COOLDOWN = 2.98
 HITSHAPE = NodePath("../../HitShape")
 HEALTH_HIGH_THRESHOLD = 0.8
@@ -1569,11 +1569,11 @@ BODY = NodePath("../..")
 
 [node name="Sweep" type="Node" parent="Attacks" unique_id=1515618671 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("23_od1a5")
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_o226f")
+TRIGGER_ANIMATIONS = Array[String](["FLY"])
 ATTACK_ANIMATION = "SWEEP"
 LIKELIHOOD_MULTIPLIER = 300.0
 ATTACK_RADIUS = 20.0
-ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_o226f")
-TRIGGER_ANIMATIONS = Array[String](["FLY"])
 COOLDOWN = 10.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
@@ -1602,14 +1602,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.674217, 0)
 visible = false
 mesh = SubResource("BoxMesh_wpfpa")
 
-[node name="Mesh" type="Node3D" parent="." unique_id=1289796498 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "SCENE_ROOT")]
+[node name="Mesh" type="Node3D" parent="." unique_id=1289796498 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "BODY")]
 rotation_edit_mode = 1
 script = ExtResource("26_5mwrc")
 SKELETAL_ANIMATION_PLAYER = NodePath("envy/AnimationPlayer")
 SKELETON = NodePath("envy/Armature/Skeleton3D")
 MESH = NodePath(".")
-SCENE_ROOT = NodePath("..")
-SKELETON_ROOT_DEFAULT_ROTATION = Quaternion(0, 0.707107, 0.707107, 0)
+BODY = NodePath("..")
+DEFAULT_TRANSFORM_ANIMATION = "IDLE"
 
 [node name="envy" parent="Mesh" unique_id=344055251 instance=ExtResource("27_wpfpa")]
 

@@ -24,7 +24,6 @@
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="23_8fqfx"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="25_gwq6n"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="25_vjg2k"]
-[ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://actors/characters/enemies/root_motion.gd" id="26_t4er3"]
 [ext_resource type="PackedScene" uid="uid://dnmftqcmv26ca" path="res://actors/characters/enemies/bosses/sloth/sloth.blend" id="27_dbtmo"]
 [ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="28_muo5h"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://actors/characters/dialog/dialog.gd" id="28_v7xtt"]
@@ -626,12 +625,12 @@ _data = {
 &"RESET": SubResource("Animation_jojdm")
 }
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7qim"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_enj2w"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cu7wn"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p7qim"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("25_vjg2k")
@@ -939,9 +938,7 @@ SPEED = 0.0
 SPEED_MULTIPLIER = 0.0
 STOP_CHASE_AREA = NodePath("../HitShape")
 
-[node name="Mesh" type="Node3D" parent="." unique_id=1415185518 node_paths=PackedStringArray("SCENE_ROOT")]
-script = ExtResource("26_t4er3")
-SCENE_ROOT = NodePath("..")
+[node name="Mesh" type="Node3D" parent="." unique_id=1415185518]
 
 [node name="sloth" parent="Mesh" unique_id=2146499300 instance=ExtResource("27_dbtmo")]
 
@@ -958,8 +955,8 @@ secondary_limit_angle = 0.87266463
 secondary_damp_threshold = 1.0
 
 [node name="Sphere_001" parent="Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2146499300, 1751786890) index="1" unique_id=1498387284]
-surface_material_override/0 = SubResource("StandardMaterial3D_p7qim")
-surface_material_override/1 = SubResource("ShaderMaterial_cu7wn")
+surface_material_override/0 = SubResource("StandardMaterial3D_enj2w")
+surface_material_override/1 = SubResource("ShaderMaterial_p7qim")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh" unique_id=345657186]
 

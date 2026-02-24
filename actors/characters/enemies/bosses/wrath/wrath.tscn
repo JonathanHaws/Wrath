@@ -1447,30 +1447,30 @@ next/SPIN_ATTACK = &"CHASE"
 
 [node name="SlamAttack" type="Node" parent="AnimationPlayer" unique_id=518478710 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_x676q")
-ATTACK_ANIMATION = "SLAM_ATTACK"
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_x676q")
+ATTACK_ANIMATION = "SLAM_ATTACK"
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
 [node name="JumpAttack" type="Node" parent="AnimationPlayer" unique_id=1261328417 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_x676q")
-ATTACK_ANIMATION = "JUMP_ATTACK"
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_tjj4l")
+ATTACK_ANIMATION = "JUMP_ATTACK"
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
 [node name="SpinAttack" type="Node" parent="AnimationPlayer" unique_id=341744808 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_x676q")
-ATTACK_ANIMATION = "SPIN_ATTACK"
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_q1yl6")
+ATTACK_ANIMATION = "SPIN_ATTACK"
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
 [node name="RoarAttack" type="Node" parent="AnimationPlayer" unique_id=691378933 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("24_x676q")
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_ydlo6")
 ATTACK_ANIMATION = "ROAR_ATTACK"
 LIKELIHOOD_MULTIPLIER = 0.2
-ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_ydlo6")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
@@ -1487,38 +1487,36 @@ MESH = NodePath("../Mesh")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 SPEED_MULTIPLIER = 0.0
 
-[node name="Mesh" type="Node3D" parent="." unique_id=1492049658 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "SCENE_ROOT")]
+[node name="Mesh" type="Node3D" parent="." unique_id=1492049658 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "BODY")]
 script = ExtResource("13_h5485")
 SKELETAL_ANIMATION_PLAYER = NodePath("wrath/AnimationPlayer")
 SKELETON = NodePath("wrath/Armature")
 MESH = NodePath(".")
-SCENE_ROOT = NodePath("..")
-SKELETON_ROOT_DEFAULT_POSITION = Vector3(5.3501e-17, -1.1, 1)
-SKELETON_ROOT_DEFAULT_ROTATION = Quaternion(-0.707107, -7.55185e-17, -7.55185e-17, 0.707107)
+BODY = NodePath("..")
+DEFAULT_TRANSFORM_ANIMATION = "Intro"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh" unique_id=1237596973]
 
 [node name="wrath" parent="Mesh" unique_id=1674302010 instance=ExtResource("10_h46di")]
 
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" index="0"]
-bones/1/position = Vector3(-7.121752e-17, 0.082943216, 0.5182572)
-bones/1/rotation = Quaternion(0.5201871, 5.555561e-17, 9.1212174e-17, 0.85405236)
-bones/2/rotation = Quaternion(0.29661265, 1.1384466e-07, 3.5358987e-08, 0.9549979)
-bones/2/scale = Vector3(1, 1.0000001, 0.99999994)
-bones/3/rotation = Quaternion(0.101092115, 0.18124993, 0.763867, 0.6110943)
-bones/4/rotation = Quaternion(-0.3595353, 0.010600679, 0.15241416, 0.92053896)
-bones/5/rotation = Quaternion(-0.455173, -0.06791449, 0.03254455, 0.8872125)
-bones/6/rotation = Quaternion(-0.08224289, 0.0006229699, 0.13466907, 0.9874715)
-bones/7/rotation = Quaternion(0.11497435, -2.7996945e-08, -6.397762e-08, 0.9933685)
+bones/1/position = Vector3(-7.71653e-18, -0.71880484, 1.0035257)
+bones/1/rotation = Quaternion(0.2573497, 8.1128756e-17, 7.052857e-17, 0.9663183)
+bones/2/rotation = Quaternion(0.34762904, 1.1177448e-07, 4.144061e-08, 0.93763226)
+bones/3/rotation = Quaternion(0.1010921, 0.18124995, 0.763867, 0.6110943)
+bones/4/rotation = Quaternion(0.13309738, 0.38514933, 0.19012764, 0.8931947)
+bones/5/rotation = Quaternion(-0.455173, -0.067914516, 0.0325446, 0.8872125)
+bones/6/rotation = Quaternion(-0.082242884, 0.000622981, 0.13466905, 0.9874715)
+bones/7/rotation = Quaternion(-0.13630904, -2.9309884e-14, -3.249861e-08, 0.99066633)
 bones/8/rotation = Quaternion(0.10109232, -0.18125007, -0.763867, 0.61109424)
-bones/9/rotation = Quaternion(-0.24811953, 0.00052556023, -0.14623012, 0.95762897)
-bones/10/rotation = Quaternion(-0.455173, 0.06791452, -0.03254454, 0.8872125)
+bones/9/rotation = Quaternion(0.18254952, -0.037696682, -0.18083832, 0.96568745)
+bones/10/rotation = Quaternion(-0.23919083, 0.24390233, -0.29281807, 0.8930605)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0"]
 material_override = ExtResource("27_a67hc")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1" unique_id=695131287]
-transform = Transform3D(-0.65342456, 0.06969153, -0.75377643, 0.7326384, -0.19231775, -0.6528817, -0.19046485, -0.97885466, 0.07460639, -2.230582, 2.6543112, -0.61016744)
+transform = Transform3D(-0.92368394, -0.19508246, -0.32977355, 0.09050055, -0.9474079, 0.30696434, -0.3723133, 0.25369352, 0.89276063, -2.2133746, 2.3116562, 1.089886)
 bone_name = "hand_l"
 bone_idx = 6
 
@@ -1534,7 +1532,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" unique_id=675944075 groups=["wrath"]]
-transform = Transform3D(-0.68529326, 0.14988273, 0.7126768, -0.7228619, -0.25899976, -0.64061666, 0.08856561, -0.9541769, 0.28583515, 2.5136962, 2.5679877, -0.23413622)
+transform = Transform3D(-0.69944155, 0.46056998, -0.5464948, -0.40541083, -0.88541645, -0.22733104, -0.5885773, 0.06255026, 0.80601716, 2.212791, 2.2416654, 1.1654639)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1550,7 +1548,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3" unique_id=290485866 groups=["wrath"]]
-transform = Transform3D(1, 2.1316285e-14, 2.3841864e-07, 2.9874037e-08, 0.99211884, -0.12530085, -2.3653965e-07, 0.12530091, 0.9921187, 2.8723113e-23, 0.9999998, 0.10029495)
+transform = Transform3D(1, 7.23087e-15, 2.3841858e-07, -7.954478e-08, 0.9427023, 0.333635, -2.2475776e-07, -0.33363494, 0.94270235, 5.3811063e-17, 0.78891784, 0.17443109)
 bone_name = "torso"
 bone_idx = 2
 

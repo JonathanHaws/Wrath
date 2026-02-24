@@ -6,57 +6,67 @@ extends Node3D
 @export var SKELETAL_ANIMATION_PLAYER: AnimationPlayer 
 @export var SKELETON: Node3D
 @export var MESH: Node3D
-@export var SCENE_ROOT: Node3D
-@export var SKELETON_ROOT_POSITION_TRACK_INDEX: int = 0
-@export var SKELETON_ROOT_ROTATION_TRACK_INDEX: int = 1
-@export var SKELETON_ROOT_DEFAULT_POSITION: Vector3 = Vector3.ZERO ## Look in skeleton mesh animation player root rotation 
-@export var SKELETON_ROOT_DEFAULT_ROTATION: Quaternion = Quaternion()  ## Look in skeleton mesh animation player root rotation 
-
-var last_root_pos: Vector3 = SKELETON_ROOT_DEFAULT_POSITION  # declare at top
-var last_time: float = 0.0 ## When animation current playback goes backward you can know new animation has played so can reset root motion
+@export var BODY: Node3D
+@export var ROOT_BONE_NAME: String = "root"
+@export var DEFAULT_TRANSFORM_ANIMATION: String = "Idle" ## Somtimes root is not identity or zero. This animation at time specifies default transform 
+var last_time: float = 0.0 ## When current playback time goes backward its known a new animation has started so can reset root motion
+var default_root_position: Vector3 = Vector3.ZERO 
+var default_root_rotation: Quaternion = Quaternion() 
+var last_root_pos: Vector3 = default_root_position 
 
 func convert_blender_quat_to_godot(q: Quaternion) -> Quaternion: # Blender to godot
-	return q * SKELETON_ROOT_DEFAULT_ROTATION.inverse()
+	return q *  default_root_rotation.inverse()
 
 func transfer_skeleton_orientation_to_mesh():
-	SCENE_ROOT.global_transform.basis = SKELETON.global_transform.basis
-	MESH.quaternion = Quaternion()
-	SKELETON.quaternion = Quaternion()  # reset to identity
+	BODY.global_transform.basis = SKELETON.global_transform.basis
+	MESH.quaternion = Quaternion() # reset to identity
+	SKELETON.quaternion = Quaternion()  
 
-func ready() -> void:
-	last_root_pos = SKELETON_ROOT_DEFAULT_POSITION
+func find_root_tracks(anim: Animation) -> Dictionary:
+	var pos_idx: int = -1
+	var rot_idx: int = -1
+	for i: int in anim.get_track_count():
+		var path: NodePath = anim.track_get_path(i)
+		if !str(path).ends_with(ROOT_BONE_NAME): continue
+		var type: int = anim.track_get_type(i)
+		if type == Animation.TYPE_POSITION_3D: pos_idx = i
+		elif type == Animation.TYPE_ROTATION_3D: rot_idx = i
+	return {"position": pos_idx, "rotation": rot_idx}
 
-func _physics_process(_delta: float) -> void: 
-	if !SKELETAL_ANIMATION_PLAYER: return
-	if !SKELETON: return
-	if !SCENE_ROOT: return
-	if not SKELETAL_ANIMATION_PLAYER.is_playing(): return
+func _ready() -> void:
+	var anim = SKELETAL_ANIMATION_PLAYER.get_animation(DEFAULT_TRANSFORM_ANIMATION)
+	if not anim: return
+	var tracks: Dictionary = find_root_tracks(anim)
 	
-	if SKELETAL_ANIMATION_PLAYER.current_animation == "": return
+	if tracks["position"] != -1:
+		default_root_position = anim.position_track_interpolate(tracks["position"], 0.0)
+		last_root_pos = default_root_position
+
+	if tracks["rotation"] != -1:
+		default_root_rotation = anim.rotation_track_interpolate(tracks["rotation"], 0.0)
+	
+func _physics_process(_delta: float) -> void: 
+	if !SKELETAL_ANIMATION_PLAYER or !SKELETON or !BODY: return
+	if not SKELETAL_ANIMATION_PLAYER.is_playing(): return
 
 	var anim = SKELETAL_ANIMATION_PLAYER.get_animation(SKELETAL_ANIMATION_PLAYER.current_animation)
 	var time = SKELETAL_ANIMATION_PLAYER.current_animation_position
-
-	if time < last_time:
-		last_root_pos = SKELETON_ROOT_DEFAULT_POSITION
+	var tracks: Dictionary = find_root_tracks(anim)
+	
+	if time < last_time:last_root_pos = default_root_position
 	last_time = time
 
-	# POSITION 
-	var pos_path = anim.track_get_path(SKELETON_ROOT_POSITION_TRACK_INDEX)
-	if str(pos_path).ends_with("root"):
-		
-		var root_pos = anim.position_track_interpolate(SKELETON_ROOT_POSITION_TRACK_INDEX, min(time, anim.length))
+	if tracks["position"] != -1:
+		var root_pos = anim.position_track_interpolate(tracks["position"], min(time, anim.length))
 		var delta_root_pos = root_pos - last_root_pos
 		last_root_pos = root_pos	
 		
 		var initial_skeleton_position = SKELETON.position
 		SKELETON.position += delta_root_pos 
-		SCENE_ROOT.global_transform.origin += (SKELETON.global_transform.origin - initial_skeleton_position) - SCENE_ROOT.global_transform.origin 
+		BODY.global_transform.origin += (SKELETON.global_transform.origin - initial_skeleton_position) - BODY.global_transform.origin 
 		SKELETON.position = initial_skeleton_position
 		
-	# ROTATION
-	var rot_path = anim.track_get_path(SKELETON_ROOT_ROTATION_TRACK_INDEX)
-	if str(rot_path).ends_with("root") and anim.track_get_type(SKELETON_ROOT_ROTATION_TRACK_INDEX) == Animation.TYPE_ROTATION_3D:
-		var rot_quat = anim.rotation_track_interpolate(SKELETON_ROOT_ROTATION_TRACK_INDEX, min(time, anim.length)) # Avoid out of bounds access
+	if tracks["rotation"] != -1:
+		var rot_quat = anim.rotation_track_interpolate(tracks["rotation"], min(time, anim.length)) # Avoid out of bounds access
 		SKELETON.quaternion = convert_blender_quat_to_godot(rot_quat) # example extra rotation
 		#print(convert_blender_quat_to_godot(rot_quat) )
