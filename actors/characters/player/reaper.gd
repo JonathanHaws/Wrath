@@ -96,13 +96,14 @@ func try_jump() -> void:
 				PARTICLES.spawn()
 	
 @export_subgroup("Falling")
-@export var GRAVITY_MULTIPLIER: float = 4
+@export var GRAVITY_STRENGTH: float = 4.0
+@export var GRAVITY_MULTIPLIER: float = 1.0
 @export var MAX_FALL_SPEED: float = 50.0 
 @export var DESCEND_MULTIPLIER: float = 2.0
 @export var LAND_EFFECTS_COOLDOWN: float = 0.24
 @export var STEP_UP_RAY: RayCast3D
 func get_fall_velocity(delta: float) -> Vector3:
-	var fall_vel = velocity + get_gravity() * GRAVITY_MULTIPLIER * delta
+	var fall_vel = velocity + get_gravity() * (GRAVITY_MULTIPLIER * GRAVITY_STRENGTH) * delta
 	if Input.is_action_pressed("descend"):
 		fall_vel += get_gravity() * GRAVITY_MULTIPLIER * delta * (DESCEND_MULTIPLIER - 1.0)
 	if fall_vel.y < -MAX_FALL_SPEED:
@@ -176,7 +177,6 @@ func try_plunge() -> void:
 @export_subgroup("Dash")
 @export var DASH_COOLDOWN: float = 0.0
 var dash_cooldown_left: float = 0.0
-
 func try_dash(delta: float) -> void:
 	if ANIM and ANIM.current_animation == "DASH": return
 	if dash_cooldown_left > 0: dash_cooldown_left -= delta
