@@ -469,6 +469,7 @@ body = NodePath("..")
 mesh = NodePath("../piglet")
 duration_seconds = 0.5
 weight = 0.0
+rotation_weight = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpInteraction" unique_id=447597325]
 transform = Transform3D(0.999997, 4.65661e-09, -1.80153e-08, 1.11759e-08, 0.999997, -2.98023e-08, 1.40863e-08, -1.3411e-07, 0.999995, -0.137741, 1.13558, 0.0584046)
@@ -488,6 +489,7 @@ body = NodePath("..")
 mesh = NodePath("../piglet")
 duration_seconds = 0.5
 weight = 0.0
+rotation_weight = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeadPetInteraction" unique_id=2103315949]
 transform = Transform3D(0.999997, 4.65661e-09, -1.80153e-08, 1.11759e-08, 0.999997, -2.98023e-08, 1.40863e-08, -1.3411e-07, 0.999995, -0.137741, 1.13558, 0.0584046)
@@ -507,6 +509,7 @@ body = NodePath("..")
 mesh = NodePath("../piglet")
 duration_seconds = 0.5
 weight = 0.0
+rotation_weight = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PatInteraction" unique_id=1619893817]
 transform = Transform3D(0.999997, 4.65661e-09, -1.80153e-08, 1.11759e-08, 0.999997, -2.98023e-08, 1.40863e-08, -1.3411e-07, 0.999995, -0.137741, 1.13558, 0.0584046)

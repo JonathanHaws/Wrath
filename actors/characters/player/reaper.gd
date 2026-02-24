@@ -176,7 +176,11 @@ func try_plunge() -> void:
 
 @export_subgroup("Dash")
 @export var DASH_COOLDOWN: float = 0.0
+@export var DASH_EXIT_SPEED: float = 3.0
 var dash_cooldown_left: float = 0.0
+func apply_dash_exit_velocity() -> void:
+	var forward: Vector3 = -MESH.global_transform.basis.z.normalized()
+	velocity += forward * DASH_EXIT_SPEED
 func try_dash(delta: float) -> void:
 	if ANIM and ANIM.current_animation == "DASH": return
 	if dash_cooldown_left > 0: dash_cooldown_left -= delta
