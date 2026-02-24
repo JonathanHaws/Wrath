@@ -1,5 +1,10 @@
 extends CharacterBody3D
 @export_group("Movement") 
+@export_subgroup("Turning")
+@export var MOUSE_SENSITIVITY: float = 0.003
+@export var TURN_SPEED: float = 20.0
+@export var TURN_MULTIPLIER: float = 1.0
+
 @export_subgroup("Acceleration")
 @export var GROUND_SPEED: float = 1.2
 @export var AIR_SPEED: float = 1.2
@@ -141,12 +146,10 @@ func try_step_up() -> void:
 	velocity.y = 0
 	global_position.y = hit_y
 
-@export_subgroup("Turning")
-@export var MOUSE_SENSITIVITY: float = 0.003
-@export var TURN_SPEED: float = 20.0
-@export var TURN_MULTIPLIER: float = 1.0
-
 @export_group("Combat") #
+@export var STAMINA: float = 10
+@export var MAX_STAMINA: float = 10
+@export var STAMINA_RECOVERY: float = 30.0
 @export var ATTACKING_DISABLED: bool = true
 @export var PLUNGE_TIME: float = 0.03
 func try_block() -> void:
@@ -170,11 +173,16 @@ func try_plunge() -> void:
 		if not ANIM.current_animation in "PLUNGE_FALL": return
 		ANIM.play("PLUNGE", 0)
 
-@export_subgroup("Stamina")
-@export var STAMINA: float = 10
-@export var MAX_STAMINA: float = 10
-@export var STAMINA_RECOVERY: float = 30.0
+@export_subgroup("Dash")
+@export var DASH_COOLDOWN: float = 0.0
+var dash_cooldown_left: float = 0.0
 
+func try_dash(delta: float) -> void:
+	if ANIM and ANIM.current_animation == "DASH": return
+	if dash_cooldown_left > 0: dash_cooldown_left -= delta
+	if Input.is_action_just_pressed("dash") and dash_cooldown_left <= 0:
+		if ANIM and in_interruptible_animation(): ANIM.play("DASH", 0.0)
+	
 @export_subgroup("Shooting")
 @export var SHOOTING_DISABLED: bool = false
 @export var MAX_SHOOTING_ENERGY: int = 1
@@ -235,7 +243,7 @@ func try_heal() -> void:
 	heal_charges -= 1
 	if ANIM: ANIM.play("HEAL", 0.0)
 
-@export_subgroup("References")
+@export_group("References")
 @export var CAMERA: Camera3D
 @export var MESH: Node3D
 @export var COLLISON_SHAPE: CollisionShape3D
@@ -274,6 +282,7 @@ func in_interruptible_animation() -> bool:
 		"HEAL",
 		"BLOCK_ENTER",
 		"BLOCK_EXIT",
+		"DASH",
 		"BLOCK",
 		"SHOOT",
 		"WINDUP",
@@ -367,6 +376,7 @@ func _physics_process(delta: float) -> void:
 	try_step_up()
 	clamp_horizontal_movement()
 	apply_horizontal_friction()
+	try_dash(delta)
 	move_and_slide() 
 	if in_interruptible_animation(): 
 		if air_time < 0.1: 

@@ -27,11 +27,11 @@ func ready() -> void:
 	last_root_pos = SKELETON_ROOT_DEFAULT_POSITION
 
 func _physics_process(_delta: float) -> void: 
-	
 	if !SKELETAL_ANIMATION_PLAYER: return
 	if !SKELETON: return
 	if !SCENE_ROOT: return
 	if not SKELETAL_ANIMATION_PLAYER.is_playing(): return
+	
 	if SKELETAL_ANIMATION_PLAYER.current_animation == "": return
 
 	var anim = SKELETAL_ANIMATION_PLAYER.get_animation(SKELETAL_ANIMATION_PLAYER.current_animation)
