@@ -65,6 +65,7 @@ func _physics_process(_delta: float) -> void:
 		SKELETON.position += delta_root_pos 
 		BODY.global_transform.origin += (SKELETON.global_transform.origin - initial_skeleton_position) - BODY.global_transform.origin 
 		SKELETON.position = initial_skeleton_position
+		## Add move an collide instead of just instantly setting to stop collision bugs
 		
 	if tracks["rotation"] != -1:
 		var rot_quat = anim.rotation_track_interpolate(tracks["rotation"], min(time, anim.length)) # Avoid out of bounds access
