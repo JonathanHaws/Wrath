@@ -12,7 +12,7 @@ extends Node3D
 var last_time: float = 0.0 ## When current playback time goes backward its known a new animation has started so can reset root motion
 var default_root_position: Vector3 = Vector3.ZERO 
 var default_root_rotation: Quaternion = Quaternion() 
-var last_root_pos: Vector3 = default_root_position 
+var last_track_position: Vector3 = default_root_position 
 
 func convert_blender_quat_to_godot(q: Quaternion) -> Quaternion: # Blender to godot
 	return q *  default_root_rotation.inverse()
@@ -40,7 +40,7 @@ func _ready() -> void:
 	
 	if tracks["position"] != -1:
 		default_root_position = anim.position_track_interpolate(tracks["position"], 0.0)
-		last_root_pos = default_root_position
+		last_track_position = default_root_position
 
 	if tracks["rotation"] != -1:
 		default_root_rotation = anim.rotation_track_interpolate(tracks["rotation"], 0.0)
@@ -53,16 +53,16 @@ func _physics_process(_delta: float) -> void:
 	var time = SKELETAL_ANIMATION_PLAYER.current_animation_position
 	var tracks: Dictionary = find_root_tracks(anim)
 	
-	if time < last_time:last_root_pos = default_root_position
+	if time < last_time: last_track_position = default_root_position
 	last_time = time
 
 	if tracks["position"] != -1:
-		var root_pos = anim.position_track_interpolate(tracks["position"], min(time, anim.length))
-		var delta_root_pos = root_pos - last_root_pos
-		last_root_pos = root_pos	
+		var track_position = anim.position_track_interpolate(tracks["position"], min(time, anim.length))
+		var track_position_delta = track_position - last_track_position
+		last_track_position = track_position	
 		
 		var initial_skeleton_position = SKELETON.position
-		SKELETON.position += delta_root_pos 
+		SKELETON.position += track_position_delta
 		BODY.global_transform.origin += (SKELETON.global_transform.origin - initial_skeleton_position) - BODY.global_transform.origin 
 		SKELETON.position = initial_skeleton_position
 		## Add move an collide instead of just instantly setting to stop collision bugs
