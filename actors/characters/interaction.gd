@@ -21,9 +21,12 @@ extends Node
 
 @export_subgroup("Interpolation")## Remember animation tracks properties are update top to bottom in track list
 @export_range(0.0, 10.0, 0.01, "or_greater") var duration_seconds: float = 0.0 ## Determines how long the tween takes to align transforms 
-@export_range(0.0, 1.0, 0.01) var weight: float = 0.5 ## Determines who stays still versus who moves. Usually only want target to move (0). Middle is (0.5)
 @export var interpolate_position: bool = true
 @export var interpolate_rotation: bool = true
+@export var interpolate_scale: bool = false
+@export_range(0.0, 1.0, 0.01) var position_weight: float = 0.0
+@export_range(0.0, 1.0, 0.01) var rotation_weight: float = 0.0
+@export_range(0.0, 1.0, 0.01) var scale_weight: float = 0.0
 
 func _on_body_entered(other_body: Node3D) -> void:
 	if disabled: return
@@ -38,29 +41,36 @@ func _match_transforms() -> void:
 	var target_mesh = get_tree().get_first_node_in_group(target_mesh_group)
 	var target_body = get_tree().get_first_node_in_group(target_body_group)
 	if not target_mesh or not target_body: return
-
-	var middle = mesh.global_transform.interpolate_with(target_mesh.global_transform, weight)
 	
-	if duration_seconds > 0.0:
-		var tween = create_tween()
-		tween.set_parallel(true)
-		tween.set_process_mode(Tween.TweenProcessMode.TWEEN_PROCESS_PHYSICS)
-		tween.set_trans(Tween.TRANS_SINE)
-		tween.set_ease(Tween.EASE_IN_OUT)
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.set_process_mode(Tween.TweenProcessMode.TWEEN_PROCESS_PHYSICS)
+	tween.set_trans(Tween.TRANS_SINE)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	
+	if interpolate_position:
+		var target_position = mesh.global_position.lerp(target_mesh.global_position, position_weight)
+		tween.tween_property(body, "global_position", target_position, duration_seconds)
+		tween.tween_property(target_body, "global_position", target_position, duration_seconds)
+		tween.tween_property(mesh, "global_position", target_position, duration_seconds)
+		tween.tween_property(target_mesh, "global_position", target_position, duration_seconds)
 
-		tween.tween_property(body, "global_transform", middle, duration_seconds)
-		tween.tween_property(target_body, "global_transform", middle, duration_seconds)
-		tween.tween_property(mesh, "global_transform", middle, duration_seconds)
-		tween.tween_property(target_mesh, "global_transform", middle, duration_seconds)
+	if interpolate_rotation:
+		var target_rotation = mesh.global_rotation.lerp(target_mesh.global_rotation, rotation_weight)
+		tween.tween_property(body, "global_rotation", target_rotation, duration_seconds)
+		tween.tween_property(target_body, "global_rotation", target_rotation, duration_seconds)
+		tween.tween_property(mesh, "global_rotation", target_rotation, duration_seconds)
+		tween.tween_property(target_mesh, "global_rotation", target_rotation, duration_seconds)
 		
-	else: 
-		if body: body.global_transform = middle
-		target_body.global_transform = middle
-		mesh.global_transform = middle
-		target_mesh.global_transform = middle
-		
-		#print("Child Local Transform:", child_transform.transform)
-		#print("Target Child Local Transform:", target_child_transform.transform)
+	if interpolate_scale:
+		var target_scale = mesh.scale.lerp(target_mesh.scale, scale_weight)
+		tween.tween_property(body, "global_scale", target_scale, duration_seconds)
+		tween.tween_property(target_body, "global_scale", target_scale, duration_seconds)
+		tween.tween_property(mesh, "global_scale", target_scale, duration_seconds)
+		tween.tween_property(target_mesh, "global_scale", target_scale, duration_seconds)
+
+	#print("Child Local Transform:", child_transform.transform)
+	#print("Target Child Local Transform:", target_child_transform.transform)
 				
 func _trigger_corresponding_animation() -> void:
 	if disabled: return

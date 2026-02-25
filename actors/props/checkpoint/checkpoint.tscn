@@ -257,7 +257,7 @@ target_anim = &"REST"
 body = NodePath(".")
 mesh = NodePath("../../PlayerSpot")
 duration_seconds = 1.0
-weight = 0.0
+interpolate_rotation = false
 
 [node name="Aquired" type="AnimationPlayer" parent="." unique_id=1547696060]
 root_node = NodePath("../Rest")
