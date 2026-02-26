@@ -15,6 +15,7 @@ var default_root_rotation: Quaternion = Quaternion()
 var last_track_position: Vector3 = default_root_position 
 
 func manual_move_and_slide(body: CharacterBody3D, motion: Vector3, max_bounces: int = 4) -> void:
+	## Basically move and slide but independent and not affecting velocity in any way
 	var remaining = motion
 	for i in max_bounces:
 		if remaining.length() == 0: break
@@ -69,16 +70,12 @@ func _physics_process(_delta: float) -> void:
 		var track_position_delta = track_position - last_track_position
 		last_track_position = track_position	
 		
-		var initial_skeleton_position = SKELETON.position
-		SKELETON.position += track_position_delta
-		var delta_position = (SKELETON.global_transform.origin - initial_skeleton_position) - BODY.global_position	# delta
-		
 
+		var global_skeleton_position = SKELETON.get_parent().to_global(SKELETON.position + track_position_delta)
+		var delta_position = (global_skeleton_position - SKELETON.position) - BODY.global_position	# delta
+		
 		manual_move_and_slide(BODY, delta_position)
 
-
-		SKELETON.position = initial_skeleton_position
-		## Add move an collide instead of just instantly setting to stop collision bugs
 		
 	if tracks["rotation"] != -1:
 		var rot_quat = anim.rotation_track_interpolate(tracks["rotation"], min(time, anim.length)) # Avoid out of bounds access
