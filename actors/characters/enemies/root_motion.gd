@@ -69,15 +69,16 @@ func _physics_process(_delta: float) -> void:
 		var track_position = anim.position_track_interpolate(tracks["position"], min(time, anim.length))
 		var track_position_delta = track_position - last_track_position
 		last_track_position = track_position	
+		if track_position_delta != Vector3.ZERO:
 		
+			# SKeletons are weird so MUST call get_parent ()
+			var global_skeleton_position = SKELETON.get_parent().to_global(SKELETON.position + track_position_delta)
+			var delta_position = (global_skeleton_position - SKELETON.position) - BODY.global_position	
+			
+			manual_move_and_slide(BODY, delta_position)
 
-		var global_skeleton_position = SKELETON.get_parent().to_global(SKELETON.position + track_position_delta)
-		var delta_position = (global_skeleton_position - SKELETON.position) - BODY.global_position	# delta
-		
-		manual_move_and_slide(BODY, delta_position)
-
-		
 	if tracks["rotation"] != -1:
-		var rot_quat = anim.rotation_track_interpolate(tracks["rotation"], min(time, anim.length)) # Avoid out of bounds access
-		SKELETON.quaternion = convert_blender_quat_to_godot(rot_quat) # example extra rotation
-		#print(convert_blender_quat_to_godot(rot_quat) )
+		var track_quat = anim.rotation_track_interpolate(tracks["rotation"], min(time, anim.length)) # Avoid out of bounds access
+		if track_quat != SKELETON.quaternion:
+			SKELETON.quaternion = convert_blender_quat_to_godot(track_quat) # example extra rotation
+			#print(convert_blender_quat_to_godot(rot_quat) )
