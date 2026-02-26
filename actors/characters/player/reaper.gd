@@ -14,6 +14,7 @@ extends CharacterBody3D
 @export var GROUND_FRICTION_PER_SECOND: float = 0.9 # fraction of remainingvelocity
 @export var AIR_FRICTION_PER_SECOND: float = 0.9 # fraction of velocity lost
 @export var RUN_DISABLED: bool = false	
+@export var CONTROLLER_RUN_MULTIPLIER: float = 1
 func apply_horizontal_friction() -> void: 
 	# Use in physics process for time independence
 	var friction: float = GROUND_FRICTION_PER_SECOND
@@ -33,21 +34,27 @@ func get_keyboard_run_vector() -> Vector2:
 	return Input.get_vector("keyboard_left", "keyboard_right", "keyboard_forward", "keyboard_back")
 func get_controller_run_vector() -> Vector2:
 	if RUN_DISABLED: return Vector2.ZERO
-	return Input.get_vector("controller_left", "controller_right", "controller_forward", "controller_back")
+	var input_vector = Input.get_vector("controller_left", "controller_right", "controller_forward", "controller_back")
+	return input_vector * CONTROLLER_RUN_MULTIPLIER
 func get_run_vector() -> Vector2:
 	if RUN_DISABLED: return Vector2.ZERO
 	var run_vector = get_controller_run_vector() + get_keyboard_run_vector()
 	if run_vector.length() > 1: run_vector = run_vector.normalized()
 	return run_vector
+func is_walking() -> bool:
+	var input_vector_length = get_controller_run_vector().length()	
+	var is_controller_walking = input_vector_length > 0.0 and input_vector_length < 0.75
+	return is_controller_walking or Input.is_action_pressed("walk")
+
 func get_run_acceleration() -> Vector3:
 	var input_vector: Vector2 = get_run_vector()
 	var run_speed: float
+	
 	if is_on_floor(): run_speed = GROUND_SPEED
 	else: run_speed = AIR_SPEED
 	
-	var speed_factor: float = 1.0
-	if Input.is_action_pressed("sprint") or get_controller_run_vector().length() > 0.75:
-		speed_factor *= SPRINT_MULTIPLIER
+	var speed_factor: float = SPRINT_MULTIPLIER
+	if is_walking(): speed_factor = 1.0
 		
 	var acceleration: float = run_speed * speed_factor * SPEED_MULTIPLIER
 	var run_vector = (Vector3(input_vector.x, 0, input_vector.y)).rotated(Vector3.UP, CAMERA.global_rotation.y)
@@ -238,7 +245,7 @@ func try_heal() -> void:
 	if HEALING_DISABLED: return
 	if heal_charges <= 0: return
 	if not HITSHAPE: return
-	if not Input.is_action_just_pressed("interact"): return
+	if not Input.is_action_just_pressed("heal"): return
 	if not is_on_floor(): return
 	if not in_interruptible_animation(): return
 	if not "HEALTH" in HITSHAPE: return
@@ -385,10 +392,10 @@ func _physics_process(delta: float) -> void:
 	if in_interruptible_animation(): 
 		if air_time < 0.1: 
 			if get_run_vector().length() > 0:
-				if Input.is_action_pressed("sprint") or get_controller_run_vector().length() > 0.75:
-					ANIM.play("RUN", 0.0, 1, false)
-				else:
+				if is_walking():
 					ANIM.play("WALK", 0.0, 1, false)
+				else:
+					ANIM.play("RUN", 0.0, 1, false)
 			else:
 				ANIM.play("IDLE", 0, 1, false)
 		else:

@@ -50,9 +50,9 @@ func _physics_process(_delta):
 		if input_vector.length() > 0:
 			if MESH: 
 				var mesh_direction = -MESH.global_transform.basis.z
-				var speed_factor = 1.0
-				if Input.is_action_pressed("sprint") or controller_vector.length() > 0.75:
-					speed_factor = SPRINT_MULTIPLIER
+				var speed_factor = SPRINT_MULTIPLIER
+				if Input.is_action_pressed("walk") or controller_vector.length() < 0.75:
+					speed_factor = 1.0
 
 				PLAYER.position.x += mesh_direction.x * FLY_SPEED * speed_factor
 				PLAYER.position.z += mesh_direction.z * FLY_SPEED * speed_factor
