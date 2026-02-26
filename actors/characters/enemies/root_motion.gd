@@ -14,6 +14,14 @@ var default_root_position: Vector3 = Vector3.ZERO
 var default_root_rotation: Quaternion = Quaternion() 
 var last_track_position: Vector3 = default_root_position 
 
+func manual_move_and_slide(body: CharacterBody3D, motion: Vector3, max_bounces: int = 4) -> void:
+	var remaining = motion
+	for i in max_bounces:
+		if remaining.length() == 0: break
+		var collision = body.move_and_collide(remaining)
+		if not collision: break
+		remaining = remaining.slide(collision.get_normal())
+
 func convert_blender_quat_to_godot(q: Quaternion) -> Quaternion: # Blender to godot
 	return q *  default_root_rotation.inverse()
 
@@ -63,7 +71,12 @@ func _physics_process(_delta: float) -> void:
 		
 		var initial_skeleton_position = SKELETON.position
 		SKELETON.position += track_position_delta
-		BODY.global_transform.origin += (SKELETON.global_transform.origin - initial_skeleton_position) - BODY.global_transform.origin 
+		var delta_position = (SKELETON.global_transform.origin - initial_skeleton_position) - BODY.global_position	# delta
+		
+
+		manual_move_and_slide(BODY, delta_position)
+
+
 		SKELETON.position = initial_skeleton_position
 		## Add move an collide instead of just instantly setting to stop collision bugs
 		
