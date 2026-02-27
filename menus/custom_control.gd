@@ -9,6 +9,7 @@ var waiting_for_new := false
 var last_pressed_event: InputEvent = null
 
 func _update_label() -> void:
+	#Config.save_setting("controls", action_name, Controls.get_action_bindings(action_name))
 	label.text = display_name + " - " + Controls.get_action_bindings(action_name) + " "
 	
 func _reset_buttons() -> void:
@@ -17,6 +18,11 @@ func _reset_buttons() -> void:
 	remove.text = "-"
 
 func _ready() -> void:
+	
+	#var events = Config.load_setting("controls", action_name, InputMap.action_get_events(action_name))
+	
+	#print(action_name, " ", events)
+	
 	_update_label()
 	add.pressed.connect(_on_add_pressed)
 	remove.pressed.connect(_on_remove_pressed)
