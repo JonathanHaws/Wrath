@@ -16,6 +16,22 @@ func set_ui_scale(value: float) -> void:
 	
 	#reduce_ui_scale_until_contained()
 
+func load_graphics_settings(config: ConfigFile) -> void:
+	BASE_RES = Vector2(
+		ProjectSettings.get_setting("display/window/size/viewport_width"),
+		ProjectSettings.get_setting("display/window/size/viewport_height")
+		)
+	var width = config.get_value("display", "resolution_width", get_window().size.x)
+	var height = config.get_value("display", "resolution_height", get_window().size.y)
+	change_resolution(Vector2i(min(width, 1920), min(height, 1080))) ## above 1920 seems to break audio so set as default
+
+func load_audio_settings(config: ConfigFile) -> void:
+	for bus_name in BUSES:
+		var value = config.get_value("audio", bus_name, DEFAULT)
+		var bus_idx = AudioServer.get_bus_index(bus_name)
+		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value / 100.0))
+
+
 func change_resolution(res_size: Vector2) -> void:
 	
 	get_window().content_scale_size = res_size
@@ -40,21 +56,8 @@ func save_setting(section: String, key: String, value: Variant) -> void:
 func _ready() -> void:
 	var config = ConfigFile.new()
 	config.load("user://settings.cfg")
-
-	for bus_name in BUSES:
-		var value = config.get_value("audio", bus_name, DEFAULT)
-		var bus_idx = AudioServer.get_bus_index(bus_name)
-		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value / 100.0))
-	
-	BASE_RES = Vector2(
-		ProjectSettings.get_setting("display/window/size/viewport_width"),
-		ProjectSettings.get_setting("display/window/size/viewport_height")
-	)
-		
-	var width = config.get_value("display", "resolution_width", get_window().size.x)
-	var height = config.get_value("display", "resolution_height", get_window().size.y)
-	
-	change_resolution(Vector2i(min(width, 1920), min(height, 1080))) ## above 1920 seems to break audio so set as default
+	load_graphics_settings(config)
+	load_audio_settings(config)
 
 #func reduce_ui_scale_until_contained() -> void:
 	#var win_size = get_window().content_scale_size

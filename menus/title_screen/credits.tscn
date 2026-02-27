@@ -35,11 +35,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_airpt")
 
-[node name="VboxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1850816245 node_paths=PackedStringArray("focus_node")]
+[node name="VboxContainer" type="VBoxContainer" parent="CenterContainer" unique_id=1850816245]
 layout_mode = 2
 alignment = 1
 script = ExtResource("1_hyvu0")
-focus_node = NodePath("Back")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="CenterContainer/VboxContainer" unique_id=1702316145]
 layout_mode = 2
@@ -70,10 +69,6 @@ text = "BACK
 icon_alignment = 1
 script = ExtResource("2_77ypm")
 scene_file = "uid://cls12q06quifx"
-
-[node name="GrabFocus" type="Node" parent="CenterContainer/VboxContainer" unique_id=386491779 node_paths=PackedStringArray("focus_node")]
-script = ExtResource("1_hyvu0")
-focus_node = NodePath("../Back")
 
 [node name="MenuAudio" type="Node" parent="." unique_id=1655364472 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 script = ExtResource("8_003hq")

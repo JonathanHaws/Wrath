@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxja4xs36njyv"]
+[gd_scene format=3 uid="uid://cxja4xs36njyv"]
 
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_fophc"]
 [ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://menus/pause/toggle.gd" id="2_js3u0"]
@@ -7,11 +7,10 @@
 [ext_resource type="Script" uid="uid://cehsklglvnhkr" path="res://menus/options/resolution.gd" id="4_5xg6i"]
 [ext_resource type="Script" uid="uid://yd63tscy6h1n" path="res://menus/options/window_mode_dropdown.gd" id="5_4uyla"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="6_bu2dy"]
-[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="7_7b5bx"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="9_krw46"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="9_p4i2r"]
 
-[node name="ColorRect" type="ColorRect"]
+[node name="ColorRect" type="ColorRect" unique_id=626060116]
 process_mode = 3
 z_index = 3000
 z_as_relative = false
@@ -27,7 +26,7 @@ color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
 script = ExtResource("2_js3u0")
 metadata/_edit_use_anchors_ = true
 
-[node name="Options" type="VBoxContainer" parent="." groups=["ui_scalable"]]
+[node name="Options" type="VBoxContainer" parent="." unique_id=331924757 groups=["ui_scalable"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -43,19 +42,19 @@ grow_vertical = 2
 pivot_offset = Vector2(139.5, 182)
 script = ExtResource("2_p4i2r")
 
-[node name="Master" type="HBoxContainer" parent="Options"]
+[node name="Master" type="HBoxContainer" parent="Options" unique_id=2129095031]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_fophc")
 alignment = 1
 
-[node name="Label" type="Label" parent="Options/Master"]
+[node name="Label" type="Label" parent="Options/Master" unique_id=1519859037]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_fophc")
 text = "MASTER:"
 
-[node name="HSlider" type="HSlider" parent="Options/Master"]
+[node name="HSlider" type="HSlider" parent="Options/Master" unique_id=396730028]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -66,18 +65,18 @@ value = 100.0
 script = ExtResource("3_js3u0")
 bus_name = "Master"
 
-[node name="SFX" type="HBoxContainer" parent="Options"]
+[node name="SFX" type="HBoxContainer" parent="Options" unique_id=856195702]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_fophc")
 alignment = 1
 
-[node name="Label" type="Label" parent="Options/SFX"]
+[node name="Label" type="Label" parent="Options/SFX" unique_id=1577338629]
 layout_mode = 2
 theme = ExtResource("1_fophc")
 text = "SFX:"
 
-[node name="HSlider" type="HSlider" parent="Options/SFX"]
+[node name="HSlider" type="HSlider" parent="Options/SFX" unique_id=1453142023]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_horizontal = 8
@@ -88,17 +87,17 @@ value = 100.0
 script = ExtResource("3_js3u0")
 bus_name = "SFX"
 
-[node name="Music" type="HBoxContainer" parent="Options"]
+[node name="Music" type="HBoxContainer" parent="Options" unique_id=574393238]
 layout_mode = 2
 theme = ExtResource("1_fophc")
 alignment = 1
 
-[node name="Label" type="Label" parent="Options/Music"]
+[node name="Label" type="Label" parent="Options/Music" unique_id=1004771511]
 layout_mode = 2
 theme = ExtResource("1_fophc")
 text = "MUSIC:"
 
-[node name="HSlider" type="HSlider" parent="Options/Music"]
+[node name="HSlider" type="HSlider" parent="Options/Music" unique_id=945468493]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 size_flags_vertical = 4
@@ -108,7 +107,7 @@ value = 100.0
 script = ExtResource("3_js3u0")
 bus_name = "Music"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Options" node_paths=PackedStringArray("increase_button", "decrease_button", "resolution_label")]
+[node name="HBoxContainer" type="HBoxContainer" parent="Options" unique_id=920369633 node_paths=PackedStringArray("increase_button", "decrease_button", "resolution_label")]
 layout_mode = 2
 alignment = 1
 script = ExtResource("4_5xg6i")
@@ -116,19 +115,19 @@ increase_button = NodePath("Increase")
 decrease_button = NodePath("Decrease")
 resolution_label = NodePath("Label")
 
-[node name="Label" type="Label" parent="Options/HBoxContainer"]
+[node name="Label" type="Label" parent="Options/HBoxContainer" unique_id=1034542978]
 layout_mode = 2
 text = "1920x1080"
 
-[node name="Increase" type="Button" parent="Options/HBoxContainer"]
+[node name="Increase" type="Button" parent="Options/HBoxContainer" unique_id=1159588591]
 layout_mode = 2
 text = "+"
 
-[node name="Decrease" type="Button" parent="Options/HBoxContainer"]
+[node name="Decrease" type="Button" parent="Options/HBoxContainer" unique_id=1503066004]
 layout_mode = 2
 text = "-"
 
-[node name="WindowMode" type="OptionButton" parent="Options"]
+[node name="WindowMode" type="OptionButton" parent="Options" unique_id=2042925641]
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_fophc")
@@ -143,7 +142,7 @@ popup/item_2/text = "BORDERLESS"
 popup/item_2/id = 2
 script = ExtResource("5_4uyla")
 
-[node name="Graphics" type="Button" parent="Options" node_paths=PackedStringArray("node_to_replace")]
+[node name="Graphics" type="Button" parent="Options" unique_id=1023779468 node_paths=PackedStringArray("node_to_replace")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -155,7 +154,7 @@ script = ExtResource("6_bu2dy")
 scene_file = "uid://byffyuaxv71sc"
 node_to_replace = NodePath("../..")
 
-[node name="Back" type="Button" parent="Options" node_paths=PackedStringArray("node_to_replace")]
+[node name="Back" type="Button" parent="Options" unique_id=1403928192 node_paths=PackedStringArray("node_to_replace")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -166,12 +165,9 @@ icon_alignment = 1
 script = ExtResource("6_bu2dy")
 scene_file = "uid://duevw8ikxn5kj"
 node_to_replace = NodePath("../..")
+is_back_button = true
 
-[node name="GrabFocus" type="Node" parent="." node_paths=PackedStringArray("focus_node")]
-script = ExtResource("7_7b5bx")
-focus_node = NodePath("../Options/Master/HSlider")
-
-[node name="MenuAudio" type="Node" parent="." node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+[node name="MenuAudio" type="Node" parent="." unique_id=553187582 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 process_mode = 3
 script = ExtResource("9_p4i2r")
 SOUNDS = Array[AudioStream]([ExtResource("9_krw46")])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c1e26hcf0nrup"]
+[gd_scene format=3 uid="uid://c1e26hcf0nrup"]
 
 [ext_resource type="Script" uid="uid://cit8ydyw2wira" path="res://menus/save/delete/delete.gd" id="1_3evui"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_hul5c"]
@@ -7,9 +7,8 @@
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="4_fevu8"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="6_npq60"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="7_luhou"]
-[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_axw2x"]
 
-[node name="DeleteGame" type="ColorRect"]
+[node name="DeleteGame" type="ColorRect" unique_id=1249324866]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -20,7 +19,7 @@ size_flags_vertical = 3
 color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
 metadata/_edit_use_anchors_ = true
 
-[node name="CenterContainer" type="CenterContainer" parent="." groups=["ui_scalable"]]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=864061414 groups=["ui_scalable"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -39,23 +38,19 @@ size_flags_vertical = 3
 script = ExtResource("1_hul5c")
 metadata/_edit_use_anchors_ = true
 
-[node name="Delete" type="VBoxContainer" parent="CenterContainer"]
+[node name="Delete" type="VBoxContainer" parent="CenterContainer" unique_id=69840178]
 layout_mode = 2
 script = ExtResource("1_3evui")
 profile_scene = ExtResource("3_luhou")
 
-[node name="Back" type="Button" parent="CenterContainer/Delete"]
+[node name="Back" type="Button" parent="CenterContainer/Delete" unique_id=1743395861]
 layout_mode = 2
 theme = ExtResource("3_u3frr")
 text = "Back"
 script = ExtResource("4_fevu8")
 scene_file = "uid://cls12q06quifx"
 
-[node name="GrabFocus" type="Node" parent="CenterContainer/Delete" node_paths=PackedStringArray("focus_node")]
-script = ExtResource("8_axw2x")
-focus_node = NodePath("../Back")
-
-[node name="MenuAudio" type="Node" parent="." node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+[node name="MenuAudio" type="Node" parent="." unique_id=1839128190 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 script = ExtResource("7_luhou")
 SOUNDS = Array[AudioStream]([ExtResource("6_npq60")])
 HOVER_SOUND = "Menu_Hover"

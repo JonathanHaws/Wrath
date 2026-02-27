@@ -197,6 +197,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:DASH_DISABLED")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_get7n"]
 resource_name = "checkpoint_disable"
@@ -261,7 +273,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
@@ -273,13 +285,25 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath(".:CONTROLLER_RUN_MULTIPLIER")
-tracks/1/interp = 1
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:DASH_DISABLED")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_p420n"]
@@ -289,7 +313,7 @@ tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
-tracks/0/interp = 1
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
@@ -301,13 +325,25 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath(".:CONTROLLER_RUN_MULTIPLIER")
-tracks/1/interp = 1
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:DASH_DISABLED")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_agako"]
@@ -417,7 +453,7 @@ tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath(".:SHOOTING_DISABLED")
-tracks/2/interp = 1
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
@@ -429,7 +465,7 @@ tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath(".:HEALING_DISABLED")
-tracks/3/interp = 1
+tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
@@ -441,12 +477,12 @@ tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
 tracks/4/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape:disabled")
-tracks/4/interp = 1
+tracks/4/interp = 0
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/5/type = "value"
@@ -481,57 +517,69 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath(".:SHOOTING_DISABLED")
-tracks/1/interp = 1
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath(".:HEALING_DISABLED")
-tracks/2/interp = 1
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath(".:RUN_DISABLED")
-tracks/3/interp = 1
+tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/4/path = NodePath(".:DASH_DISABLED")
 tracks/4/interp = 0
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath(".:SPEED_MULTIPLIER")
-tracks/5/interp = 1
+tracks/5/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/5/interp = 0
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -581,33 +629,45 @@ tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
 tracks/3/path = NodePath(".:RUN_DISABLED")
-tracks/3/interp = 1
+tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/4/path = NodePath(".:DASH_DISABLED")
 tracks/4/interp = 0
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath(".:SPEED_MULTIPLIER")
-tracks/5/interp = 1
+tracks/5/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/5/interp = 0
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -4063,38 +4123,38 @@ omni_range = 17.0156
 rotation_edit_mode = 1
 
 [node name="Skeleton3D" parent="Mesh/reaper/Reaper" parent_id_path=PackedInt32Array(830977937, 1009846176) index="0" unique_id=165334818]
-bones/1/position = Vector3(0.012178166, 0.19505176, 0.8582668)
+bones/1/position = Vector3(0.011332331, 0.1932452, 0.79865587)
 bones/1/rotation = Quaternion(0.66652495, 0.005288413, -0.0047285077, 0.74544907)
-bones/2/rotation = Quaternion(1.8626446e-09, 1.2361932e-07, -3.2596281e-09, 1)
-bones/3/position = Vector3(-0.13482243, 0.052575987, -0.0037890945)
-bones/3/rotation = Quaternion(-0.079156846, -0.24224563, 0.80736095, 0.53218377)
-bones/4/rotation = Quaternion(-0.70825344, 0.12014593, -0.33246922, 0.61106986)
-bones/5/rotation = Quaternion(-0.106005274, -0.08438389, 0.07545141, 0.9879015)
-bones/6/rotation = Quaternion(-0.64519733, -0.3699685, -0.17571038, 0.6449572)
-bones/7/position = Vector3(0.09502389, 0.29883626, -0.037884142)
-bones/7/rotation = Quaternion(-0.08802523, 0.31957725, -0.44377673, 0.8325769)
-bones/8/position = Vector3(0.040278308, 0.37375045, 0.019249905)
-bones/8/rotation = Quaternion(-0.59016526, -0.32968497, -0.3287858, 0.65947914)
-bones/9/rotation = Quaternion(0.069940835, -1.5149455e-12, 1.6696863e-08, 0.99755114)
-bones/10/position = Vector3(0.07390616, 0.08636394, 1.0374769e-08)
-bones/10/rotation = Quaternion(-0.11537217, -0.050698962, -0.85975343, 0.49491715)
-bones/11/rotation = Quaternion(-0.45832148, -0.40650788, 0.06873397, 0.7873807)
-bones/12/rotation = Quaternion(-0.03414386, 0.039828926, 0.14083621, 0.9886421)
-bones/13/rotation = Quaternion(-0.6807748, 0.0647394, -0.21559657, 0.6970457)
-bones/14/position = Vector3(0.009702273, 0.14449012, -0.0938516)
-bones/14/rotation = Quaternion(-0.4985187, -8.952571e-05, 0.25960752, 0.8270932)
-bones/15/position = Vector3(-0.10450728, 0.22616594, -0.026558556)
-bones/15/rotation = Quaternion(-0.3967154, 0.38349468, -0.1891968, 0.812252)
-bones/16/position = Vector3(-0.07455924, -0.046927348, -2.5305592e-08)
-bones/16/rotation = Quaternion(0.010156104, -0.18648286, 0.9823706, 0.008313462)
-bones/17/rotation = Quaternion(0.023063226, 0.000157398, 0.0032334859, 0.99972886)
-bones/18/rotation = Quaternion(-0.6116697, 0.002533471, 0.0008904037, 0.7911087)
-bones/19/position = Vector3(0.07455925, -0.046927348, -1.8576564e-08)
-bones/19/rotation = Quaternion(-0.0062845666, 0.12080198, 0.9926165, -0.008936215)
-bones/20/rotation = Quaternion(0.023063224, -0.00015736259, -0.003233474, 0.9997288)
-bones/21/rotation = Quaternion(-0.792553, 0.002029981, -0.0018231295, 0.60979694)
-bones/22/position = Vector3(0.074101746, 0.4825835, 1.0977385)
-bones/22/rotation = Quaternion(0.29752752, 0.26516637, 0.5539212, 0.73098254)
+bones/2/rotation = Quaternion(-0.11975618, 1.2306582e-07, -1.7062401e-08, 0.99280334)
+bones/3/position = Vector3(-0.13482241, 0.05257595, -0.0037891262)
+bones/3/rotation = Quaternion(-0.25372022, -0.580655, 0.54051054, 0.5534566)
+bones/4/rotation = Quaternion(-0.33145165, 0.15853015, -0.11503268, 0.9229168)
+bones/5/rotation = Quaternion(0.2327428, 0.4670051, -0.0035098451, 0.8530678)
+bones/6/rotation = Quaternion(-0.5627141, 0.35730004, -0.064148925, 0.74268067)
+bones/7/position = Vector3(-0.11759407, 0.27375856, -0.04578931)
+bones/7/rotation = Quaternion(0.067593984, 0.86980355, -0.19214503, 0.4493919)
+bones/8/position = Vector3(0.01564087, 0.3471405, 0.0016988507)
+bones/8/rotation = Quaternion(-0.29830822, 0.5469926, 0.123367526, 0.7723936)
+bones/9/rotation = Quaternion(0.069940835, -1.5124413e-12, 1.669686e-08, 0.99755114)
+bones/10/position = Vector3(0.07390615, 0.086363815, -5.174771e-09)
+bones/10/rotation = Quaternion(-0.3513077, 0.35746822, -0.5947306, 0.6285658)
+bones/11/rotation = Quaternion(0.020329868, -0.5148683, 0.11508199, 0.8492665)
+bones/12/rotation = Quaternion(0.24997914, -0.032564327, 0.007701906, 0.9676729)
+bones/13/rotation = Quaternion(-0.6807748, 0.06473934, -0.21559654, 0.6970456)
+bones/14/position = Vector3(-0.05707141, 0.22036748, 0.015360217)
+bones/14/rotation = Quaternion(-0.28052455, -0.1739752, 0.364591, 0.87069637)
+bones/15/position = Vector3(-0.072949275, 0.290383, 0.0925632)
+bones/15/rotation = Quaternion(-0.39671543, 0.38349473, -0.18919685, 0.8122519)
+bones/16/position = Vector3(-0.07455925, -0.0469272, -1.0298182e-08)
+bones/16/rotation = Quaternion(0.011724504, -0.3962127, 0.91806495, 0.0058988845)
+bones/17/rotation = Quaternion(0.32486933, 0.005148859, -0.0021175372, 0.94574255)
+bones/18/rotation = Quaternion(-0.6116697, 0.0025334712, 0.00089040416, 0.7911087)
+bones/19/position = Vector3(0.07455925, -0.04692726, -1.7020549e-08)
+bones/19/rotation = Quaternion(-0.005789649, 0.17456663, 0.98458475, -0.009264499)
+bones/20/rotation = Quaternion(0.14559303, -0.0017087846, -0.0013863457, 0.9893422)
+bones/21/rotation = Quaternion(-0.75213695, 0.0010378165, -0.0015694597, 0.6590043)
+bones/22/position = Vector3(0.08270913, 0.7798221, 1.2134116)
+bones/22/rotation = Quaternion(0.4982241, -0.5549597, 0.3694723, 0.5543309)
 
 [node name="body" parent="Mesh/reaper/Reaper/Skeleton3D" index="0" unique_id=519405934]
 material_override = ExtResource("35_m1s71")
@@ -4103,7 +4163,7 @@ material_override = ExtResource("35_m1s71")
 material_override = ExtResource("36_4anjp")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="3" unique_id=552018988]
-transform = Transform3D(0.246515, -0.6622984, 0.70752466, -0.05455805, 0.71941316, 0.69243616, -0.967602, -0.20929705, 0.14121248, 0.05851976, 1.0986794, -0.23258314)
+transform = Transform3D(0.09705604, -0.96453005, -0.2454828, 0.9848987, 0.12860593, -0.11590989, 0.14336912, -0.23052584, 0.9624464, 0.065485135, 1.2144631, -0.5298217)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -4139,7 +4199,7 @@ light_energy = 0.0
 libraries/ = SubResource("AnimationLibrary_hfpb6")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4" unique_id=1880319706]
-transform = Transform3D(-0.99981976, -0.015474274, -0.011016672, 0.011582442, -0.03696038, -0.9992497, 0.015055489, -0.9991971, 0.03713301, -0.08787328, 0.032966554, -0.13120614)
+transform = Transform3D(-0.99981976, -0.015474323, -0.011016574, 0.014041334, -0.21147926, -0.9772817, 0.012793002, -0.97726, 0.21165875, -0.087873355, 0.04804489, -0.22060879)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -4149,7 +4209,7 @@ script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5" unique_id=1885491197]
-transform = Transform3D(-0.99981976, -0.015474274, -0.011016672, 0.011582442, -0.03696038, -0.9992497, 0.015055489, -0.9991971, 0.03713301, -0.08787328, 0.032966554, -0.13120614)
+transform = Transform3D(-0.99981976, -0.015474323, -0.011016574, 0.014041334, -0.21147926, -0.9772817, 0.012793002, -0.97726, 0.21165875, -0.087873355, 0.04804489, -0.22060879)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -4285,7 +4345,7 @@ bus = &"SFX"
 layout_mode = 2
 theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
-text = "[font_size=28][outline_size=6][color=#A1A1A1]# PRESS [color=4a515b][key][/color] TO AQUIRE SKILLS "
+text = "[font_size=28][outline_size=6][color=#A1A1A1]# PRESS [color=566987][key][/color] TO AQUIRE SKILLS "
 fit_content = true
 horizontal_alignment = 2
 visible_characters = 0
@@ -4306,7 +4366,7 @@ libraries/ = SubResource("AnimationLibrary_ika6y")
 layout_mode = 2
 theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
-text = "[font_size=28][outline_size=6][color=#A1A1A1]# PRESS [color=606060][key][/color] TO HEAL"
+text = "[font_size=28][outline_size=6][color=#A1A1A1]# PRESS [color=566987][key][/color] TO HEAL"
 fit_content = true
 horizontal_alignment = 2
 script = ExtResource("51_773af")
@@ -4325,7 +4385,7 @@ libraries/ = SubResource("AnimationLibrary_b52ho")
 layout_mode = 2
 theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
-text = "[font_size=28][outline_size=6][color=#A1A1A1]# SHOOT WITH [color=765a43][key][/color][br] RECHARGE SOUL BY ATTACKING ENEMIES[/color]"
+text = "[font_size=28][outline_size=6][color=#A1A1A1]# SHOOT WITH [color=566987][key][/color][br] RECHARGE SOUL BY ATTACKING ENEMIES[/color]"
 fit_content = true
 horizontal_alignment = 2
 visible_characters = 0

@@ -61,7 +61,8 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	
 	if not skippable_animation_playing(): 
-		if SKIP_BUTTON and SKIP_BUTTON.visible: SKIP_BUTTON.visible = false
+		if SKIP_BUTTON and SKIP_BUTTON.visible: 
+			SKIP_BUTTON.visible = false
 		return
 	if SKIP_BUTTON and not SKIP_BUTTON.visible: SKIP_BUTTON.visible = true
 	

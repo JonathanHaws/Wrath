@@ -7,7 +7,6 @@
 [ext_resource type="Script" uid="uid://cqi7s4551j7xa" path="res://menus/save/continue.gd" id="5_2fxgv"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="6_k2sbj"]
 [ext_resource type="Script" uid="uid://dbk4ank3cq0ny" path="res://menus/title_screen/quit.gd" id="7_nikc7"]
-[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_8af7w"]
 [ext_resource type="AudioStream" uid="uid://bl2yh8xx8yn4s" path="res://menus/sfx/Menu_Load.ogg" id="9_8af7w"]
 [ext_resource type="AudioStream" uid="uid://bskcgvhx85bs3" path="res://menus/title_screen/title_screen.ogg" id="10_03rxr"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="10_8af7w"]
@@ -85,7 +84,6 @@ script = ExtResource("1_gkebh")
 
 [node name="Main" type="VBoxContainer" parent="CenterContainer" unique_id=931193974 groups=["ui_scalable"]]
 layout_mode = 2
-focus_mode = 2
 alignment = 1
 script = ExtResource("1_gkebh")
 
@@ -176,10 +174,6 @@ theme = ExtResource("4_n4yvo")
 text = "QUIT"
 icon_alignment = 1
 script = ExtResource("7_nikc7")
-
-[node name="GrabFocus" type="Node" parent="CenterContainer/Main" unique_id=91715033 node_paths=PackedStringArray("focus_node")]
-script = ExtResource("8_8af7w")
-focus_node = NodePath("../NewGame")
 
 [node name="MenuAudio" type="Node" parent="CenterContainer/Main" unique_id=1999041215 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 script = ExtResource("12_k2sbj")

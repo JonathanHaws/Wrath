@@ -1,11 +1,6 @@
-extends Node
-@export var focus_node: Control
-
-func _on_focus_node_visibility_changed() -> void:
-	if focus_node.visible:
-		focus_node.grab_focus()
+extends Control
+@export var focus_target: Control
 
 func _ready() -> void:
-	if focus_node:
-		focus_node.connect("visibility_changed", Callable(self, "_on_focus_node_visibility_changed"))
-		_on_focus_node_visibility_changed()  
+	if focus_target:
+		focus_target.call_deferred("grab_focus")  # ensures focus actually works

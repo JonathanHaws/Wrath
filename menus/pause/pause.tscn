@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://pccpxg1y2tdf" path="res://menus/skip/skip.gd" id="4_e7s18"]
 [ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://menus/pause/restart.gd" id="5_0mtqa"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="6_kiq5e"]
-[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="7_6l83q"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="7_e7s18"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="9_nw3fp"]
 
@@ -92,10 +91,6 @@ text = "QUIT"
 icon_alignment = 1
 script = ExtResource("6_kiq5e")
 scene_file = "uid://cls12q06quifx"
-
-[node name="GrabFocus" type="Node" parent="." unique_id=1953414363 node_paths=PackedStringArray("focus_node")]
-script = ExtResource("7_6l83q")
-focus_node = NodePath("../Main/Restart")
 
 [node name="MenuAudio" type="Node" parent="." unique_id=1302714813 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 process_mode = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dt1c8xw6lwsk5"]
+[gd_scene format=3 uid="uid://dt1c8xw6lwsk5"]
 
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="1_1va1p"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_8ie4y"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="4_8ie4y"]
 [ext_resource type="Script" uid="uid://dhsj4xkcsrngo" path="res://menus/save/new/new.gd" id="4_xega6"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="5_d3ddl"]
-[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="6_wtlav"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="7_044tn"]
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_New.wav" id="7_io75r"]
 [ext_resource type="PackedScene" uid="uid://f3fcn8ktks1h" path="res://menus/title_screen/fade_to_black.tscn" id="8_044tn"]
@@ -47,7 +46,7 @@ _data = {
 &"begin": SubResource("Animation_jce53")
 }
 
-[node name="NewGame" type="ColorRect"]
+[node name="NewGame" type="ColorRect" unique_id=751919862]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -58,7 +57,7 @@ size_flags_vertical = 3
 color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
 metadata/_edit_use_anchors_ = true
 
-[node name="CenterContainer" type="CenterContainer" parent="." groups=["ui_scalable"]]
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=571680029 groups=["ui_scalable"]]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,14 +76,14 @@ size_flags_vertical = 3
 script = ExtResource("1_8ie4y")
 metadata/_edit_use_anchors_ = true
 
-[node name="New" type="VBoxContainer" parent="CenterContainer"]
+[node name="New" type="VBoxContainer" parent="CenterContainer" unique_id=1506933178]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="CenterContainer/New"]
+[node name="Label" type="Label" parent="CenterContainer/New" unique_id=1584973625]
 layout_mode = 2
 theme = ExtResource("3_kssy0")
 
-[node name="LineEdit" type="LineEdit" parent="CenterContainer/New"]
+[node name="LineEdit" type="LineEdit" parent="CenterContainer/New" unique_id=578692219]
 layout_mode = 2
 theme = ExtResource("3_kssy0")
 placeholder_text = "NAME"
@@ -92,7 +91,7 @@ alignment = 1
 max_length = 64
 expand_to_text_length = true
 
-[node name="Begin" type="Button" parent="CenterContainer/New" node_paths=PackedStringArray("name_input", "error_label", "anim")]
+[node name="Begin" type="Button" parent="CenterContainer/New" unique_id=1937074380 node_paths=PackedStringArray("name_input", "error_label", "anim")]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -105,7 +104,7 @@ name_input = NodePath("../LineEdit")
 error_label = NodePath("../Label")
 anim = NodePath("AnimationPlayer")
 
-[node name="MenuAudio" type="Node" parent="CenterContainer/New/Begin" node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+[node name="MenuAudio" type="Node" parent="CenterContainer/New/Begin" unique_id=1421470360 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 script = ExtResource("4_8ie4y")
 SOUNDS = Array[AudioStream]([ExtResource("1_1va1p"), ExtResource("7_io75r")])
 HOVER_SOUND = "Menu_Hover"
@@ -114,17 +113,15 @@ HOVERED_BUTTONS = [NodePath("..")]
 PRESSED_BUTTONS = [NodePath("..")]
 ADD_TO_ROOT = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/New/Begin"]
-libraries = {
-&"": SubResource("AnimationLibrary_044tn")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/New/Begin" unique_id=1305841155]
+libraries/ = SubResource("AnimationLibrary_044tn")
 
-[node name="Node2D" type="Node2D" parent="CenterContainer/New/Begin"]
+[node name="Node2D" type="Node2D" parent="CenterContainer/New/Begin" unique_id=69641019]
 top_level = true
 script = ExtResource("7_044tn")
 scenes = Array[PackedScene]([ExtResource("8_044tn")])
 
-[node name="Back" type="Button" parent="CenterContainer/New"]
+[node name="Back" type="Button" parent="CenterContainer/New" unique_id=462494430]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -135,11 +132,7 @@ icon_alignment = 1
 script = ExtResource("5_d3ddl")
 scene_file = "uid://cls12q06quifx"
 
-[node name="GrabFocus" type="Node" parent="CenterContainer/New" node_paths=PackedStringArray("focus_node")]
-script = ExtResource("6_wtlav")
-focus_node = NodePath("../LineEdit")
-
-[node name="MenuAudio" type="Node" parent="." node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+[node name="MenuAudio" type="Node" parent="." unique_id=464676704 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 script = ExtResource("4_8ie4y")
 SOUNDS = Array[AudioStream]([ExtResource("1_1va1p")])
 HOVER_SOUND = "Menu_Hover"

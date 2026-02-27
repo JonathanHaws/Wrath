@@ -40,6 +40,9 @@ func _ready():
 	
 	if Controls: Controls.play_input_anim("choice_enabled")
 	
+	$Options/Choice1.call_deferred("grab_focus")
+	$Options/Choice2.call_deferred("grab_focus")
+	
 	$Options/Choice1.text = ""
 	$Options/Choice2.text = ""
 	if info.size() > 0:

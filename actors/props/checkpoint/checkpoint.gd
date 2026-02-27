@@ -6,7 +6,6 @@ extends Area3D
 @export var REST_ANIM: AnimationPlayer
 @export var AQUIRED_ANIM: AnimationPlayer
 @export var PROMPT_ANIM: AnimationPlayer ## Animation player for when player enters area they can potentially rest
-@export var REST_ACTIONS: Array[String] = ["interact"]
 var player_inside: bool = false
 var enter_prompt_played: bool = false
 @export_file("*.tscn") var skill_tree_file: String
@@ -72,6 +71,5 @@ func _connect_signals() -> void:
 
 func _process(_delta: float) -> void:
 	if player_inside:
-		for action in REST_ACTIONS:
-			if Input.is_action_just_pressed(action):
-				if not REST_ANIM.is_playing() and not REST_ANIM.current_animation == "REST": REST_ANIM.play("REST")
+		if Input.is_action_just_pressed("rest"):
+			if not REST_ANIM.is_playing() and not REST_ANIM.current_animation == "REST": REST_ANIM.play("REST")

@@ -1,5 +1,4 @@
 extends Node
-
 @export var action_name: String
 @export var display_name: String = ""
 @export var label: Label

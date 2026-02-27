@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://cxj1escn8txf7" path="res://menus/options/graphics/graphics_setting.gd" id="4_m8m6k"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="5_wtdqe"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="6_684si"]
-[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="8_bpob5"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="9_j3qnb"]
 
 [node name="Control" type="Control" unique_id=1288123490]
@@ -235,10 +234,7 @@ icon_alignment = 1
 script = ExtResource("5_wtdqe")
 scene_file = "uid://cxja4xs36njyv"
 node_to_replace = NodePath("../../..")
-
-[node name="GrabFocus" type="Node" parent="ColorRect" unique_id=1960673690 node_paths=PackedStringArray("focus_node")]
-script = ExtResource("8_bpob5")
-focus_node = NodePath("../VBoxContainer/Bloom/BloomButton")
+is_back_button = true
 
 [node name="MenuAudio" type="Node" parent="." unique_id=2000930046 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 process_mode = 3
