@@ -5,6 +5,8 @@ extends TextureButton
 @export var new_amount: Variant = 1.0 ## The update value for the property
 @export var save_key: String ## Special save data key to read if this has been aquired yet. If left empty key will be auto generated prefixed with unique node branch path
 @export var prerequisite_node: Node ## The node that must be aquired before this one can be purchased. (Previous node skill tree) 
+var prerequisite_key
+var aquired_key
 
 @export_group("VISUALS")
 @export_subgroup("INFO")
@@ -32,23 +34,20 @@ func tween_scale_down_on_exit():
 	var t = create_tween()
 	t.tween_property(self, "scale", normal_scale, scale_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
 
-@export_group("AUDIO") ## All skills can use the same audio players for ease of use
-@export var sfx_bought: AudioStreamPlayer ## Sound to be played when bought. Multiple skills can share same same player
-@export var sfx_insufficient: AudioStreamPlayer ## Sound to be played when declined. Automatically referenced if player is sibling
-@export var sfx_hover: AudioStreamPlayer ## Sound to be played when hovered. Automatically searches for sibling player
-var aquired_key
-var prerequisite_key
+@export_group("AUDIO") ## Multiple skills can share same same player with refrence by group
+@export var hover_sound_group: String = "skill_hover_sound" ## Sound to be played when hovered.
+@export var insufficient_funds_sound_group: String = "skill_insufficent_funds_sound" ## Sound to be played when declined.
+@export var purchased_sound_group: String = "skill_purchased_sound_group_sound" ## Sound to be played when skill is bought.
+func play_group_sound(group_name: String) -> void:
+	for node in get_tree().get_nodes_in_group(group_name):
+		if node is AudioStreamPlayer: node.play()
 
 func hovered():
-	if sfx_hover: sfx_hover.play()
+	play_group_sound(hover_sound_group)
 	for n in get_tree().get_nodes_in_group(cost_group): n.text = str(cost)
 	for n in get_tree().get_nodes_in_group(description_group): n.text = description
 
 func _ready():
-	if not sfx_bought: sfx_bought = get_parent().get_node_or_null("Sufficient")
-	if not sfx_insufficient: sfx_insufficient = get_parent().get_node_or_null("Insufficient")
-	if not sfx_hover: sfx_hover = get_parent().get_node_or_null("Hover")
-
 	if save_key: aquired_key = save_key
 	else: aquired_key = Save.get_unique_key(self,"skill_node")
 	if prerequisite_node: 
@@ -72,11 +71,11 @@ func _on_pressed():
 		Save.data[currency_key] = 0
 	
 	if prerequisite_node and not Save.data.has(prerequisite_key):
-		if sfx_insufficient: sfx_insufficient.play()
+		play_group_sound(insufficient_funds_sound_group)
 		return
 		
 	if 	Save.data[currency_key] < cost:
-		if sfx_insufficient: sfx_insufficient.play()
+		play_group_sound(insufficient_funds_sound_group)
 		return
 	
 	if Save.data.has(aquired_key): return
@@ -85,7 +84,7 @@ func _on_pressed():
 	Save.data[upgrade_key] = new_amount
 	#print('upgraded ', upgrade_key, " ", new_amount)
 	
-	if sfx_bought: sfx_bought.play()
+	play_group_sound(purchased_sound_group)
 	
 	Save.data[aquired_key] = true
 	modulate = aquired_modulate

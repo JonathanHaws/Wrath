@@ -4,7 +4,7 @@ extends Camera3D
 @export_range(-90.0, 90.0, 1.0, "Degrees") var pitch_max_deg: float = 80.0
 @export var SpringArm: SpringArm3D
 @export var MOUSE_SENSITIVITY: float = 0.003
-@export var CONTROLLER_SENSITIVITY: float = 0.05
+@export var CONTROLLER_SENSITIVITY: float = 0.07
 @export var SENSITIVITY_MULTIPLIER: float = 1.0
 @export var TOP_LEVEL_ROTATION: bool = true ## For ignoring rotation tweens on interactions... Or any external influence to orientation
 var mouse_delta = Vector2.ZERO

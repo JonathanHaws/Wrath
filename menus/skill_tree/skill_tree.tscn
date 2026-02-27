@@ -240,21 +240,21 @@ offset_bottom = 36.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Insufficient" type="AudioStreamPlayer" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1989543702]
-process_mode = 3
-stream = ExtResource("7_g7gqr")
-bus = &"SFX"
-
-[node name="Sufficient" type="AudioStreamPlayer" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=412770777]
-process_mode = 3
-stream = ExtResource("8_ncvsq")
-bus = &"SFX"
-
-[node name="Hover" type="AudioStreamPlayer" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1757245086]
+[node name="Hover" type="AudioStreamPlayer" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1757245086 groups=["skill_hover_sound"]]
 process_mode = 3
 stream = ExtResource("7_cvmyc")
 volume_db = -10.0
 pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="Insufficient" type="AudioStreamPlayer" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1989543702 groups=["skill_insufficent_funds_sound"]]
+process_mode = 3
+stream = ExtResource("7_g7gqr")
+bus = &"SFX"
+
+[node name="Sufficient" type="AudioStreamPlayer" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=412770777 groups=["skill_purchased_sound_group_sound"]]
+process_mode = 3
+stream = ExtResource("8_ncvsq")
 bus = &"SFX"
 
 [node name="Lines" type="Control" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=816233998]
