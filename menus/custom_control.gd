@@ -12,13 +12,15 @@ func _input(event: InputEvent) -> void:
 		last_pressed_event = event
 		waiting_for_new = false
 		refresh_ui()
+		Controls.save_action_setting(action_name)
 
 func create_delete_button(event: InputEvent) -> Button:
 	var btn: Button = Button.new()  
-	btn.text = Controls.event_to_string(event)
+	btn.text = Controls.get_string_from_event(event)
 	btn.pressed.connect(func() -> void:
 		InputMap.action_erase_event(action_name, event)   
 		btn.queue_free()
+		Controls.save_action_setting(action_name)
 		)
 	return btn
 
@@ -27,20 +29,20 @@ func create_add_button() -> Button:
 	add_btn.text = "+"
 	add_btn.pressed.connect(func() -> void:
 		waiting_for_new = true
-		add_btn.text = "Press key..."		
+		add_btn.text = "..."		
 		)
 	return add_btn
 
 func create_restore_button() -> Button:
 	var restore_btn: Button = Button.new()
 	restore_btn.text = "@"
-	container.add_child(restore_btn)
 	restore_btn.pressed.connect(func() -> void:
 		for event in InputMap.action_get_events(action_name):
 			InputMap.action_erase_event(action_name, event)
 		for event in ProjectSettings.get_setting("input/" + action_name)["events"]:
 			InputMap.action_add_event(action_name, event)
 		refresh_ui()
+		Controls.save_action_setting(action_name)
 	)
 	return restore_btn
 
@@ -57,5 +59,7 @@ func refresh_ui():
 	container.add_child(create_restore_button())
 
 func _ready() -> void:
+	Controls.load_action_setting(action_name)
+	
 	refresh_ui()
 	

@@ -13,10 +13,9 @@ const JOYPAD_BUTTON_NAMES := {
 	10: "DPad Up",
 	11: "DPad Down",
 	12: "DPad Left",
-	13: "DPad Right"
-}
-
-func string_to_event(s: String) -> InputEvent:
+	13: "DPad Right",
+	}
+func get_event_from_string(s: String) -> InputEvent:
 	var ev: InputEvent = null
 	if s.begins_with("Mouse "):
 		ev = InputEventMouseButton.new()
@@ -30,8 +29,7 @@ func string_to_event(s: String) -> InputEvent:
 			ev = InputEventKey.new()
 			ev.keycode = code
 	return ev
-
-func event_to_string(ev: InputEvent) -> String:
+func get_string_from_event(ev: InputEvent) -> String:
 	if ev is InputEventKey:
 		var code = ev.keycode if ev.keycode != 0 else ev.physical_keycode
 		return OS.get_keycode_string(code)
@@ -40,12 +38,45 @@ func event_to_string(ev: InputEvent) -> String:
 	elif ev is InputEventMouseButton:
 		return "Mouse " + str(ev.button_index)
 	return "(Unknown)"
-
-func get_action_bindings(action: String) -> String:
+func get_string_from_action(action: String) -> String:
 	var keys := []
 	for ev in InputMap.action_get_events(action):
-		keys.append(event_to_string(ev))
+		keys.append(get_string_from_event(ev))
 	return ", ".join(keys) if keys.size() > 0 else "(Unassigned)"
+func get_events_from_string(s: String) -> Array[InputEvent]:
+	var events: Array[InputEvent] = []
+	for part in s.split(","):
+		var ev = get_event_from_string(part.strip_edges())
+		if ev: events.append(ev)
+	return events
+func load_action_setting(action: String) -> void:
+	var saved_string: String = Config.load_setting("controls", action, "default")
+	if saved_string != "default":
+		InputMap.action_erase_events(action)
+		var events = Controls.get_events_from_string(saved_string)
+		for ev in events: InputMap.action_add_event(action, ev)
+func save_action_setting(action: String) -> void:
+	# Convert current InputMap state to a string and save
+	var current_binds = Controls.get_string_from_action(action)
+	Config.save_setting("controls", action, current_binds)
+func load_action_settings() -> void:
+	var actions = [
+		"lock_on", 
+		"keyboard_forward", 
+		"keyboard_back", 
+		"keyboard_left", 
+		"keyboard_right", 
+		"jump", 
+		"attack", 
+		"block", 
+		"shoot", 
+		"interact", 
+		"heal", 
+		"dash", 
+		"rest", 
+		"toggle_skill_tree"
+		]
+	for action in actions: load_action_setting(action)
 
 # For disabling input... 
 func play_input_anim(animation_name: String, group_name: String = "input_anim") -> void:
@@ -67,6 +98,8 @@ func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	idle_time_seconds = idle_timeout_seconds + 1
+
+	load_action_settings()
 
 func _input(event):
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED: return

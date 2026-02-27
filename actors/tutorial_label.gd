@@ -5,7 +5,7 @@ extends Control
 @export var place_holder_string: String = "[key]"
 @export var capitalize: bool = true
 func set_tutorial_text() -> void:
-	var binding_text: String = Controls.get_action_bindings(action_name)
+	var binding_text: String = Controls.get_string_from_action(action_name)
 	if capitalize: binding_text = binding_text.to_upper()
 	if "text" in label: label.text = label.text.replace(place_holder_string, binding_text)
 
