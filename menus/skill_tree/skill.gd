@@ -33,6 +33,9 @@ func tween_scale_up_on_hover():
 func tween_scale_down_on_exit():
 	var t = create_tween()
 	t.tween_property(self, "scale", normal_scale, scale_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
+func _on_visibility_changed() -> void:
+	#print('test')
+	call_deferred("grab_focus")
 
 @export_group("AUDIO") ## Multiple skills can share same same player with refrence by group
 @export var hover_sound_group: String = "skill_hover_sound" ## Sound to be played when hovered.
@@ -54,9 +57,9 @@ func _ready():
 		prerequisite_key = Save.get_unique_key(prerequisite_node, "skill_node")
 		if prerequisite_node.save_key != "": prerequisite_key = prerequisite_node.save_key
 
-	
 	pressed.connect(_on_pressed)
 	mouse_entered.connect(hovered)
+	focus_entered.connect(hovered)
 	mouse_entered.connect(tween_scale_up_on_hover)
 	mouse_exited.connect(tween_scale_down_on_exit)
 
@@ -64,6 +67,8 @@ func _ready():
 	mouse_entered.connect(apply_hover_modulate)
 	mouse_exited.connect(apply_base_modulate)
 	Save.save_data_updated.connect(apply_base_modulate)
+	
+	connect("visibility_changed", _on_visibility_changed)
 	
 func _on_pressed():
 

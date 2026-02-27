@@ -20,7 +20,7 @@ func toggle_skill_tree() -> void:
 		if Controls: Controls.play_input_anim("skill_tree_enable")
 
 func _process(_delta):
-	
+
 	if Input.is_action_just_pressed("menu_back") and !toggle_disabled and skill_tree_open:
 		toggle_skill_tree()
 	

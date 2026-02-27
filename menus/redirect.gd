@@ -1,4 +1,4 @@
-extends Node # Can be used on anything but most likely button
+extends Control # Can be used on anything but most likely button
 @export_file("*.tscn") var scene_file: String
 @export var node_to_replace: Node ## if no node to replace is specified will replace the entire tree (USUALLY WHAT IS WANTED)
 @export var is_back_button: bool = false
@@ -10,9 +10,7 @@ func grab_focus_when_visibility_changed() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if is_back_button and event.is_action_pressed("menu_back"): 
 		_on_pressed() 
-	if event.is_action_pressed("ui_cancel"):  
-		_on_pressed() 
-
+		
 func _ready() -> void:
 
 	connect("visibility_changed", Callable(self, "grab_focus_when_visibility_changed"))

@@ -93,12 +93,12 @@ script = ExtResource("6_kiq5e")
 scene_file = "uid://bbnvaw1wjbpv0"
 node_to_replace = NodePath("../..")
 
-[node name="Quit" type="Button" parent="Main" unique_id=1051991261]
+[node name="Exit" type="Button" parent="Main" unique_id=1176192422]
 layout_mode = 2
 size_flags_horizontal = 4
-size_flags_vertical = 0
+size_flags_vertical = 4
 theme = ExtResource("3_7gaeb")
-text = "QUIT"
+text = "EXIT"
 icon_alignment = 1
 script = ExtResource("6_kiq5e")
 scene_file = "uid://cls12q06quifx"
@@ -109,6 +109,6 @@ script = ExtResource("7_e7s18")
 SOUNDS = Array[AudioStream]([ExtResource("9_nw3fp")])
 HOVER_SOUND = "Menu_Hover"
 PRESSED_SOUND = "Menu_Hover"
-HOVERED_BUTTONS = [NodePath("../Main/Restart"), NodePath("../Main/Options"), NodePath("../Main/Controls"), NodePath("../Main/Quit")]
-PRESSED_BUTTONS = [NodePath("../Main/Restart"), NodePath("../Main/Options"), NodePath("../Main/Controls"), NodePath("../Main/Quit")]
+HOVERED_BUTTONS = [NodePath("../Main/Restart"), NodePath("../Main/Options"), NodePath("../Main/Controls")]
+PRESSED_BUTTONS = [NodePath("../Main/Restart"), NodePath("../Main/Options"), NodePath("../Main/Controls")]
 ADD_TO_ROOT = true

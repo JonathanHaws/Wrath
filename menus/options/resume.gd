@@ -2,6 +2,7 @@ extends Button
 @export var pause_toggler: Node
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not visible: return
 	if event.is_action_pressed("menu_back"):  # usually B / Esc
 		## Controller B to exit skill tree but dont dash
 		await get_tree().physics_frame 
@@ -10,6 +11,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_on_pressed()
 
 func _on_pressed() -> void:
+	if not visible: return
 	if pause_toggler:
 		pause_toggler.toggle(false)
 

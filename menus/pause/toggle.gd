@@ -1,4 +1,3 @@
-
 # Make sure in main mneu put a node2d with this script which is hidden...
 # That way if the player is coming back to the main menu from a pause menu the game will be unpaused 
 # If this is not done menu will seem unresponsive and glitchy
