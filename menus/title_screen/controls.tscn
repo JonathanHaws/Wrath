@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://menus/pause/toggle.gd" id="2_44vjs"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="2_lbh2v"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_t88b0"]
-[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="2_w8ibl"]
 [ext_resource type="Script" uid="uid://d0y3kmnwe4g6k" path="res://menus/custom_control.gd" id="3_00uuv"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="9_t88b0"]
 
@@ -33,18 +32,17 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -189.5
-offset_top = -262.0
-offset_right = 189.5
-offset_bottom = 262.0
+offset_left = -55.5
+offset_top = -118.0
+offset_right = 55.5
+offset_bottom = 118.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset = Vector2(189.5, 262)
 script = ExtResource("2_t88b0")
 
 [node name="Camera" type="FoldableContainer" parent="Controls" unique_id=698683463]
 layout_mode = 2
-focus_neighbor_left = NodePath("VBoxContainer/ControllerSensitivity/HSlider")
+focus_neighbor_left = NodePath("VBoxContainer/LockOn")
 focus_neighbor_right = NodePath("VBoxContainer/ControllerSensitivity/HSlider")
 folded = true
 title = "CAMERA"
@@ -114,39 +112,17 @@ value = 0.03
 script = ExtResource("2_00uuv")
 value_label = NodePath("../Value")
 
-[node name="LockOn" type="HBoxContainer" parent="Controls/Camera/VBoxContainer" unique_id=2017024505 node_paths=PackedStringArray("label", "add", "remove")]
+[node name="LockOn" type="HBoxContainer" parent="Controls/Camera/VBoxContainer" unique_id=2017024505]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "lock_on"
 display_name = "LOCK ON"
-label = NodePath("Label")
-add = NodePath("Add")
-remove = NodePath("Remove")
-
-[node name="Label" type="Label" parent="Controls/Camera/VBoxContainer/LockOn" unique_id=528209452]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "LOCK ON"
-
-[node name="Add" type="Button" parent="Controls/Camera/VBoxContainer/LockOn" unique_id=1864947751]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "+"
-
-[node name="Remove" type="Button" parent="Controls/Camera/VBoxContainer/LockOn" unique_id=1499831003]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_nke8k")
-text = "-
-"
-icon_alignment = 1
 
 [node name="Movement" type="FoldableContainer" parent="Controls" unique_id=1673508977]
 layout_mode = 2
-focus_neighbor_left = NodePath("VBoxContainer/Forward/Add")
-focus_neighbor_right = NodePath("../Combat/VBoxContainer/Attack/Add")
+focus_neighbor_left = NodePath("VBoxContainer/Jump")
+focus_neighbor_right = NodePath("VBoxContainer/Forward")
 folded = true
 title = "MOVEMENT"
 title_alignment = 1
@@ -155,154 +131,45 @@ title_alignment = 1
 visible = false
 layout_mode = 2
 
-[node name="Forward" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1563587344 node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Forward" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1563587344]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "keyboard_forward"
 display_name = "FORWARD"
-label = NodePath("Label")
-add = NodePath("Add")
-remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Controls/Movement/VBoxContainer/Forward" unique_id=388833696]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "FORWARD"
-
-[node name="Add" type="Button" parent="Controls/Movement/VBoxContainer/Forward" unique_id=1543902539]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "+"
-
-[node name="Remove" type="Button" parent="Controls/Movement/VBoxContainer/Forward" unique_id=841488572]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_nke8k")
-text = "-"
-icon_alignment = 1
-
-[node name="Backward" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1133384638 node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Backward" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1133384638]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "keyboard_back"
 display_name = "BACKWARD"
-label = NodePath("Label")
-add = NodePath("Add")
-remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Controls/Movement/VBoxContainer/Backward" unique_id=2095716798]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "BACKWARD"
-
-[node name="Add" type="Button" parent="Controls/Movement/VBoxContainer/Backward" unique_id=237750503]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "+"
-
-[node name="Remove" type="Button" parent="Controls/Movement/VBoxContainer/Backward" unique_id=758110228]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_nke8k")
-text = "-
-"
-icon_alignment = 1
-
-[node name="Left" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1281279967 node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Left" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1281279967]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "keyboard_left"
 display_name = "LEFT"
-label = NodePath("Label")
-add = NodePath("Add")
-remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Controls/Movement/VBoxContainer/Left" unique_id=1662969091]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "LEFT"
-
-[node name="Add" type="Button" parent="Controls/Movement/VBoxContainer/Left" unique_id=1643466477]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "+"
-
-[node name="Remove" type="Button" parent="Controls/Movement/VBoxContainer/Left" unique_id=781721081]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_nke8k")
-text = "-
-"
-icon_alignment = 1
-
-[node name="Right" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1706166080 node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Right" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1706166080]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "keyboard_right"
 display_name = "RIGHT"
-label = NodePath("Label")
-add = NodePath("Add")
-remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Controls/Movement/VBoxContainer/Right" unique_id=1021959490]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "RIGHT"
-
-[node name="Add" type="Button" parent="Controls/Movement/VBoxContainer/Right" unique_id=1102547857]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "+"
-
-[node name="Remove" type="Button" parent="Controls/Movement/VBoxContainer/Right" unique_id=1517817670]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_nke8k")
-text = "-
-"
-icon_alignment = 1
-
-[node name="Jump" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=819306910 node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Jump" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=819306910]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "jump"
 display_name = "JUMP"
-label = NodePath("Label")
-add = NodePath("Add")
-remove = NodePath("Remove")
-
-[node name="Label" type="Label" parent="Controls/Movement/VBoxContainer/Jump" unique_id=367490925]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "JUMP"
-
-[node name="Add" type="Button" parent="Controls/Movement/VBoxContainer/Jump" unique_id=504763332]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "+"
-
-[node name="Remove" type="Button" parent="Controls/Movement/VBoxContainer/Jump" unique_id=379366251]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_nke8k")
-text = "-
-"
-icon_alignment = 1
 
 [node name="Combat" type="FoldableContainer" parent="Controls" unique_id=1511240414]
 layout_mode = 2
-focus_neighbor_left = NodePath("../General/VBoxContainer/Heal")
-focus_neighbor_right = NodePath("../General/VBoxContainer/Heal")
+focus_neighbor_left = NodePath("VBoxContainer/Shoot")
+focus_neighbor_right = NodePath("VBoxContainer/Attack")
 folded = true
 title = "COMBAT"
 title_alignment = 1
@@ -311,97 +178,31 @@ title_alignment = 1
 visible = false
 layout_mode = 2
 
-[node name="Attack" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=1391514407 node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Attack" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=1391514407]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "attack"
 display_name = "ATTACK"
-label = NodePath("Label")
-add = NodePath("Add")
-remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Controls/Combat/VBoxContainer/Attack" unique_id=1463090376]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "ATTACK"
-
-[node name="Add" type="Button" parent="Controls/Combat/VBoxContainer/Attack" unique_id=415882659]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "+"
-
-[node name="Remove" type="Button" parent="Controls/Combat/VBoxContainer/Attack" unique_id=1722529804]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_nke8k")
-text = "-
-"
-icon_alignment = 1
-
-[node name="Block" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=1034567462 node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Block" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=1034567462]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "block"
 display_name = "BLOCK"
-label = NodePath("Label")
-add = NodePath("Add")
-remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Controls/Combat/VBoxContainer/Block" unique_id=834507105]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "BLOCK"
-
-[node name="Add" type="Button" parent="Controls/Combat/VBoxContainer/Block" unique_id=1466982614]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "+"
-
-[node name="Remove" type="Button" parent="Controls/Combat/VBoxContainer/Block" unique_id=1261086152]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_nke8k")
-text = "-
-"
-icon_alignment = 1
-
-[node name="Shoot" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=1126546248 node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Shoot" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=1126546248]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "shoot"
 display_name = "SHOOT"
-label = NodePath("Label")
-add = NodePath("Add")
-remove = NodePath("Remove")
-
-[node name="Label" type="Label" parent="Controls/Combat/VBoxContainer/Shoot" unique_id=89896108]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "SHOOT"
-
-[node name="Add" type="Button" parent="Controls/Combat/VBoxContainer/Shoot" unique_id=1666282931]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "+"
-
-[node name="Remove" type="Button" parent="Controls/Combat/VBoxContainer/Shoot" unique_id=1878210706]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_nke8k")
-text = "-
-"
-icon_alignment = 1
 
 [node name="General" type="FoldableContainer" parent="Controls" unique_id=527277962]
 layout_mode = 2
-focus_neighbor_left = NodePath("VBoxContainer/Interact/Add")
-focus_neighbor_right = NodePath("VBoxContainer/Interact/Add")
+focus_neighbor_left = NodePath("VBoxContainer/SkillTree")
+focus_neighbor_right = NodePath("VBoxContainer/Interact")
 folded = true
 title = "GENERAL"
 title_alignment = 1
@@ -410,150 +211,40 @@ title_alignment = 1
 visible = false
 layout_mode = 2
 
-[node name="Interact" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1982470625 node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Interact" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1982470625]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "interact"
 display_name = "INTERACT"
-label = NodePath("Label")
-add = NodePath("Add")
-remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Controls/General/VBoxContainer/Interact" unique_id=1103562933]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "INTERACT"
-
-[node name="Add" type="Button" parent="Controls/General/VBoxContainer/Interact" unique_id=1929711934]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "+"
-
-[node name="Remove" type="Button" parent="Controls/General/VBoxContainer/Interact" unique_id=1838463736]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_nke8k")
-text = "-
-"
-icon_alignment = 1
-
-[node name="Heal" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1705924091 node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Heal" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1705924091]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "heal"
 display_name = "HEAL"
-label = NodePath("Label")
-add = NodePath("Add")
-remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Controls/General/VBoxContainer/Heal" unique_id=2113193566]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "HEAL"
-
-[node name="Add" type="Button" parent="Controls/General/VBoxContainer/Heal" unique_id=187192467]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "+"
-
-[node name="Remove" type="Button" parent="Controls/General/VBoxContainer/Heal" unique_id=519854683]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_nke8k")
-text = "-
-"
-icon_alignment = 1
-
-[node name="Dash" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1934570992 node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Dash" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1934570992]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "dash"
 display_name = "DASH"
-label = NodePath("Label")
-add = NodePath("Add")
-remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Controls/General/VBoxContainer/Dash" unique_id=1625944097]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "Dash"
-
-[node name="Add" type="Button" parent="Controls/General/VBoxContainer/Dash" unique_id=1964347628]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "+"
-
-[node name="Remove" type="Button" parent="Controls/General/VBoxContainer/Dash" unique_id=2037438401]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_nke8k")
-text = "-
-"
-icon_alignment = 1
-
-[node name="Rest" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=765867851 node_paths=PackedStringArray("label", "add", "remove")]
+[node name="Rest" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=765867851]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "rest"
 display_name = "REST"
-label = NodePath("Label")
-add = NodePath("Add")
-remove = NodePath("Remove")
 
-[node name="Label" type="Label" parent="Controls/General/VBoxContainer/Rest" unique_id=1913486779]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "REST"
-
-[node name="Add" type="Button" parent="Controls/General/VBoxContainer/Rest" unique_id=838037746]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "+"
-
-[node name="Remove" type="Button" parent="Controls/General/VBoxContainer/Rest" unique_id=975848075]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_nke8k")
-text = "-
-"
-icon_alignment = 1
-
-[node name="SkillTree" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=629654638 node_paths=PackedStringArray("label", "add", "remove")]
+[node name="SkillTree" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=629654638]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "toggle_skill_tree"
-display_name = "Skill Tree"
-label = NodePath("Label")
-add = NodePath("Add")
-remove = NodePath("Remove")
-
-[node name="Label" type="Label" parent="Controls/General/VBoxContainer/SkillTree" unique_id=85114444]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "Skill Tree"
-
-[node name="Add" type="Button" parent="Controls/General/VBoxContainer/SkillTree" unique_id=845831124]
-layout_mode = 2
-theme = ExtResource("2_w8ibl")
-text = "+"
-
-[node name="Remove" type="Button" parent="Controls/General/VBoxContainer/SkillTree" unique_id=1803428593]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme = ExtResource("1_nke8k")
-text = "-
-"
-icon_alignment = 1
+display_name = "SKILL TREE"
 
 [node name="Back" type="Button" parent="Controls" unique_id=1086883894 node_paths=PackedStringArray("node_to_replace")]
 layout_mode = 2
