@@ -89,6 +89,7 @@ text = "BACK
 icon_alignment = 1
 script = ExtResource("4_3kwj5")
 scene_file = "uid://cls12q06quifx"
+is_back_button = true
 
 [node name="Node2D" type="Node2D" parent="." unique_id=515543704]
 top_level = true

@@ -69,6 +69,7 @@ text = "BACK
 icon_alignment = 1
 script = ExtResource("2_77ypm")
 scene_file = "uid://cls12q06quifx"
+is_back_button = true
 
 [node name="MenuAudio" type="Node" parent="." unique_id=1655364472 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 script = ExtResource("8_003hq")

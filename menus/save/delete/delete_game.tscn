@@ -49,6 +49,7 @@ theme = ExtResource("3_u3frr")
 text = "Back"
 script = ExtResource("4_fevu8")
 scene_file = "uid://cls12q06quifx"
+is_back_button = true
 
 [node name="MenuAudio" type="Node" parent="." unique_id=1839128190 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 script = ExtResource("7_luhou")

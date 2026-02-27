@@ -5,6 +5,7 @@
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="3_7gaeb"]
 [ext_resource type="Script" uid="uid://pccpxg1y2tdf" path="res://menus/skip/skip.gd" id="4_e7s18"]
 [ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://menus/pause/restart.gd" id="5_0mtqa"]
+[ext_resource type="Script" uid="uid://v7rpg87oifq2" path="res://menus/options/resume.gd" id="5_e7s18"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="6_kiq5e"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="7_e7s18"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="9_nw3fp"]
@@ -50,6 +51,16 @@ text = "SKIP"
 icon_alignment = 1
 script = ExtResource("4_e7s18")
 SKIP_BUTTON = NodePath(".")
+
+[node name="Resume" type="Button" parent="Main" unique_id=769776267 node_paths=PackedStringArray("pause_toggler")]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("3_7gaeb")
+text = "RESUME"
+icon_alignment = 1
+script = ExtResource("5_e7s18")
+pause_toggler = NodePath("../..")
 
 [node name="Restart" type="Button" parent="Main" unique_id=1420508524]
 layout_mode = 2

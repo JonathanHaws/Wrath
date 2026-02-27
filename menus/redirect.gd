@@ -8,10 +8,10 @@ func grab_focus_when_visibility_changed() -> void:
 	call_deferred("grab_focus")
 
 func _unhandled_input(event: InputEvent) -> void:
-	if not is_back_button: return
+	if is_back_button and event.is_action_pressed("menu_back"): 
+		_on_pressed() 
 	if event.is_action_pressed("ui_cancel"):  
 		_on_pressed() 
-
 
 func _ready() -> void:
 
