@@ -106,7 +106,7 @@ func try_jump() -> void:
 @export var GRAVITY_STRENGTH: float = 4.0
 @export var GRAVITY_MULTIPLIER: float = 1.0
 @export var MAX_FALL_SPEED: float = 50.0 
-@export var DESCEND_MULTIPLIER: float = 2.0
+@export var DESCEND_MULTIPLIER: float = 5.0
 @export var LAND_EFFECTS_COOLDOWN: float = 0.24
 @export var STEP_UP_RAY: RayCast3D
 func get_fall_velocity(delta: float) -> Vector3:

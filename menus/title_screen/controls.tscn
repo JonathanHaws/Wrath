@@ -7,6 +7,8 @@
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="2_lbh2v"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_t88b0"]
 [ext_resource type="Script" uid="uid://d0y3kmnwe4g6k" path="res://menus/custom_control.gd" id="3_00uuv"]
+[ext_resource type="AudioStream" uid="uid://ckcjmp63iqneu" path="res://menus/sfx/Menu_Delete.ogg" id="3_t88b0"]
+[ext_resource type="AudioStream" uid="uid://bl2yh8xx8yn4s" path="res://menus/sfx/Menu_Load.ogg" id="5_t88b0"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="9_t88b0"]
 
 [node name="ColorRect" type="ColorRect" unique_id=951405758]
@@ -40,6 +42,29 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(267.25, 118)
 script = ExtResource("2_t88b0")
+
+[node name="DeleteSound" type="AudioStreamPlayer" parent="Controls" unique_id=452911105 groups=["control_delete_sound"]]
+stream = ExtResource("3_t88b0")
+volume_db = -6.0
+pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="AddSound" type="AudioStreamPlayer" parent="Controls" unique_id=1423230636 groups=["control_add_sound"]]
+stream = ExtResource("1_gksqo")
+volume_db = -4.0
+pitch_scale = 0.6
+bus = &"SFX"
+
+[node name="NewInputSound" type="AudioStreamPlayer" parent="Controls" unique_id=1735340853 groups=["control_new_input_sound"]]
+stream = ExtResource("1_gksqo")
+pitch_scale = 0.9
+bus = &"SFX"
+
+[node name="RestoreSound" type="AudioStreamPlayer" parent="Controls" unique_id=210790414 groups=["control_restore_sound"]]
+stream = ExtResource("5_t88b0")
+volume_db = -5.0
+pitch_scale = 0.9
+bus = &"SFX"
 
 [node name="Camera" type="FoldableContainer" parent="Controls" unique_id=698683463]
 layout_mode = 2
@@ -167,6 +192,13 @@ script = ExtResource("3_00uuv")
 action_name = "jump"
 display_name = "JUMP"
 
+[node name="Walk" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1702466736]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "walk"
+display_name = "WALK"
+
 [node name="Combat" type="FoldableContainer" parent="Controls" unique_id=1511240414]
 layout_mode = 2
 focus_neighbor_left = NodePath("VBoxContainer/Shoot")
@@ -199,6 +231,13 @@ size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "shoot"
 display_name = "SHOOT"
+
+[node name="Descend" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=761536034]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "descend"
+display_name = "DESCEND"
 
 [node name="General" type="FoldableContainer" parent="Controls" unique_id=527277962]
 layout_mode = 2
@@ -267,6 +306,6 @@ script = ExtResource("9_t88b0")
 SOUNDS = Array[AudioStream]([ExtResource("1_gksqo")])
 HOVER_SOUND = "Menu_Hover"
 PRESSED_SOUND = "Menu_Hover"
-HOVERED_BUTTONS = [NodePath("../Controls/Back")]
-PRESSED_BUTTONS = [NodePath("../Controls/Back")]
+HOVERED_BUTTONS = [NodePath("../Controls/Back"), NodePath("../Controls/Camera"), NodePath("../Controls/Movement"), NodePath("../Controls/Combat"), NodePath("../Controls/General")]
+PRESSED_BUTTONS = [NodePath("../Controls/Back"), NodePath("../Controls/Camera"), NodePath("../Controls/Movement"), NodePath("../Controls/Combat"), NodePath("../Controls/General")]
 ADD_TO_ROOT = true
