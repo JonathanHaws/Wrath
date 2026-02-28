@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://k2lit03sbiu0" path="res://menus/skill_tree/textures/Skill Images/Skills-7.png" id="10_g7gqr"]
 [ext_resource type="Texture2D" uid="uid://caga3p1qqekcr" path="res://menus/skill_tree/textures/Skill Images/Skills-1.png" id="10_mlmuh"]
 [ext_resource type="Texture2D" uid="uid://xw3jd85ytxqu" path="res://menus/skill_tree/textures/Progress/Envy.png" id="11_0gl5m"]
+[ext_resource type="Texture2D" uid="uid://cmews7lfin7r7" path="res://menus/skill_tree/textures/Skill Images/Focus.png" id="11_8iry6"]
 [ext_resource type="Texture2D" uid="uid://77ol03ius6rh" path="res://menus/skill_tree/textures/Progress/Pride.png" id="12_cqod1"]
 [ext_resource type="Texture2D" uid="uid://bcusr8k864bcv" path="res://menus/skill_tree/textures/Skill Images/Skills-9.png" id="12_ncvsq"]
 [ext_resource type="Texture2D" uid="uid://5ql648bpxoih" path="res://menus/skill_tree/textures/Skill Images/Skills-10.png" id="13_og45s"]
@@ -188,6 +189,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(640, 360)
+focus_mode = 2
 script = ExtResource("3_monbv")
 
 [node name="AlwaysVisible" type="Control" parent="TextureRect/PanZoom/Control" unique_id=262638]
@@ -486,13 +488,14 @@ end_cap_mode = 2
 
 [node name="Root" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=2059211064]
 layout_mode = 0
-offset_left = -381.0
-offset_top = -53.0
-offset_right = -253.0
-offset_bottom = 75.0
+offset_left = -394.0
+offset_top = -67.0
+offset_right = -234.0
+offset_bottom = 93.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("10_mlmuh")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 0
 upgrade_key = "max_health"
@@ -504,13 +507,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Health1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=989286291 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = -166.0
-offset_top = -145.0
-offset_right = -38.0
-offset_bottom = -17.0
+offset_left = -179.0
+offset_top = -159.0
+offset_right = -19.0
+offset_bottom = 1.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("10_g7gqr")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_health"
@@ -523,13 +527,13 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Health2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=617741630 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = -50.0
-offset_top = -146.0
-offset_right = 78.0
-offset_bottom = -18.0
+offset_left = -63.0
+offset_top = -160.0
+offset_right = 97.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("10_g7gqr")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_health"
@@ -542,13 +546,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Health3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1530933580 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 68.0
-offset_top = -148.0
-offset_right = 196.0
-offset_bottom = -20.0
+offset_left = 55.0
+offset_top = -162.0
+offset_right = 215.0
+offset_bottom = -2.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("12_ncvsq")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 20
 upgrade_key = "max_health"
@@ -561,13 +566,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Health4" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=418795439 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 180.0
-offset_top = -148.0
-offset_right = 308.0
-offset_bottom = -20.0
+offset_left = 167.0
+offset_top = -162.0
+offset_right = 327.0
+offset_bottom = -2.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("13_og45s")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "max_health"
@@ -580,13 +586,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Health5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1076724308 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 300.0
-offset_top = -147.0
-offset_right = 428.0
-offset_bottom = -19.0
+offset_left = 287.0
+offset_top = -161.0
+offset_right = 447.0
+offset_bottom = -1.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("14_t5yef")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "max_health"
@@ -599,13 +606,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Damage1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=696502459 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = -234.0
-offset_top = -49.0
-offset_right = -106.0
-offset_bottom = 79.0
+offset_left = -247.0
+offset_top = -63.0
+offset_right = -87.0
+offset_bottom = 97.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("15_i6b42")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "damage"
@@ -618,13 +626,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Damage2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1434864100 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = -111.0
-offset_top = -52.0
-offset_right = 17.0
-offset_bottom = 76.0
+offset_left = -124.0
+offset_top = -66.0
+offset_right = 36.0
+offset_bottom = 94.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("16_gfb6y")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 20
 upgrade_key = "damage"
@@ -637,13 +646,13 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Damage3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1358661405 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 13.0
-offset_top = -53.0
-offset_right = 141.0
-offset_bottom = 75.0
+offset_top = -67.0
+offset_right = 160.0
+offset_bottom = 93.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("17_kbgl2")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "damage"
@@ -656,13 +665,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Damage4" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=2099494119 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 131.0
-offset_top = -55.0
-offset_right = 259.0
-offset_bottom = 73.0
+offset_left = 118.0
+offset_top = -69.0
+offset_right = 278.0
+offset_bottom = 91.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("18_dj7o1")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 40
 upgrade_key = "damage"
@@ -675,13 +685,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Damage5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=393665130 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 251.0
-offset_top = -55.0
-offset_right = 379.0
-offset_bottom = 73.0
+offset_left = 238.0
+offset_top = -69.0
+offset_right = 398.0
+offset_bottom = 91.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("19_c2fwa")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 50
 upgrade_key = "damage"
@@ -694,13 +705,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Stamina1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1769906788 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = -287.0
-offset_top = 45.0
-offset_right = -159.0
-offset_bottom = 173.0
+offset_left = -300.0
+offset_top = 31.0
+offset_right = -140.0
+offset_bottom = 191.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("20_ynufy")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_stamina"
@@ -713,13 +725,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Stamina2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=195302398 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = -165.0
-offset_top = 45.0
-offset_right = -37.0
-offset_bottom = 173.0
+offset_left = -178.0
+offset_top = 31.0
+offset_right = -18.0
+offset_bottom = 191.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("21_yrhry")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_stamina"
@@ -732,13 +745,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Stamina3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1590350321 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = -40.0
-offset_top = 44.0
-offset_right = 88.0
-offset_bottom = 172.0
+offset_left = -53.0
+offset_top = 30.0
+offset_right = 107.0
+offset_bottom = 190.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("22_mlmuh")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_stamina"
@@ -751,13 +765,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Stamina4" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=141627404 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 84.0
-offset_top = 45.0
-offset_right = 212.0
-offset_bottom = 173.0
+offset_left = 71.0
+offset_top = 31.0
+offset_right = 231.0
+offset_bottom = 191.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("23_8iry6")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 20
 upgrade_key = "max_stamina"
@@ -770,13 +785,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Stamina5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1055730430 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 205.0
-offset_top = 48.0
-offset_right = 333.0
-offset_bottom = 176.0
+offset_left = 192.0
+offset_top = 34.0
+offset_right = 352.0
+offset_bottom = 194.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("24_irovk")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "max_stamina"
@@ -789,13 +805,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Heal1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1421657066 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 11.0
-offset_top = -240.0
-offset_right = 139.0
-offset_bottom = -112.0
+offset_left = -2.0
+offset_top = -254.0
+offset_right = 158.0
+offset_bottom = -94.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("25_mlmuh")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "heal_amount"
@@ -808,13 +825,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Heal2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1222075329 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 120.0
-offset_top = -241.0
-offset_right = 248.0
-offset_bottom = -113.0
+offset_left = 107.0
+offset_top = -255.0
+offset_right = 267.0
+offset_bottom = -95.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("26_8iry6")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "heal_amount"
@@ -827,13 +845,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Heal3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1542770186 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 237.0
-offset_top = -242.0
-offset_right = 365.0
-offset_bottom = -114.0
+offset_left = 224.0
+offset_top = -256.0
+offset_right = 384.0
+offset_bottom = -96.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("27_irovk")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 50
 upgrade_key = "heal_amount"
@@ -846,13 +865,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Heal5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1499729094 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 350.0
-offset_top = -242.0
-offset_right = 478.0
-offset_bottom = -114.0
+offset_left = 337.0
+offset_top = -256.0
+offset_right = 497.0
+offset_bottom = -96.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("29_q260o")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 50
 upgrade_key = "heal_amount"
@@ -865,13 +885,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Healing1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1794716747 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = -287.0
-offset_top = -150.0
-offset_right = -159.0
-offset_bottom = -22.0
+offset_left = -300.0
+offset_top = -164.0
+offset_right = -140.0
+offset_bottom = -4.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("25_0x486")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_heal_charges"
@@ -884,13 +905,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Healing2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1567615969 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = -211.0
-offset_top = -237.0
-offset_right = -83.0
-offset_bottom = -109.0
+offset_left = -224.0
+offset_top = -251.0
+offset_right = -64.0
+offset_bottom = -91.0
 scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(64, 64)
 texture_normal = ExtResource("26_q260o")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "max_heal_charges"
@@ -903,13 +925,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Healing3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=244929428 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = -99.0
-offset_top = -240.0
-offset_right = 29.0
-offset_bottom = -112.0
+offset_left = -112.0
+offset_top = -254.0
+offset_right = 48.0
+offset_bottom = -94.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("27_ew1w1")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "max_heal_charges"
@@ -922,13 +945,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Shooting1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1740089763 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = -212.0
-offset_top = 131.0
-offset_right = -84.0
-offset_bottom = 259.0
+offset_left = -225.0
+offset_top = 117.0
+offset_right = -65.0
+offset_bottom = 277.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("33_ew1w1")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "max_shooting_energy"
@@ -941,13 +965,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Shooting2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=91032018 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = -99.0
-offset_top = 134.0
-offset_right = 29.0
-offset_bottom = 262.0
+offset_left = -112.0
+offset_top = 120.0
+offset_right = 48.0
+offset_bottom = 280.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("34_1wrek")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "max_shooting_energy"
@@ -960,13 +985,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Shooting3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=845054454 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 22.0
-offset_top = 135.0
-offset_right = 150.0
-offset_bottom = 263.0
+offset_left = 9.0
+offset_top = 121.0
+offset_right = 169.0
+offset_bottom = 281.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("35_qixc4")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 50
 upgrade_key = "max_shooting_energy"
@@ -979,13 +1005,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Shoot1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=55361770 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 140.0
-offset_top = 133.0
-offset_right = 268.0
-offset_bottom = 261.0
+offset_left = 127.0
+offset_top = 119.0
+offset_right = 287.0
+offset_bottom = 279.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("36_tj72h")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 10
 upgrade_key = "shoot_damage"
@@ -998,13 +1025,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Shoot2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=843346763 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 260.0
-offset_top = 133.0
-offset_right = 388.0
-offset_bottom = 261.0
+offset_left = 247.0
+offset_top = 119.0
+offset_right = 407.0
+offset_bottom = 279.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("37_my0po")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 20
 upgrade_key = "shoot_damage"
@@ -1017,13 +1045,14 @@ normal_scale = Vector2(0.5, 0.5)
 
 [node name="Shoot3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1364290635 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
-offset_left = 316.0
-offset_top = 47.0
-offset_right = 444.0
-offset_bottom = 175.0
+offset_left = 303.0
+offset_top = 33.0
+offset_right = 463.0
+offset_bottom = 193.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(64, 64)
+pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("38_o5bp0")
+texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 cost = 30
 upgrade_key = "shoot_damage"
@@ -1062,7 +1091,9 @@ offset_top = -342.0
 offset_right = 658.0
 offset_bottom = -86.0
 pivot_offset = Vector2(130.16, 126.01)
+focus_mode = 0
 texture_normal = ExtResource("5_y257w")
+texture_focused = ExtResource("11_8iry6")
 texture_click_mask = ExtResource("29_6pdds")
 script = ExtResource("5_n1vdw")
 currency_key = ""
@@ -1075,7 +1106,9 @@ offset_top = -342.0
 offset_right = 658.0
 offset_bottom = -86.0
 pivot_offset = Vector2(130.16, 126.01)
+focus_mode = 0
 texture_normal = ExtResource("7_x7g2o")
+texture_focused = ExtResource("11_8iry6")
 texture_click_mask = ExtResource("31_5y3ua")
 script = ExtResource("5_n1vdw")
 currency_key = ""
@@ -1088,7 +1121,9 @@ offset_top = -342.0
 offset_right = 658.0
 offset_bottom = -86.0
 pivot_offset = Vector2(130.16, 126.01)
+focus_mode = 0
 texture_normal = ExtResource("8_fxm8d")
+texture_focused = ExtResource("11_8iry6")
 texture_click_mask = ExtResource("33_5y3ua")
 script = ExtResource("5_n1vdw")
 currency_key = ""
@@ -1101,6 +1136,7 @@ offset_top = -342.0
 offset_right = 658.0
 offset_bottom = -86.0
 pivot_offset = Vector2(130.16, 126.01)
+focus_mode = 0
 texture_normal = ExtResource("9_fq5i0")
 texture_click_mask = ExtResource("35_3w8ju")
 script = ExtResource("5_n1vdw")
@@ -1114,6 +1150,7 @@ offset_top = -343.0
 offset_right = 657.0
 offset_bottom = -87.0
 pivot_offset = Vector2(130.16, 126.01)
+focus_mode = 0
 texture_normal = ExtResource("10_1lfrl")
 texture_click_mask = ExtResource("37_g7gqr")
 script = ExtResource("5_n1vdw")
@@ -1127,6 +1164,7 @@ offset_top = -342.0
 offset_right = 657.0
 offset_bottom = -86.0
 pivot_offset = Vector2(130.16, 126.01)
+focus_mode = 0
 texture_normal = ExtResource("11_0gl5m")
 texture_click_mask = ExtResource("39_ncvsq")
 script = ExtResource("5_n1vdw")
@@ -1140,6 +1178,7 @@ offset_top = -342.0
 offset_right = 657.0
 offset_bottom = -86.0
 pivot_offset = Vector2(130.16, 126.01)
+focus_mode = 0
 texture_normal = ExtResource("12_cqod1")
 texture_click_mask = ExtResource("35_odw3s")
 script = ExtResource("5_n1vdw")
