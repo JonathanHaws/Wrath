@@ -1,5 +1,5 @@
 extends Control
-@export var speed: float = 500.0
+@export var speed: float = 300.0
 @export var controller_zoom_speed: float = 0.01
 @export var min_zoom: float = 0.5
 @export var max_zoom: float = 1.5
@@ -57,7 +57,7 @@ func _process(delta: float) -> void:
 	elif Input.is_action_just_released("zoom_out"): adjust_zoom(0.9)
 
 	var axis_value: float = Input.get_axis("controller_zoom_in", "controller_zoom_out")
-	if abs(axis_value) > 0.4:  # dead zone
+	if abs(axis_value) > 0.8:  # dead zone
 		adjust_zoom(1.0 - axis_value * controller_zoom_speed)
 
 	if Input.is_action_pressed("pan"):
