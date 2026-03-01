@@ -1,18 +1,19 @@
-[gd_scene load_steps=6 format=3 uid="uid://bchlq7ojvre5o"]
+[gd_scene format=3 uid="uid://bchlq7ojvre5o"]
 
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_jkjqm"]
 [ext_resource type="Script" uid="uid://60mgdw58o7o0" path="res://menus/save/profile/profile.gd" id="2_egniv"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="3_8a5x8"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="3_s3ewt"]
 [ext_resource type="AudioStream" uid="uid://bl2yh8xx8yn4s" path="res://menus/sfx/Menu_Load.ogg" id="5_0fgso"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="6_lofat"]
 
-[node name="Button" type="Button"]
+[node name="Button" type="Button" unique_id=320115392]
 offset_right = 8.0
 offset_bottom = 8.0
 theme = ExtResource("1_jkjqm")
 script = ExtResource("2_egniv")
 
-[node name="MenuAudio" type="Node" parent="." node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+[node name="MenuAudio" type="Node" parent="." unique_id=62790456 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 script = ExtResource("3_s3ewt")
 SOUNDS = Array[AudioStream]([ExtResource("3_8a5x8"), ExtResource("5_0fgso")])
 HOVER_SOUND = "Menu_Hover"
@@ -20,3 +21,7 @@ PRESSED_SOUND = "Menu_Load"
 HOVERED_BUTTONS = [NodePath("..")]
 PRESSED_BUTTONS = [NodePath("..")]
 ADD_TO_ROOT = true
+
+[node name="GrabFocus" type="Node" parent="." unique_id=888700552 node_paths=PackedStringArray("focus_targets")]
+script = ExtResource("6_lofat")
+focus_targets = [NodePath("..")]

@@ -60,7 +60,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="GrabFocus" type="Node" parent="." unique_id=1533278927 node_paths=PackedStringArray("focus_targets")]
 script = ExtResource("1_044tn")
-focus_targets = [NodePath("../CenterContainer")]
+focus_targets = [NodePath("../CenterContainer/New/LineEdit")]
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=571680029 groups=["ui_scalable"]]
 layout_mode = 1

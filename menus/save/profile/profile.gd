@@ -46,6 +46,4 @@ func format_profile(data: Dictionary) -> void:
 	if "play_time" in data:
 		text += format_time(data["play_time"])
 
-func _ready() -> void:
-	call_deferred("grab_focus")
 	
