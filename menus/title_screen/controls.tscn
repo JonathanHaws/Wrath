@@ -241,7 +241,6 @@ display_name = "DESCEND"
 
 [node name="General" type="FoldableContainer" parent="Controls" unique_id=527277962]
 layout_mode = 2
-focus_neighbor_left = NodePath("VBoxContainer/SkillTree")
 focus_neighbor_right = NodePath("VBoxContainer/Interact")
 folded = true
 title = "GENERAL"
@@ -278,13 +277,6 @@ size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "rest"
 display_name = "REST"
-
-[node name="SkillTree" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=629654638]
-layout_mode = 2
-size_flags_horizontal = 4
-script = ExtResource("3_00uuv")
-action_name = "toggle_skill_tree"
-display_name = "SKILL TREE"
 
 [node name="Back" type="Button" parent="Controls" unique_id=1086883894 node_paths=PackedStringArray("node_to_replace")]
 layout_mode = 2

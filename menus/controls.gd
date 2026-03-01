@@ -90,7 +90,6 @@ func load_action_settings() -> void:
 		"dash", 
 		"rest", 
 		"interact", 
-		"toggle_skill_tree"
 		]
 	for action in actions: load_action_setting(action)
 

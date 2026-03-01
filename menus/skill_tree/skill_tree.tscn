@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dtb4vhbly0gp5" path="res://menus/skill_tree/skill_tree_toggle.gd" id="1_13hwl"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_iiq8l"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="2_irovk"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="3_monbv"]
 [ext_resource type="Texture2D" uid="uid://rj52h8jq1tcw" path="res://menus/skill_tree/textures/Progress/Progress Background.png" id="4_lts1r"]
 [ext_resource type="Script" uid="uid://hf3odyswfp0p" path="res://menus/skill_tree/skill.gd" id="5_n1vdw"]
@@ -135,6 +136,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_13hwl")
 skill_tree_ui = NodePath(".")
+
+[node name="GrabFocus" type="Node" parent="." unique_id=1584314649 node_paths=PackedStringArray("focus_target")]
+script = ExtResource("2_irovk")
+focus_target = NodePath("../TextureRect/PanZoom/Control/Skill Tree/Root")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1063797725]
 layout_mode = 1

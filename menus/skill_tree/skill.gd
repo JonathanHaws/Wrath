@@ -22,10 +22,7 @@ func setup_focus():
 		if prerequisite_node.focus_neighbor_right.is_empty() or prerequisite_node.focus_neighbor_right == p:
 			prerequisite_node.focus_neighbor_right = get_path()
 		focus_neighbor_left = p
-func _on_visibility_changed() -> void:
-	if focus_mode == Control.FOCUS_NONE: return
-	release_focus()
-	grab_focus.call_deferred()
+
 
 @export_group("VISUALS")
 @export_subgroup("INFO")
@@ -58,6 +55,7 @@ func tween_scale_down_on_exit():
 @export var insufficient_funds_sound_group: String = "skill_insufficent_funds_sound" ## Sound to be played when declined.
 @export var purchased_sound_group: String = "skill_purchased_sound_group_sound" ## Sound to be played when skill is bought.
 func play_group_sound(group_name: String) -> void:
+	if not is_visible_in_tree(): return
 	for node in get_tree().get_nodes_in_group(group_name):
 		if node is AudioStreamPlayer: node.play()
 
@@ -88,7 +86,6 @@ func _ready():
 	mouse_exited.connect(apply_base_modulate)
 	Save.save_data_updated.connect(apply_base_modulate)
 	
-	connect("visibility_changed", _on_visibility_changed)
 	setup_focus()
 	
 func _on_pressed():
