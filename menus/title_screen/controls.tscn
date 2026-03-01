@@ -74,7 +74,7 @@ focus_targets = [NodePath("../Camera")]
 
 [node name="Camera" type="FoldableContainer" parent="Controls" unique_id=698683463]
 layout_mode = 2
-focus_neighbor_left = NodePath("VBoxContainer/LockOn")
+focus_neighbor_left = NodePath("VBoxContainer/ControllerSensitivity/HSlider")
 focus_neighbor_right = NodePath("VBoxContainer/ControllerSensitivity/HSlider")
 folded = true
 title = "CAMERA"
@@ -153,8 +153,6 @@ display_name = "LOCK ON"
 
 [node name="Movement" type="FoldableContainer" parent="Controls" unique_id=1673508977]
 layout_mode = 2
-focus_neighbor_left = NodePath("VBoxContainer/Jump")
-focus_neighbor_right = NodePath("VBoxContainer/Forward")
 folded = true
 title = "MOVEMENT"
 title_alignment = 1
@@ -163,16 +161,18 @@ title_alignment = 1
 visible = false
 layout_mode = 2
 
-[node name="Forward" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1563587344]
+[node name="Forward" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1563587344 node_paths=PackedStringArray("focus_top")]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "keyboard_forward"
 display_name = "FORWARD"
+focus_top = NodePath("../..")
 
 [node name="Backward" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1133384638]
 layout_mode = 2
 size_flags_horizontal = 4
+focus_mode = 2
 script = ExtResource("3_00uuv")
 action_name = "keyboard_back"
 display_name = "BACKWARD"
@@ -198,17 +198,16 @@ script = ExtResource("3_00uuv")
 action_name = "jump"
 display_name = "JUMP"
 
-[node name="Walk" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1702466736]
+[node name="Walk" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1702466736 node_paths=PackedStringArray("focus_bottom")]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "walk"
 display_name = "WALK"
+focus_bottom = NodePath("../../../Combat")
 
 [node name="Combat" type="FoldableContainer" parent="Controls" unique_id=1511240414]
 layout_mode = 2
-focus_neighbor_left = NodePath("VBoxContainer/Shoot")
-focus_neighbor_right = NodePath("VBoxContainer/Attack")
 folded = true
 title = "COMBAT"
 title_alignment = 1
@@ -217,12 +216,13 @@ title_alignment = 1
 visible = false
 layout_mode = 2
 
-[node name="Attack" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=1391514407]
+[node name="Attack" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=1391514407 node_paths=PackedStringArray("focus_top")]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "attack"
 display_name = "ATTACK"
+focus_top = NodePath("../..")
 
 [node name="Block" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=1034567462]
 layout_mode = 2
@@ -247,7 +247,6 @@ display_name = "DESCEND"
 
 [node name="General" type="FoldableContainer" parent="Controls" unique_id=527277962]
 layout_mode = 2
-focus_neighbor_right = NodePath("VBoxContainer/Interact")
 folded = true
 title = "GENERAL"
 title_alignment = 1
@@ -256,12 +255,13 @@ title_alignment = 1
 visible = false
 layout_mode = 2
 
-[node name="Interact" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1982470625]
+[node name="Interact" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1982470625 node_paths=PackedStringArray("focus_top")]
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "interact"
 display_name = "INTERACT"
+focus_top = NodePath("../..")
 
 [node name="Heal" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1705924091]
 layout_mode = 2

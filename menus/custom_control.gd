@@ -12,13 +12,16 @@ func play_group_sound(group_name: String) -> void:
 var waiting_for_new: bool = false
 var last_pressed_event: InputEvent = null
 
+@export var focus_top: Node
+@export var focus_bottom: Node
+
 func _input(event: InputEvent) -> void:
 	if waiting_for_new and event.is_pressed():
 		get_viewport().set_input_as_handled()
 		InputMap.action_add_event(action_name, event)
 		last_pressed_event = event
 		waiting_for_new = false
-		refresh_ui()
+		refresh_ui(true, 1)
 		Controls.save_action_setting(action_name)
 		play_group_sound(new_input_sound_group)
 
@@ -27,8 +30,8 @@ func create_delete_button(event: InputEvent) -> Button:
 	create_button.text = Controls.get_string_from_event(event)
 	create_button.pressed.connect(func() -> void:
 		InputMap.action_erase_event(action_name, event)   
-		create_button.queue_free()
 		Controls.save_action_setting(action_name)
+		refresh_ui(true, 1)
 		play_group_sound(deleted_sound_group)
 		)
 	return create_button
@@ -51,13 +54,34 @@ func create_restore_button() -> Button:
 			InputMap.action_erase_event(action_name, event)
 		for event in ProjectSettings.get_setting("input/" + action_name)["events"]:
 			InputMap.action_add_event(action_name, event)
-		refresh_ui()
+		refresh_ui(true, 0)
 		Controls.save_action_setting(action_name)
 		play_group_sound(restore_sound_group)
 	)
 	return restore_button
 
-func refresh_ui():
+func update_focus() -> void:
+	for i in range(1, container.get_child_count()): # skip index 0 (label)
+		var button: Control = container.get_child(i)
+		button.focus_neighbor_left = button.get_path()
+		button.focus_neighbor_right = button.get_path()
+		button.focus_next = button.get_path()
+		button.focus_previous = button.get_path()
+		#button.focus_neighbor_top = button.get_path()
+		#button.focus_neighbor_bottom = button.get_path()
+		
+		if i > 1:button.focus_neighbor_left = container.get_child(i - 1).get_path()
+		if i < container.get_child_count() - 1: button.focus_neighbor_right = container.get_child(i + 1).get_path()
+	
+		if focus_bottom: button.focus_neighbor_bottom = focus_bottom.get_path()
+	
+		if focus_top: 
+			button.focus_neighbor_top = focus_top.get_path()
+			focus_top.focus_neighbor_left = container.get_child(1).get_path()
+			focus_top.focus_neighbor_right = container.get_child(1).get_path()
+		
+func refresh_ui(grab_focus: bool = false, focus_index_from_end: int = 1) -> void:
+	
 	for child in container.get_children(): child.queue_free()
 	
 	var title: Label = Label.new()   
@@ -68,6 +92,13 @@ func refresh_ui():
 		container.add_child(create_delete_button(event))	
 	container.add_child(create_add_button())
 	container.add_child(create_restore_button())
+	
+	if grab_focus and container.get_child_count() > 1:
+		var target_index = container.get_child_count() - (focus_index_from_end + 1)
+		if target_index > 0: container.get_child(target_index).grab_focus()
+	await get_tree().process_frame 	# Must await for queue free() and add_child() to complete
+	await get_tree().physics_frame 	# Or else old buttons might mess up focus web.
+	update_focus() # Or new buttons might not be added yet so new focus web won't complete
 
 func _ready() -> void:
 
