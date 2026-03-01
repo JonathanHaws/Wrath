@@ -1,6 +1,5 @@
-extends Node
+extends Control
 @export var focus_targets: Array[Control]
-#@export var focus_group: String = "focus_nodes" 	## Make it so when exiting from tree call apply focus on other grab focus nodes
 
 func _apply_focus() -> void:
 	for target in focus_targets:
@@ -15,13 +14,9 @@ func _ready() -> void:
 		target.visibility_changed.connect(_apply_focus)
 	_apply_focus()
 
-#func _exit_tree() -> void:
-	### Make it so when exiting from tree call apply focus on other grab focus nodes
-	##var focus_owner: Control = get_viewport().gui_get_focus_owner()
-	##if focus_owner == null:
-		##return
-	#
-	#for node in get_tree().get_nodes_in_group(focus_group):
-		#if node != self and node.has_method("_apply_focus"):
-			#print('test')
-			#node.call_deferred("_apply_focus")
+# Poll to ensure focus is always available for controller players
+func _process(_delta: float) -> void: 
+	if not is_visible_in_tree(): return
+	var focus_owner: Control = get_viewport().gui_get_focus_owner()
+	if not is_instance_valid(focus_owner):
+		_apply_focus()	

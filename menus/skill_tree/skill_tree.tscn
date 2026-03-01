@@ -137,7 +137,8 @@ grow_vertical = 2
 script = ExtResource("1_13hwl")
 skill_tree_ui = NodePath(".")
 
-[node name="GrabFocus" type="Node" parent="." unique_id=1584314649 node_paths=PackedStringArray("focus_targets")]
+[node name="GrabFocus" type="Control" parent="." unique_id=311804854 node_paths=PackedStringArray("focus_targets")]
+anchors_preset = 0
 script = ExtResource("2_irovk")
 focus_targets = [NodePath("../TextureRect/PanZoom/Control/Skill Tree/Root")]
 

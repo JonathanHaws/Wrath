@@ -43,7 +43,8 @@ pivot_offset = Vector2(48, 94)
 alignment = 1
 script = ExtResource("2_gwfjr")
 
-[node name="GrabFocus" type="Node" parent="Main" unique_id=1462835170 node_paths=PackedStringArray("focus_targets")]
+[node name="GrabFocus" type="Control" parent="Main" unique_id=251907550 node_paths=PackedStringArray("focus_targets")]
+layout_mode = 2
 script = ExtResource("3_x7iio")
 focus_targets = [NodePath("../Skip"), NodePath("../Resume")]
 

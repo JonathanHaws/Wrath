@@ -88,7 +88,8 @@ layout_mode = 2
 alignment = 1
 script = ExtResource("1_gkebh")
 
-[node name="GrabFocus" type="Node" parent="CenterContainer/Main" unique_id=234474360 node_paths=PackedStringArray("focus_targets")]
+[node name="GrabFocus" type="Control" parent="CenterContainer/Main" unique_id=1752781579 node_paths=PackedStringArray("focus_targets")]
+layout_mode = 2
 script = ExtResource("2_k2sbj")
 focus_targets = [NodePath("../Continue"), NodePath("../NewGame")]
 

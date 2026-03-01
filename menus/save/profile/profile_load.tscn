@@ -22,6 +22,7 @@ HOVERED_BUTTONS = [NodePath("..")]
 PRESSED_BUTTONS = [NodePath("..")]
 ADD_TO_ROOT = true
 
-[node name="GrabFocus" type="Node" parent="." unique_id=888700552 node_paths=PackedStringArray("focus_targets")]
+[node name="GrabFocus" type="Control" parent="." unique_id=135303956 node_paths=PackedStringArray("focus_targets")]
+anchors_preset = 0
 script = ExtResource("6_lofat")
 focus_targets = [NodePath("..")]

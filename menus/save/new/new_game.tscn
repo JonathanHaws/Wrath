@@ -58,7 +58,8 @@ size_flags_vertical = 3
 color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
 metadata/_edit_use_anchors_ = true
 
-[node name="GrabFocus" type="Node" parent="." unique_id=1533278927 node_paths=PackedStringArray("focus_targets")]
+[node name="GrabFocus" type="Control" parent="." unique_id=843432636 node_paths=PackedStringArray("focus_targets")]
+anchors_preset = 0
 script = ExtResource("1_044tn")
 focus_targets = [NodePath("../CenterContainer/New/LineEdit")]
 

@@ -177,7 +177,8 @@ size_flags_vertical = 8
 mouse_filter = 2
 script = ExtResource("2_xbol6")
 
-[node name="GrabFocus" type="Node" parent="Options" unique_id=704234029 node_paths=PackedStringArray("focus_targets")]
+[node name="GrabFocus" type="Control" parent="Options" unique_id=802723767 node_paths=PackedStringArray("focus_targets")]
+layout_mode = 2
 script = ExtResource("3_gcusp")
 focus_targets = [NodePath("../Choice1")]
 

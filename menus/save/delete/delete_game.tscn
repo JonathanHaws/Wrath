@@ -44,7 +44,8 @@ layout_mode = 2
 script = ExtResource("1_3evui")
 profile_scene = ExtResource("3_luhou")
 
-[node name="GrabFocus" type="Node" parent="CenterContainer/Delete" unique_id=1673255497 node_paths=PackedStringArray("focus_targets")]
+[node name="GrabFocus" type="Control" parent="CenterContainer/Delete" unique_id=375029155 node_paths=PackedStringArray("focus_targets")]
+layout_mode = 2
 script = ExtResource("4_luhou")
 focus_targets = [NodePath("../Back")]
 

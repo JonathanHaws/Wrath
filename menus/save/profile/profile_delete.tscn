@@ -5,8 +5,9 @@
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="3_vlxqh"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="4_top0u"]
 [ext_resource type="AudioStream" uid="uid://ckcjmp63iqneu" path="res://menus/sfx/Menu_Delete.ogg" id="5_oii82"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="6_sge7k"]
 
-[node name="Button" type="Button" unique_id=1120109589]
+[node name="Button" type="Button" unique_id=1120109589 groups=["profile"]]
 offset_right = 8.0
 offset_bottom = 8.0
 theme = ExtResource("1_oii82")
@@ -20,3 +21,8 @@ PRESSED_SOUND = "Menu_Delete"
 HOVERED_BUTTONS = [NodePath("..")]
 PRESSED_BUTTONS = [NodePath("..")]
 ADD_TO_ROOT = true
+
+[node name="GrabFocus" type="Control" parent="." unique_id=1930533439 node_paths=PackedStringArray("focus_targets")]
+anchors_preset = 0
+script = ExtResource("6_sge7k")
+focus_targets = [NodePath("..")]

@@ -74,16 +74,6 @@ fade_to_black_spawner = NodePath("../../Node2D")
 script = ExtResource("4_oirw8")
 focus_targets = [NodePath("../Back")]
 
-[node name="Continue" type="Button" parent="CenterContainer/Load" unique_id=658150579]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 4
-theme = ExtResource("3_opbiq")
-text = "CONTINUE
-"
-icon_alignment = 1
-script = ExtResource("4_3kwj5")
-
 [node name="Back" type="Button" parent="CenterContainer/Load" unique_id=750394385]
 layout_mode = 2
 size_flags_horizontal = 4

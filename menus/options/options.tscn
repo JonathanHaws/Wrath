@@ -27,7 +27,8 @@ color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
 script = ExtResource("2_js3u0")
 metadata/_edit_use_anchors_ = true
 
-[node name="GrabFocus" type="Node" parent="." unique_id=1077363496 node_paths=PackedStringArray("focus_targets")]
+[node name="GrabFocus" type="Control" parent="." unique_id=463581446 node_paths=PackedStringArray("focus_targets")]
+anchors_preset = 0
 script = ExtResource("3_p4i2r")
 focus_targets = [NodePath("../Options/Master/HSlider")]
 

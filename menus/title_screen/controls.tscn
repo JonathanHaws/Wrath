@@ -44,10 +44,6 @@ grow_vertical = 2
 pivot_offset = Vector2(267.25, 118)
 script = ExtResource("2_t88b0")
 
-[node name="GrabFocus" type="Node" parent="Controls" unique_id=1624931768 node_paths=PackedStringArray("focus_targets")]
-script = ExtResource("4_44vjs")
-focus_targets = [NodePath("../Camera")]
-
 [node name="DeleteSound" type="AudioStreamPlayer" parent="Controls" unique_id=452911105 groups=["control_delete_sound"]]
 stream = ExtResource("3_t88b0")
 volume_db = -6.0
@@ -70,6 +66,11 @@ stream = ExtResource("5_t88b0")
 volume_db = -5.0
 pitch_scale = 0.9
 bus = &"SFX"
+
+[node name="GrabFocus" type="Control" parent="Controls" unique_id=717115006 node_paths=PackedStringArray("focus_targets")]
+layout_mode = 2
+script = ExtResource("4_44vjs")
+focus_targets = [NodePath("../Camera")]
 
 [node name="Camera" type="FoldableContainer" parent="Controls" unique_id=698683463]
 layout_mode = 2

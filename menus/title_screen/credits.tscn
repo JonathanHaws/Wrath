@@ -71,7 +71,8 @@ script = ExtResource("2_77ypm")
 scene_file = "uid://cls12q06quifx"
 is_back_button = true
 
-[node name="GrabFocus" type="Node" parent="CenterContainer/VboxContainer" unique_id=54975552 node_paths=PackedStringArray("focus_targets")]
+[node name="GrabFocus" type="Control" parent="CenterContainer/VboxContainer" unique_id=1609319606 node_paths=PackedStringArray("focus_targets")]
+layout_mode = 2
 script = ExtResource("1_hyvu0")
 focus_targets = [NodePath("../Back")]
 

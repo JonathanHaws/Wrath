@@ -23,7 +23,6 @@ func setup_focus():
 			prerequisite_node.focus_neighbor_right = get_path()
 		focus_neighbor_left = p
 
-
 @export_group("VISUALS")
 @export_subgroup("INFO")
 @export var cost_group:= "cost_skilltree" ## Label to update with cost of current skill node hovered
