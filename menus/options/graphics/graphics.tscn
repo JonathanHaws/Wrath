@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://menus/pause/toggle.gd" id="1_j3qnb"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_ll3a5"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_oc2qo"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="3_air7c"]
 [ext_resource type="Script" uid="uid://cxj1escn8txf7" path="res://menus/options/graphics/graphics_setting.gd" id="4_m8m6k"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="5_wtdqe"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="6_684si"]
@@ -35,6 +36,10 @@ offset_left = 18.0
 offset_top = 11.0
 offset_right = 127.0
 offset_bottom = 287.0
+
+[node name="GrabFocus" type="Node" parent="ColorRect/VBoxContainer" unique_id=1538293220 node_paths=PackedStringArray("focus_targets")]
+script = ExtResource("3_air7c")
+focus_targets = [NodePath("../Brightness/HSlider")]
 
 [node name="Brightness" type="Label" parent="ColorRect/VBoxContainer" unique_id=1539021332]
 layout_mode = 2

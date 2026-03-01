@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_t88b0"]
 [ext_resource type="Script" uid="uid://d0y3kmnwe4g6k" path="res://menus/custom_control.gd" id="3_00uuv"]
 [ext_resource type="AudioStream" uid="uid://ckcjmp63iqneu" path="res://menus/sfx/Menu_Delete.ogg" id="3_t88b0"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="4_44vjs"]
 [ext_resource type="AudioStream" uid="uid://bl2yh8xx8yn4s" path="res://menus/sfx/Menu_Load.ogg" id="5_t88b0"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="9_t88b0"]
 
@@ -42,6 +43,10 @@ grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(267.25, 118)
 script = ExtResource("2_t88b0")
+
+[node name="GrabFocus" type="Node" parent="Controls" unique_id=1624931768 node_paths=PackedStringArray("focus_targets")]
+script = ExtResource("4_44vjs")
+focus_targets = [NodePath("../Camera")]
 
 [node name="DeleteSound" type="AudioStreamPlayer" parent="Controls" unique_id=452911105 groups=["control_delete_sound"]]
 stream = ExtResource("3_t88b0")

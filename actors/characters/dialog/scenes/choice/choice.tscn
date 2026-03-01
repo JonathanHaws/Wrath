@@ -3,6 +3,7 @@
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="1_jcgki"]
 [ext_resource type="Script" uid="uid://c3dab6kjxg0ua" path="res://actors/characters/dialog/scenes/choice/choice.gd" id="1_sx31n"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_xbol6"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="3_gcusp"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="5_iphix"]
 [ext_resource type="AudioStream" uid="uid://cv08lxjw3rypc" path="res://actors/characters/player/sfx/Jump.wav" id="6_iphix"]
 
@@ -175,6 +176,10 @@ size_flags_horizontal = 4
 size_flags_vertical = 8
 mouse_filter = 2
 script = ExtResource("2_xbol6")
+
+[node name="GrabFocus" type="Node" parent="Options" unique_id=704234029 node_paths=PackedStringArray("focus_targets")]
+script = ExtResource("3_gcusp")
+focus_targets = [NodePath("../Choice1")]
 
 [node name="Choice1" type="Button" parent="Options" unique_id=2014382057]
 modulate = Color(1, 1, 1, 0)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://5n4cvh6cqc4p"]
+[gd_scene format=3 uid="uid://5n4cvh6cqc4p"]
 
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://stages/lighting/enviroment.tscn" id="2_i1vh2"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://actors/props/weather/weather.tscn" id="3_5o1fx"]
@@ -35,6 +35,7 @@ animation = &"Burn_1"
 animation = &"Spin"
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_gclgv"]
+nodes/output/position = Vector2(560, 360)
 nodes/Add2/node = SubResource("AnimationNodeAdd2_q6mxo")
 nodes/Add2/position = Vector2(60, 300)
 "nodes/Add2 2/node" = SubResource("AnimationNodeAdd2_ses4i")
@@ -45,8 +46,7 @@ nodes/Animation/position = Vector2(-220, 440)
 "nodes/Animation 2/position" = Vector2(-120, 240)
 "nodes/Animation 3/node" = SubResource("AnimationNodeAnimation_6nidi")
 "nodes/Animation 3/position" = Vector2(40, 560)
-nodes/output/position = Vector2(560, 360)
-node_connections = [&"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Animation 3", &"output", 0, &"Add2 2"]
+node_connections = [&"output", 0, &"Add2 2", &"Add2", 0, &"Animation 2", &"Add2", 1, &"Animation", &"Add2 2", 0, &"Add2", &"Add2 2", 1, &"Animation 3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1waye"]
 size = Vector3(22.0024, 14.7581, 7.83386)
@@ -251,33 +251,33 @@ _data = {
 &"RESET": SubResource("Animation_ses4i")
 }
 
-[node name="Main" type="Node3D"]
+[node name="Main" type="Node3D" unique_id=865586989]
 
-[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=493935001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D" unique_id=1178742419]
 material_override = ExtResource("11_0yniq")
 use_collision = true
 
-[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=844086152]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0601807, 9.93213, -2.54907)
 flip_faces = true
 size = Vector3(46, 20, 65)
 
-[node name="Enviroment" type="Node" parent="."]
+[node name="Enviroment" type="Node" parent="." unique_id=2993162]
 
-[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("2_i1vh2")]
+[node name="WorldEnvironment" parent="Enviroment" unique_id=1415555367 instance=ExtResource("2_i1vh2")]
 
-[node name="Weather" parent="Enviroment" instance=ExtResource("3_5o1fx")]
+[node name="Weather" parent="Enviroment" unique_id=792846156 instance=ExtResource("3_5o1fx")]
 
-[node name="Lights" type="Node" parent="Enviroment"]
+[node name="Lights" type="Node" parent="Enviroment" unique_id=2068991675]
 
-[node name="Lights" type="Node3D" parent="Enviroment/Lights"]
+[node name="Lights" type="Node3D" parent="Enviroment/Lights" unique_id=901679521]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights"]
+[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights" unique_id=458600423]
 transform = Transform3D(-0.863752, 0.338228, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528203, 6.96341, 1.1386, -1.43818)
 light_color = Color(0.29, 0.29, 0.29, 1)
 light_energy = 100.0
@@ -286,38 +286,38 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.2
 omni_range = 101.01
 
-[node name="Portal Light" type="OmniLight3D" parent="Enviroment/Lights"]
+[node name="Portal Light" type="OmniLight3D" parent="Enviroment/Lights" unique_id=1114010829]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.30496, 26.0057)
 light_color = Color(0.294299, 0.67518, 0.743146, 1)
 light_energy = 15.0
 omni_range = 45.0382
 
-[node name="Portal Light2" type="OmniLight3D" parent="Enviroment/Lights"]
+[node name="Portal Light2" type="OmniLight3D" parent="Enviroment/Lights" unique_id=1973448275]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2085, -0.765566, 26.0057)
 light_color = Color(0.294299, 0.67518, 0.743146, 1)
 light_energy = 2.0
 omni_range = 45.0382
 
-[node name="Portal Light3" type="OmniLight3D" parent="Enviroment/Lights"]
+[node name="Portal Light3" type="OmniLight3D" parent="Enviroment/Lights" unique_id=311792838]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.34703, -0.765566, 26.0057)
 light_color = Color(0.294299, 0.67518, 0.743146, 1)
 light_energy = 2.0
 omni_range = 45.0382
 
-[node name="FloorMesh" type="MeshInstance3D" parent="Enviroment"]
+[node name="FloorMesh" type="MeshInstance3D" parent="Enviroment" unique_id=1341894401]
 transform = Transform3D(56.136, 0, 0, 0, 1, 0, 0, 0, 82.5, 0, -9.55002, 0)
 material_override = ExtResource("10_0jji2")
 mesh = SubResource("BoxMesh_cr866")
 skeleton = NodePath("../..")
 
-[node name="Interactables" type="Node" parent="."]
+[node name="Interactables" type="Node" parent="." unique_id=959817675]
 
-[node name="Enter" parent="." instance=ExtResource("8_bgvw0")]
+[node name="Enter" parent="." unique_id=214307958 instance=ExtResource("8_bgvw0")]
 transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, -9.094, -34.539)
 DESTINATION_NODE_NAME = "PrideTower"
 DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
 
-[node name="Portal" type="Node3D" parent="." node_paths=PackedStringArray("ANIM", "AREA", "PLAYER_SPOT")]
+[node name="Portal" type="Node3D" parent="." unique_id=724158024 node_paths=PackedStringArray("ANIM", "AREA", "PLAYER_SPOT")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3.82572e-06, -9.06787, 1.26405)
 script = ExtResource("5_c6d1s")
 ANIM = NodePath("Cinematic")
@@ -327,7 +327,7 @@ PLAYER_SPOT = NodePath("Cinematic/PlayerSpot")
 ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
-[node name="Mesh" parent="Portal" node_paths=PackedStringArray("ANIM", "AREA", "PLAYER_SPOT") instance=ExtResource("4_mda5h")]
+[node name="Mesh" parent="Portal" unique_id=441573752 node_paths=PackedStringArray("ANIM", "AREA", "PLAYER_SPOT") instance=ExtResource("4_mda5h")]
 transform = Transform3D(52.205, 0, -6.36646e-12, 0, 52.205, 0, 6.36646e-12, 0, 52.205, 1.13687e-11, -0.50214, -25.7185)
 script = ExtResource("5_c6d1s")
 ANIM = NodePath("../Cinematic")
@@ -338,40 +338,38 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
 [node name="spin" parent="Portal/Mesh" index="1"]
-transform = Transform3D(0.587882, 0.808945, 0, -0.808945, 0.587882, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(-0.7334001, 0.67979515, 0, -0.67979515, -0.7334001, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Portal/Mesh/flames_2" index="0"]
-transform = Transform3D(-0.825641, 0.175444, -3.11332e-16, -0.175444, -0.825641, 5.26395e-15, 7.89595e-16, 5.2137e-15, 0.844076, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(-1.011095, -0.007303308, 1.9976212e-17, 0.007303308, -1.011095, 5.5312734e-15, -1.997658e-17, 5.531273e-15, 1.0111215, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Portal/Mesh/flames_1" index="0"]
-transform = Transform3D(-0.825641, 0.175444, -3.11332e-16, -0.175444, -0.825641, 5.26395e-15, 7.89595e-16, 5.2137e-15, 0.844076, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(-1.011095, -0.007303308, 1.9976212e-17, 0.007303308, -1.011095, 5.5312734e-15, -1.997658e-17, 5.531273e-15, 1.0111215, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Portal/Mesh" index="4"]
-autoplay = "Spin"
+autoplay = &"Spin"
 
-[node name="AnimationTree" type="AnimationTree" parent="Portal/Mesh"]
+[node name="AnimationTree" type="AnimationTree" parent="Portal/Mesh" unique_id=2125059601]
 tree_root = SubResource("AnimationNodeBlendTree_gclgv")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Add2/add_amount = 1.0
 "parameters/Add2 2/add_amount" = 1.0
 
-[node name="Area3D" type="Area3D" parent="Portal"]
+[node name="Area3D" type="Area3D" parent="Portal" unique_id=13690403]
 transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -4.01658e-06, 9.06787, 1.26402)
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Portal/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Portal/Area3D" unique_id=757620462]
 transform = Transform3D(1, 0, -9.6494e-18, 0, 1, 0, 9.6494e-18, 0, 1, -0.791359, -2.34534, 25.9541)
 shape = SubResource("BoxShape3D_1waye")
 
-[node name="Cinematic" type="AnimationPlayer" parent="Portal"]
+[node name="Cinematic" type="AnimationPlayer" parent="Portal" unique_id=1201820335]
 root_node = NodePath("../Mesh")
-libraries = {
-&"": SubResource("AnimationLibrary_ses4i")
-}
-autoplay = "RESET"
+libraries/ = SubResource("AnimationLibrary_ses4i")
+autoplay = &"RESET"
 
-[node name="ColorRect" type="ColorRect" parent="Portal/Cinematic"]
+[node name="ColorRect" type="ColorRect" parent="Portal/Cinematic" unique_id=1127335080]
 z_index = 2
 anchors_preset = 15
 anchor_right = 1.0
@@ -380,7 +378,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
-[node name="Label" type="Label" parent="Portal/Cinematic/ColorRect" groups=["ui_scalable"]]
+[node name="Label" type="Label" parent="Portal/Cinematic/ColorRect" unique_id=987585381 groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 8
@@ -403,24 +401,26 @@ horizontal_alignment = 1
 vertical_alignment = 1
 script = ExtResource("13_v2tb1")
 
-[node name="Camera3D" type="Camera3D" parent="Portal/Cinematic"]
-transform = Transform3D(-0.66068, 0.429468, -0.615678, 0, 0.820173, 0.572115, 0.750668, 0.377984, -0.541872, -17.2564, 8.33722, 7.99027)
+[node name="Camera3D" type="Camera3D" parent="Portal/Cinematic" unique_id=1772620209]
+transform = Transform3D(-0.66067976, 0.42946792, -0.6156781, 0, 0.8201729, 0.5721148, 0.75066817, 0.37798426, -0.54187196, -17.2564, 8.33722, 7.99027)
 fov = 91.859
 
-[node name="PlayerSpot" type="Node3D" parent="Portal/Cinematic"]
+[node name="PlayerSpot" type="Node3D" parent="Portal/Cinematic" unique_id=997532444]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3.82572e-06, -4.55427, 23.1851)
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Portal/Cinematic"]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Portal/Cinematic" unique_id=958669835]
 bus = &"Music"
 
-[node name="RedirectToCredits" type="Node" parent="Portal/Cinematic"]
+[node name="RedirectToCredits" type="Control" parent="Portal/Cinematic" unique_id=2028418843]
+layout_mode = 3
+anchors_preset = 0
 script = ExtResource("13_ns1qw")
 scene_file = "uid://b3i01lg3stgkg"
 
-[node name="Checkpoint" parent="." instance=ExtResource("14_d1ner")]
+[node name="Checkpoint" parent="." unique_id=1478836931 instance=ExtResource("14_d1ner")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -9.1, -19.731)
 
-[node name="Reaper" parent="." instance=ExtResource("7_1yqwe")]
+[node name="Reaper" parent="." unique_id=2530760 instance=ExtResource("7_1yqwe")]
 transform = Transform3D(-0.995788, 0, 0.0916933, 0, 1, 0, -0.0916933, 0, -0.995788, 0, -7.999, -24.667)
 
 [editable path="Portal/Mesh"]

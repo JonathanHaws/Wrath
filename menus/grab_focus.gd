@@ -1,11 +1,14 @@
 extends Node
-@export var focus_target: Control
+@export var focus_targets: Array[Control]
 
-func _on_visibility_changed():
-	if focus_target and focus_target.visible:
-		focus_target.call_deferred("grab_focus")
+func _apply_focus() -> void:
+	for target in focus_targets:
+		if target and target.visible:
+			target.call_deferred("grab_focus")
+			return
 
 func _ready() -> void:
-	if focus_target:
-		focus_target.visibility_changed.connect(_on_visibility_changed)
-		if focus_target.visible: _on_visibility_changed()
+	for target in focus_targets:
+		if not target: continue
+		target.visibility_changed.connect(_apply_focus)
+	_apply_focus()

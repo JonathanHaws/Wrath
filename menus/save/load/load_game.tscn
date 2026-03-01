@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="3_3kwj5"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="3_opbiq"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="4_3kwj5"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="4_oirw8"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="7_2maut"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="7_oirw8"]
 [ext_resource type="PackedScene" uid="uid://f3fcn8ktks1h" path="res://menus/title_screen/fade_to_black.tscn" id="8_655js"]
@@ -68,6 +69,10 @@ layout_mode = 2
 script = ExtResource("1_6x4ew")
 profile_scene = ExtResource("2_t8d72")
 fade_to_black_spawner = NodePath("../../Node2D")
+
+[node name="GrabFocus" type="Node" parent="CenterContainer/Load" unique_id=390578297 node_paths=PackedStringArray("focus_targets")]
+script = ExtResource("4_oirw8")
+focus_targets = [NodePath("../Back")]
 
 [node name="Continue" type="Button" parent="CenterContainer/Load" unique_id=658150579]
 layout_mode = 2

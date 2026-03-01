@@ -4,17 +4,11 @@ extends Control # Can be used on anything but most likely button
 @export var is_back_button: bool = false
 var scene = null
 
-func grab_focus_when_visibility_changed() -> void:
-	call_deferred("grab_focus")
-
 func _unhandled_input(event: InputEvent) -> void:
 	if is_back_button and event.is_action_pressed("menu_back"): 
 		_on_pressed() 
 		
 func _ready() -> void:
-
-	connect("visibility_changed", Callable(self, "grab_focus_when_visibility_changed"))
-	call_deferred("grab_focus")
 	
 	if scene_file != "" and ResourceLoader.exists(scene_file):
 		scene = load(scene_file)

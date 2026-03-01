@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://menus/pause/toggle.gd" id="2_js3u0"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_p4i2r"]
 [ext_resource type="Script" uid="uid://d2hxlmmmtfynf" path="res://menus/options/volume_adjustment.gd" id="3_js3u0"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="3_p4i2r"]
 [ext_resource type="Script" uid="uid://cehsklglvnhkr" path="res://menus/options/resolution.gd" id="4_5xg6i"]
 [ext_resource type="Script" uid="uid://yd63tscy6h1n" path="res://menus/options/window_mode_dropdown.gd" id="5_4uyla"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="6_bu2dy"]
@@ -25,6 +26,10 @@ theme = ExtResource("1_fophc")
 color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
 script = ExtResource("2_js3u0")
 metadata/_edit_use_anchors_ = true
+
+[node name="GrabFocus" type="Node" parent="." unique_id=1077363496 node_paths=PackedStringArray("focus_targets")]
+script = ExtResource("3_p4i2r")
+focus_targets = [NodePath("../Options/Master/HSlider")]
 
 [node name="Options" type="VBoxContainer" parent="." unique_id=331924757 groups=["ui_scalable"]]
 layout_mode = 1

@@ -2,6 +2,7 @@
 
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="1_1va1p"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_8ie4y"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="1_044tn"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="3_kssy0"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="4_8ie4y"]
 [ext_resource type="Script" uid="uid://dhsj4xkcsrngo" path="res://menus/save/new/new.gd" id="4_xega6"]
@@ -56,6 +57,10 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
 metadata/_edit_use_anchors_ = true
+
+[node name="GrabFocus" type="Node" parent="." unique_id=1533278927 node_paths=PackedStringArray("focus_targets")]
+script = ExtResource("1_044tn")
+focus_targets = [NodePath("../CenterContainer")]
 
 [node name="CenterContainer" type="CenterContainer" parent="." unique_id=571680029 groups=["ui_scalable"]]
 layout_mode = 1

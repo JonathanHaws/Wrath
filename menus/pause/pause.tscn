@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://menus/pause/toggle.gd" id="1_327xx"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_gwfjr"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="3_7gaeb"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="3_x7iio"]
 [ext_resource type="Script" uid="uid://pccpxg1y2tdf" path="res://menus/skip/skip.gd" id="4_e7s18"]
 [ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://menus/pause/restart.gd" id="5_0mtqa"]
 [ext_resource type="Script" uid="uid://v7rpg87oifq2" path="res://menus/options/resume.gd" id="5_e7s18"]
@@ -41,6 +42,10 @@ grow_vertical = 2
 pivot_offset = Vector2(48, 94)
 alignment = 1
 script = ExtResource("2_gwfjr")
+
+[node name="GrabFocus" type="Node" parent="Main" unique_id=1462835170 node_paths=PackedStringArray("focus_targets")]
+script = ExtResource("3_x7iio")
+focus_targets = [NodePath("../Skip"), NodePath("../Resume")]
 
 [node name="Skip" type="Button" parent="Main" unique_id=884173732 node_paths=PackedStringArray("SKIP_BUTTON")]
 layout_mode = 2

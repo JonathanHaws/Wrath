@@ -71,6 +71,10 @@ script = ExtResource("2_77ypm")
 scene_file = "uid://cls12q06quifx"
 is_back_button = true
 
+[node name="GrabFocus" type="Node" parent="CenterContainer/VboxContainer" unique_id=54975552 node_paths=PackedStringArray("focus_targets")]
+script = ExtResource("1_hyvu0")
+focus_targets = [NodePath("../Back")]
+
 [node name="MenuAudio" type="Node" parent="." unique_id=1655364472 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
 script = ExtResource("8_003hq")
 SOUNDS = Array[AudioStream]([ExtResource("3_hyvu0")])
