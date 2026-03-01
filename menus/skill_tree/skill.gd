@@ -8,6 +8,25 @@ extends TextureButton
 var prerequisite_key
 var aquired_key
 
+@export_group("Focus")
+func setup_focus():
+	if focus_previous.is_empty(): focus_previous = get_path()
+	if focus_next.is_empty(): focus_next = get_path()
+	if focus_neighbor_top.is_empty(): focus_neighbor_top = get_path()
+	if focus_neighbor_bottom.is_empty(): focus_neighbor_bottom = get_path()
+	if focus_neighbor_left.is_empty(): focus_neighbor_left = get_path()
+	if focus_neighbor_right.is_empty(): focus_neighbor_right = get_path()
+
+	if prerequisite_node:
+		var p = prerequisite_node.get_path()
+		if prerequisite_node.focus_neighbor_right.is_empty() or prerequisite_node.focus_neighbor_right == p:
+			prerequisite_node.focus_neighbor_right = get_path()
+		focus_neighbor_left = p
+func _on_visibility_changed() -> void:
+	if focus_mode == Control.FOCUS_NONE: return
+	release_focus()
+	grab_focus.call_deferred()
+
 @export_group("VISUALS")
 @export_subgroup("INFO")
 @export var cost_group:= "cost_skilltree" ## Label to update with cost of current skill node hovered
@@ -33,11 +52,6 @@ func tween_scale_up_on_hover():
 func tween_scale_down_on_exit():
 	var t = create_tween()
 	t.tween_property(self, "scale", normal_scale, scale_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-func _on_visibility_changed() -> void:
-	if focus_mode == Control.FOCUS_NONE: return
-	#print('test')
-	release_focus()
-	grab_focus.call_deferred()
 	
 @export_group("AUDIO") ## Multiple skills can share same same player with refrence by group
 @export var hover_sound_group: String = "skill_hover_sound" ## Sound to be played when hovered.
@@ -55,6 +69,7 @@ func hovered():
 func _ready():
 	if save_key: aquired_key = save_key
 	else: aquired_key = Save.get_unique_key(self,"skill_node")
+	
 	if prerequisite_node: 
 		prerequisite_key = Save.get_unique_key(prerequisite_node, "skill_node")
 		if prerequisite_node.save_key != "": prerequisite_key = prerequisite_node.save_key
@@ -74,6 +89,7 @@ func _ready():
 	Save.save_data_updated.connect(apply_base_modulate)
 	
 	connect("visibility_changed", _on_visibility_changed)
+	setup_focus()
 	
 func _on_pressed():
 
