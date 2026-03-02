@@ -13,6 +13,9 @@ func toggle(paused: bool) -> void:
 	self.visible = paused
 	Engine.time_scale = 0 if paused else 1
 	get_tree().paused = paused
+	
+	if self.visible:
+		if Config and Config.has_method("save_window_transform"): Config.save_window_transform()
 
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("menu"):

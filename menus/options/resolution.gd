@@ -36,7 +36,7 @@ func increase_resolution() -> void:
 	if resolution_index > 0:
 		resolution_index -= 1
 		var key = keys[resolution_index]
-		Config.change_resolution(resolutions[key])
+		Config.set_resolution(resolutions[key])
 		if option_button: option_button.selected = resolution_index
 		update_label()
 
@@ -45,14 +45,14 @@ func decrease_resolution() -> void:
 	if resolution_index < keys.size() - 1:
 		resolution_index += 1
 		var key = keys[resolution_index]
-		Config.change_resolution(resolutions[key])
+		Config.set_resolution(resolutions[key])
 		if option_button: option_button.selected = resolution_index
 		update_label()
 		
 func _on_option_selected(index: int) -> void:
 	resolution_index = index
 	update_label()
-	Config.change_resolution(resolutions[option_button.get_item_text(index)])
+	Config.set_resolution(resolutions[option_button.get_item_text(index)])
 
 func _ready() -> void:
 	

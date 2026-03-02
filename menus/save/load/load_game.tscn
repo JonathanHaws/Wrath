@@ -70,7 +70,8 @@ script = ExtResource("1_6x4ew")
 profile_scene = ExtResource("2_t8d72")
 fade_to_black_spawner = NodePath("../../Node2D")
 
-[node name="GrabFocus" type="Node" parent="CenterContainer/Load" unique_id=390578297 node_paths=PackedStringArray("focus_targets")]
+[node name="GrabFocus" type="Control" parent="CenterContainer/Load" unique_id=597383573 node_paths=PackedStringArray("focus_targets")]
+layout_mode = 2
 script = ExtResource("4_oirw8")
 focus_targets = [NodePath("../Back")]
 
