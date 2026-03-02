@@ -41,12 +41,13 @@ func adjust_zoom(factor):
 	position += (mouse_after - mouse_before) * zoom
 
 func _process(delta: float) -> void:
-	if is_visible_in_tree():
-		if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-	else:
+	if not is_visible_in_tree():
 		center_required_node()
-	
+		return
+
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+
 	var move: Vector2 = Vector2(
 		Input.get_axis("skill_tree_left", "skill_tree_right"),
 		Input.get_axis("skill_tree_up", "skill_tree_down")
