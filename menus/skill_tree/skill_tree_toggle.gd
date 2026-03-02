@@ -14,10 +14,10 @@ func toggle_skill_tree() -> void:
 
 	if skill_tree_open:
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
-		if Controls: Controls.play_input_anim("skill_tree_disable")
+		if Config: Config.play_input_anim("skill_tree_disable")
 	else:
 		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-		if Controls: Controls.play_input_anim("skill_tree_enable")
+		if Config: Config.play_input_anim("skill_tree_enable")
 
 func _process(_delta):
 

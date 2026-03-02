@@ -20,13 +20,13 @@ var in_range: bool = false
 
 func _on_body_entered(body) -> void:
 	if not body.is_in_group(player_group): return
-	if Controls: Controls.play_input_anim("dialog_enable")
+	if Config: Config.play_input_anim("dialog_enable")
 	in_range = true
 	spawn()	
 
 func _on_body_exited(body)-> void:
 	if not body.is_in_group(player_group): return
-	if Controls: Controls.play_input_anim("dialog_disable")
+	if Config: Config.play_input_anim("dialog_disable")
 	for child in get_children(): if child.has_method("exit_area"): child.exit_area()
 	in_range = false
 

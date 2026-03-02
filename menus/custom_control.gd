@@ -22,15 +22,15 @@ func _input(event: InputEvent) -> void:
 		last_pressed_event = event
 		waiting_for_new = false
 		refresh_ui(true, 1)
-		Controls.save_action_setting(action_name)
+		Config.save_action_setting(action_name)
 		play_group_sound(new_input_sound_group)
 
 func create_delete_button(event: InputEvent) -> Button:
 	var create_button: Button = Button.new()  
-	create_button.text = Controls.get_string_from_event(event)
+	create_button.text = Config.get_string_from_event(event)
 	create_button.pressed.connect(func() -> void:
 		InputMap.action_erase_event(action_name, event)   
-		Controls.save_action_setting(action_name)
+		Config.save_action_setting(action_name)
 		refresh_ui(true, 1)
 		play_group_sound(deleted_sound_group)
 		)
@@ -55,7 +55,7 @@ func create_restore_button() -> Button:
 		for event in ProjectSettings.get_setting("input/" + action_name)["events"]:
 			InputMap.action_add_event(action_name, event)
 		refresh_ui(true, 0)
-		Controls.save_action_setting(action_name)
+		Config.save_action_setting(action_name)
 		play_group_sound(restore_sound_group)
 	)
 	return restore_button
@@ -102,7 +102,7 @@ func refresh_ui(grab_focus: bool = false, focus_index_from_end: int = 1) -> void
 
 func _ready() -> void:
 
-	Controls.load_action_setting(action_name)
+	Config.load_action_setting(action_name)
 	
 	refresh_ui()
 	
