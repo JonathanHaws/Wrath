@@ -10,7 +10,8 @@ extends Node
 @export var HITBOX_SHAPE: Node 
 @export var DAMAGE_SHAPE: Node
 @export var ANIMATION_PLAYER: AnimationPlayer
-@export var GOD_MODE_ANIMATION: StringName = &"GOD"
+@export var ENTER_ANIMATION: String = "GOD"
+@export var EXIT_ANIMATION: String= "IDLE"
 var mode := false
 var last_position: Vector3
 
@@ -23,8 +24,10 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("god_mode"):
 		mode = !mode
 		#if DAMAGE_SHAPE: DAMAGE_SHAPE.disabled = !DAMAGE_SHAPE.disabled
-		if mode and ANIMATION_PLAYER and GOD_MODE_ANIMATION != "":
-			ANIMATION_PLAYER.play(GOD_MODE_ANIMATION)
+		if mode and ANIMATION_PLAYER and ENTER_ANIMATION != "":
+			ANIMATION_PLAYER.play(ENTER_ANIMATION)
+		elif not mode and ANIMATION_PLAYER and EXIT_ANIMATION != "":
+			ANIMATION_PLAYER.play(EXIT_ANIMATION)
 		
 	if mode: 
 		if Input.is_action_just_pressed("get_wisp"):

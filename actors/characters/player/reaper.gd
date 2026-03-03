@@ -124,7 +124,7 @@ func try_fall(delta: float) -> void:
 		velocity = get_fall_velocity(delta)
 func play_land_effects() -> void:
 	if air_time > LAND_EFFECTS_COOLDOWN:
-		$Squash.squish(.3)
+		if ANIM.current_animation == "GOD": return
 		if $Audio: $Audio.play_2d_sound(["land"])
 		if PARTICLES: PARTICLES.spawn()
 func try_step_up() -> void:
@@ -292,6 +292,7 @@ func in_interruptible_animation() -> bool:
 	
 	if not ANIM: return true
 	return not ANIM.current_animation in [
+		"GOD",
 		"HEAL",
 		"BLOCK_ENTER",
 		"BLOCK_EXIT",
