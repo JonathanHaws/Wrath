@@ -1,45 +1,45 @@
-extends Node
+extends Node ## For dynamically spawning and triggering existing audio nodes
+@export_subgroup("Spawning") ## Does not change audio already added to the tree just for when initially spawned)
 @export var SOUNDS: Array[AudioStream] = []
 @export var VOLUME_MULTIPLIERS: Array[float] = [] ## Easily multiplier for getting balance of audio right
-
-@export_subgroup("Spawning") 
-## For dynamically changing volume of audio (Does not change audio already added to the tree just for when initially spawned)
+@export var GROUPS: Array[String] ## Groups that dynamically spawned players are added to
+@export var DESTORY_GROUPS: Array[String] ## Groups that are destroyed in ready to avoid choatic audial overlap when switching scenes
+@export var AVOID_STACKING_GROUPS: Array[String] = [] ## If any players already exists with one of these groups, dont spawn new sound
+@export var AUDIO_BUS: String = "SFX"
+@export var ADD_TO_ROOT: bool = false ## Added as a sibling to globals... So When calling change scene to file it doesnt get removed 
+@export var SPAWN_ON_LOAD: bool = false ## Makes audio play on load
 @export var VOLUME_MULTIPLIER: float = 1.0 
 @export var PITCH_MULTIPLIER: float = 1.0 
 @export var VOLUME_VARIANCE: float = 0.0
 @export var PITCH_VARIANCE: float = 0.0
-@export var AUDIO_BUS: String = "SFX"
 
-@export_subgroup("Triggering Audio") 
-@export var AUTO_PLAY: bool = false ## Makes audio play on load
-@export var HOVER_SOUND: String = "" 
-@export var PRESSED_SOUND: String = "" 
-@export var HOVERED_BUTTONS: Array[Node] = [] ## Makes audio play when button is hovered
-@export var PRESSED_BUTTONS: Array[Node] = [] ## Makes audio play when button is pressed
-
-@export_subgroup("Audio Between Scenes") 
-@export var ADD_TO_ROOT: bool = false ## Important for audio that is meant to play between scenes. Is added as a sibling to globals... So When calling change scene to file it doesnt get removed 
-@export var AVOID_STACKING_MULTIPLE_LOADS: bool = false ## Makes it so if audio autoplays between  
-@export var GROUP_NAME: String = "" ## Exclusive group name of audio (Used to kill audio)
-@export var KILL_BUTTONS: Array[Button] = [] ## Frees all players in group name... For freeing meun music when game is started for example
+@export_subgroup("Menu") 
+@export var ONLY_SPAWN_IF_VISIBLE: Node
+@export var HOVER_SOUND: String = "Menu_Hover"
+@export var PRESSED_SOUND: String = "Menu_Hover"
+@export var FOCUS_SOUND: String = "Menu_Hover"
+@export var HOVERED_GROUP: String = "menu_hovered_sound"
+@export var PRESSED_GROUP: String = "menu_pressed_sound"
+@export var FOCUS_ENTERED_GROUP: String = "menu_focus_sound"
+func _connect_group_signal(group_name: String, signal_name: String, sound_name: String) -> void:
+	#print('test')
+	if group_name == "": return
+	if sound_name == "": return
+	for node in get_tree().get_nodes_in_group(group_name): 		
+		if node.has_signal(signal_name):
+			node.connect(signal_name, Callable(self, "spawn_sound").bind(sound_name))
 
 func _ready() -> void:
-	#print('test')
-	if AUTO_PLAY: play_2d_sound()
+	
+	if SPAWN_ON_LOAD: spawn_sound.call_deferred()
+	for group_name in DESTORY_GROUPS: 
+		for node in get_tree().get_nodes_in_group(group_name): node.queue_free()
 
-	for b in KILL_BUTTONS:
-		if b: b.pressed.connect(_kill_audio)
-		
-
-	for b in PRESSED_BUTTONS:
-		if b.has_signal("pressed"):
-			if b: b.pressed.connect(func(): play_2d_sound(PRESSED_SOUND))
-		
-	await get_tree().create_timer(0.1,true,false, true).timeout # Wait a second to connect the signal so hover isnt an issue
-	for b in HOVERED_BUTTONS:
-		if b.has_signal("mouse_entered"):
-			if b: b.mouse_entered.connect(func(): play_2d_sound(HOVER_SOUND))
-
+	await get_tree().create_timer(0.1,true,false, true).timeout ## No menu sounds right off the bat
+	_connect_group_signal(HOVERED_GROUP, "mouse_entered", HOVER_SOUND)
+	_connect_group_signal(PRESSED_GROUP, "pressed", PRESSED_SOUND)
+	_connect_group_signal(FOCUS_ENTERED_GROUP, "focus_entered", HOVER_SOUND)
+	
 func play_random_child() -> void:
 	var nodes = get_children()
 	if nodes.size() == 0: return
@@ -49,51 +49,48 @@ func play_random_child() -> void:
 		node.pitch_scale = randf_range(PITCH_MULTIPLIER - PITCH_VARIANCE, PITCH_MULTIPLIER + PITCH_VARIANCE)
 		node.volume_db = linear_to_db((db_to_linear(node.volume_db) * VOLUME_MULTIPLIER) + randf_range(-VOLUME_VARIANCE, VOLUME_VARIANCE))
 		node.play()
+	
+func get_sound_index_from_string(sound_name: String) -> int:
+	for i in range(SOUNDS.size()):
+		var audio_name = SOUNDS[i].resource_path.get_file().get_basename().to_lower()
+		if audio_name == sound_name.to_lower(): return i
+	return -1
+func get_sound_index_from_array(sound_array: Array) -> int:
+	if sound_array.size() == 0: return -1
+	var chosen_sound = sound_array[randi() % sound_array.size()]
+	return get_sound_index(chosen_sound)
+func get_sound_index(sound: Variant) -> int:
+	if sound == null: 
+		if SOUNDS.size() == 0: return -1
+		else: return 0
+	elif sound is int: return sound
+	elif sound is Array: return get_sound_index_from_array(sound)
+	elif sound is String: return get_sound_index_from_string(sound)
+	elif sound is AudioStream: return SOUNDS.find(sound)
+	return -1
 		
-func play_2d_sound(sound: Variant = null) -> AudioStreamPlayer:
-	
-	if GROUP_NAME != "" and get_tree().get_nodes_in_group(GROUP_NAME).size() > 0:
-		return get_tree().get_nodes_in_group(GROUP_NAME)[0]
-	
-	if sound == null:
-		if SOUNDS.size() > 0:
-			sound = SOUNDS[0]
-		else:
-			return null
-	
-	var base_volume = 1
-	if sound is Array:
-		if sound.size() == 0: return
+func spawn_sound(sound: Variant = null) -> AudioStreamPlayer:
 
-		var final_index= randi() % sound.size()
-
-		if sound[0] is AudioStream:
-			sound = sound[final_index]
-		elif sound[0] is String:
-			var sound_name = sound[final_index]
-			for s in SOUNDS:
-				if s.resource_path.get_file().get_basename().to_lower() == sound_name.to_lower():
-					#print(sound_name.to_lower())
-					sound = s
-					var idx = SOUNDS.find(s)
-					if idx < VOLUME_MULTIPLIERS.size():
-						base_volume = VOLUME_MULTIPLIERS[idx]
-					break
+	var sound_index = get_sound_index(sound)
+	if sound_index < 0 or sound_index >= SOUNDS.size(): return null
 	
-	if sound is String:
-		for s in SOUNDS:
-			if s.resource_path.get_file().get_basename().to_lower() == sound.to_lower():
-				sound = s
-				var idx = SOUNDS.find(s)
-				if idx < VOLUME_MULTIPLIERS.size():
-					base_volume = VOLUME_MULTIPLIERS[idx]
-				break
+	#print('test')
 	
-	if sound == null or not (sound is AudioStream):
-		return null
+	if ONLY_SPAWN_IF_VISIBLE and not ONLY_SPAWN_IF_VISIBLE.is_visible_in_tree():
+		return
+	
+	
+	for group_name in AVOID_STACKING_GROUPS:
+		for node in get_tree().get_nodes_in_group(group_name):
+			if node.is_inside_tree(): return null  # skip spawning
+	
+	var final_sound = SOUNDS[sound_index]
+	var base_volume = 1.0
+	if sound_index < VOLUME_MULTIPLIERS.size():
+		base_volume = VOLUME_MULTIPLIERS[sound_index]
 	
 	var player = AudioStreamPlayer.new()
-	player.stream = sound
+	player.stream = final_sound
 	player.pitch_scale = randf_range(PITCH_MULTIPLIER - PITCH_VARIANCE, PITCH_MULTIPLIER + PITCH_VARIANCE)
 	#print(base_volume)
 	player.process_mode = Node.PROCESS_MODE_ALWAYS
@@ -102,19 +99,14 @@ func play_2d_sound(sound: Variant = null) -> AudioStreamPlayer:
 	player.bus = AUDIO_BUS
 	player.connect("tree_entered", Callable(player, "play"))
 	player.connect("finished", Callable(player, "queue_free"))
-	if GROUP_NAME != "": player.add_to_group(GROUP_NAME)
+	
+	for group_name in GROUPS:
+		if group_name != "":
+			player.add_to_group(group_name)
 	
 	if ADD_TO_ROOT:
 		var tree := Engine.get_main_loop()
 		tree.get_root().call_deferred("add_child", player)
 	else:
-		add_child(player)
+		add_child.call_deferred(player)
 	return player
-
-func _kill_audio() -> void:
-	if GROUP_NAME == "": return
-	var tree := Engine.get_main_loop()
-	if tree == null or not (tree is SceneTree): return
-	for n in tree.get_nodes_in_group(GROUP_NAME):
-		if n is AudioStreamPlayer:
-			n.queue_free()

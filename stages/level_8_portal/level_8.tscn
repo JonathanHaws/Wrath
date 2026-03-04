@@ -338,13 +338,13 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
 
 [node name="spin" parent="Portal/Mesh" index="1"]
-transform = Transform3D(-0.7334001, 0.67979515, 0, -0.67979515, -0.7334001, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
+transform = Transform3D(-0.99974436, 0.022546407, 0, -0.022546407, -0.99974436, 0, 0, 0, 1, 0.000288624, 0.12951, -0.0294213)
 
 [node name="fire1_002" parent="Portal/Mesh/flames_2" index="0"]
-transform = Transform3D(-1.011095, -0.007303308, 1.9976212e-17, 0.007303308, -1.011095, 5.5312734e-15, -1.997658e-17, 5.531273e-15, 1.0111215, 15.7583, 0.222717, -15.5292)
+transform = Transform3D(-0.30572855, -0.8241018, 1.0478988e-15, 0.8241018, -0.30572855, 3.4543456e-15, -2.8741804e-15, 2.1839605e-15, 0.87898445, 15.7583, 0.222717, -15.5292)
 
 [node name="fire1_001" parent="Portal/Mesh/flames_1" index="0"]
-transform = Transform3D(-1.011095, -0.007303308, 1.9976212e-17, 0.007303308, -1.011095, 5.5312734e-15, -1.997658e-17, 5.531273e-15, 1.0111215, 15.7583, 0.222717, -15.7353)
+transform = Transform3D(-0.30572855, -0.8241018, 1.0478988e-15, 0.8241018, -0.30572855, 3.4543456e-15, -2.8741804e-15, 2.1839605e-15, 0.87898445, 15.7583, 0.222717, -15.7353)
 
 [node name="AnimationPlayer" parent="Portal/Mesh" index="4"]
 autoplay = &"Spin"
@@ -364,7 +364,7 @@ collision_mask = 3
 transform = Transform3D(1, 0, -9.6494e-18, 0, 1, 0, 9.6494e-18, 0, 1, -0.791359, -2.34534, 25.9541)
 shape = SubResource("BoxShape3D_1waye")
 
-[node name="Cinematic" type="AnimationPlayer" parent="Portal" unique_id=1201820335]
+[node name="Cinematic" type="AnimationPlayer" parent="Portal" unique_id=1201820335 groups=["cinematic_music"]]
 root_node = NodePath("../Mesh")
 libraries/ = SubResource("AnimationLibrary_ses4i")
 autoplay = &"RESET"
@@ -402,7 +402,7 @@ vertical_alignment = 1
 script = ExtResource("13_v2tb1")
 
 [node name="Camera3D" type="Camera3D" parent="Portal/Cinematic" unique_id=1772620209]
-transform = Transform3D(-0.66067976, 0.42946792, -0.6156781, 0, 0.8201729, 0.5721148, 0.75066817, 0.37798426, -0.54187196, -17.2564, 8.33722, 7.99027)
+transform = Transform3D(-0.66067976, 0.4294679, -0.615678, 0, 0.8201729, 0.57211477, 0.75066817, 0.37798423, -0.5418719, -17.2564, 8.33722, 7.99027)
 fov = 91.859
 
 [node name="PlayerSpot" type="Node3D" parent="Portal/Cinematic" unique_id=997532444]

@@ -49,7 +49,7 @@ layout_mode = 2
 script = ExtResource("4_luhou")
 focus_targets = [NodePath("../Back")]
 
-[node name="Back" type="Button" parent="CenterContainer/Delete" unique_id=1743395861]
+[node name="Back" type="Button" parent="CenterContainer/Delete" unique_id=1743395861 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 2
 theme = ExtResource("3_u3frr")
 text = "Back"
@@ -57,11 +57,7 @@ script = ExtResource("4_fevu8")
 scene_file = "uid://cls12q06quifx"
 is_back_button = true
 
-[node name="MenuAudio" type="Node" parent="." unique_id=1839128190 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+[node name="MenuAudio" type="Node" parent="." unique_id=1839128190]
 script = ExtResource("7_luhou")
 SOUNDS = Array[AudioStream]([ExtResource("6_npq60")])
-HOVER_SOUND = "Menu_Hover"
-PRESSED_SOUND = "Menu_Hover"
-HOVERED_BUTTONS = [NodePath("../CenterContainer/Delete/Back")]
-PRESSED_BUTTONS = [NodePath("../CenterContainer/Delete/Back")]
 ADD_TO_ROOT = true

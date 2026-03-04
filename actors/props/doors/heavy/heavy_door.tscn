@@ -22,7 +22,7 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }]
 }
 tracks/1/type = "value"

@@ -30,7 +30,7 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["bounce"],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }]
 }
 

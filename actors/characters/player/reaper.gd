@@ -95,7 +95,7 @@ func try_jump() -> void:
 			jump_buffer = 0
 		
 		if is_on_floor():
-			if $Audio: $Audio.play_2d_sound(["jump"])
+			if $Audio: $Audio.spawn_sound(["jump"])
 			$Squash.squish(-.3)	
 			ANIM.play("JUMPING")
 			if PARTICLES: 
@@ -125,7 +125,7 @@ func try_fall(delta: float) -> void:
 func play_land_effects() -> void:
 	if air_time > LAND_EFFECTS_COOLDOWN:
 		if ANIM.current_animation == "GOD": return
-		if $Audio: $Audio.play_2d_sound(["land"])
+		if $Audio: $Audio.spawn_sound(["land"])
 		if PARTICLES: PARTICLES.spawn()
 func try_step_up() -> void:
 	if not STEP_UP_RAY: return
@@ -366,7 +366,7 @@ func _ready() -> void:
 		
 	if not Save.data.has("spawn_sound"):
 		Save.data["spawn_sound"] = "spawn_new"
-	if $Audio: $Audio.play_2d_sound([Save.data["spawn_sound"]])
+	if $Audio: $Audio.spawn_sound([Save.data["spawn_sound"]])
 
 func _process(_delta)-> void:
 

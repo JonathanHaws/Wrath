@@ -75,7 +75,7 @@ layout_mode = 2
 script = ExtResource("4_oirw8")
 focus_targets = [NodePath("../Back")]
 
-[node name="Back" type="Button" parent="CenterContainer/Load" unique_id=750394385]
+[node name="Back" type="Button" parent="CenterContainer/Load" unique_id=750394385 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -96,11 +96,8 @@ scenes = Array[PackedScene]([ExtResource("8_655js")])
 root_node = NodePath("../../CenterContainer/Load")
 libraries/ = SubResource("AnimationLibrary_655js")
 
-[node name="MenuAudio" type="Node" parent="." unique_id=2040327337 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+[node name="MenuAudio" type="Node" parent="." unique_id=2040327337]
 script = ExtResource("7_2maut")
 SOUNDS = Array[AudioStream]([ExtResource("3_3kwj5")])
-HOVER_SOUND = "Menu_Hover"
-PRESSED_SOUND = "Menu_Hover"
-HOVERED_BUTTONS = [NodePath("../CenterContainer/Load/Back")]
-PRESSED_BUTTONS = [NodePath("../CenterContainer/Load/Back")]
+DESTORY_GROUPS = Array[String](["menu_music"])
 ADD_TO_ROOT = true

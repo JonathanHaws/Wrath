@@ -2,6 +2,14 @@ extends Node
 @export var action_name: String
 @export var display_name: String = ""
 @export var container: Node = self
+@export var focus_top: Node
+@export var focus_bottom: Node
+var waiting_for_new: bool = false
+var last_pressed_event: InputEvent = null
+
+@export_group("Audio")
+#@export var hover_sound_group: String = "control_hover_sound"
+@export var focus_sound_group: String = "control_focus_sound"
 @export var deleted_sound_group: String = "control_delete_sound"
 @export var add_sound_group: String = "control_add_sound"
 @export var new_input_sound_group: String = "control_new_input_sound"
@@ -9,11 +17,11 @@ extends Node
 func play_group_sound(group_name: String) -> void:
 	for node in get_tree().get_nodes_in_group(group_name):
 		if node is AudioStreamPlayer: node.play()
-var waiting_for_new: bool = false
-var last_pressed_event: InputEvent = null
-
-@export var focus_top: Node
-@export var focus_bottom: Node
+func _connect_button_sounds(button: Button) -> void:
+	if button.has_signal("focus_entered"): 
+		button.focus_entered.connect(func(): play_group_sound(focus_sound_group))
+	#if button.has_signal("mouse_entered"): 
+		#button.mouse_entered.connect(func(): play_group_sound(hover_sound_group))
 
 func _input(event: InputEvent) -> void:
 	if waiting_for_new and event.is_pressed():
@@ -88,10 +96,18 @@ func refresh_ui(grab_focus: bool = false, focus_index_from_end: int = 1) -> void
 	title.text = display_name + " - "
 	container.add_child(title)
 	
-	for event in InputMap.action_get_events(action_name):
-		container.add_child(create_delete_button(event))	
-	container.add_child(create_add_button())
-	container.add_child(create_restore_button())
+	for input_event in InputMap.action_get_events(action_name):
+		var delete_button = create_delete_button(input_event)
+		container.add_child(delete_button)
+		_connect_button_sounds(delete_button)
+
+	var add_button = create_add_button()
+	container.add_child(add_button)
+	_connect_button_sounds(add_button)
+
+	var restore_button = create_restore_button()
+	container.add_child(restore_button)
+	_connect_button_sounds(restore_button)
 	
 	if grab_focus and container.get_child_count() > 1:
 		var target_index = container.get_child_count() - (focus_index_from_end + 1)

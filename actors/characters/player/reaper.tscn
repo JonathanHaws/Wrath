@@ -944,7 +944,7 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [["HURT"]],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }]
 }
 tracks/8/type = "method"
@@ -2416,7 +2416,7 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [["slash_1", "slash_2", "slash_3"]],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }]
 }
 tracks/4/type = "value"
@@ -2834,10 +2834,10 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [["step_1", "step_2", "step_3", "step_4"]],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }, {
 "args": [["step_1", "step_2", "step_3", "step_4"]],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }]
 }
 tracks/6/type = "value"
@@ -3063,7 +3063,7 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [["slash_1", "slash_2", "slash_3"]],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }]
 }
 tracks/1/type = "animation"
@@ -3219,10 +3219,10 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": [["step_1", "step_2", "step_3", "step_4"]],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }, {
 "args": [["step_1", "step_2", "step_3", "step_4"]],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }]
 }
 tracks/6/type = "method"
@@ -3293,7 +3293,7 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [["windown"]],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }]
 }
 tracks/3/type = "value"

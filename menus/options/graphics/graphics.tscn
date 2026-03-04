@@ -47,7 +47,7 @@ layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "BRIGHTNESS:"
 
-[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer/Brightness" unique_id=1432101898 node_paths=PackedStringArray("slider", "display_label")]
+[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer/Brightness" unique_id=1432101898 node_paths=PackedStringArray("slider", "display_label") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 139.0
@@ -79,7 +79,7 @@ layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "CONTRAST:"
 
-[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer/Contrast" unique_id=278178098 node_paths=PackedStringArray("slider", "display_label")]
+[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer/Contrast" unique_id=278178098 node_paths=PackedStringArray("slider", "display_label") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 139.0
@@ -110,7 +110,7 @@ layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "SATURATION:"
 
-[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer/Saturation" unique_id=1935833146 node_paths=PackedStringArray("slider", "display_label")]
+[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer/Saturation" unique_id=1935833146 node_paths=PackedStringArray("slider", "display_label") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 139.0
@@ -140,7 +140,7 @@ layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "SSAO RADIUS:"
 
-[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer/SSAORadius" unique_id=628361429 node_paths=PackedStringArray("slider", "display_label")]
+[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer/SSAORadius" unique_id=628361429 node_paths=PackedStringArray("slider", "display_label") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 139.0
@@ -172,7 +172,7 @@ layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "SSAO INTENSITY:"
 
-[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer/SSAOIntensity" unique_id=1125211757 node_paths=PackedStringArray("slider", "display_label")]
+[node name="HSlider" type="HSlider" parent="ColorRect/VBoxContainer/SSAOIntensity" unique_id=1125211757 node_paths=PackedStringArray("slider", "display_label") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 139.0
@@ -204,7 +204,7 @@ layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "SSAO:"
 
-[node name="SSAOButton" type="CheckButton" parent="ColorRect/VBoxContainer/SSAO" unique_id=3734677 node_paths=PackedStringArray("toggle_button")]
+[node name="SSAOButton" type="CheckButton" parent="ColorRect/VBoxContainer/SSAO" unique_id=3734677 node_paths=PackedStringArray("toggle_button") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 0
 offset_left = 51.0
 offset_top = 1.0
@@ -219,7 +219,7 @@ layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "BLOOM:"
 
-[node name="BloomButton" type="CheckButton" parent="ColorRect/VBoxContainer/Bloom" unique_id=316682200 node_paths=PackedStringArray("toggle_button")]
+[node name="BloomButton" type="CheckButton" parent="ColorRect/VBoxContainer/Bloom" unique_id=316682200 node_paths=PackedStringArray("toggle_button") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 4.0
@@ -229,7 +229,7 @@ script = ExtResource("4_m8m6k")
 setting_name = "bloom_enabled"
 toggle_button = NodePath(".")
 
-[node name="Back" type="Button" parent="ColorRect/VBoxContainer" unique_id=192155630 node_paths=PackedStringArray("node_to_replace")]
+[node name="Back" type="Button" parent="ColorRect/VBoxContainer" unique_id=192155630 node_paths=PackedStringArray("node_to_replace") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
@@ -242,12 +242,9 @@ scene_file = "uid://cxja4xs36njyv"
 node_to_replace = NodePath("../../..")
 is_back_button = true
 
-[node name="MenuAudio" type="Node" parent="." unique_id=2000930046 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+[node name="MenuAudio" type="Node" parent="." unique_id=2000930046 node_paths=PackedStringArray("ONLY_SPAWN_IF_VISIBLE")]
 process_mode = 3
 script = ExtResource("9_j3qnb")
 SOUNDS = Array[AudioStream]([ExtResource("6_684si")])
-HOVER_SOUND = "Menu_Hover"
-PRESSED_SOUND = "Menu_Hover"
-HOVERED_BUTTONS = [NodePath("../ColorRect/VBoxContainer/Brightness/HSlider"), NodePath("../ColorRect/VBoxContainer/Contrast/HSlider"), NodePath("../ColorRect/VBoxContainer/Saturation/HSlider"), NodePath("../ColorRect/VBoxContainer/Bloom/BloomButton"), NodePath("../ColorRect/VBoxContainer/SSAO/SSAOButton"), NodePath("../ColorRect/VBoxContainer/Back")]
-PRESSED_BUTTONS = [NodePath("../ColorRect/VBoxContainer/Brightness/HSlider"), NodePath("../ColorRect/VBoxContainer/Contrast/HSlider"), NodePath("../ColorRect/VBoxContainer/Saturation/HSlider"), NodePath("../ColorRect/VBoxContainer/Bloom/BloomButton"), NodePath("../ColorRect/VBoxContainer/SSAO/SSAOButton"), NodePath("../ColorRect/VBoxContainer/Back")]
 ADD_TO_ROOT = true
+ONLY_SPAWN_IF_VISIBLE = NodePath("..")

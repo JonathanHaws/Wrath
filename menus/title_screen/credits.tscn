@@ -59,7 +59,7 @@ text = "[center] [color=#ececec] Boss Rush Jam[/color][color=#858585] - 2025 \"S
 fit_content = true
 autowrap_mode = 0
 
-[node name="Back" type="Button" parent="CenterContainer/VboxContainer" unique_id=622718709]
+[node name="Back" type="Button" parent="CenterContainer/VboxContainer" unique_id=622718709 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -76,11 +76,7 @@ layout_mode = 2
 script = ExtResource("1_hyvu0")
 focus_targets = [NodePath("../Back")]
 
-[node name="MenuAudio" type="Node" parent="." unique_id=1655364472 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+[node name="MenuAudio" type="Node" parent="." unique_id=1655364472]
 script = ExtResource("8_003hq")
 SOUNDS = Array[AudioStream]([ExtResource("3_hyvu0")])
-HOVER_SOUND = "Menu_Hover"
-PRESSED_SOUND = "Menu_Hover"
-HOVERED_BUTTONS = [NodePath("../CenterContainer/VboxContainer/Back")]
-PRESSED_BUTTONS = [NodePath("../CenterContainer/VboxContainer/Back")]
 ADD_TO_ROOT = true

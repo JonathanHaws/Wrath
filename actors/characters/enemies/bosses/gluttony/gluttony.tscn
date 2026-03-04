@@ -180,7 +180,7 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [["Despawn"]],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }]
 }
 tracks/2/type = "method"
@@ -467,7 +467,7 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["Slam"],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }]
 }
 tracks/3/type = "value"
@@ -534,7 +534,7 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["Slam"],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }]
 }
 tracks/3/type = "value"
@@ -783,32 +783,32 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Light:light_energy")
+tracks/0/path = NodePath("Audio/Music:volume_db")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [20.0]
+"values": [0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/1/path = NodePath("Light:light_energy")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [20.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/2/interp = 0
+tracks/2/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
@@ -819,43 +819,43 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/3/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Ui:modulate")
-tracks/4/interp = 1
+tracks/4/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/4/interp = 0
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"update": 1,
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HitShape/CollisionShape3D:disabled")
+tracks/5/path = NodePath("Ui:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("CollisionShape3D:disabled")
+tracks/6/path = NodePath("HitShape/CollisionShape3D:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -867,103 +867,103 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/7/path = NodePath("CollisionShape3D:disabled")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
+"update": 1,
+"values": [false]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("IntroCinematic/Shot2:position")
+tracks/8/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:influence")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(11.6795, 14.4465, 50.4496)]
+"values": [1.0]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("IntroCinematic/Shot2:rotation")
+tracks/9/path = NodePath("IntroCinematic/Shot2:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.226893, 0.28798, 0)]
+"values": [Vector3(11.6795, 14.4465, 50.4496)]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("IntroCinematic/Shot2:fov")
+tracks/10/path = NodePath("IntroCinematic/Shot2:rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [10.5]
+"values": [Vector3(-0.226893, 0.28798, 0)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("IntroCinematic/Shot2:current")
+tracks/11/path = NodePath("IntroCinematic/Shot2:fov")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [10.5]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("IntroCinematic/ColorRect:color")
+tracks/12/path = NodePath("IntroCinematic/Shot2:current")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("IntroCinematic/Shot1:current")
+tracks/13/path = NodePath("IntroCinematic/ColorRect:color")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/Retopo:material_override:shader_parameter/dissolve_amount")
+tracks/14/path = NodePath("IntroCinematic/Shot1:current")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [false]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Audio/Music:volume_db")
+tracks/15/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/Retopo:material_override:shader_parameter/dissolve_amount")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
@@ -1400,7 +1400,7 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["Slam"],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }]
 }
 tracks/3/type = "value"
@@ -1467,7 +1467,7 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": ["Slam"],
-"method": &"play_2d_sound"
+"method": &"spawn_sound"
 }]
 }
 tracks/3/type = "value"
@@ -2392,8 +2392,8 @@ bones/26/rotation = Quaternion(0.56248856, 0.29451463, -0.15749802, 0.75634795)
 bones/27/position = Vector3(-0.16756517, 0.18480073, 1.7204161)
 bones/28/position = Vector3(-0.6505352, 0.38523665, 0.048037607)
 bones/30/rotation = Quaternion(0.18322377, -0.037296604, -0.67258185, 0.71601105)
-bones/31/rotation = Quaternion(0.14499511, 0.096939676, 0.043559905, 0.9837081)
-bones/32/rotation = Quaternion(0.26274303, 0.42238086, 0.28148058, 0.82056653)
+bones/31/rotation = Quaternion(0.27380997, 0.032269087, 0.042366415, 0.96030825)
+bones/32/rotation = Quaternion(0.26274297, 0.42238086, 0.28148052, 0.8205664)
 bones/33/rotation = Quaternion(0.0046492084, -0.038033713, 0.039187722, 0.99849695)
 bones/34/rotation = Quaternion(0.13107882, 0.02623608, -0.12396564, 0.98324084)
 bones/35/rotation = Quaternion(0.017543204, -0.002852416, 0.094209194, 0.99539375)
@@ -2404,8 +2404,8 @@ bones/39/rotation = Quaternion(0.034904547, 0.002714451, -0.10407444, 0.9939531)
 bones/40/position = Vector3(-3.4600173e-08, 1.0775654, -1.5121655e-07)
 bones/40/rotation = Quaternion(0.18322411, 0.037296984, 0.67258173, 0.716011)
 bones/40/scale = Vector3(1.0000002, 1.0000001, 1)
-bones/41/rotation = Quaternion(0.11475858, -0.0882835, -0.0033687293, 0.989457)
-bones/42/rotation = Quaternion(0.25486484, -0.40987793, -0.31079572, 0.81881016)
+bones/41/rotation = Quaternion(0.18299223, -0.022459334, 0.24081421, 0.9528998)
+bones/42/rotation = Quaternion(0.25486484, -0.40987793, -0.31079578, 0.81881016)
 bones/43/rotation = Quaternion(0.0046492317, 0.038033713, -0.039187726, 0.99849695)
 bones/44/rotation = Quaternion(0.13107885, -0.026236063, 0.12396566, 0.98324084)
 bones/45/rotation = Quaternion(0.01754316, 0.0028524133, -0.09420924, 0.99539375)
@@ -2428,7 +2428,7 @@ bones/57/rotation = Quaternion(0.04008765, -0.008712262, -0.088202596, 0.9952575
 material_override = ExtResource("28_kav4y")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="1" unique_id=134155221]
-transform = Transform3D(0.95500255, 0.08186616, -0.28507492, -0.27159858, -0.14483516, -0.9514498, -0.119180605, 0.9860633, -0.11608323, 3.1054537, 2.1497736, 0.42213786)
+transform = Transform3D(0.89983416, -0.17040083, -0.40157387, -0.41761595, -0.070445284, -0.9058887, 0.12607515, 0.98285353, -0.13455118, 2.7187176, 2.1078978, 0.65352523)
 bone_name = "hand_r"
 bone_idx = 33
 
@@ -2454,7 +2454,7 @@ shape = SubResource("CapsuleShape3D_mra31")
 debug_color = Color(0.3372549, 0.5803922, 0.5058824, 0.54509807)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="2" unique_id=446597695]
-transform = Transform3D(0.93470734, -0.12650713, 0.33214214, 0.3203712, -0.10475808, -0.94148207, 0.15389861, 0.9864185, -0.057389192, -3.1903486, 2.1172552, 0.3276965)
+transform = Transform3D(0.64552426, -0.098470055, 0.7573656, 0.71699786, -0.26345813, -0.6453715, 0.26308373, 0.9596319, -0.09946601, -2.9874954, 1.4155083, 0.19404435)
 bone_name = "hand_l"
 bone_idx = 43
 
@@ -2761,7 +2761,6 @@ body = NodePath("..")
 mesh = NodePath("../Mesh")
 target_body_group = "piglet_body"
 target_mesh_group = "piglet_mesh"
-weight = 0.0
 
 [node name="Particles" type="Node3D" parent="." unique_id=1521193383]
 script = ExtResource("19_4cd86")
