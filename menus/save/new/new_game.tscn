@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="5_d3ddl"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="7_044tn"]
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://menus/sfx/Menu_New.wav" id="7_io75r"]
-[ext_resource type="PackedScene" uid="uid://f3fcn8ktks1h" path="res://menus/title_screen/fade_to_black.tscn" id="8_044tn"]
+[ext_resource type="PackedScene" uid="uid://f3fcn8ktks1h" path="res://menus/transitions/fade_to_black.tscn" id="8_044tn"]
 
 [sub_resource type="Animation" id="Animation_jce53"]
 resource_name = "begin"
@@ -20,7 +20,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.4),
+"times": PackedFloat32Array(0.6333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -30,7 +30,7 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D")
+tracks/1/path = NodePath("SceneSpawner")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -122,7 +122,7 @@ script = ExtResource("4_xega6")
 default_scene_file = "uid://dmf0vo8jrm34a"
 name_input = NodePath("../LineEdit")
 error_label = NodePath("../Label")
-anim = NodePath("AnimationPlayer")
+anim = NodePath("Transition")
 
 [node name="MenuAudio" type="Node" parent="CenterContainer/New/Begin" unique_id=1421470360]
 script = ExtResource("4_8ie4y")
@@ -133,10 +133,10 @@ HOVERED_GROUP = ""
 PRESSED_GROUP = "menu_new_sound"
 FOCUS_ENTERED_GROUP = ""
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/New/Begin" unique_id=1305841155]
+[node name="Transition" type="AnimationPlayer" parent="CenterContainer/New/Begin" unique_id=1305841155]
 libraries/ = SubResource("AnimationLibrary_044tn")
 
-[node name="Node2D" type="Node2D" parent="CenterContainer/New/Begin" unique_id=69641019]
+[node name="SceneSpawner" type="Node2D" parent="CenterContainer/New/Begin" unique_id=69641019]
 top_level = true
 script = ExtResource("7_044tn")
 scenes = Array[PackedScene]([ExtResource("8_044tn")])
@@ -157,8 +157,5 @@ is_back_button = true
 script = ExtResource("4_8ie4y")
 SOUNDS = Array[AudioStream]([ExtResource("1_1va1p")])
 ADD_TO_ROOT = true
-BUS_NAMES = Array[String](["Music"])
-TWEEN_TO_MULTIPLIERS = Array[float]([0.0])
-TWEEN_DURATION = Array[float]([3.0])
 
 [connection signal="visibility_changed" from="CenterContainer/New/Begin" to="CenterContainer/New/Begin" method="grab_focus"]

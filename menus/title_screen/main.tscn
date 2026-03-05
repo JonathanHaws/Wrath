@@ -11,8 +11,10 @@
 [ext_resource type="AudioStream" uid="uid://bl2yh8xx8yn4s" path="res://menus/sfx/Menu_Load.ogg" id="9_8af7w"]
 [ext_resource type="AudioStream" uid="uid://bskcgvhx85bs3" path="res://menus/title_screen/title_screen.ogg" id="10_03rxr"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="10_8af7w"]
+[ext_resource type="PackedScene" uid="uid://cyc6qliwd6avp" path="res://menus/transitions/fade_out_music_0p3.tscn" id="11_nikc7"]
+[ext_resource type="PackedScene" uid="uid://bwacv5bktdk46" path="res://menus/transitions/fade_out_sfx_0p3.tscn" id="12_8af7w"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="12_k2sbj"]
-[ext_resource type="PackedScene" uid="uid://f3fcn8ktks1h" path="res://menus/title_screen/fade_to_black.tscn" id="14_nikc7"]
+[ext_resource type="PackedScene" uid="uid://f3fcn8ktks1h" path="res://menus/transitions/fade_to_black.tscn" id="14_nikc7"]
 
 [sub_resource type="Animation" id="Animation_nikc7"]
 length = 0.001
@@ -36,27 +38,44 @@ tracks/0/keys = {
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Node2D")
+tracks/1/path = NodePath("Transitions")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
+"args": [0],
 "method": &"spawn"
 }]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("MenuAudio")
+tracks/2/path = NodePath("Transitions")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(),
-"transitions": PackedFloat32Array(),
-"values": []
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1],
+"method": &"spawn"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Transitions")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [2],
+"method": &"spawn"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nikc7"]
@@ -137,10 +156,10 @@ FOCUS_ENTERED_GROUP = ""
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CenterContainer/Main/Continue" unique_id=569390132]
 libraries/ = SubResource("AnimationLibrary_nikc7")
 
-[node name="Node2D" type="Node2D" parent="CenterContainer/Main/Continue" unique_id=411564723]
+[node name="Transitions" type="Node2D" parent="CenterContainer/Main/Continue" unique_id=411564723]
 top_level = true
 script = ExtResource("10_8af7w")
-scenes = Array[PackedScene]([ExtResource("14_nikc7")])
+scenes = Array[PackedScene]([ExtResource("14_nikc7"), ExtResource("11_nikc7"), ExtResource("12_8af7w")])
 
 [node name="NewGame" type="Button" parent="CenterContainer/Main" unique_id=303036810 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 2

@@ -2,8 +2,8 @@ extends Control
 @export_file("*.tscn") var default_scene_file: String
 @export var profile_scene: PackedScene
 @export var exclude_current_save: bool = false
-
-@export var fade_to_black_spawner: Node
+@export var transition_animation_player: AnimationPlayer
+@export var transition_animation_name: String = "fade"
 
 func _on_profile_pressed(save_file: String) -> void:
 	
@@ -13,8 +13,11 @@ func _on_profile_pressed(save_file: String) -> void:
 	# Which it is not currently. You always spawn at the last checkpoint you banked
 	# So this just force rests before starting the session
 	
-	#fade_to_black_spawner.spawn()
-	await get_tree().create_timer(0.4).timeout ## Time to let fadeout play
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	
+	if transition_animation_player:
+		transition_animation_player.play(transition_animation_name)
+		await get_tree().create_timer(transition_animation_player.get_animation(transition_animation_name).length).timeout
 	
 	Save.load_save_data(save_file) 
 	Save.data["rests"] = (Save.data.get("rests", 0) + 1)

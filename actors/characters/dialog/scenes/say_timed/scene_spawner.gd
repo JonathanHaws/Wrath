@@ -5,8 +5,12 @@ extends Node
 @export var scene_to_spawn: int = 0 ## Specifies which scene to spawn 
 @export var random_scene: bool = false ## Overrides 'scene_to_spawn'
 @export var add_to_scene_root: bool = false ## Makes spawned scene a child of the scene root instead of this node. Useful when particles want to spawn other particles) Still starts with this nodes initial transform though
-func get_scene_to_spawn() -> PackedScene:
+@export var add_to_root: bool = false ## Makes it so scene spawned will still exist even if scene changes
+func get_scene_to_spawn(scene_variant: Variant = scene_to_spawn) -> PackedScene:
 	if scenes.size() == 0: return null 
+	if scene_variant != -1: # call method track requesting a specific scene to be spawned
+		if scene_variant is int and scene_variant >= 0 and scene_variant < scenes.size():
+			return scenes[scene_variant]
 	if random_scene: return scenes[randi() % scenes.size()]
 	if scene_to_spawn >= 0 and scene_to_spawn < scenes.size():
 		return scenes[scene_to_spawn]
@@ -108,13 +112,17 @@ func spawn_towards_camera_group(group: String = "player_camera",  weight: Vector
 			if scene.has_method("set_velocity_from_orientation"): scene.set_velocity_from_orientation()
 		return
 	
-func spawn() -> Node:
+func spawn(scene_variant: Variant = -1) -> Node:
 	
-	var scene_to_instantiate = get_scene_to_spawn()
+	var scene_to_instantiate = get_scene_to_spawn(scene_variant)
+	#print(scene_to_instantiate.resource_path.get_file())
+	
 	if scene_to_instantiate == null: return
 	var scene = scene_to_instantiate.instantiate()
 	
-	if add_to_scene_root:
+	if add_to_root:
+		get_tree().root.add_child(scene)
+	elif add_to_scene_root:
 		var root = get_tree().get_current_scene()
 		if root: root.add_child(scene)	
 	else:

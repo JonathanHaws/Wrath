@@ -83,8 +83,8 @@ func spawn_sound(sound: Variant = null) -> AudioStreamPlayer:
 @export_group("Ready") 
 @export var SPAWN_ON_LOAD: bool = false ## Makes first sound autoplay on load
 @export var DESTORY_GROUPS: Array[String] ## Groups that are destroyed in ready to avoid choatic audial overlap when switching scenes
-@export_subgroup("Tween") 
-@export var BUS_NAMES: Array[String] = [] ## Specifies which buses to change the volume of when this node is loaded
+@export_group("Tween Bus Volumes") 
+@export var BUS_NAMES: Array[String] = [] ## Specifies which buses to change the volume of when this node is loaded in ready
 @export var TWEEN_TO_MULTIPLIERS: Array[float] = [] ## Specifies the desired percentage.
 @export var TWEEN_DURATION: Array[float] = [.75] ## Specifies how long 
 func tween_bus(bus_name: String, target_multiplier: float, duration_seconds: float) -> void:

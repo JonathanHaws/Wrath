@@ -1,6 +1,4 @@
-[gd_scene format=3 uid="uid://f3fcn8ktks1h"]
-
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="1_rwnf3"]
+[gd_scene format=3 uid="uid://brtdguv72meqk"]
 
 [sub_resource type="Animation" id="Animation_tmtx3"]
 length = 0.001
@@ -30,8 +28,8 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_8af7w"]
-resource_name = "load_game"
-length = 0.5
+resource_name = "fade"
+length = 1.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -39,10 +37,10 @@ tracks/0/path = NodePath("AnimationPlayer/ColorRect:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.4, 0.60932803, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -56,28 +54,39 @@ tracks/1/keys = {
 "update": 0,
 "values": [true, true]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(1.1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_bbq7c"]
 _data = {
 &"RESET": SubResource("Animation_tmtx3"),
-&"load_game": SubResource("Animation_8af7w")
+&"fade": SubResource("Animation_8af7w")
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" unique_id=407444993]
+process_mode = 3
 libraries/ = SubResource("AnimationLibrary_bbq7c")
-autoplay = &"load_game"
+autoplay = &"fade"
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=613134938]
 modulate = Color(1, 1, 1, 0)
+z_index = 4096
+z_as_relative = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
-
-[node name="Node" type="Node" parent="." unique_id=2068382001]
-script = ExtResource("1_rwnf3")
-BUS_NAMES = Array[String](["Music"])
-TWEEN_TO_MULTIPLIERS = Array[float]([0.0])
-TWEEN_DURATION = Array[float]([0.3])
