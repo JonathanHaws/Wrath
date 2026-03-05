@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_xbol6"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="3_gcusp"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="5_iphix"]
-[ext_resource type="AudioStream" uid="uid://cv08lxjw3rypc" path="res://actors/characters/player/sfx/Jump.wav" id="6_iphix"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="6_gcusp"]
 
 [sub_resource type="Animation" id="Animation_e0soa"]
 resource_name = "RESET"
@@ -177,30 +177,31 @@ size_flags_vertical = 8
 mouse_filter = 2
 script = ExtResource("2_xbol6")
 
-[node name="GrabFocus" type="Control" parent="Options" unique_id=802723767 node_paths=PackedStringArray("focus_targets")]
-layout_mode = 2
-script = ExtResource("3_gcusp")
-focus_targets = [NodePath("../Choice1")]
-
-[node name="Choice1" type="Button" parent="Options" unique_id=2014382057]
+[node name="Choice1" type="Button" parent="Options" unique_id=2014382057 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_jcgki")
 text = "EXAMPLE CHOICE 1"
 
-[node name="Choice2" type="Button" parent="Options" unique_id=1086979235]
+[node name="Choice2" type="Button" parent="Options" unique_id=1086979235 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_jcgki")
 text = "EXAMPLE CHOICE 2"
 
-[node name="MenuAudio" type="Node" parent="." unique_id=1565350981 node_paths=PackedStringArray("HOVERED_BUTTONS", "PRESSED_BUTTONS")]
+[node name="GrabFocus" type="Control" parent="." unique_id=802723767 node_paths=PackedStringArray("focus_targets")]
+layout_mode = 3
+anchors_preset = 0
+offset_top = 620.0
+offset_right = 1280.0
+offset_bottom = 620.0
+mouse_filter = 2
+script = ExtResource("3_gcusp")
+focus_targets = [NodePath("../Options/Choice1")]
+
+[node name="Node" type="Node" parent="." unique_id=200543046 node_paths=PackedStringArray("ONLY_SPAWN_IF_VISIBLE")]
 script = ExtResource("5_iphix")
-SOUNDS = Array[AudioStream]([ExtResource("6_iphix")])
-HOVER_SOUND = "Jump"
-PRESSED_SOUND = "Jump"
-HOVERED_BUTTONS = [NodePath("../Options/Choice1"), NodePath("../Options/Choice2")]
-PRESSED_BUTTONS = [NodePath("../Options/Choice1"), NodePath("../Options/Choice2")]
-ADD_TO_ROOT = true
+SOUNDS = Array[AudioStream]([ExtResource("6_gcusp")])
+ONLY_SPAWN_IF_VISIBLE = NodePath("../Options")

@@ -4375,6 +4375,7 @@ grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(0.8, 0.8)
 pivot_offset = Vector2(40, 40)
+mouse_filter = 2
 script = ExtResource("43_ekykk")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="UI/Tutorials" unique_id=1379840933]
@@ -4384,6 +4385,7 @@ offset_top = -82.49999
 offset_right = 42.500183
 offset_bottom = 41.500008
 pivot_offset = Vector2(290, 124)
+mouse_filter = 2
 alignment = 2
 
 [node name="Revealed" type="AudioStreamPlayer" parent="UI/Tutorials/VBoxContainer" unique_id=1667586098]
@@ -4409,6 +4411,7 @@ bus = &"SFX"
 
 [node name="SkillTreeTutorial" type="RichTextLabel" parent="UI/Tutorials/VBoxContainer" unique_id=1707971146 node_paths=PackedStringArray("label", "revealed_player", "animation_player")]
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
 text = "[font_size=28][outline_size=6][color=#A1A1A1]# PRESS [color=566987][key][/color] TO AQUIRE SKILLS "
@@ -4430,6 +4433,7 @@ libraries/ = SubResource("AnimationLibrary_ika6y")
 
 [node name="HealTutorial" type="RichTextLabel" parent="UI/Tutorials/VBoxContainer" unique_id=2078828283 node_paths=PackedStringArray("label", "revealed_player", "animation_player")]
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
 text = "[font_size=28][outline_size=6][color=#A1A1A1]# PRESS [color=566987][key][/color] TO HEAL"
@@ -4449,6 +4453,7 @@ libraries/ = SubResource("AnimationLibrary_b52ho")
 
 [node name="ShootTutorial" type="RichTextLabel" parent="UI/Tutorials/VBoxContainer" unique_id=1295859465 node_paths=PackedStringArray("label", "revealed_player", "animation_player")]
 layout_mode = 2
+mouse_filter = 2
 theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
 text = "[font_size=28][outline_size=6][color=#A1A1A1]# SHOOT WITH [color=566987][key][/color][br] RECHARGE SOUL BY ATTACKING ENEMIES[/color]"

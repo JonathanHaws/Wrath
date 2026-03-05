@@ -1,4 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://f3fcn8ktks1h"]
+[gd_scene format=3 uid="uid://f3fcn8ktks1h"]
+
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="1_rwnf3"]
 
 [sub_resource type="Animation" id="Animation_tmtx3"]
 length = 0.001
@@ -61,13 +63,11 @@ _data = {
 &"load_game": SubResource("Animation_8af7w")
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer"]
-libraries = {
-&"": SubResource("AnimationLibrary_bbq7c")
-}
-autoplay = "load_game"
+[node name="AnimationPlayer" type="AnimationPlayer" unique_id=407444993]
+libraries/ = SubResource("AnimationLibrary_bbq7c")
+autoplay = &"load_game"
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=613134938]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0
@@ -75,3 +75,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Node" type="Node" parent="." unique_id=2068382001]
+script = ExtResource("1_rwnf3")
+BUS_NAMES = Array[String](["Music"])
+TWEEN_TO_MULTIPLIERS = Array[float]([0.0])
+TWEEN_DURATION = Array[float]([0.3])
