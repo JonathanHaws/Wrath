@@ -13,7 +13,7 @@ func _on_profile_pressed(save_file: String) -> void:
 	# Which it is not currently. You always spawn at the last checkpoint you banked
 	# So this just force rests before starting the session
 	
-	fade_to_black_spawner.spawn()
+	#fade_to_black_spawner.spawn()
 	await get_tree().create_timer(0.4).timeout ## Time to let fadeout play
 	
 	Save.load_save_data(save_file) 

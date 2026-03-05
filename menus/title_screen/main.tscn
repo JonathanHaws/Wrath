@@ -47,6 +47,20 @@ tracks/1/keys = {
 "method": &"spawn"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Music", 0.0, 0.4],
+"method": &"tween_bus"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nikc7"]
 _data = {
@@ -209,9 +223,12 @@ anchors_preset = 0
 script = ExtResource("12_k2sbj")
 SOUNDS = Array[AudioStream]([ExtResource("10_03rxr")])
 GROUPS = Array[String](["menu_music"])
-DESTORY_GROUPS = Array[String](["cinematic_music"])
 AVOID_STACKING_GROUPS = Array[String](["menu_music"])
 AUDIO_BUS = "Music"
 ADD_TO_ROOT = true
 SPAWN_ON_LOAD = true
+DESTORY_GROUPS = Array[String](["cinematic_music"])
+BUS_NAMES = Array[String](["Music", "SFX", "Master"])
+TWEEN_TO_MULTIPLIERS = Array[float]([1.0, 1.0, 1.0])
+TWEEN_DURATION = Array[float]([0.75, 0.75, 0.75])
 HOVER_SOUND = ""

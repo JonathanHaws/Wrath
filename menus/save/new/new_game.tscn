@@ -41,6 +41,20 @@ tracks/1/keys = {
 "method": &"spawn"
 }]
 }
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("MenuAudio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Music", 0.0, 0.4],
+"method": &"tween_bus"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_044tn"]
 _data = {
@@ -142,7 +156,9 @@ is_back_button = true
 [node name="MenuAudio" type="Node" parent="." unique_id=464676704]
 script = ExtResource("4_8ie4y")
 SOUNDS = Array[AudioStream]([ExtResource("1_1va1p")])
-DESTORY_GROUPS = Array[String](["menu_music"])
 ADD_TO_ROOT = true
+BUS_NAMES = Array[String](["Music"])
+TWEEN_TO_MULTIPLIERS = Array[float]([0.0])
+TWEEN_DURATION = Array[float]([3.0])
 
 [connection signal="visibility_changed" from="CenterContainer/New/Begin" to="CenterContainer/New/Begin" method="grab_focus"]

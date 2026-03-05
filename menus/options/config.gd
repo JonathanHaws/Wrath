@@ -11,14 +11,53 @@ func save_setting(section: String, key: String, value: Variant) -> void:
 	config.save("user://settings.cfg")	
 
 #region Audio
-const BUSES = ["Master", "Music", "SFX"]
-const DEFAULT = 100.0
+
+class Bus: # Wrapper class which makes buses easily savable and tweenable
+	var name: String
+	var index: int
+	var saved: float
+	var multiplier: float
+	var tween: Tween = null
+	func _init(bus_name: String, saved_value: float = 100.0, multiplier_value: float = 1.0) -> void:
+		name = bus_name
+		index = AudioServer.get_bus_index(bus_name)
+		saved = saved_value
+		multiplier = multiplier_value
+	func apply() -> void:
+		var final_volume = clamp((saved / 100.0) * multiplier, 0.0001, 1.0)
+		AudioServer.set_bus_volume_db(index, linear_to_db(final_volume))
+
+var BUSES: Dictionary = {
+	"Master": Bus.new("Master"),
+	"Music":  Bus.new("Music"),
+	"SFX":    Bus.new("SFX")
+	}
+
 func load_audio_settings() -> void:
-	for bus_name in BUSES:
-		var value = load_setting("audio", bus_name, DEFAULT)
-		var bus_idx = AudioServer.get_bus_index(bus_name)
-		AudioServer.set_bus_volume_db(bus_idx, linear_to_db(value / 100.0))
-		#endregion
+	for bus_name in BUSES.keys():
+		var bus = BUSES[bus_name]
+		bus.saved = load_setting("audio", bus_name, bus.saved)
+		bus.apply() 
+
+func tween_bus_volume(bus_name: String, target_multiplier: float, duration_seconds: float) -> void:
+	if not BUSES.has(bus_name): return
+	var bus = BUSES[bus_name]
+	if bus.tween:
+		bus.tween.kill()
+		bus.tween = null
+
+	var start_multiplier = bus.multiplier
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.set_ease(Tween.EASE_IN_OUT)
+	bus.tween = tween
+	tween.tween_method( func(t):
+		#print(bus.multiplier)
+		bus.multiplier = lerp(start_multiplier, target_multiplier, t)
+		bus.apply(),  
+		0.0, 1.0, duration_seconds)
+	tween.finished.connect(func(): bus.tween = null)
+	
 
 #region Graphics
 

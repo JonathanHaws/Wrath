@@ -113,6 +113,6 @@ scene_file = "uid://cls12q06quifx"
 process_mode = 3
 script = ExtResource("7_e7s18")
 SOUNDS = Array[AudioStream]([ExtResource("9_nw3fp")])
-DESTORY_GROUPS = Array[String](["menu_music"])
 ADD_TO_ROOT = true
+DESTORY_GROUPS = Array[String](["menu_music"])
 ONLY_SPAWN_IF_VISIBLE = NodePath("..")

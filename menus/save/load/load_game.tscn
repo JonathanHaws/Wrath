@@ -8,31 +8,6 @@
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="4_3kwj5"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="4_oirw8"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="7_2maut"]
-[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="7_oirw8"]
-[ext_resource type="PackedScene" uid="uid://f3fcn8ktks1h" path="res://menus/title_screen/fade_to_black.tscn" id="8_655js"]
-
-[sub_resource type="Animation" id="Animation_oirw8"]
-resource_name = "load"
-length = 0.5
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../../Node2D")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"spawn"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_655js"]
-_data = {
-&"load": SubResource("Animation_oirw8")
-}
 
 [node name="LoadGame" type="ColorRect" unique_id=80972365]
 anchors_preset = 15
@@ -68,7 +43,7 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 2
 script = ExtResource("1_6x4ew")
 profile_scene = ExtResource("2_t8d72")
-fade_to_black_spawner = NodePath("../../Node2D")
+fade_to_black_spawner = NodePath("")
 
 [node name="GrabFocus" type="Control" parent="CenterContainer/Load" unique_id=597383573 node_paths=PackedStringArray("focus_targets")]
 layout_mode = 2
@@ -87,17 +62,9 @@ script = ExtResource("4_3kwj5")
 scene_file = "uid://cls12q06quifx"
 is_back_button = true
 
-[node name="Node2D" type="Node2D" parent="." unique_id=515543704]
-top_level = true
-script = ExtResource("7_oirw8")
-scenes = Array[PackedScene]([ExtResource("8_655js")])
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D" unique_id=1056710675]
-root_node = NodePath("../../CenterContainer/Load")
-libraries/ = SubResource("AnimationLibrary_655js")
-
 [node name="MenuAudio" type="Node" parent="." unique_id=2040327337]
 script = ExtResource("7_2maut")
 SOUNDS = Array[AudioStream]([ExtResource("3_3kwj5")])
-DESTORY_GROUPS = Array[String](["menu_music"])
 ADD_TO_ROOT = true
+BUS_NAMES = Array[String](["Music"])
+TWEEN_TO_MULTIPLIERS = Array[float]([0.0])
