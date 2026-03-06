@@ -3,11 +3,11 @@ extends Node ## Script for adding leaning to 3d character controller (Only affec
 
 ## Determines how much lean weight is given to not just in the direction of velocity,
 ## But the difference or delta in velocity from this frame to the last (acceleration)
-@export var ACCELERATION_WEIGHT = 8
-@export var MAX_LEAN_FORWARD_DEGREES := 6.0  
-@export var MAX_LEAN_SIDE_DEGREES := 8.0    
-@export var LEAN_SPEED_FORWARD := 11.0
-@export var LEAN_SPEED_SIDE := 5.0
+@export var ACCELERATION_WEIGHT: float = 8.0
+@export var MAX_LEAN_FORWARD_DEGREES: float = 8.0
+@export var MAX_LEAN_SIDE_DEGREES: float = 8.0
+@export var LEAN_SPEED_FORWARD: float = 5.0
+@export var LEAN_SPEED_SIDE: float = 3.0
 @export var BODY: CharacterBody3D
 @export var MESH: Node3D
 var last_velocity := Vector3.ZERO
@@ -21,7 +21,9 @@ func _physics_process(delta: float) -> void:
 	#var forward: Vector3 = -MESH.global_transform.basis.z
 
 	var velocity_vector = BODY.velocity
+	velocity_vector.y = 0 # Ignore vertical contribution
 	var acceleration_vector: Vector3 = BODY.velocity - last_velocity
+	acceleration_vector.y = 0 # Ignore vertical contribution
 	last_velocity = velocity_vector
 	
 	#var lean_vector = velocity_vector 
