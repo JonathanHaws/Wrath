@@ -1,4 +1,5 @@
 extends Control ## script for onboarding tutorial prompts... 
+## Perhaps instead of action... Also accepting signals would be another more flexible way to 
 @export_group("Tutorial")
 @export_multiline var base_text: String = "[key] [progress]" 
 @export var action_name: String = "interact"
