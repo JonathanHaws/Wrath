@@ -2,12 +2,23 @@ extends Control
 @export_group("Rich Text Label")
 @export var label: Node
 @export var action_name: String = "interact"
-@export var place_holder_string: String = "[key]"
+@export var place_holder_string: String = "[key]" ## Used to specify what text will be automatically replaced with ccontrols
+@export var progress: String = "[progress]" ## Used to track progress of how well player learned mechanic. 
+@export var progress_display_divider: int = 1 ## Used to make prgress display cleaner for toggle actions. really require 6/6 but show 3/3
 @export var capitalize: bool = true
+var base_text: String = ""	
 func set_tutorial_text() -> void:
+	if not ("text" in label): return
 	var binding_text: String = Config.get_string_from_action(action_name)
 	if capitalize: binding_text = binding_text.to_upper()
-	if "text" in label: label.text = label.text.replace(place_holder_string, binding_text)
+	var text: String = base_text.replace(place_holder_string, binding_text)
+
+	var learn_count: int = int(Save.data.get(get_key(), 0))
+	var display_count: int = int(float(learn_count) / progress_display_divider)
+	var display_required: int = int(float(required_learn_count) / progress_display_divider)
+
+	text = text.replace(progress, str(display_count) + "/" + str(display_required))
+	label.text = text
 
 @export_group("Save")
 @export var saved_key: String = ""
@@ -43,6 +54,7 @@ func _on_body_entered(body: Node) -> void:
 	#print('player entered tutorial')
 
 func _ready():
+	if "text" in label: base_text = label.text
 	set_tutorial_text()
 	if has_learned_tutorial(): queue_free()
 	
@@ -59,6 +71,8 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed(action_name) and visible:
 		Save.data[saved_key] = int(Save.data.get(saved_key, 0)) + 1	# increment
+		
+		set_tutorial_text()
 		
 		if has_learned_tutorial():
 			if animation_player and learned_animation != "" and animation_player.current_animation != learned_animation:

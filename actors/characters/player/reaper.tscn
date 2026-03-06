@@ -4414,7 +4414,7 @@ layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
-text = "[font_size=28][outline_size=6][color=#A1A1A1]# PRESS [color=566987][key][/color] TO AQUIRE SKILLS "
+text = "[font_size=28][outline_size=6][color=#A1A1A1]# PRESS [color=566987][key][/color] TO AQUIRE SKILLS  [progress]"
 fit_content = true
 horizontal_alignment = 2
 visible_characters = 0
@@ -4422,8 +4422,9 @@ visible_ratio = 0.0
 script = ExtResource("51_773af")
 label = NodePath(".")
 action_name = "toggle_skill_tree"
+progress_display_divider = 2
 saved_key = "skill_tree_tutorial"
-required_learn_count = 4
+required_learn_count = 6
 revealed_player = NodePath("../Revealed")
 animation_player = NodePath("AnimationPlayer")
 
@@ -4436,13 +4437,12 @@ layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
-text = "[font_size=28][outline_size=6][color=#A1A1A1]# PRESS [color=566987][key][/color] TO HEAL"
+text = "[font_size=28][outline_size=6][color=#A1A1A1]# PRESS [color=566987][key][/color] TO HEAL [progress]"
 fit_content = true
 horizontal_alignment = 2
 script = ExtResource("51_773af")
 label = NodePath(".")
 saved_key = "healing_tutorial"
-required_learn_count = 4
 revealed_player = NodePath("../Revealed")
 animation_player = NodePath("AnimationPlayer")
 tutorial_area_group_name = "heal_tutorial"
@@ -4456,7 +4456,7 @@ layout_mode = 2
 mouse_filter = 2
 theme = ExtResource("52_ccj1p")
 bbcode_enabled = true
-text = "[font_size=28][outline_size=6][color=#A1A1A1]# SHOOT WITH [color=566987][key][/color][br] RECHARGE SOUL BY ATTACKING ENEMIES[/color]"
+text = "[font_size=28][outline_size=6][color=#A1A1A1]# SHOOT WITH [color=566987][key][/color][br] RECHARGE SOUL BY ATTACKING ENEMIES [progress][/color] "
 fit_content = true
 horizontal_alignment = 2
 visible_characters = 0
@@ -4465,7 +4465,6 @@ script = ExtResource("51_773af")
 label = NodePath(".")
 action_name = "shoot"
 saved_key = "shooting_tutorial"
-required_learn_count = 4
 revealed_player = NodePath("../Revealed")
 animation_player = NodePath("AnimationPlayer")
 tutorial_area_group_name = "shoot_tutorial"
