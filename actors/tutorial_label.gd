@@ -55,21 +55,33 @@ func set_tutorial_text() -> void:
 			label.text = segment
 		add_child(label)
 
-@export_group("AUDIO") ## Audio player found by group and triggered
+@export_group("Audio") ## Audio player found by group and triggered
 @export var revealed_sound: String = "tutorial_prompt" ## Sound to be played when revealed
 @export var already_revealed_sound: String = "" ## Sound to be played when revealed
 func play_group_sound(group_name: String) -> void:
 	for node in get_tree().get_nodes_in_group(group_name):
 		if node is AudioStreamPlayer: node.play()
 
-@export_group("Animations")
-@export_subgroup("Tweens")
+@export_group("Tweens")
 @export_subgroup("Modulation")
-var ready_modulation: bool = true
-var reveal_modulation_tween: bool = true
-var already_revealed_modulation_tween: bool = true
-var learned_modulation_tween: bool = true
-@export_subgroup("Players")
+@export var default_modulate: Color = Color(1, 1, 1, 0) 
+@export var reveal_modulation_tween: bool = true
+@export var already_revealed_modulation_tween: bool = true
+@export var learned_modulation_tween: bool = true
+@export var reveal_modulation_duration: float = 0.5
+@export var learned_modulation_duration: float = 0.5
+
+@export_subgroup("Visible Characters")
+@export var reveal_characters_slowly: bool = true
+@export var speed_per_character: float = 0.05  
+func tween_reveal_text() -> void:
+	var tween = create_tween()
+	for child in get_children(): if child is Label:
+		child.visible_characters = 0 
+		var duration = child.text.length() * speed_per_character
+		tween.tween_property(child, "visible_characters", child.text.length(), duration)
+
+@export_group("Animations")
 @export var revealed_player: AudioStreamPlayer ## Sound for when tutorial info is revealed
 @export var animation_player: AnimationPlayer ## Animation to play when area is entered
 @export var reveal_animation: String = "REVEAL"
@@ -77,27 +89,29 @@ var learned_modulation_tween: bool = true
 @export var already_revealed_animation: String = "REVEAL"
 func play_reveal_animation() -> void:
 	if reveal_modulation_tween: 
-		create_tween().tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.5)
+		create_tween().tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 1.0), reveal_modulation_duration)
 	if animation_player: animation_player.play(reveal_animation, 0)
+	if reveal_characters_slowly: tween_reveal_text()
 	play_group_sound(revealed_sound)
 	visible = true
 
 func play_already_revealed_animation() -> void:
 	if already_revealed_modulation_tween: 
-		create_tween().tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 1.0), 0.5)
+		create_tween().tween_property(self, "modulate", Color(1.0, 1.0, 1.0, 1.0), reveal_modulation_duration)
 	if animation_player: animation_player.play(already_revealed_animation, 0)
+	if reveal_characters_slowly: tween_reveal_text()
 	play_group_sound(already_revealed_sound)
 	visible = true
 
 func play_learned_animation() -> void:
 	if learned_modulation_tween: 
-		create_tween().tween_property(self, "modulate", Color(1,1,1,0), 0.5)
+		create_tween().tween_property(self, "modulate", Color(1,1,1,0), learned_modulation_duration)
 	if animation_player:
 		animation_player.connect("animation_finished", Callable(self, "queue_free"))
 		animation_player.play(learned_animation, 0)
 	
 func _ready():
-	if ready_modulation: modulate = Color(1, 1, 1, 0)
+	modulate = default_modulate
 	
 	set_tutorial_text()
 	if has_learned_tutorial(): queue_free()

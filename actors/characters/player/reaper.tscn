@@ -4228,7 +4228,7 @@ volume_db = -22.0
 pitch_scale = 0.5
 bus = &"SFX"
 
-[node name="Label" type="HBoxContainer" parent="UI/Tutorials/VBoxContainer" unique_id=540184136]
+[node name="SkillTutorial" type="HBoxContainer" parent="UI/Tutorials/VBoxContainer" unique_id=540184136]
 visible = false
 layout_mode = 2
 theme = ExtResource("52_ccj1p")
@@ -4240,7 +4240,7 @@ saved_key = "skill_tree_tutorial"
 required_learn_count = 6
 progress_display_divider = 2
 
-[node name="HealTut" type="HBoxContainer" parent="UI/Tutorials/VBoxContainer" unique_id=1902762774]
+[node name="HealTutorial" type="HBoxContainer" parent="UI/Tutorials/VBoxContainer" unique_id=1902762774]
 visible = false
 layout_mode = 2
 theme = ExtResource("52_ccj1p")
@@ -4251,7 +4251,7 @@ action_name = "heal"
 saved_key = "heal_tutorial"
 tutorial_area_group_name = "heal_tutorial"
 
-[node name="ShootTut" type="HBoxContainer" parent="UI/Tutorials/VBoxContainer" unique_id=679846313]
+[node name="ShootTutorial" type="HBoxContainer" parent="UI/Tutorials/VBoxContainer" unique_id=679846313]
 visible = false
 layout_mode = 2
 theme = ExtResource("52_ccj1p")
