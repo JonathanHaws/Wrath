@@ -4,6 +4,10 @@
 
 [resource]
 default_font = ExtResource("1_t1x2l")
-Label/colors/font_color = Color(0.74, 0.74, 0.74, 1)
+default_font_size = 28
+Label/colors/font_color = Color(0.69301486, 0.6930149, 0.6930149, 1)
+Label/colors/font_shadow_color = Color(0.18215626, 0.18215623, 0.18215623, 0.93333334)
 Label/constants/outline_size = 6
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 2
 Label/font_sizes/font_size = 28
