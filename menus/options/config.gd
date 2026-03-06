@@ -1,14 +1,33 @@
 extends Node
+
+#region Config 
+
 func load_setting(section: String, key: String, default_value: Variant) -> Variant:
 	var config = ConfigFile.new()
 	if config.load("user://settings.cfg") == OK:
 		return config.get_value(section, key, default_value)
 	return default_value
+
 func save_setting(section: String, key: String, value: Variant) -> void:
 	var config = ConfigFile.new()
 	config.load("user://settings.cfg")
 	config.set_value(section, key, value)
 	config.save("user://settings.cfg")	
+
+#endregion
+
+#region Animations
+
+# For triggering animations remotely like disabling input... 
+# Also used by this script to trigger an animation only when the game first launches
+func play_animation_by_group(animation_name: String, group_name: String = "input_anim") -> void:
+	#print(animation_name)
+	for p in get_tree().get_nodes_in_group(group_name):
+		if p is AnimationPlayer:
+			p.play(animation_name, 0)
+			p.advance(p.current_animation_length)
+
+#endregion
 
 #region Audio
 
@@ -58,6 +77,7 @@ func tween_bus_volume(bus_name: String, target_multiplier: float, duration_secon
 		0.0, 1.0, duration_seconds)
 	tween.finished.connect(func(): bus.tween = null)
 	
+#endregion
 
 #region Graphics
 
@@ -164,6 +184,7 @@ func load_graphics_settings() -> void:
 #endregion
 
 #region Controls
+
 const JOYPAD_BUTTON_NAMES := {
 	0: "PAD A",
 	1: "PAD B",
@@ -181,12 +202,14 @@ const JOYPAD_BUTTON_NAMES := {
 	13: "DP Left",
 	14: "DP Right",
 	}
+
 const JOYPAD_AXIS_NAMES := {
 	2: "LStick",
 	3: "RStick",
 	4: "LT",
 	5: "RT",
 	}
+
 func get_event_from_string(s: String) -> InputEvent:
 	var event: InputEvent = null
 	if s.begins_with("Mouse "):
@@ -205,6 +228,7 @@ func get_event_from_string(s: String) -> InputEvent:
 			event = InputEventKey.new()
 			event.keycode = code
 	return event
+
 func get_string_from_event(event: InputEvent) -> String:
 	if event is InputEventKey:
 		var code = event.keycode if event.keycode != 0 else event.physical_keycode
@@ -216,27 +240,32 @@ func get_string_from_event(event: InputEvent) -> String:
 	elif event is InputEventMouseButton:
 		return "Mouse " + str(event.button_index)
 	return "(Unknown)"
+
 func get_string_from_action(action: String) -> String:
 	var keys := []
 	for event in InputMap.action_get_events(action):
 		keys.append(get_string_from_event(event))
 	return ", ".join(keys) if keys.size() > 0 else "(Unassigned)"
+
 func get_events_from_string(s: String) -> Array[InputEvent]:
 	var events: Array[InputEvent] = []
 	for part in s.split(","):
 		var event = get_event_from_string(part.strip_edges())
 		if event: events.append(event)
 	return events
+
 func load_action_setting(action: String) -> void:
 	var saved_string: String = load_setting("controls", action, "default")
 	if saved_string != "default":
 		InputMap.action_erase_events(action)
 		var events = get_events_from_string(saved_string)
 		for event in events: InputMap.action_add_event(action, event)
+
 func save_action_setting(action: String) -> void:
 	# Convert current InputMap state to a string and save
 	var current_binds = get_string_from_action(action)
 	save_setting("controls", action, current_binds)
+
 func load_controls_settings() -> void:
 	var actions = [
 		"lock_on", 
@@ -258,14 +287,6 @@ func load_controls_settings() -> void:
 		]
 	for action in actions: load_action_setting(action)
 	
-# For disabling input... 
-func play_input_anim(animation_name: String, group_name: String = "input_anim") -> void:
-	#print(animation_name)
-	for p in get_tree().get_nodes_in_group(group_name):
-		if p is AnimationPlayer:
-			p.play(animation_name, 0)
-			p.advance(p.current_animation_length)
-
 #endregion
 
 #region  Hidden Cursor
@@ -300,6 +321,7 @@ func _ready() -> void:
 	load_graphics_settings()
 	load_audio_settings()
 	load_controls_settings()
+	play_animation_by_group("only_on_launch", "game_start_player")
 
 func _process(_delta):
 	hidden_cursor_process(_delta)

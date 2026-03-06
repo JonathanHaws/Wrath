@@ -10,7 +10,7 @@ func _on_choice_pressed(choice: Dictionary) -> void:
 	if info[choice_chosen].has("end"): 
 		dialog.end()
 	
-	if Config: Config.play_input_anim("choice_disabled")
+	if Config: Config.play_animation_by_group("choice_disabled")
 	_capture_cursor()
 	queue("exited")
 	if dialog.in_range:
@@ -34,11 +34,11 @@ func _release_cursor():
 		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _exit_tree():
-	if Config: Config.play_input_anim("choice_disabled")
+	if Config: Config.play_animation_by_group("choice_disabled")
 
 func _ready():
 	
-	if Config: Config.play_input_anim("choice_enabled")
+	if Config: Config.play_animation_by_group("choice_enabled")
 	
 	$Options/Choice1.text = ""
 	$Options/Choice2.text = ""

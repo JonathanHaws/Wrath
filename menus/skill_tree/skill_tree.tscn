@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://dspid5s7r6a1o"]
 
 [ext_resource type="Script" uid="uid://dtb4vhbly0gp5" path="res://menus/skill_tree/skill_tree_toggle.gd" id="1_13hwl"]
-[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="1_iiq8l"]
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/themes/theme.tres" id="1_iiq8l"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="2_irovk"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="3_monbv"]
 [ext_resource type="Texture2D" uid="uid://rj52h8jq1tcw" path="res://menus/skill_tree/textures/Progress/Progress Background.png" id="4_lts1r"]
@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://77ol03ius6rh" path="res://menus/skill_tree/textures/Progress/Pride.png" id="12_cqod1"]
 [ext_resource type="Texture2D" uid="uid://bcusr8k864bcv" path="res://menus/skill_tree/textures/Skill Images/Skills-9.png" id="12_ncvsq"]
 [ext_resource type="Texture2D" uid="uid://5ql648bpxoih" path="res://menus/skill_tree/textures/Skill Images/Skills-10.png" id="13_og45s"]
-[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="13_uftlf"]
+[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://menus/themes/notification.tres" id="13_uftlf"]
 [ext_resource type="Texture2D" uid="uid://bplp8apkyeu2t" path="res://menus/skill_tree/textures/Skill Images/Skills-11.png" id="14_t5yef"]
 [ext_resource type="Script" uid="uid://dbfbopu4ncf67" path="res://menus/skill_tree/wisp_counter.gd" id="14_xjsia"]
 [ext_resource type="Texture2D" uid="uid://sf6w3mb61dd3" path="res://menus/skill_tree/textures/Skill Images/Skills-12.png" id="15_i6b42"]
@@ -55,6 +55,7 @@
 [ext_resource type="Texture2D" uid="uid://bowmjsco5pwul" path="res://menus/skill_tree/textures/Skill Images/Skills-29.png" id="37_my0po"]
 [ext_resource type="Texture2D" uid="uid://rhj5qcvstxwa" path="res://menus/skill_tree/textures/Skill Images/Skills-30.png" id="38_o5bp0"]
 [ext_resource type="BitMap" uid="uid://dndd136tgy7dj" path="res://menus/skill_tree/textures/Progress/Envy.bmp" id="39_ncvsq"]
+[ext_resource type="Theme" uid="uid://c8d8pojx2cgao" path="res://menus/themes/skill_tree_description.tres" id="56_0x486"]
 
 [sub_resource type="Gradient" id="Gradient_ubdiu"]
 interpolation_mode = 2
@@ -1241,5 +1242,5 @@ text = "1"
 
 [node name="Description" type="Label" parent="VBoxContainer" unique_id=793817492 groups=["ability_info_skilltree"]]
 layout_mode = 2
-theme = ExtResource("13_uftlf")
+theme = ExtResource("56_0x486")
 text = "This is a description of the skill"

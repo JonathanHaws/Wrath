@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://btfr5eocbsa1j"]
 
 [ext_resource type="Script" uid="uid://pccpxg1y2tdf" path="res://menus/skip/skip.gd" id="1_iemd8"]
-[ext_resource type="Theme" uid="uid://dc3871vl88kgm" path="res://actors/characters/player/tutorial.tres" id="2_25h4r"]
+[ext_resource type="Theme" uid="uid://dc3871vl88kgm" path="res://menus/themes/tutorial.tres" id="2_25h4r"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="3_frnm4"]
 
 [sub_resource type="Animation" id="Animation_pyb2n"]

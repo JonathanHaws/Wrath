@@ -29,6 +29,7 @@ func _on_game_new_pressed() -> void:
 			if error_label: error_label.text = "PICK A UNIQUE NAME."
 			return
 	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	if anim and anim_name != "": anim.play(anim_name)
 
 func _begin() -> void:

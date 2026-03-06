@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://bb0ulhlrvid4g" path="res://actors/characters/dialog/scenes/say_timed/say_timed.gd" id="1_jnq6s"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_rmwxh"]
-[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="3_bvnr2"]
+[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://menus/themes/notification.tres" id="3_bvnr2"]
 
 [sub_resource type="Animation" id="Animation_e0soa"]
 resource_name = "RESET"

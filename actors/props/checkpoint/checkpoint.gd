@@ -38,7 +38,7 @@ func _play_aquired() -> void:
 	AQUIRED_ANIM.play("AQUIRED")
 
 func _on_body_entered(body: Node) -> void:
-	if Config: Config.play_input_anim("checkpoint_disable")
+	if Config: Config.play_animation_by_group("checkpoint_disable")
 	if GROUP != "" and not body.is_in_group(GROUP): return
 	enter_prompt_played = true
 	
@@ -55,7 +55,7 @@ func _on_body_entered(body: Node) -> void:
 	AQUIRED_ANIM.play("AQUIRED")
 	
 func _on_body_exited(body: Node) -> void:
-	if Config: Config.play_input_anim("checkpoint_enable")
+	if Config: Config.play_animation_by_group("checkpoint_enable")
 	if GROUP != "" and not body.is_in_group(GROUP): return
 	player_inside = false
 	if not enter_prompt_played: return

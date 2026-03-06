@@ -27,7 +27,7 @@ func setup_focus():
 @export_subgroup("INFO")
 @export var cost_group:= "cost_skilltree" ## Label to update with cost of current skill node hovered
 @export var description_group := "ability_info_skilltree" ## Label to update with a description of the ability
-@export var description := "Increases players power"
+@export_multiline var description := "Increases players power"
 @export_subgroup("MODULATION")
 @export var base_modulate: Color = Color(.3,.3,.3,1)
 @export var hover_modulate: Color = Color(0.5,0.5,0.5,1)	

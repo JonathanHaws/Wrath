@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="1_xbifh"]
 [ext_resource type="PackedScene" uid="uid://bchlq7ojvre5o" path="res://menus/save/profile/profile_load.tscn" id="2_t8d72"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="3_3kwj5"]
-[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/theme.tres" id="3_opbiq"]
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/themes/theme.tres" id="3_opbiq"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="4_3kwj5"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="4_inbrs"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="4_oirw8"]

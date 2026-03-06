@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cqca3skeurt3e" path="res://actors/characters/enemies/bosses/greed/greed_hurt_particles.tscn" id="2_jx80p"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://actors/characters/hit_shape.gd" id="4_ri305"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://actors/characters/ui/bar.tscn" id="9_wri43"]
-[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://actors/characters/player/notification.tres" id="10_bkkeq"]
+[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://menus/themes/notification.tres" id="10_bkkeq"]
 [ext_resource type="StyleBox" uid="uid://p8dn2g85fmrc" path="res://actors/characters/enemies/bosses/greed/greed_health.tres" id="10_jx80p"]
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://actors/characters/enemies/sfx/Cry.wav" id="12_hnntr"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="15_cadt7"]
