@@ -112,6 +112,8 @@ func play_learned_animation() -> void:
 		animation_player.play(learned_animation, 0)
 	
 func _ready():
+	mouse_filter = Control.MOUSE_FILTER_IGNORE
+	
 	modulate = default_modulate
 	
 	set_tutorial_text()
