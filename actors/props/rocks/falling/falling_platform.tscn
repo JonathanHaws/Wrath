@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://b36oi3g053jo0"]
+[gd_scene format=3 uid="uid://b36oi3g053jo0"]
 
-[ext_resource type="Script" uid="uid://b0ux3y8bj5pp6" path="res://actors/characters/enemies/ghosts/falling_platform.gd" id="1_pwrpi"]
+[ext_resource type="Script" uid="uid://b0ux3y8bj5pp6" path="res://actors/props/rocks/falling/falling_platform.gd" id="1_pwrpi"]
 [ext_resource type="Material" uid="uid://pl3nbr4toayv" path="res://actors/props/rocks/materials/rocks.tres" id="2_hjgdu"]
 [ext_resource type="ArrayMesh" uid="uid://bx7n4l7cl82nw" path="res://actors/props/rocks/rock_1.res" id="2_pwrpi"]
+
 
 [sub_resource type="Animation" id="Animation_qy78s"]
 length = 0.001

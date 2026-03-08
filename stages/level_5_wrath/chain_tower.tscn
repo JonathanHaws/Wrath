@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bnli3nh320v2f"]
+[gd_scene format=3 uid="uid://bnli3nh320v2f"]
 
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://stages/materials/bricks/small/world_small.tres" id="2_xjjd2"]
 [ext_resource type="PackedScene" uid="uid://ct16v3d62ahyk" path="res://stages/level_5_wrath/chain_ceiling.blend" id="3_kfjdl"]
@@ -9,7 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://actors/characters/player/reaper.tscn" id="8_fk1wk"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp.tscn" id="9_4y6qk"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://actors/props/doors/heavy/heavy_door.tscn" id="10_8fu47"]
-[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="11_sj1b4"]
+[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/melee/ghost_melee.tscn" id="11_sj1b4"]
+
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)

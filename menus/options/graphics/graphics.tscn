@@ -22,11 +22,11 @@ offset_bottom = 176.0
 script = ExtResource("1_j3qnb")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=713534090 groups=["ui_scalable"]]
-layout_mode = 0
+layout_mode = 1
 offset_left = -7.0
 offset_top = -178.0
-offset_right = 358.0
-offset_bottom = 170.0
+offset_right = 337.0
+offset_bottom = 92.0
 color = Color(0.0646965, 0.0646965, 0.0646965, 0.913725)
 script = ExtResource("1_oc2qo")
 
@@ -36,6 +36,7 @@ offset_left = 18.0
 offset_top = 11.0
 offset_right = 127.0
 offset_bottom = 287.0
+script = ExtResource("1_oc2qo")
 
 [node name="GrabFocus" type="Control" parent="ColorRect/VBoxContainer" unique_id=1985318492 node_paths=PackedStringArray("focus_targets")]
 layout_mode = 2

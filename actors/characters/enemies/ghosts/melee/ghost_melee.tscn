@@ -501,123 +501,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_dfr5h"]
-resource_name = "JUMP_ATTACK"
-length = 2.2
-step = 0.0183
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.433333, 0.5, 1),
-"transitions": PackedFloat32Array(0.406126, 1, 9.18958, 0.176777),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.29, 0), Vector3(0, 1.29, 0), Vector3(0, 0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Hitbox:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.433333, 0.5, 1),
-"transitions": PackedFloat32Array(0.406126, 1, 9.18958, 0.176777),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.29, 0), Vector3(0, 1.29, 0), Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("CollisionShape3D:position")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.433333, 0.5, 1),
-"transitions": PackedFloat32Array(0.406126, 1, 9.18958, 0.176777),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 1.29, 0), Vector3(0, 1.29, 0), Vector3(0, 0, 0)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("JumpAttack/CollisionShape3D:disabled")
-tracks/3/interp = 0
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1, 1.0181818),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [true, false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Target:MOVE_AND_SLIDE")
-tracks/4/interp = 0
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [false, true]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Audio/Slam")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CameraEffects")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(1),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["small", 0.2, 0.2, 0.0],
-"method": &"impact"
-}]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/7/interp = 0
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.2333, 1.6545454, 1.8878855),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 0.0, 0.0, 1.0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-
 [sub_resource type="Animation" id="Animation_05mu1"]
 resource_name = "RESET"
 tracks/0/type = "value"
@@ -729,114 +612,6 @@ tracks/8/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_fd7dn"]
-resource_name = "SHOOT"
-length = 3.5
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Squash:target_squash_scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 1.06667, 2.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 1.2, 1.2, 1.0]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Audio/ShootWindup")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/2/interp = 0
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 3.1666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 1.566667, 2.8666666, 3.0333364),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 0.0, 0.0, 1.0]
-}
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Squash")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(1.7333399, 1.9102299, 2.11348),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [0.2],
-"method": &"squish"
-}, {
-"args": [0.2],
-"method": &"squish"
-}, {
-"args": [0.2],
-"method": &"squish"
-}]
-}
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Audio/Shoot")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(1.7333399, 1.90844, 2.11595),
-"transitions": PackedFloat32Array(1, 1, 1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}, {
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Mesh/SceneSpawner")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(1.7333367),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [3, 0.1, Vector3(0.1, 0, 0)],
-"method": &"spawn_towards_target"
-}]
-}
-
 [sub_resource type="Animation" id="Animation_oquh6"]
 resource_name = "STUNNED"
 length = 1.7500042
@@ -909,23 +684,13 @@ _data = {
 &"ATTACK": SubResource("Animation_1m57m"),
 &"CHASE": SubResource("Animation_n368u"),
 &"DEATH": SubResource("Animation_hp215"),
-&"JUMP_ATTACK": SubResource("Animation_dfr5h"),
 &"RESET": SubResource("Animation_05mu1"),
-&"SHOOT": SubResource("Animation_fd7dn"),
 &"STUNNED": SubResource("Animation_oquh6")
 }
 
 [sub_resource type="Curve" id="Curve_mvqiw"]
 _data = [Vector2(0.0687285, 1), 0.0, 0.0, 0, 0, Vector2(0.209622, 0), 0.0, 0.0, 0, 0]
 point_count = 2
-
-[sub_resource type="Curve" id="Curve_n368u"]
-_data = [Vector2(0, 0.730337), 0.0, 0.0, 0, 0]
-point_count = 1
-
-[sub_resource type="Curve" id="Curve_7c1mb"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1e-05, 1), 0.0, 0.0, 0, 0, Vector2(0.128878, 1), -0.0794266, -0.0794266, 0, 0, Vector2(0.298329, 0), 0.0, 0.0, 0, 0]
-point_count = 4
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qr43c"]
 size = Vector3(1.0802, 1.44707, 1.26314)
@@ -1116,8 +881,6 @@ libraries/ = SubResource("AnimationLibrary_agce3")
 autoplay = &"CHASE"
 next/ATTACK = &"CHASE"
 next/CHASE = &"CHASE"
-next/JUMP_ATTACK = &"CHASE"
-next/SHOOT = &"CHASE"
 next/STUNNED = &"CHASE"
 
 [node name="Attack" type="Node" parent="AnimationPlayer" unique_id=1993194282 node_paths=PackedStringArray("TARGET", "BODY")]
@@ -1125,26 +888,6 @@ script = ExtResource("20_mvqiw")
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_mvqiw")
 ATTACK_ANIMATION = "ATTACK"
 LIKELIHOOD_MULTIPLIER = 50.0
-TARGET = NodePath("../../Target")
-BODY = NodePath("../..")
-
-[node name="Shoot" type="Node" parent="AnimationPlayer" unique_id=435457927 node_paths=PackedStringArray("AREAS", "TARGET", "BODY")]
-script = ExtResource("20_mvqiw")
-ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_n368u")
-ATTACK_ANIMATION = "SHOOT"
-ATTACK_RADIUS = 20.0
-COOLDOWN = 5.0
-AREAS = [NodePath("../../ShootWhenPlayerInHere"), NodePath("../../NeverShootWhenPlayerInHere")]
-AREA_LIKELIHOOD_VALUES = Array[float]([1.0, -1.0])
-TARGET = NodePath("../../Target")
-BODY = NodePath("../..")
-
-[node name="JumpAttack" type="Node" parent="AnimationPlayer" unique_id=609250576 node_paths=PackedStringArray("TARGET", "BODY")]
-script = ExtResource("20_mvqiw")
-ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_7c1mb")
-ATTACK_ANIMATION = "JUMP_ATTACK"
-LIKELIHOOD_MULTIPLIER = 30.0
-COOLDOWN = 4.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 

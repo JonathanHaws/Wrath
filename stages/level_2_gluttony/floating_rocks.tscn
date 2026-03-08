@@ -11,7 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cy3bknox15p2c" path="res://actors/props/rocks/horizontal/horizontal_moving_rock.tscn" id="10_0eqd5"]
 [ext_resource type="PackedScene" uid="uid://b36oi3g053jo0" path="res://actors/props/rocks/falling/falling_platform.tscn" id="11_bmkvs"]
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://actors/props/wisp/wisp.tscn" id="13_1j05m"]
-[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="14_rnrrl"]
+[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/melee/ghost_melee.tscn" id="14_rnrrl"]
 [ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://actors/characters/npcs/piglet/piglet.tscn" id="15_14x8r"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]

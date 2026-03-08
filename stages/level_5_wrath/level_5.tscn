@@ -17,7 +17,7 @@
 [ext_resource type="Material" uid="uid://cy0ev2opeyd34" path="res://stages/materials/bricks/star/star.tres" id="17_e52ow"]
 [ext_resource type="Material" uid="uid://8p0im5f4mlk7" path="res://stages/materials/bricks/big/world_big.tres" id="18_ovh7g"]
 [ext_resource type="PackedScene" uid="uid://7mrheb4oio5g" path="res://stages/level_5_wrath/arch/arch.tscn" id="19_3yoog"]
-[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/ghost.tscn" id="19_b0sq8"]
+[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://actors/characters/enemies/ghosts/melee/ghost_melee.tscn" id="19_b0sq8"]
 
 [sub_resource type="Animation" id="Animation_gllqw"]
 resource_name = "ESCAPE"

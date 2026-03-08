@@ -4,7 +4,7 @@ extends Node
 @export var PLAYER_GROUP = "player"
 var skill_tree_open: bool = false
 
-func toggle_skill_tree() -> void:
+func toggle_skill_tree(capture_or_release_cursor: bool = true) -> void:
 	## Controller B to exit skill tree but dont dash
 	await get_tree().physics_frame 
 	await get_tree().physics_frame
@@ -13,13 +13,16 @@ func toggle_skill_tree() -> void:
 	skill_tree_ui.visible = skill_tree_open
 
 	if skill_tree_open:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+		if capture_or_release_cursor: Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		if Config: Config.play_animation_by_group("skill_tree_disable")
 	else:
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		if capture_or_release_cursor: Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		if Config: Config.play_animation_by_group("skill_tree_enable")
 
 func _process(_delta):
+
+	if Input.is_action_just_pressed("menu") and !toggle_disabled and skill_tree_open:
+		toggle_skill_tree(false)
 
 	if Input.is_action_just_pressed("menu_back") and !toggle_disabled and skill_tree_open:
 		toggle_skill_tree()
