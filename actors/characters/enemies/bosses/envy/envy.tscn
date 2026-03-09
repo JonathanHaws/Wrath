@@ -1372,7 +1372,7 @@ _data = {
 &"exited": SubResource("Animation_06a6w")
 }
 
-[node name="Envy" type="CharacterBody3D" unique_id=2069353459 node_paths=PackedStringArray("TARGET", "ANIM")]
+[node name="Envy" type="CharacterBody3D" unique_id=2069353459 node_paths=PackedStringArray("TARGET", "ANIM") groups=["chase"]]
 rotation_edit_mode = 1
 collision_layer = 6
 collision_mask = 7

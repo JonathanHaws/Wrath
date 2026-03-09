@@ -1,7 +1,9 @@
 ## Used for particles, projectiles, and other dynamically spawned scenes
 ## Use top level for scene transforms to avoid them following parents 
 extends Node
+@export_group("Scenes") 
 @export var scenes: Array[PackedScene]
+@export var add_to_groups: Array[String] = []
 @export var scene_to_spawn: int = 0 ## Specifies which scene to spawn 
 @export var random_scene: bool = false ## Overrides 'scene_to_spawn'
 @export var add_to_scene_root: bool = false ## Makes spawned scene a child of the scene root instead of this node. Useful when particles want to spawn other particles) Still starts with this nodes initial transform though
@@ -44,7 +46,7 @@ func get_orientation_towards_position_3d(target_position: Vector3, position: Vec
 func _check_wave_end():
 	if not is_inside_tree(): return
 	if get_tree().get_nodes_in_group("wave_spawned").is_empty():
-		print("All enemies killed spawning new wave")
+		#print("All enemies killed spawning new wave")
 		wave_animation_player.play()	# advance wave
 
 func spawn_towards_target(scene_count: int = 1, delay: float = 0.0, weight: Vector3 = Vector3(1,1,1)) -> void:
@@ -119,6 +121,8 @@ func spawn(scene_variant: Variant = -1) -> Node:
 	
 	if scene_to_instantiate == null: return
 	var scene = scene_to_instantiate.instantiate()
+	
+	for group in add_to_groups: scene.add_to_group(group)
 	
 	if add_to_root:
 		get_tree().root.add_child(scene)

@@ -20,15 +20,18 @@
 [ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://actors/characters/enemies/ghosts/ghost_hurt_particles.tscn" id="18_mgx37"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://actors/characters/enemies/random_attack.gd" id="20_mvqiw"]
 [ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://actors/characters/enemies/ghosts/ghost_projectile.tscn" id="20_x07w4"]
-[ext_resource type="Material" uid="uid://cn5x858kq0c3r" path="res://actors/characters/enemies/ghosts/ghost.tres" id="21_mvqiw"]
+[ext_resource type="PackedScene" uid="uid://7533kr1t01i1" path="res://actors/characters/enemies/ghosts/melee/melee_ghost.blend" id="21_l7nyu"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="21_oquh6"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://actors/characters/enemies/chase_target.gd" id="22_3d4yc"]
+[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://actors/characters/disolve.gdshader" id="22_l7nyu"]
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_7c1mb"]
-radius = 0.806
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x8ps6"]
+radius = 0.83935547
+height = 3.4125977
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_6640v"]
-radius = 0.980629
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p16ut"]
+radius = 1.1000977
+height = 3.3430176
 
 [sub_resource type="Animation" id="Animation_rkfee"]
 resource_name = "DEATH"
@@ -86,56 +89,32 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D:material_override:albedo_color")
+tracks/4/path = NodePath("Hitbox/CollisionShape3D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.766667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.52, 0.52, 0.52, 1), Color(0.52, 0.52, 0.52, 0)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D2:material_override:albedo_color")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.766667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(0.52, 0.52, 0.52, 1), Color(0.52, 0.52, 0.52, 0)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Hitbox/CollisionShape3D:disabled")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/7/type = "animation"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("AnimationPlayer")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/5/type = "animation"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "clips": PackedStringArray("DEATH"),
 "times": PackedFloat32Array(0)
 }
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Mesh/LockOn")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/LockOn")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -143,10 +122,36 @@ tracks/8/keys = {
 "method": &"queue_free"
 }]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CollisionShape3D")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Target:USE_GRAVITY")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
 tracks/9/type = "method"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("CollisionShape3D")
+tracks/9/path = NodePath("WispReward")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -154,60 +159,22 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"queue_free"
-}]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Target:USE_GRAVITY")
-tracks/10/interp = 0
-tracks/10/loop_wrap = true
-tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [false]
-}
-tracks/11/type = "method"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("WispReward")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
 "method": &"give"
 }]
 }
-tracks/12/type = "method"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("HurtParticles")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("HurtParticles")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"spawn"
 }]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Mesh/MeshInstance3D:surface_material_override/0:shader_parameter/dissolve_amount")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(0, 0.8333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
 }
 
 [sub_resource type="Animation" id="Animation_pyqwo"]
@@ -285,74 +252,38 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D:material_override:albedo_color")
+tracks/2/path = NodePath("Target:USE_GRAVITY")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.52, 0.52, 0.52, 1)]
+"update": 1,
+"values": [true]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/MeshInstance3D/MeshInstance3D2:material_override:albedo_color")
+tracks/3/path = NodePath("Hitbox/CollisionShape3D:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.52, 0.52, 0.52, 1)]
+"update": 1,
+"values": [false]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Target:USE_GRAVITY")
+tracks/4/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Hitbox/CollisionShape3D:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Mesh/MeshInstance3D:surface_material_override/0:shader_parameter/dissolve_amount")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n368u"]
@@ -383,7 +314,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/MeshInstance3D/Attack/CollisionShape3D:disabled")
+tracks/1/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/Attack/CollisionShape3D:disabled")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -407,43 +338,43 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/MeshInstance3D:rotation")
+tracks/3/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.41111112, 0.8333381, 0.9777841, 1.4111111),
-"transitions": PackedFloat32Array(0.659755, 0.0457527, 0.0457527, 0.129408, 16.5642),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0.582888, 0, 0), Vector3(0.582888, 0, 0), Vector3(-0.528119, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.3444441, 1.2847311, 1.8333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [1.0, 0.0, 0.0, 1.0]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Mesh/MeshInstance3D/Attack:parryable")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/Attack:parryable")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0.8, 0.87777776),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
+tracks/5/type = "animation"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/melee_ghost/AnimationPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": PackedStringArray("Attack"),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_n368u"]
 resource_name = "CHASE"
-loop_mode = 2
+length = 0.83333755
+loop_mode = 1
+step = 0.041666668
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -467,6 +398,16 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/melee_ghost/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("Idle"),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_hp215"]
@@ -500,13 +441,49 @@ tracks/1/keys = {
 "method": &"impact"
 }]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/Sphere:surface_material_override/0:shader_parameter/dissolve_amount")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.0333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/Sphere_002:surface_material_override/0:albedo_color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.6435713, 0.64357144, 0.64357126, 1), Color(0.64, 0.64, 0.64, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/Sphere_001:surface_material_override/0:albedo_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.96666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.6435713, 0.64357144, 0.64357126, 1), Color(0.64, 0.64, 0.64, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_05mu1"]
 resource_name = "RESET"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/MeshInstance3D/Attack/CollisionShape3D:disabled")
+tracks/0/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/Attack/CollisionShape3D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -530,43 +507,43 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/MeshInstance3D:rotation")
+tracks/2/path = NodePath("Squash:target_squash_scale")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [1.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Squash:target_squash_scale")
+tracks/3/path = NodePath("Mesh:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Mesh:position")
+tracks/4/path = NodePath("JumpAttack/CollisionShape3D:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 0)]
+"update": 1,
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("JumpAttack/CollisionShape3D:disabled")
+tracks/5/path = NodePath("Target:MOVE_AND_SLIDE")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -578,38 +555,62 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/6/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [0.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/7/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/Attack:parryable")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [false]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Mesh/MeshInstance3D/Attack:parryable")
+tracks/8/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/Sphere:surface_material_override/0:shader_parameter/dissolve_amount")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/Sphere_001:surface_material_override/0:albedo_color")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.6435713, 0.64357144, 0.64357126, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/Sphere_002:surface_material_override/0:albedo_color")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.6435713, 0.64357144, 0.64357126, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_oquh6"]
@@ -631,46 +632,34 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Mesh/MeshInstance3D:rotation")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.111111104, 1.3222089, 1.6888754),
-"transitions": PackedFloat32Array(0.659755, 0.0457527, 4.924579, 16.5642),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1.5707964, 0, 0), Vector3(1.5707964, 0, 0), Vector3(0, 0, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/2/interp = 0
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/MeshInstance3D/Attack/CollisionShape3D:disabled")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/Attack/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [true]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Audio/Parried")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio/Parried")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -689,36 +678,38 @@ _data = {
 }
 
 [sub_resource type="Curve" id="Curve_mvqiw"]
-_data = [Vector2(0.0687285, 1), 0.0, 0.0, 0, 0, Vector2(0.209622, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.104697436, 1), 0.0, 0.0, 0, 0, Vector2(0.2384554, 0), 0.0, 0.0, 0, 0]
 point_count = 2
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_x8ps6"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("22_l7nyu")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_frequency = 3.0
+shader_parameter/dissolve_vector = Vector3(0.5, -0.5, 0.25)
+shader_parameter/custom_glow_color_enabled = false
+shader_parameter/custom_glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.0
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/albedo_enabled = false
+shader_parameter/albedo_color = Color(0.09803922, 0.11764706, 0.1764706, 1)
+shader_parameter/enabled_emisson = false
+shader_parameter/emission_texture_intensity = 1.0
+shader_parameter/normal_strength = 1.0
+shader_parameter/enabled_normal = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p16ut"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.6435713, 0.64357144, 0.64357126, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7c1mb"]
+size = Vector3(0.72126484, 2.2288299, 2.3273582)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qr43c"]
 size = Vector3(1.0802, 1.44707, 1.26314)
-
-[sub_resource type="SphereMesh" id="SphereMesh_05mu1"]
-radius = 0.8
-height = 1.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dfr5h"]
-resource_local_to_scene = true
-transparency = 1
-albedo_color = Color(0.52, 0.52, 0.52, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_agce3"]
-radius = 0.8
-height = 1.6
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n368u"]
-resource_local_to_scene = true
-transparency = 1
-albedo_color = Color(0.52, 0.52, 0.52, 1)
-
-[sub_resource type="SphereMesh" id="SphereMesh_fd7dn"]
-radius = 0.8
-height = 1.6
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_7c1mb"]
-size = Vector3(0.53769684, 1.5969697, 1.5125582)
 
 [sub_resource type="BoxMesh" id="BoxMesh_mvqiw"]
 
@@ -796,8 +787,9 @@ collision_mask = 7
 script = ExtResource("2_5rg5p")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1779156698]
-shape = SubResource("SphereShape3D_7c1mb")
-debug_color = Color(0.87, 0.87, 0.87, 0.011764706)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7062988, 0)
+shape = SubResource("CapsuleShape3D_x8ps6")
+debug_color = Color(0.87, 0.87, 0.87, 1)
 
 [node name="Hitbox" type="Area3D" parent="." unique_id=1261233255 node_paths=PackedStringArray("ROOT", "TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("2_i6eoe")
@@ -812,8 +804,9 @@ DEATH_ANIMATION_PLAYER = NodePath("../Damaged")
 DAMAGE_NUMBERS = ExtResource("3_mvqiw")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=1137305540]
-shape = SubResource("SphereShape3D_6640v")
-debug_color = Color(0.87, 0.87, 0.87, 0.03137255)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6715088, 0)
+shape = SubResource("CapsuleShape3D_p16ut")
+debug_color = Color(0.87, 0.87, 0.87, 1)
 
 [node name="Audio" type="Node" parent="." unique_id=1672116593]
 script = ExtResource("3_p14n4")
@@ -862,7 +855,7 @@ bus = &"SFX"
 
 [node name="Squash" type="Node" parent="." unique_id=509375601 node_paths=PackedStringArray("meshes")]
 script = ExtResource("15_7e8cg")
-meshes = [NodePath("../Mesh/MeshInstance3D")]
+meshes = [null]
 
 [node name="CameraEffects" type="Node" parent="." unique_id=1190837221]
 script = ExtResource("16_wbsgp")
@@ -887,21 +880,13 @@ next/STUNNED = &"CHASE"
 script = ExtResource("20_mvqiw")
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_mvqiw")
 ATTACK_ANIMATION = "ATTACK"
-LIKELIHOOD_MULTIPLIER = 50.0
+LIKELIHOOD_MULTIPLIER = 300.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=95594136]
 
 [node name="Mesh" type="Node3D" parent="." unique_id=268847954]
-
-[node name="LockOn" type="Area3D" parent="Mesh" unique_id=2062076780]
-transform = Transform3D(1, 5.32907e-15, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/LockOn" unique_id=842629789]
-transform = Transform3D(1, -1.24345e-14, -1.03739e-12, 0, 1, 0, -3.83693e-13, 0, 1, 0.159728, -0.195234, 0.0834485)
-shape = SubResource("BoxShape3D_qr43c")
-debug_color = Color(0.7, 0.7, 0.7, 0)
 
 [node name="SceneSpawner" type="Node3D" parent="Mesh" unique_id=1201835323 node_paths=PackedStringArray("target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2796089, -0.78623927)
@@ -910,35 +895,54 @@ scenes = Array[PackedScene]([ExtResource("20_x07w4")])
 add_to_scene_root = true
 target = NodePath("../../Target")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh" unique_id=1134848450]
-mesh = SubResource("SphereMesh_05mu1")
-skeleton = NodePath("")
-surface_material_override/0 = ExtResource("21_mvqiw")
+[node name="melee_ghost" parent="Mesh" unique_id=56166697 instance=ExtResource("21_l7nyu")]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Mesh/MeshInstance3D" unique_id=639478116]
-transform = Transform3D(-1.24846e-09, 0, 0.112722, 0, 0.112722, 0, -0.0285614, 0, -4.92725e-09, 0.280028, 0.0195056, -0.806736)
-material_override = SubResource("StandardMaterial3D_dfr5h")
-mesh = SubResource("SphereMesh_agce3")
-skeleton = NodePath("")
+[node name="Skeleton3D" parent="Mesh/melee_ghost/Armature" parent_id_path=PackedInt32Array(56166697, 731905262) index="0" unique_id=964425154]
+bones/0/position = Vector3(-3.884257e-17, 0.4282647, 0.0072770156)
+bones/0/rotation = Quaternion(-0.009763041, -1.2559209e-16, -1.2559209e-16, 0.9999523)
+bones/1/rotation = Quaternion(-0.01748162, 1.1919107e-07, -2.083971e-09, 0.9998473)
+bones/2/rotation = Quaternion(0.02379526, 1.0709743e-14, 5.673231e-09, 0.99971694)
+bones/3/rotation = Quaternion(0.03407807, -1.1914004e-07, 4.062424e-09, 0.99941915)
+bones/3/scale = Vector3(1, 0.9999999, 0.9999999)
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="Mesh/MeshInstance3D" unique_id=1419044957]
-transform = Transform3D(-1.24846e-09, 0, 0.112722, 0, 0.112722, 0, -0.0285614, 0, -4.92725e-09, -0.302013, 0.0195056, -0.806736)
-material_override = SubResource("StandardMaterial3D_n368u")
-mesh = SubResource("SphereMesh_fd7dn")
-skeleton = NodePath("")
+[node name="Sphere" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="0" unique_id=978956087]
+surface_material_override/0 = SubResource("ShaderMaterial_x8ps6")
 
-[node name="Attack" type="Area3D" parent="Mesh/MeshInstance3D" unique_id=235135068 node_paths=PackedStringArray("blocked_anim_player") groups=["ghost"]]
+[node name="Sphere_001" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="1" unique_id=1081147377]
+surface_material_override/0 = SubResource("StandardMaterial3D_p16ut")
+
+[node name="Sphere_002" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="2" unique_id=527294562]
+surface_material_override/0 = SubResource("StandardMaterial3D_p16ut")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="3" unique_id=2037146665]
+transform = Transform3D(1, -3.5527137e-15, 0, 4.32987e-15, 0.99812317, -0.061234582, -1.4210855e-14, 0.061234612, 0.9981233, 8.484101e-16, 2.0572176, -0.03374157)
+bone_name = "Bone.003"
+bone_idx = 3
+
+[node name="Attack" type="Area3D" parent="Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D" unique_id=235135068 node_paths=PackedStringArray("blocked_anim_player") groups=["ghost"]]
+transform = Transform3D(1, 3.5460471e-15, 2.1754899e-16, -3.4515487e-15, 0.9981235, 0.061234597, 1.4449325e-14, -0.061234627, 0.9981234, -6.6351403e-15, -1.6178865, 0.3047358)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("21_oquh6")
 parry_anim = "STUNNED"
-blocked_anim_player = NodePath("../../../AnimationPlayer")
+blocked_anim_player = NodePath("../../../../../../AnimationPlayer")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/MeshInstance3D/Attack" unique_id=1190067184]
-transform = Transform3D(1, 0, 0, 0, 1, 4.053067e-06, 0, -4.053067e-06, 1, -0.024140235, 0.2984867, -0.4211868)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/Attack" unique_id=1190067184]
+transform = Transform3D(1, 7.275958e-12, -9.497114e-11, 2.05182e-09, 1, 4.031579e-06, 6.002665e-10, -4.0382147e-06, 0.9999997, 0.012835152, 1.4468095, -0.097355865)
 shape = SubResource("BoxShape3D_7c1mb")
 disabled = true
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
+
+[node name="LockOn" type="Area3D" parent="Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D" unique_id=2062076780]
+transform = Transform3D(1, 8.875118e-15, 2.1754902e-16, -3.4515494e-15, 0.99812365, 0.061234605, 1.4449327e-14, -0.061234634, 0.9981235, 1.09686e-14, 0.09655785, 0.014899239)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/LockOn" unique_id=842629789]
+transform = Transform3D(1, -1.24345e-14, -1.03739e-12, 0, 1, 0, -3.83693e-13, 0, 1, 0.159728, -0.195234, 0.0834485)
+shape = SubResource("BoxShape3D_qr43c")
+debug_color = Color(0.7, 0.7, 0.7, 0)
+
+[node name="AnimationPlayer" parent="Mesh/melee_ghost" index="1" unique_id=1019645295]
+playback_default_blend_time = 0.2
 
 [node name="Target" type="Node3D" parent="." unique_id=963969195 node_paths=PackedStringArray("BODY", "MESH", "NAV_AGENT", "STOP_CHASE_AREA", "AWARENESS_AREA")]
 script = ExtResource("22_3d4yc")
@@ -1010,3 +1014,5 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21777, 2.38419e-07, -0.353772)
 shape = SubResource("SphereShape3D_oquh6")
 debug_color = Color(0.658, 0.6937, 0.7, 0.023529412)
+
+[editable path="Mesh/melee_ghost"]

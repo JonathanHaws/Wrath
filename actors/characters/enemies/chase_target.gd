@@ -24,9 +24,8 @@ extends Node3D
 @export_subgroup("Range")
 @export var STOP_CHASE_AREA: Area3D ## What alerts enemies to give chase. If no area is specified they are omincient and always chase
 @export var AWARENESS_AREA: Area3D ## How close they have to be to give chase. If none is specified its everywhere
-
+@export var CHASER_GROUP: String = "chase" ## Specifies the group 
 var target: Node3D = null
-var should_chase: bool = true
 
 func track(delta: float) -> void:
 	if not MESH or not BODY or not target: return
@@ -79,21 +78,21 @@ func get_closest_from_group_3d(group: String) -> Node3D:
 	return closest
 
 func trigger_awareness() -> void:
-	should_chase = true
+	BODY.add_to_group(CHASER_GROUP)
 	if target == null:
 		target = get_closest_from_group_3d(TARGET_GROUP)
 
 func _on_body_entered_stop_area(body: Node) -> void:
 	if body.is_in_group(TARGET_GROUP):
-		should_chase = false
+		BODY.remove_from_group(CHASER_GROUP)
 
 func _on_body_exited_stop_area(body: Node) -> void:
 	if body.is_in_group(TARGET_GROUP):
-		should_chase = true
+		BODY.add_to_group(CHASER_GROUP)
 
 func _on_body_entered_awareness(body: Node) -> void:
 	if body.is_in_group(TARGET_GROUP):
-		should_chase = true
+		BODY.add_to_group(CHASER_GROUP)
 
 func _ready() -> void:
 	if STOP_CHASE_AREA:
@@ -101,7 +100,6 @@ func _ready() -> void:
 		STOP_CHASE_AREA.body_exited.connect(_on_body_exited_stop_area)
 		
 	if AWARENESS_AREA:
-		should_chase = false
 		AWARENESS_AREA.body_entered.connect(_on_body_entered_awareness)
 
 func _physics_process(delta: float) -> void:
@@ -113,7 +111,7 @@ func _physics_process(delta: float) -> void:
 		BODY.velocity.x = 0
 		BODY.velocity.z = 0
 
-		if should_chase:
+		if BODY.is_in_group(CHASER_GROUP):
 			chase_target(SPEED * SPEED_MULTIPLIER)
 		
 		if MOVE_AND_SLIDE: 

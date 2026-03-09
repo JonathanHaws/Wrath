@@ -990,6 +990,7 @@ omni_range = 27.0089
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29153e-06, 1.7507273, -0.21312356)
 script = ExtResource("23_8fqfx")
 scenes = Array[PackedScene]([ExtResource("28_muo5h")])
+add_to_groups = Array[String](["chase"])
 add_to_scene_root = true
 wave_animation_player = NodePath("AnimationPlayer")
 
