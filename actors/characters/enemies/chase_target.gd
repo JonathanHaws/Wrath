@@ -24,7 +24,7 @@ extends Node3D
 @export_subgroup("Range")
 @export var STOP_CHASE_AREA: Area3D ## What alerts enemies to give chase. If no area is specified they are omincient and always chase
 @export var AWARENESS_AREA: Area3D ## How close they have to be to give chase. If none is specified its everywhere
-@export var CHASER_GROUP: String = "chase" ## Specifies the group 
+@export var CHASER_GROUP: String = "chase" ## Specifies the group this NPCs body has to be apart of to give chase
 var target: Node3D = null
 
 func track(delta: float) -> void:
