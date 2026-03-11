@@ -94,7 +94,7 @@ func try_jump() -> void:
 			air_time = COYOTE_TIME
 			jump_buffer = 0
 		
-		if is_on_floor():
+		if air_time > LAND_EFFECTS_COOLDOWN:
 			if $Audio: $Audio.spawn_sound(["jump"])
 			$Squash.squish(-.3)	
 			ANIM.play("JUMPING")
@@ -107,7 +107,7 @@ func try_jump() -> void:
 @export var GRAVITY_MULTIPLIER: float = 1.0
 @export var MAX_FALL_SPEED: float = 50.0 
 @export var DESCEND_MULTIPLIER: float = 5.0
-@export var LAND_EFFECTS_COOLDOWN: float = 0.24
+@export var LAND_EFFECTS_COOLDOWN: float = 0.5
 @export var STEP_UP_RAY: RayCast3D
 func get_fall_velocity(delta: float) -> Vector3:
 	var fall_vel = velocity + get_gravity() * (GRAVITY_MULTIPLIER * GRAVITY_STRENGTH) * delta
