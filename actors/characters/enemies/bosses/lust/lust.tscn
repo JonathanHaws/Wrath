@@ -1181,7 +1181,7 @@ tracks/3/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.375, 2.3333333, 2.6250033),
+"times": PackedFloat32Array(0, 0.375, 2.2083333, 2.5000033),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [1.0, 0.0, 0.0, 1.0]
@@ -1859,7 +1859,7 @@ BODY = NodePath("../..")
 script = ExtResource("24_f8ihq")
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_xgbyi")
 ATTACK_ANIMATION = "SCREAM"
-LIKELIHOOD_MULTIPLIER = 200.0
+LIKELIHOOD_MULTIPLIER = 2.0
 COOLDOWN = 3.0
 ANIM = NodePath("..")
 TARGET = NodePath("../../Target")
@@ -2046,7 +2046,7 @@ disabled = true
 debug_color = Color(0.95, 0.038, 0.1748, 0.180392)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="6" unique_id=1149682648]
-transform = Transform3D(0.9997012, 0.020896094, -0.012685008, -0.023626525, 0.95910746, -0.2820555, 0.0062724277, 0.2822708, 0.95931417, -0.028881822, 5.038799, 0.2302169)
+transform = Transform3D(0.9997012, 0.020899652, -0.012679027, -0.023626456, 0.95918816, -0.28178096, 0.006272449, 0.2819962, 0.95939493, -0.028881822, 5.038799, 0.2302169)
 bone_name = "neck"
 bone_idx = 20
 
