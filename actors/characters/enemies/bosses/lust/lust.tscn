@@ -1747,7 +1747,7 @@ DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
 DAMAGE_NUMBERS = ExtResource("7_xgbyi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=869368491]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41781116, 4.0698977, -0.96957886)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.07, 0)
 shape = SubResource("CapsuleShape3D_wbwgn")
 debug_color = Color(0.658, 0.6937, 0.7, 0.023529412)
 
