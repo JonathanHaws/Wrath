@@ -46,7 +46,7 @@ radius = 0.78333
 height = 4.80709
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wbwgn"]
-radius = 0.604509
+radius = 0.96240234
 height = 4.80709
 
 [sub_resource type="Animation" id="Animation_5k6cf"]
@@ -1747,9 +1747,9 @@ DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
 DAMAGE_NUMBERS = ExtResource("7_xgbyi")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=869368491]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.07, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3665733, 0)
 shape = SubResource("CapsuleShape3D_wbwgn")
-debug_color = Color(0.658, 0.6937, 0.7, 0.023529412)
+debug_color = Color(0.658, 0.6937, 0.7, 0.8784314)
 
 [node name="Audio" type="Node" parent="." unique_id=361552963]
 script = ExtResource("6_o5lwb")
