@@ -85,7 +85,6 @@ func try_jump() -> void:
 		if air_time >= COYOTE_TIME: return
 		if not in_interruptible_animation(): return
 		if JUMP_MULTIPLIER == 0: return
-		
 		velocity.y = JUMP_VELOCITY * JUMP_MULTIPLIER
 		
 		if Input.is_action_pressed("jump") and air_time < VARIABLE_JUMP_TIME:
@@ -94,7 +93,8 @@ func try_jump() -> void:
 			air_time = COYOTE_TIME
 			jump_buffer = 0
 		
-		if air_time > LAND_EFFECTS_COOLDOWN:
+
+		if Input.is_action_just_pressed("jump"):
 			if $Audio: $Audio.spawn_sound(["jump"])
 			$Squash.squish(-.3)	
 			ANIM.play("JUMPING")
