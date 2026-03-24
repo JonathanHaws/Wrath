@@ -79,7 +79,7 @@ func tween_bus_volume(bus_name: String, target_multiplier: float, duration_secon
 	
 #endregion
 
-#region Graphics
+#region Video
 
 #region UI Scale
 var BASE_UI_SCALE = 1.0
@@ -179,6 +179,63 @@ func load_graphics_settings() -> void:
 	set_window_mode(load_setting("display", "window_mode", 1))
 	load_window_transform()
 	load_resolution()
+#endregion
+
+#region Graphics
+
+const auto_load_enviroment_group: String = "auto_load_graphics"
+
+func get_environment_value(key: String) -> Variant:
+	var env: Environment = get_viewport().get_world_3d().environment
+	if env == null: return
+	if not key in env: print("Environment does not have setting: " + str(key)); return
+	return Config.load_setting("graphics", key, env.get(key))
+
+func set_environment_value(key: String, value: Variant) -> void:
+	var env: Environment = get_viewport().get_world_3d().environment
+	if env == null: return
+	if not key in env: print("Environment does not have setting: " + str(key)); return
+	env.set(key, value)
+	Config.save_setting("graphics", key, value)
+
+func _load_enviroment(environment) -> void:
+	environment.adjustment_enabled = true
+	environment.adjustment_brightness = load_setting("graphics", "brightness", environment.adjustment_brightness)
+	environment.adjustment_contrast   = load_setting("graphics", "contrast",   environment.adjustment_contrast)
+	environment.adjustment_saturation = load_setting("graphics", "saturation", environment.adjustment_saturation)
+	environment.ssao_enabled          = load_setting("graphics", "ssao_enabled", environment.ssao_enabled)
+	environment.ssao_radius           = load_setting("graphics", "ssao_radius",  environment.ssao_radius)
+	environment.ssao_intensity        = load_setting("graphics", "ssao_intensity", environment.ssao_intensity)
+	environment.glow_enabled          = load_setting("graphics", "glow_enabled",   environment.glow_enabled)
+	environment.glow_intensity        = load_setting("graphics", "glow_intensity", environment.glow_intensity)
+	environment.glow_bloom            = load_setting("graphics", "glow_bloom", environment.glow_bloom)
+	#print('loading graphics onto environment')
+
+func poll_for_new_environments_and_load_graphics_settings() -> void:
+	for world in get_tree().get_nodes_in_group(auto_load_enviroment_group):
+		if not world.has_meta("graphics_loaded"):
+			_load_enviroment(world.environment)
+			world.set_meta("graphics_loaded", true)
+
+#region Controls (Buttons / Sliders)
+
+func _on_graphics_toggled(setting: String, enabled: bool) -> void:
+	set_environment_value(setting, enabled)
+
+func _on_graphics_changed(setting: String, value: float, label: Label) -> void:
+	set_environment_value(setting, value)
+	if label: label.text = str(value)
+
+func connect_graphics_control(setting: String, toggle_button: CheckButton = null, slider: HSlider = null, label: Label = null) -> void:
+	if toggle_button: 
+		toggle_button.button_pressed = get_environment_value(setting)
+		toggle_button.toggled.connect(func(v): _on_graphics_toggled(setting, v))
+	if slider: 
+		var value = get_environment_value(setting)
+		slider.value = value
+		label.text = str(round(value / slider.step) * slider.step)
+		slider.value_changed.connect(func(v): _on_graphics_changed(setting, v, label))
+
 #endregion
 
 #endregion
@@ -297,7 +354,6 @@ var idle_timeout_seconds: float = 2.0
 func hidden_cursor_ready() -> void:
 	await get_tree().process_frame
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	idle_time_seconds = idle_timeout_seconds + 1
 func hidden_cursor_process(_delta):
 	#print(Input.get_mouse_mode())
@@ -317,14 +373,15 @@ func hidden_cursor_input(event):
 #endregion
 
 func _ready() -> void:
-	hidden_cursor_ready()
-	load_graphics_settings()
 	load_audio_settings()
+	load_graphics_settings()
 	load_controls_settings()
+	hidden_cursor_ready()
 	play_animation_by_group("only_on_launch", "game_start_player")
 
 func _process(_delta):
 	hidden_cursor_process(_delta)
+	poll_for_new_environments_and_load_graphics_settings()
 	
 func _input(event):
 	hidden_cursor_input(event)

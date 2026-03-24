@@ -161,7 +161,7 @@ SOUNDS = Array[AudioStream]([ExtResource("3_ojp7h")])
 ADD_TO_ROOT = true
 
 [node name="Start" type="Node3D" parent="." unique_id=1452414461]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 7.6241)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 12.724625)
 
 [node name="Area3D" type="Area3D" parent="." unique_id=1124970430]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
@@ -193,7 +193,7 @@ light_specular = 19.937
 omni_range = 20.4406
 
 [node name="Meshes" type="Node3D" parent="." unique_id=1039034931]
-transform = Transform3D(-1.2583332e-07, 0, -26.08253, 0, 29.598402, 0, 2.878735, 0, -1.1401027e-06, 0, 50.163223, 0)
+transform = Transform3D(-1.2583351e-07, 0, -26.08253, 0, 22.33356, 0, 2.878735, 0, -1.1401036e-06, 0, 37.894047, 0)
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="Meshes" unique_id=607340921]
 transform = Transform3D(1.0000001, 0, 0, 0, 0.87070763, 0, -4.440892e-16, 0, 1.3036932, 0, -0.034295723, 0)

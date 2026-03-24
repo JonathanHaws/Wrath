@@ -49,8 +49,10 @@ focus_targets = [NodePath("../Brightness/HSlider")]
 layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "BRIGHTNESS:"
+script = ExtResource("4_m8m6k")
+setting_name = "adjustment_brightness"
 
-[node name="HSlider" type="HSlider" parent="Control/ColorRect/VBoxContainer/Brightness" unique_id=1432101898 node_paths=PackedStringArray("slider", "display_label") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+[node name="HSlider" type="HSlider" parent="Control/ColorRect/VBoxContainer/Brightness" unique_id=1432101898 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 139.0
@@ -58,15 +60,10 @@ offset_top = 6.0
 offset_right = 289.0
 offset_bottom = 22.0
 size_flags_vertical = 4
-theme = ExtResource("1_ll3a5")
 min_value = 1.0
 max_value = 3.5
 step = 0.01
 value = 1.4
-script = ExtResource("4_m8m6k")
-setting_name = "brightness"
-slider = NodePath(".")
-display_label = NodePath("../Label")
 
 [node name="Label" type="Label" parent="Control/ColorRect/VBoxContainer/Brightness" unique_id=1730135814]
 layout_mode = 0
@@ -81,8 +78,10 @@ text = "1.0"
 layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "CONTRAST:"
+script = ExtResource("4_m8m6k")
+setting_name = "adjustment_contrast"
 
-[node name="HSlider" type="HSlider" parent="Control/ColorRect/VBoxContainer/Contrast" unique_id=278178098 node_paths=PackedStringArray("slider", "display_label") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+[node name="HSlider" type="HSlider" parent="Control/ColorRect/VBoxContainer/Contrast" unique_id=278178098 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 139.0
@@ -95,10 +94,6 @@ min_value = 0.8
 max_value = 1.2
 step = 0.01
 value = 1.0
-script = ExtResource("4_m8m6k")
-setting_name = "contrast"
-slider = NodePath(".")
-display_label = NodePath("../Label")
 
 [node name="Label" type="Label" parent="Control/ColorRect/VBoxContainer/Contrast" unique_id=928198564]
 layout_mode = 0
@@ -112,8 +107,10 @@ text = "1.0"
 layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "SATURATION:"
+script = ExtResource("4_m8m6k")
+setting_name = "adjustment_saturation"
 
-[node name="HSlider" type="HSlider" parent="Control/ColorRect/VBoxContainer/Saturation" unique_id=1935833146 node_paths=PackedStringArray("slider", "display_label") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+[node name="HSlider" type="HSlider" parent="Control/ColorRect/VBoxContainer/Saturation" unique_id=1935833146 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 139.0
@@ -125,10 +122,6 @@ theme = ExtResource("1_ll3a5")
 max_value = 1.5
 step = 0.01
 value = 1.4
-script = ExtResource("4_m8m6k")
-setting_name = "saturation"
-slider = NodePath(".")
-display_label = NodePath("../Label")
 
 [node name="Label" type="Label" parent="Control/ColorRect/VBoxContainer/Saturation" unique_id=432957963]
 layout_mode = 0
@@ -142,8 +135,10 @@ text = "1.0"
 layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "SSAO RADIUS:"
+script = ExtResource("4_m8m6k")
+setting_name = "ssao_radius"
 
-[node name="HSlider" type="HSlider" parent="Control/ColorRect/VBoxContainer/SSAORadius" unique_id=628361429 node_paths=PackedStringArray("slider", "display_label") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+[node name="HSlider" type="HSlider" parent="Control/ColorRect/VBoxContainer/SSAORadius" unique_id=628361429 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 139.0
@@ -156,10 +151,6 @@ min_value = 0.3
 max_value = 3.0
 step = 0.01
 value = 1.4000000000000001
-script = ExtResource("4_m8m6k")
-setting_name = "ssao_radius"
-slider = NodePath(".")
-display_label = NodePath("../Label")
 
 [node name="Label" type="Label" parent="Control/ColorRect/VBoxContainer/SSAORadius" unique_id=658706661]
 layout_mode = 0
@@ -174,8 +165,10 @@ text = "1.0"
 layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "SSAO INTENSITY:"
+script = ExtResource("4_m8m6k")
+setting_name = "ssao_intensity"
 
-[node name="HSlider" type="HSlider" parent="Control/ColorRect/VBoxContainer/SSAOIntensity" unique_id=1125211757 node_paths=PackedStringArray("slider", "display_label") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+[node name="HSlider" type="HSlider" parent="Control/ColorRect/VBoxContainer/SSAOIntensity" unique_id=1125211757 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 139.0
@@ -188,10 +181,6 @@ min_value = 1.0
 max_value = 10.0
 step = 0.01
 value = 1.4
-script = ExtResource("4_m8m6k")
-setting_name = "ssao_intensity"
-slider = NodePath(".")
-display_label = NodePath("../Label")
 
 [node name="Label" type="Label" parent="Control/ColorRect/VBoxContainer/SSAOIntensity" unique_id=1972353159]
 layout_mode = 0
@@ -206,21 +195,22 @@ text = "1.0"
 layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "SSAO:"
+script = ExtResource("4_m8m6k")
+setting_name = "ssao_enabled"
 
-[node name="CheckButton" type="CheckButton" parent="Control/ColorRect/VBoxContainer/SSAO" unique_id=3734677 node_paths=PackedStringArray("toggle_button") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+[node name="CheckButton" type="CheckButton" parent="Control/ColorRect/VBoxContainer/SSAO" unique_id=3734677 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 0
 offset_left = 51.0
 offset_top = 1.0
 offset_right = 95.0
 offset_bottom = 25.0
-script = ExtResource("4_m8m6k")
-setting_name = "ssao_enabled"
-toggle_button = NodePath(".")
 
 [node name="Glow" type="Label" parent="Control/ColorRect/VBoxContainer" unique_id=2017908873]
 layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "GLOW:"
+script = ExtResource("4_m8m6k")
+setting_name = "glow_enabled"
 
 [node name="CheckButton" type="CheckButton" parent="Control/ColorRect/VBoxContainer/Glow" unique_id=1209599539 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 0
@@ -228,13 +218,13 @@ offset_left = 56.0
 offset_top = 4.0
 offset_right = 100.0
 offset_bottom = 28.0
-script = ExtResource("4_m8m6k")
-setting_name = "glow"
 
 [node name="GlowIntensity" type="Label" parent="Control/ColorRect/VBoxContainer" unique_id=1915337393]
 layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "GLOW INTENSITY:"
+script = ExtResource("4_m8m6k")
+setting_name = "glow_intensity"
 
 [node name="HSlider" type="HSlider" parent="Control/ColorRect/VBoxContainer/GlowIntensity" unique_id=866937398 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
@@ -248,8 +238,6 @@ theme = ExtResource("1_ll3a5")
 max_value = 2.0
 step = 0.01
 value = 1.0
-script = ExtResource("4_m8m6k")
-setting_name = "glow_intensity"
 
 [node name="Label" type="Label" parent="Control/ColorRect/VBoxContainer/GlowIntensity" unique_id=249183378]
 layout_mode = 0
@@ -264,8 +252,10 @@ text = "1.0"
 layout_mode = 2
 theme = ExtResource("1_ll3a5")
 text = "BLOOM:"
+script = ExtResource("4_m8m6k")
+setting_name = "glow_bloom"
 
-[node name="HSlider" type="HSlider" parent="Control/ColorRect/VBoxContainer/BloomIntensity" unique_id=1469155137 node_paths=PackedStringArray("slider", "display_label") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+[node name="HSlider" type="HSlider" parent="Control/ColorRect/VBoxContainer/BloomIntensity" unique_id=1469155137 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 0
 offset_left = 139.0
@@ -277,10 +267,6 @@ theme = ExtResource("1_ll3a5")
 max_value = 2.0
 step = 0.01
 value = 1.4
-script = ExtResource("4_m8m6k")
-setting_name = "bloom"
-slider = NodePath(".")
-display_label = NodePath("../../SSAOIntensity/Label")
 
 [node name="Label" type="Label" parent="Control/ColorRect/VBoxContainer/BloomIntensity" unique_id=1095677162]
 layout_mode = 0

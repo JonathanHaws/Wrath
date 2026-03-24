@@ -221,35 +221,35 @@ navigation_mesh = SubResource("NavigationMesh_jc5vn")
 [node name="Castle" parent="NavigationRegion3D" unique_id=834471523 instance=ExtResource("6_hcc5w")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 135.739, 8.16232, -12.8293)
 
-[node name="tower_001" parent="NavigationRegion3D/Castle" index="0" unique_id=197541190]
+[node name="tower_001" parent="NavigationRegion3D/Castle" index="0" unique_id=595012000]
 surface_material_override/0 = ExtResource("9_u51x1")
 
-[node name="path" parent="NavigationRegion3D/Castle" index="1" unique_id=436930568]
+[node name="path" parent="NavigationRegion3D/Castle" index="1" unique_id=161761566]
 surface_material_override/0 = ExtResource("9_u51x1")
 
-[node name="lust_base" parent="NavigationRegion3D/Castle" index="2" unique_id=325754324]
+[node name="lust_base" parent="NavigationRegion3D/Castle" index="2" unique_id=210965530]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="bridge" parent="NavigationRegion3D/Castle" index="3" unique_id=1446726059]
+[node name="bridge" parent="NavigationRegion3D/Castle" index="3" unique_id=232607141]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="cage_greed_001" parent="NavigationRegion3D/Castle" index="4" unique_id=2086088248]
+[node name="cage_greed_001" parent="NavigationRegion3D/Castle" index="4" unique_id=569315510]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="castle_foundation" parent="NavigationRegion3D/Castle" index="5" unique_id=1305917742]
+[node name="castle_foundation" parent="NavigationRegion3D/Castle" index="5" unique_id=749383096]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="lust_tower_chastity_001" parent="NavigationRegion3D/Castle" index="8" unique_id=6314161]
+[node name="lust_tower_chastity_001" parent="NavigationRegion3D/Castle" index="8" unique_id=1571179025]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="castle_base" parent="NavigationRegion3D/Castle" index="9" unique_id=2033139848]
+[node name="castle_base" parent="NavigationRegion3D/Castle" index="9" unique_id=1257920866]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="sloth_tower_diligence" parent="NavigationRegion3D/Castle" index="10" unique_id=638561653]
+[node name="sloth_tower_diligence" parent="NavigationRegion3D/Castle" index="10" unique_id=1199004179]
 surface_material_override/0 = ExtResource("3_dq2hf")
 surface_material_override/1 = ExtResource("3_dq2hf")
 
-[node name="castle_pride" parent="NavigationRegion3D/Castle" index="11" unique_id=821161230]
+[node name="castle_pride" parent="NavigationRegion3D/Castle" index="11" unique_id=1075078835]
 surface_material_override/0 = ExtResource("3_dq2hf")
 surface_material_override/1 = ExtResource("3_dq2hf")
 
@@ -292,7 +292,7 @@ fov = 50.0
 [node name="Door" type="Node" parent="." unique_id=368264647]
 
 [node name="LightDoor" parent="Door" unique_id=159225589 instance=ExtResource("10_s2ex5")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 178.0893, 31.54995, -22.29842)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 178.0893, 45.64901, -22.29842)
 DESTINATION_NODE_NAME = "Enter"
 DESTINATION_SCENE = "uid://worsh6enfk2g"
 
