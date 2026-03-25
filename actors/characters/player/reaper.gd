@@ -375,6 +375,8 @@ func _process(_delta)-> void:
 	
 func _physics_process(delta: float) -> void:
 	
+	#print(ANIM.current_animation)
+	
 	if ANIM.current_animation in "ESCAPE": return
 	
 	if is_on_floor(): play_land_effects()

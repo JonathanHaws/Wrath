@@ -20,7 +20,7 @@ extends Node3D
 
 @export var particles: GPUParticles3D 
 @export var depth: float = 5.5 ## How far the emisson box extends forward into the cameras frustum 
-@export var offset: Vector3 = Vector3(0, 0, 5.0) ## Used to set the shapes
+@export var offset: Vector3 = Vector3(0, 0, 8.0) ## Used to set the shapes
 var emission_box_size: Vector3
 var last_viewport_size: Vector2
 

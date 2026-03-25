@@ -188,21 +188,21 @@ const auto_load_enviroment_group: String = "auto_load_graphics"
 func get_environment_value(key: String) -> Variant:
 	var env: Environment = get_viewport().get_world_3d().environment
 	if env == null: return
-	if not key in env: print("Environment does not have setting: " + str(key)); return
+	#if not key in env: print("Environment does not have setting: " + str(key)); return
 	return Config.load_setting("graphics", key, env.get(key))
 
 func set_environment_value(key: String, value: Variant) -> void:
 	var env: Environment = get_viewport().get_world_3d().environment
 	if env == null: return
-	if not key in env: print("Environment does not have setting: " + str(key)); return
+	#if not key in env: print("Environment does not have setting: " + str(key)); return
 	env.set(key, value)
 	Config.save_setting("graphics", key, value)
 
 func _load_enviroment(environment) -> void:
 	environment.adjustment_enabled = true
-	environment.adjustment_brightness = load_setting("graphics", "brightness", environment.adjustment_brightness)
-	environment.adjustment_contrast   = load_setting("graphics", "contrast",   environment.adjustment_contrast)
-	environment.adjustment_saturation = load_setting("graphics", "saturation", environment.adjustment_saturation)
+	environment.adjustment_brightness = load_setting("graphics", "adjustment_brightness", environment.adjustment_brightness)
+	environment.adjustment_contrast   = load_setting("graphics", "adjustment_contrast",   environment.adjustment_contrast)
+	environment.adjustment_saturation = load_setting("graphics", "adjustment_saturation", environment.adjustment_saturation)
 	environment.ssao_enabled          = load_setting("graphics", "ssao_enabled", environment.ssao_enabled)
 	environment.ssao_radius           = load_setting("graphics", "ssao_radius",  environment.ssao_radius)
 	environment.ssao_intensity        = load_setting("graphics", "ssao_intensity", environment.ssao_intensity)
@@ -235,6 +235,8 @@ func connect_graphics_control(setting: String, toggle_button: CheckButton = null
 		slider.value = value
 		label.text = str(round(value / slider.step) * slider.step)
 		slider.value_changed.connect(func(v): _on_graphics_changed(setting, v, label))
+
+#endregion
 
 #endregion
 
