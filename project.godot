@@ -19,7 +19,7 @@ config/description="As a soul who is stuck in between worlds in limbo. Find your
 config/version="beta"
 run/main_scene="uid://cls12q06quifx"
 config/features=PackedStringArray("4.6", "Forward Plus")
-boot_splash/bg_color=Color(0.63375676, 0.6337568, 0.63375676, 1)
+boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 config/icon="uid://b50a5gjn0cglu"
 config/windows_native_icon="res://icon/Icon.ico"
@@ -31,10 +31,10 @@ general/default_bus_layout="res://menus/options/channels_layot.tres"
 
 [autoload]
 
-Save="*res://actors/save.gd"
+Save="*res://script/global/save.gd"
 Particles="*res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd"
-Config="*res://menus/options/config.gd"
-CameraEffects="*res://actors/camera_effects.gd"
+Config="*res://script/global/config.gd"
+CameraEffects="*res://script/component/camera_effects.gd"
 
 [debug]
 

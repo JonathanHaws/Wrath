@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://menus/themes/theme.tres" id="1_oii82"]
 [ext_resource type="Script" uid="uid://60mgdw58o7o0" path="res://menus/save/profile/profile.gd" id="2_sge7k"]
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="3_vlxqh"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="3_vlxqh"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="4_top0u"]
 [ext_resource type="AudioStream" uid="uid://ckcjmp63iqneu" path="res://menus/sfx/Menu_Delete.ogg" id="5_oii82"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="6_sge7k"]

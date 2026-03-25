@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://actors/characters/enemies/projectile.gd" id="1_kpr02"]
 [ext_resource type="PackedScene" uid="uid://1ibdp5i2ei5t" path="res://actors/characters/projectile.blend" id="2_8trq3"]
-[ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://actors/camera_effects.gd" id="3_7bp6w"]
+[ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="3_7bp6w"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="3_32n4n"]
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="4_o35mi"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="4_o35mi"]
 [ext_resource type="AudioStream" uid="uid://bkawmwxh84v2j" path="res://actors/characters/enemies/sfx/Hit_1.ogg" id="20_qiejr"]
 [ext_resource type="AudioStream" uid="uid://bvtlb0oql5hr6" path="res://actors/characters/enemies/sfx/Hit_2.ogg" id="21_j2d75"]
 [ext_resource type="AudioStream" uid="uid://c16kx02f83mop" path="res://actors/characters/enemies/sfx/Hit_3.ogg" id="22_xpmdx"]

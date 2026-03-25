@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bwacv5bktdk46"]
 
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="1_p6mtf"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="1_p6mtf"]
 
 [sub_resource type="Animation" id="Animation_nl443"]
 resource_name = "fade"

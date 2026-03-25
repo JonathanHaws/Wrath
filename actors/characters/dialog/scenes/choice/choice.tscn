@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c3dab6kjxg0ua" path="res://actors/characters/dialog/scenes/choice/choice.gd" id="1_sx31n"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://menus/options/ui_scale.gd" id="2_xbol6"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://menus/grab_focus.gd" id="3_gcusp"]
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="5_iphix"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="5_iphix"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="6_gcusp"]
 
 [sub_resource type="Animation" id="Animation_e0soa"]

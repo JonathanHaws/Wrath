@@ -1,10 +1,10 @@
-[gd_scene load_steps=14 format=3 uid="uid://4f506yax85t1"]
+[gd_scene format=3 uid="uid://4f506yax85t1"]
 
 [ext_resource type="Script" uid="uid://dtofx2osnk3pe" path="res://actors/characters/enemies/bosses/gluttony/projectiles/puddle.gd" id="1_s6lm2"]
 [ext_resource type="Material" uid="uid://14hmcag5btd0" path="res://actors/characters/enemies/bosses/gluttony/projectiles/vomit.tres" id="2_s6lm2"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://actors/characters/hurt_shape.gd" id="3_g4km2"]
 [ext_resource type="AudioStream" uid="uid://dr4wvss7cxikp" path="res://actors/characters/enemies/bosses/gluttony/sounds/vomit_splash.ogg" id="4_exbxg"]
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="5_g4v7w"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="5_g4v7w"]
 [ext_resource type="AudioStream" uid="uid://bg7hvfo0wmnlg" path="res://actors/characters/enemies/bosses/gluttony/sounds/puddle_1.ogg" id="6_yymar"]
 [ext_resource type="AudioStream" uid="uid://c8tka838atcpd" path="res://actors/characters/enemies/bosses/gluttony/sounds/puddle_2.ogg" id="7_kg012"]
 [ext_resource type="AudioStream" uid="uid://cs06ncete1mfe" path="res://actors/characters/enemies/bosses/gluttony/sounds/puddle_3.ogg" id="8_0mkwt"]

@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://menus/pause/restart.gd" id="5_0mtqa"]
 [ext_resource type="Script" uid="uid://v7rpg87oifq2" path="res://menus/options/resume.gd" id="5_e7s18"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://menus/redirect.gd" id="6_kiq5e"]
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="7_e7s18"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="7_e7s18"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://menus/sfx/Menu_Hover.wav" id="9_nw3fp"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="9_sgwxf"]
 [ext_resource type="PackedScene" uid="uid://brtdguv72meqk" path="res://menus/transitions/fade_to_black_fade_in_from_black.tscn" id="10_sgwxf"]

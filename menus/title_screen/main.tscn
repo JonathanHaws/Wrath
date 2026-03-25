@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd" id="10_8af7w"]
 [ext_resource type="PackedScene" uid="uid://cyc6qliwd6avp" path="res://menus/transitions/fade_out_music_0p3.tscn" id="11_nikc7"]
 [ext_resource type="PackedScene" uid="uid://bwacv5bktdk46" path="res://menus/transitions/fade_out_sfx_0p3.tscn" id="12_8af7w"]
-[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://actors/audio_spawner.gd" id="12_k2sbj"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="12_k2sbj"]
 [ext_resource type="PackedScene" uid="uid://f3fcn8ktks1h" path="res://menus/transitions/fade_to_black.tscn" id="14_nikc7"]
 [ext_resource type="PackedScene" uid="uid://dbkxf7jmk86ly" path="res://menus/transitions/fade_from_black.tscn" id="16_tmtx3"]
 
