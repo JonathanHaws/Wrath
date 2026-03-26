@@ -1,7 +1,7 @@
 extends Node
 var game_file_name: String = ""
 var data: Dictionary = {}
-var default_scene: String = "res://stages/level_1_lust/castle.tscn"
+var default_scene: String = "res://scenes/stages/level_1_lust/castle.tscn"
 signal save_data_updated
 
 func get_unique_key(node: Node, suffix: String) -> String:

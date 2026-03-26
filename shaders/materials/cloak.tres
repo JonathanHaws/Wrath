@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://d05o8hg3ko84m"]
+
+[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/custom/disolve.gdshader" id="1_j67kq"]
+[ext_resource type="Texture2D" uid="uid://bm1u48mshqrkg" path="res://meshes/characters/reaper/cloak/color.png" id="2_j67kq"]
+[ext_resource type="Texture2D" uid="uid://ckp765x2kgtit" path="res://meshes/characters/reaper/cloak/emisson.png" id="3_11w7u"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_j67kq")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_frequency = 3.0
+shader_parameter/dissolve_vector = Vector3(0.5, -0.5, 0.25)
+shader_parameter/custom_glow_color_enabled = false
+shader_parameter/custom_glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.0
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/albedo_enabled = true
+shader_parameter/albedo_texture = ExtResource("2_j67kq")
+shader_parameter/albedo_color = Color(1, 1, 1, 1)
+shader_parameter/enabled_emisson = true
+shader_parameter/emission_texture = ExtResource("3_11w7u")
+shader_parameter/emission_texture_intensity = 1.245
+shader_parameter/normal_strength = 1.0
+shader_parameter/enabled_normal = false

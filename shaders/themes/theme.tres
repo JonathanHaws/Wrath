@@ -1,0 +1,14 @@
+[gd_resource type="Theme" format=3 uid="uid://bty2q8m8jwn5t"]
+
+[ext_resource type="StyleBox" uid="uid://dumtrjg77ixmn" path="res://shaders/bar/background.tres" id="1_3rhje"]
+[ext_resource type="StyleBox" uid="uid://dje7o3hpjprs5" path="res://shaders/bar/difference.tres" id="2_sqai7"]
+[ext_resource type="FontFile" uid="uid://dpdckaagju1of" path="res://textures/fonts/Wrath.otf" id="4_lc2ve"]
+
+[resource]
+default_font = ExtResource("4_lc2ve")
+default_font_size = 25
+Button/colors/font_color = Color(0.8, 0.8, 0.8, 1)
+Button/fonts/font = ExtResource("4_lc2ve")
+Label/colors/font_color = Color(0.713726, 0.713726, 0.713726, 1)
+ProgressBar/styles/background = ExtResource("1_3rhje")
+ProgressBar/styles/fill = ExtResource("2_sqai7")

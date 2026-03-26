@@ -1,0 +1,139 @@
+[gd_scene format=3 uid="uid://dyk5tfpn3c33w"]
+
+[ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://script/items/projectile.gd" id="1_8vmfp"]
+[ext_resource type="PackedScene" uid="uid://1ibdp5i2ei5t" path="res://meshes/items/projectile.blend" id="2_3shst"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="2_v5ope"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhlmk"]
+albedo_color = Color(0.036, 0.0462667, 0.08, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3shst"]
+size = Vector3(0.13976523, 0.12731558, 0.11819573)
+
+[sub_resource type="Animation" id="Animation_xhlmk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_3shst"]
+resource_name = "collision"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7v0bv"]
+resource_name = "projectile"
+length = 7.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.03333333, 0.1, 5.7000003, 6.7666698),
+"transitions": PackedFloat32Array(1, 0.40612632, 1, 3.605001, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(1, 1, 1), Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OmniLight3D:light_energy")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.733333, 6.43333, 6.86667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.1, 0.1, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1tcvp"]
+_data = {
+&"RESET": SubResource("Animation_xhlmk"),
+&"collision": SubResource("Animation_3shst"),
+&"projectile": SubResource("Animation_7v0bv")
+}
+
+[node name="GhostProjectile" type="Node3D" unique_id=1464689911 node_paths=PackedStringArray("collision_animation_player", "ray", "hurt_box")]
+script = ExtResource("1_8vmfp")
+speed = 20.0
+exclude_groups = Array[String](["ghost", "enemy"])
+collision_animation_player = NodePath("AnimationPlayer")
+collision_animation_name = "collision"
+ray = NodePath("RayCast3D")
+hurt_box = NodePath("Attack")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=378754282]
+
+[node name="projectile" parent="Node3D" unique_id=1400207989 instance=ExtResource("2_3shst")]
+
+[node name="Cylinder" parent="Node3D/projectile" index="0" unique_id=1893045559]
+material_overlay = SubResource("StandardMaterial3D_xhlmk")
+
+[node name="Attack" type="Area3D" parent="." unique_id=2008542141 groups=["ghost"]]
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("2_v5ope")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack" unique_id=2004521729]
+transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, -0.0053052194, 0.005106308, -0.58083695)
+shape = SubResource("BoxShape3D_3shst")
+debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1336105221]
+libraries/ = SubResource("AnimationLibrary_1tcvp")
+autoplay = &"projectile"
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=1548411676]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.667053, 1.15956, -2.34819)
+light_color = Color(0.58, 0.58, 0.58, 1)
+light_energy = 0.04538207
+light_specular = 0.0
+omni_range = 15.0
+omni_attenuation = 0.5
+
+[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1228087490]
+visible = false
+exclude_parent = false
+hit_from_inside = true
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
+[editable path="Node3D/projectile"]

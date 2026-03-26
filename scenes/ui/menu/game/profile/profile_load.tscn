@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://bchlq7ojvre5o"]
+
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/themes/theme.tres" id="1_jkjqm"]
+[ext_resource type="Script" uid="uid://60mgdw58o7o0" path="res://script/ui/menu/game/profile.gd" id="2_egniv"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="3_8a5x8"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="3_s3ewt"]
+[ext_resource type="AudioStream" uid="uid://bl2yh8xx8yn4s" path="res://audio/sfx/characters/menu/Menu_Load.ogg" id="5_0fgso"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://script/ui/grab_focus.gd" id="6_lofat"]
+
+[node name="Button" type="Button" unique_id=320115392 groups=["menu_focus_sound", "menu_hovered_sound", "menu_profile_load_sound"]]
+offset_right = 8.0
+offset_bottom = 8.0
+theme = ExtResource("1_jkjqm")
+script = ExtResource("2_egniv")
+
+[node name="MenuAudio" type="Node" parent="." unique_id=62790456]
+script = ExtResource("3_s3ewt")
+SOUNDS = Array[AudioStream]([ExtResource("3_8a5x8"), ExtResource("5_0fgso")])
+ADD_TO_ROOT = true
+PRESSED_SOUND = "Menu_Load"
+HOVERED_GROUP = ""
+PRESSED_GROUP = "menu_profile_load_sound"
+FOCUS_ENTERED_GROUP = ""
+
+[node name="GrabFocus" type="Control" parent="." unique_id=135303956 node_paths=PackedStringArray("focus_targets")]
+anchors_preset = 0
+script = ExtResource("6_lofat")
+focus_targets = [NodePath("..")]

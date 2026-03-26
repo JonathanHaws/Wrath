@@ -1,0 +1,314 @@
+[gd_scene format=3 uid="uid://bbnvaw1wjbpv0"]
+
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="1_gksqo"]
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/themes/theme.tres" id="1_nke8k"]
+[ext_resource type="Script" uid="uid://blcresco6qh8i" path="res://script/ui/menu/options/controls/sensitivity.gd" id="2_00uuv"]
+[ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://script/ui/menu/pause/toggle.gd" id="2_44vjs"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="2_lbh2v"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="2_t88b0"]
+[ext_resource type="Script" uid="uid://d0y3kmnwe4g6k" path="res://script/ui/menu/options/controls/custom_control.gd" id="3_00uuv"]
+[ext_resource type="AudioStream" uid="uid://ckcjmp63iqneu" path="res://audio/sfx/characters/menu/Menu_Delete.ogg" id="3_t88b0"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://script/ui/grab_focus.gd" id="4_44vjs"]
+[ext_resource type="AudioStream" uid="uid://bl2yh8xx8yn4s" path="res://audio/sfx/characters/menu/Menu_Load.ogg" id="5_t88b0"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="9_t88b0"]
+
+[node name="ColorRect" type="ColorRect" unique_id=951405758]
+process_mode = 3
+z_index = 3000
+z_as_relative = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_nke8k")
+color = Color(0.05, 0.05, 0.05, 0.913725)
+script = ExtResource("2_44vjs")
+metadata/_edit_use_anchors_ = true
+
+[node name="Controls" type="VBoxContainer" parent="." unique_id=1584372267 groups=["ui_scalable"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -267.25
+offset_top = -118.0
+offset_right = 267.25
+offset_bottom = 118.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(267.25, 118)
+script = ExtResource("2_t88b0")
+
+[node name="DeleteSound" type="AudioStreamPlayer" parent="Controls" unique_id=452911105 groups=["control_delete_sound"]]
+stream = ExtResource("3_t88b0")
+volume_db = -6.0
+pitch_scale = 1.1
+bus = &"SFX"
+
+[node name="AddSound" type="AudioStreamPlayer" parent="Controls" unique_id=1423230636 groups=["control_add_sound"]]
+stream = ExtResource("1_gksqo")
+volume_db = -4.0
+pitch_scale = 0.6
+bus = &"SFX"
+
+[node name="NewInputSound" type="AudioStreamPlayer" parent="Controls" unique_id=1735340853 groups=["control_new_input_sound"]]
+stream = ExtResource("1_gksqo")
+pitch_scale = 0.9
+bus = &"SFX"
+
+[node name="RestoreSound" type="AudioStreamPlayer" parent="Controls" unique_id=210790414 groups=["control_restore_sound"]]
+stream = ExtResource("5_t88b0")
+volume_db = -5.0
+pitch_scale = 0.9
+bus = &"SFX"
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="Controls" unique_id=1290035456 groups=["control_hover_sound"]]
+stream = ExtResource("1_gksqo")
+bus = &"SFX"
+
+[node name="FocusSound" type="AudioStreamPlayer" parent="Controls" unique_id=645667822 groups=["control_focus_sound"]]
+stream = ExtResource("1_gksqo")
+bus = &"SFX"
+
+[node name="GrabFocus" type="Control" parent="Controls" unique_id=717115006 node_paths=PackedStringArray("focus_targets")]
+layout_mode = 2
+script = ExtResource("4_44vjs")
+focus_targets = [NodePath("../Camera")]
+
+[node name="Camera" type="FoldableContainer" parent="Controls" unique_id=698683463 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+focus_neighbor_left = NodePath("VBoxContainer/ControllerSensitivity/HSlider")
+focus_neighbor_right = NodePath("VBoxContainer/ControllerSensitivity/HSlider")
+folded = true
+title = "CAMERA"
+title_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/Camera" unique_id=645857300]
+visible = false
+layout_mode = 2
+
+[node name="ControllerSensitivity" type="HBoxContainer" parent="Controls/Camera/VBoxContainer" unique_id=1910014837]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_nke8k")
+alignment = 1
+
+[node name="Label" type="Label" parent="Controls/Camera/VBoxContainer/ControllerSensitivity" unique_id=1842109180]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_nke8k")
+text = "CONTROLLER SENSITIVITY:"
+
+[node name="Value" type="Label" parent="Controls/Camera/VBoxContainer/ControllerSensitivity" unique_id=1029810803]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="Controls/Camera/VBoxContainer/ControllerSensitivity" unique_id=1594263427 node_paths=PackedStringArray("value_label")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("1_nke8k")
+min_value = 0.01
+max_value = 0.15
+step = 0.01
+value = 0.01
+script = ExtResource("2_00uuv")
+camera_property_name = "CONTROLLER_SENSITIVITY"
+config_setting_name = "controller_sensitivity"
+value_label = NodePath("../Value")
+mouse = false
+
+[node name="MouseSensitivity" type="HBoxContainer" parent="Controls/Camera/VBoxContainer" unique_id=311214277]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_nke8k")
+alignment = 1
+
+[node name="Label" type="Label" parent="Controls/Camera/VBoxContainer/MouseSensitivity" unique_id=293909915]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_nke8k")
+text = "MOUSE SENSITIVITY:"
+
+[node name="Value" type="Label" parent="Controls/Camera/VBoxContainer/MouseSensitivity" unique_id=308832586]
+layout_mode = 2
+
+[node name="HSlider" type="HSlider" parent="Controls/Camera/VBoxContainer/MouseSensitivity" unique_id=1109844491 node_paths=PackedStringArray("value_label")]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+focus_neighbor_top = NodePath("../../../../Back")
+theme = ExtResource("1_nke8k")
+min_value = 0.001
+max_value = 0.03
+step = 0.001
+value = 0.03
+script = ExtResource("2_00uuv")
+value_label = NodePath("../Value")
+
+[node name="LockOn" type="HBoxContainer" parent="Controls/Camera/VBoxContainer" unique_id=2017024505]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "lock_on"
+display_name = "LOCK ON"
+
+[node name="Movement" type="FoldableContainer" parent="Controls" unique_id=1673508977 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+folded = true
+title = "MOVEMENT"
+title_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/Movement" unique_id=1339637727]
+visible = false
+layout_mode = 2
+
+[node name="Forward" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1563587344 node_paths=PackedStringArray("focus_top")]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "keyboard_forward"
+display_name = "FORWARD"
+focus_top = NodePath("../..")
+
+[node name="Backward" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1133384638]
+layout_mode = 2
+size_flags_horizontal = 4
+focus_mode = 2
+script = ExtResource("3_00uuv")
+action_name = "keyboard_back"
+display_name = "BACKWARD"
+
+[node name="Left" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1281279967]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "keyboard_left"
+display_name = "LEFT"
+
+[node name="Right" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1706166080]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "keyboard_right"
+display_name = "RIGHT"
+
+[node name="Jump" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=819306910]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "jump"
+display_name = "JUMP"
+
+[node name="Walk" type="HBoxContainer" parent="Controls/Movement/VBoxContainer" unique_id=1702466736 node_paths=PackedStringArray("focus_bottom")]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "walk"
+display_name = "WALK"
+focus_bottom = NodePath("../../../Combat")
+
+[node name="Combat" type="FoldableContainer" parent="Controls" unique_id=1511240414 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+folded = true
+title = "COMBAT"
+title_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/Combat" unique_id=2072394329]
+visible = false
+layout_mode = 2
+
+[node name="Attack" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=1391514407 node_paths=PackedStringArray("focus_top")]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "attack"
+display_name = "ATTACK"
+focus_top = NodePath("../..")
+
+[node name="Block" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=1034567462]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "block"
+display_name = "BLOCK"
+
+[node name="Shoot" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=1126546248 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "shoot"
+display_name = "SHOOT"
+
+[node name="Descend" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=761536034 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "descend"
+display_name = "DESCEND"
+
+[node name="General" type="FoldableContainer" parent="Controls" unique_id=527277962 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+folded = true
+title = "GENERAL"
+title_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/General" unique_id=416554923]
+visible = false
+layout_mode = 2
+
+[node name="Interact" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1982470625 node_paths=PackedStringArray("focus_top")]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "interact"
+display_name = "INTERACT"
+focus_top = NodePath("../..")
+
+[node name="Heal" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1705924091]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "heal"
+display_name = "HEAL"
+
+[node name="Dash" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1934570992]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "dash"
+display_name = "DASH"
+
+[node name="Rest" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=765867851]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "rest"
+display_name = "REST"
+
+[node name="Back" type="Button" parent="Controls" unique_id=1086883894 node_paths=PackedStringArray("node_to_replace") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+focus_neighbor_bottom = NodePath("../Camera/VBoxContainer/MouseSensitivity/HSlider")
+theme = ExtResource("1_nke8k")
+text = "BACK
+"
+icon_alignment = 1
+script = ExtResource("2_lbh2v")
+scene_file = "uid://duevw8ikxn5kj"
+node_to_replace = NodePath("../..")
+is_back_button = true
+
+[node name="MenuAudio" type="Node" parent="." unique_id=1240540037 node_paths=PackedStringArray("ONLY_SPAWN_IF_VISIBLE")]
+process_mode = 3
+script = ExtResource("9_t88b0")
+SOUNDS = Array[AudioStream]([ExtResource("1_gksqo")])
+ADD_TO_ROOT = true
+ONLY_SPAWN_IF_VISIBLE = NodePath("..")

@@ -22,7 +22,7 @@ config/features=PackedStringArray("4.6", "Forward Plus")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 config/icon="uid://b50a5gjn0cglu"
-config/windows_native_icon="res://icon/Icon.ico"
+config/windows_native_icon="res://textures/icon/Icon.ico"
 
 [audio]
 
@@ -32,7 +32,7 @@ general/default_bus_layout="res://menus/options/channels_layot.tres"
 [autoload]
 
 Save="*res://script/global/save.gd"
-Particles="*res://actors/characters/dialog/scenes/say_timed/scene_spawner.gd"
+Particles="*res://script/component/scene_spawner.gd"
 Config="*res://script/global/config.gd"
 CameraEffects="*res://script/component/camera_effects.gd"
 
@@ -54,6 +54,18 @@ window/stretch/aspect="expand"
 [editor_plugins]
 
 enabled=PackedStringArray()
+
+[file_customization]
+
+folder_colors={
+"res://audio/": "blue",
+"res://json/": "purple",
+"res://meshes/": "yellow",
+"res://scenes/": "green",
+"res://script/": "red",
+"res://shaders/": "teal",
+"res://textures/": "orange"
+}
 
 [global_group]
 

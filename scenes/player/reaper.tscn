@@ -1,0 +1,4411 @@
+[gd_scene format=3 uid="uid://c63gb30rbqgem"]
+
+[ext_resource type="Script" uid="uid://ralrw8p542mu" path="res://script/player/reaper.gd" id="1_0b6a6"]
+[ext_resource type="Script" uid="uid://dlpygd05y0vit" path="res://script/player/camera/fov_lerp.gd" id="2_1bp3y"]
+[ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://script/component/hit_shape.gd" id="2_utjob"]
+[ext_resource type="AudioStream" uid="uid://dv38k4hi68nft" path="res://audio/sfx/characters/player/Spawn.wav" id="2_ykn11"]
+[ext_resource type="AudioStream" uid="uid://5n5whpag62f2" path="res://audio/sfx/characters/player/Spawn_New.wav" id="3_2tmqw"]
+[ext_resource type="Script" uid="uid://binnxxydkjgul" path="res://script/player/god_mode.gd" id="3_4anjp"]
+[ext_resource type="PackedScene" uid="uid://xbs1vkc0kdgm" path="res://meshes/characters/reaper/reaper.blend" id="3_k4avc"]
+[ext_resource type="AudioStream" uid="uid://cv08lxjw3rypc" path="res://audio/sfx/characters/player/Jump.wav" id="4_i3uf6"]
+[ext_resource type="AudioStream" uid="uid://cxfh7l5kksro3" path="res://audio/sfx/characters/player/Land.wav" id="5_7kpka"]
+[ext_resource type="PackedScene" uid="uid://00xupixtbxf5" path="res://scenes/player/horizontal_slash_particle.tscn" id="5_p6b07"]
+[ext_resource type="PackedScene" uid="uid://b2vw4evrfcelo" path="res://scenes/particles/dust_step.tscn" id="6_bo8be"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="7_4anjp"]
+[ext_resource type="AudioStream" uid="uid://cww02b50taw61" path="res://audio/sfx/characters/player/Step_1.wav" id="7_erto2"]
+[ext_resource type="Script" uid="uid://bmvwcgf01b1lq" path="res://script/player/camera/third_person_camera.gd" id="7_lwilf"]
+[ext_resource type="PackedScene" uid="uid://xn7bifp3hpfj" path="res://scenes/particles/dust_land.tscn" id="8_lxnc4"]
+[ext_resource type="AudioStream" uid="uid://bt0ejti1ku0n4" path="res://audio/sfx/characters/player/Step_2.wav" id="8_wxf0g"]
+[ext_resource type="AudioStream" uid="uid://boh8nmwkjx2sf" path="res://audio/sfx/characters/player/Step_3.wav" id="9_rg8br"]
+[ext_resource type="AudioStream" uid="uid://1r82mpgsesk4" path="res://audio/sfx/characters/player/Slash_1.wav" id="10_c6xc7"]
+[ext_resource type="AudioStream" uid="uid://bfa44eyn6q4vu" path="res://audio/sfx/characters/player/Step_4.wav" id="10_tro3i"]
+[ext_resource type="AudioStream" uid="uid://0sf75mds1tdr" path="res://audio/sfx/characters/player/Slash_2.wav" id="11_x57ir"]
+[ext_resource type="AudioStream" uid="uid://dn40xettc7puu" path="res://audio/sfx/characters/player/Slash_3.wav" id="12_ot1qi"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="15_lwilf"]
+[ext_resource type="AudioStream" uid="uid://cawtjrru8ho7x" path="res://audio/sfx/characters/player/Hurt.wav" id="15_tgmjc"]
+[ext_resource type="Script" uid="uid://ccjt2mmin66uh" path="res://script/player/camera/lock_on.gd" id="17_5cvkf"]
+[ext_resource type="AudioStream" uid="uid://ca1jfg0asj5b6" path="res://audio/sfx/characters/player/Windown.wav" id="18_pc8iq"]
+[ext_resource type="AudioStream" uid="uid://dlwicer3j08q8" path="res://audio/sfx/characters/player/Spawn_Void.wav" id="20_5d6ad"]
+[ext_resource type="Script" uid="uid://brd3ehk2rfsfr" path="res://script/player/tracker/death_count_tracker.gd" id="20_m1s71"]
+[ext_resource type="AudioStream" uid="uid://bbwub6xco4f00" path="res://audio/sfx/wind.wav" id="22_ogp31"]
+[ext_resource type="Script" uid="uid://dsby53pm3kd0g" path="res://script/player/save_property.gd" id="23_75wkf"]
+[ext_resource type="AudioStream" uid="uid://n46mmfgqvnl6" path="res://audio/sfx/characters/player/Blocked.ogg" id="24_5og37"]
+[ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/characters/enemies/Cry_2.wav" id="24_8oma7"]
+[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/themes/notification.tres" id="24_m1s71"]
+[ext_resource type="AudioStream" uid="uid://bkawmwxh84v2j" path="res://audio/sfx/characters/enemies/Hit_1.ogg" id="24_uatll"]
+[ext_resource type="AudioStream" uid="uid://ql4vd0nt4yjg" path="res://audio/sfx/characters/player/Parried.ogg" id="25_2d6ni"]
+[ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/characters/enemies/Slam.wav" id="25_8i186"]
+[ext_resource type="AudioStream" uid="uid://bvtlb0oql5hr6" path="res://audio/sfx/characters/enemies/Hit_2.ogg" id="25_78wyp"]
+[ext_resource type="AudioStream" uid="uid://bl2yh8xx8yn4s" path="res://audio/sfx/characters/menu/Menu_Load.ogg" id="25_kim7h"]
+[ext_resource type="AudioStream" uid="uid://c16kx02f83mop" path="res://audio/sfx/characters/enemies/Hit_3.ogg" id="26_8oma7"]
+[ext_resource type="Script" uid="uid://bfq61wyde2xvx" path="res://script/player/death_animation.gd" id="29_5ijfa"]
+[ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://script/component/root_motion.gd" id="32_qsprq"]
+[ext_resource type="Script" uid="uid://ce0dmg6sindd8" path="res://script/player/lean.gd" id="32_xnjpx"]
+[ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://shaders/bar/player/player_health.tres" id="34_6g6ue"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="35_lwilf"]
+[ext_resource type="Material" uid="uid://dacvxdrj2im0y" path="res://shaders/materials/body.tres" id="35_m1s71"]
+[ext_resource type="Material" uid="uid://d05o8hg3ko84m" path="res://shaders/materials/cloak.tres" id="36_4anjp"]
+[ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://script/player/tracker/play_time_tracker.gd" id="36_5cvkf"]
+[ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="36_p2pt0"]
+[ext_resource type="Script" uid="uid://cwwirvd46gyr2" path="res://script/player/plunge_multiplier.gd" id="38_5ijfa"]
+[ext_resource type="Script" uid="uid://0q73mstd3d54" path="res://script/player/spin_multiplier.gd" id="38_fw2bj"]
+[ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://script/component/squash.gd" id="41_utjob"]
+[ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="42_k5idf"]
+[ext_resource type="PackedScene" uid="uid://clbxqusx74r6s" path="res://scenes/particles/dust_jump.tscn" id="42_p6b07"]
+[ext_resource type="PackedScene" uid="uid://qi35dljseuk3" path="res://scenes/player/player_projectile.tscn" id="43_78wyp"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="43_ekykk"]
+[ext_resource type="Script" uid="uid://dbfbopu4ncf67" path="res://script/ui/skill_tree/wisp_counter.gd" id="44_4anjp"]
+[ext_resource type="Script" uid="uid://pxraa8l0plaw" path="res://script/component/block_shape.gd" id="45_2d6ni"]
+[ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="45_au8vy"]
+[ext_resource type="PackedScene" uid="uid://dspid5s7r6a1o" path="res://scenes/ui/skill_tree.tscn" id="47_ekykk"]
+[ext_resource type="PackedScene" uid="uid://btfr5eocbsa1j" path="res://scenes/ui/skip.tscn" id="50_yinxs"]
+[ext_resource type="Script" uid="uid://nbc1ksywm8ut" path="res://script/ui/tutorial_label.gd" id="51_773af"]
+[ext_resource type="PackedScene" uid="uid://duevw8ikxn5kj" path="res://scenes/ui/menu/pause.tscn" id="51_bud88"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="52_3vvcf"]
+[ext_resource type="Theme" uid="uid://dc3871vl88kgm" path="res://shaders/themes/tutorial.tres" id="52_ccj1p"]
+[ext_resource type="PackedScene" uid="uid://cmau4y8fs3ukm" path="res://scenes/particles/hurt/player_hurt_particles.tscn" id="52_xnjpx"]
+[ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://audio/sfx/characters/menu/Menu_New.wav" id="53_qlt7i"]
+[ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://shaders/bar/player/health_charges_fill.tres" id="56_s81g7"]
+[ext_resource type="StyleBox" uid="uid://cdkrrhvlxa2fc" path="res://shaders/bar/player/shooting_energy_fill.tres" id="57_773af"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_k5idf"]
+radius = 0.274293
+height = 1.58012
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4anjp"]
+radius = 0.619256
+height = 2.818
+
+[sub_resource type="Animation" id="Animation_hfpb6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SkillTree:toggle_disabled")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:SHOOTING_DISABLED")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:HEALING_DISABLED")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape:disabled")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:ATTACKING_DISABLED")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".:RUN_DISABLED")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".:CONTROLLER_RUN_MULTIPLIER")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:DASH_DISABLED")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_get7n"]
+resource_name = "checkpoint_disable"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:ATTACKING_DISABLED")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:HEALING_DISABLED")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_okagy"]
+resource_name = "checkpoint_enable"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:ATTACKING_DISABLED")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:HEALING_DISABLED")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_7g1ex"]
+resource_name = "choice_disabled"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:CONTROLLER_RUN_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:DASH_DISABLED")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_p420n"]
+resource_name = "choice_enabled"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:CONTROLLER_RUN_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:DASH_DISABLED")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_agako"]
+resource_name = "dialog_disable"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkillTree:toggle_disabled")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:ATTACKING_DISABLED")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:HEALING_DISABLED")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:SHOOTING_DISABLED")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_0jl1p"]
+resource_name = "dialog_enable"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SkillTree:toggle_disabled")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:ATTACKING_DISABLED")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SHOOTING_DISABLED")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:HEALING_DISABLED")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape:disabled")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_indvt"]
+resource_name = "skill_tree_disable"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:ATTACKING_DISABLED")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SHOOTING_DISABLED")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:HEALING_DISABLED")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:RUN_DISABLED")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:DASH_DISABLED")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_himm2"]
+resource_name = "skill_tree_enable"
+length = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:ATTACKING_DISABLED")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:HEALING_DISABLED")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SHOOTING_DISABLED")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:RUN_DISABLED")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:DASH_DISABLED")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:JUMP_MULTIPLIER")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_agako"]
+_data = {
+&"RESET": SubResource("Animation_hfpb6"),
+&"checkpoint_disable": SubResource("Animation_get7n"),
+&"checkpoint_enable": SubResource("Animation_okagy"),
+&"choice_disabled": SubResource("Animation_7g1ex"),
+&"choice_enabled": SubResource("Animation_p420n"),
+&"dialog_disable": SubResource("Animation_agako"),
+&"dialog_enable": SubResource("Animation_0jl1p"),
+&"skill_tree_disable": SubResource("Animation_indvt"),
+&"skill_tree_enable": SubResource("Animation_himm2")
+}
+
+[sub_resource type="Animation" id="Animation_utjob"]
+resource_name = "DEATH"
+length = 4.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["Music", 0.0, 1.0],
+"method": &"tween_bus"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Audio")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["SFX", 0.0, 1.0],
+"method": &"tween_bus"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../AlwaysProcessDeath/DeathAnimation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_animation_based_of_cause_of_death"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_2d6ni"]
+resource_name = "FALL_DEATH"
+length = 4.771
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitshape/CollisionShape3D:disabled")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:SPEED_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:TURN_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("DEATH"),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Hitshape/DeathCountTracker")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.466667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"increase"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("..")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.533334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reload_checkpoint"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_n8vw1"]
+resource_name = "HURT"
+length = 0.091
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Audio/Hurt")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../CameraEffects")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["player_hurt"],
+"method": &"impact"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../HurtParticles")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5og37"]
+resource_name = "REGULAR_DEATH"
+length = 7.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Hitshape/CollisionShape3D:disabled")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("..:SPEED_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("..:TURN_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../ColorRect:color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.13333334, 0.36666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("../Audio/Death")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("../CameraEffects")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["player_death"],
+"method": &"impact"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("../Audio")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["HURT"]],
+"method": &"spawn_sound"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("../Hitshape/DeathCountTracker")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.76666677),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"increase"
+}]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("..")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.8333333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reload_checkpoint"
+}]
+}
+tracks/10/type = "animation"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": PackedStringArray("DEATH"),
+"times": PackedFloat32Array(0)
+}
+tracks/11/type = "animation"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Mesh/reaper/AnimationPlayer")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": PackedStringArray("Jump"),
+"times": PackedFloat32Array(0)
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../SpringArm3D/FovLerp:target_fov")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [110.0]
+}
+tracks/13/type = "animation"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Mesh/reaper/AnimationPlayer")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"clips": PackedStringArray("Death"),
+"times": PackedFloat32Array(0)
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/LookAtModifier3D:influence")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/cloak:material_override:shader_parameter/dissolve_amount")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/body:material_override:shader_parameter/dissolve_amount")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/17/type = "method"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../HurtParticles")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_xkeou"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/cloak:material_override:shader_parameter/dissolve_amount")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/body:material_override:shader_parameter/dissolve_amount")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_k5idf"]
+_data = {
+&"DEATH": SubResource("Animation_utjob"),
+&"FALL_DEATH": SubResource("Animation_2d6ni"),
+&"HURT": SubResource("Animation_n8vw1"),
+&"REGULAR_DEATH": SubResource("Animation_5og37"),
+&"RESET": SubResource("Animation_xkeou")
+}
+
+[sub_resource type="Animation" id="Animation_au8vy"]
+resource_name = "BLOCK"
+length = 0.41667086
+loop_mode = 1
+step = 0.041666668
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Block"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/BlockShape/CollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_kim7h"]
+resource_name = "BLOCK_ENTER"
+length = 0.2083375
+step = 0.041666668
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("BlockEnter"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/BlockShape/CollisionShape3D:disabled")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.041666664),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_px533"]
+resource_name = "BLOCK_EXIT"
+length = 0.2083375
+step = 0.041666668
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("BlockExit"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.04166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.04166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/BlockShape/CollisionShape3D:disabled")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_yhep5"]
+resource_name = "DASH"
+length = 0.70833755
+step = 0.041666668
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio/Dash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("Dash"),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.7083333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:TURN_MULTIPLIER")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.7083333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.7083333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"apply_dash_exit_velocity"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/ShaderTween")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["body_mesh", "cloak_mesh"], "dissolve_amount", 1.0, 0.1],
+"method": &"tween"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/ShaderTween")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["body_mesh", "cloak_mesh"], "dissolve_amount", 0.0, 0.15],
+"method": &"tween"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_s81g7"]
+resource_name = "DEATH"
+length = 10.0
+
+[sub_resource type="Animation" id="Animation_5ijfa"]
+resource_name = "DOOR"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:TURN_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_horizontal_movement"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_fm33p"]
+resource_name = "ESCAPE"
+length = 43.0
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Escape"),
+"times": PackedFloat32Array(0.7)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpringArm3D/Camera3D:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(42.7917),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_7aqcu"]
+resource_name = "FALL"
+length = 0.166671
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Fall"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_bud88"]
+resource_name = "GLUTTONY_INTRO"
+length = 16.5
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"skip",
+"time": 16.4996
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/BottomLeft:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 15.8333, 16.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 16.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 16.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:TURN_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 16.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("Idle"),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SpringArm3D/Camera3D:current")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(16.4),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_xnjpx"]
+resource_name = "GOD"
+length = 0.1815
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Fall"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:TURN_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/ShaderTween")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["body_mesh", "cloak_mesh"], "dissolve_amount", 0.0, 0.0],
+"method": &"tween"
+}]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/SceneSpawner/OmniLight3D:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_ra64v"]
+resource_name = "HEAL"
+length = 1.2500042
+step = 0.041666668
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Heal"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.29166666, 0.98473483, 1.2083334),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.25, 1.0270089, 1.2083292),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio/Heal")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.6666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"heal_hitshape"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("CameraEffects")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.6666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["player_heal", 0.2, 0.2, 0.0],
+"method": &"impact"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_kk21r"]
+resource_name = "Idle"
+length = 1.20834
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Idle"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpringArm3D/FovLerp:target_fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [80.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/CollisionShape3D:disabled")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_fw2bj"]
+resource_name = "INTRODUCTION"
+length = 9.0
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"skip",
+"time": 9.0
+}]
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Idle"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("UI:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0333333, 8, 8.6667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_wfofs"]
+resource_name = "JUMPING"
+length = 0.208338
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Jump"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpringArm3D/FovLerp:target_fov")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [90.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/CollisionShape3D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_78wyp"]
+resource_name = "LADDER"
+length = 0.416671
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Ladder"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_17dho"]
+resource_name = "LADDER_ENTER"
+length = 0.416671
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:TURN_MULTIPLIER")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("LadderEnter"),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.166667, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.2, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_uatll"]
+resource_name = "LADDER_EXIT"
+length = 0.333338
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:TURN_MULTIPLIER")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("LadderExit"),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.208333, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.2]
+}
+
+[sub_resource type="Animation" id="Animation_3vvcf"]
+resource_name = "LUST_INTRO"
+length = 6.25001
+step = 0.0416667
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"skip",
+"time": 6.16667
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("UI/BottomLeft:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 5.54163, 6.20833),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6.20833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6.20833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:TURN_MULTIPLIER")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 6.20833),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("Idle"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_ccj1p"]
+resource_name = "PIGLET_PAT"
+length = 6.25
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("PigletPat"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 6.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 6.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/LookAtModifier3D:influence")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5.58333, 6.25),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_horizontal_movement"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/ShaderTween")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["body_mesh", "cloak_mesh"], "dissolve_amount", 0.0, 0.15],
+"method": &"tween"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_773af"]
+resource_name = "PIGLET_PET"
+length = 5.83334
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("PigletPet"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 5.79167),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 5.79167),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/LookAtModifier3D:influence")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5.125, 5.79167),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_horizontal_movement"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/ShaderTween")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["body_mesh", "cloak_mesh"], "dissolve_amount", 0.0, 0.15],
+"method": &"tween"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_yinxs"]
+resource_name = "PIGLET_PICKUP"
+length = 8.0
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("PigletPickup"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 7.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 7.96667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/LookAtModifier3D:influence")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 7.3, 7.96667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stop_horizontal_movement"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/ShaderTween")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["body_mesh", "cloak_mesh"], "dissolve_amount", 0.0, 0.15],
+"method": &"tween"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5cvkf"]
+resource_name = "PLUNGE"
+length = 0.416671
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Plunge"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:TURN_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.291667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["slash_1", "slash_2", "slash_3"]],
+"method": &"spawn_sound"
+}]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/PlungeHurt/PlungeMultiplier")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"increase_damage_plunge"
+}, {
+"args": [],
+"method": &"reset_damage"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/PlungeHurt/CollisionShape3D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.041666668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_p2pt0"]
+resource_name = "PLUNGE_FALL"
+loop_mode = 1
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Plunge Fall"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.05]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_2to1h"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpringArm3D/Camera3D:current")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpringArm3D/Camera3D:current")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.2]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpringArm3D/FovLerp:target_fov")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [70.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("UI/BottomLeft:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/LookAtModifier3D:influence")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/CollisionShape3D:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Hitshape/CollisionShape3D:disabled")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("GodMode/GodModeHurt/CollisionShape3D:disabled")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Mesh/BlockShape/CollisionShape3D:disabled")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Mesh/PlungeHurt/CollisionShape3D:disabled")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/SceneSpawner/OmniLight3D:light_energy")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("UI:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_8oma7"]
+resource_name = "REST"
+length = 3.0
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Rest"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/LookAtModifier3D:influence")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_w2nfg"]
+resource_name = "RUN"
+length = 0.500005
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Run"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:TURN_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/SpinMultiplier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_damage"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/PlungeHurt/PlungeMultiplier")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_damage"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [["step_1", "step_2", "step_3", "step_4"]],
+"method": &"spawn_sound"
+}, {
+"args": [["step_1", "step_2", "step_3", "step_4"]],
+"method": &"spawn_sound"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpringArm3D/FovLerp:target_fov")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0416667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [90.0]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/CollisionShape3D:disabled")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/left_foot/dust_trail_l")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.0833333, 0.208333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/right_foot/dust_trail_r")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.324463, 0.458333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}, {
+"args": [],
+"method": &"spawn"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qsprq"]
+resource_name = "SHOOT"
+length = 1.0416718
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.8333333, 0.99999994),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [1, 0.0, 0.0, 0.1]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/SceneSpawner")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.33333334, 0.45833334, 0.56309426),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": ["player_camera", Vector3(1, 0, 0)],
+"method": &"spawn_towards_camera_group"
+}, {
+"args": ["player_camera", Vector3(1, 0, 0)],
+"method": &"spawn_towards_camera_group"
+}, {
+"args": ["player_camera", Vector3(1, 0, 0)],
+"method": &"spawn_towards_camera_group"
+}]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("Shoot"),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:TURN_MULTIPLIER")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.375, 0.5, 0.625, 0.9166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/SceneSpawner/OmniLight3D:light_energy")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.16666667, 0.25, 0.44301194),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 5.0, 0.0]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Audio/Shoot")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.16666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ekykk"]
+resource_name = "SKILLS"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:TURN_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/LookAtModifier3D:influence")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_376u0"]
+resource_name = "Spin"
+length = 0.375004
+step = 0.0416667
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.125),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["slash_1", "slash_2", "slash_3"]],
+"method": &"spawn_sound"
+}]
+}
+tracks/1/type = "animation"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": PackedStringArray("Spin"),
+"times": PackedFloat32Array(0)
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:TURN_MULTIPLIER")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/SpinMultiplier")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.208333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"increase_damage_each_spin"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/Slash")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.0833333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/CollisionShape3D:disabled")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4nekk"]
+resource_name = "WALK"
+length = 0.666671
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Walk"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:TURN_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/PlungeHurt/PlungeMultiplier")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_damage"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/SpinMultiplier")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_damage"
+}]
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.291667),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [["step_1", "step_2", "step_3", "step_4"]],
+"method": &"spawn_sound"
+}, {
+"args": [["step_1", "step_2", "step_3", "step_4"]],
+"method": &"spawn_sound"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/left_foot/dust_trail_l")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.2079),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/right_foot/dust_trail_r")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.583333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_od6d7"]
+resource_name = "Windown"
+length = 0.375004
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Windown"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/Slash")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.0833333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.125),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [["windown"]],
+"method": &"spawn_sound"
+}]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/CollisionShape3D:disabled")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.166667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.291667, 0.375001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0.0, 0.0, 1]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath(".:TURN_MULTIPLIER")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("SpringArm3D/FovLerp:target_fov")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.291667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [90.0, 90.0]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mesh/PlungeHurt/PlungeMultiplier")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_damage"
+}]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/SpinMultiplier")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0.25),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_damage"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_qldqy"]
+resource_name = "Windup"
+length = 0.291671
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Windup"),
+"times": PackedFloat32Array(0)
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.250001, 0.291667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [1, 1, 0.05]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:TURN_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.208334, 0.291667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.0, 0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SpringArm3D/FovLerp:target_fov")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.166667, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [70.0, 90.0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/SpinMultiplier")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"reset_damage"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b2cvw"]
+_data = {
+&"BLOCK": SubResource("Animation_au8vy"),
+&"BLOCK_ENTER": SubResource("Animation_kim7h"),
+&"BLOCK_EXIT": SubResource("Animation_px533"),
+&"DASH": SubResource("Animation_yhep5"),
+&"DEATH": SubResource("Animation_s81g7"),
+&"DOOR": SubResource("Animation_5ijfa"),
+&"ESCAPE": SubResource("Animation_fm33p"),
+&"FALL": SubResource("Animation_7aqcu"),
+&"GLUTTONY_INTRO": SubResource("Animation_bud88"),
+&"GOD": SubResource("Animation_xnjpx"),
+&"HEAL": SubResource("Animation_ra64v"),
+&"IDLE": SubResource("Animation_kk21r"),
+&"INTRODUCTION": SubResource("Animation_fw2bj"),
+&"JUMPING": SubResource("Animation_wfofs"),
+&"LADDER": SubResource("Animation_78wyp"),
+&"LADDER_ENTER": SubResource("Animation_17dho"),
+&"LADDER_EXIT": SubResource("Animation_uatll"),
+&"LUST_INTRO": SubResource("Animation_3vvcf"),
+&"PIGLET_PAT": SubResource("Animation_ccj1p"),
+&"PIGLET_PET": SubResource("Animation_773af"),
+&"PIGLET_PICKUP": SubResource("Animation_yinxs"),
+&"PLUNGE": SubResource("Animation_5cvkf"),
+&"PLUNGE_FALL": SubResource("Animation_p2pt0"),
+&"RESET": SubResource("Animation_2to1h"),
+&"REST": SubResource("Animation_8oma7"),
+&"RUN": SubResource("Animation_w2nfg"),
+&"SHOOT": SubResource("Animation_qsprq"),
+&"SKILLS": SubResource("Animation_ekykk"),
+&"SPIN": SubResource("Animation_376u0"),
+&"WALK": SubResource("Animation_4nekk"),
+&"WINDOWN": SubResource("Animation_od6d7"),
+&"WINDUP": SubResource("Animation_qldqy")
+}
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_utjob"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5cvkf"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0gmj"]
+size = Vector3(17.3834, 22.7476, 51.4006)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_qlt7i"]
+radius = 2.197676
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8oma7"]
+size = Vector3(1.5802494, 2.9945183, 1.0261042)
+
+[sub_resource type="Animation" id="Animation_qlt7i"]
+resource_name = "BLOCK"
+length = 0.0495
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../Audio/Block")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../CameraEffects")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["player_blocked", 0.2, 0.2, 0.0],
+"method": &"impact"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qsprq"]
+_data = {
+&"BLOCK": SubResource("Animation_qlt7i")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_m1s71"]
+size = Vector3(1.48717, 2, 1.0539405)
+
+[sub_resource type="Animation" id="Animation_atc1d"]
+resource_name = "HURT"
+length = 0.1225
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../../../CameraEffects")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["player_hurt", 0.2, 0.2, 0.0],
+"method": &"impact"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../../../Audio/Hit")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random_child"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../../../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1],
+"method": &"change_shooting_energy"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_u34bh"]
+resource_name = "KILL"
+length = 0.1225
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../../../../../../CameraEffects")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["player_kill", 0.2, 0.2, 0.0],
+"method": &"impact"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../../../Audio/Hit")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random_child"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../../../../../..")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1],
+"method": &"change_shooting_energy"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hfpb6"]
+_data = {
+&"HURT": SubResource("Animation_atc1d"),
+&"KILL": SubResource("Animation_u34bh")
+}
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wub5s"]
+bg_color = Color(1, 1, 1, 0.439216)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.0509804, 0.0509804, 0.0509804, 0.435294)
+corner_radius_top_left = 5
+corner_radius_top_right = 5
+corner_radius_bottom_right = 5
+corner_radius_bottom_left = 5
+anti_aliasing = false
+
+[sub_resource type="Animation" id="Animation_b2psf"]
+resource_name = "DOOR_FADE_IN"
+length = 0.361
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vfhrj"]
+resource_name = "FADE_IN"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vjm2n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ColorRect:color")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_48hq2"]
+_data = {
+&"DOOR_FADE_IN": SubResource("Animation_b2psf"),
+&"FADE_IN": SubResource("Animation_vfhrj"),
+&"RESET": SubResource("Animation_vjm2n")
+}
+
+[node name="Reaper" type="CharacterBody3D" unique_id=27859288 node_paths=PackedStringArray("STEP_UP_RAY", "HITSHAPE", "CAMERA", "MESH", "COLLISON_SHAPE", "PARTICLES", "ANIM", "MESH_ANIM", "FADE_IN_ANIM") groups=["player", "player_body"]]
+rotation_edit_mode = 1
+collision_layer = 2
+collision_mask = 15
+axis_lock_angular_x = true
+axis_lock_angular_y = true
+axis_lock_angular_z = true
+floor_block_on_wall = false
+floor_snap_length = 0.5
+script = ExtResource("1_0b6a6")
+STEP_UP_RAY = NodePath("Mesh/StepUp")
+ATTACKING_DISABLED = false
+HITSHAPE = NodePath("Hitshape")
+CAMERA = NodePath("SpringArm3D/Camera3D")
+MESH = NodePath("Mesh")
+COLLISON_SHAPE = NodePath("CollisionShape3D")
+PARTICLES = NodePath("JumpParticles")
+ANIM = NodePath("AnimationPlayer")
+MESH_ANIM = NodePath("Mesh/reaper/AnimationPlayer")
+FADE_IN_ANIM = NodePath("ColorRect/FadeIn")
+
+[node name="Hitshape" type="Area3D" parent="." unique_id=1397946160 node_paths=PackedStringArray("HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["player", "player_hitshape"]]
+collision_layer = 2
+script = ExtResource("2_utjob")
+IMMUNE_GROUPS = Array[String](["player"])
+HEALTH = 30.0
+MAX_HEALTH = 30.0
+INVINCIBILITY_COOLDOWN = 0.8
+HEALTH_KEY = "health"
+HURT_ANIMATION_PLAYER = NodePath("../AlwaysProcessDeath")
+DEATH_ANIMATION_PLAYER = NodePath("../AlwaysProcessDeath")
+DEATH_COUNT_KEY = "death_count_to_respawn_player"
+REST_COUNT_KEY = "rest_count_to_respawn_player"
+UPGRADABLE_MAX_HEALTH = true
+MAX_HEALTH_KEY = "max_health"
+
+[node name="DeathCountTracker" type="Node" parent="Hitshape" unique_id=1635187 node_paths=PackedStringArray("HITSHAPE")]
+script = ExtResource("20_m1s71")
+key = "deaths"
+HITSHAPE = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitshape" unique_id=1440296042]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0864, 0)
+shape = SubResource("CapsuleShape3D_k5idf")
+
+[node name="GodMode" type="Node3D" parent="." unique_id=1027070594 node_paths=PackedStringArray("PLAYER", "MESH", "CAMERA", "BODY_SHAPE", "HITBOX_SHAPE", "DAMAGE_SHAPE", "ANIMATION_PLAYER")]
+script = ExtResource("3_4anjp")
+PLAYER = NodePath("..")
+MESH = NodePath("../Mesh")
+CAMERA = NodePath("../SpringArm3D/Camera3D")
+BODY_SHAPE = NodePath("../CollisionShape3D")
+HITBOX_SHAPE = NodePath("../Hitshape/CollisionShape3D")
+DAMAGE_SHAPE = NodePath("GodModeHurt/CollisionShape3D")
+ANIMATION_PLAYER = NodePath("../AnimationPlayer")
+
+[node name="GodModeHurt" type="Area3D" parent="GodMode" unique_id=611101630 node_paths=PackedStringArray("hit_animation_player") groups=["player"]]
+script = ExtResource("7_4anjp")
+damage_groups = Array[String](["enemy_hitshape"])
+damage = 10000.0
+hit_animation_player = NodePath("../../Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="GodMode/GodModeHurt" unique_id=1105067898 groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.711507, 0)
+shape = SubResource("CapsuleShape3D_4anjp")
+disabled = true
+debug_color = Color(0.7, 0.7, 0.7, 1)
+
+[node name="Audio" type="Node" parent="." unique_id=1191003114]
+script = ExtResource("35_lwilf")
+SOUNDS = Array[AudioStream]([ExtResource("15_tgmjc"), ExtResource("4_i3uf6"), ExtResource("5_7kpka"), ExtResource("10_c6xc7"), ExtResource("11_x57ir"), ExtResource("12_ot1qi"), ExtResource("2_ykn11"), ExtResource("3_2tmqw"), ExtResource("20_5d6ad"), ExtResource("7_erto2"), ExtResource("8_wxf0g"), ExtResource("9_rg8br"), ExtResource("10_tro3i"), ExtResource("18_pc8iq"), ExtResource("25_8i186")])
+VOLUME_MULTIPLIERS = Array[float]([0.15, 2.0, 1.1, 0.2, 0.2, 0.2, 0.2, 0.2, 0.4, 0.7, 0.7, 0.7, 0.7, 0.3, 0.3])
+ADD_TO_ROOT = true
+BUS_NAMES = Array[String](["Master", "Music", "SFX"])
+TWEEN_TO_MULTIPLIERS = Array[float]([1.0, 1.0, 1.0])
+TWEEN_DURATION = Array[float]([0.3, 0.3, 0.3])
+
+[node name="AudioListener3D" type="AudioListener3D" parent="Audio" unique_id=1864689480]
+current = true
+
+[node name="Wind" type="AudioStreamPlayer" parent="Audio" unique_id=749113052]
+process_mode = 3
+stream = ExtResource("22_ogp31")
+volume_db = -15.105
+autoplay = true
+bus = &"SFX"
+
+[node name="Block" type="AudioStreamPlayer" parent="Audio" unique_id=2136303863]
+process_mode = 3
+stream = ExtResource("24_5og37")
+bus = &"SFX"
+
+[node name="Hurt" type="AudioStreamPlayer" parent="Audio" unique_id=1147449651]
+process_mode = 3
+stream = ExtResource("15_tgmjc")
+volume_db = -15.0
+bus = &"SFX"
+
+[node name="Heal" type="AudioStreamPlayer" parent="Audio" unique_id=822581629]
+process_mode = 3
+stream = ExtResource("24_8oma7")
+volume_db = -4.0
+pitch_scale = 0.6
+bus = &"SFX"
+
+[node name="Dash" type="AudioStreamPlayer" parent="Audio" unique_id=1194105955]
+process_mode = 3
+stream = ExtResource("25_kim7h")
+volume_db = -4.0
+pitch_scale = 0.6
+bus = &"SFX"
+
+[node name="Death" type="AudioStreamPlayer" parent="Audio" unique_id=655283920]
+process_mode = 3
+stream = ExtResource("25_8i186")
+volume_db = 2.0
+pitch_scale = 0.6
+bus = &"SFX"
+
+[node name="Shoot" type="AudioStreamPlayer" parent="Audio" unique_id=727643976]
+process_mode = 3
+stream = ExtResource("25_2d6ni")
+volume_db = 2.0
+pitch_scale = 0.6
+bus = &"SFX"
+
+[node name="Hit" type="Node" parent="Audio" unique_id=787367975]
+script = ExtResource("35_lwilf")
+
+[node name="Hit1" type="AudioStreamPlayer" parent="Audio/Hit" unique_id=1378739356]
+process_mode = 3
+stream = ExtResource("24_uatll")
+volume_db = -8.0
+bus = &"SFX"
+
+[node name="Hit2" type="AudioStreamPlayer" parent="Audio/Hit" unique_id=1027173279]
+process_mode = 3
+stream = ExtResource("25_78wyp")
+volume_db = -8.0
+bus = &"SFX"
+
+[node name="Hit3" type="AudioStreamPlayer" parent="Audio/Hit" unique_id=172755256]
+process_mode = 3
+stream = ExtResource("26_8oma7")
+volume_db = -8.0
+bus = &"SFX"
+
+[node name="Squash" type="Node" parent="." unique_id=158628430 node_paths=PackedStringArray("meshes")]
+script = ExtResource("41_utjob")
+meshes = [null, null, null]
+
+[node name="CameraEffects" type="Node" parent="." unique_id=757667007]
+script = ExtResource("42_k5idf")
+
+[node name="PlayTimeTracker" type="Node" parent="." unique_id=224276649]
+script = ExtResource("36_5cvkf")
+
+[node name="Input" type="AnimationPlayer" parent="." unique_id=1866432645 groups=["input_anim"]]
+libraries/ = SubResource("AnimationLibrary_agako")
+
+[node name="AlwaysProcessDeath" type="AnimationPlayer" parent="." unique_id=2103228449]
+process_mode = 3
+root_node = NodePath("../AnimationPlayer")
+libraries/ = SubResource("AnimationLibrary_k5idf")
+autoplay = &"RESET"
+
+[node name="DeathAnimation" type="Node" parent="AlwaysProcessDeath" unique_id=1054051242 node_paths=PackedStringArray("hit_shape", "regular_death_animation_player", "platforming_death_animation_player")]
+script = ExtResource("29_5ijfa")
+hit_shape = NodePath("../../Hitshape")
+regular_death_animation_player = NodePath("..")
+regular_death_animation_name = &"REGULAR_DEATH"
+platforming_death_animation_player = NodePath("..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2073546496 groups=["player_anim", "skippable"]]
+callback_mode_process = 0
+libraries/ = SubResource("AnimationLibrary_b2cvw")
+autoplay = &"IDLE"
+next/BLOCK_ENTER = &"BLOCK"
+next/BLOCK_EXIT = &"IDLE"
+next/DASH = &"RUN"
+next/INTRODUCTION = &"IDLE"
+next/LADDER = &"LADDER"
+next/LADDER_ENTER = &"LADDER"
+next/LADDER_EXIT = &"IDLE"
+next/REST = &"SKILLS"
+
+[node name="SaveStamina" type="Node" parent="." unique_id=508013689 node_paths=PackedStringArray("node")]
+script = ExtResource("23_75wkf")
+max_save_key = "max_stamina"
+node = NodePath("..")
+max_property = "MAX_STAMINA"
+property = "STAMINA"
+increase_property_by_max_difference = true
+animation_name = "STAMINA"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=262511401]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_utjob")
+debug_color = Color(0.7, 0.7, 0.7, 1)
+
+[node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=209570210 groups=["ignore_interaction_tween"]]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 0.988449, -0.151554, 0, 0.151554, 0.988449, 0, 2.412, 0)
+shape = SubResource("SphereShape3D_5cvkf")
+spring_length = 5.0
+margin = 1.0
+
+[node name="FovLerp" type="Node" parent="SpringArm3D" unique_id=881315504 node_paths=PackedStringArray("camera_node")]
+script = ExtResource("2_1bp3y")
+camera_node = NodePath("../Camera3D")
+target_fov = 70.0
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=657152026 node_paths=PackedStringArray("SpringArm") groups=["player_camera"]]
+transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0)
+current = true
+fov = 80.0
+script = ExtResource("7_lwilf")
+pitch_max_deg = 20.0
+SpringArm = NodePath("..")
+
+[node name="HeadFollowTarget" type="Node3D" parent="SpringArm3D/Camera3D" unique_id=1622756369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.896154, -0.64839, -7.68562)
+
+[node name="LockOnArea" type="Area3D" parent="SpringArm3D/Camera3D" unique_id=746419654]
+transform = Transform3D(1, 0, 0, 0, 0.979695, 0.200497, 0, -0.200497, 0.979695, 0, -3.77156, 0.404119)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SpringArm3D/Camera3D/LockOnArea" unique_id=1748668094]
+transform = Transform3D(1, 0, 0, 0, 0.98922, -0.146411, 0, 0.146411, 0.98922, -0.0899051, 9.90892, -24.3671)
+shape = SubResource("BoxShape3D_y0gmj")
+debug_color = Color(0.7, 0.7, 0.7, 0.368627)
+
+[node name="Mesh" type="Node3D" parent="." unique_id=531747882 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "BODY") groups=["player_mesh"]]
+script = ExtResource("32_qsprq")
+SKELETAL_ANIMATION_PLAYER = NodePath("reaper/AnimationPlayer")
+SKELETON = NodePath("reaper/Reaper/Skeleton3D")
+MESH = NodePath(".")
+BODY = NodePath("..")
+
+[node name="StepUp" type="RayCast3D" parent="Mesh" unique_id=770825662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.57833004)
+target_position = Vector3(0, -0.75, 0)
+debug_shape_thickness = 5
+
+[node name="PlungeHurt" type="Area3D" parent="Mesh" unique_id=622933227 node_paths=PackedStringArray("hit_animation_player") groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1605837, 0.68690205)
+script = ExtResource("7_4anjp")
+damage_groups = Array[String](["enemy_hitshape"])
+damage = 50.0
+hit_animation_player = NodePath("../reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/AnimationPlayer")
+enable_save = true
+save_key = "damage"
+
+[node name="PlungeMultiplier" type="Node" parent="Mesh/PlungeHurt" unique_id=259433183 node_paths=PackedStringArray("STATE_ANIMATION_PLAYER", "ATTACK_AREA")]
+script = ExtResource("38_5ijfa")
+STATE_ANIMATION_PLAYER = NodePath("../../../AnimationPlayer")
+ATTACK_AREA = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/PlungeHurt" unique_id=637160610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1193454)
+shape = SubResource("SphereShape3D_qlt7i")
+disabled = true
+
+[node name="BlockShape" type="Area3D" parent="Mesh" unique_id=1724350500 node_paths=PackedStringArray("hitshape", "anim_player") groups=["player", "player_blockshape"]]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999998, 0, 0, 0)
+script = ExtResource("45_2d6ni")
+hitshape = NodePath("../../Hitshape")
+anim_player = NodePath("AnimationPlayer")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/BlockShape" unique_id=768245768]
+transform = Transform3D(1, -4.76837e-07, -5.96046e-08, -6.55651e-07, 1, -3.57628e-07, 2.38419e-07, -5.96046e-07, 1, -0.027280102, 0.75381345, -0.40894416)
+shape = SubResource("BoxShape3D_8oma7")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/BlockShape" unique_id=1573948997]
+libraries/ = SubResource("AnimationLibrary_qsprq")
+
+[node name="SceneSpawner" type="Node3D" parent="Mesh/BlockShape" unique_id=1554294218]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.98480797, -0.17364816, 0, 0.17364822, 0.98480767, -0.062494136, -0.036649704, 0.02942361)
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("43_78wyp")])
+add_to_scene_root = true
+
+[node name="Lean" type="Node" parent="Mesh" unique_id=1009116791 node_paths=PackedStringArray("BODY", "MESH")]
+script = ExtResource("32_xnjpx")
+BODY = NodePath("../..")
+MESH = NodePath("../reaper")
+
+[node name="Slash" type="Node3D" parent="Mesh" unique_id=1507600048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988243, -0.52316)
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("5_p6b07")])
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Mesh" unique_id=616968197]
+transform = Transform3D(1, 0, 0, 0, -0.117121, -0.993118, 0, 0.993118, -0.117121, 0.0248996, 2.5027, -0.253531)
+light_color = Color(0.584424, 0.453955, 0.383155, 1)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 17.0156
+
+[node name="reaper" parent="Mesh" unique_id=574879540 instance=ExtResource("3_k4avc")]
+rotation_edit_mode = 1
+
+[node name="Skeleton3D" parent="Mesh/reaper/Reaper" parent_id_path=PackedInt32Array(574879540, 315178470) index="0" unique_id=556595664]
+bones/1/position = Vector3(0.009755413, 0.19112566, 0.8384928)
+bones/1/rotation = Quaternion(0.66652495, 0.005288413, -0.0047285077, 0.74544907)
+bones/2/rotation = Quaternion(1.8626446e-09, 1.2361932e-07, -3.2596281e-09, 1)
+bones/3/position = Vector3(-0.13482243, 0.052575987, -0.0037890945)
+bones/3/rotation = Quaternion(-0.079156846, -0.24224563, 0.80736095, 0.53218377)
+bones/4/rotation = Quaternion(-0.70825344, 0.12014593, -0.33246922, 0.61106986)
+bones/5/rotation = Quaternion(-0.106005274, -0.08438389, 0.07545141, 0.9879015)
+bones/6/rotation = Quaternion(-0.64519733, -0.3699685, -0.17571038, 0.6449572)
+bones/7/position = Vector3(0.09502389, 0.29883626, -0.037884142)
+bones/7/rotation = Quaternion(-0.08802523, 0.31957725, -0.44377673, 0.8325769)
+bones/8/position = Vector3(0.040278308, 0.37375045, 0.019249905)
+bones/8/rotation = Quaternion(-0.59016526, -0.32968497, -0.3287858, 0.65947914)
+bones/9/rotation = Quaternion(0.034421835, 0.0019662776, -0.011922243, 0.99933445)
+bones/10/position = Vector3(0.07390616, 0.08636394, 1.0374769e-08)
+bones/10/rotation = Quaternion(-0.11537217, -0.050698962, -0.85975343, 0.49491715)
+bones/11/rotation = Quaternion(-0.45832148, -0.40650788, 0.06873397, 0.7873807)
+bones/12/rotation = Quaternion(-0.03414386, 0.039828926, 0.14083621, 0.9886421)
+bones/13/rotation = Quaternion(-0.6807748, 0.0647394, -0.21559657, 0.6970457)
+bones/14/position = Vector3(0.009702273, 0.14449012, -0.0938516)
+bones/14/rotation = Quaternion(-0.4985187, -8.952571e-05, 0.25960752, 0.8270932)
+bones/15/position = Vector3(-0.10450728, 0.22616594, -0.026558556)
+bones/15/rotation = Quaternion(-0.3967154, 0.38349468, -0.1891968, 0.812252)
+bones/16/position = Vector3(-0.07455924, -0.046927348, -2.5305592e-08)
+bones/16/rotation = Quaternion(0.010156104, -0.18648286, 0.9823706, 0.008313462)
+bones/17/rotation = Quaternion(0.023063226, 0.000157398, 0.0032334859, 0.99972886)
+bones/18/rotation = Quaternion(-0.6116697, 0.002533471, 0.0008904037, 0.7911087)
+bones/19/position = Vector3(0.07455925, -0.046927348, -1.8576564e-08)
+bones/19/rotation = Quaternion(-0.0062845666, 0.12080198, 0.9926165, -0.008936215)
+bones/20/rotation = Quaternion(0.023063224, -0.00015736259, -0.003233474, 0.9997288)
+bones/21/rotation = Quaternion(-0.792553, 0.002029981, -0.0018231295, 0.60979694)
+bones/22/position = Vector3(0.073749006, 0.48258346, 1.0728829)
+bones/22/rotation = Quaternion(0.29752752, 0.26516637, 0.5539212, 0.73098254)
+
+[node name="ShaderTween" type="Node" parent="Mesh/reaper/Reaper/Skeleton3D" index="0" unique_id=459044748]
+script = ExtResource("45_au8vy")
+
+[node name="body" parent="Mesh/reaper/Reaper/Skeleton3D" index="1" unique_id=289670698 groups=["body_mesh"]]
+material_override = ExtResource("35_m1s71")
+
+[node name="cloak" parent="Mesh/reaper/Reaper/Skeleton3D" index="2" unique_id=27418523 groups=["cloak_mesh"]]
+material_override = ExtResource("36_4anjp")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4" unique_id=552018988]
+transform = Transform3D(0.246515, -0.6622984, 0.70752466, -0.05455805, 0.71941316, 0.69243616, -0.967602, -0.20929705, 0.14121248, 0.058519706, 1.0738213, -0.2325831)
+bone_name = "staff_2"
+bone_idx = 22
+
+[node name="SytheHurtShape" type="Area3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D" unique_id=1201465678 node_paths=PackedStringArray("hit_animation_player") groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00983417, 0.964215, 0.00320163)
+script = ExtResource("7_4anjp")
+damage_groups = Array[String](["enemy_hitshape"])
+damage = 50.0
+hit_animation_player = NodePath("AnimationPlayer")
+enable_save = true
+save_key = "damage"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=2036506350]
+transform = Transform3D(1.0000021, -4.4703484e-07, -5.098991e-07, -8.940697e-07, 1.0000006, -3.8668513e-06, 2.4680048e-07, -6.053597e-07, 0.99999964, -0.04337901, 0.5000011, -0.013707014)
+shape = SubResource("BoxShape3D_m1s71")
+disabled = true
+
+[node name="SpinMultiplier" type="Node" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=484334045 node_paths=PackedStringArray("ATTACK_AREA")]
+script = ExtResource("38_fw2bj")
+ATTACK_AREA = NodePath("..")
+
+[node name="SceneSpawner" type="Node3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=1606038787]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.98480797, -0.17364816, 0, 0.17364822, 0.98480767, -0.06249415, -0.055126756, 0.13421214)
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("43_78wyp")])
+add_to_scene_root = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/SceneSpawner" unique_id=1552873786]
+light_color = Color(0.57420003, 0.62425, 0.66, 1)
+light_energy = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=758963694]
+libraries/ = SubResource("AnimationLibrary_hfpb6")
+
+[node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5" unique_id=1880319706]
+transform = Transform3D(-0.99981976, -0.015474274, -0.011016672, 0.011582442, -0.03696038, -0.9992497, 0.015055489, -0.9991971, 0.03713301, -0.09001525, 0.013160169, -0.12728004)
+bone_name = "foot_l"
+bone_idx = 18
+
+[node name="dust_trail_l" type="Node3D" parent="Mesh/reaper/Reaper/Skeleton3D/left_foot" unique_id=1690973069]
+transform = Transform3D(-0.999716, 0.00169688, 0.0237513, 3.64147e-07, 0.997459, -0.0712467, -0.0238119, -0.0712265, -0.997176, -0.208212, 7.58414e-08, -0.00495933)
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("6_bo8be")])
+
+[node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="6" unique_id=1885491197]
+transform = Transform3D(-0.99981976, -0.015474274, -0.011016672, 0.011582442, -0.03696038, -0.9992497, 0.015055489, -0.9991971, 0.03713301, -0.09001525, 0.013160169, -0.12728004)
+bone_name = "foot_l"
+bone_idx = 18
+
+[node name="dust_trail_r" type="Node3D" parent="Mesh/reaper/Reaper/Skeleton3D/right_foot" unique_id=238800655]
+transform = Transform3D(-0.999716, 0.00169688, 0.0237513, 3.64147e-07, 0.997459, -0.0712467, -0.0238119, -0.0712265, -0.997176, 0, 0, 0)
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("6_bo8be")])
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="7" unique_id=232937500]
+target_node = NodePath("../../../../../SpringArm3D/Camera3D/HeadFollowTarget")
+bone_name = "head"
+bone = 9
+forward_axis = 5
+duration = 0.3
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 1.0472
+primary_damp_threshold = 1.0
+secondary_limit_angle = 0.261799
+secondary_damp_threshold = 1.0
+
+[node name="AnimationPlayer" parent="Mesh/reaper" index="1" unique_id=1202055081]
+root_motion_track = NodePath("Reaper/Skeleton3D:root")
+callback_mode_process = 0
+playback_default_blend_time = 0.2
+
+[node name="JumpParticles" type="Node3D" parent="." unique_id=1177969111]
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("8_lxnc4"), ExtResource("42_p6b07")])
+
+[node name="HurtParticles" type="Node3D" parent="." unique_id=2071925941 groups=["teleport_to_attacking_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5091362, -0.6996558)
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("52_xnjpx")])
+
+[node name="Control" type="Control" parent="." unique_id=493993614 groups=["ui_scalable"]]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.98, 0.98)
+pivot_offset = Vector2(4, 4)
+script = ExtResource("43_ekykk")
+
+[node name="LockOnIndicator" type="ProgressBar" parent="Control" unique_id=65486949 node_paths=PackedStringArray("CAMERA", "SpringArm", "LOCK_ON_AREA", "lock_on_ui")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(3, 3)
+theme_override_styles/fill = SubResource("StyleBoxFlat_wub5s")
+value = 100.0
+show_percentage = false
+script = ExtResource("17_5cvkf")
+CAMERA = NodePath("../../SpringArm3D/Camera3D")
+SpringArm = NodePath("../../SpringArm3D")
+LOCK_ON_AREA = NodePath("../../SpringArm3D/Camera3D/LockOnArea")
+lock_on_ui = NodePath("..")
+
+[node name="UI" type="Control" parent="." unique_id=384331694]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="NonBlackBackground" type="ColorRect" parent="UI" unique_id=245704033]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.3276709, 0.32767087, 0.32767087, 1)
+
+[node name="Tutorials" type="Control" parent="UI" unique_id=916132959]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -56.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(40, 40)
+mouse_filter = 2
+script = ExtResource("43_ekykk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tutorials" unique_id=1379840933]
+layout_mode = 0
+offset_left = -932.5
+offset_top = -82.49999
+offset_right = 42.500183
+offset_bottom = 41.500008
+pivot_offset = Vector2(290, 124)
+mouse_filter = 2
+alignment = 2
+
+[node name="Revealed" type="AudioStreamPlayer" parent="UI/Tutorials/VBoxContainer" unique_id=1667586098 groups=["tutorial_prompt"]]
+process_mode = 3
+stream = ExtResource("53_qlt7i")
+volume_db = -15.0
+pitch_scale = 0.2
+bus = &"SFX"
+
+[node name="Learning" type="AudioStreamPlayer" parent="UI/Tutorials/VBoxContainer" unique_id=124996239]
+process_mode = 3
+stream = ExtResource("52_3vvcf")
+volume_db = -22.0
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="Learnt" type="AudioStreamPlayer" parent="UI/Tutorials/VBoxContainer" unique_id=2087764388]
+process_mode = 3
+stream = ExtResource("53_qlt7i")
+volume_db = -22.0
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="SkillTutorial" type="HBoxContainer" parent="UI/Tutorials/VBoxContainer" unique_id=540184136]
+visible = false
+layout_mode = 2
+theme = ExtResource("52_ccj1p")
+alignment = 2
+script = ExtResource("51_773af")
+base_text = "# PRESS -key- TO AQUIRE SKILLS  -progress-"
+action_name = "toggle_skill_tree"
+saved_key = "skill_tree_tutorial"
+required_learn_count = 6
+progress_display_divider = 2
+
+[node name="HealTutorial" type="HBoxContainer" parent="UI/Tutorials/VBoxContainer" unique_id=1902762774]
+visible = false
+layout_mode = 2
+theme = ExtResource("52_ccj1p")
+alignment = 2
+script = ExtResource("51_773af")
+base_text = "# PRESS -key- TO HEAL -progress-"
+action_name = "heal"
+saved_key = "heal_tutorial"
+tutorial_area_group_name = "heal_tutorial"
+
+[node name="ShootTutorial" type="HBoxContainer" parent="UI/Tutorials/VBoxContainer" unique_id=679846313]
+visible = false
+layout_mode = 2
+theme = ExtResource("52_ccj1p")
+alignment = 2
+script = ExtResource("51_773af")
+base_text = " # SHOOT WITH -key- RECHARGE SOUL BY ATTACKING ENEMIES -progress-"
+action_name = "shoot"
+saved_key = "shooting_tutorial"
+tutorial_area_group_name = "shoot_tutorial"
+
+[node name="BottomLeft" type="Control" parent="UI" unique_id=1327505875]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -720.0
+offset_bottom = -720.0
+grow_vertical = 0
+pivot_offset = Vector2(0, 720)
+script = ExtResource("43_ekykk")
+
+[node name="Label" type="Label" parent="UI/BottomLeft" unique_id=493732866]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 624.0
+offset_right = 101.0
+offset_bottom = 662.0
+theme = ExtResource("24_m1s71")
+text = "WISP"
+script = ExtResource("44_4anjp")
+
+[node name="Health" parent="UI/BottomLeft" unique_id=1993447213 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
+layout_mode = 1
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 700.0
+offset_right = 115.024994
+offset_bottom = 710.0
+grow_horizontal = 1
+grow_vertical = 0
+theme_override_styles/fill = ExtResource("34_6g6ue")
+expands = true
+tracked_node = NodePath("../../../Hitshape")
+pixel_expansion_rate = 8.0
+
+[node name="HealCharges" parent="UI/BottomLeft" unique_id=291496189 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
+layout_mode = 1
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 681.0
+offset_right = 115.024994
+offset_bottom = 691.0
+grow_horizontal = 1
+grow_vertical = 0
+theme_override_styles/fill = ExtResource("56_s81g7")
+expands = true
+tracked_node = NodePath("../../..")
+tracked_property = "heal_charges"
+tracked_max_property = "MAX_HEAL_CHARGES"
+pixel_expansion_rate = 8.0
+
+[node name="Shooting" parent="UI/BottomLeft" unique_id=862791230 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
+layout_mode = 1
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 663.0
+offset_right = 115.024994
+offset_bottom = 673.0
+grow_horizontal = 1
+grow_vertical = 0
+theme_override_styles/fill = ExtResource("57_773af")
+expands = true
+tracked_node = NodePath("../../..")
+tracked_property = "shooting_energy"
+tracked_max_property = "MAX_SHOOTING_ENERGY"
+pixel_expansion_rate = 8.0
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1732221166]
+z_index = 10
+z_as_relative = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FadeIn" type="AnimationPlayer" parent="ColorRect" unique_id=426380311]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_48hq2")
+autoplay = &"FADE_IN"
+
+[node name="SkillTree" parent="." unique_id=1995210835 instance=ExtResource("47_ekykk")]
+visible = false
+
+[node name="Skip" parent="." unique_id=1659970227 instance=ExtResource("50_yinxs")]
+
+[node name="Pause" parent="." unique_id=744582408 groups=["pause_menu"] instance=ExtResource("51_bud88")]
+visible = false
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
+
+[editable path="Mesh/reaper"]

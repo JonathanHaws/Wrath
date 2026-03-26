@@ -1,0 +1,63 @@
+[gd_scene format=3 uid="uid://c1e26hcf0nrup"]
+
+[ext_resource type="Script" uid="uid://cit8ydyw2wira" path="res://script/ui/menu/game/delete.gd" id="1_3evui"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="1_hul5c"]
+[ext_resource type="PackedScene" uid="uid://3lukblhgwg5q" path="res://scenes/ui/menu/game/profile/profile_delete.tscn" id="3_luhou"]
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/themes/theme.tres" id="3_u3frr"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="4_fevu8"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://script/ui/grab_focus.gd" id="4_luhou"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="6_npq60"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="7_luhou"]
+
+[node name="DeleteGame" type="ColorRect" unique_id=1249324866]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+metadata/_edit_use_anchors_ = true
+
+[node name="CenterContainer" type="CenterContainer" parent="." unique_id=864061414 groups=["ui_scalable"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -180.5
+offset_top = -307.5
+offset_right = 180.5
+offset_bottom = 307.5
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(180.5, 307.5)
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_hul5c")
+metadata/_edit_use_anchors_ = true
+
+[node name="Delete" type="VBoxContainer" parent="CenterContainer" unique_id=69840178]
+layout_mode = 2
+script = ExtResource("1_3evui")
+profile_scene = ExtResource("3_luhou")
+
+[node name="GrabFocus" type="Control" parent="CenterContainer/Delete" unique_id=375029155 node_paths=PackedStringArray("focus_targets")]
+layout_mode = 2
+script = ExtResource("4_luhou")
+focus_targets = [NodePath("../Back")]
+
+[node name="Back" type="Button" parent="CenterContainer/Delete" unique_id=1743395861 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+theme = ExtResource("3_u3frr")
+text = "Back"
+script = ExtResource("4_fevu8")
+scene_file = "uid://cls12q06quifx"
+is_back_button = true
+
+[node name="MenuAudio" type="Node" parent="." unique_id=1839128190]
+script = ExtResource("7_luhou")
+SOUNDS = Array[AudioStream]([ExtResource("6_npq60")])
+ADD_TO_ROOT = true

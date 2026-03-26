@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cevok3tw0yqfi"]
+
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/world_small.tres" id="2_oh0fd"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/items/weather.tscn" id="3_2va3v"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/stages/lighting/enviroment.tscn" id="4_ljpmo"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/world_star.tres" id="5_d16ah"]
+[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/items/checkpoint.tscn" id="6_dbf16"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/player/reaper.tscn" id="7_uh812"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/items/heavy_door.tscn" id="8_n1rfg"]
+[ext_resource type="PackedScene" uid="uid://djqadr0k0vrs3" path="res://scenes/bosses/envy/envy.tscn" id="9_r856j"]
+
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
+vertices = PackedVector3Array(-22.19, 0.432001, -65.8895, -22.19, 0.432001, 66.1105, 128.81, 0.432001, 66.1105, 128.81, 0.432001, -65.8895)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_od467"]
+
+[node name="Main" type="Node3D"]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+navigation_mesh = SubResource("NavigationMesh_jc5vn")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D"]
+material_override = ExtResource("2_oh0fd")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.244, 23.9901, 0)
+flip_faces = true
+size = Vector3(152.368, 48.1162, 133.279)
+
+[node name="Enviroment" type="Node" parent="."]
+
+[node name="Weather" parent="Enviroment" instance=ExtResource("3_2va3v")]
+
+[node name="WorldEnvironment" parent="Enviroment" instance=ExtResource("4_ljpmo")]
+
+[node name="Lights" type="Node" parent="Enviroment"]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights"]
+transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 44.8819, 18.4367, -0.400297)
+light_color = Color(0.29, 0.29, 0.29, 1)
+light_energy = 400.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 101.01
+
+[node name="Lights" type="Node3D" parent="Enviroment/Lights"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="FloorMesh" type="MeshInstance3D" parent="Enviroment"]
+transform = Transform3D(206.667, 0, 0, 0, 1, 0, 0, 0, 172.52, 60.801, -9.54005, 0)
+material_override = ExtResource("5_d16ah")
+mesh = SubResource("BoxMesh_od467")
+skeleton = NodePath("../..")
+
+[node name="Checkpoint" parent="." instance=ExtResource("6_dbf16")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.14297, -9.05803, -0.448656)
+
+[node name="Reaper" parent="." instance=ExtResource("7_uh812")]
+transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
+
+[node name="Enter" parent="." instance=ExtResource("8_n1rfg")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
+DESTINATION_NODE_NAME = "Exit"
+DESTINATION_SCENE = "uid://d1k2pnn46w66f"
+
+[node name="Exit" parent="." groups=["envy_door"] instance=ExtResource("8_n1rfg")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 128.959, -9.60013, 1.00536e-06)
+DESTINATION_NODE_NAME = "Enter"
+LOCKED = true
+DESTINATION_SCENE = "uid://cv4g3s0sicstn"
+
+[node name="Envy" parent="." instance=ExtResource("9_r856j")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 55.4037, -8.73217, -0.983353)

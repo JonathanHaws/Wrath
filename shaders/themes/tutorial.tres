@@ -1,0 +1,13 @@
+[gd_resource type="Theme" format=3 uid="uid://dc3871vl88kgm"]
+
+[ext_resource type="FontFile" uid="uid://dpdckaagju1of" path="res://textures/fonts/Wrath.otf" id="1_xs2f1"]
+
+[resource]
+default_font = ExtResource("1_xs2f1")
+default_font_size = 28
+Label/colors/font_color = Color(0.75, 0.75, 0.75, 1)
+Label/colors/font_shadow_color = Color(0.18215626, 0.18215623, 0.18215623, 0.93333334)
+Label/constants/outline_size = 6
+Label/constants/shadow_offset_x = 2
+Label/constants/shadow_offset_y = 2
+Label/font_sizes/font_size = 28

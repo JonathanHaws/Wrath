@@ -1,0 +1,197 @@
+[gd_scene format=3 uid="uid://duevw8ikxn5kj"]
+
+[ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://script/ui/menu/pause/toggle.gd" id="1_327xx"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="2_gwfjr"]
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/themes/theme.tres" id="3_7gaeb"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://script/ui/grab_focus.gd" id="3_x7iio"]
+[ext_resource type="Script" uid="uid://pccpxg1y2tdf" path="res://script/ui/skip.gd" id="4_e7s18"]
+[ext_resource type="Script" uid="uid://d2xru3m7dk3s7" path="res://script/ui/menu/pause/restart.gd" id="5_0mtqa"]
+[ext_resource type="Script" uid="uid://v7rpg87oifq2" path="res://script/ui/menu/pause/resume.gd" id="5_e7s18"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="6_kiq5e"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="7_e7s18"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="9_nw3fp"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="9_sgwxf"]
+[ext_resource type="PackedScene" uid="uid://brtdguv72meqk" path="res://scenes/ui/menu/transitions/fade_to_black_fade_in_from_black.tscn" id="10_sgwxf"]
+[ext_resource type="PackedScene" uid="uid://bwacv5bktdk46" path="res://scenes/ui/menu/transitions/fade_out_sfx_0p3.tscn" id="11_sbfk3"]
+[ext_resource type="PackedScene" uid="uid://cyc6qliwd6avp" path="res://scenes/ui/menu/transitions/fade_out_music_0p3.tscn" id="12_svtr4"]
+
+[sub_resource type="Animation" id="Animation_x7iio"]
+resource_name = "redirect"
+length = 1.4333333
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"redirect"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Transitions")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0],
+"method": &"spawn"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/Transitions")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1],
+"method": &"spawn"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer/Transitions")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [2],
+"method": &"spawn"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bbyja"]
+_data = {
+&"redirect": SubResource("Animation_x7iio")
+}
+
+[node name="Pause" type="ColorRect" unique_id=1076420386 groups=["pause_toggle"]]
+process_mode = 3
+z_index = 4096
+z_as_relative = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+script = ExtResource("1_327xx")
+metadata/_edit_use_anchors_ = true
+
+[node name="Main" type="VBoxContainer" parent="." unique_id=609744636 groups=["ui_scalable"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -48.0
+offset_top = -94.0
+offset_right = 48.0
+offset_bottom = 94.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(48, 94)
+alignment = 1
+script = ExtResource("2_gwfjr")
+
+[node name="GrabFocus" type="Control" parent="Main" unique_id=251907550 node_paths=PackedStringArray("focus_targets")]
+layout_mode = 2
+script = ExtResource("3_x7iio")
+focus_targets = [NodePath("../Skip"), NodePath("../Resume")]
+
+[node name="Skip" type="Button" parent="Main" unique_id=884173732 node_paths=PackedStringArray("SKIP_BUTTON") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_7gaeb")
+text = "SKIP"
+icon_alignment = 1
+script = ExtResource("4_e7s18")
+SKIP_BUTTON = NodePath(".")
+
+[node name="Resume" type="Button" parent="Main" unique_id=769776267 node_paths=PackedStringArray("pause_toggler") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("3_7gaeb")
+text = "RESUME"
+icon_alignment = 1
+script = ExtResource("5_e7s18")
+pause_toggler = NodePath("../..")
+
+[node name="Restart" type="Button" parent="Main" unique_id=1420508524 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_7gaeb")
+text = "RESTART"
+icon_alignment = 1
+script = ExtResource("5_0mtqa")
+
+[node name="Options" type="Button" parent="Main" unique_id=1344369830 node_paths=PackedStringArray("node_to_replace") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_7gaeb")
+text = "OPTIONS"
+icon_alignment = 1
+script = ExtResource("6_kiq5e")
+scene_file = "uid://cxja4xs36njyv"
+node_to_replace = NodePath("../..")
+
+[node name="Controls" type="Button" parent="Main" unique_id=1316613821 node_paths=PackedStringArray("node_to_replace") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_7gaeb")
+text = "CONTROLS"
+icon_alignment = 1
+script = ExtResource("6_kiq5e")
+scene_file = "uid://bbnvaw1wjbpv0"
+node_to_replace = NodePath("../..")
+
+[node name="Exit" type="Button" parent="Main" unique_id=1176192422 node_paths=PackedStringArray("animation_player") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_7gaeb")
+text = "EXIT"
+icon_alignment = 1
+script = ExtResource("6_kiq5e")
+scene_file = "uid://cls12q06quifx"
+animation_player = NodePath("AnimationPlayer")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Main/Exit" unique_id=781065249]
+process_mode = 3
+libraries/ = SubResource("AnimationLibrary_bbyja")
+
+[node name="Transitions" type="Node2D" parent="Main/Exit/AnimationPlayer" unique_id=589109563]
+script = ExtResource("9_sgwxf")
+scenes = Array[PackedScene]([ExtResource("10_sgwxf"), ExtResource("11_sbfk3"), ExtResource("12_svtr4")])
+add_to_root = true
+
+[node name="MenuAudio" type="Node" parent="." unique_id=500561357 node_paths=PackedStringArray("ONLY_SPAWN_IF_VISIBLE")]
+process_mode = 3
+script = ExtResource("7_e7s18")
+SOUNDS = Array[AudioStream]([ExtResource("9_nw3fp")])
+ADD_TO_ROOT = true
+DESTORY_GROUPS = Array[String](["menu_music"])
+ONLY_SPAWN_IF_VISIBLE = NodePath("..")

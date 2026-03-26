@@ -1,0 +1,96 @@
+[gd_scene format=3 uid="uid://cjnryqwoknkw5"]
+
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/stages/lighting/enviroment.tscn" id="2_cy8f3"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/items/weather.tscn" id="3_o1545"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/player/reaper.tscn" id="5_vybla"]
+[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/items/checkpoint.tscn" id="6_cy8f3"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/items/heavy_door.tscn" id="7_q5vxo"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/world_small.tres" id="8_5spip"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/world_star.tres" id="9_fi73v"]
+[ext_resource type="PackedScene" uid="uid://cemstdmdnxhba" path="res://scenes/items/ladder.tscn" id="10_qh5wb"]
+[ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://scenes/bosses/gluttony/piglet.tscn" id="11_2c563"]
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
+vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
+polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
+
+[sub_resource type="BoxMesh" id="BoxMesh_od467"]
+
+[node name="Main" type="Node3D" unique_id=806372721]
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=29493858]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+navigation_mesh = SubResource("NavigationMesh_jc5vn")
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="NavigationRegion3D" unique_id=567955705]
+material_override = ExtResource("8_5spip")
+use_collision = true
+
+[node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1969597648]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71385, 9.93213, -0.0490699)
+flip_faces = true
+size = Vector3(65.3073, 20, 30)
+
+[node name="Enviroment" type="Node" parent="." unique_id=1286340858]
+
+[node name="WorldEnvironment" parent="Enviroment" unique_id=1340100306 instance=ExtResource("2_cy8f3")]
+
+[node name="Weather" parent="Enviroment" unique_id=975684027 instance=ExtResource("3_o1545")]
+
+[node name="Lights" type="Node" parent="Enviroment" unique_id=2147087789]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights" unique_id=120646417]
+transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 16.3637, 1.1386, -0.412741)
+light_color = Color(0.29, 0.29, 0.29, 1)
+light_energy = 100.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.2
+omni_range = 101.01
+
+[node name="Lights" type="Node3D" parent="Enviroment/Lights" unique_id=1699907055]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=211833689]
+transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 42.0321, 0, -9.54005, 0)
+material_override = ExtResource("9_fi73v")
+mesh = SubResource("BoxMesh_od467")
+
+[node name="Enter" parent="." unique_id=362002922 instance=ExtResource("7_q5vxo")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
+DESTINATION_NODE_NAME = "Exit"
+DESTINATION_SCENE = "uid://worsh6enfk2g"
+
+[node name="Exit" parent="." unique_id=594224674 instance=ExtResource("7_q5vxo")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
+DESTINATION_NODE_NAME = "Enter"
+DESTINATION_SCENE = "uid://cx2ditraoxlvu"
+
+[node name="FloatingRocksDoor" parent="." unique_id=1721925495 instance=ExtResource("7_q5vxo")]
+transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 7.61851, -9.60013, -14.9987)
+DESTINATION_NODE_NAME = "enter"
+DESTINATION_SCENE = "uid://c5350q0aryax0"
+
+[node name="Checkpoint" parent="." unique_id=317181500 instance=ExtResource("6_cy8f3")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.98366, -9.11077, 0.396708)
+
+[node name="Ladder" parent="." unique_id=313575098 instance=ExtResource("10_qh5wb")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -0.802918, 23.5215, 14.626)
+
+[node name="Ladder2" parent="." unique_id=555230987 instance=ExtResource("10_qh5wb")]
+transform = Transform3D(-4.37114e-08, 2.21727e-15, -1, -0.514559, 0.857455, 2.24921e-08, 0.857455, 0.514559, -3.74805e-08, -11.9031, 22.8445, -12.3389)
+
+[node name="Piglet" parent="." unique_id=1733790200 instance=ExtResource("11_2c563")]
+transform = Transform3D(-0.80747575, 0, 0.5899013, 0, 1, 0, -0.5899013, 0, -0.80747575, -18.44065, -9, 10.958)
+
+[node name="PickUpInteraction" parent="Piglet" index="4" unique_id=1269613829]
+disabled = true
+
+[node name="HeadPetInteraction" parent="Piglet" index="5" unique_id=1044115885]
+disabled = false
+
+[node name="Reaper" parent="." unique_id=1031185986 instance=ExtResource("5_vybla")]
+transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
+
+[editable path="Piglet"]
+[editable path="Piglet/piglet"]
