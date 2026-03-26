@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cy3bknox15p2c"]
 
 [ext_resource type="Material" uid="uid://pl3nbr4toayv" path="res://shaders/materials/rocks.tres" id="1_uy14b"]
-[ext_resource type="ArrayMesh" uid="uid://bxabv7sapynog" path="res://meshes/items/rocks/rock_4.res" id="1_xqdrt"]
+[ext_resource type="ArrayMesh" uid="uid://bxabv7sapynog" path="res://models/items/rocks/rock_4.res" id="1_xqdrt"]
 
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xqdrt"]

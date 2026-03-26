@@ -1,8 +1,8 @@
 extends Node
+@export var groups: Array[String] = ["target_mesh1"] ## The groups of meshes this tween will act upon. 
 @export var textures: Array[Texture2D] = []	
 
 func set_texture(
-	groups:= ["target_mesh1"],
 	texture_index: int = 0,
 	parameter_name: String = "albedo_texture"
 ) -> void:
@@ -26,7 +26,6 @@ func set_texture(
 			mat.set_shader_parameter(parameter_name, texture)
 
 func tween(
-	groups:= ["target_mesh1"],
 	property_name: String = "dissolve_amount",
 	target_value: float = 1.0,
 	time_sec: float = 1.0

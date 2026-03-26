@@ -26,7 +26,7 @@
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://script/component/root_motion.gd" id="26_8l61o"]
 [ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://scenes/ui/dialog/choice.tscn" id="26_pd0jx"]
 [ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://scenes/ui/dialog/say.tscn" id="27_or7ux"]
-[ext_resource type="PackedScene" uid="uid://s17rtpig5sq1" path="res://meshes/characters/pride/pride.blend" id="27_uxu3y"]
+[ext_resource type="PackedScene" uid="uid://s17rtpig5sq1" path="res://models/characters/pride/pride.blend" id="27_uxu3y"]
 [ext_resource type="PackedScene" uid="uid://kiuc3ouuqv0h" path="res://scenes/ui/dialog/say_timed.tscn" id="28_hnqmt"]
 [ext_resource type="JSON" uid="uid://dgjgq3dsd2m3j" path="res://json/pride_talk.json" id="29_2x3ef"]
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="30_2q8t5"]
@@ -37,33 +37,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_20oj1"]
 radius = 0.78333
 height = 4.80709
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uxu3y"]
-radius = 0.604509
-height = 4.80709
-
-[sub_resource type="Animation" id="Animation_5k6cf"]
-resource_name = "HURT"
-length = 0.001
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../HurtParticles")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"spawn"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ri305"]
-_data = {
-&"HURT": SubResource("Animation_5k6cf")
-}
 
 [sub_resource type="Animation" id="Animation_edx7f"]
 resource_name = "CHASE"
@@ -116,13 +89,13 @@ tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/2/interp = 1
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0, 0.0]
+"values": [0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -521,6 +494,51 @@ _data = {
 &"RESET": SubResource("Animation_jojdm")
 }
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uxu3y"]
+radius = 0.604509
+height = 4.80709
+
+[sub_resource type="Animation" id="Animation_u5niv"]
+resource_name = "DEATH"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["DEATH", 0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5k6cf"]
+resource_name = "HURT"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HurtParticles")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ri305"]
+_data = {
+&"DEATH": SubResource("Animation_u5niv"),
+&"HURT": SubResource("Animation_5k6cf")
+}
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_uxu3y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wbwgn"]
@@ -582,6 +600,26 @@ DEFEATED_KEY = "pride_defeated"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
 shape = SubResource("CapsuleShape3D_20oj1")
 
+[node name="Attacks" type="AnimationPlayer" parent="." unique_id=1970869158]
+callback_mode_process = 0
+libraries/ = SubResource("AnimationLibrary_y10ku")
+autoplay = &"RESET"
+playback_auto_capture_ease_type = 2
+next/INTRO = &"CHASE"
+
+[node name="HitShape" type="Area3D" parent="." unique_id=592702144 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT") groups=["enemy_hitshape"]]
+script = ExtResource("20_yihmj")
+IMMUNE_GROUPS = Array[String](["greed"])
+TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=1225057356]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
+shape = SubResource("CapsuleShape3D_uxu3y")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HitShape" unique_id=578391343]
+root_node = NodePath("../../Attacks")
+libraries/ = SubResource("AnimationLibrary_ri305")
+
 [node name="Ui" type="Control" parent="." unique_id=918424342 groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
@@ -624,19 +662,6 @@ text = "PRIDE"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="HitShape" type="Area3D" parent="." unique_id=592702144 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
-script = ExtResource("20_yihmj")
-IMMUNE_GROUPS = Array[String](["greed"])
-HEALTH = 1500
-MAX_HEALTH = 1500
-TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
-HURT_ANIMATION_PLAYER = NodePath("../Damaged")
-DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=1225057356]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
-shape = SubResource("CapsuleShape3D_uxu3y")
-
 [node name="Audio" type="Node" parent="." unique_id=178288465]
 script = ExtResource("6_aahln")
 SOUNDS = Array[AudioStream]([ExtResource("10_02w52"), ExtResource("11_0j6hd"), ExtResource("12_g0hg0"), ExtResource("13_mbca3"), ExtResource("14_imhgt"), ExtResource("15_jxplk"), ExtResource("16_st6dt"), ExtResource("17_euapl"), ExtResource("18_fd2hq")])
@@ -658,36 +683,24 @@ script = ExtResource("21_1qi28")
 script = ExtResource("23_20oj1")
 AMOUNT = 10
 
-[node name="Damaged" type="AnimationPlayer" parent="." unique_id=578391343]
-root_node = NodePath("../Attacks")
-libraries/ = SubResource("AnimationLibrary_ri305")
-
-[node name="Attacks" type="AnimationPlayer" parent="." unique_id=1970869158]
-callback_mode_process = 0
-libraries/ = SubResource("AnimationLibrary_y10ku")
-autoplay = &"RESET"
-playback_auto_capture_ease_type = 2
-next/INTRO = &"CHASE"
-
 [node name="HurtParticles" type="Node3D" parent="." unique_id=1803701370 groups=["teleport_to_attacking_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("23_hybxi")
 scenes = Array[PackedScene]([ExtResource("24_uxu3y")])
 
-[node name="Target" type="Node3D" parent="." unique_id=1924219474 node_paths=PackedStringArray("BODY", "MESH", "NAV_AGENT", "STOP_CHASE_AREA")]
+[node name="Target" type="Node3D" parent="." unique_id=1924219474 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH", "STOP_CHASE_AREA")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89408, 2.62937, 5.76861)
 script = ExtResource("25_osw8t")
-BODY = NodePath("..")
-MESH = NodePath("../Mesh")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
-FLIPPED_TRACKING = true
+BODY = NodePath("..")
 SPEED = 12.0
 SPEED_MULTIPLIER = 0.0
+MESH = NodePath("../Mesh")
+FLIPPED_TRACKING = true
 STOP_CHASE_AREA = NodePath("../HitShape")
 
-[node name="Mesh" type="Node3D" parent="." unique_id=31844010 node_paths=PackedStringArray("SCENE_ROOT")]
+[node name="Mesh" type="Node3D" parent="." unique_id=31844010]
 script = ExtResource("26_8l61o")
-SCENE_ROOT = NodePath("..")
 
 [node name="pride" parent="Mesh" unique_id=864971963 instance=ExtResource("27_uxu3y")]
 

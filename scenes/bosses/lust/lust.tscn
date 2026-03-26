@@ -26,9 +26,9 @@
 [ext_resource type="PackedScene" uid="uid://cajl1wg350nss" path="res://scenes/particles/hurt/lust_hurt_particles.tscn" id="24_mq3k6"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="25_d1vq0"]
 [ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="26_u071u"]
-[ext_resource type="Texture2D" uid="uid://bi6jr8bfooi38" path="res://meshes/characters/lust/lust_color.png" id="27_t1cxy"]
-[ext_resource type="Texture2D" uid="uid://tqtla7koy23u" path="res://meshes/characters/lust/lust_color_evil.png" id="28_b44t3"]
-[ext_resource type="PackedScene" uid="uid://b28l3wgogpqnm" path="res://meshes/characters/lust/lust.glb" id="29_eup60"]
+[ext_resource type="Texture2D" uid="uid://bi6jr8bfooi38" path="res://models/characters/lust/lust_color.png" id="27_t1cxy"]
+[ext_resource type="Texture2D" uid="uid://tqtla7koy23u" path="res://models/characters/lust/lust_color_evil.png" id="28_b44t3"]
+[ext_resource type="PackedScene" uid="uid://b28l3wgogpqnm" path="res://models/characters/lust/lust.glb" id="29_eup60"]
 [ext_resource type="Material" uid="uid://cfsjgs6ugktap" path="res://shaders/materials/lust.tres" id="30_2ky0q"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="31_827t2"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://script/dialog/dialog.gd" id="32_3ttn5"]
@@ -45,33 +45,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d0au0"]
 radius = 0.78333
 height = 4.80709
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wbwgn"]
-radius = 0.96240234
-height = 4.80709
-
-[sub_resource type="Animation" id="Animation_5k6cf"]
-resource_name = "HURT"
-length = 0.001
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../HurtParticles")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"spawn"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ri305"]
-_data = {
-&"HURT": SubResource("Animation_5k6cf")
-}
 
 [sub_resource type="Animation" id="Animation_edx7f"]
 resource_name = "CHASE"
@@ -300,13 +273,13 @@ tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
 tracks/13/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/13/interp = 1
+tracks/13/interp = 0
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0, 0.0]
+"values": [0.0]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -454,25 +427,13 @@ tracks/25/keys = {
 "update": 1,
 "values": [false, true]
 }
-tracks/26/type = "value"
+tracks/26/type = "method"
 tracks/26/imported = false
 tracks/26/enabled = true
-tracks/26/path = NodePath("Mesh/lust/Armature/Skeleton3D/lust:surface_material_override/0:shader_parameter/dissolve_amount")
+tracks/26/path = NodePath("Dialog")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
-"times": PackedFloat32Array(0, 2.13333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/27/type = "method"
-tracks/27/imported = false
-tracks/27/enabled = true
-tracks/27/path = NodePath("Dialog")
-tracks/27/interp = 1
-tracks/27/loop_wrap = true
-tracks/27/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "values": []
@@ -845,13 +806,13 @@ tracks/18/path = NodePath("Mesh/ShaderTween")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(0, 4.237541),
+"times": PackedFloat32Array(0, 4.25),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [["lust_mesh"], 0, "albedo_texture"],
+"args": [0, "albedo_texture"],
 "method": &"set_texture"
 }, {
-"args": [["lust_mesh"], 1, "albedo_texture"],
+"args": [1, "albedo_texture"],
 "method": &"set_texture"
 }]
 }
@@ -1115,6 +1076,20 @@ tracks/19/keys = {
 "clips": PackedStringArray("Idle"),
 "times": PackedFloat32Array(0)
 }
+tracks/20/type = "method"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("Mesh/ShaderTween")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0, "albedo_texture"],
+"method": &"set_texture"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_gu5ya"]
 resource_name = "SCREAM"
@@ -1372,7 +1347,7 @@ tracks/1/path = NodePath("Mesh/lust/Armature/Skeleton3D/RightHand/AttackArea/Col
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.916667, 1.01166),
+"times": PackedFloat32Array(0, 1, 1.0416666),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [true, false, true]
@@ -1384,7 +1359,7 @@ tracks/2/path = NodePath("Mesh/lust/Armature/Skeleton3D/LeftHand/AttackArea/Coll
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.916667, 1),
+"times": PackedFloat32Array(0, 1, 1.0416666),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [true, false, true]
@@ -1396,7 +1371,7 @@ tracks/3/path = NodePath("Audio/Slam")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.958333),
+"times": PackedFloat32Array(1),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.0],
@@ -1593,6 +1568,84 @@ point_count = 3
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3949115, 1), 0.0, 0.0, 0, 0, Vector2(0.5011062, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wbwgn"]
+radius = 0.96240234
+height = 4.80709
+
+[sub_resource type="Animation" id="Animation_3pkb6"]
+resource_name = "DEATH"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["DEATH", 0],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Mesh/ShaderTween")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dissolve_amount", 1.0, 2.0],
+"method": &"tween"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5k6cf"]
+resource_name = "HURT"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HurtParticles")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_b261m"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Mesh/ShaderTween")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dissolve_amount", 0.0, 0.0],
+"method": &"tween"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ri305"]
+_data = {
+&"DEATH": SubResource("Animation_3pkb6"),
+&"HURT": SubResource("Animation_5k6cf"),
+&"RESET": SubResource("Animation_b261m")
+}
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_gn5mi"]
 radius = 0.932223
 height = 5.24161
@@ -1607,11 +1660,11 @@ height = 4.57902
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7oock"]
 radius = 0.404403
-height = 1.6273458
+height = 2.3785162
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_xgbyi"]
 radius = 0.374332
-height = 1.8986135
+height = 2.5117626
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_d0au0"]
 
@@ -1676,6 +1729,78 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
 shape = SubResource("CapsuleShape3D_d0au0")
 debug_color = Color(0.658, 0.6937, 0.7, 0.03137255)
 
+[node name="Attacks" type="AnimationPlayer" parent="." unique_id=1385197527 groups=["lust_anim_player", "skippable"]]
+callback_mode_process = 0
+libraries/ = SubResource("AnimationLibrary_y10ku")
+autoplay = &"RESET"
+playback_auto_capture_ease_type = 2
+next/HIGH_SMASH = &"CHASE"
+next/INTRO = &"CHASE"
+next/RESET = &"IDLE"
+next/SCREAM = &"CHASE"
+next/SMASH = &"CHASE"
+next/SWIPE_RIGHT = &"CHASE"
+
+[node name="SwipeRight" type="Node" parent="Attacks" unique_id=1289320307 node_paths=PackedStringArray("ANIM", "TARGET", "BODY")]
+script = ExtResource("22_4ev8b")
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_f8ihq")
+ATTACK_ANIMATION = "SWIPE_RIGHT"
+LIKELIHOOD_MULTIPLIER = 1000.0
+COOLDOWN = 3.0
+ANIM = NodePath("..")
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
+
+[node name="Smash" type="Node" parent="Attacks" unique_id=332377348 node_paths=PackedStringArray("ANIM", "TARGET", "BODY")]
+script = ExtResource("22_4ev8b")
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_7oock")
+ATTACK_ANIMATION = "SMASH"
+LIKELIHOOD_MULTIPLIER = 1000.0
+COOLDOWN = 3.0
+ANIM = NodePath("..")
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
+
+[node name="HighSmash" type="Node" parent="Attacks" unique_id=970846112 node_paths=PackedStringArray("HITSHAPE", "ANIM", "TARGET", "BODY")]
+script = ExtResource("22_4ev8b")
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_7oock")
+ATTACK_ANIMATION = "HIGH_SMASH"
+LIKELIHOOD_MULTIPLIER = 1000.0
+COOLDOWN = 3.0
+HITSHAPE = NodePath("../../HitShape")
+HEALTH_HIGH_THRESHOLD = 0.5
+ANIM = NodePath("..")
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
+
+[node name="Scream" type="Node" parent="Attacks" unique_id=1602404097 node_paths=PackedStringArray("ANIM", "TARGET", "BODY")]
+script = ExtResource("22_4ev8b")
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_xgbyi")
+ATTACK_ANIMATION = "SCREAM"
+LIKELIHOOD_MULTIPLIER = 2.0
+COOLDOWN = 3.0
+ANIM = NodePath("..")
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
+
+[node name="HitShape" type="Area3D" parent="." unique_id=37887982 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT") groups=["enemy_hitshape"]]
+script = ExtResource("6_64wp7")
+HEALTH = 3000.0
+MAX_HEALTH = 3000.0
+IMMUNE_GROUPS = Array[String](["greed"])
+DAMAGE_NUMBERS = ExtResource("7_043ic")
+TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=869368491]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3665733, 0)
+shape = SubResource("CapsuleShape3D_wbwgn")
+debug_color = Color(0.658, 0.6937, 0.7, 0.8784314)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HitShape" unique_id=169412433]
+root_node = NodePath("../../Attacks")
+libraries/ = SubResource("AnimationLibrary_ri305")
+autoplay = &"RESET"
+
 [node name="Ui" type="Control" parent="." unique_id=376779000 groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
@@ -1717,21 +1842,6 @@ theme = ExtResource("5_oc2g8")
 text = "LUST"
 horizontal_alignment = 1
 uppercase = true
-
-[node name="HitShape" type="Area3D" parent="." unique_id=37887982 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
-script = ExtResource("6_64wp7")
-IMMUNE_GROUPS = Array[String](["greed"])
-HEALTH = 3000.0
-MAX_HEALTH = 3000.0
-TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
-HURT_ANIMATION_PLAYER = NodePath("../Damaged")
-DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
-DAMAGE_NUMBERS = ExtResource("7_043ic")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=869368491]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3665733, 0)
-shape = SubResource("CapsuleShape3D_wbwgn")
-debug_color = Color(0.658, 0.6937, 0.7, 0.8784314)
 
 [node name="Audio" type="Node" parent="." unique_id=361552963]
 script = ExtResource("8_76yld")
@@ -1789,64 +1899,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0)
 
-[node name="Damaged" type="AnimationPlayer" parent="." unique_id=169412433]
-root_node = NodePath("../Attacks")
-libraries/ = SubResource("AnimationLibrary_ri305")
-
-[node name="Attacks" type="AnimationPlayer" parent="." unique_id=1385197527 groups=["lust_anim_player", "skippable"]]
-callback_mode_process = 0
-libraries/ = SubResource("AnimationLibrary_y10ku")
-autoplay = &"RESET"
-playback_auto_capture_ease_type = 2
-next/HIGH_SMASH = &"CHASE"
-next/INTRO = &"CHASE"
-next/RESET = &"IDLE"
-next/SCREAM = &"CHASE"
-next/SMASH = &"CHASE"
-next/SWIPE_RIGHT = &"CHASE"
-
-[node name="SwipeRight" type="Node" parent="Attacks" unique_id=1289320307 node_paths=PackedStringArray("ANIM", "TARGET", "BODY")]
-script = ExtResource("22_4ev8b")
-ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_f8ihq")
-ATTACK_ANIMATION = "SWIPE_RIGHT"
-LIKELIHOOD_MULTIPLIER = 1000.0
-COOLDOWN = 3.0
-ANIM = NodePath("..")
-TARGET = NodePath("../../Target")
-BODY = NodePath("../..")
-
-[node name="Smash" type="Node" parent="Attacks" unique_id=332377348 node_paths=PackedStringArray("ANIM", "TARGET", "BODY")]
-script = ExtResource("22_4ev8b")
-ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_7oock")
-ATTACK_ANIMATION = "SMASH"
-LIKELIHOOD_MULTIPLIER = 1000.0
-COOLDOWN = 3.0
-ANIM = NodePath("..")
-TARGET = NodePath("../../Target")
-BODY = NodePath("../..")
-
-[node name="HighSmash" type="Node" parent="Attacks" unique_id=970846112 node_paths=PackedStringArray("HITSHAPE", "ANIM", "TARGET", "BODY")]
-script = ExtResource("22_4ev8b")
-ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_7oock")
-ATTACK_ANIMATION = "HIGH_SMASH"
-LIKELIHOOD_MULTIPLIER = 1000.0
-COOLDOWN = 3.0
-HITSHAPE = NodePath("../../HitShape")
-HEALTH_HIGH_THRESHOLD = 0.5
-ANIM = NodePath("..")
-TARGET = NodePath("../../Target")
-BODY = NodePath("../..")
-
-[node name="Scream" type="Node" parent="Attacks" unique_id=1602404097 node_paths=PackedStringArray("ANIM", "TARGET", "BODY")]
-script = ExtResource("22_4ev8b")
-ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_xgbyi")
-ATTACK_ANIMATION = "SCREAM"
-LIKELIHOOD_MULTIPLIER = 2.0
-COOLDOWN = 3.0
-ANIM = NodePath("..")
-TARGET = NodePath("../../Target")
-BODY = NodePath("../..")
-
 [node name="HurtParticles" type="Node3D" parent="." unique_id=585865109 groups=["teleport_to_attacking_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("23_6gp5g")
@@ -1873,11 +1925,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9356, 0)
 
 [node name="ShaderTween" type="Node" parent="Mesh" unique_id=266402646]
 script = ExtResource("26_u071u")
+groups = Array[String](["lust_mesh"])
 textures = Array[Texture2D]([ExtResource("27_t1cxy"), ExtResource("28_b44t3")])
 
-[node name="lust" parent="Mesh" unique_id=1996040780 instance=ExtResource("29_eup60")]
+[node name="lust" parent="Mesh" unique_id=1192322909 instance=ExtResource("29_eup60")]
 
-[node name="Skeleton3D" parent="Mesh/lust/Armature" parent_id_path=PackedInt32Array(1996040780, 145618664) index="0" unique_id=1668229645]
+[node name="Skeleton3D" parent="Mesh/lust/Armature" parent_id_path=PackedInt32Array(1192322909, 309472098) index="0" unique_id=1213983179]
 bones/1/position = Vector3(0.047937997, -0.04220111, 3.9556828)
 bones/1/rotation = Quaternion(-0.002821041, 0.82306516, 0.56791985, 0.004796327)
 bones/2/rotation = Quaternion(-0.10417691, -0.0063140197, -0.005157453, 0.9945254)
@@ -1942,7 +1995,7 @@ bones/87/rotation = Quaternion(0.0026704636, 0.0013954609, -0.037989, 0.99927366
 bones/88/rotation = Quaternion(-0.024223967, -0.0060594426, 0.1036372, 0.9943017)
 bones/89/rotation = Quaternion(0.037156776, -0.0089403195, 0.18680331, 0.9816537)
 
-[node name="lust" parent="Mesh/lust/Armature/Skeleton3D" index="0" unique_id=891613166 groups=["lust_mesh"]]
+[node name="lust" parent="Mesh/lust/Armature/Skeleton3D" index="0" unique_id=218624613 groups=["lust_mesh"]]
 blend_shapes/Calm = 1.0
 surface_material_override/0 = ExtResource("30_2ky0q")
 
@@ -2009,7 +2062,7 @@ script = ExtResource("31_827t2")
 hit_shape = NodePath("../../../../../../HitShape")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lust/Armature/Skeleton3D/LeftHand/AttackArea" unique_id=1333873224]
-transform = Transform3D(0.9889651, 0.14792755, 0.008123439, -0.14776205, 0.98885524, -0.018233169, -0.010729324, 0.01683119, 0.9998011, 0.0663116, -0.07678604, 0.1437077)
+transform = Transform3D(0.9425441, -0.32000434, 0.09596448, 0.32753652, 0.94171673, -0.07674816, -0.06581089, 0.10377006, 0.992422, 0.18650055, -0.43048096, 0.1047332)
 shape = SubResource("CapsuleShape3D_7oock")
 disabled = true
 debug_color = Color(0.95, 0.03800002, 0.17479967, 0)
@@ -2026,7 +2079,7 @@ script = ExtResource("31_827t2")
 hit_shape = NodePath("../../../../../../HitShape")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lust/Armature/Skeleton3D/RightHand/AttackArea" unique_id=1677312007]
-transform = Transform3D(0.9948841, 0.10002297, -0.014157847, -0.10025194, 0.99482185, -0.016598452, 0.012424183, 0.017933507, 0.9997619, -0.11354613, -0.21033955, 0.08203536)
+transform = Transform3D(0.9564623, 0.28824562, -0.045765236, -0.29020292, 0.9559424, -0.044189736, 0.031011399, 0.05554759, 0.9979742, -0.20191514, -0.5034065, 0.06500587)
 shape = SubResource("CapsuleShape3D_xgbyi")
 disabled = true
 debug_color = Color(0.95, 0.038, 0.1748, 0.180392)
@@ -2139,7 +2192,7 @@ bone = 73
 position_offset = Vector3(0, -0.165, 0)
 rotation_offset = Quaternion(0, 0, 0, 1)
 
-[node name="AnimationPlayer" parent="Mesh/lust" index="1" unique_id=1596675757]
+[node name="AnimationPlayer" parent="Mesh/lust" index="1" unique_id=1946643364]
 playback_default_blend_time = 0.2
 
 [node name="Light" type="OmniLight3D" parent="." unique_id=330983085]

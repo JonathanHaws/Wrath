@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="2_fabgd"]
 [ext_resource type="PackedScene" uid="uid://4f506yax85t1" path="res://scenes/bosses/gluttony/puddle.tscn" id="3_j1560"]
 [ext_resource type="Material" uid="uid://14hmcag5btd0" path="res://shaders/materials/projectiles/vomit.tres" id="4_j1560"]
-[ext_resource type="PackedScene" uid="uid://1ibdp5i2ei5t" path="res://meshes/items/projectile.blend" id="4_xdsn5"]
+[ext_resource type="PackedScene" uid="uid://1ibdp5i2ei5t" path="res://models/items/projectile.blend" id="4_xdsn5"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="5_sipne"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ab56"]

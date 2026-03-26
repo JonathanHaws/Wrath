@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://blxvkukk5u1ps"]
 
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://script/component/root_motion.gd" id="1_mgybv"]
-[ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://meshes/characters/greed/greed.blend" id="2_b46cl"]
+[ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/characters/greed/greed.blend" id="2_b46cl"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/custom/disolve.gdshader" id="3_yh813"]
-[ext_resource type="Texture2D" uid="uid://cqxt1767hiu8b" path="res://meshes/characters/greed/color.png" id="4_xrvta"]
-[ext_resource type="Texture2D" uid="uid://degml03bvddt4" path="res://meshes/characters/greed/emisson.png" id="5_vxcf4"]
+[ext_resource type="Texture2D" uid="uid://cqxt1767hiu8b" path="res://models/characters/greed/color.png" id="4_xrvta"]
+[ext_resource type="Texture2D" uid="uid://degml03bvddt4" path="res://models/characters/greed/emisson.png" id="5_vxcf4"]
 
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_haf08"]

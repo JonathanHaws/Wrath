@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bwyvmebwu86xs"]
 
 [ext_resource type="Script" uid="uid://ci0byfa0f4mm3" path="res://script/items/door.gd" id="1_cilod"]
-[ext_resource type="PackedScene" uid="uid://c0pqtwl8b1uu4" path="res://meshes/items/door/heavy_door.blend" id="2_21gea"]
+[ext_resource type="PackedScene" uid="uid://c0pqtwl8b1uu4" path="res://models/items/door/heavy_door.blend" id="2_21gea"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="3_aw8ec"]
 [ext_resource type="AudioStream" uid="uid://b50qiukxj6lq6" path="res://audio/sfx/items/door/stone_creak.wav" id="4_jwvi6"]
 

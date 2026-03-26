@@ -31,11 +31,11 @@
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://script/component/root_motion.gd" id="26_5mwrc"]
 [ext_resource type="AudioStream" uid="uid://4tppn23c1x6k" path="res://audio/sfx/characters/envy/Wing_Flap_3.ogg" id="26_kp7sv"]
 [ext_resource type="AudioStream" uid="uid://g2wk0m7e75qk" path="res://audio/sfx/characters/envy/Wing_Flap_4.ogg" id="27_076pq"]
-[ext_resource type="PackedScene" uid="uid://c5kfdq4m105cm" path="res://meshes/characters/envy/envy.blend" id="27_wpfpa"]
+[ext_resource type="PackedScene" uid="uid://c5kfdq4m105cm" path="res://models/characters/envy/envy.blend" id="27_wpfpa"]
 [ext_resource type="AudioStream" uid="uid://rdsqiht31rt0" path="res://audio/sfx/characters/envy/Wing_Flap_5.ogg" id="28_5ffyk"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="29_1epqe"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/custom/disolve.gdshader" id="29_xo5l3"]
-[ext_resource type="Texture2D" uid="uid://6qmllfc0wj7d" path="res://meshes/characters/envy/color.png" id="30_fp1nr"]
+[ext_resource type="Texture2D" uid="uid://6qmllfc0wj7d" path="res://models/characters/envy/color.png" id="30_fp1nr"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://script/dialog/dialog.gd" id="37_pmjfi"]
 [ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://scenes/ui/dialog/choice.tscn" id="38_x0k4b"]
 [ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://scenes/ui/dialog/say.tscn" id="39_06a6w"]
@@ -51,33 +51,6 @@
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_1epqe"]
 radius = 1.78077
 height = 4.80709
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_332fe"]
-radius = 2.13243
-height = 4.80709
-
-[sub_resource type="Animation" id="Animation_5k6cf"]
-resource_name = "HURT"
-length = 0.001
-tracks/0/type = "method"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../HurtParticles")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"spawn"
-}]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ri305"]
-_data = {
-&"HURT": SubResource("Animation_5k6cf")
-}
 
 [sub_resource type="Animation" id="Animation_dxy5n"]
 resource_name = "BITE_LEFT"
@@ -416,13 +389,13 @@ tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
 tracks/7/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/7/interp = 1
+tracks/7/interp = 0
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.0666667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0, 0.0]
+"values": [0.0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -1294,6 +1267,51 @@ point_count = 3
 _data = [Vector2(0.655405, 0), 0.0, -9.888, 0, 0, Vector2(0.699324, 1), -0.032749, -0.032749, 0, 0, Vector2(0.777027, 1), 0.0, 0.0, 0, 0, Vector2(0.837838, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_332fe"]
+radius = 2.13243
+height = 4.80709
+
+[sub_resource type="Animation" id="Animation_tgrj1"]
+resource_name = "DEATH"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["DEATH", 0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_5k6cf"]
+resource_name = "HURT"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../HurtParticles")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ri305"]
+_data = {
+&"DEATH": SubResource("Animation_tgrj1"),
+&"HURT": SubResource("Animation_5k6cf")
+}
+
 [sub_resource type="BoxMesh" id="BoxMesh_wpfpa"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wpfpa"]
@@ -1387,127 +1405,6 @@ DEFEATED_KEY = "envy_defeated"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
 shape = SubResource("CapsuleShape3D_1epqe")
 
-[node name="Ui" type="Control" parent="." unique_id=779999940 groups=["ui_scalable"]]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchor_left = 0.5
-anchor_top = 0.017
-anchor_right = 0.5
-anchor_bottom = 0.099
-grow_horizontal = 2
-size_flags_horizontal = 3
-script = ExtResource("2_hu4d7")
-metadata/_edit_use_anchors_ = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui" unique_id=261366062]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -450.0
-offset_right = 450.0
-offset_bottom = 50.0
-grow_horizontal = 2
-pivot_offset = Vector2(450, 0)
-metadata/_edit_use_anchors_ = true
-
-[node name="HealthBar" parent="Ui/VBoxContainer" unique_id=2037104342 node_paths=PackedStringArray("tracked_node") instance=ExtResource("3_0gn57")]
-custom_minimum_size = Vector2(900, 8.645)
-layout_mode = 2
-size_flags_horizontal = 3
-theme_override_styles/fill = ExtResource("4_wpfpa")
-max_value = 2000.0
-value = 2000.0
-tracked_node = NodePath("../../../HitShape")
-
-[node name="Label" type="Label" parent="Ui/VBoxContainer" unique_id=2002299259]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = ExtResource("5_o83ic")
-text = "ENVY"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="HitShape" type="Area3D" parent="." unique_id=767457521 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "HURT_ANIMATION_PLAYER", "DEATH_ANIMATION_PLAYER") groups=["enemy_hitshape"]]
-script = ExtResource("20_sg61t")
-IMMUNE_GROUPS = Array[String](["greed"])
-HEALTH = 6500.0
-MAX_HEALTH = 6500.0
-TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
-HURT_ANIMATION_PLAYER = NodePath("../Damaged")
-DEATH_ANIMATION_PLAYER = NodePath("../Attacks")
-DAMAGE_NUMBERS = ExtResource("21_fp1nr")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=564837777]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
-shape = SubResource("CapsuleShape3D_332fe")
-
-[node name="Audio" type="Node" parent="." unique_id=866003600]
-script = ExtResource("6_jntm4")
-SOUNDS = Array[AudioStream]([ExtResource("10_td5ev"), ExtResource("11_peotq"), ExtResource("12_8fx7k"), ExtResource("13_2fslw"), ExtResource("14_gn6a4"), ExtResource("15_6omgc"), ExtResource("16_8wint"), ExtResource("17_il76p"), ExtResource("18_del5c")])
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=146804567]
-process_mode = 3
-bus = &"SFX"
-
-[node name="Music" type="AudioStreamPlayer" parent="Audio" unique_id=1664070019]
-process_mode = 3
-stream = ExtResource("19_fp1nr")
-bus = &"Music"
-parameters/looping = true
-
-[node name="Slam" type="AudioStreamPlayer" parent="Audio" unique_id=1062121101]
-process_mode = 3
-stream = ExtResource("10_td5ev")
-volume_db = -5.917
-bus = &"SFX"
-
-[node name="Gawk" type="Node" parent="Audio" unique_id=996912206]
-script = ExtResource("6_jntm4")
-
-[node name="Gawk1" type="AudioStreamPlayer" parent="Audio/Gawk" unique_id=626228640]
-stream = ExtResource("22_o226f")
-volume_db = -3.0
-
-[node name="Gawk2" type="AudioStreamPlayer" parent="Audio/Gawk" unique_id=721345961]
-stream = ExtResource("23_msv7p")
-volume_db = -3.0
-
-[node name="WingFlap" type="Node" parent="Audio" unique_id=280111616]
-script = ExtResource("6_jntm4")
-
-[node name="WingFlap1" type="AudioStreamPlayer" parent="Audio/WingFlap" unique_id=1707919128]
-stream = ExtResource("24_j3f60")
-volume_db = 2.0
-
-[node name="WingFlap2" type="AudioStreamPlayer" parent="Audio/WingFlap" unique_id=1135306259]
-stream = ExtResource("25_v63i7")
-volume_db = 2.0
-
-[node name="WingFlap3" type="AudioStreamPlayer" parent="Audio/WingFlap" unique_id=2012988829]
-stream = ExtResource("26_kp7sv")
-volume_db = 2.0
-
-[node name="WingFlap4" type="AudioStreamPlayer" parent="Audio/WingFlap" unique_id=22945346]
-stream = ExtResource("27_076pq")
-volume_db = 2.0
-
-[node name="WingFlap5" type="AudioStreamPlayer" parent="Audio/WingFlap" unique_id=202739348]
-stream = ExtResource("28_5ffyk")
-volume_db = 2.0
-
-[node name="CameraEffects" type="Node" parent="." unique_id=1677745707]
-script = ExtResource("21_3upiv")
-
-[node name="WispReward" type="Node" parent="." unique_id=850951412]
-script = ExtResource("24_o226f")
-AMOUNT = 10
-
-[node name="Damaged" type="AnimationPlayer" parent="." unique_id=84791484]
-root_node = NodePath("../Attacks")
-libraries/ = SubResource("AnimationLibrary_ri305")
-
 [node name="Attacks" type="AnimationPlayer" parent="." unique_id=2060766082]
 callback_mode_process = 0
 libraries/ = SubResource("AnimationLibrary_y10ku")
@@ -1578,22 +1475,141 @@ COOLDOWN = 10.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
+[node name="HitShape" type="Area3D" parent="." unique_id=767457521 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT") groups=["enemy_hitshape"]]
+script = ExtResource("20_sg61t")
+HEALTH = 6500.0
+MAX_HEALTH = 6500.0
+IMMUNE_GROUPS = Array[String](["greed"])
+DAMAGE_NUMBERS = ExtResource("21_fp1nr")
+TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=564837777]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
+shape = SubResource("CapsuleShape3D_332fe")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="HitShape" unique_id=84791484]
+root_node = NodePath("../../Attacks")
+libraries/ = SubResource("AnimationLibrary_ri305")
+
+[node name="Ui" type="Control" parent="." unique_id=779999940 groups=["ui_scalable"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.017
+anchor_right = 0.5
+anchor_bottom = 0.099
+grow_horizontal = 2
+size_flags_horizontal = 3
+script = ExtResource("2_hu4d7")
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Ui" unique_id=261366062]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -450.0
+offset_right = 450.0
+offset_bottom = 50.0
+grow_horizontal = 2
+pivot_offset = Vector2(450, 0)
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" parent="Ui/VBoxContainer" unique_id=2037104342 node_paths=PackedStringArray("tracked_node") instance=ExtResource("3_0gn57")]
+custom_minimum_size = Vector2(900, 8.645)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/fill = ExtResource("4_wpfpa")
+max_value = 2000.0
+value = 2000.0
+tracked_node = NodePath("../../../HitShape")
+
+[node name="Label" type="Label" parent="Ui/VBoxContainer" unique_id=2002299259]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme = ExtResource("5_o83ic")
+text = "ENVY"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Audio" type="Node" parent="." unique_id=866003600]
+script = ExtResource("6_jntm4")
+SOUNDS = Array[AudioStream]([ExtResource("10_td5ev"), ExtResource("11_peotq"), ExtResource("12_8fx7k"), ExtResource("13_2fslw"), ExtResource("14_gn6a4"), ExtResource("15_6omgc"), ExtResource("16_8wint"), ExtResource("17_il76p"), ExtResource("18_del5c")])
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=146804567]
+process_mode = 3
+bus = &"SFX"
+
+[node name="Music" type="AudioStreamPlayer" parent="Audio" unique_id=1664070019]
+process_mode = 3
+stream = ExtResource("19_fp1nr")
+bus = &"Music"
+parameters/looping = true
+
+[node name="Slam" type="AudioStreamPlayer" parent="Audio" unique_id=1062121101]
+process_mode = 3
+stream = ExtResource("10_td5ev")
+volume_db = -5.917
+bus = &"SFX"
+
+[node name="Gawk" type="Node" parent="Audio" unique_id=996912206]
+script = ExtResource("6_jntm4")
+
+[node name="Gawk1" type="AudioStreamPlayer" parent="Audio/Gawk" unique_id=626228640]
+stream = ExtResource("22_o226f")
+volume_db = -3.0
+
+[node name="Gawk2" type="AudioStreamPlayer" parent="Audio/Gawk" unique_id=721345961]
+stream = ExtResource("23_msv7p")
+volume_db = -3.0
+
+[node name="WingFlap" type="Node" parent="Audio" unique_id=280111616]
+script = ExtResource("6_jntm4")
+
+[node name="WingFlap1" type="AudioStreamPlayer" parent="Audio/WingFlap" unique_id=1707919128]
+stream = ExtResource("24_j3f60")
+volume_db = 2.0
+
+[node name="WingFlap2" type="AudioStreamPlayer" parent="Audio/WingFlap" unique_id=1135306259]
+stream = ExtResource("25_v63i7")
+volume_db = 2.0
+
+[node name="WingFlap3" type="AudioStreamPlayer" parent="Audio/WingFlap" unique_id=2012988829]
+stream = ExtResource("26_kp7sv")
+volume_db = 2.0
+
+[node name="WingFlap4" type="AudioStreamPlayer" parent="Audio/WingFlap" unique_id=22945346]
+stream = ExtResource("27_076pq")
+volume_db = 2.0
+
+[node name="WingFlap5" type="AudioStreamPlayer" parent="Audio/WingFlap" unique_id=202739348]
+stream = ExtResource("28_5ffyk")
+volume_db = 2.0
+
+[node name="CameraEffects" type="Node" parent="." unique_id=1677745707]
+script = ExtResource("21_3upiv")
+
+[node name="WispReward" type="Node" parent="." unique_id=850951412]
+script = ExtResource("24_o226f")
+AMOUNT = 10
+
 [node name="HurtParticles" type="Node3D" parent="." unique_id=698796215 groups=["teleport_to_attacking_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("23_6u562")
 scenes = Array[PackedScene]([ExtResource("24_wpfpa")])
 
-[node name="Target" type="Node3D" parent="." unique_id=230275988 node_paths=PackedStringArray("BODY", "MESH", "NAV_AGENT")]
+[node name="Target" type="Node3D" parent="." unique_id=230275988 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.5154033, 0, 1.2341261)
 script = ExtResource("25_mgimy")
-BODY = NodePath("..")
-MESH = NodePath("../Mesh")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
+BODY = NodePath("..")
+SPEED_MULTIPLIER = 0.0
+MESH_CHASE_VECTOR = true
+USE_PATHFINDING = false
+MESH = NodePath("../Mesh")
 TRACKING_MULTIPLIER = 0.0
 FLIPPED_TRACKING = true
-USE_PATHFINDING = false
-MESH_CHASE_VECTOR = true
-SPEED_MULTIPLIER = 0.0
 
 [node name="NodeOffset" type="Node3D" parent="Target" unique_id=1277068007]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.674217, 0)
@@ -1613,7 +1629,7 @@ DEFAULT_TRANSFORM_ANIMATION = "IDLE"
 
 [node name="envy" parent="Mesh" unique_id=344055251 instance=ExtResource("27_wpfpa")]
 
-[node name="Skeleton3D" parent="Mesh/envy/Armature" index="0"]
+[node name="Skeleton3D" parent="Mesh/envy/Armature" parent_id_path=PackedInt32Array(344055251, 2084253452) index="0" unique_id=179115692]
 bones/1/position = Vector3(-3.0624682e-07, 0.25110248, 2.9511843)
 bones/1/rotation = Quaternion(2.5939861e-09, 0.9971244, 0.075783156, -1.6205449e-06)
 bones/2/rotation = Quaternion(-0.38648182, 1.2123505e-07, -1.2708251e-06, 0.9222971)
@@ -1682,7 +1698,7 @@ primary_damp_threshold = 1.0
 secondary_limit_angle = 0.5235988
 secondary_damp_threshold = 1.0
 
-[node name="Mesh" parent="Mesh/envy/Armature/Skeleton3D" index="2"]
+[node name="Mesh" parent="Mesh/envy/Armature/Skeleton3D" index="2" unique_id=1781540310]
 material_override = SubResource("ShaderMaterial_ix8e8")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/envy/Armature/Skeleton3D" index="3" unique_id=885687854]
@@ -1700,7 +1716,7 @@ transform = Transform3D(1, 9.68575e-08, -1.4901e-08, -7.45027e-09, 1, 0, 1.7053e
 shape = SubResource("BoxShape3D_od1a5")
 disabled = true
 
-[node name="AnimationPlayer" parent="Mesh/envy" index="1"]
+[node name="AnimationPlayer" parent="Mesh/envy" index="1" unique_id=1063757519]
 root_motion_track = NodePath("Armature/Skeleton3D:root")
 callback_mode_process = 0
 playback_default_blend_time = 0.3

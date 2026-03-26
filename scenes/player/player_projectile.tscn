@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://qi35dljseuk3"]
 
 [ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://script/items/projectile.gd" id="1_kpr02"]
-[ext_resource type="PackedScene" uid="uid://1ibdp5i2ei5t" path="res://meshes/items/projectile.blend" id="2_8trq3"]
+[ext_resource type="PackedScene" uid="uid://1ibdp5i2ei5t" path="res://models/items/projectile.blend" id="2_8trq3"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="3_7bp6w"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="3_32n4n"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="4_o35mi"]

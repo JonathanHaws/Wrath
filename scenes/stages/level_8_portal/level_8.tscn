@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/stages/lighting/enviroment.tscn" id="2_i1vh2"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/items/weather.tscn" id="3_5o1fx"]
-[ext_resource type="PackedScene" uid="uid://yxfcfpfrgfp4" path="res://meshes/items/portal/portal.blend" id="4_mda5h"]
+[ext_resource type="PackedScene" uid="uid://yxfcfpfrgfp4" path="res://models/items/portal/portal.blend" id="4_mda5h"]
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://script/items/cinematic.gd" id="5_c6d1s"]
 [ext_resource type="AudioStream" uid="uid://btssfp845kee" path="res://audio/music/escape.ogg" id="6_2r58u"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/player/reaper.tscn" id="7_1yqwe"]
