@@ -1,6 +1,5 @@
 extends Area3D
 @export_group("Damage")
-@export var damage_groups: Array[String] = ["player_hitshape"] ##area groups you want this hurtbox to damage
 @export var damage: float = 10.0
 @export var damage_spread: float = 0 ## Determines subtle randomness in attack damage
 @export var damage_multiplier: float = 1 ## Value that can be animated by animation players 
@@ -16,14 +15,36 @@ var overlapping_areas: Dictionary = {}
 signal hurt_something
 
 @export_group("Blocking")
-@export var parryable: bool = false ## Animate property to specify window
+@export var parryable: bool = false
+@export var parry_window: float = 0.15 ## seconds
+@export var blocked_anim: String = "BLOCKED"
 @export var parry_anim: String = "PARRY"
-@export var blocked_anim_player: AnimationPlayer
+@export var deflected_anim_player: AnimationPlayer
 @export var block_groups: Array[String] = ["player_blockshape", "enemy_blockshape"]
-func blocked(_block_time: float = 0.0) -> void:
-	if blocked_anim_player and blocked_anim_player.has_animation(parry_anim):
-		if blocked_anim_player.current_animation != parry_anim:
-			blocked_anim_player.play(parry_anim)
+func is_block_area(area: Area3D) -> bool:
+	for group in block_groups: for node in overlapping_areas:
+		if node.is_in_group(group): return true
+	return false
+func blocked(area: Area3D) -> void:
+	
+	if area.has_method("play_blocked_animation"):
+		area.play_blocked_animation()  
+	
+	if not deflected_anim_player: return
+	var parried: bool = parryable and "enabled_time" in area and area.enabled_time < parry_window
+	
+	if parried: 
+		if not deflected_anim_player.has_animation(parry_anim): return
+		if deflected_anim_player.current_animation == parry_anim: return
+		deflected_anim_player.play(parry_anim)
+		print('parried')
+		return
+	else: # regular block
+		if not deflected_anim_player.has_animation(blocked_anim): return
+		if deflected_anim_player.current_animation == blocked_anim: return
+		deflected_anim_player.play(blocked_anim)
+		print('blocked')
+			
 
 @export_group("Save") ## For upgradable damage that needs to be persisten / update
 @export var enable_save: bool = false
@@ -37,7 +58,6 @@ func _on_save_data_updated() -> void:
 	damage = Save.data[save_key]
 	damage_multiplier = 1.0
 	#print(damage)
-	
 func save_ready() -> void:
 	if not enable_save: return
 	
@@ -48,63 +68,53 @@ func save_ready() -> void:
 	Save.connect("save_data_updated", _on_save_data_updated)
 
 func hurt(area: Area3D) -> void:
+	#print("hurt ", area.name)
+	
 	if disabled: return
 	emit_signal("hurt_something")
 	await get_tree().physics_frame # Ensure both the regular hit_shape AND block_shape is in 'overlapping areas;
 	
 	# Check if one of overlapping areas is in block group... Then call hit on it instead instead of parameter area...
-	var target_to_hit := area
-	for group in block_groups:
-		for node in overlapping_areas:
-			if node.is_in_group(group):
-				target_to_hit = node
-				#print(node.name)
-				break
+	# It will then call hit again with a weaker value.... if needs be
+	if is_block_area(area):
+		blocked(area)
+		return
 	
 	#print("Cooldown remaining:", overlapping_areas[area]["cooldown"].is_stopped())
 	if area not in overlapping_areas: return
 	if not overlapping_areas[area]["cooldown"].is_stopped(): return
 	if !"hit" in area: return
 	
-	if target_to_hit.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * damage_multiplier):
+	if area.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * damage_multiplier):
 		overlapping_areas[area]["cooldown"].start()
+		overlapping_areas[area]["linger"].start() 
 		overlapping_areas[area]["linger"].start() 
 		
 		if hit_animation_player:
-			if "HEALTH" in target_to_hit and target_to_hit.HEALTH <= 0:
+			if "HEALTH" in area and area.HEALTH <= 0:
 				if hit_animation_player.has_animation(kill_anim): hit_animation_player.play(kill_anim)
 			else:
 				hit_animation_player.play(hit_anim)
 			
 func _on_area_entered(area: Area3D) -> void:
 	
-	var in_group := false # Verify in group
-	for group in damage_groups:
-		if area.is_in_group(group):
-			in_group = true
-			break
-	for group in block_groups:
-		if area.is_in_group(group):
-			in_group = true
-			break
-	if !in_group: return
-	
-	if area not in overlapping_areas:
-		var cooldown_timer = Timer.new()
-		cooldown_timer.one_shot = true
-		cooldown_timer.wait_time = cooldown
-		add_child(cooldown_timer)
-		#cooldown_timer.add_to_group("memory_leak_check")
+	if area in overlapping_areas: return
+	var cooldown_timer = Timer.new()
+	cooldown_timer.one_shot = true
+	cooldown_timer.wait_time = cooldown
+	add_child(cooldown_timer)
+	#cooldown_timer.add_to_group("memory_leak_check")
 
-		var linger_timer = Timer.new()
-		linger_timer.wait_time = linger_tick
-		add_child(linger_timer)
-		if linger: linger_timer.timeout.connect(func() -> void: hurt(area))
-		#linger_timer.add_to_group("memory_leak_check")
+	var linger_timer = Timer.new()
+	linger_timer.wait_time = linger_tick
+	add_child(linger_timer)
+	if linger: linger_timer.timeout.connect(func() -> void: hurt(area))
+	#linger_timer.add_to_group("memory_leak_check")
 
-		overlapping_areas[area] = { "cooldown": cooldown_timer, "linger": linger_timer }
+	overlapping_areas[area] = { "cooldown": cooldown_timer, "linger": linger_timer }
 
 	hurt(area)
+	
 
 func _on_area_exited(area: Area3D) -> void:
 	if area in overlapping_areas: # Clean up potential memory leak
@@ -119,6 +129,9 @@ func _ready() -> void:
 	if hit_shape and hit_shape.has_signal("DIED"):
 		hit_shape.DIED.connect(queue_free)
 	
+
+#func _process(_delta: float) -> void:
+	#print("Timers alive:", get_tree().get_nodes_in_group("memory_leak_check").size())
 
 #func _process(_delta: float) -> void:
 	#print("Timers alive:", get_tree().get_nodes_in_group("memory_leak_check").size())

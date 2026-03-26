@@ -1,24 +1,16 @@
 extends Area3D
-@export var hitshape: Area3D  
 @export var block_multiplier: float = 0.2
-@export var active: bool = false
 @export var anim_player: AnimationPlayer
 @export var block_anim: String = "BLOCK"
-var enabled_time: float = 0.0
+@export var enabled_time: float = 0.0 ## Used by hurtshape to know how long blocking has been enabled
 
-func hit(area: Area3D, damage: int) -> bool:
-	
+func play_blocked_animation() -> void:
 	if anim_player and anim_player.has_animation(block_anim):
 		anim_player.play(block_anim)
+
+func _process(delta: float) -> void:
 	
-	if "blocked" in area: area.blocked(enabled_time)
-	
-	if hitshape and hitshape.has_method("hit"):
-		return hitshape.hit(area, int(damage * block_multiplier), false)
-	return false
-	
-func _physics_process(delta: float) -> void:
-	var collision_enabled := false
+	var collision_enabled: bool = false
 	for shape in get_children():
 		if shape is CollisionShape3D and not shape.disabled:
 			collision_enabled = true
@@ -26,3 +18,5 @@ func _physics_process(delta: float) -> void:
 	
 	if collision_enabled: enabled_time += delta
 	else: enabled_time = 0.0
+	
+	#print(enabled_time)
