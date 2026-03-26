@@ -20,6 +20,7 @@
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="21_1qi28"]
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://script/items/wisp_reward.gd" id="23_20oj1"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="23_hybxi"]
+[ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="24_oeds4"]
 [ext_resource type="PackedScene" uid="uid://c2rs4sei2yvd1" path="res://scenes/particles/hurt/pride_hurt_particles.tscn" id="24_uxu3y"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://script/dialog/dialog.gd" id="25_2x3ef"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="25_osw8t"]
@@ -514,6 +515,20 @@ tracks/0/keys = {
 "method": &"play"
 }]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Mesh/ShaderTween")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dissolve_amount", 1.0, 2.0],
+"method": &"tween"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_5k6cf"]
 resource_name = "HURT"
@@ -533,10 +548,29 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_oeds4"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Mesh/ShaderTween")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dissolve_amount", 0.0, 0.0],
+"method": &"tween"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ri305"]
 _data = {
 &"DEATH": SubResource("Animation_u5niv"),
-&"HURT": SubResource("Animation_5k6cf")
+&"HURT": SubResource("Animation_5k6cf"),
+&"RESET": SubResource("Animation_oeds4")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uxu3y"]
@@ -619,6 +653,7 @@ shape = SubResource("CapsuleShape3D_uxu3y")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HitShape" unique_id=578391343]
 root_node = NodePath("../../Attacks")
 libraries/ = SubResource("AnimationLibrary_ri305")
+autoplay = &"RESET"
 
 [node name="Ui" type="Control" parent="." unique_id=918424342 groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
@@ -702,9 +737,15 @@ STOP_CHASE_AREA = NodePath("../HitShape")
 [node name="Mesh" type="Node3D" parent="." unique_id=31844010]
 script = ExtResource("26_8l61o")
 
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh" unique_id=1940434306]
+
+[node name="ShaderTween" type="Node" parent="Mesh" unique_id=578338158]
+script = ExtResource("24_oeds4")
+groups = Array[String](["pride_mesh"])
+
 [node name="pride" parent="Mesh" unique_id=864971963 instance=ExtResource("27_uxu3y")]
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh" unique_id=1940434306]
+[node name="Pride" parent="Mesh/pride" index="0" unique_id=930257281 groups=["pride_mesh"]]
 
 [node name="LockOn" type="Area3D" parent="Mesh" unique_id=840308092]
 transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 1.48289, -0.085655)
@@ -756,3 +797,5 @@ sounds = Array[AudioStream]([ExtResource("17_euapl"), ExtResource("33_u8ma1"), n
 speaker_group = "pig"
 
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
+
+[editable path="Mesh/pride"]

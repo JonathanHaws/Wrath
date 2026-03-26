@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://scenes/ui/damage_numbers.tscn" id="23_adl7b"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/themes/notification.tres" id="23_wlv32"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="24_r4ucj"]
+[ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="26_ov3vn"]
 [ext_resource type="Material" uid="uid://7w72228cchli" path="res://shaders/materials/gluttony_material.tres" id="28_kav4y"]
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://script/items/wisp_reward.gd" id="29_0iori"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://script/component/random_attack.gd" id="29_uk6rk"]
@@ -348,25 +349,13 @@ tracks/16/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/17/type = "value"
+tracks/17/type = "method"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/Retopo:material_override:shader_parameter/dissolve_amount")
+tracks/17/path = NodePath("WispReward")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0, 3.66667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 1.0]
-}
-tracks/18/type = "method"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("WispReward")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
 "times": PackedFloat32Array(4),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -374,25 +363,25 @@ tracks/18/keys = {
 "method": &"give"
 }]
 }
-tracks/19/type = "value"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath("CollisionShape3D:disabled")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("CollisionShape3D:disabled")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
 "times": PackedFloat32Array(0, 4.06667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/20/type = "method"
-tracks/20/imported = false
-tracks/20/enabled = true
-tracks/20/path = NodePath(".")
-tracks/20/interp = 1
-tracks/20/loop_wrap = true
-tracks/20/keys = {
+tracks/19/type = "method"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath(".")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
 "times": PackedFloat32Array(14.433333),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -936,79 +925,79 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/Retopo:material_override:shader_parameter/dissolve_amount")
+tracks/15/path = NodePath("Target:position")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector3(0, 0, 2.45932)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Target:position")
+tracks/16/path = NodePath("Target:MATCH_POSITION")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, 0, 2.45932)]
+"update": 1,
+"values": [true]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
 tracks/17/enabled = true
-tracks/17/path = NodePath("Target:MATCH_POSITION")
+tracks/17/path = NodePath("Mesh/Jump/CollisionShape3D:shape:radius")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [40.0]
 }
 tracks/18/type = "value"
 tracks/18/imported = false
 tracks/18/enabled = true
-tracks/18/path = NodePath("Mesh/Jump/CollisionShape3D:shape:radius")
+tracks/18/path = NodePath("Target:USE_GRAVITY")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [40.0]
+"update": 1,
+"values": [true]
 }
 tracks/19/type = "value"
 tracks/19/imported = false
 tracks/19/enabled = true
-tracks/19/path = NodePath("Target:USE_GRAVITY")
+tracks/19/path = NodePath("Mesh/Jump/CollisionShape3D:disabled")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
 tracks/20/enabled = true
-tracks/20/path = NodePath("Mesh/Jump/CollisionShape3D:disabled")
+tracks/20/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LeftLeg/AttackArea/CollisionShape3D:disabled")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [true]
 }
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LeftLeg/AttackArea/CollisionShape3D:disabled")
+tracks/21/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/RightLeg/AttackArea/CollisionShape3D:disabled")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
@@ -1020,7 +1009,7 @@ tracks/21/keys = {
 tracks/22/type = "value"
 tracks/22/imported = false
 tracks/22/enabled = true
-tracks/22/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/RightLeg/AttackArea/CollisionShape3D:disabled")
+tracks/22/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/RightHand/AttackArea/CollisionShape3D:disabled")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
@@ -1032,7 +1021,7 @@ tracks/22/keys = {
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/RightHand/AttackArea/CollisionShape3D:disabled")
+tracks/23/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea/CollisionShape3D:disabled")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
@@ -1044,22 +1033,10 @@ tracks/23/keys = {
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea/CollisionShape3D:disabled")
+tracks/24/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/VomitSpawner:scene_to_spawn")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/25/type = "value"
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/BoneAttachment3D/VomitSpawner:scene_to_spawn")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -1830,6 +1807,20 @@ tracks/0/keys = {
 "method": &"play"
 }]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Mesh/ShaderTween")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dissolve_amount", 1.0, 2.0],
+"method": &"tween"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_5k6cf"]
 resource_name = "HURT"
@@ -1849,10 +1840,29 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_ov3vn"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Mesh/ShaderTween")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dissolve_amount", 0.0, 0.0],
+"method": &"tween"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ri305"]
 _data = {
 &"DEATH": SubResource("Animation_451fm"),
-&"HURT": SubResource("Animation_5k6cf")
+&"HURT": SubResource("Animation_5k6cf"),
+&"RESET": SubResource("Animation_ov3vn")
 }
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_vwjlg"]
@@ -2250,6 +2260,7 @@ shape = SubResource("CapsuleShape3D_kcm85")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HitShape" unique_id=1856244187]
 root_node = NodePath("../../AnimationPlayer")
 libraries/ = SubResource("AnimationLibrary_ri305")
+autoplay = &"RESET"
 
 [node name="Ui" type="Control" parent="." unique_id=1323486897 groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
@@ -2358,6 +2369,10 @@ color = Color(0, 0, 0, 0)
 
 [node name="Mesh" type="Node3D" parent="." unique_id=1223605182]
 
+[node name="ShaderTween" type="Node" parent="Mesh" unique_id=222730232]
+script = ExtResource("26_ov3vn")
+groups = Array[String](["gluttony_mesh"])
+
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh" unique_id=2051367108]
 
 [node name="Jump" type="Area3D" parent="Mesh" unique_id=823332827]
@@ -2440,7 +2455,7 @@ bones/55/rotation = Quaternion(0.19292425, -0.35550728, 0.32328704, 0.85550004)
 bones/56/rotation = Quaternion(-0.272658, 0.016968768, -0.120777525, 0.9543492)
 bones/57/rotation = Quaternion(0.04008765, -0.008712262, -0.088202596, 0.99525756)
 
-[node name="Retopo" parent="Mesh/gluttony/Armature/Skeleton3D" index="0" unique_id=167493510]
+[node name="Retopo" parent="Mesh/gluttony/Armature/Skeleton3D" index="0" unique_id=167493510 groups=["gluttony_mesh"]]
 material_override = ExtResource("28_kav4y")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="1" unique_id=134155221]

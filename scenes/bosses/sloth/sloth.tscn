@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/ghosts/ghost_hurt_particles.tscn" id="21_xr0xi"]
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://script/items/wisp_reward.gd" id="23_2wp77"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="23_8fqfx"]
+[ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="24_uahh5"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="25_gwq6n"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/custom/disolve.gdshader" id="25_vjg2k"]
 [ext_resource type="PackedScene" uid="uid://dnmftqcmv26ca" path="res://models/characters/sloth/sloth.blend" id="27_dbtmo"]
@@ -568,22 +569,10 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/1:shader_parameter/dissolve_amount")
+tracks/9/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/0:albedo_color")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/0:albedo_color")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -618,6 +607,20 @@ tracks/0/keys = {
 "method": &"play"
 }]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Mesh/ShaderTween")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dissolve_amount", 1.0, 2.0],
+"method": &"tween"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_5k6cf"]
 resource_name = "HURT"
@@ -637,10 +640,29 @@ tracks/0/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_uahh5"]
+resource_name = "RESET"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Mesh/ShaderTween")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["dissolve_amount", 0.0, 0.0],
+"method": &"tween"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ri305"]
 _data = {
 &"DEATH": SubResource("Animation_ui8gw"),
-&"HURT": SubResource("Animation_5k6cf")
+&"HURT": SubResource("Animation_5k6cf"),
+&"RESET": SubResource("Animation_uahh5")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uahh5"]
@@ -873,6 +895,7 @@ shape = SubResource("CapsuleShape3D_dbtmo")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HitShape" unique_id=1742099839]
 root_node = NodePath("../../Attacks")
 libraries/ = SubResource("AnimationLibrary_ri305")
+autoplay = &"RESET"
 
 [node name="Ui" type="Control" parent="." unique_id=1164852772 groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
@@ -956,6 +979,10 @@ STOP_CHASE_AREA = NodePath("../HitShape")
 
 [node name="Mesh" type="Node3D" parent="." unique_id=1415185518]
 
+[node name="ShaderTween" type="Node" parent="Mesh" unique_id=91285279]
+script = ExtResource("24_uahh5")
+groups = Array[String](["sloth_mesh"])
+
 [node name="sloth" parent="Mesh" unique_id=2146499300 instance=ExtResource("27_dbtmo")]
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2146499300, 1143487638) index="0" unique_id=636975154]
@@ -970,7 +997,7 @@ primary_damp_threshold = 1.0
 secondary_limit_angle = 0.87266463
 secondary_damp_threshold = 1.0
 
-[node name="Sphere_001" parent="Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2146499300, 1143487638) index="1" unique_id=1540143776]
+[node name="Sphere_001" parent="Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2146499300, 1143487638) index="1" unique_id=1540143776 groups=["sloth_mesh"]]
 surface_material_override/0 = SubResource("StandardMaterial3D_uahh5")
 surface_material_override/1 = SubResource("ShaderMaterial_ic1i5")
 
