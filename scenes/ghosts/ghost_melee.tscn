@@ -785,9 +785,6 @@ HEALTH = 300.0
 MAX_HEALTH = 300.0
 ROOT = NodePath("..")
 IMMUNE_GROUPS = Array[String](["ghost"])
-SAVE_HEALTH = true
-RESPAWN_ON_DEATH = true
-RESPAWN_ON_REST = true
 DAMAGE_NUMBERS = ExtResource("3_mvqiw")
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 

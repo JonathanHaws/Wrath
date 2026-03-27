@@ -1,6 +1,7 @@
 [gd_resource type="Environment" format=3 uid="uid://bagg8vxcexy7w"]
 
 [ext_resource type="Texture2D" uid="uid://dlcy0goiywjbv" path="res://models/sky/skybox_texture.png" id="1_kh1ui"]
+[ext_resource type="CompressedTexture3D" uid="uid://guj1uclivqt4" path="res://shaders/lut/LUT.png" id="1_nxt8h"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kh1ui"]
 panorama = ExtResource("1_kh1ui")
@@ -11,6 +12,7 @@ process_mode = 2
 
 [resource]
 background_mode = 2
+background_energy_multiplier = 2.2
 sky = SubResource("Sky_clymx")
 ambient_light_source = 2
 ambient_light_color = Color(0.21662158, 0.21662134, 0.21662137, 1)
@@ -40,3 +42,4 @@ volumetric_fog_emission = Color(0.187176, 0.187176, 0.187176, 1)
 volumetric_fog_length = 1034.55
 volumetric_fog_detail_spread = 0.965936
 adjustment_enabled = true
+adjustment_color_correction = ExtResource("1_nxt8h")

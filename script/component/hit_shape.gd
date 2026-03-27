@@ -87,7 +87,9 @@ func show_damage(damage_amount: int) -> void:
 	get_tree().current_scene.add_child(number)
 	number.position = get_viewport().get_camera_3d().unproject_position(self.global_position) - Vector2(0, 140.0)
 func teleport_nodes_to_hit_source(hit_source: Area3D) -> void:
+	if not hit_source: return
 	for node in TELEPORT_NODES_TO_HIT:
+		if not node: return	
 		node.global_transform.origin = hit_source.global_transform.origin
 
 @export_subgroup("Animation") 

@@ -254,7 +254,7 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["INTRODUCTION"])
 
 [node name="Camera3D" type="Camera3D" parent="Cinematic" unique_id=2010672013 groups=["cinematic_camera"]]
-transform = Transform3D(0.34202856, 0.057365693, -0.9379365, 0, 0.9981344, 0.061047494, 0.9396896, -0.020879986, 0.34139046, -366.5924, 108.807755, 203.19954)
+transform = Transform3D(0.34202856, 0.057365693, -0.9379364, 0, 0.99813426, 0.061047494, 0.9396896, -0.020879986, 0.34139043, -366.5924, 108.807755, 203.19954)
 fov = 20.0
 
 [node name="Door" type="Node" parent="." unique_id=368264647]

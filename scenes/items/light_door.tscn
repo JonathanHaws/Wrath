@@ -122,9 +122,9 @@ offset = Vector3(14.7888, 0, 0)
 noise = SubResource("FastNoiseLite_ojp7h")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rx8ry"]
-albedo_color = Color(0.523473, 0.597846, 0.647484, 1)
+albedo_color = Color(0.41618717, 0.48540288, 0.53430206, 1)
 emission_enabled = true
-emission_energy_multiplier = 4.14
+emission_energy_multiplier = 0.0
 normal_enabled = true
 normal_scale = -0.14
 normal_texture = SubResource("NoiseTexture2D_42w7d")
