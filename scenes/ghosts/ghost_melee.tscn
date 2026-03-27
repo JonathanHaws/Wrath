@@ -54,7 +54,7 @@ tracks/1/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.73333335, 1.2555555),
+"times": PackedFloat32Array(0, 0.73333335, 0.76666665),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -781,10 +781,10 @@ BODY = NodePath("../..")
 
 [node name="Hitshape" type="Area3D" parent="." unique_id=1261233255 node_paths=PackedStringArray("ROOT", "TELEPORT_NODES_TO_HIT") groups=["enemy_hitshape"]]
 script = ExtResource("2_i6eoe")
+IMMUNE_GROUPS = Array[String](["ghost"])
 HEALTH = 300.0
 MAX_HEALTH = 300.0
 ROOT = NodePath("..")
-IMMUNE_GROUPS = Array[String](["ghost"])
 DAMAGE_NUMBERS = ExtResource("3_mvqiw")
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 
@@ -871,14 +871,12 @@ target = NodePath("../../Target")
 [node name="melee_ghost" parent="Mesh" unique_id=1456879138 instance=ExtResource("21_l7nyu")]
 
 [node name="Skeleton3D" parent="Mesh/melee_ghost/Armature" parent_id_path=PackedInt32Array(1456879138, 1672975681) index="0" unique_id=1070647026]
-bones/0/position = Vector3(-1.753133e-18, 0.0012437146, 0.008131979)
-bones/0/rotation = Quaternion(-0.009763041, -1.2559209e-16, -1.2559209e-16, 0.9999523)
-bones/1/rotation = Quaternion(-0.013132593, 1.1918087e-07, -2.602376e-09, 0.9999138)
-bones/1/scale = Vector3(1, 1.0070453, 1.000183)
-bones/2/rotation = Quaternion(0.029850595, 3.437446e-11, 5.673127e-09, 0.99955446)
-bones/2/scale = Vector3(0.9980099, 0.9998075, 0.999114)
-bones/3/rotation = Quaternion(0.03689858, -1.19128096e-07, 4.3986548e-09, 0.9993191)
-bones/3/scale = Vector3(0.99912894, 0.9991289, 0.99912894)
+bones/0/position = Vector3(1.3865103e-17, -0.00046122758, -0.09171893)
+bones/0/rotation = Quaternion(-0.17252295, -1.2517903e-16, -1.4183033e-16, 0.98500556)
+bones/1/rotation = Quaternion(-0.32669437, 1.1029549e-07, 4.22515e-09, 0.94513005)
+bones/1/scale = Vector3(1, 0.9999999, 1)
+bones/2/rotation = Quaternion(-0.27216357, -0.0003853306, 6.0697945e-05, 0.96225095)
+bones/3/rotation = Quaternion(0.23289913, -1.159082e-07, 2.7759997e-08, 0.9725009)
 
 [node name="Sphere" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="0" unique_id=324875968]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0038164, 0)
@@ -893,7 +891,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0038164, 0)
 surface_material_override/0 = SubResource("StandardMaterial3D_o8rnl")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="3" unique_id=2037146665]
-transform = Transform3D(0.9971406, 4.9679834e-09, -2.1134383e-10, -4.9675872e-09, 1.0020642, -0.08844371, 3.8838266e-10, 0.08717988, 0.9946275, 4.3360857e-09, 1.638416, -0.015138507)
+transform = Transform3D(0.9999997, -0.00026824308, -0.00073268777, 0.0007740333, 0.45933035, 0.88826495, 9.827494e-05, -0.8882653, 0.4593306, 6.126009e-05, 0.7093263, -1.3370602)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -905,7 +903,6 @@ script = ExtResource("21_oquh6")
 parryable = true
 parry_anim = "STUNNED"
 deflected_anim_player = NodePath("../../../../../../AnimationPlayer")
-ignore_groups = ["enemy_hitshape"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/Attack" unique_id=1190067184]
 transform = Transform3D(1, 7.275958e-12, -9.497114e-11, 2.05182e-09, 1, 4.031579e-06, 6.002665e-10, -4.0382147e-06, 0.9999997, 0.012835152, 2.450626, -0.09735992)

@@ -182,7 +182,7 @@ func try_plunge() -> void:
 		ANIM.play("PLUNGE", 0)
 
 @export_subgroup("Dash")
-@export var DASH_COOLDOWN: float = 0.0
+@export var DASH_COOLDOWN: float = 0.3
 @export var DASH_EXIT_SPEED: float = 3.0
 @export var DASH_DISABLED: bool = false
 var dash_cooldown_left: float = 0.0
@@ -194,7 +194,9 @@ func try_dash(delta: float) -> void:
 	if ANIM and ANIM.current_animation == "DASH": return
 	if dash_cooldown_left > 0: dash_cooldown_left -= delta
 	if Input.is_action_just_pressed("dash") and dash_cooldown_left <= 0:
-		if ANIM and in_interruptible_animation(): ANIM.play("DASH", 0.0)
+		if ANIM and in_interruptible_animation(): 
+			dash_cooldown_left = DASH_COOLDOWN
+			ANIM.play("DASH", 0.0)
 	
 @export_subgroup("Shooting")
 @export var SHOOTING_DISABLED: bool = false

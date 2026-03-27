@@ -1,12 +1,12 @@
 extends Area3D
 signal DIED; signal HURT; signal HEAL
+@export var IMMUNE_GROUPS: Array[String] = ["enemies"] ## Groups of hurtboxes in which this scene is immune to
 @export_group("Health")
 @export var DISABLED: bool = false 
 @export var HEALTH :float = 500.0
 @export var MAX_HEALTH	:float = 500.0
 @export var INVINCIBILITY_COOLDOWN: float = 0.05 ## After object gets hit how long they are invincible
 @export var ROOT: Node ## Root of scene that will be freed if health is less then 0 when scene loaded in ready
-@export var IMMUNE_GROUPS: Array[String] = [] ## Groups of hurtboxes in which this scene is immune to
 func add_immune_group(group_name: String) -> void:
 	if not group_name in IMMUNE_GROUPS:
 		IMMUNE_GROUPS.append(group_name)
@@ -132,6 +132,7 @@ func hit(area: Area3D = null, damage: int = 0, play_animation: bool = true) -> b
 	return true
 		
 func _ready():
+	for group in IMMUNE_GROUPS : add_to_group(group)
 	
 	if INVINCIBILITY_COOLDOWN > 0:
 		invincibility_timer = Timer.new()

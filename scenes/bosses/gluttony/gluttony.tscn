@@ -2706,7 +2706,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="10" unique_id=665646346]
-transform = Transform3D(1, 2.842171e-14, -4.7683713e-07, -2.983898e-07, 0.7800083, -0.6257686, 3.71937e-07, 0.6257686, 0.7800084, 5.5246958e-14, 3.036944, 0.24238157)
+transform = Transform3D(1, 6.3948846e-14, -1.4210855e-13, -9.947598e-14, 0.8158263, -0.5782967, 2.842171e-14, 0.57829666, 0.81582636, 5.5246958e-14, 3.036944, 0.24238157)
 bone_name = "head"
 bone_idx = 4
 

@@ -252,15 +252,15 @@ hurt_box = NodePath("Attack")
 
 [node name="projectile" parent="Node3D" unique_id=1400207989 instance=ExtResource("2_8trq3")]
 
-[node name="Cylinder" parent="Node3D/projectile" index="0" unique_id=1893045559]
+[node name="Cylinder" parent="Node3D/projectile" index="0" unique_id=72310232]
 surface_material_override/0 = SubResource("StandardMaterial3D_sb5oc")
 
-[node name="Attack" type="Area3D" parent="." unique_id=1769833961 node_paths=PackedStringArray("hit_animation_player") groups=["player"]]
+[node name="Attack" type="Area3D" parent="." unique_id=1769833961 node_paths=PackedStringArray("animation_player") groups=["player"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("3_32n4n")
-damage_groups = Array[String](["enemy_hitshape"])
-hit_animation_player = NodePath("../Hurt")
+groups = Array[String]([])
+animation_player = NodePath("../Hurt")
 save_key = "shoot_damage"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack" unique_id=2015519998]
