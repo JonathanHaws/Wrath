@@ -21,11 +21,19 @@ signal hurt_something
 @export var parry_anim: String = "PARRY"
 @export var deflected_anim_player: AnimationPlayer
 @export var block_groups: Array[String] = ["player_blockshape", "enemy_blockshape"]
-func is_block_area(area: Area3D) -> bool:
-	for group in block_groups: for node in overlapping_areas:
-		if node.is_in_group(group): return true
+## REQUIRED. Put own hitshape group in here. Or else block will probably be triggered when this hurt area enters its own hitshape
+@export var ignore_groups: Array = []
+func is_ignored_area(area: Area3D) -> bool:
+	for group in ignore_groups: if area.is_in_group(group): return true
 	return false
+func is_block_area(area: Area3D) -> bool:
+	for group in block_groups: if area.is_in_group(group): return true
+	return false
+func is_block_area_in_overlapping_areas() -> Area3D:
+	for node in overlapping_areas: if is_block_area(node): return node
+	return null	
 func blocked(area: Area3D) -> void:
+	#print(area.name)
 	
 	if area.has_method("play_blocked_animation"):
 		area.play_blocked_animation()  
@@ -37,15 +45,14 @@ func blocked(area: Area3D) -> void:
 		if not deflected_anim_player.has_animation(parry_anim): return
 		if deflected_anim_player.current_animation == parry_anim: return
 		deflected_anim_player.play(parry_anim)
-		print('parried')
+		#print('parried')
 		return
 	else: # regular block
 		if not deflected_anim_player.has_animation(blocked_anim): return
 		if deflected_anim_player.current_animation == blocked_anim: return
 		deflected_anim_player.play(blocked_anim)
-		print('blocked')
+		#print('blocked')
 			
-
 @export_group("Save") ## For upgradable damage that needs to be persisten / update
 @export var enable_save: bool = false
 @export var save_key: String = ""
@@ -68,24 +75,21 @@ func save_ready() -> void:
 	Save.connect("save_data_updated", _on_save_data_updated)
 
 func hurt(area: Area3D) -> void:
-	#print("hurt ", area.name)
-	
 	if disabled: return
-	emit_signal("hurt_something")
 	await get_tree().physics_frame # Ensure both the regular hit_shape AND block_shape is in 'overlapping areas;
+	if area not in overlapping_areas: return
+	#print("Cooldown remaining:", overlapping_areas[area]["cooldown"].is_stopped())
+	if not overlapping_areas[area]["cooldown"].is_stopped(): return
 	
-	# Check if one of overlapping areas is in block group... Then call hit on it instead instead of parameter area...
-	# It will then call hit again with a weaker value.... if needs be
-	if is_block_area(area):
-		blocked(area)
+	# Check if one of overlapping areas is in block group...
+	# Blocked will then call hit again itself with a weaker value... if needs be
+	var block_area = is_block_area_in_overlapping_areas()
+	if block_area:
+		blocked(block_area)
 		return
 	
-	#print("Cooldown remaining:", overlapping_areas[area]["cooldown"].is_stopped())
-	if area not in overlapping_areas: return
-	if not overlapping_areas[area]["cooldown"].is_stopped(): return
-	if !"hit" in area: return
-	
 	if area.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * damage_multiplier):
+		emit_signal("hurt_something")
 		overlapping_areas[area]["cooldown"].start()
 		overlapping_areas[area]["linger"].start() 
 		overlapping_areas[area]["linger"].start() 
@@ -98,7 +102,11 @@ func hurt(area: Area3D) -> void:
 			
 func _on_area_entered(area: Area3D) -> void:
 	
+	if is_ignored_area(area): return
+	if is_block_area(area): overlapping_areas[area] = {}; # add block overlapping
+	if !"hit" in area: return
 	if area in overlapping_areas: return
+	
 	var cooldown_timer = Timer.new()
 	cooldown_timer.one_shot = true
 	cooldown_timer.wait_time = cooldown
@@ -112,9 +120,8 @@ func _on_area_entered(area: Area3D) -> void:
 	#linger_timer.add_to_group("memory_leak_check")
 
 	overlapping_areas[area] = { "cooldown": cooldown_timer, "linger": linger_timer }
-
+	 
 	hurt(area)
-	
 
 func _on_area_exited(area: Area3D) -> void:
 	if area in overlapping_areas: # Clean up potential memory leak
@@ -129,7 +136,6 @@ func _ready() -> void:
 	if hit_shape and hit_shape.has_signal("DIED"):
 		hit_shape.DIED.connect(queue_free)
 	
-
 #func _process(_delta: float) -> void:
 	#print("Timers alive:", get_tree().get_nodes_in_group("memory_leak_check").size())
 

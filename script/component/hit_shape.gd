@@ -66,8 +66,10 @@ func _update_respawn_counter(counter_key: String, total_key: String) -> void:
 	
 	Save.data[counter_key] = total + 1
 	Save.data.erase(get_health_key())
-	if RESPAWN_TO_MAX_HEALTH: HEALTH = Save.data.get(get_max_health_key(), MAX_HEALTH)
-	else: HEALTH = initial_health
+	if RESPAWN_TO_MAX_HEALTH: 
+		HEALTH = Save.data.get(get_max_health_key(), MAX_HEALTH)
+	else: 
+		HEALTH = initial_health
 func _load_respawns() -> void:
 	if DEATH_COUNT_KEY.is_empty(): DEATH_COUNT_KEY = Save.get_unique_key(self, "death_respawn")
 	if REST_COUNT_KEY.is_empty(): REST_COUNT_KEY = Save.get_unique_key(self, "rest_respawn")
