@@ -1,12 +1,9 @@
-# Make sure in main mneu put a node2d with this script which is hidden...
+# Make sure process mode for this node is 'always' so when game pauses it doesnt pause this scripts functions aswell
 # That way if the player is coming back to the main menu from a pause menu the game will be unpaused 
 # If this is not done menu will seem unresponsive and glitchy
 
 extends Node
-func _ready() -> void: 
-	# Make sure process mode for this node is 'always' so when game pauses it doesnt pause this scripts functions aswell
-	process_mode = Node.PROCESS_MODE_ALWAYS 
-	toggle(false)
+
 
 func toggle(paused: bool) -> void:
 	self.visible = paused
