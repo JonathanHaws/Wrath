@@ -4,7 +4,6 @@
 
 extends Node
 
-
 func toggle(paused: bool) -> void:
 	self.visible = paused
 	Engine.time_scale = 0 if paused else 1

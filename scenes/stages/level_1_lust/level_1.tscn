@@ -49,7 +49,7 @@ size = Vector3(107.057, 44.5585, 30)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights" unique_id=1634604778]
 transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 16.3637, 1.1386, -0.412741)
-light_color = Color(0.29, 0.29, 0.29, 1)
+light_color = Color(0.38, 0.3534, 0.3591633, 1)
 light_energy = 100.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
@@ -104,4 +104,4 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HealTutorial" unique_id=389926924]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 1.9887085)
 shape = SubResource("BoxShape3D_hgjnn")
-debug_color = Color(0.768, 0.79413337, 0.8, 0.88235295)
+debug_color = Color(0.768, 0.79413337, 0.8, 0)

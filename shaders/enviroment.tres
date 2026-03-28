@@ -1,7 +1,7 @@
 [gd_resource type="Environment" format=3 uid="uid://bagg8vxcexy7w"]
 
 [ext_resource type="Texture2D" uid="uid://dlcy0goiywjbv" path="res://models/sky/skybox_texture.png" id="1_kh1ui"]
-[ext_resource type="CompressedTexture3D" uid="uid://guj1uclivqt4" path="res://shaders/lut/LUT.png" id="1_nxt8h"]
+[ext_resource type="CompressedTexture3D" uid="uid://guj1uclivqt4" path="res://shaders/lut/default_lut.png" id="1_nxt8h"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kh1ui"]
 panorama = ExtResource("1_kh1ui")
