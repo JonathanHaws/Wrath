@@ -3500,6 +3500,7 @@ size = Vector3(17.3834, 22.7476, 51.4006)
 render_priority = 0
 shader = ExtResource("37_cbycm")
 shader_parameter/lut_tex = ExtResource("38_d6veh")
+shader_parameter/lut_size = 16.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_sm0mq"]
 flip_faces = true
