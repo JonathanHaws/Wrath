@@ -183,60 +183,68 @@ func load_graphics_settings() -> void:
 
 #region Graphics
 
-const auto_load_enviroment_group: String = "auto_load_graphics"
+const auto_load_enviroment_group: String = "auto_load_graphics" #
+var default_environment_settings: Dictionary = {} # used for caching the default so graphics can reset them
+var graphics_keys: Array[String] = [
+	"adjustment_brightness",
+	"adjustment_contrast",
+	"adjustment_saturation",
+	"ssao_enabled",
+	"ssao_radius",
+	"ssao_intensity",
+	"glow_enabled",
+	"glow_intensity",
+	"glow_bloom"
+]
 
-func get_environment_value(key: String) -> Variant:
-	var env: Environment = get_viewport().get_world_3d().environment
-	if env == null: return
-	#if not key in env: print("Environment does not have setting: " + str(key)); return
-	return Config.load_setting("graphics", key, env.get(key))
-
-func set_environment_value(key: String, value: Variant) -> void:
-	var env: Environment = get_viewport().get_world_3d().environment
-	if env == null: return
-	#if not key in env: print("Environment does not have setting: " + str(key)); return
-	env.set(key, value)
-	Config.save_setting("graphics", key, value)
-
+func _cache_default_environment_settings(environment) -> void:
+	for key in graphics_keys:
+		default_environment_settings[key] = environment.get(key)
 func _load_enviroment(environment) -> void:
+	#print('loading graphics onto current environment')
 	environment.adjustment_enabled = true
-	environment.adjustment_brightness = load_setting("graphics", "adjustment_brightness", environment.adjustment_brightness)
-	environment.adjustment_contrast   = load_setting("graphics", "adjustment_contrast",   environment.adjustment_contrast)
-	environment.adjustment_saturation = load_setting("graphics", "adjustment_saturation", environment.adjustment_saturation)
-	environment.ssao_enabled          = load_setting("graphics", "ssao_enabled", environment.ssao_enabled)
-	environment.ssao_radius           = load_setting("graphics", "ssao_radius",  environment.ssao_radius)
-	environment.ssao_intensity        = load_setting("graphics", "ssao_intensity", environment.ssao_intensity)
-	environment.glow_enabled          = load_setting("graphics", "glow_enabled",   environment.glow_enabled)
-	environment.glow_intensity        = load_setting("graphics", "glow_intensity", environment.glow_intensity)
-	environment.glow_bloom            = load_setting("graphics", "glow_bloom", environment.glow_bloom)
-	#print('loading graphics onto environment')
-
+	for key in graphics_keys:
+		environment.set(key, load_setting("graphics", key, environment.get(key)))
 func poll_for_new_environments_and_load_graphics_settings() -> void:
 	for world in get_tree().get_nodes_in_group(auto_load_enviroment_group):
 		if not world.has_meta("graphics_loaded"):
+			_cache_default_environment_settings(world.environment)
 			_load_enviroment(world.environment)
 			world.set_meta("graphics_loaded", true)
 
-#region Controls (Buttons / Sliders)
+func get_current_environment() -> Environment:
+	var env: Environment = get_viewport().get_world_3d().environment
+	return env
 
-func _on_graphics_toggled(setting: String, enabled: bool) -> void:
-	set_environment_value(setting, enabled)
-
-func _on_graphics_changed(setting: String, value: float, label: Label) -> void:
-	set_environment_value(setting, value)
-	if label: label.text = str(value)
-
-func connect_graphics_control(setting: String, toggle_button: CheckButton = null, slider: HSlider = null, label: Label = null) -> void:
-	if toggle_button: 
-		toggle_button.button_pressed = get_environment_value(setting)
-		toggle_button.toggled.connect(func(v): _on_graphics_toggled(setting, v))
+func connect_graphics_control(setting: String, toggle_button: CheckButton = null, slider: HSlider = null, label: Label = null, reset_button: Button = null) -> void:
+	var saved_value = load_setting("graphics", setting, get_current_environment().get(setting))
+	
+	if toggle_button:
+		toggle_button.button_pressed = saved_value
+		toggle_button.toggled.connect(func(v):
+			get_current_environment().set(setting, v)
+			save_setting("graphics", setting, v)
+		)
+	
 	if slider: 
-		var value = get_environment_value(setting)
-		slider.value = value
-		label.text = str(round(value / slider.step) * slider.step)
-		slider.value_changed.connect(func(v): _on_graphics_changed(setting, v, label))
-
-#endregion
+		slider.value = saved_value
+		label.text = str(round(saved_value / slider.step) * slider.step)
+		slider.value_changed.connect(func(v):
+			get_current_environment().set(setting, v)
+			save_setting("graphics", setting, v)
+			if label: label.text = str(v)
+		)
+		
+	if reset_button:
+		reset_button.pressed.connect(func():
+			var value = default_environment_settings[setting]
+			#print(default_environment_settings)
+			if toggle_button: 
+				toggle_button.button_pressed = value
+			if slider:
+				slider.value = value
+				if label: label.text = str(round(value / slider.step) * slider.step)
+		)
 
 #endregion
 

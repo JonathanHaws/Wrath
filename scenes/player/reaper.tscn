@@ -47,7 +47,9 @@
 [ext_resource type="Material" uid="uid://d05o8hg3ko84m" path="res://shaders/materials/cloak.tres" id="36_4anjp"]
 [ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://script/player/tracker/play_time_tracker.gd" id="36_5cvkf"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="36_p2pt0"]
+[ext_resource type="Shader" uid="uid://nucdptik1mcb" path="res://shaders/custom/lut.gdshader" id="37_cbycm"]
 [ext_resource type="Script" uid="uid://cwwirvd46gyr2" path="res://script/player/plunge_multiplier.gd" id="38_5ijfa"]
+[ext_resource type="CompressedTexture3D" uid="uid://guj1uclivqt4" path="res://shaders/lut/lut_default.png" id="38_d6veh"]
 [ext_resource type="Script" uid="uid://0q73mstd3d54" path="res://script/player/spin_multiplier.gd" id="38_fw2bj"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://script/component/squash.gd" id="41_utjob"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="42_k5idf"]
@@ -3494,6 +3496,14 @@ height = 2.818
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0gmj"]
 size = Vector3(17.3834, 22.7476, 51.4006)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ojv1r"]
+render_priority = 0
+shader = ExtResource("37_cbycm")
+shader_parameter/lut_tex = ExtResource("38_d6veh")
+
+[sub_resource type="QuadMesh" id="QuadMesh_sm0mq"]
+flip_faces = true
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_qlt7i"]
 radius = 2.197676
 
@@ -3938,6 +3948,12 @@ transform = Transform3D(1, 0, 0, 0, 0.979695, 0.200497, 0, -0.200497, 0.979695, 
 transform = Transform3D(1, 0, 0, 0, 0.98922, -0.146411, 0, 0.146411, 0.98922, -0.0899051, 9.90892, -24.3671)
 shape = SubResource("BoxShape3D_y0gmj")
 debug_color = Color(0.7, 0.7, 0.7, 0.368627)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SpringArm3D/Camera3D" unique_id=342996365]
+visible = false
+material_override = SubResource("ShaderMaterial_ojv1r")
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_sm0mq")
 
 [node name="Mesh" type="Node3D" parent="." unique_id=531747882 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "BODY") groups=["player_mesh"]]
 script = ExtResource("32_qsprq")

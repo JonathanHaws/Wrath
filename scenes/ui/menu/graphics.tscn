@@ -28,7 +28,7 @@ anchors_preset = 0
 
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=713534090 groups=["ui_scalable"]]
 layout_mode = 1
-offset_right = 354.0
+offset_right = 379.0
 offset_bottom = 330.0
 color = Color(0.0646965, 0.0646965, 0.0646965, 0.913725)
 script = ExtResource("2_km2ec")
@@ -62,7 +62,7 @@ offset_bottom = 22.0
 size_flags_vertical = 4
 min_value = 0.5
 max_value = 1.5
-step = 0.05
+step = 0.025
 value = 1.0
 
 [node name="Label" type="Label" parent="Control/ColorRect/VBoxContainer/Brightness" unique_id=1730135814]
@@ -73,6 +73,14 @@ offset_right = 336.0
 offset_bottom = 26.0
 theme = ExtResource("4_ulx4h")
 text = "1.0"
+
+[node name="Button" type="Button" parent="Control/ColorRect/VBoxContainer/Brightness" unique_id=974073922]
+layout_mode = 0
+offset_left = 327.0
+offset_top = -8.0
+offset_right = 351.0
+offset_bottom = 26.0
+text = "@"
 
 [node name="Contrast" type="Label" parent="Control/ColorRect/VBoxContainer" unique_id=1242255620]
 layout_mode = 2
@@ -92,7 +100,7 @@ size_flags_vertical = 4
 theme = ExtResource("4_ulx4h")
 min_value = 0.8
 max_value = 1.2
-step = 0.05
+step = 0.025
 value = 1.0
 
 [node name="Label" type="Label" parent="Control/ColorRect/VBoxContainer/Contrast" unique_id=928198564]
@@ -102,6 +110,14 @@ offset_top = -3.0
 offset_right = 337.0
 offset_bottom = 25.0
 text = "1.0"
+
+[node name="Button" type="Button" parent="Control/ColorRect/VBoxContainer/Contrast" unique_id=1813299243]
+layout_mode = 0
+offset_left = 327.0
+offset_top = -8.0
+offset_right = 351.0
+offset_bottom = 26.0
+text = "@"
 
 [node name="Saturation" type="Label" parent="Control/ColorRect/VBoxContainer" unique_id=1879950806]
 layout_mode = 2
@@ -120,7 +136,7 @@ offset_bottom = 22.0
 size_flags_vertical = 4
 theme = ExtResource("4_ulx4h")
 max_value = 1.5
-step = 0.025
+step = 0.1
 value = 1.0
 
 [node name="Label" type="Label" parent="Control/ColorRect/VBoxContainer/Saturation" unique_id=432957963]
@@ -130,6 +146,14 @@ offset_top = -4.0
 offset_right = 337.0
 offset_bottom = 24.0
 text = "1.0"
+
+[node name="Button" type="Button" parent="Control/ColorRect/VBoxContainer/Saturation" unique_id=555371993]
+layout_mode = 0
+offset_left = 327.0
+offset_top = -8.0
+offset_right = 351.0
+offset_bottom = 26.0
+text = "@"
 
 [node name="SSAORadius" type="Label" parent="Control/ColorRect/VBoxContainer" unique_id=934896518]
 layout_mode = 2
@@ -161,6 +185,14 @@ offset_bottom = 26.0
 theme = ExtResource("4_ulx4h")
 text = "1.0"
 
+[node name="Button" type="Button" parent="Control/ColorRect/VBoxContainer/SSAORadius" unique_id=364670571]
+layout_mode = 0
+offset_left = 327.0
+offset_top = -8.0
+offset_right = 351.0
+offset_bottom = 26.0
+text = "@"
+
 [node name="SSAOIntensity" type="Label" parent="Control/ColorRect/VBoxContainer" unique_id=2095064521]
 layout_mode = 2
 theme = ExtResource("4_ulx4h")
@@ -191,6 +223,14 @@ offset_bottom = 26.0
 theme = ExtResource("4_ulx4h")
 text = "1.0"
 
+[node name="Button" type="Button" parent="Control/ColorRect/VBoxContainer/SSAOIntensity" unique_id=2047799613]
+layout_mode = 0
+offset_left = 327.0
+offset_top = -8.0
+offset_right = 351.0
+offset_bottom = 26.0
+text = "@"
+
 [node name="SSAO" type="Label" parent="Control/ColorRect/VBoxContainer" unique_id=2074995800]
 layout_mode = 2
 theme = ExtResource("4_ulx4h")
@@ -205,6 +245,14 @@ offset_top = 1.0
 offset_right = 95.0
 offset_bottom = 25.0
 
+[node name="Button" type="Button" parent="Control/ColorRect/VBoxContainer/SSAO" unique_id=414018643]
+layout_mode = 0
+offset_left = 327.0
+offset_top = -8.0
+offset_right = 351.0
+offset_bottom = 26.0
+text = "@"
+
 [node name="Glow" type="Label" parent="Control/ColorRect/VBoxContainer" unique_id=2017908873]
 layout_mode = 2
 theme = ExtResource("4_ulx4h")
@@ -218,6 +266,14 @@ offset_left = 56.0
 offset_top = 4.0
 offset_right = 100.0
 offset_bottom = 28.0
+
+[node name="Button" type="Button" parent="Control/ColorRect/VBoxContainer/Glow" unique_id=1708618686]
+layout_mode = 0
+offset_left = 327.0
+offset_top = -8.0
+offset_right = 351.0
+offset_bottom = 26.0
+text = "@"
 
 [node name="GlowIntensity" type="Label" parent="Control/ColorRect/VBoxContainer" unique_id=1915337393]
 layout_mode = 2
@@ -248,6 +304,14 @@ offset_bottom = 26.0
 theme = ExtResource("4_ulx4h")
 text = "1.0"
 
+[node name="Button" type="Button" parent="Control/ColorRect/VBoxContainer/GlowIntensity" unique_id=515569709]
+layout_mode = 0
+offset_left = 327.0
+offset_top = -8.0
+offset_right = 351.0
+offset_bottom = 26.0
+text = "@"
+
 [node name="BloomIntensity" type="Label" parent="Control/ColorRect/VBoxContainer" unique_id=1767053022]
 layout_mode = 2
 theme = ExtResource("4_ulx4h")
@@ -276,6 +340,14 @@ offset_right = 336.0
 offset_bottom = 26.0
 theme = ExtResource("4_ulx4h")
 text = "1.0"
+
+[node name="Button" type="Button" parent="Control/ColorRect/VBoxContainer/BloomIntensity" unique_id=1340859063]
+layout_mode = 0
+offset_left = 327.0
+offset_top = -8.0
+offset_right = 351.0
+offset_bottom = 26.0
+text = "@"
 
 [node name="Back" type="Button" parent="Control/ColorRect/VBoxContainer" unique_id=192155630 node_paths=PackedStringArray("node_to_replace") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 2
