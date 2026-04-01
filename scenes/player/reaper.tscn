@@ -47,9 +47,7 @@
 [ext_resource type="Material" uid="uid://d05o8hg3ko84m" path="res://shaders/materials/cloak.tres" id="36_4anjp"]
 [ext_resource type="Script" uid="uid://ikkcs4hhhkni" path="res://script/player/tracker/play_time_tracker.gd" id="36_5cvkf"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="36_p2pt0"]
-[ext_resource type="Shader" uid="uid://nucdptik1mcb" path="res://shaders/custom/lut.gdshader" id="37_cbycm"]
 [ext_resource type="Script" uid="uid://cwwirvd46gyr2" path="res://script/player/plunge_multiplier.gd" id="38_5ijfa"]
-[ext_resource type="CompressedTexture3D" uid="uid://guj1uclivqt4" path="res://shaders/lut/lut_default.png" id="38_d6veh"]
 [ext_resource type="Script" uid="uid://0q73mstd3d54" path="res://script/player/spin_multiplier.gd" id="38_fw2bj"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://script/component/squash.gd" id="41_utjob"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="42_k5idf"]
@@ -69,6 +67,10 @@
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://audio/sfx/characters/menu/Menu_New.wav" id="53_qlt7i"]
 [ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://shaders/bar/player/health_charges_fill.tres" id="56_s81g7"]
 [ext_resource type="StyleBox" uid="uid://cdkrrhvlxa2fc" path="res://shaders/bar/player/shooting_energy_fill.tres" id="57_773af"]
+[ext_resource type="Shader" uid="uid://bqr41vgk3hmn3" path="res://shaders/lut/canvas_lut.gdshader" id="70_d6veh"]
+[ext_resource type="Script" uid="uid://i17kknqf088q" path="res://script/ui/lut_overlay.gd" id="70_ojv1r"]
+[ext_resource type="CompressedTexture3D" uid="uid://be8c2txngdohp" path="res://shaders/lut/lut_lust.png" id="70_sm0mq"]
+[ext_resource type="CompressedTexture3D" uid="uid://guj1uclivqt4" path="res://shaders/lut/lut_default.png" id="71_ojv1r"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_utjob"]
 
@@ -3496,15 +3498,6 @@ height = 2.818
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0gmj"]
 size = Vector3(17.3834, 22.7476, 51.4006)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ojv1r"]
-render_priority = 0
-shader = ExtResource("37_cbycm")
-shader_parameter/lut_tex = ExtResource("38_d6veh")
-shader_parameter/lut_size = 16.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_sm0mq"]
-flip_faces = true
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_qlt7i"]
 radius = 2.197676
 
@@ -3719,6 +3712,12 @@ _data = {
 &"FADE_IN": SubResource("Animation_vfhrj"),
 &"RESET": SubResource("Animation_vjm2n")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sm0mq"]
+shader = ExtResource("70_d6veh")
+shader_parameter/default_lut_texture = ExtResource("71_ojv1r")
+shader_parameter/destination_lut_texture = ExtResource("70_sm0mq")
+shader_parameter/blend = 0.0
 
 [node name="Reaper" type="CharacterBody3D" unique_id=27859288 node_paths=PackedStringArray("STEP_UP_RAY", "HITSHAPE", "CAMERA", "MESH", "COLLISON_SHAPE", "PARTICLES", "ANIM", "MESH_ANIM", "FADE_IN_ANIM") groups=["player", "player_body"]]
 rotation_edit_mode = 1
@@ -3949,12 +3948,6 @@ transform = Transform3D(1, 0, 0, 0, 0.979695, 0.200497, 0, -0.200497, 0.979695, 
 transform = Transform3D(1, 0, 0, 0, 0.98922, -0.146411, 0, 0.146411, 0.98922, -0.0899051, 9.90892, -24.3671)
 shape = SubResource("BoxShape3D_y0gmj")
 debug_color = Color(0.7, 0.7, 0.7, 0.368627)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SpringArm3D/Camera3D" unique_id=342996365]
-visible = false
-material_override = SubResource("ShaderMaterial_ojv1r")
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_sm0mq")
 
 [node name="Mesh" type="Node3D" parent="." unique_id=531747882 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "BODY") groups=["player_mesh"]]
 script = ExtResource("32_qsprq")
@@ -4400,6 +4393,16 @@ visible = false
 
 [node name="Pause" parent="." unique_id=744582408 groups=["pause_menu"] instance=ExtResource("51_bud88")]
 visible = false
+
+[node name="LUT" type="ColorRect" parent="." unique_id=1277256602]
+material = SubResource("ShaderMaterial_sm0mq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("70_ojv1r")
 
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
 
