@@ -1,4 +1,7 @@
 extends Node
+#todo: add a way to reference target materials / meshes directly not just throguh group
+#@export var groups: Array[Node] 
+
 @export var groups: Array[String] = ["target_mesh1"] ## The groups of meshes this tween will act upon. 
 @export var textures: Array[Texture2D] = []	
 

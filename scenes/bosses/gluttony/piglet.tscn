@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://dfri6vhmpkyfv"]
 
 [ext_resource type="PackedScene" uid="uid://wlhsn0forped" path="res://models/characters/piglet/piglet.blend" id="1_w7fh2"]
-[ext_resource type="Material" uid="uid://cn5x858kq0c3r" path="res://shaders/materials/ghost/ghost.tres" id="2_iuu88"]
+[ext_resource type="Material" uid="uid://cn5x858kq0c3r" path="res://shaders/materials/ghost/ghost_body.tres" id="2_iuu88"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="2_yln8f"]
-[ext_resource type="Material" uid="uid://3q6cym1ot3lq" path="res://shaders/materials/ghost/ghost_eye.tres" id="3_b0mqt"]
+[ext_resource type="Material" uid="uid://3q6cym1ot3lq" path="res://shaders/materials/ghost/ghost_eyes.tres" id="3_b0mqt"]
 [ext_resource type="Script" uid="uid://ecjrnrwmlka3" path="res://script/component/interaction.gd" id="3_yln8f"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://script/dialog/dialog.gd" id="4_lk4kr"]
 [ext_resource type="JSON" path="res://json/piglet_talk_1.json" id="5_mqdry"]

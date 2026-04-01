@@ -19,7 +19,7 @@ func _ready():
 
 func _on_lut_area_entered(body):
 	if not body.is_in_group(player_body_group): return
-	#print(body.name, ' entered lut area')
+	#2print(body.name, ' entered lut area')
 	_tween_target_blend(1)
 
 func _on_lut_area_exited(body):

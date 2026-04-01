@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/ghosts/ghost_hurt_particles.tscn" id="18_0wow1"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://script/component/random_attack.gd" id="19_bmgwo"]
 [ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://scenes/ghosts/ghost_projectile.tscn" id="20_fx3bv"]
-[ext_resource type="Material" uid="uid://cn5x858kq0c3r" path="res://shaders/materials/ghost/ghost.tres" id="21_ngww4"]
+[ext_resource type="Material" uid="uid://cn5x858kq0c3r" path="res://shaders/materials/ghost/ghost_body.tres" id="21_ngww4"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="22_qekpj"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="23_fx1cf"]
 
