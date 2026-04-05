@@ -67,10 +67,10 @@
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://audio/sfx/characters/menu/Menu_New.wav" id="53_qlt7i"]
 [ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://shaders/bar/player/health_charges_fill.tres" id="56_s81g7"]
 [ext_resource type="StyleBox" uid="uid://cdkrrhvlxa2fc" path="res://shaders/bar/player/shooting_energy_fill.tres" id="57_773af"]
-[ext_resource type="Shader" uid="uid://bqr41vgk3hmn3" path="res://shaders/lut/canvas_lut.gdshader" id="70_d6veh"]
+[ext_resource type="CompressedTexture3D" uid="uid://guj1uclivqt4" path="res://textures/luts/lut_default.png" id="69_ojv1r"]
+[ext_resource type="Shader" uid="uid://bqr41vgk3hmn3" path="res://shaders/custom/lut.gdshader" id="70_d6veh"]
 [ext_resource type="Script" uid="uid://i17kknqf088q" path="res://script/ui/lut_overlay.gd" id="70_ojv1r"]
-[ext_resource type="CompressedTexture3D" uid="uid://be8c2txngdohp" path="res://shaders/lut/lut_lust.png" id="70_sm0mq"]
-[ext_resource type="CompressedTexture3D" uid="uid://guj1uclivqt4" path="res://shaders/lut/lut_default.png" id="71_ojv1r"]
+[ext_resource type="CompressedTexture3D" uid="uid://be8c2txngdohp" path="res://textures/luts/lut_lust.png" id="70_sm0mq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_utjob"]
 
@@ -3715,7 +3715,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sm0mq"]
 shader = ExtResource("70_d6veh")
-shader_parameter/default_lut_texture = ExtResource("71_ojv1r")
+shader_parameter/default_lut_texture = ExtResource("69_ojv1r")
 shader_parameter/destination_lut_texture = ExtResource("70_sm0mq")
 shader_parameter/blend = 0.0
 
@@ -4394,7 +4394,7 @@ visible = false
 [node name="Pause" parent="." unique_id=744582408 groups=["pause_menu"] instance=ExtResource("51_bud88")]
 visible = false
 
-[node name="LUT" type="ColorRect" parent="." unique_id=1277256602]
+[node name="LUT" type="ColorRect" parent="." unique_id=1277256602 groups=["lut_overlay"]]
 material = SubResource("ShaderMaterial_sm0mq")
 anchors_preset = 15
 anchor_right = 1.0

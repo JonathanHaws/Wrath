@@ -2,16 +2,16 @@
 
 importer="3d_texture"
 type="CompressedTexture3D"
-uid="uid://guj1uclivqt4"
-path="res://.godot/imported/lut_default.png-1d78407ef163a40f19218feff71a510a.ctex3d"
+uid="uid://gyynodp726qb"
+path="res://.godot/imported/lut_passthrough.png-d040816cab18c50e44b8d365900f81d3.ctex3d"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://shaders/lut/lut_default.png"
-dest_files=["res://.godot/imported/lut_default.png-1d78407ef163a40f19218feff71a510a.ctex3d"]
+source_file="res://textures/luts/lut_passthrough.png"
+dest_files=["res://.godot/imported/lut_passthrough.png-d040816cab18c50e44b8d365900f81d3.ctex3d"]
 
 [params]
 
@@ -25,4 +25,4 @@ compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1
 slices/horizontal=16
-slices/vertical=16
+slices/vertical=1

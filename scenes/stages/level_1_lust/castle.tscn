@@ -300,7 +300,7 @@ damage = 10000.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillVolumes/Void" unique_id=1054557280]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.713, -196.083, 36.6345)
 shape = SubResource("BoxShape3D_80ox6")
-debug_color = Color(0.71, 0.71, 0.71, 0.7529412)
+debug_color = Color(0.34, 0.34, 0.34, 0.7529412)
 
 [node name="Void2" type="Area3D" parent="KillVolumes" unique_id=533661465 groups=["platforming_hurt_shape"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 46.9871, 19)
