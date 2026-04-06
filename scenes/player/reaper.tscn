@@ -67,10 +67,9 @@
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://audio/sfx/characters/menu/Menu_New.wav" id="53_qlt7i"]
 [ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://shaders/bar/player/health_charges_fill.tres" id="56_s81g7"]
 [ext_resource type="StyleBox" uid="uid://cdkrrhvlxa2fc" path="res://shaders/bar/player/shooting_energy_fill.tres" id="57_773af"]
-[ext_resource type="CompressedTexture3D" uid="uid://guj1uclivqt4" path="res://textures/luts/lut_default.png" id="69_ojv1r"]
+[ext_resource type="CompressedTexture3D" uid="uid://caybb4g3v4fq4" path="res://textures/luts/lut.png" id="69_d6veh"]
 [ext_resource type="Shader" uid="uid://bqr41vgk3hmn3" path="res://shaders/custom/lut.gdshader" id="70_d6veh"]
 [ext_resource type="Script" uid="uid://i17kknqf088q" path="res://script/ui/lut_overlay.gd" id="70_ojv1r"]
-[ext_resource type="CompressedTexture3D" uid="uid://be8c2txngdohp" path="res://textures/luts/lut_lust.png" id="70_sm0mq"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_utjob"]
 
@@ -3715,8 +3714,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sm0mq"]
 shader = ExtResource("70_d6veh")
-shader_parameter/default_lut_texture = ExtResource("69_ojv1r")
-shader_parameter/destination_lut_texture = ExtResource("70_sm0mq")
+shader_parameter/default_texture = ExtResource("69_d6veh")
 shader_parameter/blend = 0.0
 
 [node name="Reaper" type="CharacterBody3D" unique_id=27859288 node_paths=PackedStringArray("STEP_UP_RAY", "HITSHAPE", "CAMERA", "MESH", "COLLISON_SHAPE", "PARTICLES", "ANIM", "MESH_ANIM", "FADE_IN_ANIM") groups=["player", "player_body"]]

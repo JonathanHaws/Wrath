@@ -8,14 +8,12 @@
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="6_q7gyr"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="7_q0qa8"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="8_2b5g7"]
-[ext_resource type="Shader" uid="uid://wb4i15d5ftsj" path="res://shaders/custom/lut_maker.gdshader" id="9_xw3l5"]
+[ext_resource type="Shader" uid="uid://bqr41vgk3hmn3" path="res://shaders/custom/lut.gdshader" id="9_xw3l5"]
 [ext_resource type="Script" uid="uid://cwd351l2pmkkl" path="res://script/ui/menu/options/video/lut_maker.gd" id="10_xw3l5"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xw3l5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xj7rx"]
 shader = ExtResource("9_xw3l5")
-shader_parameter/shadows = Vector3(0, 0, 0)
-shader_parameter/midtones = Vector3(0, 0, 0)
-shader_parameter/highlights = Vector3(0, 0, 0)
+shader_parameter/blend = 0.0
 
 [node name="Control" type="Control" unique_id=1288123490]
 process_mode = 3
@@ -29,6 +27,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nub3j")
+
+[node name="LutMaker" type="ColorRect" parent="." unique_id=209391130]
+material = SubResource("ShaderMaterial_xj7rx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("4_ulx4h")
+script = ExtResource("10_xw3l5")
 
 [node name="Control" type="Control" parent="." unique_id=646850414]
 layout_mode = 1
@@ -377,15 +387,3 @@ script = ExtResource("7_q0qa8")
 SOUNDS = Array[AudioStream]([ExtResource("8_2b5g7")])
 ADD_TO_ROOT = true
 ONLY_SPAWN_IF_VISIBLE = NodePath("..")
-
-[node name="LutMaker" type="ColorRect" parent="." unique_id=209391130]
-material = SubResource("ShaderMaterial_xw3l5")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("4_ulx4h")
-script = ExtResource("10_xw3l5")
