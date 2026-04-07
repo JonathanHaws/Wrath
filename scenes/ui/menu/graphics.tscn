@@ -15,6 +15,10 @@
 shader = ExtResource("9_xw3l5")
 shader_parameter/blend = 0.0
 
+[sub_resource type="Curve" id="Curve_xw3l5"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5091698, 0.41843164), 0.0, 0.0, 0, 0, Vector2(0.679054, 0.8334101), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 4
+
 [node name="Control" type="Control" unique_id=1288123490]
 process_mode = 3
 top_level = true
@@ -39,6 +43,7 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("4_ulx4h")
 script = ExtResource("10_xw3l5")
+curve_rgb = SubResource("Curve_xw3l5")
 
 [node name="Control" type="Control" parent="." unique_id=646850414]
 layout_mode = 1
@@ -387,3 +392,5 @@ script = ExtResource("7_q0qa8")
 SOUNDS = Array[AudioStream]([ExtResource("8_2b5g7")])
 ADD_TO_ROOT = true
 ONLY_SPAWN_IF_VISIBLE = NodePath("..")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=150752004]
