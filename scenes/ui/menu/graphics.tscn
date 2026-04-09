@@ -16,8 +16,8 @@ shader = ExtResource("9_xw3l5")
 shader_parameter/blend = 0.0
 
 [sub_resource type="Curve" id="Curve_xw3l5"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.5091698, 0.41843164), 0.0, 0.0, 0, 0, Vector2(0.679054, 0.8334101), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0, 0), 0.0, 0.9537377, 0, 0, Vector2(0.99999, 1), 0.8999745, 0.0, 0, 0]
+point_count = 2
 
 [node name="Control" type="Control" unique_id=1288123490]
 process_mode = 3
@@ -32,7 +32,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nub3j")
 
-[node name="LutMaker" type="ColorRect" parent="." unique_id=209391130]
+[node name="LutMaker" type="ColorRect" parent="." unique_id=209391130 node_paths=PackedStringArray("dynamic_ui_control")]
 material = SubResource("ShaderMaterial_xj7rx")
 layout_mode = 1
 anchors_preset = 15
@@ -43,7 +43,18 @@ grow_vertical = 2
 mouse_filter = 2
 theme = ExtResource("4_ulx4h")
 script = ExtResource("10_xw3l5")
+dynamic_ui_control = NodePath("../LutMakerUI")
 curve_rgb = SubResource("Curve_xw3l5")
+
+[node name="LutMakerUI" type="Control" parent="." unique_id=836565983]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+pivot_offset_ratio = Vector2(1, 0)
+theme = ExtResource("4_ulx4h")
+script = ExtResource("2_km2ec")
 
 [node name="Control" type="Control" parent="." unique_id=646850414]
 layout_mode = 1
@@ -392,5 +403,3 @@ script = ExtResource("7_q0qa8")
 SOUNDS = Array[AudioStream]([ExtResource("8_2b5g7")])
 ADD_TO_ROOT = true
 ONLY_SPAWN_IF_VISIBLE = NodePath("..")
-
-[node name="Line2D" type="Line2D" parent="." unique_id=150752004]

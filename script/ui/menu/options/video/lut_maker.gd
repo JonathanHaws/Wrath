@@ -1,25 +1,29 @@
 extends ColorRect
+var lut_size: Vector3i = Vector3i(17,17,17)
 var original_lut: ImageTexture      
 var lut: ImageTexture              
-var lut_width: int = 17
-var lut_height: int = 17
-var lut_depth: int = 17
+
+@export var dynamic_ui_control: Control ## The control in which dynamic ui will be spawned under
 var textureRect
 var control_panel: VBoxContainer # delete 
 var tones: VBoxContainer
+func get_tone_vector(tone_name: String) -> Vector4:
+	var vbox = tones.get_node(tone_name + "/VBoxContainer")
+	return Vector4(
+		vbox.get_node("HBoxContainer/S").value,
+		vbox.get_node("HBoxContainer2/R").value,
+		vbox.get_node("HBoxContainer3/G").value,
+		vbox.get_node("HBoxContainer4/B").value
+	)
+func reset_adjustments():
+	pass
 
-
-
-
-func make_passthrough_lut_image_texture(width:int, height:int, depth:int) -> ImageTexture:
-	var image := Image.create(width * depth, height, false, Image.FORMAT_RGB8)
-	for z in range(depth):
-		for y in range(height):
-			for x in range(width):
-				var r:float = float(x) / float(width - 1)
-				var g:float = float(y) / float(height - 1)
-				var b:float = float(z) / float(depth - 1)
-				image.set_pixel(x + z * width, y, Color(r, g, b))
+func make_passthrough_lut_image_texture(lut_size: Vector3i) -> ImageTexture:
+	var image := Image.create(lut_size.x * lut_size.z, lut_size.y, false, Image.FORMAT_RGB8)
+	for z in range(lut_size.z):
+		for y in range(lut_size.y):
+			for x in range(lut_size.x):
+				image.set_pixel(x + z * lut_size.x, y, Color(x / float(lut_size.x - 1), y / float(lut_size.y - 1), z / float(lut_size.z - 1)))
 	return ImageTexture.create_from_image(image)
 func get_texture_3d_from_image(image: Image, width:int, height:int, depth:int) -> ImageTexture3D:
 	var images: Array = []
@@ -29,7 +33,6 @@ func get_texture_3d_from_image(image: Image, width:int, height:int, depth:int) -
 			for x in range(width):
 				img.set_pixel(x, y, image.get_pixel(x + z * width, y))
 		images.append(img)
-	#print(images.size())	
 		
 	var tex3d := ImageTexture3D.new()
 	tex3d.create(Image.FORMAT_RGBA8, width, height, depth, false, images)
@@ -37,8 +40,8 @@ func get_texture_3d_from_image(image: Image, width:int, height:int, depth:int) -
 func update_lut():
 	var img = original_lut.get_image()
 
-	for z in range(lut_depth): for y in range(lut_height): for x in range(lut_width):
-			var color = img.get_pixel(x + z * lut_width, y)
+	for z in range(lut_size.z): for y in range(lut_size.y): for x in range(lut_size.x):
+			var color = img.get_pixel(x + z * lut_size.x, y)
 
 			var shadows_vector: Vector4 = get_tone_vector("Shadows")
 			var midtones_vector: Vector4 = get_tone_vector("Midtones")
@@ -54,23 +57,145 @@ func update_lut():
 			color.g = clamp(color.g + adjustment_g, 0, 1)
 			color.b = clamp(color.b + adjustment_b, 0, 1)
 
-			img.set_pixel(x + z * lut_width, y, color)
+			var mapped: float = curve_rgb.sample(brightness)
+			var scale: float = mapped / max(brightness, 0.0001)
+
+			color.r = clamp(color.r * scale, 0.0, 1.0)
+			color.g = clamp(color.g * scale, 0.0, 1.0)
+			color.b = clamp(color.b * scale, 0.0, 1.0)
+
+			img.set_pixel(x + z * lut_size.x, y, color)
 
 	lut.create_from_image(img)
 	textureRect.texture = lut
 
 	if material:
-		var tex3d = get_texture_3d_from_image(img, lut_width, lut_height, lut_depth)
+		var tex3d = get_texture_3d_from_image(img, lut_size.x, lut_size.y, lut_size.z)
 		material.set_shader_parameter("default_texture", tex3d)
 		material.set_shader_parameter("blend", 0.0)
 
-
-func reset_adjustments():
-	for child in get_children(): child.queue_free()
-	create_ui()
-func create_control_panel() -> VBoxContainer:
-	var vbox = VBoxContainer.new()
+func _on_save_pressed():
+	var fd := FileDialog.new()
+	fd.file_mode = FileDialog.FILE_MODE_SAVE_FILE
+	fd.access = FileDialog.ACCESS_FILESYSTEM
+	fd.add_filter("*.png ; PNG Image")
+	fd.current_file = "lut.png"	# default name
+	add_child(fd)
+	fd.connect("file_selected", Callable(self, "_on_save_selected"))
+	fd.popup_centered()
+func _on_save_selected(path: String):
+	var image: Image = lut.get_image()
+	image.save_png(path)
+	#print("Saved LUT to: " + path)
+func _on_load_pressed():
+	var fd := FileDialog.new()
+	fd.file_mode = FileDialog.FILE_MODE_OPEN_FILE  
+	fd.access = FileDialog.ACCESS_RESOURCES       
+	fd.add_filter("*.png ; PNG Image")             
+	add_child(fd)
+	fd.connect("file_selected", Callable(self, "_on_load_selected"))
+	fd.popup_centered()
+	fd.set_current_dir("res://textures/lut/")
+func _on_load_selected(path: String):
+	var image = Image.load_from_file(path)       # must be a real file path
+	original_lut = ImageTexture.create_from_image(image)
+	lut = original_lut
+	textureRect.texture = lut
+	reset_adjustments()
 	
+	update_lut()
+
+@export var curve_rgb: Curve = Curve.new()
+var curve_background: ColorRect
+var curve_line: Line2D
+var selected_point: Control
+func _create_curve_point(index: int) -> ColorRect:
+	var point_rect := ColorRect.new()
+	point_rect.color = Color(1, 1, 1)
+	point_rect.custom_minimum_size = Vector2(10, 10)
+	point_rect.gui_input.connect(Callable(self, "_on_point_gui_input").bind(point_rect))
+	return point_rect
+func _update_curve(width: int = 300, height: int = 300):
+	var new_points = []
+	for i in range(width):
+		var t = float(i) / float(width - 1)
+		new_points.append(Vector2(i, height - curve_rgb.sample(t) * height))
+	curve_line.points = new_points  # safer than clear + add_point
+
+	# Update point handles
+	var curve_points = curve_line.get_children()
+	for i in range(curve_rgb.get_point_count()):
+		var pt = curve_rgb.get_point_position(i)
+		var px = pt.x * width - 5
+		var py = height - pt.y * height - 5
+		curve_points[i].position = Vector2(px, py)
+func _on_point_gui_input(event: InputEvent, point_node: Control):
+	if event is InputEventMouseButton:
+		if event.pressed:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				if selected_point: return
+				selected_point = point_node
+			elif event.button_index == MOUSE_BUTTON_RIGHT:
+				var i = curve_line.get_children().find(point_node)
+				if i != -1:
+					curve_rgb.remove_point(i)
+					point_node.queue_free()
+					_update_curve()
+				selected_point = null
+		else:
+			if event.button_index == MOUSE_BUTTON_LEFT:
+				selected_point = null
+	elif event is InputEventMouseMotion and selected_point == point_node:
+		var local_pos = curve_background.get_local_mouse_position()
+		var t = clamp(local_pos.x / curve_background.size.x, 0, 1)
+		var v = clamp(1.0 - local_pos.y / curve_background.size.y, 0, 1)
+		var i = curve_line.get_children().find(selected_point)
+		if i != -1:
+			curve_rgb.set_point_offset(i, t)  
+			curve_rgb.set_point_value(i, v) 
+			_update_curve()
+			selected_point = curve_line.get_children()[i]		
+func _on_curve_background_input(event: InputEvent):
+	pass 
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		var local_pos = curve_background.get_local_mouse_position()
+		var t = clamp(local_pos.x / curve_background.size.x, 0, 1)
+		var v = clamp(1.0 - local_pos.y / curve_background.size.y, 0, 1)
+		var index = 0
+		while index < curve_rgb.get_point_count() and curve_rgb.get_point_position(index).x < t:
+			index += 1
+		curve_rgb.add_point(Vector2(t, v), index)
+		curve_line.add_child(_create_curve_point(index))
+		_update_curve()
+
+func _ready():
+	original_lut = make_passthrough_lut_image_texture(lut_size)
+	lut = original_lut
+	
+
+	#region Create Dynamic UI Controls
+	
+	#region Create Root Control
+	
+	var root = Control.new()
+	dynamic_ui_control.add_child(root)
+
+	root.anchor_left = 1
+	root.anchor_right = 1
+	root.anchor_top = 0
+	root.anchor_bottom = 0
+	root.offset_left = -300 
+	root.offset_top = 0
+	
+	var container = VBoxContainer.new()
+	root.add_child(container)
+	
+	#endregion
+	
+	#region Create Control Panel
+	
+	var vbox = VBoxContainer.new()
+
 	textureRect = TextureRect.new()
 	vbox.add_child(textureRect)
 	textureRect.stretch_mode = TextureRect.STRETCH_KEEP_ASPECT
@@ -95,25 +220,21 @@ func create_control_panel() -> VBoxContainer:
 	hbox.add_child(reset_button)
 	reset_button.text = "RESET"
 	reset_button.pressed.connect(reset_adjustments)
-
-	return vbox
-func get_tone_vector(tone_name: String) -> Vector4:
-	var vbox = tones.get_node(tone_name + "/VBoxContainer")
-	return Vector4(
-		vbox.get_node("HBoxContainer/S").value,
-		vbox.get_node("HBoxContainer2/R").value,
-		vbox.get_node("HBoxContainer3/G").value,
-		vbox.get_node("HBoxContainer4/B").value
-	)
-func create_tone_folders() -> VBoxContainer:
-	var main_vbox: VBoxContainer = VBoxContainer.new()
-	main_vbox.name = "Tones"
+	
+	container.add_child(vbox)
+	
+	#endregion
+		
+	#region Create Shadows, Midtones, Highlights Folders
+	
+	tones = VBoxContainer.new()
+	tones.name = "Tones"
 	
 	for tone in ["Shadows", "Midtones", "Highlights"]:
 		var folder: FoldableContainer = FoldableContainer.new()
 		folder.title = tone
 		folder.folded = true
-		main_vbox.add_child(folder)
+		tones.add_child(folder)
 		
 		var tone_vbox: VBoxContainer = VBoxContainer.new()
 		tone_vbox.name = "VBoxContainer"
@@ -144,123 +265,41 @@ func create_tone_folders() -> VBoxContainer:
 			reset.text = "@"
 			reset.pressed.connect(func(): slider.value = 0)	# inline reset
 			row.add_child(reset)	
-
-	return main_vbox
-
-
-var curve_editor: Control
-@export var curve_rgb: Curve = Curve.new()
-func create_curve_editor() -> Control:
-	var editor := ColorRect.new()  # use ColorRect for visible background
-	editor.color = Color(0.1, 0.1, 0.1, 1)  # dark gray background
-	editor.custom_minimum_size = Vector2(300, 300)
-	editor.size_flags_horizontal = Control.SIZE_EXPAND_FILL
-	editor.size_flags_vertical = Control.SIZE_EXPAND_FILL
-
-	var line := Line2D.new()
-	line.width = 2
-	line.default_color = Color.LIGHT_GRAY
-	editor.add_child(line)
-
-	return editor
-
-func draw_curve(editor: Control, curve: Curve) -> void:
-	for child in editor.get_children():
-		child.queue_free()
 	
-	var width = editor.size.x
-	var height = editor.size.y
-
-	var line := Line2D.new()
-	line.width = 2
-	line.default_color = Color(0.8, 0.8, 0.8)
-	editor.add_child(line)
-
-	for i in range(int(width)):
-		var t = float(i) / float(width - 1)
-		var y = height - curve.sample(t) * height
-		line.add_point(Vector2(i, y))
-
-	for i in range(curve.get_point_count()):
-		var pt = curve.get_point_position(i)
-		var px = pt.x * width
-		var py = height - pt.y * height
-		
-		var point_rect := ColorRect.new()
-		point_rect.color = Color(1, 1, 1)
-		point_rect.custom_minimum_size = Vector2(10, 10)
-		point_rect.position = Vector2(px - 5, py - 5)
-		editor.add_child(point_rect)
-
-func _on_curve_editor_input(event: InputEvent, line: Line2D) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		var pos = event.position
-		var y = curve_editor.size.y - pos.y
-		var t = pos.x / curve_editor.size.x
-		curve_rgb.add_point(t, clamp(y / curve_editor.size.y,0,1))
-		draw_curve(curve_editor, curve_rgb)
-
-
-func create_ui():
-
-
-	var root = Control.new()
-	add_child(root)
-
-	root.anchor_left = 1
-	root.anchor_right = 1
-	root.anchor_top = 0
-	root.anchor_bottom = 0
-	root.offset_left = -300   # panel width
-	root.offset_top = 0
-
-	var container = VBoxContainer.new()
-	root.add_child(container)
-
-
-	control_panel = create_control_panel()
-	tones = create_tone_folders()
-	curve_editor = create_curve_editor()
-	
-	container.add_child(control_panel)
 	container.add_child(tones)
-	container.add_child(curve_editor)
+	
+	#endregion
+	
+	#region Create Luminosity Curve Adjustments
+	
+	var folder := FoldableContainer.new()
+	folder.title = "Curve"
+	folder.folded = true
+	
+	curve_background = ColorRect.new() 
+	curve_background.color = Color(0.1, 0.1, 0.1, 0.431)  
+	curve_background.custom_minimum_size = Vector2(300, 300)
+	curve_background.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+	curve_background.size_flags_vertical = Control.SIZE_EXPAND_FILL
+	curve_background.gui_input.connect(_on_curve_background_input)
+	folder.add_child(curve_background)
+
+	curve_line = Line2D.new()
+	curve_line.width = 2
+	curve_line.default_color = Color.LIGHT_GRAY
+	curve_background.add_child(curve_line)
+
+	for i in range(curve_rgb.get_point_count()):
+		curve_line.add_child(_create_curve_point(i))
+		
+	_update_curve()
+	
+	container.add_child(folder)
+	#endregion
+	
+	#endregion
 	
 	update_lut()
-
-func _on_save_pressed():
-	var fd := FileDialog.new()
-	fd.file_mode = FileDialog.FILE_MODE_SAVE_FILE
-	fd.access = FileDialog.ACCESS_FILESYSTEM
-	fd.add_filter("*.png ; PNG Image")
-	fd.current_file = "lut.png"	# default name
-	add_child(fd)
-	fd.connect("file_selected", Callable(self, "_on_save_selected"))
-	fd.popup_centered()
-func _on_save_selected(path: String):
-	var image: Image = lut.get_image()
-	image.save_png(path)
-	#print("Saved LUT to: " + path)
-func _on_load_pressed():
-	var fd := FileDialog.new()
-	fd.file_mode = FileDialog.FILE_MODE_OPEN_FILE  
-	fd.access = FileDialog.ACCESS_RESOURCES       
-	fd.add_filter("*.png ; PNG Image")             
-	add_child(fd)
-	fd.connect("file_selected", Callable(self, "_on_load_selected"))
-	fd.popup_centered()
-	fd.set_current_dir("res://textures/lut/")
-func _on_load_selected(path: String):
-	var image = Image.load_from_file(path)       # must be a real file path
-	original_lut = ImageTexture.create_from_image(image)
-	lut = original_lut
-	textureRect.texture = lut
-	reset_adjustments()
-
-func _ready():
-	original_lut = make_passthrough_lut_image_texture(lut_width, lut_height, lut_depth)
-	lut = original_lut
-	create_ui()
-		
-func _process(delta: float) -> void:
-	draw_curve(curve_editor,curve_rgb)
+func process():
+	pass
+	#_update_curve()	
