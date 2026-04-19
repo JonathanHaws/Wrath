@@ -643,7 +643,6 @@ next/INTRO = &"CHASE"
 
 [node name="HitShape" type="Area3D" parent="." unique_id=592702144 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT") groups=["enemy_hitshape"]]
 script = ExtResource("20_yihmj")
-IMMUNE_GROUPS = Array[String](["greed"])
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=1225057356]
@@ -745,7 +744,7 @@ groups = Array[String](["pride_mesh"])
 
 [node name="pride" parent="Mesh" unique_id=864971963 instance=ExtResource("27_uxu3y")]
 
-[node name="Pride" parent="Mesh/pride" index="0" unique_id=930257281 groups=["pride_mesh"]]
+[node name="Pride" parent="Mesh/pride" index="0" unique_id=1255591821 groups=["pride_mesh"]]
 
 [node name="LockOn" type="Area3D" parent="Mesh" unique_id=840308092]
 transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 1.48289, -0.085655)
@@ -792,9 +791,9 @@ LINES = Array[String](["random_taunt_1", "random_taunt_2", "random_taunt_3", "ra
 process_mode = 3
 bus = &"SFX"
 script = ExtResource("32_g0nbo")
+speaker_group = "pig"
 player = NodePath(".")
 sounds = Array[AudioStream]([ExtResource("17_euapl"), ExtResource("33_u8ma1"), null])
-speaker_group = "pig"
 
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
 

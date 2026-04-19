@@ -7,6 +7,7 @@ extends AnimationPlayer
 
 func _ready():
 	label.text = info
+	for group_name in get_groups(): get_node("Control/Label").add_to_group(group_name)
 
 func exit_area() -> void:
 	queue("exited")

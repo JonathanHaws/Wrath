@@ -882,7 +882,6 @@ next/INTRO = &"CHASE"
 script = ExtResource("20_6h4tx")
 HEALTH = 100000.0
 MAX_HEALTH = 100000.0
-IMMUNE_GROUPS = Array[String](["greed"])
 DAMAGE_NUMBERS = ExtResource("7_dbtmo")
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 USE_WAVE_HEALTH_BAR = true
@@ -985,7 +984,7 @@ groups = Array[String](["sloth_mesh"])
 
 [node name="sloth" parent="Mesh" unique_id=2146499300 instance=ExtResource("27_dbtmo")]
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2146499300, 1143487638) index="0" unique_id=636975154]
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2146499300, 1840279229) index="0" unique_id=636975154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.083372, 0, 0)
 target_node = NodePath("../../../../../Target")
 bone_name = "Bone.002"
@@ -997,7 +996,7 @@ primary_damp_threshold = 1.0
 secondary_limit_angle = 0.87266463
 secondary_damp_threshold = 1.0
 
-[node name="Sphere_001" parent="Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2146499300, 1143487638) index="1" unique_id=1540143776 groups=["sloth_mesh"]]
+[node name="Sphere_001" parent="Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(2146499300, 1840279229) index="1" unique_id=493770869 groups=["sloth_mesh"]]
 surface_material_override/0 = SubResource("StandardMaterial3D_uahh5")
 surface_material_override/1 = SubResource("ShaderMaterial_ic1i5")
 
@@ -1046,7 +1045,7 @@ next/Wave2 = &"Wave3"
 libraries/ = SubResource("AnimationLibrary_p7qim")
 script = ExtResource("28_v7xtt")
 dialog_file = ExtResource("32_r1bv5")
-speaker_name = "pig"
+speaker_name = "sloth"
 dialog_templates = Array[PackedScene]([ExtResource("29_enj2w"), ExtResource("30_p7qim"), ExtResource("31_cu7wn")])
 anim = NodePath(".")
 
@@ -1062,9 +1061,9 @@ process_mode = 3
 volume_db = 2.0
 bus = &"SFX"
 script = ExtResource("35_5sj4a")
+speaker_group = "sloth"
 player = NodePath(".")
 sounds = Array[AudioStream]([ExtResource("36_p7qim"), ExtResource("37_cu7wn"), ExtResource("38_r1bv5")])
-speaker_group = "pig"
 
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
 

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://worsh6enfk2g"]
+[gd_scene format=3 uid="uid://br4dbjsqb0ksy"]
 
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/stages/lighting/enviroment.tscn" id="2_a6482"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/items/weather.tscn" id="3_2uv2b"]
@@ -23,9 +23,6 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 [sub_resource type="BoxShape3D" id="BoxShape3D_hgjnn"]
 resource_local_to_scene = true
 size = Vector3(17, 13, 38.374878)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_k7wqk"]
-size = Vector3(56.450165, 29.728943, 32.77057)
 
 [node name="Main" type="Node3D" unique_id=1547312028]
 
@@ -69,13 +66,13 @@ mesh = SubResource("BoxMesh_od467")
 
 [node name="Exit" parent="." unique_id=1887430866 groups=["lust_door"] instance=ExtResource("5_pyv35")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 83.7247, -9.60013, 1.00536e-06)
-DESTINATION_NODE_NAME = "Enter"
 DESTINATION_SCENE = "uid://cjnryqwoknkw5"
+DESTINATION_NODE_NAME = "Enter"
 
 [node name="Enter" parent="." unique_id=1064937866 instance=ExtResource("5_pyv35")]
 transform = Transform3D(-4.37112e-08, 0, 1, 0, 1, 0, -1, 0, -4.37112e-08, -22.2895, -9.60013, 1.00536e-06)
-DESTINATION_NODE_NAME = "LightDoor"
 DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
+DESTINATION_NODE_NAME = "LightDoor"
 
 [node name="Piglet" parent="." unique_id=1655639238 instance=ExtResource("9_2uv2b")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.05158, -9.04356, -10.8999)
@@ -107,13 +104,5 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HealTutorial" unique_id=389926924]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 1.9887085)
 shape = SubResource("BoxShape3D_hgjnn")
+disabled = true
 debug_color = Color(0.768, 0.79413337, 0.8, 0)
-
-[node name="Area3D" type="Area3D" parent="." unique_id=2078923018 groups=["lut_lust"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.77008, 0, 0)
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=988788764]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26701355, -2.2864685, -0.6199646)
-shape = SubResource("BoxShape3D_k7wqk")

@@ -21,6 +21,7 @@ func _on_profile_pressed(save_file: String) -> void:
 	
 	Save.load_save_data(save_file) 
 	Save.data["rests"] = (Save.data.get("rests", 0) + 1)
+	Save.data["checkpoint_respawning"] = true
 	Save.save_game()
 	Save.load_game(save_file)
 

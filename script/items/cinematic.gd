@@ -43,6 +43,8 @@ func _save_cinematic_completed() -> void:
 	Save.save_game()
 
 func _play_animations_in_other_nodes() -> void:
+	#print('test ', get_path(), '' , ANIM_NAME)
+	
 	if not is_inside_tree(): return
 	
 	#print ('playing animations in other nodes')

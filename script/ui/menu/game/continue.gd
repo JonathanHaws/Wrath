@@ -12,6 +12,7 @@ func _continue() -> void:
 	if save_files.size() > 0:
 		Save.load_save_data(save_files[0]["file_name"]) 
 		Save.data["rests"] = (Save.data.get("rests", 0) + 1)
+		Save.data["checkpoint_respawning"] = true
 		Save.save_game()
 		Save.load_game(save_files[0]["file_name"])
 		

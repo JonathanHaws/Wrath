@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/stages/lighting/enviroment.tscn" id="2_u51x1"]
 [ext_resource type="Material" uid="uid://8p0im5f4mlk7" path="res://shaders/materials/bricks/world_big.tres" id="3_dq2hf"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/player/reaper.tscn" id="4_42w7d"]
+[ext_resource type="Material" uid="uid://dp3cs55fchr3b" path="res://shaders/materials/light_door_shader.tres" id="4_g6ecr"]
 [ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://scenes/stages/lighting/sun.tscn" id="4_mqk0e"]
 [ext_resource type="PackedScene" uid="uid://615n66a3l256" path="res://models/castle/tower.blend" id="6_hcc5w"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="6_mb05r"]
@@ -14,8 +15,10 @@
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/items/checkpoint.tscn" id="12_0gnis"]
 [ext_resource type="PackedScene" uid="uid://b36oi3g053jo0" path="res://scenes/items/rocks/falling_platform.tscn" id="14_2ptaq"]
 [ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://scenes/ghosts/ghost_melee.tscn" id="14_l8smn"]
+[ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://scenes/bosses/gluttony/piglet.tscn" id="15_7vt21"]
 [ext_resource type="PackedScene" uid="uid://bre6cgb3dypbs" path="res://scenes/bosses/greed/greed.tscn" id="17_dq2hf"]
 [ext_resource type="PackedScene" uid="uid://djqadr0k0vrs3" path="res://scenes/bosses/envy/envy.tscn" id="19_oqilo"]
+[ext_resource type="PackedScene" uid="uid://v5af8j11oilq" path="res://scenes/bosses/lust/lust.tscn" id="20_bdp0v"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/items/heavy_door.tscn" id="20_bv0d2"]
 [ext_resource type="Script" uid="uid://ds3llgo67gcpi" path="res://script/component/patrol.gd" id="22_a0oe4"]
 [ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://script/items/progress_gate.gd" id="22_je0v5"]
@@ -47,7 +50,7 @@ step = 0.041666668
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"skip",
-"time": 11.0
+"time": 10.916667
 }]
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -125,7 +128,7 @@ tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0, 9.5),
 "transitions": PackedFloat32Array(1, 1),
-"update": 1,
+"update": 0,
 "values": [true, false]
 }
 
@@ -184,41 +187,43 @@ size = Vector3(20.036133, 19, 31.77295)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.1039, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
 
-[node name="Castle" parent="NavigationRegion3D" unique_id=775533437 instance=ExtResource("6_hcc5w")]
+[node name="Castle" parent="NavigationRegion3D" unique_id=1577898929 instance=ExtResource("6_hcc5w")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 135.739, 8.16232, -12.8293)
 
-[node name="island_1" parent="NavigationRegion3D/Castle" index="0" unique_id=87874234]
+[node name="island_1" parent="NavigationRegion3D/Castle" index="0" unique_id=2004922852]
 surface_material_override/0 = ExtResource("9_u51x1")
 
-[node name="path" parent="NavigationRegion3D/Castle" index="1" unique_id=1895884636]
+[node name="path" parent="NavigationRegion3D/Castle" index="1" unique_id=1437997030]
 surface_material_override/0 = ExtResource("9_u51x1")
 
-[node name="lust_base" parent="NavigationRegion3D/Castle" index="2" unique_id=7753947]
+[node name="lust_base" parent="NavigationRegion3D/Castle" index="2" unique_id=958613647]
+surface_material_override/0 = ExtResource("3_dq2hf")
+surface_material_override/1 = ExtResource("4_g6ecr")
+
+[node name="bridge" parent="NavigationRegion3D/Castle" index="3" unique_id=801207801]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="bridge" parent="NavigationRegion3D/Castle" index="3" unique_id=823006980]
+[node name="cage_greed_001" parent="NavigationRegion3D/Castle" index="4" unique_id=2103596330]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="cage_greed_001" parent="NavigationRegion3D/Castle" index="4" unique_id=343387574]
+[node name="castle_foundation" parent="NavigationRegion3D/Castle" index="5" unique_id=2029893535]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="castle_foundation" parent="NavigationRegion3D/Castle" index="5" unique_id=1694501653]
+[node name="lust_inside" parent="NavigationRegion3D/Castle" index="6" unique_id=2047507370]
+surface_material_override/0 = ExtResource("3_dq2hf")
+surface_material_override/1 = ExtResource("4_g6ecr")
+
+[node name="lust_tower_chastity_001" parent="NavigationRegion3D/Castle" index="8" unique_id=1295615818]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="lust_inside_001" parent="NavigationRegion3D/Castle" index="6" unique_id=1446610896]
+[node name="castle_base" parent="NavigationRegion3D/Castle" index="9" unique_id=498286313]
+surface_material_override/0 = ExtResource("3_dq2hf")
+surface_material_override/1 = ExtResource("4_g6ecr")
+
+[node name="sloth_tower_diligence" parent="NavigationRegion3D/Castle" index="10" unique_id=622659170]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="lust_tower_chastity_001" parent="NavigationRegion3D/Castle" index="8" unique_id=1050568955]
-surface_material_override/0 = ExtResource("3_dq2hf")
-
-[node name="castle_base" parent="NavigationRegion3D/Castle" index="9" unique_id=616028754]
-surface_material_override/0 = ExtResource("3_dq2hf")
-
-[node name="sloth_tower_diligence" parent="NavigationRegion3D/Castle" index="10" unique_id=1062145386]
-surface_material_override/0 = ExtResource("3_dq2hf")
-surface_material_override/1 = ExtResource("3_dq2hf")
-
-[node name="castle_pride" parent="NavigationRegion3D/Castle" index="11" unique_id=718980853]
+[node name="castle_pride" parent="NavigationRegion3D/Castle" index="11" unique_id=432912978]
 surface_material_override/0 = ExtResource("3_dq2hf")
 surface_material_override/1 = ExtResource("3_dq2hf")
 
@@ -255,25 +260,42 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["INTRODUCTION"])
 
 [node name="Camera3D" type="Camera3D" parent="Cinematic" unique_id=2010672013 groups=["cinematic_camera"]]
-transform = Transform3D(0.34202856, 0.05736569, -0.9379364, 0, 0.998134, 0.06104751, 0.9396896, -0.020879986, 0.34139043, -366.5924, 108.807755, 203.19954)
+transform = Transform3D(0.34202856, 0.057365626, -0.9379364, 0, 0.9981332, 0.06104749, 0.9396896, -0.020879962, 0.34139043, -366.5924, 108.807755, 203.19954)
 fov = 20.0
 
 [node name="Door" type="Node" parent="." unique_id=368264647]
 
 [node name="LightDoor" parent="Door" unique_id=159225589 instance=ExtResource("10_s2ex5")]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 257.29758, 45.64901, -22.29842)
-DESTINATION_NODE_NAME = "Enter"
-DESTINATION_SCENE = "uid://worsh6enfk2g"
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 255.56332, 45.64901, -22.29842)
+DESTINATION_NODE_NAME = "LightDoor2"
+
+[node name="LightDoor2" parent="Door" unique_id=119780670 instance=ExtResource("10_s2ex5")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 250.04193, 45.64901, -22.733723)
+DESTINATION_NODE_NAME = "LightDoor"
+
+[node name="LightDoor3" parent="Door" unique_id=284207742 instance=ExtResource("10_s2ex5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 411.67014, 45.64901, -22.29842)
+DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
+DESTINATION_NODE_NAME = "LightDoor4"
+
+[node name="LightDoor4" parent="Door" unique_id=349923668 instance=ExtResource("10_s2ex5")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 417.46545, 89.274086, -22.733723)
+DESTINATION_NODE_NAME = "LightDoor3"
+
+[node name="LightDoor5" parent="Door" unique_id=275972634 instance=ExtResource("10_s2ex5")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 533.97815, 89.274086, -22.733723)
+DESTINATION_SCENE = "uid://cjnryqwoknkw5"
+DESTINATION_NODE_NAME = "LightDoor"
 
 [node name="PrideTower" parent="Door" unique_id=901399088 groups=["envy_door"] instance=ExtResource("20_bv0d2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 634.9599, 155.2283, -26.424242)
-LOCKED = true
 DESTINATION_SCENE = "uid://5n4cvh6cqc4p"
+LOCKED = true
 
 [node name="EnvyCourt" parent="Door" unique_id=709350873 instance=ExtResource("20_bv0d2")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 533.7062, 155.2283, -26.424242)
-DESTINATION_NODE_NAME = "Exit"
 DESTINATION_SCENE = "uid://d1k2pnn46w66f"
+DESTINATION_NODE_NAME = "Exit"
 
 [node name="FallingPlatforms" type="Node3D" parent="." unique_id=1274827924]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 125.454, 3.48975, 50.4632)
@@ -317,7 +339,10 @@ debug_color = Color(1, 1, 1, 0.027451)
 [node name="Checkpoints" type="Node" parent="." unique_id=1356551056]
 
 [node name="Checkpoint" parent="Checkpoints" unique_id=910175054 instance=ExtResource("12_0gnis")]
-transform = Transform3D(1.0000004, 0, 0, 0, 1, 0, 0, 0, 0.9999997, 80.53718, 41.451836, -34.476734)
+transform = Transform3D(-4.3711402e-08, 0, -0.9999997, 0, 1, 0, 1.0000004, 0, -4.3711374e-08, 80.53718, 41.451836, -34.476734)
+
+[node name="Checkpoint2" parent="Checkpoints" unique_id=2076545832 instance=ExtResource("12_0gnis")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 292.7208, 45.315197, -22.40345)
 
 [node name="Wisps" type="Node" parent="." unique_id=1545663969]
 
@@ -327,10 +352,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 364.98056, 47.005867, 84.1773
 [node name="Ghosts" type="Node" parent="." unique_id=1275844089]
 
 [node name="Ghost" parent="Ghosts" unique_id=842720599 instance=ExtResource("14_l8smn")]
-transform = Transform3D(0.43482256, 0, 0.90051615, 0, 1, 0, -0.90051615, 0, 0.43482256, 203.7945, 44.778473, -15.420604)
+transform = Transform3D(0.43482256, 0, 0.90051615, 0, 1, 0, -0.90051615, 0, 0.43482256, 192.635, 44.778473, -15.420604)
 
 [node name="Ghost2" parent="Ghosts" unique_id=1415485496 instance=ExtResource("14_l8smn")]
-transform = Transform3D(-0.2051281, 0, 0.9787352, 0, 1, 0, -0.9787352, 0, -0.2051281, 216.57419, 44.778473, -26.356411)
+transform = Transform3D(-0.2051281, 0, 0.9787352, 0, 1, 0, -0.9787352, 0, -0.2051281, 205.41469, 44.778473, -26.356411)
+
+[node name="Piglet" parent="." unique_id=759269460 instance=ExtResource("15_7vt21")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 275.98953, 45.405087, -40.984917)
 
 [node name="Greed" parent="." unique_id=324949012 instance=ExtResource("17_dq2hf")]
 transform = Transform3D(-0.15708953, 0, -0.98758435, 0, 1, 0, 0.98758435, 0, -0.15708953, 299.60284, 45.217876, 10.0194435)
@@ -366,11 +394,14 @@ light_energy = 5.36
 light_specular = 0.0
 omni_range = 19.0
 
+[node name="Lust" parent="." unique_id=1949196190 instance=ExtResource("20_bdp0v")]
+transform = Transform3D(-0.9121058, 0, -0.40995485, 0, 1, 0, 0.40995485, 0, -0.9121058, 366.22284, 45.32094, 44.04379)
+
 [node name="Reaper" parent="." unique_id=1142266382 instance=ExtResource("4_42w7d")]
 transform = Transform3D(-0.15529731, 0, -0.9878682, 0, 1, 0, 0.9878682, 0, -0.15529731, 19.497356, 42.041492, -32.452442)
 
 [node name="SkillTreeTutorial" type="Area3D" parent="." unique_id=2027932816 groups=["skill_tree_tutorial"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 76.498, 45.717094, -40.675865)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.32533, 45.717094, -29.236448)
 collision_layer = 3
 collision_mask = 3
 
@@ -380,13 +411,14 @@ shape = SubResource("BoxShape3D_7fk2k")
 debug_color = Color(0.768, 0.79413337, 0.8, 0.88235295)
 
 [node name="ShootTutorial" type="Area3D" parent="." unique_id=1659477864 groups=["shoot_tutorial"]]
-transform = Transform3D(0.77838564, 0, -0.6277865, 0, 1, 0, 0.6277865, 0, 0.77838564, 111.21782, 44.20571, -29.420338)
+transform = Transform3D(0.77838564, 0, -0.6277865, 0, 1, 0, 0.6277865, 0, 0.77838564, 162.64381, 44.20571, -21.522644)
 collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ShootTutorial" unique_id=807632199]
-transform = Transform3D(1, 0, 2.9802322e-08, 0, 1, 0, -2.9802322e-08, 0, 1, 10.623535, 4, -1.3864746)
+transform = Transform3D(0.79525125, 0, 0.6062799, 0, 1, 0, -0.6062799, 0, 0.79525125, 0, 0, 0)
 shape = SubResource("BoxShape3D_dq2hf")
+disabled = true
 debug_color = Color(0.768, 0.79413337, 0.8, 0.88235295)
 
 [connection signal="body_entered" from="KillVolumes/Void" to="KillVolumes/Void" method="_on_body_entered"]

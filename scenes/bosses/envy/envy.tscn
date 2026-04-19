@@ -1489,7 +1489,6 @@ BODY = NodePath("../..")
 script = ExtResource("20_sg61t")
 HEALTH = 6500.0
 MAX_HEALTH = 6500.0
-IMMUNE_GROUPS = Array[String](["greed"])
 DAMAGE_NUMBERS = ExtResource("21_fp1nr")
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 
@@ -1644,7 +1643,7 @@ groups = Array[String](["envy_mesh"])
 
 [node name="envy" parent="Mesh" unique_id=344055251 instance=ExtResource("27_wpfpa")]
 
-[node name="Skeleton3D" parent="Mesh/envy/Armature" parent_id_path=PackedInt32Array(344055251, 2084253452) index="0" unique_id=179115692]
+[node name="Skeleton3D" parent="Mesh/envy/Armature" parent_id_path=PackedInt32Array(344055251, 1521865981) index="0" unique_id=1906907523]
 bones/1/position = Vector3(-3.0624682e-07, 0.25110248, 2.9511843)
 bones/1/rotation = Quaternion(2.5939861e-09, 0.9971244, 0.075783156, -1.6205449e-06)
 bones/2/rotation = Quaternion(-0.38648182, 1.2123505e-07, -1.2708251e-06, 0.9222971)
@@ -1713,7 +1712,7 @@ primary_damp_threshold = 1.0
 secondary_limit_angle = 0.5235988
 secondary_damp_threshold = 1.0
 
-[node name="Mesh" parent="Mesh/envy/Armature/Skeleton3D" index="2" unique_id=1781540310 groups=["envy_mesh"]]
+[node name="Mesh" parent="Mesh/envy/Armature/Skeleton3D" index="2" unique_id=1693650770 groups=["envy_mesh"]]
 material_override = SubResource("ShaderMaterial_ix8e8")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/envy/Armature/Skeleton3D" index="3" unique_id=885687854]
@@ -1731,7 +1730,7 @@ transform = Transform3D(1, 9.68575e-08, -1.4901e-08, -7.45027e-09, 1, 0, 1.7053e
 shape = SubResource("BoxShape3D_od1a5")
 disabled = true
 
-[node name="AnimationPlayer" parent="Mesh/envy" index="1" unique_id=1063757519]
+[node name="AnimationPlayer" parent="Mesh/envy" index="1" unique_id=1637842863]
 root_motion_track = NodePath("Armature/Skeleton3D:root")
 callback_mode_process = 0
 playback_default_blend_time = 0.3
@@ -1779,7 +1778,7 @@ debug_color = Color(0.7, 0.7, 0.7, 0.0196078)
 libraries/ = SubResource("AnimationLibrary_hc8br")
 script = ExtResource("37_pmjfi")
 dialog_file = ExtResource("41_x0k4b")
-speaker_name = "pig"
+speaker_name = "envy"
 dialog_templates = Array[PackedScene]([ExtResource("38_x0k4b"), ExtResource("39_06a6w"), ExtResource("40_hc8br")])
 anim = NodePath(".")
 
@@ -1797,9 +1796,9 @@ volume_db = 2.0
 pitch_scale = 0.9
 bus = &"SFX"
 script = ExtResource("43_2vrwt")
+speaker_group = "envy"
 player = NodePath(".")
 sounds = Array[AudioStream]([ExtResource("45_hc8br"), ExtResource("46_7awae"), ExtResource("47_vie5j")])
-speaker_group = "pig"
 
 [connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]

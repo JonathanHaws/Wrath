@@ -62,6 +62,7 @@ func _on_body_exited(body: Node) -> void:
 	PROMPT_ANIM.queue("EXIT")
 
 func _ready() -> void:
+	
 	await get_tree().create_timer(.2).timeout # Makes it so that if player spawns in they dont get the prompt immeaditly... Only when they leave and hop back on...
 	_connect_signals()
 

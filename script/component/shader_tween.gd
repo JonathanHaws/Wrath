@@ -16,6 +16,7 @@ func set_texture(
 	var texture: Texture2D = textures[texture_index]
 
 	for group_name in groups:
+		if not is_inside_tree(): return
 		var nodes = get_tree().get_nodes_in_group(group_name)
 		for node in nodes:
 			if not node: continue
@@ -37,6 +38,7 @@ func tween(
 	for i in range(groups.size()): groups[i] = str(groups[i])
 
 	for group_name in groups:
+		if not is_inside_tree(): return
 		var nodes = get_tree().get_nodes_in_group(group_name)
 		for node in nodes:
 			if not node: continue

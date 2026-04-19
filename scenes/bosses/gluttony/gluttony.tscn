@@ -2387,7 +2387,7 @@ debug_color = Color(0, 0.595, 0.7, 0.266667)
 
 [node name="gluttony" parent="Mesh" unique_id=1074736557 instance=ExtResource("29_wvvup")]
 
-[node name="Skeleton3D" parent="Mesh/gluttony/Armature" parent_id_path=PackedInt32Array(1074736557, 1433304804) index="0" unique_id=606502270]
+[node name="Skeleton3D" parent="Mesh/gluttony/Armature" parent_id_path=PackedInt32Array(1074736557, 2038024251) index="0" unique_id=1226159379]
 bones/1/position = Vector3(1.7097143e-08, -1.614377, -0.113229506)
 bones/2/rotation = Quaternion(0.11560689, -7.770195e-14, -5.5125646e-08, 0.9932951)
 bones/3/rotation = Quaternion(0.15631525, 3.843357e-14, -7.453692e-08, 0.9877072)
@@ -2455,7 +2455,7 @@ bones/55/rotation = Quaternion(0.19292425, -0.35550728, 0.32328704, 0.85550004)
 bones/56/rotation = Quaternion(-0.272658, 0.016968768, -0.120777525, 0.9543492)
 bones/57/rotation = Quaternion(0.04008765, -0.008712262, -0.088202596, 0.99525756)
 
-[node name="Retopo" parent="Mesh/gluttony/Armature/Skeleton3D" index="0" unique_id=167493510 groups=["gluttony_mesh"]]
+[node name="Retopo" parent="Mesh/gluttony/Armature/Skeleton3D" index="0" unique_id=2067898572 groups=["gluttony_mesh"]]
 material_override = ExtResource("28_kav4y")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="1" unique_id=134155221]
@@ -2706,7 +2706,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="10" unique_id=665646346]
-transform = Transform3D(1, 6.3948846e-14, -1.4210855e-13, -9.947598e-14, 0.8158263, -0.5782967, 2.842171e-14, 0.57829666, 0.81582636, 5.5246958e-14, 3.036944, 0.24238157)
+transform = Transform3D(1, 2.1316282e-14, -1.4210855e-13, -5.684342e-14, 0.8158263, -0.57829666, 5.684342e-14, 0.57829666, 0.81582636, 5.5246958e-14, 3.036944, 0.24238157)
 bone_name = "head"
 bone_idx = 4
 
@@ -2725,7 +2725,7 @@ transform = Transform3D(1, -1.7881393e-07, -2.0116568e-07, 2.3841858e-07, 0.2423
 visible = false
 mesh = SubResource("CylinderMesh_26016")
 
-[node name="AnimationPlayer" parent="Mesh/gluttony" index="1" unique_id=240901900]
+[node name="AnimationPlayer" parent="Mesh/gluttony" index="1" unique_id=233142080]
 playback_default_blend_time = 0.2
 
 [node name="LockOn" type="Area3D" parent="Mesh" unique_id=916334882]
@@ -2825,7 +2825,7 @@ curve = SubResource("Curve3D_76nnf")
 libraries/ = SubResource("AnimationLibrary_vj6n6")
 script = ExtResource("31_ddcis")
 dialog_file = ExtResource("49_26016")
-speaker_name = "pig"
+speaker_name = "gluttony"
 dialog_templates = Array[PackedScene]([ExtResource("32_26016"), ExtResource("33_x6t7s"), ExtResource("34_76nnf")])
 anim = NodePath(".")
 
@@ -2841,9 +2841,9 @@ process_mode = 3
 volume_db = -7.0
 bus = &"SFX"
 script = ExtResource("22_oobth")
+speaker_group = "gluttony"
 player = NodePath(".")
 sounds = Array[AudioStream]([ExtResource("18_n5wbu")])
-speaker_group = "pig"
 
 [connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea" to="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea" method="_on_body_entered"]

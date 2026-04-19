@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/items/checkpoint.tscn" id="6_cy8f3"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/items/heavy_door.tscn" id="7_q5vxo"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/world_small.tres" id="8_5spip"]
+[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/custom/disolve.gdshader" id="9_aade6"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/world_star.tres" id="9_fi73v"]
 [ext_resource type="PackedScene" uid="uid://cemstdmdnxhba" path="res://scenes/items/ladder.tscn" id="10_qh5wb"]
 [ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://scenes/bosses/gluttony/piglet.tscn" id="11_2c563"]
@@ -15,6 +16,30 @@ vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_aade6"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("9_aade6")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_frequency = 3.0
+shader_parameter/dissolve_vector = Vector3(0.5, -0.5, 0.25)
+shader_parameter/custom_glow_color_enabled = false
+shader_parameter/custom_glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.0
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/albedo_enabled = false
+shader_parameter/albedo_color = Color(0.09803922, 0.11764706, 0.1764706, 1)
+shader_parameter/enabled_emisson = false
+shader_parameter/emission_texture_intensity = 1.0
+shader_parameter/normal_strength = 1.0
+shader_parameter/enabled_normal = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0hkyp"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.6435713, 0.64357144, 0.64357126, 1)
 
 [node name="Main" type="Node3D" unique_id=806372721]
 
@@ -58,18 +83,18 @@ mesh = SubResource("BoxMesh_od467")
 
 [node name="Enter" parent="." unique_id=362002922 instance=ExtResource("7_q5vxo")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
-DESTINATION_NODE_NAME = "Exit"
-DESTINATION_SCENE = "uid://worsh6enfk2g"
+DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
+DESTINATION_NODE_NAME = "LightDoor5"
 
 [node name="Exit" parent="." unique_id=594224674 instance=ExtResource("7_q5vxo")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
-DESTINATION_NODE_NAME = "Enter"
 DESTINATION_SCENE = "uid://cx2ditraoxlvu"
+DESTINATION_NODE_NAME = "Enter"
 
 [node name="FloatingRocksDoor" parent="." unique_id=1721925495 instance=ExtResource("7_q5vxo")]
 transform = Transform3D(1, 0, 1.06581e-14, 0, 1, 0, -1.06581e-14, 0, 1, 7.61851, -9.60013, -14.9987)
-DESTINATION_NODE_NAME = "enter"
 DESTINATION_SCENE = "uid://c5350q0aryax0"
+DESTINATION_NODE_NAME = "enter"
 
 [node name="Checkpoint" parent="." unique_id=317181500 instance=ExtResource("6_cy8f3")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 6.98366, -9.11077, 0.396708)
@@ -83,10 +108,14 @@ transform = Transform3D(-4.37114e-08, 2.21727e-15, -1, -0.514559, 0.857455, 2.24
 [node name="Piglet" parent="." unique_id=1733790200 instance=ExtResource("11_2c563")]
 transform = Transform3D(-0.80747575, 0, 0.5899013, 0, 1, 0, -0.5899013, 0, -0.80747575, -18.44065, -9, 10.958)
 
-[node name="PickUpInteraction" parent="Piglet" index="4" unique_id=1269613829]
+[node name="Plane" parent="Piglet/piglet/Mesh/Skeleton3D" parent_id_path=PackedInt32Array(1733790200, 1608552515, 1762578239) index="0" unique_id=2098590190]
+surface_material_override/0 = SubResource("ShaderMaterial_aade6")
+surface_material_override/1 = SubResource("StandardMaterial3D_0hkyp")
+
+[node name="PickUpInteraction" parent="Piglet" index="3" unique_id=1269613829]
 disabled = true
 
-[node name="HeadPetInteraction" parent="Piglet" index="5" unique_id=1044115885]
+[node name="HeadPetInteraction" parent="Piglet" index="4" unique_id=1044115885]
 disabled = false
 
 [node name="Reaper" parent="." unique_id=1031185986 instance=ExtResource("5_vybla")]

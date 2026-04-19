@@ -212,6 +212,7 @@ grow_vertical = 0
 script = ExtResource("3_2el3y")
 
 [node name="Label" type="Label" parent="Control" unique_id=138392116 groups=["chat"]]
+modulate = Color(1, 1, 1, 0)
 z_index = 10
 layout_mode = 1
 anchors_preset = 7

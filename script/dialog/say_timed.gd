@@ -6,6 +6,8 @@ var timer: Timer
 
 func _ready():
 	
+	for group_name in get_groups(): get_node("Control/Label").add_to_group(group_name) #Copy 
+	
 	if info.has("say"):
 		label.text = info["say"]
 	

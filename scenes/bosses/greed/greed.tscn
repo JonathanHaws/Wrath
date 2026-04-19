@@ -1548,7 +1548,6 @@ BODY = NodePath("../..")
 script = ExtResource("4_ri305")
 HEALTH = 3000.0
 MAX_HEALTH = 3000.0
-IMMUNE_GROUPS = Array[String](["greed"])
 DAMAGE_NUMBERS = ExtResource("21_kq5wy")
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 
@@ -1663,7 +1662,7 @@ groups = Array[String](["greed_mesh"])
 
 [node name="Greed" parent="Mesh" unique_id=1448867892 instance=ExtResource("17_cq6fp")]
 
-[node name="Skeleton3D" parent="Mesh/Greed/Rig" parent_id_path=PackedInt32Array(1448867892, 1550320789) index="0" unique_id=1663540959]
+[node name="Skeleton3D" parent="Mesh/Greed/Rig" parent_id_path=PackedInt32Array(1448867892, 248188661) index="0" unique_id=2076039815]
 bones/1/position = Vector3(1.4825952e-07, 1.2201675, -0.9818785)
 bones/1/rotation = Quaternion(-0.8129902, -4.3215515e-08, -6.24195e-08, 0.5822774)
 bones/2/position = Vector3(0.31877697, -0.06666427, -0.0106261885)
@@ -1693,7 +1692,7 @@ bones/23/rotation = Quaternion(0.91264355, -0.009322703, 0.0011058621, 0.4086484
 bones/24/rotation = Quaternion(-0.24492635, -0.009878925, -0.013544919, 0.96939677)
 bones/25/rotation = Quaternion(0.18999322, 0.006514166, -0.03934441, 0.9809751)
 
-[node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" index="0" unique_id=2092128176 groups=["greed_mesh"]]
+[node name="greed" parent="Mesh/Greed/Rig/Skeleton3D" index="0" unique_id=998619662 groups=["greed_mesh"]]
 material_override = ExtResource("27_mmykl")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="1" unique_id=771742600]
@@ -1789,7 +1788,7 @@ primary_damp_threshold = 1.0
 secondary_limit_angle = 1.5708
 secondary_damp_threshold = 1.0
 
-[node name="AnimationPlayer" parent="Mesh/Greed" index="1" unique_id=1771848996]
+[node name="AnimationPlayer" parent="Mesh/Greed" index="1" unique_id=881628397]
 root_motion_track = NodePath("Rig/Skeleton3D:root")
 callback_mode_process = 0
 playback_default_blend_time = 0.3
@@ -1853,9 +1852,9 @@ process_mode = 3
 volume_db = -7.0
 bus = &"SFX"
 script = ExtResource("36_po183")
+speaker_group = "greed"
 player = NodePath(".")
 sounds = Array[AudioStream]([ExtResource("37_pscvx")])
-speaker_group = "greed"
 
 [node name="Background" parent="Dialog/GreedDialog" unique_id=193652404 instance=ExtResource("35_ggcq0")]
 

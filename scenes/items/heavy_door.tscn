@@ -76,11 +76,9 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_4q587"]
 size = Vector3(7, 11, 2)
 
-[node name="HeavyDoor" type="Node3D" unique_id=2033611572 node_paths=PackedStringArray("AREA", "ANIM", "START")]
+[node name="HeavyDoor" type="Node3D" unique_id=2033611572 node_paths=PackedStringArray("ANIM")]
 script = ExtResource("1_cilod")
-AREA = NodePath("Area3D")
 ANIM = NodePath("AnimationPlayer")
-START = NodePath("Start")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1879861269]
 

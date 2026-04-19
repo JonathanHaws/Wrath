@@ -325,7 +325,11 @@ func in_interruptible_animation() -> bool:
 
 func reload_checkpoint() -> void:
 	await get_tree().process_frame
-	get_tree().change_scene_to_file(Save.data["checkpoint_scene_path"])
+	Save.data["checkpoint_respawning"] = true
+	if Save.data.has("checkpoint_scene_path"):
+		get_tree().change_scene_to_file(Save.data["checkpoint_scene_path"])
+	else:
+		get_tree().reload_current_scene()
 
 func _exit_tree() -> void:
 	
@@ -345,27 +349,18 @@ func _ready() -> void:
 	Save.save_data_updated.connect(load_max_shooting_data)
 	Save.save_data_updated.connect(load_max_heal_data)
 	
-	if Save.data.has("door_node_name"):		
-		var door_node = get_tree().root.find_child(Save.data["door_node_name"], true, false)
-		if door_node:
-			if door_node.START: 
-				global_transform = door_node.START.global_transform
-				CAMERA.last_orientation = CAMERA.global_basis
-		FADE_IN_ANIM.play("DOOR_FADE_IN")
-		Save.data.erase("door_node_name")
-		Save.save_game()
-		return
-	
-	if Save.data.has("checkpoint_scene_path"):
-		if get_tree().current_scene and get_tree().current_scene.scene_file_path != Save.data["checkpoint_scene_path"]:
-			get_tree().call_deferred("change_scene_to_file", Save.data["checkpoint_scene_path"])
-			return
-	if not Save.data.has("checkpoint_scene_path"):
-		Save.data["checkpoint_scene_path"] = get_tree().current_scene.scene_file_path
-	if Save.data.has("checkpoint_node_path"):
-		var checkpoint_node = get_node_or_null(Save.data["checkpoint_node_path"])
-		if checkpoint_node: checkpoint_node.load_checkpoint(self)
-		
+	if Save.data.has("checkpoint_respawning"):
+		if Save.data.has("checkpoint_scene_path"):
+			if get_tree().current_scene and get_tree().current_scene.scene_file_path != Save.data["checkpoint_scene_path"]:
+				get_tree().call_deferred("change_scene_to_file", Save.data["checkpoint_scene_path"])
+				return
+		if not Save.data.has("checkpoint_scene_path"):
+			Save.data["checkpoint_scene_path"] = get_tree().current_scene.scene_file_path
+		if Save.data.has("checkpoint_node_path"):
+			var checkpoint_node = get_node_or_null(Save.data["checkpoint_node_path"])
+			if checkpoint_node: checkpoint_node.load_checkpoint(self)
+		Save.data.erase("checkpoint_respawning")
+			
 	if not Save.data.has("spawn_sound"):
 		Save.data["spawn_sound"] = "spawn_new"
 	if $Audio: $Audio.spawn_sound([Save.data["spawn_sound"]])
