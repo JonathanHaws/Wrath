@@ -4261,33 +4261,9 @@ layout_mode = 2
 theme = ExtResource("52_ccj1p")
 alignment = 2
 script = ExtResource("51_773af")
-base_text = "# PRESS -key- TO AQUIRE SKILLS  -progress-"
+base_text = "# PRESS -key- TO AQUIRE SKILLS"
 action_name = "toggle_skill_tree"
 saved_key = "skill_tree_tutorial"
-required_learn_count = 6
-progress_display_divider = 2
-
-[node name="HealTutorial" type="HBoxContainer" parent="UI/Tutorials/VBoxContainer" unique_id=1902762774]
-visible = false
-layout_mode = 2
-theme = ExtResource("52_ccj1p")
-alignment = 2
-script = ExtResource("51_773af")
-base_text = "# PRESS -key- TO HEAL -progress-"
-action_name = "heal"
-saved_key = "heal_tutorial"
-tutorial_area_group_name = "heal_tutorial"
-
-[node name="ShootTutorial" type="HBoxContainer" parent="UI/Tutorials/VBoxContainer" unique_id=679846313]
-visible = false
-layout_mode = 2
-theme = ExtResource("52_ccj1p")
-alignment = 2
-script = ExtResource("51_773af")
-base_text = " # SHOOT WITH -key- RECHARGE SOUL BY ATTACKING ENEMIES -progress-"
-action_name = "shoot"
-saved_key = "shooting_tutorial"
-tutorial_area_group_name = "shoot_tutorial"
 
 [node name="BottomLeft" type="Control" parent="UI" unique_id=1327505875]
 layout_mode = 1

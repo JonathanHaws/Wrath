@@ -177,10 +177,6 @@ _data = {
 resource_local_to_scene = true
 size = Vector3(17, 13, 19)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_dq2hf"]
-resource_local_to_scene = true
-size = Vector3(20.036133, 19, 31.77295)
-
 [node name="Main" type="Node3D" unique_id=1722623232]
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1692198949]
@@ -254,13 +250,14 @@ omni_range = 101.01
 libraries/ = SubResource("AnimationLibrary_n044i")
 autoplay = &"introduction"
 script = ExtResource("8_bqs2d")
+ANIM_NAME = "introduction"
 SAVE_KEY = "introduction_cutscene_completed"
 ANIM = NodePath(".")
 ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["INTRODUCTION"])
 
 [node name="Camera3D" type="Camera3D" parent="Cinematic" unique_id=2010672013 groups=["cinematic_camera"]]
-transform = Transform3D(0.34202856, 0.057365626, -0.9379364, 0, 0.9981332, 0.06104749, 0.9396896, -0.020879962, 0.34139043, -366.5924, 108.807755, 203.19954)
+transform = Transform3D(0.34202856, 0.057365615, -0.9379364, 0, 0.99813306, 0.061047487, 0.9396896, -0.020879958, 0.34139043, -366.5924, 108.807755, 203.19954)
 fov = 20.0
 
 [node name="Door" type="Node" parent="." unique_id=368264647]
@@ -357,6 +354,9 @@ transform = Transform3D(0.43482256, 0, 0.90051615, 0, 1, 0, -0.90051615, 0, 0.43
 [node name="Ghost2" parent="Ghosts" unique_id=1415485496 instance=ExtResource("14_l8smn")]
 transform = Transform3D(-0.2051281, 0, 0.9787352, 0, 1, 0, -0.9787352, 0, -0.2051281, 205.41469, 44.778473, -26.356411)
 
+[node name="Reaper" parent="." unique_id=1142266382 instance=ExtResource("4_42w7d")]
+transform = Transform3D(-0.15529731, 0, -0.9878682, 0, 1, 0, 0.9878682, 0, -0.15529731, 19.497356, 42.041492, -32.452442)
+
 [node name="Piglet" parent="." unique_id=759269460 instance=ExtResource("15_7vt21")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 275.98953, 45.405087, -40.984917)
 
@@ -397,9 +397,6 @@ omni_range = 19.0
 [node name="Lust" parent="." unique_id=1949196190 instance=ExtResource("20_bdp0v")]
 transform = Transform3D(-0.9121058, 0, -0.40995485, 0, 1, 0, 0.40995485, 0, -0.9121058, 366.22284, 45.32094, 44.04379)
 
-[node name="Reaper" parent="." unique_id=1142266382 instance=ExtResource("4_42w7d")]
-transform = Transform3D(-0.15529731, 0, -0.9878682, 0, 1, 0, 0.9878682, 0, -0.15529731, 19.497356, 42.041492, -32.452442)
-
 [node name="SkillTreeTutorial" type="Area3D" parent="." unique_id=2027932816 groups=["skill_tree_tutorial"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.32533, 45.717094, -29.236448)
 collision_layer = 3
@@ -408,17 +405,6 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="SkillTreeTutorial" unique_id=98978797]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1, 5)
 shape = SubResource("BoxShape3D_7fk2k")
-debug_color = Color(0.768, 0.79413337, 0.8, 0.88235295)
-
-[node name="ShootTutorial" type="Area3D" parent="." unique_id=1659477864 groups=["shoot_tutorial"]]
-transform = Transform3D(0.77838564, 0, -0.6277865, 0, 1, 0, 0.6277865, 0, 0.77838564, 162.64381, 44.20571, -21.522644)
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="ShootTutorial" unique_id=807632199]
-transform = Transform3D(0.79525125, 0, 0.6062799, 0, 1, 0, -0.6062799, 0, 0.79525125, 0, 0, 0)
-shape = SubResource("BoxShape3D_dq2hf")
-disabled = true
 debug_color = Color(0.768, 0.79413337, 0.8, 0.88235295)
 
 [connection signal="body_entered" from="KillVolumes/Void" to="KillVolumes/Void" method="_on_body_entered"]

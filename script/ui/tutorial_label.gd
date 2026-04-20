@@ -4,7 +4,7 @@ extends Control ## script for onboarding tutorial prompts...
 @export_multiline var base_text: String = "[key] [progress]" 
 @export var action_name: String = "interact"
 @export var saved_key: String = ""
-@export var required_learn_count: int = 3
+@export var required_learn_count: int = 1
 func get_key() -> String:
 	var key_name: String = saved_key
 	if key_name.is_empty():
