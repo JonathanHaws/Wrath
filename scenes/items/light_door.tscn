@@ -70,10 +70,10 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ojp7h"]
-size = Vector3(27.25586, 69.2397, 7.0098004)
+size = Vector3(23.601563, 33.60813, 1.0258876)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_rx8ry"]
-size = Vector3(24.590317, 10.7881, 2.4193404)
+size = Vector3(24.922789, 10.7881, 1.1157981)
 
 [node name="LightDoor" type="Node3D" unique_id=119780670 node_paths=PackedStringArray("ANIM")]
 script = ExtResource("1_ityv5")
@@ -107,11 +107,13 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1402739215]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.1808815, 34.1199, -4.4573765)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.106227875, 16.304115, -1.4654202)
 shape = SubResource("BoxShape3D_ojp7h")
+debug_color = Color(0.65882355, 1, 0.69803923, 1)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="." unique_id=1823223616]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D" unique_id=294209347]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4849281, 4.89406, -0.11207712)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.112763405, 4.89406, 0.539694)
 shape = SubResource("BoxShape3D_rx8ry")
+disabled = true
