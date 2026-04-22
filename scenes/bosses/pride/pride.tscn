@@ -23,11 +23,11 @@
 [ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="24_oeds4"]
 [ext_resource type="PackedScene" uid="uid://c2rs4sei2yvd1" path="res://scenes/particles/hurt/pride_hurt_particles.tscn" id="24_uxu3y"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://script/dialog/dialog.gd" id="25_2x3ef"]
+[ext_resource type="PackedScene" uid="uid://b1la6oxukrv61" path="res://models/characters/pride/pride.glb" id="25_oeds4"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="25_osw8t"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://script/component/root_motion.gd" id="26_8l61o"]
 [ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://scenes/ui/dialog/choice.tscn" id="26_pd0jx"]
 [ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://scenes/ui/dialog/say.tscn" id="27_or7ux"]
-[ext_resource type="PackedScene" uid="uid://s17rtpig5sq1" path="res://models/characters/pride/pride.blend" id="27_uxu3y"]
 [ext_resource type="PackedScene" uid="uid://kiuc3ouuqv0h" path="res://scenes/ui/dialog/say_timed.tscn" id="28_hnqmt"]
 [ext_resource type="JSON" uid="uid://dgjgq3dsd2m3j" path="res://json/pride_talk.json" id="29_2x3ef"]
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="30_2q8t5"]
@@ -742,10 +742,6 @@ script = ExtResource("26_8l61o")
 script = ExtResource("24_oeds4")
 groups = Array[String](["pride_mesh"])
 
-[node name="pride" parent="Mesh" unique_id=864971963 instance=ExtResource("27_uxu3y")]
-
-[node name="Pride" parent="Mesh/pride" index="0" unique_id=1255591821 groups=["pride_mesh"]]
-
 [node name="LockOn" type="Area3D" parent="Mesh" unique_id=840308092]
 transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 1.48289, -0.085655)
 
@@ -753,6 +749,8 @@ transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
 shape = SubResource("BoxShape3D_uxu3y")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
+
+[node name="pride" parent="Mesh" unique_id=2029268652 instance=ExtResource("25_oeds4")]
 
 [node name="TriggerArea" type="Area3D" parent="." unique_id=13149657]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.98601, 3)
@@ -796,5 +794,3 @@ player = NodePath(".")
 sounds = Array[AudioStream]([ExtResource("17_euapl"), ExtResource("33_u8ma1"), null])
 
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
-
-[editable path="Mesh/pride"]

@@ -29,9 +29,9 @@
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="24_r4ucj"]
 [ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="26_ov3vn"]
 [ext_resource type="Material" uid="uid://7w72228cchli" path="res://shaders/materials/characters/gluttony_material.tres" id="28_kav4y"]
+[ext_resource type="PackedScene" uid="uid://dhg86ekb6f3ne" path="res://models/characters/gluttony/gluttony.glb" id="28_ov3vn"]
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://script/items/wisp_reward.gd" id="29_0iori"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://script/component/random_attack.gd" id="29_uk6rk"]
-[ext_resource type="PackedScene" uid="uid://dshyyn54ur3e1" path="res://models/characters/gluttony/gluttony.blend" id="29_wvvup"]
 [ext_resource type="PackedScene" uid="uid://d2iqujeqiun08" path="res://scenes/bosses/gluttony/slow_vomit.tscn" id="30_kcm85"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://script/dialog/dialog.gd" id="31_ddcis"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="31_vwjlg"]
@@ -1869,6 +1869,8 @@ _data = {
 height = 0.892645
 radius = 40.0
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_28k33"]
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_4y0wo"]
 radius = 1.3692
 height = 3.29912
@@ -1904,8 +1906,6 @@ height = 3.98967
 [sub_resource type="CylinderMesh" id="CylinderMesh_26016"]
 top_radius = 0.0
 height = 4.955
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_28k33"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_adl7b"]
 
@@ -2385,9 +2385,17 @@ shape = SubResource("CylinderShape3D_vwjlg")
 disabled = true
 debug_color = Color(0, 0.595, 0.7, 0.266667)
 
-[node name="gluttony" parent="Mesh" unique_id=1074736557 instance=ExtResource("29_wvvup")]
+[node name="LockOn" type="Area3D" parent="Mesh" unique_id=916334882]
+transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 3.55321, 0.229436)
 
-[node name="Skeleton3D" parent="Mesh/gluttony/Armature" parent_id_path=PackedInt32Array(1074736557, 2038024251) index="0" unique_id=1226159379]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/LockOn" unique_id=2137040516]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
+shape = SubResource("BoxShape3D_28k33")
+debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
+
+[node name="gluttony" parent="Mesh" unique_id=1883520908 instance=ExtResource("28_ov3vn")]
+
+[node name="Skeleton3D" parent="Mesh/gluttony/Armature" parent_id_path=PackedInt32Array(1883520908, 1258805917) index="0" unique_id=1422004939]
 bones/1/position = Vector3(1.7097143e-08, -1.614377, -0.113229506)
 bones/2/rotation = Quaternion(0.11560689, -7.770195e-14, -5.5125646e-08, 0.9932951)
 bones/3/rotation = Quaternion(0.15631525, 3.843357e-14, -7.453692e-08, 0.9877072)
@@ -2423,8 +2431,8 @@ bones/26/rotation = Quaternion(0.56248856, 0.29451463, -0.15749802, 0.75634795)
 bones/27/position = Vector3(-0.16756517, 0.18480073, 1.7204161)
 bones/28/position = Vector3(-0.6505352, 0.38523665, 0.048037607)
 bones/30/rotation = Quaternion(0.18322377, -0.037296604, -0.67258185, 0.71601105)
-bones/31/rotation = Quaternion(0.27380997, 0.032269087, 0.042366415, 0.96030825)
-bones/32/rotation = Quaternion(0.26274297, 0.42238086, 0.28148052, 0.8205664)
+bones/31/rotation = Quaternion(0.14499514, 0.0969397, 0.043559913, 0.9837082)
+bones/32/rotation = Quaternion(0.26274303, 0.42238086, 0.28148058, 0.82056653)
 bones/33/rotation = Quaternion(0.0046492084, -0.038033713, 0.039187722, 0.99849695)
 bones/34/rotation = Quaternion(0.13107882, 0.02623608, -0.12396564, 0.98324084)
 bones/35/rotation = Quaternion(0.017543204, -0.002852416, 0.094209194, 0.99539375)
@@ -2435,15 +2443,15 @@ bones/39/rotation = Quaternion(0.034904547, 0.002714451, -0.10407444, 0.9939531)
 bones/40/position = Vector3(-3.4600173e-08, 1.0775654, -1.5121655e-07)
 bones/40/rotation = Quaternion(0.18322411, 0.037296984, 0.67258173, 0.716011)
 bones/40/scale = Vector3(1.0000002, 1.0000001, 1)
-bones/41/rotation = Quaternion(0.18299223, -0.022459334, 0.24081421, 0.9528998)
-bones/42/rotation = Quaternion(0.25486484, -0.40987793, -0.31079578, 0.81881016)
+bones/41/rotation = Quaternion(0.11475858, -0.0882835, -0.0033687293, 0.989457)
+bones/42/rotation = Quaternion(0.25486484, -0.40987793, -0.31079572, 0.81881016)
 bones/43/rotation = Quaternion(0.0046492317, 0.038033713, -0.039187726, 0.99849695)
 bones/44/rotation = Quaternion(0.13107885, -0.026236063, 0.12396566, 0.98324084)
 bones/45/rotation = Quaternion(0.01754316, 0.0028524133, -0.09420924, 0.99539375)
 bones/46/rotation = Quaternion(-0.048132755, -0.030094082, 0.10955459, 0.9923585)
 bones/47/rotation = Quaternion(0.21792695, 0.0032653545, -0.11912617, 0.96866214)
 bones/48/position = Vector3(0.20564498, 0.14230403, -0.1258039)
-bones/48/rotation = Quaternion(-0.07111426, 0.024135683, -0.16869298, 0.9828037)
+bones/48/rotation = Quaternion(-0.07111425, 0.02413568, -0.16869296, 0.98280364)
 bones/49/rotation = Quaternion(0.034904566, -0.0027143587, 0.10407447, 0.9939532)
 bones/51/rotation = Quaternion(0.0130586205, 4.1959036e-12, -6.538183e-08, 0.9999148)
 bones/52/position = Vector3(-5.8567302e-08, -1.614377, -0.11322962)
@@ -2455,11 +2463,11 @@ bones/55/rotation = Quaternion(0.19292425, -0.35550728, 0.32328704, 0.85550004)
 bones/56/rotation = Quaternion(-0.272658, 0.016968768, -0.120777525, 0.9543492)
 bones/57/rotation = Quaternion(0.04008765, -0.008712262, -0.088202596, 0.99525756)
 
-[node name="Retopo" parent="Mesh/gluttony/Armature/Skeleton3D" index="0" unique_id=2067898572 groups=["gluttony_mesh"]]
-material_override = ExtResource("28_kav4y")
+[node name="Retopo" parent="Mesh/gluttony/Armature/Skeleton3D" index="0" unique_id=1797198276 groups=["gluttony_mesh"]]
+surface_material_override/0 = ExtResource("28_kav4y")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="1" unique_id=134155221]
-transform = Transform3D(0.89983416, -0.17040083, -0.40157387, -0.41761595, -0.070445284, -0.9058887, 0.12607515, 0.98285353, -0.13455118, 2.7187176, 2.1078978, 0.65352523)
+transform = Transform3D(0.95500255, 0.08186616, -0.28507492, -0.27159858, -0.14483516, -0.9514498, -0.119180605, 0.9860633, -0.11608323, 3.1054537, 2.1497736, 0.42213786)
 bone_name = "hand_r"
 bone_idx = 33
 
@@ -2485,7 +2493,7 @@ shape = SubResource("CapsuleShape3D_mra31")
 debug_color = Color(0.3372549, 0.5803922, 0.5058824, 0.54509807)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="2" unique_id=446597695]
-transform = Transform3D(0.64552426, -0.098470055, 0.7573656, 0.71699786, -0.26345813, -0.6453715, 0.26308373, 0.9596319, -0.09946601, -2.9874954, 1.4155083, 0.19404435)
+transform = Transform3D(0.93470734, -0.12650713, 0.33214214, 0.3203712, -0.10475808, -0.94148207, 0.15389861, 0.9864185, -0.057389192, -3.1903486, 2.1172552, 0.3276965)
 bone_name = "hand_l"
 bone_idx = 43
 
@@ -2725,16 +2733,8 @@ transform = Transform3D(1, -1.7881393e-07, -2.0116568e-07, 2.3841858e-07, 0.2423
 visible = false
 mesh = SubResource("CylinderMesh_26016")
 
-[node name="AnimationPlayer" parent="Mesh/gluttony" index="1" unique_id=233142080]
+[node name="AnimationPlayer" parent="Mesh/gluttony" index="1" unique_id=83313584]
 playback_default_blend_time = 0.2
-
-[node name="LockOn" type="Area3D" parent="Mesh" unique_id=916334882]
-transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 3.55321, 0.229436)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/LockOn" unique_id=2137040516]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
-shape = SubResource("BoxShape3D_28k33")
-debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="HurtParticles" type="Node3D" parent="." unique_id=897801405 groups=["teleport_to_attacking_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5.34482)
