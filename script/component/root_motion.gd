@@ -4,7 +4,7 @@
 
 extends Node3D
 @export var SKELETAL_ANIMATION_PLAYER: AnimationPlayer 
-@export var SKELETON: Node3D
+@export var SKELETON: Node3D ## Should be armature parent node not actual skeleton 3D node
 @export var MESH: Node3D
 @export var BODY: Node3D
 @export var ROOT_BONE_NAME: String = "root"

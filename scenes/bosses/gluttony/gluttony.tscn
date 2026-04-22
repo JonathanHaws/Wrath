@@ -28,7 +28,7 @@
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/themes/notification.tres" id="23_wlv32"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="24_r4ucj"]
 [ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="26_ov3vn"]
-[ext_resource type="Material" uid="uid://7w72228cchli" path="res://shaders/materials/gluttony_material.tres" id="28_kav4y"]
+[ext_resource type="Material" uid="uid://7w72228cchli" path="res://shaders/materials/characters/gluttony_material.tres" id="28_kav4y"]
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://script/items/wisp_reward.gd" id="29_0iori"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://script/component/random_attack.gd" id="29_uk6rk"]
 [ext_resource type="PackedScene" uid="uid://dshyyn54ur3e1" path="res://models/characters/gluttony/gluttony.blend" id="29_wvvup"]

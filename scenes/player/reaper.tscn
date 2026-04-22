@@ -3810,6 +3810,7 @@ ANIMATION_PLAYER = NodePath("../AnimationPlayer")
 
 [node name="GodModeHurt" type="Area3D" parent="GodMode" unique_id=611101630 groups=["player"]]
 script = ExtResource("7_4anjp")
+groups = Array[String](["player"])
 damage = 10000.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="GodMode/GodModeHurt" unique_id=1105067898 groups=["player"]]

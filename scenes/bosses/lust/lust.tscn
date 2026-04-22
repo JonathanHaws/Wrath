@@ -29,7 +29,7 @@
 [ext_resource type="Texture2D" uid="uid://bi6jr8bfooi38" path="res://models/characters/lust/lust_color.png" id="27_t1cxy"]
 [ext_resource type="Texture2D" uid="uid://tqtla7koy23u" path="res://models/characters/lust/lust_color_evil.png" id="28_b44t3"]
 [ext_resource type="PackedScene" uid="uid://b28l3wgogpqnm" path="res://models/characters/lust/lust.glb" id="29_eup60"]
-[ext_resource type="Material" uid="uid://cfsjgs6ugktap" path="res://shaders/materials/lust.tres" id="30_2ky0q"]
+[ext_resource type="Material" uid="uid://cfsjgs6ugktap" path="res://shaders/materials/characters/lust.tres" id="30_2ky0q"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="31_827t2"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://script/dialog/dialog.gd" id="32_3ttn5"]
 [ext_resource type="JSON" path="res://json/lust_talk.json" id="33_035v5"]
