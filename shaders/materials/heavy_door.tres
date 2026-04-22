@@ -1,0 +1,10 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://o4vtoamthlw7"]
+
+[ext_resource type="Texture2D" uid="uid://dnyc5oun2788u" path="res://models/items/door/heavy/color.png" id="1_6yetl"]
+[ext_resource type="Texture2D" uid="uid://dbv68eij45n06" path="res://models/items/door/heavy/normal.png" id="2_8er26"]
+
+[resource]
+albedo_texture = ExtResource("1_6yetl")
+metallic_texture_channel = 4
+normal_enabled = true
+normal_texture = ExtResource("2_8er26")
