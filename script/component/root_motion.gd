@@ -43,6 +43,7 @@ func find_root_tracks(anim: Animation) -> Dictionary:
 	return {"position": pos_idx, "rotation": rot_idx}
 
 func _ready() -> void:
+	
 	var anim = SKELETAL_ANIMATION_PLAYER.get_animation(DEFAULT_TRANSFORM_ANIMATION)
 	if not anim: return
 	var tracks: Dictionary = find_root_tracks(anim)

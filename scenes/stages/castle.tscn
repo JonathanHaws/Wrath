@@ -184,34 +184,33 @@ navigation_mesh = SubResource("NavigationMesh_jc5vn")
 [node name="Castle" parent="NavigationRegion3D" unique_id=221613747 instance=ExtResource("6_hcc5w")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 135.739, 8.16232, -12.8293)
 
-[node name="bridge" parent="NavigationRegion3D/Castle" index="0" unique_id=453136305]
+[node name="bridge" parent="NavigationRegion3D/Castle" index="0" unique_id=498840402]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="castle_base" parent="NavigationRegion3D/Castle" index="2" unique_id=1211517212]
-surface_material_override/0 = ExtResource("3_dq2hf")
-surface_material_override/1 = ExtResource("4_g6ecr")
-
-[node name="castle_pride" parent="NavigationRegion3D/Castle" index="3" unique_id=1023483612]
-surface_material_override/0 = ExtResource("3_dq2hf")
-surface_material_override/1 = ExtResource("3_dq2hf")
-
-[node name="greed_tower_charity" parent="NavigationRegion3D/Castle" index="4" unique_id=44835111]
-surface_material_override/0 = ExtResource("3_dq2hf")
-
-[node name="island" parent="NavigationRegion3D/Castle" index="5" unique_id=453982618]
-surface_material_override/0 = ExtResource("9_u51x1")
-
-[node name="lust" parent="NavigationRegion3D/Castle" index="6" unique_id=242604912]
+[node name="castle_base" parent="NavigationRegion3D/Castle" index="2" unique_id=1055489544]
 surface_material_override/0 = ExtResource("3_dq2hf")
 surface_material_override/1 = ExtResource("4_g6ecr")
 
-[node name="lust_virute_tower" parent="NavigationRegion3D/Castle" index="7" unique_id=1501663258]
+[node name="castle_pride" parent="NavigationRegion3D/Castle" index="3" unique_id=392945837]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="path" parent="NavigationRegion3D/Castle" index="8" unique_id=642892600]
+[node name="greed_tower_charity" parent="NavigationRegion3D/Castle" index="4" unique_id=230448368]
+surface_material_override/0 = ExtResource("3_dq2hf")
+
+[node name="island" parent="NavigationRegion3D/Castle" index="5" unique_id=1551145050]
 surface_material_override/0 = ExtResource("9_u51x1")
 
-[node name="lust_floor" parent="NavigationRegion3D/Castle" index="9" unique_id=2017078789]
+[node name="lust" parent="NavigationRegion3D/Castle" index="6" unique_id=661863460]
+surface_material_override/0 = ExtResource("3_dq2hf")
+surface_material_override/1 = ExtResource("4_g6ecr")
+
+[node name="lust_virute_tower" parent="NavigationRegion3D/Castle" index="7" unique_id=745431341]
+surface_material_override/0 = ExtResource("3_dq2hf")
+
+[node name="path" parent="NavigationRegion3D/Castle" index="8" unique_id=1544872970]
+surface_material_override/0 = ExtResource("9_u51x1")
+
+[node name="lust_floor" parent="NavigationRegion3D/Castle" index="9" unique_id=1103420537]
 surface_material_override/0 = ExtResource("5_a45b3")
 
 [node name="Enviroment" type="Node" parent="." unique_id=356274830]
@@ -249,7 +248,7 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["INTRODUCTION"])
 
 [node name="Camera3D" type="Camera3D" parent="Cinematic" unique_id=2010672013 groups=["cinematic_camera"]]
-transform = Transform3D(0.34202856, 0.057365615, -0.9379364, 0, 0.9981328, 0.061047498, 0.9396896, -0.020879956, 0.34139043, -366.5924, 108.807755, 203.19954)
+transform = Transform3D(0.34202856, 0.057365615, -0.9379364, 0, 0.99813277, 0.0610475, 0.9396896, -0.020879958, 0.34139043, -366.5924, 108.807755, 203.19954)
 fov = 20.0
 
 [node name="Door" type="Node" parent="." unique_id=368264647]
@@ -277,12 +276,12 @@ DESTINATION_SCENE = "uid://cjnryqwoknkw5"
 DESTINATION_NODE_NAME = "LightDoor"
 
 [node name="PrideTower" parent="Door" unique_id=901399088 groups=["envy_door"] instance=ExtResource("20_bv0d2")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 640.9639, 165.90729, -32.43266)
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 641.4823, 165.90729, -32.43266)
 DESTINATION_SCENE = "uid://5n4cvh6cqc4p"
 LOCKED = true
 
 [node name="EnvyCourt" parent="Door" unique_id=709350873 instance=ExtResource("20_bv0d2")]
-transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 519.9688, 166.32074, -32.17378)
+transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 517.90314, 166.32074, -32.17378)
 DESTINATION_SCENE = "uid://d1k2pnn46w66f"
 DESTINATION_NODE_NAME = "Exit"
 
@@ -344,8 +343,8 @@ transform = Transform3D(-0.15708953, 0, -0.98758435, 0, 1, 0, 0.98758435, 0, -0.
 USE_CUSTOM_START_ANIMATION = true
 START_ANIMATION = "LEAN"
 
-[node name="Envy" parent="." unique_id=291897580 instance=ExtResource("19_oqilo")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 610.431, 166.6565, -26.369814)
+[node name="Envy" parent="." unique_id=2069353459 instance=ExtResource("19_oqilo")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 610.431, 166.6565, -32.69289)
 
 [node name="Path3D" type="Path3D" parent="." unique_id=2031636455 node_paths=PackedStringArray("node_to_queue_free")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.64444, 29.919395, -21.1921)
@@ -355,7 +354,7 @@ save_key = "envy_encountered"
 node_to_queue_free = NodePath(".")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1767323347]
-transform = Transform3D(-0.77827233, -0.627901, 0.0049922448, -0.6262926, 0.7768027, 0.065785475, -0.045184936, 0.04807266, -0.9978167, 315.36624, 133.72562, 10.627035)
+transform = Transform3D(-0.77827233, -0.627901, 0.0049922443, -0.6262926, 0.7768027, 0.06578547, -0.045184936, 0.04807266, -0.99781656, 315.36624, 133.72562, 10.627035)
 progress = 493.03
 script = ExtResource("22_a0oe4")
 speed = -30.0
@@ -364,7 +363,7 @@ speed = -30.0
 libraries/ = SubResource("AnimationLibrary_je0v5")
 autoplay = &"Flying Around"
 
-[node name="envy" parent="Path3D/PathFollow3D" unique_id=920296622 instance=ExtResource("23_je0v5")]
+[node name="envy" parent="Path3D/PathFollow3D" unique_id=398075094 instance=ExtResource("23_je0v5")]
 transform = Transform3D(1, -1.2162491e-07, -7.450581e-09, -2.2700988e-09, 1.0000001, -6.9849193e-10, 0, 7.916242e-09, 1.000001, 0, 0, 0)
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Path3D/PathFollow3D" unique_id=1656311283]
