@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://dmf0vo8jrm34a"]
 
+[ext_resource type="PackedScene" uid="uid://bw8l5s2wnqr5" path="res://models/castle/castle.glb" id="1_vtq30"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/items/weather.tscn" id="2_80ox6"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/stages/lighting/enviroment.tscn" id="2_u51x1"]
 [ext_resource type="Material" uid="uid://8p0im5f4mlk7" path="res://shaders/materials/bricks/world_big.tres" id="3_dq2hf"]
+[ext_resource type="Material" uid="uid://14hmcag5btd0" path="res://shaders/materials/projectiles/vomit.tres" id="4_7guc4"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/player/reaper.tscn" id="4_42w7d"]
 [ext_resource type="Material" uid="uid://dp3cs55fchr3b" path="res://shaders/materials/light_door_shader.tres" id="4_g6ecr"]
 [ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://scenes/stages/lighting/sun.tscn" id="4_mqk0e"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/world_star.tres" id="5_a45b3"]
-[ext_resource type="PackedScene" uid="uid://615n66a3l256" path="res://models/castle/tower.blend" id="6_hcc5w"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="6_mb05r"]
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://script/items/cinematic.gd" id="8_bqs2d"]
 [ext_resource type="Material" uid="uid://c7xo8odsficf7" path="res://shaders/materials/world_rocks.tres" id="9_u51x1"]
@@ -183,36 +184,38 @@ size = Vector3(17, 13, 19)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.1039, 0)
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
 
-[node name="Castle" parent="NavigationRegion3D" unique_id=221613747 instance=ExtResource("6_hcc5w")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 135.739, 8.16232, -12.8293)
+[node name="castle" parent="NavigationRegion3D" unique_id=1500561543 instance=ExtResource("1_vtq30")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 135.739, 8.16232, -12.8293)
 
-[node name="bridge" parent="NavigationRegion3D/Castle" index="0" unique_id=498840402]
+[node name="bridge" parent="NavigationRegion3D/castle" index="0" unique_id=1236872126]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="castle_base" parent="NavigationRegion3D/Castle" index="2" unique_id=1055489544]
+[node name="castle_base" parent="NavigationRegion3D/castle" index="2" unique_id=196980328]
+surface_material_override/0 = ExtResource("3_dq2hf")
+surface_material_override/1 = ExtResource("4_g6ecr")
+surface_material_override/2 = ExtResource("4_7guc4")
+surface_material_override/3 = ExtResource("5_a45b3")
+
+[node name="castle_pride" parent="NavigationRegion3D/castle" index="3" unique_id=1736648420]
+surface_material_override/0 = ExtResource("3_dq2hf")
+
+[node name="greed_tower_charity" parent="NavigationRegion3D/castle" index="4" unique_id=1612424564]
+surface_material_override/0 = ExtResource("3_dq2hf")
+
+[node name="island" parent="NavigationRegion3D/castle" index="5" unique_id=1945339216]
+surface_material_override/0 = ExtResource("9_u51x1")
+
+[node name="lust" parent="NavigationRegion3D/castle" index="6" unique_id=163914703]
 surface_material_override/0 = ExtResource("3_dq2hf")
 surface_material_override/1 = ExtResource("4_g6ecr")
 
-[node name="castle_pride" parent="NavigationRegion3D/Castle" index="3" unique_id=392945837]
+[node name="lust_virute_tower" parent="NavigationRegion3D/castle" index="7" unique_id=1035741627]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
-[node name="greed_tower_charity" parent="NavigationRegion3D/Castle" index="4" unique_id=230448368]
-surface_material_override/0 = ExtResource("3_dq2hf")
-
-[node name="island" parent="NavigationRegion3D/Castle" index="5" unique_id=1551145050]
+[node name="path" parent="NavigationRegion3D/castle" index="8" unique_id=1818914302]
 surface_material_override/0 = ExtResource("9_u51x1")
 
-[node name="lust" parent="NavigationRegion3D/Castle" index="6" unique_id=661863460]
-surface_material_override/0 = ExtResource("3_dq2hf")
-surface_material_override/1 = ExtResource("4_g6ecr")
-
-[node name="lust_virute_tower" parent="NavigationRegion3D/Castle" index="7" unique_id=745431341]
-surface_material_override/0 = ExtResource("3_dq2hf")
-
-[node name="path" parent="NavigationRegion3D/Castle" index="8" unique_id=1544872970]
-surface_material_override/0 = ExtResource("9_u51x1")
-
-[node name="lust_floor" parent="NavigationRegion3D/Castle" index="9" unique_id=1103420537]
+[node name="lust_floor" parent="NavigationRegion3D/castle" index="9" unique_id=1846394098]
 surface_material_override/0 = ExtResource("5_a45b3")
 
 [node name="Enviroment" type="Node" parent="." unique_id=356274830]
@@ -250,7 +253,7 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["INTRODUCTION"])
 
 [node name="Camera3D" type="Camera3D" parent="Cinematic" unique_id=2010672013 groups=["cinematic_camera"]]
-transform = Transform3D(0.34202856, 0.057365615, -0.9379364, 0, 0.99813277, 0.0610475, 0.9396896, -0.020879958, 0.34139043, -366.5924, 108.807755, 203.19954)
+transform = Transform3D(0.34202856, 0.057365615, -0.9379364, 0, 0.99813265, 0.061047513, 0.9396896, -0.020879958, 0.34139043, -366.5924, 108.807755, 203.19954)
 fov = 20.0
 
 [node name="Door" type="Node" parent="." unique_id=368264647]
@@ -356,7 +359,7 @@ save_key = "envy_encountered"
 node_to_queue_free = NodePath(".")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1767323347]
-transform = Transform3D(-0.77827233, -0.627901, 0.004992239, -0.6262926, 0.7768027, 0.06578541, -0.045184936, 0.04807266, -0.9978156, 315.36624, 133.72562, 10.627035)
+transform = Transform3D(-0.77827233, -0.627901, 0.0049922382, -0.6262926, 0.7768027, 0.06578539, -0.045184936, 0.04807266, -0.9978154, 315.36624, 133.72562, 10.627035)
 progress = 493.03
 script = ExtResource("22_a0oe4")
 speed = -30.0
@@ -390,5 +393,5 @@ debug_color = Color(0.768, 0.79413337, 0.8, 0.88235295)
 [connection signal="body_entered" from="KillVolumes/Void" to="KillVolumes/Void" method="_on_body_entered"]
 [connection signal="body_entered" from="KillVolumes/Void2" to="KillVolumes/Void2" method="_on_body_entered"]
 
-[editable path="NavigationRegion3D/Castle"]
+[editable path="NavigationRegion3D/castle"]
 [editable path="Path3D/PathFollow3D/envy"]
