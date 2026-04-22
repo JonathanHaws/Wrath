@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dfri6vhmpkyfv"]
 
-[ext_resource type="PackedScene" uid="uid://wlhsn0forped" path="res://models/characters/piglet/piglet.blend" id="1_w7fh2"]
+[ext_resource type="PackedScene" uid="uid://2u2qs8p1y4nt" path="res://models/characters/piglet/piglet.glb" id="1_iuu88"]
 [ext_resource type="Material" uid="uid://cn5x858kq0c3r" path="res://shaders/materials/ghost/ghost_body.tres" id="2_iuu88"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="2_yln8f"]
 [ext_resource type="Material" uid="uid://3q6cym1ot3lq" path="res://shaders/materials/ghost/ghost_eyes.tres" id="3_b0mqt"]
@@ -310,8 +310,6 @@ _data = {
 &"RESET": SubResource("Animation_vyj1q")
 }
 
-[sub_resource type="PrismMesh" id="PrismMesh_yln8f"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_w7fh2"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_yln8f"]
@@ -372,10 +370,11 @@ rotation_edit_mode = 1
 libraries/ = SubResource("AnimationLibrary_vyj1q")
 autoplay = &"RESET"
 
-[node name="piglet" parent="." unique_id=1608552515 groups=["piglet_mesh"] instance=ExtResource("1_w7fh2")]
-rotation_edit_mode = 1
+[node name="piglet" parent="." unique_id=162201708 instance=ExtResource("1_iuu88")]
 
-[node name="Skeleton3D" parent="piglet/Mesh" parent_id_path=PackedInt32Array(1608552515, 493314536) index="0" unique_id=203756170]
+[node name="Mesh" parent="piglet" index="0" unique_id=2043791299 groups=["piglet_mesh"]]
+
+[node name="Skeleton3D" parent="piglet/Mesh" index="0" unique_id=495222798]
 bones/0/position = Vector3(0.014366882, 0.0060956455, -1.5908631)
 bones/0/rotation = Quaternion(4.620557e-08, 0.7040688, 0.7101318, -6.050204e-08)
 bones/1/position = Vector3(-1.1199242e-08, -0.17397617, 0.531944)
@@ -392,7 +391,7 @@ bones/14/position = Vector3(-0.17298222, 0.08771386, -0.24067578)
 bones/14/rotation = Quaternion(-0.7622208, -0.04615738, -0.0390173, 0.6444894)
 bones/15/rotation = Quaternion(-0.018756445, -0.00011191812, 0.01836854, 0.99965537)
 bones/16/position = Vector3(0.17298226, 0.08771397, -0.24067582)
-bones/16/rotation = Quaternion(-0.76222074, 0.046157345, 0.03901724, 0.6444896)
+bones/16/rotation = Quaternion(-0.7622207, 0.04615735, 0.039017238, 0.6444896)
 bones/17/rotation = Quaternion(-0.01875646, 0.00011196305, -0.018368576, 0.99965537)
 bones/18/position = Vector3(5.9412555e-09, -0.05055145, 0.100356914)
 bones/18/rotation = Quaternion(0.9822588, 8.309215e-08, 3.9140815e-07, 0.18753052)
@@ -409,15 +408,9 @@ bones/27/position = Vector3(0.21547532, 0.06101351, -0.19247521)
 bones/27/rotation = Quaternion(-0.67151713, 0.038685363, 0.005759299, 0.73995614)
 bones/28/rotation = Quaternion(-0.025570905, 0.0012522442, 0.019346531, 0.999485)
 
-[node name="Plane" parent="piglet/Mesh/Skeleton3D" index="0" unique_id=1211538383]
+[node name="Plane" parent="piglet/Mesh/Skeleton3D" index="0" unique_id=1173241877]
 surface_material_override/0 = ExtResource("2_iuu88")
 surface_material_override/1 = ExtResource("3_b0mqt")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="piglet/Mesh/Skeleton3D/Plane" index="0" unique_id=218893775]
-transform = Transform3D(-1, -8.74228e-08, 0, 8.74228e-08, -1, 0, 0, 0, 1, 4.17233e-05, 0.499105, 0.00958431)
-visible = false
-mesh = SubResource("PrismMesh_yln8f")
-skeleton = NodePath("../../../../..")
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="piglet/Mesh/Skeleton3D" index="1" unique_id=2097558753]
 influence = 0.0
@@ -463,7 +456,7 @@ animation_player = NodePath("../AnimationPlayer")
 animation_name = &"PIGLET_PICKUP"
 target_anim = &"PIGLET_PICKUP"
 body = NodePath("..")
-mesh = NodePath("../piglet")
+mesh = NodePath("../piglet/Mesh")
 duration_seconds = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PickUpInteraction" unique_id=447597325]
@@ -481,7 +474,7 @@ animation_player = NodePath("../AnimationPlayer")
 animation_name = &"PIGLET_PET"
 target_anim = &"PIGLET_PET"
 body = NodePath("..")
-mesh = NodePath("../piglet")
+mesh = NodePath("../piglet/Mesh")
 duration_seconds = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HeadPetInteraction" unique_id=2103315949]
@@ -499,7 +492,7 @@ animation_player = NodePath("../AnimationPlayer")
 animation_name = &"PIGLET_PAT"
 target_anim = &"PIGLET_PAT"
 body = NodePath("..")
-mesh = NodePath("../piglet")
+mesh = NodePath("../piglet/Mesh")
 duration_seconds = 0.5
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PatInteraction" unique_id=1619893817]
@@ -529,9 +522,9 @@ anim = NodePath(".")
 [node name="Jibberish" type="AudioStreamPlayer" parent="PigletDialog" unique_id=1102842512 node_paths=PackedStringArray("player")]
 bus = &"SFX"
 script = ExtResource("10_sjgh2")
+speaker_group = "piglet"
 player = NodePath(".")
 sounds = Array[AudioStream]([ExtResource("11_38cti"), ExtResource("12_10ins")])
-speaker_group = "piglet"
 
 [node name="Node" type="Node" parent="." unique_id=1385845519 node_paths=PackedStringArray("node_to_queue_free")]
 script = ExtResource("13_mqdry")
