@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://qi35dljseuk3"]
 
 [ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://script/items/projectile.gd" id="1_kpr02"]
-[ext_resource type="PackedScene" uid="uid://1ibdp5i2ei5t" path="res://models/items/projectile.blend" id="2_8trq3"]
+[ext_resource type="PackedScene" uid="uid://bc87fmyhhshyl" path="res://models/items/projectiles/projectile.glb" id="2_ugl6f"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="3_7bp6w"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="3_32n4n"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="4_o35mi"]
@@ -239,7 +239,7 @@ _data = {
 &"KILL": SubResource("Animation_1d31d")
 }
 
-[node name="GhostProjectile" type="Node3D" unique_id=237657882 node_paths=PackedStringArray("collision_animation_player", "ray", "hurt_box")]
+[node name="PlayerProjectile" type="Node3D" unique_id=237657882 node_paths=PackedStringArray("collision_animation_player", "ray", "hurt_box")]
 script = ExtResource("1_kpr02")
 speed = 20.0
 exclude_groups = Array[String](["ghost"])
@@ -250,9 +250,9 @@ hurt_box = NodePath("Attack")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=908187687]
 
-[node name="projectile" parent="Node3D" unique_id=1400207989 instance=ExtResource("2_8trq3")]
+[node name="projectile" parent="Node3D" unique_id=96990622 instance=ExtResource("2_ugl6f")]
 
-[node name="Cylinder" parent="Node3D/projectile" index="0" unique_id=72310232]
+[node name="Cylinder" parent="Node3D/projectile" index="0" unique_id=1454792017]
 surface_material_override/0 = SubResource("StandardMaterial3D_sb5oc")
 
 [node name="Attack" type="Area3D" parent="." unique_id=1769833961 node_paths=PackedStringArray("animation_player") groups=["player"]]

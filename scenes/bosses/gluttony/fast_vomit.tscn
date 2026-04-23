@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://koykwgdddqjf"]
 
 [ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://script/items/projectile.gd" id="1_3qcbf"]
-[ext_resource type="PackedScene" uid="uid://1ibdp5i2ei5t" path="res://models/items/projectile.blend" id="2_tqssf"]
+[ext_resource type="PackedScene" uid="uid://bc87fmyhhshyl" path="res://models/items/projectiles/projectile.glb" id="2_av0uo"]
 [ext_resource type="Material" uid="uid://14hmcag5btd0" path="res://shaders/materials/projectiles/vomit.tres" id="3_kk5d8"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="4_gbvvn"]
 
@@ -89,21 +89,21 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="GhostProjectile" type="Node3D" unique_id=1464689911 node_paths=PackedStringArray("ray", "collision_animation_player", "hurt_box")]
+[node name="GhostProjectile" type="Node3D" unique_id=1464689911 node_paths=PackedStringArray("collision_animation_player", "ray", "hurt_box")]
 script = ExtResource("1_3qcbf")
 speed = 20.0
-ray = NodePath("RayCast3D")
 exclude_groups = Array[String](["gluttony", "enemy"])
 collision_animation_player = NodePath("AnimationPlayer")
 collision_animation_name = "collision"
+ray = NodePath("RayCast3D")
 hurt_box = NodePath("Attack")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=378754282]
 
-[node name="projectile" parent="Node3D" unique_id=1400207989 instance=ExtResource("2_tqssf")]
+[node name="projectile" parent="Node3D" unique_id=96990622 instance=ExtResource("2_av0uo")]
 
-[node name="Cylinder" parent="Node3D/projectile" index="0" unique_id=1893045559]
-material_overlay = ExtResource("3_kk5d8")
+[node name="Cylinder" parent="Node3D/projectile" index="0" unique_id=1454792017]
+surface_material_override/0 = ExtResource("3_kk5d8")
 
 [node name="Attack" type="Area3D" parent="." unique_id=2008542141 groups=["ghost"]]
 collision_layer = 3

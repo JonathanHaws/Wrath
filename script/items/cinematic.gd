@@ -59,7 +59,7 @@ func _seamless_camera_transition(duration: float = 1.5, save_completed: bool = f
 		#print("making current camera players camera")
 		if save_completed:
 			queue_free()
-			print('queue_freeing')
+			#print('queue_freeing')
 		)
 		
 func _teleport_player_to_player_spot() -> void:
