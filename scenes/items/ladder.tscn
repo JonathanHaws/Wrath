@@ -1,21 +1,20 @@
 [gd_scene format=3 uid="uid://cemstdmdnxhba"]
 
-[ext_resource type="PackedScene" uid="uid://bd4vhtnhvs82x" path="res://models/items/ladders.blend" id="1_w5i8a"]
 [ext_resource type="Script" uid="uid://ct2ays1dctdy6" path="res://script/items/ladder.gd" id="2_eycjc"]
-
+[ext_resource type="PackedScene" uid="uid://br037nu54pinc" path="res://models/items/ladders/ladders.glb" id="2_jrkbu"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_w5i8a"]
 size = Vector3(0.159851, 7.57813, 1)
 
-[node name="Ladder" type="Node3D"]
+[node name="Ladder" type="Node3D" unique_id=536037141]
 
-[node name="ladders" parent="." instance=ExtResource("1_w5i8a")]
-
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." unique_id=2064218779]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("2_eycjc")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=64208907]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.103363, 3.28906, 0)
 shape = SubResource("BoxShape3D_w5i8a")
+
+[node name="ladders" parent="." unique_id=7996053 instance=ExtResource("2_jrkbu")]
