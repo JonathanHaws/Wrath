@@ -4003,10 +4003,9 @@ script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("43_78wyp")])
 add_to_scene_root = true
 
-[node name="Lean" type="Node" parent="Mesh" unique_id=1009116791 node_paths=PackedStringArray("BODY", "MESH")]
+[node name="Lean" type="Node" parent="Mesh" unique_id=1009116791 node_paths=PackedStringArray("BODY")]
 script = ExtResource("32_xnjpx")
 BODY = NodePath("../..")
-MESH = NodePath("")
 
 [node name="Slash" type="Node3D" parent="Mesh" unique_id=1507600048]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988243, -0.52316)

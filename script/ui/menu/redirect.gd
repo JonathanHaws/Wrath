@@ -26,10 +26,14 @@ func _on_pressed() -> void:
 func redirect() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
+	var instance = scene.instantiate()
+	var file_name = scene.resource_path.get_file().get_basename()
+	instance.name = file_name.substr(0,1).to_upper() + file_name.substr(1)
+	
 	if node_to_replace:
 		var parent = node_to_replace.get_parent()
 		node_to_replace.queue_free()
-		parent.add_child(scene.instantiate())
+		parent.add_child(instance)
 		return
 	get_tree().paused = false 
 	Engine.time_scale = 1.0 ## Reset If changing the scene eg.(Pause Menu To Main Menu)
