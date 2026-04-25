@@ -1,23 +1,23 @@
 [gd_scene format=3 uid="uid://dsdh2bite7xv4"]
 
-[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/stages/lighting/enviroment.tscn" id="2_2c8ka"]
-[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/items/weather.tscn" id="3_aba3s"]
-[ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://scenes/stages/lighting/sun.tscn" id="4_2c8ka"]
-[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/world_small.tres" id="4_3gs6a"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="5_rlfmo"]
-[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/player/reaper.tscn" id="6_haf51"]
-[ext_resource type="PackedScene" uid="uid://b3urcqmix8s8g" path="res://scenes/bosses/wrath/wrath.tscn" id="7_eqpye"]
-[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/items/wisp.tscn" id="8_rf8or"]
-[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/items/heavy_door.tscn" id="9_1jlmx"]
-[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/items/checkpoint.tscn" id="10_dklar"]
-[ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/characters/greed/greed.blend" id="13_v1s4o"]
-[ext_resource type="Material" uid="uid://csibvbbqy3q3e" path="res://shaders/materials/bricks/statue.tres" id="14_mgos0"]
-[ext_resource type="PackedScene" uid="uid://b0t7a64rsk4nk" path="res://models/characters/wrath/wrath.blend" id="15_edumt"]
-[ext_resource type="PackedScene" uid="uid://diwdaoucmix4i" path="res://scenes/stages/level_5_wrath/hub.blend" id="16_7fvs5"]
-[ext_resource type="Material" uid="uid://cy0ev2opeyd34" path="res://shaders/materials/bricks/star.tres" id="17_e52ow"]
-[ext_resource type="Material" uid="uid://8p0im5f4mlk7" path="res://shaders/materials/bricks/world_big.tres" id="18_ovh7g"]
-[ext_resource type="PackedScene" uid="uid://7mrheb4oio5g" path="res://scenes/stages/level_5_wrath/arch/arch.tscn" id="19_3yoog"]
-[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://scenes/ghosts/ghost_melee.tscn" id="19_b0sq8"]
+[ext_resource type="PackedScene" uid="uid://dv2esad47ydip" path="res://models/castle/hub.glb" id="1_mnf81"]
+[ext_resource type="Material" uid="uid://8p0im5f4mlk7" path="res://shaders/materials/bricks/world_big.tres" id="2_goykf"]
+[ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/world_star.tres" id="3_kly6f"]
+[ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/characters/greed/greed.blend" id="4_r1v37"]
+[ext_resource type="Material" uid="uid://csibvbbqy3q3e" path="res://shaders/materials/bricks/statue.tres" id="5_c8gwa"]
+[ext_resource type="PackedScene" uid="uid://b0t7a64rsk4nk" path="res://models/characters/wrath/wrath.blend" id="6_gk7rp"]
+[ext_resource type="PackedScene" uid="uid://dqtwp52fyqb0m" path="res://models/castle/archway.glb" id="7_gd53f"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/lighting/enviroment.tscn" id="8_6x8vt"]
+[ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/items/weather.tscn" id="9_6kvay"]
+[ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://scenes/lighting/sun.tscn" id="10_3oyxa"]
+[ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/world_small.tres" id="11_700sp"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="12_1r0cy"]
+[ext_resource type="PackedScene" uid="uid://b3urcqmix8s8g" path="res://scenes/bosses/wrath/wrath.tscn" id="13_f2mlf"]
+[ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/items/wisp.tscn" id="14_yha1a"]
+[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/items/heavy_door.tscn" id="15_ukf2x"]
+[ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/items/checkpoint.tscn" id="16_occlv"]
+[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://scenes/ghosts/ghost_melee.tscn" id="17_mcfhp"]
+[ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/player/reaper.tscn" id="18_prfvu"]
 
 [sub_resource type="Animation" id="Animation_gllqw"]
 resource_name = "ESCAPE"
@@ -152,6 +152,18 @@ autoplay = &"RESET"
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1762010599]
 navigation_mesh = SubResource("NavigationMesh_jc5vn")
 
+[node name="hub2" parent="NavigationRegion3D" unique_id=276693384 instance=ExtResource("1_mnf81")]
+
+[node name="arena" parent="NavigationRegion3D/hub2/arena" parent_id_path=PackedInt32Array(276693384, 2039797216) index="0" unique_id=464251477]
+surface_material_override/0 = ExtResource("2_goykf")
+
+[node name="hub" parent="NavigationRegion3D/hub2/hub" parent_id_path=PackedInt32Array(276693384, 405329154) index="0" unique_id=1782735565]
+surface_material_override/0 = ExtResource("2_goykf")
+surface_material_override/1 = ExtResource("3_kly6f")
+
+[node name="Cube" parent="NavigationRegion3D/hub2" index="2" unique_id=1578638972]
+surface_material_override/0 = ExtResource("2_goykf")
+
 [node name="Statues" type="Node" parent="NavigationRegion3D" unique_id=32381673]
 
 [node name="Greed" type="Node3D" parent="NavigationRegion3D/Statues" unique_id=1127231529]
@@ -160,17 +172,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.5, -37.5, -102.5)
 [node name="Stand" type="Node3D" parent="NavigationRegion3D/Statues/Greed" unique_id=69418082]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
 
-[node name="Model" parent="NavigationRegion3D/Statues/Greed/Stand" unique_id=642594179 instance=ExtResource("13_v1s4o")]
+[node name="Model" parent="NavigationRegion3D/Statues/Greed/Stand" unique_id=642594179 instance=ExtResource("4_r1v37")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03159, 0)
 
-[node name="greed" parent="NavigationRegion3D/Statues/Greed/Stand/Model/Rig/Skeleton3D" parent_id_path=PackedInt32Array(642594179, 1707400556) index="0" unique_id=954413386]
-material_override = ExtResource("14_mgos0")
+[node name="greed" parent="NavigationRegion3D/Statues/Greed/Stand/Model/Rig/Skeleton3D" parent_id_path=PackedInt32Array(642594179, 1432775901) index="0" unique_id=1824743754]
+material_override = ExtResource("5_c8gwa")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Statues/Greed/Stand" unique_id=1136685733]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 use_collision = true
 size = Vector3(3, 2, 3)
-material = ExtResource("14_mgos0")
+material = ExtResource("5_c8gwa")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Statues/Greed/Stand" unique_id=1453676006]
 
@@ -185,17 +197,17 @@ transform = Transform3D(0.0524929, 0, 0.998621, 0, 1, 0, -0.998621, 0, 0.0524929
 [node name="Stand" type="Node3D" parent="NavigationRegion3D/Statues/Wrath" unique_id=1533645884]
 transform = Transform3D(-0.707107, 0, 0.707107, 0, 1, 0, -0.707107, 0, -0.707107, 0, 0, 0)
 
-[node name="Model" parent="NavigationRegion3D/Statues/Wrath/Stand" unique_id=289827006 instance=ExtResource("15_edumt")]
+[node name="Model" parent="NavigationRegion3D/Statues/Wrath/Stand" unique_id=289827006 instance=ExtResource("6_gk7rp")]
 transform = Transform3D(-0.99976, 0, -0.0218847, 0, 1, 0, 0.0218847, 0, -0.99976, -0.0659637, 1.03911, 0.433846)
 
-[node name="wrath" parent="NavigationRegion3D/Statues/Wrath/Stand/Model/Armature/Skeleton3D" index="0"]
-material_override = ExtResource("14_mgos0")
+[node name="wrath" parent="NavigationRegion3D/Statues/Wrath/Stand/Model/Armature/Skeleton3D" parent_id_path=PackedInt32Array(289827006, 309052116) index="0" unique_id=544214923]
+material_override = ExtResource("5_c8gwa")
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/Statues/Wrath/Stand" unique_id=1783396542]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 use_collision = true
 size = Vector3(3, 2, 3)
-material = ExtResource("14_mgos0")
+material = ExtResource("5_c8gwa")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Statues/Wrath/Stand" unique_id=253177828]
 
@@ -203,30 +215,6 @@ material = ExtResource("14_mgos0")
 transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, -0.199471, 4.5, -0.0586548)
 shape = SubResource("BoxShape3D_6e7kf")
 debug_color = Color(0, 0.6, 0.7, 0.42)
-
-[node name="Level" parent="NavigationRegion3D" unique_id=1240887063 instance=ExtResource("16_7fvs5")]
-
-[node name="arena" parent="NavigationRegion3D/Level/arena" index="0"]
-material_override = ExtResource("4_3gs6a")
-
-[node name="CollisionShape3D" parent="NavigationRegion3D/Level/arena/arena/StaticBody3D" index="0"]
-debug_color = Color(0.314316, 0.314316, 0.314316, 0)
-
-[node name="hub" parent="NavigationRegion3D/Level/hub" index="0"]
-surface_material_override/0 = ExtResource("4_3gs6a")
-surface_material_override/1 = ExtResource("17_e52ow")
-
-[node name="CollisionShape3D" parent="NavigationRegion3D/Level/hub/hub/StaticBody3D" index="0" groups=["static_collison"]]
-debug_color = Color(0.7, 0.7, 0.7, 0)
-
-[node name="Cube" parent="NavigationRegion3D/Level" index="2"]
-surface_material_override/0 = ExtResource("18_ovh7g")
-
-[node name="CollisionShape3D" parent="NavigationRegion3D/Level/Cube/StaticBody3D" index="0" groups=["static_collison"]]
-debug_color = Color(0.7, 0.7, 0.7, 0)
-
-[node name="Arch" parent="NavigationRegion3D" unique_id=338952161 instance=ExtResource("19_3yoog")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181592, -39.932, -161.949)
 
 [node name="NavigationLink3D" type="NavigationLink3D" parent="NavigationRegion3D" unique_id=1039519819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.753826, -38.416954, -164.83517)
@@ -259,15 +247,22 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12780666, -23.290789, -48.
 start_position = Vector3(-6.0900393, -4.1534786, -12.59618)
 end_position = Vector3(-18.124752, -6.867584, -13.202072)
 
+[node name="archway" parent="NavigationRegion3D" unique_id=1363744304 instance=ExtResource("7_gd53f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.181592, -39.932, -161.949)
+
+[node name="archlow" parent="NavigationRegion3D/archway" index="0" unique_id=520486685]
+transform = Transform3D(1.001, 0, 0, 0, -4.37551e-08, -1.001, 0, 1.001, -4.37551e-08, 0.13607359, 0, 0)
+surface_material_override/0 = ExtResource("2_goykf")
+
 [node name="Enviroment" type="Node" parent="." unique_id=746578628]
 
-[node name="WorldEnvironment" parent="Enviroment" unique_id=1103039770 instance=ExtResource("2_2c8ka")]
+[node name="WorldEnvironment" parent="Enviroment" unique_id=1103039770 instance=ExtResource("8_6x8vt")]
 
-[node name="Weather" parent="Enviroment" unique_id=1715676276 instance=ExtResource("3_aba3s")]
+[node name="Weather" parent="Enviroment" unique_id=1715676276 instance=ExtResource("9_6kvay")]
 
 [node name="Lights" type="Node" parent="Enviroment" unique_id=1329671701]
 
-[node name="Node3D" parent="Enviroment/Lights" unique_id=508368726 instance=ExtResource("4_2c8ka")]
+[node name="Node3D" parent="Enviroment/Lights" unique_id=508368726 instance=ExtResource("10_3oyxa")]
 
 [node name="General" type="OmniLight3D" parent="Enviroment/Lights" unique_id=1494797226]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.603172, -29.4064, -85.1052)
@@ -336,7 +331,7 @@ omni_range = 40.285
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -185.221, 92.8422)
 
 [node name="PortalTower" type="MeshInstance3D" parent="Enviroment/StaticBody3D" unique_id=1301308893]
-material_override = ExtResource("4_3gs6a")
+material_override = ExtResource("11_700sp")
 mesh = SubResource("CylinderMesh_iy783")
 skeleton = NodePath("../..")
 
@@ -348,7 +343,7 @@ debug_color = Color(0.7, 0.7, 0.7, 0)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 1.88324, 19)
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("5_rlfmo")
+script = ExtResource("12_1r0cy")
 damage = 10000.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillVolume" unique_id=232572054]
@@ -356,7 +351,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8294, -186.275, -53.309)
 shape = SubResource("BoxShape3D_ope8t")
 debug_color = Color(1, 1, 1, 0)
 
-[node name="Wrath" parent="." unique_id=922487539 instance=ExtResource("7_eqpye")]
+[node name="Wrath" parent="." unique_id=922487539 instance=ExtResource("13_f2mlf")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.750871, 19)
 
 [node name="Bounds" type="Node" parent="Wrath" unique_id=953843618]
@@ -399,89 +394,90 @@ debug_color = Color(0, 0.595, 0.7, 0)
 
 [node name="Wisps" type="Node" parent="." unique_id=1000270028]
 
-[node name="Wisp" parent="Wisps" unique_id=960255746 instance=ExtResource("8_rf8or")]
+[node name="Wisp" parent="Wisps" unique_id=960255746 instance=ExtResource("14_yha1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 33.3216, -37.1959, -168.946)
 
-[node name="Wisp2" parent="Wisps" unique_id=99578055 instance=ExtResource("8_rf8or")]
+[node name="Wisp2" parent="Wisps" unique_id=99578055 instance=ExtResource("14_yha1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.1656, -10.1917, 37.849)
 
-[node name="Wisp3" parent="Wisps" unique_id=1348305769 instance=ExtResource("8_rf8or")]
+[node name="Wisp3" parent="Wisps" unique_id=1348305769 instance=ExtResource("14_yha1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.9891, -28.8294, -61.2567)
 
-[node name="Wisp4" parent="Wisps" unique_id=1667224184 instance=ExtResource("8_rf8or")]
+[node name="Wisp4" parent="Wisps" unique_id=1667224184 instance=ExtResource("14_yha1a")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6554, -30.1646, -135.958)
 
 [node name="Doors" type="Node" parent="." unique_id=633269389]
 
-[node name="Enter" parent="Doors" unique_id=579748069 instance=ExtResource("9_1jlmx")]
+[node name="Enter" parent="Doors" unique_id=579748069 instance=ExtResource("15_ukf2x")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -0.0782509, -40.302, -199.664)
-DESTINATION_NODE_NAME = "Exit"
 DESTINATION_SCENE = "uid://cmky6xf3axtum"
-
-[node name="ChainTower" parent="Doors" unique_id=103027498 instance=ExtResource("9_1jlmx")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 39.7555, -40.4065, -134.982)
-DESTINATION_NODE_NAME = "ChainTower"
-DESTINATION_SCENE = "uid://bnli3nh320v2f"
-
-[node name="TowerEast" parent="Doors" unique_id=1084109513 instance=ExtResource("9_1jlmx")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25.1094, -12.9049, -2.41369)
-DESTINATION_NODE_NAME = "TowerEast"
-DESTINATION_SCENE = "uid://6ds3o48mieqb"
-
-[node name="TowerSouth" parent="Doors" unique_id=672945194 instance=ExtResource("9_1jlmx")]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.12226, -40.127, -71.3973)
-DESTINATION_NODE_NAME = "TowerSouth"
-DESTINATION_SCENE = "uid://6ds3o48mieqb"
-
-[node name="TowerWest" parent="Doors" unique_id=1126618841 instance=ExtResource("9_1jlmx")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.0826, -12.8662, -24.5036)
-DESTINATION_NODE_NAME = "TowerWest"
-DESTINATION_SCENE = "uid://6ds3o48mieqb"
-
-[node name="RoofDoor" parent="Doors" unique_id=152451020 instance=ExtResource("9_1jlmx")]
-transform = Transform3D(-1.49011e-07, 0, 1, 0, 1, 0, -1, 0, -1.49011e-07, -59.8268, -10.171, -135.273)
 DESTINATION_NODE_NAME = "Exit"
-DESTINATION_SCENE = "uid://bnli3nh320v2f"
 
-[node name="Exit" parent="Doors" unique_id=1541161140 groups=["wrath_door"] instance=ExtResource("9_1jlmx")]
+[node name="ChainTower" parent="Doors" unique_id=103027498 instance=ExtResource("15_ukf2x")]
+transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 39.7555, -40.4065, -134.982)
+DESTINATION_SCENE = "uid://bnli3nh320v2f"
+DESTINATION_NODE_NAME = "ChainTower"
+
+[node name="TowerEast" parent="Doors" unique_id=1084109513 instance=ExtResource("15_ukf2x")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -25.1094, -12.9049, -2.41369)
+DESTINATION_SCENE = "uid://6ds3o48mieqb"
+DESTINATION_NODE_NAME = "TowerEast"
+
+[node name="TowerSouth" parent="Doors" unique_id=672945194 instance=ExtResource("15_ukf2x")]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -0.12226, -40.127, -71.3973)
+DESTINATION_SCENE = "uid://6ds3o48mieqb"
+DESTINATION_NODE_NAME = "TowerSouth"
+
+[node name="TowerWest" parent="Doors" unique_id=1126618841 instance=ExtResource("15_ukf2x")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 25.0826, -12.8662, -24.5036)
+DESTINATION_SCENE = "uid://6ds3o48mieqb"
+DESTINATION_NODE_NAME = "TowerWest"
+
+[node name="RoofDoor" parent="Doors" unique_id=152451020 instance=ExtResource("15_ukf2x")]
+transform = Transform3D(-1.49011e-07, 0, 1, 0, 1, 0, -1, 0, -1.49011e-07, -59.8268, -10.171, -135.273)
+DESTINATION_SCENE = "uid://bnli3nh320v2f"
+DESTINATION_NODE_NAME = "Exit"
+
+[node name="Exit" parent="Doors" unique_id=1541161140 groups=["wrath_door"] instance=ExtResource("15_ukf2x")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 4.76271, 62.5494)
+DESTINATION_SCENE = "uid://d1k2pnn46w66f"
 DESTINATION_NODE_NAME = "Enter"
 LOCKED = true
-DESTINATION_SCENE = "uid://d1k2pnn46w66f"
 
 [node name="Checkpoints" type="Node" parent="." unique_id=2065289146]
 
-[node name="Checkpoint1" parent="Checkpoints" unique_id=152869171 instance=ExtResource("10_dklar")]
+[node name="Checkpoint1" parent="Checkpoints" unique_id=152869171 instance=ExtResource("16_occlv")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -37.1094, -135)
 CHECKPOINT_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 
-[node name="Checkpoint2" parent="Checkpoints" unique_id=1394775339 instance=ExtResource("10_dklar")]
+[node name="Checkpoint2" parent="Checkpoints" unique_id=1394775339 instance=ExtResource("16_occlv")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -12.5, -65)
 CHECKPOINT_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 
-[node name="Checkpoint4" parent="Checkpoints" unique_id=355956255 instance=ExtResource("10_dklar")]
+[node name="Checkpoint4" parent="Checkpoints" unique_id=355956255 instance=ExtResource("16_occlv")]
 transform = Transform3D(1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -5.68248e-06, -27.6287, -43.5764)
 CHECKPOINT_SCENE_PATH = "res://scenes/zones/exterior.tscn"
 
 [node name="Ghosts" type="Node" parent="." unique_id=102167060]
 
-[node name="Ghost" parent="Ghosts" unique_id=842720599 instance=ExtResource("19_b0sq8")]
+[node name="Ghost" parent="Ghosts" unique_id=842720599 instance=ExtResource("17_mcfhp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.58469, -39.0943, -82.5956)
 
-[node name="Ghost2" parent="Ghosts" unique_id=260851627 instance=ExtResource("19_b0sq8")]
+[node name="Ghost2" parent="Ghosts" unique_id=260851627 instance=ExtResource("17_mcfhp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.082122, -38.98737, -100.8928)
 
-[node name="Ghost" parent="." unique_id=1909099719 instance=ExtResource("19_b0sq8")]
+[node name="Ghost" parent="." unique_id=1909099719 instance=ExtResource("17_mcfhp")]
 transform = Transform3D(-0.707107, 0, -0.707107, 0, 1, 0, 0.707107, 0, -0.707107, -33.1698, -37.6756, -165.788)
 
-[node name="Ghost2" parent="." unique_id=790694271 instance=ExtResource("19_b0sq8")]
+[node name="Ghost2" parent="." unique_id=790694271 instance=ExtResource("17_mcfhp")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -13.5082, -11.1915, -37.4764)
 
-[node name="Reaper" parent="." unique_id=1029336022 instance=ExtResource("6_haf51")]
+[node name="Reaper" parent="." unique_id=1029336022 instance=ExtResource("18_prfvu")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -36.5086, -190)
 
 [connection signal="body_entered" from="KillVolume" to="KillVolume" method="_on_body_entered"]
 
+[editable path="NavigationRegion3D/hub2"]
 [editable path="NavigationRegion3D/Statues/Greed/Stand/Model"]
 [editable path="NavigationRegion3D/Statues/Wrath/Stand/Model"]
-[editable path="NavigationRegion3D/Level"]
+[editable path="NavigationRegion3D/archway"]

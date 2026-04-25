@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/world_small.tres" id="2_6d5mm"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/items/weather.tscn" id="3_1uhv7"]
-[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/stages/lighting/enviroment.tscn" id="4_ydha4"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/lighting/enviroment.tscn" id="4_ydha4"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/world_star.tres" id="5_oqn12"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/items/checkpoint.tscn" id="6_nirrj"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/player/reaper.tscn" id="7_orybl"]
@@ -13,6 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://wlhsn0forped" path="res://models/characters/piglet/piglet.blend" id="12_qfp2b"]
 [ext_resource type="PackedScene" uid="uid://v5af8j11oilq" path="res://scenes/bosses/lust/lust.tscn" id="13_qri8l"]
 [ext_resource type="PackedScene" uid="uid://djqadr0k0vrs3" path="res://scenes/bosses/envy/envy.tscn" id="14_6d5mm"]
+[ext_resource type="PackedScene" uid="uid://yjgk2vfs7584" path="res://models/characters/sloth/sloth.glb" id="14_gmsxx"]
+[ext_resource type="Material" uid="uid://3q6cym1ot3lq" path="res://shaders/materials/ghost/ghost_eyes.tres" id="15_g448i"]
+[ext_resource type="Material" uid="uid://cn5x858kq0c3r" path="res://shaders/materials/ghost/ghost_body.tres" id="16_ty4y1"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
@@ -66,14 +69,14 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.142
 
 [node name="Enter" parent="." unique_id=1533333931 instance=ExtResource("8_4sp4e")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
-DESTINATION_NODE_NAME = "Exit"
 DESTINATION_SCENE = "uid://d1k2pnn46w66f"
+DESTINATION_NODE_NAME = "Exit"
 
 [node name="Exit" parent="." unique_id=764002434 groups=["pride_door"] instance=ExtResource("8_4sp4e")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
+DESTINATION_SCENE = "uid://5n4cvh6cqc4p"
 DESTINATION_NODE_NAME = "Enter"
 LOCKED = true
-DESTINATION_SCENE = "uid://5n4cvh6cqc4p"
 
 [node name="gluttony" parent="." unique_id=1387691380 instance=ExtResource("9_g4wad")]
 transform = Transform3D(-0.584745, 0, -0.811217, 0, 1, 0, 0.811217, 0, -0.584745, 10.1005, -8.14531, 7.71447)
@@ -95,3 +98,13 @@ transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.09169
 
 [node name="Lust" parent="." unique_id=1949196190 instance=ExtResource("13_qri8l")]
 transform = Transform3D(-0.7683685, 0.0019798502, -0.640005, 0.015828589, 0.9997478, -0.015910577, 0.639812, -0.022355549, -0.7682065, 3.313282, -7.4927015, 12.951403)
+
+[node name="sloth" parent="." unique_id=1456814678 instance=ExtResource("14_gmsxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.943674, -8.105873, 13.421916)
+
+[node name="Sphere_001" parent="sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="0" unique_id=832004677]
+transform = Transform3D(-0.9999347, 0, 0.011431596, 0, 1, 0, -0.011431596, 0, -0.9999347, 0, 0, 1.9188004)
+surface_material_override/0 = ExtResource("15_g448i")
+surface_material_override/1 = ExtResource("16_ty4y1")
+
+[editable path="sloth"]

@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/world_small.tres" id="2_haesu"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/world_star.tres" id="3_bnm75"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/items/weather.tscn" id="4_bi5ag"]
-[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/stages/lighting/enviroment.tscn" id="5_seoog"]
+[ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/lighting/enviroment.tscn" id="5_seoog"]
 [ext_resource type="PackedScene" uid="uid://b1kpbao7u5y7k" path="res://scenes/items/bounce_pad.tscn" id="6_22dr6"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/player/reaper.tscn" id="7_u27ng"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/items/heavy_door.tscn" id="8_tuwhl"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://b1gqd40t6mj76" path="res://scenes/items/wisp.tscn" id="13_1j05m"]
 [ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://scenes/ghosts/ghost_melee.tscn" id="14_rnrrl"]
 [ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://scenes/bosses/gluttony/piglet.tscn" id="15_14x8r"]
+
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(5.5602, 0.40003, 14.2054, 5.5602, 0.40003, -9.7946, 3.3102, 0.40003, -10.0446, 3.3102, 0.40003, -14.5446, -22.1898, 0.40003, -14.5446, -22.1898, 0.40003, 14.2054, 4.3102, 8.90003, -14.5446, 4.3102, 8.90003, -11.0446, 8.5602, 8.90003, -11.0446, 8.5602, 8.90003, -14.5446, 4.5602, 0.40003, -14.5446, 4.5602, 0.40003, -11.0446, 8.3102, 0.40003, -11.0446, 8.3102, 0.40003, -14.5446, 9.5602, 0.40003, -10.0446, 7.3102, 0.40003, -9.7946, 7.3102, 0.40003, 14.2054, 41.8102, 0.40003, -14.5446, 9.5602, 0.40003, -14.5446, 41.8102, 0.40003, 14.2054)
