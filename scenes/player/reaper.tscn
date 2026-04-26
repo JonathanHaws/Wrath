@@ -852,6 +852,124 @@ tracks/3/keys = {
 "values": [true]
 }
 
+[sub_resource type="Animation" id="Animation_78wyp"]
+resource_name = "CLIMBING"
+length = 0.416671
+loop_mode = 1
+step = 0.0416667
+tracks/0/type = "animation"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"clips": PackedStringArray("Climbing"),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_17dho"]
+resource_name = "CLIMBING_ENTER"
+length = 0.416671
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:TURN_MULTIPLIER")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("ClimbingEnter"),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.166667, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.2, 0.0]
+}
+
+[sub_resource type="Animation" id="Animation_uatll"]
+resource_name = "CLIMBING_EXIT"
+length = 0.333338
+step = 0.0416667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:TURN_MULTIPLIER")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/reaper/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("ClimbingExit"),
+"times": PackedFloat32Array(0)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.208333, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.2]
+}
+
 [sub_resource type="Animation" id="Animation_yhep5"]
 resource_name = "DASH"
 length = 0.12500417
@@ -1498,124 +1616,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
-}
-
-[sub_resource type="Animation" id="Animation_78wyp"]
-resource_name = "LADDER"
-length = 0.416671
-loop_mode = 1
-step = 0.0416667
-tracks/0/type = "animation"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Mesh/reaper/AnimationPlayer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"clips": PackedStringArray("Ladder"),
-"times": PackedFloat32Array(0)
-}
-
-[sub_resource type="Animation" id="Animation_17dho"]
-resource_name = "LADDER_ENTER"
-length = 0.416671
-step = 0.0416667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:TURN_MULTIPLIER")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-tracks/2/type = "animation"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/reaper/AnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": PackedStringArray("LadderEnter"),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.166667, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.2, 0.0]
-}
-
-[sub_resource type="Animation" id="Animation_uatll"]
-resource_name = "LADDER_EXIT"
-length = 0.333338
-step = 0.0416667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:TURN_MULTIPLIER")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:SPEED_MULTIPLIER")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/2/type = "animation"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/reaper/AnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": PackedStringArray("LadderExit"),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/reaper/AnimationPlayer:playback_default_blend_time")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0.208333, 0.25),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, 0.2]
 }
 
 [sub_resource type="Animation" id="Animation_3vvcf"]
@@ -3010,6 +3010,9 @@ _data = {
 &"BLOCK": SubResource("Animation_au8vy"),
 &"BLOCK_ENTER": SubResource("Animation_kim7h"),
 &"BLOCK_EXIT": SubResource("Animation_px533"),
+&"CLIMBING": SubResource("Animation_78wyp"),
+&"CLIMBING_ENTER": SubResource("Animation_17dho"),
+&"CLIMBING_EXIT": SubResource("Animation_uatll"),
 &"DASH": SubResource("Animation_yhep5"),
 &"DEATH": SubResource("Animation_s81g7"),
 &"DOOR": SubResource("Animation_5ijfa"),
@@ -3021,9 +3024,6 @@ _data = {
 &"IDLE": SubResource("Animation_kk21r"),
 &"INTRODUCTION": SubResource("Animation_fw2bj"),
 &"JUMPING": SubResource("Animation_wfofs"),
-&"LADDER": SubResource("Animation_78wyp"),
-&"LADDER_ENTER": SubResource("Animation_17dho"),
-&"LADDER_EXIT": SubResource("Animation_uatll"),
 &"LUST_INTRO": SubResource("Animation_3vvcf"),
 &"PIGLET_PAT": SubResource("Animation_ccj1p"),
 &"PIGLET_PET": SubResource("Animation_773af"),
@@ -3762,9 +3762,6 @@ next/BLOCK_ENTER = &"BLOCK"
 next/BLOCK_EXIT = &"IDLE"
 next/DASH = &"RUN"
 next/INTRODUCTION = &"IDLE"
-next/LADDER = &"LADDER"
-next/LADDER_ENTER = &"LADDER"
-next/LADDER_EXIT = &"IDLE"
 next/REST = &"SKILLS"
 
 [node name="Hitshape" type="Area3D" parent="." unique_id=1397946160 node_paths=PackedStringArray("ANIM_PLAYER") groups=["player", "player_hitshape"]]
@@ -4039,51 +4036,16 @@ omni_range = 17.0156
 script = ExtResource("45_au8vy")
 groups = Array[String](["cloak_mesh", "body_mesh"])
 
-[node name="reaper" parent="Mesh" unique_id=438380348 instance=ExtResource("45_riyku")]
+[node name="reaper" parent="Mesh" unique_id=372593124 instance=ExtResource("45_riyku")]
 
-[node name="Skeleton3D" parent="Mesh/reaper/Reaper" parent_id_path=PackedInt32Array(438380348, 1211195373) index="0" unique_id=5731151]
-bones/0/rotation = Quaternion(-0.70708895, -0.0050162803, 0.0050162803, 0.707089)
-bones/1/position = Vector3(0.032105897, 0.050312966, 0.85798424)
-bones/1/rotation = Quaternion(0.70708895, 0.005016275, -0.005016281, 0.707089)
-bones/2/rotation = Quaternion(-5.09876e-16, 1.2361932e-07, -3.2596288e-09, 1)
-bones/3/position = Vector3(-0.07390614, 0.08636392, -1.7789846e-08)
-bones/3/rotation = Quaternion(-0.33995402, 0.18988578, 0.806794, 0.4443627)
-bones/4/rotation = Quaternion(-0.35126203, 0.18792808, -0.33690992, 0.85310596)
-bones/5/rotation = Quaternion(0.20879745, -0.012884132, 0.18829164, 0.9595748)
-bones/6/rotation = Quaternion(-0.26537672, 0.032359764, -0.12772453, 0.9550992)
-bones/7/position = Vector3(0.057966053, 0.2760509, -0.011189371)
-bones/7/rotation = Quaternion(-0.09689692, 0.20694253, -0.17389455, 0.95788646)
-bones/8/position = Vector3(0.041183144, 0.33646312, 0.05921636)
-bones/8/rotation = Quaternion(0.010814719, -0.73059523, 0.10295891, 0.6749172)
-bones/9/rotation = Quaternion(-0.13249545, -5.527461e-12, -3.1672652e-08, 0.99118364)
-bones/10/position = Vector3(0.07390615, 0.08636404, 2.0404357e-08)
-bones/10/rotation = Quaternion(-0.339954, -0.18988591, -0.80679405, 0.44436258)
-bones/11/rotation = Quaternion(-0.35126203, -0.18792811, 0.33691007, 0.85310584)
-bones/12/rotation = Quaternion(0.20879748, 0.012883996, -0.1882916, 0.9595749)
-bones/13/rotation = Quaternion(-0.26537672, -0.032359757, 0.12772456, 0.9550992)
-bones/14/position = Vector3(-0.057966106, 0.27605078, -0.011189434)
-bones/14/rotation = Quaternion(-0.09689692, -0.20694262, 0.17389469, 0.9578864)
-bones/15/position = Vector3(-0.04118313, 0.3364631, 0.05921642)
-bones/15/rotation = Quaternion(0.010814741, 0.7305951, -0.102958776, 0.67491734)
-bones/16/position = Vector3(-0.07455925, -0.046927214, -3.2384865e-08)
-bones/16/rotation = Quaternion(0.0035149124, -0.19422184, 0.9808256, 0.015705667)
-bones/17/rotation = Quaternion(0.27325985, 0.007413177, 0.00278382, 0.96190774)
-bones/18/rotation = Quaternion(-0.7067873, 2.9790047e-07, 0.0012984327, 0.70742494)
-bones/19/position = Vector3(0.07455925, -0.04692727, -3.5321253e-08)
-bones/19/rotation = Quaternion(-0.0004204223, -0.0014431516, 0.99986947, -0.016088543)
-bones/20/rotation = Quaternion(0.39503014, -0.010957118, -0.0024836797, 0.9185995)
-bones/21/rotation = Quaternion(-0.7067873, -2.9798298e-07, -0.0012984324, 0.70742494)
-bones/22/position = Vector3(0.44147426, 0.31922388, 0.84810036)
-bones/22/rotation = Quaternion(0.6205985, -0.3663349, -0.15098737, 0.6766529)
-
-[node name="body" parent="Mesh/reaper/Reaper/Skeleton3D" index="0" unique_id=1602605717 groups=["body_mesh"]]
+[node name="body" parent="Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(372593124, 1173629645) index="0" unique_id=157442255 groups=["body_mesh"]]
 surface_material_override/0 = ExtResource("35_m1s71")
 
-[node name="cloak" parent="Mesh/reaper/Reaper/Skeleton3D" index="1" unique_id=1567128331 groups=["cloak_mesh"]]
+[node name="cloak" parent="Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(372593124, 1173629645) index="1" unique_id=1968025064 groups=["cloak_mesh"]]
 surface_material_override/0 = ExtResource("36_4anjp")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="3" unique_id=552018988]
-transform = Transform3D(0.68155915, -0.26382172, -0.68255043, 0.31805983, 0.9468356, -0.04837633, 0.65902585, -0.18412045, 0.7292356, 0.4293971, 0.85427856, -0.06922376)
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(372593124, 1173629645) index="3" unique_id=552018988]
+transform = Transform3D(0.9988408, 0.0059169475, -0.047768623, -0.005598017, 0.9999609, 0.0068076863, 0.04780704, -0.00653237, 0.99883515, -0.7060426, 1.0007175, 0.0655569)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -4118,8 +4080,8 @@ light_energy = 0.0
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=758963694]
 libraries/ = SubResource("AnimationLibrary_hfpb6")
 
-[node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4" unique_id=1880319706]
-transform = Transform3D(-0.9997168, 3.0512456e-07, -0.023811786, 0.023493327, -0.16299313, -0.9863475, -0.0038814433, -0.9866272, 0.16294704, -0.07789681, 0.045771092, 0.10580947)
+[node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(372593124, 1173629645) index="4" unique_id=1880319706]
+transform = Transform3D(-0.99971664, 3.3678953e-07, -0.023811866, 0.023751343, -0.071247205, -0.99717593, -0.0016968639, -0.9974587, 0.07122703, -0.09782646, 0.010602772, 0.09236823)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -4128,8 +4090,8 @@ transform = Transform3D(-0.999716, 0.00169688, 0.0237513, 3.64147e-07, 0.997459,
 script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 
-[node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5" unique_id=1885491197]
-transform = Transform3D(-0.9997168, 3.0512456e-07, -0.023811786, 0.023493327, -0.16299313, -0.9863475, -0.0038814433, -0.9866272, 0.16294704, -0.07789681, 0.045771092, 0.10580947)
+[node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(372593124, 1173629645) index="5" unique_id=1885491197]
+transform = Transform3D(-0.99971664, 3.3678953e-07, -0.023811866, 0.023751343, -0.071247205, -0.99717593, -0.0016968639, -0.9974587, 0.07122703, -0.09782646, 0.010602772, 0.09236823)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -4138,7 +4100,7 @@ transform = Transform3D(-0.999716, 0.00169688, 0.0237513, 3.64147e-07, 0.997459,
 script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="6" unique_id=232937500]
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(372593124, 1173629645) index="6" unique_id=232937500]
 target_node = NodePath("../../../../../SpringArm3D/Camera3D/HeadFollowTarget")
 bone_name = "head"
 bone = 9
@@ -4151,7 +4113,7 @@ primary_damp_threshold = 1.0
 secondary_limit_angle = 0.261799
 secondary_damp_threshold = 1.0
 
-[node name="AnimationPlayer" parent="Mesh/reaper" index="1" unique_id=1476754621]
+[node name="AnimationPlayer" parent="Mesh/reaper" index="1" unique_id=1495470096]
 root_motion_track = NodePath("Reaper/Skeleton3D:root")
 playback_default_blend_time = 0.2
 
