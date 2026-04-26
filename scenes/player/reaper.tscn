@@ -48,6 +48,7 @@
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="36_p2pt0"]
 [ext_resource type="Script" uid="uid://cwwirvd46gyr2" path="res://script/player/plunge_multiplier.gd" id="38_5ijfa"]
 [ext_resource type="Script" uid="uid://0q73mstd3d54" path="res://script/player/spin_multiplier.gd" id="38_fw2bj"]
+[ext_resource type="Script" uid="uid://bkujxi6jnhsds" path="res://scenes/player/climb.gd" id="38_ojv1r"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://script/component/squash.gd" id="41_utjob"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="42_k5idf"]
 [ext_resource type="PackedScene" uid="uid://clbxqusx74r6s" path="res://scenes/particles/dust_jump.tscn" id="42_p6b07"]
@@ -3501,6 +3502,9 @@ height = 2.818
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0gmj"]
 size = Vector3(17.3834, 22.7476, 51.4006)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_ojv1r"]
+size = Vector3(0.28076172, 0.31201172, 1.8481445)
+
 [sub_resource type="SphereShape3D" id="SphereShape3D_qlt7i"]
 radius = 2.197676
 
@@ -3958,6 +3962,17 @@ SKELETAL_ANIMATION_PLAYER = NodePath("reaper/AnimationPlayer")
 SKELETON = NodePath("reaper/Reaper")
 MESH = NodePath(".")
 BODY = NodePath("..")
+
+[node name="Area3D" type="Area3D" parent="Mesh" unique_id=1996484879]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Area3D" unique_id=712227305]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012207031, 1.1333596, -0.7620938)
+shape = SubResource("BoxShape3D_ojv1r")
+
+[node name="Climb" type="RayCast3D" parent="Mesh" unique_id=195656063]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.202089, -0.19727737)
+debug_shape_thickness = 5
+script = ExtResource("38_ojv1r")
 
 [node name="StepUp" type="RayCast3D" parent="Mesh" unique_id=770825662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.57833004)
