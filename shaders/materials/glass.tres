@@ -1,0 +1,20 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cevcbst04hogy"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_q5prc"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6x8jk"]
+noise = SubResource("FastNoiseLite_q5prc")
+seamless = true
+as_normal_map = true
+
+[resource]
+transparency = 1
+depth_draw_mode = 1
+albedo_color = Color(0.15179999, 0.17453335, 0.22, 0.8666667)
+roughness = 0.94
+normal_enabled = true
+normal_scale = 0.5
+normal_texture = SubResource("NoiseTexture2D_6x8jk")
+uv1_scale = Vector3(0.265, 0.265, 0.265)
+uv1_triplanar = true
+uv1_world_triplanar = true
