@@ -20,10 +20,10 @@ func _ready() -> void:
 	
 	await get_tree().physics_frame
 	if TARGET_NODE:
+		global_transform = TARGET_NODE.global_transform
 		#print(TARGET_NODE, " ", TARGET_NODE.is_inside_tree())
 		#print('instant snap')
-		global_transform = TARGET_NODE.global_transform
-
+		
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		mouse_delta += event.screen_relative * Engine.time_scale
