@@ -91,7 +91,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/1/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -271,7 +271,7 @@ length = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/0/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -311,7 +311,7 @@ length = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/0/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1082,7 +1082,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/2/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1147,7 +1147,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SpringArm3D/Camera3D:current")
+tracks/3/path = NodePath("Camera3D:current")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1159,7 +1159,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/4/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1221,7 +1221,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/1/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1267,7 +1267,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("SpringArm3D/Camera3D:current")
+tracks/5/path = NodePath("Camera3D:current")
 tracks/5/interp = 0
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1533,7 +1533,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/3/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1642,7 +1642,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/1/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2095,7 +2095,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SpringArm3D/Camera3D:current")
+tracks/3/path = NodePath("Camera3D:current")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -2107,7 +2107,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SpringArm3D/Camera3D:current")
+tracks/4/path = NodePath("Camera3D:current")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -2143,7 +2143,7 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/7/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -2313,7 +2313,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/4/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -2605,7 +2605,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/3/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -3245,7 +3245,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../SpringArm3D/Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/1/path = NodePath("../Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -3497,10 +3497,10 @@ _data = {
 radius = 0.619256
 height = 2.818
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_5cvkf"]
-
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0gmj"]
 size = Vector3(17.3834, 22.7476, 51.4006)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5cvkf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ojv1r"]
 size = Vector3(0.28076172, 0.31201172, 1.8481445)
@@ -3738,7 +3738,7 @@ script = ExtResource("1_0b6a6")
 STEP_UP_RAY = NodePath("Mesh/StepUp")
 ATTACKING_DISABLED = false
 HITSHAPE = NodePath("Hitshape")
-CAMERA = NodePath("SpringArm3D/Camera3D")
+CAMERA = NodePath("Camera3D")
 MESH = NodePath("Mesh")
 COLLISON_SHAPE = NodePath("CollisionShape3D")
 PARTICLES = NodePath("JumpParticles")
@@ -3807,7 +3807,7 @@ platforming_death_animation_player = NodePath("..")
 script = ExtResource("3_4anjp")
 PLAYER = NodePath("..")
 MESH = NodePath("../Mesh")
-CAMERA = NodePath("../SpringArm3D/Camera3D")
+CAMERA = NodePath("../Camera3D")
 BODY_SHAPE = NodePath("../CollisionShape3D")
 HITBOX_SHAPE = NodePath("../Hitshape/CollisionShape3D")
 DAMAGE_SHAPE = NodePath("GodModeHurt/CollisionShape3D")
@@ -3922,6 +3922,27 @@ property = "STAMINA"
 increase_property_by_max_difference = true
 animation_name = "STAMINA"
 
+[node name="Camera3D" type="Camera3D" parent="." unique_id=657152026 node_paths=PackedStringArray("SpringArm", "TARGET_NODE") groups=["player_camera"]]
+transform = Transform3D(1, 0, 0, 0, 0.988449, -0.15155402, 0, 0.15155402, 0.988449, 0, 2.412, 0)
+top_level = true
+current = true
+fov = 80.0
+script = ExtResource("7_lwilf")
+pitch_max_deg = 20.0
+SpringArm = NodePath("../SpringArm3D")
+TARGET_NODE = NodePath("../SpringArm3D/Node3D")
+
+[node name="HeadFollowTarget" type="Node3D" parent="Camera3D" unique_id=1622756369]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.896154, -0.64839, -7.68562)
+
+[node name="LockOnArea" type="Area3D" parent="Camera3D" unique_id=746419654]
+transform = Transform3D(1, 0, 0, 0, 0.979695, 0.200497, 0, -0.200497, 0.979695, 0, -3.77156, 0.404119)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Camera3D/LockOnArea" unique_id=1748668094]
+transform = Transform3D(1, 0, 0, 0, 0.98922, -0.146411, 0, 0.146411, 0.98922, -0.0899051, 9.90892, -24.3671)
+shape = SubResource("BoxShape3D_y0gmj")
+debug_color = Color(0.7, 0.7, 0.7, 0.368627)
+
 [node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=209570210 groups=["ignore_interaction_tween"]]
 physics_interpolation_mode = 1
 transform = Transform3D(1, 0, 0, 0, 0.988449, -0.151554, 0, 0.151554, 0.988449, 0, 2.412, 0)
@@ -3931,27 +3952,10 @@ margin = 1.0
 
 [node name="FovLerp" type="Node" parent="SpringArm3D" unique_id=881315504 node_paths=PackedStringArray("camera_node")]
 script = ExtResource("2_1bp3y")
-camera_node = NodePath("../Camera3D")
+camera_node = NodePath("../../Camera3D")
 target_fov = 70.0
 
-[node name="Camera3D" type="Camera3D" parent="SpringArm3D" unique_id=657152026 node_paths=PackedStringArray("SpringArm") groups=["player_camera"]]
-transform = Transform3D(1, 0, 0, 0, 1, -1.49012e-08, 0, 1.49012e-08, 1, 0, 0, 0)
-current = true
-fov = 80.0
-script = ExtResource("7_lwilf")
-pitch_max_deg = 20.0
-SpringArm = NodePath("..")
-
-[node name="HeadFollowTarget" type="Node3D" parent="SpringArm3D/Camera3D" unique_id=1622756369]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.896154, -0.64839, -7.68562)
-
-[node name="LockOnArea" type="Area3D" parent="SpringArm3D/Camera3D" unique_id=746419654]
-transform = Transform3D(1, 0, 0, 0, 0.979695, 0.200497, 0, -0.200497, 0.979695, 0, -3.77156, 0.404119)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SpringArm3D/Camera3D/LockOnArea" unique_id=1748668094]
-transform = Transform3D(1, 0, 0, 0, 0.98922, -0.146411, 0, 0.146411, 0.98922, -0.0899051, 9.90892, -24.3671)
-shape = SubResource("BoxShape3D_y0gmj")
-debug_color = Color(0.7, 0.7, 0.7, 0.368627)
+[node name="Node3D" type="Node3D" parent="SpringArm3D" unique_id=1598816733]
 
 [node name="Mesh" type="Node3D" parent="." unique_id=531747882 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "BODY") groups=["player_mesh"]]
 script = ExtResource("32_qsprq")
@@ -4101,7 +4105,7 @@ script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(372593124, 1173629645) index="6" unique_id=232937500]
-target_node = NodePath("../../../../../SpringArm3D/Camera3D/HeadFollowTarget")
+target_node = NodePath("../../../../../Camera3D/HeadFollowTarget")
 bone_name = "head"
 bone = 9
 forward_axis = 5
@@ -4161,9 +4165,9 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_wub5s")
 value = 100.0
 show_percentage = false
 script = ExtResource("17_5cvkf")
-CAMERA = NodePath("../../SpringArm3D/Camera3D")
+CAMERA = NodePath("../../Camera3D")
 SpringArm = NodePath("../../SpringArm3D")
-LOCK_ON_AREA = NodePath("../../SpringArm3D/Camera3D/LockOnArea")
+LOCK_ON_AREA = NodePath("../../Camera3D/LockOnArea")
 lock_on_ui = NodePath("..")
 
 [node name="UI" type="Control" parent="." unique_id=384331694]

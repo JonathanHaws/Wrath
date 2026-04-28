@@ -1,6 +1,6 @@
 extends RayCast3D
-@export var climb_speed: float = 500.0
-@export var stick_force: float = 1.0
+@export var climb_speed: float = 300.0
+@export var stick_force: float = 3.0
 @export var climbable_group: String = "climbable"
 @export var player_group: String = "player_body"
 @export var player_mesh_group: String = "player_mesh"
@@ -14,6 +14,18 @@ var was_climbing: bool = false
 var climb_surface: Node = null
 var jumped_off: bool = false
 
+var climbing_point: Vector3
+#func get_next_climbing_point(delta: float) -> void:
+	#pass
+
+#var mesh_data := MeshDataTool.new()
+
+# Potential fixes
+# Make it so that if not moving no jiggling. stores a point
+
+# get collison point. raycast from there to always stay wrapped. And turn of collison on player and gravity
+# and interpolate
+
 func _physics_process(delta: float) -> void:
 	force_raycast_update()
 	
@@ -24,7 +36,14 @@ func _physics_process(delta: float) -> void:
 	and is_colliding() \
 	and get_collider() \
 	and get_collider().is_in_group(climbable_group):
+		climbing_point = get_collision_point()
 		climbing = true
+	else:
+		climbing = false
+		
+	#if is_colliding() \
+	#and not get_collider().is_in_group(climbable_group):
+		#print(get_collider())
 				
 	#if climbing and 
 
@@ -83,6 +102,3 @@ func _physics_process(delta: float) -> void:
 	
 	player.move_and_slide()
 	player.velocity = Vector3.ZERO
-	
-
-	
