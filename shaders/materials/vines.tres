@@ -1,4 +1,13 @@
 [gd_resource type="StandardMaterial3D" format=3 uid="uid://ld20iuyhw7mo"]
 
+[ext_resource type="Texture2D" uid="uid://cyiopw1jfxkk2" path="res://textures/vines/vines_albedo.png" id="1_ej444"]
+[ext_resource type="Texture2D" uid="uid://b2ii2r6470aqe" path="res://textures/vines/vines_normal-dx.png" id="2_pma3h"]
+
 [resource]
-albedo_color = Color(0.23, 0.23, 0.23, 1)
+albedo_color = Color(0.67832345, 0.7809161, 0.9884545, 1)
+albedo_texture = ExtResource("1_ej444")
+roughness = 0.7
+normal_enabled = true
+normal_texture = ExtResource("2_pma3h")
+uv1_scale = Vector3(0.265, 0.265, 0.265)
+uv1_triplanar = true
