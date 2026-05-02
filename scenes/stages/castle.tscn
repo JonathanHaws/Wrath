@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://ds3llgo67gcpi" path="res://script/component/patrol.gd" id="22_a0oe4"]
 [ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://script/items/progress_gate.gd" id="22_je0v5"]
 [ext_resource type="PackedScene" uid="uid://bdjvrm2o45ly3" path="res://models/characters/envy/envy.glb" id="23_42juj"]
+[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/custom/disolve.gdshader" id="24_3ccgg"]
 [ext_resource type="PackedScene" uid="uid://sj1jfdnq1vjb" path="res://scenes/bosses/sloth/sloth.tscn" id="25_7guc4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
@@ -149,6 +150,37 @@ size = Vector3(1926, 193.53818, 1361.68)
 [sub_resource type="BoxShape3D" id="BoxShape3D_bv0d2"]
 size = Vector3(133.595, 13.6586, 201.498)
 
+[sub_resource type="Curve3D" id="Curve3D_3ccgg"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.16384888, -0.5877228, 0.8373413, 1.0857239, 0.5138016, 1.0491943, -1.0857239, -0.5138016, -1.0491943, 1.0465698, 0.346344, -5.0491333, 2.159, -0.731, 0.915, -1.8792725, 0.7310486, -0.9145508, -2.7746277, 2.0200424, -9.091064, 2.5289412, -1.1665268, 0.29516315, -2.5289412, 1.1665268, -0.29516315, -10.432373, 2.920723, -11.928528, 1.4853516, -0.51116943, -1.4818115, -1.4853516, 0.51116943, 1.4818115, -16.330322, 4.6255302, -9.24292, 0.5300293, -0.837162, -2.8162842, -0.5300293, 0.837162, 2.8162842, -19.210327, 6.047333, -3.6176758, -1.7520752, -0.60665894, -2.2581787, 1.7520752, 0.60665894, 2.2581787, -16.828247, 8.727741, 5.7511597, -3.5889282, -0.81591415, -1.0598145, 3.5889282, 0.81591415, 1.0598145, -11.657135, 10.3455925, 10.5355835, -1.7472229, 0.009471893, 1.1437378, 1.7472229, -0.009471893, -1.1437378, -4.8108215, 11.886559, 9.170532, -0.34020996, -0.83709717, 4.681946, 0.34020996, 0.83709717, -4.681946, 0.2828064, 13.566902, 3.113037, 2.839386, -0.92378616, 2.4502563, -2.839386, 0.92378616, -2.4502563, -2.1982727, 15.930191, -6.9818115, 3.4399414, -0.5623245, -0.6694336, -3.4399414, 0.5623245, 0.6694336, -11.243469, 18.547436, -10.355225, 1.7129517, -0.8844223, -1.2102051, -1.7129517, 0.8844223, 1.2102051, -18.624573, 20.514515, -5.7177734, -1.248291, -0.92147064, -3.5518188, 1.248291, 0.92147064, 3.5518188, -19.320618, 22.455524, 2.0960083, -3.4848633, -0.9766998, -2.032837, 3.4848633, 0.9766998, 2.032837, -14.537079, 24.548313, 9.0529175, -2.305725, -0.59101105, 1.8789673, 2.305725, 0.59101105, -1.8789673, -4.37442, 27.10007, 9.467957, 0.81900024, -0.7064209, 5.614868, -0.81900024, 0.7064209, -5.614868, 0.9216919, 30.42049, -1.4851685, 3.7243958, -0.79016876, 1.4788208, -3.7243958, 0.79016876, -1.4788208, -4.023224, 32.636112, -9.770569, 3.000946, -1.9983673, 0.67755127, -3.000946, 1.9983673, -0.67755127, -14.501038, 34.64352, -10.550171, -0.74816895, -0.865921, -4.5582886, 0.74816895, 0.865921, 4.5582886, -21.182404, 37.309284, 0.83306885, -2.996704, -1.2733154, -1.6759644, 2.996704, 1.2733154, 1.6759644, -10.399963, 41.52524, 11.636963, 0, 0, 0, 0, 0, 0, -0.07485962, 44.562725, 3.9281616),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 22
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ccgg"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.52, 0.52, 0.52, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_thcj7"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("24_3ccgg")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_frequency = 3.0
+shader_parameter/dissolve_vector = Vector3(0.5, -0.5, 0.25)
+shader_parameter/custom_glow_color_enabled = false
+shader_parameter/custom_glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.0
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/albedo_enabled = false
+shader_parameter/albedo_color = Color(0.09803922, 0.11764706, 0.1764706, 1)
+shader_parameter/enabled_emisson = false
+shader_parameter/emission_texture_intensity = 1.0
+shader_parameter/normal_strength = 1.0
+shader_parameter/enabled_normal = false
+
 [sub_resource type="Curve3D" id="Curve3D_uq4p3"]
 closed = true
 _data = {
@@ -183,6 +215,9 @@ resource_local_to_scene = true
 size = Vector3(17, 13, 19)
 
 [node name="Main" type="Node3D" unique_id=1722623232]
+
+[node name="Reaper" parent="." unique_id=27859288 instance=ExtResource("4_42w7d")]
+transform = Transform3D(-0.087052085, 0, -0.9962042, 0, 1, 0, 0.9962042, 0, -0.087052085, 88.1814, 32.587936, -32.473186)
 
 [node name="NavigationRegion3D" type="NavigationRegion3D" parent="." unique_id=1692198949]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 36.1039, 0)
@@ -294,7 +329,7 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["INTRODUCTION"])
 
 [node name="Camera3D" type="Camera3D" parent="Cinematic" unique_id=2010672013 groups=["cinematic_camera"]]
-transform = Transform3D(0.34202856, 0.057365663, -0.9379364, 0, 0.99813265, 0.06104756, 0.9396896, -0.020879975, 0.34139043, -366.5924, 108.807755, 203.19954)
+transform = Transform3D(0.34202856, 0.05736567, -0.9379364, 0, 0.99813265, 0.061047573, 0.9396896, -0.020879978, 0.34139043, -366.5924, 108.807755, 203.19954)
 fov = 20.0
 
 [node name="Door" type="Node" parent="." unique_id=368264647]
@@ -389,6 +424,9 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 296.61
 [node name="Checkpoint3" parent="Checkpoints" unique_id=1016930268 instance=ExtResource("12_0gnis")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 582.8181, 62.522007, -31.142736)
 
+[node name="Checkpoint4" parent="Checkpoints" unique_id=1112498119 instance=ExtResource("12_0gnis")]
+transform = Transform3D(-0.65833485, 0, -0.75272524, 0, 1, 0, 0.75272524, 0, -0.65833485, 657.19525, 44.098347, 61.4364)
+
 [node name="Wisps" type="Node" parent="." unique_id=1545663969]
 
 [node name="Wisp2" parent="Wisps" unique_id=162123932 instance=ExtResource("11_ugtt7")]
@@ -402,50 +440,65 @@ transform = Transform3D(0.43482256, 0, 0.90051615, 0, 1, 0, -0.90051615, 0, 0.43
 [node name="Ghost2" parent="Ghosts" unique_id=152460535 instance=ExtResource("14_l8smn")]
 transform = Transform3D(-0.2051281, 0, 0.9787352, 0, 1, 0, -0.9787352, 0, -0.2051281, 223.41917, 35.709972, -36.71899)
 
-[node name="Reaper" parent="." unique_id=27859288 instance=ExtResource("4_42w7d")]
-transform = Transform3D(-0.087052085, 0, -0.9962042, 0, 1, 0, 0.9962042, 0, -0.087052085, 88.1814, 32.587936, -32.473186)
+[node name="Sins" type="Node" parent="." unique_id=503678209]
 
-[node name="Piglet" parent="." unique_id=759269460 instance=ExtResource("15_7vt21")]
-transform = Transform3D(0.7980259, 0, 0.60262316, 0, 1, 0, -0.60262316, 0, 0.7980259, 289.4882, 36.66612, -51.972992)
+[node name="Lust" parent="Sins" unique_id=1949196190 instance=ExtResource("20_bdp0v")]
+transform = Transform3D(-0.97807497, 0, -0.20825309, 0, 1, 0, 0.20825309, 0, -0.97807497, 364.6039, 38.50987, 25.439205)
 
-[node name="Greed" parent="." unique_id=324949012 instance=ExtResource("17_dq2hf")]
+[node name="Greed" parent="Sins" unique_id=324949012 instance=ExtResource("17_dq2hf")]
 transform = Transform3D(-0.15708953, 0, -0.98758435, 0, 1, 0, 0.98758435, 0, -0.15708953, 318.00122, 35.539642, -1.4994497)
 USE_CUSTOM_START_ANIMATION = true
 START_ANIMATION = "LEAN"
 
-[node name="Envy" parent="." unique_id=2069353459 instance=ExtResource("19_oqilo")]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 610.431, 166.6565, -32.69289)
+[node name="Greed2" parent="Sins" unique_id=551608256 instance=ExtResource("17_dq2hf")]
+transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 522.0462, 63.04357, -125.0572)
+USE_CUSTOM_START_ANIMATION = true
+START_ANIMATION = "FIGHT"
 
-[node name="Path3D" type="Path3D" parent="." unique_id=2031636455 node_paths=PackedStringArray("node_to_queue_free")]
+[node name="Sloth" parent="Sins" unique_id=1434777009 instance=ExtResource("25_7guc4")]
+transform = Transform3D(-0.5837747, 0, -0.8118902, 0, 0.99995536, 0, 0.81190014, 0, -0.5837676, 671.4583, 47.797066, 79.719826)
+curve = SubResource("Curve3D_3ccgg")
+
+[node name="PathFollow3D" parent="Sins/Sloth" index="1" unique_id=678533075]
+transform = Transform3D(0.9262083, 0, -0.3768973, 0, 0.9999442, 0, 0.3769039, 0, 0.9261921, 0.16384888, -0.5877228, 0.8373413)
+
+[node name="Sphere_001" parent="Sins/Sloth/PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1434777009, 1456814678, 334728690) index="0" unique_id=832004677]
+surface_material_override/0 = SubResource("StandardMaterial3D_3ccgg")
+surface_material_override/1 = SubResource("ShaderMaterial_thcj7")
+
+[node name="EnvyFly" type="Path3D" parent="Sins" unique_id=2031636455 node_paths=PackedStringArray("node_to_queue_free")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.64444, 29.919395, -21.1921)
 curve = SubResource("Curve3D_uq4p3")
 script = ExtResource("22_je0v5")
 save_key = "envy_encountered"
 node_to_queue_free = NodePath(".")
 
-[node name="PathFollow3D" type="PathFollow3D" parent="Path3D" unique_id=1767323347]
-transform = Transform3D(-0.77827233, -0.627901, 0.0049922266, -0.6262926, 0.7768027, 0.065785244, -0.045184936, 0.04807266, -0.9978131, 315.36624, 133.72562, 10.627035)
+[node name="PathFollow3D" type="PathFollow3D" parent="Sins/EnvyFly" unique_id=1767323347]
+transform = Transform3D(-0.7782721, -0.6279011, 0.004992199, -0.6262924, 0.77680284, 0.06578488, -0.04518492, 0.04807267, -0.9978076, 315.36624, 133.72562, 10.627035)
 progress = 493.03
 script = ExtResource("22_a0oe4")
 speed = -30.0
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Path3D/PathFollow3D" unique_id=881976998]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Sins/EnvyFly/PathFollow3D" unique_id=881976998]
 libraries/ = SubResource("AnimationLibrary_je0v5")
 autoplay = &"Flying Around"
 
-[node name="envy" parent="Path3D/PathFollow3D" unique_id=1562996433 instance=ExtResource("23_42juj")]
+[node name="envy" parent="Sins/EnvyFly/PathFollow3D" unique_id=1562996433 instance=ExtResource("23_42juj")]
 
-[node name="AnimationPlayer" parent="Path3D/PathFollow3D/envy" index="1" unique_id=358530830]
+[node name="AnimationPlayer" parent="Sins/EnvyFly/PathFollow3D/envy" index="1" unique_id=240167992]
 autoplay = &"FLY"
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Path3D/PathFollow3D" unique_id=1656311283]
+[node name="OmniLight3D" type="OmniLight3D" parent="Sins/EnvyFly/PathFollow3D" unique_id=1656311283]
 transform = Transform3D(1.0000008, -2.9802322e-08, -5.9604645e-08, -1.4901161e-08, 1.0000008, 4.4703484e-08, -5.9604645e-08, -5.9604645e-08, 1.0000005, 0.9666748, -5.197523, 2.3408203)
 light_energy = 5.36
 light_specular = 0.0
 omni_range = 19.0
 
-[node name="Lust" parent="." unique_id=1949196190 instance=ExtResource("20_bdp0v")]
-transform = Transform3D(-0.97807497, 0, -0.20825309, 0, 1, 0, 0.20825309, 0, -0.97807497, 364.6039, 38.50987, 25.439205)
+[node name="Envy" parent="Sins" unique_id=2069353459 instance=ExtResource("19_oqilo")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 610.431, 166.6565, -32.69289)
+
+[node name="Piglet" parent="." unique_id=759269460 instance=ExtResource("15_7vt21")]
+transform = Transform3D(0.7980259, 0, 0.60262316, 0, 1, 0, -0.60262316, 0, 0.7980259, 289.4882, 36.66612, -51.972992)
 
 [node name="SkillTreeTutorial" type="Area3D" parent="." unique_id=2027932816 groups=["skill_tree_tutorial"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 224.32533, 45.717094, -29.236448)
@@ -457,18 +510,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.498199, -3.5381546, -3.063
 shape = SubResource("BoxShape3D_7fk2k")
 debug_color = Color(0.768, 0.79413337, 0.8, 0.88235295)
 
-[node name="Greed2" parent="." unique_id=551608256 instance=ExtResource("17_dq2hf")]
-transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 522.0462, 63.04357, -125.0572)
-USE_CUSTOM_START_ANIMATION = true
-START_ANIMATION = "FIGHT"
-
-[node name="Sins" type="Node" parent="Greed2" unique_id=503678209]
-
-[node name="Sloth" parent="Greed2/Sins" unique_id=1434777009 instance=ExtResource("25_7guc4")]
-transform = Transform3D(-0.7629956, 0, -0.6464037, 0, 1, 0, 0.6464037, 0, -0.7629956, 669.50024, 47.05423, 78.01186)
-
 [connection signal="body_entered" from="KillVolumes/Void" to="KillVolumes/Void" method="_on_body_entered"]
 [connection signal="body_entered" from="KillVolumes/Void2" to="KillVolumes/Void2" method="_on_body_entered"]
 
 [editable path="NavigationRegion3D/castle"]
-[editable path="Path3D/PathFollow3D/envy"]
+[editable path="Sins/Sloth"]
+[editable path="Sins/Sloth/PathFollow3D/Body/Mesh/sloth"]
+[editable path="Sins/EnvyFly/PathFollow3D/envy"]

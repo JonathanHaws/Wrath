@@ -141,6 +141,7 @@ func _physics_process(delta: float) -> void:
 	chase_target(SPEED * SPEED_MULTIPLIER)
 		
 	if USE_GRAVITY: 
+		#print(get_parent().name) make sure RESET animation isnt enabling
 		if not BODY.is_on_floor(): 
 			BODY.velocity += BODY.get_gravity() * delta
 

@@ -39,6 +39,16 @@
 [ext_resource type="AudioStream" uid="uid://7kxu26go8qp" path="res://audio/sfx/characters/sloth/sloth_talk_2.ogg" id="37_cu7wn"]
 [ext_resource type="AudioStream" uid="uid://jp80imisvaux" path="res://audio/sfx/characters/sloth/sloth_talk_3.ogg" id="38_r1bv5"]
 
+[sub_resource type="Curve3D" id="Curve3D_3kw6g"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.16384888, -0.5877228, 0.8373413, 0, 0, 0, 0, 0, 0, 0.2778015, 0.75367737, -3.812683, 0, 0, 0, 0, 0, 0, -2.0056458, 2.277504, -7.878174, 0, 0, 0, 0, 0, 0, -10.599355, 3.6799507, -11.471683, 0, 0, 0, 0, 0, 0, -18.789612, 6.2461433, -3.9014282, 0, 0, 0, 0, 0, 0, -16.882843, 8.627636, 5.779724),
+"tilts": PackedFloat32Array(0, 0, 0.71243775, 0, 0, 0)
+}
+point_count = 6
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wbwgn"]
+size = Vector3(23.4119, 15.2804, 40.1915)
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d0au0"]
 radius = 1.1723633
 height = 4.80709
@@ -467,6 +477,18 @@ tracks/9/keys = {
 "update": 0,
 "values": [true, false]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("..:progress_ratio")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 56.291668),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_jojdm"]
 length = 0.001
@@ -545,50 +567,38 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/6/path = NodePath("HitShape/CollisionShape3D:disabled")
 tracks/6/interp = 0
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Target:USE_GRAVITY")
+tracks/7/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/0:albedo_color")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [Color(0.52, 0.52, 0.52, 1)]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("HitShape/CollisionShape3D:disabled")
-tracks/8/interp = 0
+tracks/8/path = NodePath("..:progress_ratio")
+tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [true]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/0:albedo_color")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0.52, 0.52, 0.52, 1)]
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
@@ -716,9 +726,6 @@ shader_parameter/enabled_emisson = false
 shader_parameter/emission_texture_intensity = 1.0
 shader_parameter/normal_strength = 1.0
 shader_parameter/enabled_normal = false
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_wbwgn"]
-size = Vector3(23.4119, 15.2804, 40.1915)
 
 [sub_resource type="Animation" id="Animation_p7qim"]
 resource_name = "Wave1"
@@ -886,7 +893,25 @@ _data = {
 &"exited": SubResource("Animation_enj2w")
 }
 
-[node name="Sloth" type="CharacterBody3D" unique_id=1434777009 node_paths=PackedStringArray("TARGET", "ANIM")]
+[node name="Path3D" type="Path3D" unique_id=918030749]
+curve = SubResource("Curve3D_3kw6g")
+debug_custom_color = Color(0.8646751, 0.86467516, 0.8646751, 1)
+
+[node name="TriggerArea" type="Area3D" parent="." unique_id=440954474]
+transform = Transform3D(0.94800967, 0, 0.31824255, 0, 0.99999416, 0, -0.3182437, 0, 0.94800615, -1.0672361, -0.37315506, 3.40978)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" unique_id=1303432104]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07889, 7.1402, 8.51709)
+shape = SubResource("BoxShape3D_wbwgn")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="." unique_id=678533075]
+transform = Transform3D(0.9996817, 0, -0.024497645, 0, 0.9999442, 0, 0.024498014, 0, 0.9996667, 0.16384888, -0.5877228, 0.8373413)
+rotation_mode = 1
+
+[node name="Body" type="CharacterBody3D" parent="PathFollow3D" unique_id=1434777009 node_paths=PackedStringArray("TARGET", "ANIM")]
+transform = Transform3D(1.0000173, 0, 0, 0, 1.00005, 0, 0, 0, 1.0000285, 0, 0, 0)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_5ay62")
@@ -896,18 +921,18 @@ SAVE_KEY_ENCOUNTERED = "sloth_encountered"
 DOOR_TO_UNLOCK_GROUP = "sloth_door"
 DEFEATED_KEY = "sloth_defeated"
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1199761927]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/Body" unique_id=1199761927]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
 shape = SubResource("CapsuleShape3D_d0au0")
 
-[node name="Attacks" type="AnimationPlayer" parent="." unique_id=806234673]
+[node name="Attacks" type="AnimationPlayer" parent="PathFollow3D/Body" unique_id=806234673]
 callback_mode_process = 0
 libraries/ = SubResource("AnimationLibrary_y10ku")
 autoplay = &"RESET"
 playback_auto_capture_ease_type = 2
 next/INTRO = &"CHASE"
 
-[node name="HitShape" type="Area3D" parent="." unique_id=298325573 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "ANIM_PLAYER") groups=["enemy_hitshape"]]
+[node name="HitShape" type="Area3D" parent="PathFollow3D/Body" unique_id=298325573 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "ANIM_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("20_6h4tx")
 HEALTH = 100000.0
 MAX_HEALTH = 100000.0
@@ -917,17 +942,17 @@ ANIM_PLAYER = NodePath("../Attacks")
 USE_WAVE_HEALTH_BAR = true
 WAVE_DAMAGE = 12000.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=324219729]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/Body/HitShape" unique_id=324219729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12337458, 2.49679, 0)
 shape = SubResource("CapsuleShape3D_dbtmo")
 disabled = true
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="HitShape" unique_id=1742099839]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D/Body/HitShape" unique_id=1742099839]
 root_node = NodePath("../../Attacks")
 libraries/ = SubResource("AnimationLibrary_ri305")
 autoplay = &"RESET"
 
-[node name="Ui" type="Control" parent="." unique_id=1164852772 groups=["ui_scalable"]]
+[node name="Ui" type="Control" parent="PathFollow3D/Body" unique_id=1164852772 groups=["ui_scalable"]]
 modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchor_left = 0.5
@@ -936,10 +961,11 @@ anchor_right = 0.5
 anchor_bottom = 0.099
 grow_horizontal = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 script = ExtResource("2_faveg")
 metadata/_edit_use_anchors_ = true
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui" unique_id=1622083273]
+[node name="VBoxContainer" type="VBoxContainer" parent="PathFollow3D/Body/Ui" unique_id=1622083273]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -949,9 +975,10 @@ offset_right = 450.0
 offset_bottom = 50.0
 grow_horizontal = 2
 pivot_offset = Vector2(450, 0)
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="HealthBar" parent="Ui/VBoxContainer" unique_id=1596403796 node_paths=PackedStringArray("tracked_node") instance=ExtResource("3_f2sb8")]
+[node name="HealthBar" parent="PathFollow3D/Body/Ui/VBoxContainer" unique_id=1596403796 node_paths=PackedStringArray("tracked_node") instance=ExtResource("3_f2sb8")]
 custom_minimum_size = Vector2(900, 8.645)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -960,7 +987,7 @@ max_value = 2000.0
 value = 2000.0
 tracked_node = NodePath("../../../HitShape")
 
-[node name="Label" type="Label" parent="Ui/VBoxContainer" unique_id=1279873489]
+[node name="Label" type="Label" parent="PathFollow3D/Body/Ui/VBoxContainer" unique_id=1279873489]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
@@ -969,67 +996,69 @@ text = "SLOTH"
 horizontal_alignment = 1
 uppercase = true
 
-[node name="Audio" type="Node" parent="." unique_id=1151444588]
+[node name="Audio" type="Node" parent="PathFollow3D/Body" unique_id=1151444588]
 script = ExtResource("6_fscfa")
 SOUNDS = Array[AudioStream]([ExtResource("10_qp78m"), ExtResource("11_xcc4h"), ExtResource("12_fn6e4"), ExtResource("13_pccbv"), ExtResource("14_sf2nr"), ExtResource("15_vfdb2"), ExtResource("16_k2wth"), ExtResource("17_cduhd"), ExtResource("18_xrvkg")])
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Audio" unique_id=553081252]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="PathFollow3D/Body/Audio" unique_id=553081252]
 process_mode = 3
 bus = &"SFX"
 
-[node name="Music" type="AudioStreamPlayer" parent="Audio" unique_id=1114397140]
+[node name="Music" type="AudioStreamPlayer" parent="PathFollow3D/Body/Audio" unique_id=1114397140]
 process_mode = 3
 stream = ExtResource("18_p7qim")
 bus = &"Music"
 parameters/looping = true
 
-[node name="CameraEffects" type="Node" parent="." unique_id=1964948195]
+[node name="CameraEffects" type="Node" parent="PathFollow3D/Body" unique_id=1964948195]
 script = ExtResource("21_u53v8")
 
-[node name="WispReward" type="Node" parent="." unique_id=35566029]
+[node name="WispReward" type="Node" parent="PathFollow3D/Body" unique_id=35566029]
 script = ExtResource("23_2wp77")
 AMOUNT = 10
 
-[node name="HurtParticles" type="Node3D" parent="." unique_id=959209520 groups=["teleport_to_attacking_area"]]
+[node name="HurtParticles" type="Node3D" parent="PathFollow3D/Body" unique_id=959209520 groups=["teleport_to_attacking_area"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
 script = ExtResource("23_8fqfx")
 scenes = Array[PackedScene]([ExtResource("21_xr0xi")])
 
-[node name="Target" type="Node3D" parent="." unique_id=1930926419 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH", "STOP_CHASE_AREA")]
+[node name="Target" type="Node3D" parent="PathFollow3D/Body" unique_id=1930926419 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH", "STOP_CHASE_AREA")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55050755, 2.62937, 5.76861)
 script = ExtResource("25_gwq6n")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 BODY = NodePath("..")
 SPEED = 0.0
 SPEED_MULTIPLIER = 0.0
+MOVE_AND_SLIDE = false
+USE_PATHFINDING = false
 MESH = NodePath("../Mesh")
 TRACKING_SPEED = 0.0
 FLIPPED_TRACKING = true
 STOP_CHASE_AREA = NodePath("../HitShape")
 
-[node name="Mesh" type="Node3D" parent="." unique_id=1415185518]
+[node name="Mesh" type="Node3D" parent="PathFollow3D/Body" unique_id=1415185518]
 
-[node name="ShaderTween" type="Node" parent="Mesh" unique_id=91285279]
+[node name="ShaderTween" type="Node" parent="PathFollow3D/Body/Mesh" unique_id=91285279]
 script = ExtResource("24_uahh5")
 groups = Array[String](["sloth_mesh"])
 
-[node name="NavigationAgent3D" type="NavigationAgent3D" parent="Mesh" unique_id=345657186]
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="PathFollow3D/Body/Mesh" unique_id=345657186]
 
-[node name="LockOn" type="Area3D" parent="Mesh" unique_id=1672799291]
+[node name="LockOn" type="Area3D" parent="PathFollow3D/Body/Mesh" unique_id=1672799291]
 transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.10789314, 3.4215755, -0.085655)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/LockOn" unique_id=1975597852]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/Body/Mesh/LockOn" unique_id=1975597852]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
 shape = SubResource("BoxShape3D_dbtmo")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
-[node name="sloth" parent="Mesh" unique_id=1456814678 instance=ExtResource("25_ic1i5")]
+[node name="sloth" parent="PathFollow3D/Body/Mesh" unique_id=1456814678 instance=ExtResource("25_ic1i5")]
 
-[node name="Sphere_001" parent="Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="0" unique_id=832004677]
+[node name="Sphere_001" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="0" unique_id=832004677]
 surface_material_override/0 = SubResource("StandardMaterial3D_uahh5")
 surface_material_override/1 = SubResource("ShaderMaterial_ic1i5")
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="1" unique_id=636975154]
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="1" unique_id=636975154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.083372, 0, 0)
 target_node = NodePath("../../../../../Target")
 bone_name = "Bone.002"
@@ -1041,16 +1070,7 @@ primary_damp_threshold = 1.0
 secondary_limit_angle = 0.87266463
 secondary_damp_threshold = 1.0
 
-[node name="TriggerArea" type="Area3D" parent="." unique_id=440954474]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.98601, 3)
-collision_layer = 3
-collision_mask = 3
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" unique_id=1303432104]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07889, 7.1402, 8.51709)
-shape = SubResource("BoxShape3D_wbwgn")
-
-[node name="Light" type="OmniLight3D" parent="." unique_id=1831015473]
+[node name="Light" type="OmniLight3D" parent="PathFollow3D/Body" unique_id=1831015473]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 13.6732, -0.361175)
 light_color = Color(0.211765, 0.596078, 0.721569, 1)
 light_energy = 0.0
@@ -1059,7 +1079,7 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 27.0089
 
-[node name="WaveSpawner" type="Node3D" parent="." unique_id=450703735 node_paths=PackedStringArray("wave_animation_player")]
+[node name="WaveSpawner" type="Node3D" parent="PathFollow3D/Body" unique_id=450703735 node_paths=PackedStringArray("wave_animation_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29153e-06, 1.7507273, -0.21312356)
 script = ExtResource("23_8fqfx")
 scenes = Array[PackedScene]([ExtResource("28_muo5h")])
@@ -1067,12 +1087,12 @@ add_to_groups = Array[String](["chase"])
 add_to_scene_root = true
 wave_animation_player = NodePath("AnimationPlayer")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="WaveSpawner" unique_id=203373663]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D/Body/WaveSpawner" unique_id=203373663]
 libraries/ = SubResource("AnimationLibrary_cu7wn")
 next/Wave1 = &"Wave2"
 next/Wave2 = &"Wave3"
 
-[node name="Dialog" type="AnimationPlayer" parent="." unique_id=2123824749 node_paths=PackedStringArray("anim")]
+[node name="Dialog" type="AnimationPlayer" parent="PathFollow3D/Body" unique_id=2123824749 node_paths=PackedStringArray("anim")]
 libraries/ = SubResource("AnimationLibrary_p7qim")
 script = ExtResource("28_v7xtt")
 dialog_file = ExtResource("32_r1bv5")
@@ -1080,14 +1100,14 @@ speaker_name = "sloth"
 dialog_templates = Array[PackedScene]([ExtResource("29_enj2w"), ExtResource("30_p7qim"), ExtResource("31_cu7wn")])
 anim = NodePath(".")
 
-[node name="Background" parent="Dialog" unique_id=1330511380 instance=ExtResource("33_dvx2e")]
+[node name="Background" parent="PathFollow3D/Body/Dialog" unique_id=1330511380 instance=ExtResource("33_dvx2e")]
 
-[node name="RandomDialog" type="Timer" parent="Dialog" unique_id=12206923 node_paths=PackedStringArray("DIALOG")]
+[node name="RandomDialog" type="Timer" parent="PathFollow3D/Body/Dialog" unique_id=12206923 node_paths=PackedStringArray("DIALOG")]
 script = ExtResource("34_oet4f")
 DIALOG = NodePath("..")
 LINES = Array[String](["random_taunt_1", "random_taunt_2", "random_taunt_3", "random_taunt_4"])
 
-[node name="Jibberish" type="AudioStreamPlayer" parent="Dialog" unique_id=1415043008 node_paths=PackedStringArray("player")]
+[node name="Jibberish" type="AudioStreamPlayer" parent="PathFollow3D/Body/Dialog" unique_id=1415043008 node_paths=PackedStringArray("player")]
 process_mode = 3
 volume_db = 2.0
 bus = &"SFX"
@@ -1096,6 +1116,6 @@ speaker_group = "sloth"
 player = NodePath(".")
 sounds = Array[AudioStream]([ExtResource("36_p7qim"), ExtResource("37_cu7wn"), ExtResource("38_r1bv5")])
 
-[connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
+[connection signal="body_entered" from="TriggerArea" to="PathFollow3D/Body" method="_on_trigger_area_body_entered"]
 
-[editable path="Mesh/sloth"]
+[editable path="PathFollow3D/Body/Mesh/sloth"]
