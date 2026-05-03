@@ -176,10 +176,11 @@ func try_attack() -> void:
 		ANIM.play("WINDUP")
 	elif air_time > PLUNGE_TIME:
 		ANIM.play("PLUNGE_FALL")
+		
 func try_plunge() -> void:
 	if is_on_floor() or air_time < PLUNGE_TIME:
-		if not ANIM.current_animation in "PLUNGE_FALL": return
-		ANIM.play("PLUNGE", 0)
+		if ANIM.current_animation == "PLUNGE_FALL": 
+			ANIM.play("PLUNGE", 0)
 
 @export_subgroup("Dash")
 @export var DASH_COOLDOWN: float = 0.3
@@ -386,7 +387,7 @@ func _physics_process(delta: float) -> void:
 	try_block()	
 	try_heal()
 	try_shoot()
-	try_step_up()
+	#try_step_up()
 	clamp_horizontal_movement()
 	apply_horizontal_friction()
 	try_dash(delta)

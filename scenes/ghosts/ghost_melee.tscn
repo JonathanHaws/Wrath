@@ -641,7 +641,7 @@ size = Vector3(0.72126484, 2.2288299, 2.3273582)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qr43c"]
 size = Vector3(1.0802, 1.44707, 1.26314)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kuhgr"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_o8rnl"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("24_o8rnl")
@@ -660,7 +660,7 @@ shader_parameter/emission_texture_intensity = 1.0
 shader_parameter/normal_strength = 1.0
 shader_parameter/enabled_normal = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eo06i"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kuhgr"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.6435713, 0.64357144, 0.64357126, 1)
@@ -732,9 +732,9 @@ radius = 2.2036133
 [sub_resource type="SphereShape3D" id="SphereShape3D_oquh6"]
 radius = 18.8292
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_xpgrw"]
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_kuhgr"]
 height = 0.5
-radius = 1.1728516
+radius = 1.4394531
 
 [node name="Ghost" type="CharacterBody3D" unique_id=842720599 groups=["ghost"]]
 top_level = true
@@ -885,10 +885,10 @@ shape = SubResource("BoxShape3D_qr43c")
 debug_color = Color(0.7, 0.7, 0.7, 0)
 
 [node name="body" parent="Mesh/melee_ghost/Armature/Skeleton3D" parent_id_path=PackedInt32Array(213385399, 156673787) index="1" unique_id=428820093]
-surface_material_override/0 = SubResource("ShaderMaterial_kuhgr")
+surface_material_override/0 = SubResource("ShaderMaterial_o8rnl")
 
 [node name="eyes" parent="Mesh/melee_ghost/Armature/Skeleton3D" parent_id_path=PackedInt32Array(213385399, 156673787) index="2" unique_id=1198783291]
-surface_material_override/0 = SubResource("StandardMaterial3D_eo06i")
+surface_material_override/0 = SubResource("StandardMaterial3D_kuhgr")
 
 [node name="Target" type="Node3D" parent="." unique_id=963969195 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH", "STOP_CHASE_AREA", "AWARENESS_AREA")]
 script = ExtResource("22_3d4yc")
@@ -963,12 +963,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21777, 2.38419e-07, -0.353
 shape = SubResource("SphereShape3D_oquh6")
 debug_color = Color(0.658, 0.6937, 0.7, 0.023529412)
 
-[node name="StepShape" type="Area3D" parent="." unique_id=952204998 node_paths=PackedStringArray("Body")]
+[node name="StepShape" type="Area3D" parent="." unique_id=555462504 node_paths=PackedStringArray("Body")]
 script = ExtResource("26_kuhgr")
 Body = NodePath("..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StepShape" unique_id=987067193]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.28100586, 0)
-shape = SubResource("CylinderShape3D_xpgrw")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StepShape" unique_id=1222161049]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.25, 0)
+shape = SubResource("CylinderShape3D_kuhgr")
 
 [editable path="Mesh/melee_ghost"]

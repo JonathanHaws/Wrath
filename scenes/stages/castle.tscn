@@ -158,12 +158,12 @@ _data = {
 }
 point_count = 22
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ccgg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thcj7"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_thcj7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omlwx"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("24_3ccgg")
@@ -464,8 +464,8 @@ curve = SubResource("Curve3D_3ccgg")
 transform = Transform3D(0.9262083, 0, -0.3768973, 0, 0.9999442, 0, 0.3769039, 0, 0.9261921, 0.16384888, -0.5877228, 0.8373413)
 
 [node name="Sphere_001" parent="Sins/Sloth/PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1434777009, 1456814678, 334728690) index="0" unique_id=832004677]
-surface_material_override/0 = SubResource("StandardMaterial3D_3ccgg")
-surface_material_override/1 = SubResource("ShaderMaterial_thcj7")
+surface_material_override/0 = SubResource("StandardMaterial3D_thcj7")
+surface_material_override/1 = SubResource("ShaderMaterial_omlwx")
 
 [node name="EnvyFly" type="Path3D" parent="Sins" unique_id=2031636455 node_paths=PackedStringArray("node_to_queue_free")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.64444, 29.919395, -21.1921)
