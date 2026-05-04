@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="24_uahh5"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="25_gwq6n"]
 [ext_resource type="PackedScene" uid="uid://yjgk2vfs7584" path="res://models/characters/sloth/sloth.glb" id="25_ic1i5"]
+[ext_resource type="PackedScene" uid="uid://cka3ivns267uq" path="res://scenes/bosses/sloth/slow_sludge.tscn" id="26_ic1i5"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/custom/disolve.gdshader" id="26_uahh5"]
 [ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://scenes/ghosts/ghost_melee.tscn" id="28_muo5h"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://script/dialog/dialog.gd" id="28_v7xtt"]
@@ -489,6 +490,26 @@ tracks/10/keys = {
 "update": 0,
 "values": [0.0, 1.0]
 }
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Mesh/sloth/Armature/Skeleton3D/BoneAttachment3D/SceneSpawner")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(3.208333, 13.187575, 23.480316),
+"transitions": PackedFloat32Array(1, 1, 1),
+"values": [{
+"args": [8, 0.08, Vector3(1, 1, 1)],
+"method": &"spawn_towards_target"
+}, {
+"args": [8, 0.08, Vector3(1, 1, 1)],
+"method": &"spawn_towards_target"
+}, {
+"args": [8, 0.08, Vector3(1, 1, 1)],
+"method": &"spawn_towards_target"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_jojdm"]
 length = 0.001
@@ -907,7 +928,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07889, 7.1402, 8.51709)
 shape = SubResource("BoxShape3D_wbwgn")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="." unique_id=678533075]
-transform = Transform3D(0.9996817, 0, -0.024497645, 0, 0.9999442, 0, 0.024498014, 0, 0.9996667, 0.16384888, -0.5877228, 0.8373413)
+transform = Transform3D(0.9996806, 0, -0.024497623, 0, 0.99994403, 0, 0.024497986, 0, 0.99966574, 0.16384888, -0.5877228, 0.8373413)
 rotation_mode = 1
 
 [node name="Body" type="CharacterBody3D" parent="PathFollow3D" unique_id=1434777009 node_paths=PackedStringArray("TARGET", "ANIM")]
@@ -1023,7 +1044,7 @@ script = ExtResource("23_8fqfx")
 scenes = Array[PackedScene]([ExtResource("21_xr0xi")])
 
 [node name="Target" type="Node3D" parent="PathFollow3D/Body" unique_id=1930926419 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH", "STOP_CHASE_AREA")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.55050755, 2.62937, 5.76861)
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -3.111498, 2.6293702, 5.8583508)
 script = ExtResource("25_gwq6n")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 BODY = NodePath("..")
@@ -1054,11 +1075,22 @@ debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="sloth" parent="PathFollow3D/Body/Mesh" unique_id=1456814678 instance=ExtResource("25_ic1i5")]
 
-[node name="Sphere_001" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="0" unique_id=832004677]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="0" unique_id=2032396092]
+transform = Transform3D(0.89222115, 0.01078383, -0.45146975, 0.0023526363, 0.99959034, 0.02852568, 0.45159245, -0.026513362, 0.89183027, -0.13388485, 2.4412313, -0.023626858)
+bone_name = "Bone.002"
+bone_idx = 2
+
+[node name="SceneSpawner" type="Node3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D/BoneAttachment3D" unique_id=559642429 node_paths=PackedStringArray("target")]
+transform = Transform3D(0.99803066, 0.062174793, 0.008393832, -0.06272452, 0.99169207, 0.112309515, -0.0013412661, -0.11261499, 0.9936389, -0.036895376, 1.0051528, 1.7147093)
+script = ExtResource("23_8fqfx")
+scenes = Array[PackedScene]([ExtResource("26_ic1i5")])
+target = NodePath("../../../../../../Target")
+
+[node name="Sphere_001" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="1" unique_id=832004677]
 surface_material_override/0 = SubResource("StandardMaterial3D_uahh5")
 surface_material_override/1 = SubResource("ShaderMaterial_ic1i5")
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="1" unique_id=636975154]
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="2" unique_id=636975154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.083372, 0, 0)
 target_node = NodePath("../../../../../Target")
 bone_name = "Bone.002"

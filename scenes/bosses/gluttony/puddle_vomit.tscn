@@ -119,63 +119,61 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="VomitPuddle" type="Node3D"]
+[node name="VomitPuddle" type="Node3D" unique_id=1869346286]
 script = ExtResource("1_s6lm2")
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="Node3D" type="Node3D" parent="." unique_id=1464932880]
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D"]
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D" unique_id=1520172075]
 transform = Transform3D(3.27353, -4.88282e-29, -1.72884e-37, 0, -1.57212e-07, 0.291327, -4.44423e-29, -3.59659, -1.27343e-08, 0, 0.212949, 0)
 material_override = ExtResource("2_s6lm2")
 mesh = SubResource("SphereMesh_v5ope")
 skeleton = NodePath("")
 
-[node name="Attack" type="Area3D" parent="." groups=["gluttony"]]
+[node name="Attack" type="Area3D" parent="." unique_id=1284864654 groups=["gluttony"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206618, 0)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("3_g4km2")
 linger = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack" unique_id=68223603]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.238939, 0)
 shape = SubResource("CylinderShape3D_s6lm2")
 debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_mr47g")
-}
-autoplay = "projectile"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1998064401]
+libraries/ = SubResource("AnimationLibrary_mr47g")
+autoplay = &"projectile"
 
-[node name="Audio" type="Node" parent="."]
+[node name="Audio" type="Node" parent="." unique_id=1463580645]
 
-[node name="Splash" type="Node" parent="Audio"]
+[node name="Splash" type="Node" parent="Audio" unique_id=1185188731]
 script = ExtResource("5_g4v7w")
 PITCH_VARIANCE = 0.3
 
-[node name="Splash1" type="AudioStreamPlayer" parent="Audio/Splash"]
+[node name="Splash1" type="AudioStreamPlayer" parent="Audio/Splash" unique_id=1310924467]
 process_mode = 3
 stream = ExtResource("4_exbxg")
 bus = &"SFX"
 
-[node name="Puddle" type="Node" parent="Audio"]
+[node name="Puddle" type="Node" parent="Audio" unique_id=1395165906]
 script = ExtResource("5_g4v7w")
 PITCH_VARIANCE = 0.3
 
-[node name="Puddle1" type="AudioStreamPlayer" parent="Audio/Puddle"]
+[node name="Puddle1" type="AudioStreamPlayer" parent="Audio/Puddle" unique_id=1380251357]
 process_mode = 3
 stream = ExtResource("6_yymar")
 volume_db = -3.0
 bus = &"SFX"
 
-[node name="Puddle2" type="AudioStreamPlayer" parent="Audio/Puddle"]
+[node name="Puddle2" type="AudioStreamPlayer" parent="Audio/Puddle" unique_id=1946311231]
 process_mode = 3
 stream = ExtResource("7_kg012")
 volume_db = -3.0
 bus = &"SFX"
 
-[node name="Puddle3" type="AudioStreamPlayer" parent="Audio/Puddle"]
+[node name="Puddle3" type="AudioStreamPlayer" parent="Audio/Puddle" unique_id=752738105]
 process_mode = 3
 stream = ExtResource("8_0mkwt")
 volume_db = -3.0

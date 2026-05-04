@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://14hmcag5btd0"]
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dgequ13txopwq"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_q5prc"]
 
@@ -10,9 +10,10 @@ as_normal_map = true
 [resource]
 transparency = 1
 depth_draw_mode = 1
-albedo_color = Color(0.35224003, 0.37, 0.34780002, 0.9372549)
+albedo_color = Color(0.07754668, 0.15096825, 0.21738201, 0.8980392)
 roughness = 0.94
 normal_enabled = true
+normal_scale = 0.5
 normal_texture = SubResource("NoiseTexture2D_6x8jk")
 uv1_scale = Vector3(0.265, 0.265, 0.265)
 uv1_triplanar = true

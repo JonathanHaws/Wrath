@@ -1,0 +1,180 @@
+[gd_scene format=3 uid="uid://b0i37puflnfe1"]
+
+[ext_resource type="Script" uid="uid://dtofx2osnk3pe" path="res://script/component/puddle.gd" id="1_wvynp"]
+[ext_resource type="Material" uid="uid://dgequ13txopwq" path="res://shaders/materials/projectiles/sludge.tres" id="2_wvynp"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="3_pj0af"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="4_utqpe"]
+[ext_resource type="AudioStream" uid="uid://dr4wvss7cxikp" path="res://audio/sfx/characters/gluttony/vomit_splash.ogg" id="5_ym4f6"]
+[ext_resource type="AudioStream" uid="uid://bg7hvfo0wmnlg" path="res://audio/sfx/characters/gluttony/puddle_1.ogg" id="6_tat0b"]
+[ext_resource type="AudioStream" uid="uid://c8tka838atcpd" path="res://audio/sfx/characters/gluttony/puddle_2.ogg" id="7_i2d4y"]
+[ext_resource type="AudioStream" uid="uid://cs06ncete1mfe" path="res://audio/sfx/characters/gluttony/puddle_3.ogg" id="8_ljdps"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_v5ope"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_s6lm2"]
+resource_local_to_scene = true
+height = 0.398734
+radius = 1.637
+
+[sub_resource type="Animation" id="Animation_mr47g"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node3D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Attack/CollisionShape3D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_v5ope"]
+resource_name = "projectile"
+length = 2.6666
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.6666667),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node3D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.266667, 2.4999673),
+"transitions": PackedFloat32Array(1, 16.5642, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Attack/CollisionShape3D:disabled")
+tracks/2/interp = 0
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3, 2.399967),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [true, false, true]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio/Splash")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random_child"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Audio/Puddle")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"play_random_child"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mr47g"]
+_data = {
+&"RESET": SubResource("Animation_mr47g"),
+&"projectile": SubResource("Animation_v5ope")
+}
+
+[node name="VomitPuddle" type="Node3D" unique_id=1967737358]
+script = ExtResource("1_wvynp")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=305465855]
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Node3D" unique_id=542913684]
+transform = Transform3D(3.274, -4.8833807e-29, -7.868977e-37, 0, -1.5722986e-07, 1.326, -4.4448676e-29, -3.597, -5.79613e-08, 0, 0.027624503, 0)
+material_override = ExtResource("2_wvynp")
+mesh = SubResource("SphereMesh_v5ope")
+skeleton = NodePath("")
+
+[node name="Attack" type="Area3D" parent="." unique_id=970938908 groups=["gluttony"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206618, 0)
+collision_layer = 3
+collision_mask = 3
+script = ExtResource("3_pj0af")
+linger = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Attack" unique_id=1514562191]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.238939, 0)
+shape = SubResource("CylinderShape3D_s6lm2")
+debug_color = Color(0.668887, 0.106286, 1.92523e-07, 1)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2062365517]
+libraries/ = SubResource("AnimationLibrary_mr47g")
+autoplay = &"projectile"
+
+[node name="Audio" type="Node" parent="." unique_id=2096618882]
+
+[node name="Splash" type="Node" parent="Audio" unique_id=1264757008]
+script = ExtResource("4_utqpe")
+PITCH_VARIANCE = 0.3
+
+[node name="Splash1" type="AudioStreamPlayer" parent="Audio/Splash" unique_id=1528697247]
+process_mode = 3
+stream = ExtResource("5_ym4f6")
+bus = &"SFX"
+
+[node name="Puddle" type="Node" parent="Audio" unique_id=906775774]
+script = ExtResource("4_utqpe")
+PITCH_VARIANCE = 0.3
+
+[node name="Puddle1" type="AudioStreamPlayer" parent="Audio/Puddle" unique_id=1074523024]
+process_mode = 3
+stream = ExtResource("6_tat0b")
+volume_db = -3.0
+bus = &"SFX"
+
+[node name="Puddle2" type="AudioStreamPlayer" parent="Audio/Puddle" unique_id=83060761]
+process_mode = 3
+stream = ExtResource("7_i2d4y")
+volume_db = -3.0
+bus = &"SFX"
+
+[node name="Puddle3" type="AudioStreamPlayer" parent="Audio/Puddle" unique_id=975190331]
+process_mode = 3
+stream = ExtResource("8_ljdps")
+volume_db = -3.0
+bus = &"SFX"

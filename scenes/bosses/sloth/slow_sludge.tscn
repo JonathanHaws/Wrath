@@ -1,11 +1,11 @@
-[gd_scene format=3 uid="uid://d2iqujeqiun08"]
+[gd_scene format=3 uid="uid://cka3ivns267uq"]
 
-[ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://script/items/projectile.gd" id="1_e1mm7"]
-[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="2_fabgd"]
-[ext_resource type="PackedScene" uid="uid://4f506yax85t1" path="res://scenes/bosses/gluttony/puddle_vomit.tscn" id="3_j1560"]
-[ext_resource type="Material" uid="uid://14hmcag5btd0" path="res://shaders/materials/projectiles/vomit.tres" id="4_j1560"]
-[ext_resource type="PackedScene" uid="uid://bc87fmyhhshyl" path="res://models/items/projectiles/projectile.glb" id="4_ubqyn"]
-[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="5_sipne"]
+[ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://script/items/projectile.gd" id="1_yotrv"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="2_y33ah"]
+[ext_resource type="PackedScene" uid="uid://b0i37puflnfe1" path="res://scenes/bosses/sloth/puddle_sludge.tscn" id="3_jxn60"]
+[ext_resource type="PackedScene" uid="uid://bc87fmyhhshyl" path="res://models/items/projectiles/projectile.glb" id="4_hpcsq"]
+[ext_resource type="Material" uid="uid://dgequ13txopwq" path="res://shaders/materials/projectiles/sludge.tres" id="5_jxn60"]
+[ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="6_qs85s"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3ab56"]
 size = Vector3(0.567566, 0.678773, 0.566377)
@@ -108,11 +108,10 @@ _data = {
 
 [node name="SlowVomit" type="Node3D" unique_id=2085484686 node_paths=PackedStringArray("collision_animation_player", "ray", "collision_point")]
 top_level = true
-script = ExtResource("1_e1mm7")
+script = ExtResource("1_yotrv")
 speed = 22.0
 gravity = 15.0
-random_velocity_x = 0.2
-random_velocity_y = 0.2
+random_velocity_x = 3.0
 exclude_groups = Array[String](["gluttony", "player"])
 collision_animation_player = NodePath("AnimationPlayer")
 collision_animation_name = "colliding"
@@ -121,22 +120,22 @@ collision_point = NodePath("PuddleSpawner")
 
 [node name="PuddleSpawner" type="Node3D" parent="." unique_id=828005033]
 rotation_edit_mode = 1
-script = ExtResource("2_fabgd")
-scenes = Array[PackedScene]([ExtResource("3_j1560")])
+script = ExtResource("2_y33ah")
+scenes = Array[PackedScene]([ExtResource("3_jxn60")])
 add_to_scene_root = true
 
 [node name="Node3D" type="Node3D" parent="." unique_id=1575833906]
 
-[node name="projectile" parent="Node3D" unique_id=96990622 instance=ExtResource("4_ubqyn")]
+[node name="projectile" parent="Node3D" unique_id=96990622 instance=ExtResource("4_hpcsq")]
 
 [node name="Cylinder" parent="Node3D/projectile" index="0" unique_id=1454792017]
-surface_material_override/0 = ExtResource("4_j1560")
+surface_material_override/0 = ExtResource("5_jxn60")
 
 [node name="Attack" type="Area3D" parent="." unique_id=640081506 groups=["gluttony"]]
 transform = Transform3D(0.581318, 0, 0, 0, 0.581318, 0, 0, 0, 0.581318, 0, 0, 0)
 collision_layer = 3
 collision_mask = 3
-script = ExtResource("5_sipne")
+script = ExtResource("6_qs85s")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Attack" unique_id=695140474]
 transform = Transform3D(0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0.012629599, -0.00430307, -1.0096065)
