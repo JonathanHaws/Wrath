@@ -66,7 +66,7 @@
 [ext_resource type="Theme" uid="uid://dc3871vl88kgm" path="res://shaders/themes/tutorial.tres" id="52_ccj1p"]
 [ext_resource type="PackedScene" uid="uid://cmau4y8fs3ukm" path="res://scenes/particles/hurt/player_hurt_particles.tscn" id="52_xnjpx"]
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://audio/sfx/characters/menu/Menu_New.wav" id="53_qlt7i"]
-[ext_resource type="Script" uid="uid://c2j1vbn4tf1g2" path="res://script/component/step_shape.gd" id="54_sm0mq"]
+[ext_resource type="Script" uid="uid://c2j1vbn4tf1g2" path="res://script/component/step_climber.gd" id="54_sm0mq"]
 [ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://shaders/bar/player/health_charges_fill.tres" id="56_s81g7"]
 [ext_resource type="StyleBox" uid="uid://cdkrrhvlxa2fc" path="res://shaders/bar/player/shooting_energy_fill.tres" id="57_773af"]
 [ext_resource type="CompressedTexture3D" uid="uid://caybb4g3v4fq4" path="res://textures/luts/lut.png" id="69_d6veh"]

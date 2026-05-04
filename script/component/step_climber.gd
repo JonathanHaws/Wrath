@@ -1,9 +1,9 @@
-extends Node3D
+extends Node3D ## Script enabling 3D Bodies to not get stuck on small ledges or bumpy terrain
 ## How far in front of the player the raycast to find the step is done
 ## Should usually be the radius of the collision shape of the body plus a little amount 0.01 - 0.1
 @export var STEP_DISTANCE: float = .6 
-@export var BODY: CharacterBody3D ## The body that is moved up and retains velocity
 @export var MAX_STEP_HEIGHT: float = 1.3 ## How much the player can step up
+@export var BODY: CharacterBody3D ## The body that is moved up and retains velocity
 @export var DEBUG_RAY: RayCast3D ## A way to visualize the step probe
 var last_velocity: Vector3 = Vector3.ZERO
 
@@ -56,7 +56,7 @@ func try_step_up() -> void:
 		params.from = global_transform
 		params.motion = new_pos - global_position
 		if PhysicsServer3D.body_test_motion(BODY.get_rid(), params): 
-			print('colliding')
+			#print('colliding')
 			return	
 			
 		BODY.global_position.y += step
