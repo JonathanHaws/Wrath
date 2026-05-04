@@ -148,7 +148,9 @@ func try_attack() -> void:
 	if is_on_floor():
 		ANIM.play("WINDUP")
 	elif air_time > PLUNGE_TIME:
-		ANIM.play("PLUNGE_FALL")	
+		# avoid plunging when on steps and didnt jump (temporary bandaid)
+		if velocity.y < -.5 or velocity.y > 0: # potentially add a queue to avoid a feeling of missed input
+			ANIM.play("PLUNGE_FALL")	
 func try_plunge() -> void:
 	if is_on_floor() or air_time < PLUNGE_TIME:
 		if ANIM.current_animation == "PLUNGE_FALL": 

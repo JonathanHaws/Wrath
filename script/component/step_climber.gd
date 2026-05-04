@@ -7,6 +7,8 @@ extends Node3D ## Script enabling 3D Bodies to not get stuck on small ledges or 
 @export var DEBUG_RAY: RayCast3D ## A way to visualize the step probe
 var last_velocity: Vector3 = Vector3.ZERO
 
+## potentially store input to only try step up when actively accelerating
+
 func is_moving_horizontally(velocity: Vector3) -> bool:
 	var horizontal_velocity = velocity
 	horizontal_velocity.y = 0

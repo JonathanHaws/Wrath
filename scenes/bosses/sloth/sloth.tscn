@@ -48,7 +48,7 @@ _data = {
 point_count = 6
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wbwgn"]
-size = Vector3(23.4119, 15.2804, 40.1915)
+size = Vector3(23.4119, 20.729555, 25.330528)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d0au0"]
 radius = 1.1723633
@@ -724,12 +724,12 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbtmo"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uahh5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic1i5"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ic1i5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3kw6g"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("26_uahh5")
@@ -924,7 +924,7 @@ collision_layer = 3
 collision_mask = 3
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="TriggerArea" unique_id=1303432104]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07889, 7.1402, 8.51709)
+transform = Transform3D(0.9999982, 0, -4.172325e-07, 0, 1, 0, 2.2351742e-06, 0, 0.9999991, 2.078889, 4.4156227, 1.0866051)
 shape = SubResource("BoxShape3D_wbwgn")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="." unique_id=678533075]
@@ -1087,8 +1087,8 @@ scenes = Array[PackedScene]([ExtResource("26_ic1i5")])
 target = NodePath("../../../../../../Target")
 
 [node name="Sphere_001" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="1" unique_id=832004677]
-surface_material_override/0 = SubResource("StandardMaterial3D_uahh5")
-surface_material_override/1 = SubResource("ShaderMaterial_ic1i5")
+surface_material_override/0 = SubResource("StandardMaterial3D_ic1i5")
+surface_material_override/1 = SubResource("ShaderMaterial_3kw6g")
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="2" unique_id=636975154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.083372, 0, 0)
