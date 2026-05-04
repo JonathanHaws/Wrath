@@ -66,6 +66,7 @@
 [ext_resource type="Theme" uid="uid://dc3871vl88kgm" path="res://shaders/themes/tutorial.tres" id="52_ccj1p"]
 [ext_resource type="PackedScene" uid="uid://cmau4y8fs3ukm" path="res://scenes/particles/hurt/player_hurt_particles.tscn" id="52_xnjpx"]
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://audio/sfx/characters/menu/Menu_New.wav" id="53_qlt7i"]
+[ext_resource type="Script" uid="uid://c2j1vbn4tf1g2" path="res://script/component/step_shape.gd" id="54_sm0mq"]
 [ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://shaders/bar/player/health_charges_fill.tres" id="56_s81g7"]
 [ext_resource type="StyleBox" uid="uid://cdkrrhvlxa2fc" path="res://shaders/bar/player/shooting_energy_fill.tres" id="57_773af"]
 [ext_resource type="CompressedTexture3D" uid="uid://caybb4g3v4fq4" path="res://textures/luts/lut.png" id="69_d6veh"]
@@ -3653,10 +3654,6 @@ _data = {
 &"KILL": SubResource("Animation_u34bh")
 }
 
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_ecubd"]
-height = 0.5
-radius = 0.8520508
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wub5s"]
 bg_color = Color(1, 1, 1, 0.439216)
 border_width_left = 1
@@ -3765,6 +3762,17 @@ next/BLOCK_EXIT = &"IDLE"
 next/DASH = &"RUN"
 next/INTRODUCTION = &"IDLE"
 next/REST = &"SKILLS"
+
+[node name="StepClimber" type="Node3D" parent="." unique_id=203481994 node_paths=PackedStringArray("BODY", "DEBUG_RAY")]
+script = ExtResource("54_sm0mq")
+BODY = NodePath("..")
+DEBUG_RAY = NodePath("RayCast3D")
+
+[node name="RayCast3D" type="RayCast3D" parent="StepClimber" unique_id=770825662]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9904864, -0.7255364)
+target_position = Vector3(0, -0.75, 0)
+debug_shape_custom_color = Color(0.5247082, 0.8517748, 0.32057604, 1)
+debug_shape_thickness = 5
 
 [node name="Hitshape" type="Area3D" parent="." unique_id=1397946160 node_paths=PackedStringArray("ANIM_PLAYER") groups=["player", "player_hitshape"]]
 collision_layer = 2
@@ -3977,11 +3985,6 @@ transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1
 debug_shape_thickness = 5
 script = ExtResource("38_ojv1r")
 
-[node name="StepUp" type="RayCast3D" parent="Mesh" unique_id=770825662]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -0.57833004)
-target_position = Vector3(0, -0.75, 0)
-debug_shape_thickness = 5
-
 [node name="PlungeHurt" type="Area3D" parent="Mesh" unique_id=622933227 node_paths=PackedStringArray("animation_player") groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1605837, 0.68690205)
 script = ExtResource("7_4anjp")
@@ -4165,12 +4168,6 @@ scenes = Array[PackedScene]([ExtResource("8_lxnc4"), ExtResource("42_p6b07")])
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5091362, -0.6996558)
 script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("52_xnjpx")])
-
-[node name="StepShape" type="Area3D" parent="." unique_id=1510471289]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StepShape" unique_id=1068281713]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2489042, 0)
-shape = SubResource("CylinderShape3D_ecubd")
 
 [node name="Control" type="Control" parent="." unique_id=493993614 groups=["ui_scalable"]]
 layout_mode = 3

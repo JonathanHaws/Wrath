@@ -108,7 +108,6 @@ func try_jump() -> void:
 @export var MAX_FALL_SPEED: float = 50.0 
 @export var DESCEND_MULTIPLIER: float = 5.0
 @export var LAND_EFFECTS_COOLDOWN: float = 0.2
-@export var STEP_UP_RAY: RayCast3D
 func get_fall_velocity(delta: float) -> Vector3:
 	var fall_vel = velocity + get_gravity() * (GRAVITY_MULTIPLIER * GRAVITY_STRENGTH) * delta
 	if Input.is_action_pressed("descend"):
@@ -127,32 +126,6 @@ func play_land_effects() -> void:
 		if ANIM.current_animation == "GOD": return
 		if $Audio: $Audio.spawn_sound(["land"])
 		if PARTICLES: PARTICLES.spawn()
-func try_step_up() -> void:
-	if not STEP_UP_RAY: return
-	if not STEP_UP_RAY.is_colliding(): return
-	if velocity.y > 1: return # Jumping ignore
-	
-	var hit_y: float = STEP_UP_RAY.get_collision_point().y
-	var body_y: float = global_position.y
-	if hit_y <= body_y: return
-	
-	# Make step up not work if its too steep an angle
-	var hit_normal: Vector3 = STEP_UP_RAY.get_collision_normal()
-	var up: Vector3 = Vector3.UP
-	var angle: float = acos(clamp(hit_normal.dot(up), -1.0, 1.0))
-	if angle > floor_max_angle: return
-
-	# Return if would be in collision
-	var new_pos: Vector3 = Vector3(global_position.x, hit_y, global_position.z)
-	var params := PhysicsTestMotionParameters3D.new()
-	params.from = global_transform
-	params.motion = new_pos - global_position
-	if PhysicsServer3D.body_test_motion(get_rid(), params): return
-	
-	play_land_effects()
-	air_time = 0
-	velocity.y = 0
-	global_position.y = hit_y
 
 @export_group("Combat") #
 @export var STAMINA: float = 10
@@ -175,8 +148,7 @@ func try_attack() -> void:
 	if is_on_floor():
 		ANIM.play("WINDUP")
 	elif air_time > PLUNGE_TIME:
-		ANIM.play("PLUNGE_FALL")
-		
+		ANIM.play("PLUNGE_FALL")	
 func try_plunge() -> void:
 	if is_on_floor() or air_time < PLUNGE_TIME:
 		if ANIM.current_animation == "PLUNGE_FALL": 
@@ -387,7 +359,6 @@ func _physics_process(delta: float) -> void:
 	try_block()	
 	try_heal()
 	try_shoot()
-	#try_step_up()
 	clamp_horizontal_movement()
 	apply_horizontal_friction()
 	try_dash(delta)
