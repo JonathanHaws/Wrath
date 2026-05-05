@@ -60,13 +60,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 72.5, 10, 30.5)
 flip_faces = true
 size = Vector3(20, 20, 89)
 
-[node name="Enviroment" type="Node" parent="." unique_id=765237015]
+[node name="Enviroment" type="Node3D" parent="." unique_id=947983766]
 
 [node name="Weather" parent="Enviroment" unique_id=1859431525 instance=ExtResource("3_8n4tx")]
 
 [node name="WorldEnvironment" parent="Enviroment" unique_id=1875254859 instance=ExtResource("4_l4ji8")]
 
-[node name="Lights" type="Node" parent="Enviroment" unique_id=1714725039]
+[node name="Lights" type="Node3D" parent="Enviroment" unique_id=635384001]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights" unique_id=891767953]
 transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 16.3637, 1.1386, -0.412741)

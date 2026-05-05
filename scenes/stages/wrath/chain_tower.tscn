@@ -31,19 +31,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71385, 9.93213, -0.0490699)
 flip_faces = true
 size = Vector3(65.3073, 20, 30)
 
-[node name="Enviroment" type="Node" parent="." unique_id=472646957]
+[node name="Enviroment" type="Node3D" parent="." unique_id=1383206085]
 
 [node name="chain_ceiling" parent="Enviroment" unique_id=956581869 instance=ExtResource("2_pti88")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.165699, -13.104839, -0.7295923)
-
-[node name="ChainCeiling" parent="Enviroment" unique_id=1684580087]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.56517, -15.9073, -0.547886)
 
 [node name="Weather" parent="Enviroment" unique_id=1475754132 instance=ExtResource("5_qi6lv")]
 
 [node name="WorldEnvironment" parent="Enviroment" unique_id=1700458946 instance=ExtResource("6_mmcy5")]
 
-[node name="Lights" type="Node" parent="Enviroment" unique_id=514624705]
+[node name="Lights" type="Node3D" parent="Enviroment" unique_id=195630552]
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights" unique_id=200661723]
 transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 16.3637, 1.1386, -0.412741)
@@ -73,7 +70,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.51
 DESTINATION_SCENE = "uid://dsdh2bite7xv4"
 DESTINATION_NODE_NAME = "ChainTower"
 
-[node name="Ghosts" type="Node" parent="." unique_id=779908809]
+[node name="Ghosts" type="Node3D" parent="." unique_id=1912132207]
 
 [node name="Ghost" parent="Ghosts" unique_id=541670991 instance=ExtResource("11_sj1b4")]
 transform = Transform3D(0.50829, 0, 0.861186, 0, 1, 0, -0.861186, 0, 0.50829, 13.0036, -7.5117, 10.4121)

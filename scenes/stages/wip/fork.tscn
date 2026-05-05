@@ -17,7 +17,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_lhph3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykekg"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("9_1445x")
@@ -36,7 +36,7 @@ shader_parameter/emission_texture_intensity = 1.0
 shader_parameter/normal_strength = 1.0
 shader_parameter/enabled_normal = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_af3gd"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pu0wb"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.6435713, 0.64357144, 0.64357126, 1)
@@ -56,15 +56,20 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71385, 9.93213, -0.0490699)
 flip_faces = true
 size = Vector3(65.3073, 20, 30)
 
-[node name="Enviroment" type="Node" parent="." unique_id=1286340858]
+[node name="Enviroment" type="Node3D" parent="." unique_id=946927081]
 
 [node name="WorldEnvironment" parent="Enviroment" unique_id=1340100306 instance=ExtResource("2_m82hu")]
 
 [node name="Weather" parent="Enviroment" unique_id=975684027 instance=ExtResource("3_xvxsh")]
 
-[node name="Lights" type="Node" parent="Enviroment" unique_id=2147087789]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=211833689]
+transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 42.0321, 0, -9.54005, 0)
+material_override = ExtResource("4_crg4m")
+mesh = SubResource("BoxMesh_od467")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights" unique_id=120646417]
+[node name="Lights" type="Node3D" parent="." unique_id=1611322093]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights" unique_id=120646417]
 transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 16.3637, 1.1386, -0.412741)
 light_color = Color(0.29, 0.29, 0.29, 1)
 light_energy = 100.0
@@ -73,13 +78,8 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.2
 omni_range = 101.01
 
-[node name="Lights" type="Node3D" parent="Enviroment/Lights" unique_id=1699907055]
+[node name="Lights" type="Node3D" parent="Lights" unique_id=1699907055]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=211833689]
-transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 42.0321, 0, -9.54005, 0)
-material_override = ExtResource("4_crg4m")
-mesh = SubResource("BoxMesh_od467")
 
 [node name="Enter" parent="." unique_id=362002922 instance=ExtResource("5_yix2y")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
@@ -108,9 +108,9 @@ transform = Transform3D(-4.37114e-08, 2.21727e-15, -1, -0.514559, 0.857455, 2.24
 [node name="Piglet" parent="." unique_id=1733790200 instance=ExtResource("8_huxb3")]
 transform = Transform3D(-0.80747575, 0, 0.5899013, 0, 1, 0, -0.5899013, 0, -0.80747575, -18.44065, -9, 10.958)
 
-[node name="Plane" parent="Piglet/piglet/Mesh/Skeleton3D" parent_id_path=PackedInt32Array(1733790200, 162201708, 495222798) index="0" unique_id=1173241877]
-surface_material_override/0 = SubResource("ShaderMaterial_lhph3")
-surface_material_override/1 = SubResource("StandardMaterial3D_af3gd")
+[node name="Plane" parent="Piglet/piglet/Mesh/Skeleton3D" parent_id_path=PackedInt32Array(1733790200, 162201708, 1349517519) index="0" unique_id=133001245]
+surface_material_override/0 = SubResource("ShaderMaterial_ykekg")
+surface_material_override/1 = SubResource("StandardMaterial3D_pu0wb")
 
 [node name="PickUpInteraction" parent="Piglet" index="3" unique_id=1269613829]
 disabled = true

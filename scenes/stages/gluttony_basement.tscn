@@ -64,7 +64,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.9236, 1.67438, -0.0490699)
 flip_faces = true
 size = Vector3(42, 3.4845, 2)
 
-[node name="Enviroment" type="Node" parent="." unique_id=1453484603]
+[node name="Enviroment" type="Node3D" parent="." unique_id=682160407]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroment" unique_id=1163628390]
 transform = Transform3D(258.713, 0, 0, 0, 1, 0, 0, 0, 89.7055, 43.3302, -9.54585, 0)
@@ -76,9 +76,9 @@ skeleton = NodePath("../..")
 
 [node name="Weather" parent="Enviroment" unique_id=1439817015 instance=ExtResource("4_s7wev")]
 
-[node name="Lights" type="Node" parent="Enviroment" unique_id=349969903]
+[node name="Lights" type="Node3D" parent="." unique_id=1077355695]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights" unique_id=1348272762]
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights" unique_id=1348272762]
 transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 16.3637, 1.1386, -0.412741)
 light_color = Color(0.29, 0.29, 0.29, 1)
 light_energy = 100.0
@@ -87,10 +87,10 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 101.01
 
-[node name="Lights" type="Node3D" parent="Enviroment/Lights" unique_id=877752087]
+[node name="Lights" type="Node3D" parent="Lights" unique_id=877752087]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.9505, -9, 0)
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="Enviroment/Lights" unique_id=2014259693]
+[node name="OmniLight3D2" type="OmniLight3D" parent="Lights" unique_id=2014259693]
 transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 116.137, -3.10137, -0.412741)
 light_color = Color(0.29, 0.29, 0.29, 1)
 light_energy = 25.825

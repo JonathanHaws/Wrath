@@ -297,7 +297,7 @@ material_override = ExtResource("3_dq2hf")
 use_collision = true
 size = Vector3(41.348816, 5.8320313, 5.4223633)
 
-[node name="Enviroment" type="Node" parent="." unique_id=356274830]
+[node name="Enviroment" type="Node3D" parent="." unique_id=1148970538]
 
 [node name="WorldEnvironment" parent="Enviroment" unique_id=93302124 instance=ExtResource("2_u51x1")]
 

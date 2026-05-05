@@ -43,16 +43,18 @@ transform = Transform3D(56.136, 0, 0, 0, 1, 0, 0, 0, 82.5, 0, -0.566012, 0)
 material_override = ExtResource("2_84uwv")
 mesh = SubResource("BoxMesh_b2186")
 
-[node name="Enviroment" type="Node" parent="." unique_id=829828171]
+[node name="Enviroment" type="Node3D" parent="." unique_id=352773418]
 
 [node name="Weather" parent="Enviroment" unique_id=276344235 instance=ExtResource("3_wy0h6")]
 
-[node name="Lights" type="Node" parent="Enviroment" unique_id=497472350]
+[node name="WorldEnvironment" parent="Enviroment" unique_id=786151388 instance=ExtResource("4_yydj8")]
 
-[node name="Lights" type="Node3D" parent="Enviroment/Lights" unique_id=1769116880]
+[node name="Lights" type="Node3D" parent="." unique_id=1884388497]
+
+[node name="Lights" type="Node3D" parent="Lights" unique_id=1769116880]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights" unique_id=588578332]
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights" unique_id=588578332]
 transform = Transform3D(-0.863752, 0.338228, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528203, 6.96341, 1.1386, -1.43818)
 light_color = Color(0.24817, 0.269731, 0.291302, 1)
 light_energy = 100.0
@@ -61,14 +63,12 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.2
 omni_range = 101.01
 
-[node name="WorldEnvironment" parent="Enviroment" unique_id=786151388 instance=ExtResource("4_yydj8")]
-
-[node name="Wisps" type="Node" parent="." unique_id=1722863019]
+[node name="Wisps" type="Node3D" parent="." unique_id=779433714]
 
 [node name="Wisp" parent="Wisps" unique_id=749568883 instance=ExtResource("6_hyqyh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.08563, 2.71911, -29.3764)
 
-[node name="Doors" type="Node" parent="." unique_id=2012844617]
+[node name="Doors" type="Node3D" parent="." unique_id=1460548737]
 
 [node name="TowerEast" parent="Doors" unique_id=478378617 instance=ExtResource("7_7j2oa")]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -10.1933, 1.00536e-06)
@@ -85,7 +85,7 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 22.9699,
 DESTINATION_SCENE = "uid://dsdh2bite7xv4"
 DESTINATION_NODE_NAME = "TowerSouth"
 
-[node name="Ghosts" type="Node" parent="." unique_id=1187525092]
+[node name="Ghosts" type="Node3D" parent="." unique_id=2008145596]
 
 [node name="Ghost" parent="Ghosts" unique_id=777555187 instance=ExtResource("8_0r3a6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1068, -9.15278, 21.8807)

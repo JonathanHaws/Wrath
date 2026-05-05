@@ -86,15 +86,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71385, 9.93213, -0.158932)
 flip_faces = true
 size = Vector3(65.3073, 20, 77.4419)
 
-[node name="Enviroment" type="Node" parent="." unique_id=977513781]
+[node name="Enviroment" type="Node3D" parent="." unique_id=848883866]
 
 [node name="Weather" parent="Enviroment" unique_id=1682700746 instance=ExtResource("3_1uhv7")]
 
 [node name="WorldEnvironment" parent="Enviroment" unique_id=467784795 instance=ExtResource("4_ydha4")]
 
-[node name="Lights" type="Node" parent="Enviroment" unique_id=325478397]
+[node name="FloorMesh" type="MeshInstance3D" parent="Enviroment" unique_id=970298783]
+transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 117.389, 0, -9.54005, 0)
+material_override = ExtResource("5_oqn12")
+mesh = SubResource("BoxMesh_od467")
+skeleton = NodePath("../..")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights" unique_id=1548676037]
+[node name="Lights" type="Node3D" parent="." unique_id=127497926]
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights" unique_id=1548676037]
 transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, -2.10421, 4.35191, -0.412741)
 light_color = Color(0.215902, 0.215902, 0.215902, 1)
 light_energy = 100.0
@@ -103,16 +109,10 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.2
 omni_range = 101.01
 
-[node name="Lights" type="Node3D" parent="Enviroment/Lights" unique_id=1625340490]
+[node name="Lights" type="Node3D" parent="Lights" unique_id=1625340490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
-[node name="Sun" parent="Enviroment/Lights" unique_id=1940685674 instance=ExtResource("4_3mnao")]
-
-[node name="FloorMesh" type="MeshInstance3D" parent="Enviroment" unique_id=970298783]
-transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 117.389, 0, -9.54005, 0)
-material_override = ExtResource("5_oqn12")
-mesh = SubResource("BoxMesh_od467")
-skeleton = NodePath("../..")
+[node name="Sun" parent="Lights" unique_id=1940685674 instance=ExtResource("4_3mnao")]
 
 [node name="Checkpoint" parent="." unique_id=1412673960 instance=ExtResource("6_nirrj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.14297, -9.05803, -0.448656)

@@ -149,43 +149,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0601807, 9.93213, -2.54907)
 flip_faces = true
 size = Vector3(46, 20, 65)
 
-[node name="Enviroment" type="Node" parent="." unique_id=2993162]
+[node name="Enviroment" type="Node3D" parent="." unique_id=607173903]
 
 [node name="WorldEnvironment" parent="Enviroment" unique_id=1415555367 instance=ExtResource("2_i1vh2")]
 
 [node name="Weather" parent="Enviroment" unique_id=792846156 instance=ExtResource("3_5o1fx")]
-
-[node name="Lights" type="Node" parent="Enviroment" unique_id=2068991675]
-
-[node name="Lights" type="Node3D" parent="Enviroment/Lights" unique_id=901679521]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Enviroment/Lights" unique_id=458600423]
-transform = Transform3D(-0.863752, 0.338228, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528203, 6.96341, 1.1386, -1.43818)
-light_color = Color(0.29, 0.29, 0.29, 1)
-light_energy = 100.0
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
-light_specular = 0.2
-omni_range = 101.01
-
-[node name="Portal Light" type="OmniLight3D" parent="Enviroment/Lights" unique_id=1114010829]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.30496, 26.0057)
-light_color = Color(0.294299, 0.67518, 0.743146, 1)
-light_energy = 15.0
-omni_range = 45.0382
-
-[node name="Portal Light2" type="OmniLight3D" parent="Enviroment/Lights" unique_id=1973448275]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2085, -0.765566, 26.0057)
-light_color = Color(0.294299, 0.67518, 0.743146, 1)
-light_energy = 2.0
-omni_range = 45.0382
-
-[node name="Portal Light3" type="OmniLight3D" parent="Enviroment/Lights" unique_id=311792838]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.34703, -0.765566, 26.0057)
-light_color = Color(0.294299, 0.67518, 0.743146, 1)
-light_energy = 2.0
-omni_range = 45.0382
 
 [node name="FloorMesh" type="MeshInstance3D" parent="Enviroment" unique_id=1341894401]
 transform = Transform3D(56.136, 0, 0, 0, 1, 0, 0, 0, 82.5, 0, -9.55002, 0)
@@ -198,11 +166,42 @@ transform = Transform3D(1, 0, 5.96046e-08, 0, 1, 0, -5.96046e-08, 0, 1, 0, -9.09
 DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
 DESTINATION_NODE_NAME = "PrideTower"
 
-[node name="Portal" type="Node3D" parent="." unique_id=724158024 node_paths=PackedStringArray("ANIM", "AREA", "PLAYER_SPOT")]
+[node name="Lights" type="Node3D" parent="." unique_id=1693556958]
+
+[node name="Lights" type="Node3D" parent="Lights" unique_id=901679521]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lights" unique_id=458600423]
+transform = Transform3D(-0.863752, 0.338228, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528203, 6.96341, 1.1386, -1.43818)
+light_color = Color(0.29, 0.29, 0.29, 1)
+light_energy = 100.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.2
+omni_range = 101.01
+
+[node name="Portal Light" type="OmniLight3D" parent="Lights" unique_id=1114010829]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2.30496, 26.0057)
+light_color = Color(0.294299, 0.67518, 0.743146, 1)
+light_energy = 15.0
+omni_range = 45.0382
+
+[node name="Portal Light2" type="OmniLight3D" parent="Lights" unique_id=1973448275]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.2085, -0.765566, 26.0057)
+light_color = Color(0.294299, 0.67518, 0.743146, 1)
+light_energy = 2.0
+omni_range = 45.0382
+
+[node name="Portal Light3" type="OmniLight3D" parent="Lights" unique_id=311792838]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.34703, -0.765566, 26.0057)
+light_color = Color(0.294299, 0.67518, 0.743146, 1)
+light_energy = 2.0
+omni_range = 45.0382
+
+[node name="Portal" type="Node3D" parent="." unique_id=724158024 node_paths=PackedStringArray("AREA", "PLAYER_SPOT")]
 transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -3.82572e-06, -9.06787, 1.26405)
 script = ExtResource("5_c6d1s")
 ANIM_NAME = "ESCAPE"
-ANIM = NodePath("")
 AREA = NodePath("Area3D")
 ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["ESCAPE"])
@@ -277,10 +276,10 @@ shape = SubResource("BoxShape3D_1waye")
 [node name="Portal" parent="Portal" unique_id=478687852 instance=ExtResource("6_iuacm")]
 transform = Transform3D(48.569996, 0, -3.0877518e-06, 0, 48.569996, 0, 3.0877518e-06, 0, 48.569996, -0.14994314, 0.4532423, -26.75832)
 
-[node name="portal" parent="Portal/Portal" index="0" unique_id=1014227302]
+[node name="portal" parent="Portal/Portal" index="0" unique_id=1702369571]
 transform = Transform3D(0.9999999, -7.1054274e-15, 0, 0, 0, -0.9999999, 7.1054274e-15, 0.9999999, 0, 0.006994445, 0, 0)
 
-[node name="AnimationPlayer" parent="Portal/Portal" index="2" unique_id=574031952]
+[node name="AnimationPlayer" parent="Portal/Portal" index="2" unique_id=1694452588]
 autoplay = &"Spin"
 
 [node name="Checkpoint" parent="." unique_id=1478836931 instance=ExtResource("14_d1ner")]
