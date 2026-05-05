@@ -15,6 +15,9 @@ func toggle(paused: bool) -> void:
 	if self.visible:
 		if Config and Config.has_method("save_window_transform"): Config.save_window_transform()
 
+func _ready() -> void:
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
 		toggle(not self.visible) 

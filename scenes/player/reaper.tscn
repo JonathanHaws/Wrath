@@ -4047,7 +4047,7 @@ groups = Array[String](["cloak_mesh", "body_mesh"])
 
 [node name="reaper" parent="Mesh" unique_id=372593124 instance=ExtResource("45_riyku")]
 
-[node name="Skeleton3D" parent="Mesh/reaper/Reaper" parent_id_path=PackedInt32Array(372593124, 1508350573) index="0" unique_id=1173629645]
+[node name="Skeleton3D" parent="Mesh/reaper/Reaper" parent_id_path=PackedInt32Array(372593124, 376655617) index="0" unique_id=1058900548]
 bones/1/position = Vector3(0.012178166, 0.19505176, 0.8582668)
 bones/1/rotation = Quaternion(0.5648932, 0.0032426482, -0.004040857, 0.82514787)
 bones/2/rotation = Quaternion(0.034949932, 1.2340075e-07, 6.3417405e-10, 0.9993891)
@@ -4081,10 +4081,10 @@ bones/21/rotation = Quaternion(-0.77279204, 0.005150923, 0.0013434164, 0.6346370
 bones/22/position = Vector3(0.037840486, 0.580708, 1.0538247)
 bones/22/rotation = Quaternion(0.33867583, 0.13481644, 0.51415944, 0.77637833)
 
-[node name="body" parent="Mesh/reaper/Reaper/Skeleton3D" index="0" unique_id=157442255 groups=["body_mesh"]]
+[node name="body" parent="Mesh/reaper/Reaper/Skeleton3D" index="0" unique_id=670145799 groups=["body_mesh"]]
 surface_material_override/0 = ExtResource("35_m1s71")
 
-[node name="cloak" parent="Mesh/reaper/Reaper/Skeleton3D" index="1" unique_id=1968025064 groups=["cloak_mesh"]]
+[node name="cloak" parent="Mesh/reaper/Reaper/Skeleton3D" index="1" unique_id=38238636 groups=["cloak_mesh"]]
 surface_material_override/0 = ExtResource("36_4anjp")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="3" unique_id=552018988]
@@ -4156,7 +4156,7 @@ primary_damp_threshold = 1.0
 secondary_limit_angle = 0.261799
 secondary_damp_threshold = 1.0
 
-[node name="AnimationPlayer" parent="Mesh/reaper" index="1" unique_id=1495470096]
+[node name="AnimationPlayer" parent="Mesh/reaper" index="1" unique_id=1278022557]
 root_motion_track = NodePath("Reaper/Skeleton3D:root")
 playback_default_blend_time = 0.2
 

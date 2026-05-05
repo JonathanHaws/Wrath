@@ -2,26 +2,74 @@
 
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/world_small.tres" id="2_6d5mm"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/items/weather.tscn" id="3_1uhv7"]
+[ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://scenes/lighting/sun.tscn" id="4_3mnao"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/lighting/enviroment.tscn" id="4_ydha4"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/world_star.tres" id="5_oqn12"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/items/checkpoint.tscn" id="6_nirrj"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/player/reaper.tscn" id="7_orybl"]
 [ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/items/heavy_door.tscn" id="8_4sp4e"]
-[ext_resource type="PackedScene" uid="uid://dshyyn54ur3e1" path="res://models/characters/gluttony/gluttony.blend" id="9_g4wad"]
-[ext_resource type="PackedScene" uid="uid://b0t7a64rsk4nk" path="res://models/characters/wrath/wrath.blend" id="10_npdej"]
-[ext_resource type="PackedScene" uid="uid://c2wxy1j75npxh" path="res://models/characters/greed/greed.blend" id="11_ykhj2"]
-[ext_resource type="PackedScene" uid="uid://wlhsn0forped" path="res://models/characters/piglet/piglet.blend" id="12_qfp2b"]
+[ext_resource type="PackedScene" uid="uid://2u2qs8p1y4nt" path="res://models/characters/piglet/piglet.glb" id="10_1oryi"]
+[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/custom/disolve.gdshader" id="11_k76ei"]
+[ext_resource type="PackedScene" uid="uid://dhg86ekb6f3ne" path="res://models/characters/gluttony/gluttony.glb" id="12_n2f0p"]
 [ext_resource type="PackedScene" uid="uid://v5af8j11oilq" path="res://scenes/bosses/lust/lust.tscn" id="13_qri8l"]
-[ext_resource type="PackedScene" uid="uid://djqadr0k0vrs3" path="res://scenes/bosses/envy/envy.tscn" id="14_6d5mm"]
+[ext_resource type="PackedScene" uid="uid://dbhx6r10lr31h" path="res://models/characters/wrath/wrath.glb" id="13_wn83d"]
 [ext_resource type="PackedScene" uid="uid://yjgk2vfs7584" path="res://models/characters/sloth/sloth.glb" id="14_gmsxx"]
-[ext_resource type="Material" uid="uid://3q6cym1ot3lq" path="res://shaders/materials/ghost/ghost_eyes.tres" id="15_g448i"]
-[ext_resource type="Material" uid="uid://cn5x858kq0c3r" path="res://shaders/materials/ghost/ghost_body.tres" id="16_ty4y1"]
+[ext_resource type="PackedScene" uid="uid://bdjvrm2o45ly3" path="res://models/characters/envy/envy.glb" id="17_1oryi"]
+[ext_resource type="PackedScene" uid="uid://p5m74oii8yam" path="res://models/characters/greed/greed.glb" id="18_3mnao"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
-vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
+vertices = PackedVector3Array(-22.189798, 0.43212986, -38.129883, -22.189798, 0.43212986, 37.870117, 41.810204, 0.43212986, 37.870117, 41.810204, 0.43212986, -38.129883)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wn83d"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("11_k76ei")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_frequency = 3.0
+shader_parameter/dissolve_vector = Vector3(0.5, -0.5, 0.25)
+shader_parameter/custom_glow_color_enabled = false
+shader_parameter/custom_glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.0
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/albedo_enabled = false
+shader_parameter/albedo_color = Color(0.09803922, 0.11764706, 0.1764706, 1)
+shader_parameter/enabled_emisson = false
+shader_parameter/emission_texture_intensity = 1.0
+shader_parameter/normal_strength = 1.0
+shader_parameter/enabled_normal = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1oryi"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.6435713, 0.64357144, 0.64357126, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mnao"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.6435713, 0.64357144, 0.64357126, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6aguw"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("11_k76ei")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_frequency = 3.0
+shader_parameter/dissolve_vector = Vector3(0.5, -0.5, 0.25)
+shader_parameter/custom_glow_color_enabled = false
+shader_parameter/custom_glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.0
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/albedo_enabled = false
+shader_parameter/albedo_color = Color(0.09803922, 0.11764706, 0.1764706, 1)
+shader_parameter/enabled_emisson = false
+shader_parameter/emission_texture_intensity = 1.0
+shader_parameter/normal_strength = 1.0
+shader_parameter/enabled_normal = false
 
 [node name="Main" type="Node3D" unique_id=1386725262]
 
@@ -58,6 +106,8 @@ omni_range = 101.01
 [node name="Lights" type="Node3D" parent="Enviroment/Lights" unique_id=1625340490]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 
+[node name="Sun" parent="Enviroment/Lights" unique_id=1940685674 instance=ExtResource("4_3mnao")]
+
 [node name="FloorMesh" type="MeshInstance3D" parent="Enviroment" unique_id=970298783]
 transform = Transform3D(97.3175, 0, 0, 0, 1, 0, 0, 0, 117.389, 0, -9.54005, 0)
 material_override = ExtResource("5_oqn12")
@@ -78,33 +128,82 @@ DESTINATION_SCENE = "uid://5n4cvh6cqc4p"
 DESTINATION_NODE_NAME = "Enter"
 LOCKED = true
 
-[node name="gluttony" parent="." unique_id=1387691380 instance=ExtResource("9_g4wad")]
-transform = Transform3D(-0.584745, 0, -0.811217, 0, 1, 0, 0.811217, 0, -0.584745, 10.1005, -8.14531, 7.71447)
+[node name="Lust" parent="." unique_id=1949196190 instance=ExtResource("13_qri8l")]
+transform = Transform3D(-0.7683685, 0.0019798502, -0.640005, 0.015828589, 0.9997478, -0.015910577, 0.639812, -0.022355549, -0.7682065, 5.063919, -9.145432, 11.714893)
 
-[node name="wrath2" parent="." unique_id=274266188 instance=ExtResource("10_npdej")]
-transform = Transform3D(-0.412437, 0, 0.910986, 0, 1, 0, -0.910986, 0, -0.412437, 8.71285, -9.06787, -4.69483)
+[node name="Piglet" parent="." unique_id=728713192 instance=ExtResource("10_1oryi")]
+transform = Transform3D(0.22330123, 0, -0.97474957, 0, 1, 0, 0.97474957, 0, 0.22330123, 7.6443405, -8.434498, -4.2933273)
 
-[node name="greed2" parent="." unique_id=1332135506 instance=ExtResource("11_ykhj2")]
-transform = Transform3D(-0.0129849, 0, -0.999916, 0, 1, 0, 0.999916, 0, -0.0129849, 11.5233, -9.06787, 0.0472907)
+[node name="Plane" parent="Piglet/Mesh/Skeleton3D" parent_id_path=PackedInt32Array(728713192, 1349517519) index="0" unique_id=133001245]
+surface_material_override/0 = SubResource("ShaderMaterial_wn83d")
+surface_material_override/1 = SubResource("StandardMaterial3D_1oryi")
 
-[node name="piglet" parent="." unique_id=2067401975 instance=ExtResource("12_qfp2b")]
-transform = Transform3D(-0.51402, 0, -0.857778, 0, 1, 0, 0.857778, 0, -0.51402, 7.58483, -8.99925, 4.55227)
+[node name="Gluttony" parent="." unique_id=2064500739 instance=ExtResource("12_n2f0p")]
+transform = Transform3D(0.30133823, 0, -0.9535173, 0, 1, 0, 0.9535173, 0, 0.30133823, 9.5806675, -8.145305, -1.0737524)
 
-[node name="Envy" parent="." unique_id=513083505 instance=ExtResource("14_6d5mm")]
-transform = Transform3D(0.878884, 0, -0.477036, 0, 1, 0, 0.477036, 0, 0.878884, 5.47204, -10.0346, -11.1026)
+[node name="Greed" parent="." unique_id=1599583532 instance=ExtResource("18_3mnao")]
+transform = Transform3D(-0.5082149, 0, -0.8612303, 0, 1, 0, 0.8612303, 0, -0.5082149, 8.338887, -9.06787, 7.6857014)
+
+[node name="Sloth" parent="." unique_id=1456814678 instance=ExtResource("14_gmsxx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.943674, -8.105873, 13.421916)
+
+[node name="Sphere_001" parent="Sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="0" unique_id=1805627527]
+transform = Transform3D(-0.9999347, 0, 0.011431596, 0, 1, 0, -0.011431596, 0, -0.9999347, 0, 0, 1.9188004)
+surface_material_override/0 = SubResource("StandardMaterial3D_3mnao")
+surface_material_override/1 = SubResource("ShaderMaterial_6aguw")
+
+[node name="Wrath" parent="." unique_id=212214660 instance=ExtResource("13_wn83d")]
+transform = Transform3D(-0.9352774, 0, 0.35391557, 0, 1, 0, -0.35391557, 0, -0.9352774, -1.6974049, -9.067871, -12.907586)
+
+[node name="Envy" parent="." unique_id=1261464440 instance=ExtResource("17_1oryi")]
+transform = Transform3D(0.72419596, 0, -0.68959427, 0, 1, 0, 0.68959427, 0, 0.72419596, 6.620139, -9.06787, -10.887342)
+
+[node name="Skeleton3D" parent="Envy/Armature" parent_id_path=PackedInt32Array(1261464440, 1842681375) index="0" unique_id=1392320625]
+bones/0/rotation = Quaternion(0, 0.7071068, 0.7071068, 0)
+bones/1/position = Vector3(-3.0624682e-07, 0.25110248, 2.9511843)
+bones/1/rotation = Quaternion(2.5939861e-09, 0.9971244, 0.075783156, -1.6205449e-06)
+bones/2/rotation = Quaternion(-0.38648182, 1.2123505e-07, -1.2708251e-06, 0.9222971)
+bones/3/rotation = Quaternion(-0.10861783, 1.0288944e-06, -4.676391e-07, 0.99408364)
+bones/4/rotation = Quaternion(0.60370064, -2.8984605e-06, 1.105832e-06, 0.79721117)
+bones/6/position = Vector3(2.344413e-07, 1.2578697, 0.14603795)
+bones/6/rotation = Quaternion(0.112010896, -2.3481897e-08, -1.8210285e-07, 0.993707)
+bones/7/position = Vector3(7.4323947e-07, 1.2202913, 0.43021747)
+bones/7/rotation = Quaternion(0.036111772, 4.7911664e-07, -5.0487284e-08, 0.9993478)
+bones/8/position = Vector3(3.764144e-07, 1.3215685, 0.21823758)
+bones/8/rotation = Quaternion(0.0814552, 3.1848984e-07, -1.0851988e-07, 0.996677)
+bones/9/position = Vector3(1.127819, -0.07513237, 0.1617235)
+bones/9/rotation = Quaternion(0.7340036, 0.39832124, 0.5458918, 0.067683734)
+bones/10/rotation = Quaternion(-0.09044288, 0.07062184, 0.7480068, 0.65369606)
+bones/11/rotation = Quaternion(-0.102492474, -0.114490226, 0.10455552, 0.9825759)
+bones/12/position = Vector3(-1.1278206, -0.07513192, 0.16171142)
+bones/12/rotation = Quaternion(-0.7340064, 0.3983215, 0.5458881, -0.067681596)
+bones/13/rotation = Quaternion(-0.09044288, -0.070621826, -0.74800676, 0.65369606)
+bones/14/rotation = Quaternion(-0.10249249, 0.11449013, -0.10455569, 0.9825759)
+bones/15/rotation = Quaternion(0.99496865, 1.4836745e-07, 1.6285791e-06, -0.100187086)
+bones/17/position = Vector3(0.7277975, 0.14549042, 0.8203067)
+bones/17/rotation = Quaternion(0.8759814, -0.029732617, -0.0022583806, 0.48142254)
+bones/18/rotation = Quaternion(0.24889356, 0.0478589, -0.086889215, 0.9634375)
+bones/19/rotation = Quaternion(-0.5966285, -0.07207996, 0.08217988, 0.79503804)
+bones/21/rotation = Quaternion(-0.036828116, 0.106101304, -0.23038703, 0.9665961)
+bones/22/rotation = Quaternion(-0.09331369, 0.25264233, 0.085308336, 0.95926374)
+bones/23/rotation = Quaternion(-0.06267302, 0.5606567, 0.032658257, 0.825027)
+bones/24/rotation = Quaternion(-0.0033951323, 0.5918524, -0.08141293, 0.80191714)
+bones/25/rotation = Quaternion(0.068123244, -0.21092182, 0.4097848, 0.8848433)
+bones/26/rotation = Quaternion(-0.07895166, -0.15423349, -0.075881675, 0.98194736)
+bones/27/position = Vector3(-0.7278029, 0.14549072, 0.8203018)
+bones/27/rotation = Quaternion(0.8759814, 0.029730853, 0.002260907, 0.48142263)
+bones/28/rotation = Quaternion(0.24889365, -0.047858667, 0.08688911, 0.9634375)
+bones/29/rotation = Quaternion(-0.5966286, 0.072079636, -0.08217948, 0.795038)
+bones/30/rotation = Quaternion(0.15489799, 0.8174743, -0.5542013, 0.024561364)
+bones/31/rotation = Quaternion(-0.036828157, -0.10610182, 0.23038673, 0.9665961)
+bones/32/rotation = Quaternion(-0.09331365, -0.252642, -0.08530831, 0.9592638)
+bones/34/rotation = Quaternion(-0.0033942852, -0.59184563, 0.08141297, 0.8019222)
+bones/35/rotation = Quaternion(0.06812329, 0.21092121, -0.40978488, 0.8848434)
+bones/36/rotation = Quaternion(-0.078951806, 0.15423416, 0.075882, 0.98194724)
 
 [node name="Reaper" parent="." unique_id=153444811 instance=ExtResource("7_orybl")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
-[node name="Lust" parent="." unique_id=1949196190 instance=ExtResource("13_qri8l")]
-transform = Transform3D(-0.7683685, 0.0019798502, -0.640005, 0.015828589, 0.9997478, -0.015910577, 0.639812, -0.022355549, -0.7682065, 3.313282, -7.4927015, 12.951403)
-
-[node name="sloth" parent="." unique_id=1456814678 instance=ExtResource("14_gmsxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.943674, -8.105873, 13.421916)
-
-[node name="Sphere_001" parent="sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="0" unique_id=832004677]
-transform = Transform3D(-0.9999347, 0, 0.011431596, 0, 1, 0, -0.011431596, 0, -0.9999347, 0, 0, 1.9188004)
-surface_material_override/0 = ExtResource("15_g448i")
-surface_material_override/1 = ExtResource("16_ty4y1")
-
-[editable path="sloth"]
+[editable path="Piglet"]
+[editable path="Sloth"]
+[editable path="Envy"]
