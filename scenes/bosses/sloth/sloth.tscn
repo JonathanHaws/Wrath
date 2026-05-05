@@ -469,34 +469,22 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("HitShape/CollisionShape3D:disabled")
-tracks/9/interp = 0
+tracks/9/path = NodePath("..:progress_ratio")
+tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.6666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [true, false]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("..:progress_ratio")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
 "times": PackedFloat32Array(0, 56.291668),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/11/type = "method"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Mesh/sloth/Armature/Skeleton3D/BoneAttachment3D/SceneSpawner")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Mesh/sloth/Armature/Skeleton3D/BoneAttachment3D/SceneSpawner")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(3.208333, 13.187575, 23.480316),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
@@ -509,6 +497,18 @@ tracks/11/keys = {
 "args": [8, 0.08, Vector3(1, 1, 1)],
 "method": &"spawn_towards_target"
 }]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("HitShape:INVINCIBLE")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -588,38 +588,38 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("HitShape/CollisionShape3D:disabled")
-tracks/6/interp = 0
+tracks/6/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/0:albedo_color")
+tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [true]
+"values": [Color(0.52, 0.52, 0.52, 1)]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/0:albedo_color")
+tracks/7/path = NodePath("..:progress_ratio")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.52, 0.52, 0.52, 1)]
+"values": [0.0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("..:progress_ratio")
-tracks/8/interp = 1
+tracks/8/path = NodePath("HitShape:INVINCIBLE")
+tracks/8/interp = 0
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
@@ -955,6 +955,7 @@ next/INTRO = &"CHASE"
 
 [node name="HitShape" type="Area3D" parent="PathFollow3D/Body" unique_id=298325573 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT", "ANIM_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("20_6h4tx")
+INVINCIBLE = true
 HEALTH = 100000.0
 MAX_HEALTH = 100000.0
 DAMAGE_NUMBERS = ExtResource("7_dbtmo")
@@ -966,7 +967,6 @@ WAVE_DAMAGE = 12000.0
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/Body/HitShape" unique_id=324219729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12337458, 2.49679, 0)
 shape = SubResource("CapsuleShape3D_dbtmo")
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D/Body/HitShape" unique_id=1742099839]
 root_node = NodePath("../../Attacks")
@@ -1075,7 +1075,7 @@ debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 
 [node name="sloth" parent="PathFollow3D/Body/Mesh" unique_id=1456814678 instance=ExtResource("25_ic1i5")]
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="0" unique_id=2032396092]
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="0" unique_id=2032396092]
 transform = Transform3D(0.89222115, 0.01078383, -0.45146975, 0.0023526363, 0.99959034, 0.02852568, 0.45159245, -0.026513362, 0.89183027, -0.13388485, 2.4412313, -0.023626858)
 bone_name = "Bone.002"
 bone_idx = 2
@@ -1086,11 +1086,11 @@ script = ExtResource("23_8fqfx")
 scenes = Array[PackedScene]([ExtResource("26_ic1i5")])
 target = NodePath("../../../../../../Target")
 
-[node name="Sphere_001" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="1" unique_id=832004677]
+[node name="Sphere_001" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="1" unique_id=1805627527]
 surface_material_override/0 = SubResource("StandardMaterial3D_ic1i5")
 surface_material_override/1 = SubResource("ShaderMaterial_3kw6g")
 
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 334728690) index="2" unique_id=636975154]
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="2" unique_id=636975154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.083372, 0, 0)
 target_node = NodePath("../../../../../Target")
 bone_name = "Bone.002"

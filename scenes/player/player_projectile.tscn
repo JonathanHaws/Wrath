@@ -252,7 +252,7 @@ hurt_box = NodePath("Attack")
 
 [node name="projectile" parent="Node3D" unique_id=96990622 instance=ExtResource("2_ugl6f")]
 
-[node name="Cylinder" parent="Node3D/projectile" index="0" unique_id=1454792017]
+[node name="Cylinder" parent="Node3D/projectile" index="0" unique_id=1428825205]
 surface_material_override/0 = SubResource("StandardMaterial3D_sb5oc")
 
 [node name="Attack" type="Area3D" parent="." unique_id=1769833961 node_paths=PackedStringArray("animation_player") groups=["player"]]

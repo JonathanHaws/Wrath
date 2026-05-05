@@ -1,12 +1,10 @@
 extends Area3D
 signal DIED; signal HURT; signal HEAL
 @export var IMMUNE_GROUPS: Array[String] = ["enemies"] ## Groups of hurtboxes in which this scene is immune to
-@export_group("Health")
-@export var DISABLED: bool = false 
-@export var HEALTH :float = 500.0
-@export var MAX_HEALTH	:float = 500.0
+@export var INVINCIBLE: bool = false ## Doesn't disable collision but makes it so hitshape doesnt take damage. Also automatically enabled when enemy is killed (Health < 0)
 @export var INVINCIBILITY_COOLDOWN: float = 0.05 ## After object gets hit how long they are invincible
-@export var ROOT: Node ## Root of scene that will be freed if health is less then 0 when scene loaded in ready
+@export var HEALTH: float = 500.0
+@export var MAX_HEALTH: float = 500.0
 func add_immune_group(group_name: String) -> void:
 	if not group_name in IMMUNE_GROUPS:
 		IMMUNE_GROUPS.append(group_name)
@@ -14,6 +12,7 @@ var invincibility_timer: Timer
 var last_hurt_shape
 
 @export_group("Save")
+@export var ROOT: Node ## Root of scene that will be freed if health is less then 0 when scene loaded in ready
 @export_subgroup("Health") ## Used to make it so health  is persistent across scenes
 @export var SAVE_HEALTH: bool = false ## Most entities you want queue freed if health < 0 in ready... except player sometimes (Only works if Root Is Specified)
 @export var HEALTH_KEY: String = "" ## The unique key used in save dictionary. If left empty will just use scene prefixed unique node path
@@ -108,7 +107,7 @@ func _play_anim(anim: String, signal_to_emit: Signal) -> void:
 	signal_to_emit.emit()
 
 func hit(area: Area3D = null, damage: int = 0, play_animation: bool = true) -> bool:
-	if DISABLED: 
+	if INVINCIBLE: 
 		return false
 	if invincibility_timer: 
 		if invincibility_timer.is_stopped() == false: return false 
@@ -121,7 +120,7 @@ func hit(area: Area3D = null, damage: int = 0, play_animation: bool = true) -> b
 
 	HEALTH -= damage
 	last_hurt_shape = area
-	if HEALTH <= 0: DISABLED = true
+	if HEALTH <= 0: INVINCIBLE = true
 	if invincibility_timer: invincibility_timer.start()
 	
 	show_damage(damage)

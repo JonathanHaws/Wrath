@@ -843,14 +843,14 @@ tracks/20/keys = {
 tracks/21/type = "value"
 tracks/21/imported = false
 tracks/21/enabled = true
-tracks/21/path = NodePath("HitShape/CollisionShape3D:disabled")
+tracks/21/path = NodePath("HitShape:INVINCIBLE")
 tracks/21/interp = 0
 tracks/21/loop_wrap = true
 tracks/21/keys = {
-"times": PackedFloat32Array(0, 0.7916667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [true, false]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -1040,13 +1040,13 @@ tracks/14/keys = {
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("HitShape/CollisionShape3D:disabled")
-tracks/15/interp = 1
+tracks/15/path = NodePath("HitShape:INVINCIBLE")
+tracks/15/interp = 0
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [true]
 }
 
@@ -1747,6 +1747,7 @@ BODY = NodePath("../..")
 
 [node name="HitShape" type="Area3D" parent="." unique_id=37887982 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT") groups=["enemy_hitshape"]]
 script = ExtResource("6_64wp7")
+INVINCIBLE = true
 HEALTH = 3000.0
 MAX_HEALTH = 3000.0
 DAMAGE_NUMBERS = ExtResource("7_043ic")
@@ -1755,7 +1756,6 @@ TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=869368491]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.3665733, 0)
 shape = SubResource("CapsuleShape3D_wbwgn")
-disabled = true
 debug_color = Color(0.658, 0.6937, 0.7, 0.8784314)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HitShape" unique_id=169412433]
@@ -1894,7 +1894,7 @@ textures = Array[Texture2D]([ExtResource("27_t1cxy"), ExtResource("28_b44t3")])
 
 [node name="lust" parent="Mesh" unique_id=1192322909 instance=ExtResource("29_eup60")]
 
-[node name="Skeleton3D" parent="Mesh/lust/Armature" parent_id_path=PackedInt32Array(1192322909, 2026173306) index="0" unique_id=232082129]
+[node name="Skeleton3D" parent="Mesh/lust/Armature" parent_id_path=PackedInt32Array(1192322909, 799378626) index="0" unique_id=1203164774]
 bones/1/position = Vector3(-0.33993188, -0.044542067, 3.955853)
 bones/1/rotation = Quaternion(0.0008723306, 0.82217747, 0.56714565, -0.048674915)
 bones/2/rotation = Quaternion(-0.10431215, 0.0045675095, 0.03511976, 0.9939139)
@@ -1959,7 +1959,7 @@ bones/87/rotation = Quaternion(0.0026200863, 0.0072293016, -0.19680953, 0.980411
 bones/88/rotation = Quaternion(-0.023665192, 0.013798658, -0.23600341, 0.97136605)
 bones/89/rotation = Quaternion(0.036806904, 0.008859137, -0.20840907, 0.97730887)
 
-[node name="lust" parent="Mesh/lust/Armature/Skeleton3D" index="0" unique_id=1312494318 groups=["lust_mesh"]]
+[node name="lust" parent="Mesh/lust/Armature/Skeleton3D" index="0" unique_id=1307619103 groups=["lust_mesh"]]
 blend_shapes/Calm = 1.0
 surface_material_override/0 = ExtResource("30_2ky0q")
 
@@ -2156,7 +2156,7 @@ bone = 73
 position_offset = Vector3(0, -0.165, 0)
 rotation_offset = Quaternion(0, 0, 0, 1)
 
-[node name="AnimationPlayer" parent="Mesh/lust" index="1" unique_id=572175850]
+[node name="AnimationPlayer" parent="Mesh/lust" index="1" unique_id=1735934035]
 playback_default_blend_time = 0.2
 
 [node name="Light" type="OmniLight3D" parent="." unique_id=330983085]

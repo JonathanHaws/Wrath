@@ -29,7 +29,7 @@ func play_animation(area: Area3D) -> void:
 	else:
 		animation_player.play(hit_anim)
 var overlapping_areas: Dictionary = {}
-signal hurt_something
+signal collided_with_hitshape
 
 @export_group("Blocking")
 @export var parryable: bool = false
@@ -96,8 +96,8 @@ func hurt(area: Area3D) -> void:
 	var block_area = is_block_area_in_overlapping_areas()
 	if block_area: unblocked_damage_multiplier = blocked(block_area)
 	
+	if area.has_method("hit"): emit_signal("collided_with_hitshape")
 	if area.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * (damage_multiplier * unblocked_damage_multiplier)):
-		emit_signal("hurt_something")
 		overlapping_areas[area]["cooldown"].start()
 		overlapping_areas[area]["linger"].start() 
 		overlapping_areas[area]["linger"].start() 

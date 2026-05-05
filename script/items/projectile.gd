@@ -49,8 +49,8 @@ func _ready():
 	
 	#print(velocity)
 	
-	if hurt_box and hurt_box.has_signal("hurt_something"):
-		hurt_box.connect("hurt_something", Callable(self, "play_collision_animation"))
+	if hurt_box and hurt_box.has_signal("collided_with_hitshape"):
+		hurt_box.connect("collided_with_hitshape", Callable(self, "play_collision_animation"))
 
 func _physics_process(delta: float) -> void:
 	

@@ -805,14 +805,14 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("HitShape/CollisionShape3D:disabled")
+tracks/9/path = NodePath("HitShape:INVINCIBLE")
 tracks/9/interp = 0
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.29166666),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [true, false]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -974,7 +974,7 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("HitShape/CollisionShape3D:disabled")
+tracks/13/path = NodePath("HitShape:INVINCIBLE")
 tracks/13/interp = 0
 tracks/13/loop_wrap = true
 tracks/13/keys = {
@@ -1491,6 +1491,7 @@ BODY = NodePath("../..")
 
 [node name="HitShape" type="Area3D" parent="." unique_id=767457521 node_paths=PackedStringArray("TELEPORT_NODES_TO_HIT") groups=["enemy_hitshape"]]
 script = ExtResource("20_sg61t")
+INVINCIBLE = true
 HEALTH = 6500.0
 MAX_HEALTH = 6500.0
 DAMAGE_NUMBERS = ExtResource("21_fp1nr")
@@ -1499,7 +1500,6 @@ TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=564837777]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
 shape = SubResource("CapsuleShape3D_332fe")
-disabled = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HitShape" unique_id=84791484]
 root_node = NodePath("../../Attacks")
@@ -1650,7 +1650,7 @@ groups = Array[String](["envy_mesh"])
 
 [node name="envy" parent="Mesh" unique_id=2106886466 instance=ExtResource("34_wnpe0")]
 
-[node name="Skeleton3D" parent="Mesh/envy/Armature" parent_id_path=PackedInt32Array(2106886466, 400876183) index="0" unique_id=494886227]
+[node name="Skeleton3D" parent="Mesh/envy/Armature" parent_id_path=PackedInt32Array(2106886466, 1842681375) index="0" unique_id=1392320625]
 bones/1/position = Vector3(-3.0624682e-07, 0.25110248, 2.9511843)
 bones/1/rotation = Quaternion(2.5939861e-09, 0.9971244, 0.075783156, -1.6205449e-06)
 bones/2/rotation = Quaternion(-0.38648182, 1.2123505e-07, -1.2708251e-06, 0.9222971)
@@ -1734,10 +1734,10 @@ transform = Transform3D(1, 9.68575e-08, -1.4901e-08, -7.45027e-09, 1, 0, 1.7053e
 shape = SubResource("BoxShape3D_od1a5")
 disabled = true
 
-[node name="Mesh" parent="Mesh/envy/Armature/Skeleton3D" index="3" unique_id=999482843 groups=["envy_mesh"]]
+[node name="Mesh" parent="Mesh/envy/Armature/Skeleton3D" index="3" unique_id=6325949 groups=["envy_mesh"]]
 surface_material_override/0 = ExtResource("36_tgrj1")
 
-[node name="AnimationPlayer" parent="Mesh/envy" index="1" unique_id=240167992]
+[node name="AnimationPlayer" parent="Mesh/envy" index="1" unique_id=1989047685]
 root_motion_track = NodePath("Armature/Skeleton3D:root")
 playback_default_blend_time = 0.2
 

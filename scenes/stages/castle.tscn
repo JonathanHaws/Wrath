@@ -26,7 +26,6 @@
 [ext_resource type="Script" uid="uid://ds3llgo67gcpi" path="res://script/component/patrol.gd" id="22_a0oe4"]
 [ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://script/items/progress_gate.gd" id="22_je0v5"]
 [ext_resource type="PackedScene" uid="uid://bdjvrm2o45ly3" path="res://models/characters/envy/envy.glb" id="23_42juj"]
-[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/custom/disolve.gdshader" id="24_3ccgg"]
 [ext_resource type="PackedScene" uid="uid://sj1jfdnq1vjb" path="res://scenes/bosses/sloth/sloth.tscn" id="25_7guc4"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
@@ -182,30 +181,6 @@ _data = {
 }
 point_count = 22
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ccgg"]
-resource_local_to_scene = true
-transparency = 1
-albedo_color = Color(0.52, 0.52, 0.52, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_thcj7"]
-resource_local_to_scene = true
-render_priority = 0
-shader = ExtResource("24_3ccgg")
-shader_parameter/dissolve_amount = 0.0
-shader_parameter/dissolve_frequency = 3.0
-shader_parameter/dissolve_vector = Vector3(0.5, -0.5, 0.25)
-shader_parameter/custom_glow_color_enabled = false
-shader_parameter/custom_glow_color = Color(0.533, 0.533, 0.533, 1)
-shader_parameter/glow_intensitiy = 1.0
-shader_parameter/glow_border_width = 0.018
-shader_parameter/glow_border_smoothness = 0.003
-shader_parameter/albedo_enabled = false
-shader_parameter/albedo_color = Color(0.09803922, 0.11764706, 0.1764706, 1)
-shader_parameter/enabled_emisson = false
-shader_parameter/emission_texture_intensity = 1.0
-shader_parameter/normal_strength = 1.0
-shader_parameter/enabled_normal = false
-
 [sub_resource type="Curve3D" id="Curve3D_uq4p3"]
 closed = true
 _data = {
@@ -314,7 +289,7 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["INTRODUCTION"])
 
 [node name="Camera3D" type="Camera3D" parent="Cinematic" unique_id=2010672013 groups=["cinematic_camera"]]
-transform = Transform3D(0.8754897, -0.1283104, 0.4658894, 0, 0.9641031, 0.2655235, -0.4832355, -0.2324631, 0.8440633, 363.9596, 190.36052, 469.24988)
+transform = Transform3D(0.8754897, -0.1283104, 0.4658894, 0, 0.96410316, 0.2655235, -0.4832355, -0.2324631, 0.8440633, 363.9596, 190.36052, 469.24988)
 fov = 20.0
 
 [node name="Doors" type="Node3D" parent="." unique_id=107168045]
@@ -472,12 +447,12 @@ transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12.8
 [node name="Lust" parent="Sins" unique_id=1949196190 instance=ExtResource("20_bdp0v")]
 transform = Transform3D(-0.97807497, 0, -0.20825309, 0, 1, 0, 0.20825309, 0, -0.97807497, 364.6039, 38.50987, 25.439205)
 
-[node name="Greed" parent="Sins" unique_id=324949012 instance=ExtResource("17_dq2hf")]
+[node name="GreedTalk" parent="Sins" unique_id=324949012 instance=ExtResource("17_dq2hf")]
 transform = Transform3D(-0.15708953, 0, -0.98758435, 0, 1, 0, 0.98758435, 0, -0.15708953, 318.00122, 35.539642, -1.4994497)
 USE_CUSTOM_START_ANIMATION = true
 START_ANIMATION = "LEAN"
 
-[node name="Greed2" parent="Sins" unique_id=551608256 instance=ExtResource("17_dq2hf")]
+[node name="Greed" parent="Sins" unique_id=551608256 instance=ExtResource("17_dq2hf")]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 522.0462, 63.04357, -125.0572)
 USE_CUSTOM_START_ANIMATION = true
 START_ANIMATION = "FIGHT"
@@ -485,16 +460,6 @@ START_ANIMATION = "FIGHT"
 [node name="Sloth" parent="Sins" unique_id=1434777009 instance=ExtResource("25_7guc4")]
 transform = Transform3D(-0.5837747, 0, -0.8118902, 0, 0.99995536, 0, 0.81190014, 0, -0.5837676, 671.4583, 47.797066, 79.719826)
 curve = SubResource("Curve3D_3ccgg")
-
-[node name="PathFollow3D" parent="Sins/Sloth" index="1" unique_id=678533075]
-transform = Transform3D(0.9262083, 0, -0.3768973, 0, 0.9999442, 0, 0.3769039, 0, 0.9261921, 0.16384888, -0.5877228, 0.8373413)
-
-[node name="BoneAttachment3D" parent="Sins/Sloth/PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1434777009, 1456814678, 684494173) index="0" unique_id=2032396092]
-transform = Transform3D(0.8922169, 0.010784042, -0.4514781, 0.0023525683, 0.9995903, 0.028525464, 0.4516008, -0.026513044, 0.89182603, -0.13388485, 2.4412313, -0.023626858)
-
-[node name="Sphere_001" parent="Sins/Sloth/PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1434777009, 1456814678, 684494173) index="1" unique_id=1805627527]
-surface_material_override/0 = SubResource("StandardMaterial3D_3ccgg")
-surface_material_override/1 = SubResource("ShaderMaterial_thcj7")
 
 [node name="EnvyFly" type="Path3D" parent="Sins" unique_id=2031636455 node_paths=PackedStringArray("node_to_queue_free")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.64444, 29.919395, -21.1921)
@@ -544,6 +509,4 @@ debug_color = Color(0.768, 0.79413337, 0.8, 0.88235295)
 [connection signal="body_entered" from="KillVolumes/Void2" to="KillVolumes/Void2" method="_on_body_entered"]
 
 [editable path="NavigationRegion3D/castle"]
-[editable path="Sins/Sloth"]
-[editable path="Sins/Sloth/PathFollow3D/Body/Mesh/sloth"]
 [editable path="Sins/EnvyFly/PathFollow3D/envy"]
