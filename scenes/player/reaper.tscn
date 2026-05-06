@@ -67,8 +67,6 @@
 [ext_resource type="PackedScene" uid="uid://cmau4y8fs3ukm" path="res://scenes/particles/hurt/player_hurt_particles.tscn" id="52_xnjpx"]
 [ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://audio/sfx/characters/menu/Menu_New.wav" id="53_qlt7i"]
 [ext_resource type="Script" uid="uid://c2j1vbn4tf1g2" path="res://script/component/step_climber.gd" id="54_sm0mq"]
-[ext_resource type="StyleBox" uid="uid://ctb0me4nui0ud" path="res://shaders/bar/player/health_charges_fill.tres" id="56_s81g7"]
-[ext_resource type="StyleBox" uid="uid://cdkrrhvlxa2fc" path="res://shaders/bar/player/shooting_energy_fill.tres" id="57_773af"]
 [ext_resource type="CompressedTexture3D" uid="uid://caybb4g3v4fq4" path="res://textures/luts/lut.png" id="69_d6veh"]
 [ext_resource type="Shader" uid="uid://bqr41vgk3hmn3" path="res://shaders/custom/lut.gdshader" id="70_d6veh"]
 [ext_resource type="Script" uid="uid://i17kknqf088q" path="res://script/ui/lut_overlay.gd" id="70_ojv1r"]
@@ -4302,10 +4300,10 @@ script = ExtResource("43_ekykk")
 
 [node name="Label" type="Label" parent="UI/BottomLeft" unique_id=493732866]
 layout_mode = 0
-offset_left = 9.0
-offset_top = 624.0
-offset_right = 101.0
-offset_bottom = 662.0
+offset_left = 8.0
+offset_top = 665.0
+offset_right = 100.0
+offset_bottom = 703.0
 theme = ExtResource("24_m1s71")
 text = "WISP"
 script = ExtResource("44_4anjp")
@@ -4326,46 +4324,6 @@ grow_vertical = 0
 theme_override_styles/fill = ExtResource("34_6g6ue")
 expands = true
 tracked_node = NodePath("../../../Hitshape")
-pixel_expansion_rate = 8.0
-
-[node name="HealCharges" parent="UI/BottomLeft" unique_id=291496189 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
-layout_mode = 1
-anchors_preset = 2
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 0.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = 681.0
-offset_right = 115.024994
-offset_bottom = 691.0
-grow_horizontal = 1
-grow_vertical = 0
-theme_override_styles/fill = ExtResource("56_s81g7")
-expands = true
-tracked_node = NodePath("../../..")
-tracked_property = "heal_charges"
-tracked_max_property = "MAX_HEAL_CHARGES"
-pixel_expansion_rate = 8.0
-
-[node name="Shooting" parent="UI/BottomLeft" unique_id=862791230 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
-layout_mode = 1
-anchors_preset = 2
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 0.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = 663.0
-offset_right = 115.024994
-offset_bottom = 673.0
-grow_horizontal = 1
-grow_vertical = 0
-theme_override_styles/fill = ExtResource("57_773af")
-expands = true
-tracked_node = NodePath("../../..")
-tracked_property = "shooting_energy"
-tracked_max_property = "MAX_SHOOTING_ENERGY"
 pixel_expansion_rate = 8.0
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1732221166]
