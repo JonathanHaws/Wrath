@@ -46,7 +46,7 @@ func load_player_position() -> void:
 		player.global_transform = door_node.START.global_transform
 		player.get_node("Mesh").transform = Transform3D.IDENTITY
 		player.get_node("SpringArm3D").global_basis = door_node.START.global_basis
-		player.CAMERA.last_orientation = player.CAMERA.global_basis
+		player.CAMERA.global_transform = player.CAMERA.TARGET_NODE.global_transform
 		player.FADE_IN_ANIM.play("DOOR_FADE_IN")
 
 func _on_area_body_entered(body: Node) -> void:

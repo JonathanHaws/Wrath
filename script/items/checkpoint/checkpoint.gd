@@ -18,6 +18,8 @@ func load_checkpoint(player: Node3D) -> void:
 	checkpoint_transform.basis = Basis().rotated(Vector3.UP, euler_angles.y)
 	
 	player.global_transform = checkpoint_transform
+	player.CAMERA.last_orientation = checkpoint_transform.basis
+	player.CAMERA.global_transform = player.CAMERA.TARGET_NODE.global_transform
 
 func _rest() -> void:
 	if not Save.data.has("rests"): Save.data["rests"] = 1

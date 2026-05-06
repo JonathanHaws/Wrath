@@ -10,7 +10,7 @@ extends Camera3D
 var mouse_delta = Vector2.ZERO
 var last_orientation := Basis.IDENTITY
 
-@export var TARGET_NODE: Node3D ## Used for when smooth camera is desired instead of instant snapping to the end of the spring arm. Use top level on this Camera node
+@export var TARGET_NODE: Node3D ## Used for when smooth camera is desired instead of instant snapping to the end of the spring arm. REQUIRED Use top level on this Camera node
 @export var SNAP_SPEED: float = 10.0 ## How quickly the camera moves to the target node
 
 func _ready() -> void:
@@ -18,11 +18,11 @@ func _ready() -> void:
 	if Config: MOUSE_SENSITIVITY = Config.load_setting("controls", "mouse_sensitivity", MOUSE_SENSITIVITY)
 	if Config: CONTROLLER_SENSITIVITY = Config.load_setting("controls", "controller_sensitivity", CONTROLLER_SENSITIVITY)
 	
-	await get_tree().physics_frame
-	if TARGET_NODE:
-		global_transform = TARGET_NODE.global_transform
-		#print(TARGET_NODE, " ", TARGET_NODE.is_inside_tree())
-		#print('instant snap')
+	#await get_tree().physics_frame
+	#if TARGET_NODE:
+		#global_transform = TARGET_NODE.global_transform
+		##print(TARGET_NODE, " ", TARGET_NODE.is_inside_tree())
+		##print('instant snap')
 		
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -37,7 +37,6 @@ func _physics_process(_delta: float) -> void:
 	
 	if TARGET_NODE:
 		global_transform = global_transform.interpolate_with(TARGET_NODE.global_transform, SNAP_SPEED * _delta)
-	
 	
 	if TOP_LEVEL_ROTATION:
 		SpringArm.global_transform.basis = last_orientation

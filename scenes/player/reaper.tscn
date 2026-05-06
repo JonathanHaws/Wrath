@@ -1473,7 +1473,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [80.0]
+"values": [65.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -2139,7 +2139,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [70.0]
+"values": [65.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -2415,10 +2415,10 @@ tracks/6/path = NodePath("SpringArm3D/FovLerp:target_fov")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.0416667),
+"times": PackedFloat32Array(0.083333336),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [90.0]
+"values": [78.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -3778,9 +3778,9 @@ debug_shape_thickness = 5
 collision_layer = 2
 script = ExtResource("2_utjob")
 IMMUNE_GROUPS = Array[String](["player"])
+INVINCIBILITY_COOLDOWN = 0.8
 HEALTH = 30.0
 MAX_HEALTH = 30.0
-INVINCIBILITY_COOLDOWN = 0.8
 SAVE_HEALTH = true
 HEALTH_KEY = "health"
 SAVE_MAX_HEALTH = true
@@ -3933,10 +3933,10 @@ increase_property_by_max_difference = true
 animation_name = "STAMINA"
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=657152026 node_paths=PackedStringArray("SpringArm", "TARGET_NODE") groups=["player_camera"]]
-transform = Transform3D(1, 0, 0, 0, 0.988449, -0.15155402, 0, 0.15155402, 0.988449, 0, 2.412, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.412, 7.2)
 top_level = true
 current = true
-fov = 80.0
+fov = 60.0
 script = ExtResource("7_lwilf")
 pitch_max_deg = 20.0
 SpringArm = NodePath("../SpringArm3D")
@@ -3955,17 +3955,18 @@ debug_color = Color(0.7, 0.7, 0.7, 0.368627)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=209570210 groups=["ignore_interaction_tween"]]
 physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 0.988449, -0.151554, 0, 0.151554, 0.988449, 0, 2.412, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.412, 0)
 shape = SubResource("SphereShape3D_5cvkf")
-spring_length = 5.0
+spring_length = 7.2
 margin = 1.0
 
 [node name="FovLerp" type="Node" parent="SpringArm3D" unique_id=881315504 node_paths=PackedStringArray("camera_node")]
 script = ExtResource("2_1bp3y")
 camera_node = NodePath("../../Camera3D")
-target_fov = 70.0
+target_fov = 65.0
 
 [node name="Node3D" type="Node3D" parent="SpringArm3D" unique_id=1598816733]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.2)
 
 [node name="Mesh" type="Node3D" parent="." unique_id=531747882 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "BODY") groups=["player_mesh"]]
 script = ExtResource("32_qsprq")
@@ -4062,7 +4063,7 @@ bones/8/position = Vector3(0.04027849, 0.37375063, 0.019249853)
 bones/8/rotation = Quaternion(-0.59016514, -0.32968506, -0.3287858, 0.6594793)
 bones/9/rotation = Quaternion(0.09677946, -1.6079768e-10, 2.309315e-08, 0.99530584)
 bones/10/position = Vector3(0.073906146, 0.08636369, 3.853621e-08)
-bones/10/rotation = Quaternion(-0.1199342, -0.010204963, -0.8582373, 0.4989394)
+bones/10/rotation = Quaternion(-0.11537217, -0.050698962, -0.85975343, 0.49491715)
 bones/11/rotation = Quaternion(-0.45832145, -0.40650785, 0.06873395, 0.78738075)
 bones/12/rotation = Quaternion(-0.032913685, 0.036279738, 0.15234631, 0.9871125)
 bones/13/rotation = Quaternion(-0.555662, -0.002308808, -0.14704426, 0.8182985)
@@ -4071,7 +4072,7 @@ bones/14/rotation = Quaternion(-0.49851862, -8.956995e-05, 0.2596075, 0.8270932)
 bones/15/position = Vector3(-0.07472164, 0.18097875, -0.050168972)
 bones/15/rotation = Quaternion(-0.5051416, 0.14705601, -0.14040922, 0.83874416)
 bones/16/position = Vector3(-0.07455924, -0.046927284, -1.578925e-08)
-bones/16/rotation = Quaternion(0.048026, -0.39777702, 0.91609335, 0.015497355)
+bones/16/rotation = Quaternion(0.048025995, -0.39777696, 0.91609323, 0.015497354)
 bones/17/rotation = Quaternion(0.38034564, 0.04975801, 0.01707324, 0.9233472)
 bones/18/rotation = Quaternion(-0.6471048, 0.002153012, 0.0012832449, 0.76239705)
 bones/19/position = Vector3(0.074559234, -0.13512424, 0.0065427423)
@@ -4124,7 +4125,7 @@ light_energy = 0.0
 libraries/ = SubResource("AnimationLibrary_hfpb6")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="4" unique_id=1880319706]
-transform = Transform3D(-0.99990773, 0.013587734, -0.00029334426, -0.006203097, -0.47547534, -0.8797072, -0.012092646, -0.879624, 0.47551608, -0.098694846, 0.0745292, 0.021122001)
+transform = Transform3D(-0.999908, 0.013587728, -0.00029333972, -0.0062030936, -0.4754754, -0.8797074, -0.012092632, -0.8796241, 0.47551608, -0.098694846, 0.07452902, 0.021121971)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -4134,7 +4135,7 @@ script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 
 [node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" index="5" unique_id=1885491197]
-transform = Transform3D(-0.99990773, 0.013587734, -0.00029334426, -0.006203097, -0.47547534, -0.8797072, -0.012092646, -0.879624, 0.47551608, -0.098694846, 0.0745292, 0.021122001)
+transform = Transform3D(-0.999908, 0.013587728, -0.00029333972, -0.0062030936, -0.4754754, -0.8797074, -0.012092632, -0.8796241, 0.47551608, -0.098694846, 0.07452902, 0.021121971)
 bone_name = "foot_l"
 bone_idx = 18
 
