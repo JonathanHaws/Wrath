@@ -464,6 +464,18 @@ tracks/8/keys = {
 "update": 0,
 "values": [false]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.0833334, 1.7916666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_nx0fp"]
 resource_name = "JUMP_ATTACK"
@@ -693,7 +705,7 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [0.0]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
@@ -746,70 +758,58 @@ tracks/10/keys = {
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Target:TRACKING_SPEED")
+tracks/11/path = NodePath("Ui:modulate")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [5.0]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Ui:modulate")
+tracks/12/path = NodePath("Audio/Music:volume_db")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [0.0]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Audio/Music:volume_db")
-tracks/13/interp = 1
+tracks/13/path = NodePath("Mesh/wrath/AnimationPlayer:playback_default_blend_time")
+tracks/13/interp = 0
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [0.5]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Mesh/wrath/AnimationPlayer:playback_default_blend_time")
-tracks/14/interp = 0
+tracks/14/path = NodePath("Target:USE_GRAVITY")
+tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.5]
-}
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Target:USE_GRAVITY")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
 }
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("HitShape:INVINCIBLE")
-tracks/16/interp = 0
-tracks/16/loop_wrap = true
-tracks/16/keys = {
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("HitShape:INVINCIBLE")
+tracks/15/interp = 0
+tracks/15/loop_wrap = true
+tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1526,6 +1526,7 @@ NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 BODY = NodePath("..")
 SPEED_MULTIPLIER = 0.0
 MESH = NodePath("../Mesh")
+TRACKING_MULTIPLIER = 0.0
 
 [node name="Mesh" type="Node3D" parent="." unique_id=1492049658 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "BODY")]
 script = ExtResource("13_h5485")
@@ -1555,23 +1556,24 @@ debug_color = Color(0.733333, 0.243137, 0.282353, 1)
 
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" parent_id_path=PackedInt32Array(1305978977, 1174484802) index="0" unique_id=752447743]
 bones/0/rotation = Quaternion(-0.7071068, -7.5518506e-17, -7.5518506e-17, 0.7071068)
-bones/1/position = Vector3(-7.71653e-18, -0.71880484, 1.0035257)
-bones/1/rotation = Quaternion(0.2573497, 8.1128756e-17, 7.052857e-17, 0.9663183)
-bones/2/rotation = Quaternion(0.34762904, 1.1177448e-07, 4.144061e-08, 0.93763226)
-bones/3/rotation = Quaternion(0.1010921, 0.18124995, 0.763867, 0.6110943)
-bones/4/rotation = Quaternion(0.13309738, 0.38514933, 0.19012764, 0.8931947)
-bones/5/rotation = Quaternion(-0.455173, -0.067914516, 0.0325446, 0.8872125)
+bones/1/position = Vector3(7.550701e-17, -0.70488584, 0.99510103)
+bones/1/rotation = Quaternion(0.2620984, 3.8722965e-17, 9.6529635e-17, 0.96504116)
+bones/2/rotation = Quaternion(0.34662104, -0.00032407953, -0.00034837078, 0.93800527)
+bones/2/scale = Vector3(1.0002676, 1.0002676, 1.0002676)
+bones/3/rotation = Quaternion(0.101233505, 0.18095203, 0.76286685, 0.61240715)
+bones/4/rotation = Quaternion(0.12820508, 0.38134164, 0.19153592, 0.8952407)
+bones/5/rotation = Quaternion(-0.45517302, -0.06791451, 0.03254457, 0.8872125)
 bones/6/rotation = Quaternion(-0.082242884, 0.0006229712, 0.13466904, 0.9874715)
-bones/7/rotation = Quaternion(-0.13630904, -2.9309884e-14, -3.249861e-08, 0.99066633)
-bones/8/rotation = Quaternion(0.10109232, -0.18125007, -0.763867, 0.61109424)
-bones/9/rotation = Quaternion(0.18254952, -0.037696682, -0.18083832, 0.96568745)
-bones/10/rotation = Quaternion(-0.23919083, 0.24390233, -0.29281807, 0.8930605)
+bones/7/rotation = Quaternion(-0.14138633, -0.00010571462, 6.11649e-05, 0.9899546)
+bones/8/rotation = Quaternion(0.10128304, -0.18084799, -0.76251715, 0.61286503)
+bones/9/rotation = Quaternion(0.1767313, -0.03787664, -0.1840697, 0.96615213)
+bones/10/rotation = Quaternion(-0.24311943, 0.24191186, -0.29039937, 0.8933308)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0" unique_id=1102960142 groups=["wrath_mesh"]]
 surface_material_override/0 = ExtResource("27_a67hc")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1" unique_id=695131287]
-transform = Transform3D(-0.92368394, -0.19508249, -0.32977355, 0.09050059, -0.9474079, 0.3069643, -0.37231326, 0.25369352, 0.89276063, -2.2133746, 2.3116562, 1.089886)
+transform = Transform3D(-0.92153126, -0.19807523, -0.33478516, 0.09961418, -0.9523371, 0.2892502, -0.376021, 0.23314163, 0.89709973, -2.2234786, 2.2999074, 1.0748088)
 bone_name = "hand_l"
 bone_idx = 6
 
@@ -1587,7 +1589,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" unique_id=675944075 groups=["wrath"]]
-transform = Transform3D(-0.69944155, 0.46056998, -0.5464948, -0.40541083, -0.88541645, -0.22733104, -0.5885773, 0.06255026, 0.80601716, 2.212791, 2.2416654, 1.1654639)
+transform = Transform3D(-0.7107785, 0.45995206, -0.5327032, -0.39570734, -0.88727295, -0.23811191, -0.58201766, 0.041538566, 0.81244373, 2.2271483, 2.230212, 1.1482617)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1603,7 +1605,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3" unique_id=290485866 groups=["wrath"]]
-transform = Transform3D(1, 7.23087e-15, 2.3841858e-07, -7.954478e-08, 0.9427023, 0.333635, -2.2475776e-07, -0.33363494, 0.94270235, 5.381105e-17, 0.78891784, 0.17443109)
+transform = Transform3D(1.0002671, 0.0004289964, -0.00084970903, -0.00012817563, 0.94549155, 0.32646766, 0.0009431937, -0.32646737, 0.9454911, 1.0916293e-17, 0.79563874, 0.16929448)
 bone_name = "torso"
 bone_idx = 2
 
