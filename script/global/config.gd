@@ -138,10 +138,12 @@ func set_window_mode(index: int) -> void:
 		1:
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED)
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, false)
-		2:
+		2:	
 			DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN)
 			DisplayServer.window_set_flag(DisplayServer.WINDOW_FLAG_BORDERLESS, true)	
 func save_window_position() -> void:
+	# avoid fullscreen or boderless setting impossible position top left. Making it impossible grab top bar of window 
+	if DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_WINDOWED: return 
 	save_setting("display", "window_x", get_window().position.x)
 	save_setting("display", "window_y", get_window().position.y)
 func save_window_size() -> void:
