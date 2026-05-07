@@ -243,6 +243,7 @@ debug_color = Color(0.458405, 0.458405, 0.458405, 0.247059)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.48279646, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1612915806]
+volume_db = -15.0
 bus = &"SFX"
 
 [node name="Rest" type="AnimationPlayer" parent="." unique_id=1725587436]

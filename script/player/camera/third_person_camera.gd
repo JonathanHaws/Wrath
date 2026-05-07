@@ -34,7 +34,7 @@ func _physics_process(_delta: float) -> void:
 		if initial_snap:
 			global_transform = global_transform.interpolate_with(TARGET_NODE.global_transform, SNAP_SPEED * _delta)
 		else:
-			print('test')
+			#print('test')
 			global_transform = TARGET_NODE.global_transform
 			initial_snap = true
 	
