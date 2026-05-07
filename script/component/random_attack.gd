@@ -36,6 +36,17 @@ func get_area_likelihood_multiplier() -> float:
 @export var TARGET: Node3D ## Used to calculate the proximity or distance to weigth attacks 
 @export var BODY: Node3D
 
+func shuffle_attack_nodes() -> void: ## randomly shuffles attacks to randomly change priorty of liklehood evaulations
+	var attacks = get_parent().get_children()
+	attacks.shuffle()
+
+	for attack in attacks:
+		get_parent().move_child(attack, -1)
+	
+	#var names: PackedStringArray = [] # for debugging. Verify shuffled
+	#for attack in get_parent().get_children(): names.append(attack.name)
+	#print(", ".join(names))
+
 func _ready() -> void:
 	if not ANIM: ANIM = get_parent() as AnimationPlayer
 
@@ -61,10 +72,12 @@ func _physics_process(delta: float) -> void:
 	if distance > ATTACK_RADIUS: proximity_likelihood = 0
 	proximity_likelihood = ATTACK_LIKELEHOOD_PER_SECOND.sample(clamp(distance / ATTACK_RADIUS, 0.0, 1.0))
 	
-	var area_likelihood: float = get_area_likelihood_multiplier()
-		
+	var area_likelihood: float = get_area_likelihood_multiplier()	
 	var chance = proximity_likelihood * area_likelihood * LIKELIHOOD_MULTIPLIER * delta
+	
 	if randf() < chance:
+		
+		shuffle_attack_nodes()
 		ANIM.play(ATTACK_ANIMATION)
 		ANIM.advance(0.0)
 		COOLDOWN_REMAINING = COOLDOWN

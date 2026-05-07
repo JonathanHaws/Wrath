@@ -1256,8 +1256,8 @@ _data = [Vector2(0.265393, 0), 0.0, 0.0, 0, 0, Vector2(0.29724, 1), 0.0, 0.0, 0,
 point_count = 4
 
 [sub_resource type="Curve" id="Curve_1epqe"]
-_data = [Vector2(0.265393, 0), 0.0, 0.0, 0, 0, Vector2(0.29724, 1), 0.0, 0.0, 0, 0, Vector2(0.433121, 1), 0.0, 0.0, 0, 0, Vector2(0.467091, 0), 0.0, 0.0, 0, 0]
-point_count = 4
+_data = [Vector2(0.025000006, 1), 0.0, 0.0, 0, 0, Vector2(0.433121, 1), 0.0, 0.0, 0, 0, Vector2(0.467091, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="Curve" id="Curve_fp1nr"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.459459, 1), 0.0, 0.0, 0, 0, Vector2(0.608108, 0), 0.0, 0.0, 0, 0]
@@ -1450,19 +1450,19 @@ COOLDOWN = 10.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
+[node name="BiteRight" type="Node" parent="Attacks" unique_id=2007705492 node_paths=PackedStringArray("TARGET", "BODY")]
+script = ExtResource("23_od1a5")
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_1epqe")
+ATTACK_ANIMATION = "BITE_RIGHT"
+LIKELIHOOD_MULTIPLIER = 300.0
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
+
 [node name="BiteLeft" type="Node" parent="Attacks" unique_id=522650817 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("23_od1a5")
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_1epqe")
 TRIGGER_ANIMATIONS = Array[String](["CHASE", "FLY"])
 ATTACK_ANIMATION = "BITE_LEFT"
-LIKELIHOOD_MULTIPLIER = 300.0
-TARGET = NodePath("../../Target")
-BODY = NodePath("../..")
-
-[node name="BiteRight" type="Node" parent="Attacks" unique_id=2007705492 node_paths=PackedStringArray("TARGET", "BODY")]
-script = ExtResource("23_od1a5")
-ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_1epqe")
-ATTACK_ANIMATION = "BITE_RIGHT"
 LIKELIHOOD_MULTIPLIER = 300.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
