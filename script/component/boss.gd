@@ -16,7 +16,9 @@ func defeated() -> void:
 
 func _on_trigger_area_body_entered(body: Node) -> void:
 	if not body.is_in_group(TARGET.TARGET_GROUP): return
-	if not ANIM.is_playing(): ANIM.play("INTRO")
+	if not ANIM.is_playing(): 
+		#print('test')
+		ANIM.play("INTRO")
 	
 	Save.data[SAVE_KEY_ENCOUNTERED] = true
 	Save.save_game()	
@@ -25,6 +27,6 @@ func _ready() -> void:
 	if USE_CUSTOM_START_ANIMATION: ANIM.play(START_ANIMATION, 0.0)
 	if DEFEATED_KEY != "" and Save.data.has(DEFEATED_KEY): queue_free()
 		
-func _process(_delta: float) -> void:
-	pass
+#func _process(_delta: float) -> void:
+	#print($HitShape.INVINCIBLE)
 	#print(ANIM.is_playing(), " ", ANIM.current_animation)

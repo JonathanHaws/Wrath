@@ -339,6 +339,7 @@ func _ready() -> void:
 	if not Save.data.has("spawn_sound"):
 		Save.data["spawn_sound"] = "spawn_new"
 	if $Audio: $Audio.spawn_sound([Save.data["spawn_sound"]])
+	ANIM.play()
 
 func _process(_delta)-> void:
 
