@@ -5,7 +5,8 @@ extends Area3D
 @export var damage: float = 10.0
 @export var damage_spread: float = 0 ## Determines subtle randomness in attack damage
 @export var damage_multiplier: float = 1 ## Value that can be animated by animation players 
-@export var cooldown: float = 0.2 
+@export var cooldown: float = 0.2 ## How long after landing a blow until under can be landed
+@export var disable_collision_shape: bool = true ## automatically sets collision shape to disabled in ready
 
 @export_group("Linger")
 @export var linger: bool = false
@@ -132,6 +133,7 @@ func _on_area_exited(area: Area3D) -> void:
 		overlapping_areas.erase(area)
 
 func _ready() -> void:
+	
 	for group in groups: add_to_group(group)
 	area_entered.connect(_on_area_entered)
 	area_exited.connect(_on_area_exited)
@@ -139,6 +141,9 @@ func _ready() -> void:
 	
 	if hit_shape and hit_shape.has_signal("DIED"):
 		hit_shape.DIED.connect(queue_free)
+	
+	if disable_collision_shape:
+		$CollisionShape3D.disabled = true
 	
 #func _process(_delta: float) -> void:
 	#print("Timers alive:", get_tree().get_nodes_in_group("memory_leak_check").size())
