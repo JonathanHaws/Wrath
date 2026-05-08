@@ -105,13 +105,25 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0, -80.0]
 }
-tracks/1/type = "method"
+tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Audio")
+tracks/1/path = NodePath("Ui:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.43333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -119,32 +131,24 @@ tracks/1/keys = {
 "method": &"spawn_sound"
 }]
 }
-tracks/2/type = "animation"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/wrath/AnimationPlayer")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": PackedStringArray("Death"),
-"times": PackedFloat32Array(0)
-}
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/3/interp = 0
+tracks/3/path = NodePath("Mesh/wrath/AnimationPlayer")
+tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"values": [{
+"args": [&"Death", 0.3],
+"method": &"play"
+}]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/4/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:influence")
 tracks/4/interp = 0
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -156,7 +160,7 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/5/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/5/interp = 0
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -165,24 +169,22 @@ tracks/5/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/6/type = "method"
+tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Dialog/RandomDialog")
-tracks/6/interp = 1
+tracks/6/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/6/interp = 0
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"stop"
-}]
+"update": 0,
+"values": [0.0]
 }
 tracks/7/type = "method"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath(".")
+tracks/7/path = NodePath("Dialog/RandomDialog")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -190,13 +192,13 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"defeated"
+"method": &"stop"
 }]
 }
 tracks/8/type = "method"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Mesh/wrath/Armature/Skeleton3D/Torso/LockOn")
+tracks/8/path = NodePath(".")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
@@ -204,13 +206,13 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"queue_free"
+"method": &"defeated"
 }]
 }
 tracks/9/type = "method"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("CollisionShape3D")
+tracks/9/path = NodePath("Mesh/wrath/Armature/Skeleton3D/Torso/LockOn")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
@@ -224,10 +226,24 @@ tracks/9/keys = {
 tracks/10/type = "method"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("CameraEffects")
+tracks/10/path = NodePath("CollisionShape3D")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("CameraEffects")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -235,61 +251,37 @@ tracks/10/keys = {
 "method": &"impact"
 }]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Target:USE_GRAVITY")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Target:USE_GRAVITY")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Ui:modulate")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0, 1.43333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("HitShape/CollisionShape3D:disabled")
-tracks/13/interp = 1
+tracks/13/path = NodePath("Light:light_energy")
+tracks/13/interp = 2
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Light:light_energy")
-tracks/14/interp = 2
-tracks/14/loop_wrap = true
-tracks/14/keys = {
 "times": PackedFloat32Array(0.4, 2.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [20.0, 0.0]
 }
-tracks/15/type = "method"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Dialog")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Dialog")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(2.6),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -297,37 +289,37 @@ tracks/15/keys = {
 "method": &"spawn_branch"
 }]
 }
-tracks/16/type = "value"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("Target:MOVE_AND_SLIDE")
-tracks/16/interp = 0
-tracks/16/loop_wrap = true
-tracks/16/keys = {
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/15/interp = 0
+tracks/15/loop_wrap = true
+tracks/15/keys = {
 "times": PackedFloat32Array(3.73333),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("CollisionShape3D:disabled")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("CollisionShape3D:disabled")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
 "times": PackedFloat32Array(0, 4.06667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
 }
-tracks/18/type = "method"
-tracks/18/imported = false
-tracks/18/enabled = true
-tracks/18/path = NodePath("WispReward")
-tracks/18/interp = 1
-tracks/18/loop_wrap = true
-tracks/18/keys = {
+tracks/17/type = "method"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("WispReward")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
 "times": PackedFloat32Array(5),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -335,13 +327,13 @@ tracks/18/keys = {
 "method": &"give"
 }]
 }
-tracks/19/type = "method"
-tracks/19/imported = false
-tracks/19/enabled = true
-tracks/19/path = NodePath(".")
-tracks/19/interp = 1
-tracks/19/loop_wrap = true
-tracks/19/keys = {
+tracks/18/type = "method"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath(".")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
 "times": PackedFloat32Array(16.633333),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -607,23 +599,13 @@ tracks/8/keys = {
 "update": 0,
 "values": [1.0, 9.61276]
 }
-tracks/9/type = "animation"
+tracks/9/type = "audio"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Particles/Dust/AnimationPlayer")
+tracks/9/path = NodePath("Audio/AudioStreamPlayer")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"clips": PackedStringArray("JUMP_ATTACK"),
-"times": PackedFloat32Array(1.29167)
-}
-tracks/10/type = "audio"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Audio/AudioStreamPlayer")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
 "clips": [{
 "end_offset": 4.42048,
 "start_offset": 0.0,
@@ -631,7 +613,7 @@ tracks/10/keys = {
 }],
 "times": PackedFloat32Array(0)
 }
-tracks/10/use_blend = true
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_jojdm"]
 length = 0.001
@@ -710,44 +692,44 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Light:light_energy")
-tracks/6/interp = 1
+tracks/6/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/6/interp = 0
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [true]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/7/path = NodePath("Target:USE_GRAVITY")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [true]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/8/interp = 1
+tracks/8/path = NodePath("HitShape:INVINCIBLE")
+tracks/8/interp = 0
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [true]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/9/interp = 0
+tracks/9/path = NodePath("Light:light_energy")
+tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
@@ -758,62 +740,62 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Target:MOVE_AND_SLIDE")
-tracks/10/interp = 0
+tracks/10/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [0.0]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Mesh/Jump/CollisionShape3D:shape:radius")
+tracks/11/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:influence")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [9.61276]
+"values": [1.0]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Ui:modulate")
-tracks/12/interp = 1
+tracks/12/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/12/interp = 0
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [0.0]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Target:USE_GRAVITY")
+tracks/13/path = NodePath("Mesh/Jump/CollisionShape3D:shape:radius")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [9.61276]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("HitShape:INVINCIBLE")
-tracks/14/interp = 0
+tracks/14/path = NodePath("Ui:modulate")
+tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [true]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
@@ -846,15 +828,19 @@ tracks/16/keys = {
 resource_name = "ROAR_ATTACK"
 length = 2.5
 step = 0.0416667
-tracks/0/type = "animation"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Mesh/wrath/AnimationPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"clips": PackedStringArray("Roar"),
-"times": PackedFloat32Array(0.291667)
+"times": PackedFloat32Array(0.29166666),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Roar", 0.3],
+"method": &"play"
+}]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -912,15 +898,19 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_plb4y"]
 resource_name = "SLAM_ATTACK"
 length = 2.20834
-tracks/0/type = "animation"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Mesh/wrath/AnimationPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"clips": PackedStringArray("Slam_Attack"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Slam_Attack", 0.3],
+"method": &"play"
+}]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1044,15 +1034,19 @@ tracks/9/keys = {
 resource_name = "SPIN_ATTACK"
 length = 3.0
 step = 0.0416667
-tracks/0/type = "animation"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("Mesh/wrath/AnimationPlayer")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"clips": PackedStringArray("Spin"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Spin", 0.3],
+"method": &"play"
+}]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1582,24 +1576,24 @@ debug_color = Color(0.733333, 0.243137, 0.282353, 1)
 [node name="wrath" parent="Mesh" unique_id=533761313 instance=ExtResource("30_rmp6a")]
 
 [node name="Skeleton3D" parent="Mesh/wrath/Armature" parent_id_path=PackedInt32Array(533761313, 2081504362) index="0" unique_id=1573713536]
-bones/1/position = Vector3(-7.121751e-17, 0.082943186, 0.51825726)
+bones/1/position = Vector3(-7.121752e-17, 0.082943216, 0.5182572)
 bones/1/rotation = Quaternion(0.5201871, 5.555561e-17, 9.1212174e-17, 0.85405236)
-bones/2/rotation = Quaternion(0.29661265, 1.1384467e-07, 3.535899e-08, 0.95499796)
+bones/2/rotation = Quaternion(0.29661265, 1.1384466e-07, 3.5358987e-08, 0.9549979)
 bones/2/scale = Vector3(1, 1.0000001, 0.99999994)
 bones/3/rotation = Quaternion(0.101092115, 0.18124993, 0.763867, 0.6110943)
-bones/4/rotation = Quaternion(-0.18940997, 0.08563095, 0.344916, 0.91532737)
-bones/5/rotation = Quaternion(-0.455173, -0.06791451, 0.032544572, 0.8872125)
+bones/4/rotation = Quaternion(-0.18940996, 0.08563096, 0.344916, 0.91532737)
+bones/5/rotation = Quaternion(-0.455173, -0.06791449, 0.03254455, 0.8872125)
 bones/6/rotation = Quaternion(-0.08224289, 0.0006229699, 0.13466907, 0.9874715)
-bones/7/rotation = Quaternion(-0.29291028, -1.663697e-14, -6.9835274e-08, 0.9561399)
+bones/7/rotation = Quaternion(-0.29291034, -2.6859008e-14, -6.983527e-08, 0.9561399)
 bones/8/rotation = Quaternion(0.10109232, -0.18125007, -0.763867, 0.61109424)
-bones/9/rotation = Quaternion(-0.18940993, -0.08563103, -0.34491593, 0.91532737)
-bones/10/rotation = Quaternion(-0.455173, 0.06791453, -0.032544557, 0.8872125)
+bones/9/rotation = Quaternion(-0.18940996, -0.08563103, -0.34491593, 0.9153275)
+bones/10/rotation = Quaternion(-0.455173, 0.06791452, -0.03254454, 0.8872125)
 
 [node name="wrath" parent="Mesh/wrath/Armature/Skeleton3D" index="0" unique_id=678388136 groups=["wrath_mesh"]]
 surface_material_override/0 = ExtResource("27_a67hc")
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="1" unique_id=695131287]
-transform = Transform3D(-0.9246725, -0.008721627, -0.3806632, 0.34824488, -0.42363113, -0.8362189, -0.15396743, -0.90579253, 0.3947571, -2.0109086, 1.847884, -0.058395624)
+transform = Transform3D(-0.9246724, -0.008721732, -0.3806632, 0.34824494, -0.42363107, -0.8362188, -0.15396743, -0.90579253, 0.3947571, -2.0109086, 1.8478842, -0.058395505)
 bone_name = "hand_l"
 bone_idx = 6
 
@@ -1615,7 +1609,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="2" unique_id=675944075 groups=["wrath"]]
-transform = Transform3D(-0.9246725, 0.00872178, 0.38066316, -0.34824508, -0.4236312, -0.836219, 0.1539673, -0.9057926, 0.3947572, 2.0109086, 1.8478837, -0.058395386)
+transform = Transform3D(-0.9246724, 0.008721963, 0.38066328, -0.34824523, -0.42363116, -0.83621883, 0.15396732, -0.90579265, 0.39475733, 2.0109086, 1.8478838, -0.058395386)
 bone_name = "hand_r"
 bone_idx = 11
 
@@ -1631,7 +1625,7 @@ disabled = true
 debug_color = Color(0.439216, 0.0784314, 0.0784314, 0.537255)
 
 [node name="Torso" type="BoneAttachment3D" parent="Mesh/wrath/Armature/Skeleton3D" index="3" unique_id=290485866 groups=["wrath"]]
-transform = Transform3D(1, 7.105428e-15, 2.3841864e-07, 2.9874037e-08, 0.99211895, -0.12530082, -2.3653965e-07, 0.12530088, 0.9921187, 2.8723113e-23, 0.9999999, 0.10029495)
+transform = Transform3D(1, 2.1316285e-14, 2.3841864e-07, 2.9874037e-08, 0.99211884, -0.12530085, -2.3653965e-07, 0.12530091, 0.9921187, 2.8723113e-23, 0.9999998, 0.10029495)
 bone_name = "torso"
 bone_idx = 2
 

@@ -45,14 +45,9 @@
 		{"say_timed": {"say": "MINE!", "for": 0.5}},
 
 	{"branch": "random_taunt_3"},
-		{"say_timed": {"say": "EMPTY YOUR POCKETS AND PAY TRIBUTE", "for": 2.5}},
-		{"say_timed": {"say": "I NOW OWN YOUR SOUL", "for": 2.5}},
-
-	{"branch": "random_taunt_4"},
 		{"say_timed": {"say": "THINK THIS IS A CHARITY?", "for": 2.5}},
 
 	{"branch": "death"},
-		{"say_timed": {"say": "YOU DONT GET IT DO YOU?", "for": 3.0}},
-		{"say_timed": {"say": "YOU POOR POOR SOUL.", "for": 3.0}}
+		{"say_timed": {"say": "NOTHING IS FREE.", "for": 3.0}},
 
 ]
