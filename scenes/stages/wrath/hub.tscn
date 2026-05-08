@@ -105,7 +105,7 @@ material = ExtResource("5_c8gwa")
 [node name="Wrath" parent="NavigationRegion3D/Statues/Wrath/CSGBox3D" unique_id=212214660 instance=ExtResource("6_mnf81")]
 transform = Transform3D(-0.99877363, 0, -0.049512267, 0, 1, 0, 0.049512267, 0, -0.99877363, -0.009666443, 1, 0.63775253)
 
-[node name="wrath" parent="NavigationRegion3D/Statues/Wrath/CSGBox3D/Wrath/Armature/Skeleton3D" parent_id_path=PackedInt32Array(212214660, 752447743) index="0" unique_id=1102960142]
+[node name="wrath" parent="NavigationRegion3D/Statues/Wrath/CSGBox3D/Wrath/Armature/Skeleton3D" parent_id_path=PackedInt32Array(212214660, 1573713536) index="0" unique_id=678388136]
 surface_material_override/0 = ExtResource("5_c8gwa")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="NavigationRegion3D/Statues/Wrath/CSGBox3D" unique_id=1654744508]
@@ -249,46 +249,47 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8294, -186.275, -53.309)
 shape = SubResource("BoxShape3D_ope8t")
 debug_color = Color(1, 1, 1, 0)
 
-[node name="Wrath" parent="." unique_id=922487539 instance=ExtResource("13_f2mlf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.750871, 19)
+[node name="Bounds" type="Node3D" parent="." unique_id=1417950218]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10633457, 0.750871, -0.38786888)
 
-[node name="Bounds" type="Node3D" parent="Wrath" unique_id=1417950218]
-
-[node name="South" type="StaticBody3D" parent="Wrath/Bounds" unique_id=493459309]
+[node name="South" type="StaticBody3D" parent="Bounds" unique_id=493459309]
 collision_layer = 16
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wrath/Bounds/South" unique_id=663407069]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounds/South" unique_id=663407069]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.265625, 2.90178, -35.5632)
 shape = SubResource("BoxShape3D_cj2vs")
 debug_color = Color(0.28, 0.28, 0.28, 0)
 
-[node name="East" type="StaticBody3D" parent="Wrath/Bounds" unique_id=1381577270]
+[node name="East" type="StaticBody3D" parent="Bounds" unique_id=1381577270]
 collision_layer = 16
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wrath/Bounds/East" unique_id=1862865212]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounds/East" unique_id=1862865212]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.614, 3.16276, -0.349411)
 shape = SubResource("BoxShape3D_sxksd")
 debug_color = Color(0.5, 0.5, 0.5, 0)
 
-[node name="West" type="StaticBody3D" parent="Wrath/Bounds" unique_id=1755148863]
+[node name="West" type="StaticBody3D" parent="Bounds" unique_id=1755148863]
 collision_layer = 16
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wrath/Bounds/West" unique_id=1025496600]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounds/West" unique_id=1025496600]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.5871, 2.96206, 0.0963287)
 shape = SubResource("BoxShape3D_et5sy")
 debug_color = Color(0.28, 0.28, 0.28, 0)
 
-[node name="North" type="StaticBody3D" parent="Wrath/Bounds" unique_id=1755916115]
+[node name="North" type="StaticBody3D" parent="Bounds" unique_id=1755916115]
 collision_layer = 16
 collision_mask = 8
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Wrath/Bounds/North" unique_id=1012399760]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bounds/North" unique_id=1012399760]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.169439, 2.90178, 36.0781)
 shape = SubResource("BoxShape3D_hf1cc")
 debug_color = Color(0, 0.595, 0.7, 0)
+
+[node name="Wrath" parent="." unique_id=922487539 instance=ExtResource("13_f2mlf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.535756, 0.750871, 19)
 
 [node name="Wisps" type="Node3D" parent="." unique_id=1351507048]
 

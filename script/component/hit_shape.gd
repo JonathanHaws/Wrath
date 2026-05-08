@@ -76,6 +76,8 @@ func _load_respawns() -> void:
 	if RESPAWN_ON_REST: _update_respawn_counter(REST_COUNT_KEY, RESTS_KEY)
 
 @export_group("Damaged")  
+@export_subgroup("Free Nodes On Death") 
+@export var FREE_ON_DEATH: Array[Node] ## Nodes to free upon death
 @export_subgroup("Particles") 
 @export var DAMAGE_NUMBERS: PackedScene 
 @export var TELEPORT_NODES_TO_HIT: Array[Node3D] = [] ## For hurt particles
@@ -125,9 +127,14 @@ func hit(area: Area3D = null, damage: int = 0, play_animation: bool = true) -> b
 	
 	show_damage(damage)
 	teleport_nodes_to_hit_source(area)
-	if HEALTH <= 0 and play_animation: _play_anim(DEATH_ANIM, DIED)
-	elif damage > 0 and play_animation: _play_anim(HURT_ANIM, HURT)
-	elif damage < 0 and play_animation: _play_anim(HEAL_ANIM, HEAL)
+	if play_animation:
+		if HEALTH <= 0: _play_anim(DEATH_ANIM, DIED)
+		elif damage > 0: _play_anim(HURT_ANIM, HURT)
+		elif damage < 0: _play_anim(HEAL_ANIM, HEAL)
+		
+	if HEALTH <= 0:
+		for node in FREE_ON_DEATH: if node: node.queue_free()
+
 	return true
 		
 func _ready():
