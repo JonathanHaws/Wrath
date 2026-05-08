@@ -428,32 +428,34 @@ tracks/3/keys = {
 "update": 0,
 "values": [0.5, 0.0]
 }
-tracks/4/type = "value"
+tracks/4/type = "animation"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Hitshape/CollisionShape3D:disabled")
+tracks/4/path = NodePath("AnimationPlayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"clips": PackedStringArray("DEATH"),
+"times": PackedFloat32Array(0)
 }
-tracks/5/type = "animation"
+tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AnimationPlayer")
+tracks/5/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/LockOn")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"clips": PackedStringArray("DEATH"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
 }
 tracks/6/type = "method"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/LockOn")
+tracks/6/path = NodePath("CollisionShape3D")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -464,39 +466,25 @@ tracks/6/keys = {
 "method": &"queue_free"
 }]
 }
-tracks/7/type = "method"
+tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("CollisionShape3D")
-tracks/7/interp = 1
+tracks/7/path = NodePath("Target:USE_GRAVITY")
+tracks/7/interp = 0
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"queue_free"
-}]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Target:USE_GRAVITY")
-tracks/8/interp = 0
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [false]
 }
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("WispReward")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("WispReward")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -504,13 +492,13 @@ tracks/9/keys = {
 "method": &"give"
 }]
 }
-tracks/10/type = "method"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("HurtParticles")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("HurtParticles")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -606,22 +594,10 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Hitshape/CollisionShape3D:disabled")
+tracks/3/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -641,7 +617,7 @@ size = Vector3(0.72126484, 2.2288299, 2.3273582)
 [sub_resource type="BoxShape3D" id="BoxShape3D_qr43c"]
 size = Vector3(1.0802, 1.44707, 1.26314)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_eo06i"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kuhgr"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("24_o8rnl")
@@ -660,7 +636,7 @@ shader_parameter/emission_texture_intensity = 1.0
 shader_parameter/normal_strength = 1.0
 shader_parameter/enabled_normal = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xpgrw"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eo06i"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.6435713, 0.64357144, 0.64357126, 1)
@@ -851,8 +827,15 @@ target = NodePath("../../Target")
 [node name="melee_ghost" parent="Mesh" unique_id=213385399 instance=ExtResource("22_kuhgr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32995057, 0)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/melee_ghost/Armature/Skeleton3D" parent_id_path=PackedInt32Array(213385399, 156673787) index="0" unique_id=2037146665]
-transform = Transform3D(1, -3.5527137e-15, 2.842171e-14, 4.2188475e-15, 0.9981233, -0.06123459, -5.684342e-14, 0.06123462, 0.9981234, 1.4742253e-15, 1.628953, -0.041018587)
+[node name="Skeleton3D" parent="Mesh/melee_ghost/Armature" parent_id_path=PackedInt32Array(213385399, 89284371) index="0" unique_id=907680304]
+bones/0/rotation = Quaternion(-0.009763041, -1.2559209e-16, -1.2559209e-16, 0.9999523)
+bones/1/rotation = Quaternion(-0.01748162, 1.1919107e-07, -2.083971e-09, 0.9998473)
+bones/2/rotation = Quaternion(0.02379526, 1.0709743e-14, 5.673231e-09, 0.99971694)
+bones/3/rotation = Quaternion(0.03407807, -1.1914004e-07, 4.062424e-09, 0.99941915)
+bones/3/scale = Vector3(1, 0.9999999, 0.9999999)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="0" unique_id=2037146665]
+transform = Transform3D(1, -3.5527137e-15, 0, 4.32987e-15, 0.99812317, -0.061234582, -1.4210855e-14, 0.061234612, 0.9981233, 8.872527e-16, 1.628953, -0.041018583)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -879,11 +862,11 @@ transform = Transform3D(1, -1.24344996e-14, -1.03739e-12, 1.342e-42, 1, -2.97164
 shape = SubResource("BoxShape3D_qr43c")
 debug_color = Color(0.7, 0.7, 0.7, 0)
 
-[node name="body" parent="Mesh/melee_ghost/Armature/Skeleton3D" parent_id_path=PackedInt32Array(213385399, 156673787) index="1" unique_id=428820093]
-surface_material_override/0 = SubResource("ShaderMaterial_eo06i")
+[node name="body" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="1" unique_id=1590148365]
+surface_material_override/0 = SubResource("ShaderMaterial_kuhgr")
 
-[node name="eyes" parent="Mesh/melee_ghost/Armature/Skeleton3D" parent_id_path=PackedInt32Array(213385399, 156673787) index="2" unique_id=1198783291]
-surface_material_override/0 = SubResource("StandardMaterial3D_xpgrw")
+[node name="eyes" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="2" unique_id=1042381655]
+surface_material_override/0 = SubResource("StandardMaterial3D_eo06i")
 
 [node name="Target" type="Node3D" parent="." unique_id=963969195 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH", "STOP_CHASE_AREA", "AWARENESS_AREA")]
 script = ExtResource("22_3d4yc")
