@@ -1,33 +1,21 @@
 extends TextureButton
-@export var cost := 5 ## Price for upgrading 
-@export var currency_key: String = "wisp" 
+@export var save_key: String ## Special save data key to read if this has been aquired yet. If left empty key will be auto generated prefixed with unique node branch path
+@export_multiline var description: String = "Increases players power" ## Relevant infol
+
+@export_group("COST")
+@export var cost: float = 5 ## Price for upgrading. Amount less then 0 means skill is not purchasable 
+@export var currency_key: String = "wisp" ## How much it costs to buy this skill. 
 @export var upgrade_key: String = "health" ## The save key to update 
 @export var new_amount: Variant = 1.0 ## The update value for the property
-@export var save_key: String ## Special save data key to read if this has been aquired yet. If left empty key will be auto generated prefixed with unique node branch path
 @export var prerequisite_node: Node ## The node that must be aquired before this one can be purchased. (Previous node skill tree) 
 var prerequisite_key
 var aquired_key
 
-@export_group("Focus")
-func setup_focus():
-	if focus_previous.is_empty(): focus_previous = get_path()
-	if focus_next.is_empty(): focus_next = get_path()
-	if focus_neighbor_top.is_empty(): focus_neighbor_top = get_path()
-	if focus_neighbor_bottom.is_empty(): focus_neighbor_bottom = get_path()
-	if focus_neighbor_left.is_empty(): focus_neighbor_left = get_path()
-	if focus_neighbor_right.is_empty(): focus_neighbor_right = get_path()
-
-	if prerequisite_node:
-		var p = prerequisite_node.get_path()
-		if prerequisite_node.focus_neighbor_right.is_empty() or prerequisite_node.focus_neighbor_right == p:
-			prerequisite_node.focus_neighbor_right = get_path()
-		focus_neighbor_left = p
-
 @export_group("VISUALS")
-@export_subgroup("INFO")
-@export var cost_group:= "cost_skilltree" ## Label to update with cost of current skill node hovered
-@export var description_group := "ability_info_skilltree" ## Label to update with a description of the ability
-@export_multiline var description := "Increases players power"
+@export_subgroup("INFO")	
+@export var description_group: String = "ability_info_skilltree" ## Add the Label which should say the description of the ability to this group
+@export var cost_group: String = "cost_skilltree" ## Add the Label which should say the cost of this ability to this group
+
 @export_subgroup("MODULATION")
 @export var base_modulate: Color = Color(.3,.3,.3,1)
 @export var hover_modulate: Color = Color(0.5,0.5,0.5,1)	
@@ -38,6 +26,7 @@ func apply_hover_modulate():
 func apply_base_modulate():
 	if Save.data.has(aquired_key): modulate = aquired_modulate
 	else: modulate = base_modulate
+
 @export_subgroup("TWEENS")
 @export var hover_scale: Vector2 = Vector2(1.2, 1.2)
 @export var normal_scale: Vector2 = Vector2(1, 1)
@@ -57,6 +46,20 @@ func play_group_sound(group_name: String) -> void:
 	if not is_visible_in_tree(): return
 	for node in get_tree().get_nodes_in_group(group_name):
 		if node is AudioStreamPlayer: node.play()
+
+func setup_focus():
+	if focus_previous.is_empty(): focus_previous = get_path()
+	if focus_next.is_empty(): focus_next = get_path()
+	if focus_neighbor_top.is_empty(): focus_neighbor_top = get_path()
+	if focus_neighbor_bottom.is_empty(): focus_neighbor_bottom = get_path()
+	if focus_neighbor_left.is_empty(): focus_neighbor_left = get_path()
+	if focus_neighbor_right.is_empty(): focus_neighbor_right = get_path()
+
+	if prerequisite_node:
+		var p = prerequisite_node.get_path()
+		if prerequisite_node.focus_neighbor_right.is_empty() or prerequisite_node.focus_neighbor_right == p:
+			prerequisite_node.focus_neighbor_right = get_path()
+		focus_neighbor_left = p
 
 func hovered():
 	play_group_sound(hover_sound_group)
@@ -89,6 +92,8 @@ func _ready():
 	
 func _on_pressed():
 
+	if cost < 0: return
+	
 	if not Save.data.has(currency_key): 
 		Save.data[currency_key] = 0
 	
