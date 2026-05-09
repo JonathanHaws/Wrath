@@ -289,7 +289,7 @@ ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["INTRODUCTION"])
 
 [node name="Camera3D" type="Camera3D" parent="Cinematic" unique_id=2010672013 groups=["cinematic_camera"]]
-transform = Transform3D(0.8754897, -0.12831041, 0.4658894, 0, 0.9641033, 0.2655235, -0.4832355, -0.23246314, 0.8440633, 363.9596, 190.36052, 469.24988)
+transform = Transform3D(0.8754897, -0.12831043, 0.4658894, 0, 0.96410334, 0.2655235, -0.4832355, -0.23246315, 0.8440633, 363.9596, 190.36052, 469.24988)
 fov = 20.0
 
 [node name="Doors" type="Node3D" parent="." unique_id=107168045]
@@ -320,7 +320,7 @@ DESTINATION_NODE_NAME = "Enter"
 [node name="PrideTower" parent="Doors" unique_id=901399088 groups=["envy_door"] instance=ExtResource("20_bv0d2")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 641.4823, 165.90729, -32.43266)
 DESTINATION_SCENE = "uid://5n4cvh6cqc4p"
-LOCKED = true
+SAVE_LOCKED = false
 
 [node name="EnvyCourt" parent="Doors" unique_id=709350873 instance=ExtResource("20_bv0d2")]
 transform = Transform3D(1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 517.90314, 166.32074, -32.17378)

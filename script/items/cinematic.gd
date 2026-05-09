@@ -6,13 +6,12 @@ extends Node ## Always try to have player camera as the first or oldest child in
 
 @export_group("Area Trigger") 
 @export var AREA: Area3D
-@export var PLAYER_BODY_GROUP = "player"
+@export var PLAYER_BODY_GROUP: String = "player_body"
 
 @export_group("Animations") 
 @export var ANIMATION_PLAYER_GROUPS: Array[String]
 @export var ANIMATION_NAMES: Array[String]
 @export var PLAYER_SPOT: Node3D
-var last_player_body : Node = null
 
 @export_group("Camera Transition")
 @export var CINEMATIC_CAMERA_GROUP: String = "cinematic_camera"
@@ -20,7 +19,6 @@ var last_player_body : Node = null
 
 func _on_body_entered(body: Node) -> void:
 	if PLAYER_BODY_GROUP != "" and not body.is_in_group(PLAYER_BODY_GROUP): return
-	last_player_body = body
 	_play_animations_in_other_nodes()		
 	if ANIM and ANIM.has_animation(ANIM_NAME): ANIM.play(ANIM_NAME)
 
@@ -63,12 +61,15 @@ func _seamless_camera_transition(duration: float = 1.5, save_completed: bool = f
 		)
 		
 func _teleport_player_to_player_spot() -> void:
-	if not last_player_body or not PLAYER_SPOT: return
-	last_player_body.global_transform.origin = PLAYER_SPOT.global_transform.origin
-	last_player_body.global_transform = PLAYER_SPOT.global_transform
-	last_player_body.global_transform = PLAYER_SPOT.global_transform
-	last_player_body.MESH.transform = Transform3D.IDENTITY
-	last_player_body.MESH_ANIM.playback_default_blend_time = 0
+	if not PLAYER_SPOT: return
+	var player = get_tree().get_nodes_in_group("player_body")[0]
+	player.global_transform.origin = PLAYER_SPOT.global_transform.origin
+	
+	print(PLAYER_SPOT.global_transform.origin, player.global_transform.origin )
+	player.global_transform = PLAYER_SPOT.global_transform
+	player.global_transform = PLAYER_SPOT.global_transform
+	player.MESH.transform = Transform3D.IDENTITY
+	player.MESH_ANIM.playback_default_blend_time = 0
 
 func _save_cinematic_completed() -> void:
 	if SAVE_KEY == "": return

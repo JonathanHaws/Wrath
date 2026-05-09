@@ -1,0 +1,280 @@
+[gd_scene format=3 uid="uid://co45tty7uogdq"]
+
+[ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://script/items/cinematic.gd" id="1_avuc7"]
+[ext_resource type="AudioStream" uid="uid://btssfp845kee" path="res://audio/music/escape.ogg" id="2_n4oyw"]
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/themes/theme.tres" id="3_o0h6e"]
+[ext_resource type="FontFile" uid="uid://dpdckaagju1of" path="res://textures/fonts/Wrath.otf" id="4_usdqw"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="5_x8vyi"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="6_nvg8v"]
+[ext_resource type="PackedScene" uid="uid://eilitb6knulw" path="res://models/items/portal/portal.glb" id="7_n7xmh"]
+
+[sub_resource type="Animation" id="Animation_344u6"]
+resource_name = "Escape"
+length = 70.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portal/AnimationPlayer/ColorRect:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.7, 1.2161, 10.0667, 11.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0, 0, 0, 0), Color(0.0430391, 0.0430392, 0.0430391, 1), Color(0, 0, 0, 0), Color(0, 0, 0, 0), Color(0.0430391, 0.0430392, 0.0430391, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Portal/AnimationPlayer/ColorRect/Label:modulate")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(12.0667, 12.3333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Portal/Camera3D:position")
+tracks/2/interp = 2
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.7, 6.3333335, 11.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(17.256, 8.337, 18.768), Vector3(0.591, 6.004, 10.266), Vector3(0.591, 6.004, 29.32)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Portal/Camera3D:rotation")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.7, 6.3333335, 11.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.60908204, 0.8524585, 2.400685e-08), Vector3(0, -2.3841878e-07, 0), Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Portal/Camera3D:fov")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.7, 6.3333335, 11.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [91.859, 102.239, 45.015]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Portal/Camera3D:current")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Portal")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_teleport_player_to_player_spot"
+}]
+}
+tracks/7/type = "audio"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Portal/AnimationPlayer/AudioStreamPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("2_n4oyw")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/7/use_blend = true
+
+[sub_resource type="Animation" id="Animation_avuc7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Portal/Camera3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.101229094, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Portal/Camera3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.062806495, 0.8202388, 14.735052)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Portal/AnimationPlayer/ColorRect:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Portal/AnimationPlayer/ColorRect/Label:modulate")
+tracks/3/interp = 2
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xon2b"]
+_data = {
+&"Escape": SubResource("Animation_344u6"),
+&"RESET": SubResource("Animation_avuc7")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1waye"]
+size = Vector3(22.0024, 14.7581, 7.83386)
+
+[node name="Portal" type="Node3D" unique_id=1856114483 node_paths=PackedStringArray("AREA", "PLAYER_SPOT")]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, 0)
+script = ExtResource("1_avuc7")
+ANIM_NAME = "ESCAPE"
+AREA = NodePath("Area3D")
+ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
+ANIMATION_NAMES = Array[String](["ESCAPE"])
+PLAYER_SPOT = NodePath("PlayerSpot")
+
+[node name="Lights" type="Node3D" parent="." unique_id=1108221684]
+
+[node name="Portal Light" type="OmniLight3D" parent="Lights" unique_id=31038079]
+transform = Transform3D(0.17863029, 0, -0.9839163, 0, 1, 0, 0.9839163, 0, 0.17863029, -4.199994e-06, 6.76291, 2.4786983)
+light_color = Color(0.294299, 0.67518, 0.743146, 1)
+light_energy = 15.0
+omni_range = 45.0382
+
+[node name="Portal Light2" type="OmniLight3D" parent="Lights" unique_id=884888537]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, 8.208496, 8.302304, 2.4786994)
+light_color = Color(0.294299, 0.67518, 0.743146, 1)
+light_energy = 2.0
+omni_range = 45.0382
+
+[node name="Portal Light3" type="OmniLight3D" parent="Lights" unique_id=1769553576]
+transform = Transform3D(-1, 0, 1.50996e-07, 0, 1, 0, -1.50996e-07, 0, -1, -8.3470335, 8.302304, 2.478697)
+light_color = Color(0.294299, 0.67518, 0.743146, 1)
+light_energy = 2.0
+omni_range = 45.0382
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1344862122]
+transform = Transform3D(1, 0, 0, 0, 0.99488074, 0.10105629, 0, -0.10105629, 0.99488074, 0.062806495, 0.8202388, 14.735052)
+fov = 91.859
+
+[node name="PlayerSpot" type="Node3D" parent="." unique_id=1340912010]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.2892656e-06, 2.7978375, 3.5527716)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=168144326 node_paths=PackedStringArray("ANIM", "AREA", "PLAYER_SPOT")]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_xon2b")
+autoplay = &"RESET"
+script = ExtResource("1_avuc7")
+ANIM_NAME = "Escape"
+ANIM = NodePath(".")
+AREA = NodePath("../Area3D")
+PLAYER_SPOT = NodePath("../PlayerSpot")
+
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer" unique_id=1013891232]
+z_index = 2
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Label" type="Label" parent="AnimationPlayer/ColorRect" unique_id=411946391 groups=["ui_scalable"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -283.5
+offset_top = -57.0
+offset_right = 283.5
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(283.5, 57)
+theme = ExtResource("3_o0h6e")
+theme_override_fonts/font = ExtResource("4_usdqw")
+theme_override_font_sizes/font_size = 56
+text = "THANK YOU FOR PLAYING!"
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("5_x8vyi")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="AnimationPlayer" unique_id=1521339212]
+bus = &"Music"
+
+[node name="RedirectToCredits" type="Control" parent="AnimationPlayer" unique_id=1956660807]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("6_nvg8v")
+scene_file = "uid://b3i01lg3stgkg"
+
+[node name="Area3D" type="Area3D" parent="." unique_id=342263780]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D" unique_id=1284072406]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15481046, 8.352191, 3.3840542)
+shape = SubResource("BoxShape3D_1waye")
+
+[node name="Portal" parent="." unique_id=813042160 instance=ExtResource("7_n7xmh")]
+transform = Transform3D(48.569996, 0, -3.0877518e-06, 0, 48.569996, 0, 3.0877518e-06, 0, 48.569996, -0.15, 0.453, 0)
+
+[node name="portal" parent="Portal" index="0" unique_id=1702369571]
+transform = Transform3D(0.9999999, -7.1054274e-15, 3.105881e-22, 0, -4.3711385e-08, -0.9999999, 7.1054274e-15, 0.9999999, -4.3711385e-08, 0.006994445, 0, 0)
+
+[node name="AnimationPlayer" parent="Portal" index="2" unique_id=1694452588]
+autoplay = &"Spin"
+
+[editable path="Portal"]
