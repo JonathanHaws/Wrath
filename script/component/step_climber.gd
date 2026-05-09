@@ -6,19 +6,21 @@ extends Node3D ## Script enabling 3D Bodies to not get stuck on small ledges or 
 @export var BODY: CharacterBody3D ## The body that is moved up and retains velocity
 @export var DEBUG_RAY: RayCast3D ## A way to visualize the step probe
 var last_velocity: Vector3 = Vector3.ZERO
+var accelerating: bool = false
 
-## potentially store input to only try step up when actively accelerating
+## WIP Add step down logic
+	
+func is_accelerating() -> bool:
+	var last_velocity_flat = Vector2(last_velocity.x, last_velocity.z)
+	return last_velocity_flat.length() > STEP_DISTANCE
 
-func is_moving_horizontally(velocity: Vector3) -> bool:
-	var horizontal_velocity = velocity
-	horizontal_velocity.y = 0
-	return horizontal_velocity.length() > 0.01		
-		
 func try_step_up() -> void:		
 	
-	if not BODY.is_on_wall(): return  
-	#if not BODY.is_on_floor(): return  
-	if not is_moving_horizontally(last_velocity): return
+	#if not BODY.is_on_floor(): return 
+	if BODY.velocity.y < 0: return
+	if not BODY.is_on_wall(): return   
+	if not is_accelerating(): return
+	
 	#print(BODY.get_slide_collision_count())
 	
 	for i in BODY.get_slide_collision_count():
