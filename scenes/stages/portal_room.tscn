@@ -62,7 +62,7 @@ light_specular = 0.2
 omni_range = 101.01
 
 [node name="Portal" parent="." unique_id=1856114483 instance=ExtResource("6_fnivm")]
-transform = Transform3D(-1, 0, -1.5099579e-07, 0, 1, 0, 1.5099579e-07, 0, -1, -0.44410324, -9.355314, 28.061346)
+transform = Transform3D(-1, 0, -1.5099579e-07, 0, 1, 0, 1.5099579e-07, 0, -1, -0.44410324, -9.355314, 29.036413)
 
 [node name="Checkpoint" parent="." unique_id=1478836931 instance=ExtResource("7_kd3uu")]
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, -9.1, -19.731)
