@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="5_x8vyi"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="6_nvg8v"]
 [ext_resource type="PackedScene" uid="uid://eilitb6knulw" path="res://models/items/portal/portal.glb" id="7_n7xmh"]
+[ext_resource type="Material" uid="uid://c7xo8odsficf7" path="res://shaders/materials/world_rocks.tres" id="9_o0h6e"]
 
 [sub_resource type="Animation" id="Animation_n4oyw"]
 resource_name = "RESET"
@@ -413,15 +414,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.15481046, 8.352191, 3.38405
 shape = SubResource("BoxShape3D_1waye")
 disabled = true
 
-[node name="Portal" parent="Cinematic" unique_id=1143315302 instance=ExtResource("7_n7xmh")]
+[node name="Portal" parent="Cinematic" unique_id=1261311164 instance=ExtResource("7_n7xmh")]
 
-[node name="portal" parent="Cinematic/Portal" index="0" unique_id=2020729126]
+[node name="portal" parent="Cinematic/Portal" index="0" unique_id=2022387294]
 transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0.006994445, 0, 0)
+surface_material_override/1 = ExtResource("9_o0h6e")
 
-[node name="spin" parent="Cinematic/Portal" index="1" unique_id=895594624]
+[node name="spin" parent="Cinematic/Portal" index="1" unique_id=525850540]
 visible = false
 
-[node name="AnimationPlayer" parent="Cinematic/Portal" index="2" unique_id=1301154083]
+[node name="AnimationPlayer" parent="Cinematic/Portal" index="2" unique_id=2133308495]
 autoplay = &"Spin"
 
 [editable path="Cinematic/Portal"]

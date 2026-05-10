@@ -1,0 +1,25 @@
+[gd_resource type="ShaderMaterial" format=3 uid="uid://c8vfx4h7g605y"]
+
+[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/custom/disolve.gdshader" id="1_4rk3m"]
+[ext_resource type="Texture2D" uid="uid://d2eydc4mvaeui" path="res://models/characters/wrath/emision.png" id="3_kr8kx"]
+[ext_resource type="Texture2D" uid="uid://bt0lar22n8dc1" path="res://models/characters/wrath/normal.png" id="4_vsrai"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_4rk3m")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_frequency = 3.0
+shader_parameter/dissolve_vector = Vector3(0.5, -0.5, 0.25)
+shader_parameter/custom_glow_color_enabled = true
+shader_parameter/custom_glow_color = Color(0.3957223, 0.2646826, 0.42748895, 1)
+shader_parameter/glow_intensitiy = 1.0
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/albedo_enabled = true
+shader_parameter/albedo_color = Color(0.04755766, 0.047557645, 0.047557645, 1)
+shader_parameter/enabled_emisson = true
+shader_parameter/emission_texture = ExtResource("3_kr8kx")
+shader_parameter/emission_texture_intensity = 2.075
+shader_parameter/normal_texture = ExtResource("4_vsrai")
+shader_parameter/normal_strength = 1.0
+shader_parameter/enabled_normal = false

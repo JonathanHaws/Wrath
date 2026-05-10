@@ -1,8 +1,12 @@
 [
-	{"branch": "random_taunt_1"},
+	{"branch": "final question"},
 		{"say_timed": {"say": "DO YOU LIKE MY CREATION", "for": 2.5}},
 		{"choice": [{"text": "NO", "skip": "give_in" }, 
 					{"text": "FORGIVE"}]},
+
+	{"branch": "random_taunt_1"},
+		{"say_timed": {"say": "YOU WILL LEARN", "for": 3.0}},
+		{"say_timed": {"say": "HOW AMAZING I AM", "for": 3.0}},
 
 	{"branch": "death"},
 		{"say_timed": {"say": "IM NO ONE", "for": 5.0}},

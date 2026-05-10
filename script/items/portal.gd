@@ -8,17 +8,19 @@ extends Node3D
 	"greed_defeated",
 	"sloth_defeated",
 	"wrath_defeated",
-]
+	"envy_defeated",
+	"pride_defeated",]
+var unlocked: bool = false
 
 func check_unlock() -> void:
+	if unlocked: return
 	for save_key in save_keys:
 		if !Save.data.has(save_key): 
-			print('havent beaten ' + save_key + ' yet.')
+			#print('havent gotten ' + save_key + ' yet.')
 			return
 	animation_player.play(unlocked_animation)
+	unlocked = true
 
 func _ready() -> void:
 	check_unlock()
-
-func _process(_delta: float) -> void:
-	pass
+	Save.save_data_updated.connect(check_unlock)
