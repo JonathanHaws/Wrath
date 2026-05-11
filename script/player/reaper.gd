@@ -11,6 +11,7 @@ extends CharacterBody3D
 @export var MAX_SPEED: float = 15.35
 @export var SPRINT_MULTIPLIER: float = 2.1
 @export var SPEED_MULTIPLIER: float = 1.0
+@export var SLIME_SPEED_MULTIPLIER: float = 1.0
 @export var GROUND_FRICTION_PER_SECOND: float = 0.9 # fraction of remainingvelocity
 @export var AIR_FRICTION_PER_SECOND: float = 0.9 # fraction of velocity lost
 @export var RUN_DISABLED: bool = false	
@@ -56,7 +57,7 @@ func get_run_acceleration() -> Vector3:
 	var speed_factor: float = SPRINT_MULTIPLIER
 	if is_walking(): speed_factor = 1.0
 		
-	var acceleration: float = run_speed * speed_factor * SPEED_MULTIPLIER
+	var acceleration: float = run_speed * speed_factor * SPEED_MULTIPLIER * SLIME_SPEED_MULTIPLIER
 	var run_vector = (Vector3(input_vector.x, 0, input_vector.y)).rotated(Vector3.UP, CAMERA.global_rotation.y)
 	var run_velocity = run_vector * acceleration
 	return 	run_velocity

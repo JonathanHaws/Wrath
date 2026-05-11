@@ -27,7 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://yjgk2vfs7584" path="res://models/characters/sloth/sloth.glb" id="25_ic1i5"]
 [ext_resource type="PackedScene" uid="uid://cka3ivns267uq" path="res://scenes/bosses/sloth/slow_sludge.tscn" id="26_ic1i5"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/custom/disolve.gdshader" id="26_uahh5"]
-[ext_resource type="PackedScene" uid="uid://c6e88ycy4nm7x" path="res://scenes/ghosts/ghost_melee.tscn" id="28_muo5h"]
+[ext_resource type="PackedScene" uid="uid://cisoc0f52e1rg" path="res://scenes/ghosts/slimes.tscn" id="28_ic1i5"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://script/dialog/dialog.gd" id="28_v7xtt"]
 [ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://scenes/ui/dialog/choice.tscn" id="29_enj2w"]
 [ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://scenes/ui/dialog/say.tscn" id="30_p7qim"]
@@ -40,12 +40,12 @@
 [ext_resource type="AudioStream" uid="uid://7kxu26go8qp" path="res://audio/sfx/characters/sloth/sloth_talk_2.ogg" id="37_cu7wn"]
 [ext_resource type="AudioStream" uid="uid://jp80imisvaux" path="res://audio/sfx/characters/sloth/sloth_talk_3.ogg" id="38_r1bv5"]
 
-[sub_resource type="Curve3D" id="Curve3D_3kw6g"]
+[sub_resource type="Curve3D" id="Curve3D_ic1i5"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.16384888, -0.5877228, 0.8373413, 0, 0, 0, 0, 0, 0, 0.2778015, 0.75367737, -3.812683, 0, 0, 0, 0, 0, 0, -2.0056458, 2.277504, -7.878174, 0, 0, 0, 0, 0, 0, -10.599355, 3.6799507, -11.471683, 0, 0, 0, 0, 0, 0, -18.789612, 6.2461433, -3.9014282, 0, 0, 0, 0, 0, 0, -16.882843, 8.627636, 5.779724),
-"tilts": PackedFloat32Array(0, 0, 0.71243775, 0, 0, 0)
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.16384888, -0.5877228, 0.8373413, 1.0857239, 0.5138016, 1.0491943, -1.0857239, -0.5138016, -1.0491943, 1.0465698, 0.346344, -5.0491333, 2.159, -0.731, 0.915, -1.8792725, 0.7310486, -0.9145508, -2.7746277, 2.0200424, -9.091064, 2.5289412, -1.1665268, 0.29516315, -2.5289412, 1.1665268, -0.29516315, -10.432373, 2.920723, -11.928528, 1.4853516, -0.51116943, -1.4818115, -1.4853516, 0.51116943, 1.4818115, -16.330322, 4.6255302, -9.24292, 0.5300293, -0.837162, -2.8162842, -0.5300293, 0.837162, 2.8162842, -19.210327, 6.047333, -3.6176758, -1.7520752, -0.60665894, -2.2581787, 1.7520752, 0.60665894, 2.2581787, -16.828247, 8.727741, 5.7511597, -3.5889282, -0.81591415, -1.0598145, 3.5889282, 0.81591415, 1.0598145, -11.657135, 10.3455925, 10.5355835, -2.58241, -0.6423378, 1.4994149, 2.58241, 0.6423378, -1.4994149, -4.642227, 11.263752, 8.990082, -0.34020996, -0.83709717, 4.681946, 0.34020996, 0.83709717, -4.681946, 0.2828064, 13.566902, 3.113037, 2.839386, -0.92378616, 2.4502563, -2.839386, 0.92378616, -2.4502563, -2.1982727, 15.930191, -6.9818115, 3.4399414, -0.5623245, -0.6694336, -3.4399414, 0.5623245, 0.6694336, -11.243469, 18.547436, -10.355225, 1.4109802, -0.61530304, -2.028534, -1.4109802, 0.61530304, 2.028534, -18.624573, 20.514515, -5.7177734, -1.248291, -0.92147064, -3.5518188, 1.248291, 0.92147064, 3.5518188, -19.713394, 22.566032, 2.2204895, -3.4848633, -0.9766998, -2.032837, 3.4848633, 0.9766998, 2.032837, -14.537079, 24.548313, 9.0529175, -3.1416168, -0.7788162, 2.190796, 3.1416168, 0.7788162, -2.190796, -4.37442, 27.10007, 9.467957, 0.8665619, -1.016655, 4.706024, -0.8665619, 1.016655, -4.706024, 1.8413544, 30.034039, -1.3139038, 3.7243958, -0.79016876, 1.4788208, -3.7243958, 0.79016876, -1.4788208, -4.2638702, 32.5071, -10.530426, 2.2222137, -0.7969742, -1.2567749, -2.2222137, 0.7969742, 1.2567749, -14.827316, 34.69585, -10.659149, -0.74816895, -0.865921, -4.5582886, 0.74816895, 0.865921, 4.5582886, -20.31813, 37.19276, 1.3641663, -4.134964, -1.2349472, -1.4695435, 4.134964, 1.2349472, 1.4695435, -11.816483, 40.77184, 10.844482, 0, 0, 0, 0, 0, 0, -0.50120544, 43.543446, 5.595001),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
-point_count = 6
+point_count = 22
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_wbwgn"]
 size = Vector3(23.4119, 20.729555, 25.330528)
@@ -660,12 +660,12 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbtmo"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic1i5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uahh5"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3kw6g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ic1i5"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("26_uahh5")
@@ -851,7 +851,7 @@ _data = {
 }
 
 [node name="Path3D" type="Path3D" unique_id=918030749]
-curve = SubResource("Curve3D_3kw6g")
+curve = SubResource("Curve3D_ic1i5")
 debug_custom_color = Color(0.8646751, 0.86467516, 0.8646751, 1)
 
 [node name="TriggerArea" type="Area3D" parent="." unique_id=440954474]
@@ -864,7 +864,7 @@ transform = Transform3D(0.9999982, 0, -4.172325e-07, 0, 1, 0, 2.2351742e-06, 0, 
 shape = SubResource("BoxShape3D_wbwgn")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="." unique_id=678533075]
-transform = Transform3D(0.9996806, 0, -0.024497623, 0, 0.99994403, 0, 0.024497986, 0, 0.99966574, 0.16384888, -0.5877228, 0.8373413)
+transform = Transform3D(0.9262282, 0, -0.37690637, 0, 0.99994403, 0, 0.376912, 0, 0.92621434, 0.16384888, -0.5877228, 0.8373413)
 rotation_mode = 1
 
 [node name="Body" type="CharacterBody3D" parent="PathFollow3D" unique_id=1434777009 node_paths=PackedStringArray("TARGET", "ANIM")]
@@ -892,14 +892,12 @@ next/INTRO = &"CHASE"
 [node name="HitShape" type="Area3D" parent="PathFollow3D/Body" unique_id=298325573 node_paths=PackedStringArray("FREE_ON_DEATH", "TELEPORT_NODES_TO_HIT", "ANIM_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("20_6h4tx")
 INVINCIBLE = true
-HEALTH = 100000.0
-MAX_HEALTH = 100000.0
+HEALTH = 5000.0
+MAX_HEALTH = 5000.0
 FREE_ON_DEATH = [NodePath("../Mesh/LockOn"), NodePath("../CollisionShape3D")]
 DAMAGE_NUMBERS = ExtResource("7_dbtmo")
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 ANIM_PLAYER = NodePath("../Attacks")
-USE_WAVE_HEALTH_BAR = true
-WAVE_DAMAGE = 12000.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/Body/HitShape" unique_id=324219729]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12337458, 2.49679, 0)
@@ -981,7 +979,7 @@ script = ExtResource("23_8fqfx")
 scenes = Array[PackedScene]([ExtResource("21_xr0xi")])
 
 [node name="Target" type="Node3D" parent="PathFollow3D/Body" unique_id=1930926419 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH", "STOP_CHASE_AREA")]
-transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1.0000001, -3.111498, 2.6293702, 5.8583508)
+transform = Transform3D(1.0000001, 0, 0, 0, 0.99999994, 0, 0, 0, 1.0000001, 2.0723546, 0, 5.092649)
 script = ExtResource("25_gwq6n")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 BODY = NodePath("..")
@@ -1013,19 +1011,19 @@ debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 [node name="sloth" parent="PathFollow3D/Body/Mesh" unique_id=1456814678 instance=ExtResource("25_ic1i5")]
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="0" unique_id=2032396092]
-transform = Transform3D(0.89222115, 0.01078383, -0.45146975, 0.0023526363, 0.99959034, 0.02852568, 0.45159245, -0.026513362, 0.89183027, -0.13388485, 2.4412313, -0.023626858)
+transform = Transform3D(0.91931665, 0.15268883, 0.3626881, 0.0062030763, 0.9159181, -0.4013173, -0.39346933, 0.37118763, 0.8410716, -0.13388485, 2.4412313, -0.023626858)
 bone_name = "Bone.002"
 bone_idx = 2
 
 [node name="SceneSpawner" type="Node3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D/BoneAttachment3D" unique_id=559642429 node_paths=PackedStringArray("target")]
-transform = Transform3D(0.99803066, 0.062174793, 0.008393832, -0.06272452, 0.99169207, 0.112309515, -0.0013412661, -0.11261499, 0.9936389, -0.036895376, 1.0051528, 1.7147093)
+transform = Transform3D(0.9980305, 0.062174793, 0.00839382, -0.06272453, 0.99169207, 0.112309515, -0.0013412684, -0.1126149, 0.9936389, -0.021581829, 0.573895, 0.9402676)
 script = ExtResource("23_8fqfx")
 scenes = Array[PackedScene]([ExtResource("26_ic1i5")])
 target = NodePath("../../../../../../Target")
 
 [node name="Sphere_001" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="1" unique_id=1805627527]
-surface_material_override/0 = SubResource("StandardMaterial3D_ic1i5")
-surface_material_override/1 = SubResource("ShaderMaterial_3kw6g")
+surface_material_override/0 = SubResource("StandardMaterial3D_uahh5")
+surface_material_override/1 = SubResource("ShaderMaterial_ic1i5")
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="2" unique_id=636975154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.083372, 0, 0)
@@ -1051,7 +1049,7 @@ omni_range = 27.0089
 [node name="WaveSpawner" type="Node3D" parent="PathFollow3D/Body" unique_id=450703735 node_paths=PackedStringArray("wave_animation_player")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.29153e-06, 1.7507273, -0.21312356)
 script = ExtResource("23_8fqfx")
-scenes = Array[PackedScene]([ExtResource("28_muo5h")])
+scenes = Array[PackedScene]([ExtResource("28_ic1i5")])
 add_to_groups = Array[String](["chase"])
 add_to_scene_root = true
 wave_animation_player = NodePath("AnimationPlayer")

@@ -62,9 +62,13 @@ func update_target_position(): ## keep node aligned to target
 @export var TRACKING_MULTIPLIER: float = 1.0 ## How Quickly rotation will match target
 @export var FLIPPED_TRACKING: bool = false
 func track(delta: float) -> void:
+
 	if not MESH or not BODY or not target: return
 	var initial_rotation = MESH.rotation
 	var target_pos = target.global_transform.origin
+	
+	if MESH.global_transform.origin.is_equal_approx(target_pos):
+		return
 	
 	var dir = (target_pos - MESH.global_transform.origin).normalized()
 	var up = Vector3.UP

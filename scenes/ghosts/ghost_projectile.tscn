@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://script/items/projectile.gd" id="1_8vmfp"]
 [ext_resource type="PackedScene" uid="uid://bc87fmyhhshyl" path="res://models/items/projectiles/projectile.glb" id="2_pn681"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="2_v5ope"]
-[ext_resource type="Material" uid="uid://gupcdu6u6ysw" path="res://shaders/materials/ghost/ghost_projectile_material.tres" id="3_eugfk"]
+[ext_resource type="Material" uid="uid://gupcdu6u6ysw" path="res://shaders/materials/characters/ghost/ghost_projectile_material.tres" id="3_eugfk"]
+
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3shst"]
 size = Vector3(0.13976523, 0.12731558, 0.11819573)

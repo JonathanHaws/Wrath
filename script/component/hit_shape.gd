@@ -152,21 +152,11 @@ func _ready():
 	
 	if HEALTH <= 0 and ROOT: 
 		ROOT.queue_free()
-
-@export_group("Wave Health Bar") ## For bosses or encounters that spawn waves of enemies
-@export var USE_WAVE_HEALTH_BAR: bool = false ## optional group for wave health
-@export var WAVE_HITSHAPE_GROUP: String = "enemy_hitshape" ## optional group for wave health
-@export var WAVE_DAMAGE :float = 300.0 ## The amount to decrease health when enemies die
-		
-func _process(_delta):
-	#print(HEALTH)
-	if USE_WAVE_HEALTH_BAR:
-		var callback := Callable(self, "hit").bind(null, WAVE_DAMAGE)
-		for e in get_tree().get_nodes_in_group(WAVE_HITSHAPE_GROUP):
-			if e != self and e.has_signal("DIED") and not e.is_connected("DIED", callback):
-				e.connect("DIED", callback)
 	
 func _exit_tree() -> void:
 	if SAVE_HEALTH: 
 		Save.data[get_health_key()] = HEALTH 
 		Save.save_game()
+
+#func _process(_delta):
+	#print(HEALTH)

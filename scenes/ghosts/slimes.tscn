@@ -1,0 +1,765 @@
+[gd_scene format=3 uid="uid://cisoc0f52e1rg"]
+
+[ext_resource type="Script" uid="uid://dqi5wlirwf685" path="res://script/slime/slime.gd" id="1_h1ydk"]
+[ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://script/component/random_attack.gd" id="1_l2p20"]
+[ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://script/component/hit_shape.gd" id="2_h1ydk"]
+[ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://scenes/ui/damage_numbers.tscn" id="3_wsyvp"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="4_jw7rd"]
+[ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/characters/enemies/Slam.wav" id="5_poail"]
+[ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://audio/sfx/characters/Crumble_1.wav" id="6_j0jeu"]
+[ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/characters/Crumble_2.wav" id="7_on37t"]
+[ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://audio/sfx/characters/Crumble_3.wav" id="8_tbkyr"]
+[ext_resource type="AudioStream" uid="uid://bg0rsvkfwvyq1" path="res://audio/sfx/characters/Crumble_4.wav" id="9_lnt32"]
+[ext_resource type="AudioStream" uid="uid://dejgyyvoucgey" path="res://audio/sfx/characters/enemies/Cry_3.wav" id="10_rwvj8"]
+[ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://audio/sfx/characters/enemies/Despawn.wav" id="11_vilvm"]
+[ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://audio/sfx/characters/enemies/Cry.wav" id="12_n0a58"]
+[ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/characters/enemies/Cry_2.wav" id="13_padhm"]
+[ext_resource type="AudioStream" uid="uid://ql4vd0nt4yjg" path="res://audio/sfx/characters/player/Parried.ogg" id="14_ybehm"]
+[ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://script/items/wisp_reward.gd" id="15_35ayi"]
+[ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://script/component/squash.gd" id="16_ke41j"]
+[ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="17_6v543"]
+[ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="18_phu2q"]
+[ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/ghosts/ghost_hurt_particles.tscn" id="19_uiavb"]
+[ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="20_3scn4"]
+[ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://scenes/ghosts/ghost_projectile.tscn" id="21_naasc"]
+[ext_resource type="PackedScene" uid="uid://dam1avbakfiuk" path="res://models/characters/slimes/Slimes.glb" id="22_0ee81"]
+[ext_resource type="Material" uid="uid://dgequ13txopwq" path="res://shaders/materials/projectiles/sludge.tres" id="24_h1ydk"]
+[ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="24_ktfay"]
+[ext_resource type="Material" uid="uid://3q6cym1ot3lq" path="res://shaders/materials/characters/ghost/ghost_eyes.tres" id="24_wsyvp"]
+[ext_resource type="Script" uid="uid://c2j1vbn4tf1g2" path="res://script/component/step_climber.gd" id="25_k3k00"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x8ps6"]
+radius = 0.3017578
+height = 1.2128077
+
+[sub_resource type="Animation" id="Animation_h1ydk"]
+resource_name = "ATTACK"
+length = 2.2
+step = 0.011111111
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio/MeleeWindup")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3444441, 1.2847311, 1.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+
+[sub_resource type="Animation" id="Animation_wsyvp"]
+resource_name = "CHASE"
+length = 0.83333755
+loop_mode = 1
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_jw7rd"]
+resource_name = "DEATH"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio/Death")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CameraEffects")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["enemy_death", 0.2, 0.2, 0.0],
+"method": &"impact"
+}]
+}
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.33333334, 1, 0, 0, 0)
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_unstick"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_on37t"]
+resource_name = "HURT"
+step = 0.041666668
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Audio/Parried")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_poail"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Squash:target_squash_scale")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/5/type = "scale_3d"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = PackedFloat32Array(0, 1, 1, 1, 1)
+
+[sub_resource type="Animation" id="Animation_j0jeu"]
+resource_name = "STICK"
+length = 2.2
+step = 0.011111111
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Audio/MeleeWindup")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.7666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3444441, 1.2847311, 1.8333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, 0.0, 1.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"stick"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tbkyr"]
+_data = {
+&"ATTACK": SubResource("Animation_h1ydk"),
+&"CHASE": SubResource("Animation_wsyvp"),
+&"DEATH": SubResource("Animation_jw7rd"),
+&"HURT": SubResource("Animation_on37t"),
+&"RESET": SubResource("Animation_poail"),
+&"STICK": SubResource("Animation_j0jeu")
+}
+
+[sub_resource type="Curve" id="Curve_mvqiw"]
+_data = [Vector2(0.16953316, 1), 0.0, -22.205858, 0, 0, Vector2(0.21867321, 0), -23.915375, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p16ut"]
+radius = 0.91845703
+height = 2.4566135
+
+[sub_resource type="Animation" id="Animation_rkfee"]
+resource_name = "DEATH"
+length = 2.166
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(2.03333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Target:USE_GRAVITY")
+tracks/3/interp = 0
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [false]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("OmniLight3D:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.5, 0.0]
+}
+tracks/5/type = "animation"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": PackedStringArray("DEATH"),
+"times": PackedFloat32Array(0)
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("WispReward")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"give"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("HurtParticles")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_pyqwo"]
+resource_name = "HURT"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraEffects")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1.0],
+"method": &"tremor"
+}]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HurtParticles")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"spawn"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"trigger_awareness"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"HURT", 0],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_ign71"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:light_energy")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.5]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Target:USE_GRAVITY")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_n368u"]
+_data = {
+&"DEATH": SubResource("Animation_rkfee"),
+&"HURT": SubResource("Animation_pyqwo"),
+&"RESET": SubResource("Animation_ign71")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_mvqiw"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_2gcuv"]
+radius = 1.00222
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_mvqiw"]
+height = 1.6398314
+radius = 52.341797
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_oquh6"]
+radius = 18.8292
+
+[node name="Slime" type="CharacterBody3D" unique_id=842720599 node_paths=PackedStringArray("nodes_to_delete_when_stuck", "target") groups=["ghost"]]
+top_level = true
+collision_layer = 4
+collision_mask = 7
+script = ExtResource("1_h1ydk")
+nodes_to_delete_when_stuck = [NodePath("CollisionShape3D")]
+target = NodePath("Target")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1779156698]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6037061, 0)
+shape = SubResource("CapsuleShape3D_x8ps6")
+debug_color = Color(0.87, 0.87, 0.87, 0.011764706)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1933330111]
+libraries/ = SubResource("AnimationLibrary_tbkyr")
+autoplay = &"CHASE"
+next/ATTACK = &"CHASE"
+next/CHASE = &"CHASE"
+next/HURT = &"CHASE"
+
+[node name="Stick" type="Node" parent="AnimationPlayer" unique_id=1993194282 node_paths=PackedStringArray("TARGET", "BODY")]
+script = ExtResource("1_l2p20")
+ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_mvqiw")
+ATTACK_ANIMATION = "STICK"
+LIKELIHOOD_MULTIPLIER = 50000.0
+TARGET = NodePath("../../Target")
+BODY = NodePath("../..")
+
+[node name="Hitshape" type="Area3D" parent="." unique_id=1261233255 node_paths=PackedStringArray("ROOT", "FREE_ON_DEATH", "TELEPORT_NODES_TO_HIT") groups=["enemy_hitshape"]]
+script = ExtResource("2_h1ydk")
+HEALTH = 150.0
+MAX_HEALTH = 150.0
+ROOT = NodePath("..")
+FREE_ON_DEATH = [null, NodePath("../CollisionShape3D")]
+DAMAGE_NUMBERS = ExtResource("3_wsyvp")
+TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitshape" unique_id=1137305540]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.7971351, 0)
+shape = SubResource("CapsuleShape3D_p16ut")
+debug_color = Color(0.87, 0.87, 0.87, 0.03137255)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Hitshape" unique_id=262181767]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_n368u")
+
+[node name="Audio" type="Node" parent="." unique_id=1672116593]
+script = ExtResource("4_jw7rd")
+SOUNDS = Array[AudioStream]([ExtResource("5_poail"), ExtResource("6_j0jeu"), ExtResource("7_on37t"), ExtResource("8_tbkyr"), ExtResource("9_lnt32"), ExtResource("10_rwvj8"), ExtResource("11_vilvm"), ExtResource("12_n0a58")])
+
+[node name="Death" type="AudioStreamPlayer" parent="Audio" unique_id=1948488915]
+process_mode = 3
+stream = ExtResource("10_rwvj8")
+volume_db = -8.45
+pitch_scale = 1.6
+bus = &"SFX"
+
+[node name="ShootWindup" type="AudioStreamPlayer" parent="Audio" unique_id=1924913592]
+process_mode = 3
+stream = ExtResource("10_rwvj8")
+volume_db = -4.99
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="MeleeWindup" type="AudioStreamPlayer" parent="Audio" unique_id=1244034759]
+process_mode = 3
+stream = ExtResource("12_n0a58")
+volume_db = -4.99
+pitch_scale = 2.0
+bus = &"SFX"
+
+[node name="Shoot" type="AudioStreamPlayer" parent="Audio" unique_id=1882974098]
+process_mode = 3
+stream = ExtResource("13_padhm")
+volume_db = -8.245
+pitch_scale = 3.0
+bus = &"SFX"
+
+[node name="Slam" type="AudioStreamPlayer" parent="Audio" unique_id=1221426232]
+process_mode = 3
+stream = ExtResource("5_poail")
+volume_db = -6.395
+pitch_scale = 1.3
+bus = &"SFX"
+
+[node name="Parried" type="AudioStreamPlayer" parent="Audio" unique_id=109363645]
+process_mode = 3
+stream = ExtResource("14_ybehm")
+bus = &"SFX"
+
+[node name="WispReward" type="Node" parent="." unique_id=493136637]
+script = ExtResource("15_35ayi")
+
+[node name="Squash" type="Node" parent="." unique_id=509375601 node_paths=PackedStringArray("meshes")]
+script = ExtResource("16_ke41j")
+meshes = [null]
+
+[node name="CameraEffects" type="Node" parent="." unique_id=1190837221]
+script = ExtResource("17_6v543")
+shake = 0.4
+
+[node name="HurtParticles" type="Node3D" parent="." unique_id=1999803819 groups=["teleport_to_attacking_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
+script = ExtResource("18_phu2q")
+scenes = Array[PackedScene]([ExtResource("19_uiavb")])
+
+[node name="NavigationAgent3D" type="NavigationAgent3D" parent="." unique_id=95594136]
+
+[node name="ShaderTween" type="Node" parent="." unique_id=809165415]
+script = ExtResource("20_3scn4")
+
+[node name="Mesh" type="Node3D" parent="." unique_id=268847954]
+
+[node name="SceneSpawner" type="Node3D" parent="Mesh" unique_id=1201835323 node_paths=PackedStringArray("target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2796089, -0.78623927)
+script = ExtResource("18_phu2q")
+scenes = Array[PackedScene]([ExtResource("21_naasc")])
+add_to_scene_root = true
+target = NodePath("../../Target")
+
+[node name="Slimes" parent="Mesh" unique_id=486463534 instance=ExtResource("22_0ee81")]
+
+[node name="Eyes" parent="Mesh/Slimes" index="0" unique_id=2116494351]
+surface_material_override/0 = ExtResource("24_wsyvp")
+
+[node name="Body" parent="Mesh/Slimes" index="1" unique_id=303254490]
+surface_material_override/0 = ExtResource("24_h1ydk")
+
+[node name="Target" type="Node3D" parent="." unique_id=963969195 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH", "STOP_CHASE_AREA", "AWARENESS_AREA")]
+script = ExtResource("24_ktfay")
+NAV_AGENT = NodePath("../NavigationAgent3D")
+BODY = NodePath("..")
+SPEED = 5.0
+SPEED_MULTIPLIER = 0.0
+CHASE_VERTICALLY = true
+MESH = NodePath("../Mesh")
+STOP_CHASE_AREA = NodePath("../StopChase")
+AWARENESS_AREA = NodePath("../Awareness")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Target" unique_id=1889770623]
+visible = false
+mesh = SubResource("BoxMesh_mvqiw")
+
+[node name="StopChase" type="Area3D" parent="." unique_id=130760497]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StopChase" unique_id=539509090]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0038164, 0)
+shape = SubResource("SphereShape3D_2gcuv")
+debug_color = Color(1, 1, 1, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=87786292]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1858664, 0.00665204)
+light_color = Color(0.58, 0.58, 0.58, 1)
+light_energy = 0.5
+light_specular = 0.0
+omni_range = 8.96629
+
+[node name="ShootWhenPlayerInHere" type="Area3D" parent="." unique_id=834115837 groups=["ghost"]]
+transform = Transform3D(0.33793065, 0, 0, 0, 0.33793065, 0, 0, 0, 0.33793065, 0, 0, 0)
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ShootWhenPlayerInHere" unique_id=1253445290]
+transform = Transform3D(0.99995124, 0, 0, 0, 0.99995124, 0, 0, 0, 0.99995124, -0.05771342, -0.5267727, -0.17913179)
+shape = SubResource("CylinderShape3D_mvqiw")
+debug_color = Color(0.67, 0.67, 0.67, 0.019607844)
+
+[node name="Awareness" type="Area3D" parent="." unique_id=770797376]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Awareness" unique_id=1096443313]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.21777, 2.38419e-07, -0.353772)
+shape = SubResource("SphereShape3D_oquh6")
+debug_color = Color(0.658, 0.6937, 0.7, 0.023529412)
+
+[node name="StepClimber" type="Node3D" parent="." unique_id=1492857407 node_paths=PackedStringArray("BODY")]
+script = ExtResource("25_k3k00")
+STEP_DISTANCE = 1.115
+BODY = NodePath("..")
+
+[editable path="Mesh/Slimes"]

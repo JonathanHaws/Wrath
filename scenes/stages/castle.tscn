@@ -26,6 +26,7 @@
 [ext_resource type="Script" uid="uid://ds3llgo67gcpi" path="res://script/component/patrol.gd" id="22_a0oe4"]
 [ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://script/items/progress_gate.gd" id="22_je0v5"]
 [ext_resource type="PackedScene" uid="uid://bdjvrm2o45ly3" path="res://models/characters/envy/envy.glb" id="23_42juj"]
+[ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/custom/disolve.gdshader" id="23_thcj7"]
 [ext_resource type="PackedScene" uid="uid://sj1jfdnq1vjb" path="res://scenes/bosses/sloth/sloth.tscn" id="25_7guc4"]
 [ext_resource type="PackedScene" uid="uid://co45tty7uogdq" path="res://scenes/items/portal.tscn" id="28_2yhio"]
 [ext_resource type="PackedScene" uid="uid://v8b6ve5smjd1" path="res://scenes/bosses/pride/pride.tscn" id="29_3ccgg"]
@@ -178,10 +179,34 @@ size = Vector3(133.595, 13.6586, 201.498)
 
 [sub_resource type="Curve3D" id="Curve3D_3ccgg"]
 _data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.16384888, -0.5877228, 0.8373413, 1.0857239, 0.5138016, 1.0491943, -1.0857239, -0.5138016, -1.0491943, 1.0465698, 0.346344, -5.0491333, 2.159, -0.731, 0.915, -1.8792725, 0.7310486, -0.9145508, -2.7746277, 2.0200424, -9.091064, 2.5289412, -1.1665268, 0.29516315, -2.5289412, 1.1665268, -0.29516315, -10.432373, 2.920723, -11.928528, 1.4853516, -0.51116943, -1.4818115, -1.4853516, 0.51116943, 1.4818115, -16.330322, 4.6255302, -9.24292, 0.5300293, -0.837162, -2.8162842, -0.5300293, 0.837162, 2.8162842, -19.210327, 6.047333, -3.6176758, -1.7520752, -0.60665894, -2.2581787, 1.7520752, 0.60665894, 2.2581787, -16.828247, 8.727741, 5.7511597, -3.5889282, -0.81591415, -1.0598145, 3.5889282, 0.81591415, 1.0598145, -11.657135, 10.3455925, 10.5355835, -1.7472229, 0.009471893, 1.1437378, 1.7472229, -0.009471893, -1.1437378, -4.8108215, 11.886559, 9.170532, -0.34020996, -0.83709717, 4.681946, 0.34020996, 0.83709717, -4.681946, 0.2828064, 13.566902, 3.113037, 2.839386, -0.92378616, 2.4502563, -2.839386, 0.92378616, -2.4502563, -2.1982727, 15.930191, -6.9818115, 3.4399414, -0.5623245, -0.6694336, -3.4399414, 0.5623245, 0.6694336, -11.243469, 18.547436, -10.355225, 1.7129517, -0.8844223, -1.2102051, -1.7129517, 0.8844223, 1.2102051, -18.624573, 20.514515, -5.7177734, -1.248291, -0.92147064, -3.5518188, 1.248291, 0.92147064, 3.5518188, -19.320618, 22.455524, 2.0960083, -3.4848633, -0.9766998, -2.032837, 3.4848633, 0.9766998, 2.032837, -14.537079, 24.548313, 9.0529175, -2.305725, -0.59101105, 1.8789673, 2.305725, 0.59101105, -1.8789673, -4.37442, 27.10007, 9.467957, 0.81900024, -0.7064209, 5.614868, -0.81900024, 0.7064209, -5.614868, 0.9216919, 30.42049, -1.4851685, 3.7243958, -0.79016876, 1.4788208, -3.7243958, 0.79016876, -1.4788208, -4.023224, 32.636112, -9.770569, 3.000946, -1.9983673, 0.67755127, -3.000946, 1.9983673, -0.67755127, -14.501038, 34.64352, -10.550171, -0.74816895, -0.865921, -4.5582886, 0.74816895, 0.865921, 4.5582886, -21.182404, 37.309284, 0.83306885, -2.996704, -1.2733154, -1.6759644, 2.996704, 1.2733154, 1.6759644, -10.399963, 41.52524, 11.636963, 0, 0, 0, 0, 0, 0, -0.07485962, 44.562725, 3.9281616),
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.16384888, -0.5877228, 0.8373413, 1.0857239, 0.5138016, 1.0491943, -1.0857239, -0.5138016, -1.0491943, 1.0465698, 0.346344, -5.0491333, 2.159, -0.731, 0.915, -1.8792725, 0.7310486, -0.9145508, -2.7746277, 2.0200424, -9.091064, 2.5289412, -1.1665268, 0.29516315, -2.5289412, 1.1665268, -0.29516315, -10.432373, 2.920723, -11.928528, 1.4853516, -0.51116943, -1.4818115, -1.4853516, 0.51116943, 1.4818115, -16.330322, 4.6255302, -9.24292, 0.5300293, -0.837162, -2.8162842, -0.5300293, 0.837162, 2.8162842, -19.210327, 6.047333, -3.6176758, -1.7520752, -0.60665894, -2.2581787, 1.7520752, 0.60665894, 2.2581787, -16.828247, 8.727741, 5.7511597, -3.5889282, -0.81591415, -1.0598145, 3.5889282, 0.81591415, 1.0598145, -11.657135, 10.3455925, 10.5355835, -1.7167206, -0.56158066, 1.0678406, 1.7167206, 0.56158066, -1.0678406, -4.642227, 11.263752, 8.990082, -0.34020996, -0.83709717, 4.681946, 0.34020996, 0.83709717, -4.681946, 0.2828064, 13.566902, 3.113037, 2.839386, -0.92378616, 2.4502563, -2.839386, 0.92378616, -2.4502563, -2.1982727, 15.930191, -6.9818115, 3.4399414, -0.5623245, -0.6694336, -3.4399414, 0.5623245, 0.6694336, -11.243469, 18.547436, -10.355225, 1.4109802, -0.61530304, -2.028534, -1.4109802, 0.61530304, 2.028534, -18.624573, 20.514515, -5.7177734, -1.248291, -0.92147064, -3.5518188, 1.248291, 0.92147064, 3.5518188, -19.713394, 22.566032, 2.2204895, -3.4848633, -0.9766998, -2.032837, 3.4848633, 0.9766998, 2.032837, -14.537079, 24.548313, 9.0529175, -3.1416168, -0.7788162, 2.190796, 3.1416168, 0.7788162, -2.190796, -4.37442, 27.10007, 9.467957, 0.8665619, -1.016655, 4.706024, -0.8665619, 1.016655, -4.706024, 1.8413544, 30.034039, -1.3139038, 3.7243958, -0.79016876, 1.4788208, -3.7243958, 0.79016876, -1.4788208, -4.2638702, 32.5071, -10.530426, 2.2222137, -0.7969742, -1.2567749, -2.2222137, 0.7969742, 1.2567749, -14.827316, 34.69585, -10.659149, -0.74816895, -0.865921, -4.5582886, 0.74816895, 0.865921, 4.5582886, -20.31813, 37.19276, 1.3641663, -4.134964, -1.2349472, -1.4695435, 4.134964, 1.2349472, 1.4695435, -11.816483, 40.77184, 10.844482, 0, 0, 0, 0, 0, 0, -0.50120544, 43.543446, 5.595001),
 "tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 }
 point_count = 22
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thcj7"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.52, 0.52, 0.52, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omlwx"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("23_thcj7")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_frequency = 3.0
+shader_parameter/dissolve_vector = Vector3(0.5, -0.5, 0.25)
+shader_parameter/custom_glow_color_enabled = false
+shader_parameter/custom_glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.0
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/albedo_enabled = false
+shader_parameter/albedo_color = Color(0.09803922, 0.11764706, 0.1764706, 1)
+shader_parameter/enabled_emisson = false
+shader_parameter/emission_texture_intensity = 1.0
+shader_parameter/normal_strength = 1.0
+shader_parameter/enabled_normal = false
 
 [sub_resource type="Curve3D" id="Curve3D_uq4p3"]
 closed = true
@@ -393,6 +418,7 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("6_mb05r")
 damage = 10000.0
+disable_collision_shape = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillVolumes/Void" unique_id=1054557280]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.713, -241.67612, 36.6345)
@@ -461,6 +487,13 @@ START_ANIMATION = "FIGHT"
 transform = Transform3D(-0.5837747, 0, -0.8118902, 0, 0.99995536, 0, 0.81190014, 0, -0.5837676, 671.4583, 47.797066, 79.719826)
 curve = SubResource("Curve3D_3ccgg")
 
+[node name="BoneAttachment3D" parent="Sins/Sloth/PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1434777009, 1456814678, 684494173) index="0" unique_id=2032396092]
+transform = Transform3D(0.91931903, 0.15268447, 0.36268395, 0.006203081, 0.91592044, -0.40131193, -0.39346382, 0.3711836, 0.84107596, -0.13388485, 2.4412313, -0.023626858)
+
+[node name="Sphere_001" parent="Sins/Sloth/PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1434777009, 1456814678, 684494173) index="1" unique_id=1805627527]
+surface_material_override/0 = SubResource("StandardMaterial3D_thcj7")
+surface_material_override/1 = SubResource("ShaderMaterial_omlwx")
+
 [node name="EnvyFly" type="Path3D" parent="Sins" unique_id=2031636455 node_paths=PackedStringArray("node_to_queue_free")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.64444, 29.919395, -21.1921)
 curve = SubResource("Curve3D_uq4p3")
@@ -515,4 +548,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.908577, 26.820173, 114.82
 [connection signal="body_entered" from="KillVolumes/Void2" to="KillVolumes/Void2" method="_on_body_entered"]
 
 [editable path="NavigationRegion3D/castle"]
+[editable path="Sins/Sloth"]
+[editable path="Sins/Sloth/PathFollow3D/Body/Mesh/sloth"]
 [editable path="Sins/EnvyFly/PathFollow3D/envy"]
