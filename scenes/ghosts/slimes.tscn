@@ -16,16 +16,18 @@
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/characters/enemies/Cry_2.wav" id="13_padhm"]
 [ext_resource type="AudioStream" uid="uid://ql4vd0nt4yjg" path="res://audio/sfx/characters/player/Parried.ogg" id="14_ybehm"]
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://script/items/wisp_reward.gd" id="15_35ayi"]
+[ext_resource type="AudioStream" uid="uid://t76lxhfdipdo" path="res://audio/sfx/characters/slime/slime_1.ogg" id="16_jw7rd"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://script/component/squash.gd" id="16_ke41j"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="17_6v543"]
+[ext_resource type="AudioStream" uid="uid://c010fjcr6uuy7" path="res://audio/sfx/characters/slime/slime_2.ogg" id="17_poail"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="18_phu2q"]
+[ext_resource type="AudioStream" uid="uid://doqklsqjpdvq3" path="res://audio/sfx/characters/slime/slime_death_1.ogg" id="18_poail"]
 [ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/ghosts/ghost_hurt_particles.tscn" id="19_uiavb"]
 [ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="20_3scn4"]
 [ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://scenes/ghosts/ghost_projectile.tscn" id="21_naasc"]
 [ext_resource type="PackedScene" uid="uid://dam1avbakfiuk" path="res://models/characters/slimes/Slimes.glb" id="22_0ee81"]
 [ext_resource type="Material" uid="uid://dgequ13txopwq" path="res://shaders/materials/projectiles/sludge.tres" id="24_h1ydk"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="24_ktfay"]
-[ext_resource type="Material" uid="uid://3q6cym1ot3lq" path="res://shaders/materials/characters/ghost/ghost_eyes.tres" id="24_wsyvp"]
 [ext_resource type="Script" uid="uid://c2j1vbn4tf1g2" path="res://script/component/step_climber.gd" id="25_k3k00"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x8ps6"]
@@ -77,7 +79,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_wsyvp"]
 resource_name = "CHASE"
-length = 0.83333755
+length = 0.41667086
 loop_mode = 1
 step = 0.041666668
 tracks/0/type = "value"
@@ -104,6 +106,16 @@ tracks/1/keys = {
 "update": 0,
 "values": [1.0]
 }
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/Slimes/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("Chase"),
+"times": PackedFloat32Array(0)
+}
 
 [sub_resource type="Animation" id="Animation_jw7rd"]
 resource_name = "DEATH"
@@ -111,24 +123,10 @@ length = 0.5
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Audio/Death")
+tracks/0/path = NodePath("CameraEffects")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("CameraEffects")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -136,17 +134,31 @@ tracks/1/keys = {
 "method": &"impact"
 }]
 }
-tracks/2/type = "scale_3d"
+tracks/1/type = "scale_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.33333334, 1, 0, 0, 0)
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh")
+tracks/2/path = NodePath(".")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 1, 1, 1, 0.33333334, 1, 0, 0, 0)
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"_unstick"
+}]
+}
 tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".")
+tracks/3/path = NodePath("Audio/Death")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -154,7 +166,7 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"_unstick"
+"method": &"play_random_child"
 }]
 }
 
@@ -274,51 +286,37 @@ tracks/5/keys = PackedFloat32Array(0, 1, 1, 1, 1)
 resource_name = "STICK"
 length = 2.2
 step = 0.011111111
-tracks/0/type = "method"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Audio/MeleeWindup")
-tracks/0/interp = 1
+tracks/0/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0.0],
-"method": &"play"
-}]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/1/interp = 0
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 1.7666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3444441, 1.2847311, 1.8333333),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [1.0, 0.0, 0.0, 1.0]
 }
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -609,6 +607,7 @@ BODY = NodePath("../..")
 
 [node name="Hitshape" type="Area3D" parent="." unique_id=1261233255 node_paths=PackedStringArray("ROOT", "FREE_ON_DEATH", "TELEPORT_NODES_TO_HIT") groups=["enemy_hitshape"]]
 script = ExtResource("2_h1ydk")
+INVINCIBILITY_COOLDOWN = 0.0
 HEALTH = 150.0
 MAX_HEALTH = 150.0
 ROOT = NodePath("..")
@@ -628,13 +627,6 @@ libraries/ = SubResource("AnimationLibrary_n368u")
 [node name="Audio" type="Node" parent="." unique_id=1672116593]
 script = ExtResource("4_jw7rd")
 SOUNDS = Array[AudioStream]([ExtResource("5_poail"), ExtResource("6_j0jeu"), ExtResource("7_on37t"), ExtResource("8_tbkyr"), ExtResource("9_lnt32"), ExtResource("10_rwvj8"), ExtResource("11_vilvm"), ExtResource("12_n0a58")])
-
-[node name="Death" type="AudioStreamPlayer" parent="Audio" unique_id=1948488915]
-process_mode = 3
-stream = ExtResource("10_rwvj8")
-volume_db = -8.45
-pitch_scale = 1.6
-bus = &"SFX"
 
 [node name="ShootWindup" type="AudioStreamPlayer" parent="Audio" unique_id=1924913592]
 process_mode = 3
@@ -669,6 +661,31 @@ process_mode = 3
 stream = ExtResource("14_ybehm")
 bus = &"SFX"
 
+[node name="Slime" type="Node" parent="Audio" unique_id=427119088]
+script = ExtResource("4_jw7rd")
+SOUNDS = Array[AudioStream]([ExtResource("5_poail"), ExtResource("6_j0jeu"), ExtResource("7_on37t"), ExtResource("8_tbkyr"), ExtResource("9_lnt32"), ExtResource("10_rwvj8"), ExtResource("11_vilvm"), ExtResource("12_n0a58")])
+
+[node name="Slime1" type="AudioStreamPlayer" parent="Audio/Slime" unique_id=797380222]
+process_mode = 3
+stream = ExtResource("16_jw7rd")
+volume_db = -3.0
+bus = &"SFX"
+
+[node name="Slime2" type="AudioStreamPlayer" parent="Audio/Slime" unique_id=1204888436]
+process_mode = 3
+stream = ExtResource("17_poail")
+volume_db = -3.0
+bus = &"SFX"
+
+[node name="Death" type="Node" parent="Audio" unique_id=694697829]
+script = ExtResource("4_jw7rd")
+SOUNDS = Array[AudioStream]([ExtResource("5_poail"), ExtResource("6_j0jeu"), ExtResource("7_on37t"), ExtResource("8_tbkyr"), ExtResource("9_lnt32"), ExtResource("10_rwvj8"), ExtResource("11_vilvm"), ExtResource("12_n0a58")])
+
+[node name="Death1" type="AudioStreamPlayer" parent="Audio/Death" unique_id=1620899297]
+process_mode = 3
+stream = ExtResource("18_poail")
+bus = &"SFX"
+
 [node name="WispReward" type="Node" parent="." unique_id=493136637]
 script = ExtResource("15_35ayi")
 
@@ -699,13 +716,10 @@ scenes = Array[PackedScene]([ExtResource("21_naasc")])
 add_to_scene_root = true
 target = NodePath("../../Target")
 
-[node name="Slimes" parent="Mesh" unique_id=486463534 instance=ExtResource("22_0ee81")]
+[node name="Slimes" parent="Mesh" unique_id=1705519881 instance=ExtResource("22_0ee81")]
 
-[node name="Eyes" parent="Mesh/Slimes" index="0" unique_id=2116494351]
-surface_material_override/0 = ExtResource("24_wsyvp")
-
-[node name="Body" parent="Mesh/Slimes" index="1" unique_id=303254490]
-surface_material_override/0 = ExtResource("24_h1ydk")
+[node name="Mesh" parent="Mesh/Slimes/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1705519881, 721052210) index="0" unique_id=708991476]
+surface_material_override/1 = ExtResource("24_h1ydk")
 
 [node name="Target" type="Node3D" parent="." unique_id=963969195 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH", "STOP_CHASE_AREA", "AWARENESS_AREA")]
 script = ExtResource("24_ktfay")
