@@ -15,7 +15,6 @@
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://audio/sfx/characters/enemies/Cry.wav" id="12_n0a58"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/characters/enemies/Cry_2.wav" id="13_padhm"]
 [ext_resource type="AudioStream" uid="uid://ql4vd0nt4yjg" path="res://audio/sfx/characters/player/Parried.ogg" id="14_ybehm"]
-[ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://script/items/wisp_reward.gd" id="15_35ayi"]
 [ext_resource type="AudioStream" uid="uid://t76lxhfdipdo" path="res://audio/sfx/characters/slime/slime_1.ogg" id="16_jw7rd"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://script/component/squash.gd" id="16_ke41j"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="17_6v543"]
@@ -421,24 +420,10 @@ tracks/5/keys = {
 tracks/6/type = "method"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("WispReward")
+tracks/6/path = NodePath("HurtParticles")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"give"
-}]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("HurtParticles")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -685,9 +670,6 @@ SOUNDS = Array[AudioStream]([ExtResource("5_poail"), ExtResource("6_j0jeu"), Ext
 process_mode = 3
 stream = ExtResource("18_poail")
 bus = &"SFX"
-
-[node name="WispReward" type="Node" parent="." unique_id=493136637]
-script = ExtResource("15_35ayi")
 
 [node name="Squash" type="Node" parent="." unique_id=509375601 node_paths=PackedStringArray("meshes")]
 script = ExtResource("16_ke41j")

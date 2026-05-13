@@ -109,6 +109,7 @@ func _play_anim(anim: String, signal_to_emit: Signal) -> void:
 	signal_to_emit.emit()
 
 func hit(area: Area3D = null, damage: int = 0, play_animation: bool = true) -> bool:
+	#print(get_parent().name + " hit")
 	if INVINCIBLE: 
 		return false
 	if invincibility_timer: 
