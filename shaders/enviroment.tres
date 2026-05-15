@@ -2,6 +2,13 @@
 
 [ext_resource type="Texture2D" uid="uid://mobdq5g62tgj" path="res://models/sky/skybox_texture.png" id="1_kh1ui"]
 
+[sub_resource type="Curve" id="Curve_keqxo"]
+_data = [Vector2(0, 0.057500124), 0.0, -0.42817065, 0, 0, Vector2(0.45994827, 0.27200007), 0.6987501, 0.6987501, 0, 0, Vector2(0.7648579, 0.74), 1.2171781, 1.2171781, 0, 0, Vector2(1, 1), 0.9737416, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_nxt8h"]
+curve = SubResource("Curve_keqxo")
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_kh1ui"]
 panorama = ExtResource("1_kh1ui")
 
@@ -17,13 +24,14 @@ ambient_light_source = 2
 ambient_light_color = Color(0.21662158, 0.21662134, 0.21662137, 1)
 ambient_light_energy = 2.85
 reflected_light_source = 2
-tonemap_exposure = 5.0
+tonemap_mode = 4
+tonemap_exposure = 12.0
 ssao_enabled = true
-ssao_radius = 0.95
-ssao_intensity = 5.86
-ssao_detail = 5.0
+ssao_radius = 0.7
+ssao_intensity = 8.0
+ssao_horizon = 0.05
 ssao_light_affect = 1.0
-ssao_ao_channel_affect = 1.0
+ssao_ao_channel_affect = 0.8
 glow_enabled = true
 glow_intensity = 0.2
 glow_bloom = 0.5
@@ -40,3 +48,4 @@ volumetric_fog_emission = Color(0.187176, 0.187176, 0.187176, 1)
 volumetric_fog_length = 1034.55
 volumetric_fog_detail_spread = 0.965936
 adjustment_enabled = true
+adjustment_color_correction = SubResource("CurveTexture_nxt8h")
