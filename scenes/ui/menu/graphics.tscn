@@ -33,6 +33,7 @@ grow_vertical = 2
 script = ExtResource("1_nub3j")
 
 [node name="LutMaker" type="ColorRect" parent="." unique_id=209391130 node_paths=PackedStringArray("dynamic_ui_control")]
+visible = false
 material = SubResource("ShaderMaterial_xj7rx")
 layout_mode = 1
 anchors_preset = 15
@@ -47,6 +48,7 @@ dynamic_ui_control = NodePath("../LutMakerUI")
 curve_rgb = SubResource("Curve_xw3l5")
 
 [node name="LutMakerUI" type="Control" parent="." unique_id=836565983]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0

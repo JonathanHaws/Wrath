@@ -1501,6 +1501,7 @@ anchor_right = 0.5
 anchor_bottom = 0.099
 grow_horizontal = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 script = ExtResource("21_47sfl")
 metadata/_edit_use_anchors_ = true
 
@@ -1514,6 +1515,7 @@ offset_right = 450.0
 offset_bottom = 50.0
 grow_horizontal = 2
 pivot_offset = Vector2(450, 0)
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" parent="Ui/VBoxContainer" unique_id=1180555038 node_paths=PackedStringArray("tracked_node") instance=ExtResource("9_wri43")]

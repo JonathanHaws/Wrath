@@ -2149,6 +2149,7 @@ anchor_right = 0.5
 anchor_bottom = 0.099
 grow_horizontal = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 script = ExtResource("21_28k33")
 metadata/_edit_use_anchors_ = true
 
@@ -2164,6 +2165,7 @@ offset_right = 450.0
 offset_bottom = 50.0
 grow_horizontal = 2
 pivot_offset = Vector2(450, 0)
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" parent="Ui/VBoxContainer" unique_id=2098702256 node_paths=PackedStringArray("tracked_node") instance=ExtResource("21_fddld")]
@@ -2594,7 +2596,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="10" unique_id=665646346]
-transform = Transform3D(0.60162365, -0.5659425, -0.56369996, 0.16299403, 0.7778323, -0.6069672, 0.7819729, 0.2732861, 0.5602077, 1.1090704e-09, 3.0399902, 0.2412262)
+transform = Transform3D(1, 7.494947e-10, -2.1120172e-10, -7.3345063e-10, 0.81562626, -0.5785788, -2.614513e-10, 0.57857877, 0.81562626, 1.1090704e-09, 3.0399902, 0.2412262)
 bone_name = "head"
 bone_idx = 4
 

@@ -1359,6 +1359,7 @@ anchor_right = 0.5
 anchor_bottom = 0.099
 grow_horizontal = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 script = ExtResource("28_x676q")
 metadata/_edit_use_anchors_ = true
 
@@ -1372,6 +1373,7 @@ offset_right = 450.0
 offset_bottom = 50.0
 grow_horizontal = 2
 pivot_offset = Vector2(450, 0)
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="HealthBar" parent="Ui/VBoxContainer" unique_id=1824303872 node_paths=PackedStringArray("tracked_node") instance=ExtResource("17_r1aqn")]
@@ -1539,7 +1541,7 @@ secondary_damp_threshold = 1.0
 
 [node name="AnimationPlayer" parent="Mesh/wrath" index="1" unique_id=2031046783]
 root_motion_track = NodePath("Armature/Skeleton3D:root")
-playback_default_blend_time = 0.4
+playback_default_blend_time = 0.2
 
 [node name="TriggerArea" type="Area3D" parent="." unique_id=1389874001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.98601, 3)
