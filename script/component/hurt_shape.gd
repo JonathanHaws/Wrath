@@ -6,7 +6,7 @@ extends Area3D
 @export var damage_spread: float = 0 ## Determines subtle randomness in attack damage
 @export var damage_multiplier: float = 1 ## Value that can be animated by animation players 
 @export var cooldown: float = 0.2 ## How long after landing a blow until under can be landed
-@export var disable_collision_shape: bool = true ## automatically sets collision shape to disabled in ready
+@export var disable_collision_shape: bool = false ## automatically sets collision shape to disabled in ready
 
 @export_group("Linger")
 @export var linger: bool = false

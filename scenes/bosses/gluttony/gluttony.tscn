@@ -2259,6 +2259,7 @@ groups = Array[String](["gluttony_mesh"])
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_vwjlg")
+disable_collision_shape = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Jump" unique_id=1744555357]
 shape = SubResource("CylinderShape3D_vwjlg")
@@ -2358,6 +2359,7 @@ transform = Transform3D(0.99621, 0, -0.086982, 0, 1, 0, 0.086982, 0, 0.99621, 0,
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_vwjlg")
+disable_collision_shape = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea" unique_id=1514271332]
 transform = Transform3D(-0.27755, -0.724332, -0.631118, 0.960711, -0.209259, -0.18233, 0, -0.656928, 0.753953, 0, 0, 0)
@@ -2384,6 +2386,7 @@ transform = Transform3D(0.0833822, 0, -0.996518, 0, 1, 0, 0.996518, 0, 0.0833822
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_vwjlg")
+disable_collision_shape = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/RightHand/AttackArea" unique_id=1992488368]
 transform = Transform3D(-0.27755, -0.724332, -0.631118, 0.960711, -0.209259, -0.18233, 0, -0.656928, 0.753953, 0, 0, 0)
@@ -2410,6 +2413,7 @@ transform = Transform3D(0.0833822, 0, -0.996518, 0, 1, 0, 0.996518, 0, 0.0833822
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_vwjlg")
+disable_collision_shape = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/LeftLeg/AttackArea" unique_id=1402170967]
 transform = Transform3D(-0.27754772, -0.7243291, -0.6311078, 0.9606954, -0.20925596, -0.1823281, -7.264316e-08, -0.6569247, 0.7539437, 0.12859619, 0.037152767, 0.11662948)
@@ -2435,6 +2439,7 @@ bone_idx = 57
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_vwjlg")
+disable_collision_shape = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/gluttony/Armature/Skeleton3D/RightLeg/AttackArea" unique_id=2021366804]
 transform = Transform3D(-0.27755, -0.724332, -0.631118, 0.960711, -0.209259, -0.18233, 0, -0.656928, 0.753953, 0, 0, 0)

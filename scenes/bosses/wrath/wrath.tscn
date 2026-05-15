@@ -1446,6 +1446,7 @@ groups = Array[String](["wrath_mesh"])
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_x676q")
+disable_collision_shape = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Jump" unique_id=1780483656 groups=["wrath"]]
 shape = SubResource("CylinderShape3D_4usqi")
@@ -1480,6 +1481,7 @@ bone_idx = 6
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_x676q")
+disable_collision_shape = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" unique_id=881468294]
 transform = Transform3D(0.232359, -0.667949, -0.707003, 0.97263, 0.159571, 0.168901, 0, -0.726898, 0.686745, 0, 0, 0)
@@ -1497,6 +1499,7 @@ transform = Transform3D(0.260016, 0.708287, 0.656294, -0.965604, 0.190726, 0.176
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_x676q")
+disable_collision_shape = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/RightHand/Area3D" unique_id=1610799272]
 shape = SubResource("CapsuleShape3D_86b8h")
@@ -1520,6 +1523,7 @@ debug_color = Color(0.7, 0.7, 0.7, 0)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_x676q")
+disable_collision_shape = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/wrath/Armature/Skeleton3D/Torso/Area3D" unique_id=984497997]
 transform = Transform3D(1, 1.16415e-10, -9.31323e-10, 1.16415e-10, 1, 0, 0, 7.45058e-09, 1, -1.99663e-05, 1.64233, -0.317233)

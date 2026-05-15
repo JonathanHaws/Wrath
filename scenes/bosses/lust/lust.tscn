@@ -1819,6 +1819,7 @@ bone_idx = 80
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_827t2")
+disable_collision_shape = true
 hit_shape = NodePath("../../../../../../HitShape")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lust/Armature/Skeleton3D/FrontTail/AttackArea" unique_id=1380342682]
@@ -1836,6 +1837,7 @@ bone_idx = 83
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_827t2")
+disable_collision_shape = true
 hit_shape = NodePath("../../../../../../HitShape")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lust/Armature/Skeleton3D/MiddleTail/AttackArea" unique_id=903192930]
@@ -1853,6 +1855,7 @@ bone_idx = 85
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_827t2")
+disable_collision_shape = true
 hit_shape = NodePath("../../../../../../HitShape")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lust/Armature/Skeleton3D/BackTail/AttackArea" unique_id=969547548]
@@ -1870,6 +1873,7 @@ bone_idx = 6
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_827t2")
+disable_collision_shape = true
 hit_shape = NodePath("../../../../../../HitShape")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lust/Armature/Skeleton3D/LeftHand/AttackArea" unique_id=1333873224]
@@ -1887,6 +1891,7 @@ bone_idx = 61
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_827t2")
+disable_collision_shape = true
 hit_shape = NodePath("../../../../../../HitShape")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/lust/Armature/Skeleton3D/RightHand/AttackArea" unique_id=1677312007]

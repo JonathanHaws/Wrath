@@ -418,7 +418,6 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("6_mb05r")
 damage = 10000.0
-disable_collision_shape = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="KillVolumes/Void" unique_id=1054557280]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 206.713, -241.67612, 36.6345)
@@ -528,6 +527,9 @@ omni_range = 19.0
 [node name="Envy" parent="Sins" unique_id=2069353459 instance=ExtResource("19_oqilo")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 610.431, 166.6565, -32.69289)
 
+[node name="Pride" parent="Sins" unique_id=442030674 instance=ExtResource("29_3ccgg")]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 21.024506, 34.989952, -33.760548)
+
 [node name="Piglet" parent="." unique_id=759269460 instance=ExtResource("15_7vt21")]
 transform = Transform3D(-0.6026232, 0, 0.7980259, 0, 1, 0, -0.7980259, 0, -0.6026232, -39.15186, 28.49634, -153.7488)
 
@@ -543,9 +545,6 @@ debug_color = Color(0.768, 0.79413337, 0.8, 0.88235295)
 
 [node name="Portal" parent="." unique_id=1309770105 instance=ExtResource("28_2yhio")]
 transform = Transform3D(-1, 0, -1.5099579e-07, 0, 1, 0, 1.5099579e-07, 0, -1, -21.439592, 24.78213, 125.03237)
-
-[node name="Pride" parent="." unique_id=442030674 instance=ExtResource("29_3ccgg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.908577, 26.820173, 114.82485)
 
 [connection signal="body_entered" from="KillVolumes/Void" to="KillVolumes/Void" method="_on_body_entered"]
 [connection signal="body_entered" from="KillVolumes/Void2" to="KillVolumes/Void2" method="_on_body_entered"]
