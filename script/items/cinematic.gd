@@ -1,21 +1,13 @@
 extends Node ## Always try to have player camera as the first or oldest child in the scene tree 
-@export var SKIPPER_GROUP: String = "skipper" ## Skipper node enables skip function
-@export var ANIM_NAME: String = "" ## Name of the cinematic animation to be played
-@export var SAVE_KEY: String = "" ## Save if completed for one time cutscenes 
+@export var AREA: Area3D ## Area which if entered by a body apart of the player body group will trigger cutscene
+@export var ANIMATION_PLAYER_GROUPS: Array[String] ## For globally calling other objects who need to play an animation for this cutscene too
+@export var ANIMATION_NAMES: Array[String] ## Corresponding animations for the global objects
 @export var ANIM: AnimationPlayer ## Animation player that will play the cinematic animation
-
-@export_group("Area Trigger") 
-@export var AREA: Area3D
-@export var PLAYER_BODY_GROUP: String = "player_body"
-
-@export_group("Animations") 
-@export var ANIMATION_PLAYER_GROUPS: Array[String]
-@export var ANIMATION_NAMES: Array[String]
-@export var PLAYER_SPOT: Node3D
-
-@export_group("Camera Transition")
-@export var CINEMATIC_CAMERA_GROUP: String = "cinematic_camera"
-@export var TARGET_CAMERA_GROUP: String = "player_camera" ## group that contains player camera that will be interpolated to
+@export var PLAYER_SPOT: Node3D ## Spot player will be teleported when the animation plays
+@export var ANIM_NAME: String = "" ## Name of the cinematic animation to be played
+@export var SAVE_KEY: String = "" ## Save if completed for one time cutscenes. If empty wont save
+@export var SKIPPER_GROUP: String = "skipper" ## Skipper node enables skip function
+@export var PLAYER_BODY_GROUP: String = "player_body" ## The type or group of the players body
 
 func _on_body_entered(body: Node) -> void:
 	if PLAYER_BODY_GROUP != "" and not body.is_in_group(PLAYER_BODY_GROUP): return
@@ -39,27 +31,28 @@ func _skip_cinematic() -> void:
 		if "_skip" in skipper:
 			skipper._skip()
 
-func _seamless_camera_transition(duration: float = 1.5, save_completed: bool = false) -> void: # todo add making it go in reverse player cam to cinematic
-	if save_completed: _save_cinematic_completed()
+func seamless_cam_trans(duration: float = 1.5, target_camera_group: String = "player_camera", save_completed: bool = false) -> void:
+	var current_camera = get_viewport().get_camera_3d()
+	var target_camera = get_tree().get_first_node_in_group(target_camera_group)
 	
-	var cinematic_list = get_tree().get_nodes_in_group(CINEMATIC_CAMERA_GROUP)
-	var target_list = get_tree().get_nodes_in_group(TARGET_CAMERA_GROUP)
-	if cinematic_list.size() == 0 or target_list.size() == 0: return
-	var cinematic_camera = cinematic_list[0]
-	var target_camera = target_list[0]
+	# make new camera to avoid issues changing current or target properties
+	# also if theres animations on them or code they might override transition
+	var transition_camera := Camera3D.new() 
+	get_tree().current_scene.add_child(transition_camera) 
+	transition_camera.global_transform = current_camera.global_transform
+	transition_camera.fov = current_camera.fov
+	transition_camera.current = true
+	
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(cinematic_camera, "global_transform", target_camera.global_transform, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(cinematic_camera, "fov", target_camera.fov, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(transition_camera, "global_transform", target_camera.global_transform, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(transition_camera, "fov", target_camera.fov, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.finished.connect(func():
+		target_camera.current = true
+		transition_camera.queue_free()
 		if save_completed: _save_cinematic_completed()
-		cinematic_camera.current = false
-		#print("making current camera players camera")
-		if save_completed:
-			queue_free()
-			#print('queue_freeing')
 		)
-		
+	
 func _teleport_player_to_player_spot() -> void:
 	if not PLAYER_SPOT: return
 	var player = get_tree().get_nodes_in_group("player_body")[0]
@@ -80,6 +73,6 @@ func _ready() -> void:
 	if AREA: 
 		AREA.body_entered.connect(_on_body_entered)
 	
-	if Save.data.has(SAVE_KEY): 
+	if Save.data.has(SAVE_KEY): # Cutscene is only supposed to play 1 time
 		#print('cutscene already played')
 		queue_free()

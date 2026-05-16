@@ -232,13 +232,27 @@ tracks/6/keys = {
 "method": &"_teleport_player_to_player_spot"
 }]
 }
-tracks/7/type = "audio"
+tracks/7/type = "method"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Cinematic/AnimationPlayer/AudioStreamPlayer")
+tracks/7/path = NodePath("Cinematic")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
+"times": PackedFloat32Array(0.7),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0, "portal_cinematic_cam", false],
+"method": &"seamless_cam_trans"
+}]
+}
+tracks/8/type = "audio"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Cinematic/AnimationPlayer/AudioStreamPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "clips": [{
 "end_offset": 0.0,
 "start_offset": 0.0,
@@ -246,7 +260,7 @@ tracks/7/keys = {
 }],
 "times": PackedFloat32Array(0)
 }
-tracks/7/use_blend = true
+tracks/8/use_blend = true
 
 [sub_resource type="Animation" id="Animation_avuc7"]
 length = 0.001
@@ -346,7 +360,7 @@ light_color = Color(0.294299, 0.67518, 0.743146, 1)
 light_energy = 2.0
 omni_range = 45.0382
 
-[node name="Camera3D" type="Camera3D" parent="Cinematic" unique_id=1344862122]
+[node name="Camera3D" type="Camera3D" parent="Cinematic" unique_id=1344862122 groups=["portal_cinematic_cam"]]
 transform = Transform3D(1, 0, 0, 0, 0.99488074, 0.10105629, 0, -0.10105629, 0.99488074, 0.062806495, 0.8202388, 14.735052)
 fov = 91.859
 

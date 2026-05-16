@@ -1,5 +1,4 @@
 extends Node3D
-
 @export var animation_player: AnimationPlayer 
 @export var unlocked_animation: String = "unlocked"
 @export var save_keys: Array[String] = [
@@ -9,7 +8,9 @@ extends Node3D
 	"sloth_defeated",
 	"wrath_defeated",
 	"envy_defeated",
-	"pride_defeated",]
+	#"pride_defeated",
+	]
+
 var unlocked: bool = false
 
 func check_unlock() -> void:
