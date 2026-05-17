@@ -70,7 +70,7 @@ step = 0.041666668
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"skip",
-"time": 10.916667
+"time": 7.9583335
 }]
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -79,7 +79,7 @@ tracks/0/path = NodePath("Cinematic/Camera3D:fov")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 8),
+"times": PackedFloat32Array(0, 7.9583335),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [20.0, 80.0]
@@ -91,7 +91,7 @@ tracks/1/path = NodePath("Cinematic/Camera3D:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 8),
+"times": PackedFloat32Array(0, 7.9583335),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(363.9596, 190.36052, 469.24988), Vector3(-3.1879578, 37.1509, 71.859825)]
@@ -103,7 +103,7 @@ tracks/2/path = NodePath("Cinematic/Camera3D:rotation")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 8),
+"times": PackedFloat32Array(0, 7.9583335),
 "transitions": PackedFloat32Array(0.5, 1),
 "update": 0,
 "values": [Vector3(-0.2687471, 0.50434697, 0), Vector3(-0.32983345, 0.34290424, 0)]
@@ -299,7 +299,7 @@ SAVE_KEY = "introduction_cutscene_completed"
 [node name="Camera3D" type="Camera3D" parent="Cinematic" unique_id=2010672013 groups=["cinematic_camera"]]
 transform = Transform3D(0.8754897, -0.12831044, 0.4658894, 0, 0.96410346, 0.2655235, -0.4832355, -0.23246318, 0.8440633, 363.9596, 190.36052, 469.24988)
 current = true
-fov = 20.0
+fov = 79.87988
 
 [node name="Doors" type="Node3D" parent="." unique_id=107168045]
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12.821152, -8.169779, 135.73941)

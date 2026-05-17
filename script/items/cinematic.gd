@@ -34,6 +34,9 @@ func _skip_cinematic() -> void:
 func seamless_cam_trans(duration: float = 1.5, target_camera_group: String = "player_camera", save_completed: bool = false) -> void:
 	var current_camera = get_viewport().get_camera_3d()
 	var target_camera = get_tree().get_first_node_in_group(target_camera_group)
+	if current_camera == target_camera: return # No need to transition
+	
+	if get_tree().get_first_node_in_group("skipper").disable_camera_transitions: return
 	
 	# make new camera to avoid issues changing current or target properties
 	# also if theres animations on them or code they might override transition

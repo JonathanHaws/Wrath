@@ -8,6 +8,10 @@ extends Node
 @export var ANIMATION_SKIPPED_BY_BUTTON: String = "SKIPPED_BY_BUTTON" ## Animation name for when skipped by button
 @export var PAUSE_MENU_GROUP: String = "pause_menu" ## Animation name for when skip has been confirmed
 @export var SKIP_BUTTON: Button
+var disable_camera_transitions = false 
+# ^^^ scince skipping will need to make player camera current instantly.
+# Disable any other scripts from doing long transitions or interfering
+# Inside of the cinematic script will read this during the seamless_cam_trans function
 
 func skippable_animation_playing() -> bool: ## Returns wether theres any animation players playing an animation with skippable marker
 	for node in get_tree().get_nodes_in_group(SKIPPABLE_GROUP):
@@ -30,7 +34,11 @@ func _skip_by_button() -> void:
 
 func _skip(skipped_animation: String = "") -> void:
 	
+	disable_camera_transitions = true
 	#print('skip')
+	
+	var target_camera = get_tree().get_first_node_in_group("player_camera")
+	target_camera.current = true
 	
 	for pause_menu in get_tree().get_nodes_in_group(PAUSE_MENU_GROUP):
 		pause_menu.toggle(false) # Unpause if skipped from button
@@ -53,6 +61,8 @@ func _skip(skipped_animation: String = "") -> void:
 	
 	for node in get_tree().get_nodes_in_group(DESTROY_GROUP):
 		node.queue_free()
+		
+	disable_camera_transitions = false
 		
 func _ready() -> void:
 	if SKIP_BUTTON:
