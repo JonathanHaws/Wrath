@@ -475,6 +475,20 @@ transform = Transform3D(0.9193156, 0.15269043, 0.3626902, 0.0062030754, 0.915917
 surface_material_override/0 = SubResource("StandardMaterial3D_3ccgg")
 surface_material_override/1 = SubResource("ShaderMaterial_thcj7")
 
+[node name="Dialog" parent="Sins/Sloth/PathFollow3D/Body" parent_id_path=PackedInt32Array(1434777009, 1434777009) index="12" unique_id=2123824749]
+index = null
+start_index_save_key = null
+dialog_key_map = null
+dialog_group = null
+player_group = null
+jibberish = null
+chat_group = null
+speaker_group = null
+character_delta = null
+pitch_min = null
+pitch_max = null
+sounds = null
+
 [node name="EnvyFly" type="Path3D" parent="Sins" unique_id=2031636455 node_paths=PackedStringArray("node_to_queue_free")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.64444, 29.919395, -21.1921)
 curve = SubResource("Curve3D_uq4p3")

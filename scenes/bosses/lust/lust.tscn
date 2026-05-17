@@ -39,7 +39,6 @@
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="37_r3vda"]
 [ext_resource type="Script" uid="uid://cfvtafc035yyj" path="res://script/dialog/random_dialog.gd" id="38_uwaqa"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/characters/enemies/Cry_2.wav" id="39_6ecgv"]
-[ext_resource type="Script" uid="uid://b7r0jqvwugh6i" path="res://script/dialog/jibberish_chat.gd" id="40_74n3d"]
 [ext_resource type="AudioStream" uid="uid://dluohdjxxbmn2" path="res://audio/sfx/characters/lust/lust_talk.ogg" id="41_qg53i"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d0au0"]
@@ -1685,7 +1684,6 @@ SAVE_COLLECTED = true
 script = ExtResource("21_1gv2p")
 ANIMATION_PLAYER_GROUPS = Array[String](["player_anim"])
 ANIMATION_NAMES = Array[String](["LUST_INTRO"])
-CINEMATIC_CAMERA_GROUP = "lust_cinematic_camera"
 
 [node name="Camera3D" type="Camera3D" parent="IntroCinematic" unique_id=617839535 groups=["lust_cinematic_camera"]]
 transform = Transform3D(1, 0, 0, 0, 0.8712137, 0.49090394, 0, -0.49090394, 0.8712137, -0.062, 10.294, 9.691)
@@ -2019,16 +2017,18 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.44854, -1.47058)
 shape = SubResource("SphereShape3D_ldn6u")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Dialog" unique_id=114233615 node_paths=PackedStringArray("anim", "area")]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Dialog" unique_id=114233615 node_paths=PackedStringArray("anim", "area", "player")]
 root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_7mlpp")
 autoplay = &"RESET"
 script = ExtResource("32_3ttn5")
 dialog_file = ExtResource("33_035v5")
-speaker_name = "lust"
 dialog_templates = Array[PackedScene]([ExtResource("34_fedu3"), ExtResource("35_tf4if"), ExtResource("36_u136s")])
 anim = NodePath(".")
 area = NodePath("..")
+jibberish = true
+player = NodePath("Jibberish")
+sounds = Array[AudioStream]([ExtResource("41_qg53i")])
 
 [node name="Background" parent="Dialog/AnimationPlayer" unique_id=1438604597 instance=ExtResource("37_r3vda")]
 
@@ -2042,12 +2042,8 @@ LINES = Array[String](["random_taunt_1", "random_taunt_2", "random_taunt_3", "ra
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Dialog/AnimationPlayer" unique_id=480837101]
 stream = ExtResource("39_6ecgv")
 
-[node name="Jibberish" type="AudioStreamPlayer" parent="Dialog/AnimationPlayer" unique_id=947420053 node_paths=PackedStringArray("player")]
+[node name="Jibberish" type="AudioStreamPlayer" parent="Dialog/AnimationPlayer" unique_id=947420053]
 bus = &"SFX"
-script = ExtResource("40_74n3d")
-speaker_group = "lust"
-player = NodePath(".")
-sounds = Array[AudioStream]([ExtResource("41_qg53i")])
 
 [node name="Lut" type="Area3D" parent="." unique_id=1971573681 groups=["lut_lust"]]
 collision_layer = 3

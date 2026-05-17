@@ -63,8 +63,10 @@ border_blend = true
 [node name="Background" type="AnimationPlayer" unique_id=509965786]
 libraries/ = SubResource("AnimationLibrary_qtv0c")
 autoplay = &"RESET"
+next/entered = &"active"
 
 [node name="Background" type="ProgressBar" parent="." unique_id=1002251781]
+modulate = Color(1, 1, 1, 0)
 z_index = 1
 anchors_preset = -1
 anchor_top = 0.769444

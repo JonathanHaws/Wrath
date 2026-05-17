@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://scenes/ui/dialog/say.tscn" id="7_p2gj2"]
 [ext_resource type="PackedScene" uid="uid://kiuc3ouuqv0h" path="res://scenes/ui/dialog/say_timed.tscn" id="8_sqsdj"]
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="9_jcpxj"]
-[ext_resource type="Script" uid="uid://b7r0jqvwugh6i" path="res://script/dialog/jibberish_chat.gd" id="10_sjgh2"]
 [ext_resource type="AudioStream" uid="uid://042olyodr1k" path="res://audio/sfx/characters/gluttony/piget_talk1.ogg" id="11_38cti"]
 [ext_resource type="AudioStream" uid="uid://bq5aa53vc3chn" path="res://audio/sfx/characters/gluttony/piget_talk2.ogg" id="12_10ins"]
 [ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://script/items/progress_gate.gd" id="13_mqdry"]
@@ -309,7 +308,7 @@ _data = {
 &"RESET": SubResource("Animation_vyj1q")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iuu88"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ux71l"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_76ygf")
@@ -328,7 +327,7 @@ shader_parameter/emission_texture_intensity = 1.0
 shader_parameter/normal_strength = 1.0
 shader_parameter/enabled_normal = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0mqt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76ygf"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.6435713, 0.64357144, 0.64357126, 1)
@@ -395,9 +394,9 @@ autoplay = &"RESET"
 
 [node name="piglet" parent="." unique_id=162201708 instance=ExtResource("1_iuu88")]
 
-[node name="Mesh" parent="piglet" index="0" unique_id=2116066303 groups=["piglet_mesh"]]
+[node name="Mesh" parent="piglet" index="0" unique_id=109102516 groups=["piglet_mesh"]]
 
-[node name="Skeleton3D" parent="piglet/Mesh" index="0" unique_id=1349517519]
+[node name="Skeleton3D" parent="piglet/Mesh" index="0" unique_id=1417879915]
 bones/0/position = Vector3(0.014366882, 0.0060956455, -1.5908631)
 bones/0/rotation = Quaternion(4.620557e-08, 0.7040688, 0.7101318, -6.050204e-08)
 bones/1/position = Vector3(-1.1199242e-08, -0.17397617, 0.531944)
@@ -431,9 +430,9 @@ bones/27/position = Vector3(0.21547532, 0.06101351, -0.19247521)
 bones/27/rotation = Quaternion(-0.67151713, 0.038685363, 0.005759299, 0.73995614)
 bones/28/rotation = Quaternion(-0.025570905, 0.0012522442, 0.019346531, 0.999485)
 
-[node name="Plane" parent="piglet/Mesh/Skeleton3D" index="0" unique_id=133001245]
-surface_material_override/0 = SubResource("ShaderMaterial_iuu88")
-surface_material_override/1 = SubResource("StandardMaterial3D_b0mqt")
+[node name="Plane" parent="piglet/Mesh/Skeleton3D" index="0" unique_id=1497663779]
+surface_material_override/0 = SubResource("ShaderMaterial_ux71l")
+surface_material_override/1 = SubResource("StandardMaterial3D_76ygf")
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="piglet/Mesh/Skeleton3D" index="1" unique_id=2097558753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8597014, 0, 0)
@@ -533,22 +532,20 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 12.0287
 
-[node name="PigletDialog" type="AnimationPlayer" parent="." unique_id=1426215669 node_paths=PackedStringArray("anim")]
+[node name="PigletDialog" type="AnimationPlayer" parent="." unique_id=1426215669 node_paths=PackedStringArray("anim", "player")]
 libraries/ = SubResource("AnimationLibrary_a5qpk")
 script = ExtResource("4_lk4kr")
 dialog_file = ExtResource("5_mqdry")
-speaker_name = "piglet"
 dialog_templates = Array[PackedScene]([ExtResource("6_n7ptf"), ExtResource("7_p2gj2"), ExtResource("8_sqsdj")])
 anim = NodePath(".")
+jibberish = true
+player = NodePath("Jibberish")
+sounds = Array[AudioStream]([ExtResource("11_38cti"), ExtResource("12_10ins")])
 
 [node name="Background" parent="PigletDialog" unique_id=509965786 instance=ExtResource("9_jcpxj")]
 
-[node name="Jibberish" type="AudioStreamPlayer" parent="PigletDialog" unique_id=1102842512 node_paths=PackedStringArray("player")]
+[node name="Jibberish" type="AudioStreamPlayer" parent="PigletDialog" unique_id=1102842512]
 bus = &"SFX"
-script = ExtResource("10_sjgh2")
-speaker_group = "piglet"
-player = NodePath(".")
-sounds = Array[AudioStream]([ExtResource("11_38cti"), ExtResource("12_10ins")])
 
 [node name="Node" type="Node" parent="." unique_id=1385845519 node_paths=PackedStringArray("node_to_queue_free")]
 script = ExtResource("13_mqdry")

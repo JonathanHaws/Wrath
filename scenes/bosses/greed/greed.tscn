@@ -37,7 +37,6 @@
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://audio/sfx/characters/enemies/Despawn.wav" id="33_gi7wv"]
 [ext_resource type="JSON" path="res://json/greed_talk.json" id="34_l4c82"]
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="35_ggcq0"]
-[ext_resource type="Script" uid="uid://b7r0jqvwugh6i" path="res://script/dialog/jibberish_chat.gd" id="36_po183"]
 [ext_resource type="AudioStream" uid="uid://yn118a1m8hyx" path="res://audio/sfx/characters/greed/greed_talk.ogg" id="37_pscvx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oijfr"]
@@ -1769,15 +1768,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.44854, -1.47058)
 shape = SubResource("SphereShape3D_gsj8k")
 disabled = true
 
-[node name="GreedDialog" type="AnimationPlayer" parent="Dialog" unique_id=1448226865 node_paths=PackedStringArray("anim", "area")]
+[node name="GreedDialog" type="AnimationPlayer" parent="Dialog" unique_id=1448226865 node_paths=PackedStringArray("anim", "area", "player")]
 libraries/ = SubResource("AnimationLibrary_4x5y3")
 autoplay = &"RESET"
 script = ExtResource("30_m6bjg")
 dialog_file = ExtResource("34_l4c82")
-speaker_name = "greed"
 dialog_templates = Array[PackedScene]([ExtResource("31_fylmt"), ExtResource("32_p1irb"), ExtResource("33_4x5y3")])
 anim = NodePath(".")
 area = NodePath("..")
+jibberish = true
+player = NodePath("Jibberish")
+sounds = Array[AudioStream]([ExtResource("37_pscvx")])
 
 [node name="RandomDialog" type="Timer" parent="Dialog/GreedDialog" unique_id=90600772 node_paths=PackedStringArray("DIALOG", "HIT_SHAPE")]
 script = ExtResource("29_vf75k")
@@ -1785,14 +1786,10 @@ DIALOG = NodePath("..")
 HIT_SHAPE = NodePath("../../../HitShape")
 LINES = Array[String](["random_taunt_1", "random_taunt_2", "random_taunt_3"])
 
-[node name="Jibberish" type="AudioStreamPlayer" parent="Dialog/GreedDialog" unique_id=1816978811 node_paths=PackedStringArray("player")]
+[node name="Jibberish" type="AudioStreamPlayer" parent="Dialog/GreedDialog" unique_id=1816978811]
 process_mode = 3
 volume_db = -7.0
 bus = &"SFX"
-script = ExtResource("36_po183")
-speaker_group = "greed"
-player = NodePath(".")
-sounds = Array[AudioStream]([ExtResource("37_pscvx")])
 
 [node name="Background" parent="Dialog/GreedDialog" unique_id=193652404 instance=ExtResource("35_ggcq0")]
 

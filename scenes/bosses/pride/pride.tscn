@@ -27,15 +27,10 @@
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="25_osw8t"]
 [ext_resource type="Material" uid="uid://c8vfx4h7g605y" path="res://shaders/materials/characters/pride.tres" id="26_7rw28"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://script/component/root_motion.gd" id="26_8l61o"]
-[ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://scenes/ui/dialog/choice.tscn" id="26_pd0jx"]
-[ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://scenes/ui/dialog/say.tscn" id="27_or7ux"]
-[ext_resource type="PackedScene" uid="uid://kiuc3ouuqv0h" path="res://scenes/ui/dialog/say_timed.tscn" id="28_hnqmt"]
 [ext_resource type="JSON" uid="uid://dgjgq3dsd2m3j" path="res://json/pride_talk.json" id="29_2x3ef"]
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="30_2q8t5"]
 [ext_resource type="Script" uid="uid://cfvtafc035yyj" path="res://script/dialog/random_dialog.gd" id="31_q4x5b"]
-[ext_resource type="Script" uid="uid://b7r0jqvwugh6i" path="res://script/dialog/jibberish_chat.gd" id="32_g0nbo"]
 [ext_resource type="AudioStream" uid="uid://bi0nj82twwtib" path="res://audio/sfx/characters/envy/envy_talk_1.ogg" id="35_3oycc"]
-[ext_resource type="AudioStream" uid="uid://n755vlvhxln5" path="res://audio/sfx/characters/envy/envy_talk_2.ogg" id="36_dtjrg"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_20oj1"]
 radius = 0.78333
@@ -769,13 +764,14 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 27.0089
 
-[node name="Dialog" type="AnimationPlayer" parent="." unique_id=350144529 node_paths=PackedStringArray("anim")]
+[node name="Dialog" type="AnimationPlayer" parent="." unique_id=350144529 node_paths=PackedStringArray("anim", "player")]
 libraries/ = SubResource("AnimationLibrary_sxwwu")
 script = ExtResource("25_2x3ef")
 dialog_file = ExtResource("29_2x3ef")
-speaker_name = "pig"
-dialog_templates = Array[PackedScene]([ExtResource("26_pd0jx"), ExtResource("27_or7ux"), ExtResource("28_hnqmt")])
 anim = NodePath(".")
+jibberish = true
+player = NodePath("Jibberish")
+sounds = Array[AudioStream]([ExtResource("35_3oycc")])
 
 [node name="Background" parent="Dialog" unique_id=1392334860 instance=ExtResource("30_2q8t5")]
 
@@ -784,13 +780,9 @@ script = ExtResource("31_q4x5b")
 DIALOG = NodePath("..")
 LINES = Array[String](["random_taunt_1"])
 
-[node name="Jibberish" type="AudioStreamPlayer" parent="Dialog" unique_id=1401897110 node_paths=PackedStringArray("player")]
+[node name="Jibberish" type="AudioStreamPlayer" parent="Dialog" unique_id=1401897110]
 process_mode = 3
 bus = &"SFX"
-script = ExtResource("32_g0nbo")
-speaker_group = "pig"
-player = NodePath(".")
-sounds = Array[AudioStream]([ExtResource("35_3oycc"), ExtResource("36_dtjrg")])
 
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
 

@@ -43,7 +43,6 @@
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="41_7awae"]
 [ext_resource type="JSON" path="res://json/envy_talk.json" id="41_x0k4b"]
 [ext_resource type="Script" uid="uid://cfvtafc035yyj" path="res://script/dialog/random_dialog.gd" id="42_vie5j"]
-[ext_resource type="Script" uid="uid://b7r0jqvwugh6i" path="res://script/dialog/jibberish_chat.gd" id="43_2vrwt"]
 [ext_resource type="AudioStream" uid="uid://bi0nj82twwtib" path="res://audio/sfx/characters/envy/envy_talk_1.ogg" id="45_hc8br"]
 [ext_resource type="AudioStream" uid="uid://n755vlvhxln5" path="res://audio/sfx/characters/envy/envy_talk_2.ogg" id="46_7awae"]
 [ext_resource type="AudioStream" uid="uid://babrl1yhvqicx" path="res://audio/sfx/characters/envy/envy_talk_3.ogg" id="47_vie5j"]
@@ -1671,13 +1670,15 @@ collision_mask = 3
 shape = SubResource("SphereShape3D_od1a5")
 debug_color = Color(0.7, 0.7, 0.7, 0.0196078)
 
-[node name="Dialog" type="AnimationPlayer" parent="." unique_id=1329055760 node_paths=PackedStringArray("anim")]
+[node name="Dialog" type="AnimationPlayer" parent="." unique_id=1329055760 node_paths=PackedStringArray("anim", "player")]
 libraries/ = SubResource("AnimationLibrary_hc8br")
 script = ExtResource("37_pmjfi")
 dialog_file = ExtResource("41_x0k4b")
-speaker_name = "envy"
 dialog_templates = Array[PackedScene]([ExtResource("38_x0k4b"), ExtResource("39_06a6w"), ExtResource("40_hc8br")])
 anim = NodePath(".")
+jibberish = true
+player = NodePath("Jibberish")
+sounds = Array[AudioStream]([ExtResource("45_hc8br"), ExtResource("46_7awae"), ExtResource("47_vie5j")])
 
 [node name="Background" parent="Dialog" unique_id=1095527906 instance=ExtResource("41_7awae")]
 
@@ -1687,15 +1688,11 @@ DIALOG = NodePath("..")
 SEQUENTIAL = true
 LINES = Array[String](["random_taunt_1", "random_taunt_2", "random_taunt_3", "random_taunt_4"])
 
-[node name="Jibberish" type="AudioStreamPlayer" parent="Dialog" unique_id=1148864199 node_paths=PackedStringArray("player")]
+[node name="Jibberish" type="AudioStreamPlayer" parent="Dialog" unique_id=1148864199]
 process_mode = 3
 volume_db = 2.0
 pitch_scale = 0.9
 bus = &"SFX"
-script = ExtResource("43_2vrwt")
-speaker_group = "envy"
-player = NodePath(".")
-sounds = Array[AudioStream]([ExtResource("45_hc8br"), ExtResource("46_7awae"), ExtResource("47_vie5j")])
 
 [connection signal="body_entered" from="Mesh/envy/Jump" to="Mesh/envy/Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]

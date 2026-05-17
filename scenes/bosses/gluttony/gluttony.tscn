@@ -23,7 +23,6 @@
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="21_28k33"]
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="21_fddld"]
 [ext_resource type="StyleBox" uid="uid://bw47y3rgbs5wu" path="res://shaders/bar/gluttony_health.tres" id="22_28k33"]
-[ext_resource type="Script" uid="uid://b7r0jqvwugh6i" path="res://script/dialog/jibberish_chat.gd" id="22_oobth"]
 [ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://scenes/ui/damage_numbers.tscn" id="23_adl7b"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/themes/notification.tres" id="23_wlv32"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="24_r4ucj"]
@@ -2673,9 +2672,10 @@ curve = SubResource("Curve3D_76nnf")
 libraries/ = SubResource("AnimationLibrary_vj6n6")
 script = ExtResource("31_ddcis")
 dialog_file = ExtResource("49_26016")
-speaker_name = "gluttony"
 dialog_templates = Array[PackedScene]([ExtResource("32_26016"), ExtResource("33_x6t7s"), ExtResource("34_76nnf")])
 anim = NodePath(".")
+jibberish = true
+sounds = Array[AudioStream]([ExtResource("18_n5wbu")])
 
 [node name="Background" parent="Dialog/PigDialog" unique_id=42615546 instance=ExtResource("36_x6t7s")]
 
@@ -2684,14 +2684,10 @@ script = ExtResource("47_26016")
 DIALOG = NodePath("..")
 LINES = Array[String](["random_taunt_1", "random_taunt_2"])
 
-[node name="Jibberish" type="AudioStreamPlayer" parent="Dialog/PigDialog" unique_id=1804017237 node_paths=PackedStringArray("player")]
+[node name="Jibberish" type="AudioStreamPlayer" parent="Dialog/PigDialog" unique_id=1804017237]
 process_mode = 3
 volume_db = -7.0
 bus = &"SFX"
-script = ExtResource("22_oobth")
-speaker_group = "gluttony"
-player = NodePath(".")
-sounds = Array[AudioStream]([ExtResource("18_n5wbu")])
 
 [connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea" to="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea" method="_on_body_entered"]

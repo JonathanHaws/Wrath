@@ -1,11 +1,10 @@
 extends Node
 @export_group("Dialog") 
 @export var dialog_file: Resource ## Json file which specifies dialog. "Branch", "Say", "Say_Timed", Choice", etc
-@export var speaker_name: String = "" ## Group name... Used for jibberish audio to only apply to this entitys dialog
 @export var index: int = 0 ## The current line the dialog is on...
 @export var start_index_save_key: String = "" ## Used to specify when the dialog will save / start from on scene reloads or dialog ends. Auto generated if not specified
-var dialog_active: bool = false
 var dialog: Array
+var last_dialog_instance
 
 @export_subgroup("Templates") ## Scene templates to spawn specified in dialog JSON f
 @export var dialog_key_map : Array[String] = ["choice", "say", "say_timed"] ## For shortening dialog files. Specify what key should spawn what scene
@@ -18,14 +17,46 @@ var dialog: Array
 @export var player_group: String = "player" ## Defines the group of bodies which can trigger conversations
 var in_range: bool = false 
 
+@export_group("Audio")
+@export_subgroup("Jibberish")
+@export var jibberish: bool = false
+@export var character_delta: int = 3
+@export var pitch_min: float = 0.8
+@export var pitch_max: float = 1.2
+@export var player: AudioStreamPlayer
+@export var sounds: Array[AudioStream] = []
+var last_visible := 0
+var label: Label
+func _play_jibberish():
+	#print('test')
+	if not jibberish: return
+	if not is_instance_valid(last_dialog_instance): return
+	var new_label := last_dialog_instance.find_child("Label", true, false) as Label
+	if new_label != label: last_visible = 0
+	label = new_label
+	
+	if not label or not player: return
+	if label.visible_characters > label.text.length(): return
+	if label.visible_characters - last_visible < character_delta: return
+
+	#print(speaker_group)
+	if sounds.size() > 0: player.stream = sounds[randi() % sounds.size()]
+	player.pitch_scale = randf_range(pitch_min, pitch_max)
+	player.play()
+	
+	#print(speaker_group)
+	last_visible = label.visible_characters
+	
 func _on_body_entered(body) -> void:
 	if not body.is_in_group(player_group): return
+	if anim: anim.queue("entered")
 	if Config: Config.play_animation_by_group("dialog_enable")
 	in_range = true
 	spawn()	
 
 func _on_body_exited(body)-> void:
 	if not body.is_in_group(player_group): return
+	if anim: anim.queue("exited")
 	if Config: Config.play_animation_by_group("dialog_disable")
 	for child in get_children(): if child.has_method("exit_area"): child.exit_area()
 	in_range = false
@@ -58,16 +89,6 @@ func end() -> void:
 func purge_dialog() -> void:
 	for node in get_tree().get_nodes_in_group(dialog_group): node.queue_free()
 
-func _is_dialog_in_tree() -> bool:
-	var dialog_in_tree: Array = get_tree().get_nodes_in_group(dialog_group)
-	if dialog_in_tree.size() == 0: return false
-	if speaker_name != "":
-		for n in dialog_in_tree:
-			if n.is_in_group(speaker_name):
-				return true
-		return false
-	return true 
-
 func goto(value: Variant) -> void:
 	index = get_index_for_value(value)
 
@@ -87,9 +108,9 @@ func spawn() -> void:
 			var instance = dialog_templates[i].instantiate()
 			instance.dialog = self
 			instance.info = entry[key]
-			if speaker_name != "": instance.add_to_group(speaker_name)
 			if dialog_group != "": instance.add_to_group(dialog_group)
 			add_child(instance)
+			last_dialog_instance = instance
 	
 	if "start" in entry:
 		Save.data[get_start_key()] = index
@@ -128,13 +149,6 @@ func _ready():
 		area.body_entered.connect(_on_body_entered)
 		area.body_exited.connect(_on_body_exited)
 
-func _physics_process(_delta: float) -> void:
-	#print(get_tree().get_nodes_in_group(dialog_group).size())
-	#print(start_index, " ", index)
+func _process(_delta):
 	
-	var active: bool = _is_dialog_in_tree() # Poll to see if dialog is active
-	if active and not dialog_active:
-		anim.queue("entered")
-	elif not active and dialog_active:
-		anim.queue("exited")
-	dialog_active = active
+	_play_jibberish()
