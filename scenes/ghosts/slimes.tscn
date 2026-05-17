@@ -659,7 +659,7 @@ bus = &"SFX"
 [node name="Slime2" type="AudioStreamPlayer" parent="Audio/Slime" unique_id=1204888436]
 process_mode = 3
 stream = ExtResource("17_poail")
-volume_db = -3.0
+volume_db = -7.0
 bus = &"SFX"
 
 [node name="Death" type="Node" parent="Audio" unique_id=694697829]

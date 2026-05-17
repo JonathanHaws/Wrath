@@ -8,16 +8,6 @@ var dialog: Array
 var dialog_instance
 var dialog_instance_valid_last_frame := false
 
-#@export_subgroup("Random Dialog") #wip consoldiation
-#@export var hit_shape: Node ## Specifies the node that has 'HEALTH' and 'MAX HEALTH' For trigger hps
-#@export var sequential: bool = false
-#@export var delete_after_play: bool = true ## Remove line from list after playing
-#@export var min_interval: float = 4.5 ## Minimum seconds between lines
-#@export var max_interval: float = 8.0 ## Maximum seconds between lines
-#@export var fail_interval: float = 0.2 ## Timeout if no line can play
-#@export var lines: Array[String] = [] ## Specifies which dialog branch to go to 
-
-
 @export_subgroup("Templates") ## Scene templates to spawn specified in dialog JSON f
 @export var dialog_key_map : Array[String] = ["choice", "say", "say_timed"] ## For shortening dialog files. Specify what key should spawn what scene
 @export var dialog_templates: Array[PackedScene] = [] ## Scene templates to spawn / despawn when the last sentence is finished
@@ -29,9 +19,64 @@ var dialog_instance_valid_last_frame := false
 @export var player_group: String = "player" ## Defines the group of bodies which can trigger conversations
 var in_range: bool = false 
 
+@export_group("Random") #wip consoldiation
+@export var random_dialog: bool = false
+@export var sequential: bool = false
+@export var delete_after_play: bool = true ## Remove line from list after playing
+@export var min_interval: float = 4.5 ## Minimum seconds between lines
+@export var max_interval: float = 8.0 ## Maximum seconds between lines
+@export var fail_interval: float = 0.2 ## Timeout if no line can play
+@export var lines: Array[String] = [] ## Specifies which dialog branch to go to 
+@export var hit_shape: Node ## Specifies the node that has 'HEALTH' and 'MAX HEALTH' For trigger hps
+var random_accum: float = 0.0
+var random_dialog_index: int = 0
+## Potential cool feature is save dialog so it only ever happens once
+
+func get_branch_time(start_index: int) -> float:
+	var total: float = 0.0
+	var i: int = start_index
+	while i < dialog.size() and not dialog[i].has("branch"):
+		if dialog[i].has("say_timed"):
+			total += float(dialog[i].say_timed["for"])
+		i += 1
+	return total
+
+func is_hp_in_range(entry: Dictionary) -> bool:
+	var min_hp: float = 0.0
+	var max_hp: float = 1.0
+	if entry.has("min_health"): min_hp = entry["min_health"]
+	if entry.has("max_health"): max_hp = entry["max_health"]
+	var current_hp: float = 1.0
+	if hit_shape: current_hp = hit_shape.HEALTH / hit_shape.MAX_HEALTH
+	return current_hp >= min_hp and current_hp <= max_hp
+
+func _spawn_random_dialog(delta) -> void:
+	if not random_dialog: return 
+	if lines.is_empty(): return
+
+	random_accum += delta
+	if random_accum < randf_range(min_interval, max_interval): return
+
+	var entry: Dictionary = get_dictionary_for_value(lines[random_dialog_index], 1)	
+	if not is_hp_in_range(entry): return
+	spawn_branch(lines[random_dialog_index])		
+	#print(entry)
+	
+	random_accum = 0
+	var branch_time = get_branch_time(index)
+	random_accum -= branch_time
+
+	if delete_after_play: if random_dialog_index < lines.size(): lines.remove_at(random_dialog_index)
+	
+	if lines.size() > 0:# Deletion shifts array so no +1 is needed for sequential incrementation
+		if sequential: random_dialog_index = random_dialog_index % lines.size() 
+		else: random_dialog_index = (random_dialog_index + randi_range(1, lines.size())) % lines.size()
+
+	#if not random_dialog_active: false
+
 @export_group("Audio")
 @export_subgroup("Jibberish")
-@export var jibberish: bool = false
+@export var jibberish: bool = true
 @export var character_delta: int = 3
 @export var pitch_min: float = 0.8
 @export var pitch_max: float = 1.2
@@ -39,9 +84,11 @@ var in_range: bool = false
 @export var sounds: Array[AudioStream] = []
 var last_visible := 0
 var label: Label
+
 func _play_jibberish():
 	#print('test')
 	if not jibberish: return
+	if sounds.size() == 0: return
 	if not is_instance_valid(dialog_instance): return
 	var new_label := dialog_instance.find_child("Label", true, false) as Label
 	if new_label != label: last_visible = 0
@@ -72,6 +119,16 @@ func _on_body_exited(body)-> void:
 	if Config: Config.play_animation_by_group("dialog_disable")
 	for child in get_children(): if child.has_method("exit_area"): child.exit_area()
 	in_range = false
+
+func _background_animation() -> void:
+	# plays backgroudn animation any time dialog exists... 
+	# even if player is outside of area. Call in process 
+	var valid := is_instance_valid(dialog_instance)
+	if valid and not dialog_instance_valid_last_frame:
+		anim.queue("entered")
+	elif not valid and dialog_instance_valid_last_frame:
+		anim.queue("exited")
+	dialog_instance_valid_last_frame = valid
 
 func get_dictionary_for_value(value: Variant, offset: int = 0) -> Dictionary:
 	var idx: int = get_index_for_value(value) + offset
@@ -164,11 +221,6 @@ func _ready():
 func _process(_delta):
 	
 	_play_jibberish()
-	
-	var valid := is_instance_valid(dialog_instance)
-	if valid and not dialog_instance_valid_last_frame:
-		anim.queue("entered")
-	elif not valid and dialog_instance_valid_last_frame:
-		anim.queue("exited")
-	dialog_instance_valid_last_frame = valid
+	_spawn_random_dialog(_delta)
+	_background_animation()
 		#print(name)

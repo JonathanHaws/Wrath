@@ -42,7 +42,6 @@
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="36_x6t7s"]
 [ext_resource type="Material" uid="uid://gwfmysarj7pc" path="res://textures/particles/dust/dust.tres" id="40_uk6rk"]
 [ext_resource type="PackedScene" uid="uid://koykwgdddqjf" path="res://scenes/bosses/gluttony/fast_vomit.tscn" id="41_ddcis"]
-[ext_resource type="Script" uid="uid://cfvtafc035yyj" path="res://script/dialog/random_dialog.gd" id="47_26016"]
 [ext_resource type="JSON" path="res://json/gluttony_talk.json" id="49_26016"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_12e26"]
@@ -198,24 +197,22 @@ tracks/4/keys = {
 "method": &"impact"
 }]
 }
-tracks/5/type = "method"
+tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Dialog/PigDialog/RandomDialog")
-tracks/5/interp = 1
+tracks/5/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/5/interp = 0
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"stop"
-}]
+"update": 0,
+"values": [0.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/6/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/6/interp = 0
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -239,8 +236,8 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/8/interp = 0
+tracks/8/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
@@ -251,58 +248,46 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/9/path = NodePath("Target:USE_GRAVITY")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [false]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Target:USE_GRAVITY")
+tracks/10/path = NodePath("Ui:modulate")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Ui:modulate")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
 "times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0.933419), Color(1, 1, 1, 0)]
 }
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Light:light_energy")
-tracks/12/interp = 2
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Light:light_energy")
+tracks/11/interp = 2
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0, 2.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [20.0, 0.0]
 }
-tracks/13/type = "method"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Dialog/PigDialog")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Dialog/PigDialog")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(2.6),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -310,25 +295,25 @@ tracks/13/keys = {
 "method": &"spawn_branch"
 }]
 }
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Target:MOVE_AND_SLIDE")
-tracks/14/interp = 0
-tracks/14/loop_wrap = true
-tracks/14/keys = {
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/keys = {
 "times": PackedFloat32Array(0, 3.56667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/15/type = "method"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("WispReward")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("WispReward")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(4),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -657,31 +642,29 @@ tracks/12/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
-tracks/13/type = "method"
+tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Dialog/PigDialog/RandomDialog")
-tracks/13/interp = 1
+tracks/13/path = NodePath("HitShape:INVINCIBLE")
+tracks/13/interp = 0
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(16.958334),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [0],
-"method": &"start"
-}]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("HitShape:INVINCIBLE")
-tracks/14/interp = 0
-tracks/14/loop_wrap = true
-tracks/14/keys = {
 "times": PackedFloat32Array(12),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [false]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Dialog/PigDialog:random_dialog")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(16.833334),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -877,6 +860,18 @@ tracks/15/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0, 0, 0, 0)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Dialog/PigDialog:random_dialog")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_12e26"]
@@ -2668,21 +2663,17 @@ curve = SubResource("Curve3D_76nnf")
 
 [node name="Dialog" type="Node" parent="." unique_id=1007750878]
 
-[node name="PigDialog" type="AnimationPlayer" parent="Dialog" unique_id=520841044 node_paths=PackedStringArray("anim")]
+[node name="PigDialog" type="AnimationPlayer" parent="Dialog" unique_id=520841044 node_paths=PackedStringArray("anim", "player")]
 libraries/ = SubResource("AnimationLibrary_vj6n6")
 script = ExtResource("31_ddcis")
 dialog_file = ExtResource("49_26016")
-dialog_templates = Array[PackedScene]([ExtResource("32_26016"), ExtResource("33_x6t7s"), ExtResource("34_76nnf")])
 anim = NodePath(".")
-jibberish = true
+dialog_templates = Array[PackedScene]([ExtResource("32_26016"), ExtResource("33_x6t7s"), ExtResource("34_76nnf")])
+lines = Array[String](["random_taunt_1", "random_taunt_2"])
+player = NodePath("Jibberish")
 sounds = Array[AudioStream]([ExtResource("18_n5wbu")])
 
 [node name="Background" parent="Dialog/PigDialog" unique_id=42615546 instance=ExtResource("36_x6t7s")]
-
-[node name="RandomDialog" type="Timer" parent="Dialog/PigDialog" unique_id=910202184 node_paths=PackedStringArray("DIALOG")]
-script = ExtResource("47_26016")
-DIALOG = NodePath("..")
-LINES = Array[String](["random_taunt_1", "random_taunt_2"])
 
 [node name="Jibberish" type="AudioStreamPlayer" parent="Dialog/PigDialog" unique_id=1804017237]
 process_mode = 3

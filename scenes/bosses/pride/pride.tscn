@@ -29,7 +29,6 @@
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://script/component/root_motion.gd" id="26_8l61o"]
 [ext_resource type="JSON" uid="uid://dgjgq3dsd2m3j" path="res://json/pride_talk.json" id="29_2x3ef"]
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="30_2q8t5"]
-[ext_resource type="Script" uid="uid://cfvtafc035yyj" path="res://script/dialog/random_dialog.gd" id="31_q4x5b"]
 [ext_resource type="AudioStream" uid="uid://bi0nj82twwtib" path="res://audio/sfx/characters/envy/envy_talk_1.ogg" id="35_3oycc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_20oj1"]
@@ -148,7 +147,7 @@ tracks/6/keys = {
 tracks/7/type = "method"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Dialog/RandomDialog")
+tracks/7/path = NodePath(".")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
@@ -156,54 +155,40 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
-"method": &"stop"
-}]
-}
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath(".")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
 "method": &"defeated"
 }]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Ui:modulate")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Ui:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0, 1.43333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Light:light_energy")
-tracks/10/interp = 2
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Light:light_energy")
+tracks/9/interp = 2
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0.4, 2.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [20.0, 0.0]
 }
-tracks/11/type = "method"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Dialog")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Dialog")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(2.6),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -211,13 +196,13 @@ tracks/11/keys = {
 "method": &"spawn_branch"
 }]
 }
-tracks/12/type = "method"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("WispReward")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("WispReward")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(4.46667),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -225,13 +210,13 @@ tracks/12/keys = {
 "method": &"give"
 }]
 }
-tracks/13/type = "method"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Mesh/ShaderTween")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Mesh/ShaderTween")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(1.2),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -239,13 +224,13 @@ tracks/13/keys = {
 "method": &"tween"
 }]
 }
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Mesh/pride/Armature_001/Skeleton3D/eyes:visible")
-tracks/14/interp = 0
-tracks/14/loop_wrap = true
-tracks/14/keys = {
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Mesh/pride/Armature_001/Skeleton3D/eyes:visible")
+tracks/13/interp = 0
+tracks/13/loop_wrap = true
+tracks/13/keys = {
 "times": PackedFloat32Array(0, 1.7333333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
@@ -344,19 +329,17 @@ tracks/6/keys = {
 "method": &"impact"
 }]
 }
-tracks/7/type = "method"
+tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Dialog/RandomDialog")
+tracks/7/path = NodePath("Dialog:random_dialog")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(2.622),
+"times": PackedFloat32Array(2.6666667),
 "transitions": PackedFloat32Array(1),
-"values": [{
-"args": [],
-"method": &"start"
-}]
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -468,6 +451,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Dialog:random_dialog")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
@@ -769,16 +764,11 @@ libraries/ = SubResource("AnimationLibrary_sxwwu")
 script = ExtResource("25_2x3ef")
 dialog_file = ExtResource("29_2x3ef")
 anim = NodePath(".")
-jibberish = true
+lines = Array[String](["random_taunt_1"])
 player = NodePath("Jibberish")
 sounds = Array[AudioStream]([ExtResource("35_3oycc")])
 
 [node name="Background" parent="Dialog" unique_id=1392334860 instance=ExtResource("30_2q8t5")]
-
-[node name="RandomDialog" type="Timer" parent="Dialog" unique_id=626962202 node_paths=PackedStringArray("DIALOG")]
-script = ExtResource("31_q4x5b")
-DIALOG = NodePath("..")
-LINES = Array[String](["random_taunt_1"])
 
 [node name="Jibberish" type="AudioStreamPlayer" parent="Dialog" unique_id=1401897110]
 process_mode = 3
