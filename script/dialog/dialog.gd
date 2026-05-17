@@ -3,8 +3,20 @@ extends Node
 @export var dialog_file: Resource ## Json file which specifies dialog. "Branch", "Say", "Say_Timed", Choice", etc
 @export var index: int = 0 ## The current line the dialog is on...
 @export var start_index_save_key: String = "" ## Used to specify when the dialog will save / start from on scene reloads or dialog ends. Auto generated if not specified
+@export var anim: AnimationPlayer ## For background animations
 var dialog: Array
-var last_dialog_instance
+var dialog_instance
+var dialog_instance_valid_last_frame := false
+
+#@export_subgroup("Random Dialog") #wip consoldiation
+#@export var hit_shape: Node ## Specifies the node that has 'HEALTH' and 'MAX HEALTH' For trigger hps
+#@export var sequential: bool = false
+#@export var delete_after_play: bool = true ## Remove line from list after playing
+#@export var min_interval: float = 4.5 ## Minimum seconds between lines
+#@export var max_interval: float = 8.0 ## Maximum seconds between lines
+#@export var fail_interval: float = 0.2 ## Timeout if no line can play
+#@export var lines: Array[String] = [] ## Specifies which dialog branch to go to 
+
 
 @export_subgroup("Templates") ## Scene templates to spawn specified in dialog JSON f
 @export var dialog_key_map : Array[String] = ["choice", "say", "say_timed"] ## For shortening dialog files. Specify what key should spawn what scene
@@ -12,7 +24,7 @@ var last_dialog_instance
 @export var dialog_group: String = "dialog" ## Group all instances of templates are added to. Used by other scrips (Such as cutscene skipper) to get rid of them
 
 @export_group("Area")
-@export var anim: AnimationPlayer ## For entry / exit animations from area
+@export var area_anim: AnimationPlayer ## For entry / exit animations from area
 @export var area: Area3D ## Defines the range in which will activate conversations
 @export var player_group: String = "player" ## Defines the group of bodies which can trigger conversations
 var in_range: bool = false 
@@ -30,8 +42,8 @@ var label: Label
 func _play_jibberish():
 	#print('test')
 	if not jibberish: return
-	if not is_instance_valid(last_dialog_instance): return
-	var new_label := last_dialog_instance.find_child("Label", true, false) as Label
+	if not is_instance_valid(dialog_instance): return
+	var new_label := dialog_instance.find_child("Label", true, false) as Label
 	if new_label != label: last_visible = 0
 	label = new_label
 	
@@ -49,14 +61,14 @@ func _play_jibberish():
 	
 func _on_body_entered(body) -> void:
 	if not body.is_in_group(player_group): return
-	if anim: anim.queue("entered")
+	if area_anim: area_anim.queue("entered")
 	if Config: Config.play_animation_by_group("dialog_enable")
 	in_range = true
 	spawn()	
 
 func _on_body_exited(body)-> void:
 	if not body.is_in_group(player_group): return
-	if anim: anim.queue("exited")
+	if area_anim: area_anim.queue("exited")
 	if Config: Config.play_animation_by_group("dialog_disable")
 	for child in get_children(): if child.has_method("exit_area"): child.exit_area()
 	in_range = false
@@ -110,7 +122,7 @@ func spawn() -> void:
 			instance.info = entry[key]
 			if dialog_group != "": instance.add_to_group(dialog_group)
 			add_child(instance)
-			last_dialog_instance = instance
+			dialog_instance = instance
 	
 	if "start" in entry:
 		Save.data[get_start_key()] = index
@@ -152,3 +164,11 @@ func _ready():
 func _process(_delta):
 	
 	_play_jibberish()
+	
+	var valid := is_instance_valid(dialog_instance)
+	if valid and not dialog_instance_valid_last_frame:
+		anim.queue("entered")
+	elif not valid and dialog_instance_valid_last_frame:
+		anim.queue("exited")
+	dialog_instance_valid_last_frame = valid
+		#print(name)
