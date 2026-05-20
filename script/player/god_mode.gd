@@ -31,8 +31,8 @@ func _physics_process(_delta):
 			ANIMATION_PLAYER.play(EXIT_ANIMATION)
 		
 	if mode: 
-		#if Input.is_action_just_pressed("get_wisp"):
-			#Save.data["wisp"] = Save.data.get("wisp", 0) + 50
+		if Input.is_action_just_pressed("get_wisp"):
+			Save.data["wisp"] = Save.data.get("wisp", 0) + 50
 		
 		if PLAYER: PLAYER.global_transform.origin = last_position
 			
