@@ -8,12 +8,6 @@
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="6_q7gyr"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="7_q0qa8"]
 [ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="8_2b5g7"]
-[ext_resource type="Shader" uid="uid://bqr41vgk3hmn3" path="res://shaders/custom/lut.gdshader" id="9_xw3l5"]
-[ext_resource type="Script" uid="uid://cwd351l2pmkkl" path="res://script/ui/menu/options/video/lut_maker.gd" id="10_xw3l5"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xj7rx"]
-shader = ExtResource("9_xw3l5")
-shader_parameter/blend = 0.0
 
 [node name="Control" type="Control" unique_id=1288123490]
 process_mode = 3
@@ -28,48 +22,24 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nub3j")
 
-[node name="LutMaker" type="ColorRect" parent="." unique_id=209391130 node_paths=PackedStringArray("dynamic_ui_control")]
-visible = false
-material = SubResource("ShaderMaterial_xj7rx")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = ExtResource("4_ulx4h")
-script = ExtResource("10_xw3l5")
-dynamic_ui_control = NodePath("../LutMakerUI")
-
-[node name="LutMakerUI" type="Control" parent="." unique_id=836565983]
-layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-grow_horizontal = 0
-pivot_offset_ratio = Vector2(1, 0)
-theme = ExtResource("4_ulx4h")
-script = ExtResource("2_km2ec")
-
 [node name="Control" type="Control" parent="." unique_id=646850414]
 layout_mode = 1
 anchors_preset = 0
 script = ExtResource("2_km2ec")
 
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=713534090 groups=["ui_scalable"]]
-custom_minimum_size = Vector2(5.02, 2.74)
 layout_mode = 0
-offset_right = 373.0
-offset_bottom = 329.0
+offset_top = 1.0
+offset_right = 368.0
+offset_bottom = 327.0
 color = Color(0.0646965, 0.0646965, 0.0646965, 0.913725)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect" unique_id=1883038192]
 layout_mode = 0
-offset_left = 18.0
-offset_top = 11.0
-offset_right = 127.0
-offset_bottom = 287.0
+offset_left = 9.0
+offset_top = 9.0
+offset_right = 113.0
+offset_bottom = 317.0
 
 [node name="GrabFocus" type="Control" parent="Control/ColorRect/VBoxContainer" unique_id=1985318492 node_paths=PackedStringArray("focus_targets")]
 layout_mode = 2

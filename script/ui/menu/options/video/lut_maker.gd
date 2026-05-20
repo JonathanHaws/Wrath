@@ -2,6 +2,9 @@ extends ColorRect
 @export var dynamic_ui_control: Control ## The control in which dynamic ui will be spawned under
 var textureRect
 var tones: VBoxContainer
+var shadows_picker : ColorPickerButton
+var midtones_picker : ColorPickerButton
+var highlights_picker : ColorPickerButton
 
 var lut_size: Vector3i = Vector3i(17,17,17)
 var original_lut: ImageTexture      
@@ -33,6 +36,24 @@ func oklab_to_rgb(lab: Vector3) -> Color:
 	var b_ = -0.0041960863 * l_ - 0.7034186147 * m_ + 1.7076147010 * s_
 
 	return Color(r, g, b_)
+func rgb_to_oklab(color: Color) -> Vector3:
+	var r = color.r
+	var g = color.g
+	var b = color.b
+
+	var l = 0.4122214708 * r + 0.5363325363 * g + 0.0514459929 * b
+	var m = 0.2119034982 * r + 0.6806995451 * g + 0.1073969566 * b
+	var s = 0.0883024619 * r + 0.2817188376 * g + 0.6299787005 * b
+
+	l = pow(l, 1.0 / 3.0)
+	m = pow(m, 1.0 / 3.0)
+	s = pow(s, 1.0 / 3.0)
+
+	return Vector3(
+		0.2104542553 * l + 0.7936177850 * m - 0.0040720468 * s,
+		1.9779984951 * l - 2.4285922050 * m + 0.4505937099 * s,
+		0.0259040371 * l + 0.7827717662 * m - 0.8086757660 * s
+	)
 
 func reset_adjustments():
 	pass
@@ -52,19 +73,30 @@ func get_texture_3d_from_image(image: Image, width:int, height:int, depth:int) -
 
 func update_lut():
 	var img = original_lut.get_image()
+	#print(img.get_class())
 
-	for z in range(lut_size.z):
-		for y in range(lut_size.y):
+	var shadows_lab = rgb_to_oklab(shadows_picker.color)
+	var midtones_lab = rgb_to_oklab(midtones_picker.color)
+	var highlights_lab = rgb_to_oklab(highlights_picker.color)
+
+	for z in range(lut_size.z): 
+		for y in range(lut_size.y): 
 			for x in range(lut_size.x):
-				var color = Color(
-					x / float(lut_size.x - 1),
-					y / float(lut_size.y - 1),
-					z / float(lut_size.z - 1)
-				)
-				img.set_pixel(x + z * lut_size.x, y, color)
+				var sample_x = x + z * lut_size.x
+				var sample_y = y
+				
+				var color = img.get_pixel(sample_x, sample_y)
+
+				#var lab = rgb_to_oklab(color)
+				color.r = 0.0
+				color.g = 0.0
+				color.b = 1.0
+				
+				img.set_pixel(sample_x, sample_y, Color(1, 0, 0))
 
 	lut.create_from_image(img)
 	textureRect.texture = lut
+	
 
 	if material:
 		var tex3d = get_texture_3d_from_image(img, lut_size.x, lut_size.y, lut_size.z)
@@ -104,8 +136,6 @@ func _on_load_selected(path: String):
 	reset_adjustments()
 	
 	update_lut()
-
-
 
 func _ready():
 	original_lut = make_passthrough_lut_image_texture(lut_size)
@@ -180,10 +210,15 @@ func _ready():
 		tone_hbox.add_child(label)
 
 		var color_picker := ColorPickerButton.new()
-		color_picker.color = Color(0, 0, 0)
+		color_picker.color = Color(0.5, 0.5, 0.5)
 		color_picker.custom_minimum_size = Vector2(160, 32)
 		color_picker.color_changed.connect(func(_c): update_lut())
 		tone_hbox.add_child(color_picker)
+
+		match tone:
+			"Shadows": shadows_picker = color_picker
+			"Midtones": midtones_picker = color_picker
+			"Highlights": highlights_picker = color_picker
 		
 	container.add_child(tones)
 	
