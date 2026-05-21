@@ -9,11 +9,21 @@ extends Node3D ## Script enabling 3D Bodies to not get stuck on small ledges or 
 var last_velocity: Vector3 = Vector3.ZERO
 var accelerating: bool = false
 
-func body_would_clip(body: CharacterBody3D, position: Vector3) -> bool:
+func body_would_clip(body: CharacterBody3D, target_position: Vector3) -> bool:
 	var params := PhysicsTestMotionParameters3D.new()
 	params.from = body.global_transform
-	params.motion = position - body.global_position
+	params.motion = target_position - body.global_position
 	return PhysicsServer3D.body_test_motion(body.get_rid(), params)
+
+func raycast(from: Vector3, to: Vector3, debug: bool = false) -> Dictionary:
+	var query = PhysicsRayQueryParameters3D.create(from, to)
+	query.collision_mask = BODY.collision_mask
+	query.exclude = [BODY.get_rid()]
+	if debug and DEBUG_RAY:
+		DEBUG_RAY.visible = true
+		DEBUG_RAY.global_position = from
+		DEBUG_RAY.target_position = to - from
+	return get_world_3d().direct_space_state.intersect_ray(query)
 
 ## WIP Add step down logic
 	
@@ -35,7 +45,6 @@ func try_step_up() -> void:
 		
 		var collision = BODY.get_slide_collision(i)
 		var collision_position = collision.get_position()
-		var space_state = get_world_3d().direct_space_state	
 		
 		var ray_end = BODY.global_position
 		var diff = collision_position - BODY.global_position
@@ -46,16 +55,8 @@ func try_step_up() -> void:
 		
 		var ray_start = ray_end
 		ray_start.y += MAX_STEP_HEIGHT
-		var query = PhysicsRayQueryParameters3D.create(ray_start, ray_end)
-		query.collision_mask = BODY.collision_mask
-		query.exclude = [BODY.get_rid()]
-		var result = space_state.intersect_ray(query)
-		
-		if DEBUG_RAY:
-			DEBUG_RAY.visible = true
-			DEBUG_RAY.global_position = ray_start
-			DEBUG_RAY.target_position = ray_end - ray_start
-		
+		var result = raycast(ray_start, ray_end, true)
+
 		if not result: 
 			#print('No surface to step on')
 			return
