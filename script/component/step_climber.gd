@@ -9,11 +9,20 @@ extends Node3D ## Script enabling 3D Bodies to not get stuck on small ledges or 
 var last_velocity: Vector3 = Vector3.ZERO
 var accelerating: bool = false
 
+func body_would_clip(body: CharacterBody3D, position: Vector3) -> bool:
+	var params := PhysicsTestMotionParameters3D.new()
+	params.from = body.global_transform
+	params.motion = position - body.global_position
+	return PhysicsServer3D.body_test_motion(body.get_rid(), params)
+
 ## WIP Add step down logic
 	
 func is_accelerating() -> bool:
 	var last_velocity_flat = Vector2(last_velocity.x, last_velocity.z)
 	return last_velocity_flat.length() > STEP_DISTANCE
+
+func try_step_down() -> void: # wip
+	pass
 
 func try_step_up() -> void:		
 	
@@ -21,7 +30,6 @@ func try_step_up() -> void:
 	#if not BODY.is_on_floor(): return 
 	if BODY.velocity.y < 0: return
 	if not BODY.is_on_wall(): return   
-	if not is_accelerating(): return
 	
 	for i in BODY.get_slide_collision_count():
 		
@@ -51,18 +59,14 @@ func try_step_up() -> void:
 		if not result: 
 			#print('No surface to step on')
 			return
+		var step = result.position.y - BODY.global_position.y	
+		var new_pos = BODY.global_position + (Vector3.UP * step)
 		
 		if abs(result.normal.y) <= 0.9: 
 			#print('Not stepping. Surface to steep')
 			return 
-	
-		var step = result.position.y - BODY.global_position.y	
-		var new_pos = BODY.global_position
-		new_pos.y += step
-		var params := PhysicsTestMotionParameters3D.new()
-		params.from = global_transform
-		params.motion = new_pos - global_position
-		if PhysicsServer3D.body_test_motion(BODY.get_rid(), params): 
+		
+		if body_would_clip(BODY, new_pos):
 			#print('Not stepping. New position would be inside wall... ')
 			return	
 			
@@ -76,5 +80,6 @@ func try_step_up() -> void:
 		
 func _physics_process(_delta: float) -> void:
 	
+	try_step_down()
 	try_step_up()
 	last_velocity = BODY.velocity
