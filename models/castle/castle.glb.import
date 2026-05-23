@@ -39,6 +39,9 @@ materials/extract_format=0
 materials/extract_path=""
 _subresources={
 "nodes": {
+"PATH:mountains": {
+"import/skip_import": true
+},
 "PATH:vines": {
 "import/skip_import": true
 }

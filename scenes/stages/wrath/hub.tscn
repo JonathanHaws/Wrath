@@ -310,7 +310,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.6554, -30.1646, -135.958)
 [node name="Enter" parent="Doors" unique_id=579748069 instance=ExtResource("15_ukf2x")]
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, -0.0782509, -40.302, -199.664)
 DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
-DESTINATION_NODE_NAME = "Exit"
+DESTINATION_NODE_NAME = "HubExit"
 
 [node name="ChainTower" parent="Doors" unique_id=103027498 instance=ExtResource("15_ukf2x")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 39.7555, -40.4065, -134.982)

@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d3reyofpkuaem"]
+
+[ext_resource type="Texture2D" uid="uid://dapk5enww0v4d" path="res://textures/trees/tree.jpg" id="1_aqyno"]
+[ext_resource type="Texture2D" uid="uid://cnb24g2nrtibw" path="res://textures/trees/normal.jpg" id="2_dv0bk"]
+
+[resource]
+albedo_color = Color(0.5817243, 0.60520506, 0.62479395, 1)
+albedo_texture = ExtResource("1_aqyno")
+roughness = 0.7
+normal_enabled = true
+normal_scale = -1.0
+normal_texture = ExtResource("2_dv0bk")
+uv1_scale = Vector3(0.265, 0.265, 0.265)
+uv1_triplanar = true

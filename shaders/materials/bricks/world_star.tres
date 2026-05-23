@@ -3,9 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://6um8wg00wlq2" path="res://textures/bricks/star/color.png" id="2_jxwqm"]
 [ext_resource type="Texture2D" uid="uid://bwj8yk018l62v" path="res://textures/bricks/star/normal.png" id="3_jofxk"]
 
-
 [resource]
-albedo_color = Color(0.745098, 0.745098, 0.745098, 1)
+albedo_color = Color(0.5910618, 0.6345421, 0.6712693, 1)
 albedo_texture = ExtResource("2_jxwqm")
 metallic_specular = 0.4
 roughness = 0.9

@@ -1,13 +1,12 @@
 extends Node3D ## Script enabling 3D Bodies to not get stuck on small ledges or bumpy terrain
 ## How far in front of the player the raycast to find the step is done
 ## Should usually be the radius of the collision shape of the body plus a little amount 0.01 - 0.1
-@export var STEP_DISTANCE: float = .6 
+@export var STEP_DISTANCE: float = .6
 @export var MAX_STEP_HEIGHT: float = 1.3 ## How much the player can step up
 @export var MIN_STEP_HEIGHT: float = 0.05 ## Mimium step height
 @export var BODY: CharacterBody3D ## The body that is moved up and retains velocity
 @export var DEBUG_RAY: RayCast3D ## A way to visualize the step probe
 var last_velocity: Vector3 = Vector3.ZERO
-var accelerating: bool = false
 
 func body_would_clip(body: CharacterBody3D, target_position: Vector3) -> bool:
 	var params := PhysicsTestMotionParameters3D.new()
@@ -24,12 +23,6 @@ func raycast(from: Vector3, to: Vector3, debug: bool = false) -> Dictionary:
 		DEBUG_RAY.global_position = from
 		DEBUG_RAY.target_position = to - from
 	return get_world_3d().direct_space_state.intersect_ray(query)
-
-## WIP Add step down logic
-	
-func is_accelerating() -> bool:
-	var last_velocity_flat = Vector2(last_velocity.x, last_velocity.z)
-	return last_velocity_flat.length() > STEP_DISTANCE
 
 func try_step_down() -> void: # wip
 	pass
@@ -74,13 +67,14 @@ func try_step_up() -> void:
 		if step < MIN_STEP_HEIGHT: 	
 			#print('Not stepping. Below minimum step height... Step should be handled by bottom roundness of the collider shape')
 			return
-			
+		
 		BODY.global_position.y += step
 		BODY.velocity = last_velocity
 		#print("Stepping up! " + str(step))	
 		
 func _physics_process(_delta: float) -> void:
 	
-	try_step_down()
+	#print(BODY.get_position_delta())
+	#try_step_down()
 	try_step_up()
 	last_velocity = BODY.velocity

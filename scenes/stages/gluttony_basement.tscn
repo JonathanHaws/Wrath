@@ -102,7 +102,7 @@ omni_range = 24.7603
 [node name="Exit" parent="." unique_id=315234003 groups=["gluttony_door"] instance=ExtResource("7_c6ynn")]
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 130.51, -9.60013, 1.00536e-06)
 DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
-DESTINATION_NODE_NAME = "Gluttony"
+DESTINATION_NODE_NAME = "GluttonyExit"
 
 [node name="Enter" parent="." unique_id=278454585 instance=ExtResource("7_c6ynn")]
 transform = Transform3D(-4.37112e-08, 0, 1, 0, 1, 0, -1, 0, -4.37112e-08, -22.2895, -9.60013, 1.00536e-06)
