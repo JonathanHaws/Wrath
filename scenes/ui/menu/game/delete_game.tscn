@@ -52,7 +52,7 @@ focus_targets = [NodePath("../Back")]
 [node name="Back" type="Button" parent="CenterContainer/Delete" unique_id=1743395861 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 2
 theme = ExtResource("3_u3frr")
-text = "Back"
+text = "BACK"
 script = ExtResource("4_fevu8")
 scene_file = "uid://cls12q06quifx"
 is_back_button = true

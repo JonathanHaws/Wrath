@@ -66,66 +66,6 @@ colors = PackedColorArray(0.0588235, 0.0588235, 0.0588235, 1, 0.135568, 0.157466
 gradient = SubResource("Gradient_ubdiu")
 fill_to = Vector2(0, 1)
 
-[sub_resource type="Animation" id="Animation_n1vdw"]
-resource_name = "FadeIn"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../FadeIn:visible")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [true, false]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../FadeIn:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.4),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_uftlf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("../FadeIn:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../FadeIn:visible")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_xjsia"]
-_data = {
-&"FadeIn": SubResource("Animation_n1vdw"),
-&"RESET": SubResource("Animation_uftlf")
-}
-
 [node name="SkillTree" type="Control" unique_id=1320779895 node_paths=PackedStringArray("skill_tree_ui")]
 z_index = 3000
 z_as_relative = false
@@ -285,8 +225,6 @@ description = "Aquire Skills"
 cost = 0.0
 upgrade_key = "max_health"
 new_amount = 20.0
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Health1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=989286291 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -304,8 +242,6 @@ description = "Increases health to 20"
 upgrade_key = "max_health"
 new_amount = 20.0
 prerequisite_node = NodePath("../Healing1")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Health2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=617741630 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -322,8 +258,6 @@ description = "Increases health to 25"
 upgrade_key = "max_health"
 new_amount = 25.0
 prerequisite_node = NodePath("../Health1")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Health3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1530933580 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -341,8 +275,6 @@ description = "Increases health to 30"
 upgrade_key = "max_health"
 new_amount = 30.0
 prerequisite_node = NodePath("../Health2")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Health4" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=418795439 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -360,8 +292,6 @@ description = "Increases health to 40"
 upgrade_key = "max_health"
 new_amount = 40.0
 prerequisite_node = NodePath("../Health3")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Health5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1076724308 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -379,8 +309,6 @@ description = "Increases health to 50"
 upgrade_key = "max_health"
 new_amount = 50.0
 prerequisite_node = NodePath("../Health4")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Damage1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=696502459 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -398,8 +326,6 @@ description = "Increases damage to 75"
 upgrade_key = "damage"
 new_amount = 75.0
 prerequisite_node = NodePath("../Root")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Damage2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1434864100 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -417,8 +343,6 @@ description = "Increases damage to 100"
 upgrade_key = "damage"
 new_amount = 100.0
 prerequisite_node = NodePath("../Damage1")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Damage3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1358661405 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -435,8 +359,6 @@ description = "Increases damage to 150"
 upgrade_key = "damage"
 new_amount = 150.0
 prerequisite_node = NodePath("../Damage2")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Damage4" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=2099494119 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -454,8 +376,6 @@ description = "Increases damage to 200"
 upgrade_key = "damage"
 new_amount = 200.0
 prerequisite_node = NodePath("../Damage3")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Damage5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=393665130 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -473,8 +393,6 @@ description = "Increases damage to 250"
 upgrade_key = "damage"
 new_amount = 250.0
 prerequisite_node = NodePath("../Damage4")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Stamina1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1769906788 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -494,8 +412,6 @@ description = "Increases consecutive spins to 2"
 upgrade_key = "max_stamina"
 new_amount = 14.0
 prerequisite_node = NodePath("../Root")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Stamina2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=195302398 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -513,8 +429,6 @@ description = "Increases consecutive spins to 3"
 upgrade_key = "max_stamina"
 new_amount = 18.0
 prerequisite_node = NodePath("../Stamina1")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Stamina3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1590350321 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -532,8 +446,6 @@ description = "Increases consecutive spins to 4"
 upgrade_key = "max_stamina"
 new_amount = 22.0
 prerequisite_node = NodePath("../Stamina2")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Stamina4" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=141627404 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -551,8 +463,6 @@ description = "Increases consecutive spins to 5"
 upgrade_key = "max_stamina"
 new_amount = 26.0
 prerequisite_node = NodePath("../Stamina3")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Stamina5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1055730430 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -570,8 +480,6 @@ description = "Increases consecutive spins to 6"
 upgrade_key = "max_stamina"
 new_amount = 30.0
 prerequisite_node = NodePath("../Stamina4")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Heal1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1421657066 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -589,8 +497,6 @@ description = "Grants acess to 2 heal charges"
 upgrade_key = "heal_amount"
 new_amount = 10.0
 prerequisite_node = NodePath("../Healing3")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Heal2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1222075329 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -608,8 +514,6 @@ description = "Grants acess to 3 heal charges"
 upgrade_key = "heal_amount"
 new_amount = 15.0
 prerequisite_node = NodePath("../Heal1")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Heal3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1542770186 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -627,8 +531,6 @@ description = "Grants acess to 5 heal charges"
 upgrade_key = "heal_amount"
 new_amount = 20.0
 prerequisite_node = NodePath("../Heal2")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Heal5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1499729094 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -646,8 +548,6 @@ description = "Grants acess to 5 heal charges"
 upgrade_key = "heal_amount"
 new_amount = 30.0
 prerequisite_node = NodePath("../Heal3")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Healing1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1794716747 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -668,8 +568,6 @@ description = "Grants acess to 2 heal charges"
 upgrade_key = "max_heal_charges"
 new_amount = 2.0
 prerequisite_node = NodePath("../Root")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Healing2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1567615969 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -688,8 +586,6 @@ description = "Grants acess to 3 heal charges"
 upgrade_key = "max_heal_charges"
 new_amount = 3.0
 prerequisite_node = NodePath("../Healing1")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Healing3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=244929428 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -707,8 +603,6 @@ description = "Grants acess to 5 heal charges"
 upgrade_key = "max_heal_charges"
 new_amount = 5.0
 prerequisite_node = NodePath("../Healing2")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Shooting1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1740089763 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -727,8 +621,6 @@ description = "Increases ranged capacity to 3"
 upgrade_key = "max_shooting_energy"
 new_amount = 3.0
 prerequisite_node = NodePath("../Stamina1")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Shooting2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=91032018 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -746,8 +638,6 @@ description = "Increases ranged capacity to 5"
 upgrade_key = "max_shooting_energy"
 new_amount = 5.0
 prerequisite_node = NodePath("../Shooting1")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Shooting3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=845054454 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -765,8 +655,6 @@ description = "Increases ranged capacity to 10"
 upgrade_key = "max_shooting_energy"
 new_amount = 10.0
 prerequisite_node = NodePath("../Shooting2")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Shoot1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=55361770 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -784,8 +672,6 @@ description = "Increases ranged damage to 15"
 upgrade_key = "shoot_damage"
 new_amount = 15.0
 prerequisite_node = NodePath("../Shooting3")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Shoot2" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=843346763 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -803,8 +689,6 @@ description = "Increases ranged damage to 25"
 upgrade_key = "shoot_damage"
 new_amount = 25.0
 prerequisite_node = NodePath("../Shoot1")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Shoot3" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1364290635 node_paths=PackedStringArray("prerequisite_node")]
 layout_mode = 0
@@ -822,8 +706,6 @@ description = "Increases ranged damage to 50"
 upgrade_key = "shoot_damage"
 new_amount = 50.0
 prerequisite_node = NodePath("../Shoot2")
-hover_scale = Vector2(0.7, 0.7)
-normal_scale = Vector2(0.5, 0.5)
 
 [node name="Progress" type="Control" parent="." unique_id=1153534499 groups=["ui_scalable"]]
 layout_mode = 1
@@ -953,24 +835,6 @@ script = ExtResource("5_n1vdw")
 save_key = "pride_defeated"
 description = "Pride Deafted. Virtue Of Humility"
 cost = -1.0
-
-[node name="FadeIn" type="ColorRect" parent="." unique_id=1072898387]
-process_mode = 3
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-theme = ExtResource("1_iiq8l")
-color = Color(0.0383972, 0.0383972, 0.0383971, 1)
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="FadeIn" unique_id=350976928]
-libraries/ = SubResource("AnimationLibrary_xjsia")
-autoplay = &"FadeIn"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1536230914 groups=["ui_scalable"]]
 layout_mode = 0

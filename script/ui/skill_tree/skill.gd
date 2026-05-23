@@ -23,7 +23,6 @@ func is_locked() -> bool:
 @export_subgroup("INFO")	
 @export var description_group: String = "ability_info_skilltree" ## Add the Label which should say the description of the ability to this group
 @export var cost_group: String = "cost_skilltree" ## Add the Label which should say the cost of this ability to this group
-
 @export var locked_texture: Texture2D = preload("res://textures/menu/skill_tree/skills/Skills-locked.png")
 @onready var unlocked_texture = texture_normal
 
@@ -51,7 +50,8 @@ func generate_line():
 	line_node.clear_points()
 	line_node.add_point(a)
 	line_node.add_point(b)
-	line_node.z_index = 1000
+	
+	line_node.z_index = get_parent().z_index
 
 	get_parent().add_child(line_node)
 	_on_save_data_updated()
@@ -62,17 +62,13 @@ func generate_line():
 @export var aquired_modulate: Color = Color(.9,.9,.9,1)
 @export var locked_modulate: Color = Color(0.15, 0.15, 0.15, 0.188) # NEW
 
-@export_subgroup("TWEENS")
-@export var hover_scale: Vector2 = Vector2(1.2, 1.2)
-@export var normal_scale: Vector2 = Vector2(1, 1)
-@export var scale_duration: float = 0.15
-func tween_scale_up_on_hover():
-	var t = create_tween()
-	t.tween_property(self, "scale", hover_scale, scale_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-func tween_scale_down_on_exit():
-	var t = create_tween()
-	t.tween_property(self, "scale", normal_scale, scale_duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_OUT)
-	
+@export_subgroup("SCALE")
+@export var acquire_scale_multiplier: Vector2 = Vector2(1.5, 1.5)
+@export var hover_scale_multiplier: Vector2 = Vector2(1.2, 1.2)
+@onready var base_scale: Vector2 = scale
+@export var scale_lerp_speed: float = 16
+var target_scale: Vector2 = Vector2.ONE
+
 @export_group("AUDIO") ## Multiple skills can share same same player with refrence by group
 @export var hover_sound_group: String = "skill_hover_sound" ## Sound to be played when hovered.
 @export var insufficient_funds_sound_group: String = "skill_insufficent_funds_sound" ## Sound to be played when declined.
@@ -98,12 +94,14 @@ func setup_focus():
 
 func enter_hovered():
 	if is_locked(): return
+	target_scale = hover_scale_multiplier
 	play_group_sound(hover_sound_group)
 	if not is_acquired(): modulate = hover_modulate
 	for n in get_tree().get_nodes_in_group(cost_group): n.text = str(cost)
 	for n in get_tree().get_nodes_in_group(description_group): n.text = description
 	
 func exit_hovered():
+	target_scale = Vector2.ONE
 	if is_acquired():
 		modulate = aquired_modulate
 	elif is_locked():
@@ -133,6 +131,8 @@ func _on_save_data_updated():
 		modulate = base_modulate
 
 func _ready():
+	z_index +=1
+	
 	if save_key: aquired_key = save_key
 	else: aquired_key = Save.get_unique_key(self,"skill_node")
 	
@@ -145,11 +145,6 @@ func _ready():
 	mouse_exited.connect(exit_hovered)
 	focus_entered.connect(enter_hovered)
 	focus_exited.connect(exit_hovered)
-	
-	focus_entered.connect(tween_scale_up_on_hover)
-	focus_exited.connect(tween_scale_down_on_exit)
-	mouse_entered.connect(tween_scale_up_on_hover)
-	mouse_exited.connect(tween_scale_down_on_exit)
 
 	Save.save_data_updated.connect(_on_save_data_updated)
 	
@@ -179,6 +174,14 @@ func _on_pressed():
 	
 	play_group_sound(purchased_sound_group)
 	
+	scale = base_scale * acquire_scale_multiplier
+	
 	Save.data[aquired_key] = true
 	modulate = aquired_modulate
 	Save.save_game()
+
+func _process(delta):
+
+	var desired_scale = base_scale * target_scale
+	scale = scale.lerp(desired_scale, scale_lerp_speed * delta)
+	#if name =="Root": print (name, " ", target_scale,)
