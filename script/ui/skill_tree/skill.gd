@@ -24,6 +24,9 @@ func is_locked() -> bool:
 @export var description_group: String = "ability_info_skilltree" ## Add the Label which should say the description of the ability to this group
 @export var cost_group: String = "cost_skilltree" ## Add the Label which should say the cost of this ability to this group
 
+@export var locked_texture: Texture2D = preload("res://textures/menu/skill_tree/skills/Skills-locked.png")
+@onready var unlocked_texture = texture_normal
+
 @export_subgroup("GENERATE LINE")
 @export var generate_line_enabled: bool = true
 @export_range(0.0, 1.0) var padding: float = 0.38
@@ -115,6 +118,12 @@ func _on_save_data_updated():
 			line_node.modulate = locked_modulate
 		else: 
 			line_node.modulate = base_modulate
+	
+	if is_locked():
+		if locked_texture:
+			texture_normal = locked_texture
+	else:
+		texture_normal = unlocked_texture		
 	
 	if is_acquired():
 		modulate = aquired_modulate
