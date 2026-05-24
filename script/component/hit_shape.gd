@@ -126,7 +126,7 @@ func hit(area: Area3D = null, damage: int = 0, play_animation: bool = true) -> b
 	if HEALTH <= 0: INVINCIBLE = true
 	if invincibility_timer: invincibility_timer.start()
 	
-	show_damage(damage)
+	#show_damage(damage) # disabling for less ui clutter
 	teleport_nodes_to_hit_source(area)
 	if play_animation:
 		if HEALTH <= 0: _play_anim(DEATH_ANIM, DIED)

@@ -355,9 +355,9 @@ texture_normal = ExtResource("17_kbgl2")
 texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 save_key = "damage_3_skill"
-description = "Increases damage to 150"
+description = "Increases damage to 125"
 upgrade_key = "damage"
-new_amount = 150.0
+new_amount = 125.0
 prerequisite_node = NodePath("../Damage2")
 
 [node name="Damage4" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=2099494119 node_paths=PackedStringArray("prerequisite_node")]
@@ -372,9 +372,9 @@ texture_normal = ExtResource("18_dj7o1")
 texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 save_key = "damage_4_skill"
-description = "Increases damage to 200"
+description = "Increases damage to 140"
 upgrade_key = "damage"
-new_amount = 200.0
+new_amount = 140.0
 prerequisite_node = NodePath("../Damage3")
 
 [node name="Damage5" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=393665130 node_paths=PackedStringArray("prerequisite_node")]
@@ -389,9 +389,9 @@ texture_normal = ExtResource("19_c2fwa")
 texture_focused = ExtResource("11_8iry6")
 script = ExtResource("5_n1vdw")
 save_key = "damage_5_skill"
-description = "Increases damage to 250"
+description = "Increases damage to 150"
 upgrade_key = "damage"
-new_amount = 250.0
+new_amount = 150.0
 prerequisite_node = NodePath("../Damage4")
 
 [node name="Stamina1" type="TextureButton" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1769906788 node_paths=PackedStringArray("prerequisite_node")]

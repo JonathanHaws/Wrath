@@ -66,7 +66,7 @@ func generate_line():
 @export var acquire_scale_multiplier: Vector2 = Vector2(1.5, 1.5)
 @export var hover_scale_multiplier: Vector2 = Vector2(1.2, 1.2)
 @onready var base_scale: Vector2 = scale
-@export var scale_lerp_speed: float = 16
+@export var scale_lerp_speed: float = 10
 var target_scale: Vector2 = Vector2.ONE
 
 @export_group("AUDIO") ## Multiple skills can share same same player with refrence by group
@@ -146,10 +146,11 @@ func _ready():
 	focus_entered.connect(enter_hovered)
 	focus_exited.connect(exit_hovered)
 
-	Save.save_data_updated.connect(_on_save_data_updated)
-	
 	setup_focus()
 	call_deferred("generate_line")
+	
+	Save.save_data_updated.connect(_on_save_data_updated)
+	_on_save_data_updated()
 	
 func _on_pressed():
 
