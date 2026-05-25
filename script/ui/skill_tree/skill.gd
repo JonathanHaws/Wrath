@@ -6,7 +6,8 @@ extends TextureButton
 @export var new_amount: Variant = 1.0 ## The update value for the property
 @export var cost: float = 5 ## Price for upgrading. Amount less then 0 means skill is not purchasable 
 @export var currency_key: String = "wisp" ## How much it costs to buy this skill. 
-@onready var animation_player: AnimationPlayer = $AnimationPlayer	
+@onready var scale_animation: AnimationPlayer = get_node_or_null("Scale")
+@onready var modulate_animation: AnimationPlayer = get_node_or_null("Modulate")
 
 @export_subgroup("INFO")
 @export var description_group: String = "ability_info_skilltree" ## Add the Label which should say the description of the ability to this group
@@ -45,7 +46,9 @@ func generate_line():
 @export var base_modulate: Color = Color(.3,.3,.3,1)
 @export var hover_modulate: Color = Color(0.5,0.5,0.5,1)	
 @export var aquired_modulate: Color = Color(.9,.9,.9,1)
-@export var locked_modulate: Color = Color(0.15, 0.15, 0.15, 0.188) # NEW
+@export var locked_modulate: Color = Color(0.15, 0.15, 0.15, 0.188) 
+
+
 
 var prerequisite_key
 var aquired_key
@@ -83,17 +86,28 @@ func setup_focus():
 			prerequisite_node.focus_neighbor_right = get_path()
 		focus_neighbor_left = p
 
-func _on_visibility_changed():
+@warning_ignore("unused_signal")
+signal unfurl
 
-	if visible and animation_player:
-		animation_player.stop()
-		animation_player.play("open", 0)
+func _on_unfurl():
+	visible = true
+	if scale_animation:
+		scale_animation.stop()
+		scale_animation.play("open")
+
+func _on_visibility_changed():
+	if visible and scale_animation:
+		scale_animation.stop()
+		if prerequisite_node: 
+			scale_animation.play("close")
+		else:
+			scale_animation.play("open")
 
 func enter_hovered():
 	if is_locked(): return
 	
-	if animation_player: 
-		animation_player.queue("enter_hover")
+	if scale_animation: 
+		scale_animation.queue("enter_hover")
 	
 	play_group_sound(hover_sound_group)
 	if not is_acquired(): modulate = hover_modulate
@@ -101,9 +115,9 @@ func enter_hovered():
 	for n in get_tree().get_nodes_in_group(description_group): n.text = description
 	
 func exit_hovered():
+	if is_locked(): return
 	
-	if animation_player: 
-		animation_player.queue("exit_hover")
+	if scale_animation: scale_animation.queue("exit_hover")
 	
 	if is_acquired():
 		modulate = aquired_modulate
@@ -134,6 +148,13 @@ func _on_save_data_updated():
 		modulate = base_modulate
 
 func _ready():
+	
+	if prerequisite_node:
+		if prerequisite_node.has_signal("unfurl"):
+			prerequisite_node.unfurl.connect(_on_unfurl)
+	
+	if scale_animation: scale_animation.play("close")
+	
 	z_index +=1
 	
 	if save_key: aquired_key = save_key
@@ -179,6 +200,8 @@ func _on_pressed():
 	#print('upgraded ', upgrade_key, " ", new_amount)
 	
 	play_group_sound(purchased_sound_group)
+	
+	if scale_animation: scale_animation.play("acquired")
 	
 	Save.data[aquired_key] = true
 	modulate = aquired_modulate

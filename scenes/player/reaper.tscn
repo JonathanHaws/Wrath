@@ -4321,6 +4321,7 @@ visible = false
 visible = false
 
 [node name="LUT" type="ColorRect" parent="." unique_id=1277256602 groups=["lut_overlay"]]
+visible = false
 material = SubResource("ShaderMaterial_sm0mq")
 anchors_preset = 15
 anchor_right = 1.0
