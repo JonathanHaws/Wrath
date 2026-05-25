@@ -1,32 +1,17 @@
 extends TextureButton
-@export var save_key: String ## Special save data key to read if this has been aquired yet. If left empty key will be auto generated prefixed with unique node branch path
 @export_multiline var description: String = "Increases players power" ## Relevant infol
-
-@export_group("COST")
-@export var cost: float = 5 ## Price for upgrading. Amount less then 0 means skill is not purchasable 
-@export var currency_key: String = "wisp" ## How much it costs to buy this skill. 
+@export var prerequisite_node: Node ## The node that must be aquired before this one can be purchased. (Previous node skill tree) 
+@export var save_key: String ## Special save data key to read if this has been aquired yet. If left empty key will be auto generated prefixed with unique node branch path
 @export var upgrade_key: String = "health" ## The save key to update 
 @export var new_amount: Variant = 1.0 ## The update value for the property
-@export var prerequisite_node: Node ## The node that must be aquired before this one can be purchased. (Previous node skill tree) 
-var prerequisite_key
-var aquired_key
-func is_acquired() -> bool:
-	return Save.data.has(aquired_key)
-func is_locked() -> bool:
-	if is_acquired():
-		return false
-	if prerequisite_node and not Save.data.has(prerequisite_key):
-		return true
-	return false
+@export var cost: float = 5 ## Price for upgrading. Amount less then 0 means skill is not purchasable 
+@export var currency_key: String = "wisp" ## How much it costs to buy this skill. 
+@onready var animation_player: AnimationPlayer = $AnimationPlayer	
 
-@export_group("VISUALS")
-@export_subgroup("INFO")	
+@export_subgroup("INFO")
 @export var description_group: String = "ability_info_skilltree" ## Add the Label which should say the description of the ability to this group
 @export var cost_group: String = "cost_skilltree" ## Add the Label which should say the cost of this ability to this group
-@export var locked_texture: Texture2D = preload("res://textures/menu/skill_tree/skills/Skills-locked.png")
 @onready var unlocked_texture = texture_normal
-
-@export_subgroup("GENERATE LINE")
 @export var generate_line_enabled: bool = true
 @export_range(0.0, 1.0) var padding: float = 0.38
 var line_node: Line2D
@@ -62,12 +47,16 @@ func generate_line():
 @export var aquired_modulate: Color = Color(.9,.9,.9,1)
 @export var locked_modulate: Color = Color(0.15, 0.15, 0.15, 0.188) # NEW
 
-@export_subgroup("SCALE")
-@export var acquire_scale_multiplier: Vector2 = Vector2(1.5, 1.5)
-@export var hover_scale_multiplier: Vector2 = Vector2(1.2, 1.2)
-@onready var base_scale: Vector2 = scale
-@export var scale_lerp_speed: float = 10
-var target_scale: Vector2 = Vector2.ONE
+var prerequisite_key
+var aquired_key
+func is_acquired() -> bool:
+	return Save.data.has(aquired_key)
+func is_locked() -> bool:
+	if is_acquired():
+		return false
+	if prerequisite_node and not Save.data.has(prerequisite_key):
+		return true
+	return false
 
 @export_group("AUDIO") ## Multiple skills can share same same player with refrence by group
 @export var hover_sound_group: String = "skill_hover_sound" ## Sound to be played when hovered.
@@ -77,6 +66,8 @@ func play_group_sound(group_name: String) -> void:
 	if not is_visible_in_tree(): return
 	for node in get_tree().get_nodes_in_group(group_name):
 		if node is AudioStreamPlayer: node.play()
+
+@export var locked_texture: Texture2D = preload("res://textures/menu/skill_tree/skills/Skills-locked.png")
 
 func setup_focus():
 	if focus_previous.is_empty(): focus_previous = get_path()
@@ -92,16 +83,28 @@ func setup_focus():
 			prerequisite_node.focus_neighbor_right = get_path()
 		focus_neighbor_left = p
 
+func _on_visibility_changed():
+
+	if visible and animation_player:
+		animation_player.stop()
+		animation_player.play("open", 0)
+
 func enter_hovered():
 	if is_locked(): return
-	target_scale = hover_scale_multiplier
+	
+	if animation_player: 
+		animation_player.queue("enter_hover")
+	
 	play_group_sound(hover_sound_group)
 	if not is_acquired(): modulate = hover_modulate
 	for n in get_tree().get_nodes_in_group(cost_group): n.text = str(cost)
 	for n in get_tree().get_nodes_in_group(description_group): n.text = description
 	
 func exit_hovered():
-	target_scale = Vector2.ONE
+	
+	if animation_player: 
+		animation_player.queue("exit_hover")
+	
 	if is_acquired():
 		modulate = aquired_modulate
 	elif is_locked():
@@ -146,6 +149,8 @@ func _ready():
 	focus_entered.connect(enter_hovered)
 	focus_exited.connect(exit_hovered)
 
+	visibility_changed.connect(_on_visibility_changed)
+
 	setup_focus()
 	call_deferred("generate_line")
 	
@@ -175,14 +180,6 @@ func _on_pressed():
 	
 	play_group_sound(purchased_sound_group)
 	
-	scale = base_scale * acquire_scale_multiplier
-	
 	Save.data[aquired_key] = true
 	modulate = aquired_modulate
 	Save.save_game()
-
-func _process(delta):
-
-	var desired_scale = base_scale * target_scale
-	scale = scale.lerp(desired_scale, scale_lerp_speed * delta)
-	#if name =="Root": print (name, " ", target_scale,)
