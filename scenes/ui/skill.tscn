@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cmews7lfin7r7" path="res://textures/menu/skill_tree/skills/Focus.png" id="2_rogof"]
 [ext_resource type="Script" uid="uid://hf3odyswfp0p" path="res://script/ui/skill_tree/skill.gd" id="3_y1pqf"]
 
-[sub_resource type="Animation" id="Animation_iidus"]
+[sub_resource type="Animation" id="Animation_f8ipa"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -18,8 +18,20 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
-[sub_resource type="Animation" id="Animation_f8ipa"]
+[sub_resource type="Animation" id="Animation_rogof"]
 resource_name = "acquired"
 length = 0.6
 tracks/0/type = "value"
@@ -35,7 +47,7 @@ tracks/0/keys = {
 "values": [Vector2(0.8, 0.8), Vector2(0.6, 0.6)]
 }
 
-[sub_resource type="Animation" id="Animation_rogof"]
+[sub_resource type="Animation" id="Animation_y1pqf"]
 resource_name = "close"
 length = 0.001
 tracks/0/type = "value"
@@ -51,9 +63,9 @@ tracks/0/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_0d38o"]
+[sub_resource type="Animation" id="Animation_gwm4k"]
 resource_name = "enter_hover"
-length = 0.033333335
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -61,15 +73,15 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.03333334),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(0.6, 0.6)]
+"values": [Vector2(0.6, 0.6)]
 }
 
-[sub_resource type="Animation" id="Animation_tmelv"]
+[sub_resource type="Animation" id="Animation_66n72"]
 resource_name = "exit_hover"
-length = 0.033333335
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -77,37 +89,49 @@ tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.03333334),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0.6, 0.6), Vector2(0.5, 0.5)]
+"values": [Vector2(0.5, 0.5)]
 }
 
-[sub_resource type="Animation" id="Animation_jsg0y"]
+[sub_resource type="Animation" id="Animation_q2hjf"]
 resource_name = "hover"
 
-[sub_resource type="Animation" id="Animation_cm31t"]
+[sub_resource type="Animation" id="Animation_pxw3o"]
 resource_name = "open"
 length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("Line2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.23333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.48000005),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0.6, 0.6), Vector2(0.5, 0.5)]
 }
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0.099999994),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -118,13 +142,24 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0d38o"]
 _data = {
-&"RESET": SubResource("Animation_iidus"),
-&"acquired": SubResource("Animation_f8ipa"),
-&"close": SubResource("Animation_rogof"),
-&"enter_hover": SubResource("Animation_0d38o"),
-&"exit_hover": SubResource("Animation_tmelv"),
-&"hover": SubResource("Animation_jsg0y"),
-&"open": SubResource("Animation_cm31t")
+&"RESET": SubResource("Animation_f8ipa"),
+&"acquired": SubResource("Animation_rogof"),
+&"close": SubResource("Animation_y1pqf"),
+&"enter_hover": SubResource("Animation_gwm4k"),
+&"exit_hover": SubResource("Animation_66n72"),
+&"hover": SubResource("Animation_q2hjf"),
+&"open": SubResource("Animation_pxw3o")
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_mw7tg"]
+_data = {
+&"RESET": SubResource("Animation_f8ipa"),
+&"acquired": SubResource("Animation_rogof"),
+&"close": SubResource("Animation_y1pqf"),
+&"enter_hover": SubResource("Animation_gwm4k"),
+&"exit_hover": SubResource("Animation_66n72"),
+&"hover": SubResource("Animation_q2hjf"),
+&"open": SubResource("Animation_pxw3o")
 }
 
 [node name="Skill" type="TextureButton" unique_id=124740578]
@@ -140,12 +175,12 @@ script = ExtResource("3_y1pqf")
 description = "Increases health to 20"
 save_key = "health_skill"
 
-[node name="Scale" type="AnimationPlayer" parent="." unique_id=729741578]
+[node name="Open" type="AnimationPlayer" parent="." unique_id=729741578]
 libraries/ = SubResource("AnimationLibrary_0d38o")
-autoplay = &"RESET"
+autoplay = &"close"
 
-[node name="Modulate" type="AnimationPlayer" parent="." unique_id=295500715]
-libraries/ = SubResource("AnimationLibrary_0d38o")
+[node name="State" type="AnimationPlayer" parent="." unique_id=295500715]
+libraries/ = SubResource("AnimationLibrary_mw7tg")
 autoplay = &"open"
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1529396372]
@@ -153,9 +188,3 @@ width = 8.0
 default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
-
-[node name="Control" type="Control" parent="Line2D" unique_id=950252787]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0

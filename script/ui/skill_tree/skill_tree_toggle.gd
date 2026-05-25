@@ -13,6 +13,9 @@ func toggle_skill_tree(capture_or_release_cursor: bool = true) -> void:
 	skill_tree_ui.visible = skill_tree_open
 
 	if skill_tree_open:
+		$TextureRect/AnimationPlayer.stop()
+		$TextureRect/AnimationPlayer.play("open")
+		
 		if capture_or_release_cursor: Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 		if Config: Config.play_animation_by_group("skill_tree_disable")
 	else:
