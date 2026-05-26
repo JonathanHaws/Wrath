@@ -8,7 +8,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("OpenControl:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -17,6 +17,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OpenControlLine:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_y1pqf"]
 resource_name = "close"
@@ -24,7 +36,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("OpenControl:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -33,35 +45,59 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OpenControlLine:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_pxw3o"]
 resource_name = "open"
 length = 0.6
-tracks/0/type = "value"
+tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.48000005),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2(0, 0), Vector2(1.1, 1.1), Vector2(1, 1)]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0.099999994),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [&"unfurl"],
 "method": &"emit_signal"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OpenControl:scale")
+tracks/1/interp = 2
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.43333334, 0.56666666),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1.1, 1.1), Vector2(0.96, 0.96), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("OpenControlLine:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.23333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.42, 0.42, 0.42, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0d38o"]
@@ -76,7 +112,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HoverControl/StateControl:scale")
+tracks/0/path = NodePath("OpenControl/HoverControl/StateControl:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -92,7 +128,7 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HoverControl/StateControl:scale")
+tracks/0/path = NodePath("OpenControl/HoverControl/StateControl:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -104,7 +140,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HoverControl/StateControl:modulate")
+tracks/1/path = NodePath("OpenControl/HoverControl/StateControl:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -116,7 +152,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Line2D:modulate")
+tracks/2/path = NodePath("OpenControlLine/Line2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -132,7 +168,7 @@ length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HoverControl/StateControl:scale")
+tracks/0/path = NodePath("OpenControl/HoverControl/StateControl:scale")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -144,7 +180,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HoverControl/StateControl:modulate")
+tracks/1/path = NodePath("OpenControl/HoverControl/StateControl:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -156,7 +192,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Line2D:modulate")
+tracks/2/path = NodePath("OpenControlLine/Line2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -171,7 +207,7 @@ resource_name = "locked"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HoverControl/StateControl:modulate")
+tracks/0/path = NodePath("OpenControl/HoverControl/StateControl:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -183,7 +219,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Line2D:modulate")
+tracks/1/path = NodePath("OpenControlLine/Line2D:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -206,7 +242,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HoverControl:scale")
+tracks/0/path = NodePath("OpenControl/HoverControl:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -218,7 +254,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HoverControl:modulate")
+tracks/1/path = NodePath("OpenControl/HoverControl:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -234,7 +270,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HoverControl:scale")
+tracks/0/path = NodePath("OpenControl/HoverControl:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -246,7 +282,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HoverControl:modulate")
+tracks/1/path = NodePath("OpenControl/HoverControl:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -261,7 +297,7 @@ resource_name = "exit_hover"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HoverControl:scale")
+tracks/0/path = NodePath("OpenControl/HoverControl:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -273,7 +309,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HoverControl:modulate")
+tracks/1/path = NodePath("OpenControl/HoverControl:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -301,35 +337,46 @@ pivot_offset = Vector2(80, 80)
 script = ExtResource("3_y1pqf")
 description = "Increases health to 20"
 save_key = "health_skill"
-button = NodePath("HoverControl/StateControl/TextureButton")
+button = NodePath("OpenControl/HoverControl/StateControl/TextureButton")
 open_animation = NodePath("Open")
 state_animation = NodePath("State")
 hover_animation = NodePath("Hover")
-line_node = NodePath("Line2D")
+line_node = NodePath("OpenControlLine/Line2D")
 
-[node name="Line2D" type="Line2D" parent="." unique_id=1529396372]
+[node name="OpenControlLine" type="Control" parent="." unique_id=406741890]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Line2D" type="Line2D" parent="OpenControlLine" unique_id=1529396372]
 modulate = Color(0.42, 0.42, 0.42, 0.07843137)
-points = PackedVector2Array(80, 80, -1, 160)
+points = PackedVector2Array(80, 80, 48, 115)
 width = 4.0
 default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
 
-[node name="HoverControl" type="Control" parent="." unique_id=1731249203]
+[node name="OpenControl" type="Control" parent="." unique_id=95999118]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(40, 70)
+
+[node name="HoverControl" type="Control" parent="OpenControl" unique_id=1731249203]
 modulate = Color(0.92, 0.92, 0.92, 1)
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(80, 80)
 
-[node name="StateControl" type="Control" parent="HoverControl" unique_id=925637607]
+[node name="StateControl" type="Control" parent="OpenControl/HoverControl" unique_id=925637607]
 modulate = Color(0.42, 0.42, 0.42, 0.07843137)
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 pivot_offset = Vector2(80, 80)
 
-[node name="TextureButton" type="TextureButton" parent="HoverControl/StateControl" unique_id=1303877298]
+[node name="TextureButton" type="TextureButton" parent="OpenControl/HoverControl/StateControl" unique_id=1303877298]
 self_modulate = Color(0.7204674, 0.72046757, 0.7204671, 1)
 layout_mode = 0
 offset_right = 160.0
@@ -349,8 +396,3 @@ autoplay = &"acquired"
 [node name="Hover" type="AnimationPlayer" parent="." unique_id=1054842003]
 libraries/ = SubResource("AnimationLibrary_b8yne")
 autoplay = &"RESET"
-
-[node name="Control" type="Control" parent="." unique_id=95999118]
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
