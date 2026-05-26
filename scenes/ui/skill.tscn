@@ -151,23 +151,119 @@ _data = {
 &"open": SubResource("Animation_pxw3o")
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_mw7tg"]
+[sub_resource type="Animation" id="Animation_mw7tg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.58383155, 0.58383155, 0.58383155, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.8, 0.8)]
+}
+
+[sub_resource type="Animation" id="Animation_ki0xx"]
+resource_name = "acquired"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.43333334),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(0.95468724, 0.95468724, 0.95468724, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.033333335, 0.6333334),
+"transitions": PackedFloat32Array(0.13397177, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(0.6, 0.6)]
+}
+
+[sub_resource type="Animation" id="Animation_qjrbc"]
+resource_name = "available"
+length = 0.6
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.19999999),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.42352942, 0.42352942, 0.42352942, 0.14901961), Color(0.58383155, 0.58383155, 0.58383155, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.16666667, 0.5),
+"transitions": PackedFloat32Array(3.2490084, 0.112656094, 5.6568522),
+"update": 0,
+"values": [Vector2(0.5, 0.5), Vector2(0.6, 0.6), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_rv3d5"]
+resource_name = "locked"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.42358288, 0.42358288, 0.42358288, 0.15)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_qjrbc"]
 _data = {
-&"RESET": SubResource("Animation_f8ipa"),
-&"acquired": SubResource("Animation_rogof"),
-&"close": SubResource("Animation_y1pqf"),
-&"enter_hover": SubResource("Animation_gwm4k"),
-&"exit_hover": SubResource("Animation_66n72"),
-&"hover": SubResource("Animation_q2hjf"),
-&"open": SubResource("Animation_pxw3o")
+&"RESET": SubResource("Animation_mw7tg"),
+&"acquired": SubResource("Animation_ki0xx"),
+&"available": SubResource("Animation_qjrbc"),
+&"locked": SubResource("Animation_rv3d5")
 }
 
 [node name="Skill" type="TextureButton" unique_id=124740578]
+modulate = Color(0.58383155, 0.58383155, 0.58383155, 1)
 offset_left = -80.0
 offset_top = -80.0
 offset_right = 80.0
 offset_bottom = 80.0
-scale = Vector2(1e-05, 1e-05)
+scale = Vector2(0.8, 0.8)
 pivot_offset = Vector2(80, 80)
 texture_normal = ExtResource("1_f8ipa")
 texture_focused = ExtResource("2_rogof")
@@ -179,9 +275,11 @@ save_key = "health_skill"
 libraries/ = SubResource("AnimationLibrary_0d38o")
 autoplay = &"close"
 
-[node name="State" type="AnimationPlayer" parent="." unique_id=295500715]
-libraries/ = SubResource("AnimationLibrary_mw7tg")
-autoplay = &"open"
+[node name="State" type="AnimationPlayer" parent="." unique_id=1770440113]
+libraries/ = SubResource("AnimationLibrary_qjrbc")
+autoplay = &"locked"
+
+[node name="Hover" type="AnimationPlayer" parent="." unique_id=1054842003]
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1529396372]
 width = 8.0

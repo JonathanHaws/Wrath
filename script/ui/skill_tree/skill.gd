@@ -40,7 +40,6 @@ func generate_line():
 	line_node.z_index = get_parent().z_index
 
 	get_parent().add_child(line_node)
-	_on_save_data_updated()
 
 @export_subgroup("MODULATION")
 @export var base_modulate: Color = Color(.3,.3,.3,1)
@@ -50,14 +49,17 @@ func generate_line():
 
 var prerequisite_key
 var aquired_key
+
 func is_acquired() -> bool:
 	return Save.data.has(aquired_key)
+
 func is_locked() -> bool:
-	if is_acquired():
-		return false
-	if prerequisite_node and not Save.data.has(prerequisite_key):
-		return true
+	if prerequisite_node and not Save.data.has(prerequisite_key): return true
 	return false
+
+func is_available() -> bool:
+	return not is_locked() and not is_acquired()
+
 
 @export_group("AUDIO") ## Multiple skills can share same same player with refrence by group
 @export var hover_sound_group: String = "skill_hover_sound" ## Sound to be played when hovered.
@@ -86,6 +88,8 @@ func setup_focus():
 
 @warning_ignore("unused_signal")
 signal unfurl
+signal acquired
+
 
 func _on_unfurl():
 	visible = true
@@ -124,28 +128,31 @@ func exit_hovered():
 	else:
 		modulate = base_modulate
 
-func _on_save_data_updated():
+func _on_prequisite_acquired():
+	update_state_animation(false)
 	
-	if line_node: 
-		if is_locked():
-			line_node.modulate = locked_modulate
-		else: 
-			line_node.modulate = base_modulate
+
+func resolve_save_keys():
+	# will auto generate unique save keys if ones are not provided
+	if save_key: aquired_key = save_key
+	else: aquired_key = Save.get_unique_key(self,"skill_node")
 	
-	if is_locked():
-		if locked_texture:
-			texture_normal = locked_texture
-	else:
-		texture_normal = unlocked_texture		
-	
-	if is_acquired():
-		modulate = aquired_modulate
-	elif is_locked():
-		modulate = locked_modulate
-	else:
-		modulate = base_modulate
+	if prerequisite_node: 
+		prerequisite_key = Save.get_unique_key(prerequisite_node, "skill_node")
+		if prerequisite_node.save_key != "": prerequisite_key = prerequisite_node.save_key
+
+func update_state_animation(play_instantly: bool = false):
+	if not get_node_or_null("State"): return
+	if is_acquired(): $State.play("acquired")
+	elif is_locked(): $State.play("locked")
+	else: $State.play("available")
+	if play_instantly:
+		$State.advance($State.current_animation_length - $State.current_animation_position)
 
 func _ready():
+	
+	resolve_save_keys()
+	update_state_animation(true)
 	
 	if prerequisite_node:
 		if prerequisite_node.has_signal("unfurl"):
@@ -155,12 +162,6 @@ func _ready():
 	
 	z_index +=1
 	
-	if save_key: aquired_key = save_key
-	else: aquired_key = Save.get_unique_key(self,"skill_node")
-	
-	if prerequisite_node: 
-		prerequisite_key = Save.get_unique_key(prerequisite_node, "skill_node")
-		if prerequisite_node.save_key != "": prerequisite_key = prerequisite_node.save_key
 
 	button_down.connect(_on_pressed)
 	mouse_entered.connect(enter_hovered)
@@ -169,21 +170,19 @@ func _ready():
 	focus_exited.connect(exit_hovered)
 
 	visibility_changed.connect(_on_visibility_changed)
+	
+	if prerequisite_node and prerequisite_node.has_signal("acquired"):
+		prerequisite_node.acquired.connect(_on_prequisite_acquired)
 
 	setup_focus()
 	call_deferred("generate_line")
 	
-	Save.save_data_updated.connect(_on_save_data_updated)
-	_on_save_data_updated()
 	
 func _on_pressed():
-
 	if cost < 0: return
-	
-	if not Save.data.has(currency_key): 
-		Save.data[currency_key] = 0
-	
-	if prerequisite_node and not Save.data.has(prerequisite_key):
+	if not Save.data.has(currency_key): Save.data[currency_key] = 0
+
+	if is_locked():
 		play_group_sound(insufficient_funds_sound_group)
 		return
 		
@@ -191,7 +190,7 @@ func _on_pressed():
 		play_group_sound(insufficient_funds_sound_group)
 		return
 	
-	if Save.data.has(aquired_key): return
+	if is_acquired(): return
 	
 	Save.data[currency_key] -= cost
 	Save.data[upgrade_key] = new_amount
@@ -199,8 +198,10 @@ func _on_pressed():
 	
 	play_group_sound(purchased_sound_group)
 	
-	if state_animation: state_animation.play("acquired")
+	if $State: $State.play("acquired")
 	
 	Save.data[aquired_key] = true
 	modulate = aquired_modulate
 	Save.save_game()
+	
+	acquired.emit()
