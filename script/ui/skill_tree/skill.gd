@@ -1,4 +1,7 @@
-extends Control
+extends Control 
+@warning_ignore("unused_signal")
+signal unfurl
+signal acquired
 
 @export_multiline var description: String = "Increases players power" ## Relevant infol
 @export var prerequisite_node: Node ## The node that must be aquired before this one can be purchased. (Previous node skill tree) 
@@ -23,47 +26,18 @@ extends Control
 @export_subgroup("Line")
 @export_range(0.0, 1.0) var padding: float = 0.38
 @export var line_node: Line2D
-func generate_line():
+func setup_line():
 	if not line_node: return
 	if prerequisite_node == null: 
 		line_node.queue_free()
 		return
-
-	#line_node = Line2D.new()
-	#line_node.width = 4
-	#line_node.default_color = Color8(204, 204, 204)
-	#line_node.z_index = -1
-	#line_node.begin_cap_mode = Line2D.LINE_CAP_ROUND
-	#line_node.end_cap_mode = Line2D.LINE_CAP_ROUND
-	#
 	var start: Vector2 = line_node.to_local(global_position) + pivot_offset
 	var end: Vector2 = line_node.to_local(prerequisite_node.global_position) + pivot_offset
-	#line_node.set_point_position(1, end)
 	var a: Vector2 = start.lerp(end, 0.38)
 	var b: Vector2 = start.lerp(end, 0.62)
-	#
 	line_node.clear_points()
 	line_node.add_point(a)
 	line_node.add_point(b)
-	#
-	#line_node.z_index = get_parent().z_index
-#
-	#get_parent().add_child(line_node)
-
-
-var prerequisite_key
-var aquired_key
-
-func is_acquired() -> bool:
-	return Save.data.has(aquired_key)
-
-func is_locked() -> bool:
-	if prerequisite_node and not Save.data.has(prerequisite_key): return true
-	return false
-
-func is_available() -> bool:
-	return not is_locked() and not is_acquired()
-
 
 @export_group("AUDIO") ## Multiple skills can share same same player with refrence by group
 @export var hover_sound_group: String = "skill_hover_sound" ## Sound to be played when hovered.
@@ -73,6 +47,24 @@ func play_group_sound(group_name: String) -> void:
 	if not is_visible_in_tree(): return
 	for node in get_tree().get_nodes_in_group(group_name):
 		if node is AudioStreamPlayer: node.play()
+
+var prerequisite_key
+var aquired_key
+func is_acquired() -> bool:
+	return Save.data.has(aquired_key)
+func is_locked() -> bool:
+	if prerequisite_node and not Save.data.has(prerequisite_key): return true
+	return false
+func is_available() -> bool:
+	return not is_locked() and not is_acquired()
+func resolve_save_keys():
+	# will auto generate unique save keys if ones are not provided
+	if save_key: aquired_key = save_key
+	else: aquired_key = Save.get_unique_key(self,"skill_node")
+	
+	if prerequisite_node: 
+		prerequisite_key = Save.get_unique_key(prerequisite_node, "skill_node")
+		if prerequisite_node.save_key != "": prerequisite_key = prerequisite_node.save_key
 
 func setup_focus():
 	if focus_previous.is_empty(): focus_previous = get_path()
@@ -88,11 +80,6 @@ func setup_focus():
 			prerequisite_node.focus_neighbor_right = get_path()
 		focus_neighbor_left = p
 
-@warning_ignore("unused_signal")
-signal unfurl
-signal acquired
-
-
 func _on_unfurl():
 	visible = true
 	if open_animation:
@@ -102,10 +89,8 @@ func _on_unfurl():
 func _on_visibility_changed():
 	if visible and open_animation:
 		open_animation.stop()
-		if prerequisite_node: 
-			open_animation.play("close")
-		else:
-			open_animation.play("open")
+		if prerequisite_node: open_animation.play("close")
+		else: open_animation.play("open")
 
 func enter_hovered():
 	if is_locked(): return
@@ -120,41 +105,25 @@ func exit_hovered():
 	
 func _on_prequisite_acquired():
 	update_state_animation(false)
-	
-
-func resolve_save_keys():
-	# will auto generate unique save keys if ones are not provided
-	if save_key: aquired_key = save_key
-	else: aquired_key = Save.get_unique_key(self,"skill_node")
-	
-	if prerequisite_node: 
-		prerequisite_key = Save.get_unique_key(prerequisite_node, "skill_node")
-		if prerequisite_node.save_key != "": prerequisite_key = prerequisite_node.save_key
 
 func update_state_animation(play_instantly: bool = false):
 	if not get_node_or_null("State"): return
-	if is_acquired(): $State.play("acquired")
-	elif is_locked(): $State.play("locked")
-	else: $State.play("available")
-	if play_instantly:
-		$State.advance($State.current_animation_length - $State.current_animation_position)
+	if is_acquired(): state_animation.play("acquired")
+	elif is_locked():  state_animation.play("locked")
+	else:  state_animation.play("available")
+	if play_instantly: state_animation.advance(state_animation.current_animation_length -  state_animation.current_animation_position)
 
 func _ready():
 	
 	resolve_save_keys()
 	update_state_animation(true)
 	
-	if button: button.texture_normal = texture
-	
 	if prerequisite_node:
-		if prerequisite_node.has_signal("unfurl"):
-			prerequisite_node.unfurl.connect(_on_unfurl)
-	
-	if open_animation: open_animation.play("close")
-	
-	z_index +=1
+		if prerequisite_node.has_signal("unfurl"): prerequisite_node.unfurl.connect(_on_unfurl)
+		if prerequisite_node.has_signal("acquired"): prerequisite_node.acquired.connect(_on_prequisite_acquired)
 	
 	if button:
+		button.texture_normal = texture
 		button.button_down.connect(_on_pressed)
 		button.mouse_entered.connect(enter_hovered)
 		button.mouse_exited.connect(exit_hovered)
@@ -162,13 +131,10 @@ func _ready():
 		button.focus_exited.connect(exit_hovered)
 
 	visibility_changed.connect(_on_visibility_changed)
-	
-	if prerequisite_node and prerequisite_node.has_signal("acquired"):
-		prerequisite_node.acquired.connect(_on_prequisite_acquired)
+	if open_animation: open_animation.play("close")
 
 	setup_focus()
-	call_deferred("generate_line")
-	
+	call_deferred("setup_line")
 	
 func _on_pressed():
 	if cost < 0: return
