@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://wumns7jvps3a"]
 
-[ext_resource type="Texture2D" uid="uid://k2lit03sbiu0" path="res://textures/menu/skill_tree/skills/Skills-7.png" id="1_f8ipa"]
-[ext_resource type="Texture2D" uid="uid://cmews7lfin7r7" path="res://textures/menu/skill_tree/skills/Focus.png" id="2_rogof"]
+[ext_resource type="Texture2D" uid="uid://caga3p1qqekcr" path="res://textures/menu/skill_tree/skills/Skills-1.png" id="2_0w5t2"]
 [ext_resource type="Script" uid="uid://hf3odyswfp0p" path="res://script/ui/skill_tree/skill.gd" id="3_y1pqf"]
 
 [sub_resource type="Animation" id="Animation_f8ipa"]
@@ -16,35 +15,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(0, 0)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Line2D:modulate")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_rogof"]
-resource_name = "acquired"
-length = 0.6
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.6),
-"transitions": PackedFloat32Array(0.13397177, 1),
-"update": 0,
-"values": [Vector2(0.8, 0.8), Vector2(0.6, 0.6)]
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_y1pqf"]
@@ -63,75 +34,28 @@ tracks/0/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_gwm4k"]
-resource_name = "enter_hover"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.6, 0.6)]
-}
-
-[sub_resource type="Animation" id="Animation_66n72"]
-resource_name = "exit_hover"
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.5, 0.5)]
-}
-
-[sub_resource type="Animation" id="Animation_q2hjf"]
-resource_name = "hover"
-
 [sub_resource type="Animation" id="Animation_pxw3o"]
 resource_name = "open"
 length = 0.6
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Line2D:modulate")
+tracks/0/path = NodePath(".:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.23333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3, 0.48000005),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0.6, 0.6), Vector2(0.5, 0.5)]
+"values": [Vector2(0, 0), Vector2(1.1, 1.1), Vector2(1, 1)]
 }
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(0.099999994),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -143,11 +67,7 @@ tracks/2/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0d38o"]
 _data = {
 &"RESET": SubResource("Animation_f8ipa"),
-&"acquired": SubResource("Animation_rogof"),
 &"close": SubResource("Animation_y1pqf"),
-&"enter_hover": SubResource("Animation_gwm4k"),
-&"exit_hover": SubResource("Animation_66n72"),
-&"hover": SubResource("Animation_q2hjf"),
 &"open": SubResource("Animation_pxw3o")
 }
 
@@ -156,26 +76,14 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("HoverControl/StateControl:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.58383155, 0.58383155, 0.58383155, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0.8, 0.8)]
+"values": [Vector2(1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_ki0xx"]
@@ -184,54 +92,78 @@ length = 0.8
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
+tracks/0/path = NodePath("HoverControl/StateControl:scale")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.43333334),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.099999994, 0.46666667),
+"transitions": PackedFloat32Array(3.2490134, 0.55478483, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 1), Color(0.95468724, 0.95468724, 0.95468724, 1)]
+"values": [Vector2(1, 1), Vector2(1.15, 1.15), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
+tracks/1/path = NodePath("HoverControl/StateControl:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.033333335, 0.6333334),
-"transitions": PackedFloat32Array(0.13397177, 1),
+"times": PackedFloat32Array(0, 0.099999994, 0.26666665),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(0.8, 0.8), Vector2(0.6, 0.6)]
+"values": [Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Line2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.099999994, 0.26666668),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.39215687), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_qjrbc"]
 resource_name = "available"
-length = 0.6
+length = 1.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
+tracks/0/path = NodePath("HoverControl/StateControl:scale")
+tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.19999999),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.43333334, 1.4333333),
+"transitions": PackedFloat32Array(0.31864014, 0.55478364, 5.6568522),
 "update": 0,
-"values": [Color(0.42352942, 0.42352942, 0.42352942, 0.14901961), Color(0.58383155, 0.58383155, 0.58383155, 1)]
+"values": [Vector2(1, 1), Vector2(1.08, 1.08), Vector2(1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:scale")
+tracks/1/path = NodePath("HoverControl/StateControl:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.16666667, 0.5),
-"transitions": PackedFloat32Array(3.2490084, 0.112656094, 5.6568522),
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0.5, 0.5), Vector2(0.6, 0.6), Vector2(0.5, 0.5)]
+"values": [Color(0.42, 0.42, 0.42, 0.078431375), Color(1, 1, 1, 0.39215687)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Line2D:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.42, 0.42, 0.42, 0.078431375), Color(1, 1, 1, 0.39215687)]
 }
 
 [sub_resource type="Animation" id="Animation_rv3d5"]
@@ -239,14 +171,26 @@ resource_name = "locked"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
+tracks/0/path = NodePath("HoverControl/StateControl:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0.42358288, 0.42358288, 0.42358288, 0.15)]
+"values": [Color(0.42, 0.42, 0.42, 0.078431375)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Line2D:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.42, 0.42, 0.42, 0.078431375)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_qjrbc"]
@@ -257,32 +201,156 @@ _data = {
 &"locked": SubResource("Animation_rv3d5")
 }
 
-[node name="Skill" type="TextureButton" unique_id=124740578]
-modulate = Color(0.58383155, 0.58383155, 0.58383155, 1)
+[sub_resource type="Animation" id="Animation_0w5t2"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HoverControl:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HoverControl:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.92, 0.92, 0.92, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x1pa7"]
+resource_name = "enter_hover"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HoverControl:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1.1, 1.1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HoverControl:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_l6brh"]
+resource_name = "exit_hover"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HoverControl:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.8666667),
+"transitions": PackedFloat32Array(0.12499998, 1),
+"update": 0,
+"values": [Vector2(1.1, 1.1), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HoverControl:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.85, 0.85, 0.85, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_b8yne"]
+_data = {
+&"RESET": SubResource("Animation_0w5t2"),
+&"enter_hover": SubResource("Animation_x1pa7"),
+&"exit_hover": SubResource("Animation_l6brh")
+}
+
+[node name="Skill" type="Control" unique_id=73827621 node_paths=PackedStringArray("button", "open_animation", "state_animation", "hover_animation", "line_node")]
+layout_mode = 3
+anchors_preset = 0
 offset_left = -80.0
 offset_top = -80.0
 offset_right = 80.0
 offset_bottom = 80.0
-scale = Vector2(0.8, 0.8)
 pivot_offset = Vector2(80, 80)
-texture_normal = ExtResource("1_f8ipa")
-texture_focused = ExtResource("2_rogof")
 script = ExtResource("3_y1pqf")
 description = "Increases health to 20"
 save_key = "health_skill"
-
-[node name="Open" type="AnimationPlayer" parent="." unique_id=729741578]
-libraries/ = SubResource("AnimationLibrary_0d38o")
-autoplay = &"close"
-
-[node name="State" type="AnimationPlayer" parent="." unique_id=1770440113]
-libraries/ = SubResource("AnimationLibrary_qjrbc")
-autoplay = &"locked"
-
-[node name="Hover" type="AnimationPlayer" parent="." unique_id=1054842003]
+button = NodePath("HoverControl/StateControl/TextureButton")
+open_animation = NodePath("Open")
+state_animation = NodePath("State")
+hover_animation = NodePath("Hover")
+line_node = NodePath("Line2D")
 
 [node name="Line2D" type="Line2D" parent="." unique_id=1529396372]
-width = 8.0
+modulate = Color(0.42, 0.42, 0.42, 0.07843137)
+points = PackedVector2Array(80, 80, -1, 160)
+width = 4.0
 default_color = Color(0.8, 0.8, 0.8, 1)
 begin_cap_mode = 2
 end_cap_mode = 2
+
+[node name="HoverControl" type="Control" parent="." unique_id=1731249203]
+modulate = Color(0.92, 0.92, 0.92, 1)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(80, 80)
+
+[node name="StateControl" type="Control" parent="HoverControl" unique_id=925637607]
+modulate = Color(0.42, 0.42, 0.42, 0.07843137)
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+pivot_offset = Vector2(80, 80)
+
+[node name="TextureButton" type="TextureButton" parent="HoverControl/StateControl" unique_id=1303877298]
+self_modulate = Color(0.7204674, 0.72046757, 0.7204671, 1)
+layout_mode = 0
+offset_right = 160.0
+offset_bottom = 160.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(80, 80)
+texture_normal = ExtResource("2_0w5t2")
+
+[node name="Open" type="AnimationPlayer" parent="." unique_id=729741578]
+libraries/ = SubResource("AnimationLibrary_0d38o")
+autoplay = &"RESET"
+
+[node name="State" type="AnimationPlayer" parent="." unique_id=1770440113]
+libraries/ = SubResource("AnimationLibrary_qjrbc")
+autoplay = &"acquired"
+
+[node name="Hover" type="AnimationPlayer" parent="." unique_id=1054842003]
+libraries/ = SubResource("AnimationLibrary_b8yne")
+autoplay = &"RESET"
+
+[node name="Control" type="Control" parent="." unique_id=95999118]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0

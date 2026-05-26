@@ -1,4 +1,5 @@
-extends TextureButton
+extends Control
+
 @export_multiline var description: String = "Increases players power" ## Relevant infol
 @export var prerequisite_node: Node ## The node that must be aquired before this one can be purchased. (Previous node skill tree) 
 @export var save_key: String ## Special save data key to read if this has been aquired yet. If left empty key will be auto generated prefixed with unique node branch path
@@ -6,46 +7,49 @@ extends TextureButton
 @export var new_amount: Variant = 1.0 ## The update value for the property
 @export var cost: float = 5 ## Price for upgrading. Amount less then 0 means skill is not purchasable 
 @export var currency_key: String = "wisp" ## How much it costs to buy this skill. 
-@onready var open_animation: AnimationPlayer = get_node_or_null("Open")
-@onready var state_animation: AnimationPlayer = get_node_or_null("State")
+
+@export var button: TextureButton
+@export var locked_texture: Texture2D = preload("res://textures/menu/skill_tree/skills/Skills-locked.png")
+@export var texture: Texture2D
 
 @export_subgroup("INFO")
 @export var description_group: String = "ability_info_skilltree" ## Add the Label which should say the description of the ability to this group
 @export var cost_group: String = "cost_skilltree" ## Add the Label which should say the cost of this ability to this group
-@onready var unlocked_texture = texture_normal
-@export var generate_line_enabled: bool = true
-@export_range(0.0, 1.0) var padding: float = 0.38
-var line_node: Line2D
-func generate_line():
-	if not generate_line_enabled: return
-	if prerequisite_node == null: return
-	if line_node and is_instance_valid(line_node): line_node.queue_free() # avoid duplicates
 
-	line_node = Line2D.new()
-	line_node.width = 4
-	line_node.default_color = Color8(204, 204, 204)
-	line_node.z_index = -1
-	line_node.begin_cap_mode = Line2D.LINE_CAP_ROUND
-	line_node.end_cap_mode = Line2D.LINE_CAP_ROUND
-	
-	var start: Vector2 = prerequisite_node.position + prerequisite_node.pivot_offset
-	var end: Vector2 = position + pivot_offset
+@export var open_animation: AnimationPlayer ## The animation player which controls opening and closing animations
+@export var state_animation: AnimationPlayer ## The animation player which controls how the skill looks in different states
+@export var hover_animation: AnimationPlayer ## The animation player which controls how skills look when hovered
+
+@export_subgroup("Line")
+@export_range(0.0, 1.0) var padding: float = 0.38
+@export var line_node: Line2D
+func generate_line():
+	if not line_node: return
+	if prerequisite_node == null: 
+		line_node.queue_free()
+		return
+
+	#line_node = Line2D.new()
+	#line_node.width = 4
+	#line_node.default_color = Color8(204, 204, 204)
+	#line_node.z_index = -1
+	#line_node.begin_cap_mode = Line2D.LINE_CAP_ROUND
+	#line_node.end_cap_mode = Line2D.LINE_CAP_ROUND
+	#
+	var start: Vector2 = line_node.to_local(global_position) + pivot_offset
+	var end: Vector2 = line_node.to_local(prerequisite_node.global_position) + pivot_offset
+	#line_node.set_point_position(1, end)
 	var a: Vector2 = start.lerp(end, 0.38)
 	var b: Vector2 = start.lerp(end, 0.62)
-	
+	#
 	line_node.clear_points()
 	line_node.add_point(a)
 	line_node.add_point(b)
-	
-	line_node.z_index = get_parent().z_index
+	#
+	#line_node.z_index = get_parent().z_index
+#
+	#get_parent().add_child(line_node)
 
-	get_parent().add_child(line_node)
-
-@export_subgroup("MODULATION")
-@export var base_modulate: Color = Color(.3,.3,.3,1)
-@export var hover_modulate: Color = Color(0.5,0.5,0.5,1)	
-@export var aquired_modulate: Color = Color(.9,.9,.9,1)
-@export var locked_modulate: Color = Color(0.15, 0.15, 0.15, 0.188) 
 
 var prerequisite_key
 var aquired_key
@@ -69,8 +73,6 @@ func play_group_sound(group_name: String) -> void:
 	if not is_visible_in_tree(): return
 	for node in get_tree().get_nodes_in_group(group_name):
 		if node is AudioStreamPlayer: node.play()
-
-@export var locked_texture: Texture2D = preload("res://textures/menu/skill_tree/skills/Skills-locked.png")
 
 func setup_focus():
 	if focus_previous.is_empty(): focus_previous = get_path()
@@ -107,27 +109,15 @@ func _on_visibility_changed():
 
 func enter_hovered():
 	if is_locked(): return
-	
-	if open_animation: 
-		open_animation.play("enter_hover")
-	
+	if hover_animation: hover_animation.play("enter_hover")
 	play_group_sound(hover_sound_group)
-	if not is_acquired(): modulate = hover_modulate
 	for n in get_tree().get_nodes_in_group(cost_group): n.text = str(cost)
 	for n in get_tree().get_nodes_in_group(description_group): n.text = description
 	
 func exit_hovered():
 	if is_locked(): return
+	if hover_animation: hover_animation.play("exit_hover")
 	
-	if open_animation: open_animation.play("exit_hover")
-	
-	if is_acquired():
-		modulate = aquired_modulate
-	elif is_locked():
-		modulate = locked_modulate
-	else:
-		modulate = base_modulate
-
 func _on_prequisite_acquired():
 	update_state_animation(false)
 	
@@ -154,6 +144,8 @@ func _ready():
 	resolve_save_keys()
 	update_state_animation(true)
 	
+	if button: button.texture_normal = texture
+	
 	if prerequisite_node:
 		if prerequisite_node.has_signal("unfurl"):
 			prerequisite_node.unfurl.connect(_on_unfurl)
@@ -162,12 +154,12 @@ func _ready():
 	
 	z_index +=1
 	
-
-	button_down.connect(_on_pressed)
-	mouse_entered.connect(enter_hovered)
-	mouse_exited.connect(exit_hovered)
-	focus_entered.connect(enter_hovered)
-	focus_exited.connect(exit_hovered)
+	if button:
+		button.button_down.connect(_on_pressed)
+		button.mouse_entered.connect(enter_hovered)
+		button.mouse_exited.connect(exit_hovered)
+		button.focus_entered.connect(enter_hovered)
+		button.focus_exited.connect(exit_hovered)
 
 	visibility_changed.connect(_on_visibility_changed)
 	
@@ -191,17 +183,12 @@ func _on_pressed():
 		return
 	
 	if is_acquired(): return
-	
+	play_group_sound(purchased_sound_group)
 	Save.data[currency_key] -= cost
 	Save.data[upgrade_key] = new_amount
-	#print('upgraded ', upgrade_key, " ", new_amount)
-	
-	play_group_sound(purchased_sound_group)
-	
 	if $State: $State.play("acquired")
-	
 	Save.data[aquired_key] = true
-	modulate = aquired_modulate
 	Save.save_game()
-	
 	acquired.emit()
+
+	#print('upgraded ', upgrade_key, " ", new_amount)

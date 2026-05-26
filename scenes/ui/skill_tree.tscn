@@ -19,43 +19,44 @@
 [ext_resource type="Texture2D" uid="uid://xw3jd85ytxqu" path="res://textures/menu/skill_tree/progress/Envy.png" id="11_0gl5m"]
 [ext_resource type="Texture2D" uid="uid://cmews7lfin7r7" path="res://textures/menu/skill_tree/skills/Focus.png" id="11_8iry6"]
 [ext_resource type="Texture2D" uid="uid://77ol03ius6rh" path="res://textures/menu/skill_tree/progress/Pride.png" id="12_cqod1"]
-[ext_resource type="Texture2D" uid="uid://bcusr8k864bcv" path="res://textures/menu/skill_tree/skills/Skills-9.png" id="12_ncvsq"]
-[ext_resource type="Texture2D" uid="uid://5ql648bpxoih" path="res://textures/menu/skill_tree/skills/Skills-10.png" id="13_og45s"]
+[ext_resource type="Texture2D" uid="uid://k2lit03sbiu0" path="res://textures/menu/skill_tree/skills/Skills-7.png" id="13_0d38o"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/themes/notification.tres" id="13_uftlf"]
 [ext_resource type="PackedScene" uid="uid://wumns7jvps3a" path="res://scenes/ui/skill.tscn" id="14_cm31t"]
-[ext_resource type="Texture2D" uid="uid://bplp8apkyeu2t" path="res://textures/menu/skill_tree/skills/Skills-11.png" id="14_t5yef"]
+[ext_resource type="Texture2D" uid="uid://bua7jndlgablg" path="res://textures/menu/skill_tree/skills/Skills-8.png" id="14_jsg0y"]
 [ext_resource type="Script" uid="uid://dbfbopu4ncf67" path="res://script/ui/skill_tree/wisp_counter.gd" id="14_xjsia"]
-[ext_resource type="Texture2D" uid="uid://bua7jndlgablg" path="res://textures/menu/skill_tree/skills/Skills-8.png" id="15_cm31t"]
-[ext_resource type="Texture2D" uid="uid://sf6w3mb61dd3" path="res://textures/menu/skill_tree/skills/Skills-12.png" id="15_i6b42"]
-[ext_resource type="Texture2D" uid="uid://dx4ma2wn26ebx" path="res://textures/menu/skill_tree/skills/Skills-13.png" id="16_gfb6y"]
-[ext_resource type="Texture2D" uid="uid://ujmpi2oua4ab" path="res://textures/menu/skill_tree/skills/Skills-14.png" id="17_kbgl2"]
-[ext_resource type="Texture2D" uid="uid://dk8vf64h4vgmx" path="res://textures/menu/skill_tree/skills/Skills-15.png" id="18_dj7o1"]
-[ext_resource type="Texture2D" uid="uid://byd2nuvavbciv" path="res://textures/menu/skill_tree/skills/Skills-16.png" id="19_c2fwa"]
+[ext_resource type="Texture2D" uid="uid://bcusr8k864bcv" path="res://textures/menu/skill_tree/skills/Skills-9.png" id="15_tmelv"]
+[ext_resource type="Texture2D" uid="uid://5ql648bpxoih" path="res://textures/menu/skill_tree/skills/Skills-10.png" id="16_3qqj5"]
+[ext_resource type="Texture2D" uid="uid://bplp8apkyeu2t" path="res://textures/menu/skill_tree/skills/Skills-11.png" id="17_k8ak4"]
+[ext_resource type="Texture2D" uid="uid://sf6w3mb61dd3" path="res://textures/menu/skill_tree/skills/Skills-12.png" id="18_d7s0y"]
+[ext_resource type="Texture2D" uid="uid://dx4ma2wn26ebx" path="res://textures/menu/skill_tree/skills/Skills-13.png" id="19_nmcf3"]
+[ext_resource type="Texture2D" uid="uid://ujmpi2oua4ab" path="res://textures/menu/skill_tree/skills/Skills-14.png" id="20_b35ye"]
 [ext_resource type="Texture2D" uid="uid://t8jd682718uy" path="res://textures/menu/skill_tree/skills/Skills-2.png" id="20_ynufy"]
+[ext_resource type="Texture2D" uid="uid://dk8vf64h4vgmx" path="res://textures/menu/skill_tree/skills/Skills-15.png" id="21_utu42"]
 [ext_resource type="Texture2D" uid="uid://distclvu0k1gv" path="res://textures/menu/skill_tree/skills/Skills-3.png" id="21_yrhry"]
-[ext_resource type="Texture2D" uid="uid://bj73k6k6i6o5u" path="res://textures/menu/skill_tree/skills/Skills-4.png" id="22_mlmuh"]
-[ext_resource type="Texture2D" uid="uid://o1xndwpgjdna" path="res://textures/menu/skill_tree/skills/Skills-5.png" id="23_8iry6"]
-[ext_resource type="Texture2D" uid="uid://tobor5t5nhng" path="res://textures/menu/skill_tree/skills/Skills-6.png" id="24_irovk"]
-[ext_resource type="Texture2D" uid="uid://evsf8rjmyuyn" path="res://textures/menu/skill_tree/skills/Skills-17.png" id="25_0x486"]
-[ext_resource type="Texture2D" uid="uid://douwk3ow3uq7l" path="res://textures/menu/skill_tree/skills/Skills-20.png" id="25_mlmuh"]
-[ext_resource type="Texture2D" uid="uid://bt7fkyaa0pahq" path="res://textures/menu/skill_tree/skills/Skills-21.png" id="26_8iry6"]
-[ext_resource type="Texture2D" uid="uid://kxudbt8cao1n" path="res://textures/menu/skill_tree/skills/Skills-18.png" id="26_q260o"]
-[ext_resource type="Texture2D" uid="uid://cbvbwfjifllvh" path="res://textures/menu/skill_tree/skills/Skills-19.png" id="27_ew1w1"]
-[ext_resource type="Texture2D" uid="uid://c6b14iucde34s" path="res://textures/menu/skill_tree/skills/Skills-22.png" id="27_irovk"]
+[ext_resource type="Texture2D" uid="uid://byd2nuvavbciv" path="res://textures/menu/skill_tree/skills/Skills-16.png" id="22_m02ky"]
+[ext_resource type="Texture2D" uid="uid://bj73k6k6i6o5u" path="res://textures/menu/skill_tree/skills/Skills-4.png" id="25_c3l7r"]
+[ext_resource type="Texture2D" uid="uid://o1xndwpgjdna" path="res://textures/menu/skill_tree/skills/Skills-5.png" id="26_jf8qe"]
+[ext_resource type="Texture2D" uid="uid://tobor5t5nhng" path="res://textures/menu/skill_tree/skills/Skills-6.png" id="27_u4nii"]
+[ext_resource type="Texture2D" uid="uid://douwk3ow3uq7l" path="res://textures/menu/skill_tree/skills/Skills-20.png" id="28_b0yt6"]
+[ext_resource type="Texture2D" uid="uid://bt7fkyaa0pahq" path="res://textures/menu/skill_tree/skills/Skills-21.png" id="29_3fh55"]
 [ext_resource type="BitMap" uid="uid://cx52mrtys0j6u" path="res://textures/menu/skill_tree/progress/Lust.bmp" id="29_6pdds"]
-[ext_resource type="Texture2D" uid="uid://03p5rbgxdyqw" path="res://textures/menu/skill_tree/skills/Skills-24.png" id="29_q260o"]
+[ext_resource type="Texture2D" uid="uid://c6b14iucde34s" path="res://textures/menu/skill_tree/skills/Skills-22.png" id="30_x0e3q"]
 [ext_resource type="BitMap" uid="uid://d28um32hhw3je" path="res://textures/menu/skill_tree/progress/Gluttony.bmp" id="31_5y3ua"]
+[ext_resource type="Texture2D" uid="uid://03p5rbgxdyqw" path="res://textures/menu/skill_tree/skills/Skills-24.png" id="31_pw20m"]
+[ext_resource type="Texture2D" uid="uid://evsf8rjmyuyn" path="res://textures/menu/skill_tree/skills/Skills-17.png" id="32_2h014"]
 [ext_resource type="BitMap" uid="uid://b6a7luoq5vmpx" path="res://textures/menu/skill_tree/progress/Greed.bmp" id="33_5y3ua"]
-[ext_resource type="Texture2D" uid="uid://f6mg8oi6mifj" path="res://textures/menu/skill_tree/skills/Skills-25.png" id="33_ew1w1"]
-[ext_resource type="Texture2D" uid="uid://b2ivrq65nnsn7" path="res://textures/menu/skill_tree/skills/Skills-26.png" id="34_1wrek"]
+[ext_resource type="Texture2D" uid="uid://kxudbt8cao1n" path="res://textures/menu/skill_tree/skills/Skills-18.png" id="33_r725d"]
+[ext_resource type="Texture2D" uid="uid://cbvbwfjifllvh" path="res://textures/menu/skill_tree/skills/Skills-19.png" id="34_6udsr"]
 [ext_resource type="BitMap" uid="uid://dnjiroy2yu8o0" path="res://textures/menu/skill_tree/progress/Sloth.bmp" id="35_3w8ju"]
+[ext_resource type="Texture2D" uid="uid://f6mg8oi6mifj" path="res://textures/menu/skill_tree/skills/Skills-25.png" id="35_kwbsy"]
 [ext_resource type="BitMap" uid="uid://dxp1oexk5oxck" path="res://textures/menu/skill_tree/progress/Pride.bmp" id="35_odw3s"]
-[ext_resource type="Texture2D" uid="uid://dr7mxaao58ba7" path="res://textures/menu/skill_tree/skills/Skills-27.png" id="35_qixc4"]
-[ext_resource type="Texture2D" uid="uid://6ld5dlfed6rw" path="res://textures/menu/skill_tree/skills/Skills-28.png" id="36_tj72h"]
+[ext_resource type="Texture2D" uid="uid://b2ivrq65nnsn7" path="res://textures/menu/skill_tree/skills/Skills-26.png" id="36_wmggm"]
+[ext_resource type="Texture2D" uid="uid://dr7mxaao58ba7" path="res://textures/menu/skill_tree/skills/Skills-27.png" id="37_80otk"]
 [ext_resource type="BitMap" uid="uid://c2i7jnfbb7d6e" path="res://textures/menu/skill_tree/progress/Wrath.bmp" id="37_g7gqr"]
-[ext_resource type="Texture2D" uid="uid://bowmjsco5pwul" path="res://textures/menu/skill_tree/skills/Skills-29.png" id="37_my0po"]
-[ext_resource type="Texture2D" uid="uid://rhj5qcvstxwa" path="res://textures/menu/skill_tree/skills/Skills-30.png" id="38_o5bp0"]
+[ext_resource type="Texture2D" uid="uid://6ld5dlfed6rw" path="res://textures/menu/skill_tree/skills/Skills-28.png" id="38_r0xme"]
+[ext_resource type="Texture2D" uid="uid://bowmjsco5pwul" path="res://textures/menu/skill_tree/skills/Skills-29.png" id="39_b3asd"]
 [ext_resource type="BitMap" uid="uid://dndd136tgy7dj" path="res://textures/menu/skill_tree/progress/Envy.bmp" id="39_ncvsq"]
+[ext_resource type="Texture2D" uid="uid://rhj5qcvstxwa" path="res://textures/menu/skill_tree/skills/Skills-30.png" id="40_0t480"]
 [ext_resource type="Theme" uid="uid://c8d8pojx2cgao" path="res://shaders/themes/skill_tree_description.tres" id="56_0x486"]
 
 [sub_resource type="Gradient" id="Gradient_ubdiu"]
@@ -79,7 +80,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0.9372549)]
 }
 
 [sub_resource type="Animation" id="Animation_0d38o"]
@@ -121,7 +122,7 @@ script = ExtResource("2_irovk")
 focus_targets = [null]
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=1063797725]
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.9372549)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -253,12 +254,12 @@ offset_left = -394.0
 offset_top = -67.0
 offset_right = -234.0
 offset_bottom = 93.0
-texture_normal = ExtResource("10_mlmuh")
 description = "Aquire Skills"
 save_key = "root_skill"
 upgrade_key = ""
 new_amount = 0.0
 cost = 0.0
+texture = ExtResource("10_mlmuh")
 
 [node name="Health1" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1094198700 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -271,6 +272,7 @@ prerequisite_node = NodePath("../Healing1")
 save_key = "health_1_skill"
 upgrade_key = "max_health"
 new_amount = 20.0
+texture = ExtResource("13_0d38o")
 
 [node name="Health2" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=904753705 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -278,12 +280,12 @@ offset_left = -63.0
 offset_top = -160.0
 offset_right = 97.0
 offset_bottom = 0.0
-texture_normal = ExtResource("15_cm31t")
 description = "Increases Health To 25"
 prerequisite_node = NodePath("../Health1")
 save_key = "health_2_skill"
 upgrade_key = "max_health"
 new_amount = 25.0
+texture = ExtResource("14_jsg0y")
 
 [node name="Health3" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1660216775 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -291,12 +293,12 @@ offset_left = 55.0
 offset_top = -162.0
 offset_right = 215.0
 offset_bottom = -2.0
-texture_normal = ExtResource("12_ncvsq")
 description = "Increases Health To 30"
 prerequisite_node = NodePath("../Health2")
 save_key = "health_3_skill"
 upgrade_key = "max_health"
 new_amount = 25.0
+texture = ExtResource("15_tmelv")
 
 [node name="Health4" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=787902469 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -304,12 +306,12 @@ offset_left = 167.0
 offset_top = -161.0
 offset_right = 327.0
 offset_bottom = -1.0
-texture_normal = ExtResource("13_og45s")
 description = "Increases Health To 40"
 prerequisite_node = NodePath("../Health3")
 save_key = "health_4_skill"
 upgrade_key = "max_health"
 new_amount = 40.0
+texture = ExtResource("16_3qqj5")
 
 [node name="Health5" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=628552147 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -317,12 +319,12 @@ offset_left = 287.0
 offset_top = -161.0
 offset_right = 447.0
 offset_bottom = -1.0
-texture_normal = ExtResource("14_t5yef")
 description = "Increases Health To 50"
 prerequisite_node = NodePath("../Health4")
 save_key = "health_5_skill"
 upgrade_key = "max_health"
 new_amount = 50.0
+texture = ExtResource("17_k8ak4")
 
 [node name="Damage1" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=454310616 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -330,12 +332,12 @@ offset_left = -247.0
 offset_top = -63.0
 offset_right = -87.0
 offset_bottom = 97.0
-texture_normal = ExtResource("15_i6b42")
 description = "Increases Damage To 75"
 prerequisite_node = NodePath("../Root")
 save_key = "damage_1_skill"
 upgrade_key = "damage"
 new_amount = 75.0
+texture = ExtResource("18_d7s0y")
 
 [node name="Damage2" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1578773633 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -343,12 +345,12 @@ offset_left = -124.0
 offset_top = -66.0
 offset_right = 36.0
 offset_bottom = 94.0
-texture_normal = ExtResource("16_gfb6y")
 description = "Increases Damage To 100"
 prerequisite_node = NodePath("../Damage1")
 save_key = "damage_2_skill"
 upgrade_key = "damage"
 new_amount = 100.0
+texture = ExtResource("19_nmcf3")
 
 [node name="Damage3" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1070350483 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -356,12 +358,12 @@ offset_left = 0.0
 offset_top = -67.0
 offset_right = 160.0
 offset_bottom = 93.0
-texture_normal = ExtResource("17_kbgl2")
 description = "Increases Damage To 125"
 prerequisite_node = NodePath("../Damage2")
 save_key = "damage_3_skill"
 upgrade_key = "damage"
 new_amount = 125.0
+texture = ExtResource("20_b35ye")
 
 [node name="Damage4" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=212274403 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -369,12 +371,12 @@ offset_left = 118.0
 offset_top = -70.0
 offset_right = 278.0
 offset_bottom = 90.0
-texture_normal = ExtResource("18_dj7o1")
 description = "Increases Damage To 140"
 prerequisite_node = NodePath("../Damage3")
 save_key = "damage_4_skill"
 upgrade_key = "damage"
 new_amount = 140.0
+texture = ExtResource("21_utu42")
 
 [node name="Damage5" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=895469397 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -382,12 +384,12 @@ offset_left = 238.0
 offset_top = -69.0
 offset_right = 398.0
 offset_bottom = 91.0
-texture_normal = ExtResource("19_c2fwa")
 description = "Increases Damage To 150"
 prerequisite_node = NodePath("../Damage4")
 save_key = "damage_5_skill"
 upgrade_key = "damage"
 new_amount = 150.0
+texture = ExtResource("22_m02ky")
 
 [node name="Stamina1" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=840116948 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -395,12 +397,12 @@ offset_left = -300.0
 offset_top = 31.0
 offset_right = -140.0
 offset_bottom = 191.0
-texture_normal = ExtResource("20_ynufy")
 description = "Increases Consecutive Spins To 2"
 prerequisite_node = NodePath("../Root")
 save_key = "stamina_1_skill"
 upgrade_key = "max_stamina"
 new_amount = 14.0
+texture = ExtResource("20_ynufy")
 
 [node name="Stamina2" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=486639261 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -408,12 +410,12 @@ offset_left = -178.0
 offset_top = 31.0
 offset_right = -18.0
 offset_bottom = 191.0
-texture_normal = ExtResource("21_yrhry")
 description = "Increases Consecutive Spins To 3"
 prerequisite_node = NodePath("../Stamina1")
 save_key = "stamina_2_skill"
 upgrade_key = "max_stamina"
 new_amount = 18.0
+texture = ExtResource("21_yrhry")
 
 [node name="Stamina3" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=829117137 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -421,12 +423,12 @@ offset_left = -53.0
 offset_top = 30.0
 offset_right = 107.0
 offset_bottom = 190.0
-texture_normal = ExtResource("22_mlmuh")
 description = "Increases Consecutive Spins To 4"
 prerequisite_node = NodePath("../Stamina2")
 save_key = "stamina_3_skill"
 upgrade_key = "max_stamina"
 new_amount = 22.0
+texture = ExtResource("25_c3l7r")
 
 [node name="Stamina4" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=392889408 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -434,12 +436,12 @@ offset_left = 71.0
 offset_top = 31.0
 offset_right = 231.0
 offset_bottom = 191.0
-texture_normal = ExtResource("23_8iry6")
 description = "Increases Consecutive Spins To 5"
 prerequisite_node = NodePath("../Stamina3")
 save_key = "stamina_4_skill"
 upgrade_key = "max_stamina"
 new_amount = 26.0
+texture = ExtResource("26_jf8qe")
 
 [node name="Stamina5" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=609666192 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -447,12 +449,12 @@ offset_left = 191.0
 offset_top = 34.0
 offset_right = 351.0
 offset_bottom = 194.0
-texture_normal = ExtResource("24_irovk")
 description = "Increases Consecutive Spins To 6"
 prerequisite_node = NodePath("../Stamina4")
 save_key = "stamina_5_skill"
 upgrade_key = "max_stamina"
 new_amount = 30.0
+texture = ExtResource("27_u4nii")
 
 [node name="Heal1" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1360114510 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -460,12 +462,12 @@ offset_left = -2.0
 offset_top = -254.0
 offset_right = 158.0
 offset_bottom = -94.0
-texture_normal = ExtResource("25_mlmuh")
 description = "Upgrades Heal Amount To 10"
 prerequisite_node = NodePath("../Healing3")
 save_key = "heal_1_skill"
 upgrade_key = "heal_amount"
 new_amount = 10.0
+texture = ExtResource("28_b0yt6")
 
 [node name="Heal2" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=426008460 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -473,12 +475,12 @@ offset_left = 107.0
 offset_top = -255.0
 offset_right = 267.0
 offset_bottom = -95.0
-texture_normal = ExtResource("26_8iry6")
 description = "Upgrades Heal Amount To 15"
 prerequisite_node = NodePath("../Heal1")
 save_key = "heal_2_skill"
 upgrade_key = "heal_amount"
 new_amount = 15.0
+texture = ExtResource("29_3fh55")
 
 [node name="Heal3" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1764975868 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -486,12 +488,12 @@ offset_left = 224.0
 offset_top = -256.0
 offset_right = 384.0
 offset_bottom = -96.0
-texture_normal = ExtResource("27_irovk")
 description = "Upgrades Heal Amount To 20"
 prerequisite_node = NodePath("../Heal2")
 save_key = "heal_3_skill"
 upgrade_key = "heal_amount"
 new_amount = 20.0
+texture = ExtResource("30_x0e3q")
 
 [node name="Heal4" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1486104125 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -499,13 +501,13 @@ offset_left = 337.0
 offset_top = -256.0
 offset_right = 497.0
 offset_bottom = -96.0
-texture_normal = ExtResource("29_q260o")
 description = "Upgrades Heal Amount To 30
 "
 prerequisite_node = NodePath("../Heal3")
 save_key = "heal_4_skill"
 upgrade_key = "heal_amount"
 new_amount = 30.0
+texture = ExtResource("31_pw20m")
 
 [node name="Healing1" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1539998069 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -513,13 +515,13 @@ offset_left = -300.0
 offset_top = -163.0
 offset_right = -140.0
 offset_bottom = -3.0
-texture_normal = ExtResource("25_0x486")
 description = "Grants Acess To 2 Heal Charges
 "
 prerequisite_node = NodePath("../Root")
 save_key = "healing_1_skill"
 upgrade_key = "max_heal_charges"
 new_amount = 2.0
+texture = ExtResource("32_2h014")
 
 [node name="Healing2" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1190097127 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -527,12 +529,12 @@ offset_left = -225.0
 offset_top = -253.0
 offset_right = -65.0
 offset_bottom = -93.0
-texture_normal = ExtResource("26_q260o")
 description = "Grants Acess To 3 Heal Charges"
 prerequisite_node = NodePath("../Healing1")
 save_key = "healing_2_skill"
 upgrade_key = "max_heal_charges"
 new_amount = 3.0
+texture = ExtResource("33_r725d")
 
 [node name="Healing3" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=241610282 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -540,12 +542,12 @@ offset_left = -112.0
 offset_top = -253.0
 offset_right = 48.0
 offset_bottom = -93.0
-texture_normal = ExtResource("27_ew1w1")
 description = "Grants Acess To 5 Heal Charges"
 prerequisite_node = NodePath("../Healing2")
 save_key = "healing_3_skill"
 upgrade_key = "max_heal_charges"
 new_amount = 5.0
+texture = ExtResource("34_6udsr")
 
 [node name="Shooting1" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=335294972 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -553,12 +555,12 @@ offset_left = -225.0
 offset_top = 116.0
 offset_right = -65.0
 offset_bottom = 276.0
-texture_normal = ExtResource("33_ew1w1")
 description = "Increases Ranged Capacity To 3"
 prerequisite_node = NodePath("../Stamina1")
 save_key = "shooting_1_skill"
 upgrade_key = "max_shooting_energy"
 new_amount = 3.0
+texture = ExtResource("35_kwbsy")
 
 [node name="Shooting2" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=947138964 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -566,12 +568,12 @@ offset_left = -112.0
 offset_top = 120.0
 offset_right = 48.0
 offset_bottom = 280.0
-texture_normal = ExtResource("34_1wrek")
 description = "Increases Ranged Capacity To 5"
 prerequisite_node = NodePath("../Shooting1")
 save_key = "shooting_2_skill"
 upgrade_key = "max_shooting_energy"
 new_amount = 5.0
+texture = ExtResource("36_wmggm")
 
 [node name="Shooting3" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1791426779 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -579,12 +581,12 @@ offset_left = 9.0
 offset_top = 121.0
 offset_right = 169.0
 offset_bottom = 281.0
-texture_normal = ExtResource("35_qixc4")
 description = "Increases Ranged Capacity To 10"
 prerequisite_node = NodePath("../Shooting2")
 save_key = "shooting_3_skill"
 upgrade_key = "max_shooting_energy"
 new_amount = 10.0
+texture = ExtResource("37_80otk")
 
 [node name="Shoot1" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1245693505 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -592,12 +594,12 @@ offset_left = 127.0
 offset_top = 118.0
 offset_right = 287.0
 offset_bottom = 278.0
-texture_normal = ExtResource("36_tj72h")
 description = "Increases Ranged Damage To 15"
 prerequisite_node = NodePath("../Shooting3")
 save_key = "shoot_1_skill"
 upgrade_key = "shoot_damage"
 new_amount = 15.0
+texture = ExtResource("38_r0xme")
 
 [node name="Shoot2" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=658479965 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -605,12 +607,12 @@ offset_left = 247.0
 offset_top = 119.0
 offset_right = 407.0
 offset_bottom = 279.0
-texture_normal = ExtResource("37_my0po")
 description = "Increases Ranged Damage To 25"
 prerequisite_node = NodePath("../Shoot1")
 save_key = "shoot_2_skill"
 upgrade_key = "shoot_damage"
 new_amount = 25.0
+texture = ExtResource("39_b3asd")
 
 [node name="Shoot3" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1589100784 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
@@ -618,15 +620,16 @@ offset_left = 303.0
 offset_top = 33.0
 offset_right = 463.0
 offset_bottom = 193.0
-texture_normal = ExtResource("38_o5bp0")
 description = "Increases Ranged Damage To 50
 "
 prerequisite_node = NodePath("../Shoot2")
 save_key = "shoot_3_skill"
 upgrade_key = "shoot_damage"
 new_amount = 50.0
+texture = ExtResource("40_0t480")
 
 [node name="Progress" type="Control" parent="." unique_id=1153534499 groups=["ui_scalable"]]
+visible = false
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
