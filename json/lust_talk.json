@@ -2,69 +2,27 @@
 {"say": "OH MY..."},
 {"say": "WHO ARE YOU?"},
 {"say": "..."},
-{"say": "ITS VERY NICE TO MEET YOU!"},
-{"choice": [{"text": "WHO ARE YOU?" }, 				
-			{"text": "NICE TO MEET YOU TOO", "skip": "observation" }], "start": 1},
+{"say": "I MUST HAVE YOU!"},
 
-{"say": "WHO AM I?"},
-{"say": "DONT YOU ALREADY KNOW?"},
-
-{"branch": "observation", "start": 1},
-	{"say": "FORGIVE ME FOR PRYING BUT..."},
-	{"say": "WHY DO YOU SEEM SO"},
-	{"say": "LONELY?"},
-	{"say": "..."},
-	{"say": "I CAN REMOVE THAT LOAD"},
-	{"say": "ALL YOU NEED TO DO IS... "},
-	{"say": "LET ME... "},
-	{"say": "..."},
-	{"choice": [{"text": "GIVE IN", "skip": "give_in" }, 
-				{"text": "RESIST"}]},
-
-	{"say": "I THINK YOU'RE CONFUSED"},
-	{"say": "NO ONE REFUSES ME"},
-	{"say": "..."},
-	{"say": "EVER."},
-	{"say": "DO YOU UNDERSTAND?"},
-	{"choice": [{"text": "NO",  "skip": "battle" }, 
-				{"text": "YES"}]},
-						
-{"branch": "give_in"},
-	{"say": "GOOD..."},
-	{"say": "WELL THEN..."},
-	{"say": "COME CLOSER"},
-	{"anim_player_group": "lust_anim_player", "anim": "SIN", "skip": "bother"},
-
-{"branch": "battle", "start": 1 },
-	{"say": "I TRIED TO WARN YOU"},
-	{"say": "I GET WHAT I WANT..."}, 
+{"branch": "battle", "start": 1},
 
 {"branch": "intro"},
 	{"anim_player_group": "lust_anim_player", "anim": "INTRO", "start":1, "exit":1},
-
-{"branch": "bother", "start": 1},
-	{"say": "YES."},
-	{"say": "THE MASTER WILL LOVE YOU"},
-	{"say": "BUT GO AWAY FOR NOW... "},
-	{"say": "I HAVE THINGS TO DO"},
-	{"choice": [{"text": "AS YOU COMMAND", "skip": "bother", "end":1}, 
-				{"text": "IM NO ONES SLAVE", "skip": "intro"}]},
-				
+			
 {"branch": "random_taunt_1"},
 	{"say_timed": {"say": "I GET WHAT I WANT", "for": 1.5}},
 
 {"branch": "random_taunt_2"},
-	{"say_timed": {"say": "YOU REALLY THINK...", "for": 2.0}},
-	{"say_timed": {"say": "YOU CAN ESCAPE?", "for": 1.5}},
+	{"say_timed": {"say": "YOU THINK YOU KNOW LOVE?", "for": 2.0}},
+	{"say_timed": {"say": "I THINK YOU LOOK LONELY..", "for": 2.0}},
 
 {"branch": "random_taunt_3"},
-	{"say_timed": {"say": "YOU THINK YOU KNOW LOVE?", "for": 2.0}},
-
-{"branch": "random_taunt_4"},
 	{"say_timed": {"say": "YOU KNOW HOW LUCKY YOU ARE?", "for": 2.5}},
 	{"say_timed": {"say": "TO HAVE MET ME?", "for": 2.5}},
-
-{"branch": "random_taunt_5"},
+	{"say_timed": {"say": "TOGETHER WE COULD", "for": 2.5}},
+	{"say_timed": {"say": "KILL THE MASTER", "for": 2.5}},
+	
+{"branch": "random_taunt_4"},
 	{"say_timed": {"say": "I WANTED YOU...", "for": 2.5}, "min_health": 0, "max_health" :0.5 },
 	{"say_timed": {"say": "BUT NOW YOU WILL DIE!", "for": 2.2}},
 	{"say_timed": {"say": "DIE!", "for": 0.75}},

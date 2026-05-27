@@ -192,6 +192,7 @@ var graphics_keys: Array[String] = [
 	"adjustment_contrast",
 	"adjustment_saturation",
 	"ssao_enabled",
+	"ssil_enabled",
 	"ssao_radius",
 	"ssao_intensity",
 	"glow_enabled",

@@ -125,6 +125,7 @@ func try_fall(delta: float) -> void:
 func play_land_effects() -> void:
 	if air_time > LAND_EFFECTS_COOLDOWN:
 		if ANIM.current_animation == "GOD": return
+		$Squash.squish(.3)	
 		if $Audio: $Audio.spawn_sound(["land"])
 		if PARTICLES: PARTICLES.spawn()
 

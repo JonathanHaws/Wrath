@@ -45,6 +45,7 @@ func seamless_cam_trans(duration: float = 1.5, target_camera_group: String = "pl
 	transition_camera.global_transform = current_camera.global_transform
 	transition_camera.fov = current_camera.fov
 	transition_camera.current = true
+	transition_camera.make_current()
 	
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
@@ -52,6 +53,7 @@ func seamless_cam_trans(duration: float = 1.5, target_camera_group: String = "pl
 	tween.tween_property(transition_camera, "fov", target_camera.fov, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.finished.connect(func():
 		target_camera.current = true
+		target_camera.make_current()
 		transition_camera.queue_free()
 		if save_completed: _save_cinematic_completed()
 		)
@@ -76,6 +78,6 @@ func _ready() -> void:
 	if AREA: 
 		AREA.body_entered.connect(_on_body_entered)
 	
-	if Save.data.has(SAVE_KEY): # Cutscene is only supposed to play 1 time
+	if SAVE_KEY != "" and Save.data.has(SAVE_KEY): # Cutscene is only supposed to play 1 time
 		#print('cutscene already played')
 		queue_free()

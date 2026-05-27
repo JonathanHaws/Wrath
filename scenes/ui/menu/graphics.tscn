@@ -29,9 +29,9 @@ script = ExtResource("2_km2ec")
 
 [node name="ColorRect" type="ColorRect" parent="Control" unique_id=713534090 groups=["ui_scalable"]]
 layout_mode = 0
-offset_top = 1.0
+offset_top = -3.0
 offset_right = 368.0
-offset_bottom = 327.0
+offset_bottom = 320.0
 color = Color(0.0646965, 0.0646965, 0.0646965, 0.913725)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Control/ColorRect" unique_id=1883038192]
@@ -172,10 +172,10 @@ offset_right = 289.0
 offset_bottom = 22.0
 size_flags_vertical = 4
 theme = ExtResource("4_ulx4h")
-min_value = 0.3
-max_value = 3.0
+min_value = 0.6
+max_value = 5.0
 step = 0.01
-value = 1.4000000000000001
+value = 1.4
 
 [node name="Label" type="Label" parent="Control/ColorRect/VBoxContainer/SSAORadius" unique_id=658706661]
 layout_mode = 0
@@ -213,7 +213,7 @@ theme = ExtResource("4_ulx4h")
 min_value = 1.0
 max_value = 10.0
 step = 0.01
-value = 1.4
+value = 3.0
 
 [node name="Label" type="Label" parent="Control/ColorRect/VBoxContainer/SSAOIntensity" unique_id=1972353159]
 layout_mode = 0

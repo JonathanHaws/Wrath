@@ -163,12 +163,12 @@ _data = {
 }
 point_count = 22
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ccgg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thcj7"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_thcj7"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_omlwx"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("23_thcj7")
@@ -526,7 +526,7 @@ transform = Transform3D(-0.8994282, 0, -0.43706867, 0, 1, 0, 0.43706867, 0, -0.8
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12.821152, -8.169779, 135.73941)
 
 [node name="Lust" parent="Sins" unique_id=1949196190 instance=ExtResource("20_bdp0v")]
-transform = Transform3D(-0.97807497, 0, -0.20825309, 0, 1, 0, 0.20825309, 0, -0.97807497, 364.6039, 38.50987, 25.439205)
+transform = Transform3D(-0.97807497, 0, -0.20825309, 0, 1, 0, 0.20825309, 0, -0.97807497, 364.6039, 36.370827, 25.439207)
 
 [node name="GreedTalk" parent="Sins" unique_id=324949012 instance=ExtResource("17_dq2hf")]
 transform = Transform3D(-0.15708953, 0, -0.98758435, 0, 1, 0, 0.98758435, 0, -0.15708953, 318.00122, 35.539642, -1.4994497)
@@ -549,8 +549,8 @@ transform = Transform3D(0.97340286, 0, -0.2288716, 0, 0.99994403, 0, 0.22887506,
 transform = Transform3D(0.9193156, 0.15269043, 0.3626902, 0.0062030754, 0.9159176, -0.40131867, -0.39347187, 0.37118846, 0.84107006, -0.13388485, 2.4412313, -0.023626858)
 
 [node name="Sphere_001" parent="Sins/Sloth/PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1434777009, 1456814678, 684494173) index="1" unique_id=1805627527]
-surface_material_override/0 = SubResource("StandardMaterial3D_3ccgg")
-surface_material_override/1 = SubResource("ShaderMaterial_thcj7")
+surface_material_override/0 = SubResource("StandardMaterial3D_thcj7")
+surface_material_override/1 = SubResource("ShaderMaterial_omlwx")
 
 [node name="EnvyFly" type="Path3D" parent="Sins" unique_id=2031636455 node_paths=PackedStringArray("node_to_queue_free")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.64444, 29.919395, -21.1921)
