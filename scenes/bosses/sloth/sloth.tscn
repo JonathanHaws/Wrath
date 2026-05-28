@@ -52,7 +52,7 @@ size = Vector3(23.4119, 20.729555, 25.330528)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d0au0"]
 radius = 1.1723633
-height = 4.80709
+height = 3.6183887
 
 [sub_resource type="Animation" id="Animation_edx7f"]
 resource_name = "CHASE"
@@ -563,8 +563,8 @@ _data = {
 }
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dbtmo"]
-radius = 0.9926758
-height = 4.80709
+radius = 2.2583008
+height = 7.141958
 
 [sub_resource type="Animation" id="Animation_ui8gw"]
 resource_name = "DEATH"
@@ -656,12 +656,12 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbtmo"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uahh5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ui8gw"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ic1i5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uahh5"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("26_uahh5")
@@ -861,7 +861,7 @@ transform = Transform3D(0.9999982, 0, -4.172325e-07, 0, 1, 0, 2.2351742e-06, 0, 
 shape = SubResource("BoxShape3D_wbwgn")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="." unique_id=678533075]
-transform = Transform3D(0.9734027, 0, -0.2288722, 0, 0.99994403, 0, 0.22887501, 0, 0.9733907, 0.16384888, -0.5877228, 0.8373413)
+transform = Transform3D(0.9734027, 0, -0.2288722, 0, 0.99994403, 0, 0.22887501, 0, 0.9733907, 0.164, -1.153, 0.837)
 rotation_mode = 1
 
 [node name="VisualizerMesh" type="MeshInstance3D" parent="PathFollow3D" unique_id=2071606994]
@@ -881,7 +881,7 @@ DOOR_TO_UNLOCK_GROUP = "sloth_door"
 DEFEATED_KEY = "sloth_defeated"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/Body" unique_id=1199761927]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
+transform = Transform3D(1, 0, 0, 0, 0.99998116, 0, 0, 0, 1, 0, 3.091133, 0)
 shape = SubResource("CapsuleShape3D_d0au0")
 
 [node name="Attacks" type="AnimationPlayer" parent="PathFollow3D/Body" unique_id=806234673]
@@ -902,7 +902,7 @@ TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 ANIM_PLAYER = NodePath("../Attacks")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/Body/HitShape" unique_id=324219729]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12337458, 2.49679, 0)
+transform = Transform3D(1, 0, 0, 0, 0.99998844, 0, 0, 0, 1, -0.12337446, 1.7137682, 0)
 shape = SubResource("CapsuleShape3D_dbtmo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D/Body/HitShape" unique_id=1742099839]
@@ -1024,8 +1024,8 @@ scenes = Array[PackedScene]([ExtResource("26_ic1i5")])
 target = NodePath("../../../../../../Target")
 
 [node name="Sphere_001" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="1" unique_id=1805627527]
-surface_material_override/0 = SubResource("StandardMaterial3D_uahh5")
-surface_material_override/1 = SubResource("ShaderMaterial_ic1i5")
+surface_material_override/0 = SubResource("StandardMaterial3D_ui8gw")
+surface_material_override/1 = SubResource("ShaderMaterial_uahh5")
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="2" unique_id=636975154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.083372, 0, 0)

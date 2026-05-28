@@ -35,17 +35,7 @@
 		{"say_timed": {"say": "AND GET AWAY WITH IT", "for": 2.5}},
 
 	{"branch": "random_taunt_2"},
-		{"say_timed": {"say": "YOU THINK YOU CAN", "for": 2.5}},
-		{"say_timed": {"say": "SURVIVE THIS WORLD BEING POOR?", "for": 2.5}},
-		{"say_timed": {"say": "YOU CANT.", "for": 2.75}},
-		{"say_timed": {"say": "AND SO EVERYTHING WIL BE MINE", "for": 2.75}},
-		{"say_timed": {"say": "MINE", "for": 0.5}},
-		{"say_timed": {"say": "MINE", "for": 0.5}},
-		{"say_timed": {"say": "MINE", "for": 0.5}},
-		{"say_timed": {"say": "MINE!", "for": 0.5}},
-
-	{"branch": "random_taunt_3"},
-		{"say_timed": {"say": "THINK THIS IS A CHARITY?", "for": 2.5}},
+		{"say_timed": {"say": "NO ONE OWES YOU CHARITY?", "for": 2.5}},
 
 	{"branch": "death"},
 		{"say_timed": {"say": "NOTHING IS FREE.", "for": 3.0}},

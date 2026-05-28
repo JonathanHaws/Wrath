@@ -669,6 +669,8 @@ SOUNDS = Array[AudioStream]([ExtResource("5_poail"), ExtResource("6_j0jeu"), Ext
 [node name="Death1" type="AudioStreamPlayer" parent="Audio/Death" unique_id=1620899297]
 process_mode = 3
 stream = ExtResource("18_poail")
+volume_db = -5.0
+pitch_scale = 1.6
 bus = &"SFX"
 
 [node name="Squash" type="Node" parent="." unique_id=509375601 node_paths=PackedStringArray("meshes")]
