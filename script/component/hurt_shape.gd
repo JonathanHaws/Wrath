@@ -99,10 +99,14 @@ func hurt(area: Area3D) -> void:
 	
 	if area.has_method("hit"): emit_signal("collided_with_hitshape")
 	if area.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * (damage_multiplier * unblocked_damage_multiplier)):
+		#print(get_parent().name)
 		overlapping_areas[area]["cooldown"].start()
 		overlapping_areas[area]["linger"].start() 
 		overlapping_areas[area]["linger"].start() 
 		play_animation(area)
+		
+	# make it so if area didnt hit cause object is incivible it checks if its still overlapping after 
+	# the invincibility cooldown is over cause right now its just eating the overlap
 			
 func _on_area_entered(area: Area3D) -> void:
 	

@@ -2,7 +2,7 @@ extends Area3D
 signal DIED; signal HURT; signal HEAL
 @export var IMMUNE_GROUPS: Array[String] = ["enemies"] ## Groups of hurtboxes in which this scene is immune to
 @export var INVINCIBLE: bool = false ## Doesn't disable collision but makes it so hitshape doesnt take damage. Also automatically enabled when enemy is killed (Health < 0)
-@export var INVINCIBILITY_COOLDOWN: float = 0.05 ## After object gets hit how long they are invincible
+@export var INVINCIBILITY_COOLDOWN: float = 0.15 ## After object gets hit how long they are invincible
 @export var HEALTH: float = 500.0
 @export var MAX_HEALTH: float = 500.0
 func add_immune_group(group_name: String) -> void:
