@@ -3733,6 +3733,7 @@ DEBUG_RAY = NodePath("RayCast3D")
 [node name="RayCast3D" type="RayCast3D" parent="StepClimber" unique_id=770825662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9904864, -0.7255364)
 target_position = Vector3(0, -0.75, 0)
+debug_shape_custom_color = Color(0.4492579, 1, 0.8131869, 1)
 debug_shape_thickness = 5
 
 [node name="Hitshape" type="Area3D" parent="." unique_id=1397946160 node_paths=PackedStringArray("ANIM_PLAYER") groups=["player", "player_hitshape"]]
@@ -3935,14 +3936,16 @@ SKELETON = NodePath("reaper/Reaper")
 MESH = NodePath(".")
 BODY = NodePath("..")
 
-[node name="Area3D" type="Area3D" parent="Mesh" unique_id=1996484879]
+[node name="UselessAreaPossibly" type="Area3D" parent="Mesh" unique_id=1996484879]
+visible = false
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/Area3D" unique_id=712227305]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/UselessAreaPossibly" unique_id=712227305]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0012207031, 1.1333596, -0.7620938)
 shape = SubResource("BoxShape3D_ojv1r")
 
 [node name="Climb" type="RayCast3D" parent="Mesh" unique_id=195656063]
 transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.202089, -0.19727737)
+visible = false
 debug_shape_thickness = 5
 script = ExtResource("38_ojv1r")
 

@@ -1,7 +1,6 @@
 extends Node3D ## Script enabling 3D Bodies to not get stuck on small ledges or bumpy terrain
 ## How far in front of the player the raycast to find the step is done
 ## Should usually be the radius of the collision shape of the body plus a little amount 0.01 - 0.1
-@export var STEP_DISTANCE: float = .6
 @export var MAX_STEP_HEIGHT: float = 1.3 ## How much the player can step up
 @export var MIN_STEP_HEIGHT: float = 0.05 ## Mimium step height
 @export var BODY: CharacterBody3D ## The body that is moved up and retains velocity
@@ -37,15 +36,18 @@ func try_step_up() -> void:
 	for i in BODY.get_slide_collision_count():
 		
 		var collision = BODY.get_slide_collision(i)
-		var collision_position = collision.get_position()
+		var collision_position = collision.get_position()	
+		var collision_normal = collision.get_normal()
 		
-		var ray_end = BODY.global_position
 		var diff = collision_position - BODY.global_position
-		diff.y = 0
-		var normalized_difference = diff.normalized()
-		ray_end += (normalized_difference * STEP_DISTANCE)
-		ray_end.y = BODY.global_position.y
+		var diff_small_margin = (diff.normalized() * diff.length() * 1.05)
 		
+		#var flat_normal = Vector3(collision_normal.x, 0, collision_normal.z).normalized()
+		
+		# raycast down
+		var ray_end = BODY.global_position
+		ray_end += diff_small_margin
+		ray_end.y = BODY.global_position.y
 		var ray_start = ray_end
 		ray_start.y += MAX_STEP_HEIGHT
 		var result = raycast(ray_start, ray_end, true)
@@ -71,7 +73,7 @@ func try_step_up() -> void:
 		BODY.global_position.y += step
 		BODY.velocity = last_velocity
 		#print("Stepping up! " + str(step))	
-		
+	
 func _physics_process(_delta: float) -> void:
 	
 	#print(BODY.get_position_delta())
