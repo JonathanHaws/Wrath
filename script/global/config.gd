@@ -222,6 +222,8 @@ func get_current_environment() -> Environment:
 func connect_graphics_control(setting: String, toggle_button: CheckButton = null, slider: HSlider = null, label: Label = null, reset_button: Button = null) -> void:
 	var saved_value = load_setting("graphics", setting, get_current_environment().get(setting))
 	
+
+	
 	if toggle_button:
 		toggle_button.button_pressed = saved_value
 		toggle_button.toggled.connect(func(v):
@@ -239,6 +241,16 @@ func connect_graphics_control(setting: String, toggle_button: CheckButton = null
 		)
 		
 	if reset_button:
+		
+		var update_reset_visibility = func(): # dont show reset button if already reset
+			var current_value = get_current_environment().get(setting)
+			reset_button.visible = current_value != default_environment_settings[setting]
+		
+		if toggle_button: toggle_button.toggled.connect(func(_v): update_reset_visibility.call()) # check if reset 
+		if slider: slider.value_changed.connect(func(_v): update_reset_visibility.call())
+		
+		update_reset_visibility.call() # check if reset
+		
 		reset_button.pressed.connect(func():
 			var value = default_environment_settings[setting]
 			#print(default_environment_settings)
