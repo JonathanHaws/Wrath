@@ -4,6 +4,7 @@ extends CharacterBody3D
 @export var MOUSE_SENSITIVITY: float = 0.003
 @export var TURN_SPEED: float = 20.0
 @export var TURN_MULTIPLIER: float = 1.0
+var raw_velocity: Vector3 = Vector3.ZERO
 
 @export_subgroup("Acceleration")
 @export var GROUND_SPEED: float = 1.2
@@ -367,6 +368,7 @@ func _physics_process(delta: float) -> void:
 	clamp_horizontal_movement()
 	apply_horizontal_friction()
 	try_dash(delta)
+	raw_velocity = velocity
 	move_and_slide() 
 	if in_interruptible_animation(): 
 		if air_time < 0.1: 

@@ -3725,10 +3725,9 @@ next/DASH = &"RUN"
 next/INTRODUCTION = &"IDLE"
 next/REST = &"SKILLS"
 
-[node name="StepClimber" type="Node3D" parent="." unique_id=203481994 node_paths=PackedStringArray("BODY", "DEBUG_RAY")]
+[node name="StepClimber" type="Node3D" parent="." unique_id=203481994 node_paths=PackedStringArray("BODY")]
 script = ExtResource("54_sm0mq")
 BODY = NodePath("..")
-DEBUG_RAY = NodePath("RayCast3D")
 
 [node name="RayCast3D" type="RayCast3D" parent="StepClimber" unique_id=770825662]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9904864, -0.7255364)
