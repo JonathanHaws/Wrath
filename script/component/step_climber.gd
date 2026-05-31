@@ -7,6 +7,11 @@ extends Node3D ## Script enabling 3D Bodies to not get stuck on small ledges or 
 @export var BODY: CharacterBody3D ## The body that is moved up and retains velocity
 var last_velocity: Vector3 = Vector3.ZERO
 
+# Potential improvements 
+# Add step down logic
+# Dont step up if not going fast enough and would just fall down
+# Instead of relying on raw velocity property somehow get pre collision velocity
+
 func body_would_clip(body: CharacterBody3D, target_position: Vector3) -> bool:
 	var params := PhysicsTestMotionParameters3D.new()
 	params.from = body.global_transform
@@ -18,9 +23,6 @@ func raycast(from: Vector3, to: Vector3) -> Dictionary:
 	query.collision_mask = BODY.collision_mask
 	query.exclude = [BODY.get_rid()]
 	return get_world_3d().direct_space_state.intersect_ray(query)
-
-func try_step_down() -> void: # wip
-	pass
 
 func try_step_up() -> void:		
 	
@@ -34,25 +36,22 @@ func try_step_up() -> void:
 		var collision = BODY.get_slide_collision(i)
 		var collision_position = collision.get_position()	
 		var collision_normal = collision.get_normal()
-
 		var diff = collision_position - BODY.global_position
-		var diff_small_margin = (diff.normalized() * diff.length() * 1.05)
 
-		# raycast down
+		# raycast down from collision point + small margin to get step floor
 		var ray_end = BODY.global_position
-		ray_end += diff_small_margin
+		ray_end += (diff.normalized() * diff.length() * 1.05)
 		ray_end.y = BODY.global_position.y
 		var ray_start = ray_end
 		ray_start.y += MAX_STEP_HEIGHT
-		var result = raycast(ray_start, ray_end)
-
-		if not result: return # No surface to step on
+		var surface = raycast(ray_start, ray_end)
 		
-		var step = result.position.y - BODY.global_position.y	
+		if not surface: return # No surface to step on
+		var step = surface.position.y - BODY.global_position.y	
 		var new_pos = BODY.global_position + (Vector3.UP * step)
 		
 		if step < MIN_STEP_HEIGHT: return # Step not big enough
-		if abs(result.normal.y) <= 0.9: return # Surface to steep
+		if abs(surface.normal.y) <= 0.9: return # Surface too steep
 		if body_would_clip(BODY, new_pos): return # New position would be inside wall	
 		
 		if "raw_velocity" in BODY:
@@ -60,9 +59,7 @@ func try_step_up() -> void:
 			var velocity_flat = Vector3(real_velocity.x, 0, real_velocity.z).normalized()
 			var normal_flat = Vector3(collision_normal.x, 0, collision_normal.z).normalized()
 			var alignment = velocity_flat.dot(-normal_flat)	
-			if alignment < 0.2: # Walking too parallel to a step. If climbed up will just isntantly fall back down. Skipping...
-				#print(alignment)
-				return
+			if alignment < 0.2: return # Walking to parallel to a step
 		
 		BODY.global_position.y += step
 		BODY.velocity = last_velocity
@@ -70,7 +67,5 @@ func try_step_up() -> void:
 	
 func _physics_process(_delta: float) -> void:
 	
-	#print(BODY.get_position_delta())
-	#try_step_down()
 	try_step_up()
 	last_velocity = BODY.velocity
