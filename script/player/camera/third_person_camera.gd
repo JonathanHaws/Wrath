@@ -7,15 +7,15 @@ extends Camera3D
 @export var CONTROLLER_SENSITIVITY: float = 0.07
 @export var SENSITIVITY_MULTIPLIER: float = 1.0
 @export var TOP_LEVEL_ROTATION: bool = true ## For ignoring rotation tweens on interactions... Or any external influence to orientation
+var last_spring_arm_orientation: Basis = Basis.IDENTITY
 var mouse_delta = Vector2.ZERO
-var last_orientation := Basis.IDENTITY
 
 @export var TARGET_NODE: Node3D ## Used for when smooth camera is desired instead of instant snapping to the end of the spring arm. REQUIRED Use top level on this Camera node
 @export var SNAP_SPEED: float = 10.0 ## How quickly the camera moves to the target node
 var initial_snap: bool = false
 
 func _ready() -> void:
-	last_orientation = SpringArm.global_transform.basis
+	last_spring_arm_orientation = SpringArm.global_transform.basis
 	if Config: MOUSE_SENSITIVITY = Config.load_setting("controls", "mouse_sensitivity", MOUSE_SENSITIVITY)
 	if Config: CONTROLLER_SENSITIVITY = Config.load_setting("controls", "controller_sensitivity", CONTROLLER_SENSITIVITY)
 			
@@ -39,7 +39,7 @@ func _physics_process(_delta: float) -> void:
 			initial_snap = true
 	
 	if TOP_LEVEL_ROTATION:
-		SpringArm.global_transform.basis = last_orientation
+		SpringArm.global_transform.basis = last_spring_arm_orientation
 	
 	#print(position)
 	
@@ -69,4 +69,4 @@ func _physics_process(_delta: float) -> void:
 		SpringArm.global_rotation.y = new_y
 		mouse_delta = Vector2.ZERO
 		
-	last_orientation = SpringArm.global_transform.basis
+	last_spring_arm_orientation = SpringArm.global_transform.basis

@@ -50,14 +50,25 @@ func load_player_position() -> void:
 	if door_node and door_node:
 		#print('teleporting player')
 		var player = get_tree().get_first_node_in_group(PLAYER_BODY_GROUP)
-		
-		print(door_node.name)
+
 		player.global_transform = door_node.START.global_transform
 		player.get_node("Mesh").transform = Transform3D.IDENTITY
+		
 		player.get_node("SpringArm3D").global_basis = door_node.START.global_basis
-		#player.CAMERA.global_transform = player.CAMERA.TARGET_NODE.global_transform
-		#player.CAMERA.TARGET_NODE.global_transform = player.CAMERA.global_transform
+		player.CAMERA.last_spring_arm_orientation = door_node.START.global_basis
+		
+		player.CAMERA.transform = Transform3D.IDENTITY
+		player.CAMERA.global_transform = player.CAMERA.TARGET_NODE.global_transform
+
 		player.FADE_IN_ANIM.play("DOOR_FADE_IN")
+		
+		# # For debugging... Checks if spring orientation retains door start orientation
+		#await get_tree().physics_frame
+		#await get_tree().process_frame
+		#print("Camera orientation matches door start orientation: ", player.get_node("SpringArm3D").global_basis.is_equal_approx(door_node.START.global_basis))
+
+		
+
 
 func _on_area_body_entered(body: Node) -> void:
 	if LOCKED: return
