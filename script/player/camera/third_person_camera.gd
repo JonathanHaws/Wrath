@@ -14,6 +14,11 @@ var mouse_delta = Vector2.ZERO
 @export var SNAP_SPEED: float = 10.0 ## How quickly the camera moves to the target node
 var initial_snap: bool = false
 
+func set_camera_transform(new_transform: Transform3D) -> void:
+	SpringArm.global_basis = new_transform.basis
+	last_spring_arm_orientation = new_transform.basis
+	transform = Transform3D.IDENTITY
+
 func _ready() -> void:
 	last_spring_arm_orientation = SpringArm.global_transform.basis
 	if Config: MOUSE_SENSITIVITY = Config.load_setting("controls", "mouse_sensitivity", MOUSE_SENSITIVITY)
