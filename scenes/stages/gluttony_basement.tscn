@@ -99,15 +99,15 @@ light_volumetric_fog_energy = 0.0
 light_specular = 0.2
 omni_range = 24.7603
 
-[node name="Exit" parent="." unique_id=315234003 groups=["gluttony_door"] instance=ExtResource("7_c6ynn")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 130.51, -9.60013, 1.00536e-06)
-DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
-DESTINATION_NODE_NAME = "GluttonyExit"
-
 [node name="Enter" parent="." unique_id=278454585 instance=ExtResource("7_c6ynn")]
 transform = Transform3D(-4.37112e-08, 0, 1, 0, 1, 0, -1, 0, -4.37112e-08, -22.2895, -9.60013, 1.00536e-06)
 DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
 DESTINATION_NODE_NAME = "Gluttony"
+
+[node name="Exit" parent="." unique_id=2033611572 instance=ExtResource("7_c6ynn")]
+transform = Transform3D(1.311338e-07, 0, -1, 0, 1, 0, 1, 0, 1.311338e-07, 130.55463, -9.151663, 0.71050256)
+DESTINATION_SCENE = "uid://dmf0vo8jrm34a"
+DESTINATION_NODE_NAME = "GluttonyExit"
 
 [node name="Checkpoint" parent="." unique_id=673150144 instance=ExtResource("9_yyoo5")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.43816, -9.11624, 0)
@@ -117,3 +117,6 @@ transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 40.4449,
 
 [node name="Piglet" parent="." unique_id=249081217 instance=ExtResource("13_i5fvn")]
 transform = Transform3D(0.971619, 0, -0.23655, 0, 1, 0, 0.23655, 0, 0.971619, -1.67795, -9.04355, 34.9739)
+
+[editable path="Exit"]
+[editable path="Exit/heavy_door"]

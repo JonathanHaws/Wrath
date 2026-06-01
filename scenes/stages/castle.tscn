@@ -228,49 +228,49 @@ navigation_mesh = SubResource("NavigationMesh_jc5vn")
 
 [node name="castle" parent="NavigationRegion3D" unique_id=1977702336 instance=ExtResource("1_vtq30")]
 
-[node name="bridge" parent="NavigationRegion3D/castle" index="0" unique_id=1336028786]
+[node name="bridge" parent="NavigationRegion3D/castle" index="0" unique_id=128516138]
 surface_material_override/0 = ExtResource("3_dq2hf")
 surface_material_override/1 = ExtResource("5_a45b3")
 
-[node name="castle_base" parent="NavigationRegion3D/castle" index="2" unique_id=1559334171]
+[node name="castle_base" parent="NavigationRegion3D/castle" index="2" unique_id=449444506]
 surface_material_override/0 = ExtResource("3_dq2hf")
 surface_material_override/1 = ExtResource("5_a45b3")
 surface_material_override/2 = ExtResource("5_uxykk")
 surface_material_override/3 = ExtResource("6_2yhio")
 
-[node name="castle_sloth" parent="NavigationRegion3D/castle" index="3" unique_id=970403182]
+[node name="castle_sloth" parent="NavigationRegion3D/castle" index="3" unique_id=1956284110]
 surface_material_override/0 = ExtResource("3_dq2hf")
 surface_material_override/1 = ExtResource("5_a45b3")
 
-[node name="island" parent="NavigationRegion3D/castle" index="4" unique_id=1127999963]
+[node name="island" parent="NavigationRegion3D/castle" index="4" unique_id=1165593635]
 surface_material_override/0 = ExtResource("9_u51x1")
 
-[node name="lust" parent="NavigationRegion3D/castle" index="5" unique_id=800079231]
+[node name="lust" parent="NavigationRegion3D/castle" index="5" unique_id=2069126580]
 surface_material_override/0 = ExtResource("3_dq2hf")
 surface_material_override/1 = ExtResource("4_g6ecr")
 surface_material_override/2 = ExtResource("5_uxykk")
 
-[node name="lust_floor" parent="NavigationRegion3D/castle" index="6" unique_id=1054635604]
+[node name="lust_floor" parent="NavigationRegion3D/castle" index="6" unique_id=1866685582]
 surface_material_override/0 = ExtResource("5_a45b3")
 
-[node name="path" parent="NavigationRegion3D/castle" index="7" unique_id=682020327]
+[node name="path" parent="NavigationRegion3D/castle" index="7" unique_id=1851294129]
 surface_material_override/0 = ExtResource("9_u51x1")
 
-[node name="pride_tower" parent="NavigationRegion3D/castle" index="8" unique_id=276491650]
+[node name="pride_tower" parent="NavigationRegion3D/castle" index="8" unique_id=1924748974]
 surface_material_override/0 = ExtResource("3_dq2hf")
 surface_material_override/1 = ExtResource("4_g6ecr")
 
-[node name="trees" parent="NavigationRegion3D/castle" index="9" unique_id=140201289]
+[node name="trees" parent="NavigationRegion3D/castle" index="9" unique_id=1238495154]
 surface_material_override/0 = ExtResource("8_thcj7")
 
-[node name="vines_smooth" parent="NavigationRegion3D/castle" index="10" unique_id=1008576055]
+[node name="vines_smooth" parent="NavigationRegion3D/castle" index="10" unique_id=1518420684]
 surface_material_override/0 = ExtResource("6_7guc4")
 
-[node name="StaticBody3D" parent="NavigationRegion3D/castle/vines_smooth" index="0" unique_id=1013498470 groups=["climbable"]]
+[node name="StaticBody3D" parent="NavigationRegion3D/castle/vines_smooth" index="0" unique_id=95069579 groups=["climbable"]]
 collision_layer = 7
 collision_mask = 7
 
-[node name="virtue_towers" parent="NavigationRegion3D/castle" index="11" unique_id=1357378766]
+[node name="virtue_towers" parent="NavigationRegion3D/castle" index="11" unique_id=848026380]
 surface_material_override/0 = ExtResource("3_dq2hf")
 
 [node name="Enviroment" type="Node3D" parent="." unique_id=1148970538]
@@ -448,7 +448,6 @@ DESTINATION_NODE_NAME = "Exit"
 transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 641.7506, 62.707664, -32.98009)
 DESTINATION_SCENE = "uid://dsdh2bite7xv4"
 DESTINATION_NODE_NAME = "Enter"
-SAVE_LOCKED = false
 
 [node name="Gluttony" parent="Doors" unique_id=1042435553 instance=ExtResource("20_bv0d2")]
 transform = Transform3D(-1, 0, -8.742279e-08, 0, 1, 0, 8.742279e-08, 0, -1, 580.2843, 62.534252, 29.313923)
@@ -457,9 +456,8 @@ DESTINATION_NODE_NAME = "Enter"
 
 [node name="GluttonyExit" parent="Doors" unique_id=1442523253 groups=["greed_door"] instance=ExtResource("20_bv0d2")]
 transform = Transform3D(0.8173462, 0, -0.5761469, 0, 1, 0, 0.5761469, 0, 0.8173462, 544.2922, 9.413378, 25.26053)
-DESTINATION_SCENE = "uid://cmky6xf3axtum"
-DESTINATION_NODE_NAME = "Enter"
-LOCKED = true
+DESTINATION_SCENE = "uid://cx2ditraoxlvu"
+DESTINATION_NODE_NAME = "Exit"
 
 [node name="Reaper" parent="." unique_id=27859288 instance=ExtResource("4_42w7d")]
 transform = Transform3D(0.9962042, 0, -0.08705204, 0, 1, 0, 0.08705204, 0, 0.9962042, -20.305056, 21.656384, 18.808355)

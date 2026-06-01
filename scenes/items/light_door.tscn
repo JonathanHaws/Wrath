@@ -75,8 +75,10 @@ size = Vector3(23.601563, 33.60813, 1.0258876)
 [sub_resource type="BoxShape3D" id="BoxShape3D_rx8ry"]
 size = Vector3(24.922789, 10.7881, 1.1157981)
 
-[node name="LightDoor" type="Node3D" unique_id=119780670 node_paths=PackedStringArray("ANIM")]
+[node name="LightDoor" type="Node3D" unique_id=119780670 node_paths=PackedStringArray("AREA", "START", "ANIM")]
 script = ExtResource("1_ityv5")
+AREA = NodePath("Area3D")
+START = NodePath("Start")
 ANIM = NodePath("AnimationPlayer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1110488495]
