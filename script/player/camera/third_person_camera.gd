@@ -10,6 +10,13 @@ extends Camera3D
 var last_spring_arm_orientation: Basis = Basis.IDENTITY
 var mouse_delta = Vector2.ZERO
 
+@export_group("FOV Lerp")
+@export var lerp_fov: float = true
+@export var lerp_speed: float = 0.12
+@export var target_fov: float = 80.0
+@export var default_fov: float = 65.0
+@export var running_fov: float = 74.0
+
 @export var TARGET_NODE: Node3D ## Used for when smooth camera is desired instead of instant snapping to the end of the spring arm. REQUIRED Use top level on this Camera node
 @export var SNAP_SPEED: float = 10.0 ## How quickly the camera moves to the target node
 var initial_snap: bool = false
@@ -34,6 +41,8 @@ func rotate_mesh_towards_camera_xz(delta: float, mesh: Node3D, input_vector: Vec
 	mesh.global_rotation.y = lerp_angle(mesh.global_rotation.y, SpringArm.global_rotation.y + input_angle, turn_speed * delta)
 			
 func _physics_process(_delta: float) -> void:
+	
+	if lerp_fov: fov = lerp(fov, target_fov, lerp_speed)
 	
 	if TARGET_NODE:
 		if initial_snap:

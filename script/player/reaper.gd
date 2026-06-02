@@ -63,9 +63,13 @@ func get_run_acceleration() -> Vector3:
 	var run_velocity = run_vector * acceleration
 	return 	run_velocity
 func try_run(delta: float) -> void:
+	if get_run_vector().length() > 0 and not is_walking(): CAMERA.target_fov = CAMERA.running_fov
+	else: CAMERA.target_fov = CAMERA.default_fov
+	
 	if get_run_vector().length() == 0: return
 	var acceleration = get_run_acceleration()
 	velocity += acceleration
+	
 	if acceleration.length() > 0: CAMERA.rotate_mesh_towards_camera_xz(delta, MESH, get_run_vector(), TURN_SPEED * TURN_MULTIPLIER)
 
 @export_subgroup("Jumping")
@@ -95,7 +99,6 @@ func try_jump() -> void:
 			air_time = COYOTE_TIME
 			jump_buffer = 0
 		
-
 		if Input.is_action_just_pressed("jump"):
 			if $Audio: $Audio.spawn_sound(["jump"])
 			$Squash.squish(-.3)	
