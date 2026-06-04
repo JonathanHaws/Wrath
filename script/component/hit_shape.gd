@@ -118,8 +118,6 @@ func hit(area: Area3D = null, damage: int = 0, play_animation: bool = true) -> b
 		if area.is_in_group(immune_group): 
 			#print('hit but immune')
 			return false
-	if damage == 0: 
-		return false
 
 	HEALTH -= damage
 	#print(HEALTH)

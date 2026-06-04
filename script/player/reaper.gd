@@ -365,7 +365,7 @@ func _physics_process(delta: float) -> void:
 	try_jump()
 	try_plunge()
 	try_attack()
-	try_block()	
+	#try_block()	
 	try_heal()
 	try_shoot()
 	clamp_horizontal_movement()

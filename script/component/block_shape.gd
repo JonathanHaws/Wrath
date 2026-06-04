@@ -1,7 +1,7 @@
 extends Area3D
 @export var anim_player: AnimationPlayer
 @export var block_anim: String = "BLOCK"
-@export var block_multiplier: float = 0.2
+@export var block_multiplier: float = 0.5
 var enabled_time: float = 0.0 ## Used by hurtshape to know how long blocking has been enabled
 
 @export_group("Audio")

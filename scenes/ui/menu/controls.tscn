@@ -233,6 +233,7 @@ display_name = "ATTACK"
 focus_top = NodePath("../..")
 
 [node name="Block" type="HBoxContainer" parent="Controls/Combat/VBoxContainer" unique_id=1034567462]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")

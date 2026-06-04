@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://c6e88ycy4nm7x"]
 
+[ext_resource type="Script" uid="uid://b5jxc7oxbt4gs" path="res://scenes/ghosts/ghost_melee.gd" id="1_eo06i"]
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://script/items/wisp_reward.gd" id="2_5rg5p"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://script/component/hit_shape.gd" id="2_i6eoe"]
 [ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://scenes/ui/damage_numbers.tscn" id="3_mvqiw"]
@@ -28,13 +29,13 @@
 [ext_resource type="Script" uid="uid://c2j1vbn4tf1g2" path="res://script/component/step_climber.gd" id="26_kuhgr"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_x8ps6"]
-radius = 1.0649414
+radius = 0.5415039
 height = 3.193985
 
 [sub_resource type="Animation" id="Animation_1m57m"]
 resource_name = "ATTACK"
-length = 2.2
-step = 0.011111111
+length = 2.0833375
+step = 0.041666668
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -56,7 +57,7 @@ tracks/1/path = NodePath("Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.73333335, 0.76666665),
+"times": PackedFloat32Array(0, 0.6666667, 0.7916667),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -87,13 +88,27 @@ tracks/3/keys = {
 }
 tracks/4/type = "animation"
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/path = NodePath("Mesh/melee_ghost/AnimationPlayer")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "clips": PackedStringArray("Attack"),
 "times": PackedFloat32Array(0)
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/melee_ghost/AnimationPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Attack", 0.2],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_n368u"]
@@ -127,13 +142,27 @@ tracks/1/keys = {
 }
 tracks/2/type = "animation"
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/path = NodePath("Mesh/melee_ghost/AnimationPlayer")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "clips": PackedStringArray("Idle"),
 "times": PackedFloat32Array(0)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/melee_ghost/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Idle", 0.3],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_hp215"]
@@ -281,7 +310,7 @@ tracks/6/keys = {
 
 [sub_resource type="Animation" id="Animation_oquh6"]
 resource_name = "STUNNED"
-length = 1.7500042
+length = 4.166671
 step = 0.041666668
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -331,6 +360,58 @@ tracks/3/keys = {
 "values": [{
 "args": [0.0],
 "method": &"play"
+}]
+}
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = false
+tracks/4/path = NodePath("Mesh/melee_ghost/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("Stunned"),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/melee_ghost/AnimationPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Stunned", 0],
+"method": &"play"
+}]
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("AnimationPlayer")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(4.125),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"CHASE", 0],
+"method": &"play"
+}]
+}
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CameraEffects")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["player_hurt", 0.2, 0.2, 0.0],
+"method": &"impact"
 }]
 }
 
@@ -660,6 +741,7 @@ radius = 18.8292
 top_level = true
 collision_layer = 4
 collision_mask = 7
+script = ExtResource("1_eo06i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1779156698]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5942948, 0)
@@ -773,18 +855,18 @@ scenes = Array[PackedScene]([ExtResource("20_x07w4")])
 add_to_scene_root = true
 target = NodePath("../../Target")
 
-[node name="melee_ghost" parent="Mesh" unique_id=213385399 instance=ExtResource("22_kuhgr")]
+[node name="melee_ghost" parent="Mesh" unique_id=1950736104 instance=ExtResource("22_kuhgr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32995057, 0)
 
-[node name="Skeleton3D" parent="Mesh/melee_ghost/Armature" parent_id_path=PackedInt32Array(213385399, 89284371) index="0" unique_id=907680304]
+[node name="Skeleton3D" parent="Mesh/melee_ghost/Armature" parent_id_path=PackedInt32Array(1950736104, 1002958927) index="0" unique_id=1852138592]
 bones/0/rotation = Quaternion(-0.009763041, -1.2559209e-16, -1.2559209e-16, 0.9999523)
-bones/1/rotation = Quaternion(-0.01748162, 1.1919107e-07, -2.083971e-09, 0.9998473)
+bones/1/rotation = Quaternion(-0.01748162, 1.19191064e-07, -2.0839708e-09, 0.9998473)
 bones/2/rotation = Quaternion(0.02379526, 1.0709743e-14, 5.673231e-09, 0.99971694)
 bones/3/rotation = Quaternion(0.03407807, -1.1914004e-07, 4.062424e-09, 0.99941915)
 bones/3/scale = Vector3(1, 0.9999999, 0.9999999)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="0" unique_id=2037146665]
-transform = Transform3D(1, -3.5527137e-15, 0, 4.32987e-15, 0.99812317, -0.061234582, -1.4210855e-14, 0.061234612, 0.9981233, 8.872527e-16, 1.628953, -0.041018583)
+transform = Transform3D(1, -5.3290705e-15, -1.4210855e-14, 4.32987e-15, 0.99812317, -0.061234582, -1.4210855e-14, 0.061234612, 0.9981233, 7.730997e-17, 1.628953, -0.041018583)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -811,11 +893,14 @@ transform = Transform3D(1, -1.24344996e-14, -1.03739e-12, 1.342e-42, 1, -2.97164
 shape = SubResource("BoxShape3D_qr43c")
 debug_color = Color(0.7, 0.7, 0.7, 0)
 
-[node name="body" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="1" unique_id=1590148365]
+[node name="body" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="1" unique_id=1453379822]
 surface_material_override/0 = SubResource("ShaderMaterial_kuhgr")
 
-[node name="eyes" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="2" unique_id=1042381655]
+[node name="eyes" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="2" unique_id=1314265457]
 surface_material_override/0 = SubResource("StandardMaterial3D_eo06i")
+
+[node name="AnimationPlayer" parent="Mesh/melee_ghost" index="1" unique_id=997221702]
+playback_default_blend_time = 0.2
 
 [node name="Target" type="Node3D" parent="." unique_id=963969195 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH", "STOP_CHASE_AREA", "AWARENESS_AREA")]
 script = ExtResource("22_3d4yc")
@@ -892,7 +977,6 @@ debug_color = Color(0.658, 0.6937, 0.7, 0.023529412)
 
 [node name="StepClimber" type="Node3D" parent="." unique_id=1492857407 node_paths=PackedStringArray("BODY")]
 script = ExtResource("26_kuhgr")
-STEP_DISTANCE = 1.115
 BODY = NodePath("..")
 
 [editable path="Mesh/melee_ghost"]

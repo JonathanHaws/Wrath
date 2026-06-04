@@ -1,18 +1,16 @@
 extends Area3D
 @export var groups: Array[String] = ["enemies"] ## Groups that are auto added in ready
-@export_group("Damage")
 @export var disabled: bool = false
+@export var disable_collision_shape: bool = false ## automatically sets collision shape to disabled in ready
 @export var damage: float = 10.0
 @export var damage_spread: float = 0 ## Determines subtle randomness in attack damage
 @export var damage_multiplier: float = 1 ## Value that can be animated by animation players 
-@export var disable_collision_shape: bool = false ## automatically sets collision shape to disabled in ready
-@export var hit_shape: Area3D ## Avoid damagining after death by automatocally freeing this hurtbox when this hitshape dies
-@export var animation_player: AnimationPlayer ## Animation to be played when something is hit by this hurt shape
 @export var hit_anim: String = "HURT" ## Name of the animation to play when something is hit
 @export var kill_anim: String = "KILL" ## Name of animation to play when something is killed
+@export var animation_player: AnimationPlayer ## Animation to be played when something is hit by this hurt shape
+@export var hit_shape: Area3D ## Avoid damagining after death by automatocally freeing this hurtbox when this hitshape dies
 signal collided_with_hitshape
 var overlapping_hit_areas: Dictionary = {}
-var overlapping_block_areas: Dictionary = {}
 
 @export_group("Blocking")
 @export var parryable: bool = false
@@ -21,27 +19,34 @@ var overlapping_block_areas: Dictionary = {}
 @export var parry_anim: String = "PARRY"
 @export var deflected_anim_player: AnimationPlayer
 @export var block_groups: Array[String] = ["player_blockshape"]
+var overlapping_block_areas: Dictionary = {}
 func is_block_area(area: Area3D) -> bool:
 	for group in block_groups: if area.is_in_group(group): return true
-	return false
-#func blocked(area: Area3D) -> float:
-	##print(area.name)
-	#if area.has_method("play_blocked_animation"):
-		#area.play_blocked_animation()  
-	#
-	#if deflected_anim_player: 
-		#var parried: bool = parryable and "enabled_time" in area and area.enabled_time < parry_window
-		#if parried: 
-			#if deflected_anim_player.has_animation(parry_anim) and deflected_anim_player.current_animation != parry_anim:
-				#deflected_anim_player.play(parry_anim)
-				##print('parried')
-		#else: # regular block
-			#if deflected_anim_player.has_animation(blocked_anim) and deflected_anim_player.current_animation != blocked_anim:
-				#deflected_anim_player.play(blocked_anim)
-				##print('blocked')
-	#
-	#return get_block_area_in_overlapping_areas().block_multiplier	
-					
+	return false	
+func get_best_block() -> Dictionary:
+	var best_area: Area3D = null
+	var lowest_multiplier: float = 1.0
+	for block_area in overlapping_block_areas.keys():
+		if not is_instance_valid(block_area): continue
+		var multiplier: float = block_area.block_multiplier
+		if parryable and "enabled_time" in block_area and block_area.enabled_time < parry_window:
+			multiplier = 0.0
+		if best_area == null or multiplier < lowest_multiplier:
+			best_area = block_area
+			lowest_multiplier = multiplier
+	return { "area": best_area, "multiplier": lowest_multiplier }
+	
+func play_blocked_animation(block_area: Area3D, blocked_damage_multiplier: float) -> void:
+	if not deflected_anim_player: return
+	if blocked_damage_multiplier == 0.0:
+		if deflected_anim_player.has_animation(parry_anim): deflected_anim_player.play(parry_anim, 0)
+		deflected_anim_player.advance(0.0)
+	elif blocked_damage_multiplier < 1.0:
+		if deflected_anim_player.has_animation(blocked_anim): deflected_anim_player.play(blocked_anim, 0)
+		deflected_anim_player.advance(0.0)	
+	if block_area and block_area.has_method("play_blocked_animation"):
+		block_area.play_blocked_animation()
+			
 @export_group("Save") ## For upgradable damage that needs to be persisten / update
 @export var enable_save: bool = false
 @export var save_key: String = ""
@@ -86,21 +91,19 @@ func _physics_process(_delta: float) -> void:
 	#if overlapping_hit_areas.size() > 0: print(overlapping_hit_areas)
 		
 	if disabled: return		
+	
 	for area in overlapping_hit_areas.keys():
+		if not is_instance_valid(area): continue
 	
 		if overlapping_hit_areas[area]:
 			if $CollisionShape3D.disabled: overlapping_hit_areas.erase(area)
 			continue
 	
-		## blocking
-		var unblocked_damage_multiplier = 1.0
-		#var block_area = is_block_area_in_overlapping_areas()
-		#if block_area: unblocked_damage_multiplier = blocked(block_area)
+		#overlapping_hit_areas[area] = true
+		#var best_block = get_best_block()
+		#play_blocked_animation(best_block.area, best_block.multiplier)
 		
 		if area.has_method("hit"): emit_signal("collided_with_hitshape")
-		if area.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * (damage_multiplier * unblocked_damage_multiplier)):
+		if area.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * (damage_multiplier)):
 			play_animation(area)
 			overlapping_hit_areas[area] = true
-
-
-		
