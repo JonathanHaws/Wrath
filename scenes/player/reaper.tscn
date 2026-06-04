@@ -3835,6 +3835,7 @@ script = ExtResource("7_lwilf")
 pitch_max_deg = 20.0
 SpringArm = NodePath("../SpringArm3D")
 EXCLUDED_BODY = NodePath("..")
+TOP_LEVEL_ROTATION = false
 target_fov = 65.0
 TARGET_NODE = NodePath("../SpringArm3D/Node3D")
 

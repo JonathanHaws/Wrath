@@ -8,8 +8,6 @@ extends Camera3D
 @export var CONTROLLER_SENSITIVITY: float = 0.07
 @export var SENSITIVITY_MULTIPLIER: float = 1.0
 @export var TOP_LEVEL_ROTATION: bool = true ## For ignoring rotation tweens on interactions... Or any external influence to orientation
-var last_spring_arm_orientation: Basis = Basis.IDENTITY
-var mouse_delta = Vector2.ZERO
 
 @export_group("FOV Lerp")
 @export var lerp_fov: float = true
@@ -21,7 +19,10 @@ var mouse_delta = Vector2.ZERO
 @export_group("Target_Lerp")
 @export var TARGET_NODE: Node3D ## Used for when smooth camera is desired instead of instant snapping to the end of the spring arm. REQUIRED Use top level on this Camera node
 @export var SNAP_SPEED: float = 10.0 ## How quickly the camera moves to the target node
+
 var initial_snap: bool = false
+var last_spring_arm_orientation: Basis = Basis.IDENTITY
+var mouse_delta = Vector2.ZERO
 
 func set_camera_transform(new_transform: Transform3D) -> void:
 	SpringArm.global_basis = new_transform.basis
@@ -57,35 +58,25 @@ func _physics_process(_delta: float) -> void:
 			global_transform = TARGET_NODE.global_transform
 			initial_snap = true
 	
-	if TOP_LEVEL_ROTATION: 
-		SpringArm.global_transform.basis = last_spring_arm_orientation
-	
 	#print(position)
 	
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED: 
 		mouse_delta = Vector2.ZERO
 		return
-	
 	var mouse_sens = MOUSE_SENSITIVITY * SENSITIVITY_MULTIPLIER
 	var controller_sens = CONTROLLER_SENSITIVITY * SENSITIVITY_MULTIPLIER
-		
 	mouse_delta.x *=  mouse_sens 
 	mouse_delta.y *=  mouse_sens 
-	
 	var look_left_right = Input.get_axis("look_left", "look_right")
 	var look_up_down = Input.get_axis("look_down", "look_up")
-	
 	mouse_delta.x += look_left_right * controller_sens
 	mouse_delta.y -= look_up_down * controller_sens
 	
 	if mouse_delta.length() > 0:
 		var new_x = SpringArm.global_rotation.x - mouse_delta.y 
 		var new_y = SpringArm.global_rotation.y - mouse_delta.x 
-
 		new_x = clamp(new_x, deg_to_rad(pitch_min_deg), deg_to_rad(pitch_max_deg)) #Constrain 
-
 		SpringArm.global_rotation.x = new_x
 		SpringArm.global_rotation.y = new_y
 		mouse_delta = Vector2.ZERO
 		
-	last_spring_arm_orientation = SpringArm.global_transform.basis
