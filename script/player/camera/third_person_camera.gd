@@ -3,6 +3,7 @@ extends Camera3D
 @export_range(-90.0, 90.0, 1.0, "Degrees") var pitch_min_deg: float = -80.0
 @export_range(-90.0, 90.0, 1.0, "Degrees") var pitch_max_deg: float = 80.0
 @export var SpringArm: SpringArm3D
+@export var EXCLUDED_BODY: PhysicsBody3D ## If the camera is between players body and wall. But the player is against the wall. the spring arm has to phase into 1. 
 @export var MOUSE_SENSITIVITY: float = 0.003
 @export var CONTROLLER_SENSITIVITY: float = 0.07
 @export var SENSITIVITY_MULTIPLIER: float = 1.0
@@ -17,6 +18,7 @@ var mouse_delta = Vector2.ZERO
 @export var default_fov: float = 65.0
 @export var running_fov: float = 74.0
 
+@export_group("Target_Lerp")
 @export var TARGET_NODE: Node3D ## Used for when smooth camera is desired instead of instant snapping to the end of the spring arm. REQUIRED Use top level on this Camera node
 @export var SNAP_SPEED: float = 10.0 ## How quickly the camera moves to the target node
 var initial_snap: bool = false
@@ -30,6 +32,7 @@ func _ready() -> void:
 	last_spring_arm_orientation = SpringArm.global_transform.basis
 	if Config: MOUSE_SENSITIVITY = Config.load_setting("controls", "mouse_sensitivity", MOUSE_SENSITIVITY)
 	if Config: CONTROLLER_SENSITIVITY = Config.load_setting("controls", "controller_sensitivity", CONTROLLER_SENSITIVITY)
+	if EXCLUDED_BODY: SpringArm.add_excluded_object(EXCLUDED_BODY)
 			
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -42,6 +45,8 @@ func rotate_mesh_towards_camera_xz(delta: float, mesh: Node3D, input_vector: Vec
 			
 func _physics_process(_delta: float) -> void:
 	
+	#print(SpringArm.get_hit_length())
+	
 	if lerp_fov: fov = lerp(fov, target_fov, lerp_speed)
 	
 	if TARGET_NODE:
@@ -52,7 +57,7 @@ func _physics_process(_delta: float) -> void:
 			global_transform = TARGET_NODE.global_transform
 			initial_snap = true
 	
-	if TOP_LEVEL_ROTATION:
+	if TOP_LEVEL_ROTATION: 
 		SpringArm.global_transform.basis = last_spring_arm_orientation
 	
 	#print(position)

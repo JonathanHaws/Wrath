@@ -122,6 +122,8 @@ func hit(area: Area3D = null, damage: int = 0, play_animation: bool = true) -> b
 		return false
 
 	HEALTH -= damage
+	#print(HEALTH)
+	
 	last_hurt_shape = area
 	if HEALTH <= 0: INVINCIBLE = true
 	if invincibility_timer: invincibility_timer.start()

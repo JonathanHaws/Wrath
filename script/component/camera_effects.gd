@@ -12,16 +12,16 @@ var shake_offset := Vector3.ZERO
 var decay_rate = default_decay_rate
 
 @export var shake_presets := {
-	"player_attack": { "strength": 4.0, "slow_motion_duration": .16,  "slow_motion_speed": 0.0},
+	"player_attack": { "strength": 4.0, "slow_motion_duration": .14,  "slow_motion_speed": 0.0},
 	"player_blocked":{ "strength": 1.0, "slow_motion_duration": .4,  "slow_motion_speed": 0.0},
-	"player_heal":   { "strength": 2.0, "slow_motion_duration": .16,  "slow_motion_speed": 0.0},
-	"player_shoot":  { "strength": 1.0, "slow_motion_duration": .16,  "slow_motion_speed": 0.0},
+	"player_heal":   { "strength": 2.0, "slow_motion_duration": .14,  "slow_motion_speed": 0.0},
+	"player_shoot":  { "strength": 1.0, "slow_motion_duration": .11,  "slow_motion_speed": 0.0},
 	"player_hurt":   { "strength": 2.5, "slow_motion_duration": .16,  "slow_motion_speed": 0.0},
 	"player_kill":   { "strength": 3.5, "slow_motion_duration": .22,  "slow_motion_speed": 0.0},
 	"player_death":  { "strength": 0.0, "slow_motion_duration": 1, "slow_motion_speed": 0.2},
 	"boss_death":    { "strength": 1.0, "slow_motion_duration": 2.0, "slow_motion_speed": 0.7},
 	"enemy_death":   { "strength": 1.0, "slow_motion_duration": 0.3, "slow_motion_speed": 0.2},
-	"small":  		 { "strength": 3.0, "slow_motion_duration": 0.16, "slow_motion_speed": 0.0},
+	"small":  		 { "strength": 3.0, "slow_motion_duration": 0.14, "slow_motion_speed": 0.0},
 	"big": 			 { "strength": 6.0, "slow_motion_duration": .5,  "slow_motion_speed": 0.5},
 	"boss_scream":   { "continious_tremor_strength": .8, "continuious_tremor_duration": 1.5 }
 }

@@ -874,8 +874,8 @@ next/INTRO = &"CHASE"
 [node name="HitShape" type="Area3D" parent="PathFollow3D/Body" unique_id=298325573 node_paths=PackedStringArray("FREE_ON_DEATH", "TELEPORT_NODES_TO_HIT", "ANIM_PLAYER") groups=["enemy_hitshape"]]
 script = ExtResource("20_6h4tx")
 INVINCIBLE = true
-HEALTH = 5000.0
-MAX_HEALTH = 5000.0
+HEALTH = 6000.0
+MAX_HEALTH = 6000.0
 FREE_ON_DEATH = [NodePath("../Mesh/LockOn"), NodePath("../CollisionShape3D")]
 DAMAGE_NUMBERS = ExtResource("7_dbtmo")
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]

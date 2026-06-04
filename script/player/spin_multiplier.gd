@@ -1,5 +1,5 @@
 extends Node
-@export var SPIN_DAMAGE_MULTIPLIER = 1.5 
+@export var SPIN_DAMAGE_MULTIPLIER = 1.0625
 @export var ATTACK_AREA: Area3D
 
 func increase_damage_each_spin():

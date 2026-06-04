@@ -1328,8 +1328,8 @@ BODY = NodePath("../..")
 [node name="HitShape" type="Area3D" parent="." unique_id=1924907179 node_paths=PackedStringArray("FREE_ON_DEATH", "TELEPORT_NODES_TO_HIT") groups=["enemy_hitshape"]]
 script = ExtResource("4_pxmry")
 INVINCIBLE = true
-HEALTH = 5500.0
-MAX_HEALTH = 5500.0
+HEALTH = 7000.0
+MAX_HEALTH = 7000.0
 FREE_ON_DEATH = [NodePath("../Mesh/wrath/Armature/Skeleton3D/Torso/LockOn"), NodePath("../CollisionShape3D")]
 DAMAGE_NUMBERS = ExtResource("19_a67hc")
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]

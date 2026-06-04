@@ -332,11 +332,11 @@ offset_left = -247.0
 offset_top = -63.0
 offset_right = -87.0
 offset_bottom = 97.0
-description = "Increases Damage To 75"
+description = "Increases Damage To 60"
 prerequisite_node = NodePath("../Root")
 save_key = "damage_1_skill"
 upgrade_key = "damage"
-new_amount = 75.0
+new_amount = 60.0
 texture = ExtResource("18_d7s0y")
 
 [node name="Damage2" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1578773633 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
@@ -345,11 +345,11 @@ offset_left = -124.0
 offset_top = -66.0
 offset_right = 36.0
 offset_bottom = 94.0
-description = "Increases Damage To 100"
+description = "Increases Damage To 70"
 prerequisite_node = NodePath("../Damage1")
 save_key = "damage_2_skill"
 upgrade_key = "damage"
-new_amount = 100.0
+new_amount = 70.0
 texture = ExtResource("19_nmcf3")
 
 [node name="Damage3" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1070350483 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
@@ -358,11 +358,11 @@ offset_left = 0.0
 offset_top = -67.0
 offset_right = 160.0
 offset_bottom = 93.0
-description = "Increases Damage To 125"
+description = "Increases Damage To 80"
 prerequisite_node = NodePath("../Damage2")
 save_key = "damage_3_skill"
 upgrade_key = "damage"
-new_amount = 125.0
+new_amount = 80.0
 texture = ExtResource("20_b35ye")
 
 [node name="Damage4" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=212274403 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
@@ -371,11 +371,11 @@ offset_left = 118.0
 offset_top = -70.0
 offset_right = 278.0
 offset_bottom = 90.0
-description = "Increases Damage To 140"
+description = "Increases Damage To 90"
 prerequisite_node = NodePath("../Damage3")
 save_key = "damage_4_skill"
 upgrade_key = "damage"
-new_amount = 140.0
+new_amount = 90.0
 texture = ExtResource("21_utu42")
 
 [node name="Damage5" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=895469397 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
@@ -384,7 +384,7 @@ offset_left = 238.0
 offset_top = -69.0
 offset_right = 398.0
 offset_bottom = 91.0
-description = "Increases Damage To 150"
+description = "Increases Damage To 100"
 prerequisite_node = NodePath("../Damage4")
 save_key = "damage_5_skill"
 upgrade_key = "damage"
@@ -401,7 +401,7 @@ description = "Increases Consecutive Spins To 2"
 prerequisite_node = NodePath("../Root")
 save_key = "stamina_1_skill"
 upgrade_key = "max_stamina"
-new_amount = 14.0
+new_amount = 20.0
 texture = ExtResource("20_ynufy")
 
 [node name="Stamina2" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=486639261 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
@@ -414,7 +414,7 @@ description = "Increases Consecutive Spins To 3"
 prerequisite_node = NodePath("../Stamina1")
 save_key = "stamina_2_skill"
 upgrade_key = "max_stamina"
-new_amount = 18.0
+new_amount = 30.0
 texture = ExtResource("21_yrhry")
 
 [node name="Stamina3" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=829117137 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
@@ -427,7 +427,7 @@ description = "Increases Consecutive Spins To 4"
 prerequisite_node = NodePath("../Stamina2")
 save_key = "stamina_3_skill"
 upgrade_key = "max_stamina"
-new_amount = 22.0
+new_amount = 40.0
 texture = ExtResource("25_c3l7r")
 
 [node name="Stamina4" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=392889408 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
@@ -440,7 +440,7 @@ description = "Increases Consecutive Spins To 5"
 prerequisite_node = NodePath("../Stamina3")
 save_key = "stamina_4_skill"
 upgrade_key = "max_stamina"
-new_amount = 26.0
+new_amount = 50.0
 texture = ExtResource("26_jf8qe")
 
 [node name="Stamina5" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=609666192 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
@@ -453,7 +453,7 @@ description = "Increases Consecutive Spins To 6"
 prerequisite_node = NodePath("../Stamina4")
 save_key = "stamina_5_skill"
 upgrade_key = "max_stamina"
-new_amount = 30.0
+new_amount = 60.0
 texture = ExtResource("27_u4nii")
 
 [node name="Heal1" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1360114510 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]

@@ -649,10 +649,10 @@ tracks/13/path = NodePath("HitShape:INVINCIBLE")
 tracks/13/interp = 0
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(12),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 12),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [false]
+"values": [true, false]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -2080,8 +2080,8 @@ collision_layer = 3
 collision_mask = 3
 script = ExtResource("2_q2lvp")
 INVINCIBLE = true
-HEALTH = 3000.0
-MAX_HEALTH = 3000.0
+HEALTH = 4000.0
+MAX_HEALTH = 4000.0
 FREE_ON_DEATH = [NodePath("../Mesh/LockOn"), NodePath("../CollisionShape3D"), null]
 DAMAGE_NUMBERS = ExtResource("23_adl7b")
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
