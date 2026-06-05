@@ -105,9 +105,10 @@ func refresh_ui(grab_focus: bool = false, focus_index_from_end: int = 1) -> void
 	container.add_child(add_button)
 	_connect_button_sounds(add_button)
 
-	var restore_button = create_restore_button()
-	container.add_child(restore_button)
-	_connect_button_sounds(restore_button)
+	if InputMap.action_get_events(action_name) != ProjectSettings.get_setting("input/" + action_name)["events"]:
+		var restore_button = create_restore_button()
+		container.add_child(restore_button)
+		_connect_button_sounds(restore_button)
 	
 	if grab_focus and container.get_child_count() > 1:
 		var target_index = container.get_child_count() - (focus_index_from_end + 1)
