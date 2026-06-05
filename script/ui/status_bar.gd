@@ -6,10 +6,10 @@ extends ProgressBar
 @export var tracked_property: String = "HEALTH"
 @export var tracked_max_property: String = "MAX_HEALTH"
 @export var pixel_expansion_rate: float = 0.0
+var difference_delay: float = 0.0
+var difference_value: float = 0.0
 var default_width 
 var default_max_value
-var difference_delay := 0.0
-var difference_value: float = 0.0
 
 func update_bar(delta := 0.0) -> void:
 	if not tracked_node: return
@@ -30,7 +30,8 @@ func update_bar(delta := 0.0) -> void:
 		difference_delay = difference_speed
 		difference_value = value
 		
-	if (difference_value != value): # Combo Hits Decreasing... Reset timer each hit
+	# Combo Hits Decreasing... Reset timer each hit
+	if value < difference_value:
 		difference_delay = difference_speed
 		difference_value = value
 	

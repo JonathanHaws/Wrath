@@ -1,6 +1,5 @@
 extends Area3D
 @export var groups: Array[String] = ["enemies"] ## Groups that are auto added in ready
-@export var disabled: bool = false
 @export var disable_collision_shape: bool = false ## automatically sets collision shape to disabled in ready
 @export var damage: float = 10.0
 @export var damage_spread: float = 0 ## Determines subtle randomness in attack damage
@@ -90,14 +89,11 @@ func _on_area_exited(area: Area3D) -> void:
 func _physics_process(_delta: float) -> void:
 	#if overlapping_hit_areas.size() > 0: print(overlapping_hit_areas)
 		
-	if disabled: return		
-	
+	if $CollisionShape3D.disabled: overlapping_hit_areas.clear()	
+			
 	for area in overlapping_hit_areas.keys():
 		if not is_instance_valid(area): continue
-	
-		if overlapping_hit_areas[area]:
-			if $CollisionShape3D.disabled: overlapping_hit_areas.erase(area)
-			continue
+		if overlapping_hit_areas[area]: continue # Already attacked with this area
 	
 		#overlapping_hit_areas[area] = true
 		#var best_block = get_best_block()

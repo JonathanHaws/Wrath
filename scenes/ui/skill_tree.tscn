@@ -458,41 +458,41 @@ texture = ExtResource("27_u4nii")
 
 [node name="Heal1" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1360114510 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
-offset_left = -2.0
+offset_left = -222.0
 offset_top = -254.0
-offset_right = 158.0
+offset_right = -62.0
 offset_bottom = -94.0
-description = "Upgrades Heal Amount To 10"
-prerequisite_node = NodePath("../Healing3")
-save_key = "heal_1_skill"
-upgrade_key = "heal_amount"
-new_amount = 10.0
+description = "Healing Rate 1.5 Per Second"
+prerequisite_node = NodePath("../Healing1")
+save_key = "auto_heal_rate_1_skill"
+upgrade_key = "auto_heal_rate"
+new_amount = 1.5
 texture = ExtResource("28_b0yt6")
 
 [node name="Heal2" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=426008460 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
-offset_left = 107.0
+offset_left = 113.0
 offset_top = -255.0
-offset_right = 267.0
+offset_right = 273.0
 offset_bottom = -95.0
-description = "Upgrades Heal Amount To 15"
-prerequisite_node = NodePath("../Heal1")
-save_key = "heal_2_skill"
-upgrade_key = "heal_amount"
-new_amount = 15.0
+description = "Healing Rate 2 Per Second"
+prerequisite_node = NodePath("../Heal3")
+save_key = "auto_heal_rate_2_skill"
+upgrade_key = "auto_heal_rate"
+new_amount = 2.0
 texture = ExtResource("29_3fh55")
 
 [node name="Heal3" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1764975868 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
-offset_left = 224.0
-offset_top = -256.0
-offset_right = 384.0
-offset_bottom = -96.0
-description = "Upgrades Heal Amount To 20"
-prerequisite_node = NodePath("../Heal2")
-save_key = "heal_3_skill"
-upgrade_key = "heal_amount"
-new_amount = 20.0
+offset_left = 0.0
+offset_top = -255.0
+offset_right = 160.0
+offset_bottom = -95.0
+description = "Healing Rate 2.5 Per Second"
+prerequisite_node = NodePath("../Healing2")
+save_key = "auto_heal_rate_3_skill"
+upgrade_key = "auto_heal_rate"
+new_amount = 2.5
 texture = ExtResource("30_x0e3q")
 
 [node name="Heal4" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1486104125 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
@@ -501,12 +501,11 @@ offset_left = 337.0
 offset_top = -256.0
 offset_right = 497.0
 offset_bottom = -96.0
-description = "Upgrades Heal Amount To 30
-"
-prerequisite_node = NodePath("../Heal3")
-save_key = "heal_4_skill"
-upgrade_key = "heal_amount"
-new_amount = 30.0
+description = "Healing Rate 3 Per Second"
+prerequisite_node = NodePath("../Healing3")
+save_key = "auto_heal_rate_4_skill"
+upgrade_key = "auto_heal_rate"
+new_amount = 3.0
 texture = ExtResource("31_pw20m")
 
 [node name="Healing1" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1539998069 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
@@ -515,38 +514,38 @@ offset_left = -300.0
 offset_top = -163.0
 offset_right = -140.0
 offset_bottom = -3.0
-description = "Grants Acess To 2 Heal Charges
+description = "Makes Health Regenerate In 5 Seconds
 "
 prerequisite_node = NodePath("../Root")
-save_key = "healing_1_skill"
-upgrade_key = "max_heal_charges"
-new_amount = 2.0
+save_key = "auto_heal_1_skill"
+upgrade_key = "auto_heal_delay"
+new_amount = 5.0
 texture = ExtResource("32_2h014")
 
 [node name="Healing2" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=1190097127 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
-offset_left = -225.0
-offset_top = -253.0
-offset_right = -65.0
-offset_bottom = -93.0
-description = "Grants Acess To 3 Heal Charges"
-prerequisite_node = NodePath("../Healing1")
-save_key = "healing_2_skill"
-upgrade_key = "max_heal_charges"
-new_amount = 3.0
+offset_left = -114.0
+offset_top = -256.0
+offset_right = 46.0
+offset_bottom = -96.0
+description = "Makes Health Regenerate In 4 Seconds"
+prerequisite_node = NodePath("../Heal1")
+save_key = "auto_heal_2_skill"
+upgrade_key = "auto_heal_delay"
+new_amount = 4.0
 texture = ExtResource("33_r725d")
 
 [node name="Healing3" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=241610282 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]
 layout_mode = 0
-offset_left = -112.0
-offset_top = -253.0
-offset_right = 48.0
-offset_bottom = -93.0
-description = "Grants Acess To 5 Heal Charges"
-prerequisite_node = NodePath("../Healing2")
-save_key = "healing_3_skill"
-upgrade_key = "max_heal_charges"
-new_amount = 5.0
+offset_left = 228.0
+offset_top = -255.0
+offset_right = 388.0
+offset_bottom = -95.0
+description = "Makes Health Regenerate In 3 Seconds"
+prerequisite_node = NodePath("../Heal2")
+save_key = "auto_heal_3_skill"
+upgrade_key = "auto_heal_delay"
+new_amount = 3.0
 texture = ExtResource("34_6udsr")
 
 [node name="Shooting1" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=335294972 node_paths=PackedStringArray("prerequisite_node") instance=ExtResource("14_cm31t")]

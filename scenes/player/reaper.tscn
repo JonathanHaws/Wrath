@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://binnxxydkjgul" path="res://script/player/god_mode.gd" id="3_4anjp"]
 [ext_resource type="AudioStream" uid="uid://cv08lxjw3rypc" path="res://audio/sfx/characters/player/Jump.wav" id="4_i3uf6"]
 [ext_resource type="AudioStream" uid="uid://cxfh7l5kksro3" path="res://audio/sfx/characters/player/Land.wav" id="5_7kpka"]
+[ext_resource type="Script" uid="uid://3o1v2ntuk284" path="res://script/component/auto_regen.gd" id="5_d6veh"]
 [ext_resource type="PackedScene" uid="uid://00xupixtbxf5" path="res://scenes/player/horizontal_slash_particle.tscn" id="5_p6b07"]
 [ext_resource type="PackedScene" uid="uid://b2vw4evrfcelo" path="res://scenes/particles/dust_step.tscn" id="6_bo8be"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="7_4anjp"]
@@ -3612,7 +3613,7 @@ shader = ExtResource("70_d6veh")
 shader_parameter/default_texture = ExtResource("69_d6veh")
 shader_parameter/blend = 0.0
 
-[node name="Reaper" type="CharacterBody3D" unique_id=27859288 node_paths=PackedStringArray("HITSHAPE", "CAMERA", "MESH", "COLLISON_SHAPE", "PARTICLES", "ANIM", "MESH_ANIM", "FADE_IN_ANIM") groups=["player", "player_body"]]
+[node name="Reaper" type="CharacterBody3D" unique_id=27859288 node_paths=PackedStringArray("CAMERA", "MESH", "COLLISON_SHAPE", "PARTICLES", "ANIM", "MESH_ANIM", "FADE_IN_ANIM") groups=["player", "player_body"]]
 rotation_edit_mode = 1
 collision_layer = 2
 collision_mask = 15
@@ -3622,7 +3623,6 @@ axis_lock_angular_z = true
 floor_snap_length = 0.5
 script = ExtResource("1_0b6a6")
 ATTACKING_DISABLED = false
-HITSHAPE = NodePath("Hitshape")
 CAMERA = NodePath("Camera3D")
 MESH = NodePath("Mesh")
 COLLISON_SHAPE = NodePath("CollisionShape3D")
@@ -3657,7 +3657,7 @@ BODY = NodePath("..")
 collision_layer = 2
 script = ExtResource("2_utjob")
 IMMUNE_GROUPS = Array[String](["player"])
-INVINCIBILITY_COOLDOWN = 0.3
+INVINCIBILITY_COOLDOWN = 0.5
 HEALTH = 30.0
 MAX_HEALTH = 30.0
 SAVE_HEALTH = true
@@ -3673,6 +3673,10 @@ ANIM_PLAYER = NodePath("AlwaysProcessDeath")
 [node name="DeathCountTracker" type="Node" parent="Hitshape" unique_id=1635187 node_paths=PackedStringArray("HITSHAPE")]
 script = ExtResource("20_m1s71")
 key = "deaths"
+HITSHAPE = NodePath("..")
+
+[node name="AutoRegen" type="Node" parent="Hitshape" unique_id=2082786145 node_paths=PackedStringArray("HITSHAPE")]
+script = ExtResource("5_d6veh")
 HITSHAPE = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitshape" unique_id=1440296042]

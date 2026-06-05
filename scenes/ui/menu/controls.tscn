@@ -273,6 +273,7 @@ display_name = "INTERACT"
 focus_top = NodePath("../..")
 
 [node name="Heal" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1705924091]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 script = ExtResource("3_00uuv")

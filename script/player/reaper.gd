@@ -206,39 +206,6 @@ func try_shoot() -> void:
 	shooting_energy -= 1
 	ANIM.play("SHOOT", 0.0)
 
-@export_subgroup("Healing") 
-@export var HITSHAPE: Area3D
-@export var HEALING_DISABLED: bool = false
-@export var MAX_HEAL_CHARGES: int = 1
-@export var HEAL_AMOUNT: float = 5.0
-@export var heal_charges: int = MAX_HEAL_CHARGES
-func load_max_heal_data() -> void:
-	MAX_HEAL_CHARGES = Save.data.get("max_heal_charges", MAX_HEAL_CHARGES)
-func load_heal_data() -> void:
-	if Save.data.get("deaths",0) > Save.data.get("replenish_heal_charges_at_death_count",0) \
-	or Save.data.get("rests",0) > Save.data.get("replenish_heal_charges_at_rest_count",0):
-		Save.data.erase("heal_charges")
-		Save.data["replenish_heal_charges_at_death_count"] = Save.data.get("deaths",0)
-		Save.data["replenish_heal_charges_at_rest_count"] = Save.data.get("rests",0)
-	
-	load_max_heal_data()
-	HEAL_AMOUNT = Save.data.get("heal_amount", HEAL_AMOUNT)
-	heal_charges = Save.data.get("heal_charges", MAX_HEAL_CHARGES)
-func heal_hitshape() -> void:
-	HITSHAPE.HEALTH = min(HITSHAPE.HEALTH + HEAL_AMOUNT, HITSHAPE.MAX_HEALTH)
-func try_heal() -> void:
-	if HEALING_DISABLED: return
-	if heal_charges <= 0: return
-	if not HITSHAPE: return
-	if not Input.is_action_just_pressed("heal"): return
-	if not is_on_floor(): return
-	if not in_interruptible_animation(): return
-	if not "HEALTH" in HITSHAPE: return
-	if not "MAX_HEALTH" in HITSHAPE: return
-	#if HITBOX.HEALTH >= HITBOX.MAX_HEALTH: return
-	heal_charges -= 1
-	if ANIM: ANIM.play("HEAL", 0.0)
-
 @export_group("References")
 @export var CAMERA: Camera3D
 @export var MESH: Node3D
@@ -315,7 +282,7 @@ func reload_checkpoint() -> void:
 func _exit_tree() -> void:
 	
 	Save.data["shooting_energy"] = shooting_energy
-	Save.data["heal_charges"] = heal_charges
+
 	
 	if velocity.y < -20:
 		Save.data["spawn_sound"] = "spawn_void"
@@ -326,9 +293,7 @@ func _exit_tree() -> void:
 func _ready() -> void:
 	
 	load_shooting_data()
-	load_heal_data()
 	Save.save_data_updated.connect(load_max_shooting_data)
-	Save.save_data_updated.connect(load_max_heal_data)
 	
 	if Save.data.has("checkpoint_respawning"):
 		if Save.data.has("checkpoint_scene_path"):
@@ -366,7 +331,7 @@ func _physics_process(delta: float) -> void:
 	try_plunge()
 	try_attack()
 	#try_block()	
-	try_heal()
+	#try_heal()
 	try_shoot()
 	clamp_horizontal_movement()
 	apply_horizontal_friction()
