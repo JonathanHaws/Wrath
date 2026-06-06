@@ -219,6 +219,30 @@ tracks/3/keys = {
 "update": 0,
 "values": [Color(0.6435713, 0.64357144, 0.64357126, 1), Color(0.64, 0.64, 0.64, 0)]
 }
+tracks/4/type = "animation"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/melee_ghost/AnimationPlayer")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"clips": PackedStringArray("Death"),
+"times": PackedFloat32Array(0)
+}
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/melee_ghost/AnimationPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Death", 0],
+"method": &"play"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_05mu1"]
 resource_name = "RESET"
@@ -853,18 +877,20 @@ scenes = Array[PackedScene]([ExtResource("20_x07w4")])
 add_to_scene_root = true
 target = NodePath("../../Target")
 
-[node name="melee_ghost" parent="Mesh" unique_id=1950736104 instance=ExtResource("22_kuhgr")]
+[node name="melee_ghost" parent="Mesh" unique_id=1173241069 instance=ExtResource("22_kuhgr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.32995057, 0)
 
-[node name="Skeleton3D" parent="Mesh/melee_ghost/Armature" parent_id_path=PackedInt32Array(1950736104, 979342626) index="0" unique_id=975303199]
+[node name="Skeleton3D" parent="Mesh/melee_ghost/Armature" parent_id_path=PackedInt32Array(1173241069, 1453419515) index="0" unique_id=1800800308]
 bones/0/rotation = Quaternion(-0.009763041, -1.2559209e-16, -1.2559209e-16, 0.9999523)
-bones/1/rotation = Quaternion(-0.01748162, 1.19191064e-07, -2.0839708e-09, 0.9998473)
+bones/1/rotation = Quaternion(-0.01748162, 1.1919107e-07, -2.083971e-09, 0.9998473)
+bones/1/scale = Vector3(1, 0.99999994, 1)
 bones/2/rotation = Quaternion(0.02379526, 1.0709743e-14, 5.673231e-09, 0.99971694)
+bones/2/scale = Vector3(1, 1, 0.99999994)
 bones/3/rotation = Quaternion(0.03407807, -1.1914004e-07, 4.062424e-09, 0.99941915)
-bones/3/scale = Vector3(1, 0.9999999, 0.9999999)
+bones/3/scale = Vector3(1, 0.99999976, 0.9999998)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="0" unique_id=2037146665]
-transform = Transform3D(1, -5.3290705e-15, -1.4210855e-14, 4.32987e-15, 0.99812317, -0.061234582, -1.4210855e-14, 0.061234612, 0.9981233, 7.730997e-17, 1.628953, -0.041018583)
+transform = Transform3D(1, -3.5527137e-15, 0, 4.32987e-15, 0.99812317, -0.061234597, -1.4210855e-14, 0.0612346, 0.9981232, 1.4742253e-15, 1.628953, -0.041018594)
 bone_name = "Bone.003"
 bone_idx = 3
 
@@ -891,13 +917,13 @@ transform = Transform3D(1, -1.24344996e-14, -1.03739e-12, 1.342e-42, 1, -2.97164
 shape = SubResource("BoxShape3D_qr43c")
 debug_color = Color(0.7, 0.7, 0.7, 0)
 
-[node name="body" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="1" unique_id=296269083]
+[node name="body" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="1" unique_id=661294532]
 surface_material_override/0 = SubResource("ShaderMaterial_kuhgr")
 
-[node name="eyes" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="2" unique_id=849369811]
+[node name="eyes" parent="Mesh/melee_ghost/Armature/Skeleton3D" index="2" unique_id=439191291]
 surface_material_override/0 = SubResource("StandardMaterial3D_eo06i")
 
-[node name="AnimationPlayer" parent="Mesh/melee_ghost" index="1" unique_id=891965955]
+[node name="AnimationPlayer" parent="Mesh/melee_ghost" index="1" unique_id=1737792377]
 playback_default_blend_time = 0.2
 
 [node name="Target" type="Node3D" parent="." unique_id=963969195 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH", "STOP_CHASE_AREA", "AWARENESS_AREA")]

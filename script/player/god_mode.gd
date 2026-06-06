@@ -13,7 +13,7 @@ extends Node
 @export var ANIMATION_PLAYER: AnimationPlayer
 @export var ENTER_ANIMATION: String = "GOD"
 @export var EXIT_ANIMATION: String= "IDLE"
-var mode := false
+var mode: bool = false
 var last_position: Vector3
 
 func _ready():
@@ -63,7 +63,7 @@ func _physics_process(_delta):
 				if InputMap.has_action("walk") and Input.is_action_pressed("walk") or (controller_vector.length() > .4 and controller_vector.length() < 0.75):
 					speed_factor = 1.0
 
-				PLAYER.position += direction * FLY_SPEED * speed_factor * _delta
+				PLAYER.global_position += direction * FLY_SPEED * speed_factor * _delta
 			
 	else:
 		if BODY_SHAPE: BODY_SHAPE.disabled = false
