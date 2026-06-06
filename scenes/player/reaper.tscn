@@ -91,7 +91,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/1/path = NodePath("../Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -271,7 +271,7 @@ length = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/0/path = NodePath("../Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -311,7 +311,7 @@ length = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/0/path = NodePath("../Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -1082,7 +1082,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/2/path = NodePath("../Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1147,7 +1147,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D:current")
+tracks/3/path = NodePath("../Camera3D:current")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1159,7 +1159,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/4/path = NodePath("../Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -1221,7 +1221,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/1/path = NodePath("../Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -1465,7 +1465,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Camera3D:target_fov")
+tracks/2/path = NodePath("../Camera3D:target_fov")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1521,7 +1521,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/3/path = NodePath("../Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -1618,7 +1618,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/1/path = NodePath("../Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -2071,7 +2071,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D:current")
+tracks/3/path = NodePath("../Camera3D:current")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -2083,7 +2083,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Camera3D:current")
+tracks/4/path = NodePath("../Camera3D:current")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -2107,7 +2107,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/6/path = NodePath("../Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -2227,7 +2227,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Camera3D:target_fov")
+tracks/16/path = NodePath("../Camera3D:target_fov")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -2289,7 +2289,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/4/path = NodePath("../Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -2569,7 +2569,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/3/path = NodePath("../Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -3161,7 +3161,7 @@ length = 7.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../Camera3D:SENSITIVITY_MULTIPLIER")
+tracks/0/path = NodePath("../../Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -3401,12 +3401,6 @@ _data = {
 radius = 0.619256
 height = 3.1760898
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_y0gmj"]
-size = Vector3(17.3834, 22.7476, 51.4006)
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_5cvkf"]
-radius = 0.05
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_qlt7i"]
 radius = 2.197676
 
@@ -3613,7 +3607,15 @@ shader = ExtResource("70_d6veh")
 shader_parameter/default_texture = ExtResource("69_d6veh")
 shader_parameter/blend = 0.0
 
-[node name="Reaper" type="CharacterBody3D" unique_id=27859288 node_paths=PackedStringArray("CAMERA", "MESH", "COLLISON_SHAPE", "PARTICLES", "ANIM", "MESH_ANIM", "FADE_IN_ANIM") groups=["player", "player_body"]]
+[sub_resource type="BoxShape3D" id="BoxShape3D_y0gmj"]
+size = Vector3(17.3834, 22.7476, 51.4006)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5cvkf"]
+radius = 0.05
+
+[node name="Node3D" type="Node3D" unique_id=1322744736]
+
+[node name="Reaper" type="CharacterBody3D" parent="." unique_id=27859288 node_paths=PackedStringArray("CAMERA", "MESH", "COLLISON_SHAPE", "PARTICLES", "ANIM", "MESH_ANIM", "FADE_IN_ANIM") groups=["player", "player_body"]]
 rotation_edit_mode = 1
 collision_layer = 2
 collision_mask = 15
@@ -3623,7 +3625,7 @@ axis_lock_angular_z = true
 floor_snap_length = 0.5
 script = ExtResource("1_0b6a6")
 ATTACKING_DISABLED = false
-CAMERA = NodePath("Camera3D")
+CAMERA = NodePath("../Camera3D")
 MESH = NodePath("Mesh")
 COLLISON_SHAPE = NodePath("CollisionShape3D")
 PARTICLES = NodePath("JumpParticles")
@@ -3631,15 +3633,15 @@ ANIM = NodePath("AnimationPlayer")
 MESH_ANIM = NodePath("Mesh/reaper/AnimationPlayer")
 FADE_IN_ANIM = NodePath("ColorRect/FadeIn")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=262511401]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reaper" unique_id=262511401]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2107353, 0)
 shape = SubResource("CapsuleShape3D_utjob")
 debug_color = Color(0.7, 0.7, 0.7, 1)
 
-[node name="Input" type="AnimationPlayer" parent="." unique_id=1866432645 groups=["input_anim"]]
+[node name="Input" type="AnimationPlayer" parent="Reaper" unique_id=1866432645 groups=["input_anim"]]
 libraries/ = SubResource("AnimationLibrary_agako")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=2073546496 groups=["player_anim", "skippable"]]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Reaper" unique_id=2073546496 groups=["player_anim", "skippable"]]
 callback_mode_process = 0
 libraries/ = SubResource("AnimationLibrary_b2cvw")
 autoplay = &"IDLE"
@@ -3649,11 +3651,11 @@ next/DASH = &"RUN"
 next/INTRODUCTION = &"IDLE"
 next/REST = &"SKILLS"
 
-[node name="StepClimber" type="Node3D" parent="." unique_id=203481994 node_paths=PackedStringArray("BODY")]
+[node name="StepClimber" type="Node3D" parent="Reaper" unique_id=203481994 node_paths=PackedStringArray("BODY")]
 script = ExtResource("54_sm0mq")
 BODY = NodePath("..")
 
-[node name="Hitshape" type="Area3D" parent="." unique_id=1397946160 node_paths=PackedStringArray("ANIM_PLAYER") groups=["player", "player_hitshape"]]
+[node name="Hitshape" type="Area3D" parent="Reaper" unique_id=1397946160 node_paths=PackedStringArray("ANIM_PLAYER") groups=["player", "player_hitshape"]]
 collision_layer = 2
 script = ExtResource("2_utjob")
 IMMUNE_GROUPS = Array[String](["player"])
@@ -3670,54 +3672,54 @@ DEATH_COUNT_KEY = "death_count_to_respawn_player"
 REST_COUNT_KEY = "rest_count_to_respawn_player"
 ANIM_PLAYER = NodePath("AlwaysProcessDeath")
 
-[node name="DeathCountTracker" type="Node" parent="Hitshape" unique_id=1635187 node_paths=PackedStringArray("HITSHAPE")]
+[node name="DeathCountTracker" type="Node" parent="Reaper/Hitshape" unique_id=1635187 node_paths=PackedStringArray("HITSHAPE")]
 script = ExtResource("20_m1s71")
 key = "deaths"
 HITSHAPE = NodePath("..")
 
-[node name="AutoRegen" type="Node" parent="Hitshape" unique_id=2082786145 node_paths=PackedStringArray("HITSHAPE")]
+[node name="AutoRegen" type="Node" parent="Reaper/Hitshape" unique_id=2082786145 node_paths=PackedStringArray("HITSHAPE")]
 script = ExtResource("5_d6veh")
 HITSHAPE = NodePath("..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitshape" unique_id=1440296042]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reaper/Hitshape" unique_id=1440296042]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0864, 0)
 shape = SubResource("CapsuleShape3D_k5idf")
 
-[node name="AlwaysProcessDeath" type="AnimationPlayer" parent="Hitshape" unique_id=2103228449]
+[node name="AlwaysProcessDeath" type="AnimationPlayer" parent="Reaper/Hitshape" unique_id=2103228449]
 process_mode = 3
 root_node = NodePath("../../AnimationPlayer")
 libraries/ = SubResource("AnimationLibrary_k5idf")
 autoplay = &"RESET"
 
-[node name="DeathAnimation" type="Node" parent="Hitshape/AlwaysProcessDeath" unique_id=1054051242 node_paths=PackedStringArray("hit_shape", "regular_death_animation_player", "platforming_death_animation_player")]
+[node name="DeathAnimation" type="Node" parent="Reaper/Hitshape/AlwaysProcessDeath" unique_id=1054051242 node_paths=PackedStringArray("hit_shape", "regular_death_animation_player", "platforming_death_animation_player")]
 script = ExtResource("29_5ijfa")
 hit_shape = NodePath("../..")
 regular_death_animation_player = NodePath("..")
 regular_death_animation_name = &"REGULAR_DEATH"
 platforming_death_animation_player = NodePath("..")
 
-[node name="GodMode" type="Node3D" parent="." unique_id=1027070594 node_paths=PackedStringArray("PLAYER", "MESH", "CAMERA", "BODY_SHAPE", "HITBOX_SHAPE", "DAMAGE_SHAPE", "ANIMATION_PLAYER")]
+[node name="GodMode" type="Node3D" parent="Reaper" unique_id=1027070594 node_paths=PackedStringArray("PLAYER", "MESH", "CAMERA", "BODY_SHAPE", "HITBOX_SHAPE", "DAMAGE_SHAPE", "ANIMATION_PLAYER")]
 script = ExtResource("3_4anjp")
 PLAYER = NodePath("..")
 MESH = NodePath("../Mesh")
-CAMERA = NodePath("../Camera3D")
+CAMERA = NodePath("../../Camera3D")
 BODY_SHAPE = NodePath("../CollisionShape3D")
 HITBOX_SHAPE = NodePath("../Hitshape/CollisionShape3D")
 DAMAGE_SHAPE = NodePath("GodModeHurt/CollisionShape3D")
 ANIMATION_PLAYER = NodePath("../AnimationPlayer")
 
-[node name="GodModeHurt" type="Area3D" parent="GodMode" unique_id=611101630 groups=["player"]]
+[node name="GodModeHurt" type="Area3D" parent="Reaper/GodMode" unique_id=611101630 groups=["player"]]
 script = ExtResource("7_4anjp")
 groups = Array[String](["player"])
 damage = 10000.0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="GodMode/GodModeHurt" unique_id=1105067898 groups=["player"]]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reaper/GodMode/GodModeHurt" unique_id=1105067898 groups=["player"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.89055187, 0)
 shape = SubResource("CapsuleShape3D_4anjp")
 disabled = true
 debug_color = Color(0.7, 0.7, 0.7, 1)
 
-[node name="Audio" type="Node" parent="." unique_id=1191003114]
+[node name="Audio" type="Node" parent="Reaper" unique_id=1191003114]
 script = ExtResource("35_lwilf")
 SOUNDS = Array[AudioStream]([ExtResource("15_tgmjc"), ExtResource("4_i3uf6"), ExtResource("5_7kpka"), ExtResource("10_c6xc7"), ExtResource("11_x57ir"), ExtResource("12_ot1qi"), ExtResource("2_ykn11"), ExtResource("3_2tmqw"), ExtResource("20_5d6ad"), ExtResource("7_erto2"), ExtResource("8_wxf0g"), ExtResource("9_rg8br"), ExtResource("10_tro3i"), ExtResource("18_pc8iq"), ExtResource("25_8i186")])
 VOLUME_MULTIPLIERS = Array[float]([0.15, 2.0, 1.1, 0.2, 0.2, 0.2, 0.1, 0.1, 0.25, 0.7, 0.7, 0.7, 0.7, 0.3, 0.3])
@@ -3726,87 +3728,87 @@ BUS_NAMES = Array[String](["Master", "Music", "SFX"])
 TWEEN_TO_MULTIPLIERS = Array[float]([1.0, 1.0, 1.0])
 TWEEN_DURATION = Array[float]([0.3, 0.3, 0.3])
 
-[node name="AudioListener3D" type="AudioListener3D" parent="Audio" unique_id=1864689480]
+[node name="AudioListener3D" type="AudioListener3D" parent="Reaper/Audio" unique_id=1864689480]
 current = true
 
-[node name="Wind" type="AudioStreamPlayer" parent="Audio" unique_id=749113052]
+[node name="Wind" type="AudioStreamPlayer" parent="Reaper/Audio" unique_id=749113052]
 process_mode = 3
 stream = ExtResource("22_ogp31")
 volume_db = -15.105
 autoplay = true
 bus = &"SFX"
 
-[node name="Block" type="AudioStreamPlayer" parent="Audio" unique_id=2136303863]
+[node name="Block" type="AudioStreamPlayer" parent="Reaper/Audio" unique_id=2136303863]
 process_mode = 3
 stream = ExtResource("24_5og37")
 bus = &"SFX"
 
-[node name="Hurt" type="AudioStreamPlayer" parent="Audio" unique_id=1147449651]
+[node name="Hurt" type="AudioStreamPlayer" parent="Reaper/Audio" unique_id=1147449651]
 process_mode = 3
 stream = ExtResource("15_tgmjc")
 volume_db = -15.0
 bus = &"SFX"
 
-[node name="Heal" type="AudioStreamPlayer" parent="Audio" unique_id=822581629]
+[node name="Heal" type="AudioStreamPlayer" parent="Reaper/Audio" unique_id=822581629]
 process_mode = 3
 stream = ExtResource("24_8oma7")
 volume_db = -4.0
 pitch_scale = 0.6
 bus = &"SFX"
 
-[node name="Dash" type="AudioStreamPlayer" parent="Audio" unique_id=1194105955]
+[node name="Dash" type="AudioStreamPlayer" parent="Reaper/Audio" unique_id=1194105955]
 process_mode = 3
 stream = ExtResource("25_kim7h")
 volume_db = -4.0
 pitch_scale = 0.6
 bus = &"SFX"
 
-[node name="Death" type="AudioStreamPlayer" parent="Audio" unique_id=655283920]
+[node name="Death" type="AudioStreamPlayer" parent="Reaper/Audio" unique_id=655283920]
 process_mode = 3
 stream = ExtResource("25_8i186")
 volume_db = 2.0
 pitch_scale = 0.6
 bus = &"SFX"
 
-[node name="Shoot" type="AudioStreamPlayer" parent="Audio" unique_id=727643976]
+[node name="Shoot" type="AudioStreamPlayer" parent="Reaper/Audio" unique_id=727643976]
 process_mode = 3
 stream = ExtResource("25_2d6ni")
 volume_db = 2.0
 pitch_scale = 0.6
 bus = &"SFX"
 
-[node name="Hit" type="Node" parent="Audio" unique_id=787367975]
+[node name="Hit" type="Node" parent="Reaper/Audio" unique_id=787367975]
 script = ExtResource("35_lwilf")
 
-[node name="Hit1" type="AudioStreamPlayer" parent="Audio/Hit" unique_id=1378739356]
+[node name="Hit1" type="AudioStreamPlayer" parent="Reaper/Audio/Hit" unique_id=1378739356]
 process_mode = 3
 stream = ExtResource("24_uatll")
 volume_db = -8.0
 bus = &"SFX"
 
-[node name="Hit2" type="AudioStreamPlayer" parent="Audio/Hit" unique_id=1027173279]
+[node name="Hit2" type="AudioStreamPlayer" parent="Reaper/Audio/Hit" unique_id=1027173279]
 process_mode = 3
 stream = ExtResource("25_78wyp")
 volume_db = -8.0
 bus = &"SFX"
 
-[node name="Hit3" type="AudioStreamPlayer" parent="Audio/Hit" unique_id=172755256]
+[node name="Hit3" type="AudioStreamPlayer" parent="Reaper/Audio/Hit" unique_id=172755256]
 process_mode = 3
 stream = ExtResource("26_8oma7")
 volume_db = -8.0
 bus = &"SFX"
 
-[node name="Squash" type="Node" parent="." unique_id=158628430 node_paths=PackedStringArray("meshes")]
+[node name="Squash" type="Node" parent="Reaper" unique_id=158628430 node_paths=PackedStringArray("meshes")]
 script = ExtResource("41_utjob")
 meshes = [NodePath("../Mesh/reaper/Reaper/Skeleton3D/body"), NodePath("../Mesh/reaper/Reaper/Skeleton3D/cloak"), NodePath("../Mesh/reaper/Reaper/Skeleton3D/staff")]
 
-[node name="CameraEffects" type="Node" parent="." unique_id=757667007]
+[node name="CameraEffects" type="Node" parent="Reaper" unique_id=757667007]
 script = ExtResource("42_k5idf")
 
-[node name="PlayTimeTracker" type="Node" parent="." unique_id=224276649]
+[node name="PlayTimeTracker" type="Node" parent="Reaper" unique_id=224276649]
 script = ExtResource("36_5cvkf")
 
-[node name="SaveStamina" type="Node" parent="." unique_id=508013689 node_paths=PackedStringArray("node")]
+[node name="SaveStamina" type="Node" parent="Reaper" unique_id=508013689 node_paths=PackedStringArray("node")]
 script = ExtResource("23_75wkf")
 max_save_key = "max_stamina"
 node = NodePath("..")
@@ -3815,7 +3817,370 @@ property = "STAMINA"
 increase_property_by_max_difference = true
 animation_name = "STAMINA"
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=657152026 node_paths=PackedStringArray("SpringArm", "EXCLUDED_BODY", "TARGET_NODE") groups=["player_camera"]]
+[node name="Mesh" type="Node3D" parent="Reaper" unique_id=531747882 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "BODY") groups=["player_mesh"]]
+script = ExtResource("32_qsprq")
+SKELETAL_ANIMATION_PLAYER = NodePath("reaper/AnimationPlayer")
+SKELETON = NodePath("reaper/Reaper")
+MESH = NodePath(".")
+BODY = NodePath("..")
+
+[node name="Climb" type="RayCast3D" parent="Reaper/Mesh" unique_id=195656063]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.202089, -0.19727737)
+visible = false
+debug_shape_thickness = 5
+script = ExtResource("38_ojv1r")
+
+[node name="PlungeHurt" type="Area3D" parent="Reaper/Mesh" unique_id=622933227 node_paths=PackedStringArray("animation_player") groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1605837, 0.68690205)
+script = ExtResource("7_4anjp")
+groups = Array[String]([])
+damage = 50.0
+animation_player = NodePath("../reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/AnimationPlayer")
+enable_save = true
+save_key = "damage"
+
+[node name="PlungeMultiplier" type="Node" parent="Reaper/Mesh/PlungeHurt" unique_id=259433183 node_paths=PackedStringArray("STATE_ANIMATION_PLAYER", "ATTACK_AREA")]
+script = ExtResource("38_5ijfa")
+STATE_ANIMATION_PLAYER = NodePath("../../../AnimationPlayer")
+ATTACK_AREA = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reaper/Mesh/PlungeHurt" unique_id=637160610]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1193454)
+shape = SubResource("SphereShape3D_qlt7i")
+disabled = true
+
+[node name="BlockShape" type="Area3D" parent="Reaper/Mesh" unique_id=1724350500 node_paths=PackedStringArray("anim_player", "audio_duck_nodes") groups=["player", "player_blockshape"]]
+transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999998, 0, 0, 0)
+script = ExtResource("45_2d6ni")
+anim_player = NodePath("AnimationPlayer")
+audio_duck_nodes = [NodePath("../../Audio/Hurt")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reaper/Mesh/BlockShape" unique_id=768245768]
+transform = Transform3D(1, -4.76837e-07, -5.96046e-08, -6.55651e-07, 1, -3.57628e-07, 2.38419e-07, -5.96046e-07, 1, -0.027280128, 0.75381327, 0.022367787)
+shape = SubResource("BoxShape3D_8oma7")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Reaper/Mesh/BlockShape" unique_id=1573948997]
+libraries/ = SubResource("AnimationLibrary_qsprq")
+
+[node name="SceneSpawner" type="Node3D" parent="Reaper/Mesh/BlockShape" unique_id=1554294218]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.98480797, -0.17364816, 0, 0.17364822, 0.98480767, -0.062494136, -0.036649704, 0.02942361)
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("43_78wyp")])
+add_to_scene_root = true
+
+[node name="Lean" type="Node" parent="Reaper/Mesh" unique_id=1009116791 node_paths=PackedStringArray("BODY")]
+script = ExtResource("32_xnjpx")
+BODY = NodePath("../..")
+
+[node name="Slash" type="Node3D" parent="Reaper/Mesh" unique_id=1507600048]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988243, -0.52316)
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("5_p6b07")])
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Reaper/Mesh" unique_id=616968197]
+transform = Transform3D(1, 0, 0, 0, -0.117121, -0.993118, 0, 0.993118, -0.117121, 0.0248996, 2.5027, -0.253531)
+light_color = Color(0.584424, 0.453955, 0.383155, 1)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 17.0156
+
+[node name="ShaderTween" type="Node" parent="Reaper/Mesh" unique_id=459044748]
+script = ExtResource("45_au8vy")
+groups = Array[String](["cloak_mesh", "body_mesh"])
+
+[node name="reaper" parent="Reaper/Mesh" unique_id=1111972383 instance=ExtResource("45_riyku")]
+
+[node name="body" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(1111972383, 690915142) index="0" unique_id=1310757747 groups=["body_mesh"]]
+surface_material_override/0 = ExtResource("35_m1s71")
+
+[node name="cloak" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(1111972383, 690915142) index="1" unique_id=1411531318 groups=["cloak_mesh"]]
+surface_material_override/0 = ExtResource("36_4anjp")
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(1111972383, 690915142) index="3" unique_id=552018988]
+transform = Transform3D(0.9988408, 0.0059169475, -0.047768623, -0.005598017, 0.9999609, 0.0068076863, 0.04780704, -0.00653237, 0.99883515, -0.7060426, 1.0007175, 0.0655569)
+bone_name = "staff_2"
+bone_idx = 22
+
+[node name="SytheHurtShape" type="Area3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D" unique_id=1201465678 node_paths=PackedStringArray("animation_player") groups=["player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00983417, 0.964215, 0.00320163)
+script = ExtResource("7_4anjp")
+groups = Array[String](["player"])
+damage = 50.0
+animation_player = NodePath("AnimationPlayer")
+enable_save = true
+save_key = "damage"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=2036506350]
+transform = Transform3D(1.0000026, -4.4703484e-07, -4.3213367e-07, -1.3262033e-06, 1.0000007, -3.8649887e-06, -2.8312206e-07, -5.9977174e-07, 0.99999964, -0.04337898, 0.43725693, -0.013707459)
+shape = SubResource("BoxShape3D_m1s71")
+disabled = true
+
+[node name="SpinMultiplier" type="Node" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=484334045 node_paths=PackedStringArray("ATTACK_AREA")]
+script = ExtResource("38_fw2bj")
+ATTACK_AREA = NodePath("..")
+
+[node name="SceneSpawner" type="Node3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=1606038787]
+transform = Transform3D(1.0000001, 0, 0, 0, 0.98480797, -0.17364816, 0, 0.17364822, 0.98480767, -0.06249415, -0.055126756, 0.13421214)
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("43_78wyp")])
+add_to_scene_root = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/SceneSpawner" unique_id=1552873786]
+light_color = Color(0.57420003, 0.62425, 0.66, 1)
+light_energy = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=758963694]
+libraries/ = SubResource("AnimationLibrary_hfpb6")
+
+[node name="left_foot" type="BoneAttachment3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(1111972383, 690915142) index="4" unique_id=1880319706]
+transform = Transform3D(-0.99971664, 3.3678953e-07, -0.023811866, 0.023751343, -0.071247205, -0.99717593, -0.0016968639, -0.9974587, 0.07122703, -0.09782646, 0.010602772, 0.09236823)
+bone_name = "foot_l"
+bone_idx = 18
+
+[node name="dust_trail_l" type="Node3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D/left_foot" unique_id=1690973069]
+transform = Transform3D(-0.999716, 0.00169688, 0.0237513, 3.64147e-07, 0.997459, -0.0712467, -0.0238119, -0.0712265, -0.997176, -0.208212, 7.58414e-08, -0.00495933)
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("6_bo8be")])
+
+[node name="right_foot" type="BoneAttachment3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(1111972383, 690915142) index="5" unique_id=1885491197]
+transform = Transform3D(-0.99971664, 3.3678953e-07, -0.023811866, 0.023751343, -0.071247205, -0.99717593, -0.0016968639, -0.9974587, 0.07122703, -0.09782646, 0.010602772, 0.09236823)
+bone_name = "foot_l"
+bone_idx = 18
+
+[node name="dust_trail_r" type="Node3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D/right_foot" unique_id=238800655]
+transform = Transform3D(-0.999716, 0.00169688, 0.0237513, 3.64147e-07, 0.997459, -0.0712467, -0.0238119, -0.0712265, -0.997176, 0, 0, 0)
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("6_bo8be")])
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(1111972383, 690915142) index="6" unique_id=232937500]
+target_node = NodePath("../../../../../../Camera3D/HeadFollowTarget")
+bone_name = "head"
+bone = 9
+forward_axis = 5
+duration = 0.3
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 1.0472
+primary_damp_threshold = 1.0
+secondary_limit_angle = 0.261799
+secondary_damp_threshold = 1.0
+
+[node name="SlimeAttachment" type="BoneAttachment3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(1111972383, 690915142) index="7" unique_id=412721731]
+transform = Transform3D(0.9999998, 9.3132124e-10, 2.4021676e-07, -9.3132124e-10, 0.9999998, -9.6092204e-11, -2.4122252e-07, -3.5545e-12, 0.9999998, 1.8365476e-10, 1.1588202, 0.054948512)
+bone_name = "torso"
+bone_idx = 2
+
+[node name="SlimeStick" type="Node3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D/SlimeAttachment" unique_id=1015251732 groups=["slime_stick"]]
+transform = Transform3D(1.0000002, -1.0173428e-08, -2.4362956e-07, 2.1988402e-09, 0.9992794, -0.03796166, 2.4398045e-07, 0.037961654, 0.9992794, 2.0695987e-08, -0.8425671, -0.082461104)
+
+[node name="AnimationPlayer" parent="Reaper/Mesh/reaper" index="1" unique_id=1653652084]
+root_motion_track = NodePath("Reaper/Skeleton3D:root")
+playback_default_blend_time = 0.2
+
+[node name="JumpParticles" type="Node3D" parent="Reaper" unique_id=1177969111]
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("8_lxnc4"), ExtResource("42_p6b07")])
+
+[node name="HurtParticles" type="Node3D" parent="Reaper" unique_id=2071925941 groups=["teleport_to_attacking_area"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5091362, -0.6996558)
+script = ExtResource("15_lwilf")
+scenes = Array[PackedScene]([ExtResource("52_xnjpx")])
+
+[node name="Control" type="Control" parent="Reaper" unique_id=493993614 groups=["ui_scalable"]]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.98, 0.98)
+pivot_offset = Vector2(4, 4)
+script = ExtResource("43_ekykk")
+
+[node name="LockOnIndicator" type="ProgressBar" parent="Reaper/Control" unique_id=65486949 node_paths=PackedStringArray("CAMERA", "SpringArm", "LOCK_ON_AREA", "lock_on_ui")]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -3.0
+offset_top = -3.0
+offset_right = 3.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(3, 3)
+theme_override_styles/fill = SubResource("StyleBoxFlat_wub5s")
+value = 100.0
+show_percentage = false
+script = ExtResource("17_5cvkf")
+CAMERA = NodePath("../../../Camera3D")
+SpringArm = NodePath("../../../SpringArm3D")
+LOCK_ON_AREA = NodePath("../../../Camera3D/LockOnArea")
+lock_on_ui = NodePath("..")
+
+[node name="UI" type="Control" parent="Reaper" unique_id=384331694]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="NonBlackBackground" type="ColorRect" parent="Reaper/UI" unique_id=245704033]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.3276709, 0.32767087, 0.32767087, 1)
+
+[node name="Tutorials" type="Control" parent="Reaper/UI" unique_id=916132959]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -56.0
+offset_top = -56.0
+offset_right = -16.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(0.8, 0.8)
+pivot_offset = Vector2(40, 40)
+mouse_filter = 2
+script = ExtResource("43_ekykk")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Reaper/UI/Tutorials" unique_id=1379840933]
+layout_mode = 0
+offset_left = -932.5
+offset_top = -82.49999
+offset_right = 42.500183
+offset_bottom = 41.500008
+pivot_offset = Vector2(290, 124)
+mouse_filter = 2
+alignment = 2
+
+[node name="Revealed" type="AudioStreamPlayer" parent="Reaper/UI/Tutorials/VBoxContainer" unique_id=1667586098 groups=["tutorial_prompt"]]
+process_mode = 3
+stream = ExtResource("53_qlt7i")
+volume_db = -15.0
+pitch_scale = 0.2
+bus = &"SFX"
+
+[node name="Learning" type="AudioStreamPlayer" parent="Reaper/UI/Tutorials/VBoxContainer" unique_id=124996239]
+process_mode = 3
+stream = ExtResource("52_3vvcf")
+volume_db = -22.0
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="Learnt" type="AudioStreamPlayer" parent="Reaper/UI/Tutorials/VBoxContainer" unique_id=2087764388]
+process_mode = 3
+stream = ExtResource("53_qlt7i")
+volume_db = -22.0
+pitch_scale = 0.5
+bus = &"SFX"
+
+[node name="SkillTutorial" type="HBoxContainer" parent="Reaper/UI/Tutorials/VBoxContainer" unique_id=540184136]
+visible = false
+layout_mode = 2
+theme = ExtResource("52_ccj1p")
+alignment = 2
+script = ExtResource("51_773af")
+base_text = "# PRESS -key- TO AQUIRE SKILLS"
+action_name = "toggle_skill_tree"
+saved_key = "skill_tree_tutorial"
+
+[node name="BottomLeft" type="Control" parent="Reaper/UI" unique_id=1327505875]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -720.0
+offset_bottom = -720.0
+grow_vertical = 0
+pivot_offset = Vector2(0, 720)
+script = ExtResource("43_ekykk")
+
+[node name="Label" type="Label" parent="Reaper/UI/BottomLeft" unique_id=493732866]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 665.0
+offset_right = 100.0
+offset_bottom = 703.0
+theme = ExtResource("24_m1s71")
+text = "WISP"
+script = ExtResource("44_4anjp")
+
+[node name="Health" parent="Reaper/UI/BottomLeft" unique_id=1993447213 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
+layout_mode = 1
+anchors_preset = 2
+anchor_left = 0.0
+anchor_top = 1.0
+anchor_right = 0.0
+anchor_bottom = 1.0
+offset_left = 9.0
+offset_top = 700.0
+offset_right = 115.024994
+offset_bottom = 710.0
+grow_horizontal = 1
+grow_vertical = 0
+theme_override_styles/fill = ExtResource("34_6g6ue")
+expands = true
+tracked_node = NodePath("../../../Hitshape")
+pixel_expansion_rate = 8.0
+
+[node name="ColorRect" type="ColorRect" parent="Reaper" unique_id=1732221166]
+z_index = 10
+z_as_relative = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="FadeIn" type="AnimationPlayer" parent="Reaper/ColorRect" unique_id=426380311]
+root_node = NodePath("../..")
+libraries/ = SubResource("AnimationLibrary_48hq2")
+autoplay = &"FADE_IN"
+
+[node name="SkillTree" parent="Reaper" unique_id=1995210835 instance=ExtResource("47_ekykk")]
+visible = false
+
+[node name="Skip" parent="Reaper" unique_id=1659970227 instance=ExtResource("50_yinxs")]
+
+[node name="Pause" parent="Reaper" unique_id=744582408 groups=["pause_menu"] instance=ExtResource("51_bud88")]
+visible = false
+
+[node name="LUT" type="ColorRect" parent="Reaper" unique_id=1277256602 groups=["lut_overlay"]]
+material = SubResource("ShaderMaterial_sm0mq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("70_ojv1r")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=657152026 node_paths=PackedStringArray("Root", "Body", "SpringArm", "TARGET_NODE") groups=["player_camera"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.412, 7.1015263)
 top_level = true
 current = true
@@ -3823,8 +4188,9 @@ fov = 70.0
 near = 0.001
 script = ExtResource("7_lwilf")
 pitch_max_deg = 20.0
+Root = NodePath("..")
+Body = NodePath("../Reaper")
 SpringArm = NodePath("../SpringArm3D")
-EXCLUDED_BODY = NodePath("..")
 TOP_LEVEL_ROTATION = false
 target_fov = 65.0
 TARGET_NODE = NodePath("../SpringArm3D/Node3D")
@@ -3850,369 +4216,6 @@ margin = 1.0
 [node name="Node3D" type="Node3D" parent="SpringArm3D" unique_id=1598816733]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.1015263)
 
-[node name="Mesh" type="Node3D" parent="." unique_id=531747882 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "BODY") groups=["player_mesh"]]
-script = ExtResource("32_qsprq")
-SKELETAL_ANIMATION_PLAYER = NodePath("reaper/AnimationPlayer")
-SKELETON = NodePath("reaper/Reaper")
-MESH = NodePath(".")
-BODY = NodePath("..")
+[connection signal="animation_finished" from="Reaper/AnimationPlayer" to="Reaper" method="_on_animation_finished"]
 
-[node name="Climb" type="RayCast3D" parent="Mesh" unique_id=195656063]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, -1, 0, 1, -4.371139e-08, 0, 1.202089, -0.19727737)
-visible = false
-debug_shape_thickness = 5
-script = ExtResource("38_ojv1r")
-
-[node name="PlungeHurt" type="Area3D" parent="Mesh" unique_id=622933227 node_paths=PackedStringArray("animation_player") groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.1605837, 0.68690205)
-script = ExtResource("7_4anjp")
-groups = Array[String]([])
-damage = 50.0
-animation_player = NodePath("../reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/AnimationPlayer")
-enable_save = true
-save_key = "damage"
-
-[node name="PlungeMultiplier" type="Node" parent="Mesh/PlungeHurt" unique_id=259433183 node_paths=PackedStringArray("STATE_ANIMATION_PLAYER", "ATTACK_AREA")]
-script = ExtResource("38_5ijfa")
-STATE_ANIMATION_PLAYER = NodePath("../../../AnimationPlayer")
-ATTACK_AREA = NodePath("..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/PlungeHurt" unique_id=637160610]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.1193454)
-shape = SubResource("SphereShape3D_qlt7i")
-disabled = true
-
-[node name="BlockShape" type="Area3D" parent="Mesh" unique_id=1724350500 node_paths=PackedStringArray("anim_player", "audio_duck_nodes") groups=["player", "player_blockshape"]]
-transform = Transform3D(0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999998, 0, 0, 0)
-script = ExtResource("45_2d6ni")
-anim_player = NodePath("AnimationPlayer")
-audio_duck_nodes = [NodePath("../../Audio/Hurt")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/BlockShape" unique_id=768245768]
-transform = Transform3D(1, -4.76837e-07, -5.96046e-08, -6.55651e-07, 1, -3.57628e-07, 2.38419e-07, -5.96046e-07, 1, -0.027280128, 0.75381327, 0.022367787)
-shape = SubResource("BoxShape3D_8oma7")
-disabled = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/BlockShape" unique_id=1573948997]
-libraries/ = SubResource("AnimationLibrary_qsprq")
-
-[node name="SceneSpawner" type="Node3D" parent="Mesh/BlockShape" unique_id=1554294218]
-transform = Transform3D(1.0000001, 0, 0, 0, 0.98480797, -0.17364816, 0, 0.17364822, 0.98480767, -0.062494136, -0.036649704, 0.02942361)
-script = ExtResource("15_lwilf")
-scenes = Array[PackedScene]([ExtResource("43_78wyp")])
-add_to_scene_root = true
-
-[node name="Lean" type="Node" parent="Mesh" unique_id=1009116791 node_paths=PackedStringArray("BODY")]
-script = ExtResource("32_xnjpx")
-BODY = NodePath("../..")
-
-[node name="Slash" type="Node3D" parent="Mesh" unique_id=1507600048]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.988243, -0.52316)
-script = ExtResource("15_lwilf")
-scenes = Array[PackedScene]([ExtResource("5_p6b07")])
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Mesh" unique_id=616968197]
-transform = Transform3D(1, 0, 0, 0, -0.117121, -0.993118, 0, 0.993118, -0.117121, 0.0248996, 2.5027, -0.253531)
-light_color = Color(0.584424, 0.453955, 0.383155, 1)
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-omni_range = 17.0156
-
-[node name="ShaderTween" type="Node" parent="Mesh" unique_id=459044748]
-script = ExtResource("45_au8vy")
-groups = Array[String](["cloak_mesh", "body_mesh"])
-
-[node name="reaper" parent="Mesh" unique_id=1111972383 instance=ExtResource("45_riyku")]
-
-[node name="body" parent="Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(1111972383, 690915142) index="0" unique_id=1310757747 groups=["body_mesh"]]
-surface_material_override/0 = ExtResource("35_m1s71")
-
-[node name="cloak" parent="Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(1111972383, 690915142) index="1" unique_id=1411531318 groups=["cloak_mesh"]]
-surface_material_override/0 = ExtResource("36_4anjp")
-
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(1111972383, 690915142) index="3" unique_id=552018988]
-transform = Transform3D(0.9988408, 0.0059169475, -0.047768623, -0.005598017, 0.9999609, 0.0068076863, 0.04780704, -0.00653237, 0.99883515, -0.7060426, 1.0007175, 0.0655569)
-bone_name = "staff_2"
-bone_idx = 22
-
-[node name="SytheHurtShape" type="Area3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D" unique_id=1201465678 node_paths=PackedStringArray("animation_player") groups=["player"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00983417, 0.964215, 0.00320163)
-script = ExtResource("7_4anjp")
-groups = Array[String](["player"])
-damage = 50.0
-animation_player = NodePath("AnimationPlayer")
-enable_save = true
-save_key = "damage"
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=2036506350]
-transform = Transform3D(1.0000026, -4.4703484e-07, -4.3213367e-07, -1.3262033e-06, 1.0000007, -3.8649887e-06, -2.8312206e-07, -5.9977174e-07, 0.99999964, -0.04337898, 0.43725693, -0.013707459)
-shape = SubResource("BoxShape3D_m1s71")
-disabled = true
-
-[node name="SpinMultiplier" type="Node" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=484334045 node_paths=PackedStringArray("ATTACK_AREA")]
-script = ExtResource("38_fw2bj")
-ATTACK_AREA = NodePath("..")
-
-[node name="SceneSpawner" type="Node3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=1606038787]
-transform = Transform3D(1.0000001, 0, 0, 0, 0.98480797, -0.17364816, 0, 0.17364822, 0.98480767, -0.06249415, -0.055126756, 0.13421214)
-script = ExtResource("15_lwilf")
-scenes = Array[PackedScene]([ExtResource("43_78wyp")])
-add_to_scene_root = true
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/SceneSpawner" unique_id=1552873786]
-light_color = Color(0.57420003, 0.62425, 0.66, 1)
-light_energy = 0.0
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=758963694]
-libraries/ = SubResource("AnimationLibrary_hfpb6")
-
-[node name="left_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(1111972383, 690915142) index="4" unique_id=1880319706]
-transform = Transform3D(-0.99971664, 3.3678953e-07, -0.023811866, 0.023751343, -0.071247205, -0.99717593, -0.0016968639, -0.9974587, 0.07122703, -0.09782646, 0.010602772, 0.09236823)
-bone_name = "foot_l"
-bone_idx = 18
-
-[node name="dust_trail_l" type="Node3D" parent="Mesh/reaper/Reaper/Skeleton3D/left_foot" unique_id=1690973069]
-transform = Transform3D(-0.999716, 0.00169688, 0.0237513, 3.64147e-07, 0.997459, -0.0712467, -0.0238119, -0.0712265, -0.997176, -0.208212, 7.58414e-08, -0.00495933)
-script = ExtResource("15_lwilf")
-scenes = Array[PackedScene]([ExtResource("6_bo8be")])
-
-[node name="right_foot" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(1111972383, 690915142) index="5" unique_id=1885491197]
-transform = Transform3D(-0.99971664, 3.3678953e-07, -0.023811866, 0.023751343, -0.071247205, -0.99717593, -0.0016968639, -0.9974587, 0.07122703, -0.09782646, 0.010602772, 0.09236823)
-bone_name = "foot_l"
-bone_idx = 18
-
-[node name="dust_trail_r" type="Node3D" parent="Mesh/reaper/Reaper/Skeleton3D/right_foot" unique_id=238800655]
-transform = Transform3D(-0.999716, 0.00169688, 0.0237513, 3.64147e-07, 0.997459, -0.0712467, -0.0238119, -0.0712265, -0.997176, 0, 0, 0)
-script = ExtResource("15_lwilf")
-scenes = Array[PackedScene]([ExtResource("6_bo8be")])
-
-[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(1111972383, 690915142) index="6" unique_id=232937500]
-target_node = NodePath("../../../../../Camera3D/HeadFollowTarget")
-bone_name = "head"
-bone = 9
-forward_axis = 5
-duration = 0.3
-use_angle_limitation = true
-symmetry_limitation = true
-primary_limit_angle = 1.0472
-primary_damp_threshold = 1.0
-secondary_limit_angle = 0.261799
-secondary_damp_threshold = 1.0
-
-[node name="SlimeAttachment" type="BoneAttachment3D" parent="Mesh/reaper/Reaper/Skeleton3D" parent_id_path=PackedInt32Array(1111972383, 690915142) index="7" unique_id=412721731]
-transform = Transform3D(0.9999998, 9.3132124e-10, 2.4021676e-07, -9.3132124e-10, 0.9999998, -9.6092204e-11, -2.4122252e-07, -3.5545e-12, 0.9999998, 1.8365476e-10, 1.1588202, 0.054948512)
-bone_name = "torso"
-bone_idx = 2
-
-[node name="SlimeStick" type="Node3D" parent="Mesh/reaper/Reaper/Skeleton3D/SlimeAttachment" unique_id=1015251732 groups=["slime_stick"]]
-transform = Transform3D(1.0000002, -1.0173428e-08, -2.4362956e-07, 2.1988402e-09, 0.9992794, -0.03796166, 2.4398045e-07, 0.037961654, 0.9992794, 2.0695987e-08, -0.8425671, -0.082461104)
-
-[node name="AnimationPlayer" parent="Mesh/reaper" index="1" unique_id=1653652084]
-root_motion_track = NodePath("Reaper/Skeleton3D:root")
-playback_default_blend_time = 0.2
-
-[node name="JumpParticles" type="Node3D" parent="." unique_id=1177969111]
-script = ExtResource("15_lwilf")
-scenes = Array[PackedScene]([ExtResource("8_lxnc4"), ExtResource("42_p6b07")])
-
-[node name="HurtParticles" type="Node3D" parent="." unique_id=2071925941 groups=["teleport_to_attacking_area"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5091362, -0.6996558)
-script = ExtResource("15_lwilf")
-scenes = Array[PackedScene]([ExtResource("52_xnjpx")])
-
-[node name="Control" type="Control" parent="." unique_id=493993614 groups=["ui_scalable"]]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -4.0
-offset_top = -4.0
-offset_right = 4.0
-offset_bottom = 4.0
-grow_horizontal = 2
-grow_vertical = 2
-scale = Vector2(0.98, 0.98)
-pivot_offset = Vector2(4, 4)
-script = ExtResource("43_ekykk")
-
-[node name="LockOnIndicator" type="ProgressBar" parent="Control" unique_id=65486949 node_paths=PackedStringArray("CAMERA", "SpringArm", "LOCK_ON_AREA", "lock_on_ui")]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -3.0
-offset_top = -3.0
-offset_right = 3.0
-offset_bottom = 3.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(3, 3)
-theme_override_styles/fill = SubResource("StyleBoxFlat_wub5s")
-value = 100.0
-show_percentage = false
-script = ExtResource("17_5cvkf")
-CAMERA = NodePath("../../Camera3D")
-SpringArm = NodePath("../../SpringArm3D")
-LOCK_ON_AREA = NodePath("../../Camera3D/LockOnArea")
-lock_on_ui = NodePath("..")
-
-[node name="UI" type="Control" parent="." unique_id=384331694]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
-[node name="NonBlackBackground" type="ColorRect" parent="UI" unique_id=245704033]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0.3276709, 0.32767087, 0.32767087, 1)
-
-[node name="Tutorials" type="Control" parent="UI" unique_id=916132959]
-layout_mode = 1
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -56.0
-offset_top = -56.0
-offset_right = -16.0
-offset_bottom = -16.0
-grow_horizontal = 0
-grow_vertical = 0
-scale = Vector2(0.8, 0.8)
-pivot_offset = Vector2(40, 40)
-mouse_filter = 2
-script = ExtResource("43_ekykk")
-
-[node name="VBoxContainer" type="VBoxContainer" parent="UI/Tutorials" unique_id=1379840933]
-layout_mode = 0
-offset_left = -932.5
-offset_top = -82.49999
-offset_right = 42.500183
-offset_bottom = 41.500008
-pivot_offset = Vector2(290, 124)
-mouse_filter = 2
-alignment = 2
-
-[node name="Revealed" type="AudioStreamPlayer" parent="UI/Tutorials/VBoxContainer" unique_id=1667586098 groups=["tutorial_prompt"]]
-process_mode = 3
-stream = ExtResource("53_qlt7i")
-volume_db = -15.0
-pitch_scale = 0.2
-bus = &"SFX"
-
-[node name="Learning" type="AudioStreamPlayer" parent="UI/Tutorials/VBoxContainer" unique_id=124996239]
-process_mode = 3
-stream = ExtResource("52_3vvcf")
-volume_db = -22.0
-pitch_scale = 0.5
-bus = &"SFX"
-
-[node name="Learnt" type="AudioStreamPlayer" parent="UI/Tutorials/VBoxContainer" unique_id=2087764388]
-process_mode = 3
-stream = ExtResource("53_qlt7i")
-volume_db = -22.0
-pitch_scale = 0.5
-bus = &"SFX"
-
-[node name="SkillTutorial" type="HBoxContainer" parent="UI/Tutorials/VBoxContainer" unique_id=540184136]
-visible = false
-layout_mode = 2
-theme = ExtResource("52_ccj1p")
-alignment = 2
-script = ExtResource("51_773af")
-base_text = "# PRESS -key- TO AQUIRE SKILLS"
-action_name = "toggle_skill_tree"
-saved_key = "skill_tree_tutorial"
-
-[node name="BottomLeft" type="Control" parent="UI" unique_id=1327505875]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -720.0
-offset_bottom = -720.0
-grow_vertical = 0
-pivot_offset = Vector2(0, 720)
-script = ExtResource("43_ekykk")
-
-[node name="Label" type="Label" parent="UI/BottomLeft" unique_id=493732866]
-layout_mode = 0
-offset_left = 8.0
-offset_top = 665.0
-offset_right = 100.0
-offset_bottom = 703.0
-theme = ExtResource("24_m1s71")
-text = "WISP"
-script = ExtResource("44_4anjp")
-
-[node name="Health" parent="UI/BottomLeft" unique_id=1993447213 node_paths=PackedStringArray("tracked_node") instance=ExtResource("36_p2pt0")]
-layout_mode = 1
-anchors_preset = 2
-anchor_left = 0.0
-anchor_top = 1.0
-anchor_right = 0.0
-anchor_bottom = 1.0
-offset_left = 9.0
-offset_top = 700.0
-offset_right = 115.024994
-offset_bottom = 710.0
-grow_horizontal = 1
-grow_vertical = 0
-theme_override_styles/fill = ExtResource("34_6g6ue")
-expands = true
-tracked_node = NodePath("../../../Hitshape")
-pixel_expansion_rate = 8.0
-
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1732221166]
-z_index = 10
-z_as_relative = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-color = Color(0, 0, 0, 1)
-
-[node name="FadeIn" type="AnimationPlayer" parent="ColorRect" unique_id=426380311]
-root_node = NodePath("../..")
-libraries/ = SubResource("AnimationLibrary_48hq2")
-autoplay = &"FADE_IN"
-
-[node name="SkillTree" parent="." unique_id=1995210835 instance=ExtResource("47_ekykk")]
-visible = false
-
-[node name="Skip" parent="." unique_id=1659970227 instance=ExtResource("50_yinxs")]
-
-[node name="Pause" parent="." unique_id=744582408 groups=["pause_menu"] instance=ExtResource("51_bud88")]
-visible = false
-
-[node name="LUT" type="ColorRect" parent="." unique_id=1277256602 groups=["lut_overlay"]]
-material = SubResource("ShaderMaterial_sm0mq")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-script = ExtResource("70_ojv1r")
-
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_finished"]
-
-[editable path="Mesh/reaper"]
+[editable path="Reaper/Mesh/reaper"]

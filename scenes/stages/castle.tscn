@@ -412,7 +412,7 @@ fov = 79.87988
 transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 12.821152, -8.169779, 135.73941)
 
 [node name="LightDoor" parent="Doors" unique_id=159225589 instance=ExtResource("10_s2ex5")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 269.35834, 36.279392, -35.05111)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 269.35834, 34.789116, -35.05111)
 DESTINATION_NODE_NAME = "LightDoor2"
 
 [node name="LightDoor2" parent="Doors" unique_id=119780670 instance=ExtResource("10_s2ex5")]

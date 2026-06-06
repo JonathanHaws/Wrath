@@ -2,8 +2,11 @@ extends Camera3D
 @export_group("Camera")
 @export_range(-90.0, 90.0, 1.0, "Degrees") var pitch_min_deg: float = -80.0
 @export_range(-90.0, 90.0, 1.0, "Degrees") var pitch_max_deg: float = 80.0
+
+@export var Root: Node3D
+@export var Body: Node3D
 @export var SpringArm: SpringArm3D
-@export var EXCLUDED_BODY: PhysicsBody3D ## If the camera is between players body and wall. But the player is against the wall. the spring arm has to phase into 1. 
+#@export var EXCLUDED_BODY: PhysicsBody3D ## If the camera is between players body and wall. But the player is against the wall. the spring arm has to phase into 1. 
 @export var MOUSE_SENSITIVITY: float = 0.003
 @export var CONTROLLER_SENSITIVITY: float = 0.07
 @export var SENSITIVITY_MULTIPLIER: float = 1.0
@@ -19,21 +22,22 @@ extends Camera3D
 @export_group("Target_Lerp")
 @export var TARGET_NODE: Node3D ## Used for when smooth camera is desired instead of instant snapping to the end of the spring arm. REQUIRED Use top level on this Camera node
 @export var SNAP_SPEED: float = 10.0 ## How quickly the camera moves to the target node
-
 var initial_snap: bool = false
-var last_spring_arm_orientation: Basis = Basis.IDENTITY
 var mouse_delta = Vector2.ZERO
 
 func set_camera_transform(new_transform: Transform3D) -> void:
+	Root.transform = Transform3D.IDENTITY
+	Root.global_position = new_transform.origin
+	Body.transform = new_transform
+	Body.position = Vector3.ZERO
 	SpringArm.global_basis = new_transform.basis
-	last_spring_arm_orientation = new_transform.basis
-	transform = Transform3D.IDENTITY
+	transform = new_transform
 
 func _ready() -> void:
-	last_spring_arm_orientation = SpringArm.global_transform.basis
 	if Config: MOUSE_SENSITIVITY = Config.load_setting("controls", "mouse_sensitivity", MOUSE_SENSITIVITY)
 	if Config: CONTROLLER_SENSITIVITY = Config.load_setting("controls", "controller_sensitivity", CONTROLLER_SENSITIVITY)
-	if EXCLUDED_BODY: SpringArm.add_excluded_object(EXCLUDED_BODY)
+	#if EXCLUDED_BODY: SpringArm.add_excluded_object(EXCLUDED_BODY)
+	set_transform(TARGET_NODE.global_transform)
 			
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -45,21 +49,15 @@ func rotate_mesh_towards_camera_xz(delta: float, mesh: Node3D, input_vector: Vec
 	mesh.global_rotation.y = lerp_angle(mesh.global_rotation.y, SpringArm.global_rotation.y + input_angle, turn_speed * delta)
 			
 func _physics_process(_delta: float) -> void:
+	Root.global_position = Body.global_position
+	Body.position = Vector3.ZERO
 	
 	#print(SpringArm.get_hit_length())
-	
-	if lerp_fov: fov = lerp(fov, target_fov, lerp_speed)
-	
-	if TARGET_NODE:
-		if initial_snap:
-			global_transform = global_transform.interpolate_with(TARGET_NODE.global_transform, SNAP_SPEED * _delta)
-		else:
-			#print('test')
-			global_transform = TARGET_NODE.global_transform
-			initial_snap = true
-	
 	#print(position)
 	
+	if lerp_fov: fov = lerp(fov, target_fov, lerp_speed)
+	if TARGET_NODE: global_transform = global_transform.interpolate_with(TARGET_NODE.global_transform, SNAP_SPEED * _delta)
+
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED: 
 		mouse_delta = Vector2.ZERO
 		return

@@ -63,7 +63,7 @@ func _teleport_player_to_player_spot() -> void:
 	var player = get_tree().get_nodes_in_group("player_body")[0]
 	player.global_transform.origin = PLAYER_SPOT.global_transform.origin
 	
-	print(PLAYER_SPOT.global_transform.origin, player.global_transform.origin )
+	#print(PLAYER_SPOT.global_transform.origin, player.global_transform.origin )
 	player.global_transform = PLAYER_SPOT.global_transform
 	player.global_transform = PLAYER_SPOT.global_transform
 	player.MESH.transform = Transform3D.IDENTITY

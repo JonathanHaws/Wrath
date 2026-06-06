@@ -341,7 +341,6 @@ DESTINATION_NODE_NAME = "Exit"
 transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 4.76271, 62.5494)
 DESTINATION_SCENE = "uid://d1k2pnn46w66f"
 DESTINATION_NODE_NAME = "Enter"
-LOCKED = true
 
 [node name="Checkpoints" type="Node3D" parent="." unique_id=1988954822]
 
