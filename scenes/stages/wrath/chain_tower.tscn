@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bs7jq6obdgcxq" path="res://models/castle/chain_ceiling.glb" id="2_pti88"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/world_small.tres" id="2_xjjd2"]
+[ext_resource type="Material" uid="uid://d4musdhwu8l60" path="res://shaders/materials/metal.tres" id="3_uk0a4"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/items/weather.tscn" id="5_qi6lv"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/lighting/enviroment.tscn" id="6_mmcy5"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/world_star.tres" id="7_5aqd4"]
@@ -35,6 +36,9 @@ size = Vector3(65.3073, 20, 30)
 
 [node name="chain_ceiling" parent="Enviroment" unique_id=956581869 instance=ExtResource("2_pti88")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.165699, -13.104839, -0.7295923)
+
+[node name="Chain Ceiling" parent="Enviroment/chain_ceiling/draft_Mesh" parent_id_path=PackedInt32Array(956581869, 737752446) index="0" unique_id=890828292]
+surface_material_override/0 = ExtResource("3_uk0a4")
 
 [node name="Weather" parent="Enviroment" unique_id=1475754132 instance=ExtResource("5_qi6lv")]
 
@@ -80,3 +84,5 @@ transform = Transform3D(-0.432967, 0, 0.90141, 0, 1, 0, -0.90141, 0, -0.432967, 
 
 [node name="Reaper" parent="." unique_id=1614508072 instance=ExtResource("8_fk1wk")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
+
+[editable path="Enviroment/chain_ceiling"]

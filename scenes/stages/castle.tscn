@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/player/reaper.tscn" id="4_42w7d"]
 [ext_resource type="Material" uid="uid://dp3cs55fchr3b" path="res://shaders/materials/light_door_shader.tres" id="4_g6ecr"]
 [ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://scenes/lighting/sun.tscn" id="4_mqk0e"]
+[ext_resource type="Material" uid="uid://d4musdhwu8l60" path="res://shaders/materials/metal.tres" id="4_omlwx"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/world_star.tres" id="5_a45b3"]
 [ext_resource type="Material" uid="uid://cevcbst04hogy" path="res://shaders/materials/glass.tres" id="5_uxykk"]
 [ext_resource type="Material" uid="uid://bl2wct7vm2xrm" path="res://shaders/materials/bricks/world_dark_big.tres" id="6_2yhio"]
@@ -163,12 +164,12 @@ _data = {
 }
 point_count = 22
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_thcj7"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhdgl"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_omlwx"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3oav3"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("23_thcj7")
@@ -231,6 +232,9 @@ navigation_mesh = SubResource("NavigationMesh_jc5vn")
 [node name="bridge" parent="NavigationRegion3D/castle" index="0" unique_id=128516138]
 surface_material_override/0 = ExtResource("3_dq2hf")
 surface_material_override/1 = ExtResource("5_a45b3")
+
+[node name="cage_greed" parent="NavigationRegion3D/castle" index="1" unique_id=216101058]
+surface_material_override/0 = ExtResource("4_omlwx")
 
 [node name="castle_base" parent="NavigationRegion3D/castle" index="2" unique_id=449444506]
 surface_material_override/0 = ExtResource("3_dq2hf")
@@ -530,7 +534,7 @@ transform = Transform3D(-0.15708953, 0, -0.98758435, 0, 1, 0, 0.98758435, 0, -0.
 USE_CUSTOM_START_ANIMATION = true
 START_ANIMATION = "LEAN"
 
-[node name="Greed" parent="Sins" unique_id=158936523 instance=ExtResource("17_dq2hf")]
+[node name="Greed" parent="Sins" unique_id=1257399365 instance=ExtResource("17_dq2hf")]
 transform = Transform3D(0.8660254, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660254, 522.0462, 63.04357, -125.0572)
 USE_CUSTOM_START_ANIMATION = true
 START_ANIMATION = "FIGHT"
@@ -546,8 +550,8 @@ transform = Transform3D(0.97340286, 0, -0.2288716, 0, 0.99994403, 0, 0.22887506,
 transform = Transform3D(0.9193156, 0.15269043, 0.3626902, 0.0062030754, 0.9159176, -0.40131867, -0.39347187, 0.37118846, 0.84107006, -0.13388485, 2.4412313, -0.023626858)
 
 [node name="Sphere_001" parent="Sins/Sloth/PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1434777009, 1456814678, 684494173) index="1" unique_id=1805627527]
-surface_material_override/0 = SubResource("StandardMaterial3D_thcj7")
-surface_material_override/1 = SubResource("ShaderMaterial_omlwx")
+surface_material_override/0 = SubResource("StandardMaterial3D_xhdgl")
+surface_material_override/1 = SubResource("ShaderMaterial_3oav3")
 
 [node name="EnvyFly" type="Path3D" parent="Sins" unique_id=2031636455 node_paths=PackedStringArray("node_to_queue_free")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.64444, 29.919395, -21.1921)
