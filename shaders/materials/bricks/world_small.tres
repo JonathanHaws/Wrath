@@ -3,9 +3,8 @@
 [ext_resource type="Texture2D" uid="uid://divcbrhgiq8y" path="res://textures/bricks/small/color.png" id="1_eifie"]
 [ext_resource type="Texture2D" uid="uid://ctmw2gnehmp3i" path="res://textures/bricks/small/normal.png" id="3_3qkbk"]
 
-
 [resource]
-albedo_color = Color(0.0461228, 0.0590478, 0.0979491, 1)
+albedo_color = Color(0.068500996, 0.08784019, 0.101651125, 1)
 albedo_texture = ExtResource("1_eifie")
 metallic_specular = 0.4
 normal_enabled = true

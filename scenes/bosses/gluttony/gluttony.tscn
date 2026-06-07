@@ -279,7 +279,7 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0, 2.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [20.0, 0.0]
+"values": [7.0, 0.0]
 }
 tracks/12/type = "method"
 tracks/12/imported = false
@@ -685,13 +685,13 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Light:light_energy")
-tracks/1/interp = 1
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [20.0]
+"values": [7.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -2556,7 +2556,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/gluttony/Armature/Skeleton3D" index="10" unique_id=665646346]
-transform = Transform3D(1, 9.471535e-12, -2.8705927e-12, -9.30811e-12, 0.8158238, -0.5783002, -3.1832315e-12, 0.5783002, 0.81582385, 1.4038728e-11, 3.0369823, 0.24236691)
+transform = Transform3D(0.6016239, -0.5659424, -0.56369996, 0.16172901, 0.7773894, -0.6078725, 0.7822354, 0.274544, 0.5592253, 1.4038728e-11, 3.0369823, 0.24236691)
 bone_name = "head"
 bone_idx = 4
 
@@ -2618,9 +2618,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07889, 7.1402, 8.51709)
 shape = SubResource("BoxShape3D_r1aqn")
 
 [node name="Light" type="OmniLight3D" parent="." unique_id=2055921908]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 13.6732, -0.361175)
-light_color = Color(0.570221, 0.357229, 0.228058, 1)
-light_energy = 20.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7530686, 7.101659, 3.1549516)
+light_color = Color(0.83027697, 0.57532525, 0.42395595, 1)
+light_energy = 7.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
@@ -2677,7 +2677,7 @@ sounds = Array[AudioStream]([ExtResource("18_n5wbu")])
 
 [node name="Jibberish" type="AudioStreamPlayer" parent="Dialog/PigDialog" unique_id=1804017237]
 process_mode = 3
-volume_db = -7.0
+volume_db = -11.0
 bus = &"SFX"
 
 [connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]

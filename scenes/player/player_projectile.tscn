@@ -3,17 +3,12 @@
 [ext_resource type="Script" uid="uid://b1k7rqqomk7ae" path="res://script/items/projectile.gd" id="1_kpr02"]
 [ext_resource type="PackedScene" uid="uid://bc87fmyhhshyl" path="res://models/items/projectiles/projectile.glb" id="2_ugl6f"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="3_7bp6w"]
+[ext_resource type="Material" uid="uid://c2p7qmqa0ird5" path="res://shaders/materials/projectiles/player_projectile_material.tres" id="3_8by7l"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="3_32n4n"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="4_o35mi"]
 [ext_resource type="AudioStream" uid="uid://bkawmwxh84v2j" path="res://audio/sfx/characters/enemies/Hit_1.ogg" id="20_qiejr"]
 [ext_resource type="AudioStream" uid="uid://bvtlb0oql5hr6" path="res://audio/sfx/characters/enemies/Hit_2.ogg" id="21_j2d75"]
 [ext_resource type="AudioStream" uid="uid://c16kx02f83mop" path="res://audio/sfx/characters/enemies/Hit_3.ogg" id="22_xpmdx"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sb5oc"]
-albedo_color = Color(0.28440002, 0.33354002, 0.36, 1)
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 0.2
-rim_tint = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7pvji"]
 size = Vector3(0.32712737, 0.30148357, 0.3260544)
@@ -253,14 +248,13 @@ hurt_box = NodePath("Attack")
 [node name="projectile" parent="Node3D" unique_id=96990622 instance=ExtResource("2_ugl6f")]
 
 [node name="Cylinder" parent="Node3D/projectile" index="0" unique_id=1428825205]
-surface_material_override/0 = SubResource("StandardMaterial3D_sb5oc")
+surface_material_override/0 = ExtResource("3_8by7l")
 
 [node name="Attack" type="Area3D" parent="." unique_id=1769833961 node_paths=PackedStringArray("animation_player") groups=["player"]]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("3_32n4n")
 groups = Array[String]([])
-disable_collision_shape = false
 animation_player = NodePath("../Hurt")
 save_key = "shoot_damage"
 
