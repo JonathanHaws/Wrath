@@ -8,7 +8,6 @@ extends Node
 var lock_on_activated = false
 var lock_on_target: Area3D
 var lock_on_targets: Array[Area3D] = []
-var was_locked_on = false ## For restoring lock on after it was disabled for a cutscene
 
 func _on_lock_on_area_entered(area: Node) -> void:
 	if area.name == "LockOn":
@@ -35,13 +34,10 @@ func _process(_delta: float) -> void:
 	
 	var CURRENT_CAMERA = get_viewport().get_camera_3d()
 	if CURRENT_CAMERA == null or not CAMERA.current:
-		was_locked_on = true
 		lock_on_activated = false
-	elif was_locked_on:
-		lock_on_activated = true
-		was_locked_on = false
 	
 	if Input.is_action_just_pressed("lock_on"):
+		
 		if not lock_on_activated: # lock on to target closest to center of screen
 			
 			lock_on_targets.sort_custom(func(a, b):
