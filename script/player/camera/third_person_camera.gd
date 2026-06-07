@@ -2,28 +2,27 @@ extends Camera3D
 @export_group("Camera")
 @export_range(-90.0, 90.0, 1.0, "Degrees") var pitch_min_deg: float = -80.0
 @export_range(-90.0, 90.0, 1.0, "Degrees") var pitch_max_deg: float = 80.0
-
 @export var Root: Node3D
 @export var Body: Node3D
 @export var SpringArm: SpringArm3D
-#@export var EXCLUDED_BODY: PhysicsBody3D ## If the camera is between players body and wall. But the player is against the wall. the spring arm has to phase into 1. 
 @export var MOUSE_SENSITIVITY: float = 0.003
 @export var CONTROLLER_SENSITIVITY: float = 0.07
 @export var SENSITIVITY_MULTIPLIER: float = 1.0
-@export var TOP_LEVEL_ROTATION: bool = true ## For ignoring rotation tweens on interactions... Or any external influence to orientation
+@export var REGAIN_CONTROL_SECONDS: float = 0.75 ## When camera becomes current such as after a cutscene. How quickly does the 
+@export var CONTROL_MULTIPLIER: float = 0
+#@export var EXCLUDED_BODY: PhysicsBody3D ## If the camera is between players body and wall. But the player is against the wall. the spring arm has to phase into 1. 
+var mouse_delta = Vector2.ZERO
 
-@export_group("FOV Lerp")
+@export_subgroup("FOV Lerp")
 @export var lerp_fov: float = true
 @export var lerp_speed: float = 0.12
 @export var target_fov: float = 80.0
 @export var default_fov: float = 65.0
 @export var running_fov: float = 74.0
 
-@export_group("Target_Lerp")
+@export_subgroup("Target_Lerp")
 @export var TARGET_NODE: Node3D ## Used for when smooth camera is desired instead of instant snapping to the end of the spring arm. REQUIRED Use top level on this Camera node
 @export var SNAP_SPEED: float = 10.0 ## How quickly the camera moves to the target node
-var initial_snap: bool = false
-var mouse_delta = Vector2.ZERO
 
 func set_camera_transform(new_transform: Transform3D) -> void:
 	Root.transform = Transform3D.IDENTITY
@@ -69,6 +68,11 @@ func _physics_process(_delta: float) -> void:
 	var look_up_down = Input.get_axis("look_down", "look_up")
 	mouse_delta.x += look_left_right * controller_sens
 	mouse_delta.y -= look_up_down * controller_sens
+	
+	if not current: CONTROL_MULTIPLIER = 0
+	else: CONTROL_MULTIPLIER = move_toward(CONTROL_MULTIPLIER, 1.0, _delta / REGAIN_CONTROL_SECONDS)
+	mouse_delta.x *= CONTROL_MULTIPLIER
+	mouse_delta.y *= CONTROL_MULTIPLIER
 	
 	if mouse_delta.length() > 0:
 		var new_x = SpringArm.global_rotation.x - mouse_delta.y 

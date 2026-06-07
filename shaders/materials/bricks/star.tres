@@ -3,7 +3,6 @@
 [ext_resource type="Texture2D" uid="uid://6um8wg00wlq2" path="res://textures/bricks/star/color.png" id="2_r17gu"]
 [ext_resource type="Texture2D" uid="uid://bwj8yk018l62v" path="res://textures/bricks/star/normal.png" id="3_o0kjj"]
 
-
 [resource]
 albedo_color = Color(0.74558, 0.74558, 0.74558, 1)
 albedo_texture = ExtResource("2_r17gu")
@@ -11,6 +10,7 @@ metallic_specular = 0.4
 roughness = 0.6
 roughness_texture_channel = 3
 normal_enabled = true
+normal_scale = -0.75
 normal_texture = ExtResource("3_o0kjj")
 ao_texture = ExtResource("2_r17gu")
 ao_on_uv2 = true

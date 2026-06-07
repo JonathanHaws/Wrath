@@ -164,12 +164,12 @@ _data = {
 }
 point_count = 22
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xhdgl"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_omlwx"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3oav3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xhdgl"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("23_thcj7")
@@ -216,6 +216,54 @@ tracks/0/keys = {
 _data = {
 &"Flying Around": SubResource("Animation_a0oe4")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3oav3"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("23_thcj7")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_frequency = 3.0
+shader_parameter/dissolve_vector = Vector3(0.5, -0.5, 0.25)
+shader_parameter/custom_glow_color_enabled = false
+shader_parameter/custom_glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.0
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/albedo_enabled = false
+shader_parameter/albedo_color = Color(0.09803922, 0.11764706, 0.1764706, 1)
+shader_parameter/enabled_emisson = false
+shader_parameter/emission_texture_intensity = 1.0
+shader_parameter/normal_strength = 1.0
+shader_parameter/enabled_normal = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0xm0m"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.6435713, 0.64357144, 0.64357126, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xylxf"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("23_thcj7")
+shader_parameter/dissolve_amount = 0.0
+shader_parameter/dissolve_frequency = 3.0
+shader_parameter/dissolve_vector = Vector3(0.5, -0.5, 0.25)
+shader_parameter/custom_glow_color_enabled = false
+shader_parameter/custom_glow_color = Color(0.533, 0.533, 0.533, 1)
+shader_parameter/glow_intensitiy = 1.0
+shader_parameter/glow_border_width = 0.018
+shader_parameter/glow_border_smoothness = 0.003
+shader_parameter/albedo_enabled = false
+shader_parameter/albedo_color = Color(0.09803922, 0.11764706, 0.1764706, 1)
+shader_parameter/enabled_emisson = false
+shader_parameter/emission_texture_intensity = 1.0
+shader_parameter/normal_strength = 1.0
+shader_parameter/enabled_normal = false
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_csfd1"]
+resource_local_to_scene = true
+transparency = 1
+albedo_color = Color(0.6435713, 0.64357144, 0.64357126, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7fk2k"]
 resource_local_to_scene = true
@@ -550,8 +598,8 @@ transform = Transform3D(0.97340286, 0, -0.2288716, 0, 0.99994403, 0, 0.22887506,
 transform = Transform3D(0.9193156, 0.15269043, 0.3626902, 0.0062030754, 0.9159176, -0.40131867, -0.39347187, 0.37118846, 0.84107006, -0.13388485, 2.4412313, -0.023626858)
 
 [node name="Sphere_001" parent="Sins/Sloth/PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1434777009, 1456814678, 684494173) index="1" unique_id=1805627527]
-surface_material_override/0 = SubResource("StandardMaterial3D_xhdgl")
-surface_material_override/1 = SubResource("ShaderMaterial_3oav3")
+surface_material_override/0 = SubResource("StandardMaterial3D_omlwx")
+surface_material_override/1 = SubResource("ShaderMaterial_xhdgl")
 
 [node name="EnvyFly" type="Path3D" parent="Sins" unique_id=2031636455 node_paths=PackedStringArray("node_to_queue_free")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 165.64444, 29.919395, -21.1921)
@@ -584,7 +632,33 @@ omni_range = 19.0
 [node name="Envy" parent="Sins" unique_id=2069353459 instance=ExtResource("19_oqilo")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 610.431, 166.6565, -32.69289)
 
-[node name="Piglet" parent="." unique_id=759269460 instance=ExtResource("15_7vt21")]
+[node name="Piglet" parent="Sins" unique_id=759269460 instance=ExtResource("15_7vt21")]
+transform = Transform3D(-0.66791, 0, 0.744242, 0, 1, 0, -0.744242, 0, -0.66791, 528.6393, 62.6828, -3.7114773)
+
+[node name="Plane" parent="Sins/Piglet/piglet/Mesh/Skeleton3D" parent_id_path=PackedInt32Array(759269460, 162201708, 1417879915) index="0" unique_id=1497663779]
+surface_material_override/0 = SubResource("ShaderMaterial_3oav3")
+surface_material_override/1 = SubResource("StandardMaterial3D_0xm0m")
+
+[node name="PickUpInteraction" parent="Sins/Piglet" index="3" unique_id=1269613829]
+disabled = true
+
+[node name="PatInteraction" parent="Sins/Piglet" index="5" unique_id=1822399454]
+disabled = false
+
+[node name="Piglet2" parent="Sins" unique_id=1405665428 instance=ExtResource("15_7vt21")]
+transform = Transform3D(-0.015183882, 0, 0.999885, 0, 1, 0, -0.999885, 0, -0.015183882, 418.66653, 33.773533, -26.508617)
+
+[node name="Plane" parent="Sins/Piglet2/piglet/Mesh/Skeleton3D" parent_id_path=PackedInt32Array(1405665428, 162201708, 1417879915) index="0" unique_id=1497663779]
+surface_material_override/0 = SubResource("ShaderMaterial_xylxf")
+surface_material_override/1 = SubResource("StandardMaterial3D_csfd1")
+
+[node name="PickUpInteraction" parent="Sins/Piglet2" index="3" unique_id=1269613829]
+disabled = true
+
+[node name="HeadPetInteraction" parent="Sins/Piglet2" index="4" unique_id=1044115885]
+disabled = false
+
+[node name="Piglet" parent="." unique_id=57978446 instance=ExtResource("15_7vt21")]
 transform = Transform3D(-0.6026232, 0, 0.7980259, 0, 1, 0, -0.7980259, 0, -0.6026232, -39.15186, 28.49634, -153.7488)
 
 [node name="SkillTreeTutorial" type="Area3D" parent="." unique_id=2027932816 groups=["skill_tree_tutorial"]]
@@ -607,3 +681,7 @@ transform = Transform3D(1, 0, 6.357301e-08, 0, 1, 0, -6.357301e-08, 0, 1, -20.02
 [editable path="Sins/Sloth"]
 [editable path="Sins/Sloth/PathFollow3D/Body/Mesh/sloth"]
 [editable path="Sins/EnvyFly/PathFollow3D/envy"]
+[editable path="Sins/Piglet"]
+[editable path="Sins/Piglet/piglet"]
+[editable path="Sins/Piglet2"]
+[editable path="Sins/Piglet2/piglet"]
