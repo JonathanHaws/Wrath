@@ -18,7 +18,9 @@ var collected
 func give() -> void:
 	if collected: return
 	Save.data[WISP_KEY] = Save.data.get(WISP_KEY, 0) + AMOUNT
-	if SAVE_COLLECTED: Save.data[Save.get_unique_key(self,"_collected")] = true
+	if SAVE_COLLECTED:
+		Save.data[Save.get_unique_key(self,"_collected")] = true
+		collected = true
 	Save.save_game()
 
 func _on_body_entered(body: Node) -> void:

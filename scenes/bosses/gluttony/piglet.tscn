@@ -13,6 +13,7 @@
 [ext_resource type="AudioStream" uid="uid://042olyodr1k" path="res://audio/sfx/characters/gluttony/piget_talk1.ogg" id="11_38cti"]
 [ext_resource type="AudioStream" uid="uid://bq5aa53vc3chn" path="res://audio/sfx/characters/gluttony/piget_talk2.ogg" id="12_10ins"]
 [ext_resource type="Script" uid="uid://4r5yyx6xxofk" path="res://script/items/progress_gate.gd" id="13_mqdry"]
+[ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://script/items/wisp_reward.gd" id="14_76ygf"]
 
 [sub_resource type="Animation" id="Animation_yln8f"]
 resource_name = "GOBBLED"
@@ -152,6 +153,20 @@ tracks/3/keys = {
 "method": &"spawn_branch"
 }]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WispReward")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(6.7083335),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"give"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_bpypl"]
 resource_name = "PIGLET_PET"
@@ -207,6 +222,20 @@ tracks/3/keys = {
 "update": 0,
 "values": [1.0, 0.0, 0.0, 1.0]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WispReward")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(6.9166665),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"give"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_7ogmq"]
 resource_name = "PIGLET_PICKUP"
@@ -261,6 +290,20 @@ tracks/3/keys = {
 "method": &"spawn_branch"
 }]
 }
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("WispReward")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(8.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"give"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_vyj1q"]
 length = 0.001
@@ -308,7 +351,7 @@ _data = {
 &"RESET": SubResource("Animation_vyj1q")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ux71l"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iuu88"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_76ygf")
@@ -327,7 +370,7 @@ shader_parameter/emission_texture_intensity = 1.0
 shader_parameter/normal_strength = 1.0
 shader_parameter/enabled_normal = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_76ygf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0mqt"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.6435713, 0.64357144, 0.64357126, 1)
@@ -431,12 +474,11 @@ bones/27/rotation = Quaternion(-0.67151713, 0.038685363, 0.005759299, 0.73995614
 bones/28/rotation = Quaternion(-0.025570905, 0.0012522442, 0.019346531, 0.999485)
 
 [node name="Plane" parent="piglet/Mesh/Skeleton3D" index="0" unique_id=1497663779]
-surface_material_override/0 = SubResource("ShaderMaterial_ux71l")
-surface_material_override/1 = SubResource("StandardMaterial3D_76ygf")
+surface_material_override/0 = SubResource("ShaderMaterial_iuu88")
+surface_material_override/1 = SubResource("StandardMaterial3D_b0mqt")
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="piglet/Mesh/Skeleton3D" index="1" unique_id=2097558753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8597014, 0, 0)
-influence = 0.5701917
 target_node = NodePath("../../../../target/OffsetForLookAt")
 bone_name = "head"
 bone = 4
@@ -538,7 +580,6 @@ script = ExtResource("4_lk4kr")
 dialog_file = ExtResource("5_mqdry")
 anim = NodePath(".")
 dialog_templates = Array[PackedScene]([ExtResource("6_n7ptf"), ExtResource("7_p2gj2"), ExtResource("8_sqsdj")])
-jibberish = true
 player = NodePath("Jibberish")
 sounds = Array[AudioStream]([ExtResource("11_38cti"), ExtResource("12_10ins")])
 
@@ -551,5 +592,10 @@ bus = &"SFX"
 script = ExtResource("13_mqdry")
 save_key = "gluttony_defeated"
 node_to_queue_free = NodePath("..")
+
+[node name="WispReward" type="Node" parent="." unique_id=1118373316]
+script = ExtResource("14_76ygf")
+AMOUNT = 3
+SAVE_COLLECTED = true
 
 [editable path="piglet"]

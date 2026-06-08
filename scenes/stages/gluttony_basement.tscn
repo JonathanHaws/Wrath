@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cx2ditraoxlvu"]
 
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/world_small.tres" id="2_7wkw3"]
+[ext_resource type="Texture2D" uid="uid://c7abb4v51lhdm" path="res://textures/particles/dirt_02.png" id="3_gke6g"]
 [ext_resource type="PackedScene" uid="uid://cgpke20inq3xd" path="res://scenes/lighting/enviroment.tscn" id="3_w2dfs"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/items/weather.tscn" id="4_s7wev"]
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/world_star.tres" id="5_m2l7k"]
@@ -63,6 +64,16 @@ size = Vector3(2, 3.4845, 8.51123)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 85.9236, 1.67438, -0.0490699)
 flip_faces = true
 size = Vector3(42, 3.4845, 2)
+
+[node name="Decals" type="Node3D" parent="NavigationRegion3D" unique_id=111720106]
+
+[node name="Decal" type="Decal" parent="NavigationRegion3D/Decals" unique_id=284352098]
+transform = Transform3D(25.225, 0, 0, 0, 25.225, 0, 0, 0, 25.225, 39.144703, -3.2786946, -0.85963774)
+size = Vector3(1, 0.271, 1)
+texture_albedo = ExtResource("3_gke6g")
+modulate = Color(0.39742857, 0.46063298, 0.33570436, 1)
+distance_fade_enabled = true
+cull_mask = 1048573
 
 [node name="Enviroment" type="Node3D" parent="." unique_id=682160407]
 
