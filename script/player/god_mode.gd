@@ -22,6 +22,8 @@ func _ready():
 		queue_free()
 
 func _physics_process(_delta):
+	
+	
 	if Input.is_action_just_pressed("god_mode"):
 		mode = !mode
 		#if DAMAGE_SHAPE: DAMAGE_SHAPE.disabled = !DAMAGE_SHAPE.disabled
@@ -31,6 +33,11 @@ func _physics_process(_delta):
 			ANIMATION_PLAYER.play(EXIT_ANIMATION)
 		
 	if mode: 
+		
+		if Input.is_action_just_pressed("hide"): 
+			print('test')
+			PLAYER.visible = !PLAYER.visible
+		
 		if Input.is_action_just_pressed("get_wisp"):
 			Save.data["wisp"] = Save.data.get("wisp", 0) + 50
 		
