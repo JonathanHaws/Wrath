@@ -3,7 +3,6 @@
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/themes/theme.tres" id="1_fophc"]
 [ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://script/ui/menu/pause/toggle.gd" id="2_js3u0"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="2_p4i2r"]
-[ext_resource type="Script" uid="uid://d2hxlmmmtfynf" path="res://script/ui/menu/options/volume_adjustment.gd" id="3_js3u0"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://script/ui/grab_focus.gd" id="3_p4i2r"]
 [ext_resource type="Script" uid="uid://cehsklglvnhkr" path="res://script/ui/menu/options/video/resolution.gd" id="4_5xg6i"]
 [ext_resource type="Script" uid="uid://yd63tscy6h1n" path="res://script/ui/menu/options/video/window_mode_dropdown.gd" id="5_4uyla"]
@@ -30,7 +29,7 @@ metadata/_edit_use_anchors_ = true
 [node name="GrabFocus" type="Control" parent="." unique_id=463581446 node_paths=PackedStringArray("focus_targets")]
 anchors_preset = 0
 script = ExtResource("3_p4i2r")
-focus_targets = [NodePath("../Options/Master/HSlider")]
+focus_targets = [NodePath("")]
 
 [node name="Options" type="VBoxContainer" parent="." unique_id=331924757 groups=["ui_scalable"]]
 layout_mode = 1
@@ -46,72 +45,8 @@ offset_bottom = 182.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(139.5, 182)
+alignment = 1
 script = ExtResource("2_p4i2r")
-
-[node name="Master" type="HBoxContainer" parent="Options" unique_id=2129095031]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("1_fophc")
-alignment = 1
-
-[node name="Label" type="Label" parent="Options/Master" unique_id=1519859037]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("1_fophc")
-text = "MASTER:"
-
-[node name="HSlider" type="HSlider" parent="Options/Master" unique_id=396730028 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-theme = ExtResource("1_fophc")
-step = 10.0
-value = 100.0
-script = ExtResource("3_js3u0")
-bus_name = "Master"
-
-[node name="SFX" type="HBoxContainer" parent="Options" unique_id=856195702]
-layout_mode = 2
-size_flags_horizontal = 4
-theme = ExtResource("1_fophc")
-alignment = 1
-
-[node name="Label" type="Label" parent="Options/SFX" unique_id=1577338629]
-layout_mode = 2
-theme = ExtResource("1_fophc")
-text = "SFX:"
-
-[node name="HSlider" type="HSlider" parent="Options/SFX" unique_id=1453142023 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_horizontal = 8
-size_flags_vertical = 4
-theme = ExtResource("1_fophc")
-step = 10.0
-value = 100.0
-script = ExtResource("3_js3u0")
-bus_name = "SFX"
-
-[node name="Music" type="HBoxContainer" parent="Options" unique_id=574393238]
-layout_mode = 2
-theme = ExtResource("1_fophc")
-alignment = 1
-
-[node name="Label" type="Label" parent="Options/Music" unique_id=1004771511]
-layout_mode = 2
-theme = ExtResource("1_fophc")
-text = "MUSIC:"
-
-[node name="HSlider" type="HSlider" parent="Options/Music" unique_id=945468493 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
-custom_minimum_size = Vector2(150, 0)
-layout_mode = 2
-size_flags_vertical = 4
-theme = ExtResource("1_fophc")
-step = 10.0
-value = 100.0
-script = ExtResource("3_js3u0")
-bus_name = "Music"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Options" unique_id=920369633 node_paths=PackedStringArray("increase_button", "decrease_button", "resolution_label")]
 layout_mode = 2

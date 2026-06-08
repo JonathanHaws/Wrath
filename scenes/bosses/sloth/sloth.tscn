@@ -1045,7 +1045,7 @@ sounds = Array[AudioStream]([ExtResource("36_p7qim"), ExtResource("37_cu7wn")])
 [node name="Jibberish" type="AudioStreamPlayer" parent="PathFollow3D/Body/Dialog" unique_id=1415043008]
 process_mode = 3
 volume_db = 2.0
-bus = &"SFX"
+bus = &"Dialog"
 
 [connection signal="body_entered" from="TriggerArea" to="PathFollow3D/Body" method="_on_trigger_area_body_entered"]
 

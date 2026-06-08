@@ -149,6 +149,7 @@ script = ExtResource("1_s6lm2")
 
 [node name="Decal" type="Decal" parent="." unique_id=1549779203]
 transform = Transform3D(25.225, 0, 0, 0, 25.225, 0, 0, 0, 25.225, 0, 0, 0)
+visible = false
 size = Vector3(0.25, 0.271, 0.25)
 texture_albedo = ExtResource("2_tpwq8")
 modulate = Color(0.577715, 0.6511032, 0.5102317, 0.2784314)

@@ -772,7 +772,7 @@ sounds = Array[AudioStream]([ExtResource("35_3oycc")])
 
 [node name="Jibberish" type="AudioStreamPlayer" parent="Dialog" unique_id=1401897110]
 process_mode = 3
-bus = &"SFX"
+bus = &"Dialog"
 
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
 

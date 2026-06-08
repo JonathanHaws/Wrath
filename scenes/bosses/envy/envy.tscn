@@ -1669,7 +1669,7 @@ sounds = Array[AudioStream]([ExtResource("45_hc8br"), ExtResource("46_7awae"), E
 process_mode = 3
 volume_db = 2.0
 pitch_scale = 0.9
-bus = &"SFX"
+bus = &"Dialog"
 
 [connection signal="body_entered" from="Mesh/envy/Jump" to="Mesh/envy/Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]

@@ -2679,7 +2679,7 @@ sounds = Array[AudioStream]([ExtResource("18_n5wbu")])
 [node name="Jibberish" type="AudioStreamPlayer" parent="Dialog/PigDialog" unique_id=1804017237]
 process_mode = 3
 volume_db = -11.0
-bus = &"SFX"
+bus = &"Dialog"
 
 [connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea" to="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea" method="_on_body_entered"]

@@ -136,12 +136,23 @@ icon_alignment = 1
 script = ExtResource("5_e7s18")
 pause_toggler = NodePath("../..")
 
-[node name="Options" type="Button" parent="Main" unique_id=1344369830 node_paths=PackedStringArray("node_to_replace") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+[node name="Audio" type="Button" parent="Main" unique_id=1200623930 node_paths=PackedStringArray("node_to_replace") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("3_7gaeb")
-text = "OPTIONS"
+text = "AUDIO"
+icon_alignment = 1
+script = ExtResource("6_kiq5e")
+scene_file = "uid://cjx2wcq5s1eci"
+node_to_replace = NodePath("../..")
+
+[node name="Video" type="Button" parent="Main" unique_id=1344369830 node_paths=PackedStringArray("node_to_replace") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_7gaeb")
+text = "VIDEO"
 icon_alignment = 1
 script = ExtResource("6_kiq5e")
 scene_file = "uid://cxja4xs36njyv"

@@ -1,0 +1,155 @@
+[gd_scene format=3 uid="uid://cjx2wcq5s1eci"]
+
+[ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/themes/theme.tres" id="1_bqttb"]
+[ext_resource type="Script" uid="uid://dh057ifnoswvq" path="res://script/ui/menu/pause/toggle.gd" id="2_66xr1"]
+[ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://script/ui/grab_focus.gd" id="3_emdi5"]
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="4_bpgbv"]
+[ext_resource type="Script" uid="uid://d2hxlmmmtfynf" path="res://script/ui/menu/options/volume_adjustment.gd" id="5_uswbj"]
+[ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="8_4o6nl"]
+[ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="9_t3qhu"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="10_py61l"]
+
+[node name="ColorRect" type="ColorRect" unique_id=626060116]
+process_mode = 3
+z_index = 3000
+z_as_relative = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_bqttb")
+color = Color(0.0509804, 0.0509804, 0.0509804, 0.913725)
+script = ExtResource("2_66xr1")
+metadata/_edit_use_anchors_ = true
+
+[node name="GrabFocus" type="Control" parent="." unique_id=463581446 node_paths=PackedStringArray("focus_targets")]
+anchors_preset = 0
+script = ExtResource("3_emdi5")
+focus_targets = [NodePath("../Options/Master/HSlider")]
+
+[node name="Options" type="VBoxContainer" parent="." unique_id=331924757 groups=["ui_scalable"]]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -139.5
+offset_top = -182.0
+offset_right = 139.5
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(139.5, 182)
+alignment = 1
+script = ExtResource("4_bpgbv")
+
+[node name="Master" type="HBoxContainer" parent="Options" unique_id=2129095031]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_bqttb")
+alignment = 1
+
+[node name="Label" type="Label" parent="Options/Master" unique_id=1519859037]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_bqttb")
+text = "MASTER:"
+
+[node name="HSlider" type="HSlider" parent="Options/Master" unique_id=396730028 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("1_bqttb")
+step = 10.0
+value = 100.0
+script = ExtResource("5_uswbj")
+bus_name = "Master"
+
+[node name="Music" type="HBoxContainer" parent="Options" unique_id=574393238]
+layout_mode = 2
+theme = ExtResource("1_bqttb")
+alignment = 1
+
+[node name="Label" type="Label" parent="Options/Music" unique_id=1004771511]
+layout_mode = 2
+theme = ExtResource("1_bqttb")
+text = "MUSIC:"
+
+[node name="HSlider" type="HSlider" parent="Options/Music" unique_id=945468493 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_vertical = 4
+theme = ExtResource("1_bqttb")
+step = 10.0
+value = 100.0
+script = ExtResource("5_uswbj")
+bus_name = "Music"
+
+[node name="SFX" type="HBoxContainer" parent="Options" unique_id=856195702]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_bqttb")
+alignment = 1
+
+[node name="Label" type="Label" parent="Options/SFX" unique_id=1577338629]
+layout_mode = 2
+theme = ExtResource("1_bqttb")
+text = "SFX:"
+
+[node name="HSlider" type="HSlider" parent="Options/SFX" unique_id=1453142023 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("1_bqttb")
+step = 10.0
+value = 100.0
+script = ExtResource("5_uswbj")
+bus_name = "SFX"
+
+[node name="Dialog" type="HBoxContainer" parent="Options" unique_id=713831033]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_bqttb")
+alignment = 1
+
+[node name="Label" type="Label" parent="Options/Dialog" unique_id=1151581099]
+layout_mode = 2
+theme = ExtResource("1_bqttb")
+text = "DIALOG:"
+
+[node name="HSlider" type="HSlider" parent="Options/Dialog" unique_id=206874507 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme = ExtResource("1_bqttb")
+step = 10.0
+value = 100.0
+script = ExtResource("5_uswbj")
+bus_name = "Dialog"
+
+[node name="Back" type="Button" parent="Options" unique_id=1403928192 node_paths=PackedStringArray("node_to_replace") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme = ExtResource("1_bqttb")
+text = "BACK
+"
+icon_alignment = 1
+script = ExtResource("8_4o6nl")
+scene_file = "uid://duevw8ikxn5kj"
+node_to_replace = NodePath("../..")
+is_back_button = true
+
+[node name="MenuAudio" type="Node" parent="." unique_id=845164135 node_paths=PackedStringArray("ONLY_SPAWN_IF_VISIBLE")]
+process_mode = 3
+script = ExtResource("9_t3qhu")
+SOUNDS = Array[AudioStream]([ExtResource("10_py61l")])
+ADD_TO_ROOT = true
+ONLY_SPAWN_IF_VISIBLE = NodePath("..")

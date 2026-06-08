@@ -1885,7 +1885,7 @@ sounds = Array[AudioStream]([ExtResource("41_qg53i")])
 stream = ExtResource("39_6ecgv")
 
 [node name="Jibberish" type="AudioStreamPlayer" parent="Dialog/AnimationPlayer" unique_id=947420053]
-bus = &"SFX"
+bus = &"Dialog"
 
 [node name="Lut" type="Area3D" parent="." unique_id=1971573681 groups=["lut_lust"]]
 collision_layer = 3

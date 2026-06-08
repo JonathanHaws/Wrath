@@ -1766,7 +1766,7 @@ sounds = Array[AudioStream]([ExtResource("37_pscvx")])
 [node name="Jibberish" type="AudioStreamPlayer" parent="Dialog/GreedDialog" unique_id=1816978811]
 process_mode = 3
 volume_db = -7.0
-bus = &"SFX"
+bus = &"Dialog"
 
 [node name="Background" parent="Dialog/GreedDialog" unique_id=193652404 instance=ExtResource("35_ggcq0")]
 

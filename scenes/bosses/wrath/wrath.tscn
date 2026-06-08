@@ -1584,7 +1584,7 @@ sounds = Array[AudioStream]([ExtResource("40_owmeo"), ExtResource("41_owmeo")])
 
 [node name="Jibberish" type="AudioStreamPlayer" parent="Dialog" unique_id=206644804]
 process_mode = 3
-bus = &"SFX"
+bus = &"Dialog"
 
 [connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" to="Mesh/wrath/Armature/Skeleton3D/LeftHand/Area3D" method="_on_body_entered"]

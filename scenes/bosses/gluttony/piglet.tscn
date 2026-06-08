@@ -351,7 +351,7 @@ _data = {
 &"RESET": SubResource("Animation_vyj1q")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iuu88"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_76ygf"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("2_76ygf")
@@ -370,7 +370,7 @@ shader_parameter/emission_texture_intensity = 1.0
 shader_parameter/normal_strength = 1.0
 shader_parameter/enabled_normal = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0mqt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iuu88"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.6435713, 0.64357144, 0.64357126, 1)
@@ -474,8 +474,8 @@ bones/27/rotation = Quaternion(-0.67151713, 0.038685363, 0.005759299, 0.73995614
 bones/28/rotation = Quaternion(-0.025570905, 0.0012522442, 0.019346531, 0.999485)
 
 [node name="Plane" parent="piglet/Mesh/Skeleton3D" index="0" unique_id=1497663779]
-surface_material_override/0 = SubResource("ShaderMaterial_iuu88")
-surface_material_override/1 = SubResource("StandardMaterial3D_b0mqt")
+surface_material_override/0 = SubResource("ShaderMaterial_76ygf")
+surface_material_override/1 = SubResource("StandardMaterial3D_iuu88")
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="piglet/Mesh/Skeleton3D" index="1" unique_id=2097558753]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8597014, 0, 0)
@@ -586,7 +586,7 @@ sounds = Array[AudioStream]([ExtResource("11_38cti"), ExtResource("12_10ins")])
 [node name="Background" parent="PigletDialog" unique_id=509965786 instance=ExtResource("9_jcpxj")]
 
 [node name="Jibberish" type="AudioStreamPlayer" parent="PigletDialog" unique_id=1102842512]
-bus = &"SFX"
+bus = &"Dialog"
 
 [node name="Node" type="Node" parent="." unique_id=1385845519 node_paths=PackedStringArray("node_to_queue_free")]
 script = ExtResource("13_mqdry")

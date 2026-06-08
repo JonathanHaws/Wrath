@@ -69,6 +69,7 @@ size = Vector3(42, 3.4845, 2)
 
 [node name="Decal" type="Decal" parent="NavigationRegion3D/Decals" unique_id=284352098]
 transform = Transform3D(25.225, 0, 0, 0, 25.225, 0, 0, 0, 25.225, 39.144703, -3.2786946, -0.85963774)
+visible = false
 size = Vector3(1, 0.271, 1)
 texture_albedo = ExtResource("3_gke6g")
 modulate = Color(0.39742857, 0.46063298, 0.33570436, 1)
