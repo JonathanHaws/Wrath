@@ -76,7 +76,7 @@ layout_mode = 2
 script = ExtResource("1_hyvu0")
 focus_targets = [NodePath("../Back")]
 
-[node name="MenuAudio" type="Node" parent="." unique_id=1655364472]
+[node name="MenuAudio" type="Node" parent="." unique_id=1655364472 groups=["menu_hovered_sound", "menu_pressed_sound"]]
 script = ExtResource("8_003hq")
 SOUNDS = Array[AudioStream]([ExtResource("3_hyvu0")])
 ADD_TO_ROOT = true

@@ -36,6 +36,7 @@ func _check_max_health() -> void:
 	#if difference <= 0: return
 	#if ANIMATION_PLAYER and UPGRADE_ANIMATION != "":
 		#ANIMATION_PLAYER.play(UPGRADE_ANIMATION)
+	if not Save.data.has(get_max_health_key()): return
 	MAX_HEALTH = Save.data[get_max_health_key()]
 func _load_max_health() -> void:
 	if not SAVE_MAX_HEALTH: return 
