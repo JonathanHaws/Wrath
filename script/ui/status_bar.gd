@@ -21,7 +21,7 @@ func update_bar(delta := 0.0) -> void:
 	if pixel_expansion_rate > 0:
 		size.x = default_width + max(0, (max_value - default_max_value) * pixel_expansion_rate)
 
-	value = tracked_node.get(tracked_property)
+	value = float(tracked_node.get(tracked_property))
 
 	if value > difference_bar.value: # Increasing first to work in ready
 		difference_bar.value = value

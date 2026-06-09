@@ -448,7 +448,7 @@ _data = {
 }
 
 [sub_resource type="Curve" id="Curve_mvqiw"]
-_data = [Vector2(0.15246816, 1), 0.0, 0.0, 0, 0, Vector2(0.27348727, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0.13535911, 1), 0.0, 0.0, 0, 0, Vector2(0.18784532, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p16ut"]
@@ -781,7 +781,7 @@ next/STUNNED = &"CHASE"
 script = ExtResource("20_mvqiw")
 ATTACK_LIKELEHOOD_PER_SECOND = SubResource("Curve_mvqiw")
 ATTACK_ANIMATION = "ATTACK"
-LIKELIHOOD_MULTIPLIER = 300.0
+LIKELIHOOD_MULTIPLIER = 500000.0
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 

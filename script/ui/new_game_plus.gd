@@ -45,5 +45,5 @@ func _on_pressed() -> void:
 
 	Save.data = data
 	Save.save_game()
-	print(Save.game_file_name)
+	#print(Save.game_file_name)
 	Save.load_game(Save.game_file_name)
