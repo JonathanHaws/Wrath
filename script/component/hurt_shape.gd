@@ -103,6 +103,7 @@ func _physics_process(_delta: float) -> void:
 	for area in overlapping_hit_areas.keys():
 		if not is_instance_valid(area): continue
 		if overlapping_hit_areas[area]: continue # Already attacked with this area
+		overlapping_hit_areas[area] = true
 	
 		#overlapping_hit_areas[area] = true
 		#var best_block = get_best_block()
@@ -111,4 +112,3 @@ func _physics_process(_delta: float) -> void:
 		if area.has_method("hit"): emit_signal("collided_with_hitshape")
 		if area.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * (damage_multiplier * get_damage_scale_multiplier())):
 			play_animation(area)
-			overlapping_hit_areas[area] = true

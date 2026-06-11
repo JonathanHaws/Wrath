@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="16_wbsgp"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/characters/enemies/Cry_2.wav" id="17_7c1mb"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="17_fgjfs"]
-[ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/ghosts/ghost_hurt_particles.tscn" id="18_mgx37"]
+[ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/particles/hurt/ghost_hurt_particles.tscn" id="18_mgx37"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://script/component/random_attack.gd" id="20_mvqiw"]
 [ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://scenes/ghosts/ghost_projectile.tscn" id="20_x07w4"]
 [ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="20_ymlvl"]
@@ -452,7 +452,7 @@ _data = [Vector2(0.18232045, 1), 0.0, 0.0, 0, 0, Vector2(0.22375691, 0), 0.0, 0.
 point_count = 2
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_p16ut"]
-radius = 1.1132813
+radius = 0.7504883
 height = 3.3635635
 
 [sub_resource type="Animation" id="Animation_rkfee"]

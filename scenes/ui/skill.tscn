@@ -349,7 +349,6 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="Line2D" type="Line2D" parent="OpenControlLine" unique_id=1529396372]
-modulate = Color(0.42, 0.42, 0.42, 0.07843137)
 points = PackedVector2Array(80, 80, 48, 115)
 width = 4.0
 default_color = Color(0.8, 0.8, 0.8, 1)
@@ -370,7 +369,6 @@ offset_bottom = 40.0
 pivot_offset = Vector2(80, 80)
 
 [node name="StateControl" type="Control" parent="OpenControl/HoverControl" unique_id=925637607]
-modulate = Color(0.42, 0.42, 0.42, 0.07843137)
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0

@@ -21,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://c010fjcr6uuy7" path="res://audio/sfx/characters/slime/slime_2.ogg" id="17_poail"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="18_phu2q"]
 [ext_resource type="AudioStream" uid="uid://doqklsqjpdvq3" path="res://audio/sfx/characters/slime/slime_death_1.ogg" id="18_poail"]
-[ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/ghosts/ghost_hurt_particles.tscn" id="19_uiavb"]
+[ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/particles/hurt/ghost_hurt_particles.tscn" id="19_uiavb"]
 [ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="20_3scn4"]
 [ext_resource type="PackedScene" uid="uid://dyk5tfpn3c33w" path="res://scenes/ghosts/ghost_projectile.tscn" id="21_naasc"]
 [ext_resource type="PackedScene" uid="uid://dam1avbakfiuk" path="res://models/characters/slimes/Slimes.glb" id="22_0ee81"]
@@ -756,7 +756,6 @@ debug_color = Color(0.658, 0.6937, 0.7, 0.023529412)
 
 [node name="StepClimber" type="Node3D" parent="." unique_id=1492857407 node_paths=PackedStringArray("BODY")]
 script = ExtResource("25_k3k00")
-STEP_DISTANCE = 1.115
 BODY = NodePath("..")
 
 [editable path="Mesh/Slimes"]

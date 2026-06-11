@@ -20,9 +20,9 @@
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://audio/sfx/characters/enemies/Spin.wav" id="18_xrvkg"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://script/component/hit_shape.gd" id="20_6h4tx"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="21_u53v8"]
-[ext_resource type="PackedScene" uid="uid://cagou2r2gnqty" path="res://scenes/ghosts/ghost_hurt_particles.tscn" id="21_xr0xi"]
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://script/items/wisp_reward.gd" id="23_2wp77"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="23_8fqfx"]
+[ext_resource type="PackedScene" uid="uid://0o880t36r221" path="res://scenes/particles/hurt/sloth_hurt_particles.tscn" id="23_ui8gw"]
 [ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="24_uahh5"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="25_gwq6n"]
 [ext_resource type="PackedScene" uid="uid://yjgk2vfs7584" path="res://models/characters/sloth/sloth.glb" id="25_ic1i5"]
@@ -51,8 +51,8 @@ size = Vector3(23.4119, 20.729555, 25.330528)
 [sub_resource type="PrismMesh" id="PrismMesh_ic1i5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d0au0"]
-radius = 1.1723633
-height = 3.6183887
+radius = 1.7177734
+height = 5.289363
 
 [sub_resource type="Animation" id="Animation_edx7f"]
 resource_name = "CHASE"
@@ -581,7 +581,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_5k6cf"]
 resource_name = "HURT"
-length = 0.001
+length = 0.156
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -838,7 +838,6 @@ visible = false
 mesh = SubResource("PrismMesh_ic1i5")
 
 [node name="Body" type="CharacterBody3D" parent="PathFollow3D" unique_id=1434777009 node_paths=PackedStringArray("TARGET", "ANIM")]
-transform = Transform3D(1.0000173, 0, 0, 0, 1.00005, 0, 0, 0, 1.0000285, 0, 0, 0)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_5ay62")
@@ -849,7 +848,7 @@ DOOR_TO_UNLOCK_GROUP = "sloth_door"
 DEFEATED_KEY = "sloth_defeated"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/Body" unique_id=1199761927]
-transform = Transform3D(1, 0, 0, 0, 0.99998116, 0, 0, 0, 1, 0, 3.091133, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2556727, 0)
 shape = SubResource("CapsuleShape3D_d0au0")
 
 [node name="Attacks" type="AnimationPlayer" parent="PathFollow3D/Body" unique_id=806234673]
@@ -866,11 +865,11 @@ HEALTH = 6000.0
 MAX_HEALTH = 6000.0
 FREE_ON_DEATH = [NodePath("../Mesh/LockOn"), NodePath("../CollisionShape3D")]
 DAMAGE_NUMBERS = ExtResource("7_dbtmo")
-TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
-ANIM_PLAYER = NodePath("../Attacks")
+TELEPORT_NODES_TO_HIT = [NodePath("")]
+ANIM_PLAYER = NodePath("AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/Body/HitShape" unique_id=324219729]
-transform = Transform3D(1, 0, 0, 0, 0.99998844, 0, 0, 0, 1, -0.12337446, 1.7137682, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.12337446, 1.7137682, 0)
 shape = SubResource("CapsuleShape3D_dbtmo")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PathFollow3D/Body/HitShape" unique_id=1742099839]
@@ -943,11 +942,6 @@ script = ExtResource("21_u53v8")
 script = ExtResource("23_2wp77")
 AMOUNT = 10
 
-[node name="HurtParticles" type="Node3D" parent="PathFollow3D/Body" unique_id=959209520 groups=["teleport_to_attacking_area"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.2908)
-script = ExtResource("23_8fqfx")
-scenes = Array[PackedScene]([ExtResource("21_xr0xi")])
-
 [node name="Target" type="Node3D" parent="PathFollow3D/Body" unique_id=1930926419 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH", "STOP_CHASE_AREA")]
 transform = Transform3D(1.0000001, 0, 0, 0, 0.99999994, 0, 0, 0, 1.0000001, 2.0723546, 0, 5.092649)
 script = ExtResource("25_gwq6n")
@@ -961,6 +955,11 @@ MESH = NodePath("../Mesh")
 TRACKING_SPEED = 0.0
 FLIPPED_TRACKING = true
 STOP_CHASE_AREA = NodePath("../HitShape")
+
+[node name="HurtParticles" type="Node3D" parent="PathFollow3D/Body" unique_id=590469927 groups=["teleport_to_attacking_area"]]
+transform = Transform3D(0.9734866, 0, 0.22889476, 0, 1.000006, 0, -0.228895, 0, 0.9734877, 0.13273633, 1.4315639, 1.280403)
+script = ExtResource("23_8fqfx")
+scenes = Array[PackedScene]([ExtResource("23_ui8gw")])
 
 [node name="Mesh" type="Node3D" parent="PathFollow3D/Body" unique_id=1415185518]
 
@@ -981,7 +980,7 @@ debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
 [node name="sloth" parent="PathFollow3D/Body/Mesh" unique_id=1456814678 instance=ExtResource("25_ic1i5")]
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="0" unique_id=2032396092]
-transform = Transform3D(0.9193173, 0.15269224, 0.36268505, 0.0062030973, 0.91591364, -0.4013275, -0.3934678, 0.37119722, 0.8410681, -0.13388485, 2.4412313, -0.023626858)
+transform = Transform3D(0.91931546, 0.15269087, 0.3626904, 0.006203104, 0.91591716, -0.4013195, -0.3934722, 0.3711892, 0.8410696, -0.13388485, 2.4412313, -0.023626858)
 bone_name = "Bone.002"
 bone_idx = 2
 

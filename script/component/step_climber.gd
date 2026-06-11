@@ -1,7 +1,10 @@
 extends Node3D ## Script enabling 3D Bodies to not get stuck on small ledges or bumpy terrain
+
 ## Avoids stepping up just to instantly fall back down because of walking too parallel to the step, instead of right into it. 
 ## BODY is required to have a [member raw_velocity] property set before calling [method move_and_slide]. So it can calculate the alignment
-@export_range(0.0, 1.0, 0.01) var MIN_STEP_ALIGNMENT: float = 0.25 
+@export_range(0.0, 1.0, 0.01) var MIN_STEP_ALIGNMENT: float = 0.5
+@export var MIN_SPEED: float = 1.5 ## Used to make sure body is accelerating sufficently to not just fall bak down step. BODY is required to have a [member raw_velocity] property set before calling [method move_and_slide] for this to work
+
 @export var MAX_STEP_HEIGHT: float = 1.3 ## How much the player can step up
 @export var MIN_STEP_HEIGHT: float = 0.05 ## Mimium step height. Steps smaller then this should be sufficently handled by bottom roundness of capsule collider
 @export var BODY: CharacterBody3D ## The body that is moved up and retains velocity
@@ -24,8 +27,9 @@ func raycast(from: Vector3, to: Vector3) -> Dictionary:
 	query.exclude = [BODY.get_rid()]
 	return get_world_3d().direct_space_state.intersect_ray(query)
 
-func try_step_up() -> void:		
+func try_step_up(delta: float) -> void:
 	
+	#if "raw_velocity" in BODY: print(BODY.raw_velocity)
 	#print(BODY.get_slide_collision_count())
 	#if not BODY.is_on_floor(): return 
 	if BODY.velocity.y < 0: return
@@ -55,17 +59,22 @@ func try_step_up() -> void:
 		if body_would_clip(BODY, new_pos): return # New position would be inside wall	
 		
 		if "raw_velocity" in BODY:
-			var real_velocity = BODY.raw_velocity
-			var velocity_flat = Vector3(real_velocity.x, 0, real_velocity.z).normalized()
-			var normal_flat = Vector3(collision_normal.x, 0, collision_normal.z).normalized()
-			var alignment = velocity_flat.dot(-normal_flat)	
-			if alignment < 0.2: return # Walking to parallel to a step
-		
+			var raw_velocity = BODY.raw_velocity
+			var raw_velocity_flat: Vector3 = Vector3(raw_velocity.x, 0.0, raw_velocity.z)
+
+			var normal_flat = Vector3(collision_normal.x, 0, collision_normal.z)
+			var alignment = (raw_velocity_flat.normalized()).dot(-(normal_flat.normalized()))
+			#print(alignment)	
+			if alignment < MIN_STEP_ALIGNMENT: return # Walking to parallel to a step
+			
+			#print(raw_velocity_flat.length())
+			if raw_velocity_flat.length() < MIN_SPEED: return 
+
 		BODY.global_position.y += step
 		BODY.velocity = last_velocity
 		#print("Stepping up! " + str(step))	
 	
 func _physics_process(_delta: float) -> void:
 	
-	try_step_up()
+	try_step_up(_delta)
 	last_velocity = BODY.velocity
