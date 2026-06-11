@@ -59,6 +59,14 @@ func _on_save_data_updated() -> void:
 	damage = Save.data[save_key]
 	damage_multiplier = 1.0
 	#print(damage)
+	
+@export_group("New Game Modifier")
+@export var SCALE_DAMAGE: bool = true
+@export var DAMAGE_SCALE_KEY: String = "enemy_damage_multiplier"	
+func get_damage_scale_multiplier() -> float:
+	if not SCALE_DAMAGE: return 1.0
+	return float(Save.data.get(DAMAGE_SCALE_KEY, 1.0))
+	
 func save_ready() -> void:
 	if not enable_save: return
 	if save_key == "": save_key = Save.get_unique_key(self, "damage")
@@ -101,6 +109,6 @@ func _physics_process(_delta: float) -> void:
 		#play_blocked_animation(best_block.area, best_block.multiplier)
 		
 		if area.has_method("hit"): emit_signal("collided_with_hitshape")
-		if area.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * (damage_multiplier)):
+		if area.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * (damage_multiplier * get_damage_scale_multiplier())):
 			play_animation(area)
 			overlapping_hit_areas[area] = true

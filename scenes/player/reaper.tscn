@@ -3671,6 +3671,7 @@ RESPAWN_ON_REST = true
 DEATH_COUNT_KEY = "death_count_to_respawn_player"
 REST_COUNT_KEY = "rest_count_to_respawn_player"
 ANIM_PLAYER = NodePath("AlwaysProcessDeath")
+SCALE_HEALTH = false
 
 [node name="DeathCountTracker" type="Node" parent="Reaper/Hitshape" unique_id=1635187 node_paths=PackedStringArray("HITSHAPE")]
 script = ExtResource("20_m1s71")
@@ -3838,6 +3839,7 @@ damage = 50.0
 animation_player = NodePath("../reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape/AnimationPlayer")
 enable_save = true
 save_key = "damage"
+SCALE_DAMAGE = false
 
 [node name="PlungeMultiplier" type="Node" parent="Reaper/Mesh/PlungeHurt" unique_id=259433183 node_paths=PackedStringArray("STATE_ANIMATION_PLAYER", "ATTACK_AREA")]
 script = ExtResource("38_5ijfa")
@@ -3945,6 +3947,7 @@ damage = 50.0
 animation_player = NodePath("AnimationPlayer")
 enable_save = true
 save_key = "damage"
+SCALE_DAMAGE = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D/BoneAttachment3D/SytheHurtShape" unique_id=2036506350]
 transform = Transform3D(1.0000026, -4.4703484e-07, -4.3213367e-07, -1.3262033e-06, 1.0000007, -3.8649887e-06, -2.8312206e-07, -5.9977174e-07, 0.99999964, -0.04337898, 0.43725693, -0.013707459)

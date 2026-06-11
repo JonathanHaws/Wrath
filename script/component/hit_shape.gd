@@ -109,6 +109,10 @@ func _play_anim(anim: String, signal_to_emit: Signal) -> void:
 	ANIM_PLAYER.play(anim)
 	signal_to_emit.emit()
 
+@export_group("New Game Modifier")
+@export var SCALE_HEALTH: bool = true
+@export var HEALTH_SCALE_KEY: String = "enemy_health_multiplier"
+
 func hit(area: Area3D = null, damage: int = 0, play_animation: bool = true) -> bool:
 	#print(get_parent().name + " hit")
 	if INVINCIBLE: 
@@ -140,6 +144,12 @@ func hit(area: Area3D = null, damage: int = 0, play_animation: bool = true) -> b
 	return true
 		
 func _ready():
+	
+	if SCALE_HEALTH: # For new game + scaling
+		var multiplier: float = float(Save.data.get(HEALTH_SCALE_KEY, 1.0))
+		MAX_HEALTH *= multiplier
+		HEALTH *= multiplier
+	
 	for group in IMMUNE_GROUPS : add_to_group(group)
 	
 	if INVINCIBILITY_COOLDOWN > 0:
