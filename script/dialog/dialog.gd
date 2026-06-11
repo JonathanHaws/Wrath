@@ -109,6 +109,7 @@ func _play_jibberish():
 func _on_body_entered(body) -> void:
 	if not body.is_in_group(player_group): return
 	if area_anim: area_anim.queue("entered")
+	#print('playing enteredd')
 	if Config: Config.play_animation_by_group("dialog_enable")
 	in_range = true
 	spawn()	

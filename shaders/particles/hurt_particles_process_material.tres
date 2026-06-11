@@ -1,24 +1,25 @@
 [gd_resource type="ParticleProcessMaterial" format=3 uid="uid://prfysqn2atre"]
 
 [sub_resource type="Curve" id="Curve_olvgd"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0]
-point_count = 1
+_data = [Vector2(0, 1), 0.0, -6.238776, 0, 0, Vector2(0.18387097, 0.5942783), -0.7096607, -0.7096607, 0, 0, Vector2(0.6870968, 0.30689204), -0.5558181, -0.5558181, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_wtfvh"]
 curve = SubResource("Curve_olvgd")
 
 [sub_resource type="Curve" id="Curve_kc6k6"]
-_data = [Vector2(0, 0), 0.0, 36.65, 0, 0, Vector2(0.024096383, 0.12509704), -0.47220102, -0.47220102, 0, 0, Vector2(0.119386636, 0.07971299), -0.14718297, -0.14718297, 0, 0, Vector2(0.8858219, 0.023542643), -0.13358487, -0.13358487, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 5
+_limits = [0.0, 0.2, 0.0, 1.0]
+_data = [Vector2(0, 0), 0.0, 36.65, 0, 0, Vector2(1e-05, 0.10863133), -0.91117233, -0.91117233, 0, 0, Vector2(0.12903225, 0.05252774), -0.16076745, -0.16076745, 0, 0, Vector2(1, 0.023674473), -0.010802576, -0.027581954, 0, 0]
+point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_x7qws"]
 curve = SubResource("Curve_kc6k6")
 
 [resource]
-direction = Vector3(1, 1, 1)
-spread = 126.925
-initial_velocity_max = 5.0
-gravity = Vector3(0, -5, 0)
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 6.0
+gravity = Vector3(0, -1, 0)
 scale_min = 0.0
 scale_max = 5.0
 scale_curve = SubResource("CurveTexture_x7qws")

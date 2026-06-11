@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="26_owmeo"]
 [ext_resource type="Material" uid="uid://biupco8dcn4xr" path="res://shaders/materials/characters/wrath_material.tres" id="27_a67hc"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="28_x676q"]
+[ext_resource type="Script" uid="uid://dpgehwrod878r" path="res://script/component/look_at_influence_lerp.gd" id="30_84vix"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="30_r1aqn"]
 [ext_resource type="PackedScene" uid="uid://dbhx6r10lr31h" path="res://models/characters/wrath/wrath.glb" id="30_rmp6a"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="31_4oeto"]
@@ -86,6 +87,18 @@ tracks/2/keys = {
 "args": [&"Chase", 0.5],
 "method": &"play"
 }]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_x1kl7"]
@@ -406,6 +419,18 @@ tracks/8/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_nx0fp"]
 resource_name = "JUMP_ATTACK"
@@ -544,6 +569,18 @@ tracks/9/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/9/use_blend = true
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_jojdm"]
 length = 0.001
@@ -680,6 +717,18 @@ tracks/10/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_h5485"]
@@ -887,6 +936,18 @@ tracks/9/keys = {
 "method": &"impact"
 }]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/10/interp = 0
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
+}
 
 [sub_resource type="Animation" id="Animation_jiut6"]
 resource_name = "SPIN_ATTACK"
@@ -961,6 +1022,18 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0, 0.5)
 }
 tracks/4/use_blend = true
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/5/interp = 0
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
 _data = {
@@ -993,7 +1066,7 @@ _data = [Vector2(0, 2.58427), 0.0, 0.0, 0, 0, Vector2(0.155172, 3.59551), 0.0, 0
 point_count = 3
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oijfr"]
-radius = 1.4908
+radius = 1.1459961
 height = 5.82094
 
 [sub_resource type="Animation" id="Animation_84vix"]
@@ -1072,7 +1145,7 @@ _data = {
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_4usqi"]
 height = 0.892645
-radius = 9.61276
+radius = 1.0
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_d1l46"]
 radius = 0.822642
@@ -1533,6 +1606,7 @@ primary_limit_angle = 0.785398
 primary_damp_threshold = 1.0
 secondary_limit_angle = 0.785398
 secondary_damp_threshold = 1.0
+script = ExtResource("30_84vix")
 
 [node name="AnimationPlayer" parent="Mesh/wrath" index="1" unique_id=2031046783]
 root_motion_track = NodePath("Armature/Skeleton3D:root")

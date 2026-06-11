@@ -31,6 +31,7 @@
 [ext_resource type="PackedScene" uid="uid://b28l3wgogpqnm" path="res://models/characters/lust/lust.glb" id="29_eup60"]
 [ext_resource type="Material" uid="uid://cfsjgs6ugktap" path="res://shaders/materials/characters/lust.tres" id="30_2ky0q"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="31_827t2"]
+[ext_resource type="Script" uid="uid://dpgehwrod878r" path="res://script/component/look_at_influence_lerp.gd" id="32_3pkb6"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://script/dialog/dialog.gd" id="32_3ttn5"]
 [ext_resource type="JSON" path="res://json/lust_talk.json" id="33_035v5"]
 [ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://scenes/ui/dialog/choice.tscn" id="34_fedu3"]
@@ -75,7 +76,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/2/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:target_influence")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -110,13 +111,25 @@ tracks/1/keys = {
 "clips": PackedStringArray("Death"),
 "times": PackedFloat32Array(0)
 }
-tracks/2/type = "method"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Audio")
+tracks/2/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:target_influence")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -124,13 +137,13 @@ tracks/2/keys = {
 "method": &"spawn_sound"
 }]
 }
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -138,13 +151,13 @@ tracks/3/keys = {
 "method": &"defeated"
 }]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("CameraEffects")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CameraEffects")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -152,22 +165,10 @@ tracks/4/keys = {
 "method": &"impact"
 }]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/5/interp = 0
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/6/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/6/interp = 0
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -179,38 +180,38 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Target:USE_GRAVITY")
-tracks/7/interp = 1
+tracks/7/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/7/interp = 0
 tracks/7/loop_wrap = true
 tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Target:USE_GRAVITY")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Ui:modulate")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Ui:modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0, 1.43333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [1.0, 0.0]
 }
 tracks/10/type = "method"
 tracks/10/imported = false
@@ -359,23 +360,23 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/5/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:target_influence")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 2.4583333, 2.6666667),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0, 0.0, 0.0, 1.0]
+"values": [0.0]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/6/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.375, 2.3333333, 2.6250033),
+"times": PackedFloat32Array(0, 0.0833333, 2.4583333, 2.6666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [1.0, 0.0, 0.0, 1.0]
@@ -383,11 +384,11 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/7/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 0.25, 2.625, 2.875),
+"times": PackedFloat32Array(0, 0.375, 2.3333333, 2.6250033),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
 "values": [1.0, 0.0, 0.0, 1.0]
@@ -593,14 +594,14 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/13/interp = 1
+tracks/13/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/13/interp = 0
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 0.416667, 0.458333),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [1.0, 1.0, 0.0]
+"times": PackedFloat32Array(0, 4.875),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
 }
 tracks/14/type = "value"
 tracks/14/imported = false
@@ -895,6 +896,18 @@ tracks/14/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_gu5ya"]
 resource_name = "SCREAM"
@@ -951,26 +964,14 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/4/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:target_influence")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.166667, 0.458333, 1.8333334, 2.0881634),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0, 0.0, 0.0, 1.0]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0.083333336, 0.25, 1.9999968, 2.0833302),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [1.0, 0.0, 1.0, 1.0]
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_7oock"]
@@ -1143,19 +1144,19 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:influence")
-tracks/4/interp = 1
+tracks/4/path = NodePath("Mesh/lust/Armature/Skeleton3D/MiddleTail/AttackArea/CollisionShape3D:disabled")
+tracks/4/interp = 0
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.083333336, 2.375, 2.4583302),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 1.125, 1.2083334),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [1.0, 0.0, 0.0, 1.0]
+"values": [true, false, true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Mesh/lust/Armature/Skeleton3D/MiddleTail/AttackArea/CollisionShape3D:disabled")
+tracks/5/path = NodePath("Mesh/lust/Armature/Skeleton3D/FrontTail/AttackArea/CollisionShape3D:disabled")
 tracks/5/interp = 0
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -1164,31 +1165,31 @@ tracks/5/keys = {
 "update": 0,
 "values": [true, false, true]
 }
-tracks/6/type = "value"
+tracks/6/type = "method"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Mesh/lust/Armature/Skeleton3D/FrontTail/AttackArea/CollisionShape3D:disabled")
-tracks/6/interp = 0
+tracks/6/path = NodePath("Audio/Spin")
+tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 1.125, 1.2083334),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [true, false, true]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Audio/Spin")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0.333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.0],
 "method": &"play"
 }]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 1.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
@@ -1319,6 +1320,21 @@ height = 2.5117626
 [sub_resource type="SphereShape3D" id="SphereShape3D_ldn6u"]
 radius = 5.85584
 
+[sub_resource type="Animation" id="Animation_7im6n"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
 [sub_resource type="Animation" id="Animation_qmj27"]
 resource_name = "entered"
 length = 0.333337
@@ -1335,6 +1351,18 @@ tracks/0/keys = {
 "args": [&"entered"],
 "method": &"queue"
 }]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_asfo8"]
@@ -1354,9 +1382,22 @@ tracks/0/keys = {
 "method": &"queue"
 }]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Mesh/lust/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7mlpp"]
 _data = {
+&"RESET": SubResource("Animation_7im6n"),
 &"entered": SubResource("Animation_qmj27"),
 &"exited": SubResource("Animation_asfo8")
 }
@@ -1585,75 +1626,75 @@ textures = Array[Texture2D]([ExtResource("27_t1cxy"), ExtResource("28_b44t3")])
 
 [node name="Skeleton3D" parent="Mesh/lust/Armature" parent_id_path=PackedInt32Array(1192322909, 1475180337) index="0" unique_id=657402277]
 bones/1/position = Vector3(-1.8033913e-10, -0.13026617, 3.9921987)
-bones/1/rotation = Quaternion(-0.0025804355, 0.52212334, 0.85286474, -0.001579771)
-bones/2/rotation = Quaternion(-0.13448353, -0.004934529, -0.00014409581, 0.99090356)
-bones/3/rotation = Quaternion(0.021788845, 0.08099128, -0.72166616, 0.68714166)
-bones/4/rotation = Quaternion(-0.094346926, 0.679247, -0.4883659, 0.53964883)
-bones/5/rotation = Quaternion(0.2534805, -0.49652463, 0.14082634, 0.81815577)
-bones/6/rotation = Quaternion(-0.02983009, -0.00076981704, 0.027736234, 0.9991698)
-bones/7/position = Vector3(0.09777086, 0.2254984, 0.11940675)
-bones/7/rotation = Quaternion(0.14547396, 0.0081326235, -0.09041415, 0.98518854)
-bones/8/rotation = Quaternion(-0.08075829, 0.004705713, 0.06001525, 0.9949142)
-bones/9/position = Vector3(0.00685324, 0.26450077, 0.06643475)
-bones/9/rotation = Quaternion(0.043765802, 0.0006971866, -0.022815293, 0.998781)
-bones/10/rotation = Quaternion(-0.013387276, 0.0012167663, -0.11609475, 0.9931472)
-bones/11/rotation = Quaternion(-0.05786138, -0.0050501637, -0.06591051, 0.99613374)
-bones/12/position = Vector3(-0.0051291394, 0.29934528, 0.006172729)
-bones/12/rotation = Quaternion(0.0614101, 0.01811016, -0.04628295, 0.9968746)
-bones/13/rotation = Quaternion(-0.06500222, 0.057512537, -0.051461015, 0.9948964)
-bones/14/rotation = Quaternion(-0.0074423198, -0.017582448, -0.10705437, 0.9940698)
-bones/15/position = Vector3(0.0036738117, 0.31193715, -0.041109502)
-bones/15/rotation = Quaternion(0.026100919, 0.020045124, -0.055565093, 0.9979125)
-bones/16/rotation = Quaternion(-0.056790896, 0.006017279, 0.039492395, 0.99758655)
-bones/17/rotation = Quaternion(0.032590482, 0.0038259008, -0.12530518, 0.9915755)
-bones/18/position = Vector3(0.000843925, 0.27963305, -0.09001983)
-bones/18/rotation = Quaternion(-0.0075255064, -0.042898092, -0.08128179, 0.99573916)
-bones/19/rotation = Quaternion(-0.0075398115, 0.0047372975, -0.022126153, 0.9997156)
-bones/20/rotation = Quaternion(0.065957285, 0.0020755492, -0.00012059064, 0.99782026)
-bones/21/rotation = Quaternion(-0.038138118, 0.00045991642, -0.000856382, 0.999272)
-bones/29/rotation = Quaternion(0.99920243, 0.03711722, -0.011343881, -0.009391083)
-bones/35/rotation = Quaternion(0.99929357, 0.03573446, -0.010975345, -0.0038680672)
-bones/44/rotation = Quaternion(0.9991995, -0.037114855, 0.011595467, -0.009400485)
-bones/50/rotation = Quaternion(0.99929076, -0.03573349, 0.011226825, -0.0038770335)
-bones/58/rotation = Quaternion(0.024608986, -0.07830491, 0.7215754, 0.687453)
-bones/59/rotation = Quaternion(-0.094347164, -0.6792472, 0.48836598, 0.53964865)
-bones/60/rotation = Quaternion(0.35004944, 0.39221054, -0.0770952, 0.8471675)
-bones/61/rotation = Quaternion(-0.029830076, 0.0007695202, -0.027736183, 0.9991698)
-bones/62/position = Vector3(-0.09777105, 0.2254989, 0.119406775)
-bones/62/rotation = Quaternion(0.1454739, -0.008132756, 0.09041417, 0.98518854)
-bones/63/rotation = Quaternion(-0.08075823, -0.0047055944, -0.06001527, 0.9949142)
-bones/64/position = Vector3(-0.006853216, 0.26450056, 0.06643477)
-bones/64/rotation = Quaternion(0.04376576, -0.0006973709, 0.022815272, 0.998781)
-bones/65/rotation = Quaternion(-0.013387228, -0.0012167124, 0.11609475, 0.9931472)
-bones/66/rotation = Quaternion(-0.057861384, 0.0050501656, 0.06591052, 0.99613374)
-bones/67/position = Vector3(0.0051293597, 0.29934517, 0.006172728)
-bones/67/rotation = Quaternion(0.0614101, -0.01811028, 0.04628292, 0.9968746)
-bones/68/rotation = Quaternion(-0.065002225, -0.057512533, 0.051461026, 0.9948964)
-bones/69/rotation = Quaternion(-0.007442346, 0.01758266, 0.10705439, 0.9940698)
-bones/70/position = Vector3(-0.0036744664, 0.31193742, -0.041109458)
-bones/70/rotation = Quaternion(0.026100919, -0.020045124, 0.055565093, 0.99791265)
+bones/1/rotation = Quaternion(-0.001714253, 0.82399935, 0.5665828, -0.0024931147)
+bones/2/rotation = Quaternion(-0.102081925, -0.0049537695, -0.000109371795, 0.9947637)
+bones/3/rotation = Quaternion(-0.004480882, 0.1102152, -0.784508, 0.61022925)
+bones/4/rotation = Quaternion(0.078278065, 0.2642241, -0.24366547, 0.9298846)
+bones/5/rotation = Quaternion(0.15232927, -0.39537188, 0.52485466, 0.7382442)
+bones/6/rotation = Quaternion(0.15904002, 0.21556243, 0.12905362, 0.95476925)
+bones/7/position = Vector3(0.102102354, 0.1836882, 0.14951526)
+bones/7/rotation = Quaternion(0.009209049, -0.31804326, -0.3837909, 0.8668727)
+bones/8/rotation = Quaternion(-0.08116407, 0.0049369605, 0.059830327, 0.9948912)
+bones/9/position = Vector3(0.0068530994, 0.2645007, 0.06643485)
+bones/9/rotation = Quaternion(0.04376566, 0.0007066012, -0.023030227, 0.9987762)
+bones/10/rotation = Quaternion(-0.14728896, -0.07517309, -0.61684006, 0.7695215)
+bones/11/rotation = Quaternion(-0.05785839, -0.005084507, -0.06650209, 0.99609447)
+bones/12/position = Vector3(-0.005181011, 0.29944095, 0.0061864005)
+bones/12/rotation = Quaternion(-0.0092939595, 0.0061870213, -0.26562634, 0.96401143)
+bones/13/rotation = Quaternion(-0.011191274, -0.08793622, -0.5654583, 0.81999934)
+bones/14/rotation = Quaternion(-0.085246995, -0.19685133, -0.21000242, 0.9538771)
+bones/15/position = Vector3(0.0036352025, 0.31201106, -0.0411039)
+bones/15/rotation = Quaternion(0.001994668, -0.034891702, -0.29396614, 0.9551768)
+bones/16/rotation = Quaternion(-0.120537125, -0.111674204, -0.56646603, 0.807537)
+bones/17/rotation = Quaternion(0.12980849, -0.06650998, -0.24472667, 0.9585589)
+bones/18/position = Vector3(0.005387412, 0.2833347, -0.07793507)
+bones/18/rotation = Quaternion(-0.15308167, -0.2034926, -0.3669333, 0.8947161)
+bones/19/rotation = Quaternion(-0.2504009, -0.03289577, -0.60346, 0.7563421)
+bones/20/rotation = Quaternion(0.06595728, 0.00207555, -0.0001205907, 0.9978204)
+bones/21/rotation = Quaternion(0.21221644, -3.2251408e-09, 5.3429758e-05, 0.9772227)
+bones/29/rotation = Quaternion(0.99920243, 0.037117217, -0.011343883, -0.009391106)
+bones/35/rotation = Quaternion(0.99929357, 0.035734456, -0.010975343, -0.0038680448)
+bones/44/rotation = Quaternion(0.9991995, -0.037114855, 0.011595466, -0.009400485)
+bones/50/rotation = Quaternion(0.99929076, -0.03573349, 0.011226825, -0.003877041)
+bones/58/rotation = Quaternion(-0.0014149013, -0.10782918, 0.78451955, 0.61065537)
+bones/59/rotation = Quaternion(0.07827799, -0.26422426, 0.24366549, 0.92988455)
+bones/60/rotation = Quaternion(0.1523292, 0.39537227, -0.5248548, 0.73824394)
+bones/61/rotation = Quaternion(0.15904012, -0.21556279, -0.12905358, 0.95476913)
+bones/62/position = Vector3(-0.10210248, 0.18368858, 0.1495153)
+bones/62/rotation = Quaternion(0.009208921, 0.31804323, 0.38379088, 0.8668727)
+bones/63/rotation = Quaternion(-0.08116404, -0.0049368497, -0.059830356, 0.99489117)
+bones/64/position = Vector3(-0.006853577, 0.26450053, 0.066434905)
+bones/64/rotation = Quaternion(0.043765623, -0.0007067848, 0.023030235, 0.99877614)
+bones/65/rotation = Quaternion(-0.1472889, 0.07517313, 0.6168401, 0.7695214)
+bones/66/rotation = Quaternion(-0.057858396, 0.0050845197, 0.06650208, 0.99609447)
+bones/67/position = Vector3(0.005181227, 0.29944113, 0.0061863144)
+bones/67/rotation = Quaternion(-0.009293959, -0.006187143, 0.26562637, 0.96401143)
+bones/68/rotation = Quaternion(-0.011191269, 0.08793619, 0.5654583, 0.81999934)
+bones/69/rotation = Quaternion(-0.08524701, 0.19685154, 0.21000242, 0.95387703)
+bones/70/position = Vector3(-0.0036349378, 0.31201082, -0.041103773)
+bones/70/rotation = Quaternion(0.0019946313, 0.03489173, 0.29396614, 0.9551767)
 bones/75/position = Vector3(8.087289e-15, -0.13026622, 3.992199)
 bones/76/rotation = Quaternion(-0.042013723, 7.543124e-08, 3.1719494e-09, 0.999117)
 bones/77/rotation = Quaternion(0.17215095, 1.882006e-14, -3.1754495e-16, 0.9850706)
 bones/78/rotation = Quaternion(0.3651448, -1.1977232e-14, 4.2418025e-15, 0.93095076)
 bones/79/rotation = Quaternion(0.26554605, 0.08668429, -0.17887548, 0.9433847)
-bones/80/rotation = Quaternion(0.08776887, 0.019589752, -0.2095553, 0.97365266)
-bones/81/rotation = Quaternion(3.586527e-09, 4.8760995e-09, 0.42135087, 0.9068977)
+bones/80/rotation = Quaternion(0.08634379, 0.01858886, -0.2096444, 0.9737805)
+bones/81/rotation = Quaternion(3.6786036e-09, 4.9372684e-09, 0.4213509, 0.9068977)
 bones/82/rotation = Quaternion(-0.007985091, -0.0032682782, 0.37878066, 0.92544633)
-bones/83/rotation = Quaternion(-0.013443675, -0.0038092663, 0.12361962, 0.9922313)
-bones/84/rotation = Quaternion(-0.0006977362, 0.009774252, -0.2167347, 0.9761814)
-bones/85/rotation = Quaternion(0.00721045, 0.012228944, -0.3202245, 0.9472354)
-bones/86/rotation = Quaternion(-0.0042894757, 0.008282593, -0.23672947, 0.97153085)
-bones/87/rotation = Quaternion(0.0026704632, 0.0013954577, -0.037988987, 0.99927366)
-bones/88/rotation = Quaternion(-0.024223963, -0.006059441, 0.10363722, 0.9943017)
-bones/89/rotation = Quaternion(0.037156772, -0.0089403195, 0.18680331, 0.9816537)
+bones/83/rotation = Quaternion(-0.013443672, -0.0038092653, 0.12361962, 0.9922313)
+bones/84/rotation = Quaternion(-0.0006977359, 0.009774249, -0.2167347, 0.9761814)
+bones/85/rotation = Quaternion(0.007210449, 0.012228944, -0.3202245, 0.9472354)
+bones/86/rotation = Quaternion(-0.0042894734, 0.008282594, -0.23672947, 0.97153085)
+bones/87/rotation = Quaternion(0.0026704636, 0.0013954609, -0.037989, 0.99927366)
+bones/88/rotation = Quaternion(-0.024223967, -0.0060594426, 0.1036372, 0.9943017)
+bones/89/rotation = Quaternion(0.037156776, -0.0089403195, 0.18680331, 0.9816537)
 
 [node name="lust" parent="Mesh/lust/Armature/Skeleton3D" index="0" unique_id=1239155144 groups=["lust_mesh"]]
 blend_shapes/Calm = 1.0
 surface_material_override/0 = ExtResource("30_2ky0q")
 
 [node name="FrontTail" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="1" unique_id=499700947]
-transform = Transform3D(0.6790592, 0.7340835, 1.4901161e-08, -0.002566889, 0.0023745, 0.9999939, 0.7340789, -0.6790549, 0.0034965277, 0.43011913, 0.618281, -1.5251162)
+transform = Transform3D(0.67905915, 0.73408353, 0, 6.7055225e-08, -2.9802322e-08, 1, 0.73408335, -0.679059, -2.8312206e-07, 0.43011913, 0.618281, -1.5251162)
 bone_name = "tail.006"
 bone_idx = 80
 
@@ -1670,7 +1711,7 @@ disabled = true
 debug_color = Color(0.73, 0.73, 0.73, 0)
 
 [node name="MiddleTail" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="2" unique_id=1577024150]
-transform = Transform3D(0.47965792, -0.8765925, -0.038904645, 0.003068338, -0.042662144, 0.9990848, -0.87745, -0.4793382, -0.017773757, 0.20876753, 0.6039963, -5.030569)
+transform = Transform3D(0.47965792, -0.8765925, -0.038904656, 5.075708e-08, -0.04433804, 0.99901646, -0.87745535, -0.47918597, -0.02126725, 0.20876753, 0.59173846, -5.0304976)
 bone_name = "tail.009"
 bone_idx = 83
 
@@ -1687,7 +1728,7 @@ disabled = true
 debug_color = Color(0.73, 0.73, 0.73, 0)
 
 [node name="BackTail" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="3" unique_id=1506271973]
-transform = Transform3D(0.99981403, 0.019272255, 0.0005890634, -6.734952e-05, -0.027058642, 0.9996338, 0.019280983, -0.9994478, -0.027052518, -2.0482805, 0.47219616, -7.011236)
+transform = Transform3D(0.99981403, 0.019272255, 0.0005890485, 8.568168e-08, -0.030553348, 0.999533, 0.019281011, -0.99934703, -0.030547876, -2.0482805, 0.4530131, -7.010691)
 bone_name = "tail.011"
 bone_idx = 85
 
@@ -1704,7 +1745,7 @@ disabled = true
 debug_color = Color(0.73, 0.73, 0.73, 0)
 
 [node name="LeftHand" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="4" unique_id=2116836541]
-transform = Transform3D(-0.8263588, 0.55808324, 0.07533182, -0.54442143, -0.8259108, 0.14654945, 0.14400479, 0.080090955, 0.98633033, 1.1788665, 3.68011, -0.9959564)
+transform = Transform3D(0.5744439, 0.68973154, -0.44077685, -0.81810325, 0.4661157, -0.336814, -0.02685833, 0.5540818, 0.83202845, 1.6515352, 4.6951065, 0.029585093)
 bone_name = "hand_l"
 bone_idx = 6
 
@@ -1721,7 +1762,7 @@ disabled = true
 debug_color = Color(0.95, 0.03800002, 0.17479967, 0)
 
 [node name="RightHand" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="5" unique_id=255726878]
-transform = Transform3D(-0.93741375, -0.33024472, 0.11042834, 0.34576678, -0.9203341, 0.18284295, 0.041247573, 0.20958273, 0.9769205, -1.0057852, 3.6227763, -0.91219926)
+transform = Transform3D(0.5744442, -0.68973136, 0.44077632, 0.81810284, 0.46611613, -0.336814, 0.0268583, 0.5540813, 0.8320288, -1.6515357, 4.695108, 0.029585183)
 bone_name = "hand_r"
 bone_idx = 61
 
@@ -1738,7 +1779,7 @@ disabled = true
 debug_color = Color(0.95, 0.038, 0.1748, 0.180392)
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="6" unique_id=1149682648]
-transform = Transform3D(1, -3.5506673e-08, 0.00025180983, -0.0001442011, 0.8197128, 0.57277507, -0.0002064316, -0.5727755, 0.8197123, -5.0481678e-08, 4.896273, -0.7794174)
+transform = Transform3D(0.9999998, -2.4971087e-08, 0.00025176955, 7.288024e-05, 0.9572158, -0.28937578, -0.00024098787, 0.2893759, 0.9572154, -2.79917e-08, 5.0741944, 0.14824909)
 bone_name = "neck"
 bone_idx = 20
 
@@ -1763,9 +1804,10 @@ primary_limit_angle = 3.14159
 primary_damp_threshold = 1.0
 secondary_limit_angle = 1.5708
 secondary_damp_threshold = 1.0
+script = ExtResource("32_3pkb6")
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Mesh/lust/Armature/Skeleton3D" index="8" unique_id=77273062]
-transform = Transform3D(0.99999243, -4.0628947e-08, -0.003908346, 0.0026408534, 0.73718774, 0.67568314, 0.002881155, -0.6756887, 0.73718154, -2.4995485e-08, 4.434377, -0.35605478)
+transform = Transform3D(0.9999922, -2.5029294e-08, -0.0039083846, -0.0006286858, 0.9869771, -0.16086084, 0.0038574915, 0.16086225, 0.98696923, -1.2279695e-08, 4.4557896, 0.047458455)
 bone_name = "back"
 bone_idx = 2
 
@@ -1801,7 +1843,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Mesh/lust/Armature/Skeleton3D/ChestLeft" unique_id=447121726]
-transform = Transform3D(0.9034172, 0.4273234, 0.035101898, -0.09746279, 0.28439274, -0.9537411, -0.41753846, 0.8582047, 0.29857397, 0.13102573, 4.596036, -0.5204135)
+transform = Transform3D(0.90341705, 0.42732322, 0.035101894, 0.26764655, -0.49808872, -0.8247868, -0.33496666, 0.7545213, -0.56435347, 0.13102567, 4.684939, 0.0727165)
 bone_name = "chest_l"
 bone = 71
 position_offset = Vector3(0, -0.165, 0)
@@ -1839,7 +1881,7 @@ settings/0/enable_all_child_collisions = true
 settings/0/exclude_collision_count = 0
 
 [node name="SpringBoneCollisionPlane3D" type="SpringBoneCollisionPlane3D" parent="Mesh/lust/Armature/Skeleton3D/ChestRight" unique_id=99009593]
-transform = Transform3D(0.9034174, -0.42732278, -0.03510176, 0.09746271, 0.2843927, -0.9537412, 0.41753784, 0.858205, 0.29857394, -0.13102588, 4.596036, -0.5204136)
+transform = Transform3D(0.9034171, -0.42732275, -0.03510175, -0.26764613, -0.49808896, -0.82478684, 0.33496627, 0.75452137, -0.5643535, -0.13102582, 4.684939, 0.072716475)
 bone_name = "chest_r"
 bone = 73
 position_offset = Vector3(0, -0.165, 0)
