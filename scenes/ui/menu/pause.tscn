@@ -143,6 +143,17 @@ icon_alignment = 1
 script = ExtResource("5_e7s18")
 pause_toggler = NodePath("../..")
 
+[node name="Stats" type="Button" parent="Main" unique_id=2120402639 node_paths=PackedStringArray("node_to_replace") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_7gaeb")
+text = "STATS"
+icon_alignment = 1
+script = ExtResource("6_kiq5e")
+scene_file = "uid://dbote4pjabcqg"
+node_to_replace = NodePath("../..")
+
 [node name="Audio" type="Button" parent="Main" unique_id=1200623930 node_paths=PackedStringArray("node_to_replace") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 2
 size_flags_horizontal = 4

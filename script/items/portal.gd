@@ -25,3 +25,10 @@ func check_unlock() -> void:
 func _ready() -> void:
 	check_unlock()
 	Save.save_data_updated.connect(check_unlock)
+	
+func save_game_completed_time() -> void:
+	if Save.data.has("completion_time"): return # already has a time
+	var play_time: float = Save.data.get("play_time", 0.0)
+	Save.data["completion_time"] = play_time
+	Save.save_game()
+	#print(play_time)

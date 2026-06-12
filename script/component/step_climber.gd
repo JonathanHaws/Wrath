@@ -2,7 +2,7 @@ extends Node3D ## Script enabling 3D Bodies to not get stuck on small ledges or 
 
 ## Avoids stepping up just to instantly fall back down because of walking too parallel to the step, instead of right into it. 
 ## BODY is required to have a [member raw_velocity] property set before calling [method move_and_slide]. So it can calculate the alignment
-@export_range(0.0, 1.0, 0.01) var MIN_STEP_ALIGNMENT: float = 0.5
+@export_range(0.0, 1.0, 0.01) var MIN_STEP_ALIGNMENT: float = 0.25
 @export var MIN_SPEED: float = 1.5 ## Used to make sure body is accelerating sufficently to not just fall bak down step. BODY is required to have a [member raw_velocity] property set before calling [method move_and_slide] for this to work
 
 @export var MAX_STEP_HEIGHT: float = 1.3 ## How much the player can step up
@@ -27,7 +27,7 @@ func raycast(from: Vector3, to: Vector3) -> Dictionary:
 	query.exclude = [BODY.get_rid()]
 	return get_world_3d().direct_space_state.intersect_ray(query)
 
-func try_step_up(delta: float) -> void:
+func try_step_up(_delta: float) -> void:
 	
 	#if "raw_velocity" in BODY: print(BODY.raw_velocity)
 	#print(BODY.get_slide_collision_count())
