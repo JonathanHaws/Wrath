@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://script/component/hit_shape.gd" id="6_64wp7"]
 [ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://scenes/ui/damage_numbers.tscn" id="7_043ic"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="8_76yld"]
+[ext_resource type="Script" uid="uid://bmvmfpf3a13r6" path="res://script/ui/hide_ui/hide_ui.gd" id="9_b261m"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/characters/enemies/Slam.wav" id="9_ua66g"]
 [ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://audio/sfx/characters/Crumble_1.wav" id="10_pv45n"]
 [ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/characters/Crumble_2.wav" id="11_kr5ke"]
@@ -1536,6 +1537,10 @@ theme = ExtResource("5_oc2g8")
 text = "LUST"
 horizontal_alignment = 1
 uppercase = true
+
+[node name="HideUI" type="Node" parent="Ui" unique_id=1986912288 node_paths=PackedStringArray("TARGETS")]
+script = ExtResource("9_b261m")
+TARGETS = [NodePath("..")]
 
 [node name="Audio" type="Node" parent="." unique_id=361552963]
 script = ExtResource("8_76yld")

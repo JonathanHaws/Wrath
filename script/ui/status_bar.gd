@@ -50,4 +50,5 @@ func _ready()-> void:
 	
 
 func _process(_delta)-> void:
+	
 	update_bar(_delta)

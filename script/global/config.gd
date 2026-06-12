@@ -81,7 +81,29 @@ func tween_bus_volume(bus_name: String, target_multiplier: float, duration_secon
 
 #region Video
 
-#region UI Scale
+#region UI
+
+#region Hiding
+
+var HIDE_UI: bool = false
+signal hide_ui_changed(hidden: bool)
+
+func set_hide_ui(hidden: bool) -> void:
+	HIDE_UI = hidden
+	save_setting("ui", "hide_ui", hidden)
+	hide_ui_changed.emit(hidden)
+
+	for node in get_tree().get_nodes_in_group("ui_hideable"):
+		if node is CanvasItem:
+			node.visible = !hidden
+
+func load_ui_settings() -> void:
+	set_hide_ui(load_setting("ui", "hide_ui", false))
+
+#endregion
+
+#region Scale 
+
 var BASE_UI_SCALE = 1.0
 var UI_SCALE = 1
 signal ui_scale_changed(new_scale: Vector2)
@@ -105,6 +127,8 @@ func set_ui_scale(value: float) -> void:
 		#Config.UI_SCALE -= 0.05
 		#for node in get_tree().get_nodes_in_group("ui_scalable"):
 			#node.scale = Vector2(Config.UI_SCALE, Config.UI_SCALE)
+
+#endregion
 
 #endregion
 
@@ -203,11 +227,13 @@ var graphics_keys: Array[String] = [
 func _cache_default_environment_settings(environment) -> void:
 	for key in graphics_keys:
 		default_environment_settings[key] = environment.get(key)
+
 func _load_enviroment(environment) -> void:
 	#print('loading graphics onto current environment')
 	environment.adjustment_enabled = true
 	for key in graphics_keys:
 		environment.set(key, load_setting("graphics", key, environment.get(key)))
+
 func poll_for_new_environments_and_load_graphics_settings() -> void:
 	for world in get_tree().get_nodes_in_group(auto_load_enviroment_group):
 		if not world.has_meta("graphics_loaded"):
@@ -221,9 +247,7 @@ func get_current_environment() -> Environment:
 
 func connect_graphics_control(setting: String, toggle_button: CheckButton = null, slider: HSlider = null, label: Label = null, reset_button: Button = null) -> void:
 	var saved_value = load_setting("graphics", setting, get_current_environment().get(setting))
-	
-
-	
+		
 	if toggle_button:
 		toggle_button.button_pressed = saved_value
 		toggle_button.toggled.connect(func(v):
@@ -401,6 +425,7 @@ func _ready() -> void:
 	load_audio_settings()
 	load_graphics_settings()
 	load_controls_settings()
+	load_ui_settings()
 	hidden_cursor_ready()
 	play_animation_by_group("only_on_launch", "game_start_player")
 

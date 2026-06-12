@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://bb0ulhlrvid4g" path="res://script/dialog/say_timed.gd" id="1_jnq6s"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="2_rmwxh"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/themes/notification.tres" id="3_bvnr2"]
+[ext_resource type="Script" uid="uid://bmvmfpf3a13r6" path="res://script/ui/hide_ui/hide_ui.gd" id="4_m38vd"]
 
 [sub_resource type="Animation" id="Animation_e0soa"]
 resource_name = "RESET"
@@ -192,3 +193,7 @@ vertical_alignment = 1
 
 [node name="RevealText" type="AnimationPlayer" parent="Control/Label" unique_id=1040508841]
 libraries/ = SubResource("AnimationLibrary_h7hyr")
+
+[node name="HideUI" type="Node" parent="." unique_id=934006266 node_paths=PackedStringArray("TARGETS")]
+script = ExtResource("4_m38vd")
+TARGETS = [NodePath("../Control")]

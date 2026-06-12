@@ -7,6 +7,7 @@
 [ext_resource type="AudioStream" uid="uid://dejgyyvoucgey" path="res://audio/sfx/characters/enemies/Cry_3.wav" id="8_6fdi0"]
 [ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://audio/sfx/characters/Crumble_1.wav" id="10_s7vgg"]
 [ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/characters/Crumble_2.wav" id="11_i4c6m"]
+[ext_resource type="Script" uid="uid://bmvmfpf3a13r6" path="res://script/ui/hide_ui/hide_ui.gd" id="11_owmeo"]
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://audio/sfx/characters/enemies/Cry.wav" id="12_kqq76"]
 [ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://audio/sfx/characters/Crumble_3.wav" id="12_p5r8v"]
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://audio/sfx/characters/enemies/Spin.wav" id="13_367wx"]
@@ -1447,6 +1448,10 @@ theme = ExtResource("24_do1jg")
 text = "WRATH"
 horizontal_alignment = 1
 uppercase = true
+
+[node name="HideUI" type="Node" parent="Ui" unique_id=501116130 node_paths=PackedStringArray("TARGETS")]
+script = ExtResource("11_owmeo")
+TARGETS = [NodePath("..")]
 
 [node name="Audio" type="Node" parent="." unique_id=1903051612]
 script = ExtResource("31_4oeto")

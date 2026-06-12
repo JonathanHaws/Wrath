@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="9_wri43"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/themes/notification.tres" id="10_bkkeq"]
 [ext_resource type="StyleBox" uid="uid://p8dn2g85fmrc" path="res://shaders/bar/greed_health.tres" id="10_jx80p"]
+[ext_resource type="Script" uid="uid://bmvmfpf3a13r6" path="res://script/ui/hide_ui/hide_ui.gd" id="10_o8vm5"]
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://audio/sfx/characters/enemies/Cry.wav" id="12_hnntr"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="15_cadt7"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://script/component/root_motion.gd" id="16_psb2t"]
@@ -1554,6 +1555,10 @@ theme = ExtResource("10_bkkeq")
 text = "GREED"
 horizontal_alignment = 1
 uppercase = true
+
+[node name="HideUI" type="Node" parent="Ui" unique_id=182766061 node_paths=PackedStringArray("TARGETS")]
+script = ExtResource("10_o8vm5")
+TARGETS = [NodePath("..")]
 
 [node name="Audio" type="Node" parent="." unique_id=1669653625]
 script = ExtResource("23_xmcwa")

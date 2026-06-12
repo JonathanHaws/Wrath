@@ -1,5 +1,7 @@
 [gd_scene format=3 uid="uid://5ajxste60xmp"]
 
+[ext_resource type="Script" uid="uid://bmvmfpf3a13r6" path="res://script/ui/hide_ui/hide_ui.gd" id="1_h7s5s"]
+
 [sub_resource type="Animation" id="Animation_rlwdq"]
 length = 0.001
 tracks/0/type = "value"
@@ -87,3 +89,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="HideUI" type="Node" parent="." unique_id=163841824 node_paths=PackedStringArray("TARGETS")]
+script = ExtResource("1_h7s5s")
+TARGETS = [NodePath("../Background")]

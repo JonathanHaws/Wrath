@@ -5,6 +5,7 @@
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="3_vd3ju"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="5_2bcub"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/characters/enemies/Slam.wav" id="9_cix80"]
+[ext_resource type="Script" uid="uid://bmvmfpf3a13r6" path="res://script/ui/hide_ui/hide_ui.gd" id="10_ov3vn"]
 [ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://audio/sfx/characters/Crumble_1.wav" id="10_xppq1"]
 [ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/characters/Crumble_2.wav" id="11_l33v6"]
 [ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://audio/sfx/characters/Crumble_3.wav" id="12_42xxq"]
@@ -2129,6 +2130,10 @@ theme = ExtResource("23_wlv32")
 text = "GLUTTONY"
 horizontal_alignment = 1
 uppercase = true
+
+[node name="HideUI" type="Node" parent="Ui" unique_id=512468021 node_paths=PackedStringArray("TARGETS")]
+script = ExtResource("10_ov3vn")
+TARGETS = [NodePath("..")]
 
 [node name="Audio" type="Node" parent="." unique_id=513380999]
 script = ExtResource("5_2bcub")

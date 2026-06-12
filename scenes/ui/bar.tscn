@@ -4,6 +4,7 @@
 [ext_resource type="StyleBox" uid="uid://bosm3016yuwg3" path="res://shaders/bar/wrath_health.tres" id="2_c8kxi"]
 [ext_resource type="Script" uid="uid://gkuxfuak4v33" path="res://script/ui/status_bar.gd" id="3_1bxfd"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/themes/theme.tres" id="4_1jmjf"]
+[ext_resource type="Script" uid="uid://bmvmfpf3a13r6" path="res://script/ui/hide_ui/hide_ui.gd" id="5_c8kxi"]
 
 [sub_resource type="Theme" id="Theme_j0yyq"]
 default_font_size = 20
@@ -46,3 +47,7 @@ theme = ExtResource("4_1jmjf")
 step = 0.001
 value = 80.0
 show_percentage = false
+
+[node name="HideUI" type="Node" parent="." unique_id=1968915922 node_paths=PackedStringArray("TARGETS")]
+script = ExtResource("5_c8kxi")
+TARGETS = [NodePath("..")]

@@ -6,6 +6,7 @@
 [ext_resource type="StyleBox" uid="uid://dyxhjehl326n8" path="res://shaders/bar/envy_health.tres" id="4_wpfpa"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/themes/notification.tres" id="5_o83ic"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="6_jntm4"]
+[ext_resource type="Script" uid="uid://bmvmfpf3a13r6" path="res://script/ui/hide_ui/hide_ui.gd" id="9_tgrj1"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/characters/enemies/Slam.wav" id="10_td5ev"]
 [ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://audio/sfx/characters/Crumble_1.wav" id="11_peotq"]
 [ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/characters/Crumble_2.wav" id="12_8fx7k"]
@@ -1566,6 +1567,10 @@ text = "ENVY"
 horizontal_alignment = 1
 uppercase = true
 
+[node name="HideUI" type="Node" parent="Ui" unique_id=1011380091 node_paths=PackedStringArray("TARGETS")]
+script = ExtResource("9_tgrj1")
+TARGETS = [NodePath("..")]
+
 [node name="Audio" type="Node" parent="." unique_id=866003600]
 script = ExtResource("6_jntm4")
 SOUNDS = Array[AudioStream]([ExtResource("10_td5ev"), ExtResource("11_peotq"), ExtResource("12_8fx7k"), ExtResource("13_2fslw"), ExtResource("14_gn6a4"), ExtResource("15_6omgc"), ExtResource("16_8wint"), ExtResource("17_il76p"), ExtResource("18_del5c")])
@@ -1755,7 +1760,7 @@ secondary_damp_threshold = 1.0
 script = ExtResource("35_wnpe0")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/envy/Armature/Skeleton3D" index="3" unique_id=885687854]
-transform = Transform3D(1, -2.1046985e-07, -1.6255849e-06, -1.5963608e-06, -0.35017514, -0.93668413, -3.7209625e-07, 0.93668395, -0.35017502, -5.088634e-07, 4.202835, 2.9265351)
+transform = Transform3D(0.90630776, -0.41201386, 0.09407838, -0.12803823, -0.47983527, -0.86796546, 0.402756, 0.774598, -0.48763192, -0.53159934, 4.0301585, 2.7414188)
 bone_name = "beak"
 bone_idx = 6
 
