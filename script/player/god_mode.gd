@@ -35,7 +35,6 @@ func _physics_process(_delta):
 	if mode: 
 		
 		if Input.is_action_just_pressed("hide"): 
-			print('test')
 			PLAYER.visible = !PLAYER.visible
 		
 		if Input.is_action_just_pressed("get_wisp"):
