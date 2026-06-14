@@ -6,9 +6,7 @@
 [ext_resource type="Material" uid="uid://c2p7qmqa0ird5" path="res://shaders/materials/projectiles/player_projectile_material.tres" id="3_8by7l"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="3_32n4n"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="4_o35mi"]
-[ext_resource type="AudioStream" uid="uid://bkawmwxh84v2j" path="res://audio/sfx/characters/enemies/Hit_1.ogg" id="20_qiejr"]
-[ext_resource type="AudioStream" uid="uid://bvtlb0oql5hr6" path="res://audio/sfx/characters/enemies/Hit_2.ogg" id="21_j2d75"]
-[ext_resource type="AudioStream" uid="uid://c16kx02f83mop" path="res://audio/sfx/characters/enemies/Hit_3.ogg" id="22_xpmdx"]
+[ext_resource type="AudioStream" uid="uid://fg3n00e7eriu" path="res://audio/sfx/characters/player/Hit.ogg" id="7_umuub"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7pvji"]
 size = Vector3(0.32712737, 0.30148357, 0.3260544)
@@ -292,20 +290,9 @@ script = ExtResource("4_o35mi")
 
 [node name="Hit1" type="AudioStreamPlayer" parent="Audio" unique_id=952110416]
 process_mode = 3
-stream = ExtResource("20_qiejr")
+stream = ExtResource("7_umuub")
 volume_db = -8.0
-bus = &"SFX"
-
-[node name="Hit2" type="AudioStreamPlayer" parent="Audio" unique_id=7919888]
-process_mode = 3
-stream = ExtResource("21_j2d75")
-volume_db = -8.0
-bus = &"SFX"
-
-[node name="Hit3" type="AudioStreamPlayer" parent="Audio" unique_id=424331109]
-process_mode = 3
-stream = ExtResource("22_xpmdx")
-volume_db = -8.0
+pitch_scale = 0.3
 bus = &"SFX"
 
 [editable path="Node3D/projectile"]

@@ -21,7 +21,6 @@
 [ext_resource type="AudioStream" uid="uid://0sf75mds1tdr" path="res://audio/sfx/characters/player/Slash_2.wav" id="11_x57ir"]
 [ext_resource type="AudioStream" uid="uid://dn40xettc7puu" path="res://audio/sfx/characters/player/Slash_3.wav" id="12_ot1qi"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="15_lwilf"]
-[ext_resource type="AudioStream" uid="uid://cawtjrru8ho7x" path="res://audio/sfx/characters/player/Hurt.wav" id="15_tgmjc"]
 [ext_resource type="Script" uid="uid://ccjt2mmin66uh" path="res://script/player/camera/lock_on.gd" id="17_5cvkf"]
 [ext_resource type="AudioStream" uid="uid://ca1jfg0asj5b6" path="res://audio/sfx/characters/player/Windown.wav" id="18_pc8iq"]
 [ext_resource type="AudioStream" uid="uid://dlwicer3j08q8" path="res://audio/sfx/characters/player/Spawn_Void.wav" id="20_5d6ad"]
@@ -31,15 +30,14 @@
 [ext_resource type="AudioStream" uid="uid://n46mmfgqvnl6" path="res://audio/sfx/characters/player/Blocked.ogg" id="24_5og37"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/characters/enemies/Cry_2.wav" id="24_8oma7"]
 [ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/themes/notification.tres" id="24_m1s71"]
-[ext_resource type="AudioStream" uid="uid://bkawmwxh84v2j" path="res://audio/sfx/characters/enemies/Hit_1.ogg" id="24_uatll"]
 [ext_resource type="AudioStream" uid="uid://ql4vd0nt4yjg" path="res://audio/sfx/characters/player/Parried.ogg" id="25_2d6ni"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/characters/enemies/Slam.wav" id="25_8i186"]
-[ext_resource type="AudioStream" uid="uid://bvtlb0oql5hr6" path="res://audio/sfx/characters/enemies/Hit_2.ogg" id="25_78wyp"]
 [ext_resource type="AudioStream" uid="uid://bl2yh8xx8yn4s" path="res://audio/sfx/characters/menu/Menu_Load.ogg" id="25_kim7h"]
-[ext_resource type="AudioStream" uid="uid://c16kx02f83mop" path="res://audio/sfx/characters/enemies/Hit_3.ogg" id="26_8oma7"]
 [ext_resource type="Script" uid="uid://bfq61wyde2xvx" path="res://script/player/death_animation.gd" id="29_5ijfa"]
+[ext_resource type="AudioStream" uid="uid://fg3n00e7eriu" path="res://audio/sfx/characters/player/Hit.ogg" id="30_d6veh"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://script/component/root_motion.gd" id="32_qsprq"]
 [ext_resource type="Script" uid="uid://ce0dmg6sindd8" path="res://script/player/lean.gd" id="32_xnjpx"]
+[ext_resource type="AudioStream" uid="uid://dru7207t76d4t" path="res://audio/sfx/characters/player/Kill.ogg" id="33_sm0mq"]
 [ext_resource type="StyleBox" uid="uid://bl4mgs7p5gjoc" path="res://shaders/bar/player/player_health.tres" id="34_6g6ue"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="35_lwilf"]
 [ext_resource type="Material" uid="uid://dacvxdrj2im0y" path="res://shaders/materials/body.tres" id="35_m1s71"]
@@ -2587,15 +2585,15 @@ step = 0.0416667
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Audio")
+tracks/0/path = NodePath("Audio/Slash")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0.125),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [["slash_1", "slash_2", "slash_3"]],
-"method": &"spawn_sound"
+"args": [],
+"method": &"play_random_child"
 }]
 }
 tracks/1/type = "animation"
@@ -2817,15 +2815,15 @@ tracks/1/keys = {
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Audio")
+tracks/2/path = NodePath("Audio/Windown")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0.125),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [["windown"]],
-"method": &"spawn_sound"
+"args": [0.0],
+"method": &"play"
 }]
 }
 tracks/3/type = "value"
@@ -3238,24 +3236,10 @@ tracks/5/keys = {
 tracks/6/type = "method"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("../Audio")
+tracks/6/path = NodePath("../Hitshape/DeathCountTracker")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": [["HURT"]],
-"method": &"spawn_sound"
-}]
-}
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("../Hitshape/DeathCountTracker")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
 "times": PackedFloat32Array(0.76666677),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -3263,13 +3247,13 @@ tracks/7/keys = {
 "method": &"increase"
 }]
 }
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("..")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("..")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(0.8333333),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -3277,14 +3261,24 @@ tracks/8/keys = {
 "method": &"reload_checkpoint"
 }]
 }
+tracks/8/type = "animation"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath(".")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": PackedStringArray("DEATH"),
+"times": PackedFloat32Array(0)
+}
 tracks/9/type = "animation"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath(".")
+tracks/9/path = NodePath("../Mesh/reaper/AnimationPlayer")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"clips": PackedStringArray("DEATH"),
+"clips": PackedStringArray("Jump"),
 "times": PackedFloat32Array(0)
 }
 tracks/10/type = "animation"
@@ -3294,62 +3288,52 @@ tracks/10/path = NodePath("../Mesh/reaper/AnimationPlayer")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"clips": PackedStringArray("Jump"),
-"times": PackedFloat32Array(0)
-}
-tracks/11/type = "animation"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("../Mesh/reaper/AnimationPlayer")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
 "clips": PackedStringArray("Death"),
 "times": PackedFloat32Array(0)
 }
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/LookAtModifier3D:influence")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/LookAtModifier3D:influence")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
 }
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/cloak:material_override:shader_parameter/dissolve_amount")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/cloak:material_override:shader_parameter/dissolve_amount")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0, 0.1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
 }
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/body:material_override:shader_parameter/dissolve_amount")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("../Mesh/reaper/Reaper/Skeleton3D/body:material_override:shader_parameter/dissolve_amount")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
 "times": PackedFloat32Array(0, 0.0666667, 0.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 1.0]
 }
-tracks/15/type = "method"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("../HurtParticles")
-tracks/15/interp = 1
-tracks/15/loop_wrap = true
-tracks/15/keys = {
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../HurtParticles")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -3357,13 +3341,13 @@ tracks/15/keys = {
 "method": &"spawn"
 }]
 }
-tracks/16/type = "method"
-tracks/16/imported = false
-tracks/16/enabled = true
-tracks/16/path = NodePath("../Mesh/ShaderTween")
-tracks/16/interp = 1
-tracks/16/loop_wrap = true
-tracks/16/keys = {
+tracks/15/type = "method"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("../Mesh/ShaderTween")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -3444,24 +3428,10 @@ length = 0.1225
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../../../../../CameraEffects")
+tracks/0/path = NodePath("../../../../../../Audio/Hit")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"values": [{
-"args": ["player_hurt", 0.2, 0.2, 0.0],
-"method": &"impact"
-}]
-}
-tracks/1/type = "method"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../../../../../../Audio/Hit")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -3469,18 +3439,32 @@ tracks/1/keys = {
 "method": &"play_random_child"
 }]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../../../../../..")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [1],
+"method": &"change_shooting_energy"
+}]
+}
 tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../../../../../..")
+tracks/2/path = NodePath("../../../../../../CameraEffects")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [1],
-"method": &"change_shooting_energy"
+"args": ["player_hurt", 0.2, 0.2, 0.0],
+"method": &"impact"
 }]
 }
 
@@ -3490,21 +3474,21 @@ length = 0.1225
 tracks/0/type = "method"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("../../../../../../CameraEffects")
+tracks/0/path = NodePath("../../../../../../Audio/Hit")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["player_kill", 0.2, 0.2, 0.0],
-"method": &"impact"
+"args": [],
+"method": &"play_random_child"
 }]
 }
 tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("../../../../../../Audio/Hit")
+tracks/1/path = NodePath("../../../../../../Audio/Kill")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -3527,6 +3511,20 @@ tracks/2/keys = {
 "values": [{
 "args": [1],
 "method": &"change_shooting_energy"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../../../../../../CameraEffects")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["player_kill", 0.2, 0.2, 0.0],
+"method": &"impact"
 }]
 }
 
@@ -3660,7 +3658,7 @@ BODY = NodePath("..")
 collision_layer = 2
 script = ExtResource("2_utjob")
 IMMUNE_GROUPS = Array[String](["player"])
-INVINCIBILITY_COOLDOWN = 1.0
+INVINCIBILITY_COOLDOWN = 5.0
 HEALTH = 30.0
 MAX_HEALTH = 30.0
 SAVE_HEALTH = true
@@ -3723,7 +3721,7 @@ debug_color = Color(0.7, 0.7, 0.7, 1)
 
 [node name="Audio" type="Node" parent="Reaper" unique_id=1191003114]
 script = ExtResource("35_lwilf")
-SOUNDS = Array[AudioStream]([ExtResource("15_tgmjc"), ExtResource("4_i3uf6"), ExtResource("5_7kpka"), ExtResource("10_c6xc7"), ExtResource("11_x57ir"), ExtResource("12_ot1qi"), ExtResource("2_ykn11"), ExtResource("3_2tmqw"), ExtResource("20_5d6ad"), ExtResource("7_erto2"), ExtResource("8_wxf0g"), ExtResource("9_rg8br"), ExtResource("10_tro3i"), ExtResource("18_pc8iq"), ExtResource("25_8i186")])
+SOUNDS = Array[AudioStream]([ExtResource("30_d6veh"), ExtResource("4_i3uf6"), ExtResource("5_7kpka"), ExtResource("10_c6xc7"), ExtResource("11_x57ir"), ExtResource("12_ot1qi"), ExtResource("2_ykn11"), ExtResource("3_2tmqw"), ExtResource("20_5d6ad"), ExtResource("7_erto2"), ExtResource("8_wxf0g"), ExtResource("9_rg8br"), ExtResource("10_tro3i"), ExtResource("18_pc8iq"), ExtResource("25_8i186")])
 VOLUME_MULTIPLIERS = Array[float]([0.15, 2.0, 1.1, 0.2, 0.2, 0.2, 0.1, 0.1, 0.25, 0.7, 0.7, 0.7, 0.7, 0.3, 0.3])
 ADD_TO_ROOT = true
 BUS_NAMES = Array[String](["Master", "Music", "SFX"])
@@ -3747,8 +3745,9 @@ bus = &"SFX"
 
 [node name="Hurt" type="AudioStreamPlayer" parent="Reaper/Audio" unique_id=1147449651]
 process_mode = 3
-stream = ExtResource("15_tgmjc")
-volume_db = -15.0
+stream = ExtResource("30_d6veh")
+volume_db = -7.0
+pitch_scale = 0.6
 bus = &"SFX"
 
 [node name="Heal" type="AudioStreamPlayer" parent="Reaper/Audio" unique_id=822581629]
@@ -3768,7 +3767,7 @@ bus = &"SFX"
 [node name="Death" type="AudioStreamPlayer" parent="Reaper/Audio" unique_id=655283920]
 process_mode = 3
 stream = ExtResource("25_8i186")
-volume_db = 2.0
+volume_db = -1.0
 pitch_scale = 0.6
 bus = &"SFX"
 
@@ -3779,24 +3778,53 @@ volume_db = 2.0
 pitch_scale = 0.6
 bus = &"SFX"
 
+[node name="Windown" type="AudioStreamPlayer" parent="Reaper/Audio" unique_id=1716252773]
+process_mode = 3
+stream = ExtResource("18_pc8iq")
+volume_db = -16.0
+pitch_scale = 0.3
+bus = &"SFX"
+
+[node name="Slash" type="Node" parent="Reaper/Audio" unique_id=978035864]
+script = ExtResource("35_lwilf")
+
+[node name="Slash1" type="AudioStreamPlayer" parent="Reaper/Audio/Slash" unique_id=930348205]
+process_mode = 3
+stream = ExtResource("10_c6xc7")
+volume_db = -16.0
+pitch_scale = 0.3
+bus = &"SFX"
+
+[node name="Slash2" type="AudioStreamPlayer" parent="Reaper/Audio/Slash" unique_id=1023186424]
+process_mode = 3
+stream = ExtResource("11_x57ir")
+volume_db = -16.0
+pitch_scale = 0.3
+bus = &"SFX"
+
+[node name="Slash3" type="AudioStreamPlayer" parent="Reaper/Audio/Slash" unique_id=1887786253]
+process_mode = 3
+stream = ExtResource("12_ot1qi")
+volume_db = -16.0
+pitch_scale = 0.3
+bus = &"SFX"
+
 [node name="Hit" type="Node" parent="Reaper/Audio" unique_id=787367975]
 script = ExtResource("35_lwilf")
 
 [node name="Hit1" type="AudioStreamPlayer" parent="Reaper/Audio/Hit" unique_id=1378739356]
 process_mode = 3
-stream = ExtResource("24_uatll")
-volume_db = -8.0
+stream = ExtResource("30_d6veh")
+volume_db = -7.0
+pitch_scale = 0.3
 bus = &"SFX"
 
-[node name="Hit2" type="AudioStreamPlayer" parent="Reaper/Audio/Hit" unique_id=1027173279]
-process_mode = 3
-stream = ExtResource("25_78wyp")
-volume_db = -8.0
-bus = &"SFX"
+[node name="Kill" type="Node" parent="Reaper/Audio" unique_id=1158289049]
+script = ExtResource("35_lwilf")
 
-[node name="Hit3" type="AudioStreamPlayer" parent="Reaper/Audio/Hit" unique_id=172755256]
+[node name="Kill" type="AudioStreamPlayer" parent="Reaper/Audio/Kill" unique_id=347055195]
 process_mode = 3
-stream = ExtResource("26_8oma7")
+stream = ExtResource("33_sm0mq")
 volume_db = -8.0
 bus = &"SFX"
 
@@ -3897,37 +3925,37 @@ groups = Array[String](["cloak_mesh", "body_mesh"])
 
 [node name="Skeleton3D" parent="Reaper/Mesh/reaper/Reaper" parent_id_path=PackedInt32Array(1111972383, 947482423) index="0" unique_id=690915142]
 bones/1/position = Vector3(0.012178166, 0.19505176, 0.8582668)
-bones/1/rotation = Quaternion(0.66652495, 0.005288413, -0.0047285077, 0.74544907)
-bones/2/rotation = Quaternion(1.8626446e-09, 1.2361932e-07, -3.2596281e-09, 1)
-bones/3/position = Vector3(-0.13482243, 0.052575987, -0.0037890945)
-bones/3/rotation = Quaternion(-0.079156846, -0.24224563, 0.80736095, 0.53218377)
-bones/4/rotation = Quaternion(-0.70825344, 0.12014593, -0.33246922, 0.61106986)
-bones/5/rotation = Quaternion(-0.106005274, -0.08438389, 0.07545141, 0.9879015)
-bones/6/rotation = Quaternion(-0.64519733, -0.3699685, -0.17571038, 0.6449572)
-bones/7/position = Vector3(0.09502389, 0.29883626, -0.037884142)
-bones/7/rotation = Quaternion(-0.08802523, 0.31957725, -0.44377673, 0.8325769)
-bones/8/position = Vector3(0.040278308, 0.37375045, 0.019249905)
-bones/8/rotation = Quaternion(-0.59016526, -0.32968497, -0.3287858, 0.65947914)
-bones/9/rotation = Quaternion(0.069940835, -1.5149455e-12, 1.6696863e-08, 0.99755114)
-bones/10/position = Vector3(0.07390616, 0.08636394, 1.0374769e-08)
-bones/10/rotation = Quaternion(-0.11537217, -0.050698962, -0.85975343, 0.49491715)
-bones/11/rotation = Quaternion(-0.45832148, -0.40650788, 0.06873397, 0.7873807)
-bones/12/rotation = Quaternion(-0.03414386, 0.039828926, 0.14083621, 0.9886421)
-bones/13/rotation = Quaternion(-0.6807748, 0.0647394, -0.21559657, 0.6970457)
-bones/14/position = Vector3(0.009702273, 0.14449012, -0.0938516)
-bones/14/rotation = Quaternion(-0.4985187, -8.952571e-05, 0.25960752, 0.8270932)
-bones/15/position = Vector3(-0.10450728, 0.22616594, -0.026558556)
-bones/15/rotation = Quaternion(-0.3967154, 0.38349468, -0.1891968, 0.812252)
-bones/16/position = Vector3(-0.07455925, -0.04692732, -3.0184218e-08)
-bones/16/rotation = Quaternion(0.010156104, -0.18648286, 0.9823706, 0.008313462)
-bones/17/rotation = Quaternion(0.023063226, 0.000157398, 0.0032334859, 0.99972886)
-bones/18/rotation = Quaternion(-0.6116697, 0.002533471, 0.0008904037, 0.7911087)
-bones/19/position = Vector3(0.07455925, -0.04692738, -3.02964e-08)
-bones/19/rotation = Quaternion(-0.0062845666, 0.12080198, 0.9926165, -0.008936215)
-bones/20/rotation = Quaternion(0.023063224, -0.00015736259, -0.003233474, 0.9997288)
-bones/21/rotation = Quaternion(-0.792553, 0.002029981, -0.0018231295, 0.60979694)
-bones/22/position = Vector3(0.11063671, 0.46598735, 1.0433531)
-bones/22/rotation = Quaternion(0.6023692, -0.4017803, 0.12367744, 0.6785484)
+bones/1/rotation = Quaternion(0.5648932, 0.0032426482, -0.004040857, 0.82514787)
+bones/2/rotation = Quaternion(0.034949932, 1.2340075e-07, 6.3417405e-10, 0.9993891)
+bones/3/position = Vector3(-0.13482243, 0.05257576, -0.0037890568)
+bones/3/rotation = Quaternion(-0.079156905, -0.24224567, 0.8073609, 0.5321839)
+bones/4/rotation = Quaternion(-0.70825344, 0.1201459, -0.3324692, 0.61106986)
+bones/5/rotation = Quaternion(-0.10600532, -0.084383905, 0.07545141, 0.98790157)
+bones/6/rotation = Quaternion(-0.6451973, -0.3699684, -0.17571034, 0.6449572)
+bones/7/position = Vector3(0.095023885, 0.2988363, -0.037884086)
+bones/7/rotation = Quaternion(-0.0880252, 0.31957725, -0.44377673, 0.8325769)
+bones/8/position = Vector3(0.04027848, 0.3737506, 0.019249912)
+bones/8/rotation = Quaternion(-0.5901652, -0.32968503, -0.32878578, 0.65947914)
+bones/9/rotation = Quaternion(0.09677946, -7.30744e-11, 2.2391365e-08, 0.99530584)
+bones/10/position = Vector3(0.073906146, 0.08636369, 3.853621e-08)
+bones/10/rotation = Quaternion(-0.119934216, -0.010204965, -0.85823727, 0.49893942)
+bones/11/rotation = Quaternion(-0.4583216, -0.40650797, 0.068733916, 0.7873807)
+bones/12/rotation = Quaternion(-0.032913685, 0.036279734, 0.15234628, 0.9871125)
+bones/13/rotation = Quaternion(-0.555662, -0.0023087931, -0.14704427, 0.8182985)
+bones/14/position = Vector3(0.00970234, 0.14449014, -0.09385164)
+bones/14/rotation = Quaternion(-0.4985187, -8.9540146e-05, 0.2596075, 0.8270932)
+bones/15/position = Vector3(-0.07472164, 0.18097878, -0.050168924)
+bones/15/rotation = Quaternion(-0.5051416, 0.14705603, -0.14040922, 0.83874416)
+bones/16/position = Vector3(-0.07455924, -0.046927284, -1.578925e-08)
+bones/16/rotation = Quaternion(0.048025995, -0.39777696, 0.91609323, 0.015497354)
+bones/17/rotation = Quaternion(0.38034564, 0.04975801, 0.01707324, 0.9233472)
+bones/18/rotation = Quaternion(-0.6471048, 0.002153012, 0.0012832449, 0.76239705)
+bones/19/position = Vector3(0.074559234, -0.13512424, 0.0065427423)
+bones/19/rotation = Quaternion(-0.013184794, 0.07819598, 0.9968348, -0.005658877)
+bones/20/rotation = Quaternion(0.07898753, -0.0136577245, -0.0023103359, 0.99677944)
+bones/21/rotation = Quaternion(-0.77279204, 0.005150923, 0.0013434164, 0.63463706)
+bones/22/position = Vector3(0.037840486, 0.580708, 1.0538247)
+bones/22/rotation = Quaternion(0.33867583, 0.13481644, 0.51415944, 0.77637833)
 
 [node name="body" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" index="0" unique_id=1310757747 groups=["body_mesh"]]
 surface_material_override/0 = ExtResource("35_m1s71")
@@ -3936,7 +3964,7 @@ surface_material_override/0 = ExtResource("35_m1s71")
 surface_material_override/0 = ExtResource("36_4anjp")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" index="3" unique_id=552018988]
-transform = Transform3D(0.63663787, -0.6620048, -0.39552703, 0.7033569, 0.7087698, -0.054169424, 0.31619805, -0.24371028, 0.9168556, 0.095822655, 1.0448178, -0.21598703)
+transform = Transform3D(0.4329143, -0.7164031, 0.5471304, 0.14508659, 0.6544171, 0.74208355, -0.88968253, -0.24187733, 0.38724706, 0.022885196, 1.0542556, -0.33070767)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -3973,7 +4001,7 @@ light_energy = 0.0
 libraries/ = SubResource("AnimationLibrary_hfpb6")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" index="4" unique_id=1880319706]
-transform = Transform3D(-0.99981976, -0.015474274, -0.011016672, 0.011582442, -0.03696038, -0.9992497, 0.015055489, -0.9991971, 0.03713301, -0.087873295, 0.032966614, -0.13120615)
+transform = Transform3D(-0.999908, 0.013587728, -0.00029333972, -0.0062030936, -0.4754754, -0.8797074, -0.012092632, -0.8796241, 0.47551608, -0.098694846, 0.07452902, 0.021121971)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -3983,7 +4011,7 @@ script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 
 [node name="right_foot" type="BoneAttachment3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" index="5" unique_id=1885491197]
-transform = Transform3D(-0.99981976, -0.015474274, -0.011016672, 0.011582442, -0.03696038, -0.9992497, 0.015055489, -0.9991971, 0.03713301, -0.087873295, 0.032966614, -0.13120615)
+transform = Transform3D(-0.999908, 0.013587728, -0.00029333972, -0.0062030936, -0.4754754, -0.8797074, -0.012092632, -0.8796241, 0.47551608, -0.098694846, 0.07452902, 0.021121971)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -4006,7 +4034,7 @@ secondary_limit_angle = 0.261799
 secondary_damp_threshold = 1.0
 
 [node name="SlimeAttachment" type="BoneAttachment3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" index="7" unique_id=412721731]
-transform = Transform3D(0.9999998, 9.313199e-10, 2.4374611e-07, -2.9375306e-08, 0.99377066, 0.11144405, -2.4221552e-07, -0.11144404, 0.99377066, 1.8365476e-10, 1.1569486, 0.021463253)
+transform = Transform3D(0.9999862, -0.0031916043, -0.0041336836, 0.004271348, 0.95526016, 0.29573548, 0.003004874, -0.29574913, 0.9552608, -0.00086985924, 1.1384687, -0.053747967)
 bone_name = "torso"
 bone_idx = 2
 

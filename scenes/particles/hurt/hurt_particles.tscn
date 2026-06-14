@@ -51,7 +51,7 @@ tracks/0/path = NodePath(".:emitting")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.16666667),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -80,7 +80,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.23333333, 1.9666667),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [6.0, 6.0, 1.0, 0.0, 0.0]
+"values": [6.0, 2.5, 0.5, 0.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_12k5t"]
@@ -94,7 +94,7 @@ _data = {
 [node name="Hurt" type="GPUParticles3D" parent="." unique_id=1450112268]
 material_override = SubResource("StandardMaterial3D_c4vjc")
 amount = 256
-lifetime = 1.4000000000000001
+lifetime = 1.4
 one_shot = true
 preprocess = 0.18
 explosiveness = 1.0

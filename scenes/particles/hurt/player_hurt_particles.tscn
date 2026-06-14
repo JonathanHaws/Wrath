@@ -5,3 +5,8 @@
 [node name="PlayerHurtParticles" type="Node3D" unique_id=849758516]
 
 [node name="HurtParticles" parent="." unique_id=850109977 instance=ExtResource("1_3wo0l")]
+
+[node name="OmniLight3D" parent="HurtParticles" index="1" unique_id=682954786]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.1757607, 0)
+
+[editable path="HurtParticles"]
