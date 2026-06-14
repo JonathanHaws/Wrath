@@ -3,6 +3,7 @@ extends Node
 @export var SpringArm: SpringArm3D
 @export var LOCK_ON_SPEED = 7
 @export var LOCK_ON_OFFSET: float = 4.0
+@export var MAX_LOOK_DOWN_ANGLE: float = -25.0
 @export var LOCK_ON_AREA: Area3D
 @export var lock_on_ui: Control 
 var lock_on_activated = false
@@ -76,6 +77,9 @@ func _physics_process(_delta: float) -> void:
 		SpringArm.look_at(final_target_position, Vector3.UP)
 	var new_rotation = SpringArm.global_rotation
 	
+	#print(SpringArm.global_rotation)
+	new_rotation.x = max(new_rotation.x, deg_to_rad(MAX_LOOK_DOWN_ANGLE))
+
 	SpringArm.global_rotation.x = lerp_angle(current_rotation.x, new_rotation.x, LOCK_ON_SPEED * _delta)
 	SpringArm.global_rotation.y = lerp_angle(current_rotation.y, new_rotation.y, LOCK_ON_SPEED * _delta)
 	if "last_orientation" in CAMERA: CAMERA.last_orientation = SpringArm.global_transform.basis
