@@ -89,20 +89,19 @@ _data = {
 &"projectile": SubResource("Animation_v5ope")
 }
 
-[node name="GhostProjectile" type="Node3D" unique_id=1464689911 node_paths=PackedStringArray("collision_animation_player", "ray", "hurt_box")]
+[node name="GhostProjectile" type="Node3D" unique_id=1464689911 node_paths=PackedStringArray("collision_animation_player", "hurt_box")]
 script = ExtResource("1_3qcbf")
 speed = 20.0
 exclude_groups = Array[String](["gluttony", "enemy"])
 collision_animation_player = NodePath("AnimationPlayer")
 collision_animation_name = "collision"
-ray = NodePath("RayCast3D")
 hurt_box = NodePath("Attack")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=378754282]
 
 [node name="projectile" parent="Node3D" unique_id=96990622 instance=ExtResource("2_av0uo")]
 
-[node name="Cylinder" parent="Node3D/projectile" index="0" unique_id=1454792017]
+[node name="Cylinder" parent="Node3D/projectile" index="0" unique_id=1428825205]
 surface_material_override/0 = ExtResource("3_kk5d8")
 
 [node name="Attack" type="Area3D" parent="." unique_id=2008542141 groups=["ghost"]]
@@ -126,10 +125,5 @@ light_energy = 0.1
 light_specular = 0.0
 omni_range = 15.0
 omni_attenuation = 0.5
-
-[node name="RayCast3D" type="RayCast3D" parent="." unique_id=1228087490]
-visible = false
-exclude_parent = false
-hit_back_faces = false
 
 [editable path="Node3D/projectile"]

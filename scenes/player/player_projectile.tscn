@@ -232,13 +232,12 @@ _data = {
 &"KILL": SubResource("Animation_1d31d")
 }
 
-[node name="PlayerProjectile" type="Node3D" unique_id=237657882 node_paths=PackedStringArray("collision_animation_player", "ray", "hurt_box")]
+[node name="PlayerProjectile" type="Node3D" unique_id=237657882 node_paths=PackedStringArray("collision_animation_player", "hurt_box")]
 script = ExtResource("1_kpr02")
 speed = 20.0
 exclude_groups = Array[String](["ghost"])
 collision_animation_player = NodePath("AnimationPlayer")
 collision_animation_name = "collision"
-ray = NodePath("RayCast3D")
 hurt_box = NodePath("Attack")
 
 [node name="Node3D" type="Node3D" parent="." unique_id=908187687]
@@ -276,11 +275,6 @@ light_energy = 0.0
 light_specular = 0.0
 omni_range = 15.0
 omni_attenuation = 0.5
-
-[node name="RayCast3D" type="RayCast3D" parent="." unique_id=2020543375]
-visible = false
-exclude_parent = false
-hit_from_inside = true
 
 [node name="CameraEffects" type="Node" parent="." unique_id=987861492]
 script = ExtResource("3_7bp6w")
