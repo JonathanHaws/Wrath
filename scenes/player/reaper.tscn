@@ -3609,9 +3609,6 @@ shader_parameter/blend = 0.0
 [sub_resource type="BoxShape3D" id="BoxShape3D_y0gmj"]
 size = Vector3(17.3834, 22.7476, 51.4006)
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_5cvkf"]
-radius = 0.05
-
 [node name="Node3D" type="Node3D" unique_id=1322744736]
 
 [node name="Reaper" type="CharacterBody3D" parent="." unique_id=27859288 node_paths=PackedStringArray("CAMERA", "MESH", "COLLISON_SHAPE", "PARTICLES", "ANIM", "MESH_ANIM", "FADE_IN_ANIM") groups=["player", "player_body"]]
@@ -4276,8 +4273,7 @@ debug_color = Color(0.7, 0.7, 0.7, 0.368627)
 
 [node name="SpringArm3D" type="SpringArm3D" parent="." unique_id=209570210 groups=["ignore_interaction_tween"]]
 physics_interpolation_mode = 2
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.412, 0)
-shape = SubResource("SphereShape3D_5cvkf")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2837057, 0)
 spring_length = 7.2
 margin = 1.0
 
