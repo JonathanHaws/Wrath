@@ -5,7 +5,6 @@ extends Camera3D
 @export var Root: Node3D
 @export var Body: Node3D
 @export var SpringArm: SpringArm3D
-@export var EXCLUDED_BODY: PhysicsBody3D ## If the camera is between players body and wall. But the player is against the wall. the spring arm has to phase into 1. 
 @export var MOUSE_SENSITIVITY: float = 0.003
 @export var CONTROLLER_SENSITIVITY: float = 0.07
 @export var SENSITIVITY_MULTIPLIER: float = 1.0
@@ -35,7 +34,6 @@ func set_camera_transform(new_transform: Transform3D) -> void:
 func _ready() -> void:
 	if Config: MOUSE_SENSITIVITY = Config.load_setting("controls", "mouse_sensitivity", MOUSE_SENSITIVITY)
 	if Config: CONTROLLER_SENSITIVITY = Config.load_setting("controls", "controller_sensitivity", CONTROLLER_SENSITIVITY)
-	if EXCLUDED_BODY: SpringArm.add_excluded_object(EXCLUDED_BODY)
 	set_transform(get_springarm_hit_transform())
 			
 func _input(event: InputEvent) -> void:
@@ -57,8 +55,6 @@ func get_springarm_hit_transform() -> Transform3D:
 	)
 			
 func _physics_process(_delta: float) -> void:
-	
-	print(SpringArm.global_position)
 	
 	Root.global_position = Body.global_position
 	Body.position = Vector3.ZERO
