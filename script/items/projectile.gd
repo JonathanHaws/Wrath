@@ -1,14 +1,12 @@
 extends Node3D
 @export_group("Trajectory")
-@export var root: Node3D = self # specify root for movement/collision
-@export var speed = 15.0
+@export var root: Node3D = self ## specify root for movement/collision
+@export var speed = 15.0 
 @export var gravity: float = 0.0  
-@export var random_velocity_x: float = 0.0
-@export var random_velocity_y: float = 0.0
+@export var horizontal_spread: float = 0.0 ## how much random initial x velocity the projectile will get
+@export var vertical_spread: float = 0.0 ## how much random initial y velocity the projectile will get
+var previous_position: Vector3
 var velocity: Vector3
-var start_position: Vector3
-var initial_velocity: Vector3
-var age: float = 0.0
 
 @export_subgroup("Homing")
 @export var home_in_ready: bool = false
@@ -24,12 +22,12 @@ var age: float = 0.0
 @export var hurt_box: Node ## destroy when hurtboxes hit something
 @export var collision_point: Node3D ## Node that will teleport to the point of collision. (Useful Chain Reaction Spawning)
 
-func get_velocity_from_orientation() -> Vector3:
-	var projectile_velocity: Vector3 = -global_transform.basis.z.normalized() * speed
-	projectile_velocity += Vector3(
+func get_velocity_from_orientation(speed_value: float, random_velocity_x: float, random_velocity_y: float) -> Vector3:
+	return -global_transform.basis.z.normalized() * speed_value + Vector3(
 		randf_range(-random_velocity_x, random_velocity_x),
-		randf_range(-random_velocity_y, random_velocity_y), 0)
-	return projectile_velocity
+		randf_range(-random_velocity_y, random_velocity_y),
+		0
+	)
 
 func raycast(from: Vector3, to: Vector3) -> Dictionary:
 	var query := PhysicsRayQueryParameters3D.create(from, to)
@@ -45,22 +43,20 @@ func point_towards(node: Node3D, direction: Vector3) -> void:
 	if abs(direction.normalized().dot(up)) > 0.999: up = Vector3.RIGHT
 	node.look_at(node.global_position + direction, up)
 
-func get_position_from_age(t: float) -> Vector3:
-	return (start_position
-		+ initial_velocity * t
-		+ Vector3.DOWN * gravity * t * t * 0.5
-	)
-
-func get_age_at_y_position(y: float) -> float:
-	var a := -0.5 * gravity
-	var b := initial_velocity.y
-	var c := start_position.y - y
-
-	var discriminant := b * b - 4.0 * a * c
-	if discriminant < 0.0:
-		return -1.0
-
-	return (-b - sqrt(discriminant)) / (2.0 * a)
+# To be used if needed for absolute determinisitism?
+#func get_position_from_age(t: float) -> Vector3:
+	#return (start_position
+		#+ initial_velocity * t
+		#+ Vector3.DOWN * gravity * t * t * 0.5
+	#)
+#func get_age_at_y_position(y: float) -> float:
+	#var a := -0.5 * gravity
+	#var b := initial_velocity.y
+	#var c := start_position.y - y
+	#var discriminant := b * b - 4.0 * a * c
+	#if discriminant < 0.0:
+		#return -1.0
+	#return (-b - sqrt(discriminant)) / (2.0 * a)
 
 func play_collision_animation():
 	if collision_animation_player and collision_animation_name != "":
@@ -83,22 +79,18 @@ func _ready():
 	if hurt_box and hurt_box.has_signal("collided_with_hitshape"):
 		hurt_box.connect("collided_with_hitshape", Callable(self, "play_collision_animation"))
 	
-	start_position = root.global_position
-	velocity = get_velocity_from_orientation()
-	initial_velocity = get_velocity_from_orientation()
-	
+	velocity = get_velocity_from_orientation(speed, horizontal_spread, vertical_spread)
 	#print(velocity)
 	
 func _physics_process(delta: float) -> void:
 
-	age += delta
-	var current_position = get_position_from_age(age)
-	var next_position = get_position_from_age(age + delta)
-	root.global_position = current_position
+	velocity.y -= gravity * delta
 	
-	point_towards(self, next_position - current_position)
+	previous_position = root.global_position
+	root.global_position += velocity * delta
+	point_towards(self, root.global_position - previous_position)
 	
-	var hit: Dictionary = raycast(current_position, next_position)
+	var hit: Dictionary = raycast(previous_position, root.global_position)
 	if not hit.is_empty():
 		if collision_point:
 			collision_point.global_position = hit.position
