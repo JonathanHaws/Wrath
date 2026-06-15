@@ -21,8 +21,8 @@ var mouse_delta = Vector2.ZERO
 @export var running_fov: float = 74.0
 
 @export_subgroup("Target_Lerp")
-@export var TARGET_NODE: Node3D ## Used for when smooth camera is desired instead of instant snapping to the end of the spring arm. REQUIRED Use top level on this Camera node
-@export var SNAP_SPEED: float = 10.0 ## How quickly the camera moves to the target node
+@export var SNAP_INSTANT: bool = false ## No smoothing the camera instantly teleports to the spring arm hit position
+@export var SNAP_SPEED: float = 25.0 ## How quickly the camera moves to the spring arm hit position
 
 func set_camera_transform(new_transform: Transform3D) -> void:
 	Root.transform = Transform3D.IDENTITY
@@ -36,7 +36,7 @@ func _ready() -> void:
 	if Config: MOUSE_SENSITIVITY = Config.load_setting("controls", "mouse_sensitivity", MOUSE_SENSITIVITY)
 	if Config: CONTROLLER_SENSITIVITY = Config.load_setting("controls", "controller_sensitivity", CONTROLLER_SENSITIVITY)
 	#if EXCLUDED_BODY: SpringArm.add_excluded_object(EXCLUDED_BODY)
-	set_transform(TARGET_NODE.global_transform)
+	set_transform(get_springarm_hit_transform())
 			
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -46,6 +46,15 @@ func rotate_mesh_towards_camera_xz(delta: float, mesh: Node3D, input_vector: Vec
 	if input_vector.length() == 0: return
 	var input_angle = atan2(-input_vector.x, -input_vector.y)
 	mesh.global_rotation.y = lerp_angle(mesh.global_rotation.y, SpringArm.global_rotation.y + input_angle, turn_speed * delta)
+
+func get_springarm_hit_transform() -> Transform3D:
+	var hit_length: float = SpringArm.get_hit_length()
+	#print(hit_length)
+	if hit_length == 0.0: return SpringArm.global_transform
+	return Transform3D(
+		SpringArm.global_transform.basis,
+		SpringArm.global_transform.origin + SpringArm.global_transform.basis.z.normalized() * hit_length
+	)
 			
 func _physics_process(_delta: float) -> void:
 	Root.global_position = Body.global_position
@@ -55,7 +64,9 @@ func _physics_process(_delta: float) -> void:
 	#print(position)
 	
 	if lerp_fov: fov = lerp(fov, target_fov, lerp_speed)
-	if TARGET_NODE: global_transform = global_transform.interpolate_with(TARGET_NODE.global_transform, SNAP_SPEED * _delta)
+	
+	if SNAP_INSTANT: global_transform = get_springarm_hit_transform()
+	else: global_transform = global_transform.interpolate_with(get_springarm_hit_transform(), SNAP_SPEED * _delta)
 
 	if Input.mouse_mode != Input.MOUSE_MODE_CAPTURED: 
 		mouse_delta = Vector2.ZERO

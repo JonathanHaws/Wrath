@@ -4250,7 +4250,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("70_ojv1r")
 
-[node name="Camera3D" type="Camera3D" parent="." unique_id=657152026 node_paths=PackedStringArray("Root", "Body", "SpringArm", "TARGET_NODE") groups=["player_camera"]]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=657152026 node_paths=PackedStringArray("Root", "Body", "SpringArm") groups=["player_camera"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.412, 7.1015263)
 top_level = true
 current = true
@@ -4262,7 +4262,6 @@ Root = NodePath("..")
 Body = NodePath("../Reaper")
 SpringArm = NodePath("../SpringArm3D")
 target_fov = 65.0
-TARGET_NODE = NodePath("../SpringArm3D/Node3D")
 
 [node name="HeadFollowTarget" type="Node3D" parent="Camera3D" unique_id=1622756369]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.896154, -0.64839, -7.68562)
@@ -4281,9 +4280,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.412, 0)
 shape = SubResource("SphereShape3D_5cvkf")
 spring_length = 7.2
 margin = 1.0
-
-[node name="Node3D" type="Node3D" parent="SpringArm3D" unique_id=1598816733]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.1015263)
 
 [connection signal="animation_finished" from="Reaper/AnimationPlayer" to="Reaper" method="_on_animation_finished"]
 
