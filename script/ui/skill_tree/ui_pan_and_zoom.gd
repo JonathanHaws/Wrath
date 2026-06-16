@@ -45,8 +45,8 @@ func _process(delta: float) -> void:
 		center_required_node()
 		return
 
-	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
-		Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	#if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED:
+		#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 	var move: Vector2 = Vector2(
 		Input.get_axis("skill_tree_left", "skill_tree_right"),

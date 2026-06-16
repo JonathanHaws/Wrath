@@ -396,32 +396,57 @@ func load_controls_settings() -> void:
 #endregion
 
 #region  Hidden Cursor
-var last_position_visible :Vector2 = Vector2.ZERO
-var mouse_tolerance: float = 10.0  # pixels
+var last_position_visible: Vector2 = Vector2.ZERO ## Used to keep continuinity as capturing the cursor resets its position
+var last_mouse_visible: bool = false ## Wether the mouse was visible last frame. Used in juction with ^^^ to keep mouse position continuity
+var last_time = 0 ## Last timestamp used to manually calcualte delta reliabley as it can be changed by various things
+var mouse_tolerance: float = 10.0  ## How far the mouse has to be moved to be shown in pixels
+var idle_timeout_seconds: float = 3.0 ## How long the mouse has to be still to automatically hide
 var idle_time_seconds: float = 0.0
-var idle_timeout_seconds: float = 2.0
+
 func hidden_cursor_ready() -> void:
 	await get_tree().process_frame
-	process_mode = Node.PROCESS_MODE_ALWAYS
 	idle_time_seconds = idle_timeout_seconds + 1
+
 func hidden_cursor_process(_delta):
+	var now = Time.get_ticks_msec() / 1000.0
+	var delta = now - last_time
+	last_time = now
+	
+	#print(delta)
 	#print(Input.get_mouse_mode())
 	#print(idle_time_seconds)
-	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
-		idle_time_seconds += _delta
+
+
+	var mouse_visible: bool = Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE
+	
+	if !mouse_visible: # Reset count down if the cursor is not visible
+		idle_time_seconds = 0.0 
+
+	if mouse_visible:
+		idle_time_seconds += delta
 		if idle_time_seconds >= idle_timeout_seconds:
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			idle_time_seconds = 0
+			
+	if mouse_visible and not last_mouse_visible:
+		#print('restoring mouse position', last_position_visible )
+		Input.warp_mouse(last_position_visible)	
+		
+	last_mouse_visible = mouse_visible	
+			
 func hidden_cursor_input(event):
+	if Input.get_mouse_mode() == Input.MOUSE_MODE_VISIBLE:
+		last_position_visible = get_viewport().get_mouse_position()
+		
 	if Input.get_mouse_mode() == Input.MOUSE_MODE_CAPTURED: return
 	if event is InputEventMouseMotion:
 		var current_pos = get_viewport().get_mouse_position()
 		if last_position_visible.distance_to(current_pos) > mouse_tolerance:
-			last_position_visible = get_viewport().get_mouse_position()
 			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 #endregion
 
 func _ready() -> void:
+	process_mode = Node.PROCESS_MODE_ALWAYS # Ensure process functions still get called when the game is paused
 	load_audio_settings()
 	load_graphics_settings()
 	load_controls_settings()

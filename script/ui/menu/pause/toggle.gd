@@ -9,8 +9,11 @@ func toggle(paused: bool) -> void:
 	Engine.time_scale = 0 if paused else 1
 	get_tree().paused = paused
 	
-	if paused: Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-	else: Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	if paused: # Already visible no need to change (More seamless)
+		if Input.get_mouse_mode() != Input.MOUSE_MODE_VISIBLE: 
+			Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+	else: 
+		Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	
 	if self.visible:
 		if Config and Config.has_method("save_window_transform"): Config.save_window_transform()

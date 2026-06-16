@@ -18,13 +18,13 @@ func _on_pressed() -> void:
 	if not scene: return
 	if animation_player:
 		#print("test", Engine.time_scale)
-		Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+		#Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 		Engine.time_scale = 1.0
 		animation_player.play(redirect_animation_name)
 	else: redirect()
 	
 func redirect() -> void:
-	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
+	#Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	var instance = scene.instantiate()
 	var file_name = scene.resource_path.get_file().get_basename()

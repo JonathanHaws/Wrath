@@ -57,7 +57,7 @@ alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 theme = ExtResource("1_bqttb")
-text = "MASTER:"
+text = "MASTER"
 
 [node name="HSlider" type="HSlider" parent="Options/Master" unique_id=396730028 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
@@ -78,7 +78,7 @@ alignment = 1
 [node name="Label" type="Label" parent="Options/Music" unique_id=1004771511]
 layout_mode = 2
 theme = ExtResource("1_bqttb")
-text = "MUSIC:"
+text = "MUSIC"
 
 [node name="HSlider" type="HSlider" parent="Options/Music" unique_id=945468493 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
@@ -99,7 +99,7 @@ alignment = 1
 [node name="Label" type="Label" parent="Options/SFX" unique_id=1577338629]
 layout_mode = 2
 theme = ExtResource("1_bqttb")
-text = "SFX:"
+text = "SFX"
 
 [node name="HSlider" type="HSlider" parent="Options/SFX" unique_id=1453142023 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
@@ -121,7 +121,7 @@ alignment = 1
 [node name="Label" type="Label" parent="Options/Dialog" unique_id=1151581099]
 layout_mode = 2
 theme = ExtResource("1_bqttb")
-text = "DIALOG:"
+text = "DIALOG"
 
 [node name="HSlider" type="HSlider" parent="Options/Dialog" unique_id=206874507 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 custom_minimum_size = Vector2(150, 0)
