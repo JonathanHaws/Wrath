@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cls12q06quifx"]
 
-[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="1_48c50"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="1_48c50"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="1_gkebh"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://script/ui/grab_focus.gd" id="2_k2sbj"]
 [ext_resource type="FontFile" uid="uid://dpdckaagju1of" path="res://textures/fonts/Wrath.otf" id="3_03rxr"]
@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://cqi7s4551j7xa" path="res://script/ui/menu/game/continue.gd" id="5_2fxgv"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="6_k2sbj"]
 [ext_resource type="Script" uid="uid://dbk4ank3cq0ny" path="res://script/ui/menu/quit.gd" id="7_nikc7"]
-[ext_resource type="AudioStream" uid="uid://bl2yh8xx8yn4s" path="res://audio/sfx/characters/menu/Menu_Load.ogg" id="9_8af7w"]
+[ext_resource type="AudioStream" uid="uid://bl2yh8xx8yn4s" path="res://audio/sfx/menu/Menu_Load.ogg" id="9_8af7w"]
 [ext_resource type="AudioStream" uid="uid://bskcgvhx85bs3" path="res://audio/music/title_screen.ogg" id="10_03rxr"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="10_8af7w"]
 [ext_resource type="PackedScene" uid="uid://cyc6qliwd6avp" path="res://scenes/ui/menu/transitions/fade_out_music_0p3.tscn" id="11_nikc7"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="12_k2sbj"]
 [ext_resource type="PackedScene" uid="uid://f3fcn8ktks1h" path="res://scenes/ui/menu/transitions/fade_to_black.tscn" id="14_nikc7"]
 [ext_resource type="PackedScene" uid="uid://dbkxf7jmk86ly" path="res://scenes/ui/menu/transitions/fade_from_black.tscn" id="16_tmtx3"]
+
 
 [sub_resource type="Animation" id="Animation_nikc7"]
 length = 0.001

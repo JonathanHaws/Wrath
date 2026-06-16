@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cw2iscxy4kg2r" path="res://script/ui/menu/game/load.gd" id="1_6x4ew"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="1_xbifh"]
 [ext_resource type="PackedScene" uid="uid://bchlq7ojvre5o" path="res://scenes/ui/menu/game/profile/profile_load.tscn" id="2_t8d72"]
-[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="3_3kwj5"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="3_3kwj5"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/themes/theme.tres" id="3_opbiq"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="4_3kwj5"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="4_inbrs"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bwacv5bktdk46" path="res://scenes/ui/menu/transitions/fade_out_sfx_0p3.tscn" id="6_jybea"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="7_2maut"]
 [ext_resource type="PackedScene" uid="uid://cyc6qliwd6avp" path="res://scenes/ui/menu/transitions/fade_out_music_0p3.tscn" id="7_r3b1n"]
+
 
 [sub_resource type="Animation" id="Animation_ivmwj"]
 resource_name = "fade"

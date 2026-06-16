@@ -8,12 +8,12 @@
 [ext_resource type="Script" uid="uid://hf3odyswfp0p" path="res://script/ui/skill_tree/skill.gd" id="5_n1vdw"]
 [ext_resource type="Script" uid="uid://dj02tl55k436t" path="res://script/ui/skill_tree/ui_pan_and_zoom.gd" id="5_ubdiu"]
 [ext_resource type="Texture2D" uid="uid://cx2y2gjfx4lpw" path="res://textures/menu/skill_tree/progress/Lust.png" id="5_y257w"]
-[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="7_cvmyc"]
-[ext_resource type="AudioStream" uid="uid://bupfexkisbh8k" path="res://audio/sfx/characters/menu/skill_tree/insufficent.ogg" id="7_g7gqr"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="7_cvmyc"]
+[ext_resource type="AudioStream" uid="uid://bupfexkisbh8k" path="res://audio/sfx/menu/skill_tree/insufficent.ogg" id="7_g7gqr"]
 [ext_resource type="Texture2D" uid="uid://d104cj8pnvmmf" path="res://textures/menu/skill_tree/progress/Gluttony.png" id="7_x7g2o"]
 [ext_resource type="Texture2D" uid="uid://dtc4k0883hbbi" path="res://textures/menu/skill_tree/progress/Greed.png" id="8_fxm8d"]
-[ext_resource type="AudioStream" uid="uid://tukr53oaefox" path="res://audio/sfx/characters/menu/skill_tree/aquired.ogg" id="8_ncvsq"]
 [ext_resource type="Texture2D" uid="uid://bo4ub4xkrnjyr" path="res://textures/menu/skill_tree/progress/Sloth.png" id="9_fq5i0"]
+[ext_resource type="AudioStream" uid="uid://ba0ik3gupdpsa" path="res://audio/sfx/menu/skill_tree/purchased.ogg" id="10_0d38o"]
 [ext_resource type="Texture2D" uid="uid://lovdox0pt7q1" path="res://textures/menu/skill_tree/progress/Wrath.png" id="10_1lfrl"]
 [ext_resource type="Texture2D" uid="uid://caga3p1qqekcr" path="res://textures/menu/skill_tree/skills/Skills-1.png" id="10_mlmuh"]
 [ext_resource type="Texture2D" uid="uid://xw3jd85ytxqu" path="res://textures/menu/skill_tree/progress/Envy.png" id="11_0gl5m"]
@@ -92,7 +92,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_jsg0y"]
@@ -211,6 +211,7 @@ _data = {
 }
 
 [node name="SkillTree" type="Control" unique_id=1320779895 node_paths=PackedStringArray("ANIM")]
+visible = false
 z_index = 3000
 z_as_relative = false
 layout_mode = 3
@@ -239,6 +240,7 @@ texture = SubResource("GradientTexture2D_odw3s")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="TextureRect" unique_id=890947007]
 libraries/ = SubResource("AnimationLibrary_jsg0y")
+autoplay = &"RESET"
 
 [node name="UiScale" type="Control" parent="TextureRect" unique_id=1078690376 groups=["ui_scalable"]]
 layout_mode = 1
@@ -349,9 +351,9 @@ process_mode = 3
 stream = ExtResource("7_g7gqr")
 bus = &"SFX"
 
-[node name="Sufficient" type="AudioStreamPlayer" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=412770777 groups=["skill_purchased_sound_group_sound"]]
+[node name="Purchased" type="AudioStreamPlayer" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=412770777 groups=["skill_purchased_sound_group_sound"]]
 process_mode = 3
-stream = ExtResource("8_ncvsq")
+stream = ExtResource("10_0d38o")
 bus = &"SFX"
 
 [node name="Root" parent="TextureRect/PanZoom/Control/Skill Tree" unique_id=124740578 instance=ExtResource("14_cm31t")]

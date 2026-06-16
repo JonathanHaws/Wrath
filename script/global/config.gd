@@ -404,6 +404,7 @@ var idle_timeout_seconds: float = 3.0 ## How long the mouse has to be still to a
 var idle_time_seconds: float = 0.0
 
 func hidden_cursor_ready() -> void:
+	last_position_visible = get_viewport().get_mouse_position()
 	await get_tree().process_frame
 	idle_time_seconds = idle_timeout_seconds + 1
 
@@ -428,9 +429,9 @@ func hidden_cursor_process(_delta):
 			Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 			idle_time_seconds = 0
 			
-	if mouse_visible and not last_mouse_visible:
+	#if mouse_visible and not last_mouse_visible:
 		#print('restoring mouse position', last_position_visible )
-		Input.warp_mouse(last_position_visible)	
+		#Input.warp_mouse(last_position_visible)	
 		
 	last_mouse_visible = mouse_visible	
 			

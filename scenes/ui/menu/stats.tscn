@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cmu4nbas5tjma" path="res://script/ui/stats.gd" id="5_plxju"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="6_1xvom"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="7_y35dd"]
-[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="8_pkb3e"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="8_pkb3e"]
 
 [node name="ColorRect" type="ColorRect" unique_id=626060116]
 process_mode = 3

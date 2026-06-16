@@ -8,7 +8,7 @@
 [ext_resource type="Script" uid="uid://yd63tscy6h1n" path="res://script/ui/menu/options/video/window_mode_dropdown.gd" id="5_4uyla"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="6_bu2dy"]
 [ext_resource type="Script" uid="uid://ch3c1tbf6o5wo" path="res://script/ui/hide_ui/hide_ui_toggle.gd" id="7_ygf0k"]
-[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="9_krw46"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="9_krw46"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="9_p4i2r"]
 
 [node name="ColorRect" type="ColorRect" unique_id=626060116]

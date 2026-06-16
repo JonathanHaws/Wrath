@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://cxj1escn8txf7" path="res://script/ui/menu/options/video/graphics_setting.gd" id="5_ftlkf"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="6_q7gyr"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="7_q0qa8"]
-[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="8_2b5g7"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="8_2b5g7"]
 
 [node name="Control" type="Control" unique_id=1288123490]
 process_mode = 3

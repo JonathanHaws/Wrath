@@ -3,9 +3,10 @@
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/themes/theme.tres" id="1_oii82"]
 [ext_resource type="Script" uid="uid://60mgdw58o7o0" path="res://script/ui/menu/game/profile.gd" id="2_sge7k"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="3_vlxqh"]
-[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="4_top0u"]
-[ext_resource type="AudioStream" uid="uid://ckcjmp63iqneu" path="res://audio/sfx/characters/menu/Menu_Delete.ogg" id="5_oii82"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="4_top0u"]
+[ext_resource type="AudioStream" uid="uid://ckcjmp63iqneu" path="res://audio/sfx/menu/Menu_Delete.ogg" id="5_oii82"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://script/ui/grab_focus.gd" id="6_sge7k"]
+
 
 [node name="Button" type="Button" unique_id=1120109589 groups=["menu_focus_sound", "menu_hovered_sound", "menu_profile_delete_sound", "profile"]]
 offset_right = 8.0

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dt1c8xw6lwsk5"]
 
-[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/characters/menu/Menu_Hover.wav" id="1_1va1p"]
+[ext_resource type="AudioStream" uid="uid://f6q46g68fwt7" path="res://audio/sfx/menu/Menu_Hover.wav" id="1_1va1p"]
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="1_8ie4y"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://script/ui/grab_focus.gd" id="1_044tn"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/themes/theme.tres" id="3_kssy0"]
@@ -8,8 +8,9 @@
 [ext_resource type="Script" uid="uid://dhsj4xkcsrngo" path="res://script/ui/menu/game/new.gd" id="4_xega6"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="5_d3ddl"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="7_044tn"]
-[ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://audio/sfx/characters/menu/Menu_New.wav" id="7_io75r"]
+[ext_resource type="AudioStream" uid="uid://bxy8idshrtel0" path="res://audio/sfx/menu/Menu_New.wav" id="7_io75r"]
 [ext_resource type="PackedScene" uid="uid://f3fcn8ktks1h" path="res://scenes/ui/menu/transitions/fade_to_black.tscn" id="8_044tn"]
+
 
 [sub_resource type="Animation" id="Animation_jce53"]
 resource_name = "begin"
