@@ -625,12 +625,12 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbtmo"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ic1i5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uahh5"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_3kw6g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ic1i5"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("26_uahh5")
@@ -866,7 +866,7 @@ HEALTH = 6000.0
 MAX_HEALTH = 6000.0
 FREE_ON_DEATH = [NodePath("../Mesh/LockOn"), NodePath("../CollisionShape3D")]
 DAMAGE_NUMBERS = ExtResource("7_dbtmo")
-TELEPORT_NODES_TO_HIT = [null]
+TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 ANIM_PLAYER = NodePath("AnimationPlayer")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PathFollow3D/Body/HitShape" unique_id=324219729]
@@ -997,8 +997,8 @@ target = NodePath("../../../../../../Target")
 
 [node name="Sphere_001" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="1" unique_id=1805627527]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27371758, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_ic1i5")
-surface_material_override/1 = SubResource("ShaderMaterial_3kw6g")
+surface_material_override/0 = SubResource("StandardMaterial3D_uahh5")
+surface_material_override/1 = SubResource("ShaderMaterial_ic1i5")
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="2" unique_id=636975154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.083372, 0, 0)

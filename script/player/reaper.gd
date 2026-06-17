@@ -17,32 +17,39 @@ var raw_velocity: Vector3 = Vector3.ZERO
 @export var AIR_FRICTION_PER_SECOND: float = 0.9 # fraction of velocity lost
 @export var RUN_DISABLED: bool = false	
 @export var CONTROLLER_RUN_MULTIPLIER: float = 1
+
 func apply_horizontal_friction() -> void: 
 	# Use in physics process for time independence
 	var friction: float = GROUND_FRICTION_PER_SECOND
 	if not is_on_floor(): friction = AIR_FRICTION_PER_SECOND
 	velocity.x *= friction
 	velocity.z *= friction
+
 func stop_horizontal_movement() -> void:
 	velocity.x = 0
 	velocity.z = 0
+
 func clamp_horizontal_movement() -> void:
 	if Vector2(velocity.x, velocity.z).length() <= MAX_SPEED: return
 	var velocity_normalized = Vector2(velocity.x, velocity.z).normalized()
 	velocity.x = velocity_normalized.x * MAX_SPEED
 	velocity.z = velocity_normalized.y * MAX_SPEED
+
 func get_keyboard_run_vector() -> Vector2:
 	if RUN_DISABLED: return Vector2.ZERO
 	return Input.get_vector("keyboard_left", "keyboard_right", "keyboard_forward", "keyboard_back")
+
 func get_controller_run_vector() -> Vector2:
 	if RUN_DISABLED: return Vector2.ZERO
 	var input_vector = Input.get_vector("controller_left", "controller_right", "controller_forward", "controller_back")
 	return input_vector * CONTROLLER_RUN_MULTIPLIER
+
 func get_run_vector() -> Vector2:
 	if RUN_DISABLED: return Vector2.ZERO
 	var run_vector = get_controller_run_vector() + get_keyboard_run_vector()
 	if run_vector.length() > 1: run_vector = run_vector.normalized()
 	return run_vector
+
 func is_walking() -> bool:
 	var input_vector_length = get_controller_run_vector().length()	
 	var is_controller_walking = input_vector_length > 0.0 and input_vector_length < 0.75
@@ -62,6 +69,7 @@ func get_run_acceleration() -> Vector3:
 	var run_vector = (Vector3(input_vector.x, 0, input_vector.y)).rotated(Vector3.UP, CAMERA.global_rotation.y)
 	var run_velocity = run_vector * acceleration
 	return 	run_velocity
+
 func try_run(delta: float) -> void:
 	if get_run_vector().length() > 0 and not is_walking(): CAMERA.target_fov = CAMERA.running_fov
 	else: CAMERA.target_fov = CAMERA.default_fov
@@ -80,11 +88,13 @@ func try_run(delta: float) -> void:
 @export var JUMP_BUFFER_TIME: float = 0.2
 var jump_buffer = 0;
 var air_time = 0;
+
 func update_jump_buffer(delta: float) -> void:	
 	if Input.is_action_just_pressed("jump"):
 		jump_buffer = JUMP_BUFFER_TIME
 	elif jump_buffer > 0:
 		jump_buffer -= delta	
+
 func try_jump() -> void:
 
 	if jump_buffer > 0: 
@@ -113,6 +123,7 @@ func try_jump() -> void:
 @export var MAX_FALL_SPEED: float = 50.0 
 @export var DESCEND_MULTIPLIER: float = 5.0
 @export var LAND_EFFECTS_COOLDOWN: float = 0.2
+
 func get_fall_velocity(delta: float) -> Vector3:
 	var fall_vel = velocity + get_gravity() * (GRAVITY_MULTIPLIER * GRAVITY_STRENGTH) * delta
 	if Input.is_action_pressed("descend"):
@@ -120,12 +131,14 @@ func get_fall_velocity(delta: float) -> Vector3:
 	if fall_vel.y < -MAX_FALL_SPEED:
 		fall_vel.y = -MAX_FALL_SPEED
 	return fall_vel
+
 func try_fall(delta: float) -> void:
 	if is_on_floor():
 		air_time = 0
 	else:
 		air_time += delta
 		velocity = get_fall_velocity(delta)
+
 func play_land_effects() -> void:
 	if air_time > LAND_EFFECTS_COOLDOWN:
 		if ANIM.current_animation == "GOD": return
@@ -138,7 +151,10 @@ func play_land_effects() -> void:
 @export var MAX_STAMINA: float = 10
 @export var STAMINA_RECOVERY: float = 30.0
 @export var ATTACKING_DISABLED: bool = true
-@export var PLUNGE_TIME: float = 0.03
+@export var PLUNGE_TIME: float = 0.35 ## If the player is falling (velocity.y negative). Requires an air_time of .3 to trigger plunge. To avoid triggering plunges when falling of ledges
+@export var PLUNGE_BUFFER_TIME: float = 0.3 ## Relates to ^^^ TO avoid a feeling of misinput plunge attempt is remembered on the case the player is falling then satisfies the condition
+var plunge_buffer: float = 0.0
+
 func try_block() -> void:
 	if Input.is_action_pressed("block"):
 		if in_interruptible_animation() and ANIM.current_animation not in ["BLOCK", "BLOCK_ENTER"]:
@@ -146,30 +162,39 @@ func try_block() -> void:
 	elif ANIM.current_animation == "BLOCK":
 		if not Input.is_action_pressed("block") and ANIM.current_animation != "BLOCK_EXIT":
 			ANIM.play("BLOCK_EXIT", 0.0)
+
 func try_attack() -> void:
 	if ATTACKING_DISABLED: return
 	if not Input.is_action_just_pressed("attack"): return
 	if not in_interruptible_animation(): return
 	
-	if is_on_floor():
+	if is_on_floor(): # Air attacks belong to plunge
 		ANIM.play("WINDUP")
-	elif air_time > PLUNGE_TIME:
-		# avoid plunging when on steps and didnt jump (temporary bandaid)
-		if velocity.y < -.5 or velocity.y > 0: # potentially add a queue to avoid a feeling of missed input
+
+func try_plunge(delta) -> void:
+	
+	if is_on_floor(): plunge_buffer = 0
+	plunge_buffer -= delta
+	if Input.is_action_just_pressed("attack") and not is_on_floor():
+		plunge_buffer = PLUNGE_BUFFER_TIME
+
+	if plunge_buffer > 0 and in_interruptible_animation() and not ATTACKING_DISABLED:
+		if velocity.y > 0 or air_time > PLUNGE_TIME:
 			ANIM.play("PLUNGE_FALL")	
-func try_plunge() -> void:
-	if is_on_floor() or air_time < PLUNGE_TIME:
-		if ANIM.current_animation == "PLUNGE_FALL": 
-			ANIM.play("PLUNGE", 0)
+	
+	if is_on_floor() and ANIM.current_animation == "PLUNGE_FALL": 
+		ANIM.play("PLUNGE", 0)
 
 @export_subgroup("Dash")
 @export var DASH_COOLDOWN: float = 0.3
 @export var DASH_EXIT_SPEED: float = 3.0
 @export var DASH_DISABLED: bool = false
 var dash_cooldown_left: float = 0.0
+
 func apply_dash_exit_velocity() -> void:
 	var forward: Vector3 = -MESH.global_transform.basis.z.normalized()
 	velocity += forward * DASH_EXIT_SPEED
+
 func try_dash(delta: float) -> void:
 	if DASH_DISABLED: return
 	if ANIM and ANIM.current_animation == "DASH": return
@@ -183,10 +208,13 @@ func try_dash(delta: float) -> void:
 @export var SHOOTING_DISABLED: bool = false
 @export var MAX_SHOOTING_ENERGY: int = 1
 @export var shooting_energy: int = MAX_SHOOTING_ENERGY
+
 func change_shooting_energy(amount: int) -> void:
 	shooting_energy = clamp(shooting_energy + amount, 0, MAX_SHOOTING_ENERGY)
+
 func load_max_shooting_data() -> void:
 	MAX_SHOOTING_ENERGY = Save.data.get("max_shooting_energy", MAX_SHOOTING_ENERGY)
+
 func load_shooting_data() -> void:
 	if Save.data.get("deaths",0) > Save.data.get("replenish_shooting_energy_at_death_count",0) \
 	or Save.data.get("rests",0) > Save.data.get("replenish_shooting_energy_at_rest_count",0):
@@ -195,6 +223,7 @@ func load_shooting_data() -> void:
 		Save.data["replenish_shooting_energy_at_rest_count"] = Save.data.get("rests",0)
 	load_max_shooting_data()
 	shooting_energy = Save.data.get("shooting_energy", MAX_SHOOTING_ENERGY)
+
 func try_shoot() -> void:
 	if SHOOTING_DISABLED: return
 	if ATTACKING_DISABLED: return
@@ -214,6 +243,7 @@ func try_shoot() -> void:
 @export var ANIM: AnimationPlayer
 @export var MESH_ANIM: AnimationPlayer
 @export var FADE_IN_ANIM: AnimationPlayer
+
 func _on_animation_finished(animation_name: String) -> void:
 	
 	if animation_name == "WINDOWN":
@@ -238,6 +268,7 @@ func _on_animation_finished(animation_name: String) -> void:
 		ANIM.play("SPIN", 0.0, 1, false)
 		ANIM.seek(0, true) 
 		STAMINA -= 10
+
 func in_interruptible_animation() -> bool:
 	
 	if not ANIM: return true
@@ -329,7 +360,7 @@ func _physics_process(delta: float) -> void:
 	try_run(delta)
 	update_jump_buffer(delta)
 	try_jump()
-	try_plunge()
+	try_plunge(delta)
 	try_attack()
 	#try_block()	
 	#try_heal()
