@@ -13,13 +13,13 @@ var disable_camera_transitions = false
 # Disable any other scripts from doing long transitions or interfering
 # Inside of the cinematic script will read this during the seamless_cam_trans function
 
-func skippable_animation_playing() -> bool: ## Returns wether theres any animation players playing an animation with skippable marker
+func get_skip_time_remaining() -> float:
 	for node in get_tree().get_nodes_in_group(SKIPPABLE_GROUP):
 		if node is AnimationPlayer and node.is_playing():
-			if SKIP_MARKER in node.get_animation(node.current_animation).get_marker_names():
-				if node.get_animation(node.current_animation).get_marker_time(SKIP_MARKER) > node.current_animation_position:
-					return true
-	return false
+			var anim = node.get_animation(node.current_animation)
+			if SKIP_MARKER not in anim.get_marker_names(): continue
+			return anim.get_marker_time(SKIP_MARKER) - node.current_animation_position
+	return -1.0
 
 func get_animation_player() -> AnimationPlayer:
 	var nodes = get_tree().get_nodes_in_group(ANIMATION_PLAYER_GROUP)
@@ -70,18 +70,20 @@ func _ready() -> void:
 				
 func _process(_delta: float) -> void:
 	
-	if not skippable_animation_playing(): 
-		if SKIP_BUTTON and SKIP_BUTTON.visible: 
-			SKIP_BUTTON.visible = false
-		return
-	if SKIP_BUTTON and not SKIP_BUTTON.visible: SKIP_BUTTON.visible = true
+	if SKIP_BUTTON: 
+		if get_skip_time_remaining() <= 0: SKIP_BUTTON.visible = false
+		else: SKIP_BUTTON.visible = true
 	
 	var animation_player = get_animation_player()
-	if not animation_player: return
-	if Input.is_action_pressed("skip"):
-		if not animation_player.is_playing(): animation_player.play(ANIMATION_SKIPPING_BY_HOLD)
-		animation_player.speed_scale = 1.0
-	else:
-		if animation_player.speed_scale != -1.0: animation_player.speed_scale = -1.0 
+	if animation_player:
+		
+		# Since the skipping prompt takes a bit of time this is to avoid glitchy behavior of being able to start skipping but is impossible to ever skip
+		var skippable = animation_player.get_animation(ANIMATION_SKIPPING_BY_HOLD).length < get_skip_time_remaining()
+		
+		if Input.is_action_pressed("skip") and skippable: 
+			if not animation_player.is_playing(): animation_player.play(ANIMATION_SKIPPING_BY_HOLD)
+			animation_player.speed_scale = 1.0
+		else:
+			if animation_player.speed_scale != -1.0: animation_player.speed_scale = -1.0 
 		
 	#print("Current time:", ANIMATION_PLAYER.current_animation_position)
