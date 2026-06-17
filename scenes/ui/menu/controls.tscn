@@ -80,6 +80,52 @@ layout_mode = 2
 script = ExtResource("4_44vjs")
 focus_targets = [NodePath("../Camera")]
 
+[node name="General" type="FoldableContainer" parent="Controls" unique_id=527277962 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+layout_mode = 2
+folded = true
+title = "GENERAL"
+title_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Controls/General" unique_id=416554923]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Controls/General/VBoxContainer" unique_id=1272468180]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("1_nke8k")
+text = "SKILL TREE - TAB"
+
+[node name="Interact" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1982470625 node_paths=PackedStringArray("focus_top")]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "interact"
+display_name = "INTERACT"
+focus_top = NodePath("../..")
+
+[node name="Heal" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1705924091]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "heal"
+display_name = "HEAL"
+
+[node name="Dash" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1934570992]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "dash"
+display_name = "DASH"
+
+[node name="Rest" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=765867851]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("3_00uuv")
+action_name = "rest"
+display_name = "REST"
+
 [node name="Camera" type="FoldableContainer" parent="Controls" unique_id=698683463 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 2
 focus_neighbor_left = NodePath("VBoxContainer/ControllerSensitivity/HSlider")
@@ -253,46 +299,6 @@ size_flags_horizontal = 4
 script = ExtResource("3_00uuv")
 action_name = "descend"
 display_name = "DESCEND"
-
-[node name="General" type="FoldableContainer" parent="Controls" unique_id=527277962 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
-layout_mode = 2
-folded = true
-title = "GENERAL"
-title_alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Controls/General" unique_id=416554923]
-visible = false
-layout_mode = 2
-
-[node name="Interact" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1982470625 node_paths=PackedStringArray("focus_top")]
-layout_mode = 2
-size_flags_horizontal = 4
-script = ExtResource("3_00uuv")
-action_name = "interact"
-display_name = "INTERACT"
-focus_top = NodePath("../..")
-
-[node name="Heal" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1705924091]
-visible = false
-layout_mode = 2
-size_flags_horizontal = 4
-script = ExtResource("3_00uuv")
-action_name = "heal"
-display_name = "HEAL"
-
-[node name="Dash" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=1934570992]
-layout_mode = 2
-size_flags_horizontal = 4
-script = ExtResource("3_00uuv")
-action_name = "dash"
-display_name = "DASH"
-
-[node name="Rest" type="HBoxContainer" parent="Controls/General/VBoxContainer" unique_id=765867851]
-layout_mode = 2
-size_flags_horizontal = 4
-script = ExtResource("3_00uuv")
-action_name = "rest"
-display_name = "REST"
 
 [node name="Back" type="Button" parent="Controls" unique_id=1086883894 node_paths=PackedStringArray("node_to_replace") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 2

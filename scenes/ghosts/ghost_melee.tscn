@@ -790,7 +790,7 @@ script = ExtResource("2_i6eoe")
 HEALTH = 300.0
 MAX_HEALTH = 300.0
 ROOT = NodePath("..")
-FREE_ON_DEATH = [NodePath("../Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/LockOn"), NodePath("../CollisionShape3D")]
+FREE_ON_DEATH = [NodePath("../Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/LockOn"), NodePath("../CollisionShape3D"), NodePath("../Mesh/melee_ghost/Armature/Skeleton3D/BoneAttachment3D/Attack")]
 DAMAGE_NUMBERS = ExtResource("3_mvqiw")
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 

@@ -4,7 +4,6 @@
 [ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="2_gwfjr"]
 [ext_resource type="Theme" uid="uid://bty2q8m8jwn5t" path="res://shaders/themes/theme.tres" id="3_7gaeb"]
 [ext_resource type="Script" uid="uid://26mw4fs3n6mg" path="res://script/ui/grab_focus.gd" id="3_x7iio"]
-[ext_resource type="Script" uid="uid://pccpxg1y2tdf" path="res://script/ui/skip.gd" id="4_e7s18"]
 [ext_resource type="Script" uid="uid://v7rpg87oifq2" path="res://script/ui/menu/pause/resume.gd" id="5_e7s18"]
 [ext_resource type="Script" uid="uid://c0vttrxsmyjl6" path="res://script/ui/menu/redirect.gd" id="6_kiq5e"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="7_e7s18"]
@@ -123,15 +122,14 @@ layout_mode = 2
 script = ExtResource("3_x7iio")
 focus_targets = [NodePath("../Skip"), NodePath("../Resume")]
 
-[node name="Skip" type="Button" parent="Main" unique_id=884173732 node_paths=PackedStringArray("SKIP_BUTTON") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+[node name="Skip" type="Button" parent="Main" unique_id=884173732 groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme = ExtResource("3_7gaeb")
 text = "SKIP"
 icon_alignment = 1
-script = ExtResource("4_e7s18")
-SKIP_BUTTON = NodePath(".")
 
 [node name="Resume" type="Button" parent="Main" unique_id=769776267 node_paths=PackedStringArray("pause_toggler") groups=["menu_focus_sound", "menu_hovered_sound", "menu_pressed_sound"]]
 layout_mode = 2

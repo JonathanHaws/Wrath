@@ -70,20 +70,23 @@ func _ready() -> void:
 				
 func _process(_delta: float) -> void:
 	
-	if SKIP_BUTTON: 
-		if get_skip_time_remaining() <= 0: SKIP_BUTTON.visible = false
-		else: SKIP_BUTTON.visible = true
+	if get_skip_time_remaining() <= 0:
+		if SKIP_BUTTON: SKIP_BUTTON.visible = false
+		return
+
+	if SKIP_BUTTON: SKIP_BUTTON.visible = true
 	
 	var animation_player = get_animation_player()
 	if animation_player:
 		
 		# Since the skipping prompt takes a bit of time this is to avoid glitchy behavior of being able to start skipping but is impossible to ever skip
-		var skippable = animation_player.get_animation(ANIMATION_SKIPPING_BY_HOLD).length < get_skip_time_remaining()
+		var remaining_skipping_animation_time: float = animation_player.get_animation(ANIMATION_SKIPPING_BY_HOLD).length
+		var skippable = remaining_skipping_animation_time + 0.1 < get_skip_time_remaining() # 0.1 just a buffer
 		
 		if Input.is_action_pressed("skip") and skippable: 
 			if not animation_player.is_playing(): animation_player.play(ANIMATION_SKIPPING_BY_HOLD)
 			animation_player.speed_scale = 1.0
 		else:
 			if animation_player.speed_scale != -1.0: animation_player.speed_scale = -1.0 
-		
+
 	#print("Current time:", ANIMATION_PLAYER.current_animation_position)
