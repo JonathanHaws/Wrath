@@ -33,6 +33,67 @@
 radius = 0.3017578
 height = 1.2128077
 
+[sub_resource type="Animation" id="Animation_tbkyr"]
+resource_name = "Intro"
+length = 2.5666666
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitshape:INVINCIBLE")
+tracks/0/interp = 0
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.7666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Stick:DISABLED")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.1666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="Animation" id="Animation_lnt32"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Hitshape:INVINCIBLE")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimationPlayer/Stick:DISABLED")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rwvj8"]
+_data = {
+&"Intro": SubResource("Animation_tbkyr"),
+&"RESET": SubResource("Animation_lnt32")
+}
+
 [sub_resource type="Animation" id="Animation_h1ydk"]
 resource_name = "ATTACK"
 length = 2.2
@@ -213,6 +274,7 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_poail"]
 resource_name = "RESET"
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -247,7 +309,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -575,12 +637,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6037061, 0)
 shape = SubResource("CapsuleShape3D_x8ps6")
 debug_color = Color(0.87, 0.87, 0.87, 0.011764706)
 
+[node name="IntroInvincibility" type="AnimationPlayer" parent="." unique_id=466674573]
+libraries/ = SubResource("AnimationLibrary_rwvj8")
+autoplay = &"Intro"
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1933330111]
 libraries/ = SubResource("AnimationLibrary_tbkyr")
-autoplay = &"CHASE"
+autoplay = &"RESET"
 next/ATTACK = &"CHASE"
 next/CHASE = &"CHASE"
 next/HURT = &"CHASE"
+next/RESET = &"CHASE"
 
 [node name="Stick" type="Node" parent="AnimationPlayer" unique_id=1993194282 node_paths=PackedStringArray("TARGET", "BODY")]
 script = ExtResource("1_l2p20")
@@ -701,7 +768,13 @@ target = NodePath("../../Target")
 
 [node name="Slimes" parent="Mesh" unique_id=1705519881 instance=ExtResource("22_0ee81")]
 
-[node name="Mesh" parent="Mesh/Slimes/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1705519881, 721052210) index="0" unique_id=708991476]
+[node name="Skeleton3D" parent="Mesh/Slimes/Armature" parent_id_path=PackedInt32Array(1705519881, 1399730127) index="0" unique_id=721052210]
+bones/1/rotation = Quaternion(-0.0034716933, 0, -5.5921624e-18, 0.99999404)
+bones/1/scale = Vector3(0.9900662, 0.9900662, 0.9900662)
+bones/2/rotation = Quaternion(0.0066328505, -6.147775e-26, 1.0683496e-17, 0.999978)
+bones/3/rotation = Quaternion(-0.0080456445, 1.7510295e-26, -1.29585875e-17, 0.9999677)
+
+[node name="Mesh" parent="Mesh/Slimes/Armature/Skeleton3D" index="0" unique_id=708991476]
 surface_material_override/1 = ExtResource("24_h1ydk")
 
 [node name="Target" type="Node3D" parent="." unique_id=963969195 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH", "STOP_CHASE_AREA", "AWARENESS_AREA")]
