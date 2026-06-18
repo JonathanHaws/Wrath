@@ -1,0 +1,157 @@
+[gd_scene format=3 uid="uid://bw26tn2sy6atb"]
+
+[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="1_0dwhk"]
+[ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="2_pfayw"]
+[ext_resource type="StyleBox" uid="uid://p8dn2g85fmrc" path="res://shaders/bar/greed_health.tres" id="3_7vp6q"]
+[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/themes/notification.tres" id="4_jcn1r"]
+[ext_resource type="Script" uid="uid://bmvmfpf3a13r6" path="res://script/ui/hide_ui/hide_ui.gd" id="5_uegxj"]
+
+[sub_resource type="Animation" id="Animation_0dwhk"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Control:offset_transform_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_w4sf1"]
+resource_name = "death"
+length = 3.2333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.73333335),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Control:offset_transform_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.5, 0.5)]
+}
+
+[sub_resource type="Animation" id="Animation_pfayw"]
+resource_name = "reveal"
+length = 3.2333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.4333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("VBoxContainer/Control:offset_transform_scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.23333335, 2.0666666),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.6, 0.6), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7vp6q"]
+_data = {
+&"RESET": SubResource("Animation_0dwhk"),
+&"death": SubResource("Animation_w4sf1"),
+&"reveal": SubResource("Animation_pfayw")
+}
+
+[node name="BossHealthBar" type="Control" unique_id=1502005390 groups=["ui_scalable"]]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 0.017
+anchor_right = 0.5
+anchor_bottom = 0.099
+grow_horizontal = 2
+size_flags_horizontal = 3
+mouse_filter = 2
+script = ExtResource("1_0dwhk")
+metadata/_edit_use_anchors_ = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=530216707]
+libraries/ = SubResource("AnimationLibrary_7vp6q")
+autoplay = &"RESET"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1612161601]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -450.0
+offset_top = 0.7599983
+offset_right = 450.0
+offset_bottom = 50.76
+grow_horizontal = 2
+pivot_offset = Vector2(450, 0)
+mouse_filter = 2
+
+[node name="HealthBar" parent="VBoxContainer" unique_id=1551105526 instance=ExtResource("2_pfayw")]
+custom_minimum_size = Vector2(900, 8.645)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/fill = ExtResource("3_7vp6q")
+max_value = 2000.0
+value = 2000.0
+
+[node name="Control" type="Control" parent="VBoxContainer" unique_id=661605685]
+layout_mode = 2
+size_flags_horizontal = 4
+offset_transform_enabled = true
+
+[node name="Label" type="Label" parent="VBoxContainer/Control" unique_id=805204591]
+layout_mode = 0
+offset_right = 45.0
+offset_bottom = 31.0
+size_flags_horizontal = 4
+size_flags_vertical = 8
+offset_transform_enabled = true
+offset_transform_position_ratio = Vector2(-0.5, 0)
+theme = ExtResource("4_jcn1r")
+text = "GREED"
+horizontal_alignment = 1
+uppercase = true
+
+[node name="HideUI" type="Node" parent="." unique_id=1381771657 node_paths=PackedStringArray("TARGETS")]
+script = ExtResource("5_uegxj")
+TARGETS = [NodePath("..")]

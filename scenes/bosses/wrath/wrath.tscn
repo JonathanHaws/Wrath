@@ -5,24 +5,22 @@
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/characters/enemies/Slam.wav" id="6_ay1ei"]
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://audio/sfx/characters/enemies/Despawn.wav" id="6_ew0re"]
 [ext_resource type="AudioStream" uid="uid://dejgyyvoucgey" path="res://audio/sfx/characters/enemies/Cry_3.wav" id="8_6fdi0"]
+[ext_resource type="PackedScene" uid="uid://bw26tn2sy6atb" path="res://scenes/ui/boss_health_bar.tscn" id="8_8e8dl"]
+[ext_resource type="StyleBox" uid="uid://bosm3016yuwg3" path="res://shaders/bar/wrath_health.tres" id="9_nguwe"]
 [ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://audio/sfx/characters/Crumble_1.wav" id="10_s7vgg"]
 [ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/characters/Crumble_2.wav" id="11_i4c6m"]
-[ext_resource type="Script" uid="uid://bmvmfpf3a13r6" path="res://script/ui/hide_ui/hide_ui.gd" id="11_owmeo"]
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://audio/sfx/characters/enemies/Cry.wav" id="12_kqq76"]
 [ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://audio/sfx/characters/Crumble_3.wav" id="12_p5r8v"]
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://audio/sfx/characters/enemies/Spin.wav" id="13_367wx"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://script/component/root_motion.gd" id="13_h5485"]
 [ext_resource type="AudioStream" uid="uid://bg0rsvkfwvyq1" path="res://audio/sfx/characters/Crumble_4.wav" id="13_wxkwy"]
-[ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="17_r1aqn"]
 [ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://scenes/ui/damage_numbers.tscn" id="19_a67hc"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/characters/enemies/Cry_2.wav" id="19_ewgrb"]
 [ext_resource type="PackedScene" uid="uid://d0ifk8wbwkr3w" path="res://scenes/particles/hurt/wrath_hurt_particles.tscn" id="22_1df88"]
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://script/items/wisp_reward.gd" id="22_tjj4l"]
-[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/themes/notification.tres" id="24_do1jg"]
 [ext_resource type="Script" uid="uid://cj57vb4cyw6ut" path="res://script/component/random_attack.gd" id="24_x676q"]
 [ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="26_owmeo"]
 [ext_resource type="Material" uid="uid://biupco8dcn4xr" path="res://shaders/materials/characters/wrath_material.tres" id="27_a67hc"]
-[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="28_x676q"]
 [ext_resource type="Script" uid="uid://dpgehwrod878r" path="res://script/component/look_at_influence_lerp.gd" id="30_84vix"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="30_r1aqn"]
 [ext_resource type="PackedScene" uid="uid://dbhx6r10lr31h" path="res://models/characters/wrath/wrath.glb" id="30_rmp6a"]
@@ -131,25 +129,13 @@ tracks/1/keys = {
 "update": 0,
 "values": [0.0, -80.0]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Ui:modulate")
+tracks/2/path = NodePath("Audio")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 1.43333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/3/type = "method"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Audio")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -157,13 +143,13 @@ tracks/3/keys = {
 "method": &"spawn_sound"
 }]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Mesh/wrath/AnimationPlayer")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/wrath/AnimationPlayer")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -171,10 +157,22 @@ tracks/4/keys = {
 "method": &"play"
 }]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/4/interp = 0
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:influence")
+tracks/5/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/5/interp = 0
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -186,7 +184,7 @@ tracks/5/keys = {
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/6/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/6/interp = 0
 tracks/6/loop_wrap = true
 tracks/6/keys = {
@@ -198,46 +196,34 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/7/path = NodePath("Target:MOVE_AND_SLIDE")
 tracks/7/interp = 0
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Target:MOVE_AND_SLIDE")
-tracks/8/interp = 0
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(3.73333),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/9/type = "value"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Target:USE_GRAVITY")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Target:USE_GRAVITY")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/10/type = "method"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath(".")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -245,25 +231,25 @@ tracks/10/keys = {
 "method": &"defeated"
 }]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Mesh/wrath/Armature/Skeleton3D/Light:light_energy")
-tracks/11/interp = 2
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Mesh/wrath/Armature/Skeleton3D/Light:light_energy")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0.4, 2.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [7.0, 0.0]
 }
-tracks/12/type = "method"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("WispReward")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("WispReward")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(5),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -271,13 +257,13 @@ tracks/12/keys = {
 "method": &"give"
 }]
 }
-tracks/13/type = "method"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("CameraEffects")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("CameraEffects")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -285,18 +271,35 @@ tracks/13/keys = {
 "method": &"impact"
 }]
 }
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Dialog")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [false],
+"method": &"set_random_dialog"
+}, {
+"args": ["death"],
+"method": &"spawn_branch"
+}]
+}
 tracks/14/type = "method"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Dialog")
+tracks/14/path = NodePath("BossHealthBar/AnimationPlayer")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(2.6),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": ["death"],
-"method": &"spawn_branch"
+"args": [&"death"],
+"method": &"queue"
 }]
 }
 
@@ -372,17 +375,19 @@ tracks/4/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/5/type = "value"
+tracks/5/type = "method"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Ui:modulate")
+tracks/5/path = NodePath("BossHealthBar/AnimationPlayer")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(2.08333, 2.625),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(2.0833333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"reveal"],
+"method": &"queue"
+}]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -681,25 +686,13 @@ tracks/7/keys = {
 "update": 0,
 "values": [1.0]
 }
-tracks/8/type = "value"
+tracks/8/type = "method"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Ui:modulate")
+tracks/8/path = NodePath("Mesh/wrath/AnimationPlayer")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Mesh/wrath/AnimationPlayer")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -707,25 +700,25 @@ tracks/9/keys = {
 "method": &"play"
 }]
 }
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Dialog:random_dialog")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Dialog:random_dialog")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:target_influence")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Mesh/wrath/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1406,52 +1399,14 @@ root_node = NodePath("../..")
 libraries/ = SubResource("AnimationLibrary_pxmry")
 autoplay = &"RESET"
 
-[node name="Ui" type="Control" parent="." unique_id=1556510494 groups=["ui_scalable"]]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchor_left = 0.5
-anchor_top = 0.017
-anchor_right = 0.5
-anchor_bottom = 0.099
-grow_horizontal = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-script = ExtResource("28_x676q")
-metadata/_edit_use_anchors_ = true
+[node name="BossHealthBar" parent="." unique_id=1502005390 instance=ExtResource("8_8e8dl")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui" unique_id=80874841]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -450.0
-offset_right = 450.0
-offset_bottom = 50.0
-grow_horizontal = 2
-pivot_offset = Vector2(450, 0)
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="HealthBar" parent="Ui/VBoxContainer" unique_id=1824303872 node_paths=PackedStringArray("tracked_node") instance=ExtResource("17_r1aqn")]
-custom_minimum_size = Vector2(900, 8.645)
-layout_mode = 2
-size_flags_horizontal = 3
-max_value = 2000.0
-value = 2000.0
+[node name="HealthBar" parent="BossHealthBar/VBoxContainer" parent_id_path=PackedInt32Array(1502005390, 1612161601) index="0" unique_id=1551105526 node_paths=PackedStringArray("tracked_node")]
+theme_override_styles/fill = ExtResource("9_nguwe")
 tracked_node = NodePath("../../../HitShape")
 
-[node name="Label" type="Label" parent="Ui/VBoxContainer" unique_id=1255147791]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = ExtResource("24_do1jg")
+[node name="Label" parent="BossHealthBar/VBoxContainer/Control" parent_id_path=PackedInt32Array(1502005390, 661605685) index="0" unique_id=805204591]
 text = "WRATH"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="HideUI" type="Node" parent="Ui" unique_id=501116130 node_paths=PackedStringArray("TARGETS")]
-script = ExtResource("11_owmeo")
-TARGETS = [NodePath("..")]
 
 [node name="Audio" type="Node" parent="." unique_id=1903051612]
 script = ExtResource("31_4oeto")
@@ -1671,4 +1626,5 @@ bus = &"Dialog"
 [connection signal="body_entered" from="Mesh/wrath/Armature/Skeleton3D/Torso/Area3D" to="Mesh/wrath/Armature/Skeleton3D/Torso/Area3D" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
 
+[editable path="BossHealthBar"]
 [editable path="Mesh/wrath"]

@@ -55,7 +55,6 @@ func update_target_position(): ## keep node aligned to target
 		else:
 			global_position = target.global_position
 
-
 @export_group("Tracking")
 @export var MESH: Node3D ## The mesh that faces the target
 @export var TRACKING_SPEED: float = 5.0 ## Degrees Per Second

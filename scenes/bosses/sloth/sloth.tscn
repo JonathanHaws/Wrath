@@ -2,13 +2,10 @@
 
 [ext_resource type="Script" uid="uid://csgw80q0egbad" path="res://script/sloth.gd" id="1_3kw6g"]
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://script/component/boss.gd" id="1_5ay62"]
-[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="2_faveg"]
-[ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="3_f2sb8"]
 [ext_resource type="StyleBox" uid="uid://brwksry3ixj4j" path="res://shaders/bar/sloth_health.tres" id="4_dbtmo"]
-[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/themes/notification.tres" id="5_h7mjm"]
+[ext_resource type="PackedScene" uid="uid://bw26tn2sy6atb" path="res://scenes/ui/boss_health_bar.tscn" id="5_ic1i5"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="6_fscfa"]
 [ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://scenes/ui/damage_numbers.tscn" id="7_dbtmo"]
-[ext_resource type="Script" uid="uid://bmvmfpf3a13r6" path="res://script/ui/hide_ui/hide_ui.gd" id="9_uahh5"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/characters/enemies/Slam.wav" id="10_qp78m"]
 [ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://audio/sfx/characters/Crumble_1.wav" id="11_xcc4h"]
 [ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/characters/Crumble_2.wav" id="12_fn6e4"]
@@ -195,46 +192,34 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Ui:modulate")
+tracks/9/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/0:albedo_color")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 1.43333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/0:albedo_color")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
 "times": PackedFloat32Array(0.39999962, 2.2666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.52, 0.52, 0.52, 1), Color(0.52, 0.52, 0.52, 0)]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/1:shader_parameter/dissolve_amount")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Mesh/sloth/Armature/Skeleton3D/Sphere_001:surface_material_override/1:shader_parameter/dissolve_amount")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0, 0.8333333, 2.3),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [0.0, 0.0, 1.0]
 }
-tracks/12/type = "method"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("WispReward")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("WispReward")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(2.3),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -242,56 +227,73 @@ tracks/12/keys = {
 "method": &"give"
 }]
 }
-tracks/13/type = "method"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Dialog")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
-"times": PackedFloat32Array(2.6),
-"transitions": PackedFloat32Array(1),
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Dialog")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [false],
+"method": &"set_random_dialog"
+}, {
 "args": ["death"],
 "method": &"spawn_branch"
 }]
 }
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Light:light_energy")
-tracks/14/interp = 2
-tracks/14/loop_wrap = true
-tracks/14/keys = {
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Light:light_energy")
+tracks/13/interp = 2
+tracks/13/loop_wrap = true
+tracks/13/keys = {
 "times": PackedFloat32Array(0.4, 2.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [20.0, 0.0]
 }
-tracks/15/type = "value"
-tracks/15/imported = false
-tracks/15/enabled = true
-tracks/15/path = NodePath("Target:MOVE_AND_SLIDE")
-tracks/15/interp = 0
-tracks/15/loop_wrap = true
-tracks/15/keys = {
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/14/interp = 0
+tracks/14/loop_wrap = true
+tracks/14/keys = {
 "times": PackedFloat32Array(0, 3.56667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
+tracks/15/type = "method"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("WaveSpawner")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 tracks/16/type = "method"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("WaveSpawner")
+tracks/16/path = NodePath("BossHealthBar/AnimationPlayer")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
-"args": [],
-"method": &"queue_free"
+"args": [&"death"],
+"method": &"queue"
 }]
 }
 
@@ -339,17 +341,19 @@ tracks/2/keys = {
 "method": &"play"
 }]
 }
-tracks/3/type = "value"
+tracks/3/type = "method"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Ui:modulate")
+tracks/3/path = NodePath("BossHealthBar/AnimationPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(1.54167, 2.75),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(1.5417),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"reveal"],
+"method": &"queue"
+}]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -515,22 +519,10 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Ui:modulate")
+tracks/7/path = NodePath("Dialog:random_dialog")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
-}
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Dialog:random_dialog")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -625,12 +617,12 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbtmo"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uahh5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kw6g"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ic1i5"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_obe7g"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("26_uahh5")
@@ -878,53 +870,14 @@ root_node = NodePath("../../Attacks")
 libraries/ = SubResource("AnimationLibrary_ri305")
 autoplay = &"RESET"
 
-[node name="Ui" type="Control" parent="PathFollow3D/Body" unique_id=1164852772 groups=["ui_scalable"]]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchor_left = 0.5
-anchor_top = 0.017
-anchor_right = 0.5
-anchor_bottom = 0.099
-grow_horizontal = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-script = ExtResource("2_faveg")
-metadata/_edit_use_anchors_ = true
+[node name="BossHealthBar" parent="PathFollow3D/Body" unique_id=1502005390 instance=ExtResource("5_ic1i5")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PathFollow3D/Body/Ui" unique_id=1622083273]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -450.0
-offset_right = 450.0
-offset_bottom = 50.0
-grow_horizontal = 2
-pivot_offset = Vector2(450, 0)
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="HealthBar" parent="PathFollow3D/Body/Ui/VBoxContainer" unique_id=1596403796 node_paths=PackedStringArray("tracked_node") instance=ExtResource("3_f2sb8")]
-custom_minimum_size = Vector2(900, 8.645)
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="HealthBar" parent="PathFollow3D/Body/BossHealthBar/VBoxContainer" parent_id_path=PackedInt32Array(1502005390, 1612161601) index="0" unique_id=1551105526 node_paths=PackedStringArray("tracked_node")]
 theme_override_styles/fill = ExtResource("4_dbtmo")
-max_value = 2000.0
-value = 2000.0
 tracked_node = NodePath("../../../HitShape")
 
-[node name="Label" type="Label" parent="PathFollow3D/Body/Ui/VBoxContainer" unique_id=1279873489]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = ExtResource("5_h7mjm")
+[node name="Label" parent="PathFollow3D/Body/BossHealthBar/VBoxContainer/Control" parent_id_path=PackedInt32Array(1502005390, 661605685) index="0" unique_id=805204591]
 text = "SLOTH"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="HideUI" type="Node" parent="PathFollow3D/Body/Ui" unique_id=102645854 node_paths=PackedStringArray("TARGETS")]
-script = ExtResource("9_uahh5")
-TARGETS = [NodePath("..")]
 
 [node name="Audio" type="Node" parent="PathFollow3D/Body" unique_id=1151444588]
 script = ExtResource("6_fscfa")
@@ -997,8 +950,8 @@ target = NodePath("../../../../../../Target")
 
 [node name="Sphere_001" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="1" unique_id=1805627527]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27371758, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_uahh5")
-surface_material_override/1 = SubResource("ShaderMaterial_ic1i5")
+surface_material_override/0 = SubResource("StandardMaterial3D_3kw6g")
+surface_material_override/1 = SubResource("ShaderMaterial_obe7g")
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="2" unique_id=636975154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.083372, 0, 0)
@@ -1053,4 +1006,5 @@ bus = &"Dialog"
 
 [connection signal="body_entered" from="TriggerArea" to="PathFollow3D/Body" method="_on_trigger_area_body_entered"]
 
+[editable path="PathFollow3D/Body/BossHealthBar"]
 [editable path="PathFollow3D/Body/Mesh/sloth"]

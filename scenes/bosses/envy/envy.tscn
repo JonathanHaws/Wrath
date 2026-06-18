@@ -1,12 +1,9 @@
 [gd_scene format=3 uid="uid://djqadr0k0vrs3"]
 
 [ext_resource type="Script" uid="uid://cp47q7vvgwlhh" path="res://script/component/boss.gd" id="1_3bgwy"]
-[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="2_hu4d7"]
-[ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="3_0gn57"]
 [ext_resource type="StyleBox" uid="uid://dyxhjehl326n8" path="res://shaders/bar/envy_health.tres" id="4_wpfpa"]
-[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/themes/notification.tres" id="5_o83ic"]
+[ext_resource type="PackedScene" uid="uid://bw26tn2sy6atb" path="res://scenes/ui/boss_health_bar.tscn" id="5_gl33r"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="6_jntm4"]
-[ext_resource type="Script" uid="uid://bmvmfpf3a13r6" path="res://script/ui/hide_ui/hide_ui.gd" id="9_tgrj1"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/characters/enemies/Slam.wav" id="10_td5ev"]
 [ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://audio/sfx/characters/Crumble_1.wav" id="11_peotq"]
 [ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/characters/Crumble_2.wav" id="12_8fx7k"]
@@ -429,39 +426,30 @@ tracks/7/keys = {
 "update": 1,
 "values": [false]
 }
-tracks/8/type = "value"
+tracks/8/type = "method"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Ui:modulate")
+tracks/8/path = NodePath("Dialog")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0, 1.43333),
+"times": PackedFloat32Array(0, 2.6),
 "transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
-}
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("Dialog")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
-"times": PackedFloat32Array(2.6),
-"transitions": PackedFloat32Array(1),
 "values": [{
+"args": [false],
+"method": &"set_random_dialog"
+}, {
 "args": ["death"],
 "method": &"spawn_branch"
 }]
 }
-tracks/10/type = "method"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("WispReward")
-tracks/10/interp = 1
-tracks/10/loop_wrap = true
-tracks/10/keys = {
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("WispReward")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
 "times": PackedFloat32Array(2.66667),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -469,41 +457,55 @@ tracks/10/keys = {
 "method": &"give"
 }]
 }
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Mesh/envy/Armature/Skeleton3D/Light:light_energy")
-tracks/11/interp = 2
-tracks/11/loop_wrap = true
-tracks/11/keys = {
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Mesh/envy/Armature/Skeleton3D/Light:light_energy")
+tracks/10/interp = 2
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0.4, 2.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [10.0, 0.0]
 }
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Target:MOVE_AND_SLIDE")
-tracks/12/interp = 0
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0, 3.56667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/13/type = "value"
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Mesh/envy/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/13/type = "method"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Mesh/envy/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/13/path = NodePath("BossHealthBar/AnimationPlayer")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"values": [{
+"args": [&"death"],
+"method": &"queue"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_msv7p"]
@@ -708,25 +710,13 @@ tracks/0/keys = {
 "update": 0,
 "values": [0.0]
 }
-tracks/1/type = "value"
+tracks/1/type = "method"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Ui:modulate")
+tracks/1/path = NodePath("Audio/Music")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(1.54167, 2.75),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
-}
-tracks/2/type = "method"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Audio/Music")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -734,47 +724,47 @@ tracks/2/keys = {
 "method": &"play"
 }]
 }
-tracks/3/type = "animation"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Mesh/envy/AnimationPlayer")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/envy/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "clips": PackedStringArray("IDLE"),
 "times": PackedFloat32Array(0)
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CollisionShape3D:disabled")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CollisionShape3D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("CameraEffects")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("CameraEffects")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
 "times": PackedFloat32Array(0.0833334),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -782,29 +772,43 @@ tracks/6/keys = {
 "method": &"impact"
 }]
 }
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("HitShape:INVINCIBLE")
-tracks/7/interp = 0
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitShape:INVINCIBLE")
+tracks/6/interp = 0
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [false]
 }
-tracks/8/type = "value"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Dialog:random_dialog")
-tracks/8/interp = 0
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Dialog:random_dialog")
+tracks/7/interp = 0
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "times": PackedFloat32Array(2.8333333),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("BossHealthBar/AnimationPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.5416666),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"reveal"],
+"method": &"queue"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -906,46 +910,34 @@ tracks/7/keys = {
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath("Ui:modulate")
+tracks/8/path = NodePath("Dialog:random_dialog")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Dialog:random_dialog")
+tracks/9/path = NodePath("Mesh/envy/Armature/Skeleton3D/LookAtModifier3D:target_influence")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [1.0]
 }
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Mesh/envy/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/10/path = NodePath("Mesh/envy/Armature/Skeleton3D/LookAtModifier3D2:target_influence")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Mesh/envy/Armature/Skeleton3D/LookAtModifier3D2:target_influence")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -1523,53 +1515,14 @@ root_node = NodePath("../../Attacks")
 libraries/ = SubResource("AnimationLibrary_ri305")
 autoplay = &"RESET"
 
-[node name="Ui" type="Control" parent="." unique_id=779999940 groups=["ui_scalable"]]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchor_left = 0.5
-anchor_top = 0.017
-anchor_right = 0.5
-anchor_bottom = 0.099
-grow_horizontal = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-script = ExtResource("2_hu4d7")
-metadata/_edit_use_anchors_ = true
+[node name="BossHealthBar" parent="." unique_id=1502005390 instance=ExtResource("5_gl33r")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui" unique_id=261366062]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -450.0
-offset_right = 450.0
-offset_bottom = 50.0
-grow_horizontal = 2
-pivot_offset = Vector2(450, 0)
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="HealthBar" parent="Ui/VBoxContainer" unique_id=2037104342 node_paths=PackedStringArray("tracked_node") instance=ExtResource("3_0gn57")]
-custom_minimum_size = Vector2(900, 8.645)
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="HealthBar" parent="BossHealthBar/VBoxContainer" parent_id_path=PackedInt32Array(1502005390, 1612161601) index="0" unique_id=1551105526 node_paths=PackedStringArray("tracked_node")]
 theme_override_styles/fill = ExtResource("4_wpfpa")
-max_value = 2000.0
-value = 2000.0
 tracked_node = NodePath("../../../HitShape")
 
-[node name="Label" type="Label" parent="Ui/VBoxContainer" unique_id=2002299259]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = ExtResource("5_o83ic")
+[node name="Label" parent="BossHealthBar/VBoxContainer/Control" parent_id_path=PackedInt32Array(1502005390, 661605685) index="0" unique_id=805204591]
 text = "ENVY"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="HideUI" type="Node" parent="Ui" unique_id=1011380091 node_paths=PackedStringArray("TARGETS")]
-script = ExtResource("9_tgrj1")
-TARGETS = [NodePath("..")]
 
 [node name="Audio" type="Node" parent="." unique_id=866003600]
 script = ExtResource("6_jntm4")
@@ -1760,7 +1713,7 @@ secondary_damp_threshold = 1.0
 script = ExtResource("35_wnpe0")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/envy/Armature/Skeleton3D" index="3" unique_id=885687854]
-transform = Transform3D(0.90630776, -0.41201386, 0.09407838, -0.12803823, -0.47983527, -0.86796546, 0.402756, 0.774598, -0.48763192, -0.53159934, 4.0301585, 2.7414188)
+transform = Transform3D(1, -2.1046985e-07, -1.6255849e-06, -1.5963608e-06, -0.35017514, -0.93668413, -3.7209625e-07, 0.93668395, -0.35017502, -5.088634e-07, 4.202835, 2.9265351)
 bone_name = "beak"
 bone_idx = 6
 
@@ -1841,4 +1794,5 @@ bus = &"Dialog"
 [connection signal="body_entered" from="Mesh/envy/Jump" to="Mesh/envy/Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
 
+[editable path="BossHealthBar"]
 [editable path="Mesh/envy"]

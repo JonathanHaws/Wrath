@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://script/component/hit_shape.gd" id="2_q2lvp"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="3_vd3ju"]
 [ext_resource type="Script" uid="uid://bl4j7debsqdet" path="res://script/component/audio_spawner.gd" id="5_2bcub"]
+[ext_resource type="PackedScene" uid="uid://bw26tn2sy6atb" path="res://scenes/ui/boss_health_bar.tscn" id="6_lvxpv"]
 [ext_resource type="AudioStream" uid="uid://c8q1fk5xrer8m" path="res://audio/sfx/characters/enemies/Slam.wav" id="9_cix80"]
-[ext_resource type="Script" uid="uid://bmvmfpf3a13r6" path="res://script/ui/hide_ui/hide_ui.gd" id="10_ov3vn"]
 [ext_resource type="AudioStream" uid="uid://cl02p4qrmi4hf" path="res://audio/sfx/characters/Crumble_1.wav" id="10_xppq1"]
 [ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/characters/Crumble_2.wav" id="11_l33v6"]
 [ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://audio/sfx/characters/Crumble_3.wav" id="12_42xxq"]
@@ -21,11 +21,8 @@
 [ext_resource type="AudioStream" uid="uid://7dl2hq8svsgn" path="res://audio/sfx/characters/gluttony/shreik_2.wav" id="19_svijn"]
 [ext_resource type="PackedScene" uid="uid://bemj0qglnoue4" path="res://scenes/particles/hurt/gluttony_hurt_particles.tscn" id="20_kav4y"]
 [ext_resource type="AudioStream" uid="uid://kqf1rgb5uj7h" path="res://audio/sfx/characters/gluttony/scuffle.wav" id="20_svijn"]
-[ext_resource type="Script" uid="uid://cxuksdiuk3upw" path="res://script/ui/ui_scale.gd" id="21_28k33"]
-[ext_resource type="PackedScene" uid="uid://bjgldiv3a4i6p" path="res://scenes/ui/bar.tscn" id="21_fddld"]
 [ext_resource type="StyleBox" uid="uid://bw47y3rgbs5wu" path="res://shaders/bar/gluttony_health.tres" id="22_28k33"]
 [ext_resource type="PackedScene" uid="uid://dx5gfq7hao3tx" path="res://scenes/ui/damage_numbers.tscn" id="23_adl7b"]
-[ext_resource type="Theme" uid="uid://cjkplyiuaa222" path="res://shaders/themes/notification.tres" id="23_wlv32"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="24_r4ucj"]
 [ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="26_ov3vn"]
 [ext_resource type="Material" uid="uid://7w72228cchli" path="res://shaders/materials/characters/gluttony_material.tres" id="28_kav4y"]
@@ -262,60 +259,51 @@ tracks/8/keys = {
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath("Ui:modulate")
-tracks/9/interp = 1
+tracks/9/path = NodePath("Light:light_energy")
+tracks/9/interp = 2
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0, 0.5),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0.933419), Color(1, 1, 1, 0)]
-}
-tracks/10/type = "value"
-tracks/10/imported = false
-tracks/10/enabled = true
-tracks/10/path = NodePath("Light:light_energy")
-tracks/10/interp = 2
-tracks/10/loop_wrap = true
-tracks/10/keys = {
 "times": PackedFloat32Array(0, 2.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [7.0, 0.0]
 }
-tracks/11/type = "method"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Dialog/PigDialog")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(2.6),
-"transitions": PackedFloat32Array(1),
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Dialog/PigDialog")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 2.6),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
+"args": [false],
+"method": &"set_random_dialog"
+}, {
 "args": ["death"],
 "method": &"spawn_branch"
 }]
 }
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Target:MOVE_AND_SLIDE")
-tracks/12/interp = 0
-tracks/12/loop_wrap = true
-tracks/12/keys = {
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/11/interp = 0
+tracks/11/loop_wrap = true
+tracks/11/keys = {
 "times": PackedFloat32Array(0, 3.56667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
 }
-tracks/13/type = "method"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("WispReward")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
+tracks/12/type = "method"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("WispReward")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
 "times": PackedFloat32Array(4),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -323,17 +311,31 @@ tracks/13/keys = {
 "method": &"give"
 }]
 }
-tracks/14/type = "value"
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "method"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/14/path = NodePath("BossHealthBar/AnimationPlayer")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"values": [{
+"args": [&"death"],
+"method": &"queue"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_adl7b"]
@@ -620,17 +622,19 @@ tracks/11/keys = {
 "update": 0,
 "values": [42.0, 26.5]
 }
-tracks/12/type = "value"
+tracks/12/type = "method"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Ui:modulate")
+tracks/12/path = NodePath("BossHealthBar/AnimationPlayer")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(13.5833, 14.4167, 17),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1)]
+"times": PackedFloat32Array(13.583333),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"reveal"],
+"method": &"queue"
+}]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
@@ -842,46 +846,34 @@ tracks/13/keys = {
 tracks/14/type = "value"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Ui:modulate")
+tracks/14/path = NodePath("IntroCinematic/ColorRect:color")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(0, 0, 0, 0)]
 }
 tracks/15/type = "value"
 tracks/15/imported = false
 tracks/15/enabled = true
-tracks/15/path = NodePath("IntroCinematic/ColorRect:color")
+tracks/15/path = NodePath("Dialog/PigDialog:random_dialog")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(0, 0, 0, 0)]
+"update": 1,
+"values": [false]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("Dialog/PigDialog:random_dialog")
+tracks/16/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:target_influence")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-tracks/17/type = "value"
-tracks/17/imported = false
-tracks/17/enabled = true
-tracks/17/path = NodePath("Mesh/gluttony/Armature/Skeleton3D/LookAtModifier3D:target_influence")
-tracks/17/interp = 1
-tracks/17/loop_wrap = true
-tracks/17/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -2085,55 +2077,14 @@ root_node = NodePath("../../AnimationPlayer")
 libraries/ = SubResource("AnimationLibrary_ri305")
 autoplay = &"RESET"
 
-[node name="Ui" type="Control" parent="." unique_id=1323486897 groups=["ui_scalable"]]
-modulate = Color(1, 1, 1, 0)
-layout_mode = 3
-anchor_left = 0.5
-anchor_top = 0.017
-anchor_right = 0.5
-anchor_bottom = 0.099
-grow_horizontal = 2
-size_flags_horizontal = 3
-mouse_filter = 2
-script = ExtResource("21_28k33")
-metadata/_edit_use_anchors_ = true
+[node name="BossHealthBar" parent="." unique_id=1502005390 instance=ExtResource("6_lvxpv")]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Ui" unique_id=1303637080]
-z_index = -50
-z_as_relative = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -450.0
-offset_right = 450.0
-offset_bottom = 50.0
-grow_horizontal = 2
-pivot_offset = Vector2(450, 0)
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="HealthBar" parent="Ui/VBoxContainer" unique_id=2098702256 node_paths=PackedStringArray("tracked_node") instance=ExtResource("21_fddld")]
-custom_minimum_size = Vector2(900, 8.645)
-layout_mode = 2
-size_flags_horizontal = 3
+[node name="HealthBar" parent="BossHealthBar/VBoxContainer" parent_id_path=PackedInt32Array(1502005390, 1612161601) index="0" unique_id=1551105526 node_paths=PackedStringArray("tracked_node")]
 theme_override_styles/fill = ExtResource("22_28k33")
-max_value = 2000.0
-value = 2000.0
 tracked_node = NodePath("../../../HitShape")
 
-[node name="Label" type="Label" parent="Ui/VBoxContainer" unique_id=221398547]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 8
-theme = ExtResource("23_wlv32")
+[node name="Label" parent="BossHealthBar/VBoxContainer/Control" parent_id_path=PackedInt32Array(1502005390, 661605685) index="0" unique_id=805204591]
 text = "GLUTTONY"
-horizontal_alignment = 1
-uppercase = true
-
-[node name="HideUI" type="Node" parent="Ui" unique_id=512468021 node_paths=PackedStringArray("TARGETS")]
-script = ExtResource("10_ov3vn")
-TARGETS = [NodePath("..")]
 
 [node name="Audio" type="Node" parent="." unique_id=513380999]
 script = ExtResource("5_2bcub")
@@ -2687,4 +2638,5 @@ bus = &"Dialog"
 [connection signal="body_entered" from="Mesh/gluttony/Armature/Skeleton3D/RightLeg/TriggerArea" to="Mesh/gluttony/Armature/Skeleton3D/RightLeg/TriggerArea" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
 
+[editable path="BossHealthBar"]
 [editable path="Mesh/gluttony"]
