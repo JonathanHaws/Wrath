@@ -30,10 +30,9 @@ var in_range: bool = false
 @export var hit_shape: Node ## Specifies the node that has 'HEALTH' and 'MAX HEALTH' For trigger hps
 var random_accum: float = 0.0
 var random_dialog_index: int = 0
-func set_random_dialog(is_spawning: bool = false) -> void:
-	purge_dialog()
+func set_random_dialog(is_spawning: bool = false, purge_existing_dialog: bool = true) -> void:
+	if purge_existing_dialog: purge_dialog()
 	random_dialog = is_spawning
-
 ## Potential cool feature is save dialog so it only ever happens once or only with certain save data
 
 func get_branch_time(start_index: int) -> float:
