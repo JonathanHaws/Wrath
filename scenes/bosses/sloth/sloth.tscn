@@ -33,6 +33,7 @@
 [ext_resource type="PackedScene" uid="uid://kiuc3ouuqv0h" path="res://scenes/ui/dialog/say_timed.tscn" id="31_cu7wn"]
 [ext_resource type="JSON" path="res://json/sloth_talk.json" id="32_r1bv5"]
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="33_dvx2e"]
+[ext_resource type="Script" uid="uid://cyt6s1hgewbgh" path="res://scenes/bosses/lust/acheivement.gd" id="36_5mnmy"]
 [ext_resource type="AudioStream" uid="uid://b5gb1x1g7p55s" path="res://audio/sfx/characters/sloth/sloth_talk_1.ogg" id="36_p7qim"]
 [ext_resource type="AudioStream" uid="uid://7kxu26go8qp" path="res://audio/sfx/characters/sloth/sloth_talk_2.ogg" id="37_cu7wn"]
 
@@ -294,6 +295,20 @@ tracks/16/keys = {
 "values": [{
 "args": [&"death"],
 "method": &"queue"
+}]
+}
+tracks/17/type = "method"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Acheivement")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["SLOTH_TROPHY"],
+"method": &"set_achievement"
 }]
 }
 
@@ -617,12 +632,12 @@ _data = {
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dbtmo"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3kw6g"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ui8gw"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.52, 0.52, 0.52, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_obe7g"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uahh5"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("26_uahh5")
@@ -950,8 +965,8 @@ target = NodePath("../../../../../../Target")
 
 [node name="Sphere_001" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="1" unique_id=1805627527]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.27371758, 0)
-surface_material_override/0 = SubResource("StandardMaterial3D_3kw6g")
-surface_material_override/1 = SubResource("ShaderMaterial_obe7g")
+surface_material_override/0 = SubResource("StandardMaterial3D_ui8gw")
+surface_material_override/1 = SubResource("ShaderMaterial_uahh5")
 
 [node name="LookAtModifier3D" type="LookAtModifier3D" parent="PathFollow3D/Body/Mesh/sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="2" unique_id=636975154]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.083372, 0, 0)
@@ -1003,6 +1018,9 @@ sounds = Array[AudioStream]([ExtResource("36_p7qim"), ExtResource("37_cu7wn")])
 process_mode = 3
 volume_db = 2.0
 bus = &"Dialog"
+
+[node name="Acheivement" type="Node" parent="PathFollow3D/Body" unique_id=1753950155]
+script = ExtResource("36_5mnmy")
 
 [connection signal="body_entered" from="TriggerArea" to="PathFollow3D/Body" method="_on_trigger_area_body_entered"]
 

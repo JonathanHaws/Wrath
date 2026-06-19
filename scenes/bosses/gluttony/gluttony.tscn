@@ -41,6 +41,7 @@
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="36_x6t7s"]
 [ext_resource type="Material" uid="uid://gwfmysarj7pc" path="res://textures/particles/dust/dust.tres" id="40_uk6rk"]
 [ext_resource type="PackedScene" uid="uid://koykwgdddqjf" path="res://scenes/bosses/gluttony/fast_vomit.tscn" id="41_ddcis"]
+[ext_resource type="Script" uid="uid://cyt6s1hgewbgh" path="res://scenes/bosses/lust/acheivement.gd" id="43_r6ng6"]
 [ext_resource type="JSON" path="res://json/gluttony_talk.json" id="49_26016"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_12e26"]
@@ -335,6 +336,20 @@ tracks/14/keys = {
 "values": [{
 "args": [&"death"],
 "method": &"queue"
+}]
+}
+tracks/15/type = "method"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Acheivement")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["GLUTTONY_TROPHY"],
+"method": &"set_achievement"
 }]
 }
 
@@ -2626,6 +2641,9 @@ sounds = Array[AudioStream]([ExtResource("18_n5wbu")])
 process_mode = 3
 volume_db = -11.0
 bus = &"Dialog"
+
+[node name="Acheivement" type="Node" parent="." unique_id=2089234239]
+script = ExtResource("43_r6ng6")
 
 [connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea" to="Mesh/gluttony/Armature/Skeleton3D/LeftHand/AttackArea" method="_on_body_entered"]

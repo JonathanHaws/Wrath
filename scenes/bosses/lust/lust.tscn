@@ -37,6 +37,7 @@
 [ext_resource type="PackedScene" uid="uid://kiuc3ouuqv0h" path="res://scenes/ui/dialog/say_timed.tscn" id="36_u136s"]
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="37_r3vda"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/characters/enemies/Cry_2.wav" id="39_6ecgv"]
+[ext_resource type="Script" uid="uid://cyt6s1hgewbgh" path="res://scenes/bosses/lust/acheivement.gd" id="40_3pkb6"]
 [ext_resource type="Script" uid="uid://c5n4b0c7ujcw0" path="res://script/component/squash.gd" id="40_scf0u"]
 [ext_resource type="AudioStream" uid="uid://dluohdjxxbmn2" path="res://audio/sfx/characters/lust/lust_talk.ogg" id="41_qg53i"]
 
@@ -305,6 +306,20 @@ tracks/15/keys = {
 "values": [{
 "args": [&"death"],
 "method": &"queue"
+}]
+}
+tracks/16/type = "method"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Acheivement")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["LUST_TROPHY"],
+"method": &"set_achievement"
 }]
 }
 
@@ -1943,6 +1958,9 @@ debug_color = Color(0.65882355, 0.69411767, 0.69803923, 0.078431375)
 [node name="Squash" type="Node" parent="." unique_id=2043407996 node_paths=PackedStringArray("meshes")]
 script = ExtResource("40_scf0u")
 meshes = [NodePath("../Mesh/lust/Armature/Skeleton3D/lust")]
+
+[node name="Acheivement" type="Node" parent="." unique_id=1219741790]
+script = ExtResource("40_3pkb6")
 
 [connection signal="body_entered" from="Mesh/lust/Armature/Skeleton3D/FrontTail/AttackArea" to="Mesh/lust/Armature/Skeleton3D/FrontTail/AttackArea" method="_on_body_entered"]
 [connection signal="body_entered" from="Mesh/lust/Armature/Skeleton3D/MiddleTail/AttackArea" to="Mesh/lust/Armature/Skeleton3D/MiddleTail/AttackArea" method="_on_body_entered"]

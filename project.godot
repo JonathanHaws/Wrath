@@ -53,7 +53,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/godotsteam/plugin.cfg")
 
 [file_customization]
 
@@ -389,3 +389,14 @@ hide={
 textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 environment/bg_color=Color(0, 0, 0, 1)
+
+[steam]
+
+initialization/app_id=4738810
+initialization/initialize_on_startup=true
+initialization/embed_callbacks=false
+multiplayer_peer/max_channels=4
+
+[steam_server]
+
+initialization/embed_callbacks=false

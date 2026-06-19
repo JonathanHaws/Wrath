@@ -34,6 +34,7 @@
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://audio/sfx/characters/enemies/Despawn.wav" id="33_gi7wv"]
 [ext_resource type="JSON" path="res://json/greed_talk.json" id="34_l4c82"]
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="35_ggcq0"]
+[ext_resource type="Script" uid="uid://cyt6s1hgewbgh" path="res://scenes/bosses/lust/acheivement.gd" id="36_2ku6t"]
 [ext_resource type="AudioStream" uid="uid://yn118a1m8hyx" path="res://audio/sfx/characters/greed/greed_talk.ogg" id="37_pscvx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_oijfr"]
@@ -312,6 +313,20 @@ tracks/16/keys = {
 "values": [{
 "args": [&"death"],
 "method": &"queue"
+}]
+}
+tracks/17/type = "method"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Acheivement")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": ["GREED_TROPHY"],
+"method": &"set_achievement"
 }]
 }
 
@@ -1595,27 +1610,27 @@ debug_color = Color(0, 0.6, 0.7, 0.42)
 bones/1/position = Vector3(1.4825946e-07, 1.2201675, -0.9818785)
 bones/1/rotation = Quaternion(-0.8129902, -4.3215532e-08, -6.241949e-08, 0.5822774)
 bones/2/position = Vector3(0.31877697, -0.06666427, -0.010626154)
-bones/2/rotation = Quaternion(0.9957248, 0.0149688, -0.0008339985, 0.091144584)
-bones/3/rotation = Quaternion(0.9207093, 0.009610182, -0.001461139, 0.39012802)
+bones/2/rotation = Quaternion(0.9957324, 0.01496887, -0.0008327607, 0.091062225)
+bones/3/rotation = Quaternion(0.9207094, 0.009610183, -0.0014611405, 0.39012802)
 bones/5/rotation = Quaternion(0.18999313, -0.0065141497, 0.03934435, 0.98097515)
 bones/6/rotation = Quaternion(0.23214084, -2.1491486e-11, 5.8902994e-10, 0.97268224)
-bones/7/rotation = Quaternion(0.0842316, 0.094901875, -0.98369217, 0.1274699)
-bones/8/rotation = Quaternion(0.14302444, -0.17530425, -0.01719008, 0.9739184)
+bones/7/rotation = Quaternion(0.08422959, 0.09488343, -0.9836941, 0.1274694)
+bones/8/rotation = Quaternion(0.14319979, -0.17534514, -0.017188458, 0.9738853)
 bones/9/rotation = Quaternion(0.09713816, 0.01228926, -0.05329915, 0.9937667)
 bones/10/rotation = Quaternion(-0.024474971, 1.089548e-08, -0.035991468, 0.99905235)
-bones/12/rotation = Quaternion(-0.105105095, -3.198653e-11, -2.548832e-10, 0.9944611)
+bones/12/rotation = Quaternion(-0.10510508, -3.198653e-11, -2.548832e-10, 0.9944611)
 bones/13/position = Vector3(-0.48886776, 1.4355079, -0.009695645)
-bones/13/rotation = Quaternion(0.0069652284, -0.067561954, 0.98973006, 0.12578312)
-bones/14/rotation = Quaternion(0.090695225, 0.023425639, 0.028909674, 0.9951834)
+bones/13/rotation = Quaternion(0.00693753, -0.06734246, 0.9897454, 0.12578191)
+bones/14/rotation = Quaternion(0.090564735, 0.023395926, 0.028909236, 0.995196)
 bones/15/rotation = Quaternion(0.11003292, -0.0060832934, -0.09316448, 0.9895333)
 bones/16/rotation = Quaternion(-0.024474962, 5.9176823e-09, 0.035991482, 0.99905235)
 bones/17/position = Vector3(-0.0001620068, 0.33930945, -0.32458934)
 bones/17/rotation = Quaternion(0.765907, 0.21774045, -0.5986672, -0.08702349)
-bones/18/rotation = Quaternion(-0.09246462, 0.17340854, -0.5951083, 0.77924716)
-bones/19/rotation = Quaternion(-0.42650658, 0.04670116, 0.03695732, 0.90252167)
+bones/18/rotation = Quaternion(-0.09246459, 0.17340854, -0.5951083, 0.77924716)
+bones/19/rotation = Quaternion(-0.4265066, 0.046701167, 0.03695733, 0.9025217)
 bones/20/rotation = Quaternion(-0.39865866, -0.027954789, -0.049147397, 0.9153548)
-bones/21/rotation = Quaternion(-0.35566005, 0.010927228, 0.002101773, 0.9345493)
-bones/22/rotation = Quaternion(0.9957248, -0.0149688, 0.0008339987, 0.09114458)
+bones/21/rotation = Quaternion(-0.35566005, 0.010927226, 0.0021017713, 0.9345493)
+bones/22/rotation = Quaternion(0.9957248, -0.014968801, 0.0008339989, 0.09114458)
 bones/23/rotation = Quaternion(0.9126436, -0.009322656, 0.0011059814, 0.40864837)
 bones/24/rotation = Quaternion(-0.24492623, -0.009878999, -0.013544996, 0.96939677)
 bones/25/rotation = Quaternion(0.18999313, 0.0065141516, -0.039344344, 0.98097515)
@@ -1670,7 +1685,7 @@ shape = SubResource("CylinderShape3D_br41q")
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="LeftHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="4" unique_id=1460152811]
-transform = Transform3D(-0.9946493, 0.071292885, 0.07476728, -0.05930367, -0.9866235, 0.15184356, 0.08459247, 0.14659695, 0.98557246, 0.9637688, 1.3181977, 0.9400239)
+transform = Transform3D(-0.9946493, 0.07128885, 0.07476822, -0.059265442, -0.9865644, 0.15224056, 0.08461668, 0.14699478, 0.9855111, 0.96376026, 1.3182256, 0.94056404)
 bone_name = "hand_l"
 bone_idx = 10
 
@@ -1688,7 +1703,7 @@ disabled = true
 debug_color = Color(0.734575, 0.242201, 0.281854, 1)
 
 [node name="RightHandAttack" type="BoneAttachment3D" parent="Mesh/Greed/Rig/Skeleton3D" index="5" unique_id=1317980976]
-transform = Transform3D(-0.9517738, -0.30282834, 0.049210254, 0.30580235, -0.9493222, 0.07260394, 0.024729878, 0.084151104, 0.9961459, -1.048383, 1.3322662, 0.8820089)
+transform = Transform3D(-0.9517754, -0.3028232, 0.049209096, 0.30580145, -0.9493091, 0.07277816, 0.024675744, 0.08431666, 0.9961332, -1.0483718, 1.3321679, 0.882568)
 bone_name = "hand_r"
 bone_idx = 16
 
@@ -1773,6 +1788,9 @@ volume_db = -7.0
 bus = &"Dialog"
 
 [node name="Background" parent="Dialog/GreedDialog" unique_id=193652404 instance=ExtResource("35_ggcq0")]
+
+[node name="Acheivement" type="Node" parent="." unique_id=22801504]
+script = ExtResource("36_2ku6t")
 
 [connection signal="body_entered" from="Mesh/Jump" to="Mesh/Jump" method="_on_body_entered"]
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
