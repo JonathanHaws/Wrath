@@ -22,5 +22,5 @@ func _ready() -> void:
 	if not self.visible: toggle(false)
 
 func _process(_delta: float) -> void:
-	if Input.is_action_just_pressed("ui_cancel"):
+	if Input.is_action_just_pressed("menu"):
 		toggle(not self.visible) 

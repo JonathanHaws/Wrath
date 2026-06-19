@@ -39,7 +39,7 @@ func setup_line():
 	line_node.add_point(a)
 	line_node.add_point(b)
 
-@export_group("AUDIO") ## Multiple skills can share same same player with refrence by group
+@export_group("Audio") ## Multiple skills can share same same player with refrence by group
 @export var hover_sound_group: String = "skill_hover_sound" ## Sound to be played when hovered.
 @export var insufficient_funds_sound_group: String = "skill_insufficent_funds_sound" ## Sound to be played when declined.
 @export var purchased_sound_group: String = "skill_purchased_sound_group_sound" ## Sound to be played when skill is bought.
@@ -67,18 +67,31 @@ func resolve_save_keys():
 		if prerequisite_node.save_key != "": prerequisite_key = prerequisite_node.save_key
 
 func setup_focus():
-	if focus_previous.is_empty(): focus_previous = get_path()
-	if focus_next.is_empty(): focus_next = get_path()
-	if focus_neighbor_top.is_empty(): focus_neighbor_top = get_path()
-	if focus_neighbor_bottom.is_empty(): focus_neighbor_bottom = get_path()
-	if focus_neighbor_left.is_empty(): focus_neighbor_left = get_path()
-	if focus_neighbor_right.is_empty(): focus_neighbor_right = get_path()
+	if not button: return
+	# get rid of wrong auto focus neighbors or zero them out just so proper ones can be set
+	if button.focus_previous.is_empty(): button.focus_previous = button.get_path()
+	if button.focus_next.is_empty(): button.focus_next = button.get_path()
+	if button.focus_neighbor_top.is_empty(): button.focus_neighbor_top = button.get_path()
+	if button.focus_neighbor_bottom.is_empty(): button.focus_neighbor_bottom = button.get_path()
+	if button.focus_neighbor_left.is_empty(): button.focus_neighbor_left = button.get_path()
+	if button.focus_neighbor_right.is_empty(): button.focus_neighbor_right = button.get_path()
 
-	if prerequisite_node:
-		var p = prerequisite_node.get_path()
-		if prerequisite_node.focus_neighbor_right.is_empty() or prerequisite_node.focus_neighbor_right == p:
-			prerequisite_node.focus_neighbor_right = get_path()
-		focus_neighbor_left = p
+	var left_node = get_node_or_null(focus_neighbor_left)
+	var right_node = get_node_or_null(focus_neighbor_right)
+	var top_node = get_node_or_null(focus_neighbor_top)
+	var bottom_node = get_node_or_null(focus_neighbor_bottom)
+	
+	# Redirect to another UI element that doesn't have button property / child
+	if left_node: button.focus_neighbor_left = left_node.get_path()
+	if right_node: button.focus_neighbor_right = right_node.get_path()
+	if top_node: button.focus_neighbor_top = top_node.get_path()
+	if bottom_node: button.focus_neighbor_bottom = bottom_node.get_path()
+	
+	# Redirect to another skill that does have button property / child
+	if left_node and left_node.button: button.focus_neighbor_left = left_node.button.get_path()
+	if right_node and right_node.button: button.focus_neighbor_right = right_node.button.get_path()
+	if top_node and top_node.button: button.focus_neighbor_top = top_node.button.get_path()
+	if bottom_node and bottom_node.button: button.focus_neighbor_bottom = bottom_node.button.get_path()
 
 func _on_unfurl():
 	visible = true
@@ -90,8 +103,10 @@ func _on_visibility_changed():
 	if visible and open_animation:
 		open_animation.stop()
 		if prerequisite_node: open_animation.play("close")
-		else: open_animation.play("open")
-
+		else: 
+			open_animation.play("open")
+			if button: button.grab_focus()
+		
 func enter_hovered():
 	if is_locked(): return
 	if hover_animation: hover_animation.play("enter_hover")
