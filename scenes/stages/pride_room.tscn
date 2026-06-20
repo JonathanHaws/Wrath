@@ -9,9 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/items/checkpoint.tscn" id="8_nmuh7"]
 [ext_resource type="PackedScene" uid="uid://co45tty7uogdq" path="res://scenes/items/portal.tscn" id="9_i68yl"]
 [ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://scenes/bosses/gluttony/piglet.tscn" id="10_g1s2n"]
+[ext_resource type="PackedScene" uid="uid://t2ipoergd65e" path="res://models/characters/pride/pride_sculpt.glb" id="10_gtqr5"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
-vertices = PackedVector3Array(-22.1898, 0.43213, -14.2991, -22.1898, 0.43213, 14.2009, 41.8102, 0.43213, 14.2009, 41.8102, 0.43213, -14.2991)
+vertices = PackedVector3Array(-22.189798, 0.43212986, -32.299072, -22.189798, 0.43212986, 32.200928, 83.8102, 0.43212986, 32.200928, 83.8102, 0.43212986, -32.299072)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
@@ -30,9 +31,9 @@ material_override = ExtResource("2_6oxoa")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1304535015]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71385, 9.93213, -0.04907036)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.711733, 9.93213, -0.04907036)
 flip_faces = true
-size = Vector3(65.3073, 20, 66)
+size = Vector3(107.30306, 20, 66)
 
 [node name="Enviroment" type="Node3D" parent="." unique_id=682160407]
 
@@ -81,4 +82,17 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.438
 transform = Transform3D(0.971619, 0, -0.23655, 0, 1, 0, 0.23655, 0, 0.971619, -1.67795, -9.04355, 34.9739)
 
 [node name="Portal" parent="." unique_id=1309770105 instance=ExtResource("9_i68yl")]
-transform = Transform3D(1.9861623e-08, 0, -1, 0, 1, 0, 1, 0, 1.9861623e-08, 40.16447, -8.991761, -0.18047714)
+transform = Transform3D(1.9861623e-08, 0, -1, 0, 1, 0, 1, 0, 1.9861623e-08, 82.708145, -8.991761, -0.18047714)
+
+[node name="pride_sculpt" parent="." unique_id=2016120836 instance=ExtResource("10_gtqr5")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 52.80049, -9, 0)
+visible = false
+
+[node name="Light" type="OmniLight3D" parent="pride_sculpt" unique_id=981561618]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3694725, 6.8484, -2.428435)
+light_color = Color(0.6125, 0.48999998, 0.7, 1)
+light_energy = 5.0
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+omni_range = 27.0089

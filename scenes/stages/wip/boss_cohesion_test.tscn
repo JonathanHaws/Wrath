@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://bsufvbv2jwo77"]
 
+[ext_resource type="PackedScene" uid="uid://t2ipoergd65e" path="res://models/characters/pride/pride_sculpt.glb" id="2_1oryi"]
 [ext_resource type="Material" uid="uid://b7ndlyb5lfeuy" path="res://shaders/materials/bricks/world_small.tres" id="2_6d5mm"]
 [ext_resource type="PackedScene" uid="uid://pw71tm25g4j4" path="res://scenes/items/weather.tscn" id="3_1uhv7"]
 [ext_resource type="PackedScene" uid="uid://bwu2lkv2cv827" path="res://scenes/lighting/sun.tscn" id="4_3mnao"]
@@ -7,13 +8,15 @@
 [ext_resource type="Material" uid="uid://cwytjbq2qmglj" path="res://shaders/materials/bricks/world_star.tres" id="5_oqn12"]
 [ext_resource type="PackedScene" uid="uid://1jc5rm2ln3av" path="res://scenes/items/checkpoint.tscn" id="6_nirrj"]
 [ext_resource type="PackedScene" uid="uid://c63gb30rbqgem" path="res://scenes/player/reaper.tscn" id="7_orybl"]
-[ext_resource type="PackedScene" uid="uid://bwyvmebwu86xs" path="res://scenes/items/heavy_door.tscn" id="8_4sp4e"]
 [ext_resource type="PackedScene" uid="uid://2u2qs8p1y4nt" path="res://models/characters/piglet/piglet.glb" id="10_1oryi"]
 [ext_resource type="Shader" uid="uid://kww2iajo2air" path="res://shaders/custom/disolve.gdshader" id="11_k76ei"]
+[ext_resource type="PackedScene" uid="uid://dam1avbakfiuk" path="res://models/characters/slimes/Slimes.glb" id="12_6aguw"]
 [ext_resource type="PackedScene" uid="uid://dhg86ekb6f3ne" path="res://models/characters/gluttony/gluttony.glb" id="12_n2f0p"]
-[ext_resource type="PackedScene" uid="uid://v5af8j11oilq" path="res://scenes/bosses/lust/lust.tscn" id="13_qri8l"]
+[ext_resource type="Material" uid="uid://dgequ13txopwq" path="res://shaders/materials/projectiles/sludge.tres" id="13_v76x3"]
 [ext_resource type="PackedScene" uid="uid://dbhx6r10lr31h" path="res://models/characters/wrath/wrath.glb" id="13_wn83d"]
 [ext_resource type="PackedScene" uid="uid://yjgk2vfs7584" path="res://models/characters/sloth/sloth.glb" id="14_gmsxx"]
+[ext_resource type="PackedScene" uid="uid://b28l3wgogpqnm" path="res://models/characters/lust/lust.glb" id="15_wn83d"]
+[ext_resource type="Material" uid="uid://cfsjgs6ugktap" path="res://shaders/materials/characters/lust.tres" id="16_1oryi"]
 [ext_resource type="PackedScene" uid="uid://bdjvrm2o45ly3" path="res://models/characters/envy/envy.glb" id="17_1oryi"]
 [ext_resource type="PackedScene" uid="uid://p5m74oii8yam" path="res://models/characters/greed/greed.glb" id="18_3mnao"]
 
@@ -23,7 +26,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_wn83d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3mnao"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("11_k76ei")
@@ -42,17 +45,17 @@ shader_parameter/emission_texture_intensity = 1.0
 shader_parameter/normal_strength = 1.0
 shader_parameter/enabled_normal = false
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1oryi"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6aguw"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.6435713, 0.64357144, 0.64357126, 1)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3mnao"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v76x3"]
 resource_local_to_scene = true
 transparency = 1
 albedo_color = Color(0.6435713, 0.64357144, 0.64357126, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6aguw"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tcnho"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("11_k76ei")
@@ -82,7 +85,7 @@ material_override = ExtResource("2_6d5mm")
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="NavigationRegion3D/CSGCombiner3D" unique_id=1317077850]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.71385, 9.93213, -0.158932)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.6977997, 9.872881, -1.0854301)
 flip_faces = true
 size = Vector3(65.3073, 20, 77.4419)
 
@@ -117,48 +120,40 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -9, 0)
 [node name="Checkpoint" parent="." unique_id=1412673960 instance=ExtResource("6_nirrj")]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.14297, -9.05803, -0.448656)
 
-[node name="Enter" parent="." unique_id=1533333931 instance=ExtResource("8_4sp4e")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -22.5156, -9.60013, 1.00536e-06)
-DESTINATION_SCENE = "uid://d1k2pnn46w66f"
-DESTINATION_NODE_NAME = "Exit"
-
-[node name="Exit" parent="." unique_id=764002434 groups=["pride_door"] instance=ExtResource("8_4sp4e")]
-transform = Transform3D(1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 41.8639, -9.60013, 1.00536e-06)
-DESTINATION_SCENE = "uid://5n4cvh6cqc4p"
-DESTINATION_NODE_NAME = "Enter"
-LOCKED = true
-
-[node name="Lust" parent="." unique_id=1949196190 instance=ExtResource("13_qri8l")]
-transform = Transform3D(-0.7683685, 0.0019798502, -0.640005, 0.015828589, 0.9997478, -0.015910577, 0.639812, -0.022355549, -0.7682065, 5.063919, -9.145432, 11.714893)
-
 [node name="Piglet" parent="." unique_id=728713192 instance=ExtResource("10_1oryi")]
 transform = Transform3D(0.22330123, 0, -0.97474957, 0, 1, 0, 0.97474957, 0, 0.22330123, 7.6443405, -8.434498, -4.2933273)
 
-[node name="Plane" parent="Piglet/Mesh/Skeleton3D" parent_id_path=PackedInt32Array(728713192, 1349517519) index="0" unique_id=133001245]
-surface_material_override/0 = SubResource("ShaderMaterial_wn83d")
-surface_material_override/1 = SubResource("StandardMaterial3D_1oryi")
+[node name="Plane" parent="Piglet/Mesh/Skeleton3D" parent_id_path=PackedInt32Array(728713192, 1417879915) index="0" unique_id=1497663779]
+transform = Transform3D(0.98502475, 0, 0.17241465, 0, 1, 0, -0.17241465, 0, 0.98502475, -8.541595, -0.55426407, 0.8839216)
+surface_material_override/0 = SubResource("ShaderMaterial_3mnao")
+surface_material_override/1 = SubResource("StandardMaterial3D_6aguw")
 
 [node name="Gluttony" parent="." unique_id=2064500739 instance=ExtResource("12_n2f0p")]
-transform = Transform3D(0.30133823, 0, -0.9535173, 0, 1, 0, 0.9535173, 0, 0.30133823, 9.5806675, -8.145305, -1.0737524)
+transform = Transform3D(0.46122575, 0, -0.88728285, 0, 1, 0, 0.88728285, 0, 0.46122575, 7.337822, -8.699569, -9.5843525)
 
 [node name="Greed" parent="." unique_id=1599583532 instance=ExtResource("18_3mnao")]
-transform = Transform3D(-0.5082149, 0, -0.8612303, 0, 1, 0, 0.8612303, 0, -0.5082149, 8.338887, -9.06787, 7.6857014)
+transform = Transform3D(0.9086818, 0, -0.4174894, 0, 1, 0, 0.4174894, 0, 0.9086818, 1.1700706, -9.06787, -13.589365)
 
 [node name="Sloth" parent="." unique_id=1456814678 instance=ExtResource("14_gmsxx")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.943674, -8.105873, 13.421916)
+transform = Transform3D(-0.9202925, 0, -0.39123112, 0, 1, 0, 0.39123112, 0, -0.9202925, -1.660286, -8.717418, 16.251991)
 
 [node name="Sphere_001" parent="Sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="0" unique_id=1805627527]
-transform = Transform3D(-0.9999347, 0, 0.011431596, 0, 1, 0, -0.011431596, 0, -0.9999347, 0, 0, 1.9188004)
-surface_material_override/0 = SubResource("StandardMaterial3D_3mnao")
-surface_material_override/1 = SubResource("ShaderMaterial_6aguw")
+surface_material_override/0 = SubResource("StandardMaterial3D_v76x3")
+surface_material_override/1 = SubResource("ShaderMaterial_tcnho")
+
+[node name="Slimes" parent="Sloth/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1456814678, 684494173) index="1" unique_id=1705519881 instance=ExtResource("12_6aguw")]
+transform = Transform3D(-0.99317956, 0, -0.11659491, 0, 1, 0, 0.11659491, 0, -0.99317956, 2.314594, -0.2597952, 1.5558109)
+
+[node name="Mesh" parent="Sloth/Armature/Skeleton3D/Slimes/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1705519881, 721052210) index="0" unique_id=708991476]
+surface_material_override/1 = ExtResource("13_v76x3")
 
 [node name="Wrath" parent="." unique_id=212214660 instance=ExtResource("13_wn83d")]
-transform = Transform3D(-0.9352774, 0, 0.35391557, 0, 1, 0, -0.35391557, 0, -0.9352774, -1.6974049, -9.067871, -12.907586)
+transform = Transform3D(0.647183, 0, 0.76233476, 0, 1, 0, -0.76233476, 0, 0.647183, 6.6816645, -9.067871, 6.4383574)
 
 [node name="Envy" parent="." unique_id=1261464440 instance=ExtResource("17_1oryi")]
-transform = Transform3D(0.72419596, 0, -0.68959427, 0, 1, 0, 0.68959427, 0, 0.72419596, 6.620139, -9.06787, -10.887342)
+transform = Transform3D(0.99436736, 0, 0.10598758, 0, 1, 0, -0.10598758, 0, 0.99436736, -3.1032476, -9.06787, -15.0814705)
 
-[node name="Skeleton3D" parent="Envy/Armature" parent_id_path=PackedInt32Array(1261464440, 1842681375) index="0" unique_id=1392320625]
+[node name="Skeleton3D" parent="Envy/Armature" parent_id_path=PackedInt32Array(1261464440, 2009984488) index="0" unique_id=182098199]
 bones/0/rotation = Quaternion(0, 0.7071068, 0.7071068, 0)
 bones/1/position = Vector3(-3.0624682e-07, 0.25110248, 2.9511843)
 bones/1/rotation = Quaternion(2.5939861e-09, 0.9971244, 0.075783156, -1.6205449e-06)
@@ -201,9 +196,23 @@ bones/34/rotation = Quaternion(-0.0033942852, -0.59184563, 0.08141297, 0.8019222
 bones/35/rotation = Quaternion(0.06812329, 0.21092121, -0.40978488, 0.8848434)
 bones/36/rotation = Quaternion(-0.078951806, 0.15423416, 0.075882, 0.98194724)
 
+[node name="Mesh" parent="Envy/Armature/Skeleton3D" index="0" unique_id=1502797564]
+transform = Transform3D(0.8419588, 0, -0.5395424, 0, 1, 0, 0.5395424, 0, 0.8419588, 1.5231096, 0, -2.1245785)
+
 [node name="Reaper" parent="." unique_id=153444811 instance=ExtResource("7_orybl")]
 transform = Transform3D(-0.0916933, 0, -0.995788, 0, 1, 0, 0.995788, 0, -0.0916933, -13.0945, -7.47934, -1.63374)
 
+[node name="Lust" parent="." unique_id=634180078 instance=ExtResource("15_wn83d")]
+transform = Transform3D(-0.68265545, 0, -0.7307404, 0, 1, 0, 0.7307404, 0, -0.68265545, 3.2008715, -9.776282, 11.387904)
+
+[node name="lust" parent="Lust/Armature/Skeleton3D" parent_id_path=PackedInt32Array(634180078, 657402277) index="0" unique_id=1239155144]
+material_override = ExtResource("16_1oryi")
+
+[node name="pride_sculpt" parent="." unique_id=1438846520 instance=ExtResource("2_1oryi")]
+transform = Transform3D(-0.9999716, 0, -0.0075268, 0, 1, 0, 0.0075268, 0, -0.9999716, 7.7985, -8.996832, -0.5236597)
+
 [editable path="Piglet"]
 [editable path="Sloth"]
+[editable path="Sloth/Armature/Skeleton3D/Slimes"]
 [editable path="Envy"]
+[editable path="Lust"]
