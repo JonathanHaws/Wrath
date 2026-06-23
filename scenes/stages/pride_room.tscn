@@ -10,12 +10,28 @@
 [ext_resource type="PackedScene" uid="uid://co45tty7uogdq" path="res://scenes/items/portal.tscn" id="9_i68yl"]
 [ext_resource type="PackedScene" uid="uid://dfri6vhmpkyfv" path="res://scenes/bosses/gluttony/piglet.tscn" id="10_g1s2n"]
 [ext_resource type="PackedScene" uid="uid://t2ipoergd65e" path="res://models/characters/pride/pride_sculpt.glb" id="10_gtqr5"]
+[ext_resource type="Shader" uid="uid://crt4d8p4aond2" path="res://shaders/custom/mirror.gdshader" id="11_6oxoa"]
+[ext_resource type="Script" uid="uid://bkenv0x5emeqg" path="res://script/mirror.gd" id="12_02100"]
 
 [sub_resource type="NavigationMesh" id="NavigationMesh_jc5vn"]
 vertices = PackedVector3Array(-22.189798, 0.43212986, -32.299072, -22.189798, 0.43212986, 32.200928, 83.8102, 0.43212986, 32.200928, 83.8102, 0.43212986, -32.299072)
 polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_ycex8"]
+size = Vector2(30, 10)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_hmjiv"]
+viewport_path = NodePath("MeshInstance3D/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6oxoa"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("11_6oxoa")
+shader_parameter/tex = SubResource("ViewportTexture_hmjiv")
+
+[sub_resource type="PrismMesh" id="PrismMesh_hmjiv"]
 
 [node name="Main" type="Node3D" unique_id=1157930120]
 
@@ -85,8 +101,7 @@ transform = Transform3D(0.971619, 0, -0.23655, 0, 1, 0, 0.23655, 0, 0.971619, -1
 transform = Transform3D(1.9861623e-08, 0, -1, 0, 1, 0, 1, 0, 1.9861623e-08, 82.708145, -8.991761, -0.18047714)
 
 [node name="pride_sculpt" parent="." unique_id=2016120836 instance=ExtResource("10_gtqr5")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 52.80049, -9, 0)
-visible = false
+transform = Transform3D(-0.86138195, 0, -0.5079579, 0, 1, 0, 0.5079579, 0, -0.86138195, 8.831201, -9, 24.569967)
 
 [node name="Light" type="OmniLight3D" parent="pride_sculpt" unique_id=981561618]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3694725, 6.8484, -2.428435)
@@ -96,3 +111,25 @@ light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
 omni_range = 27.0089
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1714980362 node_paths=PackedStringArray("viewport", "mirror_camera")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.515686, -4, 32.224762)
+mesh = SubResource("QuadMesh_ycex8")
+skeleton = NodePath("")
+surface_material_override/0 = SubResource("ShaderMaterial_6oxoa")
+script = ExtResource("12_02100")
+viewport = NodePath("SubViewport")
+mirror_camera = NodePath("SubViewport/Camera3D")
+
+[node name="SubViewport" type="SubViewport" parent="MeshInstance3D" unique_id=141120457]
+size = Vector2i(1393, 512)
+
+[node name="Camera3D" type="Camera3D" parent="MeshInstance3D/SubViewport" unique_id=103998612]
+transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, 2.5156858, -4, 32.17901)
+projection = 2
+size = 0.065
+far = 100.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/SubViewport/Camera3D" unique_id=60041490]
+transform = Transform3D(-1.1127254e-07, 6.756116e-08, -1, -1, -4.371139e-08, 1.1127254e-07, -4.3711385e-08, 1, 6.756116e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_hmjiv")
