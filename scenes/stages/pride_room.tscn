@@ -20,7 +20,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 [sub_resource type="BoxMesh" id="BoxMesh_od467"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_ycex8"]
-size = Vector2(30, 10)
+size = Vector2(21.28, 11.88)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_hmjiv"]
 viewport_path = NodePath("MeshInstance3D/SubViewport")
@@ -113,7 +113,7 @@ light_specular = 0.0
 omni_range = 27.0089
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1714980362 node_paths=PackedStringArray("viewport", "mirror_camera")]
-transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 2.515686, -4, 32.224762)
+transform = Transform3D(-0.9999999, 0, 8.742276e-08, 0, 1, 0, -8.742276e-08, 0, -0.9999999, 0, -1.9274797, 32.330692)
 mesh = SubResource("QuadMesh_ycex8")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("ShaderMaterial_6oxoa")
@@ -132,4 +132,11 @@ far = 100.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/SubViewport/Camera3D" unique_id=60041490]
 transform = Transform3D(-1.1127254e-07, 6.756116e-08, -1, -1, -4.371139e-08, 1.1127254e-07, -4.3711385e-08, 1, 6.756116e-08, 0, 0, 0)
+visible = false
 mesh = SubResource("PrismMesh_hmjiv")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=1965841009]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.11578369, -1.861206, 32.85257)
+material_override = ExtResource("2_6oxoa")
+use_collision = true
+size = Vector3(20.6073, 11.739014, 1)
