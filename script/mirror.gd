@@ -40,7 +40,6 @@ func _process(_delta):
 	var frostum_offset =  Vector2(cam2mirror_camlocal.x, cam2mirror_camlocal.y)
 	mirror_camera.set_frustum(mesh.size.y, frostum_offset, near, 10000) #godot 4.7 seems to use vertical size as frustum... so use that
 
-
 func Mirror_transform(n : Vector3, d : Vector3) -> Transform3D:
 	var basisX : Vector3 = Vector3(1.0, 0, 0) - 2 * Vector3(n.x * n.x, n.x * n.y, n.x * n.z)
 	var basisY : Vector3 = Vector3(0, 1.0, 0) - 2 * Vector3(n.y * n.x, n.y * n.y, n.y * n.z)
