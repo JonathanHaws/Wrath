@@ -9,21 +9,20 @@
 [ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/characters/Crumble_2.wav" id="12_g0hg0"]
 [ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://audio/sfx/characters/Crumble_3.wav" id="13_mbca3"]
 [ext_resource type="AudioStream" uid="uid://bg0rsvkfwvyq1" path="res://audio/sfx/characters/Crumble_4.wav" id="14_imhgt"]
+[ext_resource type="AudioStream" uid="uid://djsidb0a3237q" path="res://audio/music/$pride.ogg" id="15_1ce75"]
 [ext_resource type="AudioStream" uid="uid://dejgyyvoucgey" path="res://audio/sfx/characters/enemies/Cry_3.wav" id="15_jxplk"]
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://audio/sfx/characters/enemies/Despawn.wav" id="16_st6dt"]
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://audio/sfx/characters/enemies/Cry.wav" id="17_euapl"]
-[ext_resource type="AudioStream" uid="uid://f7dwuxrh87go" path="res://audio/music/wrath.ogg" id="17_oeds4"]
 [ext_resource type="AudioStream" uid="uid://cnqmjqai7521j" path="res://audio/sfx/characters/enemies/Spin.wav" id="18_fd2hq"]
 [ext_resource type="Script" uid="uid://c2v1aaynofoka" path="res://script/component/hit_shape.gd" id="20_yihmj"]
 [ext_resource type="Script" uid="uid://bjn0spyxdvu3g" path="res://script/component/camera_effects.gd" id="21_1qi28"]
+[ext_resource type="PackedScene" uid="uid://erf3nei0t7pt" path="res://models/characters/pride/pride.glb" id="23_1ce75"]
 [ext_resource type="Script" uid="uid://o6ymojmwkjnn" path="res://script/items/wisp_reward.gd" id="23_20oj1"]
 [ext_resource type="Script" uid="uid://nf5y0ndpubhh" path="res://script/component/scene_spawner.gd" id="23_hybxi"]
 [ext_resource type="Script" uid="uid://yhtm4vllueo2" path="res://script/component/shader_tween.gd" id="24_oeds4"]
 [ext_resource type="PackedScene" uid="uid://c2rs4sei2yvd1" path="res://scenes/particles/hurt/pride_hurt_particles.tscn" id="24_uxu3y"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://script/dialog/dialog.gd" id="25_2x3ef"]
-[ext_resource type="PackedScene" uid="uid://b1la6oxukrv61" path="res://models/characters/pride/pride.glb" id="25_oeds4"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="25_osw8t"]
-[ext_resource type="Material" uid="uid://c8vfx4h7g605y" path="res://shaders/materials/characters/pride.tres" id="26_7rw28"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://script/component/root_motion.gd" id="26_8l61o"]
 [ext_resource type="JSON" uid="uid://dgjgq3dsd2m3j" path="res://json/pride_talk.json" id="29_2x3ef"]
 [ext_resource type="Script" uid="uid://cyt6s1hgewbgh" path="res://scenes/bosses/lust/acheivement.gd" id="29_cxgsi"]
@@ -50,6 +49,28 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/1/interp = 0
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "animation"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Mesh/pride/AnimationPlayer")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"clips": PackedStringArray("Walk"),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_x1kl7"]
@@ -214,25 +235,13 @@ tracks/11/keys = {
 "method": &"tween"
 }]
 }
-tracks/12/type = "value"
+tracks/12/type = "method"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Mesh/pride/Armature_001/Skeleton3D/eyes:visible")
-tracks/12/interp = 0
+tracks/12/path = NodePath("BossHealthBar/AnimationPlayer")
+tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 1.7333333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-tracks/13/type = "method"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("BossHealthBar/AnimationPlayer")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -240,13 +249,13 @@ tracks/13/keys = {
 "method": &"queue"
 }]
 }
-tracks/14/type = "method"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Acheivement")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Acheivement")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -274,7 +283,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/1/path = NodePath("Target:TRACKING_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -359,6 +368,16 @@ tracks/7/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "values": []
+}
+tracks/8/type = "animation"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Mesh/pride/AnimationPlayer")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"clips": PackedStringArray("Intro"),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -445,18 +464,6 @@ tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [true]
-}
-tracks/7/type = "value"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Mesh/pride/Armature_001/Skeleton3D/eyes:visible")
-tracks/7/interp = 0
-tracks/7/loop_wrap = true
-tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
 "values": [true]
 }
 
@@ -619,7 +626,7 @@ script = ExtResource("20_yihmj")
 INVINCIBLE = true
 HEALTH = 8000.0
 MAX_HEALTH = 8000.0
-FREE_ON_DEATH = [NodePath("../Mesh/LockOn"), NodePath("../CollisionShape3D")]
+FREE_ON_DEATH = [NodePath("../Mesh/pride/rig/Skeleton3D/BoneAttachment3D/LockOn"), NodePath("../CollisionShape3D")]
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=1225057356]
@@ -650,7 +657,7 @@ bus = &"SFX"
 
 [node name="Music" type="AudioStreamPlayer" parent="Audio" unique_id=2125450821]
 process_mode = 3
-stream = ExtResource("17_oeds4")
+stream = ExtResource("15_1ce75")
 bus = &"Music"
 parameters/looping = true
 
@@ -671,6 +678,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89408, 2.62937, 5.76861)
 script = ExtResource("25_osw8t")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 BODY = NodePath("..")
+SPEED = 4.0
 SPEED_MULTIPLIER = 0.0
 CHASE_VERTICALLY = true
 MESH = NodePath("../Mesh")
@@ -678,7 +686,7 @@ MESH = NodePath("../Mesh")
 [node name="Mesh" type="Node3D" parent="." unique_id=31844010 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "BODY")]
 script = ExtResource("26_8l61o")
 SKELETAL_ANIMATION_PLAYER = NodePath("pride/AnimationPlayer")
-SKELETON = NodePath("pride/Armature")
+SKELETON = NodePath("pride/rig/Skeleton3D")
 MESH = NodePath(".")
 BODY = NodePath("..")
 
@@ -688,18 +696,61 @@ BODY = NodePath("..")
 script = ExtResource("24_oeds4")
 groups = Array[String](["pride_mesh"])
 
-[node name="LockOn" type="Area3D" parent="Mesh" unique_id=840308092]
-transform = Transform3D(0.999906, 0.00257004, 0.0135036, -0.0131209, -0.114423, 0.993345, 0.00409807, -0.993429, -0.114379, -0.00974348, 1.48289, -0.085655)
+[node name="pride" parent="Mesh" unique_id=966865936 instance=ExtResource("23_1ce75")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/LockOn" unique_id=1253475876]
+[node name="Skeleton3D" parent="Mesh/pride/rig" parent_id_path=PackedInt32Array(966865936, 879555098) index="0" unique_id=2114756466]
+bones/1/position = Vector3(2.087003e-10, -0.17326672, 3.412994)
+bones/4/rotation = Quaternion(-0.025434121, 0.00916148, -0.00023309817, 0.9996345)
+bones/5/rotation = Quaternion(0.27266315, -0.008817049, 0.002498929, 0.962066)
+bones/8/rotation = Quaternion(-0.5886837, -0.2456798, -0.48629344, 0.59716964)
+bones/9/position = Vector3(-0.0655566, 0.6258249, -0.03602692)
+bones/9/rotation = Quaternion(-0.1931029, 0.83859557, -0.356107, 0.3642204)
+bones/10/rotation = Quaternion(0.27784547, 0.69114494, 0.46863064, 0.4748747)
+bones/11/rotation = Quaternion(-0.21007368, -0.2127595, 0.1673164, 0.939472)
+bones/13/position = Vector3(0.0025201067, 0.19248354, -0.001107417)
+bones/13/rotation = Quaternion(0.28185079, 0.03548067, 0.6346396, 0.71870285)
+bones/14/rotation = Quaternion(0.29967323, -0.2809881, 0.57659715, 0.7062417)
+bones/15/rotation = Quaternion(0.3135549, -0.028830705, 0.3515839, 0.8816127)
+bones/16/position = Vector3(0.052658204, 0.04338773, -0.031205557)
+bones/16/rotation = Quaternion(-0.45998597, 0.25174353, 0.49745262, 0.691071)
+bones/17/rotation = Quaternion(0.13483068, 0.35788542, -0.19305746, 0.9035859)
+bones/18/rotation = Quaternion(0.0992369, 0.09184225, -0.19055536, 0.97231984)
+bones/20/position = Vector3(-0.009147706, 0.19416542, 0.0012207944)
+bones/20/rotation = Quaternion(0.36943203, -0.0038900073, 0.6095974, 0.701353)
+bones/21/rotation = Quaternion(0.43421885, -0.27063155, 0.5753128, 0.638144)
+bones/22/rotation = Quaternion(0.31071934, -0.038698822, 0.23725195, 0.9196018)
+bones/24/position = Vector3(-0.02413576, 0.20843303, 0.0018858409)
+bones/24/rotation = Quaternion(0.37059435, -0.0940112, 0.65712273, 0.6496241)
+bones/25/rotation = Quaternion(0.52757865, -0.26093853, 0.4802446, 0.650336)
+bones/26/rotation = Quaternion(0.4159807, -0.2024468, 0.110574104, 0.87962997)
+bones/28/position = Vector3(-0.025186395, 0.23037817, -0.00061733346)
+bones/28/rotation = Quaternion(0.4476479, -0.18949348, 0.6588052, 0.57417715)
+bones/29/rotation = Quaternion(0.64030236, -0.2299154, 0.2534519, 0.68768746)
+bones/30/rotation = Quaternion(0.28792918, -0.1090501, 0.095177144, 0.94664997)
+bones/31/rotation = Quaternion(-0.5649189, 0.27881265, 0.3804777, 0.67702806)
+bones/32/rotation = Quaternion(0.10649774, -0.76831967, 0.6234343, 0.09835105)
+bones/33/rotation = Quaternion(0.5366171, 0.08528825, -0.69407284, 0.47226167)
+bones/56/rotation = Quaternion(0.9901143, 0.019273307, -0.004764357, 0.13885136)
+bones/57/rotation = Quaternion(0.07699554, 0.0061869817, -0.00017821742, 0.99701226)
+bones/60/rotation = Quaternion(0.9915057, -0.019321818, 0.0045634047, 0.12853944)
+bones/61/rotation = Quaternion(0.074809454, -0.0061008413, 0.00017618202, 0.9971792)
+bones/63/rotation = Quaternion(0.03754124, 0.9915593, -0.12409666, -0.0009144931)
+bones/64/position = Vector3(-0.6027508, 5.1139855, 0.7489196)
+bones/64/rotation = Quaternion(-0.37707433, 0.90099436, 0.19149587, 0.09671334)
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/pride/rig/Skeleton3D" index="0" unique_id=2130094361]
+transform = Transform3D(0.999832, 7.379459e-10, 0.018328058, -0.0008896831, 0.998821, 0.04853395, -0.01830645, -0.048542205, 0.9986534, -2.0866336e-10, 4.843699, -4.048925e-07)
+bone_name = "spine.003"
+bone_idx = 4
+
+[node name="LockOn" type="Area3D" parent="Mesh/pride/rig/Skeleton3D/BoneAttachment3D" unique_id=840308092]
+transform = Transform3D(0.31858417, 0, 0, 0, 0.3185841, 0, 0, 0, 0.3185839, 0, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/pride/rig/Skeleton3D/BoneAttachment3D/LockOn" unique_id=1253475876]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
 shape = SubResource("BoxShape3D_uxu3y")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
-
-[node name="pride" parent="Mesh" unique_id=1028097545 instance=ExtResource("25_oeds4")]
-
-[node name="body" parent="Mesh/pride/Armature/Skeleton3D" parent_id_path=PackedInt32Array(1028097545, 1171914700) index="0" unique_id=157206038]
-surface_material_override/0 = ExtResource("26_7rw28")
 
 [node name="TriggerArea" type="Area3D" parent="." unique_id=13149657]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2, -0.98601, 3)
