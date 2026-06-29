@@ -12,7 +12,7 @@ var shake_offset := Vector3.ZERO
 var decay_rate = default_decay_rate
 
 @export var shake_presets := {
-	"player_hurt":   { "strength": 1.0, "slow_motion_duration": .24,  "slow_motion_speed": 0.0},
+	"player_hurt":   { "strength": 1.0, "slow_motion_duration": .18,  "slow_motion_speed": 0.0},
 	"player_attack": { "strength": 1.0, "slow_motion_duration": .18,  "slow_motion_speed": 0.0},
 	"player_kill":   { "strength": 1.5, "slow_motion_duration": .27,  "slow_motion_speed": 0.0},
 	"player_shoot":  { "strength": 1.0, "slow_motion_duration": .11,  "slow_motion_speed": 0.0},
