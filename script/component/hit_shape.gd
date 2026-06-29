@@ -150,7 +150,7 @@ func _ready():
 		MAX_HEALTH *= multiplier
 		HEALTH *= multiplier
 	
-	for group in IMMUNE_GROUPS : add_to_group(group)
+	for group in IMMUNE_GROUPS: add_to_group(group)
 	
 	if INVINCIBILITY_COOLDOWN > 0:
 		invincibility_timer = Timer.new()

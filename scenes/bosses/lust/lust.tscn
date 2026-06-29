@@ -1524,7 +1524,7 @@ ANIM = NodePath("..")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="HitShape" type="Area3D" parent="." unique_id=37887982 node_paths=PackedStringArray("FREE_ON_DEATH", "TELEPORT_NODES_TO_HIT") groups=["enemy_hitshape"]]
+[node name="HitShape" type="Area3D" parent="." unique_id=37887982 node_paths=PackedStringArray("FREE_ON_DEATH", "TELEPORT_NODES_TO_HIT")]
 script = ExtResource("6_64wp7")
 INVINCIBLE = true
 HEALTH = 3000.0
@@ -1765,7 +1765,7 @@ transform = Transform3D(-0.8263588, 0.55808324, 0.07533182, -0.54442143, -0.8259
 bone_name = "hand_l"
 bone_idx = 6
 
-[node name="AttackArea" type="Area3D" parent="Mesh/lust/Armature/Skeleton3D/LeftHand" unique_id=330641709 node_paths=PackedStringArray("hit_shape") groups=["enemy_hitshape"]]
+[node name="AttackArea" type="Area3D" parent="Mesh/lust/Armature/Skeleton3D/LeftHand" unique_id=330641709 node_paths=PackedStringArray("hit_shape")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_827t2")
@@ -1782,7 +1782,7 @@ transform = Transform3D(-0.93741375, -0.33024472, 0.11042834, 0.34576678, -0.920
 bone_name = "hand_r"
 bone_idx = 61
 
-[node name="AttackArea" type="Area3D" parent="Mesh/lust/Armature/Skeleton3D/RightHand" unique_id=436178861 node_paths=PackedStringArray("hit_shape") groups=["enemy_hitshape"]]
+[node name="AttackArea" type="Area3D" parent="Mesh/lust/Armature/Skeleton3D/RightHand" unique_id=436178861 node_paths=PackedStringArray("hit_shape")]
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("31_827t2")

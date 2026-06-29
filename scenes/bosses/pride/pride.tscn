@@ -25,6 +25,7 @@
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://script/dialog/dialog.gd" id="25_2x3ef"]
 [ext_resource type="Script" uid="uid://f6ioqa0mvpjo" path="res://script/component/hurt_shape.gd" id="25_g8qxv"]
 [ext_resource type="Script" uid="uid://npudbgnmwvea" path="res://script/component/chase_target.gd" id="25_osw8t"]
+[ext_resource type="Script" uid="uid://dpgehwrod878r" path="res://script/component/look_at_influence_lerp.gd" id="26_0rkf0"]
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://script/component/root_motion.gd" id="26_8l61o"]
 [ext_resource type="JSON" uid="uid://dgjgq3dsd2m3j" path="res://json/pride_talk.json" id="29_2x3ef"]
 [ext_resource type="Script" uid="uid://cyt6s1hgewbgh" path="res://scenes/bosses/lust/acheivement.gd" id="29_cxgsi"]
@@ -32,30 +33,28 @@
 [ext_resource type="AudioStream" uid="uid://bi0nj82twwtib" path="res://audio/sfx/characters/envy/envy_talk_1.ogg" id="35_3oycc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_20oj1"]
-radius = 0.78333
-height = 4.80709
+radius = 1.1630859
+height = 6.167705
 
 [sub_resource type="Animation" id="Animation_edx7f"]
 resource_name = "CHASE"
-length = 0.791672
+length = 1.1666666
 loop_mode = 1
 step = 0.0416667
-tracks/0/type = "value"
+tracks/0/type = "animation"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/0/interp = 0
+tracks/0/path = NodePath("Mesh/pride/AnimationPlayer")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [1.0]
+"clips": PackedStringArray("Walk"),
+"times": PackedFloat32Array(0)
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -64,15 +63,29 @@ tracks/1/keys = {
 "update": 0,
 "values": [1.0]
 }
-tracks/2/type = "animation"
+tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Mesh/pride/AnimationPlayer")
-tracks/2/interp = 1
+tracks/2/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"clips": PackedStringArray("Walk"),
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Mesh/pride/rig/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
 }
 
 [sub_resource type="Animation" id="Animation_x1kl7"]
@@ -468,6 +481,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [true]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mesh/pride/rig/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_cxgsi"]
 resource_name = "THRUST"
@@ -514,10 +539,22 @@ tracks/3/path = NodePath("Mesh/pride/rig/Skeleton3D/BoneAttachment3D2/Area3D/Col
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.7916667, 1.0833334),
+"times": PackedFloat32Array(0, 0.9166667, 1.25),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mesh/pride/rig/Skeleton3D/LookAtModifier3D:target_influence")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_y10ku"]
@@ -534,8 +571,8 @@ _data = [Vector2(0, 0.78518516), 0.0, 0.0, 0, 0, Vector2(0.8126888, 0.765625), 0
 point_count = 3
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uxu3y"]
-radius = 0.604509
-height = 4.80709
+radius = 1.0693359
+height = 6.094463
 
 [sub_resource type="Animation" id="Animation_u5niv"]
 resource_name = "DEATH"
@@ -612,7 +649,7 @@ _data = {
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hmjiv"]
-size = Vector3(2.4162598, 6.139324, 0.12594604)
+size = Vector3(5.158805, 5.9245505, 0.86538315)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_uxu3y"]
 
@@ -672,7 +709,7 @@ DOOR_TO_UNLOCK_GROUP = "pride_door"
 DEFEATED_KEY = "pride_defeated"
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=617301685]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1770976, 0)
 shape = SubResource("CapsuleShape3D_20oj1")
 
 [node name="Attacks" type="AnimationPlayer" parent="." unique_id=1970869158]
@@ -692,7 +729,7 @@ ANIM = NodePath("..")
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="HitShape" type="Area3D" parent="." unique_id=592702144 node_paths=PackedStringArray("FREE_ON_DEATH", "TELEPORT_NODES_TO_HIT") groups=["enemy_hitshape"]]
+[node name="HitShape" type="Area3D" parent="." unique_id=592702144 node_paths=PackedStringArray("FREE_ON_DEATH", "TELEPORT_NODES_TO_HIT")]
 script = ExtResource("20_yihmj")
 INVINCIBLE = true
 HEALTH = 8000.0
@@ -701,7 +738,7 @@ FREE_ON_DEATH = [NodePath("../Mesh/pride/rig/Skeleton3D/BoneAttachment3D/LockOn"
 TELEPORT_NODES_TO_HIT = [NodePath("../HurtParticles")]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="HitShape" unique_id=1225057356]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.49679, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1404765, 0)
 shape = SubResource("CapsuleShape3D_uxu3y")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="HitShape" unique_id=578391343]
@@ -745,7 +782,7 @@ script = ExtResource("23_hybxi")
 scenes = Array[PackedScene]([ExtResource("24_uxu3y")])
 
 [node name="Target" type="Node3D" parent="." unique_id=1924219474 node_paths=PackedStringArray("NAV_AGENT", "BODY", "MESH")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89408, 2.62937, 5.76861)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -4.367768)
 script = ExtResource("25_osw8t")
 NAV_AGENT = NodePath("../Mesh/NavigationAgent3D")
 BODY = NodePath("..")
@@ -771,39 +808,39 @@ groups = Array[String](["pride_mesh"])
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Mesh/pride/rig" parent_id_path=PackedInt32Array(966865936, 827505951) index="0" unique_id=1175676892]
-bones/1/position = Vector3(-7.1054274e-15, -0.17326674, 3.1699643)
+bones/1/position = Vector3(-1.4305468e-13, -0.17326717, 3.1699643)
 bones/1/rotation = Quaternion(4.6243933e-08, 0.79045546, 0.61251956, 5.967773e-08)
 bones/3/rotation = Quaternion(-0.060438562, 2.2987989e-10, 3.796397e-09, 0.9981719)
 bones/4/rotation = Quaternion(-0.025434121, 0.00916148, -0.00023309817, 0.9996345)
 bones/5/rotation = Quaternion(0.27266315, -0.008817049, 0.002498929, 0.962066)
 bones/7/rotation = Quaternion(-0.09371158, -1.1825285e-07, -6.983697e-09, 0.9955994)
 bones/8/rotation = Quaternion(-0.5886837, -0.2456798, -0.48629344, 0.59716964)
-bones/9/position = Vector3(-0.0655566, 0.6258249, -0.03602692)
+bones/9/position = Vector3(-0.06555563, 0.62582403, -0.036026537)
 bones/9/rotation = Quaternion(-0.1931029, 0.83859557, -0.356107, 0.3642204)
 bones/10/rotation = Quaternion(0.27784547, 0.69114494, 0.46863064, 0.4748747)
 bones/11/rotation = Quaternion(-0.21007368, -0.2127595, 0.1673164, 0.939472)
-bones/13/position = Vector3(0.0025201067, 0.19248354, -0.001107417)
+bones/13/position = Vector3(0.0025201282, 0.19248387, -0.001107505)
 bones/13/rotation = Quaternion(0.28185079, 0.03548067, 0.6346396, 0.71870285)
 bones/14/rotation = Quaternion(0.29967323, -0.2809881, 0.57659715, 0.7062417)
 bones/15/rotation = Quaternion(0.3135549, -0.028830705, 0.3515839, 0.8816127)
-bones/16/position = Vector3(0.052658204, 0.04338773, -0.031205557)
+bones/16/position = Vector3(0.052658096, 0.043387815, -0.031205859)
 bones/16/rotation = Quaternion(-0.45998597, 0.25174353, 0.49745262, 0.691071)
 bones/17/rotation = Quaternion(0.13483068, 0.35788542, -0.19305746, 0.9035859)
 bones/18/rotation = Quaternion(0.0992369, 0.09184225, -0.19055536, 0.97231984)
-bones/20/position = Vector3(-0.009147706, 0.19416542, 0.0012207944)
+bones/20/position = Vector3(-0.009147509, 0.19416603, 0.0012204197)
 bones/20/rotation = Quaternion(0.36943203, -0.0038900073, 0.6095974, 0.701353)
 bones/21/rotation = Quaternion(0.43421885, -0.27063155, 0.5753128, 0.638144)
 bones/22/rotation = Quaternion(0.31071934, -0.038698822, 0.23725195, 0.9196018)
-bones/24/position = Vector3(-0.02413576, 0.20843303, 0.0018858409)
+bones/24/position = Vector3(-0.024135578, 0.20843266, 0.0018849808)
 bones/24/rotation = Quaternion(0.37059435, -0.0940112, 0.65712273, 0.6496241)
 bones/25/rotation = Quaternion(0.52757865, -0.26093853, 0.4802446, 0.650336)
 bones/26/rotation = Quaternion(0.4159807, -0.2024468, 0.110574104, 0.87962997)
-bones/28/position = Vector3(-0.025186395, 0.23037817, -0.00061733346)
+bones/28/position = Vector3(-0.02518567, 0.23037829, -0.00061775325)
 bones/28/rotation = Quaternion(0.4476479, -0.18949348, 0.6588052, 0.57417715)
 bones/29/rotation = Quaternion(0.64030236, -0.2299154, 0.2534519, 0.68768746)
 bones/30/rotation = Quaternion(0.28792918, -0.1090501, 0.095177144, 0.94664997)
 bones/31/rotation = Quaternion(-0.5649189, 0.27881265, 0.3804777, 0.67702806)
-bones/32/position = Vector3(-0.03783962, 0.60712415, -0.066598855)
+bones/32/position = Vector3(-0.037840642, 0.607123, -0.066598475)
 bones/32/rotation = Quaternion(0.10649774, -0.76831967, 0.6234343, 0.09835105)
 bones/33/rotation = Quaternion(0.5366171, 0.08528825, -0.69407284, 0.47226167)
 bones/56/rotation = Quaternion(0.96767336, 0.018600175, -0.0069420845, 0.25142428)
@@ -812,11 +849,11 @@ bones/58/rotation = Quaternion(-0.6240881, -0.03954922, -0.012012642, 0.78025997
 bones/60/rotation = Quaternion(0.99970424, -0.019717572, 0.00231864, 0.014044715)
 bones/61/rotation = Quaternion(0.050545733, -0.005144152, 0.00015354865, 0.99870855)
 bones/63/rotation = Quaternion(0.03754124, 0.9915593, -0.12409666, -0.0009144931)
-bones/64/position = Vector3(0.6027508, 0.7489198, 4.8709555)
+bones/64/position = Vector3(0.6027508, 0.7489191, 4.8709555)
 bones/64/rotation = Quaternion(0.5016912, 0.1982452, -0.3350185, 0.7725072)
 
 [node name="BoneAttachment3D2" type="BoneAttachment3D" parent="Mesh/pride/rig/Skeleton3D" index="0" unique_id=2028654722]
-transform = Transform3D(-0.6969229, -0.7165241, 0.02985999, -0.6424433, 0.6422885, 0.41800952, -0.31869265, 0.27213705, -0.9079518, -0.6027508, 4.8709555, 0.7489198)
+transform = Transform3D(-0.6969229, -0.7165241, 0.02985999, -0.6424433, 0.6422885, 0.41800952, -0.31869265, 0.27213705, -0.9079518, -0.6027508, 4.8709555, 0.7489191)
 bone_name = "staff"
 bone_idx = 64
 
@@ -828,12 +865,12 @@ disable_collision_shape = true
 hit_shape = NodePath("../../../../../../HitShape")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Mesh/pride/rig/Skeleton3D/BoneAttachment3D2/Area3D" unique_id=912486456]
-transform = Transform3D(1.0000007, -1.4901161e-08, 1.3411045e-07, 3.7252903e-08, 0.99999994, 1.6391277e-07, 2.9802322e-08, -1.4901161e-08, 1.0000005, -0.10510826, 0.48951817, -0.014210939)
+transform = Transform3D(1.0000006, 7.4505806e-08, 1.0967255e-05, -6.4074993e-07, 1.0000008, 1.0326505e-05, 1.7881393e-07, -1.6391277e-07, 1.0000006, 0.23890352, 0.38212895, 0.07259977)
 shape = SubResource("BoxShape3D_hmjiv")
 disabled = true
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Mesh/pride/rig/Skeleton3D" index="1" unique_id=2130094361]
-transform = Transform3D(0.999832, 7.3793505e-10, 0.018328058, -0.0008896806, 0.99882096, 0.048533812, -0.01830645, -0.04854206, 0.9986534, 3.105114e-14, 4.6006694, -2.3120083e-07)
+transform = Transform3D(0.999832, 7.3793505e-10, 0.018328058, -0.0008896806, 0.99882096, 0.048533812, -0.01830645, -0.04854206, 0.9986534, 1.6700038e-13, 4.6006694, -6.633345e-07)
 bone_name = "spine.003"
 bone_idx = 4
 
@@ -844,6 +881,21 @@ transform = Transform3D(0.31858417, 0, 0, 0, 0.3185841, 0, 0, 0, 0.3185839, 0, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.10885)
 shape = SubResource("BoxShape3D_uxu3y")
 debug_color = Color(0.49, 0.49, 0.49, 0.0745098)
+
+[node name="LookAtModifier3D" type="LookAtModifier3D" parent="Mesh/pride/rig/Skeleton3D" index="6" unique_id=1465535140]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40094, -6.15275, -0.259335)
+target_node = NodePath("../../../../../Target")
+bone_name = "spine.005"
+bone = 6
+duration = 0.4
+ease_type = 3
+use_angle_limitation = true
+symmetry_limitation = true
+primary_limit_angle = 3.14159
+primary_damp_threshold = 1.0
+secondary_limit_angle = 1.5708
+secondary_damp_threshold = 1.0
+script = ExtResource("26_0rkf0")
 
 [node name="AnimationPlayer" parent="Mesh/pride" index="1" unique_id=1297089783]
 root_motion_track = NodePath("rig/Skeleton3D:root")

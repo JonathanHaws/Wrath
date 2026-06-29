@@ -90,6 +90,10 @@ func _ready() -> void:
 func _on_area_entered(area: Area3D) -> void:
 	if overlapping_block_areas.has(area) or overlapping_hit_areas.has(area): return
 	if is_block_area(area): overlapping_block_areas[area] = false
+	
+	#for group in groups: 
+		#if area.is_in_group(group): 
+			#return
 	if area.has_method("hit"): overlapping_hit_areas[area] = false
 
 func _on_area_exited(area: Area3D) -> void:
@@ -98,7 +102,6 @@ func _on_area_exited(area: Area3D) -> void:
 func _physics_process(_delta: float) -> void:
 	#if overlapping_hit_areas.size() > 0: print(overlapping_hit_areas)
 
-	
 	if $CollisionShape3D.disabled: overlapping_hit_areas.clear()	
 			
 	for area in overlapping_hit_areas.keys():
@@ -109,8 +112,7 @@ func _physics_process(_delta: float) -> void:
 		#overlapping_hit_areas[area] = true
 		#var best_block = get_best_block()
 		#play_blocked_animation(best_block.area, best_block.multiplier)
-		#print("Hit area:", area.get_parent().name)
-		
+
 		if area.has_method("hit"): emit_signal("collided_with_hitshape")
 		if area.hit(self, int(damage + randf_range(-damage_spread, damage_spread)) * (damage_multiplier * get_damage_scale_multiplier())):
 			play_animation(area)

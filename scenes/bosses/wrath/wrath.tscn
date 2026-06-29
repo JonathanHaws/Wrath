@@ -1395,7 +1395,7 @@ LIKELIHOOD_MULTIPLIER = 0.2
 TARGET = NodePath("../../Target")
 BODY = NodePath("../..")
 
-[node name="HitShape" type="Area3D" parent="." unique_id=1924907179 node_paths=PackedStringArray("FREE_ON_DEATH", "TELEPORT_NODES_TO_HIT") groups=["enemy_hitshape"]]
+[node name="HitShape" type="Area3D" parent="." unique_id=1924907179 node_paths=PackedStringArray("FREE_ON_DEATH", "TELEPORT_NODES_TO_HIT")]
 script = ExtResource("4_pxmry")
 INVINCIBLE = true
 HEALTH = 7000.0

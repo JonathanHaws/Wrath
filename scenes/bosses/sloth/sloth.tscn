@@ -866,7 +866,7 @@ autoplay = &"RESET"
 playback_auto_capture_ease_type = 2
 next/INTRO = &"CHASE"
 
-[node name="HitShape" type="Area3D" parent="PathFollow3D/Body" unique_id=298325573 node_paths=PackedStringArray("FREE_ON_DEATH", "TELEPORT_NODES_TO_HIT", "ANIM_PLAYER") groups=["enemy_hitshape"]]
+[node name="HitShape" type="Area3D" parent="PathFollow3D/Body" unique_id=298325573 node_paths=PackedStringArray("FREE_ON_DEATH", "TELEPORT_NODES_TO_HIT", "ANIM_PLAYER")]
 script = ExtResource("20_6h4tx")
 INVINCIBLE = true
 HEALTH = 6000.0
