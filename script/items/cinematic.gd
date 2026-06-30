@@ -47,16 +47,22 @@ func seamless_cam_trans(duration: float = 1.5, target_camera_group: String = "pl
 	transition_camera.current = true
 	transition_camera.make_current()
 	
+	var start_transform = transition_camera.global_transform
+	var start_fov = transition_camera.fov
 	var tween = get_tree().create_tween()
 	tween.set_parallel(true)
-	tween.tween_property(transition_camera, "global_transform", target_camera.global_transform, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween.tween_property(transition_camera, "fov", target_camera.fov, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_method(func(weight):
+		if not is_instance_valid(target_camera):return
+		transition_camera.global_transform = start_transform.interpolate_with(target_camera.global_transform,weight)
+		transition_camera.fov = lerpf(start_fov, target_camera.fov, weight)
+		,0.0, 1.0, duration).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+			
 	tween.finished.connect(func():
+		tween.kill()
 		target_camera.current = true
 		target_camera.make_current()
 		transition_camera.queue_free()
-		if save_completed: _save_cinematic_completed()
-		)
+		if save_completed: _save_cinematic_completed())
 	
 func _teleport_player_to_player_spot() -> void:
 	if not PLAYER_SPOT: return

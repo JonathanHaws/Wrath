@@ -33,7 +33,8 @@ func _process(_delta):
 	# transform offset to camera's local coordinate system (frostum offset uses local space)
 	var cam2mirror_camlocal = mirror_camera.global_transform.basis.inverse() * cam2mirror_offset
 	var frostum_offset =  Vector2(cam2mirror_camlocal.x, cam2mirror_camlocal.y)
-	mirror_camera.set_frustum(mesh.size.y, frostum_offset, near, 10000) #godot 4.7 seems to use vertical size as frustum... so use that
+	mirror_camera.keep_aspect = Camera3D.KEEP_HEIGHT 
+	mirror_camera.set_frustum(mesh.size.y, frostum_offset, near, 10000) 
 
 ## Returns a transform that reflects positions and rotations across the mirror plane
 func MirrorTransform(normal: Vector3 = global_transform.basis.z, point_on_plane: Vector3 = global_transform.origin) -> Transform3D:
@@ -43,12 +44,21 @@ func MirrorTransform(normal: Vector3 = global_transform.basis.z, point_on_plane:
 	var offset: Vector3 = 2.0 * normal.dot(point_on_plane) * normal
 	return Transform3D(Basis(basisX, basisY, basisZ), offset)
 
-func get_plane_intersection(from: Vector3, to: Vector3, plane_normal: Vector3 = global_transform.basis.z, plane_point: Vector3 = global_transform.origin) -> Vector3:
+func get_plane_intersection_blend(from: Vector3, to: Vector3, plane_normal: Vector3 = global_transform.basis.z, plane_point: Vector3 = global_transform.origin) -> float:
 	var dir: Vector3 = to - from
 	var denom: float = dir.dot(plane_normal)
-	if abs(denom) < 0.00001: return from
-	var t: float = (plane_point - from).dot(plane_normal) / denom
-	return from + dir * t
+	if abs(denom) < 0.00001: return 0.0
+	return (plane_point - from).dot(plane_normal) / denom
+
+func set_bool_on_shader(group: String = "lut_overlay", property_name: String = "flip_x", value: bool = true) -> void:
+	var nodes = get_tree().get_nodes_in_group(group)
+	for node in nodes:
+		var mat: ShaderMaterial = null
+		if node is MeshInstance3D: mat = node.get_active_material(0) as ShaderMaterial
+		elif node is Sprite2D: mat = node.material as ShaderMaterial
+		elif node is CanvasItem: mat = node.material as ShaderMaterial	
+		if not mat: continue
+		mat.set_shader_parameter(property_name, value)
 
 func seamless_mirror_camera_transition(duration: float = 1.5, target_camera_group: String = "inside_mirror_camera") -> void:
 	
@@ -58,9 +68,9 @@ func seamless_mirror_camera_transition(duration: float = 1.5, target_camera_grou
 	#       ● Current Camera
 	#        \
 	#         \
-	#          ● Current Hit Near
+	#          ● Intersection Near
 	# ======================================== Mirror Plane
-	#            ● Target Hit Near
+	#            ● Intersection Far
 	#             \
 	#              \
 	#               ● Target Camera 
@@ -71,10 +81,14 @@ func seamless_mirror_camera_transition(duration: float = 1.5, target_camera_grou
 	var current_near: float = current_camera.near
 	var target_near: float = target_camera.near
 	
-	var intersection_position = get_plane_intersection(
-		current_camera.global_position,
-		(MirrorTransform() * target_camera.global_transform).origin
-	)
+	var reflected_target_transform: Transform3D = MirrorTransform() * target_camera.global_transform
+	
+	reflected_target_transform.basis = target_camera.global_basis
+	
+	var blend: float = get_plane_intersection_blend(current_camera.global_position, reflected_target_transform.origin)
+	var intersection_position: Vector3 = current_camera.global_position.lerp(reflected_target_transform.origin, blend)
+	var intersection_transform: Transform3D = current_camera.global_transform.interpolate_with(reflected_target_transform, blend - .1)
+	
 	
 	var transition_camera: Camera3D = Camera3D.new()
 	get_tree().current_scene.add_child(transition_camera)
@@ -84,26 +98,26 @@ func seamless_mirror_camera_transition(duration: float = 1.5, target_camera_grou
 	transition_camera.make_current()
 
 	# Phase 1	
-	var tween := get_tree().create_tween()
-	tween.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	var tween := get_tree().create_tween().set_ease(Tween.EASE_IN)
+	tween.set_trans(Tween.TRANS_LINEAR)
 	tween.set_parallel(true)
-	tween.tween_property(transition_camera, "global_position", intersection_position, duration * 0.5)
+	tween.tween_property(transition_camera, "global_position", intersection_transform.origin, duration * blend)
 	await tween.finished
-
+	
 	# SNAP ORIENTATION HERE (match target camera)
-	transition_camera.global_basis = target_camera.global_basis
+	set_bool_on_shader("lut_overlay", "flip_x", false)
+	transition_camera.global_basis = Basis(global_transform.basis.y, PI) * transition_camera.global_basis
 
 	# Phase 2 (new tween)
-	var tween2 := get_tree().create_tween()
-	tween2.set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
-	tween2.tween_property(transition_camera, "global_position", target_camera.global_position, duration * 0.5)
+	var tween2 := get_tree().create_tween().set_ease(Tween.EASE_OUT)
+	tween2.set_trans(Tween.TRANS_LINEAR)
+	tween2.tween_property(transition_camera, "global_transform", target_camera.global_transform, duration * (1 - blend))
 	await tween2.finished
 
 	# Final handoff
 	target_camera.current = true
 	target_camera.make_current()
 	transition_camera.queue_free()
-
 
 #func _physics_process(delta: float) -> void:
 	#var current_camera: Camera3D = get_viewport().get_camera_3d()

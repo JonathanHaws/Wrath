@@ -67,19 +67,19 @@ length = 13.433333
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"skip",
-"time": 8.266666
+"time": 10.466666
 }]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("AnimationPlayer/OutsideMirror:position")
-tracks/0/interp = 2
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2.4666667, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 3.5333333),
+"transitions": PackedFloat32Array(0.63728017, 0.63728017),
 "update": 0,
-"values": [Vector3(35.492416, 1.1704588, -25.243341), Vector3(45.95069, -3.6479192, 11.762776), Vector3(63.9635, -3.340991, 9.128515)]
+"values": [Vector3(35.492416, 1.1704588, -25.243341), Vector3(45.95069, -3.6479192, 11.762776)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -88,10 +88,10 @@ tracks/1/path = NodePath("AnimationPlayer/OutsideMirror:rotation")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.4666667, 4),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 3.5333333),
+"transitions": PackedFloat32Array(0.63728017, 0.63728017),
 "update": 0,
-"values": [Vector3(-0.17889594, -2.2165678, 0), Vector3(-0.065449506, -1.1388259, 0), Vector3(-0.027335808, -1.2565762, 0)]
+"values": [Vector3(-0.17889594, -2.2165678, 0), Vector3(-0.065449506, -1.1388259, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -126,10 +126,13 @@ tracks/4/path = NodePath("CSGBox3D/MeshInstance3D")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(4),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 4),
+"transitions": PackedFloat32Array(1, 1),
 "values": [{
-"args": [1.5, "inside_mirror_camera"],
+"args": ["lut_overlay", "flip_x", true],
+"method": &"set_bool_on_shader"
+}, {
+"args": [3.0, "inside_mirror_camera"],
 "method": &"seamless_mirror_camera_transition"
 }]
 }
@@ -152,7 +155,7 @@ tracks/6/path = NodePath("AnimationPlayer/InsideMirror:position")
 tracks/6/interp = 2
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(6.5, 9.066667, 11.08104),
+"times": PackedFloat32Array(7, 8.5, 9.647707),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(81.77472, -3.7423167, -5.8956895), Vector3(50.147728, -5.3282623, -13.130024), Vector3(33.104588, -5.2159176, -17.349155)]
@@ -164,27 +167,10 @@ tracks/7/path = NodePath("AnimationPlayer/InsideMirror:quaternion")
 tracks/7/interp = 2
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(6.5, 9.066667, 11.08104),
+"times": PackedFloat32Array(7, 8.5, 9.647707),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Quaternion(-0.033260908, 0.77569425, 0.041024785, 0.6288952), Quaternion(0.0023866047, 0.9949376, 0.0243621, -0.09746791), Quaternion(-0.002207656, 0.9314108, -0.00565025, -0.3639192)]
-}
-tracks/8/type = "method"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("AnimationPlayer/ShaderAnimator")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
-"times": PackedFloat32Array(0, 4.75),
-"transitions": PackedFloat32Array(1, 1),
-"values": [{
-"args": ["flip_x", true],
-"method": &"set_bool"
-}, {
-"args": ["flip_x", false],
-"method": &"set_bool"
-}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rp77y"]
@@ -274,6 +260,7 @@ surface_material_override/0 = SubResource("ShaderMaterial_6oxoa")
 script = ExtResource("12_02100")
 viewport = NodePath("SubViewport")
 mirror_camera = NodePath("SubViewport/Camera3D")
+pixels_per_world_unit = 125
 
 [node name="SubViewport" type="SubViewport" parent="CSGBox3D/MeshInstance3D" unique_id=141120457]
 size = Vector2i(1393, 512)
@@ -295,14 +282,15 @@ autoplay = &"RESET"
 script = ExtResource("12_00jdy")
 
 [node name="OutsideMirror" type="Camera3D" parent="AnimationPlayer" unique_id=744442920 groups=["outside_mirror_camera"]]
-transform = Transform3D(-0.6018146, 0.14211184, -0.78589, 0, 0.98404074, 0.17794323, 0.7986356, 0.10708886, -0.5922101, 35.492416, 1.1704588, -25.243341)
+transform = Transform3D(0.418661, 0.059395064, -0.9061981, 0, 0.99785894, 0.06540279, 0.90814245, -0.027381605, 0.41776463, 45.95069, -3.6479192, 11.762776)
 fov = 45.0
-near = 0.854
+near = 0.001
 
 [node name="InsideMirror" type="Camera3D" parent="AnimationPlayer" unique_id=1775868843 groups=["inside_mirror_camera"]]
-transform = Transform3D(-0.20676923, -0.10320116, 0.9729317, -7.450581e-09, 0.99442136, 0.105480626, -0.9783898, 0.021810133, -0.20561564, 81.77472, -3.7423167, -5.8956895)
+transform = Transform3D(-0.73511577, -0.008224941, -0.6778916, 4.656613e-10, 0.9999263, -0.012132228, 0.6779416, -0.008918592, -0.7350616, 33.104588, -5.2159176, -17.349155)
 rotation_edit_mode = 1
 fov = 45.0
+near = 0.001
 
 [node name="ShaderAnimator" type="Node" parent="AnimationPlayer" unique_id=76593107]
 script = ExtResource("13_00jdy")
