@@ -18,6 +18,7 @@ fill_to = Vector2(0.965, 0)
 transparency = 1
 shading_mode = 0
 vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 0.4392157)
 albedo_texture = SubResource("GradientTexture2D_m7vqp")
 billboard_mode = 3
 billboard_keep_scale = true

@@ -3,8 +3,9 @@
 [ext_resource type="Texture2D" uid="uid://mobdq5g62tgj" path="res://models/sky/skybox_texture.png" id="1_kh1ui"]
 
 [sub_resource type="Curve" id="Curve_keqxo"]
-_data = [Vector2(0, 0.057500124), 0.0, -0.42817065, 0, 0, Vector2(0.45994827, 0.27200007), 0.6987501, 0.6987501, 0, 0, Vector2(0.7648579, 0.74), 1.2171781, 1.2171781, 0, 0, Vector2(1, 1), 0.9737416, 0.0, 0, 0]
+_data = [Vector2(0, 0.013), 0.6987501, 0.05939691, 0, 0, Vector2(0.28938907, 0.1428572), 0.52356875, 0.52356875, 0, 0, Vector2(0.7459807, 0.5966387), 1.2171781, 1.2171781, 0, 0, Vector2(1, 1), 0.9737416, 0.0, 0, 0]
 point_count = 4
+metadata/_snap_count = 2
 
 [sub_resource type="CurveTexture" id="CurveTexture_nxt8h"]
 curve = SubResource("Curve_keqxo")
@@ -27,7 +28,7 @@ reflected_light_source = 2
 tonemap_mode = 4
 tonemap_exposure = 9.6
 ssao_enabled = true
-ssao_radius = 2.8
+ssao_radius = 0.4
 ssao_intensity = 8.2
 ssao_detail = 5.0
 ssao_light_affect = 1.0

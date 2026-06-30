@@ -20,6 +20,6 @@ billboard_keep_scale = true
 material_override = SubResource("StandardMaterial3D_6y3c6")
 
 [node name="OmniLight3D" parent="HurtParticles" index="1" unique_id=682954786]
-light_color = Color(0.5411765, 0.3137255, 0.7019608, 1)
+light_color = Color(0.65625, 0.595, 0.7, 1)
 
 [editable path="HurtParticles"]

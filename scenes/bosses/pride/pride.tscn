@@ -30,6 +30,7 @@
 [ext_resource type="JSON" uid="uid://dgjgq3dsd2m3j" path="res://json/pride_talk.json" id="29_2x3ef"]
 [ext_resource type="Script" uid="uid://cyt6s1hgewbgh" path="res://scenes/bosses/lust/acheivement.gd" id="29_cxgsi"]
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="30_2q8t5"]
+[ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://script/items/cinematic.gd" id="32_tfl8p"]
 [ext_resource type="AudioStream" uid="uid://bi0nj82twwtib" path="res://audio/sfx/characters/envy/envy_talk_1.ogg" id="35_3oycc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_20oj1"]
@@ -281,8 +282,13 @@ tracks/13/keys = {
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
 resource_name = "INTRO"
-length = 2.91667
+length = 10.875
 step = 0.0416667
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"skip",
+"time": 10.5
+}]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -290,10 +296,10 @@ tracks/0/path = NodePath("Light:light_energy")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0416667, 2.54167),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0, 20.0]
+"values": [1.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -338,7 +344,7 @@ tracks/4/path = NodePath("Audio/Music")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(8.541667),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.0],
@@ -391,8 +397,25 @@ tracks/8/path = NodePath("Mesh/pride/AnimationPlayer")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"clips": PackedStringArray("Intro"),
-"times": PackedFloat32Array(0)
+"clips": PackedStringArray("Idle"),
+"times": PackedFloat32Array(-0.041666668)
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("IntroCinematic")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0.041666668, 9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"_play_animations_in_other_nodes"
+}, {
+"args": [1.5, "player_camera", false],
+"method": &"seamless_cam_trans"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_jojdm"]
@@ -712,7 +735,7 @@ DEFEATED_KEY = "pride_defeated"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.1770976, 0)
 shape = SubResource("CapsuleShape3D_20oj1")
 
-[node name="Attacks" type="AnimationPlayer" parent="." unique_id=1970869158]
+[node name="Attacks" type="AnimationPlayer" parent="." unique_id=1970869158 groups=["skippable"]]
 callback_mode_process = 0
 libraries/ = SubResource("AnimationLibrary_y10ku")
 autoplay = &"RESET"
@@ -936,6 +959,11 @@ bus = &"Dialog"
 
 [node name="Acheivement" type="Node" parent="." unique_id=1187242359]
 script = ExtResource("29_cxgsi")
+
+[node name="IntroCinematic" type="Node" parent="." unique_id=253827866]
+script = ExtResource("32_tfl8p")
+ANIMATION_PLAYER_GROUPS = Array[String](["pride_cinematic", "player_anim"])
+ANIMATION_NAMES = Array[String](["pride_intro", "PRIDE_INTRO"])
 
 [connection signal="body_entered" from="TriggerArea" to="." method="_on_trigger_area_body_entered"]
 

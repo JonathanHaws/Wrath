@@ -296,6 +296,7 @@ func in_interruptible_animation() -> bool:
 		"ESCAPE",
 		"INTRODUCTION",
 		"GLUTTONY_INTRO",
+		"PRIDE_INTRO",
 		"PIGLET_PICKUP",
 		"PIGLET_PET",
 		"PIGLET_PAT",

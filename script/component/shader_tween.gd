@@ -29,6 +29,27 @@ func set_texture(
 
 			mat.set_shader_parameter(parameter_name, texture)
 
+func set_bool(
+	property_name: String = "flip_x",
+	value: bool = true
+) -> void:
+	if groups.is_empty(): return
+	for i in range(groups.size()):
+		groups[i] = str(groups[i])
+
+	for group_name in groups:
+		if not is_inside_tree(): return
+		var nodes = get_tree().get_nodes_in_group(group_name)
+
+		for node in nodes:
+			if not node: continue
+			var mat: ShaderMaterial = null
+			if node is MeshInstance3D: mat = node.get_active_material(0) as ShaderMaterial
+			elif node is Sprite2D: mat = node.material as ShaderMaterial
+			elif node is CanvasItem: mat = node.material as ShaderMaterial	
+			if not mat: continue
+			mat.set_shader_parameter(property_name, value)
+
 func tween(
 	property_name: String = "dissolve_amount",
 	target_value: float = 1.0,

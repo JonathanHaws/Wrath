@@ -1,7 +1,7 @@
 [gd_resource type="ParticleProcessMaterial" format=3 uid="uid://prfysqn2atre"]
 
 [sub_resource type="Curve" id="Curve_olvgd"]
-_data = [Vector2(0, 1), 0.0, -6.238776, 0, 0, Vector2(0.18387097, 0.5942783), -0.7096607, -0.7096607, 0, 0, Vector2(0.6870968, 0.30689204), -0.5558181, -0.5558181, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, -6.238776, 0, 0, Vector2(0.35842294, 0.3076923), -0.7096607, -0.7096607, 0, 0, Vector2(0.7311828, 0.18269229), -0.15780507, -0.15780507, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
 [sub_resource type="CurveTexture" id="CurveTexture_wtfvh"]
@@ -9,16 +9,17 @@ curve = SubResource("Curve_olvgd")
 
 [sub_resource type="Curve" id="Curve_kc6k6"]
 _limits = [0.0, 0.2, 0.0, 1.0]
-_data = [Vector2(0, 0), 0.0, 36.65, 0, 0, Vector2(1e-05, 0.07659297), -0.28451338, -0.28451338, 0, 0, Vector2(0.19677421, 0.029258773), -0.034177646, -0.034177646, 0, 0, Vector2(1, 0.023674473), -0.010802576, -0.027581954, 0, 0]
-point_count = 4
+_data = [Vector2(0, 0), 0.0, 36.65, 0, 0, Vector2(1e-05, 0.11730768), -1.2649496, -1.2649496, 0, 0, Vector2(0.17562723, 0.05384615), -0.034177646, -0.034177646, 0, 0, Vector2(0.8172043, 0.026923075), 0.0, 0.0, 0, 0, Vector2(1, 0), -0.010802576, -0.027581954, 0, 0]
+point_count = 5
 
 [sub_resource type="CurveTexture" id="CurveTexture_x7qws"]
 curve = SubResource("Curve_kc6k6")
 
 [resource]
+emission_shape_scale = Vector3(0.1, 0.1, 0.1)
 spread = 180.0
-initial_velocity_min = 3.25
-initial_velocity_max = 3.5
+initial_velocity_min = 1.5
+initial_velocity_max = 2.5
 gravity = Vector3(0, -1, 0)
 linear_accel_min = -2.2351742e-06
 linear_accel_max = -2.2351742e-06
