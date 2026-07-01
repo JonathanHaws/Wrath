@@ -60,69 +60,34 @@ func set_bool_on_shader(group: String = "lut_overlay", property_name: String = "
 		if not mat: continue
 		mat.set_shader_parameter(property_name, value)
 
-func seamless_mirror_camera_transition(duration: float = 1.5, target_camera_group: String = "inside_mirror_camera") -> void:
+func seamless_mirror_camera_transition(duration: float = 1.5, target_camera_group: String = "inside_mirror_camera", 	offset: float = 0.1) -> void:
 	
 	#var skipper = get_tree().get_first_node_in_group("skipper")
 	#if skipper and skipper.disable_camera_transitions:return
 	
-	#       ● Current Camera
-	#        \
-	#         \
-	#          ● Intersection Near
-	# ======================================== Mirror Plane
-	#            ● Intersection Far
-	#             \
-	#              \
-	#               ● Target Camera 
+	#   Current Cam 
+	#        ●      
+	#         \     
+	#          \   
+	#           ● 
+	# ========================== Mirror Plane
+	#           ● 
+	#          /
+	#         /
+	#        ● 
+	#    Target Cam
 	
 	var current_camera: Camera3D = get_viewport().get_camera_3d()
 	var target_camera: Camera3D = get_tree().get_first_node_in_group(target_camera_group) as Camera3D
 	if current_camera == null or target_camera == null: return
-	var current_near: float = current_camera.near
-	var target_near: float = target_camera.near
 	
-	var reflected_target_transform: Transform3D = MirrorTransform() * target_camera.global_transform
+	# print out for animation
+	var reflected_current_transform: Transform3D = MirrorTransform() * current_camera.global_transform
+	var euler := reflected_current_transform.basis.get_euler()
+	print("Reflected Target Position: ", reflected_current_transform.origin)
+	print("Reflected Rotation: ", Vector3(rad_to_deg(euler.x), rad_to_deg(euler.y), rad_to_deg(euler.z)))
 	
-	reflected_target_transform.basis = target_camera.global_basis
-	
-	var blend: float = get_plane_intersection_blend(current_camera.global_position, reflected_target_transform.origin)
-	var intersection_position: Vector3 = current_camera.global_position.lerp(reflected_target_transform.origin, blend)
-	var intersection_transform: Transform3D = current_camera.global_transform.interpolate_with(reflected_target_transform, blend - .1)
-	
-	
-	var transition_camera: Camera3D = Camera3D.new()
-	get_tree().current_scene.add_child(transition_camera)
-	transition_camera.global_transform = current_camera.global_transform
-	transition_camera.fov = current_camera.fov
-	transition_camera.current = true
-	transition_camera.make_current()
-
-	# Phase 1	
-	var tween := get_tree().create_tween().set_ease(Tween.EASE_IN)
-	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.set_parallel(true)
-	tween.tween_property(transition_camera, "global_position", intersection_transform.origin, duration * blend)
-	await tween.finished
-	
-	# SNAP ORIENTATION HERE (match target camera)
 	set_bool_on_shader("lut_overlay", "flip_x", false)
-	transition_camera.global_basis = Basis(global_transform.basis.y, PI) * transition_camera.global_basis
-
-	# Phase 2 (new tween)
-	var tween2 := get_tree().create_tween().set_ease(Tween.EASE_OUT)
-	tween2.set_trans(Tween.TRANS_LINEAR)
-	tween2.tween_property(transition_camera, "global_transform", target_camera.global_transform, duration * (1 - blend))
-	await tween2.finished
-
-	# Final handoff
 	target_camera.current = true
 	target_camera.make_current()
-	transition_camera.queue_free()
-
-#func _physics_process(delta: float) -> void:
-	#var current_camera: Camera3D = get_viewport().get_camera_3d()
-	#if current_camera == null:
-		#print("No active camera")
-		#return
-#
-	#print(current_camera.name)
+	
