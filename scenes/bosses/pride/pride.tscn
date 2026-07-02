@@ -439,7 +439,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [0.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -810,6 +810,7 @@ SPEED = 4.0
 SPEED_MULTIPLIER = 0.0
 CHASE_VERTICALLY = true
 MESH = NodePath("../Mesh")
+TRACKING_MULTIPLIER = 0.0
 
 [node name="Mesh" type="Node3D" parent="." unique_id=31844010 node_paths=PackedStringArray("SKELETAL_ANIMATION_PLAYER", "SKELETON", "MESH", "BODY")]
 script = ExtResource("26_8l61o")

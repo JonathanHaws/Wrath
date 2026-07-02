@@ -26,7 +26,7 @@ polygons = [PackedInt32Array(3, 2, 0), PackedInt32Array(0, 2, 1)]
 size = Vector2(15, 22.5)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_00jdy"]
-viewport_path = NodePath("MeshInstance3D/SubViewport")
+viewport_path = NodePath("Mirror/SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6oxoa"]
 resource_local_to_scene = true
@@ -95,10 +95,10 @@ tracks/1/path = NodePath("AnimationPlayer/OutsideMirror:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.9, 5.9, 8.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2.9, 4.9, 5.9, 7.2000003, 8.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(35.492416, 1.1704588, -25.243341), Vector3(45.95069, -3.6479192, 11.762776), Vector3(76.23471, -1.7702186, 3.337515), Vector3(102.97739, 1.6717391, -27.079163)]
+"values": [Vector3(35.492416, 1.1704588, -25.243341), Vector3(45.95069, -3.6479192, 11.762776), Vector3(76.23471, -1.7702186, 3.337515), Vector3(76.23471, -1.7702186, 3.337515), Vector3(76.23471, -1.7702186, 3.337515), Vector3(102.97739, 1.6717391, -27.079163)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -107,10 +107,10 @@ tracks/2/path = NodePath("AnimationPlayer/OutsideMirror:rotation")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.9, 5.9, 8.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 2.9, 4.9, 5.9, 7.2000003, 8.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.17889594, -2.2165678, 0), Vector3(-0.065449506, -1.1388259, 0), Vector3(-0.04712392, -1.3255775, 0), Vector3(-0.14311701, -2.9967277, 0)]
+"values": [Vector3(-0.17889594, -2.2165678, 0), Vector3(-0.065449506, -1.1388259, 0), Vector3(-0.04712392, -1.3255775, 0), Vector3(-0.04712392, -1.3255775, 0), Vector3(-0.04712392, -1.3255775, 0), Vector3(-0.14311701, -2.9967277, 0)]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -130,6 +130,23 @@ tracks/3/keys = {
 }, {
 "args": [1.5, "player_camera", false],
 "method": &"seamless_cam_trans"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Mirror")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5.9),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": ["lut_overlay", "flip_x", true],
+"method": &"set_bool_on_shader"
+}, {
+"args": ["lut_overlay", "flip_x", false],
+"method": &"set_bool_on_shader"
 }]
 }
 
@@ -206,7 +223,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.438
 [node name="Piglet" parent="." unique_id=249081217 instance=ExtResource("10_g1s2n")]
 transform = Transform3D(0.971619, 0, -0.23655, 0, 1, 0, 0.23655, 0, 0.971619, -1.67795, -9.04355, 34.9739)
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1714980362 node_paths=PackedStringArray("viewport", "mirror_camera", "outside_transition_camera", "inside_transition_camera")]
+[node name="Mirror" type="MeshInstance3D" parent="." unique_id=1714980362 node_paths=PackedStringArray("viewport", "mirror_camera", "outside_transition_camera", "inside_transition_camera")]
 transform = Transform3D(-4.3711378e-08, 0, -0.9999999, 0, 1, 0, 0.9999999, 0, -4.3711378e-08, 84.23801, 4.299156, -0.11578367)
 mesh = SubResource("QuadMesh_ycex8")
 skeleton = NodePath("")
@@ -218,24 +235,24 @@ mirror_camera = NodePath("SubViewport/Camera3D")
 outside_transition_camera = NodePath("../AnimationPlayer/OutsideMirror")
 inside_transition_camera = NodePath("../AnimationPlayer/InsideMirror")
 
-[node name="CSGBox3D" type="CSGBox3D" parent="MeshInstance3D" unique_id=1965841009]
+[node name="CSGBox3D" type="CSGBox3D" parent="Mirror" unique_id=1965841009]
 transform = Transform3D(-1.0000001, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1.0000001, 0.11578366, 0.06627369, -0.5218811)
 visible = false
 material_override = ExtResource("2_6oxoa")
 use_collision = true
 size = Vector3(20.6073, 11.739014, 1)
 
-[node name="SubViewport" type="SubViewport" parent="MeshInstance3D" unique_id=141120457]
+[node name="SubViewport" type="SubViewport" parent="Mirror" unique_id=141120457]
 world_3d = SubResource("World3D_keqxo")
 size = Vector2i(1393, 512)
 
-[node name="Camera3D" type="Camera3D" parent="MeshInstance3D/SubViewport" unique_id=103998612]
+[node name="Camera3D" type="Camera3D" parent="Mirror/SubViewport" unique_id=103998612]
 transform = Transform3D(1, 0, -1.1127254e-07, 0, 1, 0, 1.1127254e-07, 0, 1, 2.5156858, -4, 32.17901)
 projection = 2
 size = 0.065
 far = 100.0
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="MeshInstance3D/SubViewport/Camera3D" unique_id=60041490]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Mirror/SubViewport/Camera3D" unique_id=60041490]
 transform = Transform3D(-1.1127254e-07, 6.756116e-08, -1, -1, -4.371139e-08, 1.1127254e-07, -4.3711385e-08, 1, 6.756116e-08, 0, 0, 0)
 mesh = SubResource("PrismMesh_hmjiv")
 
@@ -245,7 +262,7 @@ autoplay = &"RESET"
 script = ExtResource("12_00jdy")
 
 [node name="OutsideMirror" type="Camera3D" parent="AnimationPlayer" unique_id=744442920 groups=["outside_mirror_camera"]]
-transform = Transform3D(0.26387298, 0.06224512, -0.96254677, 0, 0.99791545, 0.06453232, 0.9645573, -0.017028335, 0.26332298, 76.27311, 2.4554224, 3.7317052)
+transform = Transform3D(0.26387295, 0.06224512, -0.9625467, 0, 0.99791545, 0.06453231, 0.96455723, -0.017028335, 0.26332295, 76.27311, 2.4554224, 3.7317052)
 fov = 45.0
 near = 0.001
 

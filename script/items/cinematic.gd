@@ -31,6 +31,16 @@ func _skip_cinematic() -> void:
 		if "_skip" in skipper:
 			skipper._skip()
 
+func set_bool_on_shader(group: String = "lut_overlay", property_name: String = "flip_x", value: bool = true) -> void:
+	var nodes = get_tree().get_nodes_in_group(group)
+	for node in nodes:
+		var mat: ShaderMaterial = null
+		if node is MeshInstance3D: mat = node.get_active_material(0) as ShaderMaterial
+		elif node is Sprite2D: mat = node.material as ShaderMaterial
+		elif node is CanvasItem: mat = node.material as ShaderMaterial	
+		if not mat: continue
+		mat.set_shader_parameter(property_name, value)
+
 func seamless_cam_trans(duration: float = 1.5, target_camera_group: String = "player_camera", save_completed: bool = false) -> void:
 	var current_camera = get_viewport().get_camera_3d()
 	var target_camera = get_tree().get_first_node_in_group(target_camera_group)

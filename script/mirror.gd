@@ -10,9 +10,74 @@ func _ready():
 	mirror_camera.keep_aspect = Camera3D.KEEP_HEIGHT 
 	viewport.size = Vector2i(mesh.size * pixels_per_world_unit)
 
+func set_bool_on_shader(group: String = "lut_overlay", property_name: String = "flip_x", value: bool = true) -> void:
+	var nodes = get_tree().get_nodes_in_group(group)
+	for node in nodes:
+		var mat: ShaderMaterial = null
+		if node is MeshInstance3D: mat = node.get_active_material(0) as ShaderMaterial
+		elif node is Sprite2D: mat = node.material as ShaderMaterial
+		elif node is CanvasItem: mat = node.material as ShaderMaterial	
+		if not mat: continue
+		mat.set_shader_parameter(property_name, value)
+
+func get_plane_intersection(input_position: Vector3, normal: Vector3) -> Vector3:
+	var center_point: Vector3 = global_transform.origin
+	var n: Vector3 = normal.normalized()
+	var to_point: Vector3 = input_position - center_point
+	var depth: Vector3 = n * to_point.dot(n)
+	return input_position - depth
+
+## Critically does not change handiness! 	
+func get_mirror_transform(input_transform: Transform3D, rotate_only: bool = false) -> Transform3D:
+	
+	#  	Input Transform 
+	#        ●
+	#        |\     
+	#  Plane | \  Center
+	#  Point |  \ Point
+	# =======●===●========== Mirror Plane
+	#        |    \
+	#        |     \
+	#        |      \
+	#        ●       ● Rotated 
+	#     Output      Transform
+	#    Transform
+	
+	var forward_axis: Vector3 = global_transform.basis.z.normalized()
+	var up_axis: Vector3 = global_transform.basis.y.normalized()
+	var center_point: Vector3 = global_transform.origin
+	var difference_to_center: Vector3 = input_transform.origin - center_point
+
+	# Get (Rotated Transform) rotate relative orientation and position around mirrors center y axis by 180 degrees
+	var rotated_orientation: Basis = input_transform.basis.rotated(up_axis, PI) 
+	var rotated_position = center_point + difference_to_center.rotated(up_axis, PI) 
+	var rotated_transform = Transform3D(rotated_orientation, rotated_position)
+
+	# Get (Plane Point)
+	var to_point: Vector3 = input_transform.origin - center_point
+	var depth: Vector3 = forward_axis * to_point.dot(forward_axis)
+	var plane_point: Vector3 = input_transform.origin - depth
+	var difference_to_plane: Vector3 = plane_point - input_transform.origin
+	var output_transform = Transform3D(rotated_orientation, plane_point + difference_to_plane)
+	
+	if rotate_only: return rotated_transform
+	else: return output_transform
+	
+# Naive Solution that returns a transform that reflects positions and rotations across the mirror plane. Changes handiness 
+#func get_reflected_transform(input_transform: Transform3D) -> Transform3D:
+	#var normal = global_transform.basis.z
+	#var center: Vector3 = global_transform.origin
+	#
+	#var basisX: Vector3 = Vector3(1.0, 0, 0) - 2 * Vector3(normal.x * normal.x, normal.x * normal.y, normal.x * normal.z)
+	#var basisY: Vector3 = Vector3(0, 1.0, 0) - 2 * Vector3(normal.y * normal.x, normal.y * normal.y, normal.y * normal.z)
+	#var basisZ: Vector3 = Vector3(0, 0, 1.0) - 2 * Vector3(normal.z * normal.x, normal.z * normal.y, normal.z * normal.z)
+	#var offset: Vector3 = 2.0 * normal.dot(center) * normal
+	#var reflected_transform = Transform3D(Basis(basisX, basisY, basisZ), offset)
+	#return reflected_transform * input_transform
+
 func _process(_delta):
 	
-	inside_transition_camera.global_transform = get_mirror_transform(outside_transition_camera.global_transform, true)
+	inside_transition_camera.global_transform = get_mirror_transform(outside_transition_camera.global_transform)
 	
 	var current_cam: Camera3D= get_viewport().get_camera_3d()
 	if current_cam == null: return
@@ -40,51 +105,3 @@ func _process(_delta):
 	var cam2mirror_camlocal = mirror_camera.global_transform.basis.inverse() * cam2mirror_offset
 	var frostum_offset =  Vector2(cam2mirror_camlocal.x, cam2mirror_camlocal.y)
 	mirror_camera.set_frustum(mesh.size.y, frostum_offset, near, 10000) 
-
-## Critically does not change handiness! 	
-func get_mirror_transform(input_transform: Transform3D, rotate_only: bool = false) -> Transform3D:
-	
-	#  	Input Transform 
-	#        ●
-	#        |\     
-	#  Plane | \  Center
-	#  Point |  \ Point
-	# =======●===●========== Mirror Plane
-	#        |    \
-	#        |     \
-	#        |      \
-	#        ●       ● Rotated 
-	#     Output      Transform
-	#    Transform
-	
-	var up_axis: Vector3 = global_transform.basis.y.normalized()
-	var center_point: Vector3 = global_transform.origin
-	var difference_to_center: Vector3 = input_transform.origin - center_point
-
-	# Get (Rotated Transform) rotate relative orientation and position around mirrors center y axis by 180 degrees
-	var rotated_orientation: Basis = input_transform.basis.rotated(up_axis, PI) 
-	var rotated_position = center_point + difference_to_center.rotated(up_axis, PI) 
-	var rotated_transform = Transform3D(rotated_orientation, rotated_position)
-
-	# Get (Plane Point)
-	var normal: Vector3 = global_transform.basis.z.normalized()
-	var to_point: Vector3 = input_transform.origin - center_point
-	var depth: Vector3 = normal * to_point.dot(normal)
-	var plane_point: Vector3 = input_transform.origin - depth
-	var difference_to_plane: Vector3 = plane_point - input_transform.origin
-	var output_transform = Transform3D(rotated_orientation, plane_point + difference_to_plane)
-	
-	if rotate_only: return rotated_transform
-	else: return output_transform
-	
-## Naive Solution that returns a transform that reflects positions and rotations across the mirror plane. Changes handiness 
-func get_reflected_transform(input_transform: Transform3D) -> Transform3D:
-	var normal = global_transform.basis.z
-	var center: Vector3 = global_transform.origin
-	
-	var basisX: Vector3 = Vector3(1.0, 0, 0) - 2 * Vector3(normal.x * normal.x, normal.x * normal.y, normal.x * normal.z)
-	var basisY: Vector3 = Vector3(0, 1.0, 0) - 2 * Vector3(normal.y * normal.x, normal.y * normal.y, normal.y * normal.z)
-	var basisZ: Vector3 = Vector3(0, 0, 1.0) - 2 * Vector3(normal.z * normal.x, normal.z * normal.y, normal.z * normal.z)
-	var offset: Vector3 = 2.0 * normal.dot(center) * normal
-	var reflected_transform = Transform3D(Basis(basisX, basisY, basisZ), offset)
-	return reflected_transform * input_transform
