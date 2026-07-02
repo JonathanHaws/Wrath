@@ -1,19 +1,19 @@
 [
 	
 	{"branch": "intro"},
-		{"say_timed": {"say": "SO YOU FOUND ME...", "for": 3.0}},
+		{"say_timed": {"say": "SO YOU FOUND ME", "for": 3.0}},
 		{"say_timed": {"say": "...", "for": 2.0}},
 		
 	{"branch": "question"},	
 		{"say_timed": {"say": "OR DID YOU FIND YOURSELF?", "for": 3.5}},
 		
 	{"branch": "heir"},		
-		{"say_timed": {"say": "I GAVE YOUR SUFFERING A KINGDOM.", "for": 3.0}},
-		{"say_timed": {"say": "YOUR WOUNDS A THRONE.", "for": 3.0}},
-		{"say_timed": {"say": "YOUR PAIN A HOME.", "for": 3.0}},
-		{"say_timed": {"say": "AND YET.", "for": 2.0}},
+		{"say_timed": {"say": "I GAVE YOUR SUFFERING A KINGDOM", "for": 3.0}},
+		{"say_timed": {"say": "YOUR WOUNDS A THRONE", "for": 3.0}},
+		{"say_timed": {"say": "YOUR PAIN A HOME", "for": 3.0}},
+		{"say_timed": {"say": "AND YET", "for": 2.0}},
 		{"say_timed": {"say": "YOU TEAR OFF THAT CROWN", "for": 3.0}},
-		{"say_timed": {"say": "AND WOULD LEAVE IT ALL BEHIND YOU...", "for": 5.0}},
+		{"say_timed": {"say": "AND WOULD LEAVE IT ALL BEHIND YOU...", "for": 4.0}},
 	
 	{"branch": "fight"},	
 		{"say_timed": {"say": "YOU DONT KNOW WHAT FREEDOM COSTS.", "for": 5.0}},
@@ -26,12 +26,23 @@
 	{"branch": "random_taunt_1"},
 		{"say_timed": {"say": "DO YOU HAVE ANY EARTHLY IDEA?", "for": 3.0}},
 		{"say_timed": {"say": "HOW POWERFUL YOU HAVE TO BE?", "for": 3.0}},
-		{"say_timed": {"say": "TO HOLD DOMINION OVER THE SINS OF HELL?", "for": 3.0}},
+		{"say_timed": {"say": "TO HOLD COMPLETE AND TOTAL DOMINION", "for": 4.0}},
+		{"say_timed": {"say": "OVER THE VICIOUS AND DEADLY SINS OF HELL?", "for": 5.0}},
 			
 	{"branch": "random_taunt_2"},
-		{"say_timed": {"say": "ALL THE VOLITION", "for": 3.0}},
-		{"say_timed": {"say": "AND VIRTUE IN THE WORLD", "for": 3.0}},
-		{"say_timed": {"say": "AND I COULD BARELY CONTROL THE DAMNED BASTARDS", "for": 3.0}},
+		{"say_timed": {"say": "I COULD BARELY CONTROL THE DAMNED BASTARDS", "for": 5.0}},
+		
+	{"branch": "random_taunt_3"},
+		{"say_timed": {"say": "BUT SOMEHOW I LEARNT.", "for": 3.0}},
+		{"say_timed": {"say": "THROUGH PURE VOLITION", "for": 3.0}},
+		{"say_timed": {"say": "HOW TO LIVE WITH THEIR DEATH", "for": 3.0}},
+		{"say_timed": {"say": "TO DWELL WITH THEIR HOWLS", "for": 3.0}},
+		{"say_timed": {"say": "TO BEND THEM TO MY WILL", "for": 3.0}},
+
+	{"branch": "random_taunt_4"},
+		{"say_timed": {"say": "HOW LONG HAS IT BEEN?", "for": 3.0}},
+		{"say_timed": {"say": "SCINCE IVE HAD PEACE FROM THE WHISPERS?", "for": 5.0}},
+		{"say_timed": {"say": "IVE LOST COUNT OF THE YEARS?", "for": 3.0}},
 		
 	{"branch": "death"},
 		{"say_timed": {"say": "IM NO ONE", "for": 5.0}},

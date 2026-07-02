@@ -2043,11 +2043,11 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_cbycm"]
 resource_name = "PRIDE_INTRO"
-length = 40.0
+length = 38.666668
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"skip",
-"time": 39.4
+"time": 38.5
 }]
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2056,7 +2056,7 @@ tracks/0/path = NodePath("UI/BottomLeft:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.0333333, 37.966667, 38.63337),
+"times": PackedFloat32Array(0.0333333, 37.633335, 38.300037),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
@@ -2068,7 +2068,7 @@ tracks/1/path = NodePath("../Camera3D:SENSITIVITY_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 38.63337),
+"times": PackedFloat32Array(0, 38.466667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -2080,7 +2080,7 @@ tracks/2/path = NodePath(".:SPEED_MULTIPLIER")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 38.63337),
+"times": PackedFloat32Array(0, 38.466667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -2092,7 +2092,7 @@ tracks/3/path = NodePath(".:TURN_MULTIPLIER")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 38.63337),
+"times": PackedFloat32Array(0, 38.466667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0.0, 1.0]
@@ -3812,7 +3812,7 @@ current = true
 [node name="Wind" type="AudioStreamPlayer" parent="Reaper/Audio" unique_id=749113052]
 process_mode = 3
 stream = ExtResource("22_ogp31")
-volume_db = -15.105
+volume_db = -20.0
 autoplay = true
 bus = &"SFX"
 

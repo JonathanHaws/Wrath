@@ -282,12 +282,12 @@ tracks/13/keys = {
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
 resource_name = "INTRO"
-length = 44.0
+length = 42.75
 step = 0.0416667
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"skip",
-"time": 43.625
+"time": 42.041668
 }]
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -409,7 +409,7 @@ tracks/9/path = NodePath("Dialog:random_dialog")
 tracks/9/interp = 0
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(43.166668),
+"times": PackedFloat32Array(41.291668),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -421,7 +421,7 @@ tracks/10/path = NodePath("Dialog")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(4.8333335, 9.833333, 14.875, 39.125),
+"times": PackedFloat32Array(4.8333335, 9.833333, 15.208333, 39.125),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "values": [{
 "args": ["intro"],
@@ -984,7 +984,7 @@ anim = NodePath(".")
 sequential = true
 min_interval = 6.0
 max_interval = 9.0
-lines = Array[String](["random_taunt_1", "random_taunt_2"])
+lines = Array[String](["random_taunt_1", "random_taunt_2", "random_taunt_3", "random_taunt_4"])
 player = NodePath("Jibberish")
 sounds = Array[AudioStream]([ExtResource("29_tfl8p")])
 
