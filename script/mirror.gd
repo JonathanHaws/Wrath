@@ -5,11 +5,6 @@ extends MeshInstance3D # Use quad mesh. ALso make sure tranform scale = 1 with d
 @export var outside_transition_camera: Camera3D
 @export var inside_transition_camera: Camera3D
 
-func _ready():
-	mirror_camera.projection = Camera3D.PROJECTION_FRUSTUM
-	mirror_camera.keep_aspect = Camera3D.KEEP_HEIGHT 
-	viewport.size = Vector2i(mesh.size * pixels_per_world_unit)
-
 func set_bool_on_shader(group: String = "lut_overlay", property_name: String = "flip_x", value: bool = true) -> void:
 	var nodes = get_tree().get_nodes_in_group(group)
 	for node in nodes:
@@ -20,15 +15,7 @@ func set_bool_on_shader(group: String = "lut_overlay", property_name: String = "
 		if not mat: continue
 		mat.set_shader_parameter(property_name, value)
 
-func get_plane_intersection(input_position: Vector3, normal: Vector3) -> Vector3:
-	var center_point: Vector3 = global_transform.origin
-	var n: Vector3 = normal.normalized()
-	var to_point: Vector3 = input_position - center_point
-	var depth: Vector3 = n * to_point.dot(n)
-	return input_position - depth
-
-## Critically does not change handiness! 	
-func get_mirror_transform(input_transform: Transform3D, rotate_only: bool = false) -> Transform3D:
+func get_mirror_transform(input_transform: Transform3D) -> Transform3D: ## Critically does not change handiness! 	
 	
 	#  	Input Transform 
 	#        ●
@@ -36,9 +23,9 @@ func get_mirror_transform(input_transform: Transform3D, rotate_only: bool = fals
 	#  Plane | \  Center
 	#  Point |  \ Point
 	# =======●===●========== Mirror Plane
-	#        |    \
-	#        |     \
-	#        |      \
+	#        |  / \
+	#        | /   \
+	#        |/     \
 	#        ●       ● Rotated 
 	#     Output      Transform
 	#    Transform
@@ -58,10 +45,18 @@ func get_mirror_transform(input_transform: Transform3D, rotate_only: bool = fals
 	var depth: Vector3 = forward_axis * to_point.dot(forward_axis)
 	var plane_point: Vector3 = input_transform.origin - depth
 	var difference_to_plane: Vector3 = plane_point - input_transform.origin
-	var output_transform = Transform3D(rotated_orientation, plane_point + difference_to_plane)
 	
-	if rotate_only: return rotated_transform
-	else: return output_transform
+	# Get Output Transform position
+	var output_position: Vector3 = plane_point + difference_to_plane
+		 
+	# Get Output orientation
+	var to_plane: Vector3 = (plane_point - output_position).slide(up_axis).normalized()
+	var forward: Vector3 = (-rotated_orientation.z).slide(up_axis).normalized()
+	var angle: float = atan2(up_axis.dot(forward.cross(to_plane)),forward.dot(to_plane))
+	var output_orientation: Basis = rotated_orientation.rotated(up_axis, angle * 2.0)
+	
+	var output_transform = Transform3D(output_orientation, output_position)
+	return output_transform
 	
 # Naive Solution that returns a transform that reflects positions and rotations across the mirror plane. Changes handiness 
 #func get_reflected_transform(input_transform: Transform3D) -> Transform3D:
@@ -74,6 +69,11 @@ func get_mirror_transform(input_transform: Transform3D, rotate_only: bool = fals
 	#var offset: Vector3 = 2.0 * normal.dot(center) * normal
 	#var reflected_transform = Transform3D(Basis(basisX, basisY, basisZ), offset)
 	#return reflected_transform * input_transform
+
+func _ready():
+	mirror_camera.projection = Camera3D.PROJECTION_FRUSTUM
+	mirror_camera.keep_aspect = Camera3D.KEEP_HEIGHT 
+	viewport.size = Vector2i(mesh.size * pixels_per_world_unit)
 
 func _process(_delta):
 	

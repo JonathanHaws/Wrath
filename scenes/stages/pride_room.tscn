@@ -66,6 +66,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(-0.0645772, -1.303761, 0)]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AnimationPlayer/ColorRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_a1s0u"]
 resource_name = "pride_intro"
@@ -95,10 +107,10 @@ tracks/1/path = NodePath("AnimationPlayer/OutsideMirror:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 2.9, 4.9, 5.9, 7.2000003, 8.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 4.5, 6.8, 9.599999),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(35.492416, 1.1704588, -25.243341), Vector3(45.95069, -3.6479192, 11.762776), Vector3(76.23471, -1.7702186, 3.337515), Vector3(76.23471, -1.7702186, 3.337515), Vector3(76.23471, -1.7702186, 3.337515), Vector3(102.97739, 1.6717391, -27.079163)]
+"values": [Vector3(35.492416, 1.1704588, -25.243341), Vector3(45.95069, -3.6479192, 11.762776), Vector3(76.23471, -1.7702186, 3.337515), Vector3(102.97739, 1.6717391, -27.079163)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -107,10 +119,10 @@ tracks/2/path = NodePath("AnimationPlayer/OutsideMirror:rotation")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 2.9, 4.9, 5.9, 7.2000003, 8.7),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 4.5, 6.8, 9.599999),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.17889594, -2.2165678, 0), Vector3(-0.065449506, -1.1388259, 0), Vector3(-0.04712392, -1.3255775, 0), Vector3(-0.04712392, -1.3255775, 0), Vector3(-0.04712392, -1.3255775, 0), Vector3(-0.14311701, -2.9967277, 0)]
+"values": [Vector3(-0.17889594, -2.2165678, 0), Vector3(-0.065449506, -1.1388259, 0), Vector3(-0.04712392, -1.3255775, 0), Vector3(-0.14311701, -2.9967277, 0)]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -119,10 +131,10 @@ tracks/3/path = NodePath("AnimationPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 5.9, 9.3),
+"times": PackedFloat32Array(0.9, 6.8, 10.2),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
-"args": [2.0, "outside_mirror_camera", false],
+"args": [0.0, "outside_mirror_camera", false],
 "method": &"seamless_cam_trans"
 }, {
 "args": [0.0, "inside_mirror_camera", false],
@@ -139,7 +151,7 @@ tracks/4/path = NodePath("Mirror")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 5.9),
+"times": PackedFloat32Array(0.9, 6.8),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": ["lut_overlay", "flip_x", true],
@@ -148,6 +160,18 @@ tracks/4/keys = {
 "args": ["lut_overlay", "flip_x", false],
 "method": &"set_bool_on_shader"
 }]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AnimationPlayer/ColorRect:modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.5, 0.9, 1.3000001),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rp77y"]
@@ -254,6 +278,7 @@ far = 100.0
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Mirror/SubViewport/Camera3D" unique_id=60041490]
 transform = Transform3D(-1.1127254e-07, 6.756116e-08, -1, -1, -4.371139e-08, 1.1127254e-07, -4.3711385e-08, 1, 6.756116e-08, 0, 0, 0)
+visible = false
 mesh = SubResource("PrismMesh_hmjiv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=441558981 groups=["pride_cinematic", "skippable"]]
@@ -261,8 +286,18 @@ libraries/ = SubResource("AnimationLibrary_rp77y")
 autoplay = &"RESET"
 script = ExtResource("12_00jdy")
 
+[node name="ColorRect" type="ColorRect" parent="AnimationPlayer" unique_id=724849711]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
 [node name="OutsideMirror" type="Camera3D" parent="AnimationPlayer" unique_id=744442920 groups=["outside_mirror_camera"]]
-transform = Transform3D(0.26387295, 0.06224512, -0.9625467, 0, 0.99791545, 0.06453231, 0.96455723, -0.017028335, 0.26332295, 76.27311, 2.4554224, 3.7317052)
+transform = Transform3D(0.26387298, 0.06224513, -0.9625469, 0, 0.9979156, 0.064532325, 0.96455735, -0.01702834, 0.263323, 76.27311, 2.4554224, 3.7317052)
 fov = 45.0
 near = 0.001
 
