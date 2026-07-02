@@ -1,13 +1,38 @@
 [
+	
+	{"branch": "intro"},
+		{"say_timed": {"say": "SO YOU FOUND ME...", "for": 3.0}},
+		{"say_timed": {"say": "...", "for": 2.0}},
+		
+	{"branch": "question"},	
+		{"say_timed": {"say": "OR DID YOU FIND YOURSELF?", "for": 3.5}},
+		
+	{"branch": "heir"},		
+		{"say_timed": {"say": "I GAVE YOUR SUFFERING A KINGDOM.", "for": 3.0}},
+		{"say_timed": {"say": "YOUR WOUNDS A THRONE.", "for": 3.0}},
+		{"say_timed": {"say": "YOUR PAIN A HOME.", "for": 3.0}},
+		{"say_timed": {"say": "AND YET.", "for": 2.0}},
+		{"say_timed": {"say": "YOU TEAR OFF THAT CROWN", "for": 3.0}},
+		{"say_timed": {"say": "AND WOULD LEAVE IT ALL BEHIND YOU...", "for": 5.0}},
+	
+	{"branch": "fight"},	
+		{"say_timed": {"say": "YOU DONT KNOW WHAT FREEDOM COSTS.", "for": 5.0}},
+		
 	{"branch": "final question"},
 		{"say_timed": {"say": "DO YOU LIKE MY CREATION", "for": 2.5}},
 		{"choice": [{"text": "NO", "skip": "give_in" }, 
 					{"text": "FORGIVE"}]},
 
 	{"branch": "random_taunt_1"},
-		{"say_timed": {"say": "YOU WILL LEARN", "for": 3.0}},
-		{"say_timed": {"say": "HOW AMAZING I AM", "for": 3.0}},
-
+		{"say_timed": {"say": "DO YOU HAVE ANY EARTHLY IDEA?", "for": 3.0}},
+		{"say_timed": {"say": "HOW POWERFUL YOU HAVE TO BE?", "for": 3.0}},
+		{"say_timed": {"say": "TO HOLD DOMINION OVER THE SINS OF HELL?", "for": 3.0}},
+			
+	{"branch": "random_taunt_2"},
+		{"say_timed": {"say": "ALL THE VOLITION", "for": 3.0}},
+		{"say_timed": {"say": "AND VIRTUE IN THE WORLD", "for": 3.0}},
+		{"say_timed": {"say": "AND I COULD BARELY CONTROL THE DAMNED BASTARDS", "for": 3.0}},
+		
 	{"branch": "death"},
 		{"say_timed": {"say": "IM NO ONE", "for": 5.0}},
 	

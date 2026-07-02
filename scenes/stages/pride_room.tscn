@@ -57,36 +57,36 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimationPlayer/OutsideMirror:rotation")
+tracks/1/path = NodePath("AnimationPlayer/ColorRect:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.0645772, -1.303761, 0)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimationPlayer/ColorRect:modulate")
+tracks/2/path = NodePath("AnimationPlayer/OutsideMirror:quaternion")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Quaternion(-0.048158746, 0.87669075, 0.0898042, 0.47013757)]
 }
 
 [sub_resource type="Animation" id="Animation_a1s0u"]
 resource_name = "pride_intro"
-length = 12.0
+length = 50.0
 step = 0.1
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"skip",
-"time": 12.0
+"time": 45.4
 }]
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -107,22 +107,22 @@ tracks/1/path = NodePath("AnimationPlayer/OutsideMirror:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 4.5, 6.8, 9.599999),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(8.5, 20.1, 26.5, 31, 32.6, 34.7, 37.2, 44.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(35.492416, 1.1704588, -25.243341), Vector3(45.95069, -3.6479192, 11.762776), Vector3(76.23471, -1.7702186, 3.337515), Vector3(102.97739, 1.6717391, -27.079163)]
+"values": [Vector3(35.492416, 1.1704588, -25.243341), Vector3(45.95069, -3.6479192, 11.762776), Vector3(59.27552, -2.9576225, 24.106766), Vector3(67.975365, -2.3625765, 12.675774), Vector3(76.23471, -1.7702186, 3.337515), Vector3(108.353516, 0.26721, -19.573868), Vector3(130.4942, 2.9170685, -13.452221), Vector3(121.82284, 1.1285839, 15.990313)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("AnimationPlayer/OutsideMirror:rotation")
+tracks/2/path = NodePath("AnimationPlayer/OutsideMirror:quaternion")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 4.5, 6.8, 9.599999),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(8.500001, 20.100002, 26.5, 31, 32.6, 34.7, 37.2, 44.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(-0.17889594, -2.2165678, 0), Vector3(-0.065449506, -1.1388259, 0), Vector3(-0.04712392, -1.3255775, 0), Vector3(-0.14311701, -2.9967277, 0)]
+"values": [Quaternion(0.039858308, 0.89135647, 0.07994335, -0.4444142), Quaternion(-0.027556447, -0.53884906, -0.01764, 0.8417667), Quaternion(-0.031174447, -0.25064072, -0.008075687, 0.96754444), Quaternion(-0.024910118, -0.3951836, -0.010721033, 0.91820174), Quaternion(-0.018571692, -0.6151469, -0.01449675, 0.7880605), Quaternion(-0.011880876, 0.9842692, 0.07285223, 0.16051644), Quaternion(-0.059097808, 0.8180716, 0.08547006, 0.5656512), Quaternion(-0.10569116, 0.50620395, 0.06267611, 0.85361505)]
 }
 tracks/3/type = "method"
 tracks/3/imported = false
@@ -131,7 +131,7 @@ tracks/3/path = NodePath("AnimationPlayer")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.9, 6.8, 10.2),
+"times": PackedFloat32Array(2.3, 32.6, 38.4),
 "transitions": PackedFloat32Array(1, 1, 1),
 "values": [{
 "args": [0.0, "outside_mirror_camera", false],
@@ -140,7 +140,7 @@ tracks/3/keys = {
 "args": [0.0, "inside_mirror_camera", false],
 "method": &"seamless_cam_trans"
 }, {
-"args": [1.5, "player_camera", false],
+"args": [3.0, "player_camera", false],
 "method": &"seamless_cam_trans"
 }]
 }
@@ -151,7 +151,7 @@ tracks/4/path = NodePath("Mirror")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.9, 6.8),
+"times": PackedFloat32Array(2.3, 32.6),
 "transitions": PackedFloat32Array(1, 1),
 "values": [{
 "args": ["lut_overlay", "flip_x", true],
@@ -168,10 +168,10 @@ tracks/5/path = NodePath("AnimationPlayer/ColorRect:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.5, 0.9, 1.3000001),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0.5, 1.3, 12.9, 14.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rp77y"]
@@ -215,26 +215,17 @@ skeleton = NodePath("../..")
 
 [node name="Lights" type="Node3D" parent="." unique_id=1077355695]
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Lights" unique_id=1348272762]
-transform = Transform3D(-0.863752, 0.338229, -0.373543, -0.3265, 0.189003, 0.926108, 0.383837, 0.921889, -0.0528199, 16.3637, 1.1386, -0.412741)
-light_color = Color(0.29, 0.29, 0.29, 1)
-light_energy = 100.0
-light_indirect_energy = 0.0
-light_volumetric_fog_energy = 0.0
-light_specular = 0.0
-omni_range = 101.01
-
 [node name="Lights" type="Node3D" parent="Lights" unique_id=877752087]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.76855, 7.245826, 0)
 
 [node name="OmniLight3D2" type="OmniLight3D" parent="Lights" unique_id=2014259693]
-transform = Transform3D(-0.8637518, 0.33822867, -0.37354293, -0.3264999, 0.18900287, 0.9261079, 0.38383693, 0.921889, -0.05281993, 53.688545, -3.10137, -0.412741)
+transform = Transform3D(1.0000001, 0, 0, 0, 1, 0, 0, 0, 1, 55.008064, 4.2365665, 0)
 light_color = Color(0.29, 0.29, 0.29, 1)
-light_energy = 50.0
+light_energy = 75.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
-light_specular = 0.2
-omni_range = 24.7603
+light_specular = 0.0
+omni_range = 59.452877
 
 [node name="Enter" parent="." unique_id=278454585 instance=ExtResource("7_rp77y")]
 transform = Transform3D(-4.37112e-08, 0, 1, 0, 1, 0, -1, 0, -4.37112e-08, -22.2895, -9.60013, 1.00536e-06)
@@ -297,12 +288,14 @@ mouse_filter = 2
 color = Color(0, 0, 0, 1)
 
 [node name="OutsideMirror" type="Camera3D" parent="AnimationPlayer" unique_id=744442920 groups=["outside_mirror_camera"]]
-transform = Transform3D(0.26387298, 0.06224513, -0.9625469, 0, 0.9979156, 0.064532325, 0.96455735, -0.01702834, 0.263323, 76.27311, 2.4554224, 3.7317052)
+transform = Transform3D(-0.5533029, -0.16888131, 0.8156808, 0, 0.9792319, 0.2027435, -0.8329802, 0.112178564, -0.5418118, 76.27311, 2.4554224, 3.7317052)
+rotation_edit_mode = 1
 fov = 45.0
 near = 0.001
 
 [node name="InsideMirror" type="Camera3D" parent="AnimationPlayer" unique_id=1775868843 groups=["inside_mirror_camera"]]
-transform = Transform3D(0.24361515, -0.04568723, 0.9687953, 0, 0.99888986, 0.047106452, -0.969872, -0.011475845, 0.24334471, 92.241, -1.77, 3.3379993)
+transform = Transform3D(0.020783553, 0.108033925, -0.9939299, 0, 0.9941447, 0.10805727, 0.999784, -0.0022458138, 0.020661859, 92.241, -1.7700005, 3.338003)
+rotation_edit_mode = 1
 fov = 45.0
 near = 0.001
 

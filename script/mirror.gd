@@ -2,8 +2,12 @@ extends MeshInstance3D # Use quad mesh. ALso make sure tranform scale = 1 with d
 @export var pixels_per_world_unit: = 100
 @export var viewport: SubViewport
 @export var mirror_camera: Camera3D
+
 @export var outside_transition_camera: Camera3D
 @export var inside_transition_camera: Camera3D
+@export var inside_viewport: SubViewport
+
+
 
 func set_bool_on_shader(group: String = "lut_overlay", property_name: String = "flip_x", value: bool = true) -> void:
 	var nodes = get_tree().get_nodes_in_group(group)
@@ -84,6 +88,8 @@ func _process(_delta):
 
 	if viewport.world_3d == null: viewport.world_3d = World3D.new()
 	viewport.world_3d = get_viewport().world_3d
+	
+	
 	viewport.size = Vector2i(mesh.size * pixels_per_world_unit)
 	
 	# Transform the mirror camera to the opposite side of the mirror plane

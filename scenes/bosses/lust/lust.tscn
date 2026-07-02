@@ -32,9 +32,6 @@
 [ext_resource type="Script" uid="uid://dpgehwrod878r" path="res://script/component/look_at_influence_lerp.gd" id="32_3pkb6"]
 [ext_resource type="Script" uid="uid://cv3ri532h46g6" path="res://script/dialog/dialog.gd" id="32_3ttn5"]
 [ext_resource type="JSON" path="res://json/lust_talk.json" id="33_035v5"]
-[ext_resource type="PackedScene" uid="uid://c46auycv4i382" path="res://scenes/ui/dialog/choice.tscn" id="34_fedu3"]
-[ext_resource type="PackedScene" uid="uid://bbw5gu8hyws74" path="res://scenes/ui/dialog/say.tscn" id="35_tf4if"]
-[ext_resource type="PackedScene" uid="uid://kiuc3ouuqv0h" path="res://scenes/ui/dialog/say_timed.tscn" id="36_u136s"]
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="37_r3vda"]
 [ext_resource type="AudioStream" uid="uid://dia2v1hr7kneb" path="res://audio/sfx/characters/enemies/Cry_2.wav" id="39_6ecgv"]
 [ext_resource type="Script" uid="uid://cyt6s1hgewbgh" path="res://scenes/bosses/lust/acheivement.gd" id="40_3pkb6"]
@@ -1930,7 +1927,6 @@ autoplay = &"RESET"
 script = ExtResource("32_3ttn5")
 dialog_file = ExtResource("33_035v5")
 anim = NodePath(".")
-dialog_templates = Array[PackedScene]([ExtResource("34_fedu3"), ExtResource("35_tf4if"), ExtResource("36_u136s")])
 area = NodePath("..")
 lines = Array[String](["random_taunt_1", "random_taunt_2", "random_taunt_3", "random_taunt_4"])
 hit_shape = NodePath("../../HitShape")

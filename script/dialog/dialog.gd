@@ -8,10 +8,14 @@ var dialog: Array
 var dialog_instance
 var dialog_instance_valid_last_frame := false
 
-@export_subgroup("Templates") ## Scene templates to spawn specified in dialog JSON f
-@export var dialog_key_map : Array[String] = ["choice", "say", "say_timed"] ## For shortening dialog files. Specify what key should spawn what scene
-@export var dialog_templates: Array[PackedScene] = [] ## Scene templates to spawn / despawn when the last sentence is finished
+@export_subgroup("Templates") ## Scene templates to spawn specified in dialog JSON 
 @export var dialog_group: String = "dialog" ## Group all instances of templates are added to. Used by other scrips (Such as cutscene skipper) to get rid of them
+@export var dialog_key_map : Array[String] = ["choice", "say", "say_timed"] ## For shortening dialog files. Specify what key should spawn what scene
+@export var dialog_templates: Array[PackedScene] = [ ## Scene templates to spawn / despawn when the last sentence is finished
+	preload("res://scenes/ui/dialog/choice.tscn"),
+	preload("res://scenes/ui/dialog/say.tscn"),
+	preload("res://scenes/ui/dialog/say_timed.tscn"),
+]
 
 @export_group("Area")
 @export var area_anim: AnimationPlayer ## For entry / exit animations from area

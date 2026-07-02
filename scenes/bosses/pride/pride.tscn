@@ -10,7 +10,7 @@
 [ext_resource type="AudioStream" uid="uid://pwfss3lgluso" path="res://audio/sfx/characters/Crumble_2.wav" id="12_g0hg0"]
 [ext_resource type="AudioStream" uid="uid://do7uftfsmyrp0" path="res://audio/sfx/characters/Crumble_3.wav" id="13_mbca3"]
 [ext_resource type="AudioStream" uid="uid://bg0rsvkfwvyq1" path="res://audio/sfx/characters/Crumble_4.wav" id="14_imhgt"]
-[ext_resource type="AudioStream" uid="uid://djsidb0a3237q" path="res://audio/music/$pride.ogg" id="15_1ce75"]
+[ext_resource type="AudioStream" uid="uid://djsidb0a3237q" path="res://audio/music/pride.ogg" id="15_1ce75"]
 [ext_resource type="AudioStream" uid="uid://dejgyyvoucgey" path="res://audio/sfx/characters/enemies/Cry_3.wav" id="15_jxplk"]
 [ext_resource type="AudioStream" uid="uid://cf425758jfm2q" path="res://audio/sfx/characters/enemies/Despawn.wav" id="16_st6dt"]
 [ext_resource type="AudioStream" uid="uid://2r6c4ytgkm4u" path="res://audio/sfx/characters/enemies/Cry.wav" id="17_euapl"]
@@ -29,9 +29,9 @@
 [ext_resource type="Script" uid="uid://buy6ec86yjg2n" path="res://script/component/root_motion.gd" id="26_8l61o"]
 [ext_resource type="JSON" uid="uid://dgjgq3dsd2m3j" path="res://json/pride_talk.json" id="29_2x3ef"]
 [ext_resource type="Script" uid="uid://cyt6s1hgewbgh" path="res://scenes/bosses/lust/acheivement.gd" id="29_cxgsi"]
+[ext_resource type="AudioStream" uid="uid://epdwt74x5jrv" path="res://audio/sfx/characters/pride/pride_talk.ogg" id="29_tfl8p"]
 [ext_resource type="PackedScene" uid="uid://5ajxste60xmp" path="res://scenes/ui/dialog/background.tscn" id="30_2q8t5"]
 [ext_resource type="Script" uid="uid://bmadrcdyihyn2" path="res://script/items/cinematic.gd" id="32_tfl8p"]
-[ext_resource type="AudioStream" uid="uid://bi0nj82twwtib" path="res://audio/sfx/characters/envy/envy_talk_1.ogg" id="35_3oycc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_20oj1"]
 radius = 1.1630859
@@ -92,31 +92,31 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_x1kl7"]
 resource_name = "DEATH"
 length = 20.0
-tracks/0/type = "method"
+tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".")
+tracks/0/path = NodePath("Audio/Music:volume_db")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.266667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, -80.0]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
 "times": PackedFloat32Array(18.5),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"queue_free"
 }]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Audio/Music:volume_db")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.266667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0.0, -80.0]
 }
 tracks/2/type = "method"
 tracks/2/imported = false
@@ -204,7 +204,7 @@ tracks/8/keys = {
 "times": PackedFloat32Array(0.4, 2.63333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [20.0, 0.0]
+"values": [100.0, 0.0]
 }
 tracks/9/type = "method"
 tracks/9/imported = false
@@ -282,29 +282,29 @@ tracks/13/keys = {
 
 [sub_resource type="Animation" id="Animation_mlrdc"]
 resource_name = "INTRO"
-length = 12.0
+length = 44.0
 step = 0.0416667
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"skip",
-"time": 10.5
+"time": 43.625
 }]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Light:light_energy")
-tracks/0/interp = 2
+tracks/0/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/0/interp = 0
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [0.0]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/1/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/1/interp = 0
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -316,48 +316,36 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Target:SPEED_MULTIPLIER")
+tracks/2/path = NodePath("HitShape:INVINCIBLE")
 tracks/2/interp = 0
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("HitShape:INVINCIBLE")
-tracks/3/interp = 0
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
 "values": [false]
 }
-tracks/4/type = "method"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Audio/Music")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(8.541667),
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Audio/Music")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(32.6),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [0.0],
 "method": &"play"
 }]
 }
-tracks/5/type = "method"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("CameraEffects")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("CameraEffects")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0.0833333),
 "transitions": PackedFloat32Array(1),
 "values": [{
@@ -365,53 +353,88 @@ tracks/5/keys = {
 "method": &"impact"
 }]
 }
-tracks/6/type = "method"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("BossHealthBar/AnimationPlayer")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(8.875),
+tracks/5/type = "method"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("BossHealthBar/AnimationPlayer")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(35.583332),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [&"reveal"],
 "method": &"queue"
 }]
 }
-tracks/7/type = "method"
-tracks/7/imported = false
-tracks/7/enabled = true
-tracks/7/path = NodePath("Dialog")
-tracks/7/interp = 1
-tracks/7/loop_wrap = true
-tracks/7/keys = {
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Dialog")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
 "times": PackedFloat32Array(),
 "transitions": PackedFloat32Array(),
 "values": []
 }
-tracks/8/type = "animation"
-tracks/8/imported = false
-tracks/8/enabled = true
-tracks/8/path = NodePath("Mesh/pride/AnimationPlayer")
-tracks/8/interp = 1
-tracks/8/loop_wrap = true
-tracks/8/keys = {
+tracks/7/type = "animation"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Mesh/pride/AnimationPlayer")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
 "clips": PackedStringArray("Idle"),
 "times": PackedFloat32Array(-0.041666668)
 }
-tracks/9/type = "method"
-tracks/9/imported = false
-tracks/9/enabled = true
-tracks/9/path = NodePath("IntroCinematic")
-tracks/9/interp = 1
-tracks/9/loop_wrap = true
-tracks/9/keys = {
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("IntroCinematic")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
 "times": PackedFloat32Array(0.041666668),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"_play_animations_in_other_nodes"
+}]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Dialog:random_dialog")
+tracks/9/interp = 0
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(43.166668),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Dialog")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(4.8333335, 9.833333, 14.875, 39.125),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": ["intro"],
+"method": &"spawn_branch"
+}, {
+"args": ["question"],
+"method": &"spawn_branch"
+}, {
+"args": ["heir"],
+"method": &"spawn_branch"
+}, {
+"args": ["fight"],
+"method": &"spawn_branch"
 }]
 }
 
@@ -420,7 +443,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Light:light_energy")
+tracks/0/path = NodePath("Audio/Music:volume_db")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -432,20 +455,20 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Target:TRACKING_MULTIPLIER")
-tracks/1/interp = 1
+tracks/1/path = NodePath("Light:light_energy")
+tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [100.0]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Target:SPEED_MULTIPLIER")
-tracks/2/interp = 0
+tracks/2/path = NodePath("Target:TRACKING_MULTIPLIER")
+tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
@@ -456,20 +479,20 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/3/path = NodePath("Target:SPEED_MULTIPLIER")
 tracks/3/interp = 0
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
+"update": 0,
+"values": [0.0]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Target:USE_GRAVITY")
-tracks/4/interp = 1
+tracks/4/path = NodePath("Target:MOVE_AND_SLIDE")
+tracks/4/interp = 0
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
@@ -480,14 +503,14 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Audio/Music:volume_db")
+tracks/5/path = NodePath("Target:USE_GRAVITY")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0]
+"update": 1,
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
@@ -512,6 +535,18 @@ tracks/7/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [1.0]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Dialog:random_dialog")
+tracks/8/interp = 0
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_cxgsi"]
@@ -932,22 +967,26 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.07889, 7.1402, 8.51709)
 shape = SubResource("BoxShape3D_wbwgn")
 
 [node name="Light" type="OmniLight3D" parent="." unique_id=1051689668]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.271614, 13.6732, -0.361175)
-light_color = Color(0.541176, 0.313726, 0.701961, 1)
-light_energy = 0.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.9918766, 7.9761114, -0.9209761)
+light_color = Color(0.5560799, 0.18480001, 0.84, 1)
+light_energy = 100.0
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 0.0
 light_specular = 0.0
-omni_range = 27.0089
+omni_range = 35.787518
+omni_attenuation = 3.0
 
 [node name="Dialog" type="AnimationPlayer" parent="." unique_id=350144529 node_paths=PackedStringArray("anim", "player")]
 libraries/ = SubResource("AnimationLibrary_sxwwu")
 script = ExtResource("25_2x3ef")
 dialog_file = ExtResource("29_2x3ef")
 anim = NodePath(".")
-lines = Array[String](["random_taunt_1"])
+sequential = true
+min_interval = 6.0
+max_interval = 9.0
+lines = Array[String](["random_taunt_1", "random_taunt_2"])
 player = NodePath("Jibberish")
-sounds = Array[AudioStream]([ExtResource("35_3oycc")])
+sounds = Array[AudioStream]([ExtResource("29_tfl8p")])
 
 [node name="Background" parent="Dialog" unique_id=1392334860 instance=ExtResource("30_2q8t5")]
 
