@@ -5,17 +5,19 @@ extends MeshInstance3D # Use quad mesh. ALso make sure tranform scale = 1 with d
 @export var outside_transition_camera: Camera3D
 @export var inside_transition_camera: Camera3D
 
-#   Current Cam 
+#
+#  Player Camera Transform 
 #        ●      
-#         \     
-#          \   
-#           ● 
-# ========================== Mirror Plane
-#           ● 
-#          /
-#         /
-#        ● 
-#   Reflected Mirror Cam
+#        |\     
+#        | \   
+#        |  \ 
+# ========== ● ========= Mirror Plane
+#        |  / \
+#        | /   \
+#        |/     \
+#        ●       ● Reflected Transforms
+#    Flip X   No Flip X
+#
 
 func _ready():
 	
@@ -26,7 +28,7 @@ func _ready():
 
 func _process(_delta):
 	
-	inside_transition_camera.global_transform = MirrorTransform() * outside_transition_camera.global_transform
+	inside_transition_camera.global_transform = get_reflected_transform(outside_transition_camera.global_transform)
 	
 	var current_cam: Camera3D= get_viewport().get_camera_3d()
 	if current_cam == null: return
@@ -61,4 +63,27 @@ func MirrorTransform(normal: Vector3 = global_transform.basis.z, point_on_plane:
 	var basisY: Vector3 = Vector3(0, 1.0, 0) - 2 * Vector3(normal.y * normal.x, normal.y * normal.y, normal.y * normal.z)
 	var basisZ: Vector3 = Vector3(0, 0, 1.0) - 2 * Vector3(normal.z * normal.x, normal.z * normal.y, normal.z * normal.z)
 	var offset: Vector3 = 2.0 * normal.dot(point_on_plane) * normal
+	
+	
+	#var mirror_transform = RotateAroundMirror()
+	#return mirror_transform
+	
 	return Transform3D(Basis(basisX, basisY, basisZ), offset)
+	
+func get_reflected_transform(input_transform: Transform3D) -> Transform3D:
+	var axis: Vector3 = global_transform.basis.y.normalized()
+	var center: Vector3 = global_transform.origin
+	var angle: float = PI
+
+	var t: Transform3D = input_transform
+
+	# reflect position around axis through center
+	var offset: Vector3 = t.origin - center
+	offset = offset.rotated(axis, angle)
+	var new_position: Vector3 = center + offset
+
+	# rotate basis around same axis
+	var new_basis: Basis = t.basis.rotated(axis, angle)
+
+	return Transform3D(new_basis, new_position)
+	
