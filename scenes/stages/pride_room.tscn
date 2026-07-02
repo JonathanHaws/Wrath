@@ -245,7 +245,7 @@ autoplay = &"RESET"
 script = ExtResource("12_00jdy")
 
 [node name="OutsideMirror" type="Camera3D" parent="AnimationPlayer" unique_id=744442920 groups=["outside_mirror_camera"]]
-transform = Transform3D(0.26387298, 0.062245123, -0.9625468, 0, 0.9979155, 0.06453232, 0.96455735, -0.017028337, 0.26332298, 76.27311, 2.4554224, 3.7317052)
+transform = Transform3D(0.26387298, 0.06224512, -0.96254677, 0, 0.99791545, 0.06453232, 0.9645573, -0.017028335, 0.26332298, 76.27311, 2.4554224, 3.7317052)
 fov = 45.0
 near = 0.001
 

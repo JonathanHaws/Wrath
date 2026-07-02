@@ -1548,10 +1548,10 @@ tracks/4/path = NodePath("UI:modulate")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.0333333, 10, 10.541667),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.45833337, 10, 10.541667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_wfofs"]
@@ -4003,7 +4003,7 @@ groups = Array[String](["cloak_mesh", "body_mesh"])
 [node name="reaper" parent="Reaper/Mesh" unique_id=1111972383 instance=ExtResource("45_riyku")]
 
 [node name="Skeleton3D" parent="Reaper/Mesh/reaper/Reaper" parent_id_path=PackedInt32Array(1111972383, 947482423) index="0" unique_id=690915142]
-bones/1/position = Vector3(0.009327423, 0.1904321, 0.8349997)
+bones/1/position = Vector3(0.011792854, 0.19442736, 0.8551219)
 bones/1/rotation = Quaternion(0.66652495, 0.005288413, -0.0047285077, 0.74544907)
 bones/2/rotation = Quaternion(1.8626446e-09, 1.2361932e-07, -3.2596281e-09, 1)
 bones/3/position = Vector3(-0.13482243, 0.052575987, -0.0037890945)
@@ -4015,7 +4015,7 @@ bones/7/position = Vector3(0.09502389, 0.29883626, -0.037884142)
 bones/7/rotation = Quaternion(-0.08802523, 0.31957725, -0.44377673, 0.8325769)
 bones/8/position = Vector3(0.040278308, 0.37375045, 0.019249905)
 bones/8/rotation = Quaternion(-0.59016526, -0.32968497, -0.3287858, 0.65947914)
-bones/9/rotation = Quaternion(0.028141497, 0.0023133792, -0.014026848, 0.9995029)
+bones/9/rotation = Quaternion(0.06429894, 0.00031269196, -0.0018959502, 0.99792886)
 bones/10/position = Vector3(0.07390616, 0.08636394, 1.0374769e-08)
 bones/10/rotation = Quaternion(-0.11537217, -0.050698962, -0.85975343, 0.49491715)
 bones/11/rotation = Quaternion(-0.45832148, -0.40650788, 0.06873397, 0.7873807)
@@ -4033,7 +4033,7 @@ bones/19/position = Vector3(0.07455925, -0.046927348, -1.8576564e-08)
 bones/19/rotation = Quaternion(-0.0062845666, 0.12080198, 0.9926165, -0.008936215)
 bones/20/rotation = Quaternion(0.023063224, -0.00015736259, -0.003233474, 0.9997288)
 bones/21/rotation = Quaternion(-0.792553, 0.002029981, -0.0018231295, 0.60979694)
-bones/22/position = Vector3(0.07368666, 0.48258343, 1.0684922)
+bones/22/position = Vector3(0.0740456, 0.4825835, 1.0937855)
 bones/22/rotation = Quaternion(0.29752752, 0.26516637, 0.5539212, 0.73098254)
 
 [node name="body" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" index="0" unique_id=1310757747 groups=["body_mesh"]]
@@ -4043,7 +4043,7 @@ surface_material_override/0 = ExtResource("35_m1s71")
 surface_material_override/0 = ExtResource("36_4anjp")
 
 [node name="BoneAttachment3D" type="BoneAttachment3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" index="3" unique_id=552018988]
-transform = Transform3D(0.246515, -0.6622984, 0.70752466, -0.05455805, 0.71941316, 0.69243616, -0.967602, -0.20929705, 0.14121248, 0.05851966, 1.0694301, -0.23258308)
+transform = Transform3D(0.246515, -0.6622984, 0.70752466, -0.05455805, 0.71941316, 0.69243616, -0.967602, -0.20929705, 0.14121248, 0.058519706, 1.0947261, -0.23258314)
 bone_name = "staff_2"
 bone_idx = 22
 
@@ -4080,7 +4080,7 @@ light_energy = 0.0
 libraries/ = SubResource("AnimationLibrary_hfpb6")
 
 [node name="left_foot" type="BoneAttachment3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" index="4" unique_id=1880319706]
-transform = Transform3D(-0.99981976, -0.015474274, -0.011016672, 0.011582442, -0.03696038, -0.9992497, 0.015055489, -0.9991971, 0.03713301, -0.09039363, 0.009661317, -0.12658648)
+transform = Transform3D(-0.99981976, -0.015474274, -0.011016672, 0.011582442, -0.03696038, -0.9992497, 0.015055489, -0.9991971, 0.03713301, -0.088213935, 0.029816508, -0.13058174)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -4090,7 +4090,7 @@ script = ExtResource("15_lwilf")
 scenes = Array[PackedScene]([ExtResource("6_bo8be")])
 
 [node name="right_foot" type="BoneAttachment3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" index="5" unique_id=1885491197]
-transform = Transform3D(-0.99981976, -0.015474274, -0.011016672, 0.011582442, -0.03696038, -0.9992497, 0.015055489, -0.9991971, 0.03713301, -0.09039363, 0.009661317, -0.12658648)
+transform = Transform3D(-0.99981976, -0.015474274, -0.011016672, 0.011582442, -0.03696038, -0.9992497, 0.015055489, -0.9991971, 0.03713301, -0.088213935, 0.029816508, -0.13058174)
 bone_name = "foot_l"
 bone_idx = 18
 
@@ -4113,7 +4113,7 @@ secondary_limit_angle = 0.261799
 secondary_damp_threshold = 1.0
 
 [node name="SlimeAttachment" type="BoneAttachment3D" parent="Reaper/Mesh/reaper/Reaper/Skeleton3D" index="7" unique_id=412721731]
-transform = Transform3D(0.9999998, 9.313199e-10, 2.4374611e-07, -2.9375306e-08, 0.99377066, 0.11144405, -2.4221552e-07, -0.11144404, 0.99377066, -0.0025203468, 1.1336433, 0.02608291)
+transform = Transform3D(0.9999998, 9.313199e-10, 2.4374611e-07, -2.9375306e-08, 0.99377066, 0.11144405, -2.4221552e-07, -0.11144404, 0.99377066, -0.00034065434, 1.1537985, 0.022087656)
 bone_name = "torso"
 bone_idx = 2
 
